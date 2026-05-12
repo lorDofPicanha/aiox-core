@@ -634,7 +634,9 @@ export async function runPipeline(options = {}) {
         }
 
         // Store in vector store for semantic search (Story 3.6)
-        if (scoringResult.tier === 'S' || scoringResult.tier === 'A' || scoringResult.tier === 'B') {
+        // TEMP HOTFIX 12/Mai: skip via HYDRA_SKIP_VECTOR_STORE=1 to bypass OOM (Sprint #1 Story 1.2 will fix via SQLite)
+        const skipVectorStore = process.env.HYDRA_SKIP_VECTOR_STORE === '1';
+        if (!skipVectorStore && (scoringResult.tier === 'S' || scoringResult.tier === 'A' || scoringResult.tier === 'B')) {
           await vectorStore.upsert({
             id: contentId,
             title: raw.title,
