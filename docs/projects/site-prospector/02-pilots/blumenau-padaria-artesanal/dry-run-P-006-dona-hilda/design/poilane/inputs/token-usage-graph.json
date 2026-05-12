@@ -1,0 +1,237 @@
+[
+  {
+    "name": "--color-foreground",
+    "declarations": 7,
+    "references": 69
+  },
+  {
+    "name": "--color-background",
+    "declarations": 5,
+    "references": 18
+  },
+  {
+    "name": "--font-heading-scale",
+    "declarations": 0,
+    "references": 17
+  },
+  {
+    "name": "--font-body-scale",
+    "declarations": 0,
+    "references": 13
+  },
+  {
+    "name": "--color-link",
+    "declarations": 2,
+    "references": 8
+  },
+  {
+    "name": "--duration-short",
+    "declarations": 1,
+    "references": 8
+  },
+  {
+    "name": "--page-width-margin",
+    "declarations": 1,
+    "references": 8
+  },
+  {
+    "name": "--color-base-outline-button-labels",
+    "declarations": 0,
+    "references": 7
+  },
+  {
+    "name": "--color-button",
+    "declarations": 6,
+    "references": 6
+  },
+  {
+    "name": "--color-base-text",
+    "declarations": 0,
+    "references": 6
+  },
+  {
+    "name": "--alpha-button-border",
+    "declarations": 2,
+    "references": 5
+  },
+  {
+    "name": "--duration-default",
+    "declarations": 1,
+    "references": 5
+  },
+  {
+    "name": "--header-threshold",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--color-base-solid-button-labels",
+    "declarations": 0,
+    "references": 4
+  },
+  {
+    "name": "--color-base-accent-1",
+    "declarations": 0,
+    "references": 4
+  },
+  {
+    "name": "--header-padding",
+    "declarations": 0,
+    "references": 4
+  },
+  {
+    "name": "--color-base-background-1",
+    "declarations": 0,
+    "references": 3
+  },
+  {
+    "name": "--color-base-accent-2",
+    "declarations": 0,
+    "references": 3
+  },
+  {
+    "name": "--font-body-family",
+    "declarations": 0,
+    "references": 3
+  },
+  {
+    "name": "--font-body-style",
+    "declarations": 0,
+    "references": 3
+  },
+  {
+    "name": "--font-body-weight",
+    "declarations": 0,
+    "references": 3
+  },
+  {
+    "name": "--alpha-link",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--color-button-text",
+    "declarations": 6,
+    "references": 2
+  },
+  {
+    "name": "--color-nav-fix",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--font-heading-family",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--font-heading-style",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--gradient-background",
+    "declarations": 5,
+    "references": 1
+  },
+  {
+    "name": "--alpha-button-background",
+    "declarations": 3,
+    "references": 1
+  },
+  {
+    "name": "--color-badge-background",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--color-badge-border",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--alpha-badge-border",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--color-card-hover",
+    "declarations": 3,
+    "references": 1
+  },
+  {
+    "name": "--gradient-base-background-1",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--color-base-background-2",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--gradient-base-background-2",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--gradient-base-accent-1",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--gradient-base-accent-2",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--page-width",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--font-heading-weight",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--color-icon",
+    "declarations": 4,
+    "references": 0
+  },
+  {
+    "name": "--duration-long",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--app-height",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--lg",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--inverted",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--translateItems",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--has-input",
+    "declarations": 4,
+    "references": 0
+  },
+  {
+    "name": "--payment-terms-background-color",
+    "declarations": 1,
+    "references": 0
+  }
+]

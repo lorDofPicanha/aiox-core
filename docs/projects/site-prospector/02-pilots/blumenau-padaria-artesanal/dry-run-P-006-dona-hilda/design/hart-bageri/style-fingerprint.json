@@ -1,0 +1,30 @@
+{
+  "extracted_signals": {
+    "radius_scale": "high",
+    "color_saturation": "moderate",
+    "spacing_density": "very-roomy",
+    "typography_weight": "regular",
+    "shadow_intensity": "strong",
+    "surface_treatment": "gradient"
+  },
+  "classification": {
+    "primary_archetype": "polaris-friendly",
+    "confidence_score": 89,
+    "secondary_archetype": null,
+    "explanation": "Matched polaris-friendly on: color_saturation=moderate, spacing_density=very-roomy, typography_weight=regular, shadow_intensity=strong, surface_treatment=gradient. Diverged on: radius_scale=high (expected moderate|moderate-high)."
+  },
+  "archetype_distance": {
+    "shadcn-neutral": 33.33333333333333,
+    "carbon-enterprise": 33.33333333333333,
+    "material-elevation": 18.75,
+    "polaris-friendly": 89.47368421052632,
+    "apple-glass": 50,
+    "brutalist-mono": 18.75,
+    "govuk-conservative": 20,
+    "porsche-precision": 18.75,
+    "ant-china-enterprise": 13.333333333333334,
+    "marketing-gradient": 75,
+    "community-polished": 20
+  },
+  "_reference": "lib/extractors.cjs:ARCHETYPES"
+}

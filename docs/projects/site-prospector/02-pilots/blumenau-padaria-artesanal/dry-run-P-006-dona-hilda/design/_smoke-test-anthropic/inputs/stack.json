@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Cloudflare",
+    "kind": "cdn",
+    "evidence": "Cloudflare server header / cf-ray",
+    "confidence": "high"
+  },
+  {
+    "name": "Webflow",
+    "kind": "builder",
+    "evidence": "data-wf-page or w- classes",
+    "confidence": "high"
+  },
+  {
+    "name": "GSAP",
+    "kind": "animation",
+    "evidence": "gsap calls",
+    "confidence": "high"
+  },
+  {
+    "name": "Lenis",
+    "kind": "animation",
+    "evidence": "lenis smooth scroll",
+    "confidence": "medium"
+  },
+  {
+    "name": "Webflow CDN",
+    "kind": "cdn",
+    "evidence": "webflow CDN",
+    "confidence": "high"
+  },
+  {
+    "name": "Anthropic Brand System",
+    "kind": "design-system",
+    "evidence": "Anthropic Sans/Serif/Mono",
+    "confidence": "high"
+  }
+]

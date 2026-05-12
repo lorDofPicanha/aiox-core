@@ -1,0 +1,30 @@
+[
+  {
+    "selector": ":root",
+    "name": "--gold",
+    "value": "#c87e1e",
+    "is_alias": false,
+    "line": 515
+  },
+  {
+    "selector": ":root",
+    "name": "--font",
+    "value": "PitchSans",
+    "is_alias": false,
+    "line": 515
+  },
+  {
+    "selector": ":root",
+    "name": "--black",
+    "value": "#231f20",
+    "is_alias": false,
+    "line": 515
+  },
+  {
+    "selector": ":root",
+    "name": "--grey",
+    "value": "#d8d8d8",
+    "is_alias": false,
+    "line": 515
+  }
+]

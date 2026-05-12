@@ -1,0 +1,221 @@
+{
+  "$schema_version": "1.0-dry-run",
+  "generated_by": "@analyst (DRY RUN Fase 3)",
+  "generated_at": "2026-05-12",
+  "client": "P-006 Dona Hilda Confeitaria",
+  "niche": "padaria-confeitaria-artesanal-premium",
+  "geo_context": "Itoupava Seca, Blumenau, SC, Brasil",
+  "client_constraints": {
+    "audience_age": "30-65 mix (skew 40-60)",
+    "brand_age_years": 36,
+    "founded_year": 1990,
+    "brand_personality_hints": [
+      "tradição",
+      "artesanal",
+      "familiar",
+      "bairro Itoupava Seca",
+      "patrimônio reputacional",
+      "herança alemã+brasileira Vale do Itajaí"
+    ],
+    "language": "pt-BR-SC",
+    "mobile_heavy": true,
+    "accessibility_required": "WCAG AAA contrast 7:1",
+    "performance_required": "LCP ≤2.0s field, INP ≤200ms, CLS ≤0.05, initial JS ≤80KB gzipped",
+    "stack": "Next.js 16 + Tailwind + Vercel + Supabase (forms)",
+    "cdc_compliance": "Patricia Peck ADR-0002 — site 'recebe pedidos' não 'vende'"
+  },
+  "archetype_synthesis": {
+    "recommended_blend": "Heritage Patrimonial 30% + Rustic Authentic 40% + Brazilian Premium 30%",
+    "label": "Brazilian Traditional Premium — modernized warmly",
+    "explicit_exclusions": [
+      "Hand-drawn Folk Warm (Pinterest school) — regrede signal de 'padaria séria 36 anos' para 'home baker hobby'",
+      "Editorial Modern Minimal puro (Hart Bageri full clone) — viola gate AAA, alienate audience 50+",
+      "Stack-stuffing modern web aesthetic — thin gray-on-gray, hover-only, micro-type"
+    ]
+  },
+  "global_refs": [
+    {
+      "name": "Hart Bageri",
+      "url": "https://hartbageri.com",
+      "country": "Denmark",
+      "city": "Copenhagen",
+      "archetype": "editorial-modern-minimal",
+      "weight_target": 0.30,
+      "why": "Standard de fato pós-2022 de padaria premium contemporânea com site. Disciplina editorial — typography hierarchy clara, fotografia single-product impecável, layout grid respeitado. Awwwards-tier execution.",
+      "tokens_to_extract": {
+        "color": "low-priority (paleta neutra extrema viola gate AAA se clonada)",
+        "typography": "MEDIUM — large display serif hierarchy + sans body pattern",
+        "layout": "HIGH — vertical scroll grid editorial, hero typography enorme, whitespace radical",
+        "spacing": "HIGH — generous, restraint",
+        "photography_direction": "HIGH — single product clean, natural light, color-graded warm"
+      },
+      "filters_to_apply": [
+        "REJECT thin/light font weights",
+        "REJECT gray-on-white sub-headings if contrast <7:1",
+        "FORCE body size ≥18px (Hart usa 16px típico)",
+        "Watch out hover-only nav"
+      ],
+      "anti_clone_hedge": "NÃO copiar paleta neutra extrema; misturar com Tartine warm"
+    },
+    {
+      "name": "Tartine Bakery",
+      "url": "https://tartinebakery.com",
+      "country": "USA",
+      "city": "San Francisco",
+      "founder_signal": "Chad Robertson, fundada 2002, padrão-ouro de 'artesanal autêntico'",
+      "archetype": "industrial-rustic-authentic",
+      "weight_target": 0.40,
+      "why": "Padrão-ouro de comunicação visual de 'artesanal autêntico' global desde 2002. Fotografia close-up de crosta de pão é vocabulário inventado por eles. Tipografia editorial warm sem ser pretensiosa.",
+      "tokens_to_extract": {
+        "color": "HIGH — cream/flour off-white + warm crust-brown + charcoal (não pure black) + accent vermelho-tomate ocasional",
+        "typography": "HIGH — serif display warm (Tiempos/Lyon family) + sans humanista body (Brandon/Founders Grotesk)",
+        "layout": "MEDIUM — asymmetric grid, photos grandes, copy editorial em parágrafos",
+        "spacing": "MEDIUM",
+        "photography_direction": "VERY HIGH — close-up crosta de pão, mão padeiro com farinha, fermentação banneton, sourdough crumb shots, color-graded film (Portra 400 vibe)"
+      },
+      "filters_to_apply": [
+        "OK majoritariamente — weight regular, contrast OK",
+        "Watch hover states"
+      ],
+      "anti_clone_hedge": "NÃO importar paleta cream-flour-brown integralmente — tropicalizar com fotografias de cuca/sonho/torta de banana brasileira (não baguette/sourdough). Trocar accent vermelho-tomate por terracota Mata Atlântica ou vermelho-acerola."
+    },
+    {
+      "name": "Poilâne",
+      "url": "https://poilane.com",
+      "country": "France",
+      "city": "Paris",
+      "founder_signal": "fundada 1932, Maison Poilâne, 'depuis 1932' template global",
+      "archetype": "luxury-european-heritage",
+      "weight_target": 0.30,
+      "why": "Signal patrimonial mais forte do nicho mundial. Template de como uma padaria comunica longevidade SEM virar museu mofado. Tipografia patrimônio, monograma 'P', uso disciplinado de preto + creme + ocasional vermelho-Bordeaux.",
+      "tokens_to_extract": {
+        "color": "MEDIUM — pure cream + black ink + 1 accent (vermelho-bordeaux signature)",
+        "typography": "MEDIUM — serif clássico (Garamond Premier ou custom) + sans humanista body",
+        "layout": "MEDIUM — editorial grid 12-col, generous whitespace",
+        "spacing": "MEDIUM",
+        "photography_direction": "HIGH — mix preto-e-branco patrimônio + color contemporâneo de pão",
+        "heritage_signals": "VERY HIGH — monograma stamp, 'depuis 1932' repetido, certificados/medalhas/heritage badges"
+      },
+      "filters_to_apply": [
+        "OK contrast forte black-on-cream",
+        "Watch out hover-only nav que pode existir"
+      ],
+      "anti_clone_hedge": "RISCO ALTO de clone (signature look forte). Pegar APENAS: (a) vocabulário patrimonial 'Desde 1990' stamp + founder photo, (b) disciplina cromática 3 cores max. NÃO clonar serif específica NEM monograma idêntico."
+    }
+  ],
+  "local_refs": [
+    {
+      "name": "Portus Padaria Artesanal",
+      "url": "https://portuspadariaartesanal.com.br",
+      "url_status": "needs_validation",
+      "region": "Blumenau, SC",
+      "geo_proximity_km": 5,
+      "weight_target": 0.15,
+      "why": "Concorrente direto vizinho geográfico. 4 unidades Blumenau+BC, 26k Insta, mesmo arquétipo europeu citado como 'competitor directly winning' por P-001 Pão e Ponto. Crítico para anti-clone — Dona Hilda NÃO pode parecer 'filha pobre do Portus'.",
+      "tokens_to_extract": {
+        "vernacular_copy": "HIGH — como chamar 'encomenda', 'cuca', 'colomba', 'panettone' no PT-BR-SC",
+        "menu_categorization": "HIGH — pães vs doces vs salgados vs encomenda padrão BR",
+        "cultural_reference": "MEDIUM — Itoupava/Blumenau alemão+brasileiro signals"
+      },
+      "anti_clone_hedge": "Posicionar Dona Hilda como OPOSTO: mais patrimônio (36 anos vs Portus jovem), menos chain (1 padaria vs 4 unidades). Diferenciação deliberada.",
+      "fallback_if_broken": [
+        "Padaria Bracarense (RJ)",
+        "Pão e Ponto Padaria Artesanal Blumenau (P-001 concorrente cross-ref)"
+      ]
+    },
+    {
+      "name": "Padaria Boutique BR (placeholder validação)",
+      "candidates": [
+        {"name": "Cantinho do Pão", "url": "https://cantinhodopao.com.br", "city": "Curitiba PR"},
+        {"name": "Cuca Fresca / Cuca Cozinha", "url": "https://cuca-cozinha.com.br", "city": "Curitiba PR ou Floripa SC", "needs_url_validation": true},
+        {"name": "Padaria do Bira", "url": "tbd", "city": "Florianópolis SC"},
+        {"name": "Pão e Toast", "url": "tbd", "city": "Curitiba PR"},
+        {"name": "Pão Pão", "url": "tbd", "city": "Itajaí SC"}
+      ],
+      "url_status": "needs_validation_fase_4",
+      "region": "Sul BR (SC/PR)",
+      "weight_target": 0.15,
+      "why": "Floor de qualidade BR realista — padaria de bairro premium que JÁ tem site decente (não Wix horroroso, não 2008-HTML). Calibra ambition realista dentro do BR.",
+      "tokens_to_extract": {
+        "sitemap_pattern": "HIGH — Home / Sobre / Cardápio / Encomendas / Contato BR padrão",
+        "home_sections_typical": "HIGH — vitrine sazonal + sobre + galeria + WhatsApp",
+        "copy_seasonal_patterns": "HIGH — Páscoa colomba, Junina cuca, Natal panettone PT-BR vernacular",
+        "vernacular_fit_sul_BR": "HIGH — herança alemã+italiana, classe média-alta padrão consumo"
+      },
+      "anti_clone_hedge": "Refs BR são FLOOR não CEILING — elevar acima delas. Não clonar layout 2010s-genérico."
+    }
+  ],
+  "atomic_convergence_targets": {
+    "color_threshold_max_ref_dominance": 0.85,
+    "color_planned_blend": "40% Tartine warm + 30% Poilâne disciplina + 30% Brazilian tropical",
+    "color_initial_sketch": {
+      "background": "#F7F1E8 (cream tropical, warmer que SF Tartine)",
+      "text_primary": "#2A1F1A (warm dark brown, não pure black)",
+      "accent": "#B85C3B (terracota Mata Atlântica, vernacular BR)",
+      "text_secondary": "#5A4A3F (validar contrast 7:1 contra background)",
+      "notes": "SUGESTIVO — derivar tokens reais via multi-ref-extract Fase 4. Validar contrast AAA antes de commit."
+    },
+    "typography_threshold_max_ref_dominance": 0.75,
+    "typography_planned_blend": "40% Hart hierarchy + 30% Tartine warmth + 30% BR-available",
+    "typography_initial_recommendation": {
+      "display": "Fraunces (Google Fonts, serif warm modern variable)",
+      "display_alternatives": ["DM Serif Display", "Playfair Display"],
+      "body": "Inter (variable, medium weight, 18px+ enforced)",
+      "body_alternatives": ["DM Sans (mais warmth humanista)"],
+      "min_body_size": "18px",
+      "hero_display_size": "48-80px",
+      "section_headline_size": "32-40px"
+    },
+    "layout_threshold_max_ref_dominance": 0.60,
+    "layout_planned_blend": "50% Hart grid + 30% Tartine asymmetric photo + 20% BR-vernacular density"
+  },
+  "anti_patterns_to_avoid": [
+    "Thin gray-on-gray sub-headings (viola AAA + alienates 50+)",
+    "Hover-only nav (gate inclusive-design)",
+    "Body size 16px ou menor (gate enforce ≥18px)",
+    "Autoplay carousels (gate inclusive-design)",
+    "Modern web aesthetic puro para audience 40-65",
+    "Clone visual de Hart Bageri (dominante demais no nicho)",
+    "Paleta SF cool cream (cultural mismatch BR)",
+    "Linguagem 'pâtisserie' / 'maison' / pretensão (mismatch Itoupava Seca)",
+    "Pure black text (#000) — usar warm dark instead",
+    "Stack ecommerce desnecessário — WhatsApp-first como compraq"
+  ],
+  "performance_constraints_propagated": {
+    "lcp_field_max_s": 2.0,
+    "lcp_lab_max_s": 1.2,
+    "inp_max_ms": 200,
+    "cls_max": 0.05,
+    "ttfb_max_ms": 600,
+    "initial_js_max_kb_gzip": 80,
+    "initial_js_hard_cap_kb": 100,
+    "total_first_view_max_kb": 500,
+    "hero_image_max_kb_avif": 180,
+    "hero_image_max_kb_webp_fallback": 240
+  },
+  "next_actions_phase_4": [
+    "WebFetch + screenshot ao vivo das 3 refs globais (validar estado atual maio/2026)",
+    "WebFetch das 2 refs locais (validar URLs + qualidade) — se quebrada, substituir do fallback list",
+    "Multi-ref-extract → tokens numéricos por categoria (color hex exato, type family validada, spacing scale, layout grid measurements)",
+    "Aplicar gates pre-synthesis: anti-clone thresholds 85/75/60 + industry-fit + exclusion-habit filter",
+    "Validar contrast AAA dos tokens propostos contra paleta inicial sugerida",
+    "Output: tokens.json + preview.html para Fase 5 Brief Executável"
+  ],
+  "research_metadata": {
+    "tier": "S",
+    "budget_h": 2,
+    "execution_time_estimate_min": 30,
+    "skill_applied": "tech-research",
+    "primary_dimension": "estetico-visual",
+    "secondary_dimension": "mercado",
+    "skipped_dimensions": ["tecnico-arquitetural", "cientifico", "regulatorio-detalhado"],
+    "triangulation_level": "knowledge-base + heuristic (NÃO WebFetch ao vivo)",
+    "validity_estimate_months": 6,
+    "reassess_triggers": [
+      "Hart Bageri redesenhar",
+      "Ref BR breakthrough no nicho",
+      "Tartine ou Poilâne sair do ar",
+      "Cliente posicionamento mudar (ex: Dona Hilda virar 'Dona Hilda Café' premium downtown)"
+    ]
+  }
+}

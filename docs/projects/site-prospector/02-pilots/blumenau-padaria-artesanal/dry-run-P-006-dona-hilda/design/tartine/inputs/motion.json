@@ -1,0 +1,47 @@
+{
+  "durations": [
+    {
+      "value": "2s",
+      "count": 4
+    },
+    {
+      "value": "1s",
+      "count": 3
+    },
+    {
+      "value": "3s",
+      "count": 1
+    }
+  ],
+  "easings": [
+    {
+      "value": "cubic-bezier(.215,.61,.355,1)",
+      "count": 16
+    }
+  ],
+  "keyframes": [
+    "mapboxgl-spin",
+    "mapboxgl-user-location-dot-pulse",
+    "Toastify__trackProgress",
+    "Toastify__bounceInRight",
+    "Toastify__bounceOutRight",
+    "Toastify__bounceInLeft",
+    "Toastify__bounceOutLeft",
+    "Toastify__bounceInUp",
+    "Toastify__bounceOutUp",
+    "Toastify__bounceInDown",
+    "Toastify__bounceOutDown",
+    "Toastify__zoomIn",
+    "Toastify__zoomOut",
+    "Toastify__flipIn",
+    "Toastify__flipOut",
+    "Toastify__slideInRight",
+    "Toastify__slideInLeft",
+    "Toastify__slideInUp",
+    "Toastify__slideInDown",
+    "Toastify__slideOutRight",
+    "Toastify__slideOutLeft",
+    "Toastify__slideOutDown",
+    "Toastify__slideOutUp"
+  ]
+}

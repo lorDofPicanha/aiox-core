@@ -1,0 +1,321 @@
+# Site-Prospector Primer — Oficina Mecânica Auto
+# Curated from DRY RUN #2 (M-002 Itanorte test, Blumenau)
+# Última atualização: 2026-05-12
+
+version: "1.0"
+vertical_id: "oficina-mecanica"
+vertical_label_pt: "Oficina Mecânica Auto"
+last_updated: "2026-05-12"
+curated_by: "Orion + Breno (DR2 vertical-agnostic test)"
+status: "active"
+
+customer_journey:
+  axis: "rational-utility"
+  trigger: "rational/utility — luz acesa, vazamento, revisão preventiva km, frota trimestral"
+  discovery_query_pattern: "[capability] + [symptom] + [brand] + [location]"
+  discovery_examples:
+    - "mecânica diesel Itoupava Blumenau"
+    - "scanner Sprinter Blumenau"
+    - "luz painel acesa Mercedes Sprinter Blumenau"
+    - "retífica cabeçote IVECO Blumenau"
+  decision_factors:
+    - "atende minha marca (CRÍTICO — Mercedes? Fiat? VW? IVECO?)"
+    - "atende meu sintoma específico"
+    - "anos no mercado (trust)"
+    - "certificações Bosch Car Service / Meister"
+    - "distância (CRÍTICA para gestor frota)"
+    - "prazo de entrega"
+  cta_primary: "whatsapp-marca-sintoma-foto"
+  cta_prefill_template: "Olá [nome-oficina], preciso de diagnóstico no meu [marca-modelo]. Sintoma: [problema]. Opcional: foto."
+  seasonality: "weak"
+  seasonal_baseline_notes: "Constante baseline. Leve alta pré/pós-chuva (revisão suspensão/freios). Leve alta nov-dez frotistas (revisão pré-fim-ano)."
+
+archetype:
+  synthesis_label: "Industrial Craftsmanship Premium — modernized rationally"
+  blend:
+    industrial_craftsmanship: 50          # Singer/AUTOPROFI
+    rational_documentation: 30            # Carbahn precision
+    brazilian_tropical_floor: 20
+
+refs:
+  global:
+    - name: "Carbahn Autoworks"
+      url: "https://carbahnautoworks.com"
+      url_status: "validated_dr2"
+      city: "Bay Area, USA"
+      weight_target: 0.40
+      archetype: "rational-precision-modern"
+      knowledge_base_confidence: "HIGH"
+      why: "Top-tier US specialty workshop site — disciplinas editorial + photography + service catalog + rational design. Premiada na categoria automotive. Tipografia industrial bold."
+      tokens_to_extract:
+        color: "HIGH"
+        typography: "HIGH"
+        layout: "HIGH"
+        photography_direction: "HIGH"
+      filters_to_apply:
+        - "ADAPT US English tone to PT-BR direto"
+        - "REJECT thin/light variations"
+      anti_clone_hedge: "Pegar disciplina + bold-display. NÃO clonar paleta US navy específica."
+
+    - name: "Singer Vehicle Design"
+      url: "https://singervehicledesign.com"
+      url_status: "validated_dr2"
+      city: "Los Angeles, USA"
+      weight_target: 0.30
+      archetype: "luxury-craftsmanship-museum"
+      knowledge_base_confidence: "HIGH"
+      why: "Padrão-ouro de comunicação 'craftsmanship + museum-cinematic photography' automotive. Restomod Porsche 911. Fotografia close-up componente como objeto-arte — esse é o vocabulário Singer."
+      tokens_to_extract:
+        color: "MEDIUM"
+        typography: "MEDIUM"
+        layout: "HIGH"
+        photography_direction: "VERY HIGH"
+      filters_to_apply:
+        - "Cuidado contrast luxury-deep — vertical Tier S não é luxury"
+      anti_clone_hedge: "RISCO LUXURY OVERKILL. Pegar APENAS direção fotográfica + heritage badge stamp. NÃO clonar paleta Singer."
+
+    - name: "AUTOPROFI workshop (B2B trade concept)"
+      url: "https://autoprofi.com"
+      url_status: "needs_validation_dr2_low_knowledge"
+      city: "EU (DE/AT trade)"
+      weight_target: 0.30
+      archetype: "documentary-trade-rational"
+      knowledge_base_confidence: "LOW"
+      why: "B2B trade concept brand — workshops profissionais documentados em estética documentary natural light. Sub-arquétipo importante: documentary-bay-photography que Singer/Carbahn não cobrem."
+      tokens_to_extract:
+        color: "LOW"
+        typography: "LOW"
+        layout: "MEDIUM"
+        photography_direction: "HIGH"
+      filters_to_apply:
+        - "Validar ref still alive via WebFetch Fase 4"
+      anti_clone_hedge: "Pegar APENAS direção documentary natural light bay. Substituir refs broken via fallback."
+      fallback_if_broken:
+        - "Bilstein workshop concept"
+        - "ZF Aftermarket workshop concept"
+        - "Pagid Racing workshop visual"
+      note_dr2: "Knowledge-base confidence LOW — primer humano deve curar mais 1-2 refs reais Sul BR (DIESEL SUL, CADERA) em substituição se AUTOPROFI fail validation."
+
+  local:
+    - name: "DIESEL SUL [placeholder]"
+      url_status: "needs_validation"
+      region: "Sul BR (SC/PR/RS)"
+      weight_target: 0.15
+      why: "Floor BR realista mecânica diesel Sul BR. Tier 'WordPress 2018-2022' típico — calibra ambition realista."
+      tokens_to_extract:
+        vernacular_copy: "HIGH"
+        sitemap_pattern: "MEDIUM"
+        cultural_reference: "MEDIUM"
+      anti_clone_hedge: "Refs BR são FLOOR não CEILING — elevar acima."
+      fallback_candidates:
+        - "Mecânica Boa SP"
+        - "Auto Mecânica X (Curitiba)"
+        - "Diesel Master Joinville"
+
+    - name: "CADERA [placeholder]"
+      url_status: "needs_validation"
+      region: "Sul BR"
+      weight_target: 0.15
+      why: "Segunda ref local BR Sul — vernacular validation"
+
+color:
+  starter_palette:
+    bg_primary: "#F5F1EA"     # cream tropical industrial (slight metal shift)
+    bg_secondary: "#EDE7DC"
+    bg_inverse: "#1F1B18"     # warm anthracite NÃO pure black NÃO carbon-black
+    fg_primary: "#1F1B18"
+    fg_secondary: "#4A423B"   # warm anthracite light
+    fg_inverse: "#F5F1EA"
+    accent_primary: "#A6342E" # vermelho-acerola-Mercedes-Sprinter deep+industrial
+    accent_dark: "#7E2820"
+    accent_light: "#C9554F"
+    trust_accent: "#2E5E3E"   # verde-musgo industrial — badges/certs (NOVO TOKEN não existe em padaria)
+  rationale: "Cream tropical BR floor convergente com padaria (gate inclusive AAA + cultural fit BR), MAS shift warm-brown→warm-anthracite. Accent vermelho-acerola industrial Mercedes-Sprinter (NÃO terracota cuca). Trust accent green-musgo para Bosch Car Service / Meister / CRT badges."
+  contrast_validation_required:
+    body_min_ratio: 7.0
+    accent_on_bg_min_ratio: 4.5
+    trust_accent_on_bg_min_ratio: 4.5
+
+typography:
+  starter:
+    display: "Archivo Black"               # geometric sans bold industrial
+    body: "Inter"                          # consistency stack (mesma padaria)
+    mono: "JetBrains Mono"
+  fallbacks:
+    display: ["Archivo Narrow Bold", "Impact", "Arial Black"]
+    body: ["DM Sans", "system-ui"]
+  min_body_size_px: 18
+  hero_display_clamp: "clamp(48px, 8vw, 72px)"  # -8px vs padaria (sub-line técnica longa)
+  semantic_class: "geometric-grotesque-industrial-bold"
+
+layout:
+  sections_required:
+    - hero-componente-cinematic           # close-up componente diesel
+    - marcas-atendidas-grid               # CRÍTICO B2B (Mercedes/Fiat/IVECO/VW/Volvo/Scania/Renault/Ford)
+    - servicos-por-sintoma-grid           # CRÍTICO ("luz painel acesa", "vazamento óleo")
+    - heritage-sobre                      # Desde [ANO] Itoupava Norte
+    - equipe-meister-identified           # NOMINALMENTE — Lei 4.886/65 + B2B trust
+    - mapa-contato
+  sections_optional:
+    - galeria-bay-documentary
+    - depoimentos-clientes-frota
+    - foto-pb-historica
+  sections_excluded_for_vertical:
+    - vitrine-sazonal-rotativa            # padaria-only
+    - cardapio-grid-produtos              # padaria-only
+    - galeria-categorias-produto          # B2C aspiracional only
+  pages_required:
+    - home
+    - marcas-atendidas                    # B2B gestor frota busca
+    - servicos-por-sintoma                # B2C proprietário busca
+    - sobre
+  pages_optional:
+    - galeria-bay
+    - depoimentos
+    - contato-form-complexo
+
+photography:
+  shot_list:
+    - id: hero-componente-cinematic
+      description: "close-up cinematic turbo / bico injetor / cabeçote retificado (Singer-tier museum lighting)"
+      lighting: "museum-cinematic primary"
+      mandatory: true
+    - id: bay-documentary-3-4-angulos
+      description: "3-4 ângulos da bay de serviço documentary"
+      lighting: "documentary natural light (AUTOPROFI direction)"
+      mandatory: true
+    - id: meister-em-acao-nominalmente
+      description: "técnico Meister-class identificado nome+função em ação"
+      lighting: "documentary"
+      mandatory: true                     # vertical-specific B2B trust
+    - id: fachada-rua-bairro
+      description: "exterior daytime, oficina visível, placa identificada"
+      mandatory: true
+    - id: equipe-completa
+      description: "group shot equipe completa com nome+função (sob fachada)"
+      mandatory: false
+    - id: foto-pb-fundacao
+      description: "scan B&W fundação OR fachada pré-mudança se existir"
+      mandatory: false
+    - id: produto-final-veiculo-entregue
+      description: "before/after montagem visual (sub-section galeria opcional)"
+      mandatory: false
+  direction: "industrial museum-cinematic PRIMARY + documentary natural light SECONDARY. Color grading deep shadows warm + slight cool highlights industrial."
+  color_grading: "deep shadows warm anthracite, slight cool highlights metal, industrial precision feel"
+  cessao_direitos_required: true
+  avoid:
+    - "stock photo generic auto repair"
+    - "lifestyle car driving shots (audience B2B/B2C utility, não aspiracional)"
+    - "macro pure-white sugar style (cold)"
+    - "selfie team smiling cheesy"
+
+copy:
+  tone: "técnico-direto-autoridade-quiet"
+  vocabulary_domain: "engenharia mecânica diesel + automotive trade"
+  readability_target_b2c: "6th-grade PT-BR"
+  readability_b2b: "técnico-permissive jargão (gestor frota entende)"
+  vocabulary_examples:
+    - "scanner OBD"
+    - "injeção eletrônica diesel"
+    - "retífica de cabeçote"
+    - "linha leve / média / pesada"
+    - "leva-e-traz"
+    - "diagnóstico técnico"
+    - "frota corporativa"
+    - "preventiva trimestral"
+  anti_patterns_rejected:
+    - "Meisterwerkstatt traduzido literal"
+    - "Everything is important"
+    - "We obsess over details (luxury overkill B2B)"
+    - "Selvageria masculina exagerada (anti-pattern brand-bro)"
+    - "Termos técnicos sem explicação na home page (sub-pages OK)"
+
+legal:
+  cdc_specifics:
+    - "Site 'recebe pedidos' NÃO 'vende' (Patricia Peck ADR-0002 — universal)"
+    - "Garantia escrita serviço CDC art. 26 II (90d vícios aparentes) — garantia comercial é ADICIONAL"
+    - "Orçamento prévio escrito obrigatório CDC art. 40 (serviço > R$ 200)"
+  vertical_specific_laws:
+    - law: "Lei 4.886/65 (Corretagem / Representação Comercial)"
+      applies_to: "Indicação de prestador / comissão de indicação em contrato"
+      handle: "Confirmar com OAB-SC antes de oferecer 'comissão de indicação por frota X' em contrato"
+    - law: "Resolução CONTRAN 716/2024"
+      applies_to: "Veículo deve estar regularizado para reparo"
+      handle: "Disclaimer rodapé contrato"
+    - law: "Código Civil — Locação de serviço"
+      applies_to: "Serviço continuado contratado"
+      handle: "Cláusula contratual"
+    - law: "Resoluções DETRAN-SC"
+      applies_to: "Vistoria veicular pós-reparo (se houver)"
+      handle: "Trust signal pode mencionar se aplica"
+  vigilancia_sanitaria_check_required: false
+  cro_cfm_check_required: false
+  oab_check_required: false                 # mas Lei 4.886 pode acionar consult
+
+trust_signals:
+  required:
+    - heritage-stamp-desde-ano
+    - cnpj-visible-footer
+    - certifications-grid                    # Bosch Car Service / Meister / CRT / DENATRAN
+    - equipe-meister-identified-nominalmente
+    - marcas-atendidas-grid                  # B2B trust
+    - reviews-aggregate-google
+    - whatsapp-button-sticky
+  optional:
+    - selo-bosch-car-service-trust
+    - foto-pb-historica
+    - foto-equipe-completa
+    - galeria-bay-documentary
+    - depoimentos-clientes-frota-quotes
+  NOT_required:
+    - vitrine-sazonal                        # mecânica não tem
+    - cardapio-grid                          # não-aplicável
+    - founder-photo-warm                     # mecânica usa equipe identified, não founder-only
+
+cta:
+  primary:
+    type: "whatsapp-deep-link"
+    button_text: "💬 Solicitar diagnóstico"
+    prefill_template: "Olá [nome-oficina], preciso de diagnóstico no meu [marca-modelo]. Sintoma: [problema]. Opcional: foto."
+    placement: ["hero-cta-primary", "section-servicos-por-sintoma", "header-sticky-mobile", "footer-cta"]
+  secondary:
+    type: "tel-link"
+    button_text: "📞 (47) XXXXX-XXXX"
+  tertiary:
+    type: "agendamento-form-complexo"
+    visible: false                           # opcional página dedicated
+
+anti_patterns_global:
+  - thin-gray-on-gray
+  - hover-only-nav
+  - autoplay-carousel
+  - body-under-18px
+  - touch-target-under-48px
+  - contrast-under-7-1-body
+  - icon-only-actions
+  - hardcoded-content-non-editable
+  - lorem-ipsum-or-stock-placeholder-without-label
+
+pipeline_overrides:
+  diagnose_apify_required: true             # GBP reviews CRÍTICO (trust signal primário)
+  niche_research_dimensions:
+    - aesthetic-visual
+    - market
+    - regulatory                            # Lei 4.886/65 + DETRAN
+  design_extract_local_refs_min: 2
+  design_extract_global_refs_min: 3
+  build_phase_organism_count_min: 5         # Hero + Marcas + Sintomas + Heritage + Equipe (+Mapa = 6)
+  production_gate_extras:
+    - legal-vertical-specific-check         # Lei 4.886/65
+    - content-truth-real-equipe-nominalmente
+    - content-truth-real-marcas-atendidas
+    - content-truth-orcamento-pre-escrito-mention
+
+reassess_triggers:
+  - "Carbahn redesenhar ou sair do ar"
+  - "Singer mudar template grande"
+  - "AUTOPROFI URL validar/quebrar"
+  - "Nova ref BR Sul breakthrough em mecânica boutique"
+  - "DENATRAN/CONTRAN nova resolução afeta vertical"
+  - "Cliente positioning major shift (Tier S → Tier M, B2C → B2B-only)"
+review_cadence_months: 6

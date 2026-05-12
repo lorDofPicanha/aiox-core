@@ -1,0 +1,19 @@
+{
+  "external": [
+    "https://hartbageri.com/wp-content/themes/hartbageri/assets/framework/css/bootstrap.min.css",
+    "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css",
+    "https://cdn.linearicons.com/free/1.0.0/icon-font.min.css",
+    "https://hartbageri.com/wp-content/themes/hartbageri/assets/fonts/graphik/stylesheet.css",
+    "https://npmcdn.com/flatpickr/dist/themes/dark.css",
+    "https://hartbageri.com/wp-content/themes/hartbageri/assets/css/magnific-popup.css",
+    "https://hartbageri.com/wp-content/themes/hartbageri/style.css",
+    "https://hartbageri.com/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css?ver=5.6.2",
+    "https://hartbageri.com/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen.css?ver=5.6.2",
+    "https://hartbageri.com/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=5.6.2"
+  ],
+  "preload": [],
+  "inline_style_blocks": 7,
+  "inline_style_attrs": 0,
+  "imports_resolved": 0,
+  "failed": []
+}

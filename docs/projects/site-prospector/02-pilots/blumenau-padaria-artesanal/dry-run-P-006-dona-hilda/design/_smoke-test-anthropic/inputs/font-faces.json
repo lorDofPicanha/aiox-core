@@ -1,0 +1,126 @@
+[
+  {
+    "family": "webflow-icons",
+    "weight": "400",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [],
+    "src_formats": [],
+    "source_css_url": "https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/css/ant-brand.shared.f739704be.min.css",
+    "raw": "@font-face{font-family:webflow-icons;src:url(data:application/x-font-ttf;charset=utf-8;base64,AAEAAAALAIAAAwAwT1MvMg8SBiUAAAC8AAAAYGNtYXDpP+a4AAABHAAAAFxnYXNwAAAAEAAAAXgAAAAIZ2x5ZmhS2XEAAAGAAAADHGhlYWQTFw3HAAAEnAAAADZoaGVhCXYFgQAABNQAAAAkaG10eCe4A1oAAAT4AAAAMGxvY2EDtALGAAAFKAAAABptYXhwABAAPgAABUQAAAAgbmFtZSoCsMsAAAVkAAABznBvc3QAAwAAAAAHNAAAACAAAwP4AZAABQAAApkCzAAAAI8CmQLMAAAB6wAzAQkAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAAAAABAAADpAwPA/8AAQAPAAEAAAAABAAAAAAAAAAAAAAAgAAAAAAADAAAAAwAAABwAAQADAAAAHA"
+  },
+  {
+    "family": "Jetbrains Mono",
+    "weight": "400",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/691cda762a35b6bc5a28ffaa_JetBrainsMono-Regular.woff2"
+    ],
+    "src_formats": [
+      "woff2"
+    ],
+    "source_css_url": "https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/css/ant-brand.shared.f739704be.min.css",
+    "raw": "@font-face{font-family:Jetbrains Mono;src:url(https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/691cda762a35b6bc5a28ffaa_JetBrainsMono-Regular.woff2)format(\"woff2\");font-weight:400;font-style:normal;font-display:swap}"
+  },
+  {
+    "family": "Anthropic Sans",
+    "weight": "300 800",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/69971a00a3295036497e1a28_AnthropicSans-Roman-Web.woff2"
+    ],
+    "src_formats": [
+      "woff2"
+    ],
+    "source_css_url": "https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/css/ant-brand.shared.f739704be.min.css",
+    "raw": "@font-face{font-family:Anthropic Sans;src:url(https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/69971a00a3295036497e1a28_AnthropicSans-Roman-Web.woff2)format(\"woff2\");font-weight:300 800;font-style:normal;font-display:swap}"
+  },
+  {
+    "family": "Anthropic Sans",
+    "weight": "300 800",
+    "style": "italic",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/69971a016067bf14b9b8f48d_AnthropicSans-Italic-Web.woff2"
+    ],
+    "src_formats": [
+      "woff2"
+    ],
+    "source_css_url": "https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/css/ant-brand.shared.f739704be.min.css",
+    "raw": "@font-face{font-family:Anthropic Sans;src:url(https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/69971a016067bf14b9b8f48d_AnthropicSans-Italic-Web.woff2)format(\"woff2\");font-weight:300 800;font-style:italic;font-display:swap}"
+  },
+  {
+    "family": "Anthropic Serif",
+    "weight": "300 800",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/69971a1551eb6cda0d656e8a_AnthropicSerif-Roman-Web.woff2"
+    ],
+    "src_formats": [
+      "woff2"
+    ],
+    "source_css_url": "https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/css/ant-brand.shared.f739704be.min.css",
+    "raw": "@font-face{font-family:Anthropic Serif;src:url(https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/69971a1551eb6cda0d656e8a_AnthropicSerif-Roman-Web.woff2)format(\"woff2\");font-weight:300 800;font-style:normal;font-display:swap}"
+  },
+  {
+    "family": "Anthropic Serif",
+    "weight": "300 800",
+    "style": "italic",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/69971a15a9fb8c1107a3570e_AnthropicSerif-Italic-Web.woff2"
+    ],
+    "src_formats": [
+      "woff2"
+    ],
+    "source_css_url": "https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/css/ant-brand.shared.f739704be.min.css",
+    "raw": "@font-face{font-family:Anthropic Serif;src:url(https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/69971a15a9fb8c1107a3570e_AnthropicSerif-Italic-Web.woff2)format(\"woff2\");font-weight:300 800;font-style:italic;font-display:swap}"
+  },
+  {
+    "family": "Anthropic Mono",
+    "weight": "300 800",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/69971a2e55d24d61bc045b1a_AnthropicMono-Roman-Web.woff2"
+    ],
+    "src_formats": [
+      "woff2"
+    ],
+    "source_css_url": "https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/css/ant-brand.shared.f739704be.min.css",
+    "raw": "@font-face{font-family:Anthropic Mono;src:url(https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/69971a2e55d24d61bc045b1a_AnthropicMono-Roman-Web.woff2)format(\"woff2\");font-weight:300 800;font-style:normal;font-display:swap}"
+  },
+  {
+    "family": "Anthropic Mono",
+    "weight": "300 800",
+    "style": "italic",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/69971a2eb93743112c30fe9c_AnthropicMono-Italic-Web.woff2"
+    ],
+    "src_formats": [
+      "woff2"
+    ],
+    "source_css_url": "https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/css/ant-brand.shared.f739704be.min.css",
+    "raw": "@font-face{font-family:Anthropic Mono;src:url(https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/69971a2eb93743112c30fe9c_AnthropicMono-Italic-Web.woff2)format(\"woff2\");font-weight:300 800;font-style:italic;font-display:swap}"
+  }
+]

@@ -1,0 +1,288 @@
+# Site-Prospector Vertical Primer — SCHEMA
+# Versão: 1.0
+# Última atualização: 2026-05-12
+#
+# Documenta a estrutura de um primer YAML por vertical.
+# Primers são CURATED HUMANAMENTE — não geração automática.
+# Pipeline AIOS consome primer/{vertical}.yaml como input na Fase 3 NICHE RESEARCH.
+
+# ===========================================================================
+# METADATA
+# ===========================================================================
+version: "1.0"                              # primer schema version
+vertical_id: "exemplo-vertical"             # slug stable, sem espaços, kebab-case
+vertical_label_pt: "Exemplo Vertical"       # human-readable
+last_updated: "2026-05-12"
+curated_by: "Orion + Breno"
+status: "draft|active|deprecated"
+
+# ===========================================================================
+# CUSTOMER JOURNEY AXIS (load-bearing atom — validated DR2)
+# ===========================================================================
+customer_journey:
+  axis: "rational-utility"                  # REQUIRED: one of:
+                                             #   - emotional-aspirational  (padaria, moda, estética)
+                                             #   - rational-utility        (mecânica, eletricista)
+                                             #   - anxiety-driven          (odonto, médico, jurídico crítico)
+                                             #   - status-driven           (luxury, restoration, watchmaker)
+
+  trigger: "problema operacional"           # what brings customer to search
+  discovery_query_pattern: "[capability] + [symptom] + [brand] + [location]"
+  decision_factors:
+    - "anos no mercado"
+    - "atende minha marca/sintoma"
+    - "certificações"
+    - "distância"
+    - "prazo"
+  cta_primary: "whatsapp-marca-sintoma-foto"  # ex: whatsapp-conversational, whatsapp-marca-sintoma-foto, booking-agendamento
+  cta_prefill_template: "Olá [nome], preciso de [diagnóstico/serviço] no meu [marca/modelo] — [opcional foto]"
+  seasonality: "weak"                       # strong | weak | status-driven | event-driven
+
+# ===========================================================================
+# ARCHETYPE SYNTHESIS
+# ===========================================================================
+archetype:
+  synthesis_label: "Industrial Craftsmanship Premium — modernized rationally"
+  blend:                                    # sum = 100
+    industrial_craftsmanship: 50
+    rational_documentation: 30
+    brazilian_tropical_floor: 20
+
+# ===========================================================================
+# REFERENCE LIBRARY (curated 5-8 refs)
+# ===========================================================================
+refs:
+  global:                                   # 3 minimum, 5 max
+    - name: "Ref Name"
+      url: "https://..."
+      url_status: "validated|needs_validation|broken"
+      city: "City, Country"
+      weight_target: 0.40                   # 0.0-1.0
+      archetype: "industrial-craftsmanship" # sub-archetype label
+      knowledge_base_confidence: "HIGH"     # HIGH | MEDIUM | LOW
+      why: "Por que esta ref é canônica neste nicho — 1-2 parágrafos"
+      tokens_to_extract:
+        color: "HIGH"                       # HIGH | MEDIUM | LOW | NONE
+        typography: "MEDIUM"
+        layout: "HIGH"
+        spacing: "MEDIUM"
+        photography_direction: "VERY HIGH"
+      filters_to_apply:
+        - "REJECT thin/light font weights"
+        - "FORCE body ≥18px"
+      anti_clone_hedge: "Pegar APENAS X, Y. NÃO clonar Z."
+
+  local:                                    # 2 minimum (BR Sul preferred)
+    - name: "Ref Local"
+      url: "https://..."
+      url_status: "needs_validation"
+      region: "Blumenau, SC | Sul BR"
+      weight_target: 0.15
+      why: "..."
+      tokens_to_extract:
+        vernacular_copy: "HIGH"             # Local-specific dimensions
+        menu_categorization: "HIGH"
+        cultural_reference: "MEDIUM"
+      anti_clone_hedge: "..."
+      fallback_if_broken: ["Alternative 1", "Alternative 2"]
+
+# ===========================================================================
+# COLOR — STARTER PALETTE (overridable by client constraints)
+# ===========================================================================
+color:
+  starter_palette:
+    bg_primary: "#F5F1EA"                   # cream tropical BR floor
+    bg_secondary: "#EDE7DC"
+    bg_inverse: "#1F1B18"                   # warm anthracite NÃO pure black
+    fg_primary: "#1F1B18"
+    fg_secondary: "#4A423B"
+    fg_inverse: "#F5F1EA"
+    accent_primary: "#A6342E"               # vermelho-acerola industrial
+    accent_dark: "#7E2820"
+    trust_accent: "#2E5E3E"                 # OPCIONAL — green badge/certifications
+
+  rationale: "Cream tropical BR universal + accent vermelho-acerola industrial Mercedes-Sprinter signature. Trust accent green-musgo para badges Bosch/Meister/CRO."
+
+  contrast_targets:
+    body_min_ratio: 7.0                     # AAA
+    accent_on_bg_min_ratio: 4.5             # AA — restringido a ≥24px headings
+
+# ===========================================================================
+# TYPOGRAPHY — STARTER PAIRING
+# ===========================================================================
+typography:
+  starter:
+    display: "Archivo Black"                # geometric sans bold industrial
+    body: "Inter"                           # consistency stack
+    fallback_display: ["Archivo Narrow", "Impact"]
+    fallback_body: ["DM Sans", "system-ui"]
+  min_body_size_px: 18                      # Kat Holmes non-negotiable
+  hero_display_clamp: "clamp(48px, 8vw, 72px)"
+  semantic_class: "geometric-grotesque-industrial"
+
+# ===========================================================================
+# LAYOUT — SECTIONS REQUIRED/EXCLUDED/OPTIONAL PER VERTICAL
+# ===========================================================================
+layout:
+  sections_required:                        # MUST be present in home
+    - hero
+    - marcas-atendidas-grid
+    - servicos-por-sintoma-grid
+    - heritage-sobre
+    - equipe-meister-identified
+    - mapa-contato
+  sections_optional:                        # MAY be present
+    - depoimentos-clientes-frota
+    - galeria-bay
+  sections_excluded_for_vertical:           # MUST NOT be present (anti-pattern)
+    - vitrine-sazonal-rotativa              # padaria-only
+    - cardapio-grid-produtos                # padaria-only
+    - galeria-categorias                    # B2C aspiracional only
+  pages_required:
+    - home
+    - marcas-atendidas
+    - servicos-por-sintoma
+    - sobre
+  pages_optional:
+    - galeria-bay
+    - depoimentos
+
+# ===========================================================================
+# PHOTOGRAPHY DIRECTION
+# ===========================================================================
+photography:
+  shot_list:                                # spec for sessão 2h presencial Breno
+    - id: hero-componente-do-oficio
+      description: "close-up cinematic componente diesel (turbo / bico / cabeçote)"
+      lighting: "museum-cinematic"
+      mandatory: true
+    - id: fachada-bairro
+      description: "exterior daytime + golden hour"
+      mandatory: true
+    - id: bay-documentary
+      description: "3-4 ângulos da bay de serviço"
+      lighting: "documentary natural light"
+      mandatory: true
+    - id: meister-em-acao
+      description: "técnico Meister-class identificado nominalmente em ação"
+      mandatory: true                       # vertical-specific
+    - id: foto-pb-heritage
+      description: "foto P&B fundação 1970 OR fachada pré-1992 se existir"
+      mandatory: false
+  direction: "industrial museum-cinematic primary + documentary natural light secondary"
+  color_grading: "deep shadows warm, slight cool highlights, industrial precision feel"
+  cessao_direitos_required: true
+  avoid:
+    - "stock photo generic auto repair"
+    - "lifestyle car driving shots"
+    - "macro pure-white-sugar style (cold)"
+
+# ===========================================================================
+# COPY TONE & VOCABULARY
+# ===========================================================================
+copy:
+  tone: "técnico-direto-autoridade-quiet"
+  vocabulary_domain: "engenharia mecânica diesel"
+  readability_target_b2c: "6th-grade PT-BR"
+  readability_b2b: "técnico-permissive jargão"  # gestor frota entende
+  vocabulary_examples:
+    - "scanner OBD"
+    - "injeção eletrônica diesel"
+    - "retífica de cabeçote"
+    - "linha leve/média/pesada"
+    - "leva-e-traz"
+    - "diagnóstico técnico"
+  anti_patterns_rejected:
+    - "Meisterwerkstatt traduzido literal"
+    - "Everything is important"
+    - "We obsess over details"
+    - "luxury overkill B2B"
+
+# ===========================================================================
+# LEGAL EXTRAS — VERTICAL-SPECIFIC OVERRIDES
+# ===========================================================================
+legal:
+  cdc_specifics:
+    - "Site recebe pedidos não 'vende' (Patricia Peck ADR-0002)"
+    - "Garantia escrita serviço: prazo CDC art. 26 II (90d)"
+  vertical_specific_laws:
+    - law: "Lei 4.886/65 (Corretagem)"
+      applies_to: "Indicação de prestador serviço"
+      handle: "Confirmar com OAB-SC antes de oferecer 'comissão de indicação' em contrato"
+    - law: "Resolução CONTRAN 716/2024"
+      applies_to: "Veículo deve estar regularizado para reparo"
+      handle: "Disclaimer rodapé contrato"
+  vigilancia_sanitaria_check_required: false
+  cro_cfm_check_required: false
+  oab_check_required: false
+
+# ===========================================================================
+# TRUST SIGNALS — required/optional/NOT-required per vertical
+# ===========================================================================
+trust_signals:
+  required:
+    - heritage-stamp-desde-ano
+    - equipe-identified-nominalmente            # B2B/serviços técnicos
+    - certifications-grid                       # Bosch Car Service / Meister / CRT
+    - cnpj-visible-footer
+    - reviews-aggregate-google
+  optional:
+    - selo-bosch-car-service
+    - foto-pb-historica
+  NOT_required:
+    - founder-photo-warm                        # padaria-style anônima OK
+    - vitrine-sazonal                           # mecânica não tem
+
+# ===========================================================================
+# CTA + WHATSAPP PREFILL
+# ===========================================================================
+cta:
+  primary:
+    type: "whatsapp-deep-link"
+    button_text: "💬 Falar pelo WhatsApp"
+    prefill_template: "Olá [nome-oficina], preciso de [diagnóstico/serviço] no meu [marca-modelo]. Opcional: foto do problema."
+    placement: ["hero-cta-primary", "header-sticky-mobile", "footer-cta"]
+  secondary:
+    type: "tel-link"
+    button_text: "📞 Ligar"
+  tertiary:
+    type: "agendamento-form"                  # opcional
+    visible: false
+
+# ===========================================================================
+# ANTI-PATTERNS GLOBAIS (todas verticals)
+# ===========================================================================
+anti_patterns_global:
+  - thin-gray-on-gray
+  - hover-only-nav
+  - autoplay-carousel
+  - body-under-18px
+  - touch-target-under-48px
+  - contrast-under-7-1-body
+  - icon-only-actions
+  - hardcoded-content-non-editable
+
+# ===========================================================================
+# CONTROL FLAGS PARA PIPELINE
+# ===========================================================================
+pipeline_overrides:
+  diagnose_apify_required: true               # Insta scrape mandatório vertical
+  niche_research_dimensions:
+    - aesthetic-visual
+    - market
+    - regulatory                              # vertical-specific
+  design_extract_local_refs_min: 2
+  design_extract_global_refs_min: 3
+  build_phase_organism_count_min: 4           # mecânica precisa mais organisms
+  production_gate_extras:
+    - legal-vertical-specific-check
+    - content-truth-real-prices-via-whatsapp
+
+# ===========================================================================
+# REASSESS TRIGGERS
+# ===========================================================================
+reassess_triggers:
+  - "Ref design-rich global new emerges (>1k references in design discourse)"
+  - "Regulação setorial muda (CDC, leis específicas)"
+  - "Customer behavior shift major (pos-Sales AI, novas plataformas B2B)"
+review_cadence_months: 6

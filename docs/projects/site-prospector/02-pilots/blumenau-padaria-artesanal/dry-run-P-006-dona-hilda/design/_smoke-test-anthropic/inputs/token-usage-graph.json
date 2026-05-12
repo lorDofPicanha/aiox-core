@@ -1,0 +1,1337 @@
+[
+  {
+    "name": "--swatch--slate-dark",
+    "declarations": 1,
+    "references": 160
+  },
+  {
+    "name": "--swatch--ivory-light",
+    "declarations": 1,
+    "references": 107
+  },
+  {
+    "name": "--size--1rem",
+    "declarations": 1,
+    "references": 84
+  },
+  {
+    "name": "--swatch--transparent",
+    "declarations": 1,
+    "references": 78
+  },
+  {
+    "name": "--site--gutter",
+    "declarations": 1,
+    "references": 68
+  },
+  {
+    "name": "--size--1-5rem",
+    "declarations": 1,
+    "references": 51
+  },
+  {
+    "name": "--swatch--ivory-medium",
+    "declarations": 1,
+    "references": 45
+  },
+  {
+    "name": "--size--0-5rem",
+    "declarations": 1,
+    "references": 44
+  },
+  {
+    "name": "--swatch--slate-medium",
+    "declarations": 1,
+    "references": 42
+  },
+  {
+    "name": "--border-width--main",
+    "declarations": 1,
+    "references": 39
+  },
+  {
+    "name": "--radius--main",
+    "declarations": 1,
+    "references": 39
+  },
+  {
+    "name": "--size--2rem",
+    "declarations": 2,
+    "references": 38
+  },
+  {
+    "name": "--swatch--slate-faded-10",
+    "declarations": 1,
+    "references": 38
+  },
+  {
+    "name": "--size--0rem",
+    "declarations": 1,
+    "references": 29
+  },
+  {
+    "name": "--swatch--slate-faded-20",
+    "declarations": 1,
+    "references": 29
+  },
+  {
+    "name": "--radius--small",
+    "declarations": 1,
+    "references": 27
+  },
+  {
+    "name": "--column-width--plus-gutter",
+    "declarations": 1,
+    "references": 24
+  },
+  {
+    "name": "--container--main",
+    "declarations": 2,
+    "references": 21
+  },
+  {
+    "name": "--swatch--slate-light",
+    "declarations": 1,
+    "references": 21
+  },
+  {
+    "name": "--radius--large",
+    "declarations": 1,
+    "references": 19
+  },
+  {
+    "name": "--size--0-75rem",
+    "declarations": 1,
+    "references": 19
+  },
+  {
+    "name": "--size--0-25rem",
+    "declarations": 1,
+    "references": 17
+  },
+  {
+    "name": "--swatch--ivory-dark",
+    "declarations": 1,
+    "references": 16
+  },
+  {
+    "name": "--focus--offset-inner",
+    "declarations": 1,
+    "references": 16
+  },
+  {
+    "name": "--swatch--cloud-medium",
+    "declarations": 1,
+    "references": 16
+  },
+  {
+    "name": "--swatch--ivory-faded-10",
+    "declarations": 1,
+    "references": 16
+  },
+  {
+    "name": "--swatch--white",
+    "declarations": 1,
+    "references": 15
+  },
+  {
+    "name": "--swatch--clay",
+    "declarations": 1,
+    "references": 14
+  },
+  {
+    "name": "--swatch--ivory-faded-20",
+    "declarations": 1,
+    "references": 14
+  },
+  {
+    "name": "--radius--round",
+    "declarations": 1,
+    "references": 12
+  },
+  {
+    "name": "--swatch--olive",
+    "declarations": 1,
+    "references": 10
+  },
+  {
+    "name": "--size--0-375rem",
+    "declarations": 1,
+    "references": 8
+  },
+  {
+    "name": "--site--margin",
+    "declarations": 2,
+    "references": 8
+  },
+  {
+    "name": "--size--0-125rem",
+    "declarations": 1,
+    "references": 8
+  },
+  {
+    "name": "--size--1-25rem",
+    "declarations": 1,
+    "references": 7
+  },
+  {
+    "name": "--nav--height",
+    "declarations": 2,
+    "references": 7
+  },
+  {
+    "name": "--size--3rem",
+    "declarations": 2,
+    "references": 6
+  },
+  {
+    "name": "--size--6rem",
+    "declarations": 2,
+    "references": 6
+  },
+  {
+    "name": "--column-width--10",
+    "declarations": 2,
+    "references": 6
+  },
+  {
+    "name": "--column-width--4",
+    "declarations": 2,
+    "references": 5
+  },
+  {
+    "name": "--column-width--8",
+    "declarations": 2,
+    "references": 5
+  },
+  {
+    "name": "--column-width--12",
+    "declarations": 2,
+    "references": 5
+  },
+  {
+    "name": "--size--2-5rem",
+    "declarations": 2,
+    "references": 5
+  },
+  {
+    "name": "--swatch--cloud-light",
+    "declarations": 1,
+    "references": 5
+  },
+  {
+    "name": "--column-width--6",
+    "declarations": 2,
+    "references": 5
+  },
+  {
+    "name": "--site--column-count",
+    "declarations": 1,
+    "references": 5
+  },
+  {
+    "name": "--size--4rem",
+    "declarations": 2,
+    "references": 4
+  },
+  {
+    "name": "--size--0-875rem",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--column-width--11",
+    "declarations": 2,
+    "references": 4
+  },
+  {
+    "name": "--grid-main",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--grid-1",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--nav--hamburger-thickness",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--container--full",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--size--7-5rem",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--size--10rem",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--swatch--sky",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--focus--width",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--size--1-125rem",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--align--flex-start",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--align--text-left",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--grid-2",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--nav--hamburger-gap",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--swatch--oat",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--swatch--cactus",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--swatch--heather",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--swatch--fig",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--swatch--coral",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--column-margin--1",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--size--8rem",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--size--16rem",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--swatch--cloud-dark",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--site--width",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--focus--offset-outer",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--column-width--1",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--breakout-start",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--breakout-end",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--grid-12",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--nav--hamburger-rotate",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--nav--menu-open-duration",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--nav1--height-total",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--container--small",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--swatch--accent",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--swatch--brand-text",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--column-width--3",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--column-margin--0",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--swatch--manilla",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--swatch--kraft",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--column-margin--12",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--size--4-5rem",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--size--5rem",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--size--12rem",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--size--14rem",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--column-width--5",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--align--flex-center",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--align--flex-end",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--align--text-center",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--align--text-right",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--site--max-width",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--site--gutter-total",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--grid-breakout-single",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--grid-breakout",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--grid-3",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--grid-4",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--nav--banner-height",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--nav--icon-thickness",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--nav--menu-close-duration",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--nav--dropdown-duration",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--nav--dropdown-open-duration",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--nav1--banner-height",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--text-small--font-size",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--background",
+    "declarations": 38,
+    "references": 0
+  },
+  {
+    "name": "--font-family",
+    "declarations": 54,
+    "references": 0
+  },
+  {
+    "name": "--text",
+    "declarations": 43,
+    "references": 0
+  },
+  {
+    "name": "--font-size",
+    "declarations": 54,
+    "references": 0
+  },
+  {
+    "name": "--line-height",
+    "declarations": 54,
+    "references": 0
+  },
+  {
+    "name": "--font-weight",
+    "declarations": 54,
+    "references": 0
+  },
+  {
+    "name": "--letter-spacing",
+    "declarations": 54,
+    "references": 0
+  },
+  {
+    "name": "--link--text-hover",
+    "declarations": 19,
+    "references": 0
+  },
+  {
+    "name": "--font--paragraph-medium",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font--display-serif-family",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--margin-bottom",
+    "declarations": 54,
+    "references": 0
+  },
+  {
+    "name": "--margin-top",
+    "declarations": 54,
+    "references": 0
+  },
+  {
+    "name": "--space--6",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--space--8",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--space--4",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--gap--gap-xl",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--space--5",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--space--1",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--space--2",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--space--3",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--space--7",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font--display-sans",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font--display-sans-medium",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font--display-sans-semibold",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font--display-serif-semibold",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--border",
+    "declarations": 38,
+    "references": 0
+  },
+  {
+    "name": "--space--9",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font--detail",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font--display-sans-bold",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--background-secondary",
+    "declarations": 19,
+    "references": 0
+  },
+  {
+    "name": "--gap--gap-xs",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--text-agate",
+    "declarations": 19,
+    "references": 0
+  },
+  {
+    "name": "--letter-spacing--0-005em",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--border-hover",
+    "declarations": 38,
+    "references": 0
+  },
+  {
+    "name": "--background-hover",
+    "declarations": 19,
+    "references": 0
+  },
+  {
+    "name": "--text-hover",
+    "declarations": 19,
+    "references": 0
+  },
+  {
+    "name": "--font--mono-medium",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--background-secondary-hover",
+    "declarations": 19,
+    "references": 0
+  },
+  {
+    "name": "--font-size--paragraph-m",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--button-primary--text",
+    "declarations": 19,
+    "references": 0
+  },
+  {
+    "name": "--font-size--paragraph-s",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--space--11",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font-size--detail-m",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font--detail-regular",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--section-space--none",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--section-space--small",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--section-space--main",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--section-space--large",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--section-space--page-top",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--section-space--extra-small",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--gap--gap-m",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font-size--paragraph-xs",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--gap--gap-s",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font-size--display-s",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--space--10",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font--detail-medium",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font-size--detail-s",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--button-primary--border",
+    "declarations": 19,
+    "references": 0
+  },
+  {
+    "name": "--font--paragraph-text",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font-size--detail-xs",
+    "declarations": 3,
+    "references": 0
+  },
+  {
+    "name": "--font-size--detail-xl",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font-size--detail-l",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--card",
+    "declarations": 19,
+    "references": 0
+  },
+  {
+    "name": "--card-faded",
+    "declarations": 19,
+    "references": 0
+  },
+  {
+    "name": "--card-faded-hover",
+    "declarations": 19,
+    "references": 0
+  },
+  {
+    "name": "--link--text",
+    "declarations": 19,
+    "references": 0
+  },
+  {
+    "name": "--gap--gap-l",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font--mono",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--section-space--medium",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--line-height--1",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font--display-serif-regular",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--text-transform",
+    "declarations": 54,
+    "references": 0
+  },
+  {
+    "name": "--trim-top",
+    "declarations": 54,
+    "references": 0
+  },
+  {
+    "name": "--trim-bottom",
+    "declarations": 54,
+    "references": 0
+  },
+  {
+    "name": "--flex",
+    "declarations": 5,
+    "references": 0
+  },
+  {
+    "name": "--link--text-active",
+    "declarations": 19,
+    "references": 0
+  },
+  {
+    "name": "--button-primary--background",
+    "declarations": 19,
+    "references": 0
+  },
+  {
+    "name": "--button-primary--background-hover",
+    "declarations": 19,
+    "references": 0
+  },
+  {
+    "name": "--button-primary--border-hover",
+    "declarations": 19,
+    "references": 0
+  },
+  {
+    "name": "--button-primary--text-hover",
+    "declarations": 19,
+    "references": 0
+  },
+  {
+    "name": "--button-secondary--background",
+    "declarations": 19,
+    "references": 0
+  },
+  {
+    "name": "--button-secondary--border",
+    "declarations": 19,
+    "references": 0
+  },
+  {
+    "name": "--button-secondary--text",
+    "declarations": 19,
+    "references": 0
+  },
+  {
+    "name": "--button-secondary--background-hover",
+    "declarations": 19,
+    "references": 0
+  },
+  {
+    "name": "--button-secondary--border-hover",
+    "declarations": 19,
+    "references": 0
+  },
+  {
+    "name": "--button-secondary--text-hover",
+    "declarations": 19,
+    "references": 0
+  },
+  {
+    "name": "--button-tertiary--background",
+    "declarations": 19,
+    "references": 0
+  },
+  {
+    "name": "--button-tertiary--border",
+    "declarations": 19,
+    "references": 0
+  },
+  {
+    "name": "--button-tertiary--text",
+    "declarations": 19,
+    "references": 0
+  },
+  {
+    "name": "--button-tertiary--background-hover",
+    "declarations": 19,
+    "references": 0
+  },
+  {
+    "name": "--button-tertiary--border-hover",
+    "declarations": 19,
+    "references": 0
+  },
+  {
+    "name": "--button-tertiary--text-hover",
+    "declarations": 19,
+    "references": 0
+  },
+  {
+    "name": "--space--12",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--size--3-5rem",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--size--5-5rem",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--size--6-5rem",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--size--7rem",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--size--8-5rem",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--size--9rem",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--size--9-5rem",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--size--11rem",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--size--13rem",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--size--15rem",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--font--display-sans-trim-top",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font--display-sans-trim-bottom",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font--display-serif-trim-top",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font--display-serif-trim-bottom",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font--detail-trim-top",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font--detail-trim-bottom",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font--paragraph-trim-top",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font--paragraph-trim-bottom",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font--paragraph-regular",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font--mono-trim-top",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font--mono-trim-bottom",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font--mono-regular",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--letter-spacing--0-02em",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--letter-spacing--0em",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--line-height--1-05",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--line-height--1-1",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--line-height--1-3",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--line-height--1-4",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--line-height--1-5",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font-size--display-xs",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--font-size--display-m",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--font-size--display-l",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--font-size--display-xl",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--font-size--display-xxl",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--font-size--display-xxxl",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font-size--paragraph-l",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--font-size--monospace",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--column-width--2",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--column-width--7",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--column-width--9",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--column-margin--2",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--column-margin--3",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--column-margin--4",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--column-margin--5",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--column-margin--6",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--column-margin--7",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--column-margin--8",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--column-margin--9",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--column-margin--10",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--column-margin--11",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--text-transform--none",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--text-transform--uppercase",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--text-transform--capitalize",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--text-transform--lowercase",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--grid-5",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--grid-6",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--grid-7",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--grid-8",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--grid-9",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--grid-10",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--grid-11",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--text-transform--captialize",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--nav--height-total",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--nav--dropdown-delay",
+    "declarations": 1,
+    "references": 0
+  }
+]

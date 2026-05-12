@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Cloudflare",
+    "kind": "cdn",
+    "confidence": "high"
+  },
+  {
+    "name": "Webflow",
+    "kind": "builder",
+    "confidence": "high"
+  },
+  {
+    "name": "GSAP",
+    "kind": "animation",
+    "confidence": "high"
+  },
+  {
+    "name": "Webflow CDN",
+    "kind": "cdn",
+    "confidence": "high"
+  },
+  {
+    "name": "Anthropic Brand System",
+    "kind": "design-system",
+    "confidence": "high"
+  },
+  {
+    "name": "Lenis",
+    "kind": "animation",
+    "confidence": "medium"
+  }
+]

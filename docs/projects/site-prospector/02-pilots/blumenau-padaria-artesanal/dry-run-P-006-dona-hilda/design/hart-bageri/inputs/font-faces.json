@@ -1,0 +1,114 @@
+[
+  {
+    "family": "Glyphicons Halflings",
+    "weight": null,
+    "style": null,
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/glyphicons-halflings-regular.eot"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://hartbageri.com/wp-content/themes/hartbageri/assets/framework/css/bootstrap.min.css",
+    "raw": "@font-face{font-family:'Glyphicons Halflings';src:url(../fonts/glyphicons-halflings-regular.eot);src:url(../fonts/glyphicons-halflings-regular.eot?#iefix) format('embedded-opentype'),url(../fonts/glyphicons-halflings-regular.woff2) format('woff2'),url(../fonts/glyphicons-halflings-regular.woff) format('woff'),url(../fonts/glyphicons-halflings-regular.ttf) format('truetype'),url(../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular) format('svg')}"
+  },
+  {
+    "family": "FontAwesome",
+    "weight": "normal",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/fontawesome-webfont.eot?v=4.7.0"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css",
+    "raw": "@font-face{font-family:'FontAwesome';src:url('../fonts/fontawesome-webfont.eot?v=4.7.0');src:url('../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'),url('../fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'),url('../fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'),url('../fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'),url('../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');font-weight:normal;font-style:normal}"
+  },
+  {
+    "family": "Linearicons-Free",
+    "weight": "400",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://cdn.linearicons.com/free/1.0.0/Linearicons-Free.eot"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://cdn.linearicons.com/free/1.0.0/icon-font.min.css",
+    "raw": "@font-face{font-family:Linearicons-Free;src:url(https://cdn.linearicons.com/free/1.0.0/Linearicons-Free.eot);src:url(https://cdn.linearicons.com/free/1.0.0/Linearicons-Free.eot?#iefix) format('embedded-opentype'),url(https://cdn.linearicons.com/free/1.0.0/Linearicons-Free.woff2) format('woff2'),url(https://cdn.linearicons.com/free/1.0.0/Linearicons-Free.ttf) format('truetype'),url(https://cdn.linearicons.com/free/1.0.0/Linearicons-Free.woff) format('woff'),url(https://cdn.linearicons.com/free/1."
+  },
+  {
+    "family": "graphikbold",
+    "weight": "bold",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "graphikbold.eot"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://hartbageri.com/wp-content/themes/hartbageri/assets/fonts/graphik/stylesheet.css",
+    "raw": "@font-face {\n    font-family: 'graphikbold';\n    src: url('graphikbold.eot');\n    src: url('graphikbold.eot?#iefix') format('embedded-opentype'),\n        url('graphikbold.woff2') format('woff2'),\n        url('graphikbold.woff') format('woff'),\n        url('graphikbold.ttf') format('truetype');\n    font-weight: bold;\n    font-style: normal;\n    font-display: swap;\n}"
+  },
+  {
+    "family": "graphikregular",
+    "weight": "normal",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "graphikregular.eot"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://hartbageri.com/wp-content/themes/hartbageri/assets/fonts/graphik/stylesheet.css",
+    "raw": "@font-face {\n    font-family: 'graphikregular';\n    src: url('graphikregular.eot');\n    src: url('graphikregular.eot?#iefix') format('embedded-opentype'),\n        url('graphikregular.woff2') format('woff2'),\n        url('graphikregular.woff') format('woff'),\n        url('graphikregular.ttf') format('truetype');\n    font-weight: normal;\n    font-style: normal;\n    font-display: swap;\n}"
+  },
+  {
+    "family": "graphikmedium",
+    "weight": "500",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "graphikmedium.eot"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://hartbageri.com/wp-content/themes/hartbageri/assets/fonts/graphik/stylesheet.css",
+    "raw": "@font-face {\n    font-family: 'graphikmedium';\n    src: url('graphikmedium.eot');\n    src: url('graphikmedium.eot?#iefix') format('embedded-opentype'),\n        url('graphikmedium.woff2') format('woff2'),\n        url('graphikmedium.woff') format('woff'),\n        url('graphikmedium.ttf') format('truetype');\n    font-weight: 500;\n    font-style: normal;\n    font-display: swap;\n}"
+  },
+  {
+    "family": "star",
+    "weight": "400",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/star.eot"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://hartbageri.com/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=5.6.2",
+    "raw": "@font-face{font-family:star;src:url(../fonts/star.eot);src:url(../fonts/star.eot?#iefix) format(\"embedded-opentype\"),url(../fonts/star.woff) format(\"woff\"),url(../fonts/star.ttf) format(\"truetype\"),url(../fonts/star.svg#star) format(\"svg\");font-weight:400;font-style:normal}"
+  },
+  {
+    "family": "WooCommerce",
+    "weight": "400",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/WooCommerce.eot"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://hartbageri.com/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=5.6.2",
+    "raw": "@font-face{font-family:WooCommerce;src:url(../fonts/WooCommerce.eot);src:url(../fonts/WooCommerce.eot?#iefix) format(\"embedded-opentype\"),url(../fonts/WooCommerce.woff) format(\"woff\"),url(../fonts/WooCommerce.ttf) format(\"truetype\"),url(../fonts/WooCommerce.svg#WooCommerce) format(\"svg\");font-weight:400;font-style:normal}"
+  }
+]
