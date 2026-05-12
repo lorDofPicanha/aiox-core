@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Netlify",
+    "kind": "hosting",
+    "confidence": "high"
+  },
+  {
+    "name": "Google Analytics / GTM",
+    "kind": "analytics",
+    "confidence": "high"
+  },
+  {
+    "name": "Cloudflare",
+    "kind": "cdn",
+    "confidence": "medium"
+  }
+]

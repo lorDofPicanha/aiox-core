@@ -1,0 +1,58 @@
+[
+  {
+    "value": "0 0 0 .3rem rgb(var(--color-background)),0 0 .5rem .4rem rgba(var(--color-foreground),.3)",
+    "count": 2
+  },
+  {
+    "value": "0 0 .2rem rgba(var(--color-foreground),.3)",
+    "count": 2
+  },
+  {
+    "value": "none!important",
+    "count": 2
+  },
+  {
+    "value": "0 0 0 1rem rgb(var(--color-background)),0 0 .2rem 1.2rem rgba(var(--color-foreground),.3)",
+    "count": 2
+  },
+  {
+    "value": "0 0 0 .1rem rgba(var(--color-button),var(--alpha-button-border))",
+    "count": 2
+  },
+  {
+    "value": "0 0 0 .1rem rgba(var(--color-button),var(--alpha-button-border)),0 0 0 .3rem rgb(var(--color-background)),0 0 .5rem .4rem rgba(var(--color-foreground),.3)",
+    "count": 2
+  },
+  {
+    "value": "0 0 0 .1rem rgba(var(--color-foreground),.55)",
+    "count": 2
+  },
+  {
+    "value": "0 0 0 10rem rgb(var(--color-background)) inset!important",
+    "count": 2
+  },
+  {
+    "value": "0 0 0 .1rem rgba(var(--color-foreground),.2)",
+    "count": 1
+  },
+  {
+    "value": "0 0 0 .2rem rgba(var(--color-button),var(--alpha-button-border))",
+    "count": 1
+  },
+  {
+    "value": "0 0 0 .2rem rgba(var(--color-foreground),.55)",
+    "count": 1
+  },
+  {
+    "value": "0 0 0 .2rem rgba(var(--color-foreground),.75)",
+    "count": 1
+  },
+  {
+    "value": "0 2px 10px rgba(0,0,0,0.1)",
+    "count": 1
+  },
+  {
+    "value": "0 15px 50px rgba(0, 0, 0, 0.2)",
+    "count": 1
+  }
+]

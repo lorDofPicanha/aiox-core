@@ -1,0 +1,79 @@
+{
+  "durations": [
+    {
+      "value": "6s",
+      "count": 45
+    },
+    {
+      "value": "2s",
+      "count": 14
+    },
+    {
+      "value": "7s",
+      "count": 9
+    },
+    {
+      "value": "3s",
+      "count": 8
+    },
+    {
+      "value": "1.2s",
+      "count": 8
+    },
+    {
+      "value": "65s",
+      "count": 7
+    },
+    {
+      "value": "5s",
+      "count": 5
+    },
+    {
+      "value": "4s",
+      "count": 3
+    },
+    {
+      "value": "15s",
+      "count": 3
+    },
+    {
+      "value": "8s",
+      "count": 2
+    }
+  ],
+  "easings": [
+    {
+      "value": "cubic-bezier(.645,.045,.355,1)",
+      "count": 40
+    },
+    {
+      "value": "cubic-bezier(.455,.03,.515,.955)",
+      "count": 26
+    },
+    {
+      "value": "cubic-bezier(.86,0,.07,1)",
+      "count": 17
+    },
+    {
+      "value": "cubic-bezier(.23,1,.32,1)",
+      "count": 8
+    },
+    {
+      "value": "cubic-bezier(.785,.135,.15,.86)",
+      "count": 2
+    },
+    {
+      "value": "cubic-bezier(.25,.46,.45,.94)",
+      "count": 1
+    },
+    {
+      "value": "cubic-bezier(.55,.085,.68,.53)",
+      "count": 1
+    }
+  ],
+  "keyframes": [
+    "animateMenuOpen",
+    "itemIn",
+    "modalFadeIn"
+  ]
+}

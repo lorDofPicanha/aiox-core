@@ -1,0 +1,62 @@
+{
+  "durations": [
+    {
+      "value": "15s",
+      "count": 9
+    },
+    {
+      "value": "6s",
+      "count": 9
+    },
+    {
+      "value": "2s",
+      "count": 6
+    },
+    {
+      "value": "5s",
+      "count": 6
+    },
+    {
+      "value": "35s",
+      "count": 3
+    },
+    {
+      "value": "3s",
+      "count": 3
+    },
+    {
+      "value": "0.1s",
+      "count": 2
+    },
+    {
+      "value": "0.2s",
+      "count": 2
+    },
+    {
+      "value": "0.5s",
+      "count": 1
+    }
+  ],
+  "easings": [
+    {
+      "value": "ease",
+      "count": 3
+    },
+    {
+      "value": "cubic-bezier(0.23,1,0.32,1)",
+      "count": 2
+    },
+    {
+      "value": "cubic-bezier(.795,-.035,0,1)",
+      "count": 2
+    }
+  ],
+  "keyframes": [
+    "progress-bar-stripes",
+    "fa-spin",
+    "fpFadeInDown",
+    "a2cp-spin",
+    "fadeOut",
+    "spin"
+  ]
+}

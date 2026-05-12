@@ -8,9 +8,9 @@
 # - File types for categorization
 #
 version: 4.2.13
-generated_at: "2026-05-12T15:11:47.567Z"
+generated_at: "2026-05-12T22:23:52.277Z"
 generator: scripts/generate-install-manifest.js
-file_count: 1164
+file_count: 1168
 files:
   - path: cli/commands/config/index.js
     hash: sha256:ebcad2ce3807eda29dcddff76d7a95ddc9b7fa160df21fd608f94b802237e862
@@ -1173,9 +1173,9 @@ files:
     type: data
     size: 210
   - path: data/entity-registry.yaml
-    hash: sha256:51f345cde45d82e22be679a4e32c7bf7655a61ef1ebf0440009f0230cc84bf2b
+    hash: sha256:f9b68c73c5b376fdb47e592dff59a8969f782f6fcb9708f1a39e85257441a727
     type: data
-    size: 949714
+    size: 949445
   - path: data/gates/PR-1-foundation-tokens.yaml
     hash: sha256:ca9e8b6fa19390be476bc5429a7765b13eea9a07648ff34ae082b8b0228adc44
     type: data
@@ -1224,6 +1224,22 @@ files:
     hash: sha256:24ac0b160615583a0ff783d3da8af80b7f94191575d6db2054ec8e10a3f945dc
     type: data
     size: 68
+  - path: data/site-prospector/primers/_schema.yaml
+    hash: sha256:562af1a00a7f045af168bb1b60a28b45576dd7d59335002841de99a7cbb0a0cf
+    type: data
+    size: 12468
+  - path: data/site-prospector/primers/oficina-mecanica.yaml
+    hash: sha256:2a239fdb7350a56f9f2b3cdffc793ef3b1fd07205e0bdb5ab6819eb2ed3df7ff
+    type: data
+    size: 13946
+  - path: data/site-prospector/primers/padaria-artesanal.yaml
+    hash: sha256:3667347dca7a558dff1c2361fdf6d648e1f429ce1a5cfae083d1efad7a6ab33d
+    type: data
+    size: 12968
+  - path: data/site-prospector/primers/README.md
+    hash: sha256:59e6a39178d96faf199970d3a3b621cf593846001879d0b44ff38eff4012b582
+    type: data
+    size: 5368
   - path: data/tech-presets/_template.md
     hash: sha256:1a7262912c8c8e264d307f0d38a1109bdb2b9bff9ea7d8855c768835201aa59b
     type: data

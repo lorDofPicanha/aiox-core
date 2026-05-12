@@ -1,0 +1,464 @@
+[
+  {
+    "selector": "/* ── https://www.poilane.com/cdn/shop/t/1/assets/base.css?v=128820112774589595031652281481 ── */ :root,.color-background-1",
+    "name": "--color-foreground",
+    "value": "var(--color-base-text)",
+    "is_alias": true,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.poilane.com/cdn/shop/t/1/assets/base.css?v=128820112774589595031652281481 ── */ :root,.color-background-1",
+    "name": "--color-background",
+    "value": "var(--color-base-background-1)",
+    "is_alias": true,
+    "line": 1
+  },
+  {
+    "selector": "/* ── https://www.poilane.com/cdn/shop/t/1/assets/base.css?v=128820112774589595031652281481 ── */ :root,.color-background-1",
+    "name": "--gradient-background",
+    "value": "var(--gradient-base-background-1)",
+    "is_alias": true,
+    "line": 1
+  },
+  {
+    "selector": ".color-background-2",
+    "name": "--color-background",
+    "value": "var(--color-base-background-2)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ".color-background-2",
+    "name": "--gradient-background",
+    "value": "var(--gradient-base-background-2)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ".color-inverse",
+    "name": "--color-foreground",
+    "value": "var(--color-base-background-1)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ".color-inverse",
+    "name": "--color-background",
+    "value": "var(--color-base-text)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ".color-inverse",
+    "name": "--gradient-background",
+    "value": "rgb(var(--color-base-text))",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ".color-accent-1",
+    "name": "--color-foreground",
+    "value": "var(--color-base-solid-button-labels)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ".color-accent-1",
+    "name": "--color-background",
+    "value": "var(--color-base-accent-1)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ".color-accent-1",
+    "name": "--gradient-background",
+    "value": "var(--gradient-base-accent-1)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ".color-accent-2",
+    "name": "--color-foreground",
+    "value": "var(--color-base-solid-button-labels)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ".color-accent-2",
+    "name": "--color-background",
+    "value": "var(--color-base-accent-2)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ".color-accent-2",
+    "name": "--gradient-background",
+    "value": "var(--gradient-base-accent-2)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ".color-foreground-outline-button",
+    "name": "--color-foreground",
+    "value": "var(--color-base-outline-button-labels)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ".color-foreground-accent-1",
+    "name": "--color-foreground",
+    "value": "var(--color-base-accent-1)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ".color-foreground-accent-2",
+    "name": "--color-foreground",
+    "value": "var(--color-base-accent-2)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ":root,.color-background-1",
+    "name": "--color-link",
+    "value": "var(--color-base-outline-button-labels)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ":root,.color-background-1",
+    "name": "--alpha-link",
+    "value": ".85",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ".color-background-2,.color-inverse,.color-accent-1,.color-accent-2",
+    "name": "--color-link",
+    "value": "var(--color-foreground)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ".color-background-2,.color-inverse,.color-accent-1,.color-accent-2",
+    "name": "--alpha-link",
+    "value": ".7",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root,.color-background-1",
+    "name": "--color-button",
+    "value": "var(--color-base-accent-1)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ":root,.color-background-1",
+    "name": "--color-button-text",
+    "value": "var(--color-base-solid-button-labels)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ":root,.color-background-1",
+    "name": "--alpha-button-background",
+    "value": "1",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root,.color-background-1",
+    "name": "--alpha-button-border",
+    "value": "1",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ".color-background-2,.color-inverse,.color-accent-1,.color-accent-2",
+    "name": "--color-button",
+    "value": "var(--color-foreground)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ".color-background-2,.color-inverse,.color-accent-1,.color-accent-2",
+    "name": "--color-button-text",
+    "value": "var(--color-background)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ".button--secondary",
+    "name": "--color-button",
+    "value": "var(--color-base-outline-button-labels)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ".button--secondary",
+    "name": "--color-button-text",
+    "value": "var(--color-base-outline-button-labels)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ".button--secondary",
+    "name": "--alpha-button-background",
+    "value": "0",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ".color-background-2 .button--secondary,.color-inverse .button--secondary,.color-accent-1 .button--secondary,.color-accent-2 .button--secondary",
+    "name": "--color-button",
+    "value": "var(--color-foreground)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ".color-background-2 .button--secondary,.color-inverse .button--secondary,.color-accent-1 .button--secondary,.color-accent-2 .button--secondary",
+    "name": "--color-button-text",
+    "value": "var(--color-foreground)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ".button--tertiary",
+    "name": "--color-button",
+    "value": "var(--color-base-outline-button-labels)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ".button--tertiary",
+    "name": "--color-button-text",
+    "value": "var(--color-base-outline-button-labels)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ".button--tertiary",
+    "name": "--alpha-button-background",
+    "value": "0",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ".button--tertiary",
+    "name": "--alpha-button-border",
+    "value": ".2",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ".color-background-2 .button--tertiary,.color-inverse .button--tertiary,.color-accent-1 .button--tertiary,.color-accent-2 .button--tertiary",
+    "name": "--color-button",
+    "value": "var(--color-foreground)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ".color-background-2 .button--tertiary,.color-inverse .button--tertiary,.color-accent-1 .button--tertiary,.color-accent-2 .button--tertiary",
+    "name": "--color-button-text",
+    "value": "var(--color-foreground)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ":root,.color-background-1",
+    "name": "--color-badge-background",
+    "value": "var(--color-background)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ":root,.color-background-1",
+    "name": "--color-badge-border",
+    "value": "var(--color-foreground)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ":root,.color-background-1",
+    "name": "--alpha-badge-border",
+    "value": ".1",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ".color-background-2,.color-inverse,.color-accent-1,.color-accent-2",
+    "name": "--color-badge-background",
+    "value": "var(--color-background)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ".color-background-2,.color-inverse,.color-accent-1,.color-accent-2",
+    "name": "--color-badge-border",
+    "value": "var(--color-background)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ".color-background-2,.color-inverse,.color-accent-1,.color-accent-2",
+    "name": "--alpha-badge-border",
+    "value": "1",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root,.color-background-1,.color-background-2",
+    "name": "--color-card-hover",
+    "value": "var(--color-base-text)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ".color-inverse",
+    "name": "--color-card-hover",
+    "value": "var(--color-base-background-1)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ".color-accent-1,.color-accent-2",
+    "name": "--color-card-hover",
+    "value": "var(--color-base-solid-button-labels)",
+    "is_alias": true,
+    "line": 2
+  },
+  {
+    "selector": ":root,.color-icon-text",
+    "name": "--color-icon",
+    "value": "rgb(var(--color-base-text))",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ".color-icon-accent-1",
+    "name": "--color-icon",
+    "value": "rgb(var(--color-base-accent-1))",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ".color-icon-accent-2",
+    "name": "--color-icon",
+    "value": "rgb(var(--color-base-accent-2))",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ".color-icon-outline-button",
+    "name": "--color-icon",
+    "value": "rgb(var(--color-base-outline-button-labels))",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--duration-short",
+    "value": ".1s",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--duration-default",
+    "value": ".2s",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--duration-long",
+    "value": ".5s",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ":root",
+    "name": "--app-height",
+    "value": "100vh",
+    "is_alias": false,
+    "line": 17
+  },
+  {
+    "selector": ":root",
+    "name": "--header-threshold",
+    "value": "0px",
+    "is_alias": false,
+    "line": 17
+  },
+  {
+    "selector": "@media(hover:hover)",
+    "name": "--lg",
+    "value": "hover{color:#fff",
+    "is_alias": false,
+    "line": 17
+  },
+  {
+    "selector": "@media(hover:hover)",
+    "name": "--inverted",
+    "value": "hover:after,.t-link--inverted:hover:before{transform:scaleX(1) translateZ(0)",
+    "is_alias": false,
+    "line": 17
+  },
+  {
+    "selector": ":root",
+    "name": "--translateItems",
+    "value": "0",
+    "is_alias": false,
+    "line": 17
+  },
+  {
+    "selector": "@media(min-width:62em)",
+    "name": "--has-input",
+    "value": ":-moz-placeholder{font-size:2.4rem",
+    "is_alias": false,
+    "line": 17
+  },
+  {
+    "selector": "@media(min-width:62em)",
+    "name": "--has-input",
+    "value": "-ms-input-placeholder{font-size:2.4rem",
+    "is_alias": false,
+    "line": 17
+  },
+  {
+    "selector": "@media(min-width:62em)",
+    "name": "--has-input",
+    "value": ":-webkit-input-placeholder{font-size:2.4rem",
+    "is_alias": false,
+    "line": 17
+  },
+  {
+    "selector": "@media(min-width:62em)",
+    "name": "--has-input",
+    "value": "placeholder{font-size:2.4rem",
+    "is_alias": false,
+    "line": 17
+  },
+  {
+    "selector": "/* ── inline <style> #1 ── */ :root",
+    "name": "--payment-terms-background-color",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 299
+  },
+  {
+    "selector": "/* ── inline <style> #1 ── */ :root",
+    "name": "--page-width-margin",
+    "value": "0rem",
+    "is_alias": false,
+    "line": 299
+  },
+  {
+    "selector": "/* ── inline <style> #1 ── */ :root",
+    "name": "--color-nav-fix",
+    "value": "#ffffff",
+    "is_alias": false,
+    "line": 299
+  }
+]

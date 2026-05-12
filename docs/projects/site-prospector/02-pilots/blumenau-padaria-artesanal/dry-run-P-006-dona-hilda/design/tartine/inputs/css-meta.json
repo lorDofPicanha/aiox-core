@@ -1,0 +1,13 @@
+{
+  "external": [
+    "https://api.tiles.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css",
+    "https://tartinebakery.com/static/css/33.2ff9aac3.chunk.css",
+    "https://tartinebakery.com/static/css/main.8f7fe8c6.chunk.css",
+    "https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css"
+  ],
+  "preload": [],
+  "inline_style_blocks": 0,
+  "inline_style_attrs": 0,
+  "imports_resolved": 0,
+  "failed": []
+}

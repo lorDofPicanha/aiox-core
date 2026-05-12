@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "crashed_at": "2026-05-12T17:45:41.372Z",
+  "last_phase": "phase_1_fetch",
+  "completed_phases": {},
+  "error": {
+    "message": "getaddrinfo ENOTFOUND cantinhodopao.com.br",
+    "name": "Error",
+    "stack": "Error: getaddrinfo ENOTFOUND cantinhodopao.com.br\n    at AxiosError.from (D:\\AIOS\\.claude\\skills\\design-md\\node_modules\\axios\\dist\\node\\axios.cjs:1248:24)\n    at RedirectableRequest.handleRequestError (D:\\AIOS\\.claude\\skills\\design-md\\node_modules\\axios\\dist\\node\\axios.cjs:3611:25)\n    at RedirectableRequest.emit (node:events:520:35)\n    at eventHandlers.<computed> (D:\\AIOS\\.claude\\skills\\design-md\\node_modules\\follow-redirects\\index.js:56:24)\n    at ClientRequest.emit (node:events:508:28)\n    at emitErrorEvent (node:_http_client:108:11)\n    at TLSSocket.socketErrorListener (node:_http_client:575:5)\n    at TLSSocket.emit (node:events:520:35)\n    at emitErrorNT (node:internal/streams/destroy:170:8)",
+    "code": "ENOTFOUND",
+    "exit_code": null,
+    "details": null
+  },
+  "inputs": {
+    "url": "https://cantinhodopao.com.br",
+    "out_dir": "docs/projects/site-prospector/02-pilots/blumenau-padaria-artesanal/dry-run-P-006-dona-hilda/design/cantinho-do-pao",
+    "inputs_dir": "docs\\projects\\site-prospector\\02-pilots\\blumenau-padaria-artesanal\\dry-run-P-006-dona-hilda\\design\\cantinho-do-pao\\inputs"
+  },
+  "partial_outputs": [
+    "inputs"
+  ],
+  "debug_hint": "Network error reaching the URL. Check connectivity / DNS."
+}

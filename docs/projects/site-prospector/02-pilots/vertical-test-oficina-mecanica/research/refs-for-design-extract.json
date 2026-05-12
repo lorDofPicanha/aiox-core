@@ -1,0 +1,252 @@
+{
+  "$schema_version": "1.0-dry-run-vertical-test",
+  "generated_by": "@analyst (DRY RUN #2 Fase 3 — VERTICAL TEST)",
+  "generated_at": "2026-05-12",
+  "client": "M-002 Auto Mecânica Itanorte",
+  "niche": "oficina-mecanica-auto-diesel-independent-premium",
+  "geo_context": "Itoupava Norte, Blumenau, SC, Brasil",
+  "client_constraints": {
+    "audience_age": "35-65 B2B+B2C (skew 40-60 masculino, gestores frota + proprietários diesel)",
+    "brand_age_years": 55,
+    "founded_year": 1970,
+    "brand_personality_hints": [
+      "Meister-class",
+      "patrimônio 55 anos",
+      "diesel specialist",
+      "Itoupava Norte priority",
+      "sobreviveu enchente 1983",
+      "linha leve+média+pesada",
+      "elétrica + mecânica integrada"
+    ],
+    "language": "pt-BR-SC",
+    "mobile_heavy": true,
+    "accessibility_required": "WCAG AAA contrast 7:1",
+    "performance_required": "LCP ≤2.0s field, INP ≤200ms, CLS ≤0.05, initial JS ≤80KB gzipped — CRÍTICO Itoupava Norte 3G dead-zone",
+    "stack": "Next.js 16 + Tailwind + Vercel + Supabase (forms)",
+    "cdc_compliance": "Patricia Peck ADR-0002 — site 'recebe pedidos' não 'vende'; garantia mecânica precisa orientação OAB-SC diff vs gastronomia"
+  },
+  "vertical_test_metadata": {
+    "compared_against": "blumenau-padaria-artesanal/dry-run-P-006-dona-hilda/research/refs-for-design-extract.json",
+    "comparison_output": "LEARNINGS/vertical-agnostic-test-comparison.md",
+    "test_objective": "validar se pipeline produz outputs vertically-distinct OR converge pra genérico template"
+  },
+  "archetype_synthesis": {
+    "recommended_blend": "European Marque Specialist Editorial-Industrial 45% + Industrial Workshop Documentary 35% + Luxury Heritage Craftsmanship 20%",
+    "label": "Industrial Craftsmanship Premium BR — modernized rationally",
+    "comparison_with_padaria_blend": "padaria foi 'Brazilian Traditional Premium modernized warmly' (Heritage 30% + Rustic 40% + BR Premium 30%) — mecânica é 'Industrial Craftsmanship Premium modernized rationally' — FUNDAMENTALLY DIFFERENT archetypal mix",
+    "explicit_exclusions": [
+      "Luxury Heritage Cinematic FULL (Singer clone) — alienate cliente B2B frota pragmático",
+      "BR Realista 2018-2022 padrão (DIESEL SUL/CADERA clone) — floor não ceiling, Itanorte deve superar tier vizinho",
+      "Auto chain genérica 2010s (Hyundai Caoa, Localiza tier) — perde signal patrimonial 55 anos",
+      "Stack-stuffing modern web — thin gray-on-gray, micro-type — viola gate AAA"
+    ]
+  },
+  "global_refs": [
+    {
+      "name": "Carbahn Autoworks",
+      "url": "https://carbahn.com/",
+      "url_status": "needs_validation_phase_4",
+      "country": "USA",
+      "city": "San Jose / Mountain View / Morgan Hill, CA",
+      "founder_signal": "Steve Dinan, 40+ anos tuning BMW/Audi/Mercedes/Porsche, IMSA Pilot Challenge 2019 champion",
+      "archetype": "european-marque-specialist-editorial-industrial",
+      "weight_target": 0.45,
+      "why": "Análogo direto à Itanorte em estrutura — independent shop (não-franquia), heritage founder, specialist em marcas específicas, trust signal forte. Tipo de site que Itanorte precisa, ajustado pra contexto BR diesel. Conceitual: Carbahn é 'BMW/Audi/Porsche/Mercedes specialist' → Itanorte é 'Mercedes Sprinter/IVECO/Fiat Ducato/VW Constellation/linha diesel specialist'.",
+      "tokens_to_extract": {
+        "color": "HIGH — off-white background + deep warm charcoal + 1 racing accent",
+        "typography": "HIGH — industrial sans display + sans neutral body",
+        "layout": "HIGH — grid 12-col organized, hero photo marca, seções por marca atendida",
+        "spacing": "MEDIUM",
+        "photography_direction": "VERY HIGH — motor close-up + dyno session + técnico em ação + Meister identified",
+        "trust_signals_structure": "VERY HIGH — IMSA history sidebar / 40-year history badge / certifications grid"
+      },
+      "filters_to_apply": [
+        "Validar contrast 7:1 AAA — provável OK em high-contrast industrial",
+        "Forçar body 18px+",
+        "Watch out hover-only nav",
+        "Substituir racing-yellow americano por vermelho-acerola-Mercedes BR"
+      ],
+      "anti_clone_hedge": "NÃO copiar IMSA racing-team integration — Itanorte tem 1.500+ frotas atendidas Vale do Itajaí, NÃO IMSA. NÃO copiar paleta racing yellow exato. Adaptar utility-commercial não sport-tuning."
+    },
+    {
+      "name": "Singer Vehicle Design",
+      "url": "https://singervehicledesign.com/",
+      "url_status": "needs_validation_phase_4",
+      "country": "USA",
+      "city": "Sun Valley, CA",
+      "founder_signal": "Rob Dickinson, 2009, Porsche 911 restomod luxury",
+      "archetype": "luxury-heritage-craftsmanship-cinematic",
+      "weight_target": 0.20,
+      "why": "Padrão-ouro mundial 'everything is important' craftsmanship signal. Itanorte NÃO é luxury restomod, mas vocabulário cinematic close-up componente + monograma fundador + 'restored. reimagined. reborn.' copy-tier é matéria-prima para signal Meister-class 55 anos. Pegar APENAS heritage vocabulary + photography direction close-up componente diesel.",
+      "tokens_to_extract": {
+        "color": "MEDIUM — deep monochrome + cream + 1 muted accent",
+        "typography": "LOW — serif display custom é luxury overkill pra mecânica B2B",
+        "layout": "LOW — cinematic full-screen é luxury overkill",
+        "spacing": "MEDIUM",
+        "photography_direction": "VERY HIGH — close-up componente cinematic com lighting tipo museu, color-graded film",
+        "heritage_signals": "HIGH — monograma stamp, 'Desde 1970' repetido, narrative editorial denso adaptado pra B2B"
+      },
+      "filters_to_apply": [
+        "Validar contrast 7:1 — paleta luxury monochrome pode flertar com border",
+        "Forçar body 18px+",
+        "REJECT cinematic full-screen video auto-play",
+        "REJECT copy-tier 'everything is important' pretensioso B2B"
+      ],
+      "anti_clone_hedge": "RISCO ALTO de clone. Pegar APENAS: (a) 'Desde 1970 na Itoupava Norte' stamp, (b) close-up cinematic de componente diesel como hero, (c) disciplina cromática 3 cores max. NÃO clonar luxury cinematic mood + NÃO copy-tier pretensioso."
+    },
+    {
+      "name": "AUTOPROFI Premium Workshop Concept (LKQ Workshop Concepts Germany)",
+      "url": "https://www.lkqworkshopconcepts.com/concepts/germany",
+      "url_status": "needs_validation_phase_4",
+      "country": "Germany",
+      "city": "concept brand (multiple workshop locations)",
+      "founder_signal": "concept de branding Meisterwerkstatt certified premium standard",
+      "archetype": "industrial-workshop-documentary-meisterklasse",
+      "weight_target": 0.35,
+      "why": "Padrão BRANDING workshop independente alemão que estandariza expectativas Meisterwerkstatt — vocabulário visual 'certified premium workshop' sem luxury. Diff fundamental vs outras refs: AUTOPROFI é CONCEPT BRANDING (não shop específico), então funciona como ESPECIFICAÇÃO DE TOKENS para Itanorte adotar. Equivalente conceitual a 'Bilstein workshop certification' + 'Brembo network'.",
+      "tokens_to_extract": {
+        "color": "HIGH — white + Bosch-blue OR safety-orange OR Bilstein-yellow + dark anthracite",
+        "typography": "HIGH — industrial sans (Stratos/Industry/Forma DJR) + body neutral",
+        "layout": "HIGH — grid systematic, trust signal heavy (certifications/awards/years)",
+        "spacing": "MEDIUM",
+        "photography_direction": "HIGH — documentary workshop bay, equipe identificada nome, ferramentas Snap-On/Hazet wall",
+        "heritage_signals": "VERY HIGH — Meister certification badge prominent, anos operação stamp, Handwerkskammer reference"
+      },
+      "filters_to_apply": [
+        "OK majoritariamente — industrial branding tende high-contrast",
+        "Forçar 18px body",
+        "Validar mobile pattern"
+      ],
+      "anti_clone_hedge": "NÃO copiar Bosch-blue exato (M-004 Auto Mecânica Brasil já tem por ser Bosch Car Service network). Adaptar paleta Mercedes-Sprinter-cinza + vermelho-acerola BR. Não traduzir 'Meisterwerkstatt' literal — usar 'Mecânica de patrimônio' OR 'Tradição em diesel desde 1970'."
+    }
+  ],
+  "local_refs": [
+    {
+      "name": "DIESEL SUL — Retífica Multimarcas",
+      "url": "https://dieselsul.com.br/",
+      "url_status": "needs_validation_phase_4",
+      "region": "Joinville, SC",
+      "geo_proximity_km": 90,
+      "weight_target": 0.10,
+      "why": "Floor BR geo-relevante — mesma sub-região Vale-Norte SC, mesmo arquétipo 'retífica multimarcas + diesel completa', mesmo tier comercial independent. Funciona como CONCORRENTE-VIZINHO referencial.",
+      "tokens_to_extract": {
+        "vernacular_copy": "HIGH — 'retífica multimarcas', 'linha pesada', 'estrutura moderna'",
+        "menu_categorization": "HIGH — serviços padrão diesel SC (retífica / mecânica geral / elétrica diesel / injeção / scanner)",
+        "cultural_reference": "MEDIUM — Vale-Norte SC industrial signals"
+      },
+      "anti_clone_hedge": "Posicionar Itanorte como OPOSTO: mais patrimônio (55 anos vs DIESEL SUL desconhecido years), mais especializa em elétrica integrada (Itanorte declara mecânica+elétrica vs DIESEL SUL retífica-first). Diferenciação narrative deliberada.",
+      "fallback_if_broken": [
+        "SD Diesel (Itajaí)",
+        "Lacer Diesel (Itajaí, 1996)",
+        "Amplexo Diesel (Florianópolis)",
+        "Frison (São Paulo Vila Nova Conceição) — Bentley/Ferrari level — só usar se SC todos quebrados"
+      ]
+    },
+    {
+      "name": "CADERA Mecatrônica e Mecânica Diesel IVECO",
+      "url": "https://www.caderamecatronica.com.br/",
+      "url_status": "needs_validation_phase_4",
+      "region": "Joinville, SC",
+      "geo_proximity_km": 90,
+      "founder_signal": "22 anos mercado, IVECO specialist",
+      "weight_target": 0.10,
+      "why": "Análogo direto Itanorte — também specialist linha diesel, 22 anos mercado, independent shop, mid-Norte SC. Funciona como benchmark direto do que 'specialist diesel BR com site decente' entrega em 2026.",
+      "tokens_to_extract": {
+        "sitemap_pattern": "HIGH — Home / IVECO / Mercatrônica / Marcas / Sobre / Contato padrão BR specialist",
+        "home_sections_typical": "HIGH — vitrine especialidade + sobre + galeria + WhatsApp",
+        "copy_specialist_patterns": "HIGH — 'referência em mecânica diesel', 'specialist + experiência'",
+        "vernacular_fit_sul_BR": "HIGH — vocabulary técnico diesel SC"
+      },
+      "anti_clone_hedge": "Itanorte AMPLA (não-IVECO-specific) atende linha leve+média+pesada+elétrica. Posicionar 'amplitude técnica' vs 'specialist marca única'. Não clonar layout 2010s-genérico — elevar visual acima."
+    }
+  ],
+  "atomic_convergence_targets": {
+    "color_threshold_max_ref_dominance": 0.85,
+    "color_planned_blend": "45% Carbahn industrial + 25% Singer disciplina + 15% AUTOPROFI Meister + 15% BR adaptação",
+    "color_initial_sketch": {
+      "background": "#F5F1EA (cream tropical industrial, warmer que SF off-white, mais claro que Singer dark)",
+      "text_primary": "#1F1B18 (warm anthracite, NÃO pure black NÃO carbon-black)",
+      "accent": "#A6342E (vermelho-acerola-Mercedes-Sprinter, vernacular BR diesel + warm industrial; substituí racing-yellow Carbahn cool american)",
+      "text_secondary": "#4A423B (validar contrast 7:1 contra background)",
+      "trust_accent": "#2E5E3E (verde-musgo industrial para badges/certifications — validar AAA contra cream)",
+      "notes": "SUGESTIVO — derivar tokens reais via multi-ref-extract Fase 4. Validar contrast AAA antes commit. DIFF VS PADARIA: padaria usou terracota #B85C3B warm-orange; mecânica usa vermelho-acerola #A6342E MAIS deep+industrial. Padaria não tinha trust_accent — mecânica adiciona verde-musgo trust_accent porque trust signals são estrutura no nicho mecânica."
+    },
+    "typography_threshold_max_ref_dominance": 0.75,
+    "typography_planned_blend": "50% Carbahn industrial sans + 30% AUTOPROFI Meister industrial + 20% BR-available",
+    "typography_initial_recommendation": {
+      "display": "Archivo Black (geometric sans bold industrial — Google Fonts BR-disponível)",
+      "display_alternatives": ["DM Sans peso 700+", "Inter Display Bold", "Bebas Neue (mais cinematic)"],
+      "body": "Inter (variable, peso medium em 18px+ — mesma do padaria por consistency stack)",
+      "body_alternatives": ["DM Sans peso 400-500", "IBM Plex Sans (mais industrial humanista)"],
+      "min_body_size": "18px",
+      "hero_display_size": "48-72px",
+      "section_headline_size": "32-40px",
+      "diff_vs_padaria": "padaria pareou Fraunces (serif warm modern) + Inter — emocional editorial. Mecânica pareia Archivo Black (sans industrial bold) + Inter — rational técnico. Body MESMO (Inter consistency stack), display COMPLETAMENTE DIFERENTE (serif-warm vs sans-industrial-bold) — atomic anti-clone PASS perfeito."
+    },
+    "layout_threshold_max_ref_dominance": 0.60,
+    "layout_planned_blend": "45% Carbahn grid + 25% AUTOPROFI trust-heavy + 15% Singer hero close-up + 15% BR-vernacular density",
+    "layout_diff_vs_padaria": "padaria foi 'editorial Hart grid + asymmetric photo Tartine + BR density' — mecânica é 'Carbahn grid + AUTOPROFI trust-heavy + Singer hero close-up' — STRUCTURE-LEVEL DIFFERENT. Padaria home priorizou vitrine sazonal rotativa; mecânica home prioriza grid de marcas atendidas + grid de serviços por sintoma. Sazonalidade fraca em mecânica REMOVE seção vitrine sazonal e ADICIONA seção 'serviços por sintoma' (autodiagnose) que padaria nem tem."
+  },
+  "anti_patterns_to_avoid": [
+    "Thin gray-on-gray (viola AAA + alienates 50+)",
+    "Hover-only nav (gate inclusive-design)",
+    "Body size 16px ou menor (gate enforce ≥18px)",
+    "Autoplay video hero (gate inclusive-design + mata LCP 3G — CRÍTICO Itoupava Norte dead-zone)",
+    "Modern web aesthetic puro para audience B2B 40-65",
+    "Clone visual de Singer cinematic full (luxury overkill B2B)",
+    "Paleta Bosch-blue específica (conflito M-004 Auto Mecânica Brasil)",
+    "Paleta racing-yellow cool american (cultural mismatch BR diesel utility)",
+    "Tradução literal 'Meisterwerkstatt' (vernacular fail)",
+    "Tradução literal 'Everything is important' tagline (luxury overkill B2B)",
+    "Stock photo chave inglesa / mãos genéricas óleo (content-truth fail)",
+    "Seção 'Vitrine Sazonal' (mecânica não tem sazonalidade forte — substituir por 'Marca em Destaque' rotativa)",
+    "Lista de serviços por NOME TÉCNICO (cliente busca por SINTOMA — 'vazamento de óleo' não 'revisão preventiva')",
+    "Equipe anônima (mecânica B2B exige identificação nominal Meister responsável técnico)",
+    "Garantia escrita no site sem orientação OAB-SC mecânica (CDC + Lei 4.886/65 corretagem mecânica)"
+  ],
+  "performance_constraints_propagated": {
+    "lcp_field_max_s": 2.0,
+    "lcp_lab_max_s": 1.2,
+    "inp_max_ms": 200,
+    "cls_max": 0.05,
+    "ttfb_max_ms": 600,
+    "initial_js_max_kb_gzip": 80,
+    "initial_js_hard_cap_kb": 100,
+    "total_first_view_max_kb": 500,
+    "hero_image_max_kb_avif": 180,
+    "hero_image_max_kb_webp_fallback": 240,
+    "critical_note": "Itoupava Norte 3G dead-zone (CONTEXT.md flag) — performance gate MAIS crítico que padaria. Pre-load logo + WhatsApp button + map embed Above-the-Fold mobile. ZERO video B-roll auto-play."
+  },
+  "customer_journey_diff_padaria": {
+    "padaria_journey_summary": "emotional/aspirational — descoberta via Insta-viral, decisão por aspiração (encomenda Páscoa, presente Mães), WhatsApp pedido conversational",
+    "mecanica_journey_summary": "rational/utility — descoberta via Google sintoma+marca+local, decisão por trust gates (anos, certs, marcas atendidas), WhatsApp pedido com foto+sintoma",
+    "delta": "FUNDAMENTAL — padaria home prioriza vitrine sazonal + sobre/história + galeria; mecânica home prioriza marcas-grid + serviços-por-sintoma-grid + trust-heritage. Layouts atom-level diff."
+  },
+  "next_actions_phase_4": [
+    "WebFetch + screenshot ao vivo das 3 refs globais (validar estado atual maio/2026)",
+    "WebFetch das 2 refs locais (validar URLs + qualidade) — se quebrada, substituir do fallback list",
+    "Multi-ref-extract → tokens numéricos por categoria (color hex exato, type family validada, spacing scale, layout grid measurements)",
+    "Aplicar gates pre-synthesis: anti-clone thresholds 85/75/60 + industry-fit + exclusion-habit filter",
+    "Validar contrast AAA dos tokens propostos",
+    "Direção fotográfica Fase 4.5: especificar shot list sessão 2h presencial (close-up turbo, close-up bico injetor, bay documentary, Meister identified, fachada Rua 1º de Janeiro, foto P&B histórica se existe)",
+    "Output: tokens.json + preview.html para Fase 5 Brief Executável"
+  ],
+  "research_metadata": {
+    "tier": "S",
+    "budget_h": 2,
+    "execution_time_estimate_min": 40,
+    "skill_applied": "tech-research",
+    "primary_dimension": "estetico-visual",
+    "secondary_dimension": "mercado",
+    "skipped_dimensions": ["tecnico-arquitetural", "cientifico", "regulatorio-detalhado"],
+    "triangulation_level": "knowledge-base + WebSearch + heuristic (NÃO WebFetch ao vivo — DENIED)",
+    "validity_estimate_months": 6,
+    "reassess_triggers": [
+      "Carbahn redesenhar",
+      "Singer Vehicle Design redesenhar (improvável — signature stable)",
+      "AUTOPROFI concept brand mudar",
+      "DIESEL SUL ou CADERA breakthrough no nicho SC",
+      "Cliente posicionamento mudar (ex: Itanorte virar 'Itanorte Diesel Premium' high-end downtown)"
+    ]
+  }
+}

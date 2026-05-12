@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Netlify",
+    "kind": "hosting",
+    "evidence": "Netlify response header",
+    "confidence": "high"
+  },
+  {
+    "name": "Google Analytics / GTM",
+    "kind": "analytics",
+    "evidence": "gtag or googletagmanager",
+    "confidence": "high"
+  },
+  {
+    "name": "Cloudflare",
+    "kind": "cdn",
+    "evidence": "cloudflare CDN",
+    "confidence": "medium"
+  }
+]

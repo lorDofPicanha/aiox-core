@@ -1,0 +1,617 @@
+[
+  {
+    "name": "--wp--preset--color--black",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--wp--preset--color--cyan-bluish-gray",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--wp--preset--color--white",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--wp--preset--color--pale-pink",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--wp--preset--color--vivid-red",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--wp--preset--color--luminous-vivid-orange",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--wp--preset--color--luminous-vivid-amber",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--wp--preset--color--light-green-cyan",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--wp--preset--color--vivid-green-cyan",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--wp--preset--color--pale-cyan-blue",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--wp--preset--color--vivid-cyan-blue",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--wp--preset--color--vivid-purple",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--wp-block-synced-color",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--font-size--normal",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--font-size--huge",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--gradient--luminous-vivid-orange-to-vivid-red",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--gradient--cool-to-warm-spectrum",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--gradient--blush-light-purple",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--gradient--blush-bordeaux",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--gradient--luminous-dusk",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--gradient--pale-ocean",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--gradient--electric-grass",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--gradient--midnight",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--font-size--small",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--font-size--medium",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--font-size--large",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp--preset--font-size--x-large",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--wp-admin--admin-bar--height",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--woocommerce",
+    "declarations": 3,
+    "references": 0
+  },
+  {
+    "name": "--wc-green",
+    "declarations": 3,
+    "references": 0
+  },
+  {
+    "name": "--wc-red",
+    "declarations": 3,
+    "references": 0
+  },
+  {
+    "name": "--wc-orange",
+    "declarations": 3,
+    "references": 0
+  },
+  {
+    "name": "--wc-blue",
+    "declarations": 3,
+    "references": 0
+  },
+  {
+    "name": "--wc-primary",
+    "declarations": 3,
+    "references": 0
+  },
+  {
+    "name": "--wc-primary-text",
+    "declarations": 3,
+    "references": 0
+  },
+  {
+    "name": "--wc-secondary",
+    "declarations": 3,
+    "references": 0
+  },
+  {
+    "name": "--wc-secondary-text",
+    "declarations": 3,
+    "references": 0
+  },
+  {
+    "name": "--wc-highlight",
+    "declarations": 3,
+    "references": 0
+  },
+  {
+    "name": "--wc-highligh-text",
+    "declarations": 3,
+    "references": 0
+  },
+  {
+    "name": "--wc-content-bg",
+    "declarations": 3,
+    "references": 0
+  },
+  {
+    "name": "--wc-subtext",
+    "declarations": 3,
+    "references": 0
+  },
+  {
+    "name": "--wp-block-synced-color--rgb",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp-bound-block-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp-editor-canvas-background",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp-admin-theme-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp-admin-theme-color--rgb",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp-admin-theme-color-darker-10",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp-admin-theme-color-darker-10--rgb",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp-admin-theme-color-darker-20",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp-admin-theme-color-darker-20--rgb",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp-admin-border-width-focus",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--wp-admin--admin-bar--position-offset",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--aspect-ratio--square",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--aspect-ratio--4-3",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--aspect-ratio--3-4",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--aspect-ratio--3-2",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--aspect-ratio--2-3",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--aspect-ratio--16-9",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--aspect-ratio--9-16",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--spacing--20",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--spacing--30",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--spacing--40",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--spacing--50",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--spacing--60",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--spacing--70",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--spacing--80",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--shadow--natural",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--shadow--deep",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--shadow--sharp",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--shadow--outlined",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wp--preset--shadow--crisp",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-field-border-radius",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-field-border-style",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-field-border-size",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-field-background-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-field-border-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-field-border-color-spare",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-field-text-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-field-menu-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-label-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-label-sublabel-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-label-error-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-button-border-radius",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-button-border-style",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-button-border-size",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-button-background-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-button-border-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-button-text-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-page-break-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-background-image",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-background-position",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-background-repeat",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-background-size",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-background-width",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-background-height",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-background-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-background-url",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-container-padding",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-container-border-style",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-container-border-width",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-container-border-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-container-border-radius",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-field-size-input-height",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-field-size-input-spacing",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-field-size-font-size",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-field-size-line-height",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-field-size-padding-h",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-field-size-checkbox-size",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-field-size-sublabel-spacing",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-field-size-icon-size",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-label-size-font-size",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-label-size-line-height",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-label-size-sublabel-font-size",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-label-size-sublabel-line-height",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-button-size-font-size",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-button-size-height",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-button-size-padding-h",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-button-size-margin-top",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--wpforms-container-shadow-size-box-shadow",
+    "declarations": 1,
+    "references": 0
+  }
+]
