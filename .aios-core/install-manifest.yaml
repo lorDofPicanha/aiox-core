@@ -8,9 +8,9 @@
 # - File types for categorization
 #
 version: 4.2.13
-generated_at: "2026-05-12T22:23:52.277Z"
+generated_at: "2026-05-16T02:58:36.573Z"
 generator: scripts/generate-install-manifest.js
-file_count: 1168
+file_count: 1169
 files:
   - path: cli/commands/config/index.js
     hash: sha256:ebcad2ce3807eda29dcddff76d7a95ddc9b7fa160df21fd608f94b802237e862
@@ -1173,9 +1173,9 @@ files:
     type: data
     size: 210
   - path: data/entity-registry.yaml
-    hash: sha256:f9b68c73c5b376fdb47e592dff59a8969f782f6fcb9708f1a39e85257441a727
+    hash: sha256:77e6b6d8952fa1c76e9bdc20a1aa19a6f2fb962dd56fdc1ed2977214a6c4f9bc
     type: data
-    size: 949445
+    size: 951203
   - path: data/gates/PR-1-foundation-tokens.yaml
     hash: sha256:ca9e8b6fa19390be476bc5429a7765b13eea9a07648ff34ae082b8b0228adc44
     type: data
@@ -1184,6 +1184,10 @@ files:
     hash: sha256:c4b804084db5f5f8d56c201a7385b7a85abfc0da188391f202167b6a41a830e3
     type: data
     size: 7610
+  - path: data/jarvis-mind-clone-index.json
+    hash: sha256:358ffa773b58dd80d783047d59a5c54649754c6440cf767dfb9796526ed37449
+    type: data
+    size: 185948
   - path: data/jarvis-mind-clone-map.yaml
     hash: sha256:d404e07f7de09951ca2770cb073e315b3d8f7dd93295c3f21fad04f17ab5e7b0
     type: data
