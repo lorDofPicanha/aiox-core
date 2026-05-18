@@ -7,6 +7,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import {
+  extractWisdomHeuristic,
+  isHeuristicMode,
+  labelAndRateHeuristic,
+  summarizeHeuristic,
+} from './heuristic-judge.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PATTERNS_DIR = path.resolve(__dirname, '../../patterns');
@@ -179,10 +185,14 @@ export function getProviderName() {
 }
 
 /**
- * Check if any LLM API key is available.
+ * Check if any LLM API key is available — OR heuristic mode is on, which
+ * functionally replaces an LLM with deterministic scoring/extraction.
+ * Pipeline code that gates on this stays correct in both real-LLM and
+ * heuristic-LLM-free runs.
  * @returns {boolean}
  */
 export function hasLLMKey() {
+  if (isHeuristicMode()) return true;
   return !!(process.env.ANTHROPIC_API_KEY || process.env.DEEPSEEK_API_KEY || process.env.OPENAI_API_KEY);
 }
 
@@ -194,6 +204,9 @@ export function hasLLMKey() {
  * @returns {Promise<ExtractionResult>}
  */
 export async function extractWisdom(numberedText, title) {
+  if (isHeuristicMode()) {
+    return extractWisdomHeuristic(numberedText, title);
+  }
   const systemPrompt = loadPattern('extract_wisdom');
   const userContent = `# ${title}\n\n${numberedText}`;
   const rawResponse = await callClaude(systemPrompt, userContent);
@@ -290,6 +303,9 @@ export async function processChunked(chunks, title, options = {}) {
  * @returns {Promise<string[]>} 3-5 bullet summary
  */
 export async function summarize(text, title) {
+  if (isHeuristicMode()) {
+    return summarizeHeuristic(text, title);
+  }
   const systemPrompt = loadPattern('summarize');
   const rawResponse = await callClaude(systemPrompt, `# ${title}\n\n${text}`);
 
@@ -310,6 +326,9 @@ export async function summarize(text, title) {
  * @returns {Promise<{ tier: string, scores: Object, label: string }>}
  */
 export async function labelAndRate(text, title, domains = []) {
+  if (isHeuristicMode()) {
+    return labelAndRateHeuristic(text, title, domains);
+  }
   const systemPrompt = loadPattern('label_and_rate');
   const context = domains.length > 0 ? `\n\nTarget domains: ${domains.join(', ')}` : '';
   const rawResponse = await callClaude(systemPrompt, `# ${title}${context}\n\n${text}`);
