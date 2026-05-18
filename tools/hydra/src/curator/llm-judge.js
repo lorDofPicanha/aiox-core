@@ -9,6 +9,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import yaml from 'js-yaml';
 import { callClaude } from '../processor/extractor.js';
+import { isHeuristicMode, scoreHeuristic } from '../processor/heuristic-judge.js';
 import { calculateWeightedScore, classifyTier, DEFAULT_WEIGHTS } from './scoring-rubric.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -76,6 +77,12 @@ Respond ONLY with valid JSON (no markdown, no explanation):
  * @returns {Promise<{ tier: string, action: string, label: string, weightedScore: number, scores: Object, reasoning: string }>}
  */
 export async function scoreContent(params) {
+  // Heuristic mode (HYDRA_HEURISTIC_MODE=1 or no LLM key) — deterministic
+  // scoring, zero network calls. Returns same shape as the LLM path.
+  if (isHeuristicMode()) {
+    return scoreHeuristic(params);
+  }
+
   const { title, normalizedText, domains, sourceAuthority } = params;
 
   // Truncate text to save tokens (first 3000 chars is enough for scoring)
