@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buscador de Licitações DF — Briefing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Roboto+Mono:wght@400;500;600&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bb-limon: #D1FF00;
+  --bb-dark: #0A0A0A;
+  --bb-surface: #1A1A1A;
+  --bb-surface-2: #242424;
+  --bb-warm-white: #F5F2EA;
+  --bb-mid: #4A4A4A;
+  --bb-mid-2: #7A7A7A;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bb-dark);
+  color: var(--bb-warm-white);
+  font-family: 'Geist', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  font-size: 16px;
+  letter-spacing: 0.005em;
+}
+
+.container {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 80px 40px;
+}
+
+/* COVER */
+.cover {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 2px solid var(--bb-warm-white);
+  padding: 60px 50px;
+  margin-bottom: 80px;
+  position: relative;
+}
+.cover::before {
+  content: "∆";
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 48px;
+  color: var(--bb-limon);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+}
+.cover-tag {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bb-limon);
+  margin-bottom: 30px;
+}
+.cover h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: clamp(48px, 7vw, 96px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+.cover h1 .accent {
+  color: var(--bb-limon);
+}
+.cover-subtitle {
+  font-family: 'Geist', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: var(--bb-mid-2);
+  max-width: 70%;
+  margin-bottom: 50px;
+}
+.cover-meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  border-top: 1px solid var(--bb-mid);
+  padding-top: 30px;
+}
+.cover-meta-item {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+}
+.cover-meta-label {
+  display: block;
+  color: var(--bb-mid-2);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  font-size: 10px;
+}
+.cover-meta-value {
+  color: var(--bb-warm-white);
+  font-weight: 500;
+}
+
+/* SECTIONS */
+section {
+  margin-bottom: 80px;
+  scroll-margin-top: 40px;
+}
+
+.section-marker {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--bb-limon);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-marker::before {
+  content: "";
+  display: inline-block;
+  width: 30px;
+  height: 1px;
+  background: var(--bb-limon);
+}
+
+h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  color: var(--bb-warm-white);
+}
+
+h2 .accent { color: var(--bb-limon); }
+
+h3 {
+  font-family: 'Geist', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.2;
+  margin-top: 40px;
+  margin-bottom: 16px;
+  color: var(--bb-warm-white);
+}
+
+h4 {
+  font-family: 'Geist', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  margin-top: 28px;
+  margin-bottom: 12px;
+  color: var(--bb-warm-white);
+}
+
+p {
+  margin-bottom: 18px;
+  color: var(--bb-warm-white);
+  line-height: 1.7;
+}
+
+p.lead {
+  font-size: 19px;
+  color: var(--bb-warm-white);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+strong, b {
+  font-weight: 700;
+  color: var(--bb-warm-white);
+}
+
+.limon { color: var(--bb-limon); font-weight: 600; }
+
+em, i { font-style: italic; color: var(--bb-mid-2); }
+
+/* TLDR BOX */
+.tldr {
+  background: var(--bb-limon);
+  color: var(--bb-dark);
+  padding: 40px 50px;
+  margin: 0 -10px 50px -10px;
+  border: 2px solid var(--bb-limon);
+}
+.tldr h2, .tldr h3 {
+  color: var(--bb-dark);
+}
+.tldr p {
+  color: var(--bb-dark);
+  font-weight: 500;
+  font-size: 18px;
+}
+.tldr strong { color: var(--bb-dark); }
+
+/* CALLOUT */
+.callout {
+  background: var(--bb-surface);
+  border-left: 4px solid var(--bb-limon);
+  padding: 24px 28px;
+  margin: 30px 0;
+}
+.callout-title {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bb-limon);
+  margin-bottom: 12px;
+}
+
+/* LISTS */
+ul, ol {
+  margin: 18px 0 24px 0;
+  padding-left: 24px;
+}
+ul li, ol li {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+ul li::marker { color: var(--bb-limon); }
+ol li::marker { color: var(--bb-limon); font-weight: 700; }
+
+/* TABLES */
+.table-wrap {
+  overflow-x: auto;
+  margin: 30px 0;
+  border: 1px solid var(--bb-mid);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+th {
+  background: var(--bb-surface-2);
+  color: var(--bb-limon);
+  text-align: left;
+  padding: 14px 16px;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--bb-mid);
+}
+td {
+  padding: 16px;
+  border-bottom: 1px solid var(--bb-mid);
+  vertical-align: top;
+  color: var(--bb-warm-white);
+}
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) td { background: var(--bb-surface); }
+
+td strong { color: var(--bb-limon); }
+
+/* CODE BLOCKS */
+pre, code {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 13px;
+}
+pre {
+  background: var(--bb-surface);
+  border-left: 3px solid var(--bb-limon);
+  padding: 20px 24px;
+  margin: 24px 0;
+  overflow-x: auto;
+  line-height: 1.5;
+}
+code {
+  background: var(--bb-surface-2);
+  padding: 2px 6px;
+  border-radius: 2px;
+  color: var(--bb-limon);
+  font-size: 13px;
+}
+pre code { background: transparent; padding: 0; color: var(--bb-warm-white); }
+
+/* DAY NARRATIVE */
+.day-narrative {
+  display: grid;
+  gap: 0;
+  margin: 30px 0;
+  border: 1px solid var(--bb-mid);
+}
+.day-block {
+  padding: 24px 28px;
+  border-bottom: 1px solid var(--bb-mid);
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+.day-block:last-child { border-bottom: none; }
+.day-time {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--bb-limon);
+  letter-spacing: -0.02em;
+}
+.day-block:nth-child(even) { background: var(--bb-surface); }
+
+/* COMPARISON CARDS */
+.card-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin: 20px 0;
+}
+.card {
+  background: var(--bb-surface);
+  border: 1px solid var(--bb-mid);
+  padding: 24px 26px;
+}
+.card.highlight {
+  border-color: var(--bb-limon);
+  background: var(--bb-surface-2);
+}
+.card-label {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bb-mid-2);
+  margin-bottom: 8px;
+}
+.card.highlight .card-label { color: var(--bb-limon); }
+.card-value {
+  font-family: 'Geist', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--bb-warm-white);
+}
+
+/* QUESTIONS LIST */
+.q-list {
+  list-style: none;
+  padding-left: 0;
+  counter-reset: q-counter;
+}
+.q-list li {
+  counter-increment: q-counter;
+  padding: 18px 0 18px 50px;
+  border-bottom: 1px solid var(--bb-mid);
+  position: relative;
+}
+.q-list li::before {
+  content: counter(q-counter, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 18px;
+  font-family: 'Roboto Mono', monospace;
+  color: var(--bb-limon);
+  font-weight: 600;
+  font-size: 13px;
+}
+.q-list li::marker { content: none; }
+
+.q-section-title {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bb-limon);
+  margin: 36px 0 12px 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--bb-mid);
+}
+
+/* RISK BLOCKS */
+.risk-block {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 20px;
+  padding: 24px 28px;
+  background: var(--bb-surface);
+  border: 1px solid var(--bb-mid);
+  margin: 16px 0;
+}
+.risk-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  color: var(--bb-limon);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.risk-body h4 { margin: 0 0 8px 0; }
+
+/* SPRINT TABLE */
+.sprint-table th { font-size: 10px; }
+
+/* FOOTER */
+footer {
+  border-top: 2px solid var(--bb-warm-white);
+  padding-top: 40px;
+  margin-top: 100px;
+  text-align: center;
+  color: var(--bb-mid-2);
+  font-size: 13px;
+  font-family: 'Roboto Mono', monospace;
+}
+footer .footer-mark {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 24px;
+  color: var(--bb-limon);
+  display: block;
+  margin-bottom: 12px;
+}
+
+/* PRINT */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  .container { padding: 20px; max-width: 100%; }
+  .cover, .tldr, .callout, .card, table, .day-narrative, .risk-block, .day-block {
+    background: white !important;
+    color: black !important;
+    border-color: #000 !important;
+  }
+  .cover h1, h2, h3, h4, p, td, th, strong { color: black !important; }
+  th { background: #f0f0f0 !important; color: #000 !important; }
+  .limon, .accent, .cover-tag, .section-marker, .day-time, .risk-num, .card-label, .q-list li::before, .q-section-title, .cover-meta-label, .cover-meta-value { color: #000 !important; }
+  .tldr { background: #D1FF00 !important; color: black !important; }
+  .tldr * { color: black !important; }
+  pre, code { background: #f5f5f5 !important; color: black !important; border-color: black !important; }
+  section { page-break-inside: avoid; }
+  h2 { page-break-after: avoid; }
+  table { page-break-inside: auto; }
+}
+
+@media (max-width: 700px) {
+  .container { padding: 40px 20px; }
+  .cover { padding: 40px 30px; }
+  .cover-meta { grid-template-columns: 1fr; }
+  .card-row { grid-template-columns: 1fr; }
+  .day-block { grid-template-columns: 1fr; gap: 8px; }
+  .risk-block { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- COVER -->
+<div class="cover">
+  <div>
+    <div class="cover-tag">∆ Briefing Projeto v1 — Pronto para debate</div>
+    <h1>Buscador de<br><span class="accent">Licitações</span><br>DF + Águas Lindas</h1>
+    <p class="cover-subtitle">A ferramenta hiper-regional que avisa fornecedores microempresários sobre as licitações públicas certas, antes da concorrência ver.</p>
+  </div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Status</span>
+      <span class="cover-meta-value">Pronto para construir</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Para quem</span>
+      <span class="cover-meta-value">Amigo + Breno + debate</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Data</span>
+      <span class="cover-meta-value">15 Mai 2026</span>
+    </div>
+  </div>
+</div>
+
+<!-- 30 SECONDS -->
+<div class="tldr">
+  <div class="section-marker" style="color: var(--bb-dark);">▸ Em 30 segundos</div>
+  <h2 style="color: var(--bb-dark); margin-bottom: 24px;">A ferramenta certa não existe ainda.</h2>
+  <p>Existe um portal nacional do governo que publica TODAS as licitações públicas do Brasil — chama-se <strong>PNCP</strong>. Hoje, quem trabalha com licitação fica refrescando esse site, ou paga <strong>R$400-1.500/mês</strong> para softwares como Effecti.</p>
+  <p>O problema: essas ferramentas são pensadas pra empresas <strong>grandes nacionais</strong>. Microempresa que vende pro governo de Brasília + região não tem ferramenta feita pra ela.</p>
+  <p>Estamos construindo essa ferramenta. <strong>Foco em DF + Águas Lindas-GO.</strong> Avisa por WhatsApp e email. Resume cada edital em 5 linhas para o fornecedor decidir rápido se vale ou não participar. Não compete com ferramentas grandes — pretende ser <strong>a melhor ferramenta para o nicho regional</strong>.</p>
+</div>
+
+<!-- O PROBLEMA -->
+<section>
+  <div class="section-marker">01 ▸ O Problema</div>
+  <h2>A história <span class="accent">por trás</span> da ferramenta</h2>
+
+  <h3>O cenário do amigo hoje</h3>
+  <p>Imagine que você tem uma empresa pequena ou média que vende pro governo. Pode ser obra, pode ser produto, pode ser serviço — não importa.</p>
+  <p>Todo dia o governo abre licitações novas. Algumas servem pra você, a maioria não. Pra saber quais servem, hoje você tem 3 opções:</p>
+
+  <div class="card-row" style="grid-template-columns: 1fr;">
+    <div class="card">
+      <div class="card-label">Opção 1 — Manual</div>
+      <div class="card-value">Entrar no PNCP, Compras.gov, portal Compras DF, portal Prefeitura, e caçar à mão.</div>
+      <p style="margin-top: 12px; color: var(--bb-mid-2);">Demora horas. Sempre se perde alguma. 50-70% dos fornecedores fazem assim.</p>
+    </div>
+    <div class="card">
+      <div class="card-label">Opção 2 — Ferramenta nacional paga</div>
+      <div class="card-value">Effecti, ConLicitação, LicitaNet, Sollicita. R$45 a R$1.500/mês.</div>
+      <p style="margin-top: 12px; color: var(--bb-mid-2);">Funcionam — mas foram feitas pra empresa grande, com filtros genéricos, pricing alto, suporte que demora.</p>
+    </div>
+    <div class="card">
+      <div class="card-label">Opção 3 — Grupos de WhatsApp</div>
+      <div class="card-value">Indicação informal. "Olha, saiu edital de X em Y."</div>
+      <p style="margin-top: 12px; color: var(--bb-mid-2);">Útil, mas espalhado, sem busca, sem filtro, depende dos contatos.</p>
+    </div>
+  </div>
+
+  <h3>A dor real</h3>
+  <p>Quando você perde uma licitação que daria certo, <strong>você não sabe</strong>. Ela passou. O prazo de inscrição já fechou. Custo de oportunidade perdida pode ser <strong class="limon">R$5.000, R$50.000, R$500.000</strong> — depende do tamanho.</p>
+  <p>E o pior: <strong>as ferramentas grandes não cobrem direito municípios pequenos</strong>. Águas Lindas-GO publica licitação? Provavelmente sim, mas espalhada entre o portal próprio da prefeitura e o PNCP. Nenhuma ferramenta nacional foca em destrinchar isso.</p>
+</section>
+
+<!-- A SOLUÇÃO -->
+<section>
+  <div class="section-marker">02 ▸ A Solução</div>
+  <h2>O que <span class="accent">estamos construindo</span></h2>
+
+  <h3>Em uma frase</h3>
+  <p class="lead">Um <strong>buscador de licitações públicas hiper-regional</strong>, focado em DF + Águas Lindas-GO + entorno, que avisa o fornecedor pelos canais que ele já usa (WhatsApp, email), com resumo em 5 linhas de cada edital relevante.</p>
+
+  <h3>Em uma analogia</h3>
+  <div class="callout">
+    <div class="callout-title">Analogia simples</div>
+    <p>É como se você tivesse um <strong>assistente que acorda 6 da manhã todo dia</strong>, lê o jornal oficial da União, da Câmara, dos órgãos do DF, da Prefeitura de Águas Lindas, escolhe só as oportunidades que importam pra você, escreve um resuminho de cada uma, e te manda no WhatsApp no horário combinado.</p>
+    <p style="margin-bottom: 0;">A diferença pra um assistente humano: <strong class="limon">não dorme, custa R$0-99/mês</strong> em vez de R$3.000/mês de salário, e <strong>nunca esquece de checar a Câmara Legislativa enquanto checa o PNCP</strong>.</p>
+  </div>
+
+  <h3>Como funciona pro usuário — uma manhã típica</h3>
+  <div class="day-narrative">
+    <div class="day-block">
+      <div class="day-time">6h30</div>
+      <div>Você acorda. Toma café.</div>
+    </div>
+    <div class="day-block">
+      <div class="day-time">7h00</div>
+      <div>
+        Recebe email com <strong>3 oportunidades novas</strong> de ontem-pra-hoje. Cada uma tem:
+        <ul>
+          <li><strong>O que é</strong>: "Compra de 200 cadeiras escritório para Secretaria de Saúde DF"</li>
+          <li><strong>Quanto vale</strong>: "Valor estimado: R$ 145.000"</li>
+          <li><strong>Quando</strong>: "Prazo para enviar proposta: 22/05/2026 às 14h"</li>
+          <li><strong>Requisitos críticos</strong>: "Precisa de SICAF, capital social mínimo R$ 50.000, atestado de 3 anos de experiência"</li>
+          <li><strong>Match</strong>: "85% match com seu perfil"</li>
+          <li><strong>Link</strong>: "Abrir edital completo no PNCP →"</li>
+        </ul>
+      </div>
+    </div>
+    <div class="day-block">
+      <div class="day-time">8h00</div>
+      <div>Abre a primeira oportunidade. PDF tem 80 páginas de juridiquês. Você clica em <strong>"fazer pergunta"</strong> e digita: <em>"qual o prazo de entrega e onde é a entrega?"</em>. O assistente responde em 2 segundos: <em>"Prazo: 30 dias após assinatura. Entrega: Setor Comercial Sul, almoxarifado central."</em></div>
+    </div>
+    <div class="day-block">
+      <div class="day-time">8h15</div>
+      <div>Decide: <strong class="limon">vou participar dessa, vou ignorar a outra</strong>. Em 15 minutos você fez o que antes tomava 2 horas.</div>
+    </div>
+  </div>
+
+  <h3>Sobre o WhatsApp</h3>
+  <p>Algumas oportunidades são <strong>Tier S</strong> — combinação perfeita do seu perfil + alto valor + prazo curto. Essas o assistente manda também no WhatsApp na hora que aparecem. <strong>Limite: 1 mensagem por dia no máximo. Sem spam.</strong></p>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section>
+  <div class="section-marker">03 ▸ Por trás dos panos</div>
+  <h2>Como <span class="accent">funciona</span> de verdade (sem código)</h2>
+
+  <h3>Os ingredientes</h3>
+  <h4>1. As fontes de dados — de onde tiramos os editais</h4>
+  <ul>
+    <li><strong>PNCP</strong> (Portal Nacional, obrigatório por lei desde 2021) — fonte principal, cobre ~80% do volume</li>
+    <li><strong>Compras.gov</strong> (federal) — complemento</li>
+    <li><strong>Portal de Compras DF</strong> (governo do DF) — específico do DF</li>
+    <li><strong>Portal da Prefeitura de Águas Lindas</strong> — específico municipal</li>
+    <li>Outros portais menores conforme aparecerem</li>
+  </ul>
+
+  <h4>2. O filtro inteligente — o que decide o que mostrar pra você</h4>
+  <ul>
+    <li>Seu <strong>perfil</strong>: CNAE da empresa, valor de licitação que faz sentido, geografia, palavras-chave positivas e negativas</li>
+    <li>O <strong>conteúdo do edital</strong>: o que está sendo comprado, valor, prazo, requisitos</li>
+    <li>O <strong>match</strong>: combinação dos dois — usa IA + busca tradicional</li>
+  </ul>
+
+  <h4>3. A IA que lê os PDFs</h4>
+  <p>Usamos o <strong class="limon">Claude Haiku 4.5</strong> (modelo da Anthropic) para ler o edital completo e te dar:</p>
+  <ul>
+    <li>Resumo executivo em 5 bullets</li>
+    <li>Resposta a perguntas que você faz sobre o edital ("qual a garantia exigida?", "tem que ter sede no DF?")</li>
+  </ul>
+
+  <h4>4. Os canais de aviso</h4>
+  <ul>
+    <li><strong>Email diário</strong> (todo dia 7h)</li>
+    <li><strong>WhatsApp</strong> (só Tier S, máximo 1/dia)</li>
+    <li>Notificação no navegador (opcional)</li>
+    <li>Dashboard web pra histórico, filtros, edital completo</li>
+  </ul>
+
+  <h3>O fluxo simplificado</h3>
+<pre>Governo publica edital
+   ↓
+Nosso assistente ingere via API/scraping (5-15 min depois)
+   ↓
+Filtra por perfil de cada usuário
+   ↓
+Pra Tier S: roda IA pra fazer resumo + tags
+   ↓
+Manda email/WhatsApp pro usuário relevante
+   ↓
+Usuário decide se participa</pre>
+  <p>Tudo isso roda <strong>automático, 24/7</strong>. Não precisa de ninguém apertando botão.</p>
+</section>
+
+<!-- COMPARAÇÃO -->
+<section>
+  <div class="section-marker">04 ▸ Comparação direta</div>
+  <h2>Por que vai ser <span class="accent">melhor</span> que o existente</h2>
+
+  <div class="table-wrap">
+  <table>
+    <thead>
+    <tr>
+      <th>Necessidade</th>
+      <th>Manual</th>
+      <th>Effecti (R$400-1500)</th>
+      <th>Sollicita (R$45)</th>
+      <th>Nosso Buscador</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><td>Cobertura DF + Águas Lindas</td><td>Você olha 5 portais</td><td>Federal/estadual, municipal raro</td><td>Volume nacional</td><td><strong>Foco regional explícito</strong></td></tr>
+    <tr><td>WhatsApp como canal</td><td>Não tem</td><td>Não nativo</td><td>Não</td><td><strong>Sim, dia 1</strong></td></tr>
+    <tr><td>Resumo IA do edital</td><td>Você lê o PDF</td><td>Em testes</td><td>Não</td><td><strong>Sim, Claude Haiku 4.5</strong></td></tr>
+    <tr><td>Chat com o edital</td><td>Não existe</td><td>Não tem</td><td>Não</td><td><strong>Sim</strong></td></tr>
+    <tr><td>Preço</td><td>"Grátis" mas custa tempo</td><td>R$400-1.500/mês</td><td>R$45/mês</td><td><strong>R$0 (foco qualidade)</strong></td></tr>
+    <tr><td>Privacidade (CPF de sócios)</td><td>Não trata</td><td>Não trata</td><td>Não trata</td><td><strong>Mascarado automaticamente</strong></td></tr>
+    <tr><td>Padrão global (OCDS)</td><td>N/A</td><td>Não</td><td>Não</td><td><strong>Sim</strong></td></tr>
+    <tr><td>Tempo perdido/dia</td><td>1-2 horas</td><td>30 min</td><td>30 min</td><td><strong>5-10 minutos</strong></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">A aposta</div>
+    <p style="margin-bottom: 0;">Ferramentas grandes são <strong>horizontais</strong> — atendem fornecedor de móveis em SP, uniforme em Recife, obra em Manaus. São genéricas. Funcionam, mas não conhecem a peculiaridade do DF (capital com economia orientada ao governo) nem cobrem municípios pequenos como Águas Lindas-GO. <strong>Vertical bem feito &gt; horizontal genérico quando o vertical tem características próprias.</strong></p>
+  </div>
+</section>
+
+<!-- DIFERENCIAÇÃO -->
+<section>
+  <div class="section-marker">05 ▸ Diferenciação</div>
+  <h2>O que torna <span class="accent">isto diferente</span></h2>
+
+  <div class="card-row">
+    <div class="card highlight">
+      <div class="card-label">∆ 01</div>
+      <div class="card-value">Foco regional explícito</div>
+      <p style="margin-top: 12px; color: var(--bb-mid-2); font-size: 14px;">Hoje, <strong>nenhum competidor</strong> declara foco regional DF/Centro-Oeste. 5+ players nacionais e 6+ startups novas de IA. Nenhum tem "Brasília" no posicionamento.</p>
+    </div>
+    <div class="card highlight">
+      <div class="card-label">∆ 02</div>
+      <div class="card-value">WhatsApp como canal principal</div>
+      <p style="margin-top: 12px; color: var(--bb-mid-2); font-size: 14px;">Globalmente, <strong>nenhum player europeu/americano</strong> usa WhatsApp como notificação primária. No Brasil/LATAM é cultural. <strong>Não é exótico — é a diferenciação certa.</strong></p>
+    </div>
+    <div class="card highlight">
+      <div class="card-label">∆ 03</div>
+      <div class="card-value">Padrão global OCDS</div>
+      <p style="margin-top: 12px; color: var(--bb-mid-2); font-size: 14px;">UK, Colômbia, Ucrânia, África do Sul usam. Brasil parcialmente. <strong>Vamos expor dados nesse padrão desde dia 1</strong> = credibilidade internacional de graça.</p>
+    </div>
+    <div class="card highlight">
+      <div class="card-label">∆ 04</div>
+      <div class="card-value">Privacidade real, não teatro</div>
+      <p style="margin-top: 12px; color: var(--bb-mid-2); font-size: 14px;">CPF de sócios em editais antigos é mascarado <strong>automaticamente</strong> antes de salvar. IA instruída a nunca preservar CPF. Princípio do mínimo necessário.</p>
+    </div>
+    <div class="card highlight">
+      <div class="card-label">∆ 05</div>
+      <div class="card-value">Open data devolvido</div>
+      <p style="margin-top: 12px; color: var(--bb-mid-2); font-size: 14px;">Os dados vieram do governo (são públicos por lei). <strong>Devolvemos pra comunidade</strong> via API gratuita. Devs podem construir em cima. Diferente do Effecti que cobra pelo dado público.</p>
+    </div>
+    <div class="card highlight">
+      <div class="card-label">∆ 06</div>
+      <div class="card-value">Free real, não bait</div>
+      <p style="margin-top: 12px; color: var(--bb-mid-2); font-size: 14px;">Free tier honesto: 1 perfil + 5 alertas/dia + email diário. <strong>Sem "te liga em 7 dias"</strong>. Sem "pague pra ver mais resultados". Free é produto real.</p>
+    </div>
+  </div>
+</section>
+
+<!-- O QUE SABEMOS -->
+<section>
+  <div class="section-marker">06 ▸ Validação</div>
+  <h2>O que já <span class="accent">sabemos</span> que vai funcionar</h2>
+  <p>Fizemos <strong>4 pesquisas completas</strong> antes de começar a construir. Total: <strong class="limon">130+ fontes consultadas</strong>.</p>
+
+  <h3>Pesquisa 1 — Técnica</h3>
+  <ul>
+    <li>✅ PNCP API é pública, sem autenticação, paginação até 500/página → <strong>viável construir solo</strong></li>
+    <li>✅ Postgres + busca semântica escala até ~100.000 editais nos planos baratos</li>
+    <li>✅ A IA Haiku custa $0.005-$0.02 por edital — orçamento operacional realista: <strong class="limon">$30-50/mês</strong></li>
+    <li>⚠️ Descoberta: 80% dos dados vêm via API oficial — scraping foi <strong>superestimado</strong></li>
+  </ul>
+
+  <h3>Pesquisa 2 — Regulatória</h3>
+  <ul>
+    <li>✅ Lei 14.133 + LAI + Decreto 8.777 <strong>amparam explicitamente</strong> o consumo automatizado de dados — confiança 92%</li>
+    <li>✅ Nenhum risco TCU/TCDF para "agregador de licitações" (risco existe pra "robô de lance", que é coisa diferente)</li>
+    <li>✅ Como microempresa solo: dispensado de DPO formal, ROPA simplificado</li>
+    <li>⚠️ Única pendência: ler footer "Termos de Uso" do portal Compras DF (1h) — provavelmente OK</li>
+  </ul>
+
+  <h3>Pesquisa 3 — Mercado</h3>
+  <ul>
+    <li>✅ <strong class="limon">Zero competidor com foco regional declarado DF/Centro-Oeste</strong> — 5 buscas confirmaram (confiança 90%)</li>
+    <li>✅ ~50.000-90.000 microempresas DF potencialmente alvo (SEBRAE-DF + IBGE)</li>
+    <li>⚠️ Mercado de IA já mexido — 6 startups novas em 12 meses. <strong>Janela é curta. Diferenciação = regional + WhatsApp.</strong></li>
+  </ul>
+
+  <h3>Pesquisa 4 — Comparativa Global</h3>
+  <ul>
+    <li>✅ Nossa arquitetura está <strong>75% alinhada com state-of-the-art mundial</strong></li>
+    <li>✅ ProZorro (Ucrânia) prova que Postgres escala em escala nacional</li>
+    <li>✅ TED (UE) processa <strong>740 mil editais/ano</strong> com stack similar</li>
+    <li>💡 Lição positiva: expor padrão OCDS é <strong>gap explorável</strong></li>
+    <li>⚠️ Lição negativa: <strong>OpenTender.eu</strong> falhou em virar produto porque focou em transparência/jornalistas. <strong>Nós focamos no fornecedor pragmático.</strong></li>
+  </ul>
+</section>
+
+<!-- INCERTEZAS -->
+<section>
+  <div class="section-marker">07 ▸ Incertezas</div>
+  <h2>O que <span class="accent">ainda não sabemos</span></h2>
+  <p class="lead">São 4 incertezas honestas. Cada uma pode mudar o projeto.</p>
+
+  <div class="risk-block">
+    <div class="risk-num">01</div>
+    <div class="risk-body">
+      <h4>Águas Lindas-GO publica de verdade no PNCP?</h4>
+      <p>A lei OBRIGA, mas a realidade pode estar atrasada. Se a prefeitura publica raramente, nosso município-âncora fica fraco.</p>
+      <p><strong class="limon">Como descobrir:</strong> rodar curl na API PNCP filtrando IBGE 5200175, ver quantos editais em 365 dias.</p>
+    </div>
+  </div>
+
+  <div class="risk-block">
+    <div class="risk-num">02</div>
+    <div class="risk-body">
+      <h4>A IA faz resumo bom de PDF jurídico denso?</h4>
+      <p>Em teoria sim. Na prática, editais brasileiros têm linguagem específica que pode ser difícil.</p>
+      <p><strong class="limon">Como descobrir:</strong> baixar 3 editais reais (100p, 30p, 10p) e rodar a IA. Avaliar com você se o resumo bate o que importa.</p>
+    </div>
+  </div>
+
+  <div class="risk-block">
+    <div class="risk-num">03</div>
+    <div class="risk-body">
+      <h4>Você vai usar diariamente?</h4>
+      <p>Construir ferramenta que você não usa é o pior cenário (o "OpenTender.eu syndrome").</p>
+      <p><strong class="limon">Como descobrir:</strong> conversa de 1 hora com você: enumera 3 licitações que perdeu nos últimos 6 meses. Reverse engineering: que filtro teria pego? Vira o teste real do produto.</p>
+    </div>
+  </div>
+
+  <div class="risk-block">
+    <div class="risk-num">04</div>
+    <div class="risk-body">
+      <h4>Quanto custa de verdade rodar isso por mês?</h4>
+      <p>Estimativa atual: $30-50. Mas a IA pode ficar mais cara, ou o volume maior do que estimamos.</p>
+      <p><strong class="limon">Como descobrir:</strong> começar pequeno, medir, ajustar. Sem queimar dinheiro.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SPRINT 0 -->
+<section>
+  <div class="section-marker">08 ▸ Sprint 0</div>
+  <h2>Como vamos <span class="accent">descobrir</span> — 1 semana</h2>
+  <p>Antes de construir qualquer linha de código de produção, vamos gastar <strong>1 semana validando essas 4 incertezas</strong>. Custa ~18 horas no total.</p>
+
+  <h3>Bloco 1 — Você (3 horas)</h3>
+  <ol>
+    <li><strong>1h</strong>: conversa sobre 3 licitações perdidas (Incerteza 3)</li>
+    <li><strong>30min</strong>: detalhar seu perfil (CNAE, valor, geo, keywords)</li>
+    <li><strong>30min</strong>: validar Termos de Uso do portal Compras DF</li>
+  </ol>
+
+  <h3>Bloco 2 — Dev (6 horas)</h3>
+  <ol>
+    <li><strong>2h</strong>: baixar 1.000 editais reais do PNCP via API, ver volume e cobertura</li>
+    <li><strong>2h</strong>: rodar IA Haiku em 3 PDFs reais e avaliar qualidade + custo</li>
+    <li><strong>2h</strong>: testar fontes secundárias (dados.df.gov.br, padrão Megasoft pra municípios)</li>
+  </ol>
+
+  <h3>Bloco 3 — Decisão (1 hora)</h3>
+  <p><strong>Você + Breno</strong> sentam e decidem: começa Sprint 1? Ajusta plano? Adia? Mata?</p>
+</section>
+
+<!-- ROADMAP -->
+<section>
+  <div class="section-marker">09 ▸ Roadmap</div>
+  <h2>Se passar o Sprint 0, <span class="accent">como construímos</span></h2>
+  <p>Total honesto: <strong class="limon">12-14 semanas, ~180-220 horas</strong> distribuídas em pequenos blocos.</p>
+
+  <div class="table-wrap">
+  <table class="sprint-table">
+    <thead><tr><th>Sprint</th><th>O que adiciona</th><th>Duração</th></tr></thead>
+    <tbody>
+    <tr><td><strong>0</strong></td><td>Validação das 4 incertezas</td><td>1 semana</td></tr>
+    <tr><td><strong>1</strong></td><td>Esqueleto do banco + começa a ingerir editais do PNCP</td><td>1 semana</td></tr>
+    <tr><td><strong>2</strong></td><td>A IA começa a resumir editais + match engine simples</td><td>1 semana</td></tr>
+    <tr><td><strong>3</strong></td><td>Email diário com top 5 oportunidades + interface básica</td><td>1 semana</td></tr>
+    <tr><td><strong>4</strong></td><td>Robustez infra (fallbacks, observabilidade, retry)</td><td>1 semana</td></tr>
+    <tr><td><strong>5</strong></td><td>WhatsApp integrado</td><td>1 semana</td></tr>
+    <tr><td><strong>6</strong></td><td>Compliance LGPD completo (privacidade, cookies, ROPA)</td><td>1 semana</td></tr>
+    <tr><td><strong>7</strong></td><td>API pública gratuita no padrão OCDS internacional</td><td>1 semana</td></tr>
+    <tr><td><strong>8</strong></td><td>Chat com o edital (você pergunta, IA responde)</td><td>1 semana</td></tr>
+    <tr><td><strong>9</strong></td><td>Busca semântica avançada + buscas salvas + recomendações</td><td>1 semana</td></tr>
+    <tr><td><strong>10</strong></td><td>Polimento + onboarding + validação qualidade IA + docs</td><td>1-2 semanas</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>A cada sprint o produto fica mais completo, mas <strong class="limon">funciona desde o final do Sprint 3</strong>. Você pode começar a usar com 4 semanas de construção.</p>
+</section>
+
+<!-- RISCOS -->
+<section>
+  <div class="section-marker">10 ▸ Riscos honestos</div>
+  <h2>O que <span class="accent">pode dar errado</span></h2>
+  <p>Não vou esconder.</p>
+
+  <div class="risk-block">
+    <div class="risk-num">01</div>
+    <div class="risk-body">
+      <h4>Breno tem 4 outros projetos simultâneos</h4>
+      <p>Tocks, Bretda, KR Interiores, Vorza. Se algum entrar em emergência, este projeto <strong>pausa imediatamente</strong>.</p>
+      <p>Probabilidade calibrada: <strong class="limon">~68%</strong> de ter pelo menos 1 semana de pausa nas próximas 12 semanas. Não é mau presságio, é honestidade.</p>
+    </div>
+  </div>
+
+  <div class="risk-block">
+    <div class="risk-num">02</div>
+    <div class="risk-body">
+      <h4>Janela de competição IA está fechando</h4>
+      <p>6 startups novas no Brasil (Licitei R$3,5M Microsoft, LicitaIA, LicitaFree). Alguma pode lançar "modo regional DF" em 6-12 meses.</p>
+      <p><strong>Defesa:</strong> ser primeiro a chegar, regional + WhatsApp + parceria local.</p>
+    </div>
+  </div>
+
+  <div class="risk-block">
+    <div class="risk-num">03</div>
+    <div class="risk-body">
+      <h4>A IA pode ficar mais cara</h4>
+      <p>Preço Haiku 4.5 já mudou 2 vezes em 2 anos.</p>
+      <p><strong>Mitigação:</strong> sistema que troca de provedor (Anthropic / OpenAI / DeepSeek) automaticamente.</p>
+    </div>
+  </div>
+
+  <div class="risk-block">
+    <div class="risk-num">04</div>
+    <div class="risk-body">
+      <h4>Águas Lindas pode publicar pouco</h4>
+      <p>Se a prefeitura só publica 5 editais/ano no PNCP, o município-âncora não sustenta a narrativa.</p>
+      <p><strong>Mitigação:</strong> ampliar para "DF + outros municípios RIDE-DF".</p>
+    </div>
+  </div>
+
+  <div class="risk-block">
+    <div class="risk-num">05</div>
+    <div class="risk-body">
+      <h4>Você (amigo) pode não usar</h4>
+      <p>Pior cenário. Por isso Sprint 0 começa com conversa de 1h. Se as 3 licitações perdidas não geram match óbvio, repensamos antes de construir.</p>
+    </div>
+  </div>
+
+  <h3>Os números honestos (Superforecasting calibrado)</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Forecast</th><th>Probabilidade</th></tr></thead>
+    <tbody>
+    <tr><td>Validação PNCP de Águas Lindas dar resultado bom (≥10 editais)</td><td><strong class="limon">52%</strong></td></tr>
+    <tr><td>Você usar ≥3 vezes/semana por 30 dias</td><td><strong class="limon">48%</strong></td></tr>
+    <tr><td>Código ficar pronto até 22 de agosto sem emergências</td><td><strong class="limon">45%</strong></td></tr>
+    <tr><td>Pelo menos 1 semana de pausa por emergência em outros projetos</td><td><strong class="limon">68%</strong></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="color: var(--bb-mid-2); font-size: 14px;">Esses números vêm do trabalho de calibração de probabilidade (Tetlock — Superforecasting). Vão melhorando com dados reais.</p>
+</section>
+
+<!-- PERGUNTAS DEBATE -->
+<section>
+  <div class="section-marker">11 ▸ Debate</div>
+  <h2>25 perguntas <span class="accent">pra debatermos</span></h2>
+  <p>Estas são perguntas que abrem decisão. Cada uma pode mudar o produto. Quero sua opinião.</p>
+
+  <div class="q-section-title">▸ Sobre o uso</div>
+  <ol class="q-list">
+    <li>Que horas do dia faz mais sentido você receber o email diário? 6h? 7h? 8h?</li>
+    <li>Você prefere 1 mensagem WhatsApp/dia só com a melhor, ou 3 com as top 3?</li>
+    <li>Quando abre o resumo de um edital, o que é MAIS importante saber primeiro? Valor? Prazo? Requisitos?</li>
+    <li>Faz sentido ter botão "isso não me interessa" pra IA aprender o que você não quer ver?</li>
+  </ol>
+
+  <div class="q-section-title">▸ Sobre o perfil</div>
+  <ol class="q-list" start="5">
+    <li>Seu CNAE principal é qual? Tem outros secundários que importam?</li>
+    <li>Qual a faixa de valor de licitação que você participa? Mínimo? Máximo?</li>
+    <li>Quais 5 palavras-chave SEMPRE devem aparecer no edital?</li>
+    <li>Quais 5 palavras-chave NUNCA devem aparecer? (pra cortar irrelevante)</li>
+    <li>Você só DF, ou também Goiás estadual, ou Federal sediado em DF?</li>
+  </ol>
+
+  <div class="q-section-title">▸ Sobre as fontes</div>
+  <ol class="q-list" start="10">
+    <li>Além de PNCP, ComprasGov e portal DF, tem algum portal específico que você já usa hoje e funciona?</li>
+    <li>Vale cobrir TCDF e Câmara Legislativa DF? Ou esses raramente têm licitação relevante?</li>
+    <li>Você ouviu falar do portal da Prefeitura de Águas Lindas? Funciona? Publica regularmente?</li>
+  </ol>
+
+  <div class="q-section-title">▸ Sobre a IA</div>
+  <ol class="q-list" start="13">
+    <li>Se a IA resume 80% bem mas erra 20% no detalhe (ex: prazo), você prefere: (a) confiar e perder algumas vezes, (b) só confiar e abrir o PDF pra confirmar, (c) ter botão "validar com humano"?</li>
+    <li>Faz sentido a IA também responder perguntas tipo "esse edital tem cláusula restritiva pra microempresa?" — análise profunda?</li>
+  </ol>
+
+  <div class="q-section-title">▸ Sobre o alerta</div>
+  <ol class="q-list" start="15">
+    <li>Quantos alertas por dia é tolerável? 3? 5? 10?</li>
+    <li>Faz sentido "modo silencioso" no fim de semana?</li>
+    <li>Você quer alerta SOMENTE de Tier S (perfeitos), ou também Tier A (próximos), ou também Tier B (relevantes)?</li>
+  </ol>
+
+  <div class="q-section-title">▸ Sobre os recursos</div>
+  <ol class="q-list" start="18">
+    <li>Usaria o "chat com o edital" toda hora ou raramente?</li>
+    <li>Vale ter histórico de "editais que participei" pra IA aprender seu padrão?</li>
+    <li>Faz sentido botão "exportar essa busca em CSV pro Excel"?</li>
+  </ol>
+
+  <div class="q-section-title">▸ Sobre o futuro</div>
+  <ol class="q-list" start="21">
+    <li>Se virasse produto comercial em 1 ano, indicaria pra outros fornecedores DF? Ajudaria a divulgar?</li>
+    <li>Se outras pessoas pagassem, qual preço FAZ SENTIDO? R$30? R$50? R$99? R$150?</li>
+    <li>Toparia ser "consultor" do produto, dando feedback regular em troca de uso vitalício gratuito?</li>
+  </ol>
+
+  <div class="q-section-title">▸ Sobre marca/posicionamento</div>
+  <ol class="q-list" start="24">
+    <li>O nome "Buscador de Licitações DF" funciona? Ou tem nome melhor? ("Radar"? "Antena"? "Editais DF"?)</li>
+    <li>Você se sentiria mais confortável usando algo posicionado como "ferramenta cívica/aberta" ou "ferramenta profissional/de negócio"?</li>
+  </ol>
+</section>
+
+<!-- GLOSSÁRIO -->
+<section>
+  <div class="section-marker">12 ▸ Glossário</div>
+  <h2>Vocabulário <span class="accent">para qualquer pessoa</span></h2>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Termo</th><th>O que significa</th></tr></thead>
+    <tbody>
+    <tr><td><strong>Licitação</strong></td><td>Procedimento que o governo usa pra comprar coisas. Por lei, tem que ser transparente e competitivo.</td></tr>
+    <tr><td><strong>Edital</strong></td><td>Documento oficial que descreve a licitação (o que querem comprar, regras, prazos, requisitos). Geralmente PDF 50-200 páginas.</td></tr>
+    <tr><td><strong>PNCP</strong></td><td>Portal Nacional de Contratações Públicas. Site obrigatório por lei desde 2021. Todos os editais aparecem lá.</td></tr>
+    <tr><td><strong>CNAE</strong></td><td>Código que classifica o que uma empresa faz. Licitação geralmente exige CNAE específico.</td></tr>
+    <tr><td><strong>Pregão eletrônico</strong></td><td>Modalidade mais comum. Acontece online, lances de preço em tempo real.</td></tr>
+    <tr><td><strong>Dispensa</strong></td><td>Compra direta sem licitação completa. Permitido em valores baixos (até R$50k bens, R$100k obras).</td></tr>
+    <tr><td><strong>SICAF</strong></td><td>Sistema federal onde fornecedores ficam cadastrados. Quase toda licitação federal exige.</td></tr>
+    <tr><td><strong>ME / EPP</strong></td><td>Microempresa / Empresa de Pequeno Porte. Têm preferências legais (LC 123).</td></tr>
+    <tr><td><strong>OCDS</strong></td><td>Open Contracting Data Standard. Padrão internacional. UK, Colômbia, Ucrânia usam.</td></tr>
+    <tr><td><strong>API</strong></td><td>Endpoint técnico onde um software conversa com outro. PNCP tem API.</td></tr>
+    <tr><td><strong>LGPD</strong></td><td>Lei Geral de Proteção de Dados. Regula como dados pessoais (CPF) podem ser tratados.</td></tr>
+    <tr><td><strong>WAHA</strong></td><td>Software que conecta WhatsApp Web a servidor pra automação de mensagens.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- PRÓXIMO PASSO -->
+<section>
+  <div class="section-marker">13 ▸ Próximo passo</div>
+  <h2>Próximo <span class="accent">passo concreto</span></h2>
+
+  <div class="callout">
+    <div class="callout-title">Hoje ou amanhã — bloco de 2 horas com você</div>
+    <ol>
+      <li><strong>1h</strong> — conversa: 3 licitações perdidas (primeira incerteza)</li>
+      <li><strong>30min</strong> — detalhar seu perfil (CNAE, valor, palavras-chave)</li>
+      <li><strong>30min</strong> — validar este briefing: o que faz sentido, o que falta, o que está errado</li>
+    </ol>
+    <p style="margin-bottom: 0;">Depois disso, Breno arruma 6h dev pros experimentos técnicos do Sprint 0. Aí decidimos juntos se começa Sprint 1 ou ajusta antes.</p>
+  </div>
+
+  <div style="margin-top: 40px; padding: 24px 28px; background: var(--bb-surface); border: 1px solid var(--bb-mid);">
+    <p style="margin-bottom: 0; font-style: italic; color: var(--bb-mid-2);"><strong style="color: var(--bb-warm-white);">Disclaimer honesto:</strong> este projeto pode dar certo, pode dar errado, pode virar produto ou pode virar ferramenta-de-prateleira. O que NÃO vai acontecer: gastar dinheiro seu, prometer coisa que não cumpre, ou empurrar feature que você não pediu. <strong style="color: var(--bb-limon);">Esse é o acordo.</strong></p>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-mark">∆</span>
+  Documento v1 — pronto para debate<br>
+  Síntese de 4 pesquisas (130+ fontes) · 3 auditorias adversariais · 1 plano de execução refinado<br>
+  15 maio 2026
+</footer>
+
+</div>
+</body>
+</html>
