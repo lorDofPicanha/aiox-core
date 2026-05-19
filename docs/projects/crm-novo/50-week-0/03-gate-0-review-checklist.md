@@ -1,9 +1,11 @@
 # Gate 0 Review Checklist — Customer Need ou PIVOT (Day 7)
 
 **Quando:** Final de Week 0 (Day 7), depois de:
-- 5 entrevistas vendedor Tocks done
+- **3 entrevistas core done** (Cristiane + Rudson + Breno self) — ou 5 (com 2 externos opcionais)
 - 1 dia dogfooding done
 - Bridge standalone funcional confirmado
+
+**Realidade Tocks 2026-05-19:** equipe atual = 2 vendedores (Cristiane + Rudson). Sample size pequeno → thresholds calibrados mais rígidos (ver §2.1).
 
 **Decisor:** Breno (founder, sole decision-maker).
 **Tempo:** 90min de review honesto.
@@ -19,14 +21,15 @@ Preencha esse template ANTES de tomar decisão. Evita confirmation bias.
 
 ### 1.1 Entrevistas — Scorecard
 
-| Entrevistado | Customer Need Score (0-10) | WTP R$/mês | Atribuição quebrada citada? | "Volta em 2 sem?" |
-|--------------|----------------------------|------------|----------------------------|---------------------|
-| Marcus | ___ | R$ ___ | ✅/❌ | ✅/❌ |
-| Cristina | ___ | R$ ___ | ✅/❌ | ✅/❌ |
-| Breno (self) | ___ | R$ ___ | ✅/❌ | ✅/❌ |
-| Externo 1 | ___ | R$ ___ | ✅/❌ | ✅/❌ |
-| Externo 2 | ___ | R$ ___ | ✅/❌ | ✅/❌ |
-| **Médias** | **___** | **R$ ___** | **N/5** | **N/5** |
+| Entrevistado | Tipo | Customer Need Score (0-10) | WTP R$/mês | Atribuição quebrada citada? | "Volta em 2 sem?" |
+|--------------|------|----------------------------|------------|----------------------------|---------------------|
+| **Cristiane** | core (Tocks) | ___ | R$ ___ | ✅/❌ | ✅/❌ |
+| **Rudson** | core (Tocks) | ___ | R$ ___ | ✅/❌ | ✅/❌ |
+| **Breno (self)** | core | ___ | R$ ___ | ✅/❌ | ✅/❌ |
+| Externo 1 | opcional | ___ | R$ ___ | ✅/❌ | ✅/❌ |
+| Externo 2 | opcional | ___ | R$ ___ | ✅/❌ | ✅/❌ |
+| **Médias core (N=3)** | | **___** | **R$ ___** | **N/3** | **N/3** |
+| **Médias total (N=5)** | | **___** | **R$ ___** | **N/5** | **N/5** |
 
 ### 1.2 Dogfooding — Resultados
 
@@ -56,14 +59,23 @@ Preencha esse template ANTES de tomar decisão. Evita confirmation bias.
 
 ### 2.1 Verde · Continua Sprint 1 ALPHA
 
-**Todos os 4 critérios devem passar:**
+**Cenário N=3 (só core Cristiane + Rudson + Breno) — TODOS 4 critérios devem passar:**
+
+- [ ] Customer Need médio core ≥ 7
+- [ ] **3/3 (100%)** core pagariam R$ 300+/mês
+- [ ] **3/3 (100%)** core citaram atribuição quebrada espontaneamente
+- [ ] Dogfooding: atrito ≥ 5 + bridge success ≥ 80%
+
+**Cenário N=5 (com 2 externos) — TODOS 4 critérios:**
 
 - [ ] Customer Need médio ≥ 7
-- [ ] ≥ 3/5 vendedores pagariam R$ 300+/mês
+- [ ] ≥ 3/5 pagariam R$ 300+/mês
 - [ ] ≥ 3/5 citaram atribuição quebrada espontaneamente
 - [ ] Dogfooding: atrito ≥ 5 + bridge success ≥ 80%
 
 **Se TODOS verdes:** abre o ROADMAP, marca Gate 0 ✅, kickoff Sprint 1 segunda Week 1.
+
+**Por que N=3 mais rígido:** com sample pequeno, 1 voz dissonante representa 33% — peso enorme. Unanimidade reduz risco de falso-positivo (Cristiane + Rudson concordando elimina chance de vies individual).
 
 ### 2.2 Amarelo · Re-Conclave
 
@@ -186,15 +198,38 @@ Breno · {data} · {ass}
 
 ## 6. Calendário Gate 0
 
+### Versão "Core N=3" (mais rápida — só Tocks + self)
+
 ```
-Day 1 ────► Entrevista #1 (Marcus, 30min) + entrevista #2 (Cristina, 30min)
-Day 2 ────► Pitch doc revisado + entrevista #3 (Breno self, 30min)
+Day 1 ────► Entrevista Cristiane (30min) + Entrevista Rudson (30min)
+Day 2 ────► Pitch doc revisado + auto-entrevista Breno honesto (30min)
 Day 3 ────► Bridge standalone setup (Inngest deploy + test events)
-Day 4 ────► Entrevista #4 (externo 1) + #5 (externo 2)
-Day 5 ────► Dogfooding 1 — operando Tocks via planilha + Bridge
-Day 6 ────► Reserva (recovery + análise das entrevistas)
-Day 7 ────► Gate 0 review (90min) — aplica checklist + documenta decisão
+Day 4 ────► Reserva pra processar entrevistas
+Day 5 ────► Dogfooding — Breno opera Tocks via planilha + Bridge 1 dia
+Day 6 ────► Reserva (recovery + análise)
+Day 7 ────► Gate 0 review (90min) — aplica checklist N=3 + documenta decisão
 ```
+
+### Versão "Estendida N=5" (se quiser margem maior)
+
+```
+Day 1 ────► Entrevista Cristiane + Entrevista Rudson
+Day 2 ────► Pitch doc + auto-entrevista Breno
+Day 3 ────► Bridge standalone setup
+Day 4 ────► Entrevista externo 1 + Entrevista externo 2 (network)
+Day 5 ────► Dogfooding 1 dia
+Day 6 ────► Reserva (recovery + análise)
+Day 7 ────► Gate 0 review N=5 + documenta decisão
+```
+
+**Quando ir N=5 em vez de N=3:**
+- Se N=3 chegou "misto" (2 verdes + 1 vermelho) — externos desempatam
+- Se você (Breno) quer +confiança antes de queimar 16 semanas
+- Se Tocks team é "amostra pequena demais" pra representar Bretda também
+
+**Quando ficar em N=3:**
+- Se as 3 vozes core forem unânimes (verde ou vermelho) — externos não mudam decisão
+- Se tempo de network pra achar externos custaria atraso > 7 dias
 
 Reserva Day 6 propositalmente vazio. **Dormir com a evidência antes de decidir.**
 
