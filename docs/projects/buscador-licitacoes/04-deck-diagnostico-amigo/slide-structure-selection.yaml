@@ -1,0 +1,139 @@
+slide_structure_selection:
+  slides:
+    - slide: 1
+      function: hook
+      structure_id: H03
+      structure_name: "Cost of inaction"
+      why_this_structure: |
+        Cliente já viveu CRF vencer. Hook que evoca dor passada concreta > promessa abstrata.
+        H03 prescreve número quantificado + urgência. R$5-50k é faixa real.
+      avoid_risk: "Cost speculative — mitigado citando briefing F3 (não inventar valor específico, usar faixa)"
+
+    - slide: 2
+      function: diagnosis
+      structure_id: D11
+      structure_name: "Cost leak map"
+      why_this_structure: |
+        7 cost leaks são acumulativos, não isolados. D11 mostra MAPA — total perdido visualmente.
+        Alternativa D02 (friction map) seria genérico; D11 quantifica.
+      avoid_risk: "Leaks cannot be estimated — mitigado pois cada F1-F7 tem número/faixa do briefing"
+
+    - slide: 3
+      function: reframe
+      structure_id: R09
+      structure_name: "Means vs end"
+      why_this_structure: |
+        Cliente confunde "tool individual" com "outcome de grupo".
+        R09 separa atividade (organizar empresas) de resultado (operar como grupo).
+        Alternativa R01 (old/new model) seria menos potente — não muda hierarquia mental.
+      avoid_risk: "Distinção já é obvia — mitigado pois Lei 14.133 art. 14 IV não está no radar dele"
+
+    - slide: 4
+      function: stakes
+      structure_id: P03
+      structure_name: "Before/after metric"
+      why_this_structure: |
+        4h → 28min é mensurável e visualmente forte. P03 prescreve baseline + outcome + source.
+        Alternativa H04 (before/after snapshot) seria hook — aqui é stakes pós-reframe.
+      avoid_risk: "No baseline exists — mitigado: 4h baseline é estimado conservador do briefing F2"
+
+    - slide: 5
+      function: mechanism
+      structure_id: M04
+      structure_name: "Layer cake"
+      why_this_structure: |
+        Holding Virtual é maturidade de operação: hardware (4 CNPJs) → governança (1 app) → mundo (PNCP).
+        M04 mostra hierarquia funcional.
+        Alternativa M02 (4-block) seria perder a hierarquia top-down.
+      avoid_risk: "Layers not hierarchical — mitigado: hierarquia clara (entidades → governança → mundo externo)"
+
+    - slide: 6
+      function: mechanism
+      structure_id: M16
+      structure_name: "Input-process-output"
+      why_this_structure: |
+        Cliente precisa ver que dados FLUEM entre pipelines, não silos.
+        M16 mostra transformação visível (caixa → habilitação consome).
+        Alternativa M05 (pipeline) seria linear — perdemos o cross-pipeline.
+      avoid_risk: "Output is vague — mitigado: cada pipeline tem output nominal (financial_entries, certidoes, etc)"
+
+    - slide: 7
+      function: mechanism
+      structure_id: M02
+      structure_name: "4-block operating model"
+      why_this_structure: |
+        Anti-conluio tem 4 momentos discretos (vê/detecta/bloqueia/alerta).
+        M02 mostra cada um como capability separada.
+        Alternativa M09 (decision tree) seria certo mas mais técnico do que precisa.
+      avoid_risk: "Blocks overlap — mitigado: 4 ações sequenciais distintas"
+
+    - slide: 8
+      function: proof
+      structure_id: P11
+      structure_name: "Case teardown"
+      why_this_structure: |
+        Caso CRF precisa de problema → ação → resultado completo.
+        P11 prescreve esse shape narrativo.
+        Alternativa P03 (before/after metric) já usado slide 4.
+      avoid_risk: "Case lacks details — mitigado pelo exemplo journey §6.2 do briefing"
+
+    - slide: 9
+      function: proof
+      structure_id: P09
+      structure_name: "Demo result"
+      why_this_structure: |
+        ACT matcher é melhor mostrado como output concreto (3 opções com score).
+        P09 prescreve "live/recorded demo has output".
+        Alternativa P05 (screenshot evidence) seria forte se tivéssemos UI — não temos.
+      avoid_risk: "Demo output is not impressive — mitigado: 3 scores diferenciam claramente"
+
+    - slide: 10
+      function: plan
+      structure_id: E14
+      structure_name: "Pilot-to-scale path"
+      why_this_structure: |
+        6 sprints com vitórias progressivas. E14 mostra evolução M0→M6.
+        Alternativa E01 (milestone timeline) seria datas-only — perdemos os marcos de uso real.
+      avoid_risk: "No scale ambition — mitigado: M6 = 'não voltaria pro manual' = critério de uso sustentado"
+
+    - slide: 11
+      function: objection_handling
+      structure_id: O13
+      structure_name: "Objection stack 3"
+      why_this_structure: |
+        3 objeções esperadas precisam de tratamento rápido em call live.
+        O13 prescreve "several objections answered quickly".
+        Alternativa O05 (single objection) seria insuficiente.
+      avoid_risk: "Objections require nuance — mitigado: cada uma tem 1-line counter + proof"
+
+    - slide: 12
+      function: cta
+      structure_id: O08
+      structure_name: "CTA hero"
+      why_this_structure: |
+        Uma ação dominante: confirmar Sprint 0 + responder Bloco C.
+        O08 prescreve "one action should dominate".
+        Alternativa O07 (next-step ladder) seria múltiplas paths — diluiria.
+      avoid_risk: "CTA not finalized — mitigado: data (segunda) + count específico (45min + 8 respostas)"
+
+  repetition_audit:
+    consecutive_same_structure_max: 1  # nenhuma estrutura repetida em sequência
+    family_sequence: "H → D → R → P → M → M → M → P → P → E → O → O"
+    families_repeat: "M×3 (slides 5-7 diferentes structures) + P×2 (slides 8-9 diferentes structures) + O×2 (slides 11-12 diferentes structures)"
+    verdict: pass
+
+  template_rejection_log:
+    - rejected: "H05 (One number opener)"
+      reason: "Hook por número absoluto fica frio. H03 evoca dor passada que cliente sente."
+    - rejected: "D02 (Friction map)"
+      reason: "Não quantifica cada leak. D11 mostra COST por leak."
+    - rejected: "R01 (Old model / new model)"
+      reason: "Difference seria cosmético. R09 muda hierarquia mental."
+    - rejected: "M05 (Pipeline) para slide 6"
+      reason: "Pipeline linear esconde cross-pipeline data sharing. M16 mostra integração."
+    - rejected: "P05 (Screenshot evidence) para slides 8-9"
+      reason: "Não temos UI ainda. Slide ficaria mockup falso."
+    - rejected: "E01 (Milestone timeline) para slide 10"
+      reason: "Datas sem marcos de uso real. E14 mostra vitória mensurável por sprint."
+    - rejected: "O01 (Offer stack) para slide 11"
+      reason: "Não estamos vendendo pacote — case-âncora. Objection handling é o trabalho real desse slide."

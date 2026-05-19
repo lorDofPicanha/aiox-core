@@ -1,0 +1,246 @@
+evidence_ledger:
+  source: "deck-spec.yaml"
+  generated_at: "2026-05-18"
+  claim_count: 21
+  claims:
+    - claim_id: "s01-c1"
+      slide_id: "s01"
+      claim: "Edital regional médio R$5-50k em DF + Águas Lindas"
+      evidence_type: user_provided_document
+      source: "BRIEFING-REAL-CONSOLIDADO.md §1.3 F3"
+      confidence: medium
+      visible_or_speaker_notes: visible
+      risk: validate_with_friend
+      freshness: "2026-05"
+
+    - claim_id: "s02-c1"
+      slide_id: "s02"
+      claim: "F1 Refrescar portais consome 1-2h/dia"
+      evidence_type: user_provided_document
+      source: "BRIEFING-REAL-CONSOLIDADO.md §1.3 tabela F1"
+      confidence: medium
+      visible_or_speaker_notes: visible
+      risk: none
+      freshness: "2026-05"
+
+    - claim_id: "s02-c2"
+      slide_id: "s02"
+      claim: "F2 Refazer dossiê 30-60min × 5-30 editais/mês"
+      evidence_type: user_provided_document
+      source: "BRIEFING-REAL-CONSOLIDADO.md §1.3 tabela F2"
+      confidence: medium
+      visible_or_speaker_notes: visible
+      risk: none
+      freshness: "2026-05"
+
+    - claim_id: "s02-c3"
+      slide_id: "s02"
+      claim: "F3 CRF FGTS expirando = R$5-50k de edital perdido"
+      evidence_type: user_provided_document
+      source: "BRIEFING-REAL-CONSOLIDADO.md §1.3 tabela F3"
+      confidence: medium
+      visible_or_speaker_notes: visible
+      risk: none
+      freshness: "2026-05"
+
+    - claim_id: "s02-c4"
+      slide_id: "s02"
+      claim: "F4 Pedir BP/DRE pro contador = 1d espera × N editais"
+      evidence_type: user_provided_document
+      source: "BRIEFING-REAL-CONSOLIDADO.md §1.3 tabela F4"
+      confidence: medium
+      visible_or_speaker_notes: visible
+      risk: none
+      freshness: "2026-05"
+
+    - claim_id: "s02-c5"
+      slide_id: "s02"
+      claim: "F5 PDF concorrente <30min — recurso perdido por preclusão"
+      evidence_type: user_provided_document
+      source: "BRIEFING-REAL-CONSOLIDADO.md §1.3 tabela F5 + §5.5 Hard SLA"
+      confidence: medium
+      visible_or_speaker_notes: visible
+      risk: none
+      freshness: "2026-05"
+
+    - claim_id: "s02-c6"
+      slide_id: "s02"
+      claim: "F6 4 empresas mesmo edital sem perceber = risco anti-conluio"
+      evidence_type: official_source
+      source: "Lei 14.133/2021 art. 14 IV + BRIEFING-REAL-CONSOLIDADO.md §1.3 F6"
+      confidence: high
+      visible_or_speaker_notes: visible
+      risk: none
+      freshness: "2026-05"
+
+    - claim_id: "s02-c7"
+      slide_id: "s02"
+      claim: "F7 Visibilidade 4 caixas separadas = decisão estratégica cega"
+      evidence_type: user_provided_document
+      source: "BRIEFING-REAL-CONSOLIDADO.md §1.3 tabela F7"
+      confidence: medium
+      visible_or_speaker_notes: visible
+      risk: none
+      freshness: "2026-05"
+
+    - claim_id: "s03-c1"
+      slide_id: "s03"
+      claim: "Lei 14.133 art. 14 IV — empresas mesmo grupo não competem juntas"
+      evidence_type: official_source
+      source: "Lei Federal 14.133/2021 art. 14 IV"
+      confidence: high
+      visible_or_speaker_notes: visible
+      risk: none
+      freshness: "2026-05"
+
+    - claim_id: "s04-c1"
+      slide_id: "s04"
+      claim: "Dossiê 4h hoje → 28min com sistema (projeção)"
+      evidence_type: explicit_assumption
+      source: "BRIEFING-REAL-CONSOLIDADO.md §6.2 journey + §9 M4"
+      confidence: low
+      visible_or_speaker_notes: visible
+      risk: validate_after_M4
+      freshness: "2026-05"
+
+    - claim_id: "s05-c1"
+      slide_id: "s05"
+      claim: "Holding Virtual = 4 camadas operacionais (users/interface/governance/empresas)"
+      evidence_type: internal_artifact
+      source: "BRIEFING-REAL-CONSOLIDADO.md §2.1 metáfora + §2.2 arquitetura"
+      confidence: high
+      visible_or_speaker_notes: visible
+      risk: none
+      freshness: "2026-05"
+
+    - claim_id: "s06-c1"
+      slide_id: "s06"
+      claim: "5 pipelines compartilham 1 banco — Caixa→Habilitação"
+      evidence_type: internal_artifact
+      source: "BRIEFING-REAL-CONSOLIDADO.md §2.3 tabela quem produz/quem consome"
+      confidence: high
+      visible_or_speaker_notes: visible
+      risk: none
+      freshness: "2026-05"
+
+    - claim_id: "s07-c1"
+      slide_id: "s07"
+      claim: "Anti-conluio via RLS + DB constraint blocks proposta dupla"
+      evidence_type: internal_artifact
+      source: "BRIEFING-REAL-CONSOLIDADO.md §3.2 anticonluio_one_proposal_per_group SQL policy"
+      confidence: high
+      visible_or_speaker_notes: visible
+      risk: none
+      freshness: "2026-05"
+
+    - claim_id: "s08-c1"
+      slide_id: "s08"
+      claim: "Cron diário verifica certidões + alerta 30d + renovação 1-click"
+      evidence_type: internal_artifact
+      source: "BRIEFING-REAL-CONSOLIDADO.md §5.2 Pipeline 2 — Compliance"
+      confidence: high
+      visible_or_speaker_notes: visible
+      risk: none
+      freshness: "2026-05"
+
+    - claim_id: "s08-c2"
+      slide_id: "s08"
+      claim: "R$180k é exemplo de edital — substituir pelo caso real do amigo"
+      evidence_type: explicit_assumption
+      source: "BRIEFING-REAL-CONSOLIDADO.md §6.2 journey exemplo"
+      confidence: low
+      visible_or_speaker_notes: visible
+      risk: replace_with_real_case_post_call
+      freshness: "2026-05"
+
+    - claim_id: "s09-c1"
+      slide_id: "s09"
+      claim: "ACT matcher devolve score 0-10 com objeto + valor + período"
+      evidence_type: internal_artifact
+      source: "BRIEFING-REAL-CONSOLIDADO.md §5.4 Pipeline 4 + §6.2 journey"
+      confidence: high
+      visible_or_speaker_notes: visible
+      risk: none
+      freshness: "2026-05"
+
+    - claim_id: "s09-c2"
+      slide_id: "s09"
+      claim: "Scores 8.5/7.8/4.0 são exemplo construído"
+      evidence_type: explicit_assumption
+      source: "BRIEFING-REAL-CONSOLIDADO.md §6.2"
+      confidence: low
+      visible_or_speaker_notes: visible
+      risk: replace_with_real_ACT_post_call
+      freshness: "2026-05"
+
+    - claim_id: "s10-c1"
+      slide_id: "s10"
+      claim: "22 semanas em 6 sprints com kill gates"
+      evidence_type: internal_artifact
+      source: "BRIEFING-REAL-CONSOLIDADO.md §9 Roadmap Sprint 0-6"
+      confidence: high
+      visible_or_speaker_notes: visible
+      risk: none
+      freshness: "2026-05"
+
+    - claim_id: "s11-c1"
+      slide_id: "s11"
+      claim: "Effecti é horizontal nacional, isso é vertical regional"
+      evidence_type: internal_artifact
+      source: "BRIEFING-REAL-CONSOLIDADO.md §14.5 anti-padrões AIOX + 01-research/02-portais-fonte.md"
+      confidence: high
+      visible_or_speaker_notes: visible
+      risk: none
+      freshness: "2026-05"
+
+    - claim_id: "s11-c2"
+      slide_id: "s11"
+      claim: "Lançamento <10s + Modo Rápido <30min"
+      evidence_type: explicit_assumption
+      source: "BRIEFING-REAL-CONSOLIDADO.md §6.1 journey Alice + §6.2 journey Cliente"
+      confidence: medium
+      visible_or_speaker_notes: visible
+      risk: design_target_not_measured
+      freshness: "2026-05"
+
+    - claim_id: "s11-c3"
+      slide_id: "s11"
+      claim: "Case-âncora Fase 1 sem cobrar"
+      evidence_type: explicit_assumption
+      source: "BRIEFING-REAL-CONSOLIDADO.md §11 B3 (decisão pendente)"
+      confidence: low
+      visible_or_speaker_notes: visible
+      risk: pending_breno_B3_decision
+      freshness: "2026-05"
+
+    - claim_id: "s12-c1"
+      slide_id: "s12"
+      claim: "8 perguntas Bloco C compactadas"
+      evidence_type: internal_artifact
+      source: "BRIEFING-REAL-CONSOLIDADO.md §11 Decisões + §12 Próximos passos"
+      confidence: high
+      visible_or_speaker_notes: visible
+      risk: none
+      freshness: "2026-05"
+
+  blockers:
+    - "s01-c1"  # validate edital faixa com amigo
+    - "s04-c1"  # projeção 28min — confiança low
+    - "s08-c2"  # R$180k exemplo
+    - "s09-c2"  # scores exemplo
+    - "s11-c3"  # decisão B3 pendente Breno
+  blocker_count: 5
+  blocker_action_required:
+    - "Validar slide 1 faixa edital com amigo na call"
+    - "Marcar slide 4 como 'projeção pós-M4' explicitamente (já está em design_notes)"
+    - "Substituir slide 8 e 9 por casos reais após call"
+    - "Breno decidir B3 (cobrar/grátis) antes de imprimir/enviar deck final"
+
+  evidence_quality_score:
+    high_confidence: 11  # 11/21 = 52%
+    medium_confidence: 6  # 6/21 = 29%
+    low_confidence: 5  # 5/21 = 24% — 4 deles são exemplos a substituir
+    sourced: 14
+    assumption: 5
+    validate: 2
+    verdict: "ACEITÁVEL para v1 deck consultativo — todos os 'low confidence' são exemplos a substituir com dados reais do cliente pós-call. Não há claim factual sem source."

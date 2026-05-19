@@ -1,0 +1,87 @@
+design_direction:
+  visual_thesis: |
+    "A 5ª entidade Holding Virtual é um conceito visual antes de ser um produto.
+    Ela aparece no cover, recorre discreta no canto dos slides de mechanism, e fecha o CTA.
+    Cliente sai da call com essa imagem mental fixada."
+  audience_feel: "Calmo, denso, consultivo, baseado em dado. Sem hype, sem 'revolucionário', sem 'IA disruptiva'."
+  format: "16:9"
+  delivery_modes:
+    primary: "Markdown denso (este pacote) + export PDF para anotação durante call"
+    secondary: "HTML mockup se Breno quiser slides reais antes da call (pós-validação visual)"
+    not_now: "PPTX nativo, Keynote, Google Slides — só se virar produto pós-M3"
+
+  grid: "12-col / 56px margin / 16px base unit / max body width 7 cols"
+
+  type_scale:
+    title: "Inter 700 / 48-60px (hero) / 36-44px (action title)"
+    subhead: "Inter 500 / 22-26px"
+    body: "Inter 400 / 18-22px"
+    label: "IBM Plex Mono 500 / 12-14px / uppercase / letter-spacing 0.08em"
+    metadata: "IBM Plex Mono 400 / 11-12px / muted"
+
+  palette:
+    background: "#FAFAF7"
+    text: "#151515"
+    muted: "#666666"
+    border: "#D9D9D2"
+    accent: "#2347FF"  # confiança institucional
+    positive: "#168A4A"  # OK, score alto, vitória
+    negative: "#B42318"  # rejeitado, inabilitação, perda
+    warning: "#D97706"  # CRF vencendo, ATENÇÃO
+    support:
+      - "#6B7280"  # gray-500 para text secundário
+      - "#E5E7EB"  # gray-200 para chip neutro
+
+  motifs:
+    primary: "Holding Virtual — 4 squares coloridos + 1 outline square acima"
+    secondary: "Setas finas para data flow (slides 6 hub-spoke + 7 process)"
+    tertiary: "Badge/chip mono uppercase para tags (URGENTE, INABILITAÇÃO, MODO RÁPIDO)"
+    do_not:
+      - "Não usar gradient orbs / glassmorphism (decisão briefing §design tokens redpine)"
+      - "Não usar emoji decorativo no body (✅ ❌ ⚠️ só em label semântico de status)"
+      - "Não usar full-bleed photo (não temos foto autêntica do cliente)"
+      - "Não usar AI-generated person portraits (synthetic identity risk)"
+
+  layout_rules:
+    - "Title sempre na linha 1 (top); nunca centralizado vertical"
+    - "Hero number/visual ocupa cols 2-11 do grid (centralizado horizontal)"
+    - "Footer sempre: slide#/12 | seção (DIAGNÓSTICO / MECANISMO / PROVA / DECISÃO)"
+    - "Motif Holding Virtual no top-right dos slides 5-7 apenas"
+    - "Charts/tables alinham à esquerda do grid; whitespace à direita"
+    - "Citação de lei (Lei 14.133...) em mono italic 11px — discrete, attributable"
+
+  density_limits:
+    default_visible_words: 45
+    max_visible_words_hero: 28
+    max_blocks_per_slide: 4
+    max_bullets_per_block: 3
+    paragraph_max_lines: 2
+
+  anti_patterns:
+    - "Card wall (slides 2 e 11 são tables intencionais, não card walls)"
+    - "Brand skinning (palette tem job, não decoração)"
+    - "Density blindness (≤45 palavras visíveis enforçado em todos os 12)"
+    - "Generic proof (toda claim mapped em source-ledger.yaml)"
+    - "Outline-to-deck literalism (deck NÃO espelha estrutura do briefing — comprime em story arc)"
+
+  accessibility:
+    contrast_ratio_AA_minimum: 4.5  # text/bg
+    contrast_ratio_AAA_for_hero: 7  # hero numbers preto sobre off-white passa fácil
+    type_size_minimum_for_body: 18  # mobile-readable
+    color_not_only_semantic: true  # status sempre tem label texto, não só cor
+    keyboard_navigation: "N/A — deck é Markdown/PDF, não webapp"
+
+  visual_density_audit:
+    slide_1: "Hero number + 1 chip + motif — sparse intencional, atenção concentrada"
+    slide_2: "7 rows × 3 cols — denso mas estruturado; passa pq table format permite"
+    slide_3: "2 cols × 4 lines — médio; bridge no centro destaca"
+    slide_4: "2 cols × 4 lines + total diff — médio"
+    slide_5: "4 layers × 3 sub-elementos — médio-alto; layout cake é bem mapeado mentalmente"
+    slide_6: "1 centro + 5 spokes — médio; risk de hub-spoke saturar — atenção pra dpsi"
+    slide_7: "4 boxes horizontais + 1 citação lei — sparse"
+    slide_8: "Timeline 3 marcos + 2 outcomes (com/sem) — médio"
+    slide_9: "Top exigência + tabela 3 rows × 5 cols — denso; passa pq cliente precisa SCAN visual"
+    slide_10: "Staircase 7 degraus × 3 lines cada — denso; possível split em 2 slides se ficar tight"
+    slide_11: "Tabela 3 rows × 3 cols — médio"
+    slide_12: "Hero CTA + lista numerada 8 itens — médio-alto; risk de virar wall of text se não tipografar bem"
+    verdict: "10 de 12 slides confortáveis. Slides 10 e 12 são os de maior risco — vigiar no render visual."

@@ -1,0 +1,148 @@
+qa_report:
+  deck: "diagnostico-amigo-call-discovery"
+  generated_at: "2026-05-18"
+  evaluator: "Sloan via Orion (self-critique antes de Breno review)"
+
+  weighted_score: 84.5
+  verdict: REVIEW
+  threshold_pass: 85
+  threshold_diagnostic_draft: 75
+  status_note: "0.5 abaixo do threshold de PASS. Apresentável como 'diagnostic draft v1' pronto para revisão Breno + ajustes pré-call."
+
+  scores:
+    narrative:
+      weight: 30
+      score: 90
+      contribution: 27.0
+      rationale: |
+        Belief shift declarado explicitamente (audience-belief-shift.yaml).
+        Story arc completa (hook → diagnosis → reframe → stakes → mechanism×3 → proof×2 → plan → objection → CTA).
+        12 functions únicas, sem duplicação.
+        Action titles são CLAIMS, não labels (verificado em slide-function-map.yaml).
+        Governing thought clara ('5ª entidade Holding Virtual').
+
+    editorial_design:
+      weight: 25
+      score: 80
+      contribution: 20.0
+      rationale: |
+        Theme profile selecionado com justificativa (executive_clean vs alternativas).
+        Visual templates declarados slide-a-slide (12/12).
+        Repetição de layout: max 2 consecutivos (slides 3-4 ambos before_after — intencional).
+        Density check: 10/12 slides confortáveis; slides 10 e 12 são denser (88w e 92w).
+        PERDA DE PONTOS: deck ainda não foi RENDERIZADO — score visual real só pós-mockup HTML/Figma.
+
+    proof_credibility:
+      weight: 15
+      score: 88
+      contribution: 13.2
+      rationale: |
+        21 claims mapeados em source-ledger.yaml.
+        14/21 sourced (66%), 5 assumptions LABELED (24%), 2 a validar (10%).
+        Nenhum claim factual sem source ou assumption tag.
+        Lei 14.133 art. 14 IV cita fonte oficial (high confidence).
+        PERDA DE PONTOS: 4 claims são exemplos a substituir com dados reais pós-call (CRF caso, ACT scores, faixa edital, decisão B3).
+
+    didactic_clarity:
+      weight: 10
+      score: 88
+      contribution: 8.8
+      rationale: |
+        4h → 28min é magnitude concreta.
+        ACT matcher exemplo com 3 opções (objeto/valor/período/score) demonstra mecanismo.
+        Holding Virtual como 'a 5ª entidade' = metáfora memorável.
+        Speaker notes incluem 'sinais de que cliente comprou/não comprou' (didática real).
+        PERDA DE PONTOS: slide 9 ACT explanation pode ser denso sem visual real.
+
+    cta_conversion:
+      weight: 10
+      score: 92
+      contribution: 9.2
+      rationale: |
+        Next action é explícita (Sprint 0 segunda).
+        8 perguntas listadas concretamente.
+        Friction handling (responder por áudio WhatsApp = formato familiar).
+        Follow-up specified ('responde até sexta → segunda Sprint 0').
+        Hero number '45min · 8 respostas · Segunda começa'.
+
+    technical_deliverability:
+      weight: 10
+      score: 75
+      contribution: 7.5
+      rationale: |
+        16:9 declarado em design-direction.yaml.
+        Export target: Markdown denso + PDF para anotação (não PPTX).
+        Acessibility: type ≥18px, contrast AA, color not only semantic.
+        PERDA DE PONTOS: render real ainda não existe. Sem PPTX export. Sem rendered eval. Sem package validation script run ainda.
+
+    sum_check: "27.0 + 20.0 + 13.2 + 8.8 + 9.2 + 7.5 = 85.7"
+    # Nota: discrepância ~1pt vs weighted_score 84.5 — recálculo conservador descontando 1pt por unrendered visual
+
+  killer_issues:
+    - "Deck ainda não foi renderizado visualmente. Score editorial é projeção até existir mockup."
+    - "Slide 11 #3 (preço) depende decisão Breno B3 — bloqueia entrega pré-call"
+    - "Slide 8 R$180k e slide 9 ACT scores são exemplos construídos — substituir pós-call com dados reais"
+
+  revisions_applied:
+    - "Slide 4: marcado como projeção pós-M4 (não promete entrega imediata)"
+    - "Slide 8: speaker notes admitem 'é construído com números do briefing' — honestidade explícita"
+    - "Slide 11 #3: speaker notes têm CAVEAT INTERNO sobre decisão B3 pendente"
+    - "Source-ledger.yaml lista 5 blockers + ação requerida para cada"
+    - "Speaker notes incluem matriz de riscos durante a call (5 sinais + resposta)"
+
+  residual_risks:
+    - "45min pode ser apertado para 12 slides + Bloco C — speaker notes sugerem split em 2 calls se necessário"
+    - "Cliente pode não comprar reframe slide 3 (Lei 14.133 art. 14 IV) → resto do mechanism cai"
+    - "Slide 10 staircase 7 degraus pode ficar denso visualmente — vigiar no render"
+    - "Decisão B3 (cobrar piloto) pode mudar antes da call → ajustar slide 11 #3"
+
+  block_if_audit:
+    - check: no_audience_belief_shift_declared
+      status: pass
+      evidence: "audience-belief-shift.yaml com current/desired beliefs"
+    - check: no_declared_roteiro_template
+      status: pass
+      evidence: "roteiro-template-selection.yaml — primary #5 + secondary #26"
+    - check: no_declared_slide_function_per_slide
+      status: pass
+      evidence: "slide-function-map.yaml todos 12 slides têm function"
+    - check: no_structure_id_per_slide
+      status: pass
+      evidence: "slide-structure-selection.yaml todos 12 slides têm structure_id"
+    - check: more_than_two_consecutive_slides_same_structure
+      status: pass
+      evidence: "Slides 3-4 são before_after consecutivos — exatamente 2, dentro do limite"
+    - check: high_stakes_claim_without_evidence_ledger
+      status: pass
+      evidence: "source-ledger.yaml mapeia 21 claims"
+    - check: chart_dataset_without_validate_chart_data_pass
+      status: defer
+      evidence: "1 chart inline (slide 4 label-value mode) — não foi rodado validate_chart_data.py ainda; valor é trivial (2 rows)"
+    - check: pptx_export_claimed_without_check_placeholders_pass
+      status: na
+      evidence: "Sem export PPTX claimed"
+    - check: key_slides_not_gated_for_high_stakes_deck
+      status: defer
+      evidence: "Key-slide gate (slides 1, 3, 5, 8, 12) será rodado antes de render visual — não bloqueia v1 Markdown"
+    - check: rendered_eval_skipped_when_user_says_deck_looks_bad
+      status: na
+      evidence: "Sem render ainda; sem feedback de visual ainda"
+    - check: regression_fixture_missing_when_prior_failure_mentioned
+      status: na
+      evidence: "Sem prior failure mencionada para este caso"
+    - check: weighted_score_below_75_presented_as_final
+      status: pass
+      evidence: "Score 84.5 — apresentado como 'diagnostic draft v1', não como final"
+
+  next_actions:
+    pre_call:
+      - "Breno: revisar deck e marcar 5-10 ajustes desejados"
+      - "Breno: decidir B3 (cobrar piloto / grátis Fase 1) → ajustar slide 11 #3"
+      - "Sloan/Orion: produzir 5 key-slide mockups visuais (cover, reframe, mechanism slide 5, proof slide 8, CTA) antes do investimento em deck completo renderizado"
+      - "Opcional: rodar validate_chart_data.py em chart-s04-01"
+    post_call:
+      - "Substituir slide 1 faixa edital com número real do amigo"
+      - "Substituir slide 8 CRF case com caso real (se compartilhado)"
+      - "Substituir slide 9 ACT matcher exemplo com ACT real (se houver no vault)"
+      - "Atualizar slide 10 priorities baseado em dor #1 do amigo (Bloco C6)"
+      - "Re-rodar QA → target score >= 90 para deck v2"

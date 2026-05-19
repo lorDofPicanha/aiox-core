@@ -1,0 +1,42 @@
+briefing_normalized:
+  title: "Holding Virtual — Diagnóstico do gap atual do amigo (call discovery)"
+  deck_slug: "diagnostico-amigo-call-discovery"
+  deck_type: sales
+  audience: |
+    Amigo do Breno — fornecedor B2B regional Águas Lindas-GO + DF.
+    Opera 4 empresas (INYAC, INC, CENTINELA, ENHAC) participando de licitações públicas.
+    Hoje tudo manual: planilha + portais refrescados + dossiê refeito por edital + leitura PDF concorrente.
+    Já experimentou e abandonou ferramenta nacional paga (Effecti tier hipótese).
+    Conhece Breno pessoalmente — relação de confiança pré-existente.
+  objective: |
+    Sair da call com diagnóstico ESCRITO do gap atual e proposta concreta de piloto.
+    Não é venda fria — é entrega de mapa antes de qualquer linha de código (princípio AIOX §14.7#1).
+    Cliente vê valor antes de comprometimento.
+  desired_action: "Confirmar disponibilidade pra Sprint 0 + responder Bloco C (8 perguntas) na própria call."
+  duration_minutes: 45
+  slide_count_target: 12
+  tone: |
+    Consultivo, baseado em evidência (transcripts dos 5 áudios + briefing real).
+    Sem juridiquês, sem 'IA/LLM/RAG/pipeline/RLS'.
+    Linguagem do cliente: "edital", "CRF", "dossiê", "concorrente", "recurso", "preclusão".
+    Concreto > abstrato sempre.
+  source_material:
+    - "99-synthesis/BRIEFING-REAL-CONSOLIDADO.md (§0, §1.2, §1.3, §5, §9, §14)"
+    - "00-context/audios-18mai/TRANSCRIPTS-SUMMARY.md (linguagem real do cliente)"
+    - "01-research/licitacao-process-deep-dive.md (números regulatórios + jurisprudência)"
+    - "01-research/livro-caixa-deep-dive.md (anti-features fiscais)"
+    - "01-research/02-portais-fonte.md (PNCP API + e-Compras DF + AL)"
+  constraints:
+    - "Nada de tela de produto inexistente — Sprint 0 ainda não rodou"
+    - "Linguagem do cliente, não interna (sem 'pipelines', 'RLS', 'Inngest')"
+    - "Cada dor quantificada com número real do briefing"
+    - "Format 16:9, exportável Markdown → PDF para anotação durante call"
+    - "Cliente provavelmente vai abrir no celular — type ≥18px"
+  unknowns:
+    - "Volume real de licitações/mês do amigo (Bloco C4) — usar faixa briefing 5-30 editais/mês"
+    - "CNAE primário das 4 empresas (afeta exemplo concreto no slide 9)"
+    - "Effecti experiência real ou hipótese — confirmar slide 11"
+    - "Pricing decisão B3 (cobrar piloto ou grátis) — afeta slide 11 #3"
+  deck_outputs:
+    profile: full
+    expected: 17  # de 21 (skip import-pipeline/rendered-eval/bench-capability/forward-test — não aplicáveis)

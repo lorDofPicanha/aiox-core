@@ -1,0 +1,182 @@
+visual_template_selection:
+  slides:
+    - slide: 1
+      visual_template_id: kpi_cards
+      pick_when_match: "One hero metric exists; faixa R$5-50k merece dominância visual"
+      adaptation: |
+        1 card hero único centralizado com 'R$5–50.000' grande + label 'edital regional médio perdido'.
+        Não usar 4-8 cards — não temos múltiplas métricas independentes.
+        Chip secundário 'Lei 14.133 art. 174' embaixo discreto.
+      compatible_slide_functions: [executive_summary, proof, answer_first]
+
+    - slide: 2
+      visual_template_id: feature_matrix_table
+      pick_when_match: "7 rows × 3 cols (leak / freq / custo)"
+      adaptation: |
+        7 linhas (F1-F7), 3 colunas (Leak | Frequência | Custo estimado).
+        Coluna direita é a que carrega a história — destacar visualmente.
+        Não usar harvey_balls — não é qualitative scoring, é quantification.
+      compatible_slide_functions: [diagnosis, audit]
+
+    - slide: 3
+      visual_template_id: before_after
+      pick_when_match: "Concrete state change between 'cada empresa solo' e 'operando como grupo'"
+      adaptation: |
+        2 colunas:
+        OLD: '4 planilhas separadas / 4 calendários CND / 4 dossiês refeitos / 4 fluxos caixa cegos'
+        NEW: '1 visão unificada / 1 calendário consolidado / 1 dossiê auto-compilado / 1 dashboard de grupo'
+        Bridge no centro: 'a 5ª entidade'.
+      compatible_slide_functions: [reframe, transformation]
+
+    - slide: 4
+      visual_template_id: before_after
+      pick_when_match: "State change with measurable metric (4h → 28min)"
+      adaptation: |
+        2 colunas com 4 atividades cada lado + timestamp acumulado.
+        Hoje:
+        - Pedir balanço contador (1d espera)
+        - Procurar ACT (45min)
+        - Renovar CRF (1h)
+        - Compilar PDF (1h)
+        TOTAL 4h
+        Sistema:
+        - BP/DRE auto (5min)
+        - ACT matcher (5min)
+        - CRF renovação 1-click (3min)
+        - compile_dossie_pdf (60s + 14min revisão)
+        TOTAL 28min
+        Diff visual: 85% redução.
+      compatible_slide_functions: [proof, demo, stakes]
+
+    - slide: 5
+      visual_template_id: layered_architecture
+      pick_when_match: "3-4 horizontal system layers contain modules with short descriptions"
+      adaptation: |
+        4 camadas top-down:
+        1. Você + Pai + Alice + Giovanna + Gabela (user layer com avatares simples)
+        2. Interface única (PWA web + WhatsApp ícone)
+        3. Holding Virtual (governança: anti-conluio + RBAC + plano de contas)
+        4. INYAC | INC | CENTINELA | ENHAC (4 boxes coloridos diferentes)
+        Setas para baixo de cada camada.
+      compatible_slide_functions: [mechanism, architecture]
+
+    - slide: 6
+      visual_template_id: hub_spoke
+      pick_when_match: "Cross-pipeline data sharing — alternative to pure pipeline visual"
+      adaptation: |
+        Centro: tabela única 'Plano de Contas + financial_entries + certidoes' (database icon).
+        5 spokes ao redor:
+        - P1 Caixa (lança/categoriza)
+        - P2 Compliance (alerta vencimento)
+        - P3 Radar (filtra editais)
+        - P4 Habilitação (monta dossiê)
+        - P5 Recurso (analisa concorrente)
+        Setas bidirecionais centro ↔ spoke.
+      compatible_slide_functions: [mechanism, ecosystem]
+      override_rationale: "Originalmente charts-and-diagrams.yaml sugere `module_composition` para mechanism; aqui hub_spoke é melhor porque mostra o database central + 5 pipelines orbitando."
+
+    - slide: 7
+      visual_template_id: process_flow
+      pick_when_match: "4 sequential steps anti-conluio (vê → detecta → bloqueia → alerta)"
+      adaptation: |
+        4 boxes horizontais conectados por setas:
+        [👁️ Vê 4 empresas no mesmo schema] → [🚨 Detecta proposta dupla] → [🛑 Bloqueia INSERT no banco] → [📲 Alerta cliente]
+        Embaixo: 'Lei 14.133 art. 14 IV — empresas coligadas não competem juntas'.
+        Selo ⚖️ no canto.
+      compatible_slide_functions: [mechanism, governance]
+
+    - slide: 8
+      visual_template_id: before_after
+      pick_when_match: "Concrete state change com timeline narrativa"
+      adaptation: |
+        Timeline horizontal 3 marcos:
+        | 22/Mai: Sistema detecta CRF INYAC vence em 30d
+        | 22/Jun: CRF venceria (sem sistema)
+        | 22/Mai: Cliente clica 'Renovar' → 30s → CRF novo emitido
+        SEM SISTEMA (antes): "23/Jun lendo edital DF-2026-1234 → INABILITAÇÃO → R$180k perdido"
+        COM SISTEMA (agora): "0 CRF vencido em 90d / R$180k preservado"
+      compatible_slide_functions: [proof, case_study]
+      override_rationale: "P11 case teardown geralmente usa proof_stack; aqui timeline conta melhor porque cliente entende cronologia mais que stack."
+
+    - slide: 9
+      visual_template_id: feature_matrix_table
+      pick_when_match: "3 ACT options compared by score + criteria"
+      adaptation: |
+        Top: 'Edital DF-2026-1234 exige: mobiliário hospitalar últimos 3 anos, mín R$ 100k'
+        Tabela 3 linhas × 5 colunas:
+        | ACT | Objeto | Valor | Período | Score |
+        | Hospital São Lucas | Cadeira hospitalar | R$ 280k | 2024 | 8.5 ✅ |
+        | Clínica Bem-Estar | Cama hospitalar | R$ 150k | 2023 | 7.8 ✅ |
+        | Creche Pequenos | Mobiliário escolar | R$ 95k | 2025 | 4.0 ❌ REJEITADO |
+        Legenda embaixo: "Score combina objeto + valor + período. <5 = rejeitado automaticamente."
+      compatible_slide_functions: [proof, demo, comparison]
+
+    - slide: 10
+      visual_template_id: process_flow
+      pick_when_match: "6 sequential sprints with measurable milestone per stage"
+      adaptation: |
+        Staircase 7 degraus diagonal (M0 → M6):
+        M0 (s.1): Schema + Auth + RLS
+        M1 (s.4): Pai + 3 pessoas usando Caixa diário 7d
+        M2 (s.6): 0 CRF vencido sem aviso
+        M3 (s.10): 1 alerta edital real entregue
+        M4 (s.14): 1 dossiê <30min enviado
+        M5 (s.18): 1 recurso dentro de preclusão
+        M6 (s.22): "Não voltaria pro manual"
+        Cada degrau com data + entregável + "condição de sucesso".
+      compatible_slide_functions: [plan, roadmap]
+      override_rationale: "Pipeline_with_stages seria ok mas staircase visual reforça progressão crescente de valor."
+
+    - slide: 11
+      visual_template_id: feature_matrix_table
+      pick_when_match: "3 objections × 3 responses in compact grid"
+      adaptation: |
+        3 linhas × 3 colunas:
+        | O que você tá pensando | Realidade | Por que confiar |
+        | "Já paguei Effecti, não valeu" | Effecti = horizontal nacional comoditizado. Isso = vertical regional + diário. | Built FROM seu workflow, não p/ workflow genérico |
+        | "Não tenho tempo de aprender" | Lançamento <10s. Push WhatsApp. Modo Rápido <30min. | Mesma UX celular que você usa hoje |
+        | "Quanto custa?" | Você é case-âncora. Piloto Fase 1 sem cobrar. | Continuidade depois decidimos juntos baseado em uso real |
+      compatible_slide_functions: [objection_handling, decision]
+      override_rationale: "Card stack seria mais comum, mas tabela permite scan vertical ('o que vc tá pensando' alinhado)."
+
+    - slide: 12
+      visual_template_id: decision_card
+      pick_when_match: "Single recommendation needs to dominate"
+      adaptation: |
+        Top hero: '45 minutos. 8 perguntas. Segunda começa.'
+        Lista numerada das 8 perguntas:
+        1. Regime tributário das 4 empresas
+        2. Faturamento anual de cada
+        3. ERP/contador atual
+        4. Histórico licitação 12m (volume + vitória)
+        5. Coligação real entre as 4 (mesmo controlador?)
+        6. Sua dor #1 (Caixa, Buscador, ou Doc Auto?)
+        7. O "outro processo" do áudio
+        8. Integração com contador externo?
+        Footer: "Marca essa semana → diagnóstico escrito até sexta → Sprint 0 segunda"
+      compatible_slide_functions: [cta, decision, close]
+
+  ai_image_usage: none  # deck é Markdown/diagram only — sem AI image generation v1
+  chart_datasets:
+    - chart_id: chart-s04-01
+      slide_id: s04
+      mode: label-value
+      title: "Comparação tempo dossiê: 4h hoje × 28min sistema"
+      data:
+        - {label: "Hoje (manual)", value: 240}  # minutos
+        - {label: "Sistema (modo rápido)", value: 28}
+      unit: "minutos"
+      illustrative: true  # projeção, não medido ainda
+      note: "Substituir por valor real após M4 (1º dossiê real <30min)"
+
+  layout_variety_audit:
+    visual_template_used:
+      kpi_cards: 1
+      feature_matrix_table: 3  # slides 2, 9, 11
+      before_after: 3  # slides 3, 4, 8
+      layered_architecture: 1
+      hub_spoke: 1
+      process_flow: 2  # slides 7, 10
+      decision_card: 1
+    same_consecutive_max: 2  # slides 3-4 ambos before_after (intencional — reframe vira stakes na mesma estética)
+    verdict: pass  # nenhuma 3+ em sequência

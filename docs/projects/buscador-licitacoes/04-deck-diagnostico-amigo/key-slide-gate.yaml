@@ -1,0 +1,60 @@
+key_slide_gate:
+  required: true
+  rationale: "Deck é high-stakes (call discovery cliente-âncora). Antes de render visual completo, validar 5 slides decisivos."
+
+  slides:
+    - role: cover
+      slide: 1
+      pass_condition: "Promise é entendida em <5 segundos. Faixa R$5-50k é reconhecida como dor própria do cliente."
+      status: pre_render
+      validation_method: "Mostrar slide 1 para 1 fornecedor B2B externo (não o amigo). Pedir: 'O que esse slide tá perguntando?' — deve responder algo próximo de 'CRF vencido = perda'."
+      notes: |
+        Risco: faixa R$5-50k pode soar abstrata. Mitigação: chip 'Lei 14.133 art. 174 · 4 CNPJs sob risco' contextualiza.
+
+    - role: reframe
+      slide: 3
+      pass_condition: "Old belief e new belief são VISUALMENTE óbvios. Bridge 'a 5ª entidade' lê como conceito, não como jargão."
+      status: pre_render
+      validation_method: "Mostrar slides 1+2+3 sequencialmente. Pedir: 'O que mudou na sua cabeça agora?' Resposta esperada: algo sobre 'preciso ver as 4 juntas'."
+      notes: |
+        Risco: Lei 14.133 art. 14 IV pode ser novidade. Mitigação: speaker notes prevê "você sabia disso?" pause.
+
+    - role: mechanism
+      slide: 5
+      pass_condition: "Método (Holding Virtual) é memorável sem long explanation. Layered diagram lê em <10s."
+      status: pre_render
+      validation_method: "Mostrar slide 5 isolado por 15s, cobrir, pedir: 'Descreva o que viu'. Resposta esperada: '4 empresas + 1 sistema em cima'."
+      notes: |
+        Risco: 4 layers podem confundir. Mitigação: layer 'Governança' tem border accent destacando como ÂNCORA.
+
+    - role: proof_or_demo
+      slide: 8
+      pass_condition: "Audience vê proof concreto OU expected artifact. Timeline CRF lê como journey real, não promessa."
+      status: pre_render
+      validation_method: "Mostrar slide 8. Pedir: 'Isso já te aconteceu?' — se 'sim', proof landed. Se 'não', perguntar 'já viu acontecer com outro fornecedor?'."
+      notes: |
+        Risco: R$180k é exemplo, pode parecer inflado. Mitigação: speaker notes admitem ser construído + oferecem substituir pelo caso real.
+
+    - role: cta
+      slide: 12
+      pass_condition: "Next action é concreta e low-friction. '45min + 8 respostas por áudio WhatsApp' não soa esforço."
+      status: pre_render
+      validation_method: "Mostrar slide 12. Pedir: 'Você faria isso essa semana?' — resposta esperada: 'sim, posso responder por áudio'."
+      notes: |
+        Risco: 8 perguntas podem assustar. Mitigação: speaker notes enfatizam 'áudio funciona, não precisa planilha'.
+
+  blockers:
+    - "Mockups visuais dos 5 key slides ainda não existem — gate requer render para validação real"
+    - "Sem usuário externo de teste para validation_method dos 5 slides"
+
+  pre_render_decision: |
+    Recomendação Sloan/Orion: produzir mockups HTML simples (não Figma) dos 5 key slides ANTES de:
+    - Render completo dos 12 slides
+    - Mostrar deck pro amigo
+    - Investir em PPTX export
+
+    Tempo estimado: 2-3h para 5 mockups HTML usando theme tokens já definidos.
+
+  alternative_gates:
+    if_no_mockup_time: "Aceitar Markdown rendering como proxy de visual gate. Risco: editorial design score real só pós-render."
+    if_breno_overrides: "Breno pode skip key-slide gate se a confiança no plano for alta. Documentar override em revision-notes.md."

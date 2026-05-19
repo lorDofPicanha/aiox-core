@@ -1,0 +1,49 @@
+roteiro_template_selection:
+  primary_template: "5. Sales deck B2B"
+  secondary_template: "26. Sales call deck / live close"
+  reason: |
+    Primary 5 cobre estrutura buyer-pain → cost of status quo → new mechanism → proof → CTA — exata jornada AIOX D.S.P.C.
+    Secondary 26 dá os módulos de objection handling + risk reversal essenciais para call ao vivo.
+    NÃO foi escolhido o roteiro 1 (Webinar de venda educacional) porque o setting é 1-on-1 consultativo, não palestra.
+    NÃO foi escolhido o roteiro 4 (Investor pitch) porque cliente não é investidor; é usuário/case-âncora.
+    NÃO foi escolhido o roteiro 39 (Executive one-decision deck) porque a decisão não é executiva fria — tem componente emocional de confiança Breno↔amigo.
+
+  primary_modules_used:
+    - "Buyer pain (slide 1, 2) — F1-F7 dos áudios"
+    - "Cost of status quo (slide 1, 2, 8) — CRF vencido R$5-50k"
+    - "Desired outcome (slide 4) — 4h → 28min"
+    - "New mechanism (slides 5, 6, 7) — Holding Virtual + 5 pipelines + Anti-conluio"
+    - "Proof (slides 8, 9) — casos CRF + ACT matcher"
+    - "Implementation path (slide 10) — 6 sprints"
+    - "Risk reversal (slide 11 objection #3) — case-âncora grátis Fase 1"
+    - "Commercial model (slide 11 objection #3) — continuidade decidida depois"
+    - "Next step (slide 12) — 8 perguntas Bloco C + segunda"
+
+  secondary_modules_borrowed:
+    - "Objection stack live (slide 11) — Effecti / tempo / preço"
+    - "Hero CTA close (slide 12) — date + specific count"
+
+  modules_added:
+    - "Mechanism slide 7 (anti-conluio) — exclusivo deste caso por causa de Lei 14.133 art. 14 IV (não comum em sales decks SaaS)"
+
+  modules_removed:
+    - "Slide separado de 'team/credentials' — Breno é amigo, credenciais já estabelecidas"
+    - "Slide separado de 'pricing tier table' — case-âncora Fase 1, não há tier"
+    - "Slide de 'social proof / outros clientes' — não temos ainda (esse é o 1º case-âncora)"
+
+  target_slide_count: 12
+  estimated_call_minutes: 45  # ~3-4 min por slide com perguntas
+  delivery_format: "Markdown denso → exportável PDF para anotação durante call"
+
+  default_combinations_reference: |
+    Briefing slide-creator §template-selection-guide.md "Default Combinations" propõe pra Sales B2B:
+    `D01 → R08 → M05 → O03 → E02 → F18 → O06 → O08`
+    Adaptamos pra:
+    `H03 → D11 → R09 → P03 → M04 → M16 → M02 → P11 → P09 → E14 → O13 → O08`
+    Adaptações:
+    - H03 substitui D01 (começar pela dor cara em vez de symptom-vs-root)
+    - R09 substitui R08 (means-vs-end em vez de strategic equation — cliente não tem equação mental ainda)
+    - 3 mechanism slides (M04+M16+M02) em vez de 1 — domínio complexo, precisa mostrar entidade + pipelines + governança separadamente
+    - 2 proof slides em vez de 0 do template default — confiança Breno está dada, mas mechanism é abstrato, precisa concretizar
+    - E14 (pilot-to-scale) substitui E02 (workstream swimlane) — não tem múltiplos workstreams ainda
+    - O13 (objection stack) novo — live call exige

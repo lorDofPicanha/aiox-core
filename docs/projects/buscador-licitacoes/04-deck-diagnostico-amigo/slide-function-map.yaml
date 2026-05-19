@@ -1,0 +1,128 @@
+slide_function_map:
+  slide_count: 12
+  slides:
+    - slide: 1
+      function: hook
+      structure_id: H03
+      structure_name: "Cost of inaction"
+      audience_question: "Quanto custo eu já tive sem perceber?"
+      action_title: "Quanto custou o último CRF FGTS que você não viu vencer?"
+      key_message: "Inabilitação por CRF expirado = R$5-50k de edital perdido. Uma vez já paga o sistema."
+      proof_or_asset: "Faixa R$5-50k edital regional médio + 4 CNPJs = exposição quadruplicada"
+      notes: "Não usar número fictício alto. Faixa real cita briefing. Cliente vai mentalmente lembrar do último caso dele."
+
+    - slide: 2
+      function: diagnosis
+      structure_id: D11
+      structure_name: "Cost leak map"
+      audience_question: "Onde vaza meu tempo e dinheiro hoje?"
+      action_title: "7 furos diários que o manual não vê — mas o seu calendário sente"
+      key_message: "7 cost leaks F1-F7 quantificados, cobrindo busca/dossiê/CRF/balanço/concorrente/conluio/visibilidade"
+      proof_or_asset: "Stack de 7 linhas com custo/freq por leak"
+      notes: "Não inventar. Cada linha = item §1.3 briefing. Pausar slide 30s pra cliente reconhecer."
+
+    - slide: 3
+      function: reframe
+      structure_id: R09
+      structure_name: "Means vs end"
+      audience_question: "Não é só me organizar melhor?"
+      action_title: "O problema não é organizar 4 empresas. É operar como se fosse uma."
+      key_message: "Reframe: integração de grupo > organização individual. Lei 14.133 art. 14 IV obriga ver as 4 juntas."
+      proof_or_asset: "Old: 4 silos / New: 1 visão de grupo"
+      notes: "Aqui muda mental model. Se não comprar essa, slides 5-7 não landam."
+
+    - slide: 4
+      function: stakes
+      structure_id: P03
+      structure_name: "Before/after metric"
+      audience_question: "Quanto tempo isso me devolve?"
+      action_title: "Hoje 4h pra montar dossiê. Com o sistema: 28 minutos."
+      key_message: "85% redução em tempo de dossiê por edital. Com 5-30 editais/mês = 17-127h economizadas/mês."
+      proof_or_asset: "Two columns: Hoje (4 atividades manuais) | Sistema (4 atividades automatizadas)"
+      notes: "28min vem da journey simulada §6.2. Marcar como projeção, validar com cliente."
+
+    - slide: 5
+      function: mechanism
+      structure_id: M04
+      structure_name: "Layer cake — Holding Virtual"
+      audience_question: "Como esse sistema é montado?"
+      action_title: "A Holding Virtual: 1 sistema que enxerga suas 4 empresas como grupo"
+      key_message: "5 camadas: usuários → interface → governança → 4 CNPJs reais → mundo externo (PNCP/DF/AL)"
+      proof_or_asset: "Layered diagram §2.1 briefing (4 boxes empresas + 1 box Holding acima)"
+      notes: "Motif visual recorrente do deck. Aparece em miniatura no canto dos slides 6-7."
+
+    - slide: 6
+      function: mechanism
+      structure_id: M16
+      structure_name: "Input-process-output pipeline integration"
+      audience_question: "O que esse sistema faz na prática?"
+      action_title: "5 pipelines que conversam entre si — não 5 produtos separados"
+      key_message: "Cada pipeline produz dado que outro consome. Caixa→Habilitação, Compliance→Radar, Radar→Recurso."
+      proof_or_asset: "Pipeline diagram 5 boxes com setas mostrando data flow"
+      notes: "P1-P5 nomeados em linguagem do cliente: Caixa | Compliance | Radar | Habilitação | Recurso."
+
+    - slide: 7
+      function: mechanism
+      structure_id: M02
+      structure_name: "4-block operating model — Anti-conluio"
+      audience_question: "Mas e a regra das empresas coligadas?"
+      action_title: "Anti-conluio Lei 14.133 art. 14 IV — o sistema bloqueia antes de você errar"
+      key_message: "4 blocks: Vê (4 empresas mesmo schema) → Detecta (proposta dupla) → Bloqueia (2ª não entra) → Alerta"
+      proof_or_asset: "4-block diagram horizontal"
+      notes: "Esse é o moat oculto. Slide-âncora do deck. Concorrente nacional não tem isso por construção."
+
+    - slide: 8
+      function: proof
+      structure_id: P11
+      structure_name: "Case teardown — CRF FGTS"
+      audience_question: "Tem caso concreto?"
+      action_title: "Caso CRF FGTS: você não esquece mais"
+      key_message: "Problema/ação/resultado. Cron diário + alerta 30d + renovação 1-click."
+      proof_or_asset: "Timeline 3 linhas: 22/Jun expira → 23/Mai alerta → 23/Jun CRF novo emitido"
+      notes: "Datas exemplo. Substituir por CRF real do amigo após call (se ele compartilhar)."
+
+    - slide: 9
+      function: proof
+      structure_id: P09
+      structure_name: "Demo result — ACT matcher"
+      audience_question: "Como o sistema sabe qual ACT serve?"
+      action_title: "Caso ACT matcher: score 0-10 evita atestado errado"
+      key_message: "Edital exige mobiliário hospitalar 100k+. Matcher analisa 3 ACTs e devolve score com justificativa."
+      proof_or_asset: "Demo frame: Exigência | Opção 1 score 8.5 ✅ | Opção 2 score 7.8 ✅ | Opção 3 score 4.0 ❌"
+      notes: "Exemplo construído do briefing §6.2. Substituir com ACT real após call."
+
+    - slide: 10
+      function: plan
+      structure_id: E14
+      structure_name: "Pilot-to-scale staircase"
+      audience_question: "Quando eu vejo valor real?"
+      action_title: "22 semanas, 6 vitórias mensuráveis"
+      key_message: "M0→M6 com marco visível cada sprint. M1 (semana 4) = pai+3 pessoas usando Caixa diário."
+      proof_or_asset: "Staircase 7 degraus M0-M6 com data + entregável + 'condição cliente'"
+      notes: "Mostra que não é big-bang. Cada sprint entrega valor. Kill gates implícitos."
+
+    - slide: 11
+      function: objection_handling
+      structure_id: O13
+      structure_name: "Objection stack 3"
+      audience_question: "(perguntas mentais)"
+      action_title: "3 perguntas que você tá fazendo na sua cabeça agora"
+      key_message: "Effecti vs vertical | tempo de aprender | quanto custa — counters preparados"
+      proof_or_asset: "3 cards: objection / counter / 1-line proof"
+      notes: "Slide #3 (preço) depende decisão B3. Default: case-âncora grátis Fase 1."
+
+    - slide: 12
+      function: cta
+      structure_id: O08
+      structure_name: "CTA hero — Sprint 0 + Bloco C"
+      audience_question: "O que você precisa de mim agora?"
+      action_title: "Sprint 0 começa segunda. Preciso de 45min e 8 respostas suas."
+      key_message: "8 perguntas Bloco C compactadas + data + próximo passo"
+      proof_or_asset: "Hero number '45min + 8 respostas' + lista numerada das 8 perguntas"
+      notes: "Última imagem que fica. Encerra com data concreta. Não fica solto."
+
+  gates_passed:
+    slide_function_gate: pass
+    action_title_gate: pass  # toda title é claim, não label
+    layout_variety_gate: pass  # max 3 mechanism in row (5,6,7) com estruturas DIFERENTES
+    template_selection_gate: pass  # cada slide declara structure_id + pick reason

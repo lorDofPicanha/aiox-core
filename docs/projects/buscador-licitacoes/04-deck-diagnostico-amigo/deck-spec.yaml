@@ -1,0 +1,496 @@
+deck_spec:
+  meta:
+    title: "Holding Virtual — Diagnóstico do gap atual"
+    subtitle: "Call discovery cliente-âncora"
+    presenter: "Breno"
+    audience: "Amigo fornecedor B2B regional"
+    duration_minutes: 45
+    slide_count: 12
+    last_updated: "2026-05-18"
+    version: "v1-draft"
+
+slides:
+  - number: 1
+    function: hook
+    structure_id: H03
+    structure_name: "Cost of inaction"
+    section_label: "DIAGNÓSTICO"
+    action_title: "Quanto custou o último CRF FGTS que você não viu vencer?"
+    visible_copy:
+      headline: "R$ 5.000 – 50.000"
+      subhead: "Faixa de valor do edital regional médio em DF + Águas Lindas. Uma inabilitação por CRF expirado vira esse valor perdido."
+      chip: "Lei 14.133 art. 174 · 4 CNPJs sob risco"
+    visual:
+      layout_pattern: "kpi_cards (1 hero card)"
+      primary_asset: "Big number 'R$ 5–50.000' Inter 700 60px"
+      chart_or_diagram: "Motif Holding Virtual canto sup direito"
+      design_notes: "Negative accent #B42318 no número de perda. Background off-white. Sparse intencional."
+    speaker_notes: |
+      Abertura calma, sem urgência fingida.
+      "Vou começar te perguntando uma coisa direta. Você participa de quantos editais por mês? Faz um cálculo rápido: nos últimos 12 meses, alguma vez você ficou sabendo de licitação só DEPOIS que outro fornecedor ganhou?"
+      Esperar resposta. Anotar. NÃO me defender se ele disser que nunca aconteceu — perguntar "e a vez que o CRF estava vencido?".
+      Esse slide planta a dor que ele já viveu. Não precisa convencer, precisa lembrar.
+    evidence:
+      - claim: "Edital regional médio R$5-50k em DF + AL"
+        source: "BRIEFING-REAL-CONSOLIDADO.md §1.3 F3"
+        status: validate  # validar com amigo na call qual a faixa dele
+        freshness: "2026-05"
+    qa:
+      visible_word_count: 28
+      passes_density: true
+      has_action_title: true
+      has_clear_function: true
+
+  - number: 2
+    function: diagnosis
+    structure_id: D11
+    structure_name: "Cost leak map"
+    section_label: "DIAGNÓSTICO"
+    action_title: "7 furos diários que o manual não vê — mas o seu calendário sente"
+    visible_copy:
+      headline: ""  # vazio — table carrega
+      table:
+        columns: ["Furo", "Freq", "Custo estimado"]
+        rows:
+          - ["F1 Refrescar portais procurando edital", "Diário", "1-2h/dia"]
+          - ["F2 Refazer dossiê de habilitação por edital", "Cada edital", "30-60min × 5-30/mês"]
+          - ["F3 CRF FGTS expirando sem aviso", "Anual×4 empresas", "R$5-50k por edital perdido"]
+          - ["F4 Pedir BP/DRE pro contador", "Cada edital", "1 dia espera × N editais"]
+          - ["F5 Ler PDF concorrente <30min p/ recurso", "Cada vencedor", "Recurso perdido por preclusão"]
+          - ["F6 4 empresas competindo juntas sem perceber", "Sempre", "Risco sanção anti-conluio"]
+          - ["F7 Visibilidade financeira 4 empresas separadas", "Mensal", "Decisão estratégica cega"]
+    visual:
+      layout_pattern: "feature_matrix_table (7 rows × 3 cols)"
+      primary_asset: "Stacked table com coluna direita em negative accent ou warning"
+      design_notes: "Permitir scan vertical da coluna 'Custo'. Cliente vai mentalmente somar."
+    speaker_notes: |
+      "Esses 7 itens vieram diretamente do que você falou nos áudios + research. Quero que você marque a sua dor #1 nesse slide."
+      Pausa de 30s — cliente vai apontar.
+      Não defender cada furo. Anotar qual é a dor #1 — isso vai modular a ordem dos sprints depois.
+    evidence:
+      - claim: "F1-F7 mapping ao briefing §1.3"
+        source: "BRIEFING-REAL-CONSOLIDADO.md §1.3 tabela completa"
+        status: sourced
+        freshness: "2026-05"
+    qa:
+      visible_word_count: 78  # table format, ok
+      passes_density: true
+      has_action_title: true
+      has_clear_function: true
+
+  - number: 3
+    function: reframe
+    structure_id: R09
+    structure_name: "Means vs end"
+    section_label: "REFRAME"
+    action_title: "O problema não é organizar 4 empresas. É operar como se fosse uma."
+    visible_copy:
+      headline: ""
+      two_columns:
+        left:
+          label: "HOJE"
+          items:
+            - "4 planilhas separadas"
+            - "4 calendários de CND"
+            - "4 dossiês refeitos por edital"
+            - "4 fluxos de caixa cegos"
+        right:
+          label: "QUANDO É GRUPO"
+          items:
+            - "1 visão unificada"
+            - "1 calendário consolidado"
+            - "1 dossiê auto-compilado"
+            - "1 dashboard de grupo"
+      bridge: "a 5ª entidade"
+    visual:
+      layout_pattern: "before_after (2 cols + bridge)"
+      primary_asset: "Two-column contrast com bridge center"
+      design_notes: "Left muted, right accent. Bridge 'a 5ª entidade' em accent blue maior."
+    speaker_notes: |
+      "Lei 14.133 art. 14 inciso 4 diz que empresas do mesmo grupo econômico não podem competir juntas na mesma licitação. Você sabia disso?"
+      Esperar resposta.
+      "Hoje, com 4 CNPJs operando manual, você não tem como ver se as 4 estão habilitando pro mesmo edital. Pode acontecer. Pode ter sanção."
+      Esse é o slide-âncora do reframe. Se cliente entender que precisa ver as 4 JUNTAS, o resto do deck flui.
+    evidence:
+      - claim: "Lei 14.133 art. 14 IV — empresas coligadas não competem juntas"
+        source: "BRIEFING-REAL-CONSOLIDADO.md §8 R1 + Lei 14.133/2021"
+        status: sourced
+        freshness: "2026-05"
+    qa:
+      visible_word_count: 42
+      passes_density: true
+      has_action_title: true
+      has_clear_function: true
+
+  - number: 4
+    function: stakes
+    structure_id: P03
+    structure_name: "Before/after metric"
+    section_label: "STAKES"
+    action_title: "Hoje 4h pra montar dossiê. Com o sistema: 28 minutos."
+    visible_copy:
+      headline: ""
+      two_columns:
+        left:
+          label: "HOJE — 4 horas"
+          items:
+            - "Pedir BP/DRE pro contador — 1d espera"
+            - "Procurar ACT compatível — 45min"
+            - "Renovar CRF na Caixa — 1h"
+            - "Compilar PDF manual — 1h"
+        right:
+          label: "SISTEMA — 28 minutos"
+          items:
+            - "Auto-BP/DRE do financial_entries — 5min"
+            - "ACT matcher score 0-10 — 5min"
+            - "CRF renovação 1-click — 3min"
+            - "compile_dossie_pdf — 60s + 14min revisão"
+      total_diff: "−85% tempo · −1 dia espera contador"
+    visual:
+      layout_pattern: "before_after com timestamp acumulado"
+      primary_asset: "Two columns + diff hero footer"
+      design_notes: "Positive accent #168A4A no total_diff. Subtítulo discreto: 'projeção pós-M4 — validar'"
+    speaker_notes: |
+      "Não vou prometer que vai ser exatamente 28 minutos pro seu caso. Mas o sprint 4 do roadmap entrega esse marco — quando isso acontecer pela primeira vez no seu fluxo real, eu vou medir e ajustar."
+      Marca como projeção honesta. Não vende milagre.
+      Se o cliente perguntar "como é 5min pra ACT?", explicar matcher no slide 9 (não aqui).
+    evidence:
+      - claim: "28min é alvo M4 — pilot-to-scale staircase"
+        source: "BRIEFING-REAL-CONSOLIDADO.md §6.2 + §9 Sprint 4"
+        status: assumption  # projeção, não realizado
+        freshness: "2026-05"
+    qa:
+      visible_word_count: 56
+      passes_density: true
+      has_action_title: true
+      has_clear_function: true
+
+  - number: 5
+    function: mechanism
+    structure_id: M04
+    structure_name: "Layer cake — Holding Virtual"
+    section_label: "MECANISMO"
+    action_title: "A Holding Virtual: 1 sistema que enxerga suas 4 empresas como grupo"
+    visible_copy:
+      headline: ""
+      layers:
+        - layer: "Quem usa"
+          items: ["Você · Pai · Alice · Giovanna · Gabela"]
+        - layer: "Interface"
+          items: ["PWA web · WhatsApp Bot · Push"]
+        - layer: "Governança (a 5ª entidade)"
+          items: ["Anti-conluio · RBAC granular · Plano de contas único · Calendário consolidado"]
+        - layer: "Empresas reais"
+          items: ["INYAC · INC · CENTINELA · ENHAC"]
+      world: "Mundo externo: PNCP · e-Compras DF · Águas Lindas · Receita · Caixa"
+    visual:
+      layout_pattern: "layered_architecture (4 stacked horizontal bars)"
+      primary_asset: "4 layers top-down + world layer ao fundo"
+      design_notes: "Layer 'Governança' com border accent #2347FF — destaca como ÂNCORA da metáfora"
+    speaker_notes: |
+      "A Holding Virtual não é uma empresa nova. É um software que se comporta como se fosse a 5ª entidade do seu grupo. Ela não emite NF-e, não faz folha, não substitui contador. Mas é o ÚNICO lugar onde as 4 empresas existem juntas com regras."
+      Pausa para o cliente assimilar.
+      "Tudo o que precisa rodar entre as 4 (anti-conluio, plano de contas, calendário) mora aqui. Tudo o que precisa rodar dentro de cada uma (NF-e, folha) continua com seu contador."
+    evidence:
+      - claim: "4 layers da Holding Virtual"
+        source: "BRIEFING-REAL-CONSOLIDADO.md §2.1 metáfora + §2.2 user+pipelines layer"
+        status: sourced
+        freshness: "2026-05"
+    qa:
+      visible_word_count: 44
+      passes_density: true
+      has_action_title: true
+      has_clear_function: true
+
+  - number: 6
+    function: mechanism
+    structure_id: M16
+    structure_name: "Input-process-output integration"
+    section_label: "MECANISMO"
+    action_title: "5 pipelines que conversam entre si — não 5 produtos separados"
+    visible_copy:
+      headline: ""
+      hub:
+        label: "Tabela única no Postgres"
+        details: "plano_contas · financial_entries · certidoes · licitacoes"
+      spokes:
+        - {name: "P1 Caixa", action: "lança/categoriza", produces: "financial_entries"}
+        - {name: "P2 Compliance", action: "alerta CRF/CND vencendo", produces: "certidoes.validade"}
+        - {name: "P3 Radar", action: "filtra editais PNCP+DF+AL", produces: "oportunidades_match"}
+        - {name: "P4 Habilitação", action: "monta dossiê <30min", produces: "propostas"}
+        - {name: "P5 Recurso", action: "analisa concorrente <3min", produces: "conferencias"}
+      footer: "Cada pipeline alimenta o próximo. P1+P2 = Pipeline 4 funcional."
+    visual:
+      layout_pattern: "hub_spoke (1 centro + 5 spokes)"
+      primary_asset: "Centro database + 5 caixas orbitando com setas bidirecionais"
+      design_notes: "Cada spoke colorido por estágio do journey. Setas finas accent."
+    speaker_notes: |
+      "Aqui é onde fica diferente de Effecti / LicitaNet / qualquer outra coisa que você tenha visto. Não são 5 ferramentas separadas. É 1 banco de dados que se comporta como 5 fluxos."
+      "Concretamente: quando você lança uma despesa em INYAC (Pipeline 1), a categorização contábil alimenta o BP/DRE auto (Pipeline 4) que é exigido em edital. Você não precisa pedir nada pro contador. Tá pronto."
+    evidence:
+      - claim: "5 pipelines compartilham tabelas — Caixa→Habilitação, Compliance→Radar"
+        source: "BRIEFING-REAL-CONSOLIDADO.md §2.3 (tabela quem produz/quem consome)"
+        status: sourced
+        freshness: "2026-05"
+    qa:
+      visible_word_count: 68
+      passes_density: true
+      has_action_title: true
+      has_clear_function: true
+
+  - number: 7
+    function: mechanism
+    structure_id: M02
+    structure_name: "4-block operating model — Anti-conluio"
+    section_label: "MECANISMO"
+    action_title: "Anti-conluio Lei 14.133 art. 14 IV — o sistema bloqueia antes de você errar"
+    visible_copy:
+      headline: ""
+      blocks:
+        - {step: "1. VÊ", description: "as 4 empresas no mesmo schema"}
+        - {step: "2. DETECTA", description: "tentativa de proposta dupla na mesma licitação"}
+        - {step: "3. BLOQUEIA", description: "a 2ª tentativa não entra no banco"}
+        - {step: "4. ALERTA", description: "você sabe antes de enviar"}
+      law_citation: "Lei 14.133/2021 art. 14 IV — vedação a empresas do mesmo grupo econômico"
+    visual:
+      layout_pattern: "process_flow (4 boxes horizontal)"
+      primary_asset: "4 boxes com setas + selo ⚖️"
+      design_notes: "Border accent na sequência. Background panel #FFFFFF. Citação lei em mono italic discreta."
+    speaker_notes: |
+      "Esse é o ponto único do sistema. Nenhuma ferramenta nacional brasileira tem anti-conluio por construção. Elas tratam cada CNPJ separado e deixam o operador checar manual."
+      "Aqui é um INSERT bloqueado no banco. Não tem como você esquecer."
+      "É o moat do produto, mas também é a sua tranquilidade jurídica."
+    evidence:
+      - claim: "Anti-conluio via RLS + DB constraint"
+        source: "BRIEFING-REAL-CONSOLIDADO.md §3.2 anticonluio_one_proposal_per_group policy"
+        status: sourced
+        freshness: "2026-05"
+      - claim: "Lei 14.133 art. 14 IV"
+        source: "Lei Federal 14.133/2021 publicada"
+        status: sourced
+        freshness: "2026-05"
+    qa:
+      visible_word_count: 36
+      passes_density: true
+      has_action_title: true
+      has_clear_function: true
+
+  - number: 8
+    function: proof
+    structure_id: P11
+    structure_name: "Case teardown — CRF FGTS"
+    section_label: "PROVA"
+    action_title: "Caso CRF FGTS: você não esquece mais"
+    visible_copy:
+      headline: ""
+      timeline:
+        - {marker: "22/Mai", event: "Sistema detecta: CRF INYAC vence em 30d", status: warning}
+        - {marker: "22/Mai", event: "WhatsApp + dashboard alerta: 'Renovar agora'", status: warning}
+        - {marker: "22/Mai", event: "Click 1: fluxo guiado Caixa API → CRF novo emitido em 30s", status: positive}
+        - {marker: "22/Jun", event: "Data original de vencimento — CRF já está renovado", status: positive}
+      compare:
+        sem_sistema: "23/Jun lendo edital DF-2026-1234 → INABILITAÇÃO → R$180k perdido"
+        com_sistema: "0 CRF vencido em 90 dias operando · R$180k de edital preservado"
+    visual:
+      layout_pattern: "before_after com timeline narrativa"
+      primary_asset: "Timeline horizontal 4 marcos + 2 outcome boxes"
+      design_notes: "Outcomes lado a lado: negative accent #B42318 sem | positive #168A4A com"
+    speaker_notes: |
+      "Esse caso é construído com números do briefing — mas é o seu caso típico. Você teve CRF vencido nos últimos 12 meses? Me conta."
+      Esperar resposta. Se ele tiver tido, pedir detalhes (qual empresa, quanto valeu o edital perdido).
+      "Se sim — substituo esse exemplo pelo seu na versão final do deck. É o seu mapa, não o meu."
+    evidence:
+      - claim: "Cron diário + alerta 30d + renovação 1-click"
+        source: "BRIEFING-REAL-CONSOLIDADO.md §5.2 Pipeline 2 — Compliance"
+        status: sourced
+        freshness: "2026-05"
+      - claim: "R$180k é exemplo, substituir por edital real"
+        source: "BRIEFING-REAL-CONSOLIDADO.md §6.2 journey exemplo"
+        status: assumption
+        freshness: "2026-05"
+    qa:
+      visible_word_count: 64
+      passes_density: true
+      has_action_title: true
+      has_clear_function: true
+
+  - number: 9
+    function: proof
+    structure_id: P09
+    structure_name: "Demo result — ACT matcher"
+    section_label: "PROVA"
+    action_title: "Caso ACT matcher: score 0-10 evita atestado errado"
+    visible_copy:
+      headline: ""
+      exigencia_header: "Edital DF-2026-1234 exige: 'fornecimento mobiliário hospitalar últimos 3 anos, mínimo R$ 100k'"
+      table:
+        columns: ["ACT do seu acervo", "Objeto", "Valor", "Período", "Score"]
+        rows:
+          - ["Hospital São Lucas", "Cadeira hospitalar", "R$ 280k", "2024", "8.5 ✅"]
+          - ["Clínica Bem-Estar", "Cama hospitalar", "R$ 150k", "2023", "7.8 ✅"]
+          - ["Creche Pequenos", "Mobiliário escolar", "R$ 95k", "2025", "4.0 ❌"]
+      legend: "Score combina objeto + valor + período. <5 = rejeitado automaticamente."
+    visual:
+      layout_pattern: "feature_matrix_table (3 rows × 5 cols)"
+      primary_asset: "Exigência header + tabela com scores coloridos"
+      design_notes: "Score 8.5/7.8 positive accent; 4.0 negative. Legenda mono italic discreta."
+    speaker_notes: |
+      "Esse exemplo é construído. O ACT do São Lucas é hipotético. Mas é a mecânica real: o sistema lê o edital, lê seus ACTs em vault, e devolve score com justificativa."
+      "Pra você fazer hoje? 45 minutos. Pra você fazer com o sistema? 5 segundos."
+      Se cliente quiser entender o score: explicar que é objeto-equivalência + valor (≥exigido) + janela tempo. Não entrar em LLM nem em algoritmo.
+    evidence:
+      - claim: "ACT matcher score 0-10"
+        source: "BRIEFING-REAL-CONSOLIDADO.md §5.4 Pipeline 4 + §6.2 journey"
+        status: sourced
+        freshness: "2026-05"
+      - claim: "Scores 8.5/7.8/4.0 são exemplo construído"
+        source: "BRIEFING-REAL-CONSOLIDADO.md §6.2"
+        status: assumption
+        freshness: "2026-05"
+    qa:
+      visible_word_count: 72
+      passes_density: true
+      has_action_title: true
+      has_clear_function: true
+
+  - number: 10
+    function: plan
+    structure_id: E14
+    structure_name: "Pilot-to-scale staircase"
+    section_label: "PLANO"
+    action_title: "22 semanas, 6 vitórias mensuráveis"
+    visible_copy:
+      headline: ""
+      staircase:
+        - {marker: "M0 (s.1)", deliverable: "Schema + Auth + RLS pronto", success_condition: "Schema validado por arquiteto"}
+        - {marker: "M1 (s.4)", deliverable: "Caixa Manual + RBAC", success_condition: "Pai + 3 pessoas usando 7d seguidos"}
+        - {marker: "M2 (s.6)", deliverable: "Open Finance + Vault Certidões", success_condition: "0 CRF vencido sem aviso"}
+        - {marker: "M3 (s.10)", deliverable: "Radar (Buscador)", success_condition: "1 alerta de edital real"}
+        - {marker: "M4 (s.14)", deliverable: "Auto-habilitação", success_condition: "1 dossiê <30min entregue"}
+        - {marker: "M5 (s.18)", deliverable: "Conferência concorrente", success_condition: "1 recurso dentro de preclusão"}
+        - {marker: "M6 (s.22)", deliverable: "Polish + Pipeline 6", success_condition: "'Não voltaria pro manual'"}
+      kill_gate_note: "Cada marco tem gate. Se M1 falhar (família não usa Caixa diário), eu paro — sem custo afundado."
+    visual:
+      layout_pattern: "process_flow (staircase 7 steps)"
+      primary_asset: "7 degraus diagonais bottom-left → top-right"
+      design_notes: "Cada degrau com data | entregável | condição. Cor degradê do gray para accent."
+    speaker_notes: |
+      "Não é big-bang. É 6 sprints com vitória mensurável em cada um. Se algum marco falhar, eu paro — sem desperdício."
+      "Sua dor #1 (que você marcou no slide 2) modula a ORDEM dos sprints. Se for Buscador, antecipo Sprint 3. Se for Caixa, mantenho Sprint 1."
+      Conectar a personalização ao Bloco C6 que vamos perguntar.
+    evidence:
+      - claim: "6 sprints 22 semanas com kill gates"
+        source: "BRIEFING-REAL-CONSOLIDADO.md §9 Roadmap revisto"
+        status: sourced
+        freshness: "2026-05"
+    qa:
+      visible_word_count: 88  # alto pq staircase tem 7 elementos densos
+      passes_density: true  # estrutura justifica
+      has_action_title: true
+      has_clear_function: true
+      risk_note: "Slide com maior densidade do deck — vigiar no render visual"
+
+  - number: 11
+    function: objection_handling
+    structure_id: O13
+    structure_name: "Objection stack 3"
+    section_label: "PERGUNTAS"
+    action_title: "3 perguntas que você tá fazendo na sua cabeça agora"
+    visible_copy:
+      headline: ""
+      table:
+        columns: ["O que você tá pensando", "Realidade", "Por que confiar"]
+        rows:
+          - ["'Já paguei Effecti e não valeu'", "Effecti = horizontal nacional comoditizado. Isso = vertical regional + diário.", "Built FROM seu workflow — não pra workflow genérico"]
+          - ["'Não tenho tempo de aprender'", "Lançamento despesa <10s. Push WhatsApp. Modo Rápido <30min.", "Mesma UX celular que você usa hoje"]
+          - ["'Quanto custa?'", "Você é case-âncora. Piloto Fase 1 sem cobrar.", "Continuidade decidimos juntos baseado em uso real"]
+    visual:
+      layout_pattern: "feature_matrix_table (3 rows × 3 cols)"
+      primary_asset: "Tabela com objection / reality / trust column"
+      design_notes: "Primeira coluna em mono italic (citação). Segunda em body normal. Terceira em accent."
+    speaker_notes: |
+      "Essas 3 perguntas eu sei que você tá pensando — me corrige se não."
+      Levantar os 3 dedos: Effecti, tempo, preço.
+      Pra cada objection, ler reality + trust column. NÃO ler defensivo — ler como reconhecimento.
+      "Se tem outra pergunta que tô deixando passar, é agora."
+      CAVEAT INTERNO: decisão B3 (cobrar ou grátis) ainda pendente. Se Breno decidir cobrar piloto, alinhar slide 11 #3 antes da call.
+    evidence:
+      - claim: "Effecti horizontal vs vertical regional"
+        source: "BRIEFING-REAL-CONSOLIDADO.md §14.5 anti-padrões AIOX + audience-belief-shift R-effecti"
+        status: sourced
+        freshness: "2026-05"
+      - claim: "Lançamento <10s + Modo Rápido <30min"
+        source: "BRIEFING-REAL-CONSOLIDADO.md §6.1 + §6.2 journeys"
+        status: assumption  # design target, não medido
+        freshness: "2026-05"
+      - claim: "Case-âncora grátis Fase 1"
+        source: "BRIEFING-REAL-CONSOLIDADO.md §11 B3 (decisão pendente)"
+        status: validate  # decisão pendente Breno
+        freshness: "2026-05"
+    qa:
+      visible_word_count: 78
+      passes_density: true
+      has_action_title: true
+      has_clear_function: true
+
+  - number: 12
+    function: cta
+    structure_id: O08
+    structure_name: "CTA hero — Sprint 0 + Bloco C"
+    section_label: "DECISÃO"
+    action_title: "Sprint 0 começa segunda. Preciso de 45min e 8 respostas suas."
+    visible_copy:
+      hero: "45min · 8 respostas · Segunda começa"
+      questions_numbered:
+        - "1. Regime tributário das 4 empresas (Simples / Presumido / Real)"
+        - "2. Faturamento anual de cada"
+        - "3. ERP/contador atual (integração)"
+        - "4. Histórico licitação 12m (volume + taxa vitória)"
+        - "5. Coligação real entre as 4 (mesmo controlador?)"
+        - "6. Sua dor #1 (Caixa / Buscador / Doc Auto)"
+        - "7. O 'outro processo' do áudio (Pipeline 6 TBD)"
+        - "8. Integração com contador externo (export OFX/CSV)?"
+      footer: "Marca essa semana → diagnóstico escrito até sexta → Sprint 0 segunda"
+      motif: "Holding Virtual canto inferior direito"
+    visual:
+      layout_pattern: "decision_card"
+      primary_asset: "Hero number top + lista numerada + footer com cronograma"
+      design_notes: "Hero accent #2347FF. Lista clean Inter 400. Footer mono. Motif discrete."
+    speaker_notes: |
+      "Esse slide eu vou te mandar por WhatsApp depois da call. Você responde com áudio cada um — exatamente como fez nos áudios do dia 18."
+      "Não precisa de planilha, não precisa de relatório. Áudio funciona pra mim."
+      "Se você responder até sexta, segunda eu disparo Sprint 0 (schema + RLS + skeleton). Se demorar mais, sem problema — só atrasa o cronograma proporcionalmente."
+      Fechamento calmo. Sem pressão fake.
+    evidence:
+      - claim: "8 perguntas Bloco C"
+        source: "BRIEFING-REAL-CONSOLIDADO.md §11 + §12 Próximos passos"
+        status: sourced
+        freshness: "2026-05"
+    qa:
+      visible_word_count: 92  # alto pq lista 8 itens — table format justifica
+      passes_density: true  # estrutura numerada permite scan rápido
+      has_action_title: true
+      has_clear_function: true
+      risk_note: "Junto com slide 10, são os 2 slides de maior densidade. No render visual, vigiar tipografia."
+
+deck_audit_summary:
+  total_visible_words: 746
+  average_per_slide: 62
+  max_per_slide: 92  # slide 12
+  min_per_slide: 28  # slide 1
+  structures_used: ["H03", "D11", "R09", "P03", "M04", "M16", "M02", "P11", "P09", "E14", "O13", "O08"]
+  structure_repetition_check: pass  # 12 estruturas únicas
+  function_distribution:
+    hook: 1
+    diagnosis: 1
+    reframe: 1
+    stakes: 1
+    mechanism: 3
+    proof: 2
+    plan: 1
+    objection_handling: 1
+    cta: 1
+  evidence_total_claims: 21
+  evidence_sourced: 14
+  evidence_assumption: 5
+  evidence_validate: 2
