@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plano de Execução — Buscador Licitações DF</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Roboto+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bb-limon: #D1FF00;
+  --bb-dark: #0A0A0A;
+  --bb-surface: #1A1A1A;
+  --bb-surface-2: #242424;
+  --bb-warm-white: #F5F2EA;
+  --bb-mid: #4A4A4A;
+  --bb-mid-2: #7A7A7A;
+  --bb-red: #FF3B30;
+  --bb-yellow: #FFD60A;
+  --bb-green: #34D399;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bb-dark);
+  color: var(--bb-warm-white);
+  font-family: 'Geist', sans-serif;
+  font-weight: 400;
+  line-height: 1.65;
+  font-size: 15px;
+  letter-spacing: 0.005em;
+}
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 60px 40px;
+}
+
+/* COVER */
+.cover {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: end;
+  border: 2px solid var(--bb-warm-white);
+  padding: 50px 50px 40px;
+  margin-bottom: 60px;
+  position: relative;
+  min-height: 360px;
+}
+.cover::before {
+  content: "▸▸";
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 32px;
+  color: var(--bb-limon);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+}
+.cover-tag {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bb-limon);
+  margin-bottom: 20px;
+}
+.cover h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: clamp(36px, 5.5vw, 72px);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.cover h1 .accent { color: var(--bb-limon); }
+.cover-subtitle {
+  font-size: 17px;
+  color: var(--bb-mid-2);
+  max-width: 90%;
+}
+.cover-stats {
+  display: grid;
+  gap: 16px;
+  border-left: 1px solid var(--bb-mid);
+  padding-left: 30px;
+  text-align: right;
+}
+.stat {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 11px;
+}
+.stat-label {
+  color: var(--bb-mid-2);
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  margin-bottom: 4px;
+}
+.stat-value {
+  color: var(--bb-warm-white);
+  font-weight: 500;
+  font-size: 14px;
+}
+.stat-value.accent { color: var(--bb-limon); }
+
+/* SECTIONS */
+section {
+  margin-bottom: 70px;
+  scroll-margin-top: 40px;
+}
+
+.section-marker {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--bb-limon);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-marker::before {
+  content: "";
+  display: inline-block;
+  width: 30px;
+  height: 1px;
+  background: var(--bb-limon);
+}
+
+h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: clamp(28px, 3.5vw, 42px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin-bottom: 36px;
+  color: var(--bb-warm-white);
+}
+h2 .accent { color: var(--bb-limon); }
+
+h3 {
+  font-family: 'Geist', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+  margin-top: 36px;
+  margin-bottom: 14px;
+  color: var(--bb-warm-white);
+}
+
+h4 {
+  font-family: 'Geist', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  margin-top: 24px;
+  margin-bottom: 10px;
+  color: var(--bb-warm-white);
+}
+
+p {
+  margin-bottom: 16px;
+  color: var(--bb-warm-white);
+  line-height: 1.65;
+}
+
+strong, b { font-weight: 700; color: var(--bb-warm-white); }
+.limon { color: var(--bb-limon); font-weight: 600; }
+em, i { font-style: italic; color: var(--bb-mid-2); }
+
+ul, ol {
+  margin: 16px 0 22px 0;
+  padding-left: 22px;
+}
+ul li, ol li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+ul li::marker { color: var(--bb-limon); }
+ol li::marker { color: var(--bb-limon); font-weight: 700; }
+
+/* PHILOSOPHY CALLOUT */
+.philosophy {
+  background: var(--bb-limon);
+  color: var(--bb-dark);
+  padding: 36px 44px;
+  margin: 0 -10px 50px -10px;
+}
+.philosophy h2, .philosophy h3 { color: var(--bb-dark); }
+.philosophy p { color: var(--bb-dark); font-weight: 500; font-size: 17px; }
+.philosophy strong { color: var(--bb-dark); }
+
+/* CALLOUT */
+.callout {
+  background: var(--bb-surface);
+  border-left: 4px solid var(--bb-limon);
+  padding: 22px 28px;
+  margin: 26px 0;
+}
+.callout-title {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bb-limon);
+  margin-bottom: 10px;
+}
+
+/* TABLES */
+.table-wrap {
+  overflow-x: auto;
+  margin: 26px 0;
+  border: 1px solid var(--bb-mid);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+th {
+  background: var(--bb-surface-2);
+  color: var(--bb-limon);
+  text-align: left;
+  padding: 14px 16px;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--bb-mid);
+  vertical-align: top;
+}
+td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--bb-mid);
+  vertical-align: top;
+  color: var(--bb-warm-white);
+  line-height: 1.5;
+}
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) td { background: var(--bb-surface); }
+td strong { color: var(--bb-limon); }
+
+/* CODE */
+pre, code {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 13px;
+}
+pre {
+  background: var(--bb-surface);
+  border-left: 3px solid var(--bb-limon);
+  padding: 18px 22px;
+  margin: 22px 0;
+  overflow-x: auto;
+  line-height: 1.5;
+}
+code {
+  background: var(--bb-surface-2);
+  padding: 2px 6px;
+  color: var(--bb-limon);
+  font-size: 13px;
+}
+pre code { background: transparent; padding: 0; color: var(--bb-warm-white); }
+
+/* SPRINT GRID */
+.sprint-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 30px 0;
+}
+.sprint-card {
+  background: var(--bb-surface);
+  border: 1px solid var(--bb-mid);
+  padding: 24px 26px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.sprint-card.s0 {
+  border-color: var(--bb-limon);
+  background: var(--bb-surface-2);
+}
+.sprint-number {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 44px;
+  color: var(--bb-limon);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-bottom: 12px;
+}
+.sprint-title {
+  font-family: 'Geist', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--bb-warm-white);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.sprint-duration {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 11px;
+  color: var(--bb-mid-2);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.sprint-desc {
+  font-size: 14px;
+  color: var(--bb-warm-white);
+  line-height: 1.55;
+  flex-grow: 1;
+}
+
+/* BLOCK CARDS (Sprint 0 internal) */
+.block-card {
+  background: var(--bb-surface);
+  border: 1px solid var(--bb-mid);
+  padding: 28px 32px;
+  margin: 16px 0;
+}
+.block-card.hard { border-left: 4px solid var(--bb-red); }
+.block-card.probe { border-left: 4px solid var(--bb-yellow); }
+.block-card.discovery { border-left: 4px solid var(--bb-green); }
+.block-header {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.block-header.hard { color: var(--bb-red); }
+.block-header.probe { color: var(--bb-yellow); }
+.block-header.discovery { color: var(--bb-green); }
+
+/* QUALITY PATTERNS */
+.pattern-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin: 24px 0;
+}
+.pattern {
+  background: var(--bb-surface);
+  border: 1px solid var(--bb-mid);
+  padding: 20px 22px;
+  position: relative;
+}
+.pattern-num {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--bb-limon);
+  margin-bottom: 8px;
+}
+.pattern-title {
+  font-family: 'Geist', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--bb-warm-white);
+  margin-bottom: 10px;
+}
+.pattern-desc {
+  font-size: 13px;
+  color: var(--bb-mid-2);
+  line-height: 1.5;
+}
+
+/* DELTA TABLE (Before/After) */
+.delta {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 24px;
+  align-items: start;
+  margin: 18px 0;
+  padding: 20px 24px;
+  background: var(--bb-surface);
+  border: 1px solid var(--bb-mid);
+}
+.delta-before { color: var(--bb-mid-2); font-size: 14px; }
+.delta-arrow {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  color: var(--bb-limon);
+  font-weight: 700;
+  align-self: center;
+}
+.delta-after { color: var(--bb-warm-white); font-size: 14px; font-weight: 500; }
+.delta-after strong { color: var(--bb-limon); }
+
+/* GOVERNANCE BOX */
+.governance {
+  background: var(--bb-surface-2);
+  border: 2px solid var(--bb-red);
+  padding: 28px 32px;
+  margin: 30px 0;
+}
+.governance-title {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bb-red);
+  margin-bottom: 12px;
+}
+
+/* NEXT ACTION */
+.next-action {
+  background: var(--bb-limon);
+  color: var(--bb-dark);
+  padding: 36px 44px;
+  margin: 40px 0;
+}
+.next-action h3 {
+  color: var(--bb-dark);
+  font-size: 24px;
+  margin-top: 0;
+  margin-bottom: 18px;
+}
+.next-action p, .next-action li { color: var(--bb-dark); }
+.next-action strong { color: var(--bb-dark); }
+.next-action ol li::marker { color: var(--bb-dark); }
+
+/* SCOPE BOX */
+.scope-out {
+  background: var(--bb-surface);
+  border-left: 4px solid var(--bb-red);
+  padding: 22px 28px;
+  margin: 24px 0;
+}
+.scope-out h4 { color: var(--bb-red); margin-top: 0; }
+.scope-out ul li { color: var(--bb-mid-2); }
+.scope-out ul li::marker { color: var(--bb-red); }
+
+/* FOOTER */
+footer {
+  border-top: 2px solid var(--bb-warm-white);
+  padding-top: 36px;
+  margin-top: 80px;
+  text-align: center;
+  color: var(--bb-mid-2);
+  font-size: 12px;
+  font-family: 'Roboto Mono', monospace;
+  letter-spacing: 0.05em;
+}
+footer .footer-mark {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 22px;
+  color: var(--bb-limon);
+  display: block;
+  margin-bottom: 12px;
+}
+
+/* PRINT */
+@media print {
+  body { background: white; color: black; }
+  .container { padding: 20px; max-width: 100%; }
+  .cover, .philosophy, .callout, .sprint-card, .block-card, .pattern, .delta, .governance, .next-action, .scope-out, table {
+    background: white !important; border-color: #000 !important;
+  }
+  .cover h1, h2, h3, h4, p, td, th, strong, span, .sprint-title, .sprint-desc, .pattern-title { color: black !important; }
+  th { background: #f0f0f0 !important; color: #000 !important; }
+  .limon, .accent, .section-marker, .sprint-number, .pattern-num, .block-header, .governance-title { color: #000 !important; }
+  .philosophy, .next-action { background: #D1FF00 !important; color: black !important; }
+  .philosophy *, .next-action * { color: black !important; }
+  pre, code { background: #f5f5f5 !important; color: black !important; border-color: black !important; }
+  section { page-break-inside: avoid; }
+  h2 { page-break-after: avoid; }
+  .sprint-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 720px) {
+  .container { padding: 40px 20px; }
+  .cover { grid-template-columns: 1fr; padding: 36px 28px; }
+  .cover-stats { border-left: none; border-top: 1px solid var(--bb-mid); padding-left: 0; padding-top: 20px; text-align: left; }
+  .pattern-row { grid-template-columns: 1fr; }
+  .delta { grid-template-columns: 1fr; gap: 8px; }
+  .delta-arrow { align-self: start; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- COVER -->
+<div class="cover">
+  <div>
+    <div class="cover-tag">▸ Plano de execução v1 — Build mode</div>
+    <h1>O Melhor<br><span class="accent">Buscador</span><br>de Licitações</h1>
+    <p class="cover-subtitle">Plano técnico-operacional para construir a ferramenta hiper-regional DF + Águas Lindas-GO com qualidade state-of-the-art global.</p>
+  </div>
+  <div class="cover-stats">
+    <div class="stat">
+      <div class="stat-label">Sprints</div>
+      <div class="stat-value accent">0 + 10</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Tempo total</div>
+      <div class="stat-value">12-14 semanas</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Effort</div>
+      <div class="stat-value">180-220h</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Custo operacional</div>
+      <div class="stat-value">$30-50/mês</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Custo pré-MVP</div>
+      <div class="stat-value accent">R$0</div>
+    </div>
+  </div>
+</div>
+
+<!-- FILOSOFIA -->
+<div class="philosophy">
+  <div class="section-marker" style="color: var(--bb-dark);">▸ Filosofia</div>
+  <h2 style="margin-bottom: 16px;">Best buscador = qualidade,<br>não monetização.</h2>
+  <p>"Best buscador" significa <strong>qualidade técnica + cobertura empírica máxima + UX action-oriented + robustez infra + compliance LGPD desde dia 1</strong>. Não significa monetização-ready. D-PRODUTO arquivada por decisão do user — foco total em fazer bem feito.</p>
+</div>
+
+<!-- 0. O QUE MUDOU -->
+<section>
+  <div class="section-marker">00 ▸ Recalibração</div>
+  <h2>O que <span class="accent">mudou</span> após auditoria tripla</h2>
+  <p>Snowden (Cynefin), Tetlock (calibração de confiança) e Scott Alexander (dialética from scratch) auditaram a v0 deste plano. Resultado:</p>
+
+  <div class="delta">
+    <div class="delta-before">3 decisões ativas (D-GO / D-STACK / D-PRODUTO)</div>
+    <div class="delta-arrow">→</div>
+    <div class="delta-after"><strong>1 decisão ativa (D-STACK)</strong> + D-GO confirmado + D-PRODUTO arquivada</div>
+  </div>
+  <div class="delta">
+    <div class="delta-before">Confidence média ~75% (Tetlock: overconfident +13pp)</div>
+    <div class="delta-arrow">→</div>
+    <div class="delta-after">Recalibrado: timeline <strong>10-14 semanas</strong>, custo <strong>$30-50/mês</strong></div>
+  </div>
+  <div class="delta">
+    <div class="delta-before">8 semanas → MVP free</div>
+    <div class="delta-arrow">→</div>
+    <div class="delta-after"><strong>Sprint 0 (probe foundations 1 sem) + Sprint 1-10 (10-14 sem)</strong></div>
+  </div>
+  <div class="delta">
+    <div class="delta-before">Sprint 1 começa coding direto</div>
+    <div class="delta-arrow">→</div>
+    <div class="delta-after"><strong>Sprint 0 valida fundações</strong> ANTES de coding produção</div>
+  </div>
+  <div class="delta">
+    <div class="delta-before">7 ajustes táticos simultâneos</div>
+    <div class="delta-arrow">→</div>
+    <div class="delta-after"><strong>4 P0</strong> (Sprint 0-2) + <strong>3 P1</strong> (Sprint 5+) — Scott Alexander cut</div>
+  </div>
+  <div class="delta">
+    <div class="delta-before">"4 sinais data-driven 07/2026" produtizar/kill</div>
+    <div class="delta-arrow">→</div>
+    <div class="delta-after"><strong>Arquivado</strong> — user define monetização futura</div>
+  </div>
+  <div class="delta">
+    <div class="delta-before">Risco H10 (Tocks/Bretda) = 60%</div>
+    <div class="delta-arrow">→</div>
+    <div class="delta-after">Recalibrado <strong>40%</strong> (Tetlock) — checkpoint semanal mandatório</div>
+  </div>
+  <div class="delta">
+    <div class="delta-before">WhatsApp v2</div>
+    <div class="delta-arrow">→</div>
+    <div class="delta-after"><strong>WhatsApp Sprint 5-6</strong> — table stakes BR, defere mas planeja</div>
+  </div>
+
+  <h3>O que NÃO mudou</h3>
+  <ul>
+    <li>Stack <strong>Next.js + Supabase + Inngest + Resend + Anthropic Haiku + LlamaParse</strong></li>
+    <li>Lei 14.133 + LAI + Decreto 8.777 amparam (regulatório <strong class="limon">green-light</strong>)</li>
+    <li>Search híbrida BM25 + pgvector é diferenciação técnica real</li>
+    <li>Mascaramento CPF na ingestão (Privacy by Default) — hard requirement</li>
+    <li>OCDS-shape schema interno desde dia 1</li>
+  </ul>
+</section>
+
+<!-- SPRINT 0 -->
+<section>
+  <div class="section-marker">01 ▸ Sprint 0 — Validar Fundações</div>
+  <h2>Probe phase <span class="accent">antes de build</span></h2>
+  <p><strong>1 semana, ~18h total (~12h Breno + ~6h dev).</strong></p>
+
+  <div class="callout">
+    <div class="callout-title">▸ Filosofia Snowden</div>
+    <p style="margin-bottom: 0;"><strong>Probe-sense-respond.</strong> Antes de investir 100+h em build, gastar 1 semana validando que as fundações empíricas são reais. Não é kill-option — é <strong class="limon">construir sobre rocha, não sobre suposição</strong>.</p>
+  </div>
+
+  <h3>S0.1 — Hard-bloqueantes (3h)</h3>
+  <p>Sem isso, não passa pra Sprint 1.</p>
+
+  <div class="block-card hard">
+    <div class="block-header hard">▸ B1 — Validação Regulatória</div>
+    <h4>Ler ToU footer portal.compras.df.gov.br</h4>
+    <p><strong>Quem:</strong> Breno · <strong>Esforço:</strong> 1h · <strong>Output:</strong> "Sem cláusula anti-scraping" ✅ ou "Tem cláusula X" → plan B</p>
+    <p style="font-size: 13px; color: var(--bb-mid-2); margin-bottom: 0;">Sub-agent R disse: única pendência regulatória bloqueante. Se vedar scraping, mudamos estratégia para 100% PNCP API.</p>
+  </div>
+
+  <div class="block-card hard">
+    <div class="block-header hard">▸ B2 — Privacy by Default</div>
+    <h4>Implementar regex CPF mask em script isolado</h4>
+    <p><strong>Quem:</strong> Dev · <strong>Esforço:</strong> 2h · <strong>Output:</strong> <code>mask_cpf(text)</code> function testada com 5 inputs</p>
+    <p style="font-size: 13px; color: var(--bb-mid-2); margin-bottom: 0;">CPF jamais entra no DB (LGPD). Função pronta antes da primeira ingestão.</p>
+  </div>
+
+  <h3>S0.2 — Probes empíricos dev (6h)</h3>
+  <p>Validam stack + cobertura. Informam Sprint 1 design.</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>ID</th><th>Probe</th><th>Esforço</th><th>O que sabemos depois</th></tr></thead>
+    <tbody>
+    <tr><td><strong>P1</strong></td><td><code>curl</code> PNCP <code>/contratacoes/publicacao</code> filtro UF=DF, 90 dias, 500/pág</td><td>1h</td><td>Volume real / schema dos campos / latência / rate limit oculto?</td></tr>
+    <tr><td><strong>P2</strong></td><td>Mesma query filtro <code>codigoMunicipioIbge=5200175</code> (Águas Lindas) 365d</td><td>30min</td><td><strong>D-03 crítico:</strong> N editais Águas Lindas/ano. Se 0 → ajuste escopo</td></tr>
+    <tr><td><strong>P3</strong></td><td>Baixar 3 PDFs reais (1 grande 100+p, 1 médio 30p, 1 pequeno 10p)</td><td>30min</td><td>Sample real para POC parsing (P4+P5)</td></tr>
+    <tr><td><strong>P4</strong></td><td>POC Haiku 4.5 com 3 PDFs: objeto/valor/prazo/requisitos/modalidade</td><td>2h</td><td>Qualidade PT-BR jurídico (1-5) + custo real $/edital</td></tr>
+    <tr><td><strong>P5</strong></td><td>POC LlamaParse free + Docling Docker local</td><td>1h</td><td>Tabela comparativa + Docker rodando</td></tr>
+    <tr><td><strong>P6</strong></td><td>Testar <code>dados.df.gov.br</code> (CKAN) — dataset "licitações"</td><td>1h</td><td>Fonte secundária GDF funciona? Schema compatível?</td></tr>
+    <tr><td><strong>P7</strong></td><td>Investigar <code>*.megasofttransparencia.com.br</code> — endpoint padrão?</td><td>1h</td><td>Se padrão existir → 1 integração destrava ~50 municípios GO</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>S0.3 — Friend Discovery (3h Breno+amigo)</h3>
+  <p>Captura realidade do uso. Informa Sprint 1-3 UX e match engine.</p>
+
+  <div class="block-card discovery">
+    <div class="block-header discovery">▸ F1+F2 — Casos reais</div>
+    <h4>Sessão 1h com amigo</h4>
+    <p>"Enumera 3 licitações que perdeu/quase perdeu nos últimos 6 meses". Para cada uma: <strong>onde foi publicada?</strong> Em que portal? Que campo decidiu? Que filtro teria pego?</p>
+    <p style="font-size: 13px; color: var(--bb-mid-2); margin-bottom: 0;"><strong class="limon">Output:</strong> 3 casos reais com filtros reverse-engineered = test fixtures para UX.</p>
+  </div>
+
+  <div class="block-card discovery">
+    <div class="block-header discovery">▸ F3 — Perfil canônico</div>
+    <h4>Mapear filtros default do perfil amigo</h4>
+    <p>CNAE codes + valor min/max + keywords positivas/negativas + geo cobertura.</p>
+    <p style="font-size: 13px; color: var(--bb-mid-2); margin-bottom: 0;"><strong class="limon">Output:</strong> Schema do <code>perfil_fornecedor</code> baseado em realidade, não suposição.</p>
+  </div>
+
+  <h3>Deliverable Sprint 0</h3>
+  <div class="callout">
+    <div class="callout-title">▸ 1 documento: sprint-0-findings.md</div>
+    <ul style="margin-bottom: 0;">
+      <li>Volume real PNCP DF + Águas Lindas (números empíricos)</li>
+      <li>Qualidade Haiku 4.5 PT-BR (score 1-5 + custo $/edital)</li>
+      <li>Confirmação stack (LlamaParse + CKAN + Megasoft pattern)</li>
+      <li>Perfil canônico do amigo (filtros)</li>
+      <li>3 licitações perdidas como casos de teste para UX</li>
+    </ul>
+  </div>
+
+  <h3>Gate Sprint 0 → Sprint 1</h3>
+  <p><strong>Passa se:</strong> B1 + B2 ✅ + P1+P2+P4 dão sinais aceitáveis (Haiku ≥3/5, PNCP cobre ≥50% Águas Lindas OU plan B mapeado).</p>
+  <p><strong>Falha = ajustar plano de fonte, não kill.</strong></p>
+</section>
+
+<!-- SPRINT 1-3 -->
+<section>
+  <div class="section-marker">02 ▸ Sprint 1-3 — MVP Core</div>
+  <h2>Ingestion + Match + <span class="accent">Notif básica</span></h2>
+  <p><strong>Semanas 2-4, ~30h Breno + 30h dev.</strong></p>
+  <p>Foco: ingestion + storage + search básico funcionando para amigo + Breno. UI minimalist, lógica completa.</p>
+
+  <div class="sprint-grid">
+    <div class="sprint-card">
+      <div class="sprint-number">01</div>
+      <div class="sprint-title">Schema + Ingestion Skeleton</div>
+      <div class="sprint-duration">▸ 1 semana</div>
+      <div class="sprint-desc">
+        DB OCDS-shape interno (release → tender → award, OCID <code>ocds-aguasdf-</code>). Migration Supabase + pgvector (halfvec) + HNSW + FTS portuguese + unaccent. Tabelas <code>releases</code>, <code>parties</code>, <code>documents</code>, <code>awards</code>, <code>perfis_fornecedor</code>, <code>alertas</code>, <code>feedback</code>. Inngest worker <code>fetch-pncp-publicacao</code> (cron 15min). CPF mask aplicado. LlamaParse worker assíncrono.
+      </div>
+    </div>
+    <div class="sprint-card">
+      <div class="sprint-number">02</div>
+      <div class="sprint-title">Match Engine + IA</div>
+      <div class="sprint-duration">▸ 1 semana</div>
+      <div class="sprint-desc">
+        <code>enrichLicitacao</code> worker: download → parse PDF → resumo IA Haiku → embedding text-embedding-3-small → persist. Multi-provider LLM router (Anthropic + OpenAI fallback). Match v1: score = keyword (BM25) × CNAE × geo × valor. Perfil-fornecedor completo (baseline F3).
+      </div>
+    </div>
+    <div class="sprint-card">
+      <div class="sprint-number">03</div>
+      <div class="sprint-title">Email + UI básica</div>
+      <div class="sprint-duration">▸ 1 semana</div>
+      <div class="sprint-desc">
+        Email digest diário Resend (top 5 matches do perfil). Web Push opcional. Dashboard Next.js: lista de matches, filtros básicos, link edital PDF. Search bar (texto → BM25 + cosine rerank).
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">▸ Deliverable Sprint 1-3</div>
+    <p style="margin-bottom: 0;">MVP rodando para amigo. Recebe email diário com 5 matches relevantes. Busca por keyword. Vê resumo IA + score match.</p>
+  </div>
+</section>
+
+<!-- SPRINT 4-6 -->
+<section>
+  <div class="section-marker">03 ▸ Sprint 4-6 — Quality + WhatsApp + LGPD</div>
+  <h2>Robustez, canal, <span class="accent">compliance</span></h2>
+  <p><strong>Semanas 5-7, ~30h Breno + 30h dev.</strong></p>
+
+  <div class="sprint-grid">
+    <div class="sprint-card">
+      <div class="sprint-number">04</div>
+      <div class="sprint-title">Robustez infra</div>
+      <div class="sprint-duration">▸ 1 semana</div>
+      <div class="sprint-desc">
+        <strong>Docling self-host fallback</strong> (Docker worker) para overflow LlamaParse. Retry exponencial 5xx em todas fontes externas. Circuit breaker para PNCP (>3 falhas/5min, pausa 10min). Cache HTTP local 15min. Self-throttling (1 req/s baseline). User-Agent identificável: <code>BuscadorLicitacoesDF/1.0 (+contato@dominio.br)</code>. Observability: Sentry + Vercel Analytics + log estruturado pino.
+      </div>
+    </div>
+    <div class="sprint-card">
+      <div class="sprint-number">05</div>
+      <div class="sprint-title">WhatsApp integration</div>
+      <div class="sprint-duration">▸ 1 semana</div>
+      <div class="sprint-desc">
+        WAHA self-host (Docker) OU Cloud API ($0.005/msg). Opt-in granular: Email / WhatsApp / Web Push. Alert WhatsApp: top 1 match Tier S do dia (não spam — 1 msg/dia máx). Botão "Ver no app" → deep-link.
+      </div>
+    </div>
+    <div class="sprint-card">
+      <div class="sprint-number">06</div>
+      <div class="sprint-title">LGPD compliance</div>
+      <div class="sprint-duration">▸ 1 semana</div>
+      <div class="sprint-desc">
+        Política Privacidade real (research-regulatoria-v1 checklist). Termos de Uso. Canal contato: <code>privacidade@dominio.br</code>. Cookie banner LGPD. ROPA simplificado 8 campos ANPD. DPAs Supabase/Vercel/Anthropic/Resend/Inngest/LlamaParse. Runbook notif incidente (6 dias úteis ATPP). Footer: atribuição ODbL + links Privacidade/Termos.
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">▸ Deliverable Sprint 4-6</div>
+    <p style="margin-bottom: 0;">MVP robusto + WhatsApp + LGPD-compliant. Pronto para 5-10 fornecedores DF testarem além do amigo.</p>
+  </div>
+</section>
+
+<!-- SPRINT 7-9 -->
+<section>
+  <div class="section-marker">04 ▸ Sprint 7-9 — Differentiators</div>
+  <h2>OCDS, RAG chat, <span class="accent">search semântica</span></h2>
+  <p><strong>Semanas 8-10, ~30h Breno + 30h dev.</strong></p>
+
+  <div class="sprint-grid">
+    <div class="sprint-card">
+      <div class="sprint-number">07</div>
+      <div class="sprint-title">OCDS export + API pública</div>
+      <div class="sprint-duration">▸ 1 semana</div>
+      <div class="sprint-desc">
+        Endpoint <code>/api/ocds/releases?date=YYYY-MM-DD</code> retornando JSON OCDS-shape. Endpoint <code>/api/ocds/releases/{ocid}</code> individual. Docs Swagger/OpenAPI público. Registrar OCID prefix <code>ocds-aguasdf-</code> no Open Contracting Partnership namespace (custo zero). Linkable: cada match no app mostra link <code>.ocds</code>.
+      </div>
+    </div>
+    <div class="sprint-card">
+      <div class="sprint-number">08</div>
+      <div class="sprint-title">Chat RAG sobre edital</div>
+      <div class="sprint-duration">▸ 1 semana</div>
+      <div class="sprint-desc">
+        Embedding por chunk de edital (semantic + RAG). Chat interface: usuário pergunta sobre o edital ("qual o prazo de entrega?", "quais documentos preciso?"). Limit: 5 chats/dia/user no MVP. Two-tier: Haiku padrão + Sonnet 4.5 quando clica "análise profunda".
+      </div>
+    </div>
+    <div class="sprint-card">
+      <div class="sprint-number">09</div>
+      <div class="sprint-title">Search semantic + recommender</div>
+      <div class="sprint-duration">▸ 1 semana</div>
+      <div class="sprint-desc">
+        Search híbrida BM25 + cosine rerank (já mais avançada que Mercell líder Nordic). Saved searches: usuário salva query, recebe alertas. Recommender: "editais similares ao que você favoritou" (cosine vetor médio dos favoritos).
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">▸ Deliverable Sprint 7-9</div>
+    <p style="margin-bottom: 0;">Buscador de qualidade técnica <strong class="limon">state-of-the-art global</strong>. OCDS-compliant, RAG chat, search semântica + híbrida, multi-canal notif, LGPD-compliant. Diferenciado vs Effecti/LicitaNet/Sollicita em dimensões reais.</p>
+  </div>
+</section>
+
+<!-- SPRINT 10 -->
+<section>
+  <div class="section-marker">05 ▸ Sprint 10 — Polish</div>
+  <h2>Polimento + onboarding + <span class="accent">documentação</span></h2>
+  <p><strong>Semanas 11-12, ~20h Breno + 15h dev.</strong></p>
+
+  <ul>
+    <li>UX polish: micro-animations, empty states, error states, loading states</li>
+    <li>Mobile-first PWA otimizado (Lighthouse ≥90)</li>
+    <li>Documentação técnica interna (ADRs, schema, deployment)</li>
+    <li>Onboarding flow novo usuário: 5 passos guiados (perfil → fontes → alertas → primeiro match → settings)</li>
+    <li>Spot-check humano nos primeiros 50 resumos IA (qualidade)</li>
+    <li>README + LICENSE (Apache 2.0?) → reputational moat se virar open-source</li>
+  </ul>
+</section>
+
+<!-- ORÇAMENTO -->
+<section>
+  <div class="section-marker">06 ▸ Orçamento honesto</div>
+  <h2>Recalibrado por <span class="accent">Tetlock</span></h2>
+
+  <h3>Tempo</h3>
+  <ul>
+    <li><strong>Sprint 0:</strong> 1 semana × ~18h = <strong class="limon">18h</strong></li>
+    <li><strong>Sprint 1-10:</strong> 11 semanas × ~12-15h = <strong class="limon">132-165h</strong></li>
+    <li><strong>Total dev MVP:</strong> <strong class="limon">150-183h</strong> distribuídas em 12 semanas</li>
+    <li><strong>Tetlock:</strong> 14 semanas é mais realista, P=45%</li>
+    <li><strong>Buffer realista +20%</strong> (planning fallacy) = <strong class="limon">180-220h em 14-15 semanas</strong></li>
+  </ul>
+
+  <h3>Custo financeiro</h3>
+  <ul>
+    <li><strong>Pré-MVP (Sprint 0-10):</strong> <strong class="limon">R$0</strong> — tudo free tier</li>
+    <li><strong>Operacional fase MVP:</strong> <strong class="limon">$30-50/mês</strong></li>
+    <li>Anthropic Haiku $25 + Resend free + Supabase free→Pro quando aperta + Vercel free + Inngest free + LlamaParse free</li>
+    <li><strong>Operacional pós-MVP (≥10 usuários):</strong> $50-80/mês (Supabase Pro $25 + buffers)</li>
+    <li><strong>Hard cap user:</strong> $80/mês operacional pessoal</li>
+  </ul>
+
+  <div class="governance">
+    <div class="governance-title">▸ Governance Tocks/Bretda — não-negociável</div>
+    <h4 style="margin-top: 0;">Toda segunda-feira: Breno revisa metrics 15min</h4>
+    <ul>
+      <li>Tocks (saldo, CPL, conv)</li>
+      <li>Bretda (CPL, conv, atribuição)</li>
+      <li>KR (WABA fix status)</li>
+    </ul>
+    <p style="margin-bottom: 0;"><strong>Gatilho de pausa:</strong> qualquer um em EMERGÊNCIA (saldo zerado / CPL > 2x baseline / config quebrada) → buscador <strong style="color: var(--bb-red);">pausa pelo tempo necessário</strong>. Buscador é o 5º projeto na pilha de attention. <strong>Não-negociável.</strong></p>
+  </div>
+</section>
+
+<!-- PADRÕES DE QUALIDADE -->
+<section>
+  <div class="section-marker">07 ▸ Quality patterns</div>
+  <h2>10 padrões <span class="accent">não-negociáveis</span></h2>
+  <p>Estes são o que torna "best buscador" e não "yet another buscador".</p>
+
+  <div class="pattern-row">
+    <div class="pattern">
+      <div class="pattern-num">▸ 01</div>
+      <div class="pattern-title">Privacy by Default</div>
+      <div class="pattern-desc">CPF jamais entra no banco. LLM instruído a não preservar. (Sprint 0 B2, Sprint 1, Sprint 8)</div>
+    </div>
+    <div class="pattern">
+      <div class="pattern-num">▸ 02</div>
+      <div class="pattern-title">OCDS-native interno</div>
+      <div class="pattern-desc">Schema interno é OCDS-shape, OCID universal. (Sprint 1 + Sprint 7)</div>
+    </div>
+    <div class="pattern">
+      <div class="pattern-num">▸ 03</div>
+      <div class="pattern-title">API pública gratuita</div>
+      <div class="pattern-desc">Devs podem integrar sem permissão nossa. (Sprint 7)</div>
+    </div>
+    <div class="pattern">
+      <div class="pattern-num">▸ 04</div>
+      <div class="pattern-title">Multi-provider resiliente</div>
+      <div class="pattern-desc">Anthropic 529 ou OpenAI down ≠ produto down. (Sprint 2)</div>
+    </div>
+    <div class="pattern">
+      <div class="pattern-num">▸ 05</div>
+      <div class="pattern-title">Atribuição transparente</div>
+      <div class="pattern-desc">Toda fonte tem <code>source_url</code> + <code>fetched_at</code> visível. (Sprint 1)</div>
+    </div>
+    <div class="pattern">
+      <div class="pattern-num">▸ 06</div>
+      <div class="pattern-title">No dark patterns</div>
+      <div class="pattern-desc">Cookie banner sem dark pattern (LGPD strict). Notif opt-in real. (Sprint 5+6)</div>
+    </div>
+    <div class="pattern">
+      <div class="pattern-num">▸ 07</div>
+      <div class="pattern-title">Honest free tier</div>
+      <div class="pattern-desc">Free regional é produto real, não bait. (Always)</div>
+    </div>
+    <div class="pattern">
+      <div class="pattern-num">▸ 08</div>
+      <div class="pattern-title">Idempotência ingestion</div>
+      <div class="pattern-desc">Ingerir 2x mesmo edital ≠ duplicar. OCID universal resolve. (Sprint 1)</div>
+    </div>
+    <div class="pattern">
+      <div class="pattern-num">▸ 09</div>
+      <div class="pattern-title">Spot-check IA</div>
+      <div class="pattern-desc">Humano valida ≥50 primeiros resumos antes de liberar produção. (Sprint 10)</div>
+    </div>
+    <div class="pattern">
+      <div class="pattern-num">▸ 10</div>
+      <div class="pattern-title">Observability dia 1</div>
+      <div class="pattern-desc">Sentry + logs estruturados antes de qualquer feature. (Sprint 4)</div>
+    </div>
+  </div>
+</section>
+
+<!-- LESSONS DOS CLONES -->
+<section>
+  <div class="section-marker">08 ▸ Lessons aplicadas</div>
+  <h2>O que <span class="accent">os clones</span> mudaram</h2>
+
+  <h3>De Scott Alexander</h3>
+  <ul>
+    <li><strong>Friend's friend test</strong> não vai acontecer agora (user disse: não monetizar). Mas estrutura de feedback fica: amigo + 2 fornecedores indicados = 3 power-users N≈3 para validar qualidade real</li>
+    <li><strong>OpenTender.eu syndrome evitado</strong> — foco fornecedor pragmático ("isso é oportunidade pra mim?") explícito desde Sprint 0 (F1-F3)</li>
+    <li><strong>Defer ambition:</strong> 7 ajustes → <strong class="limon">4 P0</strong> (Docling, halfvec/HNSW, multi-provider, schema OCDS) + 3 P1 (API pública, two-tier model, Megasoft) — não simultâneo</li>
+  </ul>
+
+  <h3>De Philip Tetlock</h3>
+  <ul>
+    <li><strong>Timeline honesta:</strong> 10-12sem → <strong class="limon">12-14sem +20% buffer = 14-16 semanas</strong></li>
+    <li><strong>Custo honesto:</strong> $0-40/mês → <strong class="limon">$30-50/mês</strong></li>
+    <li><strong>Checkpoint Tocks/Bretda semanal não-negociável</strong> (F7 68% pausa forçada)</li>
+    <li><strong>CPF mask hard requirement</strong> (H11 recalibrado mas Privacy by Default mantém-se Sprint 0)</li>
+  </ul>
+
+  <h3>De Dave Snowden</h3>
+  <ul>
+    <li><strong>Sprint 0 = probe phase</strong> (não kill option — refraseado para "validar fundações antes de build")</li>
+    <li><strong>D-STACK é Complicated</strong> → confirmar e construir. Sem mais análise.</li>
+    <li><strong>Concierge experience embedded:</strong> Sprint 0 F1-F3 captura "como amigo usaria isso manualmente" — informa Sprint 1-3 UX</li>
+    <li><strong>Safe-to-fail experiments inline:</strong> cada Sprint tem deliverable testável; falha não destrói build, redireciona</li>
+  </ul>
+</section>
+
+<!-- PRÓXIMA AÇÃO -->
+<section>
+  <div class="section-marker">09 ▸ Ação imediata</div>
+  <h2>Próximo <span class="accent">passo</span></h2>
+
+  <div class="next-action">
+    <h3>Bloco de 2h "Sprint 0 kick-off" — Breno hoje/amanhã</h3>
+    <ol>
+      <li><strong>30min</strong> — Ler ToU footer portal.compras.df.gov.br (B1)</li>
+      <li><strong>30min</strong> — Sessão amigo F1: "3 licitações perdidas últimos 6 meses"</li>
+      <li><strong>30min</strong> — Sessão amigo F3: filtros perfil (CNAE, valor, geo, keywords)</li>
+      <li><strong>30min</strong> — Setup repo Git novo, branch initial, .env template, README skeleton</li>
+    </ol>
+    <h3>Bloco de 6h "Sprint 0 dev validation" — próxima sessão @dev</h3>
+    <ol start="5">
+      <li><strong>2h</strong> — P1+P2+P3: curl PNCP DF e Águas Lindas + baixar 3 PDFs reais</li>
+      <li><strong>2h</strong> — P4: POC Haiku 4.5 com os 3 PDFs (qualidade + custo real)</li>
+      <li><strong>1h</strong> — P5: POC LlamaParse free + Docling local Docker</li>
+      <li><strong>1h</strong> — P6+P7: dados.df.gov.br CKAN + investigar Megasoft pattern</li>
+    </ol>
+    <p style="margin-top: 24px; margin-bottom: 0;"><strong>Documentar tudo</strong> em <code>sprint-0-findings.md</code> ao final.</p>
+  </div>
+</section>
+
+<!-- OUT OF SCOPE -->
+<section>
+  <div class="section-marker">10 ▸ Escopo negativo</div>
+  <h2>O que este plano <span class="accent">NÃO faz</span></h2>
+  <p>Escopo explícito é o que viabiliza "fazer o melhor" em vez de "fazer muitas coisas medianas".</p>
+
+  <div class="scope-out">
+    <h4>▸ Removido do escopo:</h4>
+    <ul>
+      <li>Stripe / pricing / planos pagos (D-PRODUTO arquivada por decisão user)</li>
+      <li>Outreach SEBRAE-DF / FIBRA / LinkedIn / Google Ads (foco build, não GTM)</li>
+      <li>Política de descontinuação / kill criterion (irrelevante para pessoal-only)</li>
+      <li>4 sinais data-driven 07/2026 (D-PRODUTO arquivada)</li>
+      <li>Análise de competitors em detalhe operacional (research-mercado-v1 cobre, foco agora é build)</li>
+      <li>Mobile app nativo (PWA suficiente)</li>
+      <li>Multi-tenancy enterprise (single-user / single-org no MVP)</li>
+    </ul>
+  </div>
+</section>
+
+<!-- TRIGGERS -->
+<section>
+  <div class="section-marker">11 ▸ Triggers</div>
+  <h2>Retomada e <span class="accent">pause</span></h2>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Trigger</th><th>Ação</th></tr></thead>
+    <tbody>
+    <tr><td><code>sprint 0 done</code></td><td>Breno reporta findings; Orion atualiza plano se necessário</td></tr>
+    <tr><td><code>pausa licitações tocks/bretda</code></td><td>Pause imediato. Retoma quando outros estabilizarem</td></tr>
+    <tr><td><code>licitações monetização</code></td><td>Reabrir D-PRODUTO com base no que user definir</td></tr>
+    <tr><td><code>licitações ship</code></td><td>Final MVP shipping check + Sprint 10 polish review</td></tr>
+    <tr><td><code>licitações qualidade audit</code></td><td>Spot-check IA + LGPD + OCDS compliance audit</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-mark">▸▸</span>
+  Plano de Execução v1 — pronto para ação<br>
+  Síntese de 4 pesquisas (130+ fontes) · Auditado por Snowden + Tetlock + Scott Alexander · Recalibrado por pivot user "best buscador, não monetizar"<br>
+  15 maio 2026
+</footer>
+
+</div>
+</body>
+</html>
