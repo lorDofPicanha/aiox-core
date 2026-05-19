@@ -1,0 +1,1873 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buscador de Licitações — Como Funciona · Relatório Visual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ════════════════════════════════════════════════════════════════
+   FIELD MANUAL — Editorial light + lime accent
+   Design system: AIOX Daylight (adaptation of dark observatory)
+  ════════════════════════════════════════════════════════════════ */
+  :root {
+    --bg: #FAFAF7;
+    --paper: #FFFFFF;
+    --ink: #0B0B0B;
+    --ink-2: #2D2D2A;
+    --muted: #6E6E66;
+    --muted-2: #9A9A92;
+    --rule: #E8E8E0;
+    --rule-2: #D4D4CA;
+
+    --lime: #6B9F00;        /* darker lime for light bg AA contrast */
+    --lime-bg: #E8F5B8;
+    --lime-soft: #F5FAE4;
+
+    /* Per-stage palette — each stage owns a color */
+    --c-1: #0891B2;   /* Monitorar — cyan/teal */
+    --c-1-bg: #ECFEFF;
+    --c-2: #4F46E5;   /* Analisar — indigo (MOAT) */
+    --c-2-bg: #EEF2FF;
+    --c-3: #9333EA;   /* Diferencial — purple (MOAT) */
+    --c-3-bg: #FAF5FF;
+    --c-4: #059669;   /* Habilitar — emerald */
+    --c-4-bg: #ECFDF5;
+    --c-5: #D97706;   /* Acompanhar — amber */
+    --c-5-bg: #FFFBEB;
+    --c-6: #DC2626;   /* Recorrer — red */
+    --c-6-bg: #FEF2F2;
+    --c-base: #2563EB;/* Livro caixa — blue */
+    --c-base-bg: #EFF6FF;
+
+    --warm: #D97706;
+    --positive: #059669;
+    --negative: #DC2626;
+
+    --font-d: 'Inter Tight', system-ui, sans-serif;
+    --font-b: 'Inter', system-ui, sans-serif;
+    --font-m: 'IBM Plex Mono', ui-monospace, monospace;
+
+    --max-w: 1180px;
+    --gutter: 32px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-b);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .container {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+
+  /* ─── Sticky top nav ─────────────────────────────────────────── */
+  .topnav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(250, 250, 247, 0.92);
+    backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid var(--rule);
+    padding: 12px 0;
+  }
+  .topnav-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  }
+  .topnav .brand {
+    font-family: var(--font-m);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+  .topnav .brand .lime { color: var(--lime); font-weight: 600; }
+  .topnav nav {
+    display: flex; gap: 18px;
+    font-family: var(--font-m);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .topnav nav a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+    padding: 4px 0;
+    border-bottom: 1px solid transparent;
+  }
+  .topnav nav a:hover { color: var(--ink); border-bottom-color: var(--lime); }
+
+  /* ─── Hero ───────────────────────────────────────────────────── */
+  .hero {
+    padding: 80px 0 64px;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+  .hero .eyebrow {
+    font-family: var(--font-m);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 24px;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .hero .eyebrow::before {
+    content: ""; display: inline-block;
+    width: 24px; height: 1px; background: var(--lime);
+  }
+  .hero h1 {
+    font-family: var(--font-d);
+    font-weight: 800;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    max-width: 18ch;
+    margin-bottom: 24px;
+  }
+  .hero h1 .lime { color: var(--lime); }
+  .hero .lede {
+    font-family: var(--font-d);
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-2);
+    max-width: 60ch;
+    margin-bottom: 40px;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-top: 8px;
+  }
+  .hero-stat {
+    background: var(--paper);
+    padding: 24px 24px 28px;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .hero-stat .k {
+    font-family: var(--font-m);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .hero-stat .v {
+    font-family: var(--font-d);
+    font-weight: 800;
+    font-size: 38px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .hero-stat .v.lime { color: var(--lime); }
+  .hero-stat .v.warm { color: var(--warm); }
+  .hero-stat .u {
+    font-family: var(--font-m);
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  /* ─── Section ─────────────────────────────────────────────── */
+  section.block {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  section.block:last-of-type { border-bottom: none; }
+  .section-head { margin-bottom: 48px; max-width: 80ch; }
+  .section-head .label {
+    font-family: var(--font-m);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: inline-flex; align-items: center; gap: 10px;
+    margin-bottom: 16px;
+  }
+  .section-head .label::before {
+    content: ""; display: inline-block;
+    width: 18px; height: 1px; background: currentColor;
+  }
+  .section-head h2 {
+    font-family: var(--font-d);
+    font-weight: 700;
+    font-size: clamp(32px, 4.5vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .section-head h2 .lime { color: var(--lime); }
+  .section-head .dek {
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--ink-2);
+    max-width: 64ch;
+  }
+
+  /* ─── Workflow diagram (hero of section 2) ────────────────── */
+  .workflow-canvas {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 40px 32px;
+    position: relative;
+  }
+  .workflow-row {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .wf-card {
+    background: var(--paper);
+    border: 1px solid var(--rule-2);
+    border-radius: 6px;
+    padding: 18px 16px;
+    position: relative;
+    display: flex; flex-direction: column; gap: 8px;
+    min-height: 140px;
+  }
+  .wf-card[data-c="1"]   { border-left: 3px solid var(--c-1); }
+  .wf-card[data-c="2"]   { border-left: 3px solid var(--c-2); background: var(--c-2-bg); }
+  .wf-card[data-c="3"]   { border-left: 3px solid var(--c-3); background: var(--c-3-bg); }
+  .wf-card[data-c="4"]   { border-left: 3px solid var(--c-4); }
+  .wf-card[data-c="5"]   { border-left: 3px solid var(--c-5); }
+  .wf-card[data-c="6"]   { border-left: 3px solid var(--c-6); }
+  .wf-card .num {
+    font-family: var(--font-m);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    font-weight: 700;
+  }
+  .wf-card[data-c="1"] .num { color: var(--c-1); }
+  .wf-card[data-c="2"] .num { color: var(--c-2); }
+  .wf-card[data-c="3"] .num { color: var(--c-3); }
+  .wf-card[data-c="4"] .num { color: var(--c-4); }
+  .wf-card[data-c="5"] .num { color: var(--c-5); }
+  .wf-card[data-c="6"] .num { color: var(--c-6); }
+  .wf-card .ttl {
+    font-family: var(--font-d);
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .wf-card .desc {
+    font-size: 11.5px;
+    color: var(--ink-2);
+    line-height: 1.45;
+  }
+  .wf-card .moat-badge {
+    position: absolute; top: 8px; right: 8px;
+    font-family: var(--font-m);
+    font-size: 8px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--paper);
+    padding: 2px 6px;
+    border-radius: 2px;
+  }
+  .wf-card[data-c="2"] .moat-badge { background: var(--c-2); }
+  .wf-card[data-c="3"] .moat-badge { background: var(--c-3); }
+  .wf-card .meta {
+    font-family: var(--font-m);
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px dotted var(--rule-2);
+  }
+  .wf-base {
+    background: var(--c-base-bg);
+    border: 1px solid var(--rule-2);
+    border-left: 3px solid var(--c-base);
+    border-radius: 6px;
+    padding: 16px 22px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 20px;
+    align-items: center;
+  }
+  .wf-base .lbl {
+    font-family: var(--font-m);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--c-base);
+    font-weight: 600;
+  }
+  .wf-base .txt {
+    font-size: 13.5px;
+    color: var(--ink-2);
+  }
+  .wf-base .txt strong { color: var(--ink); }
+  .wf-base .meta {
+    font-family: var(--font-m);
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  /* SVG arrow connectors */
+  .workflow-arrows {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+  }
+
+  /* ─── Stage detail card ───────────────────────────────────── */
+  .stage {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    margin-bottom: 32px;
+    overflow: hidden;
+  }
+  .stage-header {
+    padding: 24px 32px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 24px;
+    align-items: center;
+    border-bottom: 1px solid var(--rule);
+  }
+  .stage-num {
+    width: 64px; height: 64px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-d);
+    font-weight: 800;
+    font-size: 26px;
+    letter-spacing: -0.02em;
+    color: var(--paper);
+  }
+  .stage[data-c="1"] .stage-num { background: var(--c-1); }
+  .stage[data-c="2"] .stage-num { background: var(--c-2); }
+  .stage[data-c="3"] .stage-num { background: var(--c-3); }
+  .stage[data-c="4"] .stage-num { background: var(--c-4); }
+  .stage[data-c="5"] .stage-num { background: var(--c-5); }
+  .stage[data-c="6"] .stage-num { background: var(--c-6); }
+  .stage[data-c="base"] .stage-num { background: var(--c-base); }
+
+  .stage-title {
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .stage-title .eyebrow {
+    font-family: var(--font-m);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .stage-title h3 {
+    font-family: var(--font-d);
+    font-weight: 700;
+    font-size: 30px;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+  .stage-title .one-liner {
+    font-size: 14px;
+    color: var(--ink-2);
+    margin-top: 6px;
+    max-width: 60ch;
+  }
+  .stage-badge {
+    display: flex; flex-direction: column; align-items: flex-end; gap: 4px;
+  }
+  .stage-badge .latency {
+    font-family: var(--font-d);
+    font-weight: 800;
+    font-size: 28px;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .stage[data-c="1"] .stage-badge .latency { color: var(--c-1); }
+  .stage[data-c="2"] .stage-badge .latency { color: var(--c-2); }
+  .stage[data-c="3"] .stage-badge .latency { color: var(--c-3); }
+  .stage[data-c="4"] .stage-badge .latency { color: var(--c-4); }
+  .stage[data-c="5"] .stage-badge .latency { color: var(--c-5); }
+  .stage[data-c="6"] .stage-badge .latency { color: var(--c-6); }
+  .stage[data-c="base"] .stage-badge .latency { color: var(--c-base); }
+  .stage-badge .lbl {
+    font-family: var(--font-m);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .stage-body {
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 40px;
+  }
+  .stage-side h4 {
+    font-family: var(--font-m);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .stage-side .lead {
+    font-family: var(--font-d);
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 1.45;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+  .stage-side .lead strong[data-hl="1"] { color: var(--c-1); }
+  .stage-side .lead strong[data-hl="2"] { color: var(--c-2); }
+  .stage-side .lead strong[data-hl="3"] { color: var(--c-3); }
+  .stage-side .lead strong[data-hl="4"] { color: var(--c-4); }
+  .stage-side .lead strong[data-hl="5"] { color: var(--c-5); }
+  .stage-side .lead strong[data-hl="6"] { color: var(--c-6); }
+  .stage-side .lead strong[data-hl="base"] { color: var(--c-base); }
+
+  .feat-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+  .feat-list li {
+    list-style: none;
+    font-size: 14px;
+    color: var(--ink-2);
+    padding-left: 22px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .feat-list li::before {
+    content: "→";
+    position: absolute; left: 0;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .stage[data-c="1"] .feat-list li::before { color: var(--c-1); }
+  .stage[data-c="2"] .feat-list li::before { color: var(--c-2); }
+  .stage[data-c="3"] .feat-list li::before { color: var(--c-3); }
+  .stage[data-c="4"] .feat-list li::before { color: var(--c-4); }
+  .stage[data-c="5"] .feat-list li::before { color: var(--c-5); }
+  .stage[data-c="6"] .feat-list li::before { color: var(--c-6); }
+  .stage[data-c="base"] .feat-list li::before { color: var(--c-base); }
+
+  /* Steps timeline (right column of stage) */
+  .steps-timeline {
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 24px;
+  }
+  .steps-timeline h5 {
+    font-family: var(--font-m);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .step-row {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 14px;
+    padding: 10px 0;
+    align-items: flex-start;
+    position: relative;
+  }
+  .step-row:not(:last-child)::after {
+    content: ""; position: absolute;
+    left: 15px; top: 32px; bottom: -6px;
+    width: 2px;
+    background: var(--rule);
+  }
+  .step-row .pip {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-m);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--paper);
+    position: relative; z-index: 2;
+  }
+  .stage[data-c="1"] .step-row .pip { background: var(--c-1); }
+  .stage[data-c="2"] .step-row .pip { background: var(--c-2); }
+  .stage[data-c="3"] .step-row .pip { background: var(--c-3); }
+  .stage[data-c="4"] .step-row .pip { background: var(--c-4); }
+  .stage[data-c="5"] .step-row .pip { background: var(--c-5); }
+  .stage[data-c="6"] .step-row .pip { background: var(--c-6); }
+  .stage[data-c="base"] .step-row .pip { background: var(--c-base); }
+  .step-row .ctn {
+    font-size: 13.5px;
+    color: var(--ink-2);
+    line-height: 1.55;
+    padding-top: 4px;
+  }
+  .step-row .ctn strong { color: var(--ink); font-weight: 600; }
+  .step-row .ctn code {
+    font-family: var(--font-m);
+    font-size: 11.5px;
+    background: var(--rule);
+    padding: 1px 5px;
+    border-radius: 2px;
+  }
+
+  /* KPIs inside stage */
+  .stage-kpis {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-bottom: 24px;
+  }
+  .stage-kpi {
+    background: var(--paper);
+    padding: 14px 18px;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .stage-kpi .k {
+    font-family: var(--font-m);
+    font-size: 9.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .stage-kpi .v {
+    font-family: var(--font-d);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .stage-kpi .u { font-family: var(--font-m); font-size: 10px; color: var(--muted); }
+
+  /* Example callout */
+  .example-box {
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 18px 22px;
+    margin-top: 16px;
+  }
+  .example-box .tag {
+    font-family: var(--font-m);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+    display: block;
+  }
+  .stage[data-c="1"] .example-box .tag { color: var(--c-1); }
+  .stage[data-c="2"] .example-box .tag { color: var(--c-2); }
+  .stage[data-c="3"] .example-box .tag { color: var(--c-3); }
+  .stage[data-c="4"] .example-box .tag { color: var(--c-4); }
+  .stage[data-c="5"] .example-box .tag { color: var(--c-5); }
+  .stage[data-c="6"] .example-box .tag { color: var(--c-6); }
+  .stage[data-c="base"] .example-box .tag { color: var(--c-base); }
+  .example-box .body {
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.55;
+  }
+  .example-box .body strong { color: var(--ink); }
+
+  /* Risk / mitigation list */
+  .risk-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: center;
+    font-size: 13px;
+  }
+  .risk-row:last-child { border-bottom: none; }
+  .risk-row .lbl { font-family: var(--font-m); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+  .risk-row .fail { color: var(--ink-2); }
+  .risk-row .arrow { color: var(--muted); font-family: var(--font-m); }
+  .risk-row .mit { color: var(--ink); }
+
+  /* ─── Stack overview ─────────────────────────────────────── */
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .stack-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 18px 18px 16px;
+    display: flex; flex-direction: column; gap: 6px;
+    border-radius: 4px;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .stack-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--lime);
+  }
+  .stack-card .layer {
+    font-family: var(--font-m);
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .stack-card .name {
+    font-family: var(--font-d);
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .stack-card .why {
+    font-size: 12.5px;
+    color: var(--ink-2);
+    line-height: 1.5;
+    margin-top: 4px;
+  }
+  .stack-card .cost {
+    font-family: var(--font-m);
+    font-size: 10.5px;
+    color: var(--lime);
+    font-weight: 600;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dotted var(--rule);
+  }
+
+  /* ─── Cost bars ──────────────────────────────────────────── */
+  .cost-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+  .cost-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 24px;
+  }
+  .cost-card.highlight {
+    border-color: var(--lime);
+    background: var(--lime-soft);
+  }
+  .cost-card .phase {
+    font-family: var(--font-m);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .cost-card .head {
+    font-family: var(--font-d);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--ink);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .cost-card .head .clients {
+    font-family: var(--font-m);
+    font-size: 11px;
+    color: var(--muted);
+    margin-left: 8px;
+    font-weight: 400;
+  }
+  .bar-row {
+    display: grid;
+    grid-template-columns: 100px 1fr 80px;
+    gap: 10px;
+    align-items: center;
+    padding: 6px 0;
+    font-size: 12.5px;
+  }
+  .bar-row .l { color: var(--muted); font-family: var(--font-m); font-size: 11px; }
+  .bar-row .b {
+    height: 8px;
+    background: var(--rule);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+  .bar-row .b::before {
+    content: ""; position: absolute; inset: 0;
+    background: var(--c-base);
+    width: var(--w, 50%);
+    border-radius: 4px;
+  }
+  .bar-row.infra .b::before { background: var(--negative); }
+  .bar-row.revenue .b::before { background: var(--positive); }
+  .bar-row.margin .b::before { background: var(--lime); }
+  .bar-row .v { font-family: var(--font-m); font-size: 11px; color: var(--ink); text-align: right; font-weight: 600; }
+  .cost-card .summary {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .cost-card .summary .lbl {
+    font-family: var(--font-m); font-size: 10px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted);
+  }
+  .cost-card .summary .val {
+    font-family: var(--font-d); font-weight: 800;
+    font-size: 26px; color: var(--positive);
+    letter-spacing: -0.02em;
+  }
+
+  /* ─── Moat layers ────────────────────────────────────────── */
+  .moat-stack {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  .moat-row {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 24px 28px;
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr;
+    gap: 24px;
+    align-items: center;
+    border-left: 4px solid var(--lime);
+  }
+  .moat-row .n {
+    font-family: var(--font-d);
+    font-weight: 800;
+    font-size: 56px;
+    color: var(--lime);
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+  }
+  .moat-row .what {
+    font-family: var(--font-d);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .moat-row .what small {
+    display: block;
+    font-family: var(--font-b);
+    font-weight: 400;
+    font-size: 13px;
+    color: var(--ink-2);
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+  .moat-row .why {
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.55;
+  }
+  .moat-row .why strong { color: var(--ink); }
+  .moat-row .why .time {
+    display: inline-block;
+    font-family: var(--font-m);
+    font-size: 11px;
+    color: var(--lime);
+    margin-top: 6px;
+    padding: 2px 8px;
+    background: var(--lime-bg);
+    border-radius: 2px;
+  }
+
+  /* ─── Risk heatmap ───────────────────────────────────────── */
+  .risk-matrix {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 24px;
+    border-radius: 4px;
+  }
+  .risk-grid {
+    display: grid;
+    grid-template-columns: 100px repeat(3, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-top: 14px;
+  }
+  .rg-cell {
+    background: var(--paper);
+    padding: 14px;
+    min-height: 80px;
+    font-size: 11.5px;
+    color: var(--ink-2);
+    line-height: 1.4;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .rg-cell.header {
+    background: var(--bg);
+    font-family: var(--font-m);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    justify-content: center;
+    text-align: center;
+    min-height: auto;
+    padding: 10px;
+  }
+  .rg-cell.row-label {
+    background: var(--bg);
+    font-family: var(--font-m);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    justify-content: center;
+    font-weight: 600;
+  }
+  .rg-cell.high   { background: #FEF2F2; }
+  .rg-cell.medium { background: #FFFBEB; }
+  .rg-cell.low    { background: #ECFDF5; }
+  .rg-cell .item {
+    font-size: 11px;
+    padding: 2px 0;
+    color: var(--ink);
+  }
+  .rg-cell .item strong { font-weight: 600; }
+
+  /* ─── Sprint gates timeline ──────────────────────────────── */
+  .timeline {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 32px;
+    overflow-x: auto;
+  }
+  .tl-track {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0;
+    position: relative;
+    margin-top: 32px;
+  }
+  .tl-track::before {
+    content: ""; position: absolute;
+    top: 28px; left: 0; right: 0; height: 2px;
+    background: var(--rule);
+    z-index: 0;
+  }
+  .tl-stop {
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    position: relative; z-index: 1;
+    padding: 0 8px;
+  }
+  .tl-stop .dot {
+    width: 56px; height: 56px;
+    border: 2px solid var(--lime);
+    background: var(--paper);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-d);
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--lime);
+  }
+  .tl-stop .label {
+    font-family: var(--font-m);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 2px;
+  }
+  .tl-stop .gate {
+    font-size: 12px;
+    color: var(--ink);
+    text-align: center;
+    line-height: 1.4;
+    margin-top: 4px;
+    max-width: 18ch;
+  }
+  .tl-stop .kill {
+    font-family: var(--font-m);
+    font-size: 10px;
+    color: var(--negative);
+    margin-top: 4px;
+  }
+
+  /* ─── Q&A defense block ──────────────────────────────────── */
+  .qa-list { display: flex; flex-direction: column; gap: 16px; }
+  .qa-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--lime);
+    padding: 22px 28px;
+    border-radius: 4px;
+  }
+  .qa-card .q {
+    font-family: var(--font-d);
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 12px;
+    display: flex; gap: 12px; align-items: baseline;
+  }
+  .qa-card .q::before {
+    content: "Q";
+    font-family: var(--font-m);
+    font-size: 11px;
+    color: var(--lime);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+  .qa-card .a {
+    font-size: 14px;
+    color: var(--ink-2);
+    line-height: 1.6;
+    padding-left: 24px;
+    position: relative;
+  }
+  .qa-card .a::before {
+    content: "A";
+    position: absolute; left: 0; top: 2px;
+    font-family: var(--font-m);
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+  .qa-card .a strong { color: var(--ink); }
+
+  /* ─── Footer ─────────────────────────────────────────────── */
+  footer {
+    background: var(--ink);
+    color: #B8B8AE;
+    padding: 48px 0;
+    margin-top: 0;
+  }
+  footer .container {
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 32px;
+    flex-wrap: wrap;
+  }
+  footer .brand {
+    font-family: var(--font-d);
+    font-weight: 700;
+    font-size: 18px;
+    color: #F5F5EF;
+  }
+  footer .meta {
+    font-family: var(--font-m);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: #6E6E66;
+    margin-top: 8px;
+  }
+  footer .links {
+    font-family: var(--font-m);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: #B8B8AE;
+    line-height: 1.8;
+  }
+
+  /* ─── Responsive ─────────────────────────────────────────── */
+  @media (max-width: 960px) {
+    .hero-grid { grid-template-columns: repeat(2, 1fr); }
+    .stage-body { grid-template-columns: 1fr; }
+    .workflow-row { grid-template-columns: repeat(3, 1fr); }
+    .cost-grid { grid-template-columns: 1fr; }
+    .stack-grid { grid-template-columns: repeat(2, 1fr); }
+    .moat-row { grid-template-columns: 1fr; gap: 12px; }
+    .topnav nav { display: none; }
+    .tl-track { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 640px) {
+    :root { --gutter: 18px; }
+    .workflow-row { grid-template-columns: repeat(2, 1fr); }
+    .stack-grid { grid-template-columns: 1fr; }
+    .stage-header { grid-template-columns: 1fr; }
+    .stage-badge { align-items: flex-start; }
+  }
+
+  /* ─── Print ─────────────────────────────────────────────── */
+  @media print {
+    .topnav { display: none; }
+    section.block { page-break-inside: avoid; padding: 32px 0; }
+    .stage { page-break-inside: avoid; }
+    *, *::before, *::after {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+  }
+
+  ::selection { background: var(--lime); color: var(--paper); }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ TOP NAV ═══════════ -->
+<header class="topnav">
+  <div class="topnav-inner">
+    <span class="brand">[ <span class="lime">AIOX</span> ] · BUSCADOR DE LICITAÇÕES · COMO FUNCIONA</span>
+    <nav>
+      <a href="#workflow">Workflow</a>
+      <a href="#estagios">Estágios</a>
+      <a href="#stack">Stack</a>
+      <a href="#custos">Custos</a>
+      <a href="#moat">Moat</a>
+      <a href="#riscos">Riscos</a>
+      <a href="#defesa">Defesa</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow">Relatório Visual · Field Manual v1 · 2026-05-19</span>
+    <h1>Do edital ao contrato — <span class="lime">como tudo funciona.</span></h1>
+    <p class="lede">Workflow integrado de 6 estágios automatizados sobre uma fundação financeira única. Este relatório mostra cada componente, cada decisão de arquitetura, cada custo, cada risco — sem hype, com source citation.</p>
+
+    <div class="hero-grid">
+      <div class="hero-stat">
+        <span class="k">Estágios</span>
+        <span class="v lime">6 + 1</span>
+        <span class="u">automatizados + base financeira</span>
+      </div>
+      <div class="hero-stat">
+        <span class="k">Tempo recuperado</span>
+        <span class="v">62-201h</span>
+        <span class="u">por mês, por cliente</span>
+      </div>
+      <div class="hero-stat">
+        <span class="k">ROI cliente</span>
+        <span class="v warm">12×</span>
+        <span class="u">R$ 33.6k/ano vs R$ 415k custo escondido</span>
+      </div>
+      <div class="hero-stat">
+        <span class="k">Margem Fase 2</span>
+        <span class="v">~94%</span>
+        <span class="u">5 pagantes · R$13k/mês líquido</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ WORKFLOW DIAGRAM ═══════════ -->
+<section class="block" id="workflow">
+  <div class="container">
+    <div class="section-head">
+      <div class="label">01 · Visão Geral</div>
+      <h2>O caminho completo, <span class="lime">numa tela só.</span></h2>
+      <p class="dek">6 estágios encadeados — cada um dispara o próximo via eventos. Os estágios <strong>02 Analisar</strong> e <strong>03 Indicar Diferencial</strong> são MOAT: o mercado não faz isso hoje. Tudo apoiado por uma <strong>base de livro caixa multi-empresa</strong> que alimenta o Estágio 4 sem intermediário humano.</p>
+    </div>
+
+    <div class="workflow-canvas">
+      <div class="workflow-row">
+        <div class="wf-card" data-c="1">
+          <span class="num">[ 01 ]</span>
+          <span class="ttl">Monitorar</span>
+          <span class="desc">PNCP + DF + Águas Lindas, varredura cada 15min, filtro CNAE × valor.</span>
+          <span class="meta">push &lt; 15min</span>
+        </div>
+        <div class="wf-card" data-c="2">
+          <span class="moat-badge">moat</span>
+          <span class="num">[ 02 ]</span>
+          <span class="ttl">Analisar 6m</span>
+          <span class="desc">Lê histórico do MESMO órgão. Extrai 4 padrões com fonte citada.</span>
+          <span class="meta">análise &lt; 90s</span>
+        </div>
+        <div class="wf-card" data-c="3">
+          <span class="moat-badge">moat</span>
+          <span class="num">[ 03 ]</span>
+          <span class="ttl">Indicar diferencial</span>
+          <span class="desc">5 frases acionáveis prescritivas, com source citation obrigatória.</span>
+          <span class="meta">leitura em 60s</span>
+        </div>
+        <div class="wf-card" data-c="4">
+          <span class="num">[ 04 ]</span>
+          <span class="ttl">Habilitar</span>
+          <span class="desc">ACT + BP/DRE + CRF + CND. Dossiê PDF compilado em 60s.</span>
+          <span class="meta">4h → 28min</span>
+        </div>
+        <div class="wf-card" data-c="5">
+          <span class="num">[ 05 ]</span>
+          <span class="ttl">Acompanhar</span>
+          <span class="desc">Sessão pública monitorada. 4 verificações no vencedor.</span>
+          <span class="meta">análise &lt; 3min</span>
+        </div>
+        <div class="wf-card" data-c="6">
+          <span class="num">[ 06 ]</span>
+          <span class="ttl">Recorrer</span>
+          <span class="desc">Minuta gerada via RAG jurídico + template advogado-validado.</span>
+          <span class="meta">minuta em &lt; 8min</span>
+        </div>
+      </div>
+      <div class="wf-base">
+        <span class="lbl">[ Fundação ]</span>
+        <span class="txt"><strong>Livro caixa das 3 empresas</strong> — app celular, família lança em &lt;10s, Open Finance importa automático, IA categoriza. <strong>Auto-BP/DRE</strong> alimenta o Estágio 04 sem precisar pedir nada pro contador.</span>
+        <span class="meta">&lt;10s/lançamento</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ESTÁGIOS DETALHADOS ═══════════ -->
+<section class="block" id="estagios">
+  <div class="container">
+    <div class="section-head">
+      <div class="label">02 · Cada Estágio Por Dentro</div>
+      <h2>Como funciona <span class="lime">passo a passo</span> — sem caixa-preta.</h2>
+      <p class="dek">Para cada estágio: o que faz, fluxo técnico numerado, exemplo prático, tempo economizado, e os 2 ou 3 riscos principais com mitigação. Cada cor abaixo identifica um estágio.</p>
+    </div>
+
+    <!-- ───── STAGE 1 — Monitorar ───── -->
+    <article class="stage" data-c="1">
+      <header class="stage-header">
+        <div class="stage-num">01</div>
+        <div class="stage-title">
+          <span class="eyebrow">Radar · 24/7 · WhatsApp</span>
+          <h3>Monitorar</h3>
+          <p class="one-liner">Sistema vigia 3 portais públicos a cada 15 minutos. Match WhatsApp em segundos.</p>
+        </div>
+        <div class="stage-badge">
+          <span class="latency">&lt; 15min</span>
+          <span class="lbl">do publish ao push</span>
+        </div>
+      </header>
+      <div class="stage-body">
+        <div class="stage-side">
+          <h4>O que faz</h4>
+          <p class="lead">A cada <strong data-hl="1">15 minutos</strong>, consulta <strong>PNCP + e-Compras DF + Águas Lindas</strong>, filtra editais novos por CNAE/valor/palavra-chave e calcula um <strong data-hl="1">match score</strong> 0-100 cruzando com seu perfil. Acima do threshold, push WhatsApp.</p>
+          <ul class="feat-list">
+            <li>Cobertura: 3 portais oficiais + DODF como fallback RSS</li>
+            <li>Filtros: CNAE primário/secundário, faixa de valor, palavras-chave</li>
+            <li>Dedup por hash (órgão + número + ano) — nunca duplica push</li>
+            <li>Templates HSM aprovados Meta — zero risco de ban WhatsApp</li>
+          </ul>
+          <div class="example-box">
+            <span class="tag">Exemplo prático</span>
+            <p class="body"><strong>10:42</strong> — Águas Lindas publica edital "mobiliário hospitalar R$180k". <strong>10:48</strong> — seu WhatsApp toca: <em>"Novo edital · match 87% · prazo 25/Mai"</em>. Você abre, decide, segue.</p>
+          </div>
+        </div>
+        <div class="stage-side">
+          <div class="steps-timeline">
+            <h5>Fluxo técnico</h5>
+            <div class="step-row"><span class="pip">1</span><span class="ctn"><strong>Inngest cron</strong> dispara <code>monitorar.tick</code> a cada 900s</span></div>
+            <div class="step-row"><span class="pip">2</span><span class="ctn">Worker consulta <strong>4 fontes em paralelo</strong>: PNCP REST, e-Compras DF, Portal Águas Lindas (Playwright), DODF (RSS)</span></div>
+            <div class="step-row"><span class="pip">3</span><span class="ctn">Normaliza cada edital novo no schema canônico <code>licitacao</code> (Postgres) — dedup por hash</span></div>
+            <div class="step-row"><span class="pip">4</span><span class="ctn">Computa <strong>match_score</strong>: CNAE (0.4) + valor (0.3) + cosine similarity objeto via Legal-BERTimbau (0.3)</span></div>
+            <div class="step-row"><span class="pip">5</span><span class="ctn">Se score ≥ 0.65, dispara <code>whatsapp.send</code> com template HSM <code>edital_novo_v1</code></span></div>
+            <div class="step-row"><span class="pip">6</span><span class="ctn">Cliente recebe push em <strong>&lt; 15min</strong> da publicação no portal</span></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ───── STAGE 2 — Analisar ───── -->
+    <article class="stage" data-c="2">
+      <header class="stage-header">
+        <div class="stage-num">02</div>
+        <div class="stage-title">
+          <span class="eyebrow">MOAT · Análise Histórica · 6 Meses</span>
+          <h3>Analisar 6 Meses</h3>
+          <p class="one-liner">Antes de você decidir, o sistema já leu 6 meses de contratos do mesmo órgão. 4 padrões prescritivos extraídos.</p>
+        </div>
+        <div class="stage-badge">
+          <span class="latency">&lt; 90s</span>
+          <span class="lbl">por edital (cache quente)</span>
+        </div>
+      </header>
+      <div class="stage-body">
+        <div class="stage-side">
+          <h4>O que faz</h4>
+          <p class="lead">Para cada edital marcado de interesse, consulta <strong data-hl="2">todos os contratos aprovados</strong> daquele órgão nos últimos 6 meses e extrai <strong data-hl="2">4 padrões objetivos</strong> com fonte citada (contrato N, página X).</p>
+          <ul class="feat-list">
+            <li><strong>Vencedores recorrentes</strong>: CNPJs que ganham 80%+ das licitações similares</li>
+            <li><strong>Preço médio aceito</strong>: faixa P25-P75 por objeto similar</li>
+            <li><strong>Requisitos não-óbvios</strong>: ACT/certs comuns além do exigido literalmente</li>
+            <li><strong>Motivos de derrota</strong>: por que outras propostas foram desclassificadas</li>
+          </ul>
+          <div class="example-box">
+            <span class="tag">Por que isso é MOAT</span>
+            <p class="body">Effecti/ConLicitação fazem <strong>análise histórica desde 2024</strong>, mas entregam <strong>lista bruta</strong>. Você entrega <strong>4 padrões prescritivos com fonte citada</strong>. Para concorrente copiar: retreinar pipeline + reescrever UX = 6-12 meses.</p>
+          </div>
+        </div>
+        <div class="stage-side">
+          <div class="steps-timeline">
+            <h5>Fluxo técnico</h5>
+            <div class="step-row"><span class="pip">1</span><span class="ctn">UI dispara <code>POST /api/workflow/interesse/{id}</code> → Inngest event <code>analisar.run</code></span></div>
+            <div class="step-row"><span class="pip">2</span><span class="ctn">Worker query Postgres por contratos do órgão últimos 6m. Se cache vazio, enrich via PNCP <code>/atas/{orgao}</code></span></div>
+            <div class="step-row"><span class="pip">3</span><span class="ctn"><strong>Legal-BERTimbau-large-v2</strong> (1024d MIT) gera embedding do objeto + busca top-N similares via pgvector HNSW</span></div>
+            <div class="step-row"><span class="pip">4</span><span class="ctn">LLM judge (Claude Haiku / GPT-5.1-mini) extrai os 4 padrões com source citation obrigatória</span></div>
+            <div class="step-row"><span class="pip">5</span><span class="ctn">Validação: cada padrão tem source válido? Se não → retry 1×, depois fallback descritivo</span></div>
+            <div class="step-row"><span class="pip">6</span><span class="ctn">Push WhatsApp: <em>"Análise pronta — 4 padrões extraídos. Abrir →"</em></span></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ───── STAGE 3 — Diferencial ───── -->
+    <article class="stage" data-c="3">
+      <header class="stage-header">
+        <div class="stage-num">03</div>
+        <div class="stage-title">
+          <span class="eyebrow">MOAT · Síntese Prescritiva</span>
+          <h3>Indicar Diferencial</h3>
+          <p class="one-liner">Com base na análise, sistema te diz o ângulo certo para ganhar este edital específico — em 5 frases.</p>
+        </div>
+        <div class="stage-badge">
+          <span class="latency">60s</span>
+          <span class="lbl">leitura no celular</span>
+        </div>
+      </header>
+      <div class="stage-body">
+        <div class="stage-side">
+          <h4>O que faz</h4>
+          <p class="lead">LLM forte (GPT-5 / Claude Sonnet) combina padrões do Estágio 02 + seu vault de ACTs + sua margem-padrão → gera <strong data-hl="3">5 frases acionáveis</strong>. Não é receita pronta, é o ângulo certo pra você decidir.</p>
+          <ul class="feat-list">
+            <li>Faixa de preço aceita pelo órgão historicamente</li>
+            <li>Certificação/ACT que aumenta sua chance específica</li>
+            <li>Concorrente provável + ponto fraco identificável</li>
+            <li>Risco principal (motivo mais comum de derrota)</li>
+            <li>Tempo certo de submeter (padrão observado)</li>
+          </ul>
+          <div class="example-box">
+            <span class="tag">Exemplo de saída · Edital DF-2026-1234</span>
+            <p class="body">
+            • <strong>Preço</strong>: vencedores cobraram R$160-195k. Sua margem comporta R$172k confortável.<br>
+            • <strong>Diferencial</strong>: 83% dos vencedores ofereceram garantia 24m. Você não oferece.<br>
+            • <strong>Concorrência</strong>: 3 CNPJs dominam. Empresa Y teve CRF vencido 2× — vulnerável.<br>
+            • <strong>Risco</strong>: 41% das derrotas foram por ACT objeto incompatível.
+            </p>
+          </div>
+        </div>
+        <div class="stage-side">
+          <div class="steps-timeline">
+            <h5>Fluxo técnico</h5>
+            <div class="step-row"><span class="pip">1</span><span class="ctn">Auto-disparado: Inngest event <code>diferencial.synthesize</code> quando <code>analise_orgao.status = pronto</code></span></div>
+            <div class="step-row"><span class="pip">2</span><span class="ctn">Worker carrega contexto: 4 padrões + <code>empresa.vault_acts</code> + <code>empresa.margem_minima_pct</code> + certificações</span></div>
+            <div class="step-row"><span class="pip">3</span><span class="ctn">Constrói prompt para LLM forte com instrução: <em>"5 frases acionáveis, cite fonte de cada uma"</em></span></div>
+            <div class="step-row"><span class="pip">4</span><span class="ctn">LLM retorna JSON estruturado com source IDs. Validação: cada source existe no DB? Sim/não</span></div>
+            <div class="step-row"><span class="pip">5</span><span class="ctn">Se qualquer source inválida → retry 1× com prompt estrito. Falhar → bloqueia e mostra Estágio 02 cru</span></div>
+            <div class="step-row"><span class="pip">6</span><span class="ctn">Push WhatsApp + cartão visual no app: <em>"Diferencial pronto · 5 pontos · 60s leitura"</em></span></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ───── STAGE 4 — Habilitar ───── -->
+    <article class="stage" data-c="4">
+      <header class="stage-header">
+        <div class="stage-num">04</div>
+        <div class="stage-title">
+          <span class="eyebrow">Execução · Dossiê Production-Grade</span>
+          <h3>Habilitar</h3>
+          <p class="one-liner">De 4 horas refazendo dossiê manual para 28 minutos revisando PDF compilado.</p>
+        </div>
+        <div class="stage-badge">
+          <span class="latency">4h → 28min</span>
+          <span class="lbl">−85% do trabalho manual</span>
+        </div>
+      </header>
+      <div class="stage-body">
+        <div class="stage-side">
+          <h4>O que faz</h4>
+          <p class="lead">Sistema cruza <strong data-hl="4">cada exigência do edital</strong> com seu vault de certidões/ACTs/BP-DRE, alerta o que falta, renova CRF FGTS via API Caixa, e <strong data-hl="4">compila o PDF unificado em 60 segundos</strong>.</p>
+          <ul class="feat-list">
+            <li>CRF FGTS · CND Fed/Est/Mun · CNDT · CNDP — monitoradas o ano todo</li>
+            <li>BP/DRE + índices LG/LC/SG gerados do livro caixa automaticamente</li>
+            <li>ACT matcher pontua 0-10 cada par (vault, exigência) com fórmula TCU-defensável</li>
+            <li>pdf-lib (MIT) costura PDF final na ordem do edital com bookmarks</li>
+          </ul>
+          <div class="stage-kpis">
+            <div class="stage-kpi">
+              <span class="k">Tempo poupado</span>
+              <span class="v">−3.5h/edital</span>
+              <span class="u">× 5-30 editais/mês</span>
+            </div>
+            <div class="stage-kpi">
+              <span class="k">Receita preservada</span>
+              <span class="v">R$ 5-50k</span>
+              <span class="u">por inabilitação evitada</span>
+            </div>
+          </div>
+        </div>
+        <div class="stage-side">
+          <div class="steps-timeline">
+            <h5>Fluxo técnico</h5>
+            <div class="step-row"><span class="pip">1</span><span class="ctn">API recebe <code>POST /api/workflow/habilitar/{id}</code> → Inngest event <code>habilitar.compile</code></span></div>
+            <div class="step-row"><span class="pip">2</span><span class="ctn">Worker baixa anexos do edital (PDFs) e salva em Supabase Storage</span></div>
+            <div class="step-row"><span class="pip">3</span><span class="ctn"><strong>Docling (IBM, MIT)</strong> faz parse com TableFormer; fallback <strong>Mistral OCR 3</strong> se confidence &lt;0.7</span></div>
+            <div class="step-row"><span class="pip">4</span><span class="ctn">Cruzamento paralelo: certidões (vault) + BP/DRE (livro caixa) + ACTs (LLM judge)</span></div>
+            <div class="step-row"><span class="pip">5</span><span class="ctn">1-click renew CRF FGTS via API Caixa quando vencendo &lt;7d</span></div>
+            <div class="step-row"><span class="pip">6</span><span class="ctn">pdf-lib costura tudo + você revisa 14min + envia. Total: <strong>28min</strong> do clique</span></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ───── STAGE 5 — Acompanhar ───── -->
+    <article class="stage" data-c="5">
+      <header class="stage-header">
+        <div class="stage-num">05</div>
+        <div class="stage-title">
+          <span class="eyebrow">Execução · SLA Crítico · Preclusão</span>
+          <h3>Acompanhar Sessão</h3>
+          <p class="one-liner">No momento que vencedor é declarado, sistema baixa documentos e roda 4 verificações em &lt;3min.</p>
+        </div>
+        <div class="stage-badge">
+          <span class="latency">&lt; 3min</span>
+          <span class="lbl">para decidir recurso</span>
+        </div>
+      </header>
+      <div class="stage-body">
+        <div class="stage-side">
+          <h4>O que faz</h4>
+          <p class="lead">Sistema monitora a sessão pública em tempo real. Quando alguém é declarado vencedor, baixa documentos e roda <strong data-hl="5">4 verificações automáticas</strong> classificando achados em <strong data-hl="5">INSANÁVEL / DUVIDOSO / SEM BRECHA</strong>.</p>
+          <ul class="feat-list">
+            <li>CRF FGTS vencedor está válido? (consulta Caixa em tempo real)</li>
+            <li>CND Federal está válida? (consulta RFB direto)</li>
+            <li>Sócios em CEIS / CNJ Improbidade? (Portal da Transparência)</li>
+            <li>ACT objeto compatível? (match semântico contra exigência)</li>
+          </ul>
+          <div class="example-box">
+            <span class="tag">Push WhatsApp · 18:00</span>
+            <p class="body"><strong>Vencedor declarado: Empresa Y CNPJ XX/XXX-XX</strong><br>
+            ⚠ INSANÁVEL — CRF FGTS expirou em 16/Mai<br>
+            ⚠ INSANÁVEL — sócio em CEIS<br>
+            ⚠ DUVIDOSO — ACT 'mobiliário escolar' vs edital hospitalar<br>
+            <strong>Score recurso: 9.2/10 · recomendação forte</strong></p>
+          </div>
+        </div>
+        <div class="stage-side">
+          <div class="steps-timeline">
+            <h5>Fluxo técnico</h5>
+            <div class="step-row"><span class="pip">1</span><span class="ctn">Inngest <code>acompanhar.poll</code> ativo durante janela sessão (start ± 4h), polling 30s</span></div>
+            <div class="step-row"><span class="pip">2</span><span class="ctn">Quando PNCP retorna status <code>vencedor_declarado</code>, captura cnpj + valor + documentos</span></div>
+            <div class="step-row"><span class="pip">3</span><span class="ctn">4 verificações em paralelo — Caixa CRF, RFB CND, Portal Transparência CEIS, LLM ACT match</span></div>
+            <div class="step-row"><span class="pip">4</span><span class="ctn">Classifica achados: INSANÁVEL (CRF, CEIS) · DUVIDOSO (ACT) · SEM BRECHA</span></div>
+            <div class="step-row"><span class="pip">5</span><span class="ctn">Calcula <strong>score_recurso 0-10</strong>: ≥8 = recomendação forte; 4-7 = decisão tática; &lt;4 = não recorrer</span></div>
+            <div class="step-row"><span class="pip">6</span><span class="ctn">Push WhatsApp com relatório anexo — total: <strong>&lt;3min</strong> do "vencedor declarado"</span></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ───── STAGE 6 — Recorrer ───── -->
+    <article class="stage" data-c="6">
+      <header class="stage-header">
+        <div class="stage-num">06</div>
+        <div class="stage-title">
+          <span class="eyebrow">Execução · RAG Jurídico · Anti-Preclusão</span>
+          <h3>Recorrer</h3>
+          <p class="one-liner">Se score_recurso &gt;5, sistema gera minuta com fundamento legal validado em &lt;30 segundos.</p>
+        </div>
+        <div class="stage-badge">
+          <span class="latency">&lt; 8min</span>
+          <span class="lbl">do achado ao envio</span>
+        </div>
+      </header>
+      <div class="stage-body">
+        <div class="stage-side">
+          <h4>O que faz</h4>
+          <p class="lead">RAG jurídico busca <strong data-hl="6">fundamento legal preciso</strong> em corpus indexado (Lei 14.133, Súmulas TCU, Acórdãos chave), aplica template validado por advogado, e gera <strong data-hl="6">minuta auditável</strong>. Cita base legal real — não inventa.</p>
+          <ul class="feat-list">
+            <li>Corpus indexado: Lei 14.133/2021 full text + ~200 súmulas TCU + ~50 acórdãos chave</li>
+            <li>Validação obrigatória: cada citação legal verificada contra corpus antes do output</li>
+            <li>Princípio Justen Filho: <em>"fundamento referenciado, não inventado"</em></li>
+            <li>Sistema agenda automaticamente "razões finais em 3 dias úteis"</li>
+          </ul>
+          <div class="stage-kpis">
+            <div class="stage-kpi">
+              <span class="k">Dentro do prazo</span>
+              <span class="v">100%</span>
+              <span class="u">zero perda por preclusão</span>
+            </div>
+            <div class="stage-kpi">
+              <span class="k">Receita reaverta</span>
+              <span class="v">R$ 5-50k</span>
+              <span class="u">por recurso procedente</span>
+            </div>
+          </div>
+        </div>
+        <div class="stage-side">
+          <div class="steps-timeline">
+            <h5>Fluxo técnico</h5>
+            <div class="step-row"><span class="pip">1</span><span class="ctn">Inngest event <code>recorrer.draft</code> disparado se <code>score_recurso &gt; 5</code> + você confirmou</span></div>
+            <div class="step-row"><span class="pip">2</span><span class="ctn"><strong>RAG jurídico</strong>: vector search no corpus indexado, recupera 2-3 fundamentos por achado</span></div>
+            <div class="step-row"><span class="pip">3</span><span class="ctn">LLM forte aplica template advogado-validado, preenche com fatos concretos + base legal</span></div>
+            <div class="step-row"><span class="pip">4</span><span class="ctn"><strong>Validação obrigatória</strong>: cada citação existe no corpus? Súmula é vinculante? Se não → bloqueia</span></div>
+            <div class="step-row"><span class="pip">5</span><span class="ctn">PDF gerado via pdf-lib + assinatura digital opcional (ICP-Brasil A1)</span></div>
+            <div class="step-row"><span class="pip">6</span><span class="ctn">Push WhatsApp + agenda task automática: <em>"razões finais em 3 dias úteis"</em></span></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ───── BASE — Livro Caixa ───── -->
+    <article class="stage" data-c="base">
+      <header class="stage-header">
+        <div class="stage-num">B</div>
+        <div class="stage-title">
+          <span class="eyebrow">Fundação · Backstage Integration · MOAT estrutural</span>
+          <h3>Base · Livro Caixa 3 Empresas</h3>
+          <p class="one-liner">Open Finance importa transações. IA categoriza. Família aprova com 1 tap. BP/DRE fica sempre vivo.</p>
+        </div>
+        <div class="stage-badge">
+          <span class="latency">&lt; 10s</span>
+          <span class="lbl">por lançamento</span>
+        </div>
+      </header>
+      <div class="stage-body">
+        <div class="stage-side">
+          <h4>O que faz</h4>
+          <p class="lead">App PWA no celular onde a família lança receita/despesa das 3 empresas. <strong data-hl="base">Pluggy Open Finance</strong> importa transações bancárias automático. IA sugere categoria contábil. <strong data-hl="base">Auto-BP/DRE alimenta o Estágio 04</strong> sem contador no caminho.</p>
+          <ul class="feat-list">
+            <li>RBAC granular: cada pessoa só vê a empresa dela (Postgres RLS)</li>
+            <li>Pluggy (R$48/mês) cobre 90%+ bancos PJ BR — sandbox grátis para dev</li>
+            <li>Plano de contas ITG 1000 (CFC) — aceito por contadores e TCU</li>
+            <li>Cálculo automático LG/LC/SG (índices Lei 14.133 art. 69) com fallback art.69 §3º</li>
+          </ul>
+          <div class="example-box">
+            <span class="tag">Dia típico · tarde</span>
+            <p class="body">
+            <strong>14:55</strong> Push: "8 transações novas em Empresa A, aguardando aprovação"<br>
+            <strong>14:56</strong> Pessoa abre app, vê 8 cards com categoria sugerida<br>
+            <strong>14:57</strong> "Boleto Fornecedor X · R$1.500" → tap OK<br>
+            <strong>14:59</strong> Tudo classificado em &lt;3min · BP/DRE da licitante fica sempre vivo
+            </p>
+          </div>
+        </div>
+        <div class="stage-side">
+          <div class="steps-timeline">
+            <h5>Schema multi-tenant (8 tabelas core)</h5>
+            <div class="step-row"><span class="pip">1</span><span class="ctn"><code>empresa</code> — 3 rows (1 licitante + 2 gestão), com <code>parent_group_id</code> para Lei 14.133 art. 14 IV</span></div>
+            <div class="step-row"><span class="pip">2</span><span class="ctn"><code>usuario</code> + <code>role</code> — RBAC granular: master / receita / despesa / leitor</span></div>
+            <div class="step-row"><span class="pip">3</span><span class="ctn"><code>plano_contas</code> — seed ITG 1000 versionado (não editável Fase 1)</span></div>
+            <div class="step-row"><span class="pip">4</span><span class="ctn"><code>transacao</code> — origem manual / pluggy / ocr_nota · status pendente/aprovada</span></div>
+            <div class="step-row"><span class="pip">5</span><span class="ctn"><code>conexao_bancaria</code> — Pluggy item_id, last_sync, status</span></div>
+            <div class="step-row"><span class="pip">6</span><span class="ctn"><code>audit</code> — LGPD: cada view/edit/export/delete logado com IP + user + recurso</span></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ═══════════ STACK ═══════════ -->
+<section class="block" id="stack">
+  <div class="container">
+    <div class="section-head">
+      <div class="label">03 · Stack Técnica</div>
+      <h2>Cada escolha <span class="lime">justificada</span>.</h2>
+      <p class="dek">Tudo aberto e auditável. Nenhuma escolha por modinha — cada ferramenta tem licença compatível com produto comercial, custo Fase 1 mapeado, e fallback definido.</p>
+    </div>
+
+    <div class="stack-grid">
+      <div class="stack-card">
+        <span class="layer">[ Frontend ]</span>
+        <span class="name">Next.js 16</span>
+        <span class="why">RSC + Server Actions. Deploy Vercel 1-click. Stack conhecida.</span>
+        <span class="cost">R$ 0 (Hobby)</span>
+      </div>
+      <div class="stack-card">
+        <span class="layer">[ Banco ]</span>
+        <span class="name">Supabase</span>
+        <span class="why">Postgres 15 + pgvector + RLS + Auth + Storage no mesmo SDK.</span>
+        <span class="cost">R$ 130/mês Pro</span>
+      </div>
+      <div class="stack-card">
+        <span class="layer">[ Jobs ]</span>
+        <span class="name">Inngest</span>
+        <span class="why">Event-driven, retry automático, dashboard nativo. Não polling.</span>
+        <span class="cost">R$ 0 → R$ 100</span>
+      </div>
+      <div class="stack-card">
+        <span class="layer">[ Vector ]</span>
+        <span class="name">pgvector HNSW</span>
+        <span class="why">&lt;20k vetores. Não introduzir Qdrant/Pinecone. Mantém 1 DB.</span>
+        <span class="cost">R$ 0 (incluído)</span>
+      </div>
+      <div class="stack-card">
+        <span class="layer">[ PDF Parse ]</span>
+        <span class="name">Docling (IBM)</span>
+        <span class="why">MIT. TableFormer melhor OSS p/ tabelas. NÃO Marker (GPL-3).</span>
+        <span class="cost">R$ 0 (compute)</span>
+      </div>
+      <div class="stack-card">
+        <span class="layer">[ OCR Fallback ]</span>
+        <span class="name">Mistral OCR 3</span>
+        <span class="why">$1-2/1000pg. Top em escaneado. Só chamado se Docling falhar.</span>
+        <span class="cost">R$ 10-30/mês</span>
+      </div>
+      <div class="stack-card">
+        <span class="layer">[ Embeddings ]</span>
+        <span class="name">Legal-BERTimbau-large-v2</span>
+        <span class="why">MIT. State-of-art PT-BR jurídico. Self-host 512MB RAM.</span>
+        <span class="cost">R$ 0 (compute)</span>
+      </div>
+      <div class="stack-card">
+        <span class="layer">[ LLM Judge ]</span>
+        <span class="name">Claude Haiku</span>
+        <span class="why">~R$0.05/judgment. Latência &lt;3s. Eval contínuo.</span>
+        <span class="cost">&lt;R$ 30/mês</span>
+      </div>
+      <div class="stack-card">
+        <span class="layer">[ LLM Forte ]</span>
+        <span class="name">Claude Sonnet</span>
+        <span class="why">Estágio 3 síntese prescritiva. 1× por edital. Caro mas vale.</span>
+        <span class="cost">&lt;R$ 50/mês</span>
+      </div>
+      <div class="stack-card">
+        <span class="layer">[ Open Finance ]</span>
+        <span class="name">Pluggy</span>
+        <span class="why">90%+ bancos BR PJ. BACEN direto requer ICP+DCR (não vale).</span>
+        <span class="cost">R$ 48/mês (3 CNPJs)</span>
+      </div>
+      <div class="stack-card">
+        <span class="layer">[ WhatsApp ]</span>
+        <span class="name">Cloud API Meta</span>
+        <span class="why">Único path defensável. Baileys/Wppconnect = risco ban.</span>
+        <span class="cost">~R$ 50/mês</span>
+      </div>
+      <div class="stack-card">
+        <span class="layer">[ Scraping ]</span>
+        <span class="name">Playwright</span>
+        <span class="why">Apenas para Águas Lindas (PCP privado). DF/PNCP = API REST.</span>
+        <span class="cost">R$ 0 (compute)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CUSTOS ═══════════ -->
+<section class="block" id="custos">
+  <div class="container">
+    <div class="section-head">
+      <div class="label">04 · Custos & Margens</div>
+      <h2>O modelo financeiro <span class="lime">por fase</span>.</h2>
+      <p class="dek">Pricing model <strong>workflow-as-a-service</strong>: cliente paga R$ 2.800/mês (Pro tier) e economiza R$ 415k/ano de custo manual escondido — ROI 12×. Margem cresce de 80% em piloto para 96% em escala.</p>
+    </div>
+
+    <div class="cost-grid">
+      <div class="cost-card">
+        <span class="phase">Fase 1 · Piloto</span>
+        <span class="head">Case-âncora<span class="clients">1 cliente</span></span>
+        <div class="bar-row infra">
+          <span class="l">infra</span>
+          <span class="b" style="--w: 8%"></span>
+          <span class="v">R$ 220</span>
+        </div>
+        <div class="bar-row revenue">
+          <span class="l">receita</span>
+          <span class="b" style="--w: 0%"></span>
+          <span class="v">R$ 0</span>
+        </div>
+        <div class="bar-row margin">
+          <span class="l">margem</span>
+          <span class="b" style="--w: 0%"></span>
+          <span class="v">−R$ 220</span>
+        </div>
+        <div class="summary">
+          <span class="lbl">Investimento</span>
+          <span class="val" style="color: var(--negative);">−R$ 220/mês</span>
+        </div>
+      </div>
+
+      <div class="cost-card highlight">
+        <span class="phase">Fase 2 · Beta</span>
+        <span class="head">Pagantes<span class="clients">5 clientes</span></span>
+        <div class="bar-row infra">
+          <span class="l">infra</span>
+          <span class="b" style="--w: 30%"></span>
+          <span class="v">R$ 810</span>
+        </div>
+        <div class="bar-row revenue">
+          <span class="l">receita</span>
+          <span class="b" style="--w: 100%"></span>
+          <span class="v">R$ 14.000</span>
+        </div>
+        <div class="bar-row margin">
+          <span class="l">margem</span>
+          <span class="b" style="--w: 94%"></span>
+          <span class="v">94%</span>
+        </div>
+        <div class="summary">
+          <span class="lbl">Líquido/mês</span>
+          <span class="val">R$ 13.190</span>
+        </div>
+      </div>
+
+      <div class="cost-card">
+        <span class="phase">Fase 3 · Escala</span>
+        <span class="head">Regional DF<span class="clients">50 clientes</span></span>
+        <div class="bar-row infra">
+          <span class="l">infra</span>
+          <span class="b" style="--w: 30%"></span>
+          <span class="v">R$ 6.000</span>
+        </div>
+        <div class="bar-row revenue">
+          <span class="l">receita</span>
+          <span class="b" style="--w: 100%"></span>
+          <span class="v">R$ 140.000</span>
+        </div>
+        <div class="bar-row margin">
+          <span class="l">margem</span>
+          <span class="b" style="--w: 96%"></span>
+          <span class="v">96%</span>
+        </div>
+        <div class="summary">
+          <span class="lbl">Líquido/mês</span>
+          <span class="val">R$ 134.000</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 32px; background: var(--paper); border: 1px solid var(--rule); padding: 24px 28px; border-radius: 4px;">
+      <h4 style="font-family: var(--font-m); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px;">
+        Composição do custo Fase 2 · 5 clientes pagantes
+      </h4>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; font-family: var(--font-m); font-size: 11.5px;">
+        <div style="background: var(--bg); padding: 12px 14px; border-radius: 3px;"><span style="color: var(--muted); display:block; margin-bottom: 4px;">Supabase Pro</span><strong style="color: var(--ink); font-size: 14px;">R$ 130</strong></div>
+        <div style="background: var(--bg); padding: 12px 14px; border-radius: 3px;"><span style="color: var(--muted); display:block; margin-bottom: 4px;">Pluggy 5×R$48</span><strong style="color: var(--ink); font-size: 14px;">R$ 240</strong></div>
+        <div style="background: var(--bg); padding: 12px 14px; border-radius: 3px;"><span style="color: var(--muted); display:block; margin-bottom: 4px;">LLM judge+forte</span><strong style="color: var(--ink); font-size: 14px;">R$ 230</strong></div>
+        <div style="background: var(--bg); padding: 12px 14px; border-radius: 3px;"><span style="color: var(--muted); display:block; margin-bottom: 4px;">WhatsApp Cloud</span><strong style="color: var(--ink); font-size: 14px;">R$ 80</strong></div>
+        <div style="background: var(--bg); padding: 12px 14px; border-radius: 3px;"><span style="color: var(--muted); display:block; margin-bottom: 4px;">Vercel + bandwidth</span><strong style="color: var(--ink); font-size: 14px;">R$ 100</strong></div>
+        <div style="background: var(--bg); padding: 12px 14px; border-radius: 3px;"><span style="color: var(--muted); display:block; margin-bottom: 4px;">Mistral OCR</span><strong style="color: var(--ink); font-size: 14px;">R$ 20</strong></div>
+        <div style="background: var(--bg); padding: 12px 14px; border-radius: 3px;"><span style="color: var(--muted); display:block; margin-bottom: 4px;">Sentry + Resend</span><strong style="color: var(--ink); font-size: 14px;">R$ 0</strong></div>
+        <div style="background: var(--bg); padding: 12px 14px; border-radius: 3px;"><span style="color: var(--muted); display:block; margin-bottom: 4px;">Domínio + SSL</span><strong style="color: var(--ink); font-size: 14px;">R$ 10</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ MOAT ═══════════ -->
+<section class="block" id="moat">
+  <div class="container">
+    <div class="section-head">
+      <div class="label">05 · Moat Defensável</div>
+      <h2>Por que o concorrente <span class="lime">não copia rápido</span>.</h2>
+      <p class="dek">3 camadas combinadas formam o moat. Cada uma sozinha não basta — a integração entre as 3 é o que torna a réplica custosa (12-18 meses de esforço estimado).</p>
+    </div>
+
+    <div class="moat-stack">
+      <div class="moat-row">
+        <div class="n">01</div>
+        <div class="what">Síntese prescritiva com source citation
+          <small>5 frases acionáveis (não 50 bullets). Cada frase cita contrato + página. Auditável.</small>
+        </div>
+        <div class="why">Effecti/ConLicitação entregam lista bruta de contratos. Mudar pra prescritivo exige <strong>retreinar pipeline + reescrever UX inteira</strong>.<br><span class="time">6-12 meses · esforço alto</span></div>
+      </div>
+      <div class="moat-row">
+        <div class="n">02</div>
+        <div class="what">Backstage integration livro-caixa ↔ habilitação
+          <small>BP/DRE/índices vivos pra empresa-licitante. Estágio 4 não precisa pedir nada pro contador.</small>
+        </div>
+        <div class="why">Nenhum concorrente tem sistema contábil multi-tenant + Open Finance + RLS granular. Construir = <strong>12-18 meses + parceria com contadores BR</strong>.<br><span class="time">12-18 meses · custo proibitivo</span></div>
+      </div>
+      <div class="moat-row">
+        <div class="n">03</div>
+        <div class="what">Vertical regional DF
+          <small>Águas Lindas + DF + Federal-DF customizado. Não escopo nacional comoditizado.</small>
+        </div>
+        <div class="why">Concorrente nacional não desce nesse nível (ROI baixo). Concorrente local não tem capital pra construir stack.<br><span class="time">N/A · ninguém quer fazer</span></div>
+      </div>
+    </div>
+
+    <div style="background: var(--lime-soft); border: 1px solid var(--lime); padding: 20px 24px; border-radius: 4px;">
+      <strong style="font-family: var(--font-d); font-size: 16px; color: var(--ink); display: block; margin-bottom: 8px;">O que NÃO é moat (transparente):</strong>
+      <span style="font-size: 13.5px; color: var(--ink-2);">Análise histórica 6m (Effecti já faz) · ACT matcher (técnica conhecida) · WhatsApp push (qualquer um faz) · PDF parsing (Docling MIT, open). O moat está na <strong>integração</strong>, não em nenhum componente isolado.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ RISCOS ═══════════ -->
+<section class="block" id="riscos">
+  <div class="container">
+    <div class="section-head">
+      <div class="label">06 · Riscos & Mitigações</div>
+      <h2>O que pode quebrar — <span class="lime">e como tratamos.</span></h2>
+      <p class="dek">Heatmap probabilidade × impacto. Riscos críticos têm mitigação hardcoded ou gate de kill no roadmap.</p>
+    </div>
+
+    <div class="risk-matrix">
+      <h4 style="font-family: var(--font-m); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px;">Matriz Probabilidade × Impacto</h4>
+
+      <div class="risk-grid">
+        <div class="rg-cell header">Probabilidade</div>
+        <div class="rg-cell header">Impacto BAIXO</div>
+        <div class="rg-cell header">Impacto MÉDIO</div>
+        <div class="rg-cell header">Impacto ALTO</div>
+
+        <div class="rg-cell row-label">Alta</div>
+        <div class="rg-cell low">
+          <span class="item"><strong>Portal AL muda HTML</strong></span>
+          <span class="item">→ snapshot DOM + nightly E2E</span>
+        </div>
+        <div class="rg-cell medium">
+          <span class="item"><strong>Pai 60+ não usa app</strong></span>
+          <span class="item">→ WhatsApp Bot Sprint 1 + onboarding presencial</span>
+        </div>
+        <div class="rg-cell high">
+          <span class="item"><strong>Docling falha em escaneado AL</strong></span>
+          <span class="item">→ Mistral OCR fallback + aviso revisão manual</span>
+        </div>
+
+        <div class="rg-cell row-label">Média</div>
+        <div class="rg-cell low">
+          <span class="item"><strong>Rate limit PNCP (60/min)</strong></span>
+          <span class="item">→ token bucket + backoff</span>
+        </div>
+        <div class="rg-cell medium">
+          <span class="item"><strong>LLM alucina padrão</strong></span>
+          <span class="item">→ source citation obrigatória, bloqueio se inválida</span>
+        </div>
+        <div class="rg-cell high">
+          <span class="item"><strong>ACT matcher F1 &lt; 0.75</strong></span>
+          <span class="item">→ Gate KILL Sprint 4, bloqueia feature</span>
+        </div>
+
+        <div class="rg-cell row-label">Baixa</div>
+        <div class="rg-cell low">
+          <span class="item"><strong>Pluggy fora do ar</strong></span>
+          <span class="item">→ upload OFX manual Plano C</span>
+        </div>
+        <div class="rg-cell medium">
+          <span class="item"><strong>PNCP API muda schema</strong></span>
+          <span class="item">→ Zod validation + alerta breaking</span>
+        </div>
+        <div class="rg-cell high">
+          <span class="item"><strong>WhatsApp Cloud ban</strong></span>
+          <span class="item">→ template HSM oficial, plano B email+web push</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SPRINT GATES ═══════════ -->
+<section class="block">
+  <div class="container">
+    <div class="section-head">
+      <div class="label">07 · Roadmap & Kill Gates</div>
+      <h2>Pontos de controle <span class="lime">objetivos</span>.</h2>
+      <p class="dek">Cada sprint tem 1 critério de validação. Falhar gate = pivot ou kill, não "continua e vê o que acontece". Aprendi com Polymarket (pivot tardio queima orçamento).</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-track">
+        <div class="tl-stop">
+          <div class="dot">S0</div>
+          <div class="label">Discovery</div>
+          <div class="gate">Cliente respondeu as 6 perguntas (nome empresas, qual licita, regime, etc)</div>
+          <div class="kill">KILL se sem info clara</div>
+        </div>
+        <div class="tl-stop">
+          <div class="dot">S1</div>
+          <div class="label">UX Crítica</div>
+          <div class="gate">Pai 60+ lançou 5 despesas sozinho em &lt;5min no app</div>
+          <div class="kill">PIVOT UX se falhar</div>
+        </div>
+        <div class="tl-stop">
+          <div class="dot">S4</div>
+          <div class="label">ML Gates</div>
+          <div class="gate">ACT matcher F1 ≥ 0.75 · Docling confidence ≥ 0.7 em 80% editais</div>
+          <div class="kill">KILL feature se &lt;limite</div>
+        </div>
+        <div class="tl-stop">
+          <div class="dot">S6</div>
+          <div class="label">Proof Moat</div>
+          <div class="gate">≥1 edital ganho via Estágio 3 (diferencial)</div>
+          <div class="kill">Reconsiderar pricing</div>
+        </div>
+        <div class="tl-stop">
+          <div class="dot">S8</div>
+          <div class="label">Anti-Preclusão</div>
+          <div class="gate">≥1 recurso ganho via Estágio 6 dentro do prazo</div>
+          <div class="kill">Pivot Sprint 6 prioridade</div>
+        </div>
+        <div class="tl-stop">
+          <div class="dot">S22</div>
+          <div class="label">Master Kill</div>
+          <div class="gate">≥1 edital ganho via plataforma OU ≥10h/mês recuperadas verificadas</div>
+          <div class="kill">KILL ou pivot consultoria</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ DEFESA ═══════════ -->
+<section class="block" id="defesa">
+  <div class="container">
+    <div class="section-head">
+      <div class="label">08 · Como Defender Em Call</div>
+      <h2>5 perguntas que <span class="lime">vão aparecer</span>.</h2>
+      <p class="dek">Cada uma já tem resposta pronta com source. Treine essas antes da call — são as objeções que cliente faz quando começa a entender o produto de verdade.</p>
+    </div>
+
+    <div class="qa-list">
+      <div class="qa-card">
+        <div class="q">Isso é IA? Não vai alucinar?</div>
+        <div class="a">Toda saída tem <strong>source citation obrigatória</strong>. Se o sistema não consegue citar fonte (contrato N, página X), ele não entrega — pede revisão humana. Princípio canalizado de Justen Filho: <em>"citação legal deve ser referenciada, não inventada"</em>. Está hardcoded na validação de saída do Estágio 3 e Estágio 6.</div>
+      </div>
+      <div class="qa-card">
+        <div class="q">Como você sabe que isso vai funcionar antes de construir?</div>
+        <div class="a">3 gates objetivos: <strong>F1 do ACT matcher ≥ 0.75</strong> (Sprint 4), <strong>parsing_confidence ≥ 0.7 em 80% editais</strong> (Sprint 4), <strong>1 edital ganho via diferencial</strong> (Sprint 6). Se qualquer gate falhar, pivot ou kill. Não vou queimar 22 semanas se Sprint 4 mostrar que não funciona.</div>
+      </div>
+      <div class="qa-card">
+        <div class="q">E LGPD? Vou processar dados sensíveis das 3 empresas.</div>
+        <div class="a">Dados <strong>nunca saem do Brasil</strong>. Embeddings rodam self-host (Legal-BERTimbau MIT). LLM externo recebe só objeto do edital + estatísticas agregadas — nunca CNPJ ou ACT bruto. RLS Postgres isola cada empresa. Audit log de cada acesso (Art. 18 LGPD). DPA com Pluggy, Anthropic, Meta antes da assinatura.</div>
+      </div>
+      <div class="qa-card">
+        <div class="q">Por que não pago Effecti? É mais barato.</div>
+        <div class="a">Effecti te dá <strong>alerta + lista bruta</strong>. Não te diz como ganhar o edital específico. Você gasta 4h refazendo dossiê manual. Effecti não integra com seu livro caixa. Custo manual escondido = ~R$ 415k/ano (tempo + 1-3 inabilitações/ano evitáveis). R$ 2.800/mês = <strong>ROI 12×</strong>. Conta fechada.</div>
+      </div>
+      <div class="qa-card">
+        <div class="q">E se você desistir do projeto?</div>
+        <div class="a">Esse é o ponto do <strong>workflow-as-a-service</strong> — você não fica refém. Cada dado seu vive no Supabase, <strong>exportável a qualquer momento em formatos abertos</strong> (CSV, JSON, OCDS). Banco de ACTs, vault, plano de contas, livro caixa: tudo seu. Migração pra outra solução é trivial. Não vendo lock-in, vendo workflow.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="container">
+    <div>
+      <div class="brand">[ AIOX ] · Buscador de Licitações</div>
+      <div class="meta">Relatório Visual · Field Manual v1 · 2026-05-19</div>
+    </div>
+    <div class="links">
+      Arquivos relacionados:<br>
+      · 06-deck-workflow-cliente/deck.html — 10 slides para cliente<br>
+      · 04-deck-diagnostico-amigo/deck.html — 13 slides diagnóstico<br>
+      · 99-synthesis/BRIEFING-TECNICO-INTERNO-Breno.md — briefing denso<br>
+      · 05-mega-research/ — 6 mega-research files (183KB)
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

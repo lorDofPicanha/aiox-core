@@ -1,0 +1,1083 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1280, initial-scale=1">
+<title>Workflow Buscador de Licitações — Apresentação Cliente</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ────────────────────────────────────────────────────────────────────
+   AIOX BRAND TOKENS (dark observatory · lime accent)
+   Synced from 04-deck-diagnostico-amigo/deck.html (v2 · 2026-05-18)
+  ──────────────────────────────────────────────────────────────────── */
+  :root {
+    --bg: #050505;
+    --panel: #0E0E0E;
+    --panel-2: #141414;
+    --rule: #1F1F1F;
+    --rule-2: #2A2A2A;
+    --text: #F5F5EF;
+    --text-2: #B8B8AE;
+    --muted: #6E6E66;
+    --lime: #D7FF3F;
+    --lime-2: #B8DD2E;
+    --warm: #F0B35A;
+    --rust: #C75F3E;
+    --positive: #9BE57A;
+    --negative: #E25B5B;
+
+    --font-d: 'Inter Tight', system-ui, sans-serif;
+    --font-b: 'Inter', system-ui, sans-serif;
+    --font-m: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-b);
+    -webkit-font-smoothing: antialiased;
+    /* Force backgrounds to print — fixes white-where-empty bug */
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
+  }
+  body { padding: 24px; }
+
+  /* ─── Index ──────────────────────────────────────────────────────── */
+  .index {
+    max-width: 1280px; margin: 0 auto 28px;
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    padding: 32px;
+  }
+  .index .hud {
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--font-m); font-size: 11px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--muted);
+    border-bottom: 1px solid var(--rule); padding-bottom: 14px; margin-bottom: 22px;
+  }
+  .index .hud .lime { color: var(--lime); }
+  .index h1 {
+    font-family: var(--font-d); font-weight: 800; font-size: 32px;
+    letter-spacing: -0.02em; line-height: 1.05;
+  }
+  .index h1 .lime { color: var(--lime); }
+  .index .thesis {
+    font-style: italic; font-size: 15px; color: var(--text-2);
+    margin-top: 14px; max-width: 64ch; line-height: 1.55;
+  }
+  .toc { margin-top: 24px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px 28px; }
+  .toc a {
+    color: var(--text-2); text-decoration: none;
+    display: grid; grid-template-columns: 36px 1fr 96px;
+    gap: 12px; align-items: baseline;
+    padding: 10px 0; border-bottom: 1px dotted var(--rule-2);
+    font-size: 13px;
+  }
+  .toc a:hover { color: var(--lime); }
+  .toc .n { font-family: var(--font-m); color: var(--lime); font-weight: 600; font-size: 11px; }
+  .toc .stage { font-family: var(--font-m); color: var(--muted); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; text-align: right; }
+
+  /* ─── Deck ───────────────────────────────────────────────────────── */
+  .deck { display: flex; flex-direction: column; gap: 28px; max-width: 1280px; margin: 0 auto; }
+  .slide {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    padding: 56px 64px;
+    overflow: hidden;
+    page-break-after: always;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 24px;
+  }
+
+  /* ─── HUD (top/bottom rails) ─────────────────────────────────────── */
+  .hud-top, .hud-bot {
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--font-m); font-size: 10px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .hud-top { border-bottom: 1px solid var(--rule); padding-bottom: 14px; }
+  .hud-bot { border-top: 1px solid var(--rule); padding-top: 12px; }
+  .hud-top .lime, .hud-bot .lime { color: var(--lime); }
+  .bracket { color: var(--lime); }
+  .hud-meta { display: flex; gap: 20px; }
+
+  /* ─── Display type ───────────────────────────────────────────────── */
+  h1.title {
+    font-family: var(--font-d); font-weight: 800;
+    font-size: 56px; line-height: 1.02; letter-spacing: -0.025em;
+    max-width: 22ch;
+  }
+  h1.title.xl { font-size: 78px; max-width: 16ch; line-height: 0.98; }
+  h1.title.s { font-size: 42px; max-width: 26ch; }
+  h1.title .lime { color: var(--lime); }
+  h2.subhead { font-family: var(--font-d); font-weight: 500; font-size: 22px; color: var(--text-2); line-height: 1.35; max-width: 60ch; }
+
+  .label-tag {
+    display: inline-flex; gap: 8px; align-items: center;
+    font-family: var(--font-m); font-size: 11px; font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted);
+  }
+  .label-tag .lime-dot { width: 6px; height: 6px; background: var(--lime); border-radius: 50%; }
+
+  .slide-body { display: flex; flex-direction: column; justify-content: center; gap: 24px; min-width: 0; }
+
+  /* ─── Workflow map (Slide 2) ─────────────────────────────────────── */
+  .workflow {
+    display: grid; grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+  }
+  .wf-stage {
+    background: var(--panel-2);
+    border: 1px solid var(--rule-2);
+    padding: 18px 16px;
+    position: relative;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .wf-stage:not(:last-child)::after {
+    content: "→"; position: absolute; right: -14px; top: 50%;
+    transform: translateY(-50%); color: var(--lime); font-size: 22px; font-weight: 700; z-index: 2;
+  }
+  .wf-stage .num {
+    font-family: var(--font-m); font-size: 10px; font-weight: 700;
+    color: var(--lime); letter-spacing: 0.16em;
+  }
+  .wf-stage .name {
+    font-family: var(--font-d); font-weight: 700; font-size: 17px;
+    letter-spacing: -0.01em; color: var(--text);
+  }
+  .wf-stage .desc { font-size: 11px; color: var(--text-2); line-height: 1.4; }
+  .wf-stage.moat { border-color: var(--lime); background: linear-gradient(180deg, rgba(215,255,63,0.06), var(--panel-2)); }
+  .wf-stage.moat .num { background: var(--lime); color: var(--bg); padding: 2px 6px; align-self: flex-start; }
+
+  .wf-foundation {
+    background: var(--panel-2);
+    border: 1px solid var(--rule-2);
+    border-left: 3px solid var(--lime);
+    padding: 14px 20px;
+    margin-top: 4px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .wf-foundation .lbl {
+    font-family: var(--font-m); font-size: 10px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--lime); font-weight: 600; flex-shrink: 0;
+  }
+  .wf-foundation .desc { font-size: 13px; color: var(--text-2); }
+
+  /* ─── Stage detail layout ────────────────────────────────────────── */
+  .stage-hero { display: grid; grid-template-columns: 1.05fr 1fr; gap: 32px; align-items: start; }
+  .stage-hero .left { display: flex; flex-direction: column; gap: 18px; }
+  .stage-hero .right { display: flex; flex-direction: column; gap: 16px; }
+
+  .stage-what {
+    font-family: var(--font-d); font-weight: 500;
+    font-size: 19px; line-height: 1.4; color: var(--text);
+  }
+  .stage-what strong { color: var(--lime); font-weight: 600; }
+
+  .stage-bullets { display: flex; flex-direction: column; gap: 10px; }
+  .stage-bullets li {
+    list-style: none; font-size: 14px; color: var(--text-2);
+    padding-left: 18px; position: relative; line-height: 1.5;
+  }
+  .stage-bullets li::before {
+    content: "→"; position: absolute; left: 0; color: var(--lime); font-weight: 700;
+  }
+
+  /* ─── How it works steps (right column) ──────────────────────────── */
+  .howsteps {
+    background: var(--panel-2);
+    border: 1px solid var(--rule-2);
+    padding: 22px 24px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .howsteps .ttl {
+    font-family: var(--font-m); font-size: 10px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--lime); font-weight: 600;
+    border-bottom: 1px solid var(--rule-2); padding-bottom: 10px;
+  }
+  .howsteps .step { display: grid; grid-template-columns: 28px 1fr; gap: 10px; align-items: baseline; }
+  .howsteps .step .n {
+    font-family: var(--font-m); font-size: 12px; font-weight: 700;
+    color: var(--lime);
+  }
+  .howsteps .step .txt {
+    font-size: 13px; color: var(--text-2); line-height: 1.5;
+  }
+  .howsteps .step .txt strong { color: var(--text); font-weight: 600; }
+
+  /* ─── KPI strip ──────────────────────────────────────────────────── */
+  .stage-kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .kpi {
+    background: var(--panel); padding: 18px 20px;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .kpi .label { font-family: var(--font-m); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  .kpi .value { font-family: var(--font-d); font-weight: 800; font-size: 28px; line-height: 1; letter-spacing: -0.02em; }
+  .kpi .value.time { color: var(--lime); }
+  .kpi .value.money { color: var(--warm); }
+  .kpi .unit { font-family: var(--font-m); font-size: 11px; color: var(--text-2); }
+
+  /* ─── Example callout box ─────────────────────────────────────────── */
+  .example {
+    background: var(--panel-2);
+    border-left: 3px solid var(--lime);
+    padding: 16px 20px;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .example .lbl {
+    font-family: var(--font-m); font-size: 10px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--lime);
+  }
+  .example .text { font-size: 13px; color: var(--text-2); line-height: 1.55; }
+  .example .text strong { color: var(--text); }
+
+  /* ─── Cover ──────────────────────────────────────────────────────── */
+  .cover-bg { position: absolute; inset: 0; opacity: 0.04; overflow: hidden; }
+  .cover-bg::before {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(215,255,63,0.3) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(215,255,63,0.3) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+  .cover-block { position: relative; z-index: 1; }
+  .cover-title {
+    font-family: var(--font-d); font-weight: 900;
+    font-size: 88px; line-height: 0.95; letter-spacing: -0.04em;
+  }
+  .cover-title .lime { color: var(--lime); }
+  .cover-title .small { font-size: 32px; font-weight: 500; color: var(--text-2); letter-spacing: -0.01em; display: block; margin-top: 14px; max-width: 22ch; line-height: 1.25; }
+  .cover-meta { display: flex; gap: 32px; margin-top: 48px; }
+  .cover-meta .item {
+    border-left: 2px solid var(--lime); padding-left: 14px;
+  }
+  .cover-meta .item .k {
+    font-family: var(--font-m); font-size: 10px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .cover-meta .item .v {
+    font-family: var(--font-d); font-weight: 600; font-size: 15px;
+    color: var(--text); margin-top: 4px;
+  }
+
+  /* ─── Recap summary bar (slide 10) ───────────────────────────────── */
+  .recap { background: var(--panel-2); border: 1px solid var(--rule-2); padding: 26px 30px; display: flex; flex-direction: column; gap: 14px; }
+  .recap .row { display: grid; grid-template-columns: 56px 1fr 160px; gap: 16px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--rule-2); }
+  .recap .row:last-child { border-bottom: none; }
+  .recap .row .n { font-family: var(--font-m); font-size: 11px; font-weight: 700; color: var(--lime); letter-spacing: 0.14em; }
+  .recap .row .name { font-family: var(--font-d); font-weight: 600; font-size: 16px; color: var(--text); }
+  .recap .row .name small { display: block; font-family: var(--font-b); font-weight: 400; font-size: 12px; color: var(--text-2); margin-top: 2px; }
+  .recap .row .val { font-family: var(--font-d); font-weight: 700; font-size: 15px; color: var(--lime); text-align: right; letter-spacing: -0.01em; }
+  .recap .row.foundation .n { color: var(--warm); }
+  .recap .row.foundation .val { color: var(--warm); }
+
+  /* ─── CTA ────────────────────────────────────────────────────────── */
+  .cta-big {
+    font-family: var(--font-d); font-weight: 900;
+    font-size: 72px; line-height: 0.98; letter-spacing: -0.03em;
+    color: var(--lime); padding: 8px 0;
+    max-width: 22ch;
+  }
+  .cta-foot {
+    margin-top: 14px;
+    font-family: var(--font-m); font-size: 11px;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+  }
+  .cta-foot strong { color: var(--lime); }
+
+  /* ─── Animations ─────────────────────────────────────────────────── */
+  /* Slide entrance — triggered by IntersectionObserver via .in-view */
+  .slide {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .slide.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Stagger reveal — children animate after parent slide is in view */
+  .slide [data-anim] {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  .slide.in-view [data-anim] {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* Stagger delays — applied via inline order */
+  .slide.in-view [data-anim="1"]  { transition-delay: 0.12s; }
+  .slide.in-view [data-anim="2"]  { transition-delay: 0.20s; }
+  .slide.in-view [data-anim="3"]  { transition-delay: 0.28s; }
+  .slide.in-view [data-anim="4"]  { transition-delay: 0.36s; }
+  .slide.in-view [data-anim="5"]  { transition-delay: 0.44s; }
+  .slide.in-view [data-anim="6"]  { transition-delay: 0.52s; }
+  .slide.in-view [data-anim="7"]  { transition-delay: 0.60s; }
+  .slide.in-view [data-anim="8"]  { transition-delay: 0.68s; }
+  .slide.in-view [data-anim="9"]  { transition-delay: 0.76s; }
+  .slide.in-view [data-anim="10"] { transition-delay: 0.84s; }
+
+  /* Auto-stagger for steps inside .howsteps when slide is in view */
+  .slide.in-view .howsteps .step {
+    animation: stepIn 0.5s ease-out both;
+  }
+  .slide.in-view .howsteps .step:nth-child(2) { animation-delay: 0.20s; }
+  .slide.in-view .howsteps .step:nth-child(3) { animation-delay: 0.28s; }
+  .slide.in-view .howsteps .step:nth-child(4) { animation-delay: 0.36s; }
+  .slide.in-view .howsteps .step:nth-child(5) { animation-delay: 0.44s; }
+  .slide.in-view .howsteps .step:nth-child(6) { animation-delay: 0.52s; }
+  .slide.in-view .howsteps .step:nth-child(7) { animation-delay: 0.60s; }
+  @keyframes stepIn {
+    from { opacity: 0; transform: translateX(-8px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  /* Auto-stagger for bullets */
+  .slide.in-view .stage-bullets li {
+    animation: bulletIn 0.4s ease-out both;
+  }
+  .slide.in-view .stage-bullets li:nth-child(1) { animation-delay: 0.18s; }
+  .slide.in-view .stage-bullets li:nth-child(2) { animation-delay: 0.26s; }
+  .slide.in-view .stage-bullets li:nth-child(3) { animation-delay: 0.34s; }
+  .slide.in-view .stage-bullets li:nth-child(4) { animation-delay: 0.42s; }
+  .slide.in-view .stage-bullets li:nth-child(5) { animation-delay: 0.50s; }
+  @keyframes bulletIn {
+    from { opacity: 0; transform: translateX(-6px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  /* Workflow arrows — continuous subtle pulse */
+  .wf-stage:not(:last-child)::after {
+    animation: arrowPulse 2.4s ease-in-out infinite;
+  }
+  .wf-stage:nth-child(2):not(:last-child)::after { animation-delay: 0.3s; }
+  .wf-stage:nth-child(3):not(:last-child)::after { animation-delay: 0.6s; }
+  .wf-stage:nth-child(4):not(:last-child)::after { animation-delay: 0.9s; }
+  .wf-stage:nth-child(5):not(:last-child)::after { animation-delay: 1.2s; }
+  @keyframes arrowPulse {
+    0%, 100% { opacity: 0.55; transform: translateY(-50%) translateX(0); }
+    50%      { opacity: 1;    transform: translateY(-50%) translateX(3px); }
+  }
+
+  /* MOAT cards — subtle lime glow pulse */
+  .wf-stage.moat {
+    animation: moatGlow 3.2s ease-in-out infinite;
+  }
+  .wf-stage.moat:nth-of-type(3) { animation-delay: 0.8s; }
+  @keyframes moatGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(215, 255, 63, 0); }
+    50%      { box-shadow: 0 0 24px 0 rgba(215, 255, 63, 0.18); }
+  }
+
+  /* Workflow stage cards — hover lift */
+  .wf-stage {
+    transition: transform 0.3s ease-out, border-color 0.3s ease-out, background-color 0.3s ease-out;
+  }
+  .wf-stage:hover {
+    transform: translateY(-4px);
+    border-color: var(--lime);
+    background: var(--panel);
+  }
+  .wf-stage:hover .name { color: var(--lime); transition: color 0.3s ease-out; }
+
+  /* Cover grid drift — very slow background motion */
+  .cover-bg::before {
+    animation: gridDrift 40s linear infinite;
+  }
+  @keyframes gridDrift {
+    from { background-position: 0 0; }
+    to   { background-position: 80px 80px; }
+  }
+
+  /* TOC link hover — slide right slightly */
+  .toc a {
+    transition: color 0.25s ease, padding-left 0.25s ease;
+  }
+  .toc a:hover {
+    padding-left: 6px;
+  }
+
+  /* KPI cards entrance — scale + fade */
+  .slide.in-view .kpi,
+  .slide.in-view .stat-cell {
+    animation: kpiIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .slide.in-view .kpi:nth-child(2),
+  .slide.in-view .stat-cell:nth-child(2) { animation-delay: 0.1s; }
+  .slide.in-view .stat-cell:nth-child(3) { animation-delay: 0.2s; }
+  @keyframes kpiIn {
+    from { opacity: 0; transform: scale(0.96) translateY(6px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  /* Recap rows (slide 10) — staggered reveal */
+  .slide.in-view .recap .row {
+    animation: rowIn 0.5s ease-out both;
+  }
+  .slide.in-view .recap .row:nth-child(1) { animation-delay: 0.20s; }
+  .slide.in-view .recap .row:nth-child(2) { animation-delay: 0.28s; }
+  .slide.in-view .recap .row:nth-child(3) { animation-delay: 0.36s; }
+  .slide.in-view .recap .row:nth-child(4) { animation-delay: 0.44s; }
+  .slide.in-view .recap .row:nth-child(5) { animation-delay: 0.52s; }
+  .slide.in-view .recap .row:nth-child(6) { animation-delay: 0.60s; }
+  .slide.in-view .recap .row:nth-child(7) { animation-delay: 0.68s; }
+  @keyframes rowIn {
+    from { opacity: 0; transform: translateX(-12px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  /* Lime-dot label tag — gentle pulse */
+  .label-tag .lime-dot {
+    animation: dotPulse 2s ease-in-out infinite;
+  }
+  @keyframes dotPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(215, 255, 63, 0.6); }
+    50%      { box-shadow: 0 0 0 6px rgba(215, 255, 63, 0); }
+  }
+
+  /* Reduce motion — kill all animations if user prefers */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    .slide { opacity: 1; transform: none; }
+    .slide [data-anim] { opacity: 1; transform: none; }
+  }
+
+  /* ─── Print ──────────────────────────────────────────────────────── */
+  @media print {
+    /* CRITICAL: force every element to print its backgrounds/colors exactly */
+    *, *::before, *::after {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+      animation: none !important;
+      transition: none !important;
+    }
+    html, body {
+      background: #050505 !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      width: 1280px !important;
+      height: auto !important;
+    }
+    .deck {
+      gap: 0 !important;
+      max-width: none !important;
+      width: 1280px !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      display: block !important;
+    }
+    /* CRITICAL: every slide is exactly ONE page, no overflow, no orphan page */
+    .slide {
+      border: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+      background: #0E0E0E !important;
+      /* Force exact page dimensions — overrides aspect-ratio which Chrome doesn't constrain in print */
+      width: 1280px !important;
+      height: 720px !important;
+      min-height: 720px !important;
+      max-height: 720px !important;
+      aspect-ratio: auto !important;
+      /* Prevent any content from spilling to a second page */
+      overflow: hidden !important;
+      page-break-after: always !important;
+      page-break-inside: avoid !important;
+      break-after: page !important;
+      break-inside: avoid !important;
+      /* Reset margin/padding stays as authored (56px 64px) for content positioning */
+      margin: 0 !important;
+      box-sizing: border-box !important;
+    }
+    /* Last slide: don't create an extra blank trailing page */
+    .slide:last-child {
+      page-break-after: auto !important;
+      break-after: auto !important;
+    }
+    .slide [data-anim] {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    /* Reinforce panel backgrounds (some are var(--panel-2)) */
+    .wf-stage, .wf-foundation, .stage-vs, .howsteps, .example,
+    .recap, .sumbar {
+      background: #141414 !important;
+    }
+    .stat-grid, .stage-kpis {
+      background: #1F1F1F !important;
+    }
+    .stat-cell, .kpi {
+      background: #0E0E0E !important;
+    }
+    .index { display: none !important; }
+    @page {
+      size: 1280px 720px;
+      margin: 0;
+    }
+  }
+  @media (max-width: 900px) {
+    .toc { grid-template-columns: 1fr; }
+  }
+
+  ::selection { background: var(--lime); color: var(--bg); }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════ INDEX ═══════════════════════════════════ -->
+<div class="index">
+  <div class="hud">
+    <span>[ <span class="lime">AIOX</span> ] · APRESENTAÇÃO CLIENTE · WORKFLOW BUSCADOR DE LICITAÇÕES</span>
+    <span>v1 · 2026-05-19</span>
+  </div>
+  <h1>Como o sistema funciona, <span class="lime">do começo ao fim.</span></h1>
+  <p class="thesis">Primeiro o mapa do workflow. Depois cada um dos 6 estágios explicado em detalhe — o que faz, como faz, e o que muda pra você. No fim, a base financeira que sustenta tudo.</p>
+  <div class="toc">
+    <a href="#s1"><span class="n">01</span><span>Capa · o sistema em uma frase</span><span class="stage">CAPA</span></a>
+    <a href="#s2"><span class="n">02</span><span>Mapa · workflow completo em 1 tela</span><span class="stage">VISÃO</span></a>
+    <a href="#s3"><span class="n">03</span><span>Estágio 1 · Monitorar</span><span class="stage">RADAR</span></a>
+    <a href="#s4"><span class="n">04</span><span>Estágio 2 · Analisar 6 meses</span><span class="stage">MOAT</span></a>
+    <a href="#s5"><span class="n">05</span><span>Estágio 3 · Indicar diferencial</span><span class="stage">MOAT</span></a>
+    <a href="#s6"><span class="n">06</span><span>Estágio 4 · Habilitar</span><span class="stage">EXECUÇÃO</span></a>
+    <a href="#s7"><span class="n">07</span><span>Estágio 5 · Acompanhar sessão</span><span class="stage">EXECUÇÃO</span></a>
+    <a href="#s8"><span class="n">08</span><span>Estágio 6 · Recorrer</span><span class="stage">EXECUÇÃO</span></a>
+    <a href="#s9"><span class="n">09</span><span>Base · Livro caixa 3 empresas</span><span class="stage">FUNDAÇÃO</span></a>
+    <a href="#s10"><span class="n">10</span><span>Recap · do edital ao contrato</span><span class="stage">FECHO</span></a>
+  </div>
+</div>
+
+<div class="deck">
+
+  <!-- ════════════════ SLIDE 1 · COVER ════════════════════════════════ -->
+  <section class="slide" id="s1">
+    <div class="cover-bg"></div>
+    <header class="hud-top">
+      <span>[ <span class="lime">AIOX</span> · APRESENTAÇÃO CLIENTE ]</span>
+      <span>WORKFLOW · BUSCADOR DE LICITAÇÕES</span>
+    </header>
+    <div class="slide-body cover-block" style="justify-content:center;">
+      <span class="label-tag"><span class="lime-dot"></span>Como o sistema funciona</span>
+      <h1 class="cover-title">
+        Do edital<br>
+        ao contrato —<br>
+        <span class="lime">em 1 caminho.</span>
+        <span class="small">6 estágios automatizados sobre uma fundação financeira única.</span>
+      </h1>
+      <div class="cover-meta">
+        <div class="item">
+          <div class="k">ESCOPO</div>
+          <div class="v">Águas Lindas-GO · DF · Federal-DF</div>
+        </div>
+        <div class="item">
+          <div class="k">ESTÁGIOS</div>
+          <div class="v">6 + 1 fundação</div>
+        </div>
+        <div class="item">
+          <div class="k">CANAL</div>
+          <div class="v">WhatsApp + app celular</div>
+        </div>
+      </div>
+    </div>
+    <footer class="hud-bot">
+      <span>[ <span class="lime">01</span> / 10 ]</span>
+      <span>CAPA</span>
+    </footer>
+  </section>
+
+  <!-- ════════════════ SLIDE 2 · WORKFLOW MAP ═════════════════════════ -->
+  <section class="slide" id="s2">
+    <header class="hud-top">
+      <span>[ <span class="lime">AIOX</span> · 02 / 10 ]</span>
+      <span class="hud-meta"><span>VISÃO</span><span class="lime">WORKFLOW COMPLETO</span></span>
+    </header>
+    <div class="slide-body">
+      <span class="label-tag"><span class="lime-dot"></span>6 estágios automatizados + 1 fundação financeira</span>
+      <h1 class="title s">Antes de detalhar cada um —<br>vamos ver <span class="lime">a foto inteira.</span></h1>
+      <div class="workflow">
+        <div class="wf-stage">
+          <span class="num">[ 01 ]</span>
+          <span class="name">Monitorar</span>
+          <span class="desc">PNCP + DF + Águas Lindas, 24/7, filtrado por CNAE e valor.</span>
+        </div>
+        <div class="wf-stage moat">
+          <span class="num">[ 02 ]</span>
+          <span class="name">Analisar 6m</span>
+          <span class="desc">Lê 6 meses do MESMO órgão — vencedores, preços, padrões.</span>
+        </div>
+        <div class="wf-stage moat">
+          <span class="num">[ 03 ]</span>
+          <span class="name">Indicar diferencial</span>
+          <span class="desc">"Esse órgão valoriza X — sua proposta deveria ter Y."</span>
+        </div>
+        <div class="wf-stage">
+          <span class="num">[ 04 ]</span>
+          <span class="name">Habilitar</span>
+          <span class="desc">ACT + BP/DRE + CRF + CND. Dossiê pronto em &lt;30min.</span>
+        </div>
+        <div class="wf-stage">
+          <span class="num">[ 05 ]</span>
+          <span class="name">Acompanhar</span>
+          <span class="desc">Sessão pública ao vivo. Baixa docs do vencedor em &lt;3min.</span>
+        </div>
+        <div class="wf-stage">
+          <span class="num">[ 06 ]</span>
+          <span class="name">Recorrer</span>
+          <span class="desc">Se houver brecha (CRF/CEIS/ACT), minuta gerada no prazo.</span>
+        </div>
+      </div>
+      <div class="wf-foundation">
+        <span class="lbl">[ FUNDAÇÃO ]</span>
+        <span class="desc"><strong style="color:var(--text);">Livro caixa das 3 empresas</strong> — app no celular, família lança receita/despesa em &lt;10s. <span style="color:var(--lime);">Auto-BP/DRE alimenta o Estágio 4 sem precisar pedir nada pro contador.</span></span>
+      </div>
+    </div>
+    <footer class="hud-bot">
+      <span>[ <span class="lime">02</span> / 10 ]</span>
+      <span class="hud-meta"><span class="lime">2 ESTÁGIOS NOVOS NO MERCADO</span> · ESTÁGIO 02 + 03 </span>
+    </footer>
+  </section>
+
+  <!-- ════════════════ SLIDE 3 · STAGE 1 MONITORAR ═══════════════════ -->
+  <section class="slide" id="s3">
+    <header class="hud-top">
+      <span>[ <span class="lime">AIOX</span> · 03 / 10 ]</span>
+      <span class="hud-meta"><span>ESTÁGIO 01 / 06</span><span class="lime">MONITORAR</span></span>
+    </header>
+    <div class="slide-body">
+      <h1 class="title s">O sistema vigia <span class="lime">os 3 portais</span><br>por você — 24 horas por dia.</h1>
+      <div class="stage-hero">
+        <div class="left">
+          <p class="stage-what">A cada <strong>15 minutos</strong>, o sistema consulta os portais e filtra editais novos que se encaixam no que sua empresa vende. Quando aparece um match, você recebe um push no WhatsApp.</p>
+          <ul class="stage-bullets">
+            <li>Cobertura: PNCP federal, e-Compras DF, Portal de Águas Lindas</li>
+            <li>Filtros: CNAE da empresa, valor mínimo/máximo, palavras-chave do objeto</li>
+            <li>Push WhatsApp com resumo do objeto, valor, prazo e match score</li>
+            <li>Edital irrelevante é descartado em silêncio — você só vê o que importa</li>
+          </ul>
+        </div>
+        <div class="right">
+          <div class="howsteps">
+            <span class="ttl">[ Como funciona — passo a passo ]</span>
+            <div class="step"><span class="n">01</span><span class="txt"><strong>Robô consulta API</strong> dos 3 portais a cada 15min e detecta edital novo</span></div>
+            <div class="step"><span class="n">02</span><span class="txt"><strong>Aplica filtros</strong> CNAE/valor/palavra-chave do seu perfil (configurado 1× na onboarding)</span></div>
+            <div class="step"><span class="n">03</span><span class="txt"><strong>Gera match score</strong> 0-100 cruzando objeto do edital com seu histórico de vendas</span></div>
+            <div class="step"><span class="n">04</span><span class="txt"><strong>Envia push WhatsApp</strong> com resumo + link pro edital + botão "ver mais"</span></div>
+            <div class="step"><span class="n">05</span><span class="txt"><strong>Você decide no celular</strong> em segundos: arquivar ou seguir pro Estágio 02</span></div>
+          </div>
+          <div class="example">
+            <span class="lbl">[ EXEMPLO PRÁTICO ]</span>
+            <span class="text">10:42 — Águas Lindas publica edital "mobiliário hospitalar R$180k". <strong>10:48 — seu WhatsApp toca:</strong> "Novo edital · match 87% · prazo proposta 25/Mai". Você abre, decide, segue.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="hud-bot">
+      <span>[ <span class="lime">03</span> / 10 ]</span>
+      <span class="hud-meta"><span>RADAR</span><span class="lime">push &lt; 15min</span></span>
+    </footer>
+  </section>
+
+  <!-- ════════════════ SLIDE 4 · STAGE 2 ANALISAR ════════════════════ -->
+  <section class="slide" id="s4">
+    <header class="hud-top">
+      <span>[ <span class="lime">AIOX</span> · 04 / 10 ]</span>
+      <span class="hud-meta"><span>ESTÁGIO 02 / 06 · <span class="lime">MOAT</span></span><span class="lime">ANALISAR 6 MESES</span></span>
+    </header>
+    <div class="slide-body">
+      <h1 class="title s">Antes de você decidir, o sistema<br>já leu <span class="lime">6 meses do mesmo órgão.</span></h1>
+      <div class="stage-hero">
+        <div class="left">
+          <p class="stage-what">Quando você se interessa por um edital, o sistema consulta <strong>todos os contratos aprovados</strong> por essa prefeitura ou órgão nos últimos 6 meses e extrai <strong>4 padrões objetivos</strong>.</p>
+          <ul class="stage-bullets">
+            <li><strong>Quem ganhou</strong>: CNPJs vencedores recorrentes</li>
+            <li><strong>Quanto pagou</strong>: preço médio + faixa por objeto similar</li>
+            <li><strong>Que ACT foi aceito</strong>: requisitos não-óbvios além do edital</li>
+            <li><strong>Por que outros perderam</strong>: motivos de desclassificação documentados</li>
+          </ul>
+        </div>
+        <div class="right">
+          <div class="howsteps">
+            <span class="ttl">[ Como funciona — passo a passo ]</span>
+            <div class="step"><span class="n">01</span><span class="txt"><strong>Busca histórico</strong> do órgão licitante no PNCP (atas de registro de preços + contratos publicados)</span></div>
+            <div class="step"><span class="n">02</span><span class="txt"><strong>Filtra por objeto similar</strong> usando embeddings PT-BR (Legal-BERTimbau jurídico)</span></div>
+            <div class="step"><span class="n">03</span><span class="txt"><strong>Extrai 4 padrões</strong> com IA: vencedores, preços, ACTs aceitos, motivos de derrota</span></div>
+            <div class="step"><span class="n">04</span><span class="txt"><strong>Cita fonte exata</strong> de cada padrão (número do contrato, página da ata) — auditável</span></div>
+            <div class="step"><span class="n">05</span><span class="txt"><strong>Entrega em &lt;90 segundos</strong>, pronto pra próximo estágio</span></div>
+          </div>
+          <div class="example">
+            <span class="lbl">[ O QUE NINGUÉM FAZ HOJE ]</span>
+            <span class="text">Effecti, LicitaNet, ConLicitação te dão alerta de edital novo. <strong>Nenhuma delas lê 6 meses de histórico do órgão específico</strong> e diz quem ganhou, quanto e por quê. Esse é o moat 1 do sistema.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="hud-bot">
+      <span>[ <span class="lime">04</span> / 10 ]</span>
+      <span class="hud-meta"><span class="lime">MOAT EXCLUSIVO</span><span>HISTÓRICO 6M</span></span>
+    </footer>
+  </section>
+
+  <!-- ════════════════ SLIDE 5 · STAGE 3 INDICAR DIFERENCIAL ═════════ -->
+  <section class="slide" id="s5">
+    <header class="hud-top">
+      <span>[ <span class="lime">AIOX</span> · 05 / 10 ]</span>
+      <span class="hud-meta"><span>ESTÁGIO 03 / 06 · <span class="lime">MOAT</span></span><span class="lime">INDICAR DIFERENCIAL</span></span>
+    </header>
+    <div class="slide-body">
+      <h1 class="title s">Com base na análise,<br>o sistema te diz <span class="lime">o ângulo<br>que pode te fazer ganhar.</span></h1>
+      <div class="stage-hero">
+        <div class="left">
+          <p class="stage-what">Usando os padrões do Estágio 02, o sistema gera um <strong>relatório de diferencial em 5 frases</strong>. Não é receita pronta — é o ângulo certo pra você decidir <strong>como propor</strong>.</p>
+          <ul class="stage-bullets">
+            <li>Faixa de preço que o órgão historicamente paga</li>
+            <li>Certificação ou ACT que aumenta sua chance de ganhar</li>
+            <li>Concorrente provável — e o que esses CNPJs têm de fraco</li>
+            <li>Risco a evitar (motivo de derrota mais comum desse órgão)</li>
+            <li>Tempo de submeter (manhã vs final de prazo, padrão observado)</li>
+          </ul>
+        </div>
+        <div class="right">
+          <div class="howsteps">
+            <span class="ttl">[ Como funciona — passo a passo ]</span>
+            <div class="step"><span class="n">01</span><span class="txt"><strong>Combina</strong> padrões do Estágio 02 + seu vault de ACTs/certidões + sua margem-padrão</span></div>
+            <div class="step"><span class="n">02</span><span class="txt"><strong>IA prescritiva</strong> sintetiza em 5 frases acionáveis (não 5 páginas de análise)</span></div>
+            <div class="step"><span class="n">03</span><span class="txt"><strong>Cada frase cita fonte</strong>: contrato XYZ, ata #123, página 17 — você confia e revisa</span></div>
+            <div class="step"><span class="n">04</span><span class="txt"><strong>Entrega no WhatsApp</strong> como cartão único — leitura em 60s no celular</span></div>
+          </div>
+          <div class="example">
+            <span class="lbl">[ EXEMPLO DE RELATÓRIO · EDITAL DF-2026-1234 ]</span>
+            <span class="text">
+            • <strong>Preço</strong>: vencedores cobraram R$160–195k. Sua margem comporta R$172k confortável.<br>
+            • <strong>Diferencial</strong>: 83% dos vencedores ofereceram garantia estendida 24m. Você não oferece — passe a oferecer.<br>
+            • <strong>Concorrência</strong>: 3 CNPJs aparecem em 80% das licitações. Empresa Y teve CRF vencido 2× — vulnerável.<br>
+            • <strong>Risco</strong>: 41% das derrotas foram por ACT objeto incompatível. Confirme antes.
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="hud-bot">
+      <span>[ <span class="lime">05</span> / 10 ]</span>
+      <span class="hud-meta"><span class="lime">CORE DO PRODUTO</span><span>DEFENSÁVEL</span></span>
+    </footer>
+  </section>
+
+  <!-- ════════════════ SLIDE 6 · STAGE 4 HABILITAR ═══════════════════ -->
+  <section class="slide" id="s6">
+    <header class="hud-top">
+      <span>[ <span class="lime">AIOX</span> · 06 / 10 ]</span>
+      <span class="hud-meta"><span>ESTÁGIO 04 / 06</span><span class="lime">HABILITAR</span></span>
+    </header>
+    <div class="slide-body">
+      <h1 class="title s">De 4 horas refazendo dossiê<br>para <span class="lime">28 minutos</span> revisando.</h1>
+      <div class="stage-hero">
+        <div class="left">
+          <p class="stage-what">Você decidiu participar. O sistema cruza <strong>cada exigência do edital</strong> com seu vault de certidões e ACTs, alerta o que falta, e <strong>compila o PDF unificado em 60 segundos</strong>.</p>
+          <ul class="stage-bullets">
+            <li>CRF FGTS · CND Federal · CND Estadual · CND Municipal · CNDT — monitoradas o ano todo</li>
+            <li>BP / DRE / índices LG/LC/SG gerados do livro caixa — sem pedir nada pro contador</li>
+            <li>ACT matcher pontua score 0–10 contra cada exigência específica do edital</li>
+            <li>Você revisa o PDF compilado e envia — sem refazer nada manual</li>
+          </ul>
+        </div>
+        <div class="right">
+          <div class="howsteps">
+            <span class="ttl">[ Como funciona — passo a passo ]</span>
+            <div class="step"><span class="n">01</span><span class="txt"><strong>Sistema lê o edital</strong> em PDF e extrai as exigências de habilitação (Docling + parsing jurídico)</span></div>
+            <div class="step"><span class="n">02</span><span class="txt"><strong>Cruza com vault interno</strong>: certidões, ACTs, BP/DRE, demonstrativos</span></div>
+            <div class="step"><span class="n">03</span><span class="txt"><strong>Renovação automática</strong> de CRF FGTS (1-click via API Caixa) se vencendo</span></div>
+            <div class="step"><span class="n">04</span><span class="txt"><strong>Compila PDF único</strong> na ordem que o edital pede, com índice e marcadores</span></div>
+            <div class="step"><span class="n">05</span><span class="txt"><strong>Você revisa</strong> no app por 14 min e envia. Tempo total: 28 min do clique inicial</span></div>
+          </div>
+          <div class="stage-kpis">
+            <div class="kpi">
+              <span class="label">TEMPO POR EDITAL</span>
+              <span class="value time">4h → 28min</span>
+              <span class="unit">−85% do trabalho manual</span>
+            </div>
+            <div class="kpi">
+              <span class="label">RECEITA PRESERVADA</span>
+              <span class="value money">R$ 5–50k</span>
+              <span class="unit">salvos quando CRF não vence sem aviso</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="hud-bot">
+      <span>[ <span class="lime">06</span> / 10 ]</span>
+      <span class="hud-meta"><span>EXECUÇÃO</span><span class="lime">−85% tempo</span></span>
+    </footer>
+  </section>
+
+  <!-- ════════════════ SLIDE 7 · STAGE 5 ACOMPANHAR ══════════════════ -->
+  <section class="slide" id="s7">
+    <header class="hud-top">
+      <span>[ <span class="lime">AIOX</span> · 07 / 10 ]</span>
+      <span class="hud-meta"><span>ESTÁGIO 05 / 06</span><span class="lime">ACOMPANHAR SESSÃO</span></span>
+    </header>
+    <div class="slide-body">
+      <h1 class="title s">Quando o vencedor é declarado,<br>você já tem <span class="lime">o relatório<br>de irregularidades pronto.</span></h1>
+      <div class="stage-hero">
+        <div class="left">
+          <p class="stage-what">O sistema monitora a sessão pública em tempo real. <strong>No momento que alguém é declarado vencedor</strong>, baixa todos os documentos dele e roda <strong>4 verificações automáticas</strong> em &lt;3 minutos.</p>
+          <ul class="stage-bullets">
+            <li><strong>CRF FGTS do vencedor está válido?</strong> Consulta Caixa em tempo real</li>
+            <li><strong>CND Federal está válida?</strong> Consulta RFB direto</li>
+            <li><strong>Sócios aparecem em CEIS/CNJ Improbidade?</strong> Cross-check de bases públicas</li>
+            <li><strong>ACT apresentado tem objeto compatível?</strong> Match semântico contra exigência</li>
+          </ul>
+        </div>
+        <div class="right">
+          <div class="howsteps">
+            <span class="ttl">[ Como funciona — passo a passo ]</span>
+            <div class="step"><span class="n">01</span><span class="txt"><strong>Sistema observa</strong> sessão pública via API do PNCP (status muda pra "vencedor declarado")</span></div>
+            <div class="step"><span class="n">02</span><span class="txt"><strong>Baixa documentos</strong> do CNPJ vencedor: proposta, ACTs, certidões anexadas</span></div>
+            <div class="step"><span class="n">03</span><span class="txt"><strong>Roda 4 verificações</strong> em paralelo — total &lt;90 segundos</span></div>
+            <div class="step"><span class="n">04</span><span class="txt"><strong>Classifica achados</strong>: insanável (CRF/CEIS) · duvidoso (ACT) · sem brecha</span></div>
+            <div class="step"><span class="n">05</span><span class="txt"><strong>Push WhatsApp</strong>: "Score recurso 9.2/10 · recomendação forte" + relatório anexo</span></div>
+          </div>
+          <div class="example">
+            <span class="lbl">[ EXEMPLO · 18:00 PUSH ]</span>
+            <span class="text">
+            "Vencedor declarado: Empresa Y CNPJ XX/XXX-XX. <strong>Relatório de conferência:</strong><br>
+            ⚠️ INSANÁVEL — CRF FGTS expirou em 16/Mai<br>
+            ⚠️ INSANÁVEL — sócio em CEIS<br>
+            ⚠️ DUVIDOSO — ACT 'mobiliário escolar' vs edital hospitalar<br>
+            <span style="color:var(--lime);">Score recurso: 9.2/10 · recomendação forte</span>"
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="hud-bot">
+      <span>[ <span class="lime">07</span> / 10 ]</span>
+      <span class="hud-meta"><span>SLA CRÍTICO</span><span class="lime">análise &lt; 3min</span></span>
+    </footer>
+  </section>
+
+  <!-- ════════════════ SLIDE 8 · STAGE 6 RECORRER ════════════════════ -->
+  <section class="slide" id="s8">
+    <header class="hud-top">
+      <span>[ <span class="lime">AIOX</span> · 08 / 10 ]</span>
+      <span class="hud-meta"><span>ESTÁGIO 06 / 06</span><span class="lime">RECORRER</span></span>
+    </header>
+    <div class="slide-body">
+      <h1 class="title s">Minuta de recurso pronta<br>em <span class="lime">30 segundos</span> — dentro do prazo.</h1>
+      <div class="stage-hero">
+        <div class="left">
+          <p class="stage-what">Se o Estágio 05 indicou recurso viável (score &gt;5), o sistema gera a <strong>minuta de manifestação de intenção</strong> usando template jurídico + as irregularidades concretas detectadas — com base legal certa pra cada uma.</p>
+          <ul class="stage-bullets">
+            <li>Você revisa, ajusta, envia — tudo no celular se precisar</li>
+            <li>Sistema cria automaticamente a task: "razões em 3 dias úteis"</li>
+            <li>Cita base legal correta para cada irregularidade (Lei 14.133 + súmulas TCU)</li>
+            <li>Salva minuta no histórico — base pra próximos recursos similares</li>
+          </ul>
+        </div>
+        <div class="right">
+          <div class="howsteps">
+            <span class="ttl">[ Como funciona — passo a passo ]</span>
+            <div class="step"><span class="n">01</span><span class="txt"><strong>RAG jurídico</strong>: sistema busca em Lei 14.133, súmulas TCU e ementários a base legal de cada irregularidade do Estágio 05</span></div>
+            <div class="step"><span class="n">02</span><span class="txt"><strong>Aplica template</strong> de manifestação de intenção (validado por advogado da casa)</span></div>
+            <div class="step"><span class="n">03</span><span class="txt"><strong>Preenche</strong> com os fatos concretos: "CRF FGTS expirou em 16/Mai (anexo 1)"</span></div>
+            <div class="step"><span class="n">04</span><span class="txt"><strong>Você abre no app</strong>, lê em 5 min, ajusta o que quiser, assina e envia</span></div>
+            <div class="step"><span class="n">05</span><span class="txt"><strong>Sistema agenda</strong> automaticamente: "razões finais em 3 dias úteis" — não perde o segundo prazo</span></div>
+          </div>
+          <div class="stage-kpis">
+            <div class="kpi">
+              <span class="label">DENTRO DO PRAZO</span>
+              <span class="value time">100%</span>
+              <span class="unit">nenhum recurso perdido por preclusão</span>
+            </div>
+            <div class="kpi">
+              <span class="label">RECEITA POR RECURSO</span>
+              <span class="value money">R$ 5–50k</span>
+              <span class="unit">edital reaberto se recurso procede</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="hud-bot">
+      <span>[ <span class="lime">08</span> / 10 ]</span>
+      <span class="hud-meta"><span>EXECUÇÃO</span><span class="lime">minuta em 30s</span></span>
+    </footer>
+  </section>
+
+  <!-- ════════════════ SLIDE 9 · BASE LIVRO CAIXA ════════════════════ -->
+  <section class="slide" id="s9">
+    <header class="hud-top">
+      <span>[ <span class="lime">AIOX</span> · 09 / 10 ]</span>
+      <span class="hud-meta"><span>FUNDAÇÃO</span><span class="lime">LIVRO CAIXA · 3 EMPRESAS</span></span>
+    </header>
+    <div class="slide-body">
+      <h1 class="title s">A base que sustenta tudo:<br><span class="lime">livro caixa</span> das 3 empresas no app.</h1>
+      <div class="stage-hero">
+        <div class="left">
+          <p class="stage-what">Cada lançamento dura <strong>menos de 10 segundos</strong>. O pai lança receita, outras pessoas lançam despesa da empresa delas. Sistema sugere a categoria contábil, humano só confirma. Essa fundação alimenta o <strong>Estágio 04 (Habilitar)</strong> automaticamente.</p>
+          <ul class="stage-bullets">
+            <li>Cada pessoa só vê a empresa dela — controle de acesso granular (RBAC)</li>
+            <li>Open Finance importa transações bancárias automaticamente</li>
+            <li>Categorização sugerida por IA — você só aprova com 1 tap</li>
+            <li>Dashboard agregado das 3: receita, despesa, ranking, fluxo</li>
+            <li><strong>Auto-BP/DRE da empresa licitante</strong> sempre pronto — sem contador no caminho</li>
+          </ul>
+        </div>
+        <div class="right">
+          <div class="howsteps">
+            <span class="ttl">[ Como funciona — passo a passo ]</span>
+            <div class="step"><span class="n">01</span><span class="txt"><strong>Open Finance puxa</strong> transações das contas das 3 empresas (Pluggy, R$48/mês)</span></div>
+            <div class="step"><span class="n">02</span><span class="txt"><strong>IA classifica</strong> cada transação por categoria contábil (boleto, PIX, recebimento, etc)</span></div>
+            <div class="step"><span class="n">03</span><span class="txt"><strong>Push WhatsApp 14:55</strong>: "8 transações novas em [Empresa A], aguardando aprovação"</span></div>
+            <div class="step"><span class="n">04</span><span class="txt"><strong>Pessoa abre app</strong>, vê 8 cards com categoria sugerida, dá tap em "OK" ou ajusta</span></div>
+            <div class="step"><span class="n">05</span><span class="txt"><strong>Dashboard atualiza</strong> em &lt;3min · BP/DRE da licitante fica sempre vivo</span></div>
+          </div>
+          <div class="example">
+            <span class="lbl">[ DIA TÍPICO · TARDE ]</span>
+            <span class="text">
+            <strong>14:55</strong> push "8 novas em Empresa A"<br>
+            <strong>14:56</strong> pessoa abre app, todos os cards prontos<br>
+            <strong>14:57</strong> "Boleto Fornecedor X · R$1.500" → tap OK<br>
+            <strong>14:59</strong> tudo classificado em &lt;3min<br>
+            <span style="color:var(--lime);">Pai e família lançaram sem precisar planilha.</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="hud-bot">
+      <span>[ <span class="lime">09</span> / 10 ]</span>
+      <span class="hud-meta"><span>FUNDAÇÃO</span><span class="lime">CONECTA COM ESTÁGIO 04</span></span>
+    </footer>
+  </section>
+
+  <!-- ════════════════ SLIDE 10 · RECAP + CTA ════════════════════════ -->
+  <section class="slide" id="s10">
+    <div class="cover-bg"></div>
+    <header class="hud-top">
+      <span>[ <span class="lime">AIOX</span> · 10 / 10 ]</span>
+      <span class="hud-meta"><span>FECHO</span><span class="lime">DO EDITAL AO CONTRATO</span></span>
+    </header>
+    <div class="slide-body" style="justify-content:center;">
+      <span class="label-tag"><span class="lime-dot"></span>Recap visual · 6 estágios + 1 base</span>
+      <h1 class="title s">O caminho inteiro,<br><span class="lime">numa tela só.</span></h1>
+      <div class="recap">
+        <div class="row">
+          <span class="n">[ 01 ]</span>
+          <span class="name">Monitorar<small>Push WhatsApp em &lt;15min do edital ser publicado</small></span>
+          <span class="val">push em &lt;15min</span>
+        </div>
+        <div class="row">
+          <span class="n">[ 02 ]</span>
+          <span class="name">Analisar 6m<small>4 padrões extraídos do mesmo órgão · MOAT exclusivo</small></span>
+          <span class="val">análise &lt;90s</span>
+        </div>
+        <div class="row">
+          <span class="n">[ 03 ]</span>
+          <span class="name">Indicar diferencial<small>5 frases prescritivas com fonte citada · MOAT exclusivo</small></span>
+          <span class="val">leitura em 60s</span>
+        </div>
+        <div class="row">
+          <span class="n">[ 04 ]</span>
+          <span class="name">Habilitar<small>Dossiê PDF completo cruzando edital × vault</small></span>
+          <span class="val">4h → 28min</span>
+        </div>
+        <div class="row">
+          <span class="n">[ 05 ]</span>
+          <span class="name">Acompanhar<small>4 verificações no vencedor + score de recurso</small></span>
+          <span class="val">análise &lt;3min</span>
+        </div>
+        <div class="row">
+          <span class="n">[ 06 ]</span>
+          <span class="name">Recorrer<small>Minuta jurídica com base legal citada</small></span>
+          <span class="val">minuta em &lt;8min</span>
+        </div>
+        <div class="row foundation">
+          <span class="n">[ FUND ]</span>
+          <span class="name">Livro caixa das 3 empresas<small>App celular · família lança · alimenta Estágio 04</small></span>
+          <span class="val">&lt;10s por lançamento</span>
+        </div>
+      </div>
+      <h2 class="subhead" style="text-align:center; margin-top:8px;">Próximo passo: <strong style="color:var(--lime);">call de 45 minutos</strong> para fechar 6 perguntas e iniciar Sprint 0 na semana seguinte.</h2>
+    </div>
+    <footer class="hud-bot">
+      <span>[ <span class="lime">10</span> / 10 ]</span>
+      <span class="hud-meta"><span>FECHO</span><span class="lime">SPRINT 0 · SEGUNDA</span></span>
+    </footer>
+  </section>
+
+</div>
+
+<script>
+  // ──────────────────────────────────────────────────────────────────
+  //  Keyboard nav — arrows / PageDown / Home / End
+  // ──────────────────────────────────────────────────────────────────
+  document.addEventListener('keydown', (e) => {
+    if (!['ArrowRight','ArrowLeft','ArrowDown','ArrowUp','PageDown','PageUp','Home','End'].includes(e.key)) return;
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const current = slides.findIndex(s => {
+      const r = s.getBoundingClientRect();
+      return r.top >= -100 && r.top < window.innerHeight / 2;
+    });
+    let next = current;
+    if (['ArrowRight','ArrowDown','PageDown'].includes(e.key)) next = Math.min(current + 1, slides.length - 1);
+    if (['ArrowLeft','ArrowUp','PageUp'].includes(e.key)) next = Math.max(current - 1, 0);
+    if (e.key === 'Home') next = 0;
+    if (e.key === 'End') next = slides.length - 1;
+    if (next !== current && slides[next]) slides[next].scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  // ──────────────────────────────────────────────────────────────────
+  //  Slide entrance — IntersectionObserver toggles .in-view
+  //  Graceful fallback: if observer unsupported, mark all as in-view
+  // ──────────────────────────────────────────────────────────────────
+  (function () {
+    const slides = document.querySelectorAll('.slide');
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReduced || !('IntersectionObserver' in window)) {
+      slides.forEach(s => s.classList.add('in-view'));
+      return;
+    }
+
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        } else if (entry.boundingClientRect.top > window.innerHeight) {
+          // Re-trigger animation when slide leaves below viewport (scroll up brings it back fresh)
+          entry.target.classList.remove('in-view');
+        }
+      });
+    }, {
+      root: null,
+      rootMargin: '-10% 0px -10% 0px',
+      threshold: 0.15
+    });
+
+    slides.forEach(s => obs.observe(s));
+
+    // Failsafe: ensure first slide is visible on load even if observer hasn't fired
+    if (slides[0]) {
+      const r = slides[0].getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) {
+        slides[0].classList.add('in-view');
+      }
+    }
+  })();
+</script>
+</body>
+</html>

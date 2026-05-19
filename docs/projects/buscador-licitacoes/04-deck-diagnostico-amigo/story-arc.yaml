@@ -1,0 +1,108 @@
+story_arc:
+  governing_thought: |
+    "Você não precisa de mais ferramenta — você precisa de uma 5ª entidade
+    que veja suas 4 empresas como um grupo econômico operando licitação."
+  audience_belief_shift:
+    from: "Manual + planilha + Effecti = caminho viável, só preciso me organizar mais"
+    to: "5ª entidade Holding Virtual = nova classe de ferramenta vertical regional, defensável"
+  arc:
+    - stage: hook
+      slide: 1
+      function: hook
+      structure_id: H03
+      purpose: "Cost of inaction concreto na linguagem do cliente"
+      key_claim: "Quanto custou o último CRF FGTS que você não viu vencer?"
+      proof: "Edital regional médio R$5-50k → 1 inabilitação = R$5-50k oportunidade perdida (§1.3 F3 briefing)"
+
+    - stage: diagnosis
+      slide: 2
+      function: diagnosis
+      structure_id: D11
+      purpose: "Mapa de cost leak — mostra os 7 furos invisíveis"
+      key_claim: "7 furos diários que o manual não vê — mas o seu calendário sente"
+      proof: "F1-F7 §1.3 briefing — 15-210h/mês refazendo dossiê + risco anti-conluio + recurso perdido"
+
+    - stage: reframe
+      slide: 3
+      function: reframe
+      structure_id: R09
+      purpose: "Means vs end — o problema não é organização individual, é falta de visão de grupo"
+      key_claim: "O problema não é organizar 4 empresas. É operar como se fosse uma."
+      proof: "Lei 14.133 art. 14 IV — empresas coligadas não podem competir juntas. Hoje você não tem como ver isso em tempo real."
+
+    - stage: stakes
+      slide: 4
+      function: stakes
+      structure_id: P03
+      purpose: "Before/after metric concreto"
+      key_claim: "Hoje 4h pra montar dossiê. Com o sistema: 28 minutos."
+      proof: "Journey §6.2 briefing — 28min real com ACT matcher + Auto-BP/DRE + compile_dossie_pdf 60s"
+
+    - stage: mechanism
+      slide: 5
+      function: mechanism
+      structure_id: M04
+      purpose: "Holding Virtual como layered system — visualizar a 5ª entidade"
+      key_claim: "A Holding Virtual: 1 sistema que enxerga suas 4 empresas como grupo"
+      proof: "Diagrama §2.1 briefing — 4 CNPJs + 1 app de governança"
+
+    - stage: mechanism
+      slide: 6
+      function: mechanism
+      structure_id: M16
+      purpose: "5 pipelines compartilham dados — mostra integração, não 5 produtos isolados"
+      key_claim: "5 pipelines que conversam entre si — não 5 produtos separados"
+      proof: "Tabela §2.3 briefing — Caixa→Habilitação, Compliance→Radar, Radar→Recurso"
+
+    - stage: mechanism
+      slide: 7
+      function: mechanism
+      structure_id: M02
+      purpose: "Anti-conluio nativo como 4-block operating model"
+      key_claim: "Anti-conluio Lei 14.133 art. 14 IV — o sistema bloqueia antes de você errar"
+      proof: "RLS policy §3.2 briefing — vê → detecta → bloqueia → alerta"
+
+    - stage: proof
+      slide: 8
+      function: proof
+      structure_id: P11
+      purpose: "Case teardown CRF — problema/ação/resultado concreto"
+      key_claim: "Caso CRF FGTS: você não esquece mais"
+      proof: "§5.2 briefing — cron diário + alerta 30d + renovação 1-click via Caixa API"
+
+    - stage: proof
+      slide: 9
+      function: proof
+      structure_id: P09
+      purpose: "Demo result — ACT matcher com 3 opções reais"
+      key_claim: "Caso ACT matcher: score 0-10 evita atestado errado"
+      proof: "Journey §6.2 briefing — São Lucas 8.5 / Bem-Estar 7.8 / Creche 4.0 (REJECT)"
+
+    - stage: plan
+      slide: 10
+      function: plan
+      structure_id: E14
+      purpose: "Pilot-to-scale staircase — 6 sprints com vitórias mensuráveis"
+      key_claim: "22 semanas, 6 vitórias mensuráveis"
+      proof: "Tabela §9 briefing — M0 schema → M6 'não voltaria pro manual'"
+
+    - stage: objection
+      slide: 11
+      function: objection_handling
+      structure_id: O13
+      purpose: "Objection stack — 3 perguntas que ele tá fazendo na cabeça agora"
+      key_claim: "3 perguntas que você tá fazendo na sua cabeça agora"
+      proof: "§14.5 anti-padrões AIOX + resistance map em audience-belief-shift.yaml"
+
+    - stage: cta
+      slide: 12
+      function: cta
+      structure_id: O08
+      purpose: "Hero CTA — Sprint 0 segunda + 8 perguntas Bloco C"
+      key_claim: "Sprint 0 começa segunda. Preciso de 45min e 8 respostas suas."
+      proof: "§11 briefing — Bloco C 8 perguntas listadas"
+
+  repetition_check:
+    consecutive_structures: "D11→R09→P03→M04→M16→M02→P11→P09→E14→O13→O08"
+    max_consecutive_same_family: 3  # M04→M16→M02 (3 mechanism in row — ACCEPTED because each shows DIFFERENT facet)
+    rationale: "Slides 5-6-7 são mechanism em sequência intencional (entidade → pipelines → governança), cada um com structure diferente. Passa gate de 'no more than 2 consecutive SAME structure' pois M04≠M16≠M02."

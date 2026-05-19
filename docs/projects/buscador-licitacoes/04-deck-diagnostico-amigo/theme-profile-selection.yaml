@@ -1,0 +1,57 @@
+theme_profile_selection:
+  selected_profile: executive_clean
+  pick_when_match: "Sales call B2B / decisão executiva / conteúdo numérico denso / leitura sem distração visual"
+  source: ".claude/skills/slide-creator/templates/theme/theme-tokens.yaml"
+
+  rejected_profiles:
+    - profile: sinkra_observatory_dark
+      reason: "Dark theme + lime accent é benchmark/analytical. Cliente não é founder tech; cliente é fornecedor B2B 40-50 anos provavelmente lendo no celular sob luz natural."
+    - profile: editorial_webinar
+      reason: "Editorial webinar é tom palestra. Setting 1-on-1 consultativo pede credibilidade calma, não emoção persuasiva."
+
+  tokens:
+    colors:
+      background: "#FAFAF7"  # off-white, fácil leitura mobile
+      panel: "#FFFFFF"
+      text: "#151515"
+      muted: "#666666"
+      border: "#D9D9D2"
+      accent: "#2347FF"  # blue institucional — confiança
+      positive: "#168A4A"  # verde — para "score 8.5 ✅" e "0 CRF vencido"
+      negative: "#B42318"  # vermelho — para "REJEITADO" e "INABILITAÇÃO"
+      warning: "#D97706"  # âmbar — para "CRF vence em 30d"
+    typography:
+      heading: "Inter"
+      body: "Inter"
+      mono: "IBM Plex Mono"  # para CNPJ, n_processo, código de lei
+    spacing:
+      canvas: "16:9"
+      margin_px: 56  # generoso — mobile-friendly
+      grid_columns: 12
+    chart:
+      grid: "#E6E6E0"
+      neutral: "#7A7A72"
+      highlight: "#2347FF"
+
+  constraints:
+    chart_labels_required: true  # cliente lê números — labels diretos, sem legendas separadas
+    avoid_decorative_cards: true  # não enfeitar; cliente quer dado
+    min_body_px: 18  # leitura mobile
+    max_visible_words_per_slide: 45
+    contrast_AA: required  # texto pelo menos 4.5:1
+
+  brand_motif:
+    primary_motif: "Holding Virtual 5ª entidade"
+    representation: "4 quadrados pequenos coloridos (INYAC azul / INC verde / CENTINELA âmbar / ENHAC roxo) + 1 quadrado outline maior acima"
+    recurring_placement: "Cover (slide 1 hero) → canto superior direito slides 5-7 (mechanism) → footer slide 12 (CTA)"
+    do_not: "Não usar em slides 8-9 (proof concreto) — neles, o motif distrai do caso real"
+
+  absorbed_from: [ppt-master, powerpoint-skill, sinkra-bench-pattern]
+
+  notes_for_designer: |
+    Se for renderizar visual (Figma/Stitch/V0), prioridade:
+    1. Legibilidade > estética. Cliente possivelmente lê no celular.
+    2. Números BIG (R$5-50k, 4h→28min, score 8.5, 22 semanas). Type display.
+    3. Motivo 'Holding Virtual' deve ser reconhecível, não decorativo.
+    4. Footer discreto com slide#/12 em IBM Plex Mono.
+    5. Logo/marca não existe ainda — não inventar. Usar wordmark texto 'Holding Virtual' Inter 700.

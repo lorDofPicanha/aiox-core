@@ -1,0 +1,50 @@
+research_route_selection:
+  selected_routes:
+    - id: local_file_retrieval
+      from: "templates/research/source-routing.yaml"
+      pick_when_match: "User has local files: briefing v2 + 4 research files + 5 audio transcripts"
+      adaptation: |
+        Manuscript-equivalent já está consolidado.
+        Skip parsing — files já têm claim inventory pronto.
+        Bind cada claim do deck ao source em source-ledger.yaml.
+      sources_consumed:
+        - "docs/projects/buscador-licitacoes/99-synthesis/BRIEFING-REAL-CONSOLIDADO.md"
+        - "docs/projects/buscador-licitacoes/00-context/CONTEXT.md"
+        - "docs/projects/buscador-licitacoes/00-context/audios-18mai/TRANSCRIPTS-SUMMARY.md"
+        - "docs/projects/buscador-licitacoes/01-research/licitacao-process-deep-dive.md"
+        - "docs/projects/buscador-licitacoes/01-research/livro-caixa-deep-dive.md"
+        - "docs/projects/buscador-licitacoes/01-research/02-portais-fonte.md"
+        - "docs/projects/buscador-licitacoes/01-research/plano-pesquisa-v1.md"
+
+  not_selected_routes:
+    - id: html_source_retrieval
+      reason: "Não precisamos buscar fonte web nova — briefing tem 32+24+28 fontes já consolidadas"
+    - id: motion_media_retrieval
+      reason: "Deck não usa vídeo/GIF/demo motion — mockups estáticos suficientes para call"
+    - id: scholar_or_benchmark_retrieval
+      reason: "Lei 14.133 já citada no briefing; jurisprudência TCU não é claim do deck"
+
+  evidence_handling:
+    high_stakes_claims:
+      - "R$5-50k edital regional médio"  # faixa, não número específico
+      - "4h → 28min dossiê"  # projeção, marcar como illustrative
+      - "Lei 14.133 art. 14 IV anti-conluio"  # citação legal direta
+      - "Score 8.5/7.8/4.0 ACT matcher"  # exemplo construído, marcar como illustrative
+      - "M1 = pai+3 pessoas usando 7d"  # critério de sucesso, não fato passado
+    confidence_levels:
+      - {claim_id: "s01-c1", confidence: medium, freshness: 2026-05}  # faixa edital baseada em research, validar com amigo
+      - {claim_id: "s02-c1..7", confidence: medium, freshness: 2026-05}  # cost leaks F1-F7 do briefing
+      - {claim_id: "s03-c1", confidence: high, freshness: 2026-05}  # Lei 14.133 art. 14 IV é fact pública
+      - {claim_id: "s04-c1", confidence: low, freshness: 2026-05}  # 28min é projeção
+      - {claim_id: "s05-c1..3", confidence: high, freshness: 2026-05}  # Holding Virtual arch é decisão arquitetural
+      - {claim_id: "s06-c1", confidence: high, freshness: 2026-05}  # 5 pipelines documentados §2.2
+      - {claim_id: "s07-c1", confidence: high, freshness: 2026-05}  # Anti-conluio RLS documentado §3.2
+      - {claim_id: "s08-c1", confidence: medium, freshness: 2026-05}  # CRF case é exemplo construído
+      - {claim_id: "s09-c1", confidence: low, freshness: 2026-05}  # ACT matcher scores são exemplo
+      - {claim_id: "s10-c1..7", confidence: medium, freshness: 2026-05}  # M0-M6 são planejados, não realizados
+
+  rule_compliance:
+    - "Never use one generic research prompt for all source types — pass (local route only)"
+    - "Search for media only when slide has clear media job — pass (sem media)"
+    - "Prefer fewer stronger sources over long bibliography — pass (7 sources, all consolidados)"
+    - "Research output feeds manuscript, not final slide copy directly — pass (briefing v2 já é manuscript)"

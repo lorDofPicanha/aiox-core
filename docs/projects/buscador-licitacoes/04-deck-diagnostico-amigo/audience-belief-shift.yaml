@@ -1,0 +1,34 @@
+audience_belief_shift:
+  audience: "Fornecedor B2B regional, 4 CNPJs, opera manual + planilha hoje"
+  current_belief: |
+    "Tô apertado mas dou conta no braço. Sistema seria luxo.
+    Os caros (Effecti/LicitaNet) são pra empresa grande, não pro meu jogo regional.
+    Já tentei ferramenta, não valeu o preço. Manual + grupo WhatsApp é o que sobra."
+  desired_belief: |
+    "Não é apertar mais — é trocar o motor.
+    Tem uma 5ª entidade que olha as 4 empresas juntas, evita inabilitação por CRF,
+    monta dossiê em 30min e protege recurso na preclusão.
+    E o Breno tá montando isso COMIGO, com meu jogo regional na cabeça."
+  resistance:
+    - id: R-effecti
+      objection: "Já paguei ferramenta nacional, não valeu"
+      reframe: "Aquilo é horizontal nacional comoditizado. Isso é vertical regional + diário. Diferente do começo ao fim."
+      slide: 11
+    - id: R-tempo
+      objection: "Não tenho tempo de aprender sistema novo"
+      reframe: "Lançamento despesa <10s. Push WhatsApp. Modo Rápido <30min. Quem usa celular usa isso."
+      slide: 11
+    - id: R-preco
+      objection: "Cobra quanto? Quanto vai me custar?"
+      reframe: "Você é case-âncora. Piloto Fase 1 sem cobrar. Continuidade depois decidimos juntos baseado em uso real."
+      slide: 11
+      caveat: "Decisão B3 (cobrar/grátis) ainda pendente — alinhar com Breno antes da call"
+  proof_needed:
+    - "1 número de dor SUA (CRF vencido = R$X perdido em edital)"
+    - "1 desenho do dia típico dele (modelado §1.2 briefing — validar na call)"
+    - "1 imagem mental clara da 'Holding Virtual' como 5ª entidade"
+    - "1 exemplo concreto de ACT matcher (objeto/quantidade/score)"
+    - "1 piloto entregável em 6 semanas (M1) com vitória medível"
+  final_action: |
+    Confirmar disponibilidade pra Sprint 0 + responder 8 perguntas do Bloco C na própria call.
+    Trigger pra Breno: "vai com sprint 0 buscador" após call.

@@ -1,0 +1,56 @@
+runtime_job_selection:
+  selected_jobs:
+    - id: manuscript_first_deck_pipeline
+      from: "templates/runtime/manuscript-pipeline.yaml"
+      pick_when_match: "Deck depends on research + explanation. User provided 4 research files + briefing v2 consolidado."
+      adaptation: |
+        Manuscript já EXISTE (BRIEFING-REAL-CONSOLIDADO.md 867 lh).
+        Skipping planner_creates_outline_json + research_creates_markdown_manuscript steps.
+        Going direct: manuscript_sections_are_mapped_to_slide_functions → evidence_and_media_are_bound_to_claims → slide_structure_templates_are_selected → visual_templates_are_selected → deck_spec_is_generated_from_manuscript.
+      claim_to_evidence_map_file: "source-ledger.yaml"
+
+  not_selected_jobs:
+    - id: html_to_pptx_render_contract
+      reason: "Deck v1 entregue como Markdown. PPTX export é decisão posterior (após call validation)."
+    - id: verified_export_job
+      reason: "Idem — sem export real ainda."
+    - id: provider_capability_routing
+      reason: "Sem geração de IA/imagem/vision automatizada nesse deck."
+    - id: edit_history_and_diff_contract
+      reason: "Deck v1; revisões serão manuais antes de v2 pós-call."
+    - id: traceable_slide_creation_flow
+      reason: "Não temos multiverse review nesse run — esse deck será revisto manualmente por Breno."
+    - id: induced_layout_pack_selection
+      reason: "Sem import de PPTX template existente."
+    - id: pptx_template_manifest_import
+      reason: "Idem."
+
+  outputs_planned:
+    - briefing-normalized.yaml ✅
+    - audience-belief-shift.yaml ✅
+    - story-arc.yaml ✅
+    - slide-function-map.yaml ✅
+    - roteiro-template-selection.yaml ✅
+    - slide-structure-selection.yaml ✅
+    - visual-template-selection.yaml ✅
+    - theme-profile-selection.yaml ✅
+    - runtime-job-selection.yaml ✅ (this file)
+    - research-route-selection.yaml ✅
+    - design-direction.yaml
+    - deck-spec.yaml
+    - speaker-notes.md
+    - source-ledger.yaml
+    - qa-report.yaml
+    - revision-notes.md
+    - README.md (navegação)
+
+  deferred_outputs:
+    - rendered-eval.yaml: "After visual rendering exists (Figma/Stitch ou HTML mockup)"
+    - editability-report.yaml: "After PPTX export decision"
+    - template-import-report.yaml: "N/A"
+    - chart-datasets/: "1 chart inline em visual-template-selection.yaml; standalone file só se mais charts surgirem"
+    - diagrams/: "5 diagrams declarados em design-direction.yaml; sources criadas após call"
+    - forward-test.yaml: "N/A — sem prior failure mode"
+    - planning-reflection.jsonl: "Será gerado em revision pass se for needed"
+    - key-slide-gate.yaml: "Gate dos 5 key slides — gerar antes do render visual"
+    - package-validation-report.json: "Final, gerado por scripts/validate_deck_package.py"
