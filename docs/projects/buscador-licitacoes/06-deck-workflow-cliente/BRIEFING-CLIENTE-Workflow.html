@@ -1,0 +1,1145 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buscador de Licitações — Briefing do Workflow · Para Apresentar ao Cliente</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAFAF7;
+    --paper: #FFFFFF;
+    --ink: #0B0B0B;
+    --ink-2: #2D2D2A;
+    --muted: #6E6E66;
+    --rule: #E8E8E0;
+    --lime: #6B9F00;
+    --lime-bg: #E8F5B8;
+    --lime-soft: #F5FAE4;
+
+    --c-1: #0891B2;   --c-1-bg: #ECFEFF;
+    --c-2: #4F46E5;   --c-2-bg: #EEF2FF;
+    --c-3: #9333EA;   --c-3-bg: #FAF5FF;
+    --c-4: #059669;   --c-4-bg: #ECFDF5;
+    --c-5: #D97706;   --c-5-bg: #FFFBEB;
+    --c-6: #DC2626;   --c-6-bg: #FEF2F2;
+    --c-base: #2563EB;--c-base-bg: #EFF6FF;
+    --warm: #D97706;
+
+    --font-d: 'Inter Tight', system-ui, sans-serif;
+    --font-b: 'Inter', system-ui, sans-serif;
+    --font-m: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-b);
+    font-size: 15.5px;
+    line-height: 1.6;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
+  }
+  .page {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 56px 48px;
+    background: var(--paper);
+  }
+
+  /* ─── Cover / Resumo Executivo ─── */
+  .cover {
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 32px;
+    margin-bottom: 40px;
+  }
+  .cover .eyebrow {
+    font-family: var(--font-m);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+    display: inline-flex; gap: 10px; align-items: center;
+  }
+  .cover .eyebrow::before {
+    content: ""; width: 24px; height: 1px; background: var(--lime);
+  }
+  .cover h1 {
+    font-family: var(--font-d);
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+    max-width: 16ch;
+  }
+  .cover h1 .lime { color: var(--lime); }
+  .cover .subtitle {
+    font-family: var(--font-d);
+    font-weight: 500;
+    font-size: 19px;
+    color: var(--ink-2);
+    line-height: 1.5;
+    max-width: 60ch;
+    margin-bottom: 24px;
+  }
+  .cover .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+  .cover .meta-item .k {
+    font-family: var(--font-m);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .cover .meta-item .v {
+    font-family: var(--font-d);
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+
+  /* ─── Resumo executivo box ─── */
+  .summary {
+    background: var(--lime-soft);
+    border-left: 4px solid var(--lime);
+    padding: 28px 32px;
+    margin-bottom: 56px;
+    border-radius: 0 4px 4px 0;
+  }
+  .summary .label {
+    font-family: var(--font-m);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--lime);
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+  .summary p {
+    font-family: var(--font-d);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .summary p + p { margin-top: 14px; }
+  .summary strong { font-weight: 600; }
+  .summary .lime { color: var(--lime); font-weight: 600; }
+
+  /* ─── Section heading ─── */
+  h2.section {
+    font-family: var(--font-d);
+    font-weight: 700;
+    font-size: 32px;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    margin: 56px 0 12px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+  h2.section .lime { color: var(--lime); }
+  h2.section:first-of-type { padding-top: 0; border-top: none; margin-top: 0; }
+  .section-dek {
+    font-size: 16px;
+    color: var(--ink-2);
+    line-height: 1.55;
+    max-width: 62ch;
+    margin-bottom: 32px;
+  }
+
+  /* ─── Workflow map ─── */
+  .workflow-map {
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    padding: 28px 24px;
+    margin: 0 0 40px;
+    border-radius: 4px;
+  }
+  .wf-row {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .wf-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 14px 12px;
+    border-radius: 4px;
+    border-left: 3px solid var(--ink);
+    position: relative;
+    display: flex; flex-direction: column; gap: 5px;
+    min-height: 110px;
+  }
+  .wf-card[data-c="1"] { border-left-color: var(--c-1); }
+  .wf-card[data-c="2"] { border-left-color: var(--c-2); background: var(--c-2-bg); }
+  .wf-card[data-c="3"] { border-left-color: var(--c-3); background: var(--c-3-bg); }
+  .wf-card[data-c="4"] { border-left-color: var(--c-4); }
+  .wf-card[data-c="5"] { border-left-color: var(--c-5); }
+  .wf-card[data-c="6"] { border-left-color: var(--c-6); }
+  .wf-card .n {
+    font-family: var(--font-m);
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    font-weight: 700;
+    color: var(--muted);
+  }
+  .wf-card[data-c="1"] .n { color: var(--c-1); }
+  .wf-card[data-c="2"] .n { color: var(--c-2); }
+  .wf-card[data-c="3"] .n { color: var(--c-3); }
+  .wf-card[data-c="4"] .n { color: var(--c-4); }
+  .wf-card[data-c="5"] .n { color: var(--c-5); }
+  .wf-card[data-c="6"] .n { color: var(--c-6); }
+  .wf-card .nm {
+    font-family: var(--font-d);
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .wf-card .d {
+    font-size: 10.5px;
+    color: var(--ink-2);
+    line-height: 1.4;
+  }
+  .wf-base {
+    background: var(--c-base-bg);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--c-base);
+    padding: 12px 18px;
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 14px;
+    align-items: center;
+    font-size: 12px;
+  }
+  .wf-base .lb {
+    font-family: var(--font-m);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--c-base);
+    font-weight: 600;
+  }
+  .wf-base .tx { color: var(--ink-2); line-height: 1.5; }
+  .wf-base .tx strong { color: var(--ink); }
+
+  /* ─── Stage detail (per-page-feel) ─── */
+  .stage {
+    margin: 56px 0;
+    padding: 32px 32px 36px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .stage[data-c="1"] { border-top: 4px solid var(--c-1); }
+  .stage[data-c="2"] { border-top: 4px solid var(--c-2); }
+  .stage[data-c="3"] { border-top: 4px solid var(--c-3); }
+  .stage[data-c="4"] { border-top: 4px solid var(--c-4); }
+  .stage[data-c="5"] { border-top: 4px solid var(--c-5); }
+  .stage[data-c="6"] { border-top: 4px solid var(--c-6); }
+  .stage[data-c="base"] { border-top: 4px solid var(--c-base); }
+
+  .stage-head {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 24px;
+    align-items: center;
+    padding-bottom: 20px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .stage-num {
+    width: 52px; height: 52px;
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-d);
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--paper);
+    letter-spacing: -0.02em;
+  }
+  .stage[data-c="1"] .stage-num { background: var(--c-1); }
+  .stage[data-c="2"] .stage-num { background: var(--c-2); }
+  .stage[data-c="3"] .stage-num { background: var(--c-3); }
+  .stage[data-c="4"] .stage-num { background: var(--c-4); }
+  .stage[data-c="5"] .stage-num { background: var(--c-5); }
+  .stage[data-c="6"] .stage-num { background: var(--c-6); }
+  .stage[data-c="base"] .stage-num { background: var(--c-base); }
+
+  .stage-title {
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .stage-title .tg {
+    font-family: var(--font-m);
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .stage-title h3 {
+    font-family: var(--font-d);
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1.15;
+  }
+  .stage-promise {
+    font-family: var(--font-d);
+    font-weight: 700;
+    font-size: 20px;
+    text-align: right;
+    line-height: 1.15;
+  }
+  .stage[data-c="1"] .stage-promise { color: var(--c-1); }
+  .stage[data-c="2"] .stage-promise { color: var(--c-2); }
+  .stage[data-c="3"] .stage-promise { color: var(--c-3); }
+  .stage[data-c="4"] .stage-promise { color: var(--c-4); }
+  .stage[data-c="5"] .stage-promise { color: var(--c-5); }
+  .stage[data-c="6"] .stage-promise { color: var(--c-6); }
+  .stage[data-c="base"] .stage-promise { color: var(--c-base); }
+  .stage-promise small {
+    display: block;
+    font-family: var(--font-m);
+    font-weight: 500;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  .stage h4 {
+    font-family: var(--font-m);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 12px;
+    margin-top: 24px;
+  }
+  .stage h4:first-of-type { margin-top: 0; }
+  .stage p {
+    color: var(--ink-2);
+    margin-bottom: 14px;
+  }
+  .stage p strong { color: var(--ink); font-weight: 600; }
+  .stage p .hl-1 { color: var(--c-1); font-weight: 600; }
+  .stage p .hl-2 { color: var(--c-2); font-weight: 600; }
+  .stage p .hl-3 { color: var(--c-3); font-weight: 600; }
+  .stage p .hl-4 { color: var(--c-4); font-weight: 600; }
+  .stage p .hl-5 { color: var(--c-5); font-weight: 600; }
+  .stage p .hl-6 { color: var(--c-6); font-weight: 600; }
+  .stage p .hl-base { color: var(--c-base); font-weight: 600; }
+
+  /* Hoje vs Sistema comparison */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 16px 0 20px;
+  }
+  .compare .col {
+    padding: 18px 20px;
+    border-radius: 4px;
+  }
+  .compare .col.hoje {
+    background: #FEF2F2;
+    border-left: 3px solid #DC2626;
+  }
+  .compare .col.sistema {
+    background: var(--lime-soft);
+    border-left: 3px solid var(--lime);
+  }
+  .compare .col .hd {
+    font-family: var(--font-m);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .compare .col.hoje .hd { color: #DC2626; }
+  .compare .col.sistema .hd { color: var(--lime); }
+  .compare .col p {
+    font-size: 13.5px;
+    color: var(--ink-2);
+    margin: 0;
+    line-height: 1.5;
+  }
+  .compare .col p strong { color: var(--ink); }
+
+  /* Exemplo box */
+  .example {
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    padding: 18px 22px;
+    border-radius: 4px;
+    margin: 16px 0 20px;
+  }
+  .example .lb {
+    font-family: var(--font-m);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+    display: block;
+    font-weight: 600;
+  }
+  .stage[data-c="1"] .example .lb { color: var(--c-1); }
+  .stage[data-c="2"] .example .lb { color: var(--c-2); }
+  .stage[data-c="3"] .example .lb { color: var(--c-3); }
+  .stage[data-c="4"] .example .lb { color: var(--c-4); }
+  .stage[data-c="5"] .example .lb { color: var(--c-5); }
+  .stage[data-c="6"] .example .lb { color: var(--c-6); }
+  .stage[data-c="base"] .example .lb { color: var(--c-base); }
+  .example p { font-size: 13.5px; color: var(--ink-2); margin: 0; line-height: 1.55; }
+  .example p strong { color: var(--ink); }
+
+  /* Result strip */
+  .results {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 16px;
+  }
+  .result-cell {
+    background: var(--paper);
+    padding: 14px 18px;
+  }
+  .result-cell .k {
+    font-family: var(--font-m);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .result-cell .v {
+    font-family: var(--font-d);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .stage[data-c="1"] .result-cell .v { color: var(--c-1); }
+  .stage[data-c="2"] .result-cell .v { color: var(--c-2); }
+  .stage[data-c="3"] .result-cell .v { color: var(--c-3); }
+  .stage[data-c="4"] .result-cell .v { color: var(--c-4); }
+  .stage[data-c="5"] .result-cell .v { color: var(--c-5); }
+  .stage[data-c="6"] .result-cell .v { color: var(--c-6); }
+  .stage[data-c="base"] .result-cell .v { color: var(--c-base); }
+  .result-cell .u {
+    font-family: var(--font-m);
+    font-size: 10.5px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* Lista de "o que faz" */
+  .does-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 14px;
+  }
+  .does-list li {
+    padding: 6px 0 6px 22px;
+    position: relative;
+    color: var(--ink-2);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .does-list li::before {
+    content: "→";
+    position: absolute; left: 0; top: 6px;
+    font-weight: 700;
+    color: var(--muted);
+  }
+  .stage[data-c="1"] .does-list li::before { color: var(--c-1); }
+  .stage[data-c="2"] .does-list li::before { color: var(--c-2); }
+  .stage[data-c="3"] .does-list li::before { color: var(--c-3); }
+  .stage[data-c="4"] .does-list li::before { color: var(--c-4); }
+  .stage[data-c="5"] .does-list li::before { color: var(--c-5); }
+  .stage[data-c="6"] .does-list li::before { color: var(--c-6); }
+  .stage[data-c="base"] .does-list li::before { color: var(--c-base); }
+  .does-list li strong { color: var(--ink); font-weight: 600; }
+
+  /* Roadmap timeline */
+  .roadmap {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0;
+    position: relative;
+    margin: 24px 0 32px;
+  }
+  .roadmap::before {
+    content: "";
+    position: absolute;
+    top: 18px; left: 28px; right: 28px;
+    height: 2px;
+    background: var(--lime);
+    z-index: 0;
+  }
+  .rd-stop {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 6px;
+    position: relative; z-index: 1;
+    padding: 0 6px;
+  }
+  .rd-stop .dot {
+    width: 36px; height: 36px;
+    background: var(--paper);
+    border: 2px solid var(--lime);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-d);
+    font-weight: 700;
+    font-size: 11px;
+    color: var(--lime);
+  }
+  .rd-stop .lb {
+    font-family: var(--font-m);
+    font-size: 9.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+  }
+  .rd-stop .nm {
+    font-size: 12px;
+    color: var(--ink);
+    text-align: center;
+    line-height: 1.3;
+    font-weight: 500;
+  }
+
+  /* Next steps */
+  .next-steps {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--lime);
+    padding: 24px 28px;
+    border-radius: 0 4px 4px 0;
+    margin-top: 24px;
+  }
+  .next-steps h3 {
+    font-family: var(--font-d);
+    font-weight: 700;
+    font-size: 19px;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+  .next-steps ol {
+    list-style: none;
+    counter-reset: step;
+    padding: 0;
+  }
+  .next-steps ol li {
+    counter-increment: step;
+    padding: 10px 0 10px 32px;
+    position: relative;
+    color: var(--ink-2);
+    border-bottom: 1px dotted var(--rule);
+    font-size: 14.5px;
+    line-height: 1.5;
+  }
+  .next-steps ol li:last-child { border-bottom: none; }
+  .next-steps ol li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0; top: 10px;
+    font-family: var(--font-m);
+    font-weight: 700;
+    color: var(--lime);
+    font-size: 13px;
+    width: 22px;
+  }
+  .next-steps ol li strong { color: var(--ink); font-weight: 600; }
+
+  /* Footer / sign-off */
+  .signoff {
+    border-top: 2px solid var(--ink);
+    padding-top: 28px;
+    margin-top: 64px;
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .signoff .left .nm {
+    font-family: var(--font-d);
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--ink);
+  }
+  .signoff .left .role {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .signoff .right {
+    text-align: right;
+    font-family: var(--font-m);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+  .signoff .right .doc {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* Responsive */
+  @media (max-width: 720px) {
+    .page { padding: 32px 22px; }
+    .cover h1 { font-size: 36px; }
+    .cover .meta-grid { grid-template-columns: 1fr 1fr; }
+    .wf-row { grid-template-columns: repeat(3, 1fr); }
+    .roadmap { grid-template-columns: repeat(3, 1fr); }
+    .roadmap::before { display: none; }
+    .compare { grid-template-columns: 1fr; }
+    .stage-head { grid-template-columns: auto 1fr; }
+    .stage-promise { grid-column: 1 / 3; text-align: left; }
+  }
+
+  /* Print */
+  @media print {
+    body { background: var(--paper); }
+    .page { max-width: none; padding: 20mm 16mm; }
+    .stage { page-break-inside: avoid; break-inside: avoid; }
+    h2.section { page-break-after: avoid; }
+    *, *::before, *::after {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+    @page { margin: 14mm; }
+  }
+
+  ::selection { background: var(--lime); color: var(--paper); }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+<!-- ════════════ COVER ════════════ -->
+<section class="cover">
+  <span class="eyebrow">Briefing do Workflow · Para Apresentação ao Cliente · 2026-05-19</span>
+  <h1>Como funciona, <span class="lime">do edital ao contrato.</span></h1>
+  <p class="subtitle">Sistema integrado de 6 estágios automatizados, mais a base financeira das 3 empresas. Cada estágio resolve uma dor real de quem participa de licitação pública hoje — sem hype, com resultado mensurável.</p>
+
+  <div class="meta-grid">
+    <div class="meta-item">
+      <div class="k">Escopo</div>
+      <div class="v">Águas Lindas-GO<br>DF · Federal-DF</div>
+    </div>
+    <div class="meta-item">
+      <div class="k">Empresas</div>
+      <div class="v">3 sob gestão<br>1 faz licitação</div>
+    </div>
+    <div class="meta-item">
+      <div class="k">Canal</div>
+      <div class="v">WhatsApp + app<br>no celular</div>
+    </div>
+    <div class="meta-item">
+      <div class="k">Horizonte</div>
+      <div class="v">22 semanas<br>6 sprints</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ RESUMO EXECUTIVO ════════════ -->
+<div class="summary">
+  <div class="label">Resumo Executivo · 90 segundos de leitura</div>
+  <p>Hoje você gasta <strong>~80 horas por mês</strong> refrescando portais, montando dossiê manual, lembrando de renovar CRF, escrevendo recurso na pressão da preclusão. Esse tempo não escala — e cada esquecimento custa entre R$ 5k e R$ 50k em edital perdido.</p>
+  <p>O sistema automatiza <span class="lime">os 6 estágios</span> dessa jornada: <strong>monitora</strong> editais novos, <strong>analisa</strong> 6 meses do mesmo órgão, <strong>indica o diferencial</strong> que pode te fazer ganhar, <strong>monta o dossiê</strong> em 28 minutos, <strong>acompanha a sessão</strong> em tempo real, e <strong>gera minuta de recurso</strong> dentro do prazo. Tudo apoiado por um <strong>livro caixa unificado das 3 empresas</strong> que mantém o Balanço Patrimonial vivo o ano todo.</p>
+  <p>Resultado em 22 semanas: <span class="lime">62 a 201 horas/mês recuperadas</span> + R$ 5-50k preservados por inabilitação evitada + edital extra ganho por trimestre via diferencial certo.</p>
+</div>
+
+<!-- ════════════ MAPA DO WORKFLOW ════════════ -->
+<h2 class="section">O workflow inteiro, <span class="lime">numa visão única.</span></h2>
+<p class="section-dek">São 6 estágios encadeados — cada um dispara o próximo automaticamente. Os estágios <strong>02 Analisar</strong> e <strong>03 Indicar Diferencial</strong> são onde o sistema entrega algo que o mercado não faz hoje. Tudo apoiado pelo livro caixa das 3 empresas.</p>
+
+<div class="workflow-map">
+  <div class="wf-row">
+    <div class="wf-card" data-c="1">
+      <span class="n">[ 01 ]</span>
+      <span class="nm">Monitorar</span>
+      <span class="d">3 portais, 24/7, push WhatsApp.</span>
+    </div>
+    <div class="wf-card" data-c="2">
+      <span class="n">[ 02 ]</span>
+      <span class="nm">Analisar 6m</span>
+      <span class="d">Histórico do mesmo órgão.</span>
+    </div>
+    <div class="wf-card" data-c="3">
+      <span class="n">[ 03 ]</span>
+      <span class="nm">Diferencial</span>
+      <span class="d">5 frases acionáveis.</span>
+    </div>
+    <div class="wf-card" data-c="4">
+      <span class="n">[ 04 ]</span>
+      <span class="nm">Habilitar</span>
+      <span class="d">Dossiê PDF em 28min.</span>
+    </div>
+    <div class="wf-card" data-c="5">
+      <span class="n">[ 05 ]</span>
+      <span class="nm">Acompanhar</span>
+      <span class="d">Vencedor declarado &lt;3min.</span>
+    </div>
+    <div class="wf-card" data-c="6">
+      <span class="n">[ 06 ]</span>
+      <span class="nm">Recorrer</span>
+      <span class="d">Minuta jurídica no prazo.</span>
+    </div>
+  </div>
+  <div class="wf-base">
+    <span class="lb">[ Fundação ]</span>
+    <span class="tx"><strong>Livro caixa das 3 empresas</strong> no app do celular — família lança em &lt;10s, Open Finance importa automático, IA categoriza. Balanço Patrimonial fica sempre pronto e alimenta o Estágio 04 sem precisar pedir nada pro contador.</span>
+  </div>
+</div>
+
+<!-- ════════════ STAGE 1 — MONITORAR ════════════ -->
+<h2 class="section">Cada estágio explicado, <span class="lime">passo a passo.</span></h2>
+<p class="section-dek">A partir daqui, um estágio por seção. Cada um traz: o que faz, como muda seu dia, um exemplo real, e o resultado mensurável esperado.</p>
+
+<article class="stage" data-c="1">
+  <header class="stage-head">
+    <div class="stage-num">01</div>
+    <div class="stage-title">
+      <span class="tg">Radar · 24 horas por dia</span>
+      <h3>Monitorar</h3>
+    </div>
+    <div class="stage-promise">push em &lt;15min<small>do edital ser publicado</small></div>
+  </header>
+
+  <h4>O que faz</h4>
+  <p>O sistema vigia <span class="hl-1">3 portais oficiais</span> a cada 15 minutos, filtra os editais que se encaixam no que sua empresa vende (CNAE, valor, palavra-chave), e te avisa no WhatsApp com um resumo. Edital irrelevante é descartado em silêncio — você só vê o que importa.</p>
+
+  <ul class="does-list">
+    <li>Cobertura: <strong>PNCP federal, e-Compras DF, Portal de Águas Lindas</strong></li>
+    <li>Filtros configurados 1× na onboarding: CNAE, faixa de valor, palavras-chave</li>
+    <li>Push WhatsApp com o resumo do objeto, valor, prazo e o "match score" (0-100)</li>
+    <li>Sem duplicação — sistema garante que mesmo edital só te avisa 1 vez</li>
+  </ul>
+
+  <h4>Hoje vs. com o sistema</h4>
+  <div class="compare">
+    <div class="col hoje">
+      <div class="hd">Hoje · Manual</div>
+      <p>Você refresca os portais <strong>3 a 5× por dia</strong>. Quando aparece edital novo, você descobre em horas — às vezes só no dia seguinte. <strong>Risco real:</strong> outro fornecedor leu antes.</p>
+    </div>
+    <div class="col sistema">
+      <div class="hd">Sistema</div>
+      <p>Você recebe push no celular em <strong>menos de 15 minutos</strong> da publicação. Já vem com resumo do objeto, valor, prazo e match score do seu CNAE.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <span class="lb">Exemplo prático</span>
+    <p><strong>10:42</strong> — Águas Lindas publica edital "fornecimento mobiliário hospitalar R$180k". <strong>10:48</strong> — seu WhatsApp toca: <em>"Novo edital · match 87% · prazo proposta 25/Mai."</em> Você abre, decide se interessa, segue.</p>
+  </div>
+
+  <div class="results">
+    <div class="result-cell">
+      <div class="k">Tempo/mês</div>
+      <div class="v">22-44h</div>
+      <div class="u">recuperadas só de não refrescar portal</div>
+    </div>
+    <div class="result-cell">
+      <div class="k">Receita/edital</div>
+      <div class="v">R$ 5-50k</div>
+      <div class="u">salvos quando ninguém leu antes de você</div>
+    </div>
+  </div>
+</article>
+
+<!-- ════════════ STAGE 2 — ANALISAR ════════════ -->
+<article class="stage" data-c="2">
+  <header class="stage-head">
+    <div class="stage-num">02</div>
+    <div class="stage-title">
+      <span class="tg">Inteligência Histórica · MOAT exclusivo</span>
+      <h3>Analisar 6 meses do órgão</h3>
+    </div>
+    <div class="stage-promise">análise &lt;90s<small>antes de você decidir</small></div>
+  </header>
+
+  <h4>O que faz</h4>
+  <p>Quando você marca interesse num edital, o sistema consulta <span class="hl-2">todos os contratos aprovados</span> pela mesma prefeitura ou órgão nos últimos 6 meses e extrai <span class="hl-2">4 padrões objetivos</span> com a fonte citada (contrato N, página X — verificável).</p>
+
+  <ul class="does-list">
+    <li><strong>Quem ganhou</strong>: CNPJs vencedores recorrentes</li>
+    <li><strong>Quanto pagou</strong>: preço médio + faixa por objeto similar</li>
+    <li><strong>Que requisitos foram aceitos</strong>: certificações e atestados além do edital literal</li>
+    <li><strong>Por que outros perderam</strong>: motivos de desclassificação documentados</li>
+  </ul>
+
+  <h4>Por que isso é diferente do mercado</h4>
+  <p>Effecti, LicitaNet e ConLicitação fazem <strong>análise histórica desde 2024</strong>, mas entregam <strong>lista bruta</strong> de contratos vencidos. O sistema entrega <strong>4 padrões prescritivos com fonte citada</strong>. A diferença não está em ter o dado — está em transformar em decisão.</p>
+
+  <div class="example">
+    <span class="lb">Exemplo de saída</span>
+    <p><strong>Empresa X</strong> ganhou 4 dos últimos 6 editais de hospitalar nesse órgão · <strong>preço médio R$ 168k</strong> (faixa R$ 145-195k) · <strong>83% dos vencedores</strong> apresentaram certificação ISO 9001 · <strong>5 de 12 desclassificações</strong> foram por CRF FGTS expirado.</p>
+  </div>
+
+  <div class="results">
+    <div class="result-cell">
+      <div class="k">Tempo/edital</div>
+      <div class="v">2-4h</div>
+      <div class="u">você não vai pesquisar isso manual</div>
+    </div>
+    <div class="result-cell">
+      <div class="k">Taxa de vitória</div>
+      <div class="v">+20-30%</div>
+      <div class="u">decisão informada vs decisão cega</div>
+    </div>
+  </div>
+</article>
+
+<!-- ════════════ STAGE 3 — DIFERENCIAL ════════════ -->
+<article class="stage" data-c="3">
+  <header class="stage-head">
+    <div class="stage-num">03</div>
+    <div class="stage-title">
+      <span class="tg">Síntese Prescritiva · MOAT exclusivo</span>
+      <h3>Indicar Diferencial</h3>
+    </div>
+    <div class="stage-promise">leitura em 60s<small>cartão único no celular</small></div>
+  </header>
+
+  <h4>O que faz</h4>
+  <p>Com base na análise do Estágio 02, o sistema combina <span class="hl-3">os 4 padrões + seu vault de atestados + sua margem-padrão</span> e gera um <strong>relatório de diferencial em 5 frases</strong>. Não é receita pronta — é o ângulo certo pra você decidir <strong>como propor</strong> nesse edital específico.</p>
+
+  <ul class="does-list">
+    <li><strong>Preço</strong>: faixa que o órgão historicamente paga e quanto cabe na sua margem</li>
+    <li><strong>Certificação ou atestado</strong> que aumenta a chance de ganhar</li>
+    <li><strong>Concorrência</strong>: quem você vai disputar e o que esses CNPJs têm de fraco</li>
+    <li><strong>Risco</strong>: motivo de derrota mais comum desse órgão</li>
+    <li><strong>Tempo certo de submeter</strong> (manhã vs. final de prazo, padrão observado)</li>
+  </ul>
+
+  <div class="example">
+    <span class="lb">Exemplo · Edital DF-2026-1234</span>
+    <p><strong>Preço</strong>: vencedores cobraram R$160-195k. Sua margem comporta R$172k confortável.<br>
+    <strong>Diferencial</strong>: 83% dos vencedores ofereceram garantia 24m. Você não oferece — passe a oferecer.<br>
+    <strong>Concorrência</strong>: 3 CNPJs aparecem em 80% das licitações. Empresa Y teve CRF vencido 2× — vulnerável.<br>
+    <strong>Risco</strong>: 41% das derrotas foram por ACT objeto incompatível. Confirme antes.</p>
+  </div>
+
+  <div class="results">
+    <div class="result-cell">
+      <div class="k">Tempo/edital</div>
+      <div class="v">1-2h</div>
+      <div class="u">de pesquisa de concorrente eliminadas</div>
+    </div>
+    <div class="result-cell">
+      <div class="k">Valor incremental</div>
+      <div class="v">R$ 30-150k</div>
+      <div class="u">por edital extra ganho/trimestre</div>
+    </div>
+  </div>
+</article>
+
+<!-- ════════════ STAGE 4 — HABILITAR ════════════ -->
+<article class="stage" data-c="4">
+  <header class="stage-head">
+    <div class="stage-num">04</div>
+    <div class="stage-title">
+      <span class="tg">Execução · Dossiê Automatizado</span>
+      <h3>Habilitar</h3>
+    </div>
+    <div class="stage-promise">4h → 28min<small>−85% do trabalho manual</small></div>
+  </header>
+
+  <h4>O que faz</h4>
+  <p>Você decidiu participar. O sistema lê <strong>cada exigência do edital</strong>, cruza com seu vault de certidões e atestados, <strong>alerta o que falta</strong>, renova CRF FGTS quando vencendo, e <span class="hl-4">compila o PDF unificado em 60 segundos</span>. Você só revisa.</p>
+
+  <ul class="does-list">
+    <li><strong>Certidões monitoradas o ano todo</strong>: CRF FGTS, CND Federal, Estadual, Municipal, CNDT, CNDP</li>
+    <li><strong>Balanço Patrimonial e DRE</strong> gerados automaticamente do livro caixa — sem pedir nada pro contador</li>
+    <li><strong>Índices LG/LC/SG</strong> calculados conforme Lei 14.133 art. 69, com fallback art. 69 §3º se LG &lt;1</li>
+    <li><strong>Atestados</strong> pontuados 0-10 contra cada exigência do edital com fórmula defensável (TCU)</li>
+  </ul>
+
+  <h4>Hoje vs. com o sistema</h4>
+  <div class="compare">
+    <div class="col hoje">
+      <div class="hd">Hoje · 4 horas</div>
+      <p>Pedir BP/DRE pro contador (<strong>1 dia espera</strong>) · procurar atestado na pasta (<strong>45min</strong>) · renovar CRF na Caixa (<strong>1h</strong>) · compilar PDF manual (<strong>1h</strong>) · revisão.</p>
+    </div>
+    <div class="col sistema">
+      <div class="hd">Sistema · 28 minutos</div>
+      <p>BP/DRE auto (<strong>5min</strong>) · matcher de atestado (<strong>5min</strong>) · CRF renovação 1-clique (<strong>3min</strong>) · compile PDF (<strong>60s + 14min revisão</strong>).</p>
+    </div>
+  </div>
+
+  <div class="results">
+    <div class="result-cell">
+      <div class="k">Tempo/edital</div>
+      <div class="v">−3,5h</div>
+      <div class="u">× 5-30 editais/mês = 17-105h/mês</div>
+    </div>
+    <div class="result-cell">
+      <div class="k">Receita/edital</div>
+      <div class="v">R$ 5-50k</div>
+      <div class="u">salvos de inabilitação por CRF vencido</div>
+    </div>
+  </div>
+</article>
+
+<!-- ════════════ STAGE 5 — ACOMPANHAR ════════════ -->
+<article class="stage" data-c="5">
+  <header class="stage-head">
+    <div class="stage-num">05</div>
+    <div class="stage-title">
+      <span class="tg">Execução · SLA Crítico · Anti-Preclusão</span>
+      <h3>Acompanhar Sessão</h3>
+    </div>
+    <div class="stage-promise">análise &lt;3min<small>do "vencedor declarado"</small></div>
+  </header>
+
+  <h4>O que faz</h4>
+  <p>O sistema monitora a sessão pública em tempo real. <strong>No momento que alguém é declarado vencedor</strong>, baixa todos os documentos dele e roda <span class="hl-5">4 verificações automáticas</span> em &lt;3 minutos. Você descobre se vale a pena recorrer <strong>antes</strong> da janela da preclusão fechar.</p>
+
+  <ul class="does-list">
+    <li><strong>CRF FGTS do vencedor</strong> está válido? (consulta Caixa em tempo real)</li>
+    <li><strong>CND Federal</strong> está válida? (consulta Receita Federal direto)</li>
+    <li><strong>Sócios em CEIS ou CNJ Improbidade?</strong> (cross-check Portal da Transparência)</li>
+    <li><strong>Atestado apresentado tem objeto compatível</strong> com o exigido?</li>
+  </ul>
+
+  <p>Classifica achados em <span class="hl-5">INSANÁVEL</span> (CRF vencido, sócio em CEIS — sem chance de saneamento), <span class="hl-5">DUVIDOSO</span> (atestado similar mas não idêntico — juiz decide) ou <span class="hl-5">SEM BRECHA</span> (tudo conforme).</p>
+
+  <div class="example">
+    <span class="lb">Push WhatsApp · 18:00</span>
+    <p><strong>Vencedor declarado: Empresa Y CNPJ XX/XXX-XX</strong><br>
+    INSANÁVEL — CRF FGTS expirou em 16/Mai<br>
+    INSANÁVEL — sócio em CEIS<br>
+    DUVIDOSO — atestado 'mobiliário escolar' vs edital hospitalar<br>
+    <strong>Score recurso: 9.2/10 · recomendação forte</strong></p>
+  </div>
+
+  <div class="results">
+    <div class="result-cell">
+      <div class="k">Tempo de análise</div>
+      <div class="v">&lt; 3min</div>
+      <div class="u">vs 30min-2h leitura manual de PDF</div>
+    </div>
+    <div class="result-cell">
+      <div class="k">Janela preclusão</div>
+      <div class="v">salva</div>
+      <div class="u">você manifesta intenção a tempo</div>
+    </div>
+  </div>
+</article>
+
+<!-- ════════════ STAGE 6 — RECORRER ════════════ -->
+<article class="stage" data-c="6">
+  <header class="stage-head">
+    <div class="stage-num">06</div>
+    <div class="stage-title">
+      <span class="tg">Execução · Jurídico · Anti-Preclusão</span>
+      <h3>Recorrer</h3>
+    </div>
+    <div class="stage-promise">minuta &lt;8min<small>do achado ao envio</small></div>
+  </header>
+
+  <h4>O que faz</h4>
+  <p>Se o Estágio 05 indicou recurso viável (score &gt;5), o sistema gera <strong>minuta de manifestação de intenção</strong> usando template jurídico + as irregularidades concretas detectadas — com <span class="hl-6">base legal certa pra cada uma</span>. Você revisa em 5 minutos e envia.</p>
+
+  <ul class="does-list">
+    <li>Sistema busca em Lei 14.133, súmulas TCU e ementários a base legal de cada irregularidade</li>
+    <li><strong>Cita base legal real</strong> — não inventa (validado contra corpus jurídico indexado)</li>
+    <li>Você revisa, ajusta, envia — tudo no celular se precisar</li>
+    <li><strong>Sistema agenda automaticamente</strong>: "razões finais em 3 dias úteis" — não perde o segundo prazo</li>
+  </ul>
+
+  <h4>Hoje vs. com o sistema</h4>
+  <div class="compare">
+    <div class="col hoje">
+      <div class="hd">Hoje · 30-120 min</div>
+      <p>Lê PDF do vencedor (<strong>30min</strong>) · consulta lei (<strong>20min</strong>) · escreve manualmente (<strong>1h</strong>) · às vezes <strong>passa do prazo</strong> e perde.</p>
+    </div>
+    <div class="col sistema">
+      <div class="hd">Sistema · &lt;8 min</div>
+      <p>Relatório pronto (já feito no estágio 5) · minuta gerada (<strong>30s</strong>) · você revisa (<strong>5min</strong>) · envia (<strong>2min</strong>).</p>
+    </div>
+  </div>
+
+  <div class="results">
+    <div class="result-cell">
+      <div class="k">Recursos no prazo</div>
+      <div class="v">100%</div>
+      <div class="u">nenhum perdido por preclusão</div>
+    </div>
+    <div class="result-cell">
+      <div class="k">Receita reaverta</div>
+      <div class="v">R$ 5-50k</div>
+      <div class="u">por recurso procedente</div>
+    </div>
+  </div>
+</article>
+
+<!-- ════════════ BASE — LIVRO CAIXA ════════════ -->
+<article class="stage" data-c="base">
+  <header class="stage-head">
+    <div class="stage-num">B</div>
+    <div class="stage-title">
+      <span class="tg">Fundação · A base que alimenta tudo</span>
+      <h3>Livro Caixa das 3 Empresas</h3>
+    </div>
+    <div class="stage-promise">&lt;10s por lançamento<small>app no celular</small></div>
+  </header>
+
+  <h4>O que faz</h4>
+  <p>App no celular onde a família lança receita/despesa das 3 empresas. <span class="hl-base">Open Finance importa as transações bancárias automaticamente</span>. IA sugere a categoria contábil — humano só confirma com 1 toque. Cada pessoa só vê a empresa dela (controle de acesso granular).</p>
+
+  <ul class="does-list">
+    <li><strong>RBAC granular</strong>: master (você), receita (pai), despesa por empresa (N pessoas), leitor (contador)</li>
+    <li><strong>Open Finance</strong> puxa transações das contas das 3 empresas — você não digita</li>
+    <li><strong>IA categoriza</strong> por padrão do plano de contas ITG 1000 (aceito por contadores e TCU)</li>
+    <li><span class="hl-base">Auto-BP/DRE da empresa licitante</span> sempre pronto — alimenta o Estágio 04 sem precisar pedir nada pro contador</li>
+    <li>Dashboard agregado: receita, despesa, fluxo de caixa, ranking das 3</li>
+  </ul>
+
+  <div class="example">
+    <span class="lb">Dia típico · tarde</span>
+    <p><strong>14:55</strong> WhatsApp: "8 transações novas em [Empresa A], aguardando classificação"<br>
+    <strong>14:56</strong> Pessoa abre app — cards prontos com categoria sugerida<br>
+    <strong>14:57</strong> "Boleto Fornecedor X · R$1.500" → tap "OK"<br>
+    <strong>14:59</strong> Tudo classificado em &lt;3min · dashboard atualiza<br>
+    <strong>Pai/família lançou sem precisar planilha — e o BP da licitante fica vivo.</strong></p>
+  </div>
+
+  <div class="results">
+    <div class="result-cell">
+      <div class="k">Tempo/mês</div>
+      <div class="v">5-10h</div>
+      <div class="u">recuperadas de planilha + erro contábil</div>
+    </div>
+    <div class="result-cell">
+      <div class="k">Valor estratégico</div>
+      <div class="v">∞</div>
+      <div class="u">decisão financeira informada das 3</div>
+    </div>
+  </div>
+</article>
+
+<!-- ════════════ TOTAL DE VALOR ════════════ -->
+<h2 class="section">O que isso vale, <span class="lime">por mês.</span></h2>
+<p class="section-dek">Somando os 6 estágios + a base, no cenário realista (não otimista nem pessimista) com 5-30 editais/mês:</p>
+
+<div class="workflow-map">
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+    <div style="background: var(--paper); padding: 22px 24px; border-radius: 4px; border: 1px solid var(--rule);">
+      <div style="font-family: var(--font-m); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px;">Tempo recuperado</div>
+      <div style="font-family: var(--font-d); font-weight: 800; font-size: 36px; color: var(--lime); letter-spacing: -0.02em; line-height: 1;">62-201h</div>
+      <div style="font-family: var(--font-m); font-size: 11px; color: var(--muted); margin-top: 6px;">por mês — entre 1 e 5 semanas</div>
+    </div>
+    <div style="background: var(--paper); padding: 22px 24px; border-radius: 4px; border: 1px solid var(--rule);">
+      <div style="font-family: var(--font-m); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px;">Receita preservada</div>
+      <div style="font-family: var(--font-d); font-weight: 800; font-size: 36px; color: var(--warm); letter-spacing: -0.02em; line-height: 1;">R$ 5-50k</div>
+      <div style="font-family: var(--font-m); font-size: 11px; color: var(--muted); margin-top: 6px;">por inabilitação evitada</div>
+    </div>
+    <div style="background: var(--paper); padding: 22px 24px; border-radius: 4px; border: 1px solid var(--rule);">
+      <div style="font-family: var(--font-m); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px;">Receita incremental</div>
+      <div style="font-family: var(--font-d); font-weight: 800; font-size: 36px; color: #059669; letter-spacing: -0.02em; line-height: 1;">+1/trim</div>
+      <div style="font-family: var(--font-m); font-size: 11px; color: var(--muted); margin-top: 6px;">edital extra via diferencial certo</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ ROADMAP ════════════ -->
+<h2 class="section">Como construímos isso, <span class="lime">por sprint.</span></h2>
+<p class="section-dek">22 semanas distribuídas em 6 sprints. Cada sprint entrega um estágio funcional ao final — você experimenta o sistema crescendo, não espera 22 semanas pra ver algo.</p>
+
+<div class="roadmap">
+  <div class="rd-stop">
+    <div class="dot">S0</div>
+    <div class="lb">Semanas 1-2</div>
+    <div class="nm">Discovery + Base livro caixa</div>
+  </div>
+  <div class="rd-stop">
+    <div class="dot">S1</div>
+    <div class="lb">Semanas 3-6</div>
+    <div class="nm">WhatsApp + Estágios 01-02</div>
+  </div>
+  <div class="rd-stop">
+    <div class="dot">S2</div>
+    <div class="lb">Semanas 7-10</div>
+    <div class="nm">Estágio 03 + Open Finance</div>
+  </div>
+  <div class="rd-stop">
+    <div class="dot">S3</div>
+    <div class="lb">Semanas 11-14</div>
+    <div class="nm">Estágio 04 Habilitação</div>
+  </div>
+  <div class="rd-stop">
+    <div class="dot">S4</div>
+    <div class="lb">Semanas 15-18</div>
+    <div class="nm">Estágios 05-06 sessão+recurso</div>
+  </div>
+  <div class="rd-stop">
+    <div class="dot">S5</div>
+    <div class="lb">Semanas 19-22</div>
+    <div class="nm">Polish + integração total</div>
+  </div>
+</div>
+
+<!-- ════════════ PRÓXIMOS PASSOS ════════════ -->
+<h2 class="section">Próximos passos · <span class="lime">Sprint 0 começa segunda.</span></h2>
+<p class="section-dek">Antes de começar a construir, preciso fechar 6 perguntas em uma call de 45 minutos com você. Depois disso, o Sprint 0 (Discovery + base livro caixa) começa na semana seguinte.</p>
+
+<div class="next-steps">
+  <h3>6 perguntas pra fechar (45 minutos)</h3>
+  <ol>
+    <li><strong>Nome real das 3 empresas</strong> + qual delas faz licitação pública</li>
+    <li><strong>Regime tributário</strong> de cada (Simples / Lucro Presumido / Lucro Real) + faturamento aproximado</li>
+    <li><strong>Quem lança dado no app</strong>: pai (receita) + N pessoas (despesa, 1 por empresa)</li>
+    <li><strong>Histórico 12 meses</strong>: quantos editais a licitante participou e quantos ganhou?</li>
+    <li><strong>Sua dor #1 hoje</strong>: qual dos 6 estágios mais te incomoda atualmente?</li>
+    <li><strong>O "outro processo"</strong> que você mencionou no áudio — me conta mais (escopo do Pipeline futuro)</li>
+  </ol>
+</div>
+
+<!-- ════════════ FOOTER ════════════ -->
+<div class="signoff">
+  <div class="left">
+    <div class="nm">Breno de Cerqueira</div>
+    <div class="role">Synkra AIOS · Sistemas de workflow para operação BR</div>
+  </div>
+  <div class="right">
+    <div class="doc">Briefing Workflow · v1</div>
+    <div>2026-05-19 · Apresentação Cliente</div>
+  </div>
+</div>
+
+</div>
+
+</body>
+</html>
