@@ -7,11 +7,15 @@
 
 ---
 
+## Equipe Tocks 2026-05-19
+
+**Vendedores ativos:** Cristiane + Rudson (2 vendedores). Self-interview Breno = 3º core.
+
 ## O que tem aqui
 
 | Arquivo | Para que serve | Tempo de uso |
 |---------|----------------|--------------|
-| `01-entrevista-script-vendedor-tocks.md` | Roteiro 30min × 5 entrevistas. Validação Customer Need princípio Ries. | ~2h30 conversa + 50min análise |
+| `01-entrevista-script-vendedor-tocks.md` | Roteiro 30min × 3 entrevistas core (Cristiane + Rudson + Breno self) ou 5 com 2 externos opcionais. Validação Customer Need princípio Ries. | ~1h30-2h30 conversa + 1h-2h análise |
 | `02-dogfooding-playbook.md` | 1 dia operando Tocks sem CRM com Bridge standalone. Validação founder Moubeche. | 1 dia operacional + 30min debrief |
 | `03-gate-0-review-checklist.md` | Framework de decisão Day 7: continua / amarelo / pivot / kill. | 90min review |
 | `README.md` | Este arquivo. | — |
@@ -20,21 +24,33 @@
 
 ## Fluxo de Week 0 (7 dias)
 
+### Core (N=3) — caminho rápido
+
 ```
-Day 1 ──► 2 entrevistas (Marcus + Cristina)
-Day 2 ──► Pitch doc revisado + 1 entrevista (Breno self)
+Day 1 ──► Entrevista Cristiane + Entrevista Rudson
+Day 2 ──► Pitch doc revisado + auto-entrevista Breno
 Day 3 ──► Bridge standalone deploy + test events
-Day 4 ──► 2 entrevistas (externos)
+Day 4 ──► Reserva pra processar entrevistas
 Day 5 ──► Dogfooding 1 dia
 Day 6 ──► Reserva (recovery + análise)
-Day 7 ──► Gate 0 review + decisão documentada
+Day 7 ──► Gate 0 review N=3 + decisão documentada
 ```
+
+### Estendido (N=5) — se quiser margem extra
+
+```
+Day 4 ──► (em vez de reserva) Entrevista externo 1 + externo 2
+demais dias iguais — Gate 0 N=5 no Day 7
+```
+
+**Decisão de qual fluxo:** ver §6 do checklist Gate 0.
 
 ---
 
 ## O que falta (Breno faz)
 
-- [ ] Agendar 5 entrevistas (templates de mensagem em script §Setup)
+- [ ] Agendar 2 entrevistas core (**Cristiane + Rudson**, ~30min cada)
+- [ ] Decidir se vai estender N=5 (achar 2 externos B2B Brasília) ou ficar N=3
 - [ ] Confirmar pitch doc 90s pra leitura interna (já existe em `99-architecture/PITCH-WEEK-0-TOCKS.md`)
 - [ ] Setup Inngest + Vercel staging com env Meta + Google OAuth
 - [ ] Reservar 1 dia inteiro pro dogfooding (calendário bloqueado)

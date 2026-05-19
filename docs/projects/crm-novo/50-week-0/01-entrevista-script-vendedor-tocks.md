@@ -2,9 +2,20 @@
 
 **Objetivo:** Validar que o vendedor Tocks PREFERE usar o CRM Novo a continuar com WhatsApp Web + planilha + Ads Manager separados. Se preferir status quo → **Gate 0 KILL: pivot Bridge-only.**
 
-**Quem entrevistar:** Marcus, Cristina, Breno (self-interview) e mais 2 (vendedores externos ou prospects fortes que operam similar).
+**Equipe Tocks atual (2026-05-19):** **Cristiane + Rudson** — 2 vendedores ativos.
 
-**Duração:** 30min cada. Total Week 0: 5 entrevistas = 2h30min de conversa, 2h de análise.
+**Quem entrevistar (3 core + 2 opcionais):**
+- 🔴 **Core (obrigatório, N=3):**
+  1. Cristiane (vendedora Tocks)
+  2. Rudson (vendedor Tocks)
+  3. Breno (self-interview honesto — vale tanto quanto entrevista externa)
+- 🟡 **Opcionais (se quiser amostra maior, N=5):**
+  4. Vendedor externo 1 (alguém de outra empresa Brasília que opera B2B similar — networking)
+  5. Vendedor externo 2 (idem)
+
+**Duração:** 30min cada. Total Week 0: 1h30 (core 3) a 2h30 (com externos) de conversa, mais 1h-2h de análise.
+
+**N pequeno = sinal mais ruidoso, calibração diferente.** Com 3 entrevistas, o limiar de "Customer Need" se desloca pra 100% (todos 3 verdes) em vez de 60% (3/5). Ver §Gate 0 abaixo.
 
 **Princípio Ries:** Customer Need Pivot é gatilhado se 3+ entrevistados disserem "atual funciona bem". Não tente convencer ninguém — escute o que dói de verdade.
 
@@ -12,7 +23,7 @@
 
 ## Setup da call (2min)
 
-> "Oi Marcus, valeu pelo tempo. Esses 30min são pra eu entender de verdade como você trabalha com lead hoje — sem agenda de vender CRM nenhum. Vou gravar pra não perder nada, ok? Algumas perguntas vão soar óbvias — quero ouvir do seu jeito. Se sentir que estou levando pra um lado, me interrompe."
+> "Oi Cristiane / Rudson, valeu pelo tempo. Esses 30min são pra eu entender de verdade como você trabalha com lead hoje — sem agenda de vender nada. Vou gravar pra não perder nada, ok? Algumas perguntas vão soar óbvias — quero ouvir do seu jeito. Se sentir que estou levando pra um lado, me interrompe."
 
 **Regras pra você (Breno):**
 - ❌ NÃO vender o CRM. Não falar "o sistema que estou construindo".
@@ -79,10 +90,10 @@
 ### P5. "O Sales AI que a gente tinha — me conta o que era bom e o que era trabalhoso."
 
 **O que escutar:**
-- Por que ele achou que "deu trabalho" (palavras dele, não suas)
-- O que ele esperava que fizesse e não fez
-- Se ele sente FALTA de alguma coisa do Sales AI agora que está desligado
-- Se a resposta for "nada, tô bem assim" → **🚨 KILL SIGNAL Gate 0**
+- Por que ele/ela achou que "deu trabalho" (palavras dele/dela, não suas)
+- O que esperava que fizesse e não fez
+- Se sente FALTA de alguma coisa do Sales AI agora que está desligado
+- Se a resposta for "nada, tô bem assim" → **🚨 KILL SIGNAL Gate 0** (com N=3, basta 1 voz forte assim pra reabrir Conclave)
 
 ---
 
@@ -128,7 +139,7 @@
 
 ## Fechamento (1min)
 
-> "Marcus, valeu. Última coisa: posso te ligar daqui 2 semanas pra te mostrar 1 protótipo cru e pedir feedback? Sem compromisso de nada."
+> "{Cristiane | Rudson}, valeu. Última coisa: posso te chamar daqui 2 semanas pra te mostrar 1 protótipo cru e pedir feedback? Sem compromisso de nada."
 
 **Se sim:** está engajado, candidato a beta tester.
 **Se "depois eu vejo":** baixo engajamento, peso baixo na decisão Gate 0.
@@ -172,18 +183,36 @@ ___
 
 ## Gate 0 — Regra de decisão final (Day 7)
 
-Compile os 5 score Customer Need (0-10) + WTP em planilha simples:
+Compile os 3 (core) ou 5 (com externos) scores Customer Need (0-10) + WTP em planilha simples.
+
+### Cenário N=3 (só Cristiane + Rudson + Breno)
+
+| Critério | Threshold ALPHA | Threshold KILL |
+|----------|-----------------|----------------|
+| Score Customer Need médio | ≥ 7 | ≤ 4 |
+| Vendedores que pagariam R$ 300+/mês | **3/3** (100%) | ≤ 1/3 |
+| Sinais de atribuição quebrada citados | **3/3** (100%) | ≤ 1/3 |
+| "Volto pra falar em 2 semanas?" → sim | **3/3** (100%) | ≤ 1/3 |
+
+**Critério mais rígido com N=3:** com amostra pequena, qualquer 1 voz forte contrária pesa muito. Não há margem pra "média". Tem que ser unânime nos 4 critérios — ou abrir N=5 com externos antes de decidir.
+
+### Cenário N=5 (core + 2 externos)
 
 | Critério | Threshold ALPHA | Threshold KILL |
 |----------|-----------------|----------------|
 | Score Customer Need médio | ≥ 7 | ≤ 4 |
 | Vendedores que pagariam R$ 300+/mês | ≥ 3/5 | ≤ 1/5 |
-| Sinais de atribuição quebrada | ≥ 3/5 citaram | ≤ 1/5 citaram |
+| Sinais de atribuição quebrada citados | ≥ 3/5 | ≤ 1/5 |
 | "Volto pra falar em 2 semanas?" → sim | ≥ 3/5 | ≤ 1/5 |
 
-**3+ verdes → continua Sprint 1 Alpha**
-**3+ vermelhos → PIVOT Bridge-only (build só o Bridge Meta CAPI + Google OC, sem CRM full)**
-**1-2 verdes / 1-2 vermelhos → discutir com Conclave revisitado**
+### Decisão
+
+- **4/4 verdes (N=3) ou 3+/4 verdes (N=5) → continua Sprint 1 Alpha**
+- **3+ vermelhos → PIVOT Bridge-only** (só Bridge Meta CAPI + Google OC, sem CRM full)
+- **Misto / dúvida (N=3) → adicionar 2 externos e re-avaliar com N=5**
+- **Misto (N=5) → Re-Conclave com 3 experts diferentes**
+
+**Anti-overfitting:** com N=3, evite ler tendência de 1 entrevista isolada. Procure padrão repetido nas 3 vozes. Se Cristiane diz X, Rudson diz X, e você sentiu X no dogfooding → padrão real.
 
 ---
 

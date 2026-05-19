@@ -14,6 +14,7 @@ Construir CRM próprio (greenfield, custom build) para substituir Sales AI depre
 
 **Tenants primários (Phase 1 — Week 0-12):**
 - **Tocks** — móveis de luxo high-ticket (pilot Tocks Week 8)
+  - Equipe vendas atual (2026-05-19): **Cristiane + Rudson** (2 vendedores)
 - **Bretda** — mesas de bilhar high-ticket (migration Week 9-12)
 
 **Tenants futuros (Phase 2+ — Q3 2026 onward):**
