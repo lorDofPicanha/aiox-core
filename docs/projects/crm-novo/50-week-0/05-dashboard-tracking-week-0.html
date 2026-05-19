@@ -1,0 +1,727 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 0 Tracking Dashboard — CRM Novo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAFAF7;
+    --paper: #FFFFFF;
+    --ink: #0B0B0B;
+    --ink-2: #2D2D2A;
+    --muted: #6E6E66;
+    --rule: #E8E8E0;
+    --lime: #6B9F00;
+    --lime-bg: #E8F5B8;
+    --green: #059669;
+    --green-bg: #ECFDF5;
+    --red: #DC2626;
+    --red-bg: #FEF2F2;
+    --amber: #D97706;
+    --amber-bg: #FFFBEB;
+    --blue: #2563EB;
+    --blue-bg: #EFF6FF;
+    --font-d: 'Inter Tight', system-ui, sans-serif;
+    --font-b: 'Inter', system-ui, sans-serif;
+    --font-m: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-b);
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 24px;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .container { max-width: 1280px; margin: 0 auto; }
+
+  /* Header */
+  header.head {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: center;
+  }
+  header.head h1 {
+    font-family: var(--font-d);
+    font-weight: 800;
+    font-size: 28px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  header.head .meta {
+    font-family: var(--font-m);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .day-counter {
+    text-align: right;
+  }
+  .day-counter .label {
+    font-family: var(--font-m);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .day-counter .v {
+    font-family: var(--font-d);
+    font-weight: 800;
+    font-size: 36px;
+    color: var(--lime);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .day-counter .u {
+    font-family: var(--font-m);
+    font-size: 10px;
+    color: var(--muted);
+  }
+
+  /* Hero stats */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .stat-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 18px 20px;
+    border-radius: 4px;
+    border-top: 3px solid var(--ink);
+  }
+  .stat-card[data-c="green"] { border-top-color: var(--green); }
+  .stat-card[data-c="amber"] { border-top-color: var(--amber); }
+  .stat-card[data-c="red"]   { border-top-color: var(--red); }
+  .stat-card[data-c="lime"]  { border-top-color: var(--lime); }
+  .stat-card .k {
+    font-family: var(--font-m);
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .stat-card .v {
+    font-family: var(--font-d);
+    font-weight: 800;
+    font-size: 32px;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .stat-card .u {
+    font-family: var(--font-m);
+    font-size: 10.5px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* Grid 2 cols */
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  .row.three { grid-template-columns: 1fr 1fr 1fr; }
+
+  .panel {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 22px 24px;
+    border-radius: 4px;
+  }
+  .panel h2 {
+    font-family: var(--font-d);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--ink);
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .panel h2 .badge {
+    font-family: var(--font-m);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  /* Day-by-day timeline */
+  .timeline {
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .day-row {
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    gap: 14px;
+    padding: 12px 14px;
+    align-items: center;
+    background: var(--bg);
+    border-radius: 3px;
+    border-left: 3px solid var(--rule);
+  }
+  .day-row.done { border-left-color: var(--green); background: var(--green-bg); }
+  .day-row.active { border-left-color: var(--lime); background: var(--lime-bg); }
+  .day-row.future { opacity: 0.7; }
+  .day-row .d {
+    font-family: var(--font-m);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+  }
+  .day-row .task {
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.4;
+  }
+  .day-row .task strong { color: var(--ink); }
+  .day-row .status {
+    font-family: var(--font-m);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .day-row.done .status { color: var(--green); }
+  .day-row.active .status { color: var(--lime); }
+  .day-row.future .status { color: var(--muted); }
+
+  /* Interviews tracker */
+  .interview-list {
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .interview-row {
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    padding: 14px 16px;
+    border-radius: 3px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .interview-row.core { border-left: 3px solid var(--blue); }
+  .interview-row.opcional { border-left: 3px dashed var(--muted); }
+  .interview-row.done { background: var(--green-bg); }
+  .interview-row .nm {
+    font-family: var(--font-d);
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--ink);
+  }
+  .interview-row .type {
+    font-family: var(--font-m);
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-left: 8px;
+  }
+  .interview-row .meta {
+    font-size: 11.5px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+  .interview-row .meta .pill {
+    display: inline-block;
+    padding: 2px 8px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    font-family: var(--font-m);
+    font-size: 9.5px;
+    margin-right: 4px;
+  }
+  .interview-row .score-badge {
+    font-family: var(--font-d);
+    font-weight: 800;
+    font-size: 26px;
+    color: var(--muted);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    text-align: right;
+    min-width: 60px;
+  }
+  .interview-row.done .score-badge { color: var(--green); }
+  .interview-row .score-badge small {
+    display: block;
+    font-family: var(--font-m);
+    font-size: 9px;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    margin-top: 2px;
+  }
+
+  /* Gate 0 criteria */
+  .gate-criteria {
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .criterion-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 14px;
+    align-items: center;
+    padding: 10px 14px;
+    background: var(--bg);
+    border-radius: 3px;
+    border-left: 3px solid var(--muted);
+    font-size: 12.5px;
+  }
+  .criterion-row.green { border-left-color: var(--green); background: var(--green-bg); }
+  .criterion-row.red { border-left-color: var(--red); background: var(--red-bg); }
+  .criterion-row .what { color: var(--ink-2); }
+  .criterion-row .what strong { color: var(--ink); }
+  .criterion-row .current {
+    font-family: var(--font-m);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ink);
+    padding: 4px 10px;
+    background: var(--paper);
+    border-radius: 3px;
+    border: 1px solid var(--rule);
+    min-width: 60px;
+    text-align: center;
+  }
+  .criterion-row .threshold {
+    font-family: var(--font-m);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-align: right;
+    min-width: 80px;
+  }
+
+  /* Dogfooding metrics */
+  .dog-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .dog-cell {
+    background: var(--paper);
+    padding: 14px 16px;
+  }
+  .dog-cell .k {
+    font-family: var(--font-m);
+    font-size: 9.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .dog-cell .v {
+    font-family: var(--font-d);
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+  .dog-cell .v.green { color: var(--green); }
+  .dog-cell .v.amber { color: var(--amber); }
+  .dog-cell .v.red { color: var(--red); }
+  .dog-cell .target {
+    font-family: var(--font-m);
+    font-size: 9.5px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* Bridge status */
+  .bridge-status {
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .bridge-check {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 12px;
+    padding: 10px 14px;
+    background: var(--bg);
+    border-radius: 3px;
+    align-items: center;
+    font-size: 12.5px;
+  }
+  .bridge-check .indicator {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--rule);
+  }
+  .bridge-check.ok .indicator { background: var(--green); }
+  .bridge-check.fail .indicator { background: var(--red); }
+  .bridge-check.pending .indicator { background: var(--amber); }
+  .bridge-check .desc { color: var(--ink-2); }
+  .bridge-check .desc strong { color: var(--ink); }
+  .bridge-check .status-txt {
+    font-family: var(--font-m);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--muted);
+  }
+  .bridge-check.ok .status-txt { color: var(--green); }
+  .bridge-check.fail .status-txt { color: var(--red); }
+  .bridge-check.pending .status-txt { color: var(--amber); }
+
+  /* Verdict box */
+  .verdict {
+    background: var(--lime-soft);
+    border: 1px solid var(--lime);
+    border-left: 4px solid var(--lime);
+    padding: 22px 26px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+  .verdict.green { background: var(--green-bg); border-color: var(--green); border-left-color: var(--green); }
+  .verdict.red { background: var(--red-bg); border-color: var(--red); border-left-color: var(--red); }
+  .verdict.amber { background: var(--amber-bg); border-color: var(--amber); border-left-color: var(--amber); }
+  .verdict .lbl {
+    font-family: var(--font-m);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .verdict h3 {
+    font-family: var(--font-d);
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--ink);
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+  .verdict p {
+    font-size: 13.5px;
+    color: var(--ink-2);
+    line-height: 1.55;
+  }
+
+  /* Footer note */
+  footer.foot {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 18px 24px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  footer.foot strong { color: var(--ink); }
+  footer.foot code {
+    font-family: var(--font-m);
+    background: var(--bg);
+    padding: 1px 6px;
+    border-radius: 3px;
+    color: var(--ink);
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .row, .row.three { grid-template-columns: 1fr; }
+    header.head { grid-template-columns: 1fr; }
+    .day-counter { text-align: left; }
+  }
+  ::selection { background: var(--lime); color: var(--paper); }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ═══════════ HEADER ═══════════ -->
+<header class="head">
+  <div>
+    <h1>CRM Novo · Week 0 Tracking</h1>
+    <div class="meta">Concierge MVP · Validação Customer Need · Gate 0</div>
+  </div>
+  <div class="day-counter">
+    <div class="label">Hoje</div>
+    <div class="v">Day <span id="current-day">2</span></div>
+    <div class="u">de 7 · semana de 2026-05-19</div>
+  </div>
+</header>
+
+<!-- ═══════════ STATS CARDS ═══════════ -->
+<div class="stats">
+  <div class="stat-card" data-c="lime">
+    <div class="k">Entrevistas</div>
+    <div class="v"><span id="stat-int-done">0</span>/<span id="stat-int-total">3</span></div>
+    <div class="u">core · 3 obrigatórias</div>
+  </div>
+  <div class="stat-card" data-c="amber">
+    <div class="k">Bridge Standalone</div>
+    <div class="v" id="stat-bridge">0/5</div>
+    <div class="u">verificações funcionais</div>
+  </div>
+  <div class="stat-card" data-c="green">
+    <div class="k">Dogfooding</div>
+    <div class="v" id="stat-dog">⏳</div>
+    <div class="u">Day 5 · planejado</div>
+  </div>
+  <div class="stat-card" data-c="lime">
+    <div class="k">Gate 0</div>
+    <div class="v" id="stat-gate">—</div>
+    <div class="u">Day 7 · verde/amarelo/vermelho</div>
+  </div>
+</div>
+
+<!-- ═══════════ DAY-BY-DAY TIMELINE ═══════════ -->
+<section class="panel" style="margin-bottom: 20px;">
+  <h2>Cronograma 7 dias <span class="badge">N=3 caminho rápido</span></h2>
+  <div class="timeline">
+    <div class="day-row done">
+      <div class="d">DAY 1</div>
+      <div class="task"><strong>Convite Cristiane + Rudson</strong> · Auto-entrevista agendada</div>
+      <div class="status">✓ Done</div>
+    </div>
+    <div class="day-row active">
+      <div class="d">DAY 2</div>
+      <div class="task"><strong>Entrevista Cristiane (30min)</strong> + Auto-entrevista Breno (30min)</div>
+      <div class="status">→ Hoje</div>
+    </div>
+    <div class="day-row future">
+      <div class="d">DAY 3</div>
+      <div class="task"><strong>Entrevista Rudson (30min)</strong> + Bridge Standalone deploy + test events</div>
+      <div class="status">pendente</div>
+    </div>
+    <div class="day-row future">
+      <div class="d">DAY 4</div>
+      <div class="task">Reserva · processar entrevistas (transcrição + anotações)</div>
+      <div class="status">pendente</div>
+    </div>
+    <div class="day-row future">
+      <div class="d">DAY 5</div>
+      <div class="task"><strong>Dogfooding</strong> · 1 dia operando Tocks via planilha + Bridge standalone</div>
+      <div class="status">pendente</div>
+    </div>
+    <div class="day-row future">
+      <div class="d">DAY 6</div>
+      <div class="task">Reserva · recovery + análise consolidada</div>
+      <div class="status">pendente</div>
+    </div>
+    <div class="day-row future">
+      <div class="d">DAY 7</div>
+      <div class="task"><strong>Gate 0 review</strong> (90min) · aplica checklist + documenta decisão</div>
+      <div class="status">pendente</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ROW 1: Interviews + Bridge ═══════════ -->
+<div class="row">
+  <section class="panel">
+    <h2>Entrevistas <span class="badge">Customer Need 0-10</span></h2>
+    <div class="interview-list">
+      <div class="interview-row core" data-id="cristiane">
+        <div>
+          <div class="nm">Cristiane <span class="type">[ core · Tocks ]</span></div>
+          <div class="meta">
+            <span class="pill">📅 Day 2</span>
+            <span class="pill">⏳ Pendente</span>
+            <span class="pill">WTP: —</span>
+          </div>
+        </div>
+        <div class="score-badge">—<small>score</small></div>
+      </div>
+      <div class="interview-row core" data-id="rudson">
+        <div>
+          <div class="nm">Rudson <span class="type">[ core · Tocks ]</span></div>
+          <div class="meta">
+            <span class="pill">📅 Day 3</span>
+            <span class="pill">⏳ Pendente</span>
+            <span class="pill">WTP: —</span>
+          </div>
+        </div>
+        <div class="score-badge">—<small>score</small></div>
+      </div>
+      <div class="interview-row core" data-id="breno-self">
+        <div>
+          <div class="nm">Breno <span class="type">[ core · self ]</span></div>
+          <div class="meta">
+            <span class="pill">📅 Day 2</span>
+            <span class="pill">⏳ Pendente</span>
+            <span class="pill">WTP: —</span>
+          </div>
+        </div>
+        <div class="score-badge">—<small>score</small></div>
+      </div>
+      <div class="interview-row opcional" data-id="externo-1">
+        <div>
+          <div class="nm">Externo 1 <span class="type">[ opcional ]</span></div>
+          <div class="meta">
+            <span class="pill">📅 Day 4 (se N=5)</span>
+            <span class="pill">⏸ Não agendada</span>
+          </div>
+        </div>
+        <div class="score-badge">—<small>opcional</small></div>
+      </div>
+      <div class="interview-row opcional" data-id="externo-2">
+        <div>
+          <div class="nm">Externo 2 <span class="type">[ opcional ]</span></div>
+          <div class="meta">
+            <span class="pill">📅 Day 4 (se N=5)</span>
+            <span class="pill">⏸ Não agendada</span>
+          </div>
+        </div>
+        <div class="score-badge">—<small>opcional</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Bridge Standalone <span class="badge">deploy Day 3</span></h2>
+    <div class="bridge-status">
+      <div class="bridge-check pending">
+        <div class="indicator"></div>
+        <div class="desc"><strong>Inngest deployed</strong> · staging Vercel</div>
+        <div class="status-txt">pending</div>
+      </div>
+      <div class="bridge-check pending">
+        <div class="indicator"></div>
+        <div class="desc"><strong>Meta CAPI test event</strong> · 200 OK em test events</div>
+        <div class="status-txt">pending</div>
+      </div>
+      <div class="bridge-check pending">
+        <div class="indicator"></div>
+        <div class="desc"><strong>Google OC upload</strong> · 1 upload visível no Ads Manager</div>
+        <div class="status-txt">pending</div>
+      </div>
+      <div class="bridge-check pending">
+        <div class="indicator"></div>
+        <div class="desc"><strong>Idempotency key</strong> · retry não duplica fire</div>
+        <div class="status-txt">pending</div>
+      </div>
+      <div class="bridge-check pending">
+        <div class="indicator"></div>
+        <div class="desc"><strong>Audit log row</strong> · Supabase row criada por fire</div>
+        <div class="status-txt">pending</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════ ROW 2: Dogfooding + Gate 0 ═══════════ -->
+<div class="row">
+  <section class="panel">
+    <h2>Dogfooding Metrics <span class="badge">Day 5 fill-in</span></h2>
+    <div class="dog-list">
+      <div class="dog-cell">
+        <div class="k">Atritos identificados</div>
+        <div class="v">—</div>
+        <div class="target">target ≥ 5 · KILL ≤ 2</div>
+      </div>
+      <div class="dog-cell">
+        <div class="k">Follow-ups perdidos</div>
+        <div class="v">—</div>
+        <div class="target">target ≥ 1 · KILL = 0</div>
+      </div>
+      <div class="dog-cell">
+        <div class="k">Tab switches (contador)</div>
+        <div class="v">—</div>
+        <div class="target">target ≥ 20 · KILL ≤ 5</div>
+      </div>
+      <div class="dog-cell">
+        <div class="k">Bridge success rate</div>
+        <div class="v">—</div>
+        <div class="target">target ≥ 80% · KILL &lt; 50%</div>
+      </div>
+      <div class="dog-cell">
+        <div class="k">Tempo médio intake/lead</div>
+        <div class="v">—</div>
+        <div class="target">se &gt;2min · CRM resolve</div>
+      </div>
+      <div class="dog-cell">
+        <div class="k">"Operacional sem valor"</div>
+        <div class="v">—</div>
+        <div class="target">target ≥ 60min · KILL ≤ 15min</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Gate 0 Critérios <span class="badge">N=3 unânime</span></h2>
+    <div class="gate-criteria">
+      <div class="criterion-row">
+        <div class="what"><strong>Customer Need médio</strong> (Cristiane + Rudson + Breno)</div>
+        <div class="current">—</div>
+        <div class="threshold">≥ 7 verde<br>≤ 4 kill</div>
+      </div>
+      <div class="criterion-row">
+        <div class="what"><strong>Pagariam R$ 300+/mês</strong></div>
+        <div class="current">0/3</div>
+        <div class="threshold">3/3 verde<br>≤ 1/3 kill</div>
+      </div>
+      <div class="criterion-row">
+        <div class="what"><strong>Atribuição quebrada citada espontaneamente</strong></div>
+        <div class="current">0/3</div>
+        <div class="threshold">3/3 verde<br>≤ 1/3 kill</div>
+      </div>
+      <div class="criterion-row">
+        <div class="what"><strong>"Volta em 2 semanas?" → sim</strong></div>
+        <div class="current">0/3</div>
+        <div class="threshold">3/3 verde<br>≤ 1/3 kill</div>
+      </div>
+      <div class="criterion-row">
+        <div class="what"><strong>Dogfooding: atrito ≥ 5 + bridge ≥ 80%</strong></div>
+        <div class="current">—</div>
+        <div class="threshold">passou? sim/não</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════ VERDICT BOX ═══════════ -->
+<div class="verdict">
+  <div class="lbl">Verdict provisório · atualiza ao final do Day 7</div>
+  <h3>Aguardando evidência</h3>
+  <p>Compile entrevistas + dogfooding + bridge funcional antes de aplicar regras de decisão. Verde (≥3 core unânime) → Sprint 1 Alpha · Amarelo (misto N=3) → estender N=5 · Vermelho (3+ critérios negativos) → PIVOT Bridge-only · Preto (catastrófico) → KILL.</p>
+</div>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="foot">
+  <strong>Como atualizar este dashboard:</strong> esse arquivo é estático — pra atualizar valores, edite direto no HTML (search/replace) OU faça uma cópia chamada <code>05-dashboard-tracking-week-0-LIVE.html</code> e vá preenchendo conforme avança. <br>
+  <strong>Versão Google Sheets (paralela):</strong> também mantenha uma planilha <code>CRM Week 0 - Tracking</code> com 5 abas: <code>cronograma</code>, <code>entrevistas</code>, <code>bridge</code>, <code>dogfooding</code>, <code>gate-0</code>. Cada aba espelha um panel deste dashboard. Use a planilha durante o dia (mobile-friendly) e atualize HTML no final do dia (snapshot visual).
+</footer>
+
+</div>
+
+<script>
+  // Auto-update current day baseado em data de início (2026-05-19 = Day 1)
+  const start = new Date('2026-05-19T00:00:00');
+  const now = new Date();
+  const diffDays = Math.max(1, Math.min(7, Math.ceil((now - start) / (1000 * 60 * 60 * 24)) + 1));
+  document.getElementById('current-day').textContent = diffDays;
+</script>
+
+</body>
+</html>
