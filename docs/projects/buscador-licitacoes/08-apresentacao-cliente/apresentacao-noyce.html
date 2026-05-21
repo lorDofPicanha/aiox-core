@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Noyce — Apresentação do projeto</title>
+<link rel="icon" href="../07-brand-mockups/logo/noyce-favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#111721;--muted:#69737F;--muted-2:#9AA3AD;--line:#E6E9EE;
+    --amber:#E8932E;--blue:#2F6BF5;--emerald:#15936B;--danger:#DB4A45;
+    --surface:#F6F8FA;--mono:'IBM Plex Mono',monospace;--sans:'Inter',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:#0c111a;-webkit-font-smoothing:antialiased;line-height:1.5}
+
+  .deck{scroll-snap-type:y mandatory;}
+  .slide{
+    width:100%;max-width:1280px;aspect-ratio:16/9;margin:22px auto;background:#fff;
+    border-radius:18px;overflow:hidden;position:relative;
+    scroll-snap-align:center;box-shadow:0 24px 60px rgba(0,0,0,.35);
+    display:flex;flex-direction:column;padding:62px 70px;
+  }
+  .slide.dark{background:#101726;color:#fff}
+  @media(max-width:900px){.slide{padding:34px 30px;border-radius:12px}}
+
+  /* shared bits */
+  .eyebrow{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.16em;
+    color:var(--amber);text-transform:uppercase;margin-bottom:18px}
+  .slide.dark .eyebrow{color:var(--amber)}
+  h1{font-size:54px;font-weight:800;letter-spacing:-.02em;line-height:1.04}
+  h2{font-size:40px;font-weight:800;letter-spacing:-.02em;line-height:1.08}
+  h3{font-size:21px;font-weight:700;letter-spacing:-.01em}
+  .lead{font-size:20px;color:var(--muted);max-width:760px;line-height:1.5;margin-top:16px}
+  .slide.dark .lead{color:#AEB7C2}
+  .pgnum{position:absolute;right:30px;bottom:22px;font-family:var(--mono);font-size:11px;color:var(--muted-2);letter-spacing:.08em}
+  b{color:inherit;font-weight:700}
+  .amber{color:var(--amber)} .emerald{color:var(--emerald)} .danger{color:var(--danger)} .blue{color:var(--blue)}
+
+  /* logo lockup */
+  .lk{display:flex;align-items:center;gap:16px}
+  .lk svg{width:60px;height:60px;flex:none}
+  .lk .eniac{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.28em;color:var(--muted);line-height:1}
+  .slide.dark .lk .eniac{color:var(--muted-2)}
+  .lk .noyce{font-size:34px;font-weight:800;letter-spacing:-.02em;line-height:.95;margin-top:3px}
+
+  /* spacer that pushes footer content down */
+  .grow{flex:1}
+
+  /* generic grid */
+  .row{display:flex;gap:18px}
+  .cards{display:grid;gap:16px}
+  .c2{grid-template-columns:1fr 1fr}.c3{grid-template-columns:1fr 1fr 1fr}
+  .card{border:1px solid var(--line);border-radius:14px;padding:20px 22px;background:#fff}
+  .slide.dark .card{background:#161f30;border-color:#26324a}
+  .card .lab{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--muted-2);text-transform:uppercase;margin-bottom:8px}
+  .card p{font-size:14.5px;color:var(--muted);line-height:1.5}
+  .slide.dark .card p{color:#AEB7C2}
+  .card .big{font-size:34px;font-weight:800;letter-spacing:-.02em}
+
+  /* KPI tiles */
+  .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .kpi{border:1px solid var(--line);border-radius:14px;padding:20px;background:var(--surface)}
+  .slide.dark .kpi{background:#161f30;border-color:#26324a}
+  .kpi .v{font-size:42px;font-weight:800;letter-spacing:-.02em;font-family:var(--sans)}
+  .kpi .l{font-size:13px;color:var(--muted);margin-top:4px}
+  .slide.dark .kpi .l{color:#AEB7C2}
+
+  /* flow of stages */
+  .flow{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:8px}
+  .step{border:1px solid var(--line);border-radius:13px;padding:16px 14px;background:#fff;position:relative}
+  .step .n{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--amber);letter-spacing:.06em}
+  .step h4{font-size:15.5px;font-weight:700;margin:7px 0 6px}
+  .step p{font-size:12px;color:var(--muted);line-height:1.42}
+  .step.moat{border-color:var(--amber);box-shadow:0 0 0 3px #FBEFD9}
+  .step.crit{border-color:var(--danger);box-shadow:0 0 0 3px #FBE1E0}
+
+  /* today vs noyce two-column */
+  .vs{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .vs .col{padding:26px 28px}
+  .vs .col:first-child{background:var(--surface);border-right:1px solid var(--line)}
+  .vs .col .h{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+  .vs .col.today .h{color:var(--danger)} .vs .col.noyce .h{color:var(--emerald)}
+  .vs ul{list-style:none} .vs li{font-size:15px;color:var(--ink);line-height:1.45;padding:9px 0 9px 26px;position:relative;border-top:1px solid var(--line)}
+  .vs li:first-child{border-top:none}
+  .vs li::before{content:"";position:absolute;left:0;top:15px;width:11px;height:11px;border-radius:3px}
+  .vs .today li::before{background:var(--danger);opacity:.7}
+  .vs .noyce li::before{background:var(--emerald)}
+
+  /* added list */
+  .added{display:grid;grid-template-columns:1fr 1fr;gap:14px 30px;margin-top:6px}
+  .added .it{display:flex;gap:13px;align-items:flex-start}
+  .added .ic{flex:none;width:30px;height:30px;border-radius:9px;background:#FBEFD9;color:#B86E1B;display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:13px}
+  .added .tx h4{font-size:15.5px;font-weight:700} .added .tx p{font-size:13px;color:var(--muted);line-height:1.45;margin-top:2px}
+
+  /* alert vignette */
+  .alert-card{border:1px solid var(--danger);background:#FFF6F5;border-radius:16px;padding:24px 26px;max-width:560px}
+  .alert-card .top{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--danger);text-transform:uppercase}
+  .pulse{width:10px;height:10px;border-radius:50%;background:var(--danger);box-shadow:0 0 0 0 rgba(219,74,69,.6);animation:pp 1.6s infinite}
+  @keyframes pp{0%{box-shadow:0 0 0 0 rgba(219,74,69,.5)}70%{box-shadow:0 0 0 12px rgba(219,74,69,0)}100%{box-shadow:0 0 0 0 rgba(219,74,69,0)}}
+  .alert-card .msg{font-size:21px;font-weight:700;margin:12px 0 6px;letter-spacing:-.01em}
+  .alert-card .sub{font-size:14px;color:var(--muted)}
+
+  /* coverage chips */
+  .ufrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+  .uf{border:1px solid var(--line);border-radius:10px;padding:10px 14px;background:#fff;font-size:13.5px}
+  .uf b{font-size:18px;font-weight:800}
+  .uf .u{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.04em}
+
+  /* sources */
+  .src{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:8px}
+  .src .s{border:1px solid var(--line);border-radius:12px;padding:16px 14px;text-align:center;background:#fff}
+  .src .s .nm{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .src .s .d{font-size:11.5px;color:var(--muted);margin-top:5px;line-height:1.35}
+
+  /* phone mini */
+  .phone{width:190px;border:8px solid #1b2434;border-radius:30px;background:#fff;overflow:hidden;flex:none}
+  .phone .ph-top{background:#101726;color:#fff;padding:10px 14px;font-family:var(--mono);font-size:11px;letter-spacing:.1em}
+  .phone .ph-body{padding:13px 14px}
+  .phone . feed{font-size:12px}
+  .mi{border:1px solid var(--line);border-radius:10px;padding:9px 10px;margin-bottom:8px}
+  .mi .o{font-size:12px;font-weight:600;line-height:1.3}
+  .mi .m{font-family:var(--mono);font-size:10px;color:var(--emerald);margin-top:3px}
+  .tl{font-size:11.5px;color:var(--muted);line-height:1.7}
+  .tl b{color:var(--ink)} .tl .tt{font-family:var(--mono);color:var(--amber)}
+
+  .footnote{font-family:var(--mono);font-size:10.5px;color:var(--muted-2);letter-spacing:.04em;margin-top:14px}
+  .nav-hint{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:10.5px;color:#5a6675;letter-spacing:.1em;z-index:50}
+  .tag{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--amber);border:1px solid var(--amber);border-radius:999px;padding:3px 10px;text-transform:uppercase}
+
+  /* PRINT / PDF — uma slide por página, 16:9 */
+  @page{size:1280px 720px;margin:0}
+  @media print{
+    body{background:#fff}
+    .deck{display:block}
+    .slide{width:1280px;height:720px;max-width:none;aspect-ratio:auto;margin:0;border-radius:0;
+      box-shadow:none;page-break-after:always;break-after:page}
+    .slide:last-child{page-break-after:auto}
+    .nav-hint{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- chip-radar mark def -->
+<svg width="0" height="0" style="position:absolute"><defs>
+  <g id="mk">
+    <g fill="none" style="stroke:currentColor" stroke-width="3" stroke-linecap="round">
+      <rect x="15" y="15" width="34" height="34" rx="8"/>
+      <line x1="7" y1="24" x2="15" y2="24"/><line x1="7" y1="32" x2="15" y2="32"/><line x1="7" y1="40" x2="15" y2="40"/>
+      <line x1="49" y1="24" x2="57" y2="24"/><line x1="49" y1="32" x2="57" y2="32"/><line x1="49" y1="40" x2="57" y2="40"/>
+    </g>
+    <path d="M32 32 a8 8 0 0 1 8 -8" fill="none" style="stroke:currentColor" stroke-width="2.4" stroke-linecap="round" opacity="0.55"/>
+    <path d="M32 32 a14 14 0 0 1 14 -14" fill="none" style="stroke:currentColor" stroke-width="2.4" stroke-linecap="round" opacity="0.28"/>
+    <line x1="32" y1="32" x2="44" y2="20" style="stroke:var(--acc)" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="32" cy="32" r="3.4" style="fill:var(--acc)"/>
+  </g>
+</defs></svg>
+
+<div class="deck">
+
+  <!-- 1 · CAPA -->
+  <section class="slide dark">
+    <div class="lk">
+      <svg viewBox="0 0 64 64" style="color:#fff;--acc:#E8932E"><use href="#mk"/></svg>
+      <div><div class="eniac">ENIAC</div><div class="noyce">Noyce</div></div>
+    </div>
+    <div class="grow"></div>
+    <h1>O chip que <span class="amber">nunca para</span><br>de procurar a sua licitação.</h1>
+    <p class="lead">Um buscador que vigia o PNCP, as bolsas e os portais — num raio de 500 km — e avisa você na hora certa. Apresentação do projeto.</p>
+    <div class="grow"></div>
+    <div class="footnote">ENIAC · NOYCE · BUSCADOR DE LICITAÇÕES · 2026</div>
+    <div class="pgnum">01</div>
+  </section>
+
+  <!-- 2 · HOJE (a dor, nas palavras dela) -->
+  <section class="slide">
+    <div class="eyebrow">Como é hoje</div>
+    <h2>Hoje, é tudo na mão — e dá pra perder por isso.</h2>
+    <p class="lead">Vocês mesmos descreveram o processo. Funciona, mas depende de olhar tudo, o tempo todo, sem deixar passar nada.</p>
+    <div class="grow"></div>
+    <div class="cards c3">
+      <div class="card"><div class="lab">Buscar</div><p>Abrir <b>portal por portal</b>, olhar edital por edital, ver o que se encaixa e separar os de interesse.</p></div>
+      <div class="card"><div class="lab">Habilitar</div><p>Conferir <b>na mão</b> a documentação — jurídica, fiscal, técnica — e procurar os atestados que se enquadram.</p></div>
+      <div class="card" style="border-color:var(--danger)"><div class="lab" style="color:var(--danger)">Acompanhar</div><p>No dia do certame, acompanhar os lances. <b class="danger">Já se perdeu uma licitação por não acompanhar a tempo.</b></p></div>
+    </div>
+    <div class="grow"></div>
+    <p class="footnote">"Aconteceu de a gente não acompanhar e acabar perdendo a licitação." — vocês, no áudio</p>
+    <div class="pgnum">02</div>
+  </section>
+
+  <!-- 3 · O QUE É O NOYCE -->
+  <section class="slide dark">
+    <div class="eyebrow">A ideia</div>
+    <h2>O Noyce faz esse trabalho por você — sem parar.</h2>
+    <p class="lead">É um “chip” que varre as fontes 24 horas por dia, filtra só o que interessa pro seu perfil, monta a parte chata e <span class="amber">acende o sinal</span> quando algo precisa de você.</p>
+    <div class="grow"></div>
+    <div class="cards c3">
+      <div class="card"><div class="lab">Varre</div><p>PNCP, bolsas e portais — num raio de <b>500 km</b> da sua sede — o tempo todo.</p></div>
+      <div class="card"><div class="lab">Filtra</div><p>De centenas de oportunidades por dia, mostra <b>só as que combinam</b> com o que vocês vendem.</p></div>
+      <div class="card"><div class="lab">Avisa</div><p>Push no celular e <b>WhatsApp em menos de 15 min</b> quando há oportunidade ou movimentação.</p></div>
+    </div>
+    <div class="grow"></div>
+    <p class="footnote">“Não gritamos. Calculamos.” — o âmbar só acende quando há um sinal de verdade.</p>
+    <div class="pgnum">03</div>
+  </section>
+
+  <!-- 4 · COMO FUNCIONA (6 etapas) -->
+  <section class="slide">
+    <div class="eyebrow">Como funciona</div>
+    <h2>O caminho completo, do edital ao recurso.</h2>
+    <p class="lead">O mesmo fluxo que vocês já fazem — só que o Noyce assume o peso de cada etapa.</p>
+    <div class="grow"></div>
+    <div class="flow">
+      <div class="step"><div class="n">01</div><h4>Monitorar</h4><p>Acha os editais do seu perfil no raio, 24/7.</p></div>
+      <div class="step moat"><div class="n">02</div><h4>Analisar</h4><p>Histórico de 6 meses do órgão: quem venceu, por quanto.</p></div>
+      <div class="step moat"><div class="n">03</div><h4>Indicar</h4><p>5 frases diretas: preço, concorrente, risco, timing.</p></div>
+      <div class="step"><div class="n">04</div><h4>Habilitar</h4><p>Dossiê do edital pronto: jurídica, fiscal, técnica.</p></div>
+      <div class="step crit"><div class="n">05</div><h4>Acompanhar</h4><p>Avisa lances e a hora do recurso. Sem perder o prazo.</p></div>
+      <div class="step"><div class="n">06</div><h4>Recorrer</h4><p>Analisa o vencedor e ajuda na minuta do recurso.</p></div>
+    </div>
+    <div class="grow"></div>
+    <p class="footnote"><span class="amber">■</span> onde o Noyce mais agrega vantagem &nbsp;·&nbsp; <span class="danger">■</span> onde não dá pra perder o tempo</p>
+    <div class="pgnum">04</div>
+  </section>
+
+  <!-- 5 · O ALERTA QUE MUDA O JOGO -->
+  <section class="slide">
+    <div class="eyebrow">A etapa 5, de perto</div>
+    <h2>Nunca mais perder por não acompanhar.</h2>
+    <p class="lead">No pregão, o direito de recorrer tem que ser manifestado <b>na hora, na própria sessão</b> — perdeu o momento, perdeu o direito. O Noyce vigia isso por você.</p>
+    <div class="grow"></div>
+    <div class="row" style="align-items:center;gap:34px">
+      <div class="alert-card">
+        <div class="top"><span class="pulse"></span> Noyce · alerta crítico</div>
+        <div class="msg">Manifeste a intenção de recurso <span class="danger">AGORA</span>.</div>
+        <div class="sub">Pregão 04/2026 · você ficou em 2º. A janela está aberta — registre a intenção; as razões você envia depois, no prazo.</div>
+      </div>
+      <div style="max-width:380px">
+        <h3>Dois avisos, no tempo certo:</h3>
+        <p class="lead" style="font-size:16px;margin-top:12px">
+          <b class="danger">Na sessão (segundos):</b> “manifeste a intenção agora”.<br><br>
+          <b class="amber">Depois (no prazo):</b> contagem regressiva + ajuda pra escrever as razões do recurso.</p>
+      </div>
+    </div>
+    <div class="grow"></div>
+    <div class="pgnum">05</div>
+  </section>
+
+  <!-- 6 · COBERTURA -->
+  <section class="slide dark">
+    <div class="eyebrow">Cobertura</div>
+    <h2>444 municípios no seu raio de 500 km.</h2>
+    <p class="lead">Da sede em Águas Lindas, o Noyce alcança DF inteiro, quase todo Goiás, oeste de Minas e sul do Tocantins. Mapeado de verdade.</p>
+    <div class="grow"></div>
+    <div class="kpis">
+      <div class="kpi"><div class="v">444</div><div class="l">municípios no raio</div></div>
+      <div class="kpi"><div class="v amber">~500</div><div class="l">contratações/dia no raio</div></div>
+      <div class="kpi"><div class="v emerald">2</div><div class="l">capitais: Brasília e Goiânia</div></div>
+    </div>
+    <div class="ufrow">
+      <div class="uf"><b>240</b> <span class="u">GO</span></div>
+      <div class="uf"><b>144</b> <span class="u">MG (oeste)</span></div>
+      <div class="uf"><b>31</b> <span class="u">TO (sul)</span></div>
+      <div class="uf"><b>14</b> <span class="u">MT</span></div>
+      <div class="uf"><b>1</b> <span class="u">DF</span></div>
+      <div class="uf"><b>+</b> <span class="u">bordas BA/SP</span></div>
+    </div>
+    <div class="grow"></div>
+    <p class="footnote">O Noyce filtra esse volume todo até as poucas oportunidades que são a sua cara.</p>
+    <div class="pgnum">06</div>
+  </section>
+
+  <!-- 7 · AS 5 FONTES -->
+  <section class="slide">
+    <div class="eyebrow">Fontes</div>
+    <h2>As 5 fontes que vocês usam — num lugar só.</h2>
+    <p class="lead">Em vez de abrir cinco sistemas, o Noyce junta tudo e mostra de forma única.</p>
+    <div class="grow"></div>
+    <div class="src">
+      <div class="s"><div class="nm">PNCP</div><div class="d">o portal nacional, base de tudo</div></div>
+      <div class="s"><div class="nm">BLL</div><div class="d">bolsa de licitações</div></div>
+      <div class="s"><div class="nm">BNC</div><div class="d">bolsa nacional de compras</div></div>
+      <div class="s"><div class="nm">Portal CP</div><div class="d">compras públicas</div></div>
+      <div class="s"><div class="nm">SISLOG</div><div class="d">compras do estado de GO</div></div>
+    </div>
+    <div class="grow"></div>
+    <p class="footnote">Tudo padronizado num formato só — vocês param de pular de portal em portal.</p>
+    <div class="pgnum">07</div>
+  </section>
+
+  <!-- 8 · HABILITAÇÃO + IMPUGNAÇÃO -->
+  <section class="slide">
+    <div class="eyebrow">A etapa 4, de perto</div>
+    <h2>O dossiê de habilitação, montado a partir do edital.</h2>
+    <p class="lead">O Noyce lê o edital, separa o que ele exige e confere contra os seus documentos — e ainda avisa quando o edital pede <b>mais do que a lei permite</b>.</p>
+    <div class="grow"></div>
+    <div class="cards c2">
+      <div class="card">
+        <div class="lab">Checklist por edital</div>
+        <p style="margin-bottom:10px"><b class="emerald">✓</b> Habilitação jurídica — contrato social + procuração</p>
+        <p style="margin-bottom:10px"><b class="amber">!</b> Regularidade fiscal — CND federal vence em breve</p>
+        <p><b class="emerald">✓</b> Qualificação técnica — 3 atestados compatíveis encontrados</p>
+      </div>
+      <div class="card" style="border-color:var(--amber)">
+        <div class="lab" style="color:var(--amber)">Radar de impugnação <span class="tag">novo</span></div>
+        <p>Quando um edital exige um requisito <b>acima do que a lei autoriza</b>, o Noyce sinaliza — é base pra impugnar e abrir o jogo. E avisa quando uma falha é só formalidade <b>que dá pra sanar</b> (não vale perder o sono).</p>
+      </div>
+    </div>
+    <div class="grow"></div>
+    <div class="pgnum">08</div>
+  </section>
+
+  <!-- 9 · O QUE FOI ADICIONADO -->
+  <section class="slide dark">
+    <div class="eyebrow">O que evoluiu</div>
+    <h2>O que o projeto já contempla.</h2>
+    <p class="lead">Desde a primeira conversa, o Noyce ganhou nome, marca e foi calibrado pra realidade de vocês.</p>
+    <div class="grow"></div>
+    <div class="added">
+      <div class="it"><div class="ic">1</div><div class="tx"><h4>Marca própria — Noyce, da ENIAC</h4><p>Identidade, logo e telas do produto prontas.</p></div></div>
+      <div class="it"><div class="ic">2</div><div class="tx"><h4>As 5 fontes certas</h4><p>PNCP, BLL, BNC, Portal CP e SISLOG (Goiás).</p></div></div>
+      <div class="it"><div class="ic">3</div><div class="tx"><h4>Raio de 500 km, multi-estado</h4><p>444 municípios mapeados, não só Águas Lindas + DF.</p></div></div>
+      <div class="it"><div class="ic">4</div><div class="tx"><h4>Equipe de 4 usuários</h4><p>Com papéis (quem busca, habilita, dá lance, recorre).</p></div></div>
+      <div class="it"><div class="ic">5</div><div class="tx"><h4>Alerta de prazo de recurso</h4><p>O “manifeste agora” — direto na dor que vocês citaram.</p></div></div>
+      <div class="it"><div class="ic">6</div><div class="tx"><h4>Livro caixa, separado</h4><p>Fica num sistema próprio de mercado — não se mistura.</p></div></div>
+    </div>
+    <div class="grow"></div>
+    <div class="pgnum">09</div>
+  </section>
+
+  <!-- 10 · NO BOLSO DA EQUIPE -->
+  <section class="slide">
+    <div class="eyebrow">No dia a dia</div>
+    <h2>No bolso da equipe.</h2>
+    <p class="lead">Os 4 da equipe acompanham tudo pelo celular e pelo WhatsApp — onde estiverem.</p>
+    <div class="grow"></div>
+    <div class="row" style="gap:30px;align-items:flex-start">
+      <div class="phone">
+        <div class="ph-top">Noyce · feed</div>
+        <div class="ph-body">
+          <div class="mi"><div class="o">Manutenção predial continuada</div><div class="m">match 92% · prazo 3 dias</div></div>
+          <div class="mi"><div class="o">Equipamentos de laboratório</div><div class="m">match 86% · novo hoje</div></div>
+          <div class="mi"><div class="o">Material de escritório / TI</div><div class="m">match 81%</div></div>
+        </div>
+      </div>
+      <div class="phone">
+        <div class="ph-top" style="background:#3a1414;color:#fff">Noyce · movimentação</div>
+        <div class="ph-body">
+          <div class="tl">
+            <div><span class="tt">08:57</span> &nbsp;<b>Sessão de lances aberta</b></div>
+            <div><span class="tt">09:14</span> &nbsp;Você caiu para 2º</div>
+            <div><span class="tt">09:31</span> &nbsp;<b class="danger">Janela de recurso aberta</b></div>
+            <div><span class="tt">09:31</span> &nbsp;<b>→ manifeste a intenção</b></div>
+          </div>
+        </div>
+      </div>
+      <div style="max-width:360px">
+        <h3>Tudo onde a equipe está.</h3>
+        <p class="lead" style="font-size:16px;margin-top:12px">Cada pessoa vê as oportunidades, o andamento dos pregões e os avisos críticos — pelo app ou pelo WhatsApp, em menos de 15 minutos.</p>
+      </div>
+    </div>
+    <div class="grow"></div>
+    <div class="pgnum">10</div>
+  </section>
+
+  <!-- 11 · O QUE NÃO MUDA -->
+  <section class="slide">
+    <div class="eyebrow">Importante</div>
+    <h2>Quem decide continua sendo vocês.</h2>
+    <div class="grow"></div>
+    <div class="vs">
+      <div class="col today">
+        <div class="h">O Noyce faz</div>
+        <ul>
+          <li>Varre, filtra e organiza as oportunidades</li>
+          <li>Monta o dossiê e calcula os números</li>
+          <li>Avisa na hora certa (lance, recurso, prazo)</li>
+        </ul>
+      </div>
+      <div class="col noyce">
+        <div class="h">Vocês fazem</div>
+        <ul>
+          <li>Decidem se vão ou não vão</li>
+          <li>Dão o lance e batem o martelo</li>
+          <li>Assinam, recorrem, fecham</li>
+        </ul>
+      </div>
+    </div>
+    <p class="lead" style="margin-top:22px">O Noyce calcula e avisa. A decisão — e o mérito — é de vocês.</p>
+    <div class="grow"></div>
+    <div class="pgnum">11</div>
+  </section>
+
+  <!-- 12 · PRÓXIMOS PASSOS -->
+  <section class="slide dark">
+    <div class="eyebrow">Próximo passo</div>
+    <h2>Pra eu calibrar pra realidade de vocês.</h2>
+    <p class="lead">Três coisas simples destravam o resto — e a primeira já me deixa testar se o Noyce acerta o preço e o vencedor antes de construir.</p>
+    <div class="grow"></div>
+    <div class="cards c3">
+      <div class="card"><div class="lab">1 · Histórico</div><p>As licitações que vocês participaram nos <b>últimos 6 meses</b> — pra eu testar a precisão contra o que já aconteceu.</p></div>
+      <div class="card"><div class="lab">2 · Fontes</div><p>Quais das 5 plataformas vocês <b>mais usam</b> no dia a dia.</p></div>
+      <div class="card"><div class="lab">3 · Equipe</div><p>Quem faz o quê — <b>busca, habilitação, lance, recurso</b> — entre os 4.</p></div>
+    </div>
+    <div class="grow"></div>
+    <p class="footnote">Sem custo, sem compromisso. É um trabalho entre amigos — e eu cuido do resto.</p>
+    <div class="pgnum">12</div>
+  </section>
+
+  <!-- 13 · FECHO -->
+  <section class="slide dark">
+    <div class="lk">
+      <svg viewBox="0 0 64 64" style="color:#fff;--acc:#E8932E"><use href="#mk"/></svg>
+      <div><div class="eniac">ENIAC</div><div class="noyce">Noyce</div></div>
+    </div>
+    <div class="grow"></div>
+    <h1>“Não gritamos.<br><span class="amber">Calculamos.”</span></h1>
+    <p class="lead">O chip que nunca para de procurar a sua licitação.</p>
+    <div class="grow"></div>
+    <div class="footnote">ENIAC · NOYCE · BUSCADOR DE LICITAÇÕES · RAIO 500 KM</div>
+    <div class="pgnum">13</div>
+  </section>
+
+</div>
+
+<div class="nav-hint">↓ role para navegar · 13 slides</div>
+
+</body>
+</html>

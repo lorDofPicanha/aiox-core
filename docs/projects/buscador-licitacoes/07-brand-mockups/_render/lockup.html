@@ -1,0 +1,40 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&family=IBM+Plex+Mono:wght@600&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;height:100%}
+  body{display:grid;place-items:center}
+  .lk{display:flex;align-items:center;gap:22px}
+  .lk svg{width:96px;height:96px;flex:none}
+  .eniac{font-family:'IBM Plex Mono',monospace;font-size:21px;font-weight:600;letter-spacing:.28em;color:#69737F;line-height:1}
+  .noyce{font-family:'Inter',sans-serif;font-size:54px;font-weight:800;letter-spacing:-.02em;line-height:.95;margin-top:5px}
+  body.dark .noyce{color:#fff}body.dark .eniac{color:#8E99A8}
+  body:not(.dark) .noyce{color:#111721}
+</style></head>
+<body>
+  <div class="lk">
+    <svg viewBox="0 0 64 64" aria-hidden="true">
+      <g fill="none" class="ink" stroke-width="3" stroke-linecap="round">
+        <rect x="15" y="15" width="34" height="34" rx="8"/>
+        <line x1="7" y1="24" x2="15" y2="24"/><line x1="7" y1="32" x2="15" y2="32"/><line x1="7" y1="40" x2="15" y2="40"/>
+        <line x1="49" y1="24" x2="57" y2="24"/><line x1="49" y1="32" x2="57" y2="32"/><line x1="49" y1="40" x2="57" y2="40"/>
+      </g>
+      <path d="M32 32 a8 8 0 0 1 8 -8" fill="none" class="ink" stroke-width="2.4" stroke-linecap="round" opacity="0.55"/>
+      <path d="M32 32 a14 14 0 0 1 14 -14" fill="none" class="ink" stroke-width="2.4" stroke-linecap="round" opacity="0.28"/>
+      <line x1="32" y1="32" x2="44" y2="20" class="acc-s" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="32" cy="32" r="3.4" class="acc-f"/>
+    </svg>
+    <div><div class="eniac">ENIAC</div><div class="noyce">Noyce</div></div>
+  </div>
+  <script>
+    const p=new URLSearchParams(location.search);
+    const accent=p.get('accent')||'E8932E';
+    const mode=p.get('mode')||'light';
+    if(mode==='dark') document.body.classList.add('dark');
+    const inkColor = mode==='dark' ? '#FFFFFF' : '#111721';
+    document.querySelectorAll('.ink').forEach(e=>e.setAttribute('stroke',inkColor));
+    document.querySelectorAll('.acc-s').forEach(e=>e.setAttribute('stroke','#'+accent));
+    document.querySelectorAll('.acc-f').forEach(e=>e.setAttribute('fill','#'+accent));
+  </script>
+</body></html>

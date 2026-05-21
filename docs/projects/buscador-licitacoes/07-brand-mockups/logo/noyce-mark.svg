@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="128" height="128" role="img" aria-label="Noyce">
+  <title>Noyce — Chip-Radar</title>
+  <g fill="none" stroke="#111721" stroke-width="3" stroke-linecap="round">
+    <rect x="15" y="15" width="34" height="34" rx="8"/>
+    <line x1="7" y1="24" x2="15" y2="24"/>
+    <line x1="7" y1="32" x2="15" y2="32"/>
+    <line x1="7" y1="40" x2="15" y2="40"/>
+    <line x1="49" y1="24" x2="57" y2="24"/>
+    <line x1="49" y1="32" x2="57" y2="32"/>
+    <line x1="49" y1="40" x2="57" y2="40"/>
+  </g>
+  <path d="M32 32 a8 8 0 0 1 8 -8" fill="none" stroke="#111721" stroke-width="2.4" stroke-linecap="round" opacity="0.55"/>
+  <path d="M32 32 a14 14 0 0 1 14 -14" fill="none" stroke="#111721" stroke-width="2.4" stroke-linecap="round" opacity="0.28"/>
+  <line x1="32" y1="32" x2="44" y2="20" stroke="#E8932E" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="32" cy="32" r="3.4" fill="#E8932E"/>
+</svg>

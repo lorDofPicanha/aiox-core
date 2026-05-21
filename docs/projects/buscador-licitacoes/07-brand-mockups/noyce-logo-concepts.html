@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ENIAC · Noyce — Conceitos de Logo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EEF0F3; --ink:#111721; --muted:#69737F; --muted-2:#9AA3AD;
+    --line:#E3E7EC; --amber:#E8932E; --surface:#fff; --dark:#101726;
+    --mono:'IBM Plex Mono',monospace; --sans:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.45}
+  .page{max-width:1180px;margin:0 auto;padding:48px 28px 90px}
+  .head{margin-bottom:8px}
+  .head .eyebrow{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--amber);letter-spacing:.1em}
+  .head h1{font-size:30px;font-weight:800;letter-spacing:-.025em;margin:6px 0 8px}
+  .head p{font-size:15px;color:var(--muted);max-width:680px;font-weight:500}
+
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:38px}
+  .concept{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 1px 2px rgba(17,23,33,.04),0 8px 24px rgba(17,23,33,.05)}
+  .concept.featured{grid-column:1 / -1;border-color:#F2C98C;box-shadow:0 0 0 1px #F2C98C,0 12px 30px rgba(232,147,46,.12)}
+  .c-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--line)}
+  .c-head .t{font-size:15px;font-weight:700;letter-spacing:-.01em}
+  .c-head .t .idx{font-family:var(--mono);color:var(--amber);font-size:12px;margin-right:8px;font-weight:600}
+  .c-head .rec{font-family:var(--mono);font-size:10px;font-weight:700;color:#1A1206;background:var(--amber);padding:3px 9px;border-radius:6px;letter-spacing:.05em}
+
+  /* the two tiles: light + dark */
+  .tiles{display:grid;grid-template-columns:1fr 1fr}
+  .featured .tiles{grid-template-columns:1fr 1fr 1fr}
+  .tile{aspect-ratio:1.5/1;display:grid;place-items:center;position:relative}
+  .tile.light{background:linear-gradient(180deg,#fff,#F6F8FA)}
+  .tile.dark{background:linear-gradient(160deg,#0E1726,#1B2638)}
+  .tile.app{background:linear-gradient(160deg,#F6F8FA,#E8ECF1)}
+  .tile .badge{position:absolute;bottom:9px;left:12px;font-family:var(--mono);font-size:9px;letter-spacing:.06em;color:var(--muted-2)}
+  .tile.dark .badge{color:#5B6675}
+  .icon{width:78px;height:78px}
+  .icon.lg{width:92px;height:92px}
+
+  /* app icon rounded tile */
+  .appicon{width:84px;height:84px;border-radius:21px;display:grid;place-items:center;box-shadow:0 8px 20px rgba(17,23,33,.18)}
+  .appicon.ink{background:var(--dark)}
+  .appicon.amber{background:linear-gradient(150deg,#F4A23E,#E07F1C)}
+  .appicon svg{width:50px;height:50px}
+
+  /* horizontal lockup */
+  .lockup-row{display:flex;gap:30px;align-items:center;padding:20px 22px;flex-wrap:wrap;border-top:1px solid var(--line);background:#FCFCFD}
+  .lockup{display:flex;align-items:center;gap:13px}
+  .lockup svg{width:46px;height:46px}
+  .lk-text .eniac{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.26em;color:var(--muted)}
+  .lk-text .noyce{font-size:25px;font-weight:800;letter-spacing:-.02em;color:var(--ink);line-height:1}
+  .lockup.on-dark{background:var(--dark);padding:13px 18px;border-radius:12px}
+  .lockup.on-dark .eniac{color:#8E99A8}
+  .lockup.on-dark .noyce{color:#fff}
+
+  .why{padding:15px 22px 20px;font-size:13px;color:var(--muted);line-height:1.55}
+  .why b{color:var(--ink)}
+
+  .note{margin-top:42px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 22px;font-size:13.5px;color:var(--muted);line-height:1.6}
+  .note b{color:var(--ink)}
+  .footer{text-align:center;color:var(--muted-2);font-size:12px;margin-top:40px;font-family:var(--mono);line-height:1.7}
+  @media(max-width:780px){.grid{grid-template-columns:1fr}.featured .tiles{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="head">
+    <div class="eyebrow">ENIAC · NOYCE — IDENTIDADE</div>
+    <h1>Conceitos de logo</h1>
+    <p>Cada marca funde os 3 sinais do projeto: o <b>chip de silício</b> (Noyce, o inventor), o ato de <b>buscar / monitorar</b>, e o <b>raio geográfico</b> de cobertura. Tudo em SVG vetorial — escala de favicon a outdoor sem perder nitidez.</p>
+  </div>
+
+  <!-- ===== Reusable SVG defs ===== -->
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <!-- A: CHIP-RADAR -->
+      <g id="markA">
+        <rect x="15" y="15" width="34" height="34" rx="8" fill="none" stroke="currentColor" stroke-width="3"/>
+        <line x1="7"  y1="24" x2="15" y2="24" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        <line x1="7"  y1="32" x2="15" y2="32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        <line x1="7"  y1="40" x2="15" y2="40" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        <line x1="49" y1="24" x2="57" y2="24" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        <line x1="49" y1="32" x2="57" y2="32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        <line x1="49" y1="40" x2="57" y2="40" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        <path d="M32 32 a8 8 0 0 1 8 -8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity="0.55"/>
+        <path d="M32 32 a14 14 0 0 1 14 -14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity="0.28"/>
+        <line x1="32" y1="32" x2="44" y2="20" stroke="#E8932E" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="32" cy="32" r="3.4" fill="#E8932E"/>
+      </g>
+
+      <!-- B: RADAR / RAIO -->
+      <g id="markB">
+        <circle cx="32" cy="32" r="25" fill="none" stroke="currentColor" stroke-width="2.4" opacity="0.22"/>
+        <circle cx="32" cy="32" r="17" fill="none" stroke="currentColor" stroke-width="2.6" opacity="0.45"/>
+        <circle cx="32" cy="32" r="9"  fill="none" stroke="currentColor" stroke-width="3"/>
+        <path d="M32 32 L32 7 A25 25 0 0 1 50 14 Z" fill="#E8932E" opacity="0.16"/>
+        <line x1="32" y1="32" x2="50" y2="14" stroke="#E8932E" stroke-width="3.2" stroke-linecap="round"/>
+        <circle cx="32" cy="32" r="3.6" fill="#E8932E"/>
+        <circle cx="46" cy="20" r="2.6" fill="#E8932E"/>
+      </g>
+
+      <!-- C: N MONOGRAM (circuito) -->
+      <g id="markC">
+        <line x1="20" y1="46" x2="20" y2="18" stroke="currentColor" stroke-width="4.4" stroke-linecap="round"/>
+        <line x1="20" y1="18" x2="44" y2="46" stroke="currentColor" stroke-width="4.4" stroke-linecap="round"/>
+        <line x1="44" y1="46" x2="44" y2="18" stroke="currentColor" stroke-width="4.4" stroke-linecap="round"/>
+        <circle cx="20" cy="46" r="3.4" fill="currentColor"/>
+        <circle cx="44" cy="46" r="3.4" fill="currentColor"/>
+        <circle cx="20" cy="18" r="3.4" fill="currentColor"/>
+        <circle cx="44" cy="18" r="4.6" fill="#E8932E"/>
+        <circle cx="44" cy="18" r="9"  fill="none" stroke="#E8932E" stroke-width="1.8" opacity="0.5"/>
+      </g>
+
+      <!-- D: LOCATOR (geo + chip) -->
+      <g id="markD">
+        <path d="M32 54 C22 40 16 35 16 26 a16 16 0 0 1 32 0 C48 35 42 40 32 54 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+        <rect x="24" y="18" width="16" height="16" rx="3.5" fill="none" stroke="currentColor" stroke-width="2.6"/>
+        <line x1="28" y1="14.5" x2="28" y2="18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+        <line x1="36" y1="14.5" x2="36" y2="18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+        <line x1="28" y1="34" x2="28" y2="37.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+        <line x1="36" y1="34" x2="36" y2="37.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+        <circle cx="32" cy="26" r="3.6" fill="#E8932E"/>
+      </g>
+
+      <!-- E: PULSE / SINAL -->
+      <g id="markE">
+        <circle cx="32" cy="32" r="24" fill="none" stroke="currentColor" stroke-width="3"/>
+        <path d="M13 33 H24 L29 22 L36 44 L40 31 H51" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M29 22 L36 44" stroke="#E8932E" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="36" cy="44" r="3" fill="#E8932E"/>
+      </g>
+    </defs>
+  </svg>
+
+  <div class="grid">
+
+    <!-- ===== FEATURED: A — CHIP-RADAR ===== -->
+    <div class="concept featured">
+      <div class="c-head">
+        <div class="t"><span class="idx">A</span>Chip-Radar — “o chip que varre”</div>
+        <span class="rec">RECOMENDADO</span>
+      </div>
+      <div class="tiles">
+        <div class="tile light"><svg class="icon lg" viewBox="0 0 64 64" style="color:#111721"><use href="#markA"/></svg><span class="badge">positivo</span></div>
+        <div class="tile dark"><svg class="icon lg" viewBox="0 0 64 64" style="color:#fff"><use href="#markA"/></svg><span class="badge">negativo</span></div>
+        <div class="tile app">
+          <div class="appicon ink"><svg viewBox="0 0 64 64" style="color:#fff"><use href="#markA"/></svg></div>
+          <span class="badge">app icon</span>
+        </div>
+      </div>
+      <div class="lockup-row">
+        <div class="lockup">
+          <svg viewBox="0 0 64 64" style="color:#111721"><use href="#markA"/></svg>
+          <div class="lk-text"><div class="eniac">ENIAC</div><div class="noyce">Noyce</div></div>
+        </div>
+        <div class="lockup on-dark">
+          <svg viewBox="0 0 64 64" style="color:#fff"><use href="#markA"/></svg>
+          <div class="lk-text"><div class="eniac">ENIAC</div><div class="noyce">Noyce</div></div>
+        </div>
+      </div>
+      <div class="why">Um <b>circuito integrado</b> (a invenção do Noyce) com pinos laterais, e dentro dele uma <b>varredura de radar</b> em âmbar saindo do núcleo. Diz as duas coisas de uma vez: <b>é um chip</b> e <b>ele procura</b>. O ponto âmbar é o sinal “achei” — o mesmo glifo que pulsa nos alertas de movimentação do app.</div>
+    </div>
+
+    <!-- B — RADAR -->
+    <div class="concept">
+      <div class="c-head"><div class="t"><span class="idx">B</span>Radar / Raio</div></div>
+      <div class="tiles">
+        <div class="tile light"><svg class="icon" viewBox="0 0 64 64" style="color:#111721"><use href="#markB"/></svg></div>
+        <div class="tile dark"><svg class="icon" viewBox="0 0 64 64" style="color:#fff"><use href="#markB"/></svg></div>
+      </div>
+      <div class="lockup-row">
+        <div class="lockup">
+          <svg viewBox="0 0 64 64" style="color:#111721"><use href="#markB"/></svg>
+          <div class="lk-text"><div class="eniac">ENIAC</div><div class="noyce">Noyce</div></div>
+        </div>
+      </div>
+      <div class="why">Anéis concêntricos + sweep âmbar + um ponto detectado fora do centro. Lê direto como <b>“monitora num raio”</b> — amarra com a cobertura de <b>500 km</b> e a promessa “nunca para de procurar”. O mais literal pro buscador.</div>
+    </div>
+
+    <!-- C — N monogram -->
+    <div class="concept">
+      <div class="c-head"><div class="t"><span class="idx">C</span>Monograma “N” de circuito</div></div>
+      <div class="tiles">
+        <div class="tile light"><svg class="icon" viewBox="0 0 64 64" style="color:#111721"><use href="#markC"/></svg></div>
+        <div class="tile app"><div class="appicon amber"><svg viewBox="0 0 64 64" style="color:#1A1206"><use href="#markC"/></svg></div></div>
+      </div>
+      <div class="lockup-row">
+        <div class="lockup">
+          <svg viewBox="0 0 64 64" style="color:#111721"><use href="#markC"/></svg>
+          <div class="lk-text"><div class="eniac">ENIAC</div><div class="noyce">Noyce</div></div>
+        </div>
+      </div>
+      <div class="why">O <b>N de Noyce</b> desenhado como trilha de circuito, com <b>nós/pinos</b> nas pontas — e o nó superior direito <b>aceso</b> (a porta que ativou). O mais “brandável” como ícone de app curtinho e favicon.</div>
+    </div>
+
+    <!-- D — Locator -->
+    <div class="concept">
+      <div class="c-head"><div class="t"><span class="idx">D</span>Localizador (geo + chip)</div></div>
+      <div class="tiles">
+        <div class="tile light"><svg class="icon" viewBox="0 0 64 64" style="color:#111721"><use href="#markD"/></svg></div>
+        <div class="tile dark"><svg class="icon" viewBox="0 0 64 64" style="color:#fff"><use href="#markD"/></svg></div>
+      </div>
+      <div class="lockup-row">
+        <div class="lockup">
+          <svg viewBox="0 0 64 64" style="color:#111721"><use href="#markD"/></svg>
+          <div class="lk-text"><div class="eniac">ENIAC</div><div class="noyce">Noyce</div></div>
+        </div>
+      </div>
+      <div class="why">Um <b>pin de mapa</b> cuja cabeça é um <b>chip</b>, com o ponto âmbar no centro. Fala da natureza <b>geográfica</b> (distância em km, raio a partir da sede) + a herança de silício. Bom se quiser enfatizar o lado “onde”.</div>
+    </div>
+
+    <!-- E — Pulse -->
+    <div class="concept">
+      <div class="c-head"><div class="t"><span class="idx">E</span>Pulso / sinal</div></div>
+      <div class="tiles">
+        <div class="tile light"><svg class="icon" viewBox="0 0 64 64" style="color:#111721"><use href="#markE"/></svg></div>
+        <div class="tile dark"><svg class="icon" viewBox="0 0 64 64" style="color:#fff"><use href="#markE"/></svg></div>
+      </div>
+      <div class="lockup-row">
+        <div class="lockup">
+          <svg viewBox="0 0 64 64" style="color:#111721"><use href="#markE"/></svg>
+          <div class="lk-text"><div class="eniac">ENIAC</div><div class="noyce">Noyce</div></div>
+        </div>
+      </div>
+      <div class="why">Onda de <b>osciloscópio</b> (herança ENIAC) com o pico em âmbar = o instante em que o sinal aparece. Evoca <b>tempo real</b> e a movimentação ao vivo (Stage 5). O mais “vivo/energético” dos cinco.</div>
+    </div>
+
+  </div>
+
+  <div class="note">
+    <b>Minha recomendação:</b> conceito <b>A (Chip-Radar)</b> como marca principal — é o único que diz “chip” <i>e</i> “busca” no mesmo símbolo, e o ponto âmbar vira um sistema (o mesmo glifo pulsa nos alertas do app). Uso o <b>C (N de circuito)</b> como ícone curto / favicon, e o <b>B (Radar)</b> como selo secundário em peças sobre cobertura/raio. Tudo na mesma família: traço de engenharia + 1 acento âmbar.
+  </div>
+
+  <div class="footer">
+    ENIAC · Noyce — conceitos de logo (SVG vetorial) · Orion · 2026-05-20<br>
+    âmbar #E8932E · ink #111721 · IBM Plex Mono + Inter
+  </div>
+</div>
+</body>
+</html>
