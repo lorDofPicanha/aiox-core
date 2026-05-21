@@ -1,0 +1,74 @@
+model = "gpt-5.5"
+model_reasoning_effort = "medium"
+[marketplaces.openai-bundled]
+last_updated = "2026-05-18T00:18:54Z"
+source = '\\?\C:\Users\kingp\.codex\.tmp\bundled-marketplaces\openai-bundled'
+source_type = "local"
+
+[marketplaces.openai-primary-runtime]
+last_updated = "2026-05-18T00:30:22Z"
+source_type = "local"
+source = '\\?\C:\Users\kingp\.cache\codex-runtimes\codex-primary-runtime\plugins\openai-primary-runtime'
+
+[marketplaces.claude-plugins-official]
+last_updated = "2026-05-18T00:34:14Z"
+last_revision = "b5a156b6ecd2f69c418184b7c093930ddabaf9c0"
+source_type = "git"
+source = "https://github.com/anthropics/claude-plugins-official.git"
+
+[mcp_servers."@21st-dev/magic"]
+args = [
+    "-y",
+    "@21st-dev/magic@latest",
+]
+command = "npx"
+
+[mcp_servers."@21st-dev/magic".env]
+API_KEY = "an_sk_85bc7875e55d8840687495c3174bf0bc2c3e651bde63008c41864c5b82d1a0c7"
+
+[mcp_servers.nano-banana-2]
+args = [
+    "-y",
+    "nano-banana-2-mcp",
+]
+command = "npx"
+
+[mcp_servers.nano-banana-2.env]
+GEMINI_API_KEY = "AIzaSyAZ4sNYUoaMYEYeHZFW5O8JYxMlV1unyyw"
+
+[mcp_servers.playwright]
+args = [
+    "-y",
+    "@anthropic-ai/mcp-server-playwright",
+    "--headless",
+]
+command = "npx"
+
+[mcp_servers.stitch]
+args = [
+    "-y",
+    "@_davideast/stitch-mcp",
+    "proxy",
+]
+command = "npx"
+
+[mcp_servers.stitch.env]
+STITCH_API_KEY = "AQ.Ab8RN6LTuiSdlde8Ln0txA45dZcjyCWK655chaUp0zad95Dmaw"
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."vercel@claude-plugins-official"]
+enabled = true
+
+[windows]
+sandbox = "elevated"

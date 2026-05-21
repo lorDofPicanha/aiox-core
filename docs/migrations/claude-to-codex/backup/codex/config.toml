@@ -1,0 +1,33 @@
+[mcp_servers.aios-brain-bridge]
+args = ["D:/jarvis/mcp-bridge/dist/index.js"]
+command = "node"
+
+[mcp_servers.aios-brain-bridge.env]
+AIOS_BRAIN_BRIDGE_DIR = "D:/jarvis/bridge-data"
+
+[mcp_servers.mcp-ads-bridge]
+args = ["D:/jarvis/mcp-ads-bridge/dist/index.js"]
+command = "node"
+
+[mcp_servers.mcp-ads-bridge.env]
+ADS_DATA_DIR = "D:/jarvis/ads-data"
+
+[mcp_servers.mcp-design-studio]
+args = ["D:/jarvis/mcp-design-studio/dist/index.js"]
+command = "node"
+
+[mcp_servers.mcp-design-studio.env]
+FIGMA_TOKEN = "figd_S4pou3jhYpF-u9MDQlvigQF64RrZhTDb8syIkHu-"
+UNSPLASH_ACCESS_KEY = "LVbpcmiopk6pt5qVBTFwkhf9Bfp7nTN2a-3DvODVus4"
+
+[mcp_servers.mcp-image-studio]
+args = ["D:/jarvis/mcp-image-studio/dist/index.js"]
+command = "node"
+
+[mcp_servers.mcp-image-studio.env]
+OUTPUT_DIR = "D:/AIOS/docs/projects/bretda-landingpage/prototype/img"
+PHOTOS_DIR = "D:/AIOS/docs/projects/bretda-landingpage/assets/fotos"
+REPLICATE_API_TOKEN = "r8_E5rXm1r84bYQHC0Jwpt90mWicDFpLzs1mihoD"
+
+[mcp_servers.refero]
+command = 'C:\Users\kingp\AppData\Roaming\npm\refero-mcp.cmd'

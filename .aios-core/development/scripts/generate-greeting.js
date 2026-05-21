@@ -33,6 +33,17 @@
 
 const { ActivationRuntime } = require('./activation-runtime');
 
+function loadMindClonePipeline() {
+  try {
+    return require('../../core/jarvis/mind-clone-pipeline');
+  } catch (error) {
+    if (error && error.code === 'MODULE_NOT_FOUND') {
+      return null;
+    }
+    throw error;
+  }
+}
+
 /**
  * Generate unified greeting for agent activation.
  *
@@ -48,7 +59,25 @@ const { ActivationRuntime } = require('./activation-runtime');
  * const greeting = await generateGreeting('qa');
  * console.log(greeting);
  */
-async function generateGreeting(agentId) {
+async function generateGreeting(agentId, options = {}) {
+  // 2026-05-04: route mind clones (188 advisory minds) to MindClonePipeline lite.
+  // Core agents (12) continue through ActivationRuntime → UnifiedActivationPipeline.
+  const mindClonePipeline = loadMindClonePipeline();
+  if (mindClonePipeline?.isMindClone?.(agentId)) {
+    try {
+      const pipeline = new mindClonePipeline.MindClonePipeline();
+      const result = await pipeline.activate(agentId, options);
+      return result.greeting;
+    } catch (error) {
+      console.error('[generate-greeting] MindClonePipeline error:', {
+        agentId,
+        error: error.message,
+        timestamp: new Date().toISOString(),
+      });
+      return generateFallbackGreeting(agentId);
+    }
+  }
+
   try {
     const runtime = new ActivationRuntime();
     const result = await runtime.activate(agentId);
@@ -85,16 +114,19 @@ function generateFallbackGreeting(agentId) {
 // CLI interface
 if (require.main === module) {
   const agentId = process.argv[2];
+  const callingAgent = process.argv[3];
+  const project = process.argv[4];
 
   if (!agentId) {
-    console.error('Usage: node generate-greeting.js <agent-id>');
+    console.error('Usage: node generate-greeting.js <agent-id> [callingAgent] [project]');
     console.error('\nExamples:');
     console.error('  node generate-greeting.js qa');
     console.error('  node generate-greeting.js dev');
+    console.error('  node generate-greeting.js dieter-rams aios-master bretda');
     process.exit(1);
   }
 
-  generateGreeting(agentId)
+  generateGreeting(agentId, { callingAgent, project })
     .then(greeting => {
       console.log(greeting);
       process.exit(0);

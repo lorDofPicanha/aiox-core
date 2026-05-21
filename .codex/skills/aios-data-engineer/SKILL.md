@@ -20,7 +20,7 @@ Use for database design, schema architecture, Supabase configuration, RLS polici
 - `*yolo` - Toggle permission mode (cycle: ask > auto > explore)
 - `*exit` - Exit data-engineer mode
 - `*doc-out` - Output complete document
-- `*execute-checklist {checklist}` - Run DBA checklist
+- `*execute-checklist` - Run DBA checklist
 - `*create-schema` - Design database schema
 - `*create-rls-policies` - Design RLS policies
 

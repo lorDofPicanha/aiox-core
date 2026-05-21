@@ -1,0 +1,61 @@
+{
+  "mcpServers": {
+    "aios-brain-bridge": {
+      "command": "node",
+      "args": ["D:/jarvis/mcp-bridge/dist/index.js"],
+      "env": {
+        "AIOS_BRAIN_BRIDGE_DIR": "D:/jarvis/bridge-data"
+      }
+    },
+    "mcp-ads-bridge": {
+      "command": "node",
+      "args": ["D:/jarvis/mcp-ads-bridge/dist/index.js"],
+      "cwd": "D:/jarvis/mcp-ads-bridge",
+      "env": {
+        "ADS_DATA_DIR": "D:/jarvis/ads-data"
+      }
+    },
+    "mcp-image-studio": {
+      "command": "node",
+      "args": ["D:/jarvis/mcp-image-studio/dist/index.js"],
+      "env": {
+        "REPLICATE_API_TOKEN": "r8_E5rXm1r84bYQHC0Jwpt90mWicDFpLzs1mihoD",
+        "PHOTOS_DIR": "D:/AIOS/docs/projects/bretda-landingpage/assets/fotos",
+        "OUTPUT_DIR": "D:/AIOS/docs/projects/bretda-landingpage/prototype/img"
+      }
+    },
+    "mcp-design-studio": {
+      "command": "node",
+      "args": ["D:/jarvis/mcp-design-studio/dist/index.js"],
+      "env": {
+        "FIGMA_TOKEN": "figd_S4pou3jhYpF-u9MDQlvigQF64RrZhTDb8syIkHu-",
+        "UNSPLASH_ACCESS_KEY": "LVbpcmiopk6pt5qVBTFwkhf9Bfp7nTN2a-3DvODVus4"
+      }
+    },
+    "gdrive": {
+      "disabled": true,
+      "command": "node",
+      "args": ["D:/tools/mcp-gdrive/node_modules/@modelcontextprotocol/server-gdrive/dist/index.js"],
+      "env": {
+        "GDRIVE_OAUTH_PATH": "D:/tools/mcp-gdrive/gcp-oauth.keys.json",
+        "GDRIVE_CREDENTIALS_PATH": "C:/Users/kingp/.config/claude-mcp/gdrive-credentials.json"
+      }
+    },
+    "memorix": {
+      "disabled": true,
+      "command": "npx",
+      "args": ["-y", "memorix"],
+      "env": {
+        "MEMORIX_DATA_DIR": "D:/AIOS/.claude/memory/memorix"
+      }
+    },
+    "mcp-memory-service": {
+      "disabled": true,
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "env": {
+        "MEMORY_FILE_PATH": "D:/AIOS/.claude/memory/knowledge-graph.jsonl"
+      }
+    }
+  }
+}
