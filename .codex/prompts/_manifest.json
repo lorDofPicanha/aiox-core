@@ -1,0 +1,1045 @@
+{
+  "migrated_at": "2026-05-19",
+  "source": ".claude/commands/",
+  "target": ".codex/prompts/",
+  "total_source": 207,
+  "total_converted": 207,
+  "collisions": [],
+  "entries": [
+    {
+      "source": "AIOS/agents/abby-covert.md",
+      "target": "abby-covert.md",
+      "description": "Activate abby-covert — Information Architecture Strategist"
+    },
+    {
+      "source": "AIOS/agents/acacia-parks.md",
+      "target": "acacia-parks.md",
+      "description": "Activate acacia-parks — Therapeutic Product Design Consultant"
+    },
+    {
+      "source": "AIOS/agents/adam-grant.md",
+      "target": "adam-grant.md",
+      "description": "Activate adam-grant — Chief Organizational Psychologist & Rethinking Advisor"
+    },
+    {
+      "source": "AIOS/agents/addy-osmani.md",
+      "target": "addy-osmani.md",
+      "description": "Activate addy-osmani — Director of Web Performance Engineering"
+    },
+    {
+      "source": "AIOS/agents/adriana-dallari.md",
+      "target": "adriana-dallari.md",
+      "description": "Activate adriana-dallari — Especialista em Direito Sanitario & Regulacao em Saude Brasileira"
+    },
+    {
+      "source": "AIOS/agents/aios-developer.md",
+      "target": "aios-developer.md",
+      "description": "Activate aios-developer agent (AIOS persona)"
+    },
+    {
+      "source": "AIOS/agents/aios-master.md",
+      "target": "aios-master.md",
+      "description": "Activate aios-master — AIOS Master Orchestrator & Framework Developer"
+    },
+    {
+      "source": "AIOS/agents/aios-orchestrator.md",
+      "target": "aios-orchestrator.md",
+      "description": "Activate aios-orchestrator agent (AIOS persona)"
+    },
+    {
+      "source": "AIOS/agents/alan-nichol.md",
+      "target": "alan-nichol.md",
+      "description": "Activate alan-nichol — Conversational AI & Dialogue Systems Engineer"
+    },
+    {
+      "source": "AIOS/agents/alex-hormozi.md",
+      "target": "alex-hormozi.md",
+      "description": "Activate alex-hormozi — Business Scaling & Offer Creation Expert"
+    },
+    {
+      "source": "AIOS/agents/alexander-osterwalder.md",
+      "target": "alexander-osterwalder.md",
+      "description": "Activate alexander-osterwalder — Business Model Innovation & Strategy Architect"
+    },
+    {
+      "source": "AIOS/agents/alison-darcy.md",
+      "target": "alison-darcy.md",
+      "description": "Activate alison-darcy — Digital Therapy & CBT Specialist"
+    },
+    {
+      "source": "AIOS/agents/amy-edmondson.md",
+      "target": "amy-edmondson.md",
+      "description": "Activate amy-edmondson — Organizational Learning & Psychological Safety Researcher"
+    },
+    {
+      "source": "AIOS/agents/analyst.md",
+      "target": "analyst.md",
+      "description": "Activate analyst — Business Analyst"
+    },
+    {
+      "source": "AIOS/agents/anders-ericsson.md",
+      "target": "anders-ericsson.md",
+      "description": "Activate anders-ericsson — Director of Expert Performance & Deliberate Practice"
+    },
+    {
+      "source": "AIOS/agents/andrej-karpathy.md",
+      "target": "andrej-karpathy.md",
+      "description": "Activate andrej-karpathy — Chief AI Engineer"
+    },
+    {
+      "source": "AIOS/agents/andrew-ng.md",
+      "target": "andrew-ng.md",
+      "description": "Activate andrew-ng — Director of AI Education & Transformation"
+    },
+    {
+      "source": "AIOS/agents/ann-cavoukian.md",
+      "target": "ann-cavoukian.md",
+      "description": "Activate ann-cavoukian — Privacy by Design Architect & Data Protection Strategist"
+    },
+    {
+      "source": "AIOS/agents/ann-handley.md",
+      "target": "ann-handley.md",
+      "description": "Activate ann-handley — Chief Content Officer & Writing Coach"
+    },
+    {
+      "source": "AIOS/agents/april-dunford.md",
+      "target": "april-dunford.md",
+      "description": "Activate april-dunford — Director of Product Positioning"
+    },
+    {
+      "source": "AIOS/agents/architect.md",
+      "target": "architect.md",
+      "description": "Activate architect — Architect"
+    },
+    {
+      "source": "AIOS/agents/aswath-damodaran.md",
+      "target": "aswath-damodaran.md",
+      "description": "Activate aswath-damodaran — Dean of Valuation & Corporate Finance Strategist"
+    },
+    {
+      "source": "AIOS/agents/atul-butte.md",
+      "target": "atul-butte.md",
+      "description": "Activate atul-butte — Data-Driven Medicine Architect & Translational Bioinformatics Pioneer"
+    },
+    {
+      "source": "AIOS/agents/bakul-patel.md",
+      "target": "bakul-patel.md",
+      "description": "Activate bakul-patel — Digital Health Regulatory Architect"
+    },
+    {
+      "source": "AIOS/agents/bj-fogg.md",
+      "target": "bj-fogg.md",
+      "description": "Activate bj-fogg — Behavior Design & Tiny Habits Specialist"
+    },
+    {
+      "source": "AIOS/agents/brad-feld.md",
+      "target": "brad-feld.md",
+      "description": "Activate brad-feld — Venture Capital & Startup Ecosystem Strategist"
+    },
+    {
+      "source": "AIOS/agents/brad-frost.md",
+      "target": "brad-frost.md",
+      "description": "Activate brad-frost — Director of Design Systems & Component Architecture"
+    },
+    {
+      "source": "AIOS/agents/brendan-gregg.md",
+      "target": "brendan-gregg.md",
+      "description": "Activate brendan-gregg — Performance Engineer & Systems Observability Expert"
+    },
+    {
+      "source": "AIOS/agents/brene-brown.md",
+      "target": "brene-brown.md",
+      "description": "Activate brene-brown — Chief Courage & Culture Officer"
+    },
+    {
+      "source": "AIOS/agents/bruce-schneier.md",
+      "target": "bruce-schneier.md",
+      "description": "Activate bruce-schneier — Chief Information Security Officer (CISO)"
+    },
+    {
+      "source": "AIOS/agents/casey-rosenthal.md",
+      "target": "casey-rosenthal.md",
+      "description": "Activate casey-rosenthal — Chaos Engineering & System Resilience Expert"
+    },
+    {
+      "source": "AIOS/agents/cassie-kozyrkov.md",
+      "target": "cassie-kozyrkov.md",
+      "description": "Activate cassie-kozyrkov — Director of Decision Intelligence"
+    },
+    {
+      "source": "AIOS/agents/cathy-pearl.md",
+      "target": "cathy-pearl.md",
+      "description": "Activate cathy-pearl — Conversational UX & Voice Interface Architect"
+    },
+    {
+      "source": "AIOS/agents/charity-majors.md",
+      "target": "charity-majors.md",
+      "description": "Activate charity-majors — Chief Observability & Production Ownership Officer"
+    },
+    {
+      "source": "AIOS/agents/charles-spurgeon.md",
+      "target": "charles-spurgeon.md",
+      "description": "Activate charles-spurgeon — Master Communicator & Persuasion Architect"
+    },
+    {
+      "source": "AIOS/agents/chip-huyen.md",
+      "target": "chip-huyen.md",
+      "description": "Activate chip-huyen — AI Engineering Architect"
+    },
+    {
+      "source": "AIOS/agents/chris-voss.md",
+      "target": "chris-voss.md",
+      "description": "Activate chris-voss — VP of Sales & Negotiation"
+    },
+    {
+      "source": "AIOS/agents/christian-dunker.md",
+      "target": "christian-dunker.md",
+      "description": "Activate christian-dunker — Clinical Psychology & Digital Mental Health Specialist — CRP Brazil"
+    },
+    {
+      "source": "AIOS/agents/clayton-christensen.md",
+      "target": "clayton-christensen.md",
+      "description": "Activate clayton-christensen — Director of Innovation Strategy"
+    },
+    {
+      "source": "AIOS/agents/craig-kerstiens.md",
+      "target": "craig-kerstiens.md",
+      "description": "Activate craig-kerstiens — PostgreSQL Operations Expert"
+    },
+    {
+      "source": "AIOS/agents/dan-abramov.md",
+      "target": "dan-abramov.md",
+      "description": "Activate dan-abramov — React Architecture & Component Design Expert"
+    },
+    {
+      "source": "AIOS/agents/daniel-kahneman.md",
+      "target": "daniel-kahneman.md",
+      "description": "Activate daniel-kahneman — Chief Decision Scientist"
+    },
+    {
+      "source": "AIOS/agents/daniel-miessler.md",
+      "target": "daniel-miessler.md",
+      "description": "Activate daniel-miessler — AI Security Architect & Human Augmentation Engineer"
+    },
+    {
+      "source": "AIOS/agents/danijel-overtime.md",
+      "target": "danijel-overtime.md",
+      "description": "Activate danijel-overtime — DeFi Sports Betting & On-Chain Markets Architect"
+    },
+    {
+      "source": "AIOS/agents/darren-murph.md",
+      "target": "darren-murph.md",
+      "description": "Activate darren-murph — Remote Work & Distributed Teams Expert"
+    },
+    {
+      "source": "AIOS/agents/data-engineer.md",
+      "target": "data-engineer.md",
+      "description": "Activate data-engineer — Database Architect & Operations Engineer"
+    },
+    {
+      "source": "AIOS/agents/dave-snowden.md",
+      "target": "dave-snowden.md",
+      "description": "Activate dave-snowden — Complexity Science & Sensemaking Authority"
+    },
+    {
+      "source": "AIOS/agents/david-ebersman.md",
+      "target": "david-ebersman.md",
+      "description": "Activate david-ebersman — Mental Health Business Strategist"
+    },
+    {
+      "source": "AIOS/agents/db-sage.md",
+      "target": "db-sage.md",
+      "description": "Activate db-sage agent (AIOS persona)"
+    },
+    {
+      "source": "AIOS/agents/demis-hassabis.md",
+      "target": "demis-hassabis.md",
+      "description": "Activate demis-hassabis — AI & Scientific Discovery Strategist"
+    },
+    {
+      "source": "AIOS/agents/dena-bravata.md",
+      "target": "dena-bravata.md",
+      "description": "Activate dena-bravata — Evidence-Based Health Innovation Strategist"
+    },
+    {
+      "source": "AIOS/agents/design-lead.md",
+      "target": "design-lead.md",
+      "description": "Activate design-lead — Design Lead & Creative Director"
+    },
+    {
+      "source": "AIOS/agents/design-systems-engineer.md",
+      "target": "design-systems-engineer.md",
+      "description": "Activate design-systems-engineer — Design Systems Engineer & Token Architect"
+    },
+    {
+      "source": "AIOS/agents/dev.md",
+      "target": "dev.md",
+      "description": "Activate dev — Full Stack Developer"
+    },
+    {
+      "source": "AIOS/agents/devops.md",
+      "target": "devops.md",
+      "description": "Activate devops — GitHub Repository Manager & DevOps Specialist"
+    },
+    {
+      "source": "AIOS/agents/dieter-rams.md",
+      "target": "dieter-rams.md",
+      "description": "Activate dieter-rams — Minimalist Design & Functional Purity Architect"
+    },
+    {
+      "source": "AIOS/agents/domer-polymarket.md",
+      "target": "domer-polymarket.md",
+      "description": "Activate domer-polymarket — #1 Polymarket Trader & Volume Strategy Expert"
+    },
+    {
+      "source": "AIOS/agents/don-norman.md",
+      "target": "don-norman.md",
+      "description": "Activate don-norman — Human-Centered Design & Usability Architect"
+    },
+    {
+      "source": "AIOS/agents/donald-miller.md",
+      "target": "donald-miller.md",
+      "description": "Activate donald-miller — VP of Brand Messaging & Story"
+    },
+    {
+      "source": "AIOS/agents/eduardo-bunge.md",
+      "target": "eduardo-bunge.md",
+      "description": "Activate eduardo-bunge — Digital Mental Health Architect"
+    },
+    {
+      "source": "AIOS/agents/edward-tufte.md",
+      "target": "edward-tufte.md",
+      "description": "Activate edward-tufte — Data Visualization Master & Information Design Authority"
+    },
+    {
+      "source": "AIOS/agents/eliyahu-goldratt.md",
+      "target": "eliyahu-goldratt.md",
+      "description": "Activate eliyahu-goldratt — Director of Operations Excellence"
+    },
+    {
+      "source": "AIOS/agents/eric-ries.md",
+      "target": "eric-ries.md",
+      "description": "Activate eric-ries — Lean Startup & Innovation Management Specialist"
+    },
+    {
+      "source": "AIOS/agents/eric-topol.md",
+      "target": "eric-topol.md",
+      "description": "Activate eric-topol — AI-Augmented Medicine & Digital Health Visionary"
+    },
+    {
+      "source": "AIOS/agents/erik-nymanczuk.md",
+      "target": "erik-nymanczuk.md",
+      "description": "Activate erik-nymanczuk — Especialista em Direito Digital em Saude & Compliance LGPD para Dados de Saude"
+    },
+    {
+      "source": "AIOS/agents/erik-spiekermann.md",
+      "target": "erik-spiekermann.md",
+      "description": "Activate erik-spiekermann — Typography & Information Design Master"
+    },
+    {
+      "source": "AIOS/agents/fei-fei-li.md",
+      "target": "fei-fei-li.md",
+      "description": "Activate fei-fei-li — Human-Centered AI Strategist & Vision Intelligence Expert"
+    },
+    {
+      "source": "AIOS/agents/gary-vaynerchuk.md",
+      "target": "gary-vaynerchuk.md",
+      "description": "Activate gary-vaynerchuk — Chief Attention Officer & Social Media Strategist"
+    },
+    {
+      "source": "AIOS/agents/gcr-crypto.md",
+      "target": "gcr-crypto.md",
+      "description": "Activate gcr-crypto — Crypto Whale & Contrarian Trading Expert"
+    },
+    {
+      "source": "AIOS/agents/gene-kim.md",
+      "target": "gene-kim.md",
+      "description": "Activate gene-kim — Director of DevOps Transformation & IT Operations Excellence"
+    },
+    {
+      "source": "AIOS/agents/geoff-cook.md",
+      "target": "geoff-cook.md",
+      "description": "Activate geoff-cook — Growth & Monetization Strategist"
+    },
+    {
+      "source": "AIOS/agents/github-devops.md",
+      "target": "github-devops.md",
+      "description": "Activate github-devops agent (AIOS persona)"
+    },
+    {
+      "source": "AIOS/agents/grant-cardone.md",
+      "target": "grant-cardone.md",
+      "description": "Activate grant-cardone — Sales Intensity & 10X Growth Expert"
+    },
+    {
+      "source": "AIOS/agents/guillaume-moubeche.md",
+      "target": "guillaume-moubeche.md",
+      "description": "Activate guillaume-moubeche — Bootstrapped SaaS Growth & Founder-Led Sales Strategist"
+    },
+    {
+      "source": "AIOS/agents/guillermo-rauch.md",
+      "target": "guillermo-rauch.md",
+      "description": "Activate guillermo-rauch — Frontend Infrastructure Architect"
+    },
+    {
+      "source": "AIOS/agents/halle-tecco.md",
+      "target": "halle-tecco.md",
+      "description": "Activate halle-tecco — Healthcare Ecosystem Strategist & Systems Innovation Advisor"
+    },
+    {
+      "source": "AIOS/agents/harrison-chase.md",
+      "target": "harrison-chase.md",
+      "description": "Activate harrison-chase — Director of AI Agent Architecture"
+    },
+    {
+      "source": "AIOS/agents/heather-meeker.md",
+      "target": "heather-meeker.md",
+      "description": "Activate heather-meeker — General Counsel -- Open Source & IP Licensing"
+    },
+    {
+      "source": "AIOS/agents/ilya-sutskever.md",
+      "target": "ilya-sutskever.md",
+      "description": "Activate ilya-sutskever — Chief AI Safety & Alignment Architect"
+    },
+    {
+      "source": "AIOS/agents/jason-lemkin.md",
+      "target": "jason-lemkin.md",
+      "description": "Activate jason-lemkin — Chief SaaS Growth Strategist"
+    },
+    {
+      "source": "AIOS/agents/jay-abraham.md",
+      "target": "jay-abraham.md",
+      "description": "Activate jay-abraham — Revenue Growth & Strategic Partnerships Expert"
+    },
+    {
+      "source": "AIOS/agents/jeb-blount.md",
+      "target": "jeb-blount.md",
+      "description": "Activate jeb-blount — Director of Sales Operations"
+    },
+    {
+      "source": "AIOS/agents/jerry-liu.md",
+      "target": "jerry-liu.md",
+      "description": "Activate jerry-liu — Director of Knowledge & Retrieval Systems"
+    },
+    {
+      "source": "AIOS/agents/jez-humble.md",
+      "target": "jez-humble.md",
+      "description": "Activate jez-humble — Continuous Delivery & DevOps Engineering Architect"
+    },
+    {
+      "source": "AIOS/agents/jim-fan.md",
+      "target": "jim-fan.md",
+      "description": "Activate jim-fan — Senior Research Director -- Embodied AI & Foundation Agents"
+    },
+    {
+      "source": "AIOS/agents/joanna-wiebe.md",
+      "target": "joanna-wiebe.md",
+      "description": "Activate joanna-wiebe — Conversion Copywriting Director"
+    },
+    {
+      "source": "AIOS/agents/joe-pulizzi.md",
+      "target": "joe-pulizzi.md",
+      "description": "Activate joe-pulizzi — VP of Content Strategy & Content Entrepreneurship"
+    },
+    {
+      "source": "AIOS/agents/joe-reis.md",
+      "target": "joe-reis.md",
+      "description": "Activate joe-reis — Data Engineering Lifecycle Architect"
+    },
+    {
+      "source": "AIOS/agents/johannes-thrul.md",
+      "target": "johannes-thrul.md",
+      "description": "Activate johannes-thrul — Digital Mental Health & mHealth Research Strategist"
+    },
+    {
+      "source": "AIOS/agents/john-kindervag.md",
+      "target": "john-kindervag.md",
+      "description": "Activate john-kindervag — Zero Trust Security Architect & Trust Boundary Strategist"
+    },
+    {
+      "source": "AIOS/agents/john-maeda.md",
+      "target": "john-maeda.md",
+      "description": "Activate john-maeda — Design + Technology Convergence Architect & Simplicity Strategist"
+    },
+    {
+      "source": "AIOS/agents/josh-bersin.md",
+      "target": "josh-bersin.md",
+      "description": "Activate josh-bersin — Chief Learning & HR Transformation Analyst"
+    },
+    {
+      "source": "AIOS/agents/julie-zhuo.md",
+      "target": "julie-zhuo.md",
+      "description": "Activate julie-zhuo — Design Leadership & Management Architect"
+    },
+    {
+      "source": "AIOS/agents/kat-holmes.md",
+      "target": "kat-holmes.md",
+      "description": "Activate kat-holmes — Inclusive Design Leader & Accessibility Strategist"
+    },
+    {
+      "source": "AIOS/agents/kate-ryder.md",
+      "target": "kate-ryder.md",
+      "description": "Activate kate-ryder — Women's & Family Health Specialist"
+    },
+    {
+      "source": "AIOS/agents/kelsey-hightower.md",
+      "target": "kelsey-hightower.md",
+      "description": "Activate kelsey-hightower — Platform Engineering & Cloud-Native Infrastructure Strategist"
+    },
+    {
+      "source": "AIOS/agents/kent-beck.md",
+      "target": "kent-beck.md",
+      "description": "Activate kent-beck — TDD Pioneer & Software Design Expert"
+    },
+    {
+      "source": "AIOS/agents/kent-c-dodds.md",
+      "target": "kent-c-dodds.md",
+      "description": "Activate kent-c-dodds — Director of Testing & React Quality"
+    },
+    {
+      "source": "AIOS/agents/kevin-mitnick.md",
+      "target": "kevin-mitnick.md",
+      "description": "Activate kevin-mitnick — Chief Red Team & Social Engineering Officer"
+    },
+    {
+      "source": "AIOS/agents/larry-kim.md",
+      "target": "larry-kim.md",
+      "description": "Activate larry-kim — Director of Paid Media & PPC Strategy"
+    },
+    {
+      "source": "AIOS/agents/laszlo-bock.md",
+      "target": "laszlo-bock.md",
+      "description": "Activate laszlo-bock — Director of People Analytics"
+    },
+    {
+      "source": "AIOS/agents/lawrence-lessig.md",
+      "target": "lawrence-lessig.md",
+      "description": "Activate lawrence-lessig — Chief Digital Rights & Regulatory Architect"
+    },
+    {
+      "source": "AIOS/agents/lilian-weng.md",
+      "target": "lilian-weng.md",
+      "description": "Activate lilian-weng — AI Research & Product Strategy Expert"
+    },
+    {
+      "source": "AIOS/agents/lincoln-murphy.md",
+      "target": "lincoln-murphy.md",
+      "description": "Activate lincoln-murphy — VP of Customer Success Growth"
+    },
+    {
+      "source": "AIOS/agents/linus-torvalds.md",
+      "target": "linus-torvalds.md",
+      "description": "Activate linus-torvalds — Systems Programming & Git Strategy Expert"
+    },
+    {
+      "source": "AIOS/agents/liran-tal.md",
+      "target": "liran-tal.md",
+      "description": "Activate liran-tal — Node.js Security Guardian"
+    },
+    {
+      "source": "AIOS/agents/luana-lopes-lara.md",
+      "target": "luana-lopes-lara.md",
+      "description": "Activate luana-lopes-lara — Regulated Prediction Markets & Institutional Strategy Expert"
+    },
+    {
+      "source": "AIOS/agents/lucia-savage.md",
+      "target": "lucia-savage.md",
+      "description": "Activate lucia-savage — Health Data Privacy & Regulatory Innovation Strategist"
+    },
+    {
+      "source": "AIOS/agents/mariana-mazzucato.md",
+      "target": "mariana-mazzucato.md",
+      "description": "Activate mariana-mazzucato — Director of Innovation Economics & Public Purpose"
+    },
+    {
+      "source": "AIOS/agents/markus-winand.md",
+      "target": "markus-winand.md",
+      "description": "Activate markus-winand — SQL Performance Architect"
+    },
+    {
+      "source": "AIOS/agents/martin-fowler.md",
+      "target": "martin-fowler.md",
+      "description": "Activate martin-fowler — Director of Software Engineering Practices"
+    },
+    {
+      "source": "AIOS/agents/martin-kleppmann.md",
+      "target": "martin-kleppmann.md",
+      "description": "Activate martin-kleppmann — Director of Distributed Data Systems"
+    },
+    {
+      "source": "AIOS/agents/marty-cagan.md",
+      "target": "marty-cagan.md",
+      "description": "Activate marty-cagan — Product Leadership & Empowered Teams Expert"
+    },
+    {
+      "source": "AIOS/agents/marty-neumeier.md",
+      "target": "marty-neumeier.md",
+      "description": "Activate marty-neumeier — Brand Strategy & Differentiation Expert"
+    },
+    {
+      "source": "AIOS/agents/matt-dixon.md",
+      "target": "matt-dixon.md",
+      "description": "Activate matt-dixon — VP of Sales Strategy & Research"
+    },
+    {
+      "source": "AIOS/agents/matt-pocock.md",
+      "target": "matt-pocock.md",
+      "description": "Activate matt-pocock — TypeScript Wizard"
+    },
+    {
+      "source": "AIOS/agents/micky-tripathi.md",
+      "target": "micky-tripathi.md",
+      "description": "Activate micky-tripathi — Health System Digital Transformation Strategist"
+    },
+    {
+      "source": "AIOS/agents/mikko-hypponen.md",
+      "target": "mikko-hypponen.md",
+      "description": "Activate mikko-hypponen — Chief Threat Researcher & Cybersecurity Historian"
+    },
+    {
+      "source": "AIOS/agents/mitchell-hashimoto.md",
+      "target": "mitchell-hashimoto.md",
+      "description": "Activate mitchell-hashimoto — Infrastructure-as-Code Architect"
+    },
+    {
+      "source": "AIOS/agents/morgan-housel.md",
+      "target": "morgan-housel.md",
+      "description": "Activate morgan-housel — Behavioral Finance Philosopher & Wealth Psychology Expert"
+    },
+    {
+      "source": "AIOS/agents/motion-designer.md",
+      "target": "motion-designer.md",
+      "description": "Activate motion-designer — Motion Designer & Animation Specialist"
+    },
+    {
+      "source": "AIOS/agents/nate-silver.md",
+      "target": "nate-silver.md",
+      "description": "Activate nate-silver — Statistical Modeling & Prediction Markets Expert"
+    },
+    {
+      "source": "AIOS/agents/neil-patel.md",
+      "target": "neil-patel.md",
+      "description": "Activate neil-patel — Digital Marketing & SEO Expert"
+    },
+    {
+      "source": "AIOS/agents/niall-murphy.md",
+      "target": "niall-murphy.md",
+      "description": "Activate niall-murphy — Site Reliability Engineering Authority & Error Budget Strategist"
+    },
+    {
+      "source": "AIOS/agents/nick-mehta.md",
+      "target": "nick-mehta.md",
+      "description": "Activate nick-mehta — Director of Customer Success"
+    },
+    {
+      "source": "AIOS/agents/nicole-forsgren.md",
+      "target": "nicole-forsgren.md",
+      "description": "Activate nicole-forsgren — Engineering Excellence Scientist"
+    },
+    {
+      "source": "AIOS/agents/nir-eyal.md",
+      "target": "nir-eyal.md",
+      "description": "Activate nir-eyal — Habit Formation & Behavioral Design Strategist"
+    },
+    {
+      "source": "AIOS/agents/oalanicolas.md",
+      "target": "oalanicolas.md",
+      "description": "Activate oalanicolas — Mind Cloning Architect"
+    },
+    {
+      "source": "AIOS/agents/oli-gardner.md",
+      "target": "oli-gardner.md",
+      "description": "Activate oli-gardner — Landing Page & Conversion Design Architect"
+    },
+    {
+      "source": "AIOS/agents/patricia-peck.md",
+      "target": "patricia-peck.md",
+      "description": "Activate patricia-peck — LGPD & Digital Law Specialist — Brazilian Data Protection Authority"
+    },
+    {
+      "source": "AIOS/agents/patrick-campbell.md",
+      "target": "patrick-campbell.md",
+      "description": "Activate patrick-campbell — VP of Pricing & Monetization"
+    },
+    {
+      "source": "AIOS/agents/patty-mccord.md",
+      "target": "patty-mccord.md",
+      "description": "Activate patty-mccord — Chief People Officer"
+    },
+    {
+      "source": "AIOS/agents/paul-copplestone.md",
+      "target": "paul-copplestone.md",
+      "description": "Activate paul-copplestone — Postgres-First Platform Architect"
+    },
+    {
+      "source": "AIOS/agents/pedro-valerio.md",
+      "target": "pedro-valerio.md",
+      "description": "Activate pedro-valerio — Process Absolutist"
+    },
+    {
+      "source": "AIOS/agents/peep-laja.md",
+      "target": "peep-laja.md",
+      "description": "Activate peep-laja — CRO Scientist & B2B Messaging Strategist"
+    },
+    {
+      "source": "AIOS/agents/peter-diamandis.md",
+      "target": "peter-diamandis.md",
+      "description": "Activate peter-diamandis — Director of Innovation & Moonshots"
+    },
+    {
+      "source": "AIOS/agents/philip-tetlock.md",
+      "target": "philip-tetlock.md",
+      "description": "Activate philip-tetlock — Superforecasting & Prediction Science Expert"
+    },
+    {
+      "source": "AIOS/agents/pm.md",
+      "target": "pm.md",
+      "description": "Activate pm — Product Manager"
+    },
+    {
+      "source": "AIOS/agents/po.md",
+      "target": "po.md",
+      "description": "Activate po — Product Owner"
+    },
+    {
+      "source": "AIOS/agents/qa.md",
+      "target": "qa.md",
+      "description": "Activate qa — Test Architect & Quality Advisor"
+    },
+    {
+      "source": "AIOS/agents/rafael-calvo.md",
+      "target": "rafael-calvo.md",
+      "description": "Activate rafael-calvo — Therapeutic & Wellbeing Design Architect"
+    },
+    {
+      "source": "AIOS/agents/rand-fishkin.md",
+      "target": "rand-fishkin.md",
+      "description": "Activate rand-fishkin — VP of SEO & Audience Intelligence"
+    },
+    {
+      "source": "AIOS/agents/ray-dalio.md",
+      "target": "ray-dalio.md",
+      "description": "Activate ray-dalio — Macro Economics & Principled Decision-Making Expert"
+    },
+    {
+      "source": "AIOS/agents/refika-anadol.md",
+      "target": "refika-anadol.md",
+      "description": "Activate refika-anadol — Generative Design & Data Art Director"
+    },
+    {
+      "source": "AIOS/agents/richard-susskind.md",
+      "target": "richard-susskind.md",
+      "description": "Activate richard-susskind — Director of Legal Technology Transformation & Access to Justice"
+    },
+    {
+      "source": "AIOS/agents/richard-thaler.md",
+      "target": "richard-thaler.md",
+      "description": "Activate richard-thaler — Chief Behavioral & Choice Architect"
+    },
+    {
+      "source": "AIOS/agents/rob-walling.md",
+      "target": "rob-walling.md",
+      "description": "Activate rob-walling — Bootstrapping & SaaS Growth Expert"
+    },
+    {
+      "source": "AIOS/agents/robert-mckee.md",
+      "target": "robert-mckee.md",
+      "description": "Activate robert-mckee — Chief Narrative Architect"
+    },
+    {
+      "source": "AIOS/agents/robin-hanson.md",
+      "target": "robin-hanson.md",
+      "description": "Activate robin-hanson — Prediction Market Design & Contrarian Economics Expert"
+    },
+    {
+      "source": "AIOS/agents/russell-brunson.md",
+      "target": "russell-brunson.md",
+      "description": "Activate russell-brunson — Sales Funnel & Online Conversion Expert"
+    },
+    {
+      "source": "AIOS/agents/ryan-dahl.md",
+      "target": "ryan-dahl.md",
+      "description": "Activate ryan-dahl — Director of Runtime Architecture"
+    },
+    {
+      "source": "AIOS/agents/ryan-holiday.md",
+      "target": "ryan-holiday.md",
+      "description": "Activate ryan-holiday — Growth Hacking & Perennial Strategy Expert"
+    },
+    {
+      "source": "AIOS/agents/sal-khan.md",
+      "target": "sal-khan.md",
+      "description": "Activate sal-khan — Director of Education Innovation & AI-Powered Learning"
+    },
+    {
+      "source": "AIOS/agents/sam-newman.md",
+      "target": "sam-newman.md",
+      "description": "Activate sam-newman — Director of Service Architecture"
+    },
+    {
+      "source": "AIOS/agents/sarah-drasner.md",
+      "target": "sarah-drasner.md",
+      "description": "Activate sarah-drasner — Creative Coding & SVG Animation Architect"
+    },
+    {
+      "source": "AIOS/agents/scott-alexander.md",
+      "target": "scott-alexander.md",
+      "description": "Activate scott-alexander — Bayesian Reasoning & Prediction Calibration Expert"
+    },
+    {
+      "source": "AIOS/agents/scott-galloway.md",
+      "target": "scott-galloway.md",
+      "description": "Activate scott-galloway — Chief Market Strategist & Business Analyst"
+    },
+    {
+      "source": "AIOS/agents/scott-hanselman.md",
+      "target": "scott-hanselman.md",
+      "description": "Activate scott-hanselman — Chief Developer Advocacy & Productivity Officer"
+    },
+    {
+      "source": "AIOS/agents/sean-duffy.md",
+      "target": "sean-duffy.md",
+      "description": "Activate sean-duffy — Digital Health Integration & Chronic Care Strategist"
+    },
+    {
+      "source": "AIOS/agents/seth-godin.md",
+      "target": "seth-godin.md",
+      "description": "Activate seth-godin — VP of Marketing & Brand Strategy"
+    },
+    {
+      "source": "AIOS/agents/simon-sinek.md",
+      "target": "simon-sinek.md",
+      "description": "Activate simon-sinek — Chief Inspiration & Leadership Architect"
+    },
+    {
+      "source": "AIOS/agents/simon-willison.md",
+      "target": "simon-willison.md",
+      "description": "Activate simon-willison — Practical AI Toolsmith"
+    },
+    {
+      "source": "AIOS/agents/sm.md",
+      "target": "sm.md",
+      "description": "Activate sm — Scrum Master"
+    },
+    {
+      "source": "AIOS/agents/sop-extractor.md",
+      "target": "sop-extractor.md",
+      "description": "Activate sop-extractor — SOP Extraction Specialist"
+    },
+    {
+      "source": "AIOS/agents/squad-creator.md",
+      "target": "squad-creator.md",
+      "description": "Activate squad-creator — Squad Creator"
+    },
+    {
+      "source": "AIOS/agents/stephen-hahn.md",
+      "target": "stephen-hahn.md",
+      "description": "Activate stephen-hahn — Regulatory Strategy & Institutional Crisis Leadership Advisor"
+    },
+    {
+      "source": "AIOS/agents/steve-blank.md",
+      "target": "steve-blank.md",
+      "description": "Activate steve-blank — Customer Development & Startup Validation Expert"
+    },
+    {
+      "source": "AIOS/agents/sugata-mitra.md",
+      "target": "sugata-mitra.md",
+      "description": "Activate sugata-mitra — Chief Self-Organized Learning Architect"
+    },
+    {
+      "source": "AIOS/agents/swyx.md",
+      "target": "swyx.md",
+      "description": "Activate swyx — AI Engineering & Developer Experience Expert"
+    },
+    {
+      "source": "AIOS/agents/teresa-torres.md",
+      "target": "teresa-torres.md",
+      "description": "Activate teresa-torres — Product Discovery & Continuous Discovery Expert"
+    },
+    {
+      "source": "AIOS/agents/theo-polymarket.md",
+      "target": "theo-polymarket.md",
+      "description": "Activate theo-polymarket — Information Arbitrage & Private Research Expert"
+    },
+    {
+      "source": "AIOS/agents/timnit-gebru.md",
+      "target": "timnit-gebru.md",
+      "description": "Activate timnit-gebru — AI Ethics Researcher & Fairness Advocate"
+    },
+    {
+      "source": "AIOS/agents/tobias-van-schneider.md",
+      "target": "tobias-van-schneider.md",
+      "description": "Activate tobias-van-schneider — Visual Design & Brand Identity Architect"
+    },
+    {
+      "source": "AIOS/agents/troy-hunt.md",
+      "target": "troy-hunt.md",
+      "description": "Activate troy-hunt — Chief Web Security & Data Breach Response Officer"
+    },
+    {
+      "source": "AIOS/agents/ui-designer.md",
+      "target": "ui-designer.md",
+      "description": "Activate ui-designer — UI Designer & Visual Design Specialist"
+    },
+    {
+      "source": "AIOS/agents/uncle-bob-martin.md",
+      "target": "uncle-bob-martin.md",
+      "description": "Activate uncle-bob-martin — Clean Code & Architecture Expert"
+    },
+    {
+      "source": "AIOS/agents/ux-design-expert.md",
+      "target": "ux-design-expert.md",
+      "description": "Activate ux-design-expert — UX/UI Designer & Design System Architect"
+    },
+    {
+      "source": "AIOS/agents/ux-designer.md",
+      "target": "ux-designer.md",
+      "description": "Activate ux-designer — UX Designer & Interaction Design Specialist"
+    },
+    {
+      "source": "AIOS/agents/ux-researcher.md",
+      "target": "ux-researcher.md",
+      "description": "Activate ux-researcher — UX Researcher & User Insights Specialist"
+    },
+    {
+      "source": "AIOS/agents/ux-writer.md",
+      "target": "ux-writer.md",
+      "description": "Activate ux-writer — UX Writer & Content Design Specialist"
+    },
+    {
+      "source": "AIOS/agents/val-head.md",
+      "target": "val-head.md",
+      "description": "Activate val-head — Motion Design & UI Animation Architect"
+    },
+    {
+      "source": "AIOS/agents/vitaly-friedman.md",
+      "target": "vitaly-friedman.md",
+      "description": "Activate vitaly-friedman — Web Design & Responsive Design Architect"
+    },
+    {
+      "source": "AIOS/agents/warren-buffett.md",
+      "target": "warren-buffett.md",
+      "description": "Activate warren-buffett — Chief Investment Officer (CIO)"
+    },
+    {
+      "source": "AIOS/agents/werner-vogels.md",
+      "target": "werner-vogels.md",
+      "description": "Activate werner-vogels — Cloud Architecture & Distributed Systems Strategist"
+    },
+    {
+      "source": "AIOS/agents/wes-bush.md",
+      "target": "wes-bush.md",
+      "description": "Activate wes-bush — Product-Led Growth Strategist & Activation Expert"
+    },
+    {
+      "source": "AIOS/agents/will-larson.md",
+      "target": "will-larson.md",
+      "description": "Activate will-larson — VP of Engineering Management"
+    },
+    {
+      "source": "AIOS/agents/yann-lecun.md",
+      "target": "yann-lecun.md",
+      "description": "Activate yann-lecun — Chief AI Scientist -- Self-Supervised Learning & World Models"
+    },
+    {
+      "source": "AIOS/agents/yu-kai-chou.md",
+      "target": "yu-kai-chou.md",
+      "description": "Activate yu-kai-chou — Gamification & Behavioral Design Architect"
+    },
+    {
+      "source": "AIOS/stories/story-6.1.4.md",
+      "target": "story-6.1.4.md",
+      "description": "Story reference: story-6.1.4"
+    },
+    {
+      "source": "auto-bridge.md",
+      "target": "auto-bridge.md",
+      "description": "Uso"
+    },
+    {
+      "source": "bridge-status.md",
+      "target": "bridge-status.md",
+      "description": "Uso"
+    },
+    {
+      "source": "doc-project.md",
+      "target": "doc-project.md",
+      "description": "Generate comprehensive architectural documentation for any project. Inspired by the \\\"CREATE ARCHITECT DOCUMENTATION\\\" skill from aitplm.com."
+    },
+    {
+      "source": "enrich-prd.md",
+      "target": "enrich-prd.md",
+      "description": "Uso"
+    },
+    {
+      "source": "expert-consult.md",
+      "target": "expert-consult.md",
+      "description": "Uso"
+    },
+    {
+      "source": "greet.md",
+      "target": "greet.md",
+      "description": "Generate contextual agent greeting using GreetingBuilder infrastructure."
+    },
+    {
+      "source": "mission.md",
+      "target": "mission.md",
+      "description": "Ative o Mission Control para executar missoes coordenadas"
+    },
+    {
+      "source": "start-planning.md",
+      "target": "start-planning.md",
+      "description": "Uso"
+    },
+    {
+      "source": "synapse/manager.md",
+      "target": "synapse-manager.md",
+      "description": "SYNAPSE: manager command"
+    },
+    {
+      "source": "synapse/tasks/add-rule.md",
+      "target": "synapse-add-rule.md",
+      "description": "SYNAPSE: add-rule command"
+    },
+    {
+      "source": "synapse/tasks/create-command.md",
+      "target": "synapse-create-command.md",
+      "description": "SYNAPSE: create-command command"
+    },
+    {
+      "source": "synapse/tasks/create-domain.md",
+      "target": "synapse-create-domain.md",
+      "description": "SYNAPSE: create-domain command"
+    },
+    {
+      "source": "synapse/tasks/diagnose-synapse.md",
+      "target": "synapse-diagnose-synapse.md",
+      "description": "SYNAPSE: diagnose-synapse command"
+    },
+    {
+      "source": "synapse/tasks/edit-rule.md",
+      "target": "synapse-edit-rule.md",
+      "description": "SYNAPSE: edit-rule command"
+    },
+    {
+      "source": "synapse/tasks/suggest-domain.md",
+      "target": "synapse-suggest-domain.md",
+      "description": "SYNAPSE: suggest-domain command"
+    },
+    {
+      "source": "synapse/tasks/toggle-domain.md",
+      "target": "synapse-toggle-domain.md",
+      "description": "SYNAPSE: toggle-domain command"
+    },
+    {
+      "source": "synapse/utils/manifest-parser-reference.md",
+      "target": "synapse-manifest-parser-reference.md",
+      "description": "SYNAPSE: manifest-parser-reference command"
+    },
+    {
+      "source": "sync-insights.md",
+      "target": "sync-insights.md",
+      "description": "Uso"
+    }
+  ]
+}

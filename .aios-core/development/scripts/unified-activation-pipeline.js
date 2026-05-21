@@ -73,17 +73,17 @@ try {
 const LOADER_TIERS = {
   critical: {
     loaders: ['agentConfig'],
-    timeout: 80,
+    timeout: 250,
     description: 'Agent identity — greeting is broken without this',
   },
   high: {
     loaders: ['permissionMode', 'gitConfig'],
-    timeout: 120,
+    timeout: 350,
     description: 'Permission badge + branch name — visually degraded without these',
   },
   bestEffort: {
     loaders: ['sessionContext', 'projectStatus'],
-    timeout: 180,
+    timeout: 500,
     description: 'Session awareness + project status — greeting works fine without these',
   },
 };
@@ -93,7 +93,7 @@ const LOADER_TIERS = {
  * Can be overridden via core-config.yaml pipeline.timeout_ms or AIOS_PIPELINE_TIMEOUT env var.
  * @type {number}
  */
-const DEFAULT_PIPELINE_TIMEOUT_MS = 500;
+const DEFAULT_PIPELINE_TIMEOUT_MS = 4000;
 
 /**
  * All 12 supported agent IDs.

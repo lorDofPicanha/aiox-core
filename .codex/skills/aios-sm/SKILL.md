@@ -19,6 +19,10 @@ Use for user story creation from PRD, story validation and completeness checking
 - `*draft` - Create next user story
 - `*story-checklist` - Run story draft checklist
 - `*guide` - Show comprehensive usage guide for this agent
+- `*sprint-plan` - Create sprint plan from backlog stories
+- `*capacity-check` - Validate team capacity against sprint scope
+- `*blockers` - Surface blocked stories and unresolved dependencies
+- `*retrospective` - Facilitate sprint retrospective with structured feedback
 
 ## Non-Negotiables
 - Follow `.aios-core/constitution.md`.

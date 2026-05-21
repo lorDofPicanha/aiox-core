@@ -1,0 +1,20 @@
+release: "Codex Cutover 2026-05"
+updated_at: "2026-05-20"
+source_of_truth:
+  migration_manifest: "docs/migrations/claude-to-codex/06-fase4-parallel-period.md"
+  validator: ".aios-core/infrastructure/scripts/validate-codex-cutover.js"
+
+required_checks:
+  - codex-sync
+  - codex-integration
+  - codex-skills
+  - paths
+  - codex-doctor
+  - codex-exec-smoke
+
+required_mcp_servers: 9
+
+notes:
+  - "This contract validates the Claude Code -> Codex CLI cutover path only."
+  - "The global AIOS parity contract remains authoritative for multi-IDE support."
+  - "Non-Codex IDE sync failures do not block FASE 4 operation, but must be handled separately before claiming global IDE parity."

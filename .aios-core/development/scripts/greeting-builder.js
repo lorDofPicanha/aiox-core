@@ -52,9 +52,9 @@ const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
 
-const GREETING_TIMEOUT = 150; // 150ms hard limit per-section
-const _TOTAL_GREETING_TIMEOUT = 200; // 200ms total pipeline budget (Story ACT-7, documented constant)
-const SECTION_TIMEOUT = 150; // 150ms per section builder (Story ACT-7 AC8)
+const GREETING_TIMEOUT = 2500; // Hard limit for contextual greeting generation
+const _TOTAL_GREETING_TIMEOUT = 3000; // Documented total pipeline budget
+const SECTION_TIMEOUT = 750; // Per-section builder limit
 
 // Story ACT-2: Validation now delegated to validate-user-profile.js
 const DEFAULT_USER_PROFILE = 'advanced';
@@ -339,7 +339,18 @@ class GreetingBuilder {
       agent.persona_profile?.communication?.greeting_levels ||
       agent.persona_profile?.greeting_levels;
     const greeting = greetingLevels?.named || `${agent.icon} ${agent.name} ready`;
-    return `${greeting}\n\nType \`*help\` to see available commands.`;
+
+    // 2026-05-04 (Step G): Universal *think budget annotation for all 12 core agents
+    let budgetLine = '';
+    try {
+      const { getBudgetAnnotation } = require('../../core/utils/thinking-budget');
+      const ann = getBudgetAnnotation();
+      if (ann) budgetLine = `\n${ann}`;
+    } catch {
+      // thinking-budget module optional; continue without annotation
+    }
+
+    return `${greeting}${budgetLine}\n\nType \`*help\` to see available commands.`;
   }
 
   /**
@@ -1284,8 +1295,10 @@ Use \`@pm\` (Bob) para todas as interações. Bob vai orquestrar os outros agent
       return cmd.visibility.includes(visibilityFilter);
     });
 
-    // If we have metadata-based commands, use them
-    if (commandsWithMetadata.length > 0) {
+    // If we have enough metadata-based commands, use them. Some legacy agents
+    // only annotate one command; treat that as partial metadata and fall back
+    // to the first commands so activation still surfaces useful quick actions.
+    if (commandsWithMetadata.length >= 3) {
       return commandsWithMetadata;
     }
 

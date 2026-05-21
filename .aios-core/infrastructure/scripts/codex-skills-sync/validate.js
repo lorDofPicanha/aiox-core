@@ -7,6 +7,11 @@ const path = require('path');
 const { parseAllAgents } = require('../ide-sync/agent-parser');
 const { getSkillId } = require('./index');
 
+const ALLOWED_EXTRA_SKILLS = new Set([
+  // Migration archive skill: preserves Claude-era project memory for Codex.
+  'aios-memory',
+]);
+
 function getDefaultOptions() {
   const projectRoot = process.cwd();
   return {
@@ -105,7 +110,7 @@ function validateCodexSkills(options = {}) {
       .filter(entry => entry.isDirectory() && entry.name.startsWith('aios-'))
       .map(entry => entry.name);
     for (const dir of dirs) {
-      if (!expectedIds.has(dir)) {
+      if (!expectedIds.has(dir) && !ALLOWED_EXTRA_SKILLS.has(dir)) {
         orphaned.push(dir);
         errors.push(`Orphaned skill directory: ${path.join(path.relative(resolved.projectRoot, resolved.skillsDir), dir)}`);
       }
