@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ENIAC · Noyce — Mockups (buscador de licitações)</title>
+<link rel="icon" href="logo/noyce-favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EEF0F3;
+    --surface:#FFFFFF;
+    --surface-2:#F6F8FA;
+    --ink:#111721;
+    --ink-2:#2A3340;
+    --muted:#69737F;
+    --muted-2:#9AA3AD;
+    --line:#E3E7EC;
+    --line-2:#EDEFF3;
+    --amber:#E8932E;        /* glow / sinal — herança da válvula ENIAC */
+    --amber-soft:#FBEFD9;
+    --emerald:#15936B;
+    --emerald-soft:#E2F3EC;
+    --danger:#DB4A45;
+    --danger-soft:#FBE6E5;
+    --blue:#2E5BD8;
+    --blue-soft:#E6ECFB;
+    --radius:14px;
+    --radius-sm:9px;
+    --shadow:0 1px 2px rgba(17,23,33,.04), 0 8px 24px rgba(17,23,33,.06);
+    --shadow-sm:0 1px 2px rgba(17,23,33,.05), 0 2px 8px rgba(17,23,33,.04);
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+    --sans:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.45;-webkit-font-smoothing:antialiased}
+  .page{max-width:1280px;margin:0 auto;padding:48px 28px 96px}
+
+  /* ---------- Section scaffolding ---------- */
+  .section-label{display:flex;align-items:baseline;gap:12px;margin:64px 0 18px;flex-wrap:wrap}
+  .section-label .num{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--amber);letter-spacing:.08em}
+  .section-label h2{font-size:19px;font-weight:700;letter-spacing:-.01em}
+  .section-label p{font-size:13.5px;color:var(--muted);font-weight:500}
+  .frame{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
+
+  /* ---------- Brand cover ---------- */
+  .cover{background:linear-gradient(135deg,#0E1420 0%,#161E2C 60%,#1B2638 100%);border-radius:20px;padding:52px 48px;color:#fff;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+  .cover::after{content:"";position:absolute;right:-80px;top:-80px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(232,147,46,.35),transparent 65%);filter:blur(8px)}
+  .brandline{display:flex;align-items:center;gap:14px;margin-bottom:26px}
+  .eniac-mark{font-family:var(--mono);font-weight:700;font-size:22px;letter-spacing:.32em;color:#fff;display:inline-flex;align-items:center}
+  .valve{width:9px;height:9px;border-radius:50%;background:var(--amber);box-shadow:0 0 10px 2px rgba(232,147,46,.85);margin-left:8px;display:inline-block}
+  .slash{color:#3A4658;font-weight:300;font-size:22px;margin:0 4px}
+  .noyce-mark{font-size:26px;font-weight:800;letter-spacing:-.02em;color:#fff}
+  .noyce-mark .chip{font-family:var(--mono);font-size:11px;font-weight:600;color:#0E1420;background:var(--amber);padding:2px 7px;border-radius:5px;vertical-align:middle;margin-left:10px;letter-spacing:.05em}
+  .cover h1{font-size:34px;font-weight:800;letter-spacing:-.025em;max-width:680px;line-height:1.12;margin-bottom:14px}
+  .cover h1 b{color:var(--amber)}
+  .cover .sub{font-size:15px;color:#AEB8C6;max-width:560px;font-weight:500}
+  .cover .meta{display:flex;gap:28px;margin-top:30px;flex-wrap:wrap}
+  .cover .meta div{font-size:12.5px;color:#8E99A8}
+  .cover .meta b{display:block;font-family:var(--mono);font-size:15px;color:#fff;font-weight:600;margin-top:3px}
+
+  /* ---------- Desktop app shell ---------- */
+  .appbar{display:flex;align-items:center;gap:18px;padding:13px 20px;border-bottom:1px solid var(--line);background:var(--surface)}
+  .appbar .eniac-mark{font-size:14px;color:var(--ink);letter-spacing:.26em}
+  .appbar .valve{width:7px;height:7px;box-shadow:0 0 8px 1px rgba(232,147,46,.8);margin-left:6px}
+  .appbar .slash{color:var(--line);font-size:16px}
+  .appbar .prod{font-weight:800;font-size:15px;letter-spacing:-.01em}
+  .searchbar{flex:1;max-width:440px;display:flex;align-items:center;gap:9px;background:var(--surface-2);border:1px solid var(--line);border-radius:9px;padding:8px 12px;color:var(--muted);font-size:13px}
+  .searchbar svg{flex:none}
+  .spacer{flex:1}
+  .iconbtn{width:34px;height:34px;border-radius:8px;display:grid;place-items:center;color:var(--ink-2);position:relative;border:1px solid transparent}
+  .iconbtn:hover{background:var(--surface-2)}
+  .dot-badge{position:absolute;top:5px;right:6px;width:7px;height:7px;background:var(--danger);border-radius:50%;border:2px solid var(--surface)}
+  .avatars{display:flex}
+  .avatars .av{width:30px;height:30px;border-radius:50%;border:2px solid var(--surface);margin-left:-8px;display:grid;place-items:center;font-size:11px;font-weight:700;color:#fff;font-family:var(--mono)}
+  .av.a1{background:#E8932E}.av.a2{background:#2E5BD8}.av.a3{background:#15936B}.av.a4{background:#7A4FD8}
+
+  .app-body{display:grid;grid-template-columns:212px 1fr 296px}
+  /* sidebar */
+  .sidebar{border-right:1px solid var(--line);padding:18px 14px;background:var(--surface)}
+  .nav-group{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--muted-2);text-transform:uppercase;margin:18px 8px 8px;font-weight:600}
+  .nav-group:first-child{margin-top:0}
+  .nav-item{display:flex;align-items:center;gap:11px;padding:9px 11px;border-radius:9px;font-size:13.5px;font-weight:500;color:var(--ink-2);margin-bottom:2px;position:relative}
+  .nav-item svg{flex:none;color:var(--muted)}
+  .nav-item.active{background:var(--amber-soft);color:#9A5B14;font-weight:600}
+  .nav-item.active svg{color:var(--amber)}
+  .nav-item .count{margin-left:auto;font-family:var(--mono);font-size:11px;font-weight:600;color:var(--muted);background:var(--surface-2);padding:1px 7px;border-radius:20px}
+  .nav-item.active .count{background:#fff;color:#9A5B14}
+  .stage-tag{font-family:var(--mono);font-size:9px;color:var(--muted-2);margin-left:auto}
+
+  /* main column */
+  .main{padding:22px;background:var(--surface-2);min-height:760px}
+  .main-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:12px}
+  .main-head h3{font-size:20px;font-weight:700;letter-spacing:-.015em}
+  .main-head .crumb{font-size:12.5px;color:var(--muted);margin-bottom:3px;font-weight:500}
+  .seg{display:flex;background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:3px;font-size:12.5px;font-weight:600}
+  .seg span{padding:6px 13px;border-radius:7px;color:var(--muted);cursor:default}
+  .seg span.on{background:var(--ink);color:#fff}
+
+  /* KPI row */
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
+  .kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:15px 16px;box-shadow:var(--shadow-sm)}
+  .kpi .k-label{font-size:12px;color:var(--muted);font-weight:600;display:flex;align-items:center;gap:6px}
+  .kpi .k-val{font-family:var(--mono);font-size:27px;font-weight:700;letter-spacing:-.02em;margin-top:8px;color:var(--ink)}
+  .kpi .k-delta{font-size:11.5px;font-weight:600;margin-top:5px;display:inline-flex;align-items:center;gap:4px}
+  .k-delta.up{color:var(--emerald)} .k-delta.down{color:var(--danger)} .k-delta.flat{color:var(--muted)}
+  .kpi.alert{border-color:#F4D6A6;background:linear-gradient(180deg,#fff,var(--amber-soft))}
+  .kpi.crit .k-val{color:var(--danger)}
+
+  /* filters bar */
+  .filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+  .chip{display:inline-flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:7px 11px;font-size:12.5px;font-weight:600;color:var(--ink-2)}
+  .chip svg{color:var(--muted)}
+  .chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .chip .x{color:var(--muted-2);font-weight:400}
+  .chip.radius{background:var(--blue-soft);border-color:#C6D4F6;color:#244BB0}
+  .filter-meta{margin-left:auto;font-size:12px;color:var(--muted);font-weight:500}
+
+  /* edital cards */
+  .feed{display:flex;flex-direction:column;gap:11px}
+  .ecard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:15px 16px;display:grid;grid-template-columns:54px 1fr auto;gap:15px;box-shadow:var(--shadow-sm);position:relative}
+  .ecard.hot{border-color:#F2C98C}
+  .ecard.hot::before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:3px;border-radius:3px;background:var(--amber);box-shadow:0 0 8px 1px rgba(232,147,46,.6)}
+  .match{width:54px;text-align:center}
+  .match .ring{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:14px;margin:0 auto}
+  .match .lbl{font-size:9.5px;color:var(--muted-2);font-family:var(--mono);margin-top:4px;letter-spacing:.04em}
+  .r-hi{background:conic-gradient(var(--emerald) 0 88%,var(--emerald-soft) 0);color:var(--emerald)}
+  .r-hi .ring-in,.r-md .ring-in,.r-lo .ring-in{width:38px;height:38px;border-radius:50%;background:#fff;display:grid;place-items:center}
+  .r-md{background:conic-gradient(var(--amber) 0 78%,var(--amber-soft) 0);color:#B86E1B}
+  .r-lo{background:conic-gradient(var(--blue) 0 70%,var(--blue-soft) 0);color:var(--blue)}
+  .einfo .org{font-size:12px;color:var(--muted);font-weight:600;display:flex;align-items:center;gap:7px;margin-bottom:4px}
+  .einfo .org .loc{color:var(--blue);font-family:var(--mono);font-size:11px}
+  .einfo .obj{font-size:14.5px;font-weight:600;color:var(--ink);letter-spacing:-.01em;margin-bottom:9px;line-height:1.3}
+  .etags{display:flex;gap:7px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:600;padding:3px 8px;border-radius:6px;background:var(--surface-2);color:var(--ink-2);border:1px solid var(--line-2);display:inline-flex;align-items:center;gap:5px}
+  .tag.val{color:var(--ink);font-family:var(--mono)}
+  .tag.src{font-family:var(--mono);font-size:10px;letter-spacing:.03em;color:var(--muted)}
+  .tag.mod{background:var(--blue-soft);color:#244BB0;border-color:#D5E0F8}
+  .eright{text-align:right;display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;gap:10px;min-width:120px}
+  .deadline{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--ink-2)}
+  .deadline.crit{color:var(--danger)}
+  .deadline .small{display:block;font-size:9.5px;color:var(--muted-2);font-weight:500;letter-spacing:.03em}
+  .btn{font-size:12.5px;font-weight:600;padding:8px 14px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);white-space:nowrap}
+  .btn.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .btn.amber{background:var(--amber);color:#1A1206;border-color:var(--amber)}
+
+  /* right rail — movimentação (Stage 5) */
+  .rail{border-left:1px solid var(--line);padding:18px 16px;background:var(--surface)}
+  .rail-title{font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;margin-bottom:4px}
+  .live-dot{width:8px;height:8px;border-radius:50%;background:var(--danger);box-shadow:0 0 0 0 rgba(219,74,69,.5);animation:pulse 1.8s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(219,74,69,.5)}70%{box-shadow:0 0 0 7px rgba(219,74,69,0)}100%{box-shadow:0 0 0 0 rgba(219,74,69,0)}}
+  .rail-sub{font-size:11.5px;color:var(--muted);margin-bottom:16px;font-weight:500}
+  .mv{border:1px solid var(--line);border-radius:var(--radius-sm);padding:12px;margin-bottom:10px;background:var(--surface)}
+  .mv.red{border-left:3px solid var(--danger);background:linear-gradient(90deg,var(--danger-soft),#fff 22%)}
+  .mv.yellow{border-left:3px solid var(--amber)}
+  .mv.green{border-left:3px solid var(--emerald)}
+  .mv .mv-h{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--muted);font-family:var(--mono);margin-bottom:6px}
+  .mv .mv-pregao{font-weight:600;color:var(--ink-2)}
+  .mv .mv-time{font-size:10px}
+  .mv .mv-body{font-size:12.5px;font-weight:600;color:var(--ink);line-height:1.35}
+  .mv .mv-body .em{color:var(--danger)}
+  .mv .mv-foot{font-size:11px;color:var(--muted);margin-top:6px;font-family:var(--mono)}
+  .mv .mv-cta{margin-top:9px}
+  .mv .mv-cta a{font-size:11.5px;font-weight:700;color:var(--blue)}
+
+  /* ---------- Detail / análise ---------- */
+  .detail-head{padding:20px 22px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;align-items:flex-start;background:var(--surface)}
+  .detail-head .org{font-size:12.5px;color:var(--muted);font-weight:600;display:flex;align-items:center;gap:8px;margin-bottom:6px}
+  .detail-head h3{font-size:21px;font-weight:700;letter-spacing:-.02em;max-width:560px;line-height:1.2}
+  .detail-head .row{display:flex;gap:9px;margin-top:12px;flex-wrap:wrap}
+  .dmatch{text-align:center;flex:none}
+  .dmatch .ring{width:74px;height:74px;border-radius:50%;display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:19px;background:conic-gradient(var(--emerald) 0 92%,var(--emerald-soft) 0);color:var(--emerald)}
+  .dmatch .ring .ring-in{width:58px;height:58px;border-radius:50%;background:#fff;display:grid;place-items:center}
+  .dmatch .lbl{font-family:var(--mono);font-size:10px;color:var(--muted-2);margin-top:6px;letter-spacing:.05em}
+  .detail-grid{display:grid;grid-template-columns:1fr 360px;gap:0}
+  .detail-main{padding:22px;border-right:1px solid var(--line)}
+  .detail-side{padding:22px;background:var(--surface-2)}
+  .analise-card{background:linear-gradient(180deg,#fff,#FFFCF6);border:1px solid #F2DEBC;border-radius:var(--radius);padding:18px;margin-bottom:18px;position:relative}
+  .analise-card .badge{position:absolute;top:-10px;left:16px;font-family:var(--mono);font-size:10px;font-weight:700;color:#1A1206;background:var(--amber);padding:3px 9px;border-radius:6px;letter-spacing:.06em;box-shadow:0 0 10px rgba(232,147,46,.4)}
+  .analise-card h4{font-size:14px;font-weight:700;margin:6px 0 10px}
+  .insight{display:flex;gap:10px;font-size:13px;color:var(--ink-2);margin-bottom:10px;line-height:1.42}
+  .insight .ic{flex:none;width:20px;height:20px;border-radius:6px;background:var(--amber-soft);color:#B86E1B;display:grid;place-items:center;font-family:var(--mono);font-size:11px;font-weight:700;margin-top:1px}
+  .insight b{color:var(--ink)}
+  .block-title{font-size:13px;font-weight:700;margin:20px 0 11px;display:flex;align-items:center;gap:8px}
+  .block-title .st{font-family:var(--mono);font-size:9.5px;color:var(--muted-2);font-weight:600;background:var(--surface-2);padding:2px 7px;border-radius:5px;border:1px solid var(--line)}
+  .hist{display:flex;gap:18px;align-items:flex-end;height:88px;padding:14px;border:1px solid var(--line);border-radius:var(--radius);background:#fff}
+  .hist .bar{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end}
+  .hist .bar .b{width:100%;max-width:30px;border-radius:5px 5px 0 0;background:var(--line)}
+  .hist .bar.win .b{background:var(--emerald)}
+  .hist .bar.part .b{background:var(--amber)}
+  .hist .bar .m{font-family:var(--mono);font-size:9.5px;color:var(--muted-2)}
+  .hist-legend{display:flex;gap:16px;font-size:11px;color:var(--muted);margin-top:9px;font-weight:500}
+  .hist-legend i{width:9px;height:9px;border-radius:3px;display:inline-block;margin-right:5px;vertical-align:middle}
+
+  /* dossiê checklist */
+  .dossie-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+  .progress{height:7px;background:var(--line);border-radius:10px;overflow:hidden;margin:4px 0 16px}
+  .progress .fill{height:100%;width:90%;background:linear-gradient(90deg,var(--emerald),#3FB58A);border-radius:10px}
+  .check{display:flex;align-items:center;gap:11px;padding:11px 0;border-bottom:1px solid var(--line-2);font-size:13px}
+  .check:last-child{border-bottom:none}
+  .check .ck{width:20px;height:20px;border-radius:6px;display:grid;place-items:center;flex:none;font-size:12px;font-weight:700}
+  .ck.ok{background:var(--emerald-soft);color:var(--emerald)}
+  .ck.warn{background:var(--amber-soft);color:#B86E1B}
+  .ck.miss{background:var(--danger-soft);color:var(--danger)}
+  .check .c-label{font-weight:600;color:var(--ink)}
+  .check .c-note{font-size:11.5px;color:var(--muted);margin-top:1px}
+  .check .c-right{margin-left:auto;font-family:var(--mono);font-size:11px;font-weight:600}
+  .c-right.warn{color:#B86E1B}
+
+  /* ---------- Mobile ---------- */
+  .phones{display:flex;gap:30px;flex-wrap:wrap;justify-content:center;padding:34px;background:linear-gradient(135deg,#11192A,#1A2438);border-radius:18px}
+  .phone{width:300px;background:#000;border-radius:38px;padding:9px;box-shadow:0 30px 60px rgba(0,0,0,.4),0 0 0 2px #2A3445;flex:none}
+  .phone .screen{background:var(--surface-2);border-radius:30px;overflow:hidden;height:620px;position:relative;display:flex;flex-direction:column}
+  .notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:26px;background:#000;border-radius:0 0 16px 16px;z-index:30}
+  .statusbar{display:flex;justify-content:space-between;align-items:center;padding:11px 20px 5px;font-size:11px;font-weight:700;font-family:var(--mono);color:var(--ink);z-index:20}
+  .phone-cap{text-align:center;color:#AEB8C6;font-size:12px;font-weight:600;margin-top:14px;font-family:var(--mono);letter-spacing:.03em}
+
+  .m-appbar{display:flex;align-items:center;gap:9px;padding:6px 16px 12px;border-bottom:1px solid var(--line);background:var(--surface)}
+  .m-appbar .eniac-mark{font-size:10px;letter-spacing:.18em;color:var(--ink)}
+  .m-appbar .valve{width:5px;height:5px;margin-left:4px}
+  .m-appbar .prod{font-weight:800;font-size:13px}
+  .m-appbar .iconbtn{width:30px;height:30px;margin-left:auto}
+  .m-body{flex:1;overflow:hidden;padding:14px}
+  .m-kpis{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px}
+  .m-kpi{background:var(--surface);border:1px solid var(--line);border-radius:11px;padding:11px 12px}
+  .m-kpi.alert{background:linear-gradient(180deg,#fff,var(--amber-soft));border-color:#F4D6A6}
+  .m-kpi .l{font-size:10.5px;color:var(--muted);font-weight:600}
+  .m-kpi .v{font-family:var(--mono);font-size:21px;font-weight:700;margin-top:3px}
+  .m-kpi.crit .v{color:var(--danger)}
+  .m-sec{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-family:var(--mono);margin:4px 0 9px}
+  .m-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:9px;position:relative}
+  .m-card.hot{border-color:#F2C98C}
+  .m-card .m-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+  .m-mini-match{font-family:var(--mono);font-size:11px;font-weight:700;padding:2px 7px;border-radius:6px}
+  .mm-hi{background:var(--emerald-soft);color:var(--emerald)} .mm-md{background:var(--amber-soft);color:#B86E1B}
+  .m-card .m-org{font-size:10.5px;color:var(--muted);font-weight:600;font-family:var(--mono)}
+  .m-card .m-obj{font-size:13px;font-weight:600;line-height:1.3;margin-bottom:8px}
+  .m-card .m-foot{display:flex;justify-content:space-between;align-items:center;font-size:11px}
+  .m-card .m-val{font-family:var(--mono);font-weight:600}
+  .m-card .m-dl{font-family:var(--mono);font-weight:600;color:var(--danger)}
+  .m-tabbar{display:flex;border-top:1px solid var(--line);background:var(--surface);padding:8px 0 6px}
+  .m-tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:9.5px;color:var(--muted-2);font-weight:600}
+  .m-tab.on{color:var(--amber)}
+  .m-tab svg{width:20px;height:20px}
+
+  /* lockscreen / push */
+  .lock{background:linear-gradient(165deg,#0E1726,#1C2A40 70%,#243650);height:100%;display:flex;flex-direction:column;align-items:center;padding-top:60px;color:#fff}
+  .lock .time{font-size:58px;font-weight:300;letter-spacing:-.02em}
+  .lock .date{font-size:13px;color:#AEB8C6;margin-bottom:34px;font-weight:500}
+  .push{width:88%;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-radius:18px;padding:13px 14px;margin-bottom:11px;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+  .push .p-head{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+  .push .p-ic{width:22px;height:22px;border-radius:6px;background:var(--ink);display:grid;place-items:center}
+  .push .p-ic .valve{width:6px;height:6px;margin:0}
+  .push .p-app{font-size:11px;font-weight:700;font-family:var(--mono);letter-spacing:.06em;color:var(--ink)}
+  .push .p-time{margin-left:auto;font-size:10.5px;color:var(--muted)}
+  .push .p-title{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px}
+  .push .p-body{font-size:12px;color:var(--ink-2);line-height:1.4}
+  .push .p-body b{color:var(--emerald)}
+  .push.wa{background:#fff}
+  .push.wa .p-ic{background:#25D366}
+  .push .p-msg{font-size:12px;color:var(--ink-2);line-height:1.45;margin-top:3px}
+
+  /* acompanhamento live */
+  .live-head{background:linear-gradient(135deg,#1A2438,#243650);color:#fff;padding:16px;border-radius:0}
+  .live-head .lh-top{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;color:#C7D0DC;margin-bottom:8px}
+  .live-head h4{font-size:15px;font-weight:700;line-height:1.25}
+  .live-head .lh-sub{font-size:11.5px;color:#AEB8C6;margin-top:4px;font-family:var(--mono)}
+  .rank{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px;margin:13px 0}
+  .rank-row{display:flex;align-items:center;gap:11px;padding:9px 0;border-bottom:1px solid var(--line-2);font-size:13px}
+  .rank-row:last-child{border-bottom:none}
+  .rank-row .pos{width:22px;height:22px;border-radius:6px;font-family:var(--mono);font-weight:700;font-size:12px;display:grid;place-items:center;background:var(--surface-2);color:var(--muted)}
+  .rank-row.you{font-weight:700}
+  .rank-row.you .pos{background:var(--amber);color:#1A1206}
+  .rank-row.lead .pos{background:var(--emerald);color:#fff}
+  .rank-row .nm{font-weight:600}
+  .rank-row.you .nm{color:var(--amber);}
+  .rank-row .bid{margin-left:auto;font-family:var(--mono);font-weight:700}
+  .live-feed{font-size:12px;color:var(--muted);font-family:var(--mono);padding:0 2px}
+  .live-feed .lf{padding:7px 0;border-bottom:1px dashed var(--line);display:flex;gap:8px}
+  .live-feed .lf .t{color:var(--muted-2);flex:none}
+  .live-feed .lf.new{color:var(--danger);font-weight:600}
+
+  /* tokens footer */
+  .tokens{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;padding:26px}
+  .swatches{display:flex;gap:10px;flex-wrap:wrap}
+  .sw{text-align:center}
+  .sw .c{width:54px;height:54px;border-radius:11px;border:1px solid var(--line);box-shadow:var(--shadow-sm)}
+  .sw .n{font-family:var(--mono);font-size:9.5px;color:var(--muted);margin-top:6px}
+  .type-row{margin-bottom:14px}
+  .type-row .lab{font-family:var(--mono);font-size:10px;color:var(--muted-2);letter-spacing:.05em}
+  .footer-note{text-align:center;color:var(--muted);font-size:12px;margin-top:54px;font-family:var(--mono);line-height:1.7}
+
+  @media(max-width:1100px){
+    .app-body{grid-template-columns:1fr}
+    .sidebar,.rail{display:none}
+    .detail-grid{grid-template-columns:1fr}
+    .detail-main{border-right:none;border-bottom:1px solid var(--line)}
+    .kpis{grid-template-columns:1fr 1fr}
+  }
+  @media print{
+    @page{ size:1320px 1860px; margin:0 }
+    body{background:#fff}
+    .page{padding:30px 24px 40px}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ===== Marca: Chip-Radar (conceito A) ===== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <g id="markA">
+        <rect x="15" y="15" width="34" height="34" rx="8" fill="none" stroke="currentColor" stroke-width="3"/>
+        <line x1="7"  y1="24" x2="15" y2="24" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        <line x1="7"  y1="32" x2="15" y2="32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        <line x1="7"  y1="40" x2="15" y2="40" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        <line x1="49" y1="24" x2="57" y2="24" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        <line x1="49" y1="32" x2="57" y2="32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        <line x1="49" y1="40" x2="57" y2="40" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        <path d="M32 32 a8 8 0 0 1 8 -8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity="0.55"/>
+        <path d="M32 32 a14 14 0 0 1 14 -14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity="0.28"/>
+        <line x1="32" y1="32" x2="44" y2="20" stroke="#E8932E" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="32" cy="32" r="3.4" fill="#E8932E"/>
+      </g>
+    </defs>
+  </svg>
+
+  <!-- ============ COVER ============ -->
+  <div class="cover">
+    <div class="brandline">
+      <svg viewBox="0 0 64 64" style="color:#fff;width:46px;height:46px;flex:none"><use href="#markA"/></svg>
+      <span class="eniac-mark">ENIAC</span>
+      <span class="slash">/</span>
+      <span class="noyce-mark">Noyce<span class="chip">BUSCADOR</span></span>
+    </div>
+    <h1>O chip que <b>nunca para</b> de procurar a sua licitação.</h1>
+    <p class="sub">Noyce é a peça da ENIAC que monitora PNCP, bolsas e portais 24/7, lê o edital, calcula o match e te avisa no segundo em que a oportunidade — ou a movimentação — aparece.</p>
+    <div class="meta">
+      <div>Empresa<b>ENIAC</b></div>
+      <div>Produto<b>Noyce · buscador</b></div>
+      <div>Sede / raio<b>Águas Lindas-GO · 500 km</b></div>
+      <div>Fontes<b>PNCP · PCP · BLL · BNC · SISLOG</b></div>
+      <div>Equipe<b>4 usuários · RBAC</b></div>
+    </div>
+  </div>
+
+  <!-- ============ 01 DASHBOARD ============ -->
+  <div class="section-label">
+    <span class="num">01 · DESKTOP</span>
+    <h2>Painel Noyce</h2>
+    <p>Feed de oportunidades + acompanhamento em tempo real (Stages 1, 2 e 5)</p>
+  </div>
+
+  <div class="frame">
+    <!-- appbar -->
+    <div class="appbar">
+      <svg viewBox="0 0 64 64" style="color:#111721;width:30px;height:30px;flex:none"><use href="#markA"/></svg>
+      <span class="eniac-mark">ENIAC</span>
+      <span class="slash">/</span>
+      <span class="prod">Noyce</span>
+      <div class="searchbar">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        Buscar por órgão, objeto, CNAE, nº do pregão…
+      </div>
+      <div class="spacer"></div>
+      <div class="iconbtn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><span class="dot-badge"></span></div>
+      <div class="avatars">
+        <div class="av a1">BR</div><div class="av a2">CR</div><div class="av a3">RU</div><div class="av a4">+1</div>
+      </div>
+    </div>
+
+    <div class="app-body">
+      <!-- sidebar -->
+      <div class="sidebar">
+        <div class="nav-group">Fluxo</div>
+        <div class="nav-item active"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg>Oportunidades<span class="count">23</span></div>
+        <div class="nav-item"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Acompanhando<span class="count">7</span></div>
+        <div class="nav-item"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>Habilitação<span class="count">4</span></div>
+        <div class="nav-item"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h12"/></svg>Recursos<span class="count">2</span></div>
+        <div class="nav-group">Inteligência</div>
+        <div class="nav-item"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2Z"/><path d="M9 21h6"/></svg>Análise de órgão</div>
+        <div class="nav-item"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5 8 12 8 12s8-7 8-12a8 8 0 0 0-8-8Z"/></svg>Raio &amp; cobertura</div>
+        <div class="nav-group">Conta</div>
+        <div class="nav-item"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Equipe (4)</div>
+        <div class="nav-item"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1l2-1.6-2-3.4-2.4 1a7 7 0 0 0-1.7-1l-.4-2.5h-4l-.4 2.5a7 7 0 0 0-1.7 1l-2.4-1-2 3.4 2 1.6a7 7 0 0 0 0 2l-2 1.6 2 3.4 2.4-1a7 7 0 0 0 1.7 1l.4 2.5h4l.4-2.5a7 7 0 0 0 1.7-1l2.4 1 2-3.4-2-1.6c.1-.3.1-.7.1-1Z"/></svg>Configurações</div>
+      </div>
+
+      <!-- main -->
+      <div class="main">
+        <div class="main-head">
+          <div>
+            <div class="crumb">Fluxo · Stage 1 — Monitorar</div>
+            <h3>Oportunidades de hoje</h3>
+          </div>
+          <div class="seg"><span class="on">Match</span><span>Prazo</span><span>Valor</span><span>Mais novas</span></div>
+        </div>
+
+        <!-- KPIs -->
+        <div class="kpis">
+          <div class="kpi">
+            <div class="k-label">Novas hoje</div>
+            <div class="k-val">23</div>
+            <div class="k-delta up">▲ 8 vs ontem</div>
+          </div>
+          <div class="kpi">
+            <div class="k-label">Em acompanhamento</div>
+            <div class="k-val">7</div>
+            <div class="k-delta flat">2 em sessão agora</div>
+          </div>
+          <div class="kpi crit">
+            <div class="k-label">Prazo crítico &lt;48h</div>
+            <div class="k-val">3</div>
+            <div class="k-delta down">▲ 1 desde ontem</div>
+          </div>
+          <div class="kpi alert">
+            <div class="k-label">Match médio</div>
+            <div class="k-val">84%</div>
+            <div class="k-delta up">acima do seu corte (70%)</div>
+          </div>
+        </div>
+
+        <!-- filters -->
+        <div class="filters">
+          <div class="chip radius"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5 8 12 8 12s8-7 8-12a8 8 0 0 0-8-8Z"/></svg>Raio 500 km · Águas Lindas</div>
+          <div class="chip on">CNAE 47.51 + 47.89 <span class="x">×</span></div>
+          <div class="chip">Pregão Eletrônico <span class="x">×</span></div>
+          <div class="chip">R$ 50k – 3M <span class="x">×</span></div>
+          <div class="chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4h18l-7 8v6l-4 2v-8z"/></svg>+ Filtro</div>
+          <span class="filter-meta">23 oportunidades · DF, GO, MG, TO</span>
+        </div>
+
+        <!-- feed -->
+        <div class="feed">
+          <!-- card 1 -->
+          <div class="ecard hot">
+            <div class="match">
+              <div class="ring r-hi"><div class="ring-in">92</div></div>
+              <div class="lbl">MATCH</div>
+            </div>
+            <div class="einfo">
+              <div class="org">Prefeitura de Águas Lindas de Goiás <span class="loc">· GO · 0 km</span></div>
+              <div class="obj">Aquisição de material de escritório e suprimentos de informática</div>
+              <div class="etags">
+                <span class="tag mod">Pregão Eletrônico</span>
+                <span class="tag val">R$ 248.000</span>
+                <span class="tag src">PNCP</span>
+                <span class="tag">Pregão 90021/2026</span>
+                <span class="tag">ME/EPP exclusivo</span>
+              </div>
+            </div>
+            <div class="eright">
+              <div class="deadline crit">encerra em 1d 6h<span class="small">21/05 · 09h00</span></div>
+              <button class="btn amber">Analisar</button>
+            </div>
+          </div>
+
+          <!-- card 2 -->
+          <div class="ecard">
+            <div class="match">
+              <div class="ring r-hi"><div class="ring-in">88</div></div>
+              <div class="lbl">MATCH</div>
+            </div>
+            <div class="einfo">
+              <div class="org">Secretaria de Saúde do DF (SES-DF) <span class="loc">· DF · 52 km</span></div>
+              <div class="obj">Contratação de serviço continuado de manutenção predial</div>
+              <div class="etags">
+                <span class="tag mod">Pregão Eletrônico</span>
+                <span class="tag val">R$ 1.200.000</span>
+                <span class="tag src">PCP</span>
+                <span class="tag">Pregão 12/2026</span>
+              </div>
+            </div>
+            <div class="eright">
+              <div class="deadline">encerra em 3d<span class="small">23/05 · 14h00</span></div>
+              <button class="btn primary">Analisar</button>
+            </div>
+          </div>
+
+          <!-- card 3 -->
+          <div class="ecard">
+            <div class="match">
+              <div class="ring r-md"><div class="ring-in">81</div></div>
+              <div class="lbl">MATCH</div>
+            </div>
+            <div class="einfo">
+              <div class="org">Prefeitura de Anápolis <span class="loc">· GO · 118 km</span></div>
+              <div class="obj">Registro de preços para mobiliário escolar e administrativo</div>
+              <div class="etags">
+                <span class="tag mod">ARP</span>
+                <span class="tag val">R$ 640.000</span>
+                <span class="tag src">BLL</span>
+                <span class="tag">SRP 045/2026</span>
+              </div>
+            </div>
+            <div class="eright">
+              <div class="deadline">encerra em 5d<span class="small">25/05 · 10h00</span></div>
+              <button class="btn">Analisar</button>
+            </div>
+          </div>
+
+          <!-- card 4 -->
+          <div class="ecard">
+            <div class="match">
+              <div class="ring r-md"><div class="ring-in">76</div></div>
+              <div class="lbl">MATCH</div>
+            </div>
+            <div class="einfo">
+              <div class="org">Tribunal de Contas do DF (TCDF) <span class="loc">· DF · 54 km</span></div>
+              <div class="obj">Aquisição de licenças de software e suporte técnico</div>
+              <div class="etags">
+                <span class="tag mod">Pregão Eletrônico</span>
+                <span class="tag val">R$ 320.000</span>
+                <span class="tag src">PNCP</span>
+                <span class="tag">Pregão 08/2026</span>
+              </div>
+            </div>
+            <div class="eright">
+              <div class="deadline">encerra em 6d<span class="small">26/05 · 15h00</span></div>
+              <button class="btn">Analisar</button>
+            </div>
+          </div>
+
+          <!-- card 5 -->
+          <div class="ecard">
+            <div class="match">
+              <div class="ring r-lo"><div class="ring-in">73</div></div>
+              <div class="lbl">MATCH</div>
+            </div>
+            <div class="einfo">
+              <div class="org">Univ. Federal de Uberlândia (UFU) <span class="loc">· MG · 402 km</span></div>
+              <div class="obj">Equipamentos de laboratório e insumos</div>
+              <div class="etags">
+                <span class="tag mod">Pregão Eletrônico</span>
+                <span class="tag val">R$ 880.000</span>
+                <span class="tag src">BNC</span>
+                <span class="tag">no limite do raio</span>
+              </div>
+            </div>
+            <div class="eright">
+              <div class="deadline">encerra em 8d<span class="small">28/05 · 09h00</span></div>
+              <button class="btn">Analisar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- right rail: movimentação -->
+      <div class="rail">
+        <div class="rail-title"><span class="live-dot"></span>Acompanhando agora</div>
+        <div class="rail-sub">Stage 5 — a dor #1: nunca mais perder uma movimentação.</div>
+
+        <div class="mv red">
+          <div class="mv-h"><span class="mv-pregao">Pregão 90021/2026</span><span class="mv-time">agora</span></div>
+          <div class="mv-body">Sessão de lances <span class="em">ABERTA</span> — você está em <b>2º lugar</b>.</div>
+          <div class="mv-foot">melhor lance R$ 241.300 · seu R$ 243.000</div>
+          <div class="mv-cta"><a>Entrar na sessão →</a></div>
+        </div>
+
+        <div class="mv yellow">
+          <div class="mv-h"><span class="mv-pregao">Pregão 12/2026 · SES-DF</span><span class="mv-time">há 12min</span></div>
+          <div class="mv-body">Impugnação publicada ao edital.</div>
+          <div class="mv-foot">prazo de resposta corre · revisar impacto</div>
+          <div class="mv-cta"><a>Ver documento →</a></div>
+        </div>
+
+        <div class="mv green">
+          <div class="mv-h"><span class="mv-pregao">SRP 045/2026 · Anápolis</span><span class="mv-time">há 1h</span></div>
+          <div class="mv-body">Resultado declarado — 1º: <b>Concorrente Alfa</b>.</div>
+          <div class="mv-foot">Noyce sugere: avaliar recurso (Stage 6)</div>
+          <div class="mv-cta"><a>Analisar habilitação do 1º →</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 02 DETALHE / ANÁLISE ============ -->
+  <div class="section-label">
+    <span class="num">02 · DESKTOP</span>
+    <h2>Edital + Análise Noyce</h2>
+    <p>Histórico do órgão (Stage 2 · MOAT), diferencial prescritivo e dossiê de habilitação (Stage 4)</p>
+  </div>
+
+  <div class="frame">
+    <div class="detail-head">
+      <div>
+        <div class="org">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
+          Prefeitura de Águas Lindas de Goiás · GO · 0 km · <span style="font-family:var(--mono)">PNCP · Pregão 90021/2026</span>
+        </div>
+        <h3>Aquisição de material de escritório e suprimentos de informática</h3>
+        <div class="row">
+          <span class="tag mod">Pregão Eletrônico</span>
+          <span class="tag val">R$ 248.000</span>
+          <span class="tag">ME/EPP exclusivo</span>
+          <span class="tag" style="color:var(--danger);border-color:#F3C9C8;background:var(--danger-soft)">encerra em 1d 6h</span>
+        </div>
+      </div>
+      <div class="dmatch">
+        <div class="ring"><div class="ring-in">92</div></div>
+        <div class="lbl">MATCH NOYCE</div>
+      </div>
+    </div>
+
+    <div class="detail-grid">
+      <!-- main -->
+      <div class="detail-main">
+        <div class="analise-card">
+          <span class="badge">⚡ ANÁLISE NOYCE</span>
+          <h4>Diferencial — 5 leituras acionáveis pra este edital</h4>
+          <div class="insight"><span class="ic">1</span><div>Este órgão abriu <b>14 pregões nos últimos 6 meses</b>; você participou de 3 e venceu 1. Padrão de compra recorrente — vale entrar.</div></div>
+          <div class="insight"><span class="ic">2</span><div>Concorrente recorrente: <b>Papelaria Central LTDA</b> venceu 6 dos 14 com desconto médio de <b>18%</b>. Seu piso competitivo: ~R$ 203.000.</div></div>
+          <div class="insight"><span class="ic">3</span><div>O edital exige <b>amostra física</b> de 4 itens — prazo de entrega de amostra é de 2 dias úteis após a sessão. Logística viável (0 km da sede).</div></div>
+          <div class="insight"><span class="ic">4</span><div>Item 7 (toner compatível) tem <b>especificação restritiva de marca</b> — possível ponto de impugnação a favor da concorrência. Monitorar.</div></div>
+          <div class="insight"><span class="ic">5</span><div>Exclusivo <b>ME/EPP</b> — sua empresa se enquadra. 0 grandes players elegíveis ⇒ janela de margem maior.</div></div>
+        </div>
+
+        <div class="block-title">Histórico do órgão — últimos 6 meses <span class="st">STAGE 2</span></div>
+        <div class="hist">
+          <div class="bar"><div class="b" style="height:30%"></div><span class="m">dez</span></div>
+          <div class="bar part"><div class="b" style="height:55%"></div><span class="m">jan</span></div>
+          <div class="bar win"><div class="b" style="height:80%"></div><span class="m">fev</span></div>
+          <div class="bar"><div class="b" style="height:40%"></div><span class="m">mar</span></div>
+          <div class="bar part"><div class="b" style="height:62%"></div><span class="m">abr</span></div>
+          <div class="bar part"><div class="b" style="height:90%"></div><span class="m">mai</span></div>
+        </div>
+        <div class="hist-legend">
+          <span><i style="background:var(--line)"></i>Pregões abertos</span>
+          <span><i style="background:var(--amber)"></i>Você participou</span>
+          <span><i style="background:var(--emerald)"></i>Você venceu</span>
+        </div>
+      </div>
+
+      <!-- side: dossiê -->
+      <div class="detail-side">
+        <div class="dossie-head">
+          <div class="block-title" style="margin:0">Dossiê de habilitação <span class="st">STAGE 4</span></div>
+        </div>
+        <div style="font-size:12px;color:var(--muted);font-weight:600;margin-bottom:2px">90% pronto · falta 1 documento</div>
+        <div class="progress"><div class="fill"></div></div>
+
+        <div class="check">
+          <span class="ck ok">✓</span>
+          <div><div class="c-label">Habilitação jurídica</div><div class="c-note">Contrato social + procuração · OK</div></div>
+        </div>
+        <div class="check">
+          <span class="ck warn">!</span>
+          <div><div class="c-label">Regularidade fiscal</div><div class="c-note">CND federal vence em breve</div></div>
+          <span class="c-right warn">vence 8d</span>
+        </div>
+        <div class="check">
+          <span class="ck ok">✓</span>
+          <div><div class="c-label">Qualificação técnica</div><div class="c-note">3 atestados compatíveis encontrados</div></div>
+          <span class="c-right" style="color:var(--emerald)">3 ✓</span>
+        </div>
+        <div class="check">
+          <span class="ck ok">✓</span>
+          <div><div class="c-label">Econômico-financeira</div><div class="c-note">Balanço + índices · OK</div></div>
+        </div>
+        <div class="check">
+          <span class="ck miss">×</span>
+          <div><div class="c-label">CRF / FGTS atualizado</div><div class="c-note">Documento expirado — regerar</div></div>
+          <span class="c-right" style="color:var(--danger)">falta</span>
+        </div>
+
+        <button class="btn amber" style="width:100%;margin-top:16px;padding:11px">Gerar dossiê completo (.zip)</button>
+        <button class="btn" style="width:100%;margin-top:8px;padding:11px">Acompanhar este pregão</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 03 MOBILE ============ -->
+  <div class="section-label">
+    <span class="num">03 · MOBILE</span>
+    <h2>No bolso da equipe</h2>
+    <p>Push/WhatsApp em &lt;15min, feed na palma da mão e a sessão de lances ao vivo</p>
+  </div>
+
+  <div class="phones">
+    <!-- PHONE 1: lockscreen push -->
+    <div>
+      <div class="phone">
+        <div class="screen">
+          <div class="notch"></div>
+          <div class="lock">
+            <div class="time">08:42</div>
+            <div class="date">terça-feira, 20 de maio</div>
+
+            <div class="push">
+              <div class="p-head">
+                <div class="p-ic"><svg viewBox="0 0 64 64" style="color:#fff;width:16px;height:16px"><use href="#markA"/></svg></div>
+                <span class="p-app">NOYCE</span>
+                <span class="p-time">agora</span>
+              </div>
+              <div class="p-title">Nova licitação · 92% de match</div>
+              <div class="p-body">Pref. Águas Lindas-GO · material de escritório · <b>R$ 248k</b> · encerra em 1d 6h. Toque pra analisar.</div>
+            </div>
+
+            <div class="push wa">
+              <div class="p-head">
+                <div class="p-ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2Z"/></svg></div>
+                <span class="p-app">WhatsApp · Noyce</span>
+                <span class="p-time">08:42</span>
+              </div>
+              <div class="p-msg">🔔 *Movimentação* no Pregão 90021/2026 — sessão de lances <b style="color:var(--ink)">ABERTA</b>. Você está em <b style="color:var(--ink)">2º</b>. Responda *1* pra abrir.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-cap">Push + WhatsApp · &lt;15min</div>
+    </div>
+
+    <!-- PHONE 2: feed -->
+    <div>
+      <div class="phone">
+        <div class="screen">
+          <div class="notch"></div>
+          <div class="statusbar"><span>08:42</span><span>●●● 5G ▮</span></div>
+          <div class="m-appbar">
+            <svg viewBox="0 0 64 64" style="color:#111721;width:22px;height:22px;flex:none"><use href="#markA"/></svg>
+            <span class="eniac-mark">ENIAC</span>
+            <span class="slash" style="font-size:12px;color:var(--line)">/</span>
+            <span class="prod">Noyce</span>
+            <div class="iconbtn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/></svg><span class="dot-badge"></span></div>
+          </div>
+          <div class="m-body">
+            <div class="m-kpis">
+              <div class="m-kpi alert"><div class="l">Novas hoje</div><div class="v">23</div></div>
+              <div class="m-kpi crit"><div class="l">Prazo &lt;48h</div><div class="v">3</div></div>
+            </div>
+            <div class="m-sec">Maior match</div>
+
+            <div class="m-card hot">
+              <div class="m-top">
+                <span class="m-org">PREF. ÁGUAS LINDAS · 0KM</span>
+                <span class="m-mini-match mm-hi">92%</span>
+              </div>
+              <div class="m-obj">Material de escritório e suprimentos de informática</div>
+              <div class="m-foot"><span class="m-val">R$ 248k · PNCP</span><span class="m-dl">1d 6h</span></div>
+            </div>
+
+            <div class="m-card">
+              <div class="m-top">
+                <span class="m-org">SES-DF · 52KM</span>
+                <span class="m-mini-match mm-hi">88%</span>
+              </div>
+              <div class="m-obj">Manutenção predial continuada</div>
+              <div class="m-foot"><span class="m-val">R$ 1,2M · PCP</span><span class="m-dl" style="color:var(--muted)">3d</span></div>
+            </div>
+
+            <div class="m-card">
+              <div class="m-top">
+                <span class="m-org">PREF. ANÁPOLIS · 118KM</span>
+                <span class="m-mini-match mm-md">81%</span>
+              </div>
+              <div class="m-obj">Registro de preços — mobiliário escolar</div>
+              <div class="m-foot"><span class="m-val">R$ 640k · BLL</span><span class="m-dl" style="color:var(--muted)">5d</span></div>
+            </div>
+          </div>
+          <div class="m-tabbar">
+            <div class="m-tab on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg>Oportun.</div>
+            <div class="m-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Acompanhar</div>
+            <div class="m-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>Dossiê</div>
+            <div class="m-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Equipe</div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-cap">Feed · raio 500 km</div>
+    </div>
+
+    <!-- PHONE 3: live lance -->
+    <div>
+      <div class="phone">
+        <div class="screen">
+          <div class="notch"></div>
+          <div class="statusbar"><span>09:01</span><span>●●● 5G ▮</span></div>
+          <div class="live-head">
+            <div class="lh-top"><span class="live-dot"></span>SESSÃO AO VIVO · STAGE 5</div>
+            <h4>Pregão 90021/2026 — Águas Lindas</h4>
+            <div class="lh-sub">Material de escritório · R$ 248k</div>
+          </div>
+          <div class="m-body" style="overflow:hidden">
+            <div class="rank">
+              <div class="rank-row lead"><span class="pos">1</span><span class="nm">Papelaria Central</span><span class="bid">R$ 241.300</span></div>
+              <div class="rank-row you"><span class="pos">2</span><span class="nm">Você</span><span class="bid">R$ 243.000</span></div>
+              <div class="rank-row"><span class="pos">3</span><span class="nm">Distrib. Norte</span><span class="bid">R$ 247.900</span></div>
+            </div>
+            <button class="btn amber" style="width:100%;padding:12px;font-size:14px">Cobrir lance → R$ 241.000</button>
+            <div class="m-sec" style="margin-top:16px">Movimentação</div>
+            <div class="live-feed">
+              <div class="lf new"><span class="t">09:01</span><span>Papelaria Central baixou pra R$ 241.300</span></div>
+              <div class="lf"><span class="t">08:59</span><span>Você assumiu o 2º lugar</span></div>
+              <div class="lf"><span class="t">08:57</span><span>Sessão de lances aberta</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-cap">Sessão de lances ao vivo</div>
+    </div>
+  </div>
+
+  <!-- ============ TOKENS ============ -->
+  <div class="section-label">
+    <span class="num">04 · MARCA</span>
+    <h2>Tokens visuais</h2>
+    <p>Herança ENIAC (o brilho âmbar da válvula) + densidade calma e consultiva</p>
+  </div>
+  <div class="frame">
+    <div class="tokens">
+      <div>
+        <div class="type-row"><div class="lab">LOGOTIPO — Chip-Radar + lockup</div><div style="display:flex;align-items:center;gap:12px;margin-top:4px"><svg viewBox="0 0 64 64" style="color:#111721;width:42px;height:42px"><use href="#markA"/></svg><div><div style="font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.26em;color:var(--muted)">ENIAC</div><div style="font-weight:800;font-size:23px;letter-spacing:-.02em;line-height:1">Noyce</div></div></div></div>
+        <div class="type-row"><div class="lab">PRODUTO / TÍTULOS — Inter</div><div style="font-weight:800;font-size:22px;letter-spacing:-.02em">Noyce</div></div>
+        <div class="type-row"><div class="lab">CORPO — Inter</div><div style="font-size:14px;color:var(--ink-2)">O chip que nunca para de procurar a sua licitação.</div></div>
+        <div class="type-row"><div class="lab">NÚMEROS / DADOS — IBM Plex Mono</div><div style="font-family:var(--mono);font-size:20px;font-weight:700">R$ 248.000 · 92% · 1d 6h</div></div>
+      </div>
+      <div>
+        <div class="lab" style="font-family:var(--mono);font-size:10px;color:var(--muted-2);letter-spacing:.05em;margin-bottom:12px">PALETA</div>
+        <div class="swatches">
+          <div class="sw"><div class="c" style="background:#111721"></div><div class="n">ink</div></div>
+          <div class="sw"><div class="c" style="background:#E8932E"></div><div class="n">âmbar/sinal</div></div>
+          <div class="sw"><div class="c" style="background:#15936B"></div><div class="n">match</div></div>
+          <div class="sw"><div class="c" style="background:#DB4A45"></div><div class="n">crítico</div></div>
+          <div class="sw"><div class="c" style="background:#2E5BD8"></div><div class="n">geo/info</div></div>
+          <div class="sw"><div class="c" style="background:#F6F8FA"></div><div class="n">surface</div></div>
+        </div>
+        <div style="margin-top:20px;font-size:12.5px;color:var(--muted);line-height:1.6">
+          O ponto âmbar é a <b style="color:var(--ink)">válvula da ENIAC</b> — acende quando o Noyce acha algo. Vira o glifo do produto: um sinal que pulsa em alertas de movimentação (Stage 5).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    ENIAC · Noyce — mockups de produto (buscador de licitações)<br>
+    Conceito: empresa = computador · produto = peça (Noyce, criador do chip de silício)<br>
+    Gerado por Orion · 2026-05-20 · dados ilustrativos
+  </div>
+
+</div>
+</body>
+</html>

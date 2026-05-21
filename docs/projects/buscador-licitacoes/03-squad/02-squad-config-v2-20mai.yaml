@@ -1,0 +1,173 @@
+# Squad Config OPERACIONAL v2 — Buscador de Licitações
+# Data: 2026-05-20
+# SUPERSEDES (parcial): 01-squad-final.md (que era DESENHO; muitos membros não existiam como clones)
+#
+# PRINCÍPIO: esta config só lista clones VERIFICADOS no índice consultável
+# (.aios-core/data/jarvis-mind-clone-index.json, 113 entradas em 20/Mai).
+# Todo membro abaixo foi confirmado existente — nada de referência fantasma.
+
+meta:
+  project: buscador-licitacoes
+  version: 2
+  workflow_ref: "CONTEXT.md §10 — 6 estágios + base"
+  consult_engine: ".aios-core/core/jarvis/self-consultation.js"
+  index: ".aios-core/data/jarvis-mind-clone-index.json"
+
+# ─────────────────────────────────────────────────────────────
+# CAMADA 1 — CLONES CONSULTIVOS (mind clones, via self-consultation.js)
+# ─────────────────────────────────────────────────────────────
+advisors:
+
+  # NÚCLEO DE DOMÍNIO (criados 20/Mai de fontes primárias reais)
+  - id: marcal-justen-filho
+    role: "Autoridade em Lei 14.133 — north star jurídico do projeto"
+    status: materialized-20mai
+    file: ".aios-core/development/agents/marcal-justen-filho.md"
+    consult_on:
+      - "Quais modalidades exibir como default (pregão/dispensa/concorrência)"
+      - "Habilitação: o que é exigência comum vs exótica/ilegal num edital"
+      - "Estratégia de recurso (analisar doc do vencedor p/ inabilitação)"
+      - "Risco de 'consultoria jurídica não autorizada' + disclaimers"
+      - "ME/EPP (LC 123 + arts. 47-48 da 14.133)"
+
+  - id: joel-de-menezes-niebuhr
+    role: "Prática operacional do pregão (complementa Justen — Stages 5/6)"
+    status: materialized-20mai
+    file: ".aios-core/development/agents/joel-de-menezes-niebuhr.md"
+    consult_on:
+      - "Mecânica da sessão de pregão eletrônico (fase→momento→ato)"
+      - "Intenção de recurso ≠ razões — preclusão se não registrar na sessão (DOR #1)"
+      - "Recurso ≠ pedido de reconsideração; estrutura prática + prazos"
+      - "Habilitação na prática: exigência comum vs exótica/ilegal nos editais"
+      - "Empate ficto ME/EPP + diligência/saneamento (formalismo moderado)"
+
+  - id: pablo-hoffman
+    role: "Autoridade em scraping resiliente/ético — north star de ingestão"
+    status: materialized-20mai
+    file: ".aios-core/development/agents/pablo-hoffman.md"
+    consult_on:
+      - "Arquitetura crawler: Scrapy vs Playwright por fonte"
+      - "Stage 1 monitor: PNCP API vs scraping; abstração de fontes heterogêneas"
+      - "Stage 5: monitorar sessão de pregão em tempo real (anti-bot, polling ético)"
+      - "Resiliência: detectar quebra, retry/backoff, idempotência, escalação humana"
+      - "Ética: dados públicos + robots.txt + rate-limit + User-Agent honesto"
+
+  # PERIFERIA VERIFICADA (clones reais já existentes no índice)
+  - id: werner-vogels
+    role: "Arquitetura distribuída / escala (firehose de 444 municípios)"
+    status: existing
+    consult_on:
+      - "Ingestão em escala (~450-600 contratações/dia no raio)"
+      - "Idempotência, filas, workers assíncronos, custo de LLM/parsing"
+
+  - id: ann-cavoukian
+    role: "Privacy by Design (LGPD como arquitetura, não add-on)"
+    status: existing
+    consult_on:
+      - "Coleta mínima (CNPJ público sim; CPF de sócios só com base legal)"
+      - "RLS multi-CNPJ, retenção, exclusão, portabilidade"
+
+  - id: eric-ries
+    role: "Validação lean / metodologia de kill-gate"
+    status: existing
+    consult_on:
+      - "Eval offline retroativo pré-Sprint 4 (kill se MAPE>15% ou hit<50%)"
+      - "Sequenciamento de sprint, MVP do workflow de 6 estágios"
+
+  # SOB DEMANDA (verificados, consultar quando o tema surgir)
+  - id: lawrence-lessig
+    role: "Direito + dados abertos/cívicos (ethos 'dado público é utilizável')"
+    status: existing
+    consult_on: ["Framing cívico/legal de scraping de portal gov", "Manifesto do produto"]
+
+  - id: bruce-schneier
+    role: "Segurança (scraping seguro, proteção de dados multi-CNPJ)"
+    status: existing
+    consult_on: ["Anti-bot/sessões autenticadas sob ótica de segurança", "Threat model do vault de docs"]
+
+  - id: marty-cagan
+    role: "Product discovery (workflow de 4 usuários como produto)"
+    status: existing
+    consult_on: ["Papéis dos 4 usuários", "Job-to-be-done vs feature shiny"]
+
+  - id: lucia-savage
+    role: "Governança de dados/regulatório (LGPD-adjacente; viés health)"
+    status: existing
+    consult_on: ["Base legal por categoria de dado", "ROPA / DPA com fornecedores"]
+
+# ─────────────────────────────────────────────────────────────
+# CAMADA 2 — AGENTES EXECUTORES (core AIOS — fazem o build)
+# ─────────────────────────────────────────────────────────────
+executors:
+  - { id: architect,         persona: Aria,   scope: "design técnico, schema canônico OCDS, abstração de fontes" }
+  - { id: data-engineer,     persona: Dara,   scope: "ingestão, pgvector, RLS multi-CNPJ, migrations" }
+  - { id: dev,               persona: Dex,    scope: "Next.js, workers, integrações de fonte" }
+  - { id: ux-design-expert,  persona: Uma,    scope: "UX dos 4 usuários, notificação WhatsApp/email (DOR #1)" }
+  - { id: pm,                persona: Morgan, scope: "roadmap, pricing workflow-as-a-service, decisões D1-D6" }
+  - { id: qa,                persona: Quinn,  scope: "quality gates, eval offline, smoke tests" }
+  - { id: devops,            persona: Gage,   scope: "git, CI/CD, infra, MCP" }
+
+# ─────────────────────────────────────────────────────────────
+# MAPA DE CONSULTA — estágio do workflow → advisors
+# ─────────────────────────────────────────────────────────────
+stage_advisors:
+  base_livro_caixa:   []   # DECOUPLED — usar SaaS BR (Granatum); fora do escopo de build
+  stage1_monitorar:   [pablo-hoffman, werner-vogels]
+  stage2_analisar_6m: [marcal-justen-filho, werner-vogels]
+  stage3_diferencial: [marcal-justen-filho, marty-cagan]
+  stage4_habilitar:   [marcal-justen-filho, joel-de-menezes-niebuhr, ann-cavoukian]
+  stage5_acompanhar:  [joel-de-menezes-niebuhr, pablo-hoffman, bruce-schneier]  # DOR #1 — preclusão recursal + movimentação
+  stage6_recorrer:    [joel-de-menezes-niebuhr, marcal-justen-filho]            # operacional + doutrina
+
+# ─────────────────────────────────────────────────────────────
+# MAPA DE DECISÃO — decisões abertas (CONTEXT §10.6) → advisors
+# ─────────────────────────────────────────────────────────────
+decision_advisors:
+  D1_ufs_cadastro:        [marcal-justen-filho, pablo-hoffman]
+  D2_prioridade_fontes:   [pablo-hoffman, marty-cagan]
+  D3_stage5_build_vs_buy: [pablo-hoffman, bruce-schneier, eric-ries]   # Lance Fácil vs scraper próprio
+  D4_livro_caixa:         [eric-ries]                                  # rec: Granatum/SaaS BR > build
+  D5_papeis_4_usuarios:   [marty-cagan, ux-design-expert]
+  D6_raio_fixo_vs_config: [marcal-justen-filho, werner-vogels]
+
+# ─────────────────────────────────────────────────────────────
+# COMO CONSULTAR (comandos reais)
+# ─────────────────────────────────────────────────────────────
+invocation:
+  conclave: >
+    node .aios-core/core/jarvis/self-consultation.js conclave
+    --question "{pergunta}" --project buscador-licitacoes --agent aios-master --experts 3
+  single: >
+    node .aios-core/core/jarvis/self-consultation.js consult
+    --expert "{id}" --question "{pergunta}" --project buscador-licitacoes --agent aios-master
+  save: >
+    node .aios-core/core/jarvis/self-consultation.js save-response
+    --id {id} --expert {id} --response "{resposta}"
+
+# ─────────────────────────────────────────────────────────────
+# BACKLOG DE CLONAGEM — ideais do squad-final que NÃO existem
+# (materializar de fontes primárias quando o tema ficar crítico)
+# ─────────────────────────────────────────────────────────────
+cloning_backlog:
+  # joel-de-menezes-niebuhr — MATERIALIZADO 20/Mai (movido para advisors)
+  - id: tim-davies
+    why: "OCDS — padrão que o PNCP segue; guia o schema canônico"
+    sources: "Open Data Services, Open Contracting Partnership, specs OCDS"
+    priority: P2
+  - id: fabio-souza-bertimbau
+    why: "NLP PT-BR jurídico (NER em editais, embeddings Legal-BERTimbau)"
+    sources: "papers NeuralMind/BERTimbau, HuggingFace model cards"
+    priority: P2
+  - id: jerry-liu
+    why: "PDF parse + RAG sobre editais (LlamaParse/LlamaIndex)"
+    sources: "docs LlamaIndex, talks, blog"
+    priority: P2
+  - id: daniel-tunkelang
+    why: "Search UX / faceted navigation (filtros UF/modalidade/valor/CNAE)"
+    sources: "livro 'Faceted Search', posts LinkedIn/Medium"
+    priority: P3
+
+notes:
+  - "01-squad-final.md continha 16 referências DESENHADAS; só ann-cavoukian existia como clone real. Pahlka, Niebuhr, Davies, Doug Cutting, Jerry Liu, Fábio Souza, Tunkelang, Andy Budd, Patrick Campbell, Theo Browne, e os 'clones' Patricia Peck/Kleppmann NÃO existem no índice consultável."
+  - "Substitutos reais aplicados: werner-vogels (escala) no lugar de Kleppmann; lawrence-lessig + lucia-savage no campo legal/dados; bruce-schneier (segurança) para anti-bot."
+  - "Direção estratégica: orquestrada por aios-master (Orion) + pm (Morgan); justen-filho = north star jurídico; pablo-hoffman = north star de ingestão."

@@ -1,0 +1,22 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<style>
+  html,body{margin:0;height:100%;width:100%}
+  body{display:grid;place-items:center}
+  img{display:block}
+</style></head>
+<body>
+<img id="i">
+<script>
+  const p=new URLSearchParams(location.search);
+  const img=document.getElementById('i');
+  const pad=parseFloat(p.get('pad')||'8'); // % padding
+  img.style.width=(100-pad*2)+'vw';
+  img.style.height=(100-pad*2)+'vh';
+  img.style.objectFit='contain';
+  const bg=p.get('bg');
+  if(bg==='dark') document.body.style.background='#101726';
+  else if(bg==='light') document.body.style.background='#FFFFFF';
+  else if(bg) document.body.style.background='#'+bg;
+  img.src=p.get('f');
+</script>
+</body></html>

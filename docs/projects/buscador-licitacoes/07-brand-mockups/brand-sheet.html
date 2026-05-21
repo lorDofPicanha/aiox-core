@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>ENIAC · Noyce — Brand Sheet</title>
+<link rel="icon" href="logo/noyce-favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#111721;--muted:#69737F;--muted-2:#9AA3AD;--line:#E6E9EE;--amber:#E8932E;--blue:#2F6BF5;--emerald:#15936B;--danger:#DB4A45;--mono:'IBM Plex Mono',monospace;--sans:'Inter',sans-serif}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased;line-height:1.45}
+  .sheet{width:1040px;margin:0 auto;padding:46px 50px 40px}
+  /* header */
+  .top{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:26px;border-bottom:2px solid var(--ink)}
+  .lk{display:flex;align-items:center;gap:18px}
+  .lk svg{width:74px;height:74px;flex:none}
+  .lk .eniac{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.28em;color:var(--muted);line-height:1}
+  .lk .noyce{font-size:42px;font-weight:800;letter-spacing:-.02em;line-height:.95;margin-top:4px}
+  .top .right{text-align:right;max-width:340px;padding-top:6px}
+  .top .right .tg{font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.4}
+  .top .right .tg b{color:var(--amber)}
+  .top .right .sm{font-family:var(--mono);font-size:10.5px;color:var(--muted-2);letter-spacing:.04em;margin-top:8px}
+
+  .eyebrow{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--amber);margin:30px 0 12px;text-transform:uppercase}
+  .grid2{display:grid;grid-template-columns:1.15fr 1fr;gap:26px;align-items:center}
+
+  /* mark feature */
+  .mark-feature{background:linear-gradient(180deg,#fff,#F7F8FA);border:1px solid var(--line);border-radius:18px;padding:26px;display:flex;gap:24px;align-items:center}
+  .mark-feature svg{width:112px;height:112px;flex:none}
+  .mark-feature .mx h3{font-size:18px;font-weight:700;margin-bottom:8px}
+  .mark-feature .mx p{font-size:13.5px;color:var(--muted);line-height:1.55}
+  .mark-feature .mx p b{color:var(--ink)}
+
+  .why-list{font-size:13px;color:var(--muted);line-height:1.5}
+  .why-list div{display:flex;gap:10px;margin-bottom:11px}
+  .why-list .n{flex:none;width:22px;height:22px;border-radius:7px;background:#FBEFD9;color:#B86E1B;font-family:var(--mono);font-weight:700;font-size:11px;display:grid;place-items:center}
+  .why-list b{color:var(--ink)}
+
+  /* colorways */
+  .ways{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .way{border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .way .wh{padding:13px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+  .way .wh .nm{font-size:14px;font-weight:700}
+  .way .wh .hex{font-family:var(--mono);font-size:11px;color:var(--muted)}
+  .way .wh .dotc{width:13px;height:13px;border-radius:4px;display:inline-block;margin-right:7px;vertical-align:-1px}
+  .tri{display:grid;grid-template-columns:1fr 1fr 1fr}
+  .tri .cell{aspect-ratio:1/.92;display:grid;place-items:center;position:relative}
+  .tri .cell svg{width:56px;height:56px}
+  .tri .cell.lt{background:#fff}
+  .tri .cell.dk{background:#101726}
+  .tri .cell.ap{background:#EEF1F5}
+  .tri .cell .cap{position:absolute;bottom:7px;font-family:var(--mono);font-size:8.5px;color:var(--muted-2);letter-spacing:.04em}
+  .tri .cell.dk .cap{color:#5B6675}
+  .appi{width:58px;height:58px;border-radius:15px;display:grid;place-items:center}
+  .appi svg{width:34px;height:34px}
+
+  /* palette */
+  .pal{display:flex;gap:12px;flex-wrap:wrap}
+  .sw{flex:1;min-width:120px}
+  .sw .c{height:62px;border-radius:11px;border:1px solid var(--line)}
+  .sw .nm{font-size:12px;font-weight:600;margin-top:8px}
+  .sw .hx{font-family:var(--mono);font-size:10.5px;color:var(--muted)}
+
+  /* type + footer */
+  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .type-card,.voice-card{border:1px solid var(--line);border-radius:14px;padding:20px}
+  .type-row{margin-bottom:14px}
+  .type-row .lab{font-family:var(--mono);font-size:9.5px;color:var(--muted-2);letter-spacing:.06em;margin-bottom:3px}
+  .voice-card p{font-size:13.5px;color:var(--muted);line-height:1.55}
+  .voice-card .q{font-size:17px;font-weight:700;color:var(--ink);letter-spacing:-.01em;margin-bottom:10px}
+  .footer{margin-top:34px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-family:var(--mono);font-size:10.5px;color:var(--muted-2);letter-spacing:.03em}
+  .footer b{color:var(--ink)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <g id="mk">
+    <g fill="none" style="stroke:currentColor" stroke-width="3" stroke-linecap="round">
+      <rect x="15" y="15" width="34" height="34" rx="8"/>
+      <line x1="7" y1="24" x2="15" y2="24"/><line x1="7" y1="32" x2="15" y2="32"/><line x1="7" y1="40" x2="15" y2="40"/>
+      <line x1="49" y1="24" x2="57" y2="24"/><line x1="49" y1="32" x2="57" y2="32"/><line x1="49" y1="40" x2="57" y2="40"/>
+    </g>
+    <path d="M32 32 a8 8 0 0 1 8 -8" fill="none" style="stroke:currentColor" stroke-width="2.4" stroke-linecap="round" opacity="0.55"/>
+    <path d="M32 32 a14 14 0 0 1 14 -14" fill="none" style="stroke:currentColor" stroke-width="2.4" stroke-linecap="round" opacity="0.28"/>
+    <line x1="32" y1="32" x2="44" y2="20" style="stroke:var(--acc)" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="32" cy="32" r="3.4" style="fill:var(--acc)"/>
+  </g>
+</defs></svg>
+
+<div class="sheet">
+
+  <!-- HEADER -->
+  <div class="top">
+    <div class="lk">
+      <svg viewBox="0 0 64 64" style="color:#111721;--acc:#E8932E"><use href="#mk"/></svg>
+      <div><div class="eniac">ENIAC</div><div class="noyce">Noyce</div></div>
+    </div>
+    <div class="right">
+      <div class="tg">O chip que <b>nunca para</b> de procurar a sua licitação.</div>
+      <div class="sm">EMPRESA: ENIAC · PRODUTO: NOYCE · BUSCADOR DE LICITAÇÕES</div>
+    </div>
+  </div>
+
+  <!-- A MARCA -->
+  <div class="eyebrow">A marca · Chip-Radar</div>
+  <div class="grid2">
+    <div class="mark-feature">
+      <svg viewBox="0 0 64 64" style="color:#111721;--acc:#E8932E"><use href="#mk"/></svg>
+      <div class="mx">
+        <h3>Um chip que varre.</h3>
+        <p>O símbolo é um <b>circuito integrado</b> — a invenção de Robert Noyce — com uma <b>varredura de radar</b> saindo do núcleo. Diz, num só traço, o que o produto faz: <b>processa e procura</b>, sem parar.</p>
+      </div>
+    </div>
+    <div class="why-list">
+      <div><span class="n">1</span><div><b>Chip</b> = a peça (Noyce criou o circuito integrado de silício).</div></div>
+      <div><span class="n">2</span><div><b>Radar âmbar</b> = a busca 24/7 em PNCP, bolsas e portais num raio de 500 km.</div></div>
+      <div><span class="n">3</span><div><b>O ponto que acende</b> = o sinal "achei". É o mesmo glifo que pulsa nos alertas de movimentação.</div></div>
+    </div>
+  </div>
+
+  <!-- COLORWAYS -->
+  <div class="eyebrow">Versões de cor</div>
+  <div class="ways">
+    <div class="way">
+      <div class="wh"><span class="nm"><span class="dotc" style="background:#E8932E"></span>Sinal — âmbar</span><span class="hex">PRINCIPAL · #E8932E</span></div>
+      <div class="tri">
+        <div class="cell lt"><svg viewBox="0 0 64 64" style="color:#111721;--acc:#E8932E"><use href="#mk"/></svg><span class="cap">positivo</span></div>
+        <div class="cell dk"><svg viewBox="0 0 64 64" style="color:#fff;--acc:#E8932E"><use href="#mk"/></svg><span class="cap">negativo</span></div>
+        <div class="cell ap"><div class="appi" style="background:#101726"><svg viewBox="0 0 64 64" style="color:#fff;--acc:#E8932E"><use href="#mk"/></svg></div><span class="cap">app icon</span></div>
+      </div>
+    </div>
+    <div class="way">
+      <div class="wh"><span class="nm"><span class="dotc" style="background:#2F6BF5"></span>Silício — azul</span><span class="hex">ALTERNATIVA · #2F6BF5</span></div>
+      <div class="tri">
+        <div class="cell lt"><svg viewBox="0 0 64 64" style="color:#111721;--acc:#2F6BF5"><use href="#mk"/></svg><span class="cap">positivo</span></div>
+        <div class="cell dk"><svg viewBox="0 0 64 64" style="color:#fff;--acc:#3F7BFF"><use href="#mk"/></svg><span class="cap">negativo</span></div>
+        <div class="cell ap"><div class="appi" style="background:#101726"><svg viewBox="0 0 64 64" style="color:#fff;--acc:#3F7BFF"><use href="#mk"/></svg></div><span class="cap">app icon</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PALETTE -->
+  <div class="eyebrow">Paleta</div>
+  <div class="pal">
+    <div class="sw"><div class="c" style="background:#111721"></div><div class="nm">Ink</div><div class="hx">#111721</div></div>
+    <div class="sw"><div class="c" style="background:#E8932E"></div><div class="nm">Sinal (âmbar)</div><div class="hx">#E8932E</div></div>
+    <div class="sw"><div class="c" style="background:#2F6BF5"></div><div class="nm">Silício (azul)</div><div class="hx">#2F6BF5</div></div>
+    <div class="sw"><div class="c" style="background:#15936B"></div><div class="nm">Match</div><div class="hx">#15936B</div></div>
+    <div class="sw"><div class="c" style="background:#DB4A45"></div><div class="nm">Crítico</div><div class="hx">#DB4A45</div></div>
+    <div class="sw"><div class="c" style="background:#F6F8FA;border-color:#E0E4EA"></div><div class="nm">Surface</div><div class="hx">#F6F8FA</div></div>
+  </div>
+
+  <!-- TYPE + VOICE -->
+  <div class="eyebrow">Tipografia &amp; voz</div>
+  <div class="twocol">
+    <div class="type-card">
+      <div class="type-row"><div class="lab">TÍTULOS / PRODUTO — Inter</div><div style="font-size:30px;font-weight:800;letter-spacing:-.02em">Noyce</div></div>
+      <div class="type-row"><div class="lab">MARCA / LABELS / DADOS — IBM Plex Mono</div><div style="font-family:var(--mono);font-size:19px;font-weight:600;letter-spacing:.06em">ENIAC · R$ 248.000 · 92%</div></div>
+      <div class="type-row" style="margin-bottom:0"><div class="lab">CORPO — Inter</div><div style="font-size:13.5px;color:var(--muted)">Texto de interface e comunicação, limpo e denso.</div></div>
+    </div>
+    <div class="voice-card">
+      <div class="q">"Não gritamos. Calculamos."</div>
+      <p>Voz calma, densa e consultiva — herança de engenharia. Fala com números e precisão, nunca com hype. O âmbar entra só quando há um sinal real: uma oportunidade ou uma movimentação.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span><b>ENIAC · Noyce</b> — buscador de licitações · raio 500 km · PNCP · PCP · BLL · BNC · SISLOG</span>
+    <span>BRAND SHEET · 2026-05-20</span>
+  </div>
+
+</div>
+</body>
+</html>
