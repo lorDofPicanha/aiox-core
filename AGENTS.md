@@ -45,7 +45,7 @@ Atalhos preferenciais:
 
 **Squad chiefs (Tier 0 routing):** `@cyber-chief`, `@design-chief`, `@data-chief`, `@legal-chief`, `@story-chief`, `@copy-chief`, `@traffic-masters-chief`, `@design-system`, `@oalanicolas`, `@pedro-valerio`, `@sop-extractor`
 
-**Mind clones (162+ via brain-bridge MCP):** `@<person-slug>`. Exemplos: `@patricia-peck`, `@martin-fowler`, `@april-dunford`, `@cassie-kozyrkov`, etc.
+**Mind clones (250 via brain-bridge MCP + `/skills` shortcuts):** `@<person-slug>`. Exemplos: `@patricia-peck`, `@martin-fowler`, `@april-dunford`, `@cassie-kozyrkov`, etc. Cada clone tem atalho `aios-<id>` em `.codex/skills/` (246 SKILL.md com frontmatter name/description) que carrega a persona de `.aios-core/development/agents/` ou `squads/*/agents/`.
 
 Carregue o arquivo correspondente de `.codex/agents/` ao ativar atalho. Mostre 3-6 comandos principais (`*help`, `*create`, etc.). Stay in character até receber `*exit`.
 
@@ -69,7 +69,17 @@ Retorna prompts individuais + síntese de debate (CONSENSUS / DISSENT / BLIND SP
 - `request_expert_consultation(expert, question, context)` → retorna consultation ID
 - `get_consultation_response(id)` → texto
 
-**Mind clone index:** `.aios-core/data/jarvis-mind-clone-index.json` (111 entries).
+**Mind clone index:** `.aios-core/data/jarvis-mind-clone-index.json` (250 entries; sources: mega-brain 55, aios-agent 58, codex-agent 127, squad-agent 10). Cada registro tem `membership` (core 51 / pool 186 / governance 6 / runtime 7), `domain` e `squads`.
+
+---
+
+## 4-bis. Squad routing & governance gates
+
+**Policy completa:** `.aios-core/routing-and-gates-policy.md`. Modelo híbrido: determinístico por padrão, pool dinâmico na incerteza, council só em escalação. Hierarquia `chief → specialist → clone`.
+
+**Roteamento (intent → chief Tier 0):** engenharia→@architect · plataforma→@kelsey-hightower · dados→@data-engineer · IA→@demis-hassabis · design→@design-lead · comportamental→@bj-fogg · segurança→@bruce-schneier · jurídico/privacidade→@heather-meeker · tráfego/growth→@traffic-masters-chief · conteúdo→@ann-handley · vendas→@alex-hormozi · CS→@lincoln-murphy · produto→@pm · pesquisa→@analyst · operações/QA→@sm · finanças→@aswath-damodaran · mercados→@luana-lopes-lara · saúde(Anipis)→@alison-darcy · pessoas→@patty-mccord · comunidade→@sarah-drasner · inovação→@clayton-christensen · meta/orquestração→@aios-master.
+
+**Gates obrigatórios** (disparam por gatilho material, não em toda tarefa): Story-driven (Art.III, BLOCK) · No-invention (Art.IV, BLOCK + hook) · Quality (Art.V, BLOCK pre-push) · Data-quality (hook sql-governance) · Security→@bruce-schneier · Legal→@heather-meeker · Privacy/LGPD→@ann-cavoukian · Finance→@aswath-damodaran · Brand→@ann-handley · **Human approval** (ação irreversível/externa: deploy prod, push, envio a terceiro, gasto → OK do Founder; push só via @devops).
 
 ---
 
