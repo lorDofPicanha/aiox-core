@@ -8,7 +8,7 @@
 # - File types for categorization
 #
 version: 4.2.13
-generated_at: "2026-05-22T12:24:52.050Z"
+generated_at: "2026-05-22T22:50:06.039Z"
 generator: scripts/generate-install-manifest.js
 file_count: 1212
 files:
@@ -1185,9 +1185,9 @@ files:
     type: data
     size: 210
   - path: data/entity-registry.yaml
-    hash: sha256:b4479561fc4be5d50536dda95ce0511bd2feebd9693b8aef4ddaeea34abc489b
+    hash: sha256:4c660ccb8e33bb1cb9dd82b719022196e55ca5a280c9538ee58bdf838fc7add8
     type: data
-    size: 952796
+    size: 955338
   - path: data/gates/PR-1-foundation-tokens.yaml
     hash: sha256:ca9e8b6fa19390be476bc5429a7765b13eea9a07648ff34ae082b8b0228adc44
     type: data

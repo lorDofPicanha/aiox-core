@@ -30,6 +30,11 @@
 - `01-architecture-v1` — arquitetura vigente · `00-arch-skeleton` — schema preliminar (V0)
 - Spikes: `02`(Stage5) `03`(Stage1) `04`(Stage2) `05`(Stage3) `06`(Stage4) `07`(Stage6) `08`(X1 adapters) `09`(X2 RLS) `10`(X3 vault)
 - **`11-build-plan-codex-handoff`** (handoff) · **`12-experimento-cobertura-stage2`** (kill-gate executável)
+- **`13-sprint0-council-routing-22mai`** — consolidação dos councils Sprint 0: produto, jurídico, arquitetura, dados, UX e segurança
+- **`ADR-001-equal-priority-multisource-canonical-model-22mai`** — decisão arquitetural: multi-fonte sem fonte principal + `source_candidates`
+- **`14-sprint0-schema-adapters-implementation-plan-22mai`** — sequência de build: schema, adapters, fixtures, score, UX e gates
+- **`sql/0001_noyce_equal_priority_canonical_schema.sql`** — SQL de referência para Supabase/Postgres
+- **`contracts/source-adapter.contract.ts`** — contrato único para todas as fontes
 
 **Pesquisa (`01-research/`)**
 - `04-editais-reais-21mai` — análise dos 11 editais reais
@@ -61,12 +66,28 @@
 
 ## 🛠️ Como começar a construir (no Codex)
 1. Alimentar o Codex com **`CONTEXT.md` + `11-build-plan-codex-handoff` + `STORY-NOYCE-S0-MVP-WORKFLOW.md` + os spikes citados**.
-2. Usar o gate PNCP como evidência técnica, não como escopo total do produto. O Sprint 0 atual é **workflow-first + multi-source canonical model**.
+2. Usar o gate PNCP como evidência técnica, não como escopo total nem fonte principal. O Sprint 0 atual é **workflow-first + equal-priority multi-source canonical model**.
 3. Se PCP confirmar P0 na call → **solicitar chave da API PCP** (lead ~7 dias úteis).
 4. Sprint 0: schema canônico multi-fonte + RLS (X2) + contratos de adapters + score v0 + evidências/confiança por campo.
 
 ## Atualização 2026-05-22 — Sprint 0 atual
 O projeto não deve começar como "buscador PNCP". A rota correta é construir o Noyce como workflow de licitações:
 
-- **Monitorar:** PNCP, PCP, BLL, BNC, ComprasGov e SISLOG.
-- **Analisar:
+- **Monitorar:** PNCP, PCP, BLL, BNC, ComprasGov, SISLOG e novos portais encontrados no raio operacional de 500 km.
+- **Analisar:** concorrência, oportunidade, valores médios, risco e confiança.
+- **Indicar:** score explicável com evidências.
+- **Habilitar:** checklist de requisitos e documentos.
+- **Acompanhar:** sessão, eventos, prazos e risco de preclusão.
+- **Recorrer:** minuta assistida com revisão humana.
+
+A story operacional para os agentes é `docs/stories/active/STORY-NOYCE-S0-MVP-WORKFLOW.md`.
+
+Roteamento atualizado: usar a arquitetura atual de **25 squads / 210+ especialistas**. O Sprint 0 deve ser conduzido por councils pequenos: produto, licitações/jurídico, arquitetura, dados/score, UX/brand, segurança e QA/DevOps. A matriz completa está na story acima.
+
+Política de fontes atualizada: nenhuma fonte é principal. Todas as fontes conhecidas têm o mesmo nível de importância, e qualquer portal relevante encontrado dentro do raio de 500 km deve ser registrado como fonte candidata para adapter.
+
+## 🧠 Triggers de memória (CONTEXT §7/§9/§11)
+`continua buscador licitações` · `build noyce` / `handoff codex` · `fontes reais buscador` · `escopo geografico buscador` · `gate buscador licitações` · `agendar call amigo`.
+
+---
+*README mantido por Orion (aios-master). Última atualização: 2026-05-22.*
