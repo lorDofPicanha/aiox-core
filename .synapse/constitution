@@ -47,3 +47,9 @@ CONSTITUTION_RULE_ART6_0=Absolute Imports (SHOULD)
 CONSTITUTION_RULE_ART6_1=SHOULD: Sempre usar imports absolutos com alias @/
 CONSTITUTION_RULE_ART6_2=SHOULD NOT: Usar imports relativos (../../../)
 CONSTITUTION_RULE_ART6_3=EXCEPTION: Imports dentro do mesmo módulo/feature podem ser relativos
+
+# Article VII: No Programmatic Claude for Automation (MUST)
+CONSTITUTION_RULE_ART7_0=No Programmatic Claude for Automation (MUST)
+CONSTITUTION_RULE_ART7_1=MUST NOT: Usar Claude programático (claude -p, Agent SDK, GitHub Actions, subprocess automatizado) para **bulk, automação, CI ou cron**
+CONSTITUTION_RULE_ART7_2=MUST: Rotear trabalho programático/em volume para **Codex** (codex exec) ou **Gemini** (--to gemini); consulta de especialista para **jarvis**
+CONSTITUTION_RULE_ART7_3=SHOULD: Preferir **Claude interativo** (você digita) para raciocínio longo, arquitetura e decisões delicadas — é barato e inalterado

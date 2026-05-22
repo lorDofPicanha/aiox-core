@@ -1,6 +1,6 @@
 # Synkra AIOS Constitution
 
-> **Version:** 1.0.0 | **Ratified:** 2025-01-30 | **Last Amended:** 2025-01-30
+> **Version:** 1.1.0 | **Ratified:** 2025-01-30 | **Last Amended:** 2026-05-21
 
 Este documento define os princípios fundamentais e inegociáveis do Synkra AIOS. Todos os agentes, tasks, e workflows DEVEM respeitar estes princípios. Violações são bloqueadas automaticamente via gates.
 
@@ -125,6 +125,22 @@ import { useStore } from '../../../stores/feature/store'
 
 ---
 
+### VII. No Programmatic Claude for Automation (MUST)
+
+O Claude **interativo** (terminal/IDE) continua sendo uma superfície valiosa — especialmente para **raciocínio longo e de alto risco** — e permanece **inalterado** no billing de subscription. O que se evita é o **uso programático** do Claude, que a partir de **2026-06-15** passa a consumir um **pool de créditos separado**, medido a preços de API cheios (sem rollover).
+
+**Contexto (anúncio Anthropic 14/Mai/2026, vigência 15/Jun/2026):** a subscription se divide em dois pools — (1) **interativo** (Claude.ai, Claude Code no terminal/IDE) = inalterado; (2) **Agent SDK / programático** (`claude -p`, Agent SDK, Claude Code GitHub Actions, agentes de terceiros) = crédito mensal fixo a preço de API.
+
+**Regras:**
+- MUST NOT: Usar Claude programático (`claude -p`, Agent SDK, GitHub Actions, subprocess automatizado) para **bulk, automação, CI ou cron**
+- MUST: Rotear trabalho programático/em volume para **Codex** (`codex exec`) ou **Gemini** (`--to gemini`); consulta de especialista para **jarvis**
+- SHOULD: Preferir **Claude interativo** (você digita) para raciocínio longo, arquitetura e decisões delicadas — é barato e inalterado
+- MAY: `claude -p` pontual e consciente quando o crédito programático for o caminho certo — nunca em loop/automação
+
+**Gate:** `delegate.js` **avisa** ao usar `--to claude` (consome o pool programático) e sugere Codex/Gemini, mas não bloqueia.
+
+---
+
 ## Governance
 
 ### Amendment Process
@@ -167,5 +183,5 @@ import { useStore } from '../../../stores/feature/store'
 
 ---
 
-*Synkra AIOS Constitution v1.0.0*
+*Synkra AIOS Constitution v1.1.0*
 *CLI First | Agent-Driven | Quality First*

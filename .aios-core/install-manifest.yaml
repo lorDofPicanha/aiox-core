@@ -8,9 +8,9 @@
 # - File types for categorization
 #
 version: 4.2.13
-generated_at: "2026-05-21T00:20:19.936Z"
+generated_at: "2026-05-22T00:01:43.389Z"
 generator: scripts/generate-install-manifest.js
-file_count: 1196
+file_count: 1199
 files:
   - path: cli/commands/config/index.js
     hash: sha256:ebcad2ce3807eda29dcddff76d7a95ddc9b7fa160df21fd608f94b802237e862
@@ -701,17 +701,17 @@ files:
     type: core
     size: 2593
   - path: core/jarvis/consultation-engine.js
-    hash: sha256:999b8da6f83d7acc201d84cec28fce2a1b618ff13db7f4ee96a6c1270e1022c1
+    hash: sha256:631dfcd3a6d0292db83ed27e2be35fe7d5e22d550005d89db3cdba7d6437be94
     type: core
-    size: 17085
+    size: 17973
   - path: core/jarvis/project-detector.js
     hash: sha256:ec20dff73c091b51fd681176ffe16c115db219eae926db46a8721ff76d1c84ad
     type: core
     size: 5981
   - path: core/jarvis/self-consultation.js
-    hash: sha256:f0e7fb9bff86f34ddef3203f5d1db35a3b09d6a1311a079f1ff2ab225aa267f6
+    hash: sha256:2bc234bb7306f8be4c70575c580933cf478f021c7642201d56f9617faa7584a2
     type: core
-    size: 26880
+    size: 27909
   - path: core/manifest/manifest-generator.js
     hash: sha256:94d25e22a261c09f719b52ad62979d0c013506866b07aca1b0e2623192b76428
     type: core
@@ -1177,9 +1177,9 @@ files:
     type: data
     size: 210
   - path: data/entity-registry.yaml
-    hash: sha256:07d68619d3dc84a04e625541299c60efa3b2701963905e9c8d9cd31fb74ef743
+    hash: sha256:b4479561fc4be5d50536dda95ce0511bd2feebd9693b8aef4ddaeea34abc489b
     type: data
-    size: 952277
+    size: 952796
   - path: data/gates/PR-1-foundation-tokens.yaml
     hash: sha256:ca9e8b6fa19390be476bc5429a7765b13eea9a07648ff34ae082b8b0228adc44
     type: data
@@ -1189,9 +1189,9 @@ files:
     type: data
     size: 7610
   - path: data/jarvis-mind-clone-index.json
-    hash: sha256:83f42df178063638f8a57b13243610234cd592601aa3b0eb4226b13b74d6424e
+    hash: sha256:98b23daacf99ab509d63ab3bd12ddf8cbdacccd3579471158ba7e460cfcb26ee
     type: data
-    size: 185387
+    size: 386327
   - path: data/jarvis-mind-clone-map.yaml
     hash: sha256:d404e07f7de09951ca2770cb073e315b3d8f7dd93295c3f21fad04f17ab5e7b0
     type: data
@@ -2045,9 +2045,9 @@ files:
     type: script
     size: 25151
   - path: development/scripts/squad/validate-all-squads.js
-    hash: sha256:b22976ae55239576f8cb29ba56b83dfa8e8a3b5f0a51733ee0046833b3a102a7
+    hash: sha256:976576f521fd31e8643ad4d586b8187b18a38f099e1d3acff2540aaec154a4b3
     type: script
-    size: 1529
+    size: 1556
   - path: development/scripts/squad/wrap-legacy-workflows.js
     hash: sha256:c0b3827168b691bec36b3b64e54da982fc2ccc9b5d88843b5b60f55e5d2547d5
     type: script
@@ -2121,9 +2121,9 @@ files:
     type: script
     size: 20129
   - path: development/scripts/workflow-validator.js
-    hash: sha256:cb1c698f39984f128918e8a3a4e5aed254ca445c57b9f99fa183ef14abc0f0dc
+    hash: sha256:492d5ed7398f826cdee6a6f36b541923d9bb0306fc35fab7f9650a7fe681f4d8
     type: script
-    size: 22989
+    size: 23837
   - path: development/scripts/yaml-validator.js
     hash: sha256:b4a492a1dedbb11b6ddda9889ef6adb6cf792c2315c029ebc8c6b7ce7f57188f
     type: script
@@ -3324,6 +3324,10 @@ files:
     hash: sha256:47112704515bf362507dcc59112ef460a728d9350a081e7b7d94e5bfe0d7c3e1
     type: infrastructure
     size: 4088
+  - path: infrastructure/scripts/agent-call.js
+    hash: sha256:ccca273f1dccce5b6f74065909306c1cca1cbe26b47dc5b13548533ed088023b
+    type: script
+    size: 3045
   - path: infrastructure/scripts/aios-validator.js
     hash: sha256:a48d7e1a6f33ed8f751f2b00b79b316529cd68d181a62a7b4a72ecd4858fc770
     type: script
@@ -3381,13 +3385,13 @@ files:
     type: script
     size: 40724
   - path: infrastructure/scripts/codex-skills-sync/index.js
-    hash: sha256:9ea0726a9415dcf30c706d8116464026d973a18fb94644b0c2a9d15afb04e0e1
+    hash: sha256:c089fa49e45522edeb56730931b1e24bd8c50ba27a5e6567a414b3ccd84d9a01
     type: script
-    size: 5246
+    size: 5436
   - path: infrastructure/scripts/codex-skills-sync/validate.js
-    hash: sha256:8ab4ae398368f2e1d09b1e23306d76870d5c7e9c4524a10176e40af2982dbc2c
+    hash: sha256:65038ed21a2abbbd0c9af2aa70a8fc48ae4b317b441efd83d508c41b83894ad2
     type: script
-    size: 4744
+    size: 4934
   - path: infrastructure/scripts/commit-message-generator.js
     hash: sha256:b1807eaaca9fe4c7bb2369fa5ec7458d3b462cbf573833bede142654b1a4d1cd
     type: script
@@ -3429,9 +3433,9 @@ files:
     type: script
     size: 7868
   - path: infrastructure/scripts/delegate.js
-    hash: sha256:33064a3033bac0783ecb24fdd2454658ac886a25b0f75f4560fdd4dba6e1e67b
+    hash: sha256:e76ad4166af148da965df0771de231c845bfa6fc898088138bbcc257da8755d1
     type: script
-    size: 6051
+    size: 10537
   - path: infrastructure/scripts/dependency-analyzer.js
     hash: sha256:e375efa02c1ac776b3243de0208a06abfb9e16cbcb807ee4ecf11678cf64df40
     type: script
@@ -3497,17 +3501,17 @@ files:
     type: script
     size: 38453
   - path: infrastructure/scripts/ide-sync/agent-parser.js
-    hash: sha256:b4dceac261653d85d791b6cd8b010ebfaa75cab179477b193a2448482b4aa4d4
+    hash: sha256:26202d98f71dd0f9cbd241067c0f58faa007f458f42b45d791b1b55a494f604f
     type: script
-    size: 8846
+    size: 9577
   - path: infrastructure/scripts/ide-sync/gemini-commands.js
     hash: sha256:47fa7f612494cb448d28c4e09d8bc2994318c06c94ac6b09fb4f1e39e19247e5
     type: script
     size: 5534
   - path: infrastructure/scripts/ide-sync/index.js
-    hash: sha256:c4e8e49f197ac3fd8cad191e2e5b70744f4be1718df98e9c4307f627d75fd40a
+    hash: sha256:2634de3883c3fccfd19842f9ce4d8f85ee65fd54ab29655f1b387d9a18f35263
     type: script
-    size: 14787
+    size: 15307
   - path: infrastructure/scripts/ide-sync/README.md
     hash: sha256:4b7ce30ded1d8a81c2d293711d6f20cd97fad5c8d014c4102c80e4a54978711f
     type: script
@@ -3540,6 +3544,10 @@ files:
     hash: sha256:9562bdf12fa0a548f275935a0014481ebcfd627e20fdbfbdfadc4b72b4c7ad4d
     type: script
     size: 19310
+  - path: infrastructure/scripts/lib/load-env.js
+    hash: sha256:66a47be58936f998a75a01e397d352e7b30d3c4903c765ba7a892b2983cc0b15
+    type: script
+    size: 1675
   - path: infrastructure/scripts/llm-routing/install-llm-routing.js
     hash: sha256:0f3d604068766a63ab5e60b51b48f6330e7914aa419d36c5e1f99c6ad99475be
     type: script
@@ -3672,6 +3680,10 @@ files:
     hash: sha256:6391d9e16f5c75f753c2ea5eff58301ec05c9d0b2486040c45b1ef3405c2f3a1
     type: script
     size: 22266
+  - path: infrastructure/scripts/route.js
+    hash: sha256:069448aaf418683dfb02f7d4e47f87860ba427ed05a66138bfda86508c9d596e
+    type: script
+    size: 8348
   - path: infrastructure/scripts/sandbox-tester.js
     hash: sha256:019af2e23de70d7dacb49faf031ba0c1f5553ecebe52f361bab74bfca73ba609
     type: script
@@ -3753,9 +3765,9 @@ files:
     type: script
     size: 7473
   - path: infrastructure/scripts/validate-codex-integration.js
-    hash: sha256:030fcf9e61fddec1cf6428642e248270fd01d028c42f5dcac28bb36090280229
+    hash: sha256:ca26860ae5b99bc597a719244caa518d932fe125c46ac70683ff062f3e939adc
     type: script
-    size: 4122
+    size: 5478
   - path: infrastructure/scripts/validate-gemini-integration.js
     hash: sha256:11040f3c4055ba93c98a2a83db25eff2317a43ea1459c54a51ef5daecd203b82
     type: script
