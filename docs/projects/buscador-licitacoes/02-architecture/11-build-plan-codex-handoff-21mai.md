@@ -137,15 +137,16 @@ Resultado refinado após extração de metadados dos TXT:
 
 ## 10. Correcao de rota - Sprint 0 workflow-first (2026-05-22)
 
-O gate PNCP confirmou que a fonte e util para descoberta, cobertura e historico parcial, mas tambem mostrou um limite importante: o PNCP sozinho nao deve ser tratado como fonte unica para vencedor, contrato ou inteligencia completa de concorrencia.
+O gate PNCP confirmou que a fonte e util para descoberta, cobertura e historico parcial, mas tambem mostrou um limite importante: o PNCP sozinho nao deve ser tratado como fonte unica para vencedor, contrato ou inteligencia completa de concorrencia. Na estrategia atual, tambem nao deve ser tratado como fonte principal: todas as fontes operacionais tem o mesmo nivel de escala e importancia no modelo.
 
-Portanto, o Sprint 0 do Noyce deve ser conduzido como `workflow-first + multi-source canonical model`, nao como `PNCP-first`.
+Portanto, o Sprint 0 do Noyce deve ser conduzido como `workflow-first + equal-priority multi-source canonical model`, nao como `PNCP-first`.
 
 ### Tese operacional
 
 Noyce e um workflow de licitacoes que:
 
 - monitora oportunidades em PNCP, PCP, BLL, BNC, ComprasGov e SISLOG;
+- registra novos portais encontrados dentro do raio operacional de 500 km como fontes candidatas;
 - normaliza editais, itens, orgaos, prazos, eventos e documentos;
 - analisa oportunidade, concorrentes, valores medios, risco de habilitacao e urgencia;
 - acompanha o processo vivo ate sessao, impugnacao, recurso e contrato;
@@ -159,14 +160,27 @@ A story ativa para o proximo passo e:
 
 Ela substitui a leitura estreita de "buscador PNCP" por um Sprint 0 focado em:
 
-- schema canonico multi-fonte;
-- contrato de adapters;
-- fixtures PNCP + fonte secundaria;
+- schema canonico multi-fonte sem fonte principal;
+- contrato unico de adapters;
+- fixtures/exports equivalentes para PNCP, PCP, BLL, BNC, ComprasGov, SISLOG e fontes candidatas quando houver;
 - score v0 explicavel;
 - workflow Monitorar -> Analisar -> Indicar -> Habilitar -> Acompanhar -> Recorrer;
 - primeira superficie operacional usando a identidade Noyce existente.
 
 ### Implicacao para agentes
+
+Atualizacao 2026-05-22: usar a arquitetura atual de 25 squads/210+ especialistas. O roteamento abaixo por `@product/@backend/@data` e apenas fallback generico. Para o Sprint 0, usar o council real:
+
+- Produto/MVP: `squad-product` com `@marty-cagan`, `@teresa-torres`, `@april-dunford`.
+- Licitacoes/juridico: `squad-legal` com `@marcal-justen-filho`, `@joel-de-menezes-niebuhr`, `@patricia-peck`.
+- Arquitetura/adapters: `squad-engineering` + `squad-platform` com `@martin-kleppmann`, `@martin-fowler`, `@joe-reis`, `@data-engineer`.
+- Dados/score: `squad-data` com `@cassie-kozyrkov`, `@chip-huyen`, `@nate-silver`.
+- Concorrencia/precos: `squad-markets-intelligence` + `squad-finance` com `@aswath-damodaran`, `@philip-tetlock`, `@morgan-housel`.
+- UX/brand: `squad-design` com `@ux-design-expert`, `@don-norman`, `@julie-zhuo`, `@marty-neumeier`.
+- Seguranca/LGPD: `squad-security` com `@ann-cavoukian`, `@bruce-schneier`, `@tanya-janca`.
+- QA/DevOps: core AIOS + `squad-platform` com `@qa`, `@kent-beck`, `@devops`, `@charity-majors`, `@gene-kim`.
+
+Ver matriz completa em `docs/stories/active/STORY-NOYCE-S0-MVP-WORKFLOW.md`.
 
 AIOS Master deve rotear o trabalho assim:
 

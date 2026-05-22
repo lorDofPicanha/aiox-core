@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIOX — Estrutura da Corporação Multi-Agente</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* AIOX design system — theme: sinkra_observatory_dark
+     (.claude/skills/slide-creator/templates/theme/theme-tokens.yaml) */
+  :root{
+    --bg:#050505; --panel:#111111; --panel2:#171717; --ink:#F5F5EF; --mut:#9A9A92;
+    --line:#2A2A2A; --accent:#D7FF3F; --warn:#F0B35A; --neutral:#777777;
+    --c-eng:#8fb8d6; --c-design:#d69ab0; --c-prod:#d8c98a; --c-gtm:#d6a98f;
+    --c-vert:#cf9090; --c-people:#9ad0a0;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:14px/1.55 "Inter",system-ui,Segoe UI,Roboto,Arial,sans-serif;padding:40px 22px 64px;
+    -webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto}
+  h1{font-family:"Inter Tight",Inter,sans-serif;font-size:30px;font-weight:700;margin:0 0 6px;letter-spacing:-.4px}
+  h1 .lime{color:var(--accent)}
+  .sub{color:var(--mut);margin:0 0 26px;font-size:13px}
+  .sub code{font-family:"IBM Plex Mono",monospace;color:var(--ink);font-size:12px}
+  .stats{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 30px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 18px;min-width:120px}
+  .stat .n{font-family:"Inter Tight",sans-serif;font-size:24px;font-weight:700;line-height:1}
+  .stat .l{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-top:5px;
+    font-family:"IBM Plex Mono",monospace}
+  .stat.hl .n{color:var(--accent)}
+  .layer-h{display:flex;align-items:center;gap:12px;color:var(--mut);font-size:11px;font-weight:500;
+    font-family:"IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:2px;margin:30px 0 12px}
+  .layer-h::before{content:"";width:8px;height:8px;background:var(--accent);border-radius:1px}
+  .layer-h::after{content:"";flex:1;height:1px;background:var(--line)}
+  .band{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .founder{text-align:center;font-family:"Inter Tight",sans-serif;font-weight:700;font-size:16px;
+    border-color:var(--accent)}
+  .founder .lime{color:var(--accent)}
+  .chips{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:6px 11px;
+    font-family:"IBM Plex Mono",monospace;font-size:12px}
+  .chip .role{color:var(--mut);font-size:10px;margin-left:6px}
+  .foot{color:var(--mut);font-size:12px;margin-top:10px}
+  .foot code,.pd code{font-family:"IBM Plex Mono",monospace}
+  .group-h{font-family:"Inter Tight",sans-serif;font-size:13px;font-weight:700;color:var(--ink);
+    margin:20px 0 9px;display:flex;align-items:center;gap:9px;text-transform:uppercase;letter-spacing:.5px}
+  .dot{width:10px;height:10px;border-radius:2px;display:inline-block}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:12px}
+  .card{background:var(--panel);border:1px solid var(--line);border-left-width:3px;border-radius:10px;padding:13px 15px}
+  .card .name{font-family:"Inter Tight",sans-serif;font-weight:700;font-size:14px}
+  .card .new{font-family:"IBM Plex Mono",monospace;font-size:9px;background:var(--accent);color:#0a0a06;
+    border-radius:3px;padding:2px 5px;margin-left:6px;font-weight:600;vertical-align:middle;letter-spacing:.5px}
+  .card .chief{color:var(--mut);font-family:"IBM Plex Mono",monospace;font-size:11px;margin:3px 0 9px}
+  .card .desc{color:#cfcfc7;font-size:12px;min-height:34px}
+  .card .desc b{color:var(--ink)}
+  .comp{display:flex;gap:6px;margin-top:10px;font-size:11px;font-family:"IBM Plex Mono",monospace}
+  .b{border-radius:4px;padding:2px 7px;font-weight:500}
+  .b.core{background:rgba(215,255,63,.14);color:var(--accent);border:1px solid rgba(215,255,63,.3)}
+  .b.pool{background:var(--panel2);color:var(--ink);border:1px solid var(--line)}
+  .b.tot{color:var(--mut)}
+  .pool-band{border-color:var(--accent)}
+  .pool-doms{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+  .pd{background:var(--panel2);border:1px solid var(--line);border-radius:5px;padding:4px 9px;
+    font-family:"IBM Plex Mono",monospace;font-size:11px}
+  .pd b{color:var(--accent)}
+  .gates{display:grid;grid-template-columns:repeat(auto-fill,minmax(192px,1fr));gap:8px;margin-top:8px}
+  .gate{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:9px 12px;font-size:12px}
+  .gate .o{color:var(--mut);font-size:10px;font-family:"IBM Plex Mono",monospace;margin-top:2px}
+  .gate .tag{font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:600;letter-spacing:.5px}
+  .gate.block .tag{color:var(--warn)} .gate.live{border-color:var(--accent)} .gate.live .tag{color:var(--accent)}
+  .gate.pol .tag{color:var(--mut)}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;color:var(--mut);font-size:11px;margin-top:26px;padding-top:14px;
+    border-top:1px solid var(--line);font-family:"IBM Plex Mono",monospace}
+  .legend i{width:10px;height:10px;border-radius:2px;display:inline-block;margin-right:6px;vertical-align:middle}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1><span class="lime">◆</span> AIO<span class="lime">X</span> — Estrutura da Corporação Multi-Agente</h1>
+  <p class="sub">250 clones · 25 squads · modelo híbrido (execução · expert pool · governança · runtime) · <code>validate-all-squads 25/25 OK</code> · 22 Mai 2026</p>
+
+  <div class="stats">
+    <div class="stat hl"><div class="n">51</div><div class="l">core</div></div>
+    <div class="stat hl"><div class="n">186</div><div class="l">pool</div></div>
+    <div class="stat"><div class="n">6</div><div class="l">governance</div></div>
+    <div class="stat"><div class="n">7</div><div class="l">runtime</div></div>
+    <div class="stat hl"><div class="n">25</div><div class="l">squads</div></div>
+  </div>
+
+  <div class="layer-h">Camada 1 · Operador</div>
+  <div class="band founder"><span class="lime">▲</span> Founder (Operador)</div>
+
+  <div class="layer-h">Camada 2 · Executive Council — governança (não executa)</div>
+  <div class="band"><div class="chips">
+    <span class="chip">@ceo<span class="role">CEO</span></span>
+    <span class="chip">@coo<span class="role">COO</span></span>
+    <span class="chip">@cto<span class="role">@architect</span></span>
+    <span class="chip">@cpo<span class="role">@pm</span></span>
+    <span class="chip">@cmo<span class="role">marketing</span></span>
+    <span class="chip">@cfo<span class="role">@damodaran</span></span>
+    <span class="chip">@cco<span class="role">customer</span></span>
+    <span class="chip">@cro<span class="role">revenue</span></span>
+  </div><div class="foot">Política · gates · escalação · tradeoffs cross-squad.</div></div>
+
+  <div class="layer-h">Camada 3 · Orchestration Runtime — o roteador</div>
+  <div class="band"><div class="chips">
+    <span class="chip">@aios-master<span class="role">COO/orq.</span></span>
+    <span class="chip">@aios-orchestrator</span>
+    <span class="chip">@sop-extractor</span>
+    <span class="chip">@squad-creator</span>
+    <span class="chip">@oalanicolas<span class="role">founder ctx</span></span>
+    <span class="chip">@conclave-coordinator</span>
+    <span class="chip">template-mind-clone</span>
+  </div></div>
+
+  <div class="layer-h">Camada 4 · Execution Squads (22) — chief → core → consulta pool</div>
+
+  <div class="group-h"><span class="dot" style="background:var(--c-eng)"></span>Engenharia & Plataforma</div>
+  <div class="grid">
+    <div class="card" style="border-left-color:var(--c-eng)"><div class="name">squad-engineering</div><div class="chief">@architect · CTO</div><div class="desc">Arquitetura, dev, code quality, TS/runtime.</div><div class="comp"><span class="b core">3 core</span><span class="b pool">14 pool</span><span class="b tot">17</span></div></div>
+    <div class="card" style="border-left-color:var(--c-eng)"><div class="name">squad-platform</div><div class="chief">@kelsey-hightower · VP Platform</div><div class="desc">DevOps, SRE, infra, cloud, observability.</div><div class="comp"><span class="b core">1 core</span><span class="b pool">8 pool</span><span class="b tot">9</span></div></div>
+    <div class="card" style="border-left-color:var(--c-eng)"><div class="name">squad-data</div><div class="chief">@data-engineer · VP Data</div><div class="desc">Schema, migrations, query, pipelines, RLS.</div><div class="comp"><span class="b core">1 core</span><span class="b pool">9 pool</span><span class="b tot">10</span></div></div>
+    <div class="card" style="border-left-color:var(--c-eng)"><div class="name">squad-ai</div><div class="chief">@demis-hassabis · CAIO</div><div class="desc">IA/ML, MLOps, alignment, decision science.</div><div class="comp"><span class="b pool">16 pool</span><span class="b tot">16</span></div></div>
+  </div>
+
+  <div class="group-h"><span class="dot" style="background:var(--c-design)"></span>Design & Comportamento</div>
+  <div class="grid">
+    <div class="card" style="border-left-color:var(--c-design)"><div class="name">squad-design</div><div class="chief">@design-lead</div><div class="desc">UX/UI, design systems, motion, IA, visual.</div><div class="comp"><span class="b core">7 core</span><span class="b pool">16 pool</span><span class="b tot">23</span></div></div>
+    <div class="card" style="border-left-color:var(--c-design)"><div class="name">squad-behavioral-design <span class="new">NOVO</span></div><div class="chief">@bj-fogg · VP Behavioral</div><div class="desc">Behavior design, nudge, gamificação, ética de engajamento.</div><div class="comp"><span class="b pool">7 pool</span><span class="b tot">7</span></div></div>
+  </div>
+
+  <div class="group-h"><span class="dot" style="background:var(--c-prod)"></span>Produto, Pesquisa & Inovação</div>
+  <div class="grid">
+    <div class="card" style="border-left-color:var(--c-prod)"><div class="name">squad-product</div><div class="chief">@pm · CPO</div><div class="desc">Discovery, PM, positioning, estratégia de produto.</div><div class="comp"><span class="b core">2 core</span><span class="b pool">4 pool</span><span class="b tot">6</span></div></div>
+    <div class="card" style="border-left-color:var(--c-prod)"><div class="name">squad-research</div><div class="chief">@analyst · VP Research</div><div class="desc">Pesquisa de mercado, competitor, foresight.</div><div class="comp"><span class="b core">5 core</span><span class="b pool">6 pool</span><span class="b tot">11</span></div></div>
+    <div class="card" style="border-left-color:var(--c-prod)"><div class="name">innovation</div><div class="chief">@clayton-christensen</div><div class="desc">Lean startup, JTBD, disrupção, validação.</div><div class="comp"><span class="b pool">8 pool</span><span class="b tot">8</span></div></div>
+  </div>
+
+  <div class="group-h"><span class="dot" style="background:var(--c-gtm)"></span>Marketing, Conteúdo, Vendas & Cliente</div>
+  <div class="grid">
+    <div class="card" style="border-left-color:var(--c-gtm)"><div class="name">marketing-traffic</div><div class="chief">@traffic-masters-chief</div><div class="desc">Tráfego pago, growth, SEO, CRO, funil.</div><div class="comp"><span class="b core">12 core</span><span class="b pool">16 pool</span><span class="b tot">28</span></div></div>
+    <div class="card" style="border-left-color:var(--c-gtm)"><div class="name">squad-content</div><div class="chief">@ann-handley · VP Content</div><div class="desc">Copy, narrativa, editorial, brand messaging.</div><div class="comp"><span class="b core">1 core</span><span class="b pool">7 pool</span><span class="b tot">8</span></div></div>
+    <div class="card" style="border-left-color:var(--c-gtm)"><div class="name">squad-sales</div><div class="chief">@alex-hormozi · CSO</div><div class="desc">Vendas, pricing, negociação, pipeline.</div><div class="comp"><span class="b core">8 core</span><span class="b pool">9 pool</span><span class="b tot">17</span></div></div>
+    <div class="card" style="border-left-color:var(--c-gtm)"><div class="name">squad-customer-success</div><div class="chief">@lincoln-murphy · VP CS</div><div class="desc">Onboarding, retenção, suporte, churn.</div><div class="comp"><span class="b core">7 core</span><span class="b pool">3 pool</span><span class="b tot">10</span></div></div>
+    <div class="card" style="border-left-color:var(--c-gtm)"><div class="name">squad-community</div><div class="chief">@sarah-drasner · VP DevRel</div><div class="desc">DevRel, comunidade, open-source.</div><div class="comp"><span class="b pool">3 pool</span><span class="b tot">3</span></div></div>
+  </div>
+
+  <div class="group-h"><span class="dot" style="background:var(--c-vert)"></span>Verticais especializados</div>
+  <div class="grid">
+    <div class="card" style="border-left-color:var(--c-vert)"><div class="name">squad-health <span class="new">NOVO</span></div><div class="chief">@alison-darcy · VP Digital Health</div><div class="desc"><b>Vertical Anipis.</b> 5 divisões: Data, Digital Care, Mental Health, Therapeutic Design, Regulatory.</div><div class="comp"><span class="b pool">19 pool</span><span class="b tot">19</span></div></div>
+    <div class="card" style="border-left-color:var(--c-vert)"><div class="name">squad-markets-intelligence <span class="new">NOVO</span></div><div class="chief">@luana-lopes-lara</div><div class="desc"><b>Projeto polymarket.</b> Trading, prediction markets, crypto, forecasting.</div><div class="comp"><span class="b pool">9 pool</span><span class="b tot">9</span></div></div>
+    <div class="card" style="border-left-color:var(--c-vert)"><div class="name">squad-finance</div><div class="chief">@aswath-damodaran · CFO</div><div class="desc">Valuation, pricing, modelagem, macro.</div><div class="comp"><span class="b pool">11 pool</span><span class="b tot">11</span></div></div>
+    <div class="card" style="border-left-color:var(--c-vert)"><div class="name">squad-legal</div><div class="chief">@heather-meeker · GC</div><div class="desc">Jurídico BR, compliance, LGPD, OSS, health-law.</div><div class="comp"><span class="b pool">13 pool</span><span class="b tot">13</span></div></div>
+    <div class="card" style="border-left-color:var(--c-vert)"><div class="name">squad-security</div><div class="chief">@bruce-schneier · CISO</div><div class="desc">6 divisões: Strategy, Red/Blue Team, AppSec, GRC, Talent.</div><div class="comp"><span class="b pool">16 pool</span><span class="b tot">16</span></div></div>
+  </div>
+
+  <div class="group-h"><span class="dot" style="background:var(--c-people)"></span>Pessoas & Operações</div>
+  <div class="grid">
+    <div class="card" style="border-left-color:var(--c-people)"><div class="name">squad-people</div><div class="chief">@patty-mccord · CHRO</div><div class="desc">Cultura, liderança, talento, org-psych.</div><div class="comp"><span class="b pool">8 pool</span><span class="b tot">8</span></div></div>
+    <div class="card" style="border-left-color:var(--c-people)"><div class="name">squad-education</div><div class="chief">@sal-khan · VP Education</div><div class="desc">Currículo, deliberate practice, treinamento.</div><div class="comp"><span class="b pool">3 pool</span><span class="b tot">3</span></div></div>
+    <div class="card" style="border-left-color:var(--neutral)"><div class="name">squad-operations</div><div class="chief">@sm · Scrum Master</div><div class="desc">Sprint, QA, DevOps, processo, remote.</div><div class="comp"><span class="b core">4 core</span><span class="b pool">4 pool</span><span class="b tot">9</span></div></div>
+    <div class="card" style="border-left-color:var(--accent)"><div class="name">squad-executive</div><div class="chief">@aios-master · COO</div><div class="desc">Orquestração / meta-framework.</div><div class="comp"><span class="b core">2 core</span><span class="b pool">6 pool</span><span class="b tot">12</span></div></div>
+  </div>
+
+  <div class="layer-h">Camada 5 · Expert Pool — 186 consultivos, por domínio</div>
+  <div class="band pool-band">
+    <div class="foot" style="margin:0 0 2px">Acionados <b style="color:var(--accent)">on-demand</b> por tag de domínio (não membros fixos) · via brain-bridge MCP + Conclave + <code>/skills</code> · entrada: <b>@conclave-coordinator</b></div>
+    <div class="pool-doms">
+      <span class="pd">health <b>19</b></span><span class="pd">ai <b>16</b></span><span class="pd">design <b>16</b></span><span class="pd">marketing <b>16</b></span><span class="pd">security <b>16</b></span><span class="pd">engineering <b>14</b></span><span class="pd">legal <b>13</b></span><span class="pd">finance <b>11</b></span><span class="pd">sales <b>9</b></span><span class="pd">markets <b>9</b></span><span class="pd">data <b>9</b></span><span class="pd">innovation <b>8</b></span><span class="pd">people <b>8</b></span><span class="pd">platform <b>8</b></span><span class="pd">behavioral <b>7</b></span><span class="pd">content <b>7</b></span><span class="pd">+ outros</span>
+    </div>
+  </div>
+
+  <div class="layer-h">Gates de governança — disparam por gatilho material</div>
+  <div class="gates">
+    <div class="gate block"><span class="tag">BLOCK</span> · Story-driven<div class="o">@sm/@pm · constituição</div></div>
+    <div class="gate block"><span class="tag">BLOCK</span> · No-invention<div class="o">todos · constituição</div></div>
+    <div class="gate block"><span class="tag">BLOCK</span> · Quality<div class="o">@qa · pre-push</div></div>
+    <div class="gate live"><span class="tag">ATIVO</span> · Data-quality<div class="o">@data-engineer · hook SQL</div></div>
+    <div class="gate live"><span class="tag">ATIVO</span> · Mind-clone DNA<div class="o">@squad-creator · hook</div></div>
+    <div class="gate pol"><span class="tag">POLICY</span> · Security<div class="o">@bruce-schneier</div></div>
+    <div class="gate pol"><span class="tag">POLICY</span> · Legal<div class="o">@heather-meeker</div></div>
+    <div class="gate pol"><span class="tag">POLICY</span> · Privacy/LGPD<div class="o">@ann-cavoukian</div></div>
+    <div class="gate pol"><span class="tag">POLICY</span> · Finance<div class="o">@aswath-damodaran</div></div>
+    <div class="gate pol"><span class="tag">POLICY</span> · Brand<div class="o">@ann-handley</div></div>
+    <div class="gate pol"><span class="tag">POLICY</span> · Human approval<div class="o">Founder · irreversível</div></div>
+  </div>
+
+  <div class="legend">
+    <span><i style="background:var(--accent)"></i>core / accent (lime)</span>
+    <span><i style="background:var(--panel2);border:1px solid var(--line)"></i>pool</span>
+    <span><i style="background:var(--c-vert)"></i>verticais</span>
+    <span><i style="background:var(--warn)"></i>gate BLOCK</span>
+  </div>
+  <div class="foot">Org-chart por Orion (aios-master) · tema <code>sinkra_observatory_dark</code> (AIOX). Fonte: <code>jarvis-mind-clone-index.json</code> + 25 <code>squad.yaml</code> + <code>routing-and-gates-policy.md</code>. Doc texto: <code>aiox-structure-orion-22mai.md</code>.</div>
+</div>
+</body>
+</html>
