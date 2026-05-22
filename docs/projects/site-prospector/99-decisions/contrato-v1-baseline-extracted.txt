@@ -1,0 +1,188 @@
+CONTRATO DE PRESTAÇÃO DE SERVIÇOS DE PRESENÇA DIGITAL
+Versão 1.0 — Baseline Claude · Site-Prospector / Piloto Blumenau · 15 de maio de 2026
+▸ NOTA CLAUDE — baseline: Este é um BASELINE produzido por Claude (IA) para servir como referência de comparação com o trabalho do(a) advogado(a) OAB-SC contratado. Não constitui parecer profissional. Notas em cinza ao longo do texto apontam escolhas redacionais, riscos e pontos de discussão a serem validados pelo profissional. Conta com 20 cláusulas + cláusula X de garantia + remissão a DPA anexo.
+QUALIFICAÇÃO DAS PARTES
+CONTRATADA: SITE-PROSPECTOR, nome empresarial a ser definido por ocasião da constituição como Microempresa (ME), inscrita no CNPJ sob o nº [________], com sede em [endereço completo], Blumenau/SC, CEP [_____], neste ato representada na forma de seus atos constitutivos por BRENO [SOBRENOME], brasileiro, [estado civil], [profissão], portador do RG nº [_______] SSP/SC e inscrito no CPF/MF sob o nº [_______], residente e domiciliado em [endereço completo], doravante denominada simplesmente CONTRATADA.
+CONTRATANTE: [RAZÃO SOCIAL DA PADARIA/CONFEITARIA], inscrita no CNPJ sob o nº [_______], com sede em [endereço completo], Blumenau/SC, CEP [_____], neste ato representada na forma de seus atos constitutivos por [NOME DO RESPONSÁVEL LEGAL], brasileiro(a), [estado civil], [profissão], portador(a) do RG nº [_______] SSP/[___] e inscrito(a) no CPF/MF sob o nº [_______], doravante denominada simplesmente CONTRATANTE.
+As partes acima qualificadas, doravante denominadas em conjunto como PARTES, têm entre si justo e contratado o presente Contrato de Prestação de Serviços de Presença Digital ("Contrato"), que se regerá pelas cláusulas e condições a seguir estipuladas, bem como pelas disposições da Lei nº 10.406/2002 (Código Civil), da Lei nº 8.078/1990 (Código de Defesa do Consumidor), da Lei nº 13.709/2018 (Lei Geral de Proteção de Dados Pessoais — LGPD) e demais legislações aplicáveis.
+▸ NOTA CLAUDE — baseline: Optei por presumir aplicação do CDC mesmo sendo CONTRATANTE PJ. A Súmula 297/STJ aplica CDC quando o destinatário é vulnerável e usa o serviço como destinatário final — microempresa de padaria, sem expertise em marketing digital, contratando serviço para uso próprio, tende a se enquadrar como consumidora-equiparada. Custa pouco redigir CDC-friendly e protege contra discussão futura no PROCON/JEC. Advogado deve confirmar a tese para Blumenau especificamente.
+CLÁUSULA 1ª — OBJETO
+1.1. O presente Contrato tem por objeto a prestação, pela CONTRATADA à CONTRATANTE, de serviços de desenvolvimento e gestão de presença digital local, compreendendo os seguintes entregáveis ("Entregáveis"):
+(a) desenvolvimento de site institucional da CONTRATANTE em tecnologia Next.js, com performance mobile aferida igual ou superior a 90 (noventa) pontos no Google Lighthouse;
+(b) reconstrução e configuração do perfil Google Business Profile (GBP) da CONTRATANTE, administrado pela CONTRATADA durante a vigência do plano contratado, com titularidade originária e permanente da CONTRATANTE, nos termos da Cláusula 8ª;
+(c) ajustes pontuais no perfil comercial da CONTRATANTE no Instagram, abrangendo biografia, destaques e produção de 12 (doze) posts pilar, em entrega única e não recorrente;
+(d) implementação de boas práticas de SEO local para o município de Blumenau/SC;
+(e) 1 (uma) sessão fotográfica presencial de 2 (duas) horas no estabelecimento da CONTRATANTE, com entrega das imagens tratadas em formato digital.
+1.2. Os Entregáveis serão prestados com observância dos seguintes parâmetros qualitativos:
+(a) performance técnica do site conforme métrica Google Lighthouse mobile ≥ 90, aferida no momento do go-live e mensurada mediante captura de tela arquivada;
+(b) conformidade do site com padrões mínimos de acessibilidade WCAG 2.1 nível A;
+(c) hospedagem em infraestrutura Vercel (ou equivalente), com SSL ativo e domínio personalizado da CONTRATANTE.
+1.3. A CONTRATADA não garante, como objeto contratual, aumento de faturamento, número de clientes novos, posicionamento específico em buscadores ou crescimento de receita da CONTRATANTE, que dependem de fatores fora do controle da CONTRATADA, conforme detalhado na Cláusula X (Garantia Comercial).
+▸ NOTA CLAUDE — baseline: A separação entre OBJETO (entregáveis técnicos) e GARANTIA COMERCIAL (Cláusula X) é deliberada — segue a Correção 1 da Patricia Peck (substituir promessas comerciais por entregas técnicas). Item 1.3 é a 'cláusula-vacina' contra alegação de art. 30 CDC (vinculação da oferta) e art. 37 CDC (publicidade enganosa).
+CLÁUSULA 2ª — PRAZO DE EXECUÇÃO E GO-LIVE
+2.1. Os Entregáveis serão executados em prazo indicativo de 10 (dez) dias úteis contados da data de pagamento da primeira parcela ou do valor à vista, observado o seguinte cronograma referencial:
+(a) Dias 1-2: briefing presencial, coleta de materiais e sessão fotográfica;
+(b) Dias 3-7: desenvolvimento do site, reconstrução GBP, produção dos posts Instagram;
+(c) Dia 8: revisão pela CONTRATANTE em ambiente de pré-publicação;
+(d) Dias 9-10: ajustes finais e go-live.
+2.2. Considera-se "go-live" a data de publicação do site no domínio definitivo da CONTRATANTE, confirmada por mensagem eletrônica enviada pela CONTRATADA à CONTRATANTE, à qual se vinculam o início do Período de Mensuração da Cláusula X e a contagem da garantia legal do art. 26, II, CDC.
+2.3. Atrasos imputáveis à CONTRATANTE — incluindo, sem limitação, demora na entrega de materiais, indisponibilidade para sessão fotográfica, ausência de aprovação em prazo razoável — suspendem o cronograma e não constituem inadimplemento da CONTRATADA.
+CLÁUSULA 3ª — PREÇO E CONDIÇÕES DE PAGAMENTO
+3.1. Pela prestação dos Entregáveis previstos na Cláusula 1ª, a CONTRATANTE pagará à CONTRATADA o valor total de R$ 3.497,00 (três mil, quatrocentos e noventa e sete reais), em pagamento único à vista, ou, opcionalmente, R$ 3.498,00 (três mil, quatrocentos e noventa e oito reais) parcelado em 6 (seis) prestações iguais de R$ 583,00 (quinhentos e oitenta e três reais) no cartão de crédito.
+3.2. Em cumprimento ao art. 52 do Código de Defesa do Consumidor e ao Decreto nº 7.962/2013, ficam expressamente declarados:
+(a) preço total à vista: R$ 3.497,00;
+(b) preço total a prazo: R$ 3.498,00;
+(c) número de prestações: 6 (seis);
+(d) valor de cada prestação: R$ 583,00;
+(e) acréscimo financeiro entre as modalidades à vista e a prazo: R$ 1,00 (um real);
+(f) taxa de juros efetiva mensal aplicada pela CONTRATADA: 0,00% a.m. (zero por cento ao mês), ressalvado IOF, anuidade e demais encargos cobrados diretamente pela operadora do cartão de crédito da CONTRATANTE, alheios à CONTRATADA.
+3.3. Adicionalmente, a CONTRATANTE pagará mensalidade recorrente referente ao plano contratado, conforme tabela abaixo, em modalidade de assinatura mensal por débito recorrente em cartão de crédito ou boleto bancário:
+• Plano Essential: R$ 149,00/mês;
+• Plano Growth (padrão): R$ 247,00/mês;
+• Plano Scale: R$ 397,00/mês.
+3.4. A primeira mensalidade será cobrada 30 (trinta) dias após o go-live. A CONTRATANTE poderá cancelar a recorrência a qualquer tempo, com efeitos ao final do ciclo mensal em curso, sem multa rescisória sobre a mensalidade.
+3.5. O inadimplemento das mensalidades, após notificação por escrito e prazo de 30 (trinta) dias para purgação da mora (art. 52 CDC), autoriza a suspensão dos serviços de manutenção previstos no plano, sem afetar a posse e propriedade dos Entregáveis já entregues, conforme Cláusula 7ª.
+▸ NOTA CLAUDE — baseline: Disclosures do art. 52 CDC + Dec. 7.962/2013 redigidos de forma exaustiva. Patricia Peck identificou ausência desse detalhamento como vulnerabilidade. A taxa de juros 0% explicita que o R$ 1 de diferença não é cobrança financeira da CONTRATADA, evitando enquadramento como concessão de crédito. Revisar se a CONTRATADA emitirá comprovante/contrato separado para a recorrência ou se 3.3 e 3.4 bastam — discutir com advogado.
+CLÁUSULA 4ª — GARANTIA LEGAL
+4.1. Aplica-se ao presente Contrato a garantia legal de 90 (noventa) dias prevista no art. 26, inciso II, do Código de Defesa do Consumidor, para serviços não duráveis, contada da data do go-live ou da entrega do último Entregável, o que ocorrer por último.
+4.2. A garantia legal abrange vícios de qualidade que tornem o serviço impróprio ou inadequado ao consumo a que se destina ou lhe diminuam o valor, nos termos do art. 18 e seguintes do CDC.
+4.3. A garantia comercial estipulada na Cláusula X é adicional à garantia legal prevista nesta Cláusula 4ª, nunca a substituindo nem reduzindo, conforme art. 50 do CDC.
+▸ NOTA CLAUDE — baseline: Cláusula 4 é a 'cinta de segurança' do contrato. Patricia Peck insistiu em não permitir que a Cláusula X (garantia comercial) seja interpretada como substitutiva da garantia legal. Redação explícita aqui torna inviável esse argumento por parte da CONTRATADA em juízo.
+CLÁUSULA 5ª (X) — GARANTIA COMERCIAL "PERFORMANCE LOCAL BLUMENAU"
+5.1. A CONTRATADA oferece, em adição à garantia legal prevista na Cláusula 4ª, garantia comercial complementar denominada "Performance Local Blumenau", nos termos abaixo.
+5.2. Período de mensuração: 60 (sessenta) dias corridos, contados a partir da data de publicação do site (go-live) confirmada por mensagem eletrônica enviada pela CONTRATADA à CONTRATANTE.
+5.3. Métricas objetivas auditadas: considera-se "evento de interesse comercial atribuído" o registro técnico, no painel de analytics fornecido pela CONTRATADA, de qualquer dos seguintes:
+(a) clique único, originado de visitante único identificado pelo painel de analytics, no botão "Falar pelo WhatsApp" do site;
+(b) clique no botão "Ligar" no perfil Google Business Profile administrado pela CONTRATADA, com origem identificada na busca local de Blumenau/SC.
+5.4. Condição de acionamento: se, ao término dos 60 (sessenta) dias, o painel registrar zero (0) eventos de interesse atribuídos conforme item 5.3, a CONTRATANTE terá direito a:
+(a) crédito de 3 (três) mensalidades subsequentes do plano Growth, no valor total de R$ 741,00 (setecentos e quarenta e um reais), aplicadas automaticamente nas faturas seguintes;
+(b) 1 (uma) sessão fotográfica sazonal adicional, sem custo, com escopo equivalente ao previsto no plano contratado, no valor de mercado de R$ 800,00 (oitocentos reais).
+5.5. Manutenção dos Entregáveis: o acionamento da garantia não afeta a propriedade da CONTRATANTE sobre os Entregáveis já entregues (site, perfil Google Business Profile, ajustes de Instagram, fotografias entregues), nos termos da Cláusula 7ª.
+5.6. Condições objetivas de elegibilidade (cumulativas):
+(a) a CONTRATANTE manteve o site no ar durante todo o Período de Mensuração, sem solicitar despublicação;
+(b) a CONTRATANTE não removeu, alterou ou desabilitou o botão WhatsApp, o perfil GBP ou os scripts de mensuração;
+(c) a CONTRATANTE manteve respondendo o WhatsApp no horário comercial declarado no site;
+(d) a CONTRATANTE não realizou alterações no site, fora do escopo do plano, sem comunicação prévia à CONTRATADA;
+(e) a CONTRATANTE manteve-se adimplente com as mensalidades durante o Período de Mensuração.
+5.7. Não constituem evento atribuído, para fins desta garantia: cliques duplicados do mesmo visitante na mesma sessão; cliques originados de endereço IP da CONTRATANTE ou da CONTRATADA; cliques identificados como bot pelo provedor de analytics; cliques originados de campanhas pagas não contratadas via este instrumento.
+5.8. Auditoria e transparência: a CONTRATADA disponibilizará à CONTRATANTE, durante todo o Período de Mensuração, acesso de leitura ao painel de mensuração, bem como enviará relatório mensal em formato PDF, redigido em linguagem comum, contendo capturas de tela das métricas e assinado eletronicamente pela CONTRATADA.
+5.9. Esta garantia não se confunde com promessa de venda, faturamento ou aumento de clientela. A CONTRATADA não controla a decisão de compra do consumidor final, fatores macroeconômicos, sazonalidade, qualidade dos produtos da CONTRATANTE, seu atendimento, sua precificação ou seu estoque.
+5.10. As condições de elegibilidade do item 5.6 deverão ser interpretadas razoavelmente e à luz do art. 47 do CDC. Falhas técnicas pontuais (queda de internet do estabelecimento por horas, indisponibilidade do site por causas atribuíveis ao provedor de hospedagem etc.) não descaracterizam o cumprimento das condições, desde que comunicadas à CONTRATADA em prazo razoável.
+▸ NOTA CLAUDE — baseline: Cláusula X integral da seção 04 do briefing, com 3 ajustes meus: (1) item 5.6(e) adimplência foi adicionado — o briefing original omitiu; sem isso, cliente inadimplente pode acionar garantia (risco grave); (2) item 5.10 adicionado para mitigar argumento de cliente de que a CONTRATADA está usando 5.6 como escudo abusivo (art. 51 CDC); (3) item 5.4(a) precificação total R$ 741 confere com 3 mensalidades Growth — checar se outros planos têm fórmula proporcional. CRÍTICO: discutir com advogado se a obrigação 5.6(c) 'responder WhatsApp' é exigível de microempresa sem alteridade — pode ser visto como excessivamente oneroso.
+CLÁUSULA 6ª — LICENCIAMENTO DOS ENTREGÁVEIS
+6.1. Mediante o pagamento integral do valor único previsto na Cláusula 3.1, a CONTRATADA outorga à CONTRATANTE licença perpétua, irrevogável, irretratável, mundial e gratuita para uso, reprodução, modificação e exploração comercial dos seguintes Entregáveis:
+(a) código-fonte do site institucional;
+(b) conteúdo escrito e visual produzido especificamente para a CONTRATANTE;
+(c) fotografias entregues, com cessão de direitos patrimoniais para uso comercial e institucional da CONTRATANTE.
+6.2. A CONTRATADA reserva para si:
+(a) os direitos morais de autoria sobre o código-fonte autoral por ela desenvolvido, na forma do art. 27 da Lei nº 9.610/1998;
+(b) o direito de utilizar os Entregáveis em portfólio próprio, materiais comerciais, redes sociais e mídias de divulgação, identificando a CONTRATANTE como cliente, com finalidade exclusivamente promocional dos serviços da CONTRATADA;
+(c) a propriedade intelectual sobre frameworks, bibliotecas, componentes e templates de código por ela previamente desenvolvidos e reutilizados na execução deste Contrato, sobre os quais é outorgada à CONTRATANTE licença não exclusiva de uso vinculada exclusivamente aos Entregáveis.
+6.3. A CONTRATANTE poderá solicitar, mediante comunicação por escrito, a retirada da exposição prevista no item 6.2(b) em portfólio público, com efeitos em 30 (trinta) dias da solicitação.
+▸ NOTA CLAUDE — baseline: Item 6.3 é uma proteção pro CLIENTE da padaria — sem isso, a CONTRATADA poderia, em tese, manter para sempre a referência. Possibilidade de retirada é boa-fé objetiva (art. 422 CC) e equilibra a Cláusula. Vale discutir com advogado se essa retirada gera contraprestação financeira (não vi base) ou é direito puro do cliente.
+CLÁUSULA 7ª — TITULARIDADE DE DOMÍNIO, CONTAS E PERFIS
+7.1. A titularidade dos seguintes ativos é, desde a origem ou em transferência imediata após sua criação, da CONTRATANTE:
+(a) domínio na internet (URL principal e demais variantes contratadas), registrado em nome da CONTRATANTE junto ao Registro.br ou registrador equivalente;
+(b) perfil Google Business Profile (GBP), administrado pela CONTRATADA durante a vigência do plano, mas com titularidade da CONTRATANTE desde sua criação ou transferência;
+(c) contas e perfis em redes sociais (Instagram, Facebook etc.) operados sob marca da CONTRATANTE;
+(d) contas de e-mail comercial vinculadas ao domínio.
+7.2. A CONTRATADA atua como gestora operacional autorizada dos ativos do item 7.1, mediante credenciais de acesso fornecidas pela CONTRATANTE ou criadas em nome desta, sem que tal gestão implique cessão de titularidade à CONTRATADA.
+7.3. Em caso de rescisão do Contrato por qualquer motivo, a CONTRATADA entregará à CONTRATANTE, em até 15 (quinze) dias corridos, todas as credenciais, acessos administrativos e documentação técnica necessária à continuidade da operação dos ativos do item 7.1, sem cobrança adicional.
+▸ NOTA CLAUDE — baseline: Item 7.3 é a 'cláusula anti-sequestro' — protege CONTRATANTE de ficar refém da CONTRATADA após rescisão. Prática comum no mercado brasileiro de agências digitais é segurar acessos para forçar renovação. Cláusula explícita evita esse risco e é boa-fé objetiva (art. 422 CC) + função social do contrato (art. 421 CC).
+CLÁUSULA 8ª — TRATAMENTO DE DADOS PESSOAIS (LGPD)
+8.1. As PARTES se comprometem a tratar dados pessoais coletados ou processados em decorrência deste Contrato em estrita conformidade com a Lei nº 13.709/2018 (Lei Geral de Proteção de Dados Pessoais — LGPD).
+8.2. Para os fluxos de tratamento decorrentes deste Contrato, as PARTES adotam o seguinte enquadramento de papéis:
+(a) Tracking de cliques e analytics no site da CONTRATANTE: a CONTRATANTE atua como controladora e a CONTRATADA como operadora, nos termos do art. 5º, VI e VII, da LGPD;
+(b) Formulário de contato no site da CONTRATANTE: a CONTRATANTE atua como controladora e a CONTRATADA como operadora;
+(c) Integração com WhatsApp Business: a CONTRATANTE atua como controladora; a CONTRATADA e a Meta Platforms, Inc. atuam como operadoras conforme os respectivos termos de uso.
+8.3. As obrigações específicas de cada papel, incluindo medidas técnicas e administrativas de segurança, prazos de retenção, transferência internacional de dados, procedimentos de comunicação de incidentes, atendimento a titulares e demais requisitos do art. 39 da LGPD, encontram-se detalhados no Acordo de Processamento de Dados (DPA), anexo a este Contrato como Anexo I, que dele faz parte integrante e indissociável para todos os fins de direito.
+8.4. As PARTES se enquadram, na presente data, como Pequenos Agentes de Tratamento de Dados Pessoais, nos termos da Resolução CD/ANPD nº 2, de 27 de janeiro de 2022, conforme parecer técnico-jurídico anexo a este Contrato. Caso o enquadramento se altere durante a vigência, as PARTES se comprometem a revisar este Contrato e o DPA em prazo não superior a 60 (sessenta) dias.
+8.5. Em caso de incidente de segurança envolvendo dados pessoais tratados em decorrência deste Contrato, a parte que tomar conhecimento do incidente comunicará a outra em prazo não superior a 48 (quarenta e oito) horas, sem prejuízo das obrigações próprias de comunicação à Autoridade Nacional de Proteção de Dados (ANPD) e aos titulares, nos termos do art. 48 da LGPD.
+▸ NOTA CLAUDE — baseline: Aqui adotei abordagem 'remissão a DPA anexo' para não sobrecarregar o corpo do contrato. O DPA será produzido como segundo bloco do baseline. Vantagem: contrato fica enxuto e DPA pode ser atualizado independentemente (revisão anual LGPD). 8.5 fixa prazo de 48h interno, mais rigoroso que o 'prazo razoável' do art. 48 LGPD (ANPD ainda não regulamentou prazo específico) — protege a CONTRATANTE caso a CONTRATADA sofra vazamento.
+CLÁUSULA 9ª — CONFIDENCIALIDADE
+9.1. As PARTES obrigam-se reciprocamente a manter em sigilo todas as informações de natureza confidencial a que tiverem acesso em razão deste Contrato, incluindo, sem limitação: dados financeiros, listas de clientes e fornecedores, estratégias comerciais, dados de tráfego do site, métricas de desempenho, credenciais de acesso, e informações técnicas próprias da CONTRATADA (frameworks, fluxos de trabalho, prompts e configurações de ferramentas).
+9.2. A obrigação de confidencialidade vigerá durante a execução do Contrato e por 5 (cinco) anos após seu término, qualquer que seja a causa.
+9.3. Não se enquadram como informações confidenciais: (a) informações que sejam ou se tornem públicas sem culpa da parte receptora; (b) informações já conhecidas pela parte receptora antes da divulgação; (c) informações reveladas em cumprimento a ordem judicial, requisição administrativa legítima ou determinação legal expressa, hipótese em que a parte receptora notificará a outra em prazo razoável, ressalvado sigilo legal.
+CLÁUSULA 10ª — SUBCONTRATAÇÃO
+10.1. A CONTRATADA poderá subcontratar terceiros para execução parcial dos Entregáveis, mantendo-se integralmente responsável perante a CONTRATANTE pelos atos e omissões dos subcontratados, como se próprios fossem.
+10.2. Subcontratações que envolvam tratamento de dados pessoais da CONTRATANTE ou de seus clientes finais serão precedidas de instrumento escrito que vincule o subcontratado às mesmas obrigações de proteção de dados estabelecidas neste Contrato e no DPA anexo.
+10.3. Subcontratados típicos previstos, sem prejuízo de outros: hospedagem (Vercel ou equivalente), fotógrafo profissional, redatores e designers freelancers. A CONTRATANTE manifesta ciência e anuência genérica a essas subcontratações.
+▸ NOTA CLAUDE — baseline: 10.3 lista subcontratados típicos para evitar discussão sobre 'anuência específica'. Caso advogado queira ser mais conservador, pode-se trocar por exigência de comunicação prévia caso a caso — mas isso adiciona fricção operacional. Recomendo manter 10.3 e atualizar lista quando necessário.
+CLÁUSULA 11ª — SUSPENSÃO POR INADIMPLÊNCIA
+11.1. Em caso de inadimplemento das mensalidades referidas no item 3.3, a CONTRATADA notificará a CONTRATANTE por escrito (e-mail ao endereço cadastrado e/ou WhatsApp ao telefone cadastrado), concedendo prazo de 30 (trinta) dias para purgação da mora, conforme art. 52 do CDC.
+11.2. Decorrido o prazo do item 11.1 sem regularização, a CONTRATADA poderá suspender os serviços de manutenção previstos no plano (atualizações de SEO, monitoramento de painel, suporte humano local), preservando-se integralmente:
+(a) a publicação do site no domínio da CONTRATANTE;
+(b) a operação do perfil Google Business Profile;
+(c) a propriedade e o acesso da CONTRATANTE aos ativos da Cláusula 7ª.
+11.3. Regularizada a mora, os serviços serão reativados em prazo não superior a 5 (cinco) dias úteis.
+CLÁUSULA 12ª — RESCISÃO
+12.1. O presente Contrato poderá ser rescindido:
+(a) por qualquer das PARTES, sem motivação específica, mediante aviso prévio escrito de 30 (trinta) dias;
+(b) por descumprimento de obrigação contratual essencial pela outra parte, após notificação por escrito e prazo de 15 (quinze) dias para correção, decorrido o qual a rescisão opera de pleno direito;
+(c) por consenso mútuo, a qualquer tempo, mediante termo escrito firmado pelas PARTES.
+12.2. Em qualquer hipótese de rescisão, observar-se-á o disposto na Cláusula 7.3 quanto à devolução de credenciais e acessos.
+12.3. A rescisão não retroage para retirar a propriedade da CONTRATANTE sobre os Entregáveis já entregues, nos termos da Cláusula 6ª, nem desobriga a CONTRATANTE de quitar mensalidades vencidas até a data efetiva de rescisão.
+CLÁUSULA 13ª — LIMITAÇÃO DE RESPONSABILIDADE
+13.1. Ressalvadas as hipóteses de dolo, culpa grave e violação de direitos previstos no CDC e na LGPD, a responsabilidade civil da CONTRATADA por danos diretos imputáveis à sua atuação fica limitada ao valor total efetivamente pago pela CONTRATANTE nos 12 (doze) meses anteriores ao evento danoso.
+13.2. Ficam expressamente excluídos da responsabilidade da CONTRATADA: danos indiretos, lucros cessantes, perda de chance, perda de receita, perda de clientela ou de oportunidade comercial, observado o disposto no art. 6º, VI, do CDC quanto à efetiva prevenção e reparação de danos patrimoniais.
+13.3. As limitações desta Cláusula não se aplicam a:
+(a) obrigações de pagamento;
+(b) violação de obrigações de confidencialidade;
+(c) violação de obrigações de proteção de dados pessoais (LGPD);
+(d) fato exclusivo do consumidor ou de terceiros, nos termos do art. 14, §3º, do CDC.
+▸ NOTA CLAUDE — baseline: Item 13 é o ponto mais sensível ao art. 51 CDC. A jurisprudência majoritária rejeita limitação ABSOLUTA de responsabilidade em relação consumerista, mas aceita limitação PROPORCIONAL e razoável. A âncora '12 meses pagos' é defensável (proporcionalidade ao benefício efetivamente recebido). Item 13.3 lista exceções expressas para fortalecer o argumento de razoabilidade. CRÍTICO: advogado deve confirmar jurisprudência TJ-SC sobre esta cláusula em prestação de serviço digital.
+CLÁUSULA 14ª — MANUTENÇÃO E NÍVEL DE SERVIÇO (SLA)
+14.1. A CONTRATADA compromete-se a manter o site da CONTRATANTE disponível em índice médio mensal não inferior a 99,0% (noventa e nove por cento), conforme métrica do provedor de hospedagem (Vercel ou equivalente).
+14.2. Excluem-se da apuração do SLA do item 14.1:
+(a) janelas de manutenção programadas e comunicadas com antecedência mínima de 48 (quarenta e oito) horas;
+(b) indisponibilidades causadas por força maior, caso fortuito ou ataques cibernéticos externos não preveníveis com tecnologias razoáveis;
+(c) indisponibilidades imputáveis a terceiros sob domínio da CONTRATANTE (ex.: alterações realizadas pela própria CONTRATANTE no painel).
+14.3. Solicitações de suporte serão respondidas pela CONTRATADA nos seguintes prazos máximos, contados em dias úteis durante horário comercial:
+(a) incidentes críticos (site fora do ar): 4 (quatro) horas úteis para resposta inicial;
+(b) incidentes não-críticos: 24 (vinte e quatro) horas úteis;
+(c) demandas de melhoria/ajuste dentro do plano contratado: 5 (cinco) dias úteis.
+CLÁUSULA 15ª — NÃO-COMPETE [EXCLUÍDA NA V1]
+15.1. Conforme orientação da consultoria jurídica preliminar, nesta versão 1.0 do Contrato não há cláusula de não-competição entre os serviços prestados pela CONTRATADA a clientes diferentes dentro do mesmo bairro/área de atuação da CONTRATANTE.
+15.2. A CONTRATADA reserva-se o direito de prestar serviços a outras empresas, inclusive concorrentes diretos da CONTRATANTE, sem que tal prestação configure conflito de interesses, observados o sigilo previsto na Cláusula 9ª e a finalidade exclusiva dos dados de cada cliente.
+▸ NOTA CLAUDE — baseline: Mantive a numeração da seção 05 do briefing (originalmente 'Não-compete por bairro NÃO USAR na v1'). Em vez de pular o número, expliquei a opção. Isso evita interpretação adversa ('por que pularam a cláusula 15?'). Versão futura premium pode inserir não-compete específico aqui.
+CLÁUSULA 16ª — FORO DE ELEIÇÃO
+16.1. Fica eleito o foro da Comarca de Blumenau, Estado de Santa Catarina, para dirimir quaisquer controvérsias decorrentes deste Contrato.
+16.2. A eleição do item 16.1 não prejudica, contudo, o direito da CONTRATANTE, na hipótese de a relação ser regida pelo CDC ou de a CONTRATANTE figurar como hipossuficiente, de optar pelo foro de seu próprio domicílio, nos termos do art. 101, I, do CDC e do art. 63, §3º, do CPC.
+▸ NOTA CLAUDE — baseline: Item 16.2 é a 'ressalva consumerista' que torna o foro válido. Sem isso, a cláusula é nula (art. 51, XV, CDC). Patricia Peck destacou esse ponto especificamente. Validar com advogado que a redação está conforme jurisprudência catarinense.
+CLÁUSULA 17ª — LEI APLICÁVEL
+17.1. O presente Contrato rege-se pelas leis da República Federativa do Brasil, em especial Código Civil, Código de Defesa do Consumidor, Lei Geral de Proteção de Dados Pessoais, Marco Civil da Internet (Lei nº 12.965/2014) e demais legislações aplicáveis.
+CLÁUSULA 18ª — RESOLUÇÃO DE CONFLITOS
+18.1. Antes de qualquer medida judicial, as PARTES se comprometem a buscar resolução amigável de eventuais controvérsias, observando-se as seguintes etapas sequenciais e não cumulativas:
+(a) comunicação por escrito (e-mail ou carta) descrevendo a controvérsia, com prazo de 30 (trinta) dias para tratativas diretas;
+(b) facultativamente, mediação por câmara privada ou pelo CEJUSC da Comarca de Blumenau/SC, sem prejuízo da via judicial.
+18.2. Não se elege arbitragem como meio de resolução de conflitos, em respeito à vedação do art. 51, VII, do CDC para relações consumeristas.
+CLÁUSULA 19ª — ASSINATURA ELETRÔNICA
+19.1. Este Contrato pode ser firmado por meio de plataforma de assinatura eletrônica que ofereça registro de timestamp, trilha auditável e validação por meio de e-mail, SMS ou certificado digital, nos termos da Medida Provisória nº 2.200-2/2001 e da Lei nº 14.063/2020.
+19.2. Plataformas aceitas, sem prejuízo de outras: DocuSign, ZapSign, Clicksign e equivalentes.
+19.3. A assinatura eletrônica em conformidade com este item produz os mesmos efeitos da assinatura manuscrita para todos os fins de direito.
+CLÁUSULA 20ª — DISPOSIÇÕES GERAIS
+20.1. Comunicações: as comunicações entre as PARTES previstas neste Contrato serão consideradas válidas quando enviadas para os endereços de e-mail e telefones cadastrados no preâmbulo, ou, se atualizados por escrito, para os atualizados.
+20.2. Autonomia das cláusulas: a eventual nulidade, ilegalidade ou inexequibilidade de qualquer cláusula deste Contrato não afetará as demais, que permanecerão em pleno vigor.
+20.3. Tolerância: a tolerância de uma parte ao descumprimento de qualquer obrigação pela outra não constitui novação, renúncia ou alteração do Contrato.
+20.4. Integralidade: este Contrato, em conjunto com seus Anexos (DPA, Documento de Transparência de Atribuição, Termos do plano contratado), representa o entendimento integral das PARTES sobre seu objeto, prevalecendo sobre quaisquer entendimentos verbais ou escritos anteriores.
+20.5. Cessão: este Contrato é intuitu personae quanto à CONTRATADA; sua cessão a terceiros depende de anuência expressa por escrito da CONTRATANTE. A CONTRATANTE poderá ceder o Contrato em caso de sucessão empresarial, sub-rogação ou reorganização societária, mediante comunicação prévia à CONTRATADA.
+20.6. Anexos integrantes: integram este Contrato, como se nele transcritos estivessem:
+(a) Anexo I — Acordo de Processamento de Dados (DPA);
+(b) Anexo II — Documento de Transparência de Atribuição (assinado em separado em pré-venda);
+(c) Anexo III — Especificação técnica do plano contratado (Essential, Growth ou Scale);
+(d) Anexo IV — Parecer de Enquadramento Pequeno Agente ANPD.
+20.7. E, por estarem assim justas e contratadas, as PARTES firmam o presente Contrato em via única, em formato eletrônico, na presença de 2 (duas) testemunhas a seguir identificadas.
+Blumenau, ___ de _________________ de 2026.
+_______________________________________
+CONTRATADA — Site-Prospector
+Breno [Sobrenome] — CPF [_______]
+_______________________________________
+CONTRATANTE — [Razão Social da Padaria]
+[Nome do Responsável] — CPF [_______]
+TESTEMUNHAS
+1) Nome: _________________________________  CPF: ________________
+   Assinatura: _________________________________________________
+2) Nome: _________________________________  CPF: ________________
+   Assinatura: _________________________________________________
+PROTOCOLO DE LEITURA PARA COMPARAÇÃO COM O ADVOGADO
+▸ NOTA CLAUDE — baseline: Como usar este baseline: (1) ao receber o contrato do advogado, leia primeiro do início ao fim sem comparar; (2) depois leia este baseline em paralelo, marcando: cláusulas que ele OMITIU, cláusulas onde ele tem POSIÇÃO DIFERENTE, cláusulas onde ele acrescentou ALGO NOVO; (3) red flag se ele entregar menos cláusulas que este baseline (20+X) sem justificar; (4) green flag se ele discordar de mim em pontos específicos com referência a jurisprudência catarinense; (5) green flag se ele acrescentar cláusulas sobre temas que faltam neste baseline (ex.: tributário ISS Blumenau, cláusula IA, força maior detalhada); (6) PERGUNTAS-CHAVE pra ele: (a) jurisprudência TJ-SC sobre limitação de responsabilidade em prestação de serviço digital; (b) defesa do enquadramento microempresa como consumidora-equiparada; (c) jurisprudência catarinense sobre garantia comercial não-cash com critério técnico-objetivo; (d) avaliação do prazo de 48h para notificação interna de incidente LGPD; (e) avaliação do prazo de 30 dias purgação de mora vs jurisprudência TJ-SC.

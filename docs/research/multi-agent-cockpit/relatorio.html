@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech Research — Cockpit de Orquestração Multi-Agente CLI</title>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --panel2:#1c2230; --border:#2d333b;
+    --text:#e6edf3; --muted:#9198a1; --accent:#58a6ff; --accent2:#a371f7;
+    --green:#3fb950; --yellow:#d29922; --orange:#db6d28; --red:#f85149;
+    --mono:'SF Mono',ui-monospace,'Cascadia Code',Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.6;font-size:15px}
+  .wrap{max-width:1080px;margin:0 auto;padding:48px 28px 96px}
+  header.cover{border-bottom:1px solid var(--border);padding-bottom:32px;margin-bottom:40px}
+  .kicker{color:var(--accent2);font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+  h1{font-size:34px;line-height:1.2;margin:10px 0 14px;font-weight:700}
+  h2{font-size:24px;margin:52px 0 16px;padding-top:18px;border-top:1px solid var(--border);font-weight:700}
+  h3{font-size:18px;margin:30px 0 10px;color:var(--accent)}
+  h4{font-size:15px;margin:20px 0 6px;color:var(--accent2);text-transform:uppercase;letter-spacing:.05em}
+  p{margin:10px 0}
+  .meta{color:var(--muted);font-size:14px}
+  .meta b{color:var(--text)}
+  code{font-family:var(--mono);background:var(--panel2);padding:1px 6px;border-radius:5px;font-size:13px;color:#ffa657}
+  pre{background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;overflow-x:auto;font-family:var(--mono);font-size:13px;line-height:1.5}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  ul,ol{margin:10px 0;padding-left:22px}
+  li{margin:5px 0}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin:18px 0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:760px){.grid2{grid-template-columns:1fr}}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
+  th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--border);vertical-align:top}
+  th{color:var(--muted);font-weight:600;text-transform:uppercase;font-size:11px;letter-spacing:.05em;background:var(--panel2)}
+  tr:hover td{background:var(--panel)}
+  .tag{display:inline-block;padding:1px 8px;border-radius:20px;font-size:11px;font-weight:600;white-space:nowrap}
+  .t-green{background:rgba(63,185,80,.16);color:var(--green)}
+  .t-yellow{background:rgba(210,153,34,.16);color:var(--yellow)}
+  .t-orange{background:rgba(219,109,40,.16);color:var(--orange)}
+  .t-red{background:rgba(248,81,73,.16);color:var(--red)}
+  .t-blue{background:rgba(88,166,255,.16);color:var(--accent)}
+  .t-muted{background:rgba(145,152,161,.14);color:var(--muted)}
+  .verdict{background:linear-gradient(135deg,rgba(163,113,247,.12),rgba(88,166,255,.08));
+    border:1px solid var(--accent2);border-radius:12px;padding:22px 24px;margin:24px 0}
+  .verdict h3{margin-top:0;color:var(--accent2)}
+  .pill-row{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+  .num{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--accent2);color:#fff;font-weight:700;font-size:13px;margin-right:8px}
+  .callout{border-left:3px solid var(--orange);background:rgba(219,109,40,.07);padding:12px 18px;border-radius:0 8px 8px 0;margin:16px 0}
+  .callout.red{border-color:var(--red);background:rgba(248,81,73,.07)}
+  .callout.green{border-color:var(--green);background:rgba(63,185,80,.07)}
+  .th-tese{color:var(--green)} .th-anti{color:var(--red)} .th-sint{color:var(--accent2)}
+  .src{font-size:12px;color:var(--muted);word-break:break-all}
+  .toc{columns:2;column-gap:28px;font-size:14px}
+  @media(max-width:760px){.toc{columns:1}}
+  .toc a{display:block;padding:3px 0;color:var(--text)}
+  footer{margin-top:60px;border-top:1px solid var(--border);padding-top:20px;color:var(--muted);font-size:13px}
+  .scorebar{height:6px;border-radius:3px;background:var(--panel2);overflow:hidden;min-width:60px}
+  .scorebar i{display:block;height:100%}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="cover">
+  <div class="kicker">Tech Research · Decisão Build vs Buy</div>
+  <h1>Cockpit de Orquestração Multi-Agente CLI</h1>
+  <p class="meta">Plataforma única conectando Claude Code + Codex + Gemini/Antigravity, com chat-orquestrador (jarvis), observabilidade em tempo real, relatórios consolidados e fila de tarefas.</p>
+  <p class="meta"><b>Solicitante:</b> Breno Cerqueira (AIOS) · <b>Data:</b> 2026-05-20 · <b>Método:</b> tech-research skill (6 fases) · <b>Dimensões:</b> Técnico-arquitetural + Mercado · <b>Confiança:</b> Alta (3 frentes paralelas, fontes trianguladas)</p>
+</header>
+
+<!-- ============ SUMÁRIO EXECUTIVO ============ -->
+<div class="verdict">
+  <h3>Sumário Executivo</h3>
+  <p><b>Pergunta real:</b> Devo construir, adotar (fork) ou adiar um cockpit que une as 3 CLIs sob o jarvis — e qual arquitetura, dado (a) a Constituição CLI-First do AIOS, (b) o split de billing da Anthropic em 15/Jun, e (c) o custo de oportunidade vs Anipis (beta 30/Mai)?</p>
+  <p><b>Recomendação:</b> <span class="tag t-green">BUILD LIGHT (Nível A) + BUY na execução</span> — construir um <b>cockpit de OBSERVABILIDADE</b> leve (Next.js lendo <code>D:/jarvis/bridge-data/</code> + chat jarvis + custo via ccusage), e <b>NÃO</b> construir orquestrador de execução. Para rodar agentes em paralelo, adotar <b>Emdash</b> (ou Vibe Kanban) quando isso virar necessidade real. Timebox: MVP de fim de semana, <b>depois do beta do Anipis</b>.</p>
+  <h4>3 justificativas</h4>
+  <ol>
+    <li><b>O tool exato não existe como OSS maduro.</b> Nenhum projeto reúne os 5 pilares (multi-provider + chat-orquestrador + observabilidade + relatórios + fila). Você montaria de peças — então build-light dirigido é mais barato que forçar um fork inadequado.</li>
+    <li><b>A Constituição CLI-First já decide metade.</b> "Dashboards apenas observam, nunca controlam." O Nível A (observar) é constitucional e zero-conflito; o Nível C (auto-orquestrar) fura o Artigo I.</li>
+    <li><b>O substrato já está pronto.</b> O jarvis já escreve eventos/relatórios em <code>bridge-data/</code>. O cockpit de observação é majoritariamente uma camada de leitura — esforço baixo, stack que você já domina (Next.js).</li>
+  </ol>
+  <h4>3 riscos</h4>
+  <ol>
+    <li><b>Billing trap (CONFIRMADO):</b> auto-dirigir Claude via <code>claude -p</code> cai no pool separado caro pós-15/Jun. Mitigação: cockpit observa; execução fica nas sessões interativas / Codex.</li>
+    <li><b>Custo de oportunidade:</b> Anipis beta está a ~10 dias. Construir agora atrasa o que paga a conta. Mitigação: adiar para pós-beta.</li>
+    <li><b>Windows gap:</b> quase todo OSS assume tmux/Linux. Embarcar sessões vivas exige trabalho ConPTY custom. Mitigação: começar só-observação (não precisa de PTY embutido).</li>
+  </ol>
+</div>
+
+<h2 id="toc">Índice</h2>
+<nav class="toc">
+  <a href="#contexto">1. Contexto e escopo</a>
+  <a href="#landscape">2. Landscape OSS (16 projetos)</a>
+  <a href="#shortlist">3. Shortlist — 5 mais próximos</a>
+  <a href="#arq">4. Padrões de arquitetura</a>
+  <a href="#billing">5. A armadilha de billing (confirmada)</a>
+  <a href="#obs">6. Stack de observabilidade</a>
+  <a href="#dialetica">7. Dialética Build vs Buy</a>
+  <a href="#matriz">8. Matriz de decisão</a>
+  <a href="#recomendada">9. Arquitetura recomendada</a>
+  <a href="#riscos">10. Riscos e incógnitas</a>
+  <a href="#passos">11. Próximos passos</a>
+  <a href="#fontes">12. Fontes</a>
+</nav>
+
+<!-- ============ CONTEXTO ============ -->
+<h2 id="contexto">1. Contexto e escopo</h2>
+<div class="card">
+<p><b>O que está em jogo:</b> a visão de um "cérebro central operável" — você conversa com o jarvis num painel, ele orquestra as 3 CLIs, você vê o que cada agente faz e recebe relatórios consolidados. Decisão de alto valor (semanas de build potencial).</p>
+<p><b>Restrições não-negociáveis:</b></p>
+<ul>
+  <li><span class="tag t-blue">Constituição</span> CLI-First Artigo I — dashboards observam, não controlam; UI nunca é requisito de operação.</li>
+  <li><span class="tag t-red">Billing</span> pós-15/Jun — uso programmatic (Agent SDK / <code>claude -p</code>) mete em pool separado pago a rates de API.</li>
+  <li><span class="tag t-yellow">Windows</span> — ambiente nativo, sem WSL como requisito.</li>
+  <li><span class="tag t-blue">Estado em arquivos</span> — jarvis já é file-based em <code>D:/jarvis/bridge-data/</code>.</li>
+  <li><span class="tag t-orange">Oportunidade</span> — Anipis beta 30/Mai tem precedência declarada.</li>
+</ul>
+<p><b>Investigado:</b> landscape OSS de orquestradores multi-CLI, padrões de arquitetura (worktrees, PTY, headless, observabilidade, orquestração, estado), tooling de observabilidade/custo. <b>Não investigado:</b> dimensão regulatória (irrelevante) e científica (n/a).</p>
+</div>
+
+<!-- ============ LANDSCAPE ============ -->
+<h2 id="landscape">2. Landscape OSS (verificado, mai/2026)</h2>
+<p><b>Headline honesto:</b> nenhum tool OSS único reúne os 5 pilares hoje. Os mais próximos cobrem 3-4. Star counts e recência verificados via GitHub API pelos agentes de pesquisa.</p>
+
+<table>
+<thead><tr><th>Projeto</th><th>Multi-provider?</th><th>Stack</th><th>Mecanismo</th><th>Maturidade</th><th>Chat / Obs / Report / Fila</th><th>Gap</th></tr></thead>
+<tbody>
+<tr><td><b>Emdash</b><br><span class="src">4.5k★ · Apache-2.0 · YC W26</span></td><td><span class="tag t-green">Sim ~22</span> CC/Codex/Gemini/Copilot</td><td>TypeScript · desktop</td><td>Worktrees + porta por agente</td><td><span class="tag t-green">Ativo</span> (push 20/Mai)</td><td>~ / ✓ / ✗ / ~</td><td>Sem coordenação entre agentes; sem relatórios/fila</td></tr>
+<tr><td><b>Composio AO</b><br><span class="src">7.2k★ · MIT</span></td><td><span class="tag t-yellow">Parcial</span> CC/Codex/Aider (sem Gemini)</td><td>TypeScript · web :3000</td><td>Worktrees + tmux; auto CI-fix/merge</td><td><span class="tag t-green">Muito ativo</span></td><td>~ / ✓ / ~ / ✓</td><td>Sem Gemini; agentes ociosos entre passos</td></tr>
+<tr><td><b>Vibe Kanban</b><br><span class="src">26.4k★ · Apache-2.0</span></td><td><span class="tag t-green">Sim 10+</span></td><td>Rust+TS · web</td><td>Worktrees + MCP + terminal</td><td><span class="tag t-orange">Bloop fechou Abr/26</span> · comunidade</td><td>~ / ✓ / ~ / ✓</td><td>Sem chat real; risco sunset; disk bloat</td></tr>
+<tr><td><b>CliDeck</b><br><span class="src">77★ · MIT · novo</span></td><td><span class="tag t-green">Sim</span> CC/Codex/Gemini/OpenCode</td><td>JavaScript · web</td><td>Dashboard "WhatsApp-style" + autopilot</td><td><span class="tag t-yellow">Novíssimo</span> (19/Mai)</td><td><b>✓ chat!</b> / ✓ / ~ / ~</td><td>Único com chat-orquestrador; mas 77★, não-provado</td></tr>
+<tr><td><b>Bernstein</b><br><span class="src">431★ · Apache-2.0</span></td><td><span class="tag t-green">Sim 40+</span></td><td>Python lib/CLI</td><td>Worktrees; scheduler determinístico; HMAC audit</td><td><span class="tag t-green">Ativo</span></td><td>✗ / ~ / ✓ audit / ✓</td><td>Sem GUI/chat; backend de auditoria</td></tr>
+<tr><td><b>Claude Squad</b><br><span class="src">7.5k★ · AGPL-3.0</span></td><td><span class="tag t-green">Sim</span> CC/Codex/Gemini/Aider</td><td>Go · TUI</td><td>tmux + worktrees</td><td><span class="tag t-green">Ativo</span></td><td>✗ / ✓ TUI / ✗ / ✗</td><td>TUI only; sem Windows; AGPL</td></tr>
+<tr><td><b>ccmanager</b><br><span class="src">1.1k★ · MIT</span></td><td><span class="tag t-green">Sim 8</span></td><td>TypeScript · TUI</td><td>Gerenciador de sessões worktree (sem tmux)</td><td><span class="tag t-green">Ativo</span></td><td>✗ / ✓ TUI / ✗ / ~</td><td>Switcher de sessão, não orquestrador</td></tr>
+<tr><td><b>Crystal → Nimbalyst</b><br><span class="src">3.1k★ · MIT</span></td><td><span class="tag t-yellow">Parcial</span> CC/Codex</td><td>Electron · desktop</td><td>Worktrees paralelos + diff</td><td><span class="tag t-yellow">Renomeado</span></td><td>✗ / ✓ / ~ / ~</td><td>Sem Gemini</td></tr>
+<tr><td><b>omnara</b><br><span class="src">2.6k★ · Apache-2.0</span></td><td><span class="tag t-yellow">CC/Codex</span></td><td>TS/Python · web+mobile</td><td>Wrapper CLI + mirror real-time</td><td><span class="tag t-red">Repo arquivado</span> Jan/26</td><td>✓ / ✓ / ~ / ~</td><td>Pivotou pra produto fechado</td></tr>
+<tr><td><b>container-use</b><br><span class="src">3.8k★ · Apache-2.0 · Dagger</span></td><td><span class="tag t-muted">Agnóstico (MCP)</span></td><td>Go</td><td>Envs containerizados via MCP</td><td><span class="tag t-yellow">Ativo-ish</span></td><td>✗ / ~ / ✗ / ✗</td><td>Camada de sandbox, não dashboard</td></tr>
+<tr><td><b>Conductor</b><br><span class="src">closed · macOS</span></td><td><span class="tag t-green">Sim</span> CC/Codex</td><td>App nativo macOS</td><td>Worktrees + diff review</td><td><span class="tag t-green">Ativo</span> (grátis BYO)</td><td>~ / ✓ / ~ / ~</td><td><b>Não é OSS; só macOS</b> — fora pra Windows</td></tr>
+<tr><td><b>ruflo</b> (ex-claude-flow)<br><span class="src">53.4k★ · MIT</span></td><td><span class="tag t-yellow">Claude-centric</span></td><td>TypeScript</td><td>Framework swarm MCP · CLI</td><td><span class="tag t-green">Muito ativo</span></td><td>chat-UI / ~ / ✗ / ~</td><td><b>Framework, não GUI</b>; 53k★ ≠ fit</td></tr>
+<tr><td><b>Amux</b><br><span class="src">187★ · source-avail</span></td><td><span class="tag t-yellow">CC-focused</span></td><td>Python · web+PWA</td><td>tmux + watchdog + A2A REST</td><td><span class="tag t-yellow">Novo</span></td><td>~ / ✓ / ~ / ✓ kanban</td><td>Quase só Claude; cedo</td></tr>
+<tr><td><b>sculptor</b> (Imbue)<br><span class="src">165★ · source-avail</span></td><td><span class="tag t-yellow">CC-focused</span></td><td>—</td><td>Agentes paralelos + containers</td><td><span class="tag t-green">Ativo</span></td><td>~ / ✓ / ~ / ~</td><td>Cedo; licença não-OSI</td></tr>
+<tr><td><b>uzi</b><br><span class="src">580★ · MIT</span></td><td><span class="tag t-muted">Agnóstico</span></td><td>Go</td><td>Worktrees + spawn em massa</td><td><span class="tag t-red">Abandonado</span> (Jun/25)</td><td>✗ / ~ / ✗ / ~</td><td>Stale; CLI only</td></tr>
+<tr><td><b>claude-swarm</b> → SwarmSDK<br><span class="src">1.7k★ · MIT</span></td><td><span class="tag t-yellow">CC swarms</span></td><td>Ruby</td><td>Orquestração single-process + MCP</td><td><span class="tag t-green">Ativo</span></td><td>✗ / ✗ / ✗ / ✗</td><td>SDK/framework, não dashboard</td></tr>
+<tr><td><b>Terragon / Terry</b><br><span class="src">236★ · Apache-2.0</span></td><td><span class="tag t-green">Sim</span> CC/Codex/Gemini/Amp</td><td>TS · cloud+CLI</td><td>Sandbox cloud + auto PR + MCP handoff</td><td><span class="tag t-red">MORTO</span> (empresa fechou Fev/26)</td><td>~ / ✓ / ✓ / ✓</td><td>Não-mantido; era cloud</td></tr>
+</tbody>
+</table>
+
+<!-- ============ SHORTLIST ============ -->
+<h2 id="shortlist">3. Shortlist — 5 mais próximos do seu caso</h2>
+<div class="card">
+<p><span class="num">1</span><b>Emdash</b> — melhor aposta multi-provider <i>viva</i>. ~22 providers, UI desktop, visibilidade real-time de worktrees, YC W26, shipping diário, Apache-2.0. <b>Gaps:</b> sem relatórios consolidados, sem chat-orquestrador, sem coordenação entre agentes — mas a base mais limpa pra forkar/estender.</p>
+<p><span class="num">2</span><b>Composio AO</b> — orquestrador <i>autônomo</i> mais forte: dashboard web, kanban por estado de CI, auto merge-conflict/CI/review, muito ativo. <b>Perde:</b> sem Gemini; ineficiência ociosa entre passos.</p>
+<p><span class="num">3</span><b>Vibe Kanban</b> — mais completo no papel (kanban + 10 providers + observabilidade web + MCP), ecossistema enorme. <b>Mas Bloop fechou</b> — manutenção comunitária. Adotar só se for co-manter.</p>
+<p><span class="num">4</span><b>CliDeck</b> — o <i>único</i> com chat-orquestrador genuíno (estilo WhatsApp) sobre CC/Codex/Gemini + autopilot + controle mobile. <b>Ressalva:</b> 77★, novíssimo, não-provado. Vale vigiar.</p>
+<p><span class="num">5</span><b>Bernstein</b> — escolha se "relatórios consolidados" = <b>auditabilidade</b>: logs HMAC encadeados, lineage por artefato, scheduling determinístico, 40+ adapters. Sem GUI/chat, é um backend que você embrulha.</p>
+</div>
+<div class="callout"><b>Fronteira não resolvida:</b> múltiplas comparações de 2026 concluem independentemente que <b>coordenação entre agentes contra um plano compartilhado</b> é o problema em aberto do OSS — preenchido só por tools <i>comerciais</i> (Conductor, Intent, Tonkotsu, Cursor parallel agents). Ninguém OSS combina chat-orquestrador + multi-provider + relatórios + fila + visão ao vivo.</div>
+
+<!-- ============ ARQUITETURA ============ -->
+<h2 id="arq">4. Padrões de arquitetura (como esses sistemas são feitos)</h2>
+
+<div class="grid2">
+<div class="card"><h4>Git Worktree Isolation</h4><p>Cada agente num diretório/branch próprio, mesmo <code>.git</code>. Edição paralela sem colisão; merge no nível de branch. <b>Universal</b> — todo tool converge nisso.</p><p class="src">Falha: conflitos quando 2 agentes tocam o mesmo arquivo; duplicação de node_modules; portas/DB colidem sem partição.</p></div>
+<div class="card"><h4>Terminal Multiplexing</h4><p>(a) <b>tmux→browser</b> via xterm.js (Webmux, agentboard); (b) <b>node-pty direto</b> sobre WebSocket. Vibe Kanban nem embute TUI — spawna child process e captura stdout.</p><p class="src">Falha: xterm renderiza bytes, não eventos estruturados; tmux é segunda-classe no Windows.</p></div>
+<div class="card"><h4>Headless / Programmatic</h4><p><code>claude -p</code> / <code>codex exec</code> / <code>gemini -p</code> com <code>stream-json</code>. Mas os dashboards de worktree <b>embutem sessões interativas, não <code>-p</code></b> — por visibilidade E billing.</p><p class="src">Falha: headless perde skills/slash-commands interativos; <code>-p</code> dispara billing programmatic.</p></div>
+<div class="card"><h4>Event Streaming / Observabilidade</h4><p>(a) <b>Hooks</b> Pre/PostToolUse → arquivo/socket; (b) parse do <code>stream-json</code>; (c) <b>OpenTelemetry</b> (<code>CLAUDE_CODE_ENABLE_TELEMETRY=1</code>).</p><p class="src">Falha: dashboards xterm-only não têm telemetria estruturada; OTel exige collector rodando.</p></div>
+<div class="card"><h4>Orquestração</h4><p>Supervisor/worker ou swarm/handoff. <b>Crítico: os dashboards CLI NÃO usam LangGraph/CrewAI</b> — orquestram via kanban/fila + worktrees + subprocess. Frameworks orquestram chamadas LLM (e roteiam por API key = 2ª conta).</p><p class="src">Falha: fila perde contexto compartilhado; framework adiciona runtime pesado + 2º billing.</p></div>
+<div class="card"><h4>Estado Compartilhado</h4><p><b>Modelo de referência (Vibe Kanban):</b> estado de código = Git (worktrees); estado de workflow = SQLite. Coordenação runtime via daemon MCP que distribui portas. Webmux deriva tudo de worktrees+tmux.</p><p class="src">Falha: sem fonte única se misturar DB+git+tmux; contenção de portas sem broker.</p></div>
+</div>
+
+<!-- ============ BILLING ============ -->
+<h2 id="billing">5. A armadilha de billing <span class="tag t-red">CONFIRMADA</span></h2>
+<div class="callout red">
+<p>Fonte primária Anthropic (Help Center + docs): um dashboard que <b>auto-dirige Claude via <code>claude -p</code> passa pelo Agent SDK e é cobrado separado</b> pós-15/Jun — saca de um crédito mensal próprio (<b>$20 Pro / $100 Max-5x / $200 Max-20x</b>, USD, rates de API, sem rollover). <b>Claude Code interativo no terminal/IDE continua no pool de subscription, inalterado.</b></p>
+<p>O gatilho é a <b>superfície <code>-p</code>/SDK</b> (+ GitHub Actions + apps third-party autenticando via sua subscription) — <b>não</b> "ausência de humano". Por isso um cockpit consciente de custo deve <b>embutir sessões interativas, não bombear <code>claude -p</code></b>.</p>
+</div>
+
+<!-- ============ OBSERVABILIDADE ============ -->
+<h2 id="obs">6. Stack de observabilidade (OSS, self-host)</h2>
+<table>
+<thead><tr><th>Tool</th><th>Licença</th><th>Rastreia</th><th>Fit p/ CLI local</th><th>Esforço self-host</th></tr></thead>
+<tbody>
+<tr><td><b>Langfuse</b></td><td>MIT (core)</td><td>Traces, custo, tool calls, evals</td><td><span class="tag t-yellow">Bom</span> mas overkill</td><td><span class="tag t-red">Pesado</span> (Postgres+ClickHouse+Redis+S3)</td></tr>
+<tr><td><b>Arize Phoenix</b></td><td>ELv2</td><td>OTel traces, evals</td><td><span class="tag t-yellow">Moderado</span> (eval-focused)</td><td>Médio</td></tr>
+<tr><td><b>Laminar</b></td><td>Apache-2.0</td><td>Traces, custo, agentes long-running</td><td><span class="tag t-yellow">Moderado</span> (licença mais limpa)</td><td>Médio (1 comando Helm)</td></tr>
+<tr><td><b>AgentOps / Helicone</b></td><td>MIT / Apache</td><td>Calls, custo (proxy)</td><td><span class="tag t-red">Fraco</span> — assume API app, não CLI</td><td>Médio</td></tr>
+<tr><td><b>disler/...-observability</b></td><td>OSS</td><td>12 eventos lifecycle via hooks, multi-agente</td><td><span class="tag t-green">Excelente</span> — exatamente seu caso</td><td><span class="tag t-green">Mínimo</span> (Bun+SQLite+WS)</td></tr>
+<tr><td><b>ccusage</b></td><td>MIT · 4.8k★</td><td>Custo+tokens de Claude/<b>Codex/Gemini</b>/Copilot via JSONL local</td><td><span class="tag t-green">Excelente</span> — multi-provider, offline</td><td><span class="tag t-green">Mínimo</span> (CLI)</td></tr>
+</tbody>
+</table>
+<div class="callout green"><b>Veredicto observabilidade:</b> pule Langfuse/Phoenix (multi-serviço, orientados a app). O padrão <b>disler</b> (hooks → arquivo → WebSocket → UI) é o fit exato pro "agente X editando arquivo Y" ao vivo. <b>ccusage</b> resolve custo multi-provider lendo os JSONL que as 3 CLIs já geram. Você já escreve em <code>bridge-data/</code> — encaixe perfeito.</div>
+
+<!-- ============ DIALÉTICA ============ -->
+<h2 id="dialetica">7. Síntese dialética — Build vs Buy</h2>
+<div class="card">
+<p><span class="tag t-green">TESE (Buy/Fork)</span> <b class="th-tese">Adotar Emdash ou Vibe Kanban.</b> Já implementam ~80% de execução+fila+worktrees. Forkar evita green-field. Vibe Kanban tem o modelo de estado de referência (Git+SQLite); Emdash está vivo e cobre os 3 providers.</p>
+<p><span class="tag t-red">ANTÍTESE (Build)</span> <b class="th-anti">Nenhum casa com a combinação específica.</b> multi-provider + chat-conductor + cérebro jarvis + estado-em-arquivo + Windows nativo + billing-safe + constitucional. Todo fork exigiria trabalho pesado: ConPTY Windows, integração jarvis, camada de chat. E são <i>execução-céntricos</i> (dirigem agentes) — atrito direto com "observar, não controlar". Vibe Kanban ainda tem risco de sunset.</p>
+<p><span class="tag t-blue">SÍNTESE</span> <b class="th-sint">Duas camadas, decisões separadas:</b></p>
+<ul>
+  <li><b>Camada 1 — Observabilidade (BUILD light):</b> Next.js lendo <code>bridge-data/</code> + chat jarvis (voz Gemini/Codex) + custo via ccusage + feed de atividade no padrão disler. Constitucional, billing-safe, ~1 semana, stack que você domina. <b>→ Esta é a recomendação imediata.</b></li>
+  <li><b>Camada 2 — Execução (BUY quando precisar):</b> se um dia quiser que o painel <i>lance</i> agentes em paralelo, adote <b>Emdash</b> como superfície de execução em vez de construir gestão de worktree. Mas isso é Nível B/C e cruza a linha de controle — decidir depois.</li>
+</ul>
+<p><b>Condição de validade:</b> válida enquanto (a) você opera as 3 CLIs manualmente e quer só visão+conselho; reavaliar se (b) execução paralela massiva virar necessidade diária, ou (c) surgir um OSS que feche os 5 pilares.</p>
+</div>
+
+<!-- ============ MATRIZ ============ -->
+<h2 id="matriz">8. Matriz de decisão multicritério</h2>
+<table>
+<thead><tr><th>Critério (peso)</th><th>Build Light (Nível A)</th><th>Fork Emdash</th><th>Fork Vibe Kanban</th><th>Adiar tudo</th></tr></thead>
+<tbody>
+<tr><td>Alinhamento constituição (25%)</td><td><span class="tag t-green">5 — só observa</span></td><td><span class="tag t-yellow">3 — controla</span></td><td><span class="tag t-yellow">3 — controla</span></td><td><span class="tag t-green">5</span></td></tr>
+<tr><td>Billing-safe (20%)</td><td><span class="tag t-green">5</span></td><td><span class="tag t-yellow">3 — depende</span></td><td><span class="tag t-yellow">3</span></td><td><span class="tag t-green">5</span></td></tr>
+<tr><td>Esforço/tempo (20%)</td><td><span class="tag t-yellow">3 — ~1-2 sem</span></td><td><span class="tag t-orange">2 — ConPTY+jarvis</span></td><td><span class="tag t-orange">2 — Rust+sunset</span></td><td><span class="tag t-green">5</span></td></tr>
+<tr><td>Cobre a visão (20%)</td><td><span class="tag t-yellow">3 — observar+chat</span></td><td><span class="tag t-yellow">4 — execução</span></td><td><span class="tag t-yellow">4</span></td><td><span class="tag t-red">0</span></td></tr>
+<tr><td>Risco manutenção (15%)</td><td><span class="tag t-green">5 — você dono</span></td><td><span class="tag t-green">4 — vivo</span></td><td><span class="tag t-red">1 — sunset</span></td><td><span class="tag t-green">5</span></td></tr>
+<tr><td><b>Score ponderado</b></td><td><b class="th-sint">4.30</b></td><td><b>3.05</b></td><td><b>2.70</b></td><td><b>4.25</b></td></tr>
+</tbody>
+</table>
+<p class="meta"><b>Análise de sensibilidade:</b> "Build Light" e "Adiar" empatam virtualmente. O desempate é o eixo real: <b>se a visão importa agora</b> → Build Light vence; <b>se Anipis domina</b> → Adiar vence até o beta. Se o peso de "cobre a visão" subir 20pp, Build Light dispara à frente. Forks só venceriam se "execução paralela" fosse critério dominante — não é o seu caso hoje.</p>
+
+<!-- ============ ARQUITETURA RECOMENDADA ============ -->
+<h2 id="recomendada">9. Arquitetura recomendada (cockpit leve, Windows, file-state)</h2>
+<div class="card">
+<pre>
+┌──────────────────────────────────────────────────────────┐
+│  COCKPIT (Next.js local — você já domina a stack)          │
+│  ┌────────────┐  ┌──────────────┐  ┌───────────────────┐  │
+│  │ Chat Jarvis│  │ Activity Feed │  │ Custo (multi-prov)│  │
+│  │ voz: Gemini│  │ ao vivo       │  │ via ccusage       │  │
+│  │ /Codex     │  │ (padrão       │  │                   │  │
+│  └─────┬──────┘  │  disler)      │  └─────────┬─────────┘  │
+│        │         └──────┬────────┘            │            │
+│        │  SSE + chokidar watch                │            │
+└────────┼────────────────┼─────────────────────┼───────────┘
+         │ LÊ (não controla)                     │
+         ▼                ▼                       ▼
+   ╔═══════════════════════════════════════════════════╗
+   ║   D:/jarvis/bridge-data/  (fonte da verdade)       ║
+   ║   events · conclave-reports · tool-usage · missions║
+   ╚═══════════════════════════════════════════════════╝
+         ▲                ▲                       ▲
+         │ ESCREVEM (hooks)                       │
+   ┌─────┴─────┐   ┌──────┴──────┐         ┌──────┴──────┐
+   │ Claude    │   │   Codex     │         │ Antigravity │
+   │ (interat.)│   │  (exec)     │         │  (Gemini)   │
+   └───────────┘   └─────────────┘         └─────────────┘
+</pre>
+<h4>Stack mínima (zero infra pesada)</h4>
+<ul>
+  <li><b>Captura:</b> hooks das 3 CLIs anexam eventos JSON em <code>bridge-data/</code> — você já faz.</li>
+  <li><b>Watch + stream:</b> Route Handler Next.js roda <b>chokidar</b> na pasta → push via <b>SSE</b> pro cliente (feed "agente X fazendo Z").</li>
+  <li><b>UI:</b> <b>shadcn/ui</b> shell + <b>Tremor</b> charts; timeline do event log.</li>
+  <li><b>Custo:</b> <b>ccusage</b> parseia os JSONL de Claude/Codex/Gemini → cards de spend por provider; refresh on file change.</li>
+  <li><b>Relatórios:</b> módulo pequeno que agrega event files por sessão num digest (arquivos mudados, comandos, decisões, custo).</li>
+  <li><b>Chat jarvis:</b> painel que roda <code>self-consultation.js</code> via CLI; voz = Gemini/Codex (barato). Orquestra <b>propondo</b>, você aprova, execução vai pra CLI real / <code>delegate.js</code>.</li>
+</ul>
+<p class="meta">Princípio: o cockpit <b>observa</b> (lê arquivos = grátis) e <b>aconselha</b> (chat jarvis voz barata). Execução pesada continua na CLI real (billing como já desenhado). Zero ClickHouse/Redis/Postgres. 100% local, multi-provider, constitucional.</p>
+</div>
+
+<!-- ============ RISCOS ============ -->
+<h2 id="riscos">10. Riscos, mitigações e incógnitas residuais</h2>
+<table>
+<thead><tr><th>Risco</th><th>Sev.</th><th>Mitigação</th></tr></thead>
+<tbody>
+<tr><td>Auto-dirigir Claude (<code>claude -p</code>) cai no pool caro</td><td><span class="tag t-red">CRÍTICO</span></td><td>Cockpit só observa; execução em sessão interativa / Codex</td></tr>
+<tr><td>Custo de oportunidade vs Anipis beta 30/Mai</td><td><span class="tag t-orange">ALTO</span></td><td>Adiar build pro pós-beta; ou timebox 1 fim de semana só Camada 1</td></tr>
+<tr><td>Windows: PTY embutido exige ConPTY custom</td><td><span class="tag t-yellow">MÉDIO</span></td><td>Camada 1 não precisa de PTY (só lê arquivos). Adiar PTY pra Camada 2</td></tr>
+<tr><td>Escopo creep: "observar" virar "controlar"</td><td><span class="tag t-yellow">MÉDIO</span></td><td>Trava de design: cockpit nunca aperta botão sem aprovação humana</td></tr>
+<tr><td>Vibe Kanban sunset / CliDeck imaturo</td><td><span class="tag t-yellow">MÉDIO</span></td><td>Não depender; usar como referência de UI/schema, não dependência</td></tr>
+</tbody>
+</table>
+<h4>Incógnitas redutíveis (mais research resolve)</h4>
+<ul>
+  <li>ccusage realmente lê os JSONL de Codex e Gemini no seu setup? <span class="tag t-yellow">Verificar</span> rodando <code>npx ccusage</code> antes de depender.</li>
+  <li>O agente do Antigravity (Gemini) consegue rodar comandos shell pra escrever hooks em <code>bridge-data/</code>? Testar.</li>
+</ul>
+<h4>Incógnitas irredutíveis (só POC resolve)</h4>
+<ul>
+  <li>O chat jarvis no cockpit "sente" tão fluido quanto falar no Antigravity? Só um MVP responde.</li>
+  <li>O feed de atividade ao vivo agrega valor real ou vira ruído? Validar com 1 semana de uso.</li>
+</ul>
+
+<!-- ============ PRÓXIMOS PASSOS ============ -->
+<h2 id="passos">11. Próximos passos acionáveis</h2>
+<ol>
+  <li><b>Decidir timing</b> (pós-Anipis-beta recomendado). Esta research não expira até ~set/2026 ou até surgir OSS que feche os 5 pilares.</li>
+  <li><b>POC de 1 dia (validação irredutível):</b> Next.js + chokidar em <code>bridge-data/</code> + 1 painel SSE mostrando o event feed. Prova o conceito sem comprometer semanas.</li>
+  <li><b>Rodar <code>npx ccusage</code></b> agora pra confirmar leitura multi-provider (incógnita redutível barata).</li>
+  <li><b>Conclave de arquitetura</b> (Werner Vogels + Martin Fowler + um de produto) sobre Camada 1 antes de qualquer código — gate do AIOS.</li>
+  <li><b>Vigiar CliDeck e Emdash</b> — gatilho de reavaliação: se CliDeck amadurecer (>1k★, estável) ou Emdash adicionar relatórios+chat, o cálculo build-vs-buy vira pra BUY.</li>
+</ol>
+
+<!-- ============ FONTES ============ -->
+<h2 id="fontes">12. Fontes (trianguladas)</h2>
+<h4>Landscape OSS</h4>
+<p class="src">
+github.com/BloopAI/vibe-kanban · github.com/generalaction/emdash · github.com/ComposioHQ/agent-orchestrator · github.com/smtg-ai/claude-squad · github.com/kbwo/ccmanager · github.com/stravu/crystal · github.com/omnara-ai/omnara · github.com/dagger/container-use · github.com/sipyourdrink-ltd/bernstein · github.com/rustykuntz/clideck · github.com/mixpeek/amux · github.com/imbue-ai/sculptor · github.com/devflowinc/uzi · github.com/parruda/swarm · github.com/ruvnet/ruflo · github.com/terragon-labs/terragon-oss · conductor.build · augmentcode.com/tools/open-source-agent-orchestrators
+</p>
+<h4>Arquitetura & Billing</h4>
+<p class="src">
+support.claude.com/en/articles/15036540 (Agent SDK billing) · code.claude.com/docs/en/headless · code.claude.com/docs/en/agent-sdk/observability · deepwiki.com/BloopAI/vibe-kanban · windmill.dev/blog/webmux · nimbalyst.com/blog/best-git-worktree-tools-ai-coding-2026 · arize.com/blog/orchestrator-worker-agents · vaught.ai/blog/anthropic-agent-sdk-billing-june-2026
+</p>
+<h4>Observabilidade & Custo</h4>
+<p class="src">
+github.com/langfuse/langfuse · github.com/Arize-ai/phoenix · laminar.sh · github.com/disler/claude-code-hooks-multi-agent-observability · github.com/ryoppippi/ccusage · github.com/Dicklesworthstone/coding_agent_usage_tracker · signoz.io/blog/claude-code-monitoring-with-opentelemetry · github.com/Kiranism/next-shadcn-dashboard-starter · tremor.so · github.com/paulmillr/chokidar
+</p>
+
+<footer>
+  <p>Tech Research v1.0 · método tech-research (6 fases, Gate A→F) · 3 frentes de coleta paralelas · revisão adversarial aplicada (claims sem triangulação rebaixados; ruflo 53k★ desqualificado por fit; Conductor excluído por ser closed+macOS).</p>
+  <p><b>Validade estimada:</b> ~set/2026. <b>Gatilhos de reavaliação:</b> CliDeck/Emdash amadurecem · novo OSS fecha os 5 pilares · mudança de billing Anthropic/OpenAI.</p>
+  <p>Gerado por Orion (aios-master) · AIOS · 2026-05-20</p>
+</footer>
+
+</div>
+</body>
+</html>

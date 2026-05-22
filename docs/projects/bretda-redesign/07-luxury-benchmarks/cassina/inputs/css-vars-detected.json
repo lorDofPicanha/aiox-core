@@ -1,0 +1,1962 @@
+[
+  {
+    "selector": "*,:after,:before",
+    "name": "--tw-border-opacity",
+    "value": "1",
+    "is_alias": false,
+    "line": 4323
+  },
+  {
+    "selector": ".transform",
+    "name": "--tw-translate-x",
+    "value": "0",
+    "is_alias": false,
+    "line": 4323
+  },
+  {
+    "selector": ".transform",
+    "name": "--tw-translate-y",
+    "value": "0",
+    "is_alias": false,
+    "line": 4323
+  },
+  {
+    "selector": ".transform",
+    "name": "--tw-rotate",
+    "value": "0",
+    "is_alias": false,
+    "line": 4323
+  },
+  {
+    "selector": ".transform",
+    "name": "--tw-skew-x",
+    "value": "0",
+    "is_alias": false,
+    "line": 4323
+  },
+  {
+    "selector": ".transform",
+    "name": "--tw-skew-y",
+    "value": "0",
+    "is_alias": false,
+    "line": 4323
+  },
+  {
+    "selector": ".transform",
+    "name": "--tw-scale-x",
+    "value": "1",
+    "is_alias": false,
+    "line": 4323
+  },
+  {
+    "selector": ".transform",
+    "name": "--tw-scale-y",
+    "value": "1",
+    "is_alias": false,
+    "line": 4323
+  },
+  {
+    "selector": ".bg-white",
+    "name": "--tw-bg-opacity",
+    "value": "1",
+    "is_alias": false,
+    "line": 4323
+  },
+  {
+    "selector": "*,:after,:before",
+    "name": "--tw-shadow",
+    "value": "0 0 transparent",
+    "is_alias": false,
+    "line": 4323
+  },
+  {
+    "selector": ".shadow",
+    "name": "--tw-shadow",
+    "value": "0 1px 3px 0 rgba(0,0,0,0.1),0 1px 2px 0 rgba(0,0,0,0.06)",
+    "is_alias": false,
+    "line": 4323
+  },
+  {
+    "selector": "*,:after,:before",
+    "name": "--tw-ring-inset",
+    "value": "var(--tw-empty,)",
+    "is_alias": true,
+    "line": 4323
+  },
+  {
+    "selector": "*,:after,:before",
+    "name": "--tw-ring-offset-width",
+    "value": "0px",
+    "is_alias": false,
+    "line": 4323
+  },
+  {
+    "selector": "*,:after,:before",
+    "name": "--tw-ring-offset-color",
+    "value": "#fff",
+    "is_alias": false,
+    "line": 4323
+  },
+  {
+    "selector": "*,:after,:before",
+    "name": "--tw-ring-color",
+    "value": "rgba(59,130,246,0.5)",
+    "is_alias": false,
+    "line": 4323
+  },
+  {
+    "selector": "*,:after,:before",
+    "name": "--tw-ring-offset-shadow",
+    "value": "0 0 transparent",
+    "is_alias": false,
+    "line": 4323
+  },
+  {
+    "selector": "*,:after,:before",
+    "name": "--tw-ring-shadow",
+    "value": "0 0 transparent",
+    "is_alias": false,
+    "line": 4323
+  },
+  {
+    "selector": ".ring",
+    "name": "--tw-ring-offset-shadow",
+    "value": "var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color)",
+    "is_alias": true,
+    "line": 4323
+  },
+  {
+    "selector": ".ring",
+    "name": "--tw-ring-shadow",
+    "value": "var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color)",
+    "is_alias": true,
+    "line": 4323
+  },
+  {
+    "selector": ".filter",
+    "name": "--tw-blur",
+    "value": "var(--tw-empty,)",
+    "is_alias": true,
+    "line": 4323
+  },
+  {
+    "selector": ".filter",
+    "name": "--tw-brightness",
+    "value": "var(--tw-empty,)",
+    "is_alias": true,
+    "line": 4323
+  },
+  {
+    "selector": ".filter",
+    "name": "--tw-contrast",
+    "value": "var(--tw-empty,)",
+    "is_alias": true,
+    "line": 4323
+  },
+  {
+    "selector": ".filter",
+    "name": "--tw-grayscale",
+    "value": "var(--tw-empty,)",
+    "is_alias": true,
+    "line": 4323
+  },
+  {
+    "selector": ".filter",
+    "name": "--tw-hue-rotate",
+    "value": "var(--tw-empty,)",
+    "is_alias": true,
+    "line": 4323
+  },
+  {
+    "selector": ".filter",
+    "name": "--tw-invert",
+    "value": "var(--tw-empty,)",
+    "is_alias": true,
+    "line": 4323
+  },
+  {
+    "selector": ".filter",
+    "name": "--tw-saturate",
+    "value": "var(--tw-empty,)",
+    "is_alias": true,
+    "line": 4323
+  },
+  {
+    "selector": ".filter",
+    "name": "--tw-sepia",
+    "value": "var(--tw-empty,)",
+    "is_alias": true,
+    "line": 4323
+  },
+  {
+    "selector": ".filter",
+    "name": "--tw-drop-shadow",
+    "value": "var(--tw-empty,)",
+    "is_alias": true,
+    "line": 4323
+  },
+  {
+    "selector": ".blur",
+    "name": "--tw-blur",
+    "value": "blur(8px)",
+    "is_alias": false,
+    "line": 4323
+  },
+  {
+    "selector": ".invert",
+    "name": "--tw-invert",
+    "value": "invert(100%)",
+    "is_alias": false,
+    "line": 4323
+  },
+  {
+    "selector": ":root",
+    "name": "--swiper-theme-color",
+    "value": "#007aff",
+    "is_alias": false,
+    "line": 4323
+  },
+  {
+    "selector": ":root",
+    "name": "--swiper-navigation-size",
+    "value": "44px",
+    "is_alias": false,
+    "line": 4323
+  },
+  {
+    "selector": ".swiper-button-next.swiper-button-white,.swiper-button-prev.swiper-button-white",
+    "name": "--swiper-navigation-color",
+    "value": "#fff",
+    "is_alias": false,
+    "line": 4323
+  },
+  {
+    "selector": ".swiper-button-next.swiper-button-black,.swiper-button-prev.swiper-button-black",
+    "name": "--swiper-navigation-color",
+    "value": "#000",
+    "is_alias": false,
+    "line": 4323
+  },
+  {
+    "selector": ".swiper-pagination-white",
+    "name": "--swiper-pagination-color",
+    "value": "#fff",
+    "is_alias": false,
+    "line": 4323
+  },
+  {
+    "selector": ".swiper-pagination-black",
+    "name": "--swiper-pagination-color",
+    "value": "#000",
+    "is_alias": false,
+    "line": 4323
+  },
+  {
+    "selector": ".swiper-lazy-preloader-white",
+    "name": "--swiper-preloader-color",
+    "value": "#fff",
+    "is_alias": false,
+    "line": 4323
+  },
+  {
+    "selector": ".swiper-lazy-preloader-black",
+    "name": "--swiper-preloader-color",
+    "value": "#000",
+    "is_alias": false,
+    "line": 4323
+  },
+  {
+    "selector": ".cassina__toolbar__menuItemContent",
+    "name": "--menuItemContentHeight",
+    "value": "0px",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ".cassina__toolbar__menuItemContent",
+    "name": "--menuItemContentOpacity",
+    "value": "0",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ".page-sidebar .list__title .list__title-content svg",
+    "name": "--cassina-text",
+    "value": "255 255 255",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": "@media (max-width:768px)",
+    "name": "--active",
+    "value": "before{width:calc(100% + 24px)",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-black-text",
+    "value": "#323232",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-white",
+    "value": "#fff",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-anim-bounce",
+    "value": "cubic-bezier(0.5,1.8,0.9,0.8)",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-anim-in",
+    "value": "cubic-bezier(0,0,0.2,1)",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-anim-out",
+    "value": "cubic-bezier(0.4,0,1,1)",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-anim-standard",
+    "value": "cubic-bezier(0.4,0,0.2,1)",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-border",
+    "value": "224,224,224",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-error",
+    "value": "255,0,0",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-error-alt",
+    "value": "255,226,234",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-font",
+    "value": "-apple-system,BlinkMacSystemFont,sans-serif",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-grey",
+    "value": "246,246,246",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-grey-dark",
+    "value": "209,209,209",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-orange",
+    "value": "241,99,33",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-teal",
+    "value": "0,115,120",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-teal-alt",
+    "value": "224,240,241",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-teal-dark",
+    "value": "0,104,108",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-teal-light",
+    "value": "212,243,238",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-text",
+    "value": "33,33,33",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-text-alt",
+    "value": "112,112,112",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-text-hint",
+    "value": "158,158,158",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-text-spot",
+    "value": "255,99,51",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-warning-dark",
+    "value": "249,93,94",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-warning-light",
+    "value": "254,229,232",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-anim-bounce",
+    "value": "cubic-bezier(0.5,1.8,0.9,0.8)",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-anim-in",
+    "value": "cubic-bezier(0,0,0.2,1)",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-anim-out",
+    "value": "cubic-bezier(0.4,0,1,1)",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-anim-standard",
+    "value": "cubic-bezier(0.4,0,0.2,1)",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-title-color",
+    "value": "#323232",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-blue-100",
+    "value": "194 200 255",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-blue-400",
+    "value": "61 132 255",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-blue-500",
+    "value": "51 109 255",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-blue-600",
+    "value": "41 84 255",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-blue-700",
+    "value": "31 57 255",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-blue-800",
+    "value": "23 43 196",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-gray-50",
+    "value": "255 255 255",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-gray-75",
+    "value": "250 250 250",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-gray-100",
+    "value": "244 245 245",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-gray-200",
+    "value": "234 235 235",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-gray-300",
+    "value": "223 225 226",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-gray-400",
+    "value": "181 184 186",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-gray-500",
+    "value": "149 154 157",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-gray-600",
+    "value": "118 123 127",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-gray-700",
+    "value": "84 93 99",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-gray-800",
+    "value": "51 63 71",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-gray-900",
+    "value": "23 32 38",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-gray",
+    "value": "var(--cassina-global-color-gray-100)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-gray-dark",
+    "value": "var(--cassina-global-color-gray-300)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-gray-darker",
+    "value": "var(--cassina-global-color-gray-600)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-green-400",
+    "value": "51 171 132",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-green-500",
+    "value": "45 157 120",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-green-600",
+    "value": "38 142 108",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-green-700",
+    "value": "18 128 92",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-orange",
+    "value": "241 99 33",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-red-400",
+    "value": "236 91 98",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-red-500",
+    "value": "227 72 80",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-red-600",
+    "value": "215 55 63",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-red-700",
+    "value": "201 37 45",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-red-800",
+    "value": "161 30 36",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-teal",
+    "value": "var(--cassina-global-color-blue-400)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-teal-dark",
+    "value": "var(--cassina-global-color-blue-600)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-teal-light",
+    "value": "var(--cassina-global-color-gray-100)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-red-cassina",
+    "value": "#f0323f",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-neutral-1",
+    "value": "#eceae5",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-neutral-2",
+    "value": "#d4d1cb",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-neutral-3",
+    "value": "#595858",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-neutral-4",
+    "value": "#28282a",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-red-1",
+    "value": "#cf6678",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-red-2",
+    "value": "#691322",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-red-3",
+    "value": "#c73c56",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-red-4",
+    "value": "#ed1a41",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-blue-1",
+    "value": "#526196",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-blue-2",
+    "value": "#29386e",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-blue-3",
+    "value": "#3750a3",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-blue-4",
+    "value": "#1a46e8",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-blue-5",
+    "value": "#0b24fb",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-green-1",
+    "value": "#237d76",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-green-2",
+    "value": "#0f736b",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-green-3",
+    "value": "#167a72",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-green-4",
+    "value": "#11d6c5",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-violet-1",
+    "value": "#ba9bcf",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-violet-2",
+    "value": "#875da3",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-violet-3",
+    "value": "#a45ed1",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-violet-4",
+    "value": "#9e22f0",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-orange-1",
+    "value": "#eb9f84",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-orange-2",
+    "value": "#ca5b33",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-orange-3",
+    "value": "#eb6c3f",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-orange-4",
+    "value": "#ff6c38",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-minicart-select-quantity",
+    "value": "#dbdbdb",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-background",
+    "value": "var(--cassina-global-color-gray-50)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-border",
+    "value": "var(--cassina-global-color-gray-300)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-error",
+    "value": "var(--cassina-global-color-red-700)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-text",
+    "value": "var(--cassina-global-color-gray-900)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-text-alt",
+    "value": "var(--cassina-global-color-gray-darker)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-text-hint",
+    "value": "var(--cassina-global-color-gray-500)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-warning-dark",
+    "value": "var(--cassina-global-color-red-700)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-color-warning-light",
+    "value": "var(--cassina-global-color-gray-100)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-fontFamily-sansSerif",
+    "value": "sans-serif",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-fontFamily-neueHaasGrotesk",
+    "value": "\"Neue Haas Grotesk Display Pro Roman\",Arial",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-fontFamily-neueHaasGroteskBold",
+    "value": "\"Neue Haas Grotesk Display Pro Bold\",Arial",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-fontFamily-neueHaasGroteskItalic",
+    "value": "\"Neue Haas Grotesk Display Pro Roman Italic\",Arial",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-fontSize-30",
+    "value": "0.563rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-fontSize-40",
+    "value": "0.625rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-fontSize-50",
+    "value": "0.6875rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-fontSize-75",
+    "value": "0.75rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-fontSize-85",
+    "value": "0.8125rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-fontSize-100",
+    "value": "0.875rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-fontSize-200",
+    "value": "1rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-fontSize-250",
+    "value": "1.063rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-fontSize-300",
+    "value": "1.125rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-fontSize-400",
+    "value": "1.25rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-fontSize-500",
+    "value": "1.375rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-fontSize-600",
+    "value": "1.5rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-fontSize-700",
+    "value": "1.75rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-fontSize-800",
+    "value": "2rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-fontSize-900",
+    "value": "2.25rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-fontSize-1000",
+    "value": "2.5rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-fontSize-1100",
+    "value": "3rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-fontSize-1200",
+    "value": "3.5rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-fontSize-1400",
+    "value": "6rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-padding-20",
+    "value": "0.3125rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-padding-30",
+    "value": "0.5rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-padding-40",
+    "value": "0.625rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-padding-50",
+    "value": "0.6875rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-padding-75",
+    "value": "0.75rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-padding-100",
+    "value": "0.875rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-padding-200",
+    "value": "1rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-padding-300",
+    "value": "1.125rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-padding-400",
+    "value": "1.25rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-padding-500",
+    "value": "1.375rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-padding-600",
+    "value": "1.5rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-padding-700",
+    "value": "1.75rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-padding-800",
+    "value": "2rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-padding-900",
+    "value": "2.25rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-padding-910",
+    "value": "2.375rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-padding-1000",
+    "value": "2.5rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-padding-1175",
+    "value": "2.875rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-padding-1100",
+    "value": "3rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-padding-1200",
+    "value": "3.5rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-padding-1250",
+    "value": "3.75rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-padding-1300",
+    "value": "4rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-padding-1350",
+    "value": "5rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-padding-1375",
+    "value": "5.625rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-padding-1400",
+    "value": "6rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-margin-10",
+    "value": "0.25rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-margin-20",
+    "value": "0.3125rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-margin-30",
+    "value": "0.5rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-margin-40",
+    "value": "0.625rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-margin-50",
+    "value": "0.6875rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-margin-75",
+    "value": "0.75rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-margin-100",
+    "value": "0.875rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-margin-200",
+    "value": "1rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-margin-300",
+    "value": "1.125rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-margin-400",
+    "value": "1.25rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-margin-500",
+    "value": "1.375rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-margin-600",
+    "value": "1.5rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-margin-700",
+    "value": "1.75rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-margin-800",
+    "value": "2rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-margin-900",
+    "value": "2.25rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-margin-1000",
+    "value": "2.5rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-margin-1100",
+    "value": "3rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-margin-1150",
+    "value": "3.125rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-margin-1200",
+    "value": "3.5rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-margin-1250",
+    "value": "4rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-margin-1300",
+    "value": "4.75rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-margin-1400",
+    "value": "6rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-margin-1600",
+    "value": "8.125rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-fontWeight-normal",
+    "value": "400",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-fontWeight-semibold",
+    "value": "600",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-fontWeight-bold",
+    "value": "700",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-lineHeight-100",
+    "value": "1",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-lineHeight-140",
+    "value": "1.13",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-lineHeight-150",
+    "value": "1.14",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-lineHeight-160",
+    "value": "1.18",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-lineHeight-175",
+    "value": "1.19",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-lineHeight-180",
+    "value": "1.21",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-lineHeight-200",
+    "value": "1.25",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-lineHeight-250",
+    "value": "1.42",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-lineHeight-300",
+    "value": "1.5",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-lineHeight-350",
+    "value": "1.56",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-lineHeight-400",
+    "value": "1.75",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-lineHeight-500",
+    "value": "2",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-lineHeight-600",
+    "value": "2.67",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-global-maxWidth",
+    "value": "1440px",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-header-height",
+    "value": "64px",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-header-height-desk",
+    "value": "73px",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--cassina-pre-header-height",
+    "value": "0px",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": "body:has(.cassina__pre-header)",
+    "name": "--cassina-pre-header-height",
+    "value": "33px",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ".cmp-Button__button__root",
+    "name": "--color",
+    "value": "var(--cassina-text)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ".cmp-Button__button__root:hover",
+    "name": "--color",
+    "value": "var(--cassina-teal)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ".cmp-Button__button__root:focus",
+    "name": "--color",
+    "value": "var(--cassina-teal)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ".cmp-Button__button__root:active",
+    "name": "--color",
+    "value": "var(--cassina-teal-dark)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ".cmp-Button__button__root:disabled",
+    "name": "--color",
+    "value": "var(--cassina-grey-dark)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ".cmp-Select__select__errorInputShowSelected,.cmp-Select__select__inputShowSelected",
+    "name": "--cassina-teal-light",
+    "value": "none",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ".cmp-Minicart__minicart__root",
+    "name": "--base-z-index",
+    "value": "1000",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ".cmp-Minicart__minicart__root",
+    "name": "--minicart-header-height",
+    "value": "3.5rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ".cmp-CreateAccount__createAccountSuccess__signin",
+    "name": "--color",
+    "value": "var(--cassina-text)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ".cmp-ShoppingCart__product__buttonDeleteCloseModal",
+    "name": "--color",
+    "value": "var(--cassina-text)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ".cmp-Password__password__passwordButton",
+    "name": "--stroke",
+    "value": "var(--cassina-global-color-gray-500)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ".cmp-Password__password__passwordButton:hover",
+    "name": "--stroke",
+    "value": "var(--cassina-global-color-gray-700)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ".cmp-Password__password__passwordButton:focus",
+    "name": "--stroke",
+    "value": "var(--cassina-global-color-gray-700)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ".cmp-Password__password__root:active",
+    "name": "--stroke",
+    "value": "var(--cassina-global-color-gray-700)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ".cmp-CreateAccountFromCheckout__createAccountSuccess__signin",
+    "name": "--color",
+    "value": "var(--cassina-text)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ".cmp-OnePageCheckout__minicart__root",
+    "name": "--base-z-index",
+    "value": "4",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ".cmp-OnePageCheckout__minicart__root",
+    "name": "--max-z-index",
+    "value": "999",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ".cmp-OnePageCheckout__minicart__root",
+    "name": "--minicart-header-height",
+    "value": "3.5rem",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--toastify-color-light",
+    "value": "#fff",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--toastify-color-dark",
+    "value": "#121212",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--toastify-color-info",
+    "value": "#3498db",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--toastify-color-success",
+    "value": "#07bc0c",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--toastify-color-warning",
+    "value": "#f1c40f",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--toastify-color-error",
+    "value": "#e74c3c",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--toastify-color-transparent",
+    "value": "hsla(0,0%,100%,0.7)",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--toastify-icon-color-info",
+    "value": "var(--toastify-color-info)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--toastify-icon-color-success",
+    "value": "var(--toastify-color-success)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--toastify-icon-color-warning",
+    "value": "var(--toastify-color-warning)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--toastify-icon-color-error",
+    "value": "var(--toastify-color-error)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--toastify-toast-width",
+    "value": "320px",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--toastify-toast-background",
+    "value": "#fff",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--toastify-toast-min-height",
+    "value": "64px",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--toastify-toast-max-height",
+    "value": "800px",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--toastify-font-family",
+    "value": "sans-serif",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--toastify-z-index",
+    "value": "9999",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--toastify-text-color-light",
+    "value": "#757575",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--toastify-text-color-dark",
+    "value": "#fff",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--toastify-text-color-info",
+    "value": "#fff",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--toastify-text-color-success",
+    "value": "#fff",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--toastify-text-color-warning",
+    "value": "#fff",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--toastify-text-color-error",
+    "value": "#fff",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--toastify-spinner-color",
+    "value": "#616161",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--toastify-spinner-color-empty-area",
+    "value": "#e0e0e0",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--toastify-color-progress-light",
+    "value": "linear-gradient(90deg,#4cd964,#5ac8fa,#007aff,#34aadc,#5856d6,#ff2d55)",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--toastify-color-progress-dark",
+    "value": "#bb86fc",
+    "is_alias": false,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--toastify-color-progress-info",
+    "value": "var(--toastify-color-info)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--toastify-color-progress-success",
+    "value": "var(--toastify-color-success)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--toastify-color-progress-warning",
+    "value": "var(--toastify-color-warning)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": ":root",
+    "name": "--toastify-color-progress-error",
+    "value": "var(--toastify-color-error)",
+    "is_alias": true,
+    "line": 4326
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline12",
+    "name": "--iconsBefore",
+    "value": "1",
+    "is_alias": false,
+    "line": 4359
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline12",
+    "name": "--iconsAfter",
+    "value": "0",
+    "is_alias": false,
+    "line": 4359
+  }
+]

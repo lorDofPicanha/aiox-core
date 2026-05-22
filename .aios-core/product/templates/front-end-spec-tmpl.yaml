@@ -1,7 +1,7 @@
 template:
   id: frontend-spec-template-v2
   name: UI/UX Specification
-  version: 2.0
+  version: 2.2
   output:
     format: markdown
     filename: docs/front-end-spec.md
@@ -162,6 +162,118 @@ sections:
               **Interaction Notes:** {{interaction_notes}}
               
               **Design File Reference:** {{specific_frame_link}}
+
+  - id: visual-references
+    title: Visual References & Steal List (Refero Skill methodology v2.2 post-conclave)
+    instruction: |
+      MANDATORY before component-library / design-system definition.
+
+      Collect minimum 8 visual references with traceable "tactics to steal" (post-conclave v2.2,
+      threshold raised from 5 → 8 by Jarvis conclave 2026-05-04: Nova/Uma/DSE/Kahneman/Holiday).
+
+      Routing by niche:
+      - luxury-craft (premium furniture, fashion, hospitality, haute horlogerie): use Playwright capture own (cassina.com, bottegaveneta.com, aman.com, brunellocucinelli.com, hermes.com, aesop.com)
+      - saas | wellness | internal | low-ticket | prediction-markets: use Refero MCP (refero_search, refero_design_md)
+
+      Each entry MUST include: source URL/UUID, element type (hero/nav/pricing/footer/etc),
+      one-line rationale ("why we steal this"), and asset path (screenshot or refero-uuid).
+
+      Mandatory complement (4 sub-gates v2.2):
+      - >= 3 Playwright captures unique sources (mandatory ALL niches, not luxury-only)
+      - >= 1 Negative anchor BR (saccaro.com.br, artefacto.com.br, carbonodesign.com.br, ou similar)
+      - >= 1 Counter-example (1 site da MESMA categoria que parece BARATO + 3 elementos a evitar)
+      - Pre-mortem documented (3 modos de falha antecipados antes de implementar)
+      - Human reviewer approval (User Breno default) registered
+
+      Gate: if min_items < 8 OR Playwright_captures < 3 OR negative_anchor_BR_count < 1
+      OR counter_example < 1, HALT.
+      This gate breaks the "luxury_taste_calibration" failure loop where briefs are met
+      mechanically but the result looks like "startup tentando ser premium".
+
+      See: .aios-core/development/tasks/collect-visual-references.md (v1.1 with 4 sub-gates)
+    elicit: true
+    required: true
+    min_items: 8
+    sections:
+      - id: references-method
+        title: Capture Method
+        template: |
+          **Method:** {{method}}  # playwright-capture-own | refero-mcp-search | hybrid
+          **Niche:** {{niche}}
+          **Archetype:** {{archetype}}
+          **Cache path:** {{cache_path}}
+          **Playwright captures count:** {{playwright_capture_count}}  (min: 3)
+      - id: references-list
+        title: Visual References (min 8)
+        type: table
+        columns: ["#", "Source URL", "Element", "Tactic to Steal", "How to apply here", "Asset path"]
+        rows:
+          - ["1", "{{ref_1_url}}", "{{ref_1_element}}", "{{ref_1_tactic}}", "{{ref_1_apply}}", "{{ref_1_asset}}"]
+          - ["2", "{{ref_2_url}}", "{{ref_2_element}}", "{{ref_2_tactic}}", "{{ref_2_apply}}", "{{ref_2_asset}}"]
+          - ["3", "{{ref_3_url}}", "{{ref_3_element}}", "{{ref_3_tactic}}", "{{ref_3_apply}}", "{{ref_3_asset}}"]
+          - ["4", "{{ref_4_url}}", "{{ref_4_element}}", "{{ref_4_tactic}}", "{{ref_4_apply}}", "{{ref_4_asset}}"]
+          - ["5", "{{ref_5_url}}", "{{ref_5_element}}", "{{ref_5_tactic}}", "{{ref_5_apply}}", "{{ref_5_asset}}"]
+          - ["6", "{{ref_6_url}}", "{{ref_6_element}}", "{{ref_6_tactic}}", "{{ref_6_apply}}", "{{ref_6_asset}}"]
+          - ["7", "{{ref_7_url}}", "{{ref_7_element}}", "{{ref_7_tactic}}", "{{ref_7_apply}}", "{{ref_7_asset}}"]
+          - ["8", "{{ref_8_url}}", "{{ref_8_element}}", "{{ref_8_tactic}}", "{{ref_8_apply}}", "{{ref_8_asset}}"]
+      - id: references-negative-anchor-br
+        title: Negative Anchor BR (mandatory, min 1)
+        instruction: |
+          Sites BRASILEIROS da mesma vertical que NÃO atingem padrão luxo. Calibração realista
+          vs competidores reais. Lista canônica em luxury-references-library.md
+          (Saccaro, Artefacto, Carbono Design — substituir/adicionar conforme vertical).
+        type: table
+        columns: ["#", "BR site URL", "Why it falls short", "What we MUST avoid"]
+        rows:
+          - ["1", "{{neg_1_url}}", "{{neg_1_why}}", "{{neg_1_avoid}}"]
+      - id: references-counter-example
+        title: Counter-example (Sub-gate A, mandatory)
+        instruction: |
+          1 site da MESMA categoria que parece BARATO. Por quê? Listar 3 elementos específicos a EVITAR.
+          Sem isso, Steal List é só checklist (Uma/Conclave-1).
+        template: |
+          **Cheap-looking site (same category):** {{counter_url}}
+          **Why it looks cheap:** {{counter_why}}
+          **3 elements to AVOID:**
+          1. {{counter_avoid_1}}
+          2. {{counter_avoid_2}}
+          3. {{counter_avoid_3}}
+      - id: references-pre-mortem
+        title: Pre-mortem (Sub-gate B, mandatory before implementing)
+        instruction: |
+          Se essa implementação falhar como as 4 anteriores, qual o motivo MAIS provável?
+          Antecipe 3 modos de falha específicos antes de começar a codar (Kahneman/Conclave-1).
+        template: |
+          **Failure mode 1:** {{premortem_1}}
+          **Failure mode 2:** {{premortem_2}}
+          **Failure mode 3:** {{premortem_3}}
+          **Mitigations planned:** {{premortem_mitigations}}
+      - id: references-80-20-split
+        title: 80/20 Split (proven vs brand-unique) + JSON tokens output
+        template: |
+          **80% proven patterns (tactics #X, #Y, #Z, ...):** {{proven_summary}}
+
+          **20% brand-unique (tactics #A, #B):** {{unique_summary}}
+
+          **Tokens JSON output path:** {{tokens_json_path}}  # docs/projects/{project}/design/visual-references-tokens.json
+
+          **Anti-AI-slop checklist:**
+          - [ ] No generic "modern minimal" without brand voice
+          - [ ] No stock-photo-grade hero treatment
+          - [ ] Specific film/typography/spacing measurements (not vague descriptors)
+          - [ ] Tactics traceable to a SPECIFIC benchmark, not aggregate "luxury feel"
+          - [ ] Tailwind defaults override planned (anti-tailwind-default-check.js will run in phase_1)
+      - id: references-gate
+        title: Gate Validation (8-item gate v2.2)
+        template: |
+          **Steal List tactics count:** {{tactic_count}}  (min: 8)
+          **Playwright captures count:** {{playwright_capture_count}}  (min: 3)
+          **Negative anchor BR count:** {{negative_anchor_br_count}}  (min: 1)
+          **Counter-example present:** {{counter_example_present}}  # true | false
+          **Pre-mortem documented:** {{premortem_documented}}  # true | false
+          **Tokens JSON exported:** {{tokens_json_present}}  # true | false
+          **Human reviewer approval:** {{human_reviewer_approval}}  # {nome, data, notas}
+          **Gate status:** {{gate_status}}  # PASS | HALT
 
   - id: component-library
     title: Component Library / Design System
@@ -337,6 +449,13 @@ sections:
         title: Design Handoff Checklist
         type: checklist
         items:
+          - "Visual references captured (min 8) with Steal List tactics — Refero Skill 4-step v2.2"
+          - "Playwright captures min 3 unique sources"
+          - "Negative anchor BR documented (min 1 cheap-looking competitor)"
+          - "Counter-example documented (1 site to avoid + 3 elements)"
+          - "Pre-mortem documented (3 failure modes anticipated)"
+          - "JSON tokens exported (visual-references-tokens.json)"
+          - "Human reviewer approval recorded (User Breno default)"
           - "All user flows documented"
           - "Component inventory complete"
           - "Accessibility requirements defined"

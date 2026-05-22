@@ -1,0 +1,84 @@
+{
+  "durations": [
+    {
+      "value": "6s",
+      "count": 42
+    },
+    {
+      "value": "3s",
+      "count": 40
+    },
+    {
+      "value": "2s",
+      "count": 17
+    },
+    {
+      "value": "1s",
+      "count": 15
+    },
+    {
+      "value": "4s",
+      "count": 12
+    },
+    {
+      "value": "8s",
+      "count": 9
+    },
+    {
+      "value": "7s",
+      "count": 9
+    },
+    {
+      "value": "225s",
+      "count": 8
+    },
+    {
+      "value": "0s",
+      "count": 8
+    },
+    {
+      "value": "9s",
+      "count": 7
+    }
+  ],
+  "easings": [
+    {
+      "value": "cubic-bezier(.39,.575,.565,1)",
+      "count": 68
+    },
+    {
+      "value": "cubic-bezier(.215,.61,.355,1)",
+      "count": 17
+    },
+    {
+      "value": "cubic-bezier(.47,0,.745,.715)",
+      "count": 8
+    },
+    {
+      "value": "cubic-bezier(.445,.05,.55,.95)",
+      "count": 8
+    },
+    {
+      "value": "cubic-bezier(.19,1,.22,1)",
+      "count": 5
+    },
+    {
+      "value": "cubic-bezier(.165,.84,.44,1)",
+      "count": 3
+    },
+    {
+      "value": "cubic-bezier(1,0,0,1)",
+      "count": 1
+    }
+  ],
+  "keyframes": [
+    "fadeOutAndRemove",
+    "button-loader",
+    "loader-animation",
+    "subnavigation-slide-down",
+    "gallery-fade-in",
+    "configurator-loading",
+    "in-out",
+    "pageload-animation"
+  ]
+}

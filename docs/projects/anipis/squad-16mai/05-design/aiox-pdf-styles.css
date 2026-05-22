@@ -1,0 +1,681 @@
+/* ============================================================================
+ * AIOX Squad — Dark Cockpit Edition
+ * PDF Stylesheet for Anipis Master Dossier
+ * Version: alpha
+ * Generated: 2026-05-16
+ * ============================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,700,500&display=swap');
+
+/* ----------------------------------------------------------------------------
+ * Design Tokens (AIOX Squad Brand)
+ * ---------------------------------------------------------------------------- */
+:root {
+  /* Accent */
+  --aiox-primary: #D1FF00;
+  --aiox-primary-deep: #9FCC00;
+  --aiox-primary-soft: #F0FFB0;
+  --aiox-accent-12: rgba(209, 255, 0, 0.12);
+  --aiox-accent-24: rgba(209, 255, 0, 0.24);
+
+  /* Surfaces */
+  --aiox-void: #0A0A0B;
+  --aiox-surface: #141416;
+  --aiox-surface-2: #1C1C1F;
+  --aiox-surface-3: #252528;
+  --aiox-border: #2A2A2E;
+  --aiox-border-strong: #3D3D42;
+
+  /* Text */
+  --aiox-text: #F4F1EA;
+  --aiox-text-2: #A8A4A0;
+  --aiox-text-3: #6B6864;
+  --aiox-text-on-accent: #0A0A0B;
+
+  /* Semantic */
+  --aiox-success: #7BC97B;
+  --aiox-warning: #E8B23A;
+  --aiox-error: #E0533D;
+  --aiox-info: #5C8FE8;
+
+  /* Type stacks */
+  --font-display: "Cabinet Grotesk", "Geist", "Inter", system-ui, -apple-system, sans-serif;
+  --font-sans: "Geist", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Roboto Mono", "JetBrains Mono", "Cascadia Code", "Consolas", monospace;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 0 rgba(0,0,0,0.4);
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.35);
+  --shadow-md: 0 6px 16px rgba(0,0,0,0.45);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,0.55);
+  --shadow-glow: 0 0 0 1px var(--aiox-primary), 0 0 24px rgba(209,255,0,0.35);
+}
+
+/* ----------------------------------------------------------------------------
+ * @page setup (A4, print-safe)
+ * ---------------------------------------------------------------------------- */
+@page {
+  size: A4;
+  margin: 22mm 18mm 22mm 18mm;
+
+  @top-left {
+    content: "ANIPIS · MASTER DOSSIER v1";
+    font-family: var(--font-mono);
+    font-size: 8pt;
+    color: var(--aiox-text-3);
+    letter-spacing: 0.1em;
+  }
+  @top-right {
+    content: "AIOX SQUAD · " counter(page) " / " counter(pages);
+    font-family: var(--font-mono);
+    font-size: 8pt;
+    color: var(--aiox-text-3);
+    letter-spacing: 0.1em;
+  }
+  @bottom-center {
+    content: "Confidencial · 2026-05-16 · brenodecerqueira@gmail.com";
+    font-family: var(--font-mono);
+    font-size: 7pt;
+    color: var(--aiox-text-3);
+    letter-spacing: 0.08em;
+  }
+}
+
+@page :first {
+  margin: 0;
+  @top-left { content: none; }
+  @top-right { content: none; }
+  @bottom-center { content: none; }
+}
+
+@page cover {
+  margin: 0;
+  background: var(--aiox-void);
+  @top-left { content: none; }
+  @top-right { content: none; }
+  @bottom-center { content: none; }
+}
+
+@page section {
+  @top-left {
+    content: string(section-title);
+    font-family: var(--font-mono);
+    font-size: 8pt;
+    color: var(--aiox-primary);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+}
+
+/* ----------------------------------------------------------------------------
+ * Base
+ * ---------------------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+html {
+  font-family: var(--font-sans);
+  font-size: 11pt;
+  line-height: 1.65;
+  color: var(--aiox-text);
+  background: var(--aiox-void);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--aiox-void);
+  color: var(--aiox-text);
+  font-feature-settings: "ss01", "cv11";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  orphans: 3;
+  widows: 3;
+}
+
+/* ----------------------------------------------------------------------------
+ * Typography
+ * ---------------------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  color: var(--aiox-text);
+  font-weight: 700;
+  margin-top: 1.6em;
+  margin-bottom: 0.5em;
+  letter-spacing: -0.015em;
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 28pt;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin-top: 0;
+  padding-bottom: 0.4em;
+  border-bottom: 1px solid var(--aiox-border-strong);
+  string-set: section-title content();
+}
+
+h1::before {
+  content: "—— ";
+  color: var(--aiox-primary);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+h2 {
+  font-size: 18pt;
+  line-height: 1.2;
+  margin-top: 2em;
+  color: var(--aiox-text);
+}
+
+h2::before {
+  content: counter(h2-counter, decimal-leading-zero) "  ";
+  counter-increment: h2-counter;
+  color: var(--aiox-primary);
+  font-family: var(--font-mono);
+  font-size: 0.6em;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  vertical-align: 0.2em;
+}
+
+h3 {
+  font-size: 14pt;
+  line-height: 1.3;
+  color: var(--aiox-text);
+  margin-top: 1.5em;
+}
+
+h4 {
+  font-size: 12pt;
+  line-height: 1.35;
+  color: var(--aiox-text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+h5, h6 {
+  font-size: 10pt;
+  color: var(--aiox-text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+p {
+  margin: 0 0 0.8em 0;
+  color: var(--aiox-text);
+  font-size: 10.5pt;
+  line-height: 1.7;
+}
+
+strong, b {
+  color: var(--aiox-text);
+  font-weight: 600;
+}
+
+em, i {
+  font-style: italic;
+  color: var(--aiox-text);
+}
+
+a {
+  color: var(--aiox-primary);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--aiox-primary-deep);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--aiox-border-strong);
+  margin: 2.5em 0;
+}
+
+/* Lists */
+ul, ol {
+  margin: 0.5em 0 1em 0;
+  padding-left: 1.4em;
+}
+
+li {
+  margin: 0.25em 0;
+  line-height: 1.65;
+}
+
+ul li::marker {
+  color: var(--aiox-primary);
+}
+
+ol li::marker {
+  color: var(--aiox-primary);
+  font-family: var(--font-mono);
+  font-weight: 500;
+}
+
+/* Blockquote (pull-quote) */
+blockquote {
+  margin: 1.5em 0;
+  padding: 1em 1.4em;
+  border-left: 3px solid var(--aiox-primary);
+  background: var(--aiox-accent-12);
+  font-style: italic;
+  color: var(--aiox-text);
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+blockquote p {
+  margin: 0;
+  font-size: 11pt;
+}
+
+/* ----------------------------------------------------------------------------
+ * Code
+ * ---------------------------------------------------------------------------- */
+code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  font-weight: 500;
+  color: var(--aiox-primary);
+  background: var(--aiox-surface);
+  padding: 0.1em 0.4em;
+  border-radius: 2px;
+  border: 1px solid var(--aiox-border);
+}
+
+pre {
+  font-family: var(--font-mono);
+  background: var(--aiox-surface);
+  border: 1px solid var(--aiox-border);
+  border-left: 3px solid var(--aiox-primary);
+  border-radius: 4px;
+  padding: 1em 1.2em;
+  margin: 1em 0;
+  overflow-x: auto;
+  page-break-inside: avoid;
+  break-inside: avoid;
+  font-size: 9pt;
+  line-height: 1.55;
+  color: var(--aiox-text);
+}
+
+pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--aiox-text);
+  font-size: inherit;
+}
+
+/* ----------------------------------------------------------------------------
+ * Tables
+ * ---------------------------------------------------------------------------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.2em 0;
+  font-size: 9.5pt;
+  page-break-inside: avoid;
+  break-inside: avoid;
+  background: var(--aiox-surface);
+  border: 1px solid var(--aiox-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+thead {
+  display: table-header-group;
+  background: var(--aiox-surface-2);
+}
+
+th {
+  text-align: left;
+  padding: 10px 14px;
+  font-family: var(--font-sans);
+  font-size: 8.5pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--aiox-primary);
+  border-bottom: 1px solid var(--aiox-border-strong);
+}
+
+td {
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--aiox-border);
+  vertical-align: top;
+  font-size: 9.5pt;
+  line-height: 1.55;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.012);
+}
+
+/* ----------------------------------------------------------------------------
+ * Cover Page
+ * ---------------------------------------------------------------------------- */
+.cover {
+  page: cover;
+  page-break-after: always;
+  background: var(--aiox-void);
+  color: var(--aiox-text);
+  height: 297mm;
+  width: 210mm;
+  padding: 32mm 22mm;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--aiox-primary) 20%, var(--aiox-primary) 80%, transparent 100%);
+  opacity: 0.4;
+}
+
+.cover-meta {
+  font-family: var(--font-mono);
+  font-size: 8pt;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--aiox-text-3);
+  display: flex;
+  justify-content: space-between;
+}
+
+.cover-meta .accent {
+  color: var(--aiox-primary);
+}
+
+.cover-mark {
+  font-family: var(--font-mono);
+  font-size: 9pt;
+  color: var(--aiox-primary);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.cover-title {
+  font-family: var(--font-display);
+  font-size: 64pt;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  color: var(--aiox-text);
+  margin: 0;
+}
+
+.cover-title .x-accent {
+  color: var(--aiox-primary);
+}
+
+.cover-subtitle {
+  font-family: var(--font-sans);
+  font-size: 14pt;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--aiox-text-2);
+  max-width: 130mm;
+  margin: 1.2em 0 0 0;
+}
+
+.cover-footer {
+  font-family: var(--font-mono);
+  font-size: 8pt;
+  letter-spacing: 0.1em;
+  color: var(--aiox-text-3);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.cover-footer .stamp {
+  border: 1px solid var(--aiox-primary);
+  padding: 6px 14px;
+  color: var(--aiox-primary);
+  text-transform: uppercase;
+}
+
+/* ----------------------------------------------------------------------------
+ * Section / Part dividers
+ * ---------------------------------------------------------------------------- */
+.section-divider {
+  page-break-before: always;
+  break-before: page;
+  height: 297mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 22mm;
+  background: var(--aiox-void);
+  color: var(--aiox-text);
+}
+
+.section-divider .part-number {
+  font-family: var(--font-mono);
+  font-size: 11pt;
+  color: var(--aiox-primary);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.section-divider .part-title {
+  font-family: var(--font-display);
+  font-size: 56pt;
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: var(--aiox-text);
+  margin: 0;
+  border-left: 4px solid var(--aiox-primary);
+  padding-left: 24px;
+}
+
+.section-divider .part-tagline {
+  font-family: var(--font-sans);
+  font-size: 13pt;
+  color: var(--aiox-text-2);
+  margin-top: 32px;
+  max-width: 140mm;
+  line-height: 1.5;
+}
+
+/* ----------------------------------------------------------------------------
+ * Callouts
+ * ---------------------------------------------------------------------------- */
+.callout {
+  margin: 1.4em 0;
+  padding: 1em 1.2em;
+  background: var(--aiox-surface);
+  border-left: 3px solid var(--aiox-border-strong);
+  border-radius: 2px;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.callout-accent { border-left-color: var(--aiox-primary); background: var(--aiox-accent-12); }
+.callout-info   { border-left-color: var(--aiox-info); }
+.callout-success { border-left-color: var(--aiox-success); }
+.callout-warning { border-left-color: var(--aiox-warning); }
+.callout-error  { border-left-color: var(--aiox-error); }
+
+.callout-label {
+  font-family: var(--font-mono);
+  font-size: 8pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--aiox-primary);
+  margin-bottom: 0.4em;
+  display: block;
+}
+
+.callout-info .callout-label   { color: var(--aiox-info); }
+.callout-success .callout-label { color: var(--aiox-success); }
+.callout-warning .callout-label { color: var(--aiox-warning); }
+.callout-error .callout-label  { color: var(--aiox-error); }
+
+/* ----------------------------------------------------------------------------
+ * Pill / Tag
+ * ---------------------------------------------------------------------------- */
+.pill {
+  display: inline-block;
+  padding: 2px 9px;
+  font-family: var(--font-mono);
+  font-size: 7.5pt;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--aiox-primary);
+  background: var(--aiox-surface-3);
+  border: 1px solid var(--aiox-border-strong);
+  border-radius: 999px;
+  vertical-align: middle;
+}
+
+.pill-success { color: var(--aiox-success); border-color: var(--aiox-success); }
+.pill-warning { color: var(--aiox-warning); border-color: var(--aiox-warning); }
+.pill-error   { color: var(--aiox-error); border-color: var(--aiox-error); }
+.pill-info    { color: var(--aiox-info); border-color: var(--aiox-info); }
+.pill-neutral { color: var(--aiox-text-2); border-color: var(--aiox-border-strong); }
+
+/* ----------------------------------------------------------------------------
+ * KPI / Stat blocks
+ * ---------------------------------------------------------------------------- */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 1.5em 0;
+  page-break-inside: avoid;
+}
+
+.kpi {
+  padding: 16px 18px;
+  background: var(--aiox-surface);
+  border: 1px solid var(--aiox-border);
+  border-radius: 4px;
+}
+
+.kpi-value {
+  font-family: var(--font-display);
+  font-size: 24pt;
+  font-weight: 800;
+  color: var(--aiox-primary);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.kpi-label {
+  font-family: var(--font-mono);
+  font-size: 8pt;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--aiox-text-2);
+  margin-top: 8px;
+}
+
+/* ----------------------------------------------------------------------------
+ * Quote attribution (clones)
+ * ---------------------------------------------------------------------------- */
+.quote-attrib {
+  font-family: var(--font-mono);
+  font-size: 8.5pt;
+  color: var(--aiox-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 0.4em;
+  display: block;
+}
+
+/* ----------------------------------------------------------------------------
+ * TOC
+ * ---------------------------------------------------------------------------- */
+.toc {
+  page-break-after: always;
+  font-family: var(--font-sans);
+}
+
+.toc h1 {
+  border-bottom: 1px solid var(--aiox-border-strong);
+  margin-bottom: 1.5em;
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 0.45em 0;
+  padding: 0.25em 0;
+  border-bottom: 1px dotted var(--aiox-border);
+  font-size: 10.5pt;
+}
+
+.toc li.part {
+  font-family: var(--font-mono);
+  font-size: 8.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--aiox-primary);
+  margin-top: 1.2em;
+  border-bottom: 1px solid var(--aiox-primary);
+  padding-bottom: 0.3em;
+}
+
+.toc .page-ref {
+  font-family: var(--font-mono);
+  color: var(--aiox-text-3);
+  font-size: 9pt;
+}
+
+/* ----------------------------------------------------------------------------
+ * Utility
+ * ---------------------------------------------------------------------------- */
+.text-mono { font-family: var(--font-mono); }
+.text-accent { color: var(--aiox-primary); }
+.text-muted { color: var(--aiox-text-2); }
+.text-uppercase { text-transform: uppercase; letter-spacing: 0.08em; }
+.no-break { page-break-inside: avoid; break-inside: avoid; }
+.page-break { page-break-before: always; break-before: page; }
+.center { text-align: center; }
+
+img, figure {
+  page-break-inside: avoid;
+  break-inside: avoid;
+  max-width: 100%;
+}
+
+/* ----------------------------------------------------------------------------
+ * Counter reset on first section
+ * ---------------------------------------------------------------------------- */
+body { counter-reset: h2-counter; }
+h1 { counter-reset: h2-counter; }

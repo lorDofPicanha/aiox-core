@@ -1,0 +1,322 @@
+[
+  {
+    "name": "--ai-icon-size",
+    "declarations": 3,
+    "references": 6
+  },
+  {
+    "name": "--header-menu-height-lg",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--messages-fg-color",
+    "declarations": 0,
+    "references": 4
+  },
+  {
+    "name": "--ai-text-color-muted",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--color-gray-200",
+    "declarations": 0,
+    "references": 3
+  },
+  {
+    "name": "--color-gray-100",
+    "declarations": 0,
+    "references": 3
+  },
+  {
+    "name": "--ai-font-size-xs",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--ai-icon-size-lg",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--booking-bar-height-lg",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--header-menu-scrolled",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--font-size-xs",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--gin-easing",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--ai-font-size-base",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--ai-font-size-s",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--ai-font-size-xxs",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--ai-font-size-h1",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--ai-font-size-h2",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--ai-font-size-h3",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--ai-font-size-h4",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--ai-font-size-h5",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--ai-font-size-h6",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--font-size-base",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--font-size-s",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--font-size-xxs",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--font-size-h1",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--font-size-h2",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--font-size-h3",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--font-size-h4",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--font-size-h5",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--font-size-h6",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--color-text-light",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--gin-icon-color",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--gin-border-m",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--gin-color-focus",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--color-focus",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--color-gray-300",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--gin-font-size-xxs",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--gin-font-weight-semibold",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--gin-border-l",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--messages-bg-color",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--gin-status-text",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--gin-status-bg",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--color-gray-400",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--gin-status-success-text",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--gin-status-success-bg",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--messages--status-color",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--gin-status-danger-text",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--gin-status-danger-bg",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--messages--error-color",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--gin-status-warning-text",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--gin-status-warning-bg",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--messages--warning-color",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--gin-border-color",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--gin-spacing-xxs",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--gin-spacing-xs",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--gin-color-text-light",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--color-gray-800",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--gin-border-s",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--gin-color-primary-light",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--header-menu-content-offset",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--bn-col-gap",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--mini",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--advanced",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--select",
+    "declarations": 1,
+    "references": 0
+  }
+]

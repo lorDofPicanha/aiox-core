@@ -4,7 +4,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const { parseAllAgents } = require('../ide-sync/agent-parser');
+const { parseAgentDirs } = require('../ide-sync/agent-parser');
 const { getSkillId } = require('./index');
 
 const ALLOWED_EXTRA_SKILLS = new Set([
@@ -17,6 +17,10 @@ function getDefaultOptions() {
   return {
     projectRoot,
     sourceDir: path.join(projectRoot, '.aios-core', 'development', 'agents'),
+    sourceDirs: [
+      path.join(projectRoot, '.aios-core', 'development', 'agents'),
+      path.join(projectRoot, '.claude', 'commands', 'AIOS', 'agents'),
+    ],
     skillsDir: path.join(projectRoot, '.codex', 'skills'),
     strict: false,
     quiet: false,
@@ -74,7 +78,7 @@ function validateCodexSkills(options = {}) {
     return { ok: false, checked: 0, expected: 0, errors, warnings, missing: [], orphaned: [] };
   }
 
-  const agents = parseAllAgents(resolved.sourceDir).filter(isParsableAgent);
+  const agents = parseAgentDirs(resolved.sourceDirs || [resolved.sourceDir]).filter(isParsableAgent);
   const expected = agents.map(agent => ({
     agentId: agent.id,
     filename: agent.filename,

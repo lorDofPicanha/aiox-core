@@ -1,0 +1,20 @@
+[
+  {
+    "id": "decision_aios_memory_local_first_graphiti_outbox",
+    "schemaVersion": "aios-memory-v1",
+    "type": "decision",
+    "title": "AIOS memory is local-first with Graphiti outbox",
+    "text": "Use a local-first AIOS memory layer with JSONL events, facts, decisions, Markdown summaries, and a Graphiti-ready outbox before relying on external memory services.",
+    "decision": "Use a local-first AIOS memory layer with JSONL events, facts, decisions, Markdown summaries, and a Graphiti-ready outbox before relying on external memory services.",
+    "rationale": "The AIOS already uses file-based memory and must remain usable across Codex, Claude, Gemini, Jarvis, and local scripts even when Graphiti or external services are offline.",
+    "project": "aios",
+    "agent": "codex",
+    "tags": [
+      "memory",
+      "graphiti",
+      "architecture"
+    ],
+    "createdAt": "2026-05-22T11:50:01.000Z",
+    "source": "manual"
+  }
+]

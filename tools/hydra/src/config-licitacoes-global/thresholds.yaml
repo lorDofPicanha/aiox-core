@@ -1,0 +1,161 @@
+scoring:
+  tiers:
+    S:
+      min_score: 4.5
+      action: "ingest_full_alert"
+      hallucination_check: true
+      min_confidence: 4
+    A:
+      min_score: 3.5
+      action: "ingest_full"
+      hallucination_check: true
+      min_confidence: 3
+    B:
+      min_score: 2.5
+      action: "ingest_metadata_only"
+      hallucination_check: false
+      min_confidence: 2
+    C:
+      min_score: 1.5
+      action: "skip_store_reference"
+      hallucination_check: false
+    D:
+      min_score: 0
+      action: "discard"
+      hallucination_check: false
+
+  weights:
+    relevance: 0.30
+    novelty: 0.25
+    actionability: 0.20
+    authority: 0.15
+    depth: 0.10
+
+  models:
+    triage: "claude-haiku-4-5-20251001"
+    extraction: "claude-sonnet-4-5"
+    s_tier_recheck: "claude-sonnet-4-5"
+
+heuristic_filter:
+  min_word_count: 30
+  min_word_count_full: 100
+  max_age_days: 1825  # 5 anos (TED/OCDS evergreen)
+  allowed_languages: ["en", "pt", "es"]  # ADDED es para LATAM
+  max_content_size_bytes: 5242880
+
+  source_overrides:
+    web:
+      min_word_count: 50
+      max_age_days: 1825          # 5 anos para portais .gov + papers
+    youtube:
+      min_word_count: 100
+      max_age_days: 1095
+    podcast:
+      min_word_count: 200
+      max_age_days: 1095
+    github:
+      min_word_count: 20
+      max_age_days: 730
+
+  ai_slop:
+    enabled: true
+    max_filler_ratio: 0.25
+    min_lexical_diversity: 0.35
+    max_avg_sentence_length: 40
+    filler_phrases:
+      - "in today's rapidly evolving"
+      - "it's important to note that"
+      - "in this comprehensive guide"
+      - "without further ado"
+      - "in conclusion"
+      - "as we delve deeper"
+      - "it goes without saying"
+      - "at the end of the day"
+      - "game-changer"
+      - "deep dive"
+      - "unlock the power"
+      - "take it to the next level"
+      - "leverage the potential"
+      - "revolutionize the way"
+      - "cutting-edge"
+      - "paradigm shift"
+      - "synergy"
+      - "holistic approach"
+      - "robust solution"
+      - "seamless integration"
+
+chunking:
+  max_tokens_per_chunk: 3000
+  overlap_tokens: 200
+  strategy: semantic
+  max_chunks: 50
+  min_chunk_tokens: 100
+
+dedup:
+  url_match: true
+  content_hash: true
+  semantic:
+    enabled: false   # OOM hotfix 12/Mai mantido
+    threshold: 0.85
+
+  hash_thresholds:
+    web: 0.80
+    rss: 0.85
+    youtube: 0.75
+    podcast: 0.75
+    twitter: 0.90
+    github: 0.85
+    newsletter: 0.85
+
+scoring_cache:
+  enabled: true
+  maxEntries: 5000
+  ttlMs: 604800000
+  titleSimilarityThreshold: 0.7
+
+vector_store:
+  mode: local
+  maxEntries: 50000
+
+security:
+  url_blocklist:
+    domains:
+      - "bit.ly"
+      - "t.co"
+      - "tinyurl.com"
+      - "is.gd"
+      - "goo.gl"
+      - "ow.ly"
+      - "buff.ly"
+    patterns:
+      - ".*\\.onion$"
+      - ".*\\.local$"
+      - "^file://"
+      - "^ftp://"
+      - "^data:"
+    allow_shorteners_from:
+      - "twitter"
+  size_limits:
+    maxContentBytes: 5242880
+    maxTitleLength: 500
+    minContentLength: 50
+    maxUrlLength: 2048
+  audit:
+    retention_days: 90
+
+quarantine:
+  min_confidence: 3
+  require_evidence: true
+
+anti_hallucination:
+  hallucination_rate_alert: 0.10
+  min_avg_confidence: 3.5
+  quote_match_threshold: 0.80
+  paraphrase_match_threshold: 0.60
+
+anti_echo_chamber:
+  enabled: true
+  max_source_share: 0.30
+  contrarian_bonus: 0.5
+  diversity_check_interval: 50
+  min_sources_per_day: 3

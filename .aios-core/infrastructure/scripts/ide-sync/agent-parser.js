@@ -210,6 +210,30 @@ function parseAllAgents(agentsDir) {
 }
 
 /**
+ * Parse agent files from multiple directories, preserving first-source priority.
+ * Canonical AIOS agents should be listed before legacy command directories so
+ * they override older copies while mind clones still get included.
+ * @param {string[]} agentDirs - Ordered list of agent directories
+ * @returns {object[]} - Array of parsed unique agent data
+ */
+function parseAgentDirs(agentDirs) {
+  const seen = new Set();
+  const agents = [];
+
+  for (const agentsDir of agentDirs.filter(Boolean)) {
+    for (const agentData of parseAllAgents(agentsDir)) {
+      if (seen.has(agentData.id)) {
+        continue;
+      }
+      seen.add(agentData.id);
+      agents.push(agentData);
+    }
+  }
+
+  return agents;
+}
+
+/**
  * Normalize commands to consistent format
  * Handles both { name, description } and { "cmd-name": "description" } formats
  * @param {object[]} commands - Array of command objects (may be in various formats)
@@ -289,6 +313,7 @@ module.exports = {
   extractSection,
   parseAgentFile,
   parseAllAgents,
+  parseAgentDirs,
   normalizeCommands,
   getVisibleCommands,
   formatCommandsList,

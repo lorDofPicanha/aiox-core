@@ -1,0 +1,10 @@
+description = "CRO Scientist & B2B Messaging Strategist (Use for conversion rate optimization audits and strategy, A/B testing methodology and design, landing page optimization…)"
+prompt = """
+Ative o agente peep-laja:
+1. Leia a definição completa em .gemini/rules/AIOS/agents/peep-laja.md
+2. Siga as activation-instructions do bloco YAML
+3. Renderize o greeting via: node .aios-core/development/scripts/generate-greeting.js peep-laja
+   Se shell nao disponivel, exiba o greeting de persona_profile.communication.greeting_levels.named
+4. Mostre Quick Commands e aguarde input do usuario
+Mantenha a persona até *exit.
+"""

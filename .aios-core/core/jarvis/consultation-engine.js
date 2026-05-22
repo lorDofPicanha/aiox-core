@@ -18,6 +18,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const yaml = require('js-yaml');
 const { detect: detectProject } = require('./project-detector');
 
 // ─── Config ─────────────────────────────────────────
@@ -25,6 +26,8 @@ const MEGA_BRAIN_ROOT = process.env.MEGA_BRAIN_ROOT || 'D:/jarvis/mega brain';
 const AIOS_ROOT = process.env.AIOS_ROOT || 'D:/AIOS';
 const MINDS_DIR = path.join(MEGA_BRAIN_ROOT, 'agents', 'minds');
 const AGENTS_DIR = path.join(AIOS_ROOT, '.aios-core', 'development', 'agents');
+const CODEX_AGENTS_DIR = path.join(AIOS_ROOT, '.codex', 'agents');
+const SQUADS_DIR = path.join(AIOS_ROOT, 'squads');
 const MAP_FILE = path.join(AIOS_ROOT, '.aios-core', 'data', 'jarvis-mind-clone-map.yaml');
 const INDEX_FILE = path.join(AIOS_ROOT, '.aios-core', 'data', 'jarvis-mind-clone-index.json');
 
@@ -56,6 +59,17 @@ function buildIndex() {
   const index = [];
   const indexed = new Set();
 
+  const addEntry = (filePath, department, source) => {
+    const id = path.basename(filePath, '.md');
+    if (indexed.has(id)) return;
+
+    const entry = parseExpertFile(filePath, department, source);
+    if (entry) {
+      index.push(entry);
+      indexed.add(entry.id);
+    }
+  };
+
   // Source 1: Mega Brain mind clones (priority — richer DNA)
   if (fs.existsSync(MINDS_DIR)) {
     const departments = fs.readdirSync(MINDS_DIR, { withFileTypes: true })
@@ -67,34 +81,62 @@ function buildIndex() {
       const files = fs.readdirSync(deptDir).filter(f => f.endsWith('.md') && !f.startsWith('_'));
 
       for (const file of files) {
-        const filePath = path.join(deptDir, file);
-        const entry = parseExpertFile(filePath, dept, 'mega-brain');
-        if (entry) {
-          index.push(entry);
-          indexed.add(entry.id);
-        }
+        addEntry(path.join(deptDir, file), dept, 'mega-brain');
       }
     }
   }
 
   // Source 2: AIOS development agents (fallback for experts not in Mega Brain)
   if (fs.existsSync(AGENTS_DIR)) {
-    const files = fs.readdirSync(AGENTS_DIR).filter(f => f.endsWith('.md') && !f.startsWith('_'));
+    for (const filePath of findMarkdownFiles(AGENTS_DIR)) {
+      addEntry(filePath, 'aios-agent', 'aios-agent');
+    }
+  }
 
-    for (const file of files) {
-      const id = path.basename(file, '.md');
-      if (indexed.has(id)) continue; // Skip if already indexed from Mega Brain
+  // Source 3: Codex-synced agents and mind clones
+  if (fs.existsSync(CODEX_AGENTS_DIR)) {
+    for (const filePath of findMarkdownFiles(CODEX_AGENTS_DIR)) {
+      addEntry(filePath, 'codex-agent', 'codex-agent');
+    }
+  }
 
-      const filePath = path.join(AGENTS_DIR, file);
-      const entry = parseExpertFile(filePath, 'aios-agent', 'aios-agent');
-      if (entry) {
-        index.push(entry);
-        indexed.add(entry.id);
-      }
+  // Source 4: Local squad agents (specialists that live inside private squads)
+  for (const { dir, squad } of findSquadAgentDirs()) {
+    for (const filePath of findMarkdownFiles(dir)) {
+      addEntry(filePath, squad, 'squad-agent');
     }
   }
 
   return index;
+}
+
+function findSquadAgentDirs() {
+  if (!fs.existsSync(SQUADS_DIR)) return [];
+  try {
+    return fs.readdirSync(SQUADS_DIR, { withFileTypes: true })
+      .filter(entry => entry.isDirectory() && !entry.name.startsWith('.') && !entry.name.startsWith('_'))
+      .map(entry => ({ squad: entry.name, dir: path.join(SQUADS_DIR, entry.name, 'agents') }))
+      .filter(entry => fs.existsSync(entry.dir));
+  } catch {
+    return [];
+  }
+}
+
+function findMarkdownFiles(dir) {
+  const files = [];
+  try {
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    for (const entry of entries) {
+      if (entry.isDirectory() && !entry.name.startsWith('_') && !entry.name.startsWith('.')) {
+        files.push(...findMarkdownFiles(path.join(dir, entry.name)));
+      } else if (entry.isFile() && entry.name.endsWith('.md') && !entry.name.startsWith('_')) {
+        files.push(path.join(dir, entry.name));
+      }
+    }
+  } catch {
+    // Skip unreadable directories.
+  }
+  return files;
 }
 
 /**
@@ -207,13 +249,31 @@ function loadIndex() {
       const ageHours = (Date.now() - stat.mtimeMs) / (1000 * 60 * 60);
       // Rebuild if older than 24h
       if (ageHours < 24) {
-        return JSON.parse(fs.readFileSync(INDEX_FILE, 'utf-8'));
+        const index = JSON.parse(fs.readFileSync(INDEX_FILE, 'utf-8'));
+        const needsCodexEntries = fs.existsSync(CODEX_AGENTS_DIR)
+          && !index.some(entry => entry.source === 'codex-agent');
+        const needsSquadEntries = fs.existsSync(SQUADS_DIR)
+          && !index.some(entry => entry.source === 'squad-agent');
+        if (!needsCodexEntries && !needsSquadEntries) return index;
       }
     }
   } catch {
     // Fall through to rebuild
   }
   return saveIndex(buildIndex());
+}
+
+function loadMindCloneMap() {
+  try {
+    if (!fs.existsSync(MAP_FILE)) return {};
+    return yaml.load(fs.readFileSync(MAP_FILE, 'utf-8')) || {};
+  } catch {
+    return {};
+  }
+}
+
+function unique(items) {
+  return [...new Set((items || []).filter(Boolean))];
 }
 
 // ─── Smart Search ───────────────────────────────────
@@ -299,6 +359,9 @@ function search(query, options = {}) {
       if (agentMap.primary.includes(clone.id)) {
         score += 12;
         reasons.push(`agent-primary: ${options.agent}`);
+      } else if ((agentMap.dedicated || []).includes(clone.id)) {
+        score += 8;
+        reasons.push(`agent-dedicated: ${options.agent}`);
       } else if (agentMap.secondary.includes(clone.id)) {
         score += 6;
         reasons.push(`agent-secondary: ${options.agent}`);
@@ -333,6 +396,7 @@ function recommend(agent, project) {
   const all = [...new Set([
     ...agentExperts.primary,
     ...projectExperts,
+    ...(agentExperts.dedicated || []),
     ...agentExperts.secondary,
   ])];
 
@@ -347,6 +411,7 @@ function recommend(agent, project) {
       role: clone.role,
       source: agentExperts.primary.includes(id) ? 'agent-primary'
         : projectExperts.includes(id) ? 'project'
+        : (agentExperts.dedicated || []).includes(id) ? 'agent-dedicated'
         : 'agent-secondary',
     };
   });
@@ -355,31 +420,23 @@ function recommend(agent, project) {
 // ─── Map Helpers ────────────────────────────────────
 
 function getAgentExperts(agentId) {
-  const defaults = {
-    architect: { primary: ['martin-fowler', 'werner-vogels'], secondary: ['kelsey-hightower', 'will-larson'] },
-    dev: { primary: ['sarah-drasner', 'simon-willison'], secondary: ['andrej-karpathy', 'martin-fowler'] },
-    pm: { primary: ['eric-ries', 'april-dunford'], secondary: ['clayton-christensen', 'mariana-mazzucato'] },
-    analyst: { primary: ['cassie-kozyrkov', 'aswath-damodaran'], secondary: ['scott-galloway', 'rand-fishkin'] },
-    po: { primary: ['nir-eyal', 'julie-zhuo'], secondary: ['don-norman', 'bj-fogg'] },
-    devops: { primary: ['gene-kim', 'kelsey-hightower'], secondary: ['mikko-hypponen', 'bruce-schneier'] },
-    'data-engineer': { primary: ['martin-fowler', 'chip-huyen'], secondary: ['fei-fei-li', 'cassie-kozyrkov'] },
-    qa: { primary: ['gene-kim', 'martin-fowler'], secondary: ['bruce-schneier'] },
-    sm: { primary: ['will-larson', 'patty-mccord'], secondary: ['laszlo-bock', 'josh-bersin'] },
-    'ux-design-expert': { primary: ['don-norman', 'dieter-rams'], secondary: ['john-maeda', 'vitaly-friedman'] },
+  const map = loadMindCloneMap();
+  const agent = map.agents && map.agents[agentId];
+  if (!agent) return { primary: [], secondary: [], dedicated: [] };
+
+  return {
+    primary: unique(agent.primary),
+    secondary: unique(agent.secondary),
+    dedicated: unique(agent.dedicated_members),
   };
-  return defaults[agentId] || { primary: [], secondary: [] };
 }
 
 function getProjectExperts(project) {
-  const projectMap = {
-    tocks: ['alex-hormozi', 'jeb-blount', 'morgan-housel', 'nick-mehta', 'sales-strategist', 'pricing-strategist', 'funnel-architect'],
-    serenity: ['alison-darcy', 'bj-fogg', 'rafael-calvo', 'eduardo-bunge', 'acacia-parks', 'kate-ryder', 'dena-bravata'],
-    jaci: ['alison-darcy', 'bj-fogg', 'rafael-calvo', 'eduardo-bunge', 'acacia-parks', 'kate-ryder', 'dena-bravata'],
-    'low-ticket-10k': ['alex-hormozi', 'guillaume-moubeche', 'patrick-campbell', 'peep-laja', 'oli-gardner', 'funnel-architect', 'landing-page-optimizer', 'copy-specialist'],
-    bretda: ['alex-hormozi', 'dieter-rams', 'rand-fishkin', 'donald-miller', 'sales-strategist', 'pricing-strategist'],
-    'aiox-corporation': ['will-larson', 'patty-mccord', 'eliyahu-goldratt', 'peter-diamandis', 'eric-ries'],
-  };
-  return projectMap[project] || [];
+  const map = loadMindCloneMap();
+  const aliases = { jaci: 'serenity' };
+  const projectKey = project && (map.projects && map.projects[project] ? project : aliases[project]);
+  const projectConfig = projectKey && map.projects && map.projects[projectKey];
+  return unique(projectConfig && projectConfig.additional_experts);
 }
 
 // ─── CLI ────────────────────────────────────────────

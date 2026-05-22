@@ -1,0 +1,62 @@
+{
+  "durations": [
+    {
+      "value": "2s",
+      "count": 72
+    },
+    {
+      "value": "3s",
+      "count": 55
+    },
+    {
+      "value": "15s",
+      "count": 44
+    },
+    {
+      "value": "6s",
+      "count": 22
+    },
+    {
+      "value": "5s",
+      "count": 18
+    },
+    {
+      "value": "35s",
+      "count": 18
+    },
+    {
+      "value": "0s",
+      "count": 14
+    },
+    {
+      "value": "1s",
+      "count": 10
+    },
+    {
+      "value": "25s",
+      "count": 2
+    }
+  ],
+  "easings": [
+    {
+      "value": "cubic-bezier(.42,0,.58,1)",
+      "count": 52
+    },
+    {
+      "value": "ease",
+      "count": 4
+    },
+    {
+      "value": "ease-out",
+      "count": 4
+    },
+    {
+      "value": "cubic-bezier(.4,0,.2,1)",
+      "count": 1
+    }
+  ],
+  "keyframes": [
+    "loading",
+    "progress-bar-stripes"
+  ]
+}

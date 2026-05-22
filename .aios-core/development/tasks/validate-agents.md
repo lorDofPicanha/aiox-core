@@ -76,6 +76,36 @@ For each command in `commands` array:
 2. Verify all 12 expected agents are present
 3. Verify `*yolo` command exists (universal command)
 
+### Step 7b: Cross-Registry Drift Audit (added 2026-05-04)
+
+Run the registry drift auditor to detect mismatches across the 5 layers:
+
+```bash
+node .aios-core/development/scripts/audit-agent-registry.js [--strict]
+```
+
+This compares:
+- `.claude/commands/AIOS/agents/*.md` (skill filesystem)
+- `.aios-core/development/agents/*.md` (AIOS core)
+- `D:/jarvis/mega brain/agents/minds/**/*.md` (Mega Brain advisors)
+- `.claude/agents/*.md` (Claude Code subagents)
+- `.aios-core/data/jarvis-mind-clone-index.json` (mind clone index)
+- Skill registry list (hardcoded inline manifest snapshot)
+
+**Status definitions** (full table in `.aios-core/data/agent-registry-policy.md`):
+- `OK` — invokable AND consultable. **Pass.**
+- `SKILL_ONLY` — skill .md only, not consultable. **Warning** (consultation engine should resolve).
+- `CONSULT_ONLY` — Mega Brain operational mind, not exposed as skill. **Pass** (intentional layer).
+- `PHANTOM` — listed in registry only, zero .md anywhere. **Fail** (delete or generate).
+- `INDEX_PHANTOM` — only in mind clone index. **Fail**.
+- `REDIRECT` — alias to canonical. **Pass** (informational).
+
+In `--strict` mode the audit script exits non-zero only when PHANTOM/INDEX_PHANTOM detected.
+SKILL_ONLY entries should resolve via the patched consultation-engine `SEARCH_PATHS`
+(includes `.claude/commands/AIOS/agents/` since 2026-05-04).
+
+Output: `docs/audits/agent-registry-drift-{date}.md`.
+
 ### Step 8: Generate Report
 
 Output format:

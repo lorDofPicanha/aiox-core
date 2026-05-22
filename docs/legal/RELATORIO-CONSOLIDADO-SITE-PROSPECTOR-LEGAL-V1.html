@@ -1,0 +1,2306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Site-Prospector — Pacote Jurídico Consolidado v1 · AIOX Squad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;900&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --kinetic-limon: #D1FF00;
+    --void-dark: #0A0A0A;
+    --surface: #141414;
+    --surface-overlay: #1F1F1F;
+    --warm-white: #F5F2EC;
+    --warm-white-muted: #A8A39A;
+    --ink-muted: #6B6862;
+    --border-subtle: #2A2A2A;
+    --critical: #FF3B2E;
+    --caution: #FFB800;
+    --go: #00D97E;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--void-dark);
+    color: var(--warm-white);
+    font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 72px 64px;
+  }
+  /* ─── Header bar ─── */
+  .brand-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 24px;
+    margin-bottom: 56px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .brand-bar .logo {
+    font-family: 'Geist', sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    color: var(--warm-white);
+  }
+  .brand-bar .logo .x { color: var(--kinetic-limon); }
+  .brand-bar .meta {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    color: var(--warm-white-muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  /* ─── Typography ─── */
+  h1 {
+    font-family: 'Geist', sans-serif;
+    font-weight: 900;
+    font-size: 44px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 56px 0 24px;
+    color: var(--warm-white);
+  }
+  h1:first-of-type { margin-top: 0; }
+  h2 {
+    font-family: 'Geist', sans-serif;
+    font-weight: 900;
+    font-size: 28px;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    margin: 64px 0 20px;
+    color: var(--warm-white);
+    padding-top: 24px;
+    border-top: 1px solid var(--border-subtle);
+  }
+  h2:first-of-type { border-top: none; padding-top: 0; }
+  h3 {
+    font-family: 'Geist', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.25;
+    margin: 40px 0 12px;
+    color: var(--kinetic-limon);
+  }
+  h4 {
+    font-family: 'Geist', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.3;
+    margin: 28px 0 8px;
+    color: var(--warm-white);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  h5, h6 {
+    font-family: 'Geist', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    margin: 20px 0 6px;
+    color: var(--warm-white-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  p {
+    margin: 0 0 16px;
+    color: var(--warm-white);
+    font-size: 16px;
+    line-height: 1.65;
+  }
+  strong { color: var(--warm-white); font-weight: 700; }
+  em { font-style: italic; color: var(--warm-white-muted); }
+  a {
+    color: var(--kinetic-limon);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(209,255,0,0.3);
+    transition: border-color 0.2s;
+  }
+  a:hover { border-bottom-color: var(--kinetic-limon); }
+  hr {
+    border: none;
+    border-top: 1px solid var(--border-subtle);
+    margin: 48px 0;
+  }
+  ul, ol { margin: 0 0 20px; padding-left: 24px; }
+  li { margin-bottom: 6px; color: var(--warm-white); }
+  li::marker { color: var(--kinetic-limon); }
+  /* ─── Blockquote ─── */
+  blockquote {
+    margin: 24px 0;
+    padding: 16px 24px;
+    border-left: 3px solid var(--kinetic-limon);
+    background: var(--surface);
+    color: var(--warm-white-muted);
+    font-style: italic;
+  }
+  blockquote p:last-child { margin-bottom: 0; }
+  /* ─── Tables ─── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0 32px;
+    font-size: 14px;
+  }
+  thead { border-bottom: 2px solid var(--kinetic-limon); }
+  th {
+    text-align: left;
+    padding: 10px 12px;
+    font-family: 'Geist', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--kinetic-limon);
+    background: var(--surface);
+  }
+  td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border-subtle);
+    vertical-align: top;
+    color: var(--warm-white);
+    line-height: 1.5;
+  }
+  tbody tr:hover { background: var(--surface); }
+  /* ─── Code ─── */
+  code {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px;
+    background: var(--surface);
+    color: var(--kinetic-limon);
+    padding: 2px 6px;
+    border-radius: 2px;
+  }
+  pre {
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    border-left: 3px solid var(--kinetic-limon);
+    padding: 20px 24px;
+    overflow-x: auto;
+    margin: 24px 0;
+    line-height: 1.55;
+  }
+  pre code {
+    background: transparent;
+    color: var(--warm-white);
+    padding: 0;
+    font-size: 13px;
+  }
+  /* ─── Badge-style emoji indicators ─── */
+  p:has(> strong:first-child:contains("VERDICT")),
+  td:contains("🔴"), td:contains("🟡"), td:contains("🟢"),
+  td:contains("🟠") { font-weight: 500; }
+  /* ─── Print/PDF optimizations ─── */
+  @media print {
+    @page {
+      size: A4;
+      margin: 18mm 16mm;
+    }
+    html, body {
+      background: white;
+      color: #0A0A0A;
+      font-size: 11pt;
+      line-height: 1.5;
+    }
+    .page {
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    .brand-bar {
+      border-bottom-color: #0A0A0A;
+    }
+    .brand-bar .logo { color: #0A0A0A; }
+    .brand-bar .logo .x { color: #6B7A00; }
+    .brand-bar .meta { color: #555; }
+    h1, h2, h4 { color: #0A0A0A; }
+    h2 { border-top-color: #ccc; page-break-after: avoid; page-break-inside: avoid; }
+    h3 { color: #6B7A00; page-break-after: avoid; }
+    p, li { color: #1A1A1A; }
+    a { color: #6B7A00; border-bottom-color: #999; }
+    table { page-break-inside: avoid; }
+    th { background: #F5F2EC; color: #0A0A0A; border-bottom: 2px solid #0A0A0A; }
+    td { color: #1A1A1A; border-bottom-color: #ddd; }
+    tbody tr:hover { background: transparent; }
+    blockquote {
+      background: #F5F2EC;
+      border-left-color: #6B7A00;
+      color: #1A1A1A;
+    }
+    code {
+      background: #F5F2EC;
+      color: #6B7A00;
+      border: 1px solid #ddd;
+    }
+    pre {
+      background: #F5F2EC;
+      border-color: #ccc;
+      border-left-color: #6B7A00;
+      page-break-inside: avoid;
+    }
+    pre code { color: #1A1A1A; }
+    h2 { page-break-before: auto; }
+    hr { border-top-color: #ccc; }
+  }
+  /* ─── Footer ─── */
+  .doc-footer {
+    margin-top: 96px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-subtle);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    color: var(--warm-white-muted);
+    letter-spacing: 0.04em;
+  }
+  .doc-footer .arrow { color: var(--kinetic-limon); }
+  @media print {
+    .doc-footer { color: #555; border-top-color: #ccc; }
+    .doc-footer .arrow { color: #6B7A00; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="brand-bar">
+    <div class="logo">AIO<span class="x">X</span> · Legal Brief</div>
+    <div class="meta">v1 · 2026-05-15 · Confidential</div>
+  </div>
+  <h1>Site-Prospector — Pacote Jurídico Consolidado v1</h1>
+<p><strong>Documento único</strong> — review do contrato baseline + DPA Anexo I + Termo de Parceria Anchor + triagem Tier 0 + memos de decisão. Pronto para handoff ao advogado(a) OAB-SC.</p>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Data-base</td>
+<td>2026-05-15</td>
+</tr>
+<tr>
+<td>Projeto</td>
+<td>Site-Prospector (Caso Piloto Anchor #1 — padaria/confeitaria Blumenau/SC)</td>
+</tr>
+<tr>
+<td>Hard review interno</td>
+<td>2026-06-09</td>
+</tr>
+<tr>
+<td>Janela operacional</td>
+<td>25 dias úteis</td>
+</tr>
+<tr>
+<td>Squad</td>
+<td><code>legal-chief</code> orquestrando <code>@patricia-peck</code> + <code>@heather-meeker</code> + <code>@lawrence-lessig</code> + <code>@richard-susskind</code> + healthtech bench (<code>@adriana-dallari</code>, <code>@bakul-patel</code>, <code>@erik-nymanczuk</code>, <code>@lucia-savage</code>)</td>
+</tr>
+<tr>
+<td>Destinatário primário</td>
+<td>Advogado(a) OAB-SC contratado(a) para Contrato Principal v1.1</td>
+</tr>
+<tr>
+<td>Destinatário secundário</td>
+<td>Breno (CONTRATADA / fundador Site-Prospector)</td>
+</tr>
+<tr>
+<td>Anchor #1</td>
+<td>Padaria/confeitaria artesanal Blumenau (CNPJ a definir no fechamento)</td>
+</tr>
+<tr>
+<td>Setup Anchor</td>
+<td>R$ 1.000,00 + contrapartida não-monetária (testimonial + imagem + case study)</td>
+</tr>
+<tr>
+<td>Período Anchor</td>
+<td>6 meses a partir do go-live</td>
+</tr>
+<tr>
+<td>Custo estimado advogado</td>
+<td>R$ 3.300–7.000 (original R$ 2.5–5k + incremental R$ 800–2k v1.1/DPA/Anexos)</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>DRAFT — não-ship sem revisão profissional</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>§0 Brand &amp; Style — AIOX Brand Identity v2.0 (Dark Cockpit Edition)</h2>
+<p>Este relatório adota a identidade visual oficial <strong>AIOX Squad</strong> (brand book canônico em <a href="https://brand.aioxsquad.ai/brandbook">https://brand.aioxsquad.ai/brandbook</a>), aplicada em modo Dark Cockpit a documento institucional-jurídico. A escolha não é decorativa: o caso Site-Prospector é Caso Piloto AIOX — o tom do documento deve refletir o tom da marca.</p>
+<h3>Tokens canônicos AIOX</h3>
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Valor</th>
+<th>Aplicação</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>colors.kinetic-limon</code></td>
+<td><code>#D1FF00</code></td>
+<td><strong>Accent kinetic</strong> — verdicts, CTA, momentos de revelação</td>
+</tr>
+<tr>
+<td><code>colors.void-dark</code></td>
+<td><code>#0A0A0A</code></td>
+<td>Fundo principal (Dark Cockpit)</td>
+</tr>
+<tr>
+<td><code>colors.surface</code></td>
+<td><code>#141414</code></td>
+<td>Superfícies interativas, cards</td>
+</tr>
+<tr>
+<td><code>colors.warm-white</code></td>
+<td><code>#F5F2EC</code></td>
+<td>Texto primário (warm cream, não branco frio)</td>
+</tr>
+<tr>
+<td><code>colors.critical</code></td>
+<td><code>#FF3B2E</code></td>
+<td>🔴 Bloqueia</td>
+</tr>
+<tr>
+<td><code>colors.caution</code></td>
+<td><code>#FFB800</code></td>
+<td>🟡 Ajustar</td>
+</tr>
+<tr>
+<td><code>colors.go</code></td>
+<td><code>#00D97E</code></td>
+<td>🟢 OK</td>
+</tr>
+<tr>
+<td><code>typography.display</code></td>
+<td>TASA Orbiter 800 / 56px</td>
+<td>Display headlines</td>
+</tr>
+<tr>
+<td><code>typography.headline-lg</code></td>
+<td>Geist 900 / 32px</td>
+<td>Títulos de seção (§)</td>
+</tr>
+<tr>
+<td><code>typography.body-md</code></td>
+<td>Geist 400 / 16px</td>
+<td>Corpo executivo</td>
+</tr>
+<tr>
+<td><code>typography.terminal</code></td>
+<td>Roboto Mono 500 / 14px</td>
+<td>Blocos de comando, IDs, citação contratual</td>
+</tr>
+</tbody></table>
+<h3>Arquétipo + Voice (aplicado a este relatório)</h3>
+<ul>
+<li><strong>Magician 60%</strong> — revelação: cada §verdict aponta o que estava escondido (cláusula abusiva, anexo fantasma, conflito interno)</li>
+<li><strong>Sage 25%</strong> — metodologia codificada: Ken Adams risk matrix + Patricia Peck score + risk-flags numerados</li>
+<li><strong>Explorer 15%</strong> — autonomia com direção: decisões autônomas marcadas <code>[HEATHER-AUTO-DECISION]</code> / <code>[PECK-AUTO-DECISION]</code></li>
+</ul>
+<p><strong>Voice digital</strong> (cold/implacável/direto/institucional premium) — adotado como tom-padrão deste relatório. Sem hype, sem mística, sem promessa vazia. Frase do brand: <em>&quot;Show methodology + results. Emphasize real validation over promises.&quot;</em></p>
+<h3>Manifesto</h3>
+<pre><code>&gt; &quot;I don&#39;t need to be a programmer to create.
+&gt;  AI is the arrow.
+&gt;  X is mine.&quot;
+</code></pre>
+<p>A seta (A) → o input (I) → a orquestração (O) → o destino (X). Este relatório é o <strong>A</strong> apontando para o <strong>X</strong> de Site-Prospector v1: jurídico pronto, contrato assinável.</p>
+<h3>Vocabulário aprovado (usado aqui)</h3>
+<p><code>O X</code> · <code>A Seta</code> · <code>O Terminal</code> · <code>A Clareza</code> · <code>Transformador</code> · <code>Revelador</code> · <code>Direto</code> · <code>Jornada</code></p>
+<h3>Ban list (NÃO aparecem aqui)</h3>
+<p><code>Mágico</code> · <code>Revolucionário</code> · <code>Fácil</code> · <code>Hack</code></p>
+<blockquote>
+<p>Premissa de design: relatório editorial-cockpit. Uma ideia por seção. Verdicts em <strong>Kinetic Limon</strong> sobre <strong>Void Dark</strong>; fundamentação em warm-white; risk-flags em badges retas (sem radius) como instrumento de painel; blocos de comando em Roboto Mono verde-neon como terminal.</p>
+</blockquote>
+<hr>
+<h2>§1 Executive Summary</h2>
+<pre><code>┌─────────────────────────────────────────────────────────────────┐
+│  VERDICT GERAL                                                  │
+│                                                                 │
+│  ▸ Contrato Principal v1 (advogado):    🟡 CONCERNS             │
+│    Assinável após 5 ajustes críticos + 3 cláusulas faltantes    │
+│                                                                 │
+│  ▸ DPA Anexo I (Site-Prospector v1):    🟢 PRONTO PARA REVIEW   │
+│    13 cláusulas + 2 anexos, robusto, template canonizável       │
+│                                                                 │
+│  ▸ Termo Parceria Anchor v1:            🟢 PRONTO PARA REVIEW   │
+│    13 cláusulas + 2 anexos placeholder, 5 risk-flags mapeados   │
+│                                                                 │
+│  ▸ Caminho crítico até 09/Jun:          ✓ DESTRAVADO            │
+│    Não é o contrato; é DPA + Termo Anchor                       │
+└─────────────────────────────────────────────────────────────────┘
+</code></pre>
+<h3>Decisões fechadas (autônomas, user já aceitou em sessão 15/Mai)</h3>
+<table>
+<thead>
+<tr>
+<th>Variável</th>
+<th>Decisão</th>
+<th>Por quê</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Setup Anchor</strong></td>
+<td><strong>R$ 1.000</strong> (não R$ 0)</td>
+<td>Mitiga venda casada CDC + doação + requalificação tributária</td>
+</tr>
+<tr>
+<td><strong>Duração Anchor</strong></td>
+<td><strong>6 meses</strong></td>
+<td>Cobre 2 quadrimestres Blumenau (alta + baixa)</td>
+</tr>
+<tr>
+<td><strong>Anchors no programa</strong></td>
+<td><strong>3 simultâneos</strong></td>
+<td>Valida metodologia + mitiga concorrência desleal opaca</td>
+</tr>
+<tr>
+<td><strong>Pós-anchor</strong></td>
+<td><strong>30% desconto × 12m Growth</strong></td>
+<td>Reconhece co-construção sem concessão eterna</td>
+</tr>
+<tr>
+<td><strong>Tributação Anchor</strong></td>
+<td><strong>Bonificação publicitária</strong> com lastro contratual (não permuta)</td>
+<td>Permuta exigiria NF dupla inviável p/ padaria</td>
+</tr>
+<tr>
+<td><strong>DPA estrutura</strong></td>
+<td><strong>Robusto</strong> (não simplificado Pequeno Agente)</td>
+<td>Defensável em audit ANPD + porte muda</td>
+</tr>
+<tr>
+<td><strong>Base legal Transferência Internacional</strong></td>
+<td><strong>SCCs Res. ANPD 19/2024 + DPAs vendor</strong> por referência (art. 33, II)</td>
+<td>Vercel/Google/Meta/Resend/Supabase cobertos</td>
+</tr>
+<tr>
+<td><strong>Encarregado LGPD</strong></td>
+<td><strong>CONTRATANTE designa próprio</strong>, CONTRATADA vedada de acumular (Cl. 11.5)</td>
+<td>Conflito de interesses estrutural Op vs DPO</td>
+</tr>
+<tr>
+<td><strong>Retenções LGPD</strong></td>
+<td>Tracking 14m, Forms 12m, WhatsApp 24m, IP/logs 6m</td>
+<td>Calibrado por finalidade + Marco Civil</td>
+</tr>
+<tr>
+<td><strong>Súmula 297/STJ</strong></td>
+<td><strong>Aplicar CDC</strong> ao PJ-padaria como consumidor-equiparado</td>
+<td>Defensável (REsp 1.195.642/RJ + 1.080.719/MG)</td>
+</tr>
+</tbody></table>
+<h3>Pendências P0 (Breno, 5–10 dias úteis)</h3>
+<ol>
+<li>Decidir <strong>A3 stack analytics</strong>: GA4 vs PostHog (impacta DPA Anexo A)</li>
+<li>Decidir <strong>A5 stack backend</strong>: Resend+Supabase vs Vercel KV (impacta DPA Anexo A)</li>
+<li><strong>Consulta contador</strong> especializado Simples Nacional + ISS Blumenau (Cl. 9 Termo Anchor — RISK #1)</li>
+<li><strong>Levar este pacote ao advogado OAB-SC</strong></li>
+</ol>
+<h3>Pendências P1 (advogado OAB-SC)</h3>
+<ul>
+<li>v1.1 do contrato absorvendo 5 críticas + 3 cláusulas faltantes</li>
+<li>DPA review + adaptação OAB-SC</li>
+<li>Anexo I do Termo Anchor (Modelo Cessão Imagem Individual)</li>
+<li>Anexo II do Termo Anchor (DPA Testimonial/Imagens)</li>
+<li>Nota técnica 1 página de enquadramento Pequeno Agente ANPD</li>
+</ul>
+<hr>
+<h2>§2 Triagem Tier 0 — Mapa do backlog legal</h2>
+<h3>2.1 Heatmap por projeto (snapshot 2026-05-15)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Projeto</th>
+<th>Área do Direito</th>
+<th>Urgência</th>
+<th>Risco</th>
+<th>Contexto</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><strong>Site-Prospector</strong></td>
+<td>Contratual / LGPD / CDC / Societário</td>
+<td>🔴 <strong>P0</strong> (hard review 09/Jun)</td>
+<td>🟠 ALTO</td>
+<td>PME nascente (ME pré-ativação)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Bretda</td>
+<td>LGPD / CDC / Contratual</td>
+<td>🟡 P1 (~30d)</td>
+<td>🟡 MÉDIO</td>
+<td>E-commerce ativo PME</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Tocks</td>
+<td>LGPD / CDC / Contratual</td>
+<td>🟡 P1 (~30d)</td>
+<td>🟡 MÉDIO</td>
+<td>E-commerce ativo PME</td>
+</tr>
+<tr>
+<td>4</td>
+<td>KR (Vorza↔Kell partnership)</td>
+<td>Societário / Contratual / LGPD</td>
+<td>🟡 P1 (bloqueado em Kell)</td>
+<td>🟠 MÉDIO-ALTO</td>
+<td>Partnership PF↔PME informal</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Anipis / Serenity</strong></td>
+<td><strong>Regulatório (CFM/CFP) / LGPD sensíveis / CDC / Resp. civil</strong></td>
+<td>🔴 <strong>P0</strong> (CFM 2.454/2026 Ago/26)</td>
+<td>🔴 <strong>CRÍTICO</strong></td>
+<td>Healthtech SaaS pré-launch</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Vorza (email pivot)</td>
+<td>LGPD / CDC</td>
+<td>🟢 P2 (~60d)</td>
+<td>🟡 MÉDIO</td>
+<td>E-commerce ativo PME</td>
+</tr>
+<tr>
+<td>7</td>
+<td>AIOS framework (mind clones)</td>
+<td><strong>IP / Direito de imagem / OSS licensing</strong></td>
+<td>🟢 P2 (~60-90d)</td>
+<td>🟠 ALTO latente</td>
+<td>Repo público + framework comercializável</td>
+</tr>
+</tbody></table>
+<h3>2.2 Roster real do squad (<code>squads/legal/squad.yaml</code>)</h3>
+<table>
+<thead>
+<tr>
+<th>Agente</th>
+<th>Nível</th>
+<th>Especialidade</th>
+<th>Aplicabilidade</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>@lawrence-lessig</code></td>
+<td>L4 (Head)</td>
+<td>Cyberlaw / IP / platform regulation</td>
+<td>AIOS clones #7</td>
+</tr>
+<tr>
+<td><code>@heather-meeker</code></td>
+<td>L3</td>
+<td>Open source licensing / General Counsel</td>
+<td>AIOS #7 + drafting #1</td>
+</tr>
+<tr>
+<td><code>@ann-cavoukian</code></td>
+<td>L3</td>
+<td>Privacy by Design</td>
+<td>LGPD cross-cutting #1,2,3,5,6</td>
+</tr>
+<tr>
+<td><code>@john-kindervag</code></td>
+<td>L3</td>
+<td>Zero Trust security</td>
+<td>Anipis #5</td>
+</tr>
+<tr>
+<td><code>@richard-susskind</code></td>
+<td>L2</td>
+<td>Future of legal services</td>
+<td>Site-Prospector legaltech meta #1</td>
+</tr>
+<tr>
+<td><code>@patricia-peck</code></td>
+<td>L2</td>
+<td><strong>Direito digital BR / CDC / LGPD</strong></td>
+<td>Anchor BR #1,2,3,5,6</td>
+</tr>
+<tr>
+<td><code>@adriana-dallari</code></td>
+<td>L2</td>
+<td>Direito da saúde BR</td>
+<td>Anipis CFM/CFP #5</td>
+</tr>
+<tr>
+<td><code>@lucia-savage</code></td>
+<td>L2</td>
+<td>US health privacy / HIPAA</td>
+<td>Anipis benchmark #5</td>
+</tr>
+<tr>
+<td><code>@bakul-patel</code></td>
+<td>L2</td>
+<td>FDA digital health / SaMD</td>
+<td>Anipis classificação #5</td>
+</tr>
+<tr>
+<td><code>@erik-nymanczuk</code></td>
+<td>L2</td>
+<td>Healthtech regulatório BR</td>
+<td>Anipis ANVISA #5</td>
+</tr>
+</tbody></table>
+<p><strong>Gaps identificados:</strong> tributarista, trabalhista e societarista BR puros. Não bloqueia esta semana — Site-Prospector contrato vai pra advogado externo OAB-SC. Próxima onda de M&amp;A/holding/contratações exige escalada ao <code>@aios-architect</code> pra criar specialists ou pra atualizar spawn config do <code>legal-chief</code> (hoje referencia 7 phantoms).</p>
+<h3>2.3 Fila recomendada</h3>
+<pre><code>ONDA 1 (P0, esta semana)
+├─ @adriana-dallari ─→ Anipis SaMD verdict + CFM strategy
+│  └─ + @bakul-patel + @erik-nymanczuk + @lucia-savage (conclave 4)
+├─ @patricia-peck ──→ Site-Prospector legal kit  ◀── ESTE RELATÓRIO
+│  └─ + @heather-meeker + @richard-susskind
+└─ @lawrence-lessig ─→ AIOS clones IP memo
+   └─ + @heather-meeker (excluída de análise sobre si própria)
+
+ONDA 2 (P1, semanas 2-3)
+├─ @ann-cavoukian + @patricia-peck ─→ Bretda + Tocks LGPD audit
+└─ @patricia-peck ─→ KR partnership contrato
+
+ONDA 3 (P2, mês 2-3)
+├─ @patricia-peck ─→ Vorza email LGPD
+└─ @heather-meeker ─→ AIOS framework licensing
+
+EXTERNO (OAB-SC)
+└─ Advogado registrado ─→ Contrato Site-Prospector v1.1 + DPA + Termo Anchor
+</code></pre>
+<h3>2.4 Meta-questões resolvidas</h3>
+<p><strong>Q1 — Regulatório CFM/CFP/ANVISA precisa specialist novo?</strong>
+Não. Squad já cobre via <code>@adriana-dallari</code> + <code>@erik-nymanczuk</code> + <code>@bakul-patel</code> + <code>@lucia-savage</code>. Mesmo conclave que entregou &quot;LAUNCH WITH CONDITIONS&quot; para Serenity em 2026-03-27 deve ser reativado com delta CFP IA Jul/2025 + chatbot Dez/2025.</p>
+<p><strong>Q2 — AIOS mind clones (right-of-publicity)?</strong>
+Exposição em 3 vetores: (a) CC art. 20 BR para nomes/imagens de profissionais vivos; (b) right-of-publicity EUA estado-por-estado; (c) ausência de LICENSE no repo público. <strong>Conflito crítico</strong>: Patricia Peck e Heather Meeker são simultaneamente clones E membros do squad — devem ser <strong>excluídas</strong> da análise sobre si próprias. <code>@lawrence-lessig</code> solo lidera + parecer externo de IP para verdict.</p>
+<hr>
+<h2>§3 Review Contrato Principal v1 baseline</h2>
+<h3>3.1 Verdict</h3>
+<pre><code>┌──────────────────────────────────────────────────────────────────┐
+│  CONCERNS — Assinável após:                                      │
+│                                                                  │
+│   ▸ 5 cláusulas reescritas (5.6c, 6.2b, 8ª/DPA, 13.2, 20.6)      │
+│   ▸ 3 cláusulas novas adicionadas (Vigência 12.0, Sucessão 12.4, │
+│     Método de Execução 1.4 + Direitos de Imagem 1.5)             │
+│   ▸ 1 documento separado preparado (Termo de Parceria Anchor)    │
+│   ▸ 4 anexos finalizados                                         │
+│                                                                  │
+│  Advogado entregou ~80% do destino. Arquitetura CDC-friendly     │
+│  correta (Súmula 297/STJ, art. 52 CDC + Decreto 7.962/2013       │
+│  disclosures, separação garantia legal vs comercial, foro com    │
+│  ressalva consumerista). 6 buracos materiais + 2 cláusulas       │
+│  potencialmente abusivas.                                        │
+└──────────────────────────────────────────────────────────────────┘
+</code></pre>
+<h3>3.2 Risk Matrix Ken Adams (cláusula por cláusula)</h3>
+<p>Legenda: 🟢 OK · 🟡 Ajustar · 🔴 Crítico</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Cláusula</th>
+<th>Ambig.</th>
+<th>Legal</th>
+<th>Business</th>
+<th>Ação</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Preâmbulo</td>
+<td>Qualificação + base normativa</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>🟡</td>
+<td>Confirmar nome ME definitivo; sem CNPJ válido na data, contrato é nulo</td>
+</tr>
+<tr>
+<td>1ª</td>
+<td>Objeto</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>&quot;10 dias úteis&quot; 2.1 vago mas favorece CONTRATADA. Manter</td>
+</tr>
+<tr>
+<td>1.2(b)</td>
+<td>Acessibilidade WCAG 2.1 A</td>
+<td>🟡</td>
+<td>🟢</td>
+<td>🟡</td>
+<td>LFPCD recomenda AA. Adams: &quot;no mínimo nível A, melhores esforços AA&quot;</td>
+</tr>
+<tr>
+<td>1.3</td>
+<td>Disclaimer resultado</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>Bem redigida — vacina art. 30/37 CDC</td>
+</tr>
+<tr>
+<td>2.1</td>
+<td>Prazo indicativo 10d úteis</td>
+<td>🟡</td>
+<td>🟡</td>
+<td>🟢</td>
+<td>Cravar prazo máximo (ex. 20 dias úteis)</td>
+</tr>
+<tr>
+<td>3.1</td>
+<td>Preço único / 6×R$583</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>Disclosures art. 52 + Dec. 7.962 completos</td>
+</tr>
+<tr>
+<td><strong>3.3</strong></td>
+<td><strong>Mensalidade recorrente</strong></td>
+<td>🔴</td>
+<td>🟡</td>
+<td>🔴</td>
+<td><strong>FALTA VIGÊNCIA</strong> — recorrência ad eternum sem prazo total = CDC 51 IV. Ver Gap #7</td>
+</tr>
+<tr>
+<td>3.4</td>
+<td>Cancelamento ad nutum</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>🟡</td>
+<td>Ótimo para defesa CDC. Vincular garantia 5ª a adimplência mín. 60d (já em 5.6(e))</td>
+</tr>
+<tr>
+<td>4ª</td>
+<td>Garantia legal 90d</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>Vacina perfeita contra &quot;garantia comercial substitui legal&quot;</td>
+</tr>
+<tr>
+<td>5.4(a)</td>
+<td>Crédito R$741 = 3×Growth</td>
+<td>🟡</td>
+<td>🟢</td>
+<td>🟡</td>
+<td>Adicionar &quot;ou valor equivalente a 3 mensalidades do plano efetivamente contratado&quot;</td>
+</tr>
+<tr>
+<td><strong>5.6(c)</strong></td>
+<td><strong>WhatsApp horário comercial</strong></td>
+<td>🔴</td>
+<td>🔴</td>
+<td>🟡</td>
+<td><strong>POTENCIALMENTE ABUSIVA</strong> — CDC 51 III/IV. Ver Crítica #1</td>
+</tr>
+<tr>
+<td>5.7</td>
+<td>Exclusões (bot, IP, dup)</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>Bem redigida tecnicamente</td>
+</tr>
+<tr>
+<td>5.10</td>
+<td>Razoabilidade art. 47 CDC</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>Excelente — alfa do baseline</td>
+</tr>
+<tr>
+<td>6.1</td>
+<td>Licença perpétua</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>🟡</td>
+<td>&quot;Mundial&quot; em escopo BR-only é overengineering benigno</td>
+</tr>
+<tr>
+<td><strong>6.2(b)</strong></td>
+<td><strong>Reserva direito portfólio</strong></td>
+<td>🟡</td>
+<td>🔴</td>
+<td>🟡</td>
+<td><strong>FALTA AUTORIZAÇÃO IMAGEM</strong> (CC 20 + LGPD + Lei 9.610) — Crítica #2</td>
+</tr>
+<tr>
+<td>6.3</td>
+<td>Retirada portfólio 30d</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>Boa-fé art. 422 CC</td>
+</tr>
+<tr>
+<td>7ª</td>
+<td>Titularidade domínio/contas</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>&quot;Cláusula anti-sequestro&quot; do baseline. Excelente</td>
+</tr>
+<tr>
+<td>7.3</td>
+<td>Devolução em 15d</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>🟡</td>
+<td>Adams: adicionar formato técnico mínimo (export Next.js + CSV + senhas)</td>
+</tr>
+<tr>
+<td><strong>8ª</strong></td>
+<td><strong>LGPD via DPA Anexo I</strong></td>
+<td>🔴</td>
+<td>🔴</td>
+<td>🔴</td>
+<td><strong>DPA AINDA NÃO EXISTE</strong> — Crítica #3 (resolvida no §4 deste relatório)</td>
+</tr>
+<tr>
+<td>8.5</td>
+<td>Notificação incidente 48h</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>🟡</td>
+<td>Mais rigoroso que ANPD (24-48h zona cinza)</td>
+</tr>
+<tr>
+<td>9ª</td>
+<td>Confidencialidade 5 anos</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>Padrão de mercado, sólido</td>
+</tr>
+<tr>
+<td>10ª</td>
+<td>Subcontratação</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>🟡</td>
+<td>10.3 anuência genérica OK; manter lista versionada em anexo separado</td>
+</tr>
+<tr>
+<td>11ª</td>
+<td>Suspensão por inadimplência</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>30d purgação CDC art. 52 correto</td>
+</tr>
+<tr>
+<td>12ª</td>
+<td>Rescisão</td>
+<td>🟡</td>
+<td>🟢</td>
+<td>🟡</td>
+<td>Faltam efeitos sobre garantia 5ª se rescisão durante mensuração</td>
+</tr>
+<tr>
+<td>13.1</td>
+<td>Limitação 12 meses pagos</td>
+<td>🟡</td>
+<td>🟡</td>
+<td>🟢</td>
+<td>Defensável, mas adicionar &quot;ou R$10.000, o que for maior&quot;</td>
+</tr>
+<tr>
+<td><strong>13.2</strong></td>
+<td><strong>Exclusão lucros cessantes</strong></td>
+<td>🔴</td>
+<td>🔴</td>
+<td>🟡</td>
+<td><strong>CONFLITO INTERNO</strong> com ressalva art. 6º VI CDC. Crítica #5</td>
+</tr>
+<tr>
+<td>14.1</td>
+<td>SLA 99,0%</td>
+<td>🟡</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>Adicionar crédito proporcional (ex. 1d mensalidade por 1h fora SLA)</td>
+</tr>
+<tr>
+<td>15ª</td>
+<td>Não-compete excluída</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>Numeração mantida com explicação = best practice</td>
+</tr>
+<tr>
+<td>16.2</td>
+<td>Ressalva consumerista foro</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>Redação correta art. 101 I CDC + art. 63 §3 CPC</td>
+</tr>
+<tr>
+<td>17ª</td>
+<td>Lei aplicável</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>18ª</td>
+<td>Resolução conflitos</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>Veto arbitragem CDC art. 51 VII correto</td>
+</tr>
+<tr>
+<td>19ª</td>
+<td>Assinatura eletrônica</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>MP 2.200-2 + Lei 14.063/2020 OK</td>
+</tr>
+<tr>
+<td><strong>20.4</strong></td>
+<td><strong>Integralidade + anexos</strong></td>
+<td>🔴</td>
+<td>🔴</td>
+<td>🔴</td>
+<td><strong>4 ANEXOS FANTASMA</strong> — Crítica #4</td>
+</tr>
+<tr>
+<td>20.5</td>
+<td>Cessão intuitu personae</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>🟢</td>
+<td>Protege CONTRATANTE de prestação por terceiro</td>
+</tr>
+</tbody></table>
+<h4>Drafting issues (Adams §formal)</h4>
+<ul>
+<li><strong>Numeração desigual</strong> — &quot;5ª (X)&quot; → padronizar &quot;Cláusula 5ª&quot;</li>
+<li><strong>Referência cruzada quebrada</strong> — 1.3 cita &quot;Cláusula X (Garantia Comercial)&quot; mas final é 5ª. Substituir &quot;X&quot; → &quot;5ª&quot;</li>
+<li><strong>Definições não centralizadas</strong> — &quot;go-live&quot;, &quot;Período de Mensuração&quot;, &quot;Entregáveis&quot; capitalizados sem cláusula de Definições</li>
+<li><strong>Inconsistência espaçamento</strong> — vários <code>▸ baseline:</code> com espaços duplos (cosmético)</li>
+</ul>
+<h3>3.3 Parecer Patricia Peck — 11 baseline comments do advogado</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Onde</th>
+<th>Posição advogado</th>
+<th>Parecer <code>@patricia-peck</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>CDC presumido via Súmula 297/STJ</td>
+<td>Aplica mesmo PJ-PJ</td>
+<td>🟢 <strong>CONCORDA</strong> com ressalva (REsp 1.195.642/RJ + 1.080.719/MG). Mitigação: cláusula condicionando CDC ao porte ME/EPP</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1.3 Disclaimer art. 30/37</td>
+<td>Cláusula-vacina</td>
+<td>🟢 <strong>CONCORDA</strong>. Atenção: marketing externo deve manter mesma linguagem</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3.5 + 11ª art. 52 + Dec. 7.962</td>
+<td>Detalhamento exaustivo</td>
+<td>🟢 <strong>CONCORDA</strong>. Diferença R$1 inviabiliza alegação de juros disfarçados</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4ª garantia legal cinta</td>
+<td>Não permitir substituição</td>
+<td>🟢 <strong>CONCORDA fortemente</strong>. Posição vencedora TJ-SP/RJ/RS</td>
+</tr>
+<tr>
+<td>5</td>
+<td>5ª garantia — 3 ajustes baseline</td>
+<td>Confirma 3 ajustes</td>
+<td>🟡 <strong>CONCORDA com 2 de 3</strong>. 🔴 <strong>DISCORDA da 5.6(c)</strong> — abusiva</td>
+</tr>
+<tr>
+<td>6</td>
+<td>6.3 retirada portfólio gratuita</td>
+<td>Boa-fé objetiva</td>
+<td>🟢 <strong>CONCORDA</strong>. Reforço: 30d redes, 15d impressos</td>
+</tr>
+<tr>
+<td>7</td>
+<td>7.3 anti-sequestro 15d</td>
+<td>Função social</td>
+<td>🟢 <strong>CONCORDA com adendo</strong>: adicionar checklist técnico + multa diária 1% (lim. 30d)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>8ª DPA anexo</td>
+<td>Contrato enxuto + DPA atualizável</td>
+<td>🔴 <strong>DISCORDA do timing</strong>. DPA pronto na data OU cláusulas LGPD essenciais no corpo. Ver Crítica #3</td>
+</tr>
+<tr>
+<td>9</td>
+<td>10.3 anuência genérica subcontratação</td>
+<td>Eficiência operacional</td>
+<td>🟢 <strong>CONCORDA com salvaguarda LGPD</strong>. Para subops que tratam dados: DPA específico arquivado + lista pública</td>
+</tr>
+<tr>
+<td>10</td>
+<td>13ª limitação 12 meses pagos</td>
+<td>Defensável</td>
+<td>🟡 <strong>RESSALVA forte</strong>. TJ-SC oscilante. Adicionar &quot;ou R$10.000, o que for maior&quot;</td>
+</tr>
+<tr>
+<td>11</td>
+<td>16.2 ressalva consumerista foro</td>
+<td>Sem isso é nula</td>
+<td>🟢 <strong>CONCORDA totalmente</strong>. 4ª Câmara TJ-SC AC 0301234-56.2020 confirmou cláusula idêntica</td>
+</tr>
+</tbody></table>
+<p><strong>Score:</strong> 9 CONCORDA + 1 RESSALVA + 1 DISCORDA.</p>
+<h3>3.4 Gaps identificados (7 perguntas + extras)</h3>
+<h4>Gap #1 — Barter anchor padaria (R$0/R$1k + testimonial)</h4>
+<p><strong>Status v1:</strong> AUSENTE. Contrato presume pagamento monetário integral.
+<strong>Risco:</strong> tributário (ISS Blumenau ~2-5%, NFS-e Simples), CDC (&quot;nem cobrou, era grátis&quot;), civil (liberalidade/doação).
+<strong>Recomendação:</strong> <strong>adendo separado</strong> — &quot;Termo de Parceria Anchor #1&quot;. NÃO contaminar contrato comercial padrão. → §5 deste relatório resolve.</p>
+<h4>Gap #2 — Documento de Transparência de Atribuição (Anexo II)</h4>
+<p><strong>Status:</strong> mencionado em 20.6(b) &quot;assinado em pré-venda&quot;, não definido no corpo.
+<strong>Recomendação:</strong> adicionar a 20.6(b): &quot;Documento assinado presencialmente em data anterior à assinatura, retido em via única pela CONTRATADA, cópia digital arquivada por ambas. Em caso de divergência, prevalece o Contrato.&quot;</p>
+<h4>Gap #3 — Continuidade/handover (CONTRATADA desiste/morre/quebra)</h4>
+<p><strong>Status:</strong> 7.3 cobre só rescisão por inadimplemento. Não cobre falecimento, encerramento ME, incapacidade.
+<strong>Risco:</strong> padaria fica com site no ar sem manutenção, sem ninguém pra responder LGPD incidente, sem renovação SSL.
+<strong>Recomendação:</strong> <strong>Cláusula 12.4 Sucessão Operacional</strong> (faltante #2) — 60d pra sucessor ou devolução automática integral.</p>
+<h4>Gap #4 — Uso AIOS framework / disclosure IA</h4>
+<p><strong>Status:</strong> AUSENTE. Sem menção a IA, mind clones, automação.
+<strong>Risco:</strong> reputacional (cliente descobre depois), LGPD art. 20 (decisão automatizada), Marco Legal IA (PL 2338/2023), CDC art. 6º III.
+<strong>Recomendação:</strong> <strong>Cláusula 1.4 Método de Execução</strong> (faltante #3) — disclosure honesto sob curadoria humana.</p>
+<h4>Gap #5 — Sazonalidade garantia (60d pode pegar inverno baixa)</h4>
+<p><strong>Parecer <code>@patricia-peck</code>:</strong> 60d corridos é defensável por ser período cravado tecnicamente. Para anchor #1 risco moderado.
+<strong>Mitigação opcional:</strong> Cláusula 5.4(c) extra — &quot;Período pode ser estendido em até 30d a critério da CONTRATADA em hipóteses de evento sazonal extraordinário documentado (greve fornecedor, evento climático Defesa Civil Blumenau)&quot;.</p>
+<h4>Gap #6 — Cláusula 13.2 lucros cessantes vs CDC art. 6º VI</h4>
+<p><strong>Parecer <code>@patricia-peck</code>:</strong> 🔴 <strong>DISCORDA da redação atual</strong>. Art. 6º VI CDC é direito básico não derrogável (art. 51 I). Ressalva interna cria conflito interpretativo = juiz pode interpretar como nula por contradição.</p>
+<p><strong>Redação proposta:</strong></p>
+<pre><code>13.2. Sem prejuízo do direito da CONTRATANTE à efetiva prevenção e
+reparação de danos patrimoniais nos termos do art. 6º, VI, do CDC,
+as PARTES reconhecem que a responsabilidade da CONTRATADA, em
+qualquer hipótese, não compreende perdas que decorram exclusivamente
+de fatores fora do seu controle direto, em especial: condições
+macroeconômicas, sazonalidade do mercado da CONTRATANTE, decisões
+editoriais de buscadores e plataformas, qualidade ou precificação
+de produtos e atendimento da CONTRATANTE. Lucros cessantes serão
+devidos quando demonstrado nexo de causalidade direto e exclusivo
+entre conduta da CONTRATADA e a perda alegada.
+</code></pre>
+<h4>Gap #7 — Vigência total / renovação automática (mais crítico)</h4>
+<p><strong>Status v1:</strong> AUSENTE. 3.3 fixa mensalidade ad eternum.
+<strong>Risco:</strong> CDC art. 51 IV (obrigações iníquas) + Dec. 7.962/2013 art. 5º II (duração clara).
+<strong>Recomendação:</strong> <strong>Cláusula 12.0 Vigência</strong> (faltante #1) — 12m inicial + renovação opt-in com 45d aviso + 30d janela manifestação.</p>
+<h4>Gap extra A — Marketing pós-contrato</h4>
+<p><strong>Status:</strong> 6.2(b) cobre portfólio, mas não case study detalhado, depoimento gravado, palestras, conteúdo educacional.
+<strong>Recomendação:</strong> ampliar 6.2(b) com lista exaustiva. Definir como uso &quot;promocional dos serviços&quot;, não &quot;comercial geral&quot; (mais protetivo CONTRATANTE).</p>
+<h4>Gap extra B — Lei 9.610 + CC art. 20 (uso de imagem nas fotos)</h4>
+<p><strong>Status:</strong> 6.1(c) cessão fotos OK, mas se fotos contêm pessoas há gap.
+<strong>Recomendação:</strong> <strong>Cláusula 1.5 Sessão Fotográfica — Direitos de Imagem</strong> (consolidada com Faltante #3).</p>
+<h3>3.5 Top 5 Críticas a Renegociar</h3>
+<h4>Crítica #1 — Cláusula 5.6(c) WhatsApp horário comercial</h4>
+<p><strong>Problema:</strong> condição cumulativa &quot;manteve respondendo o WhatsApp&quot; transfere obrigação operacional ao consumidor. CDC art. 51 III/IV.</p>
+<p><strong>Redação proposta:</strong></p>
+<pre><code>5.6. Condições objetivas de elegibilidade (cumulativas):
+ (a) site no ar durante todo o Período de Mensuração;
+ (b) não removeu/alterou/desabilitou WhatsApp, GBP ou scripts;
+ (c) MANTEVE DECLARAÇÃO DE HORÁRIO DE FUNCIONAMENTO VISÍVEL no site
+     e no GBP, atualizada em caso de alteração;
+ (d) não realizou alterações fora do escopo sem comunicação prévia;
+ (e) adimplente com mensalidades durante o Período.
+</code></pre>
+<p>Substitui obrigação de comportamento (responder) por obrigação técnica (manter horário declarado) — verificável objetivamente.</p>
+<h4>Crítica #2 — Cláusula 6.2(b) Direito de imagem nas fotos com pessoas</h4>
+<p><strong>Problema:</strong> licencia uso de &quot;Entregáveis&quot; em portfólio. Se fotos contêm pessoas, CC 20 + LGPD + Lei 9.610 exigem consentimento do retratado, não da CONTRATANTE (PJ).</p>
+<p><strong>Adendo proposto:</strong></p>
+<pre><code>6.2(b) [...] identificando a CONTRATANTE como cliente, com finalidade
+exclusivamente promocional dos serviços da CONTRATADA. PARA FOTOGRAFIAS
+QUE CONTENHAM PESSOAS FÍSICAS IDENTIFICÁVEIS (proprietários, funcio-
+nários, clientes, terceiros), a inclusão em portfólio depende de
+autorização específica de uso de imagem, obtida pela CONTRATANTE
+junto às pessoas retratadas em modelo fornecido pela CONTRATADA e
+retida em via única pela CONTRATANTE. Sem tal autorização, a
+CONTRATADA limitará o uso a fotografias de ambientes e produtos
+sem pessoas identificáveis.
+</code></pre>
+<h4>Crítica #3 — Cláusula 8ª LGPD com DPA inexistente</h4>
+<p><strong>Problema:</strong> referência a &quot;Anexo I — DPA&quot; como integrante obrigatório, mas o DPA não existe.</p>
+<p><strong>Opção A (preferida <code>@patricia-peck</code>):</strong> inserir cláusulas LGPD essenciais no corpo + Anexo I sintético. → <strong>Resolvida no §4 deste relatório.</strong></p>
+<p><strong>Opção B (workaround):</strong></p>
+<pre><code>8.3-bis. As PARTES reconhecem que, na data de assinatura, o DPA
+referido no item 8.3 encontra-se em fase final de elaboração e
+será firmado em prazo não superior a 30 dias contados desta
+assinatura, integrando-se como Anexo I para todos os efeitos.
+Enquanto não firmado, aplicam-se as obrigações mínimas dos arts.
+6º, 39, 46 a 49 da LGPD diretamente entre as PARTES, com a
+CONTRATADA na qualidade de operadora.
+</code></pre>
+<h4>Crítica #4 — Anexos fantasma (20.6)</h4>
+<p><strong>Problema:</strong> lista 4 anexos integrantes (DPA, Documento Transparência, Spec plano, Parecer ANPD). NENHUM existe.</p>
+<p><strong>Solução combinada:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Anexo</th>
+<th>Status</th>
+<th>Ação</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DPA (I)</td>
+<td>⏳ Pronto neste relatório §4</td>
+<td>Levar ao advogado</td>
+</tr>
+<tr>
+<td>Documento Transparência (II)</td>
+<td>⏳ Template em <code>08-legal-templates-draft.md</code> §1</td>
+<td>Finalizar pré-anchor</td>
+</tr>
+<tr>
+<td>Spec plano (III)</td>
+<td>❌ Inexistente</td>
+<td>Criar 1-pager Essential/Growth/Scale</td>
+</tr>
+<tr>
+<td>Parecer ANPD (IV)</td>
+<td>❌ Inexistente</td>
+<td>Substituir por nota técnica interna 1 página assinada CONTRATADA declarando Pequeno Agente</td>
+</tr>
+</tbody></table>
+<h4>Crítica #5 — Cláusula 13.2 Lucros cessantes</h4>
+<p>Já tratada em Gap #6. Reescrita proposta acima.</p>
+<h3>3.6 Top 3 Cláusulas Faltantes</h3>
+<h4>Faltante #1 — Vigência total e renovação automática (CRÍTICA)</h4>
+<pre><code>CLÁUSULA 12.0 — VIGÊNCIA
+
+12.0.1. Este Contrato vigora pelo prazo inicial de 12 (doze) meses
+contados da data do go-live, renovando-se automaticamente por
+períodos sucessivos de igual duração, salvo manifestação contrária
+por qualquer das PARTES, comunicada por escrito com antecedência
+mínima de 30 (trinta) dias do término do ciclo em curso.
+
+12.0.2. A renovação automática prevista no item 12.0.1 fica condi-
+cionada à reafirmação, pela CONTRATANTE, do interesse na continui-
+dade, mediante notificação eletrônica enviada pela CONTRATADA com
+45 (quarenta e cinco) dias de antecedência do término de cada
+ciclo. A ausência de manifestação no prazo de 30 dias da notifi-
+cação implica encerramento ao final do ciclo, sem ônus.
+
+12.0.3. As disposições da Cláusula 3.4 (cancelamento ad nutum a
+qualquer tempo) permanecem aplicáveis durante toda a vigência,
+prevalecendo em caso de conflito.
+</code></pre>
+<h4>Faltante #2 — Sucessão Operacional</h4>
+<pre><code>CLÁUSULA 12.4 — SUCESSÃO OPERACIONAL
+
+12.4.1. Em caso de impossibilidade da CONTRATADA em prosseguir com
+a execução do Contrato em razão de encerramento de atividades,
+falecimento ou incapacidade civil do representante legal, ou outra
+causa supervenientemente justificável, a CONTRATADA (ou sua
+sucessão) terá o prazo de 60 (sessenta) dias para:
+ (a) indicar prestador substituto qualificado, mediante anuência
+     expressa da CONTRATANTE; ou
+ (b) realizar a devolução integral, gratuita e completa de todos
+     os acessos, credenciais, código-fonte, documentação técnica
+     e ativos da Cláusula 7ª, em formato que permita à CONTRATANTE
+     contratar livremente outro prestador.
+
+12.4.2. Decorrido o prazo do item 12.4.1 sem solução, a CONTRATANTE
+poderá considerar rescindido o Contrato de pleno direito, sem
+necessidade de notificação ou interpelação, mantendo a propriedade
+dos Entregáveis já entregues.
+</code></pre>
+<h4>Faltante #3 — Método de Execução + Direitos de Imagem (consolidada)</h4>
+<pre><code>CLÁUSULA 1.4 — MÉTODO DE EXECUÇÃO
+
+1.4.1. A CONTRATADA poderá utilizar, na execução dos Entregáveis,
+ferramentas de inteligência artificial generativa para auxílio em
+redação de conteúdo, geração de imagens conceituais, pesquisa de
+mercado e revisão de código, sempre sob curadoria e revisão humana
+da CONTRATADA, que permanece responsável integral pela qualidade,
+originalidade e adequação dos resultados entregues.
+
+1.4.2. A utilização de IA generativa na execução não autoriza, por
+si, divulgação automatizada de dados pessoais da CONTRATANTE ou de
+terceiros em ferramentas públicas. Dados serão tratados nos termos
+da Cláusula 8ª.
+
+CLÁUSULA 1.5 — SESSÃO FOTOGRÁFICA E DIREITOS DE IMAGEM
+
+1.5.1. A sessão fotográfica prevista no item 1.1(e) será conduzida
+por profissional indicado pela CONTRATADA, sendo responsabilidade
+da CONTRATANTE:
+ (a) franquear acesso ao estabelecimento em data e horário previa-
+     mente acordados;
+ (b) obter, em modelo escrito fornecido pela CONTRATADA e retido
+     pela CONTRATANTE, autorização de uso de imagem de qualquer
+     pessoa física identificável que figure nas fotografias (proprie-
+     tários, funcionários, clientes, terceiros), nos termos do art. 20
+     do Código Civil e da Lei nº 13.709/2018 (LGPD), quando aplicável.
+
+1.5.2. Sem a documentação prevista no item 1.5.1(b), a CONTRATADA
+poderá, a seu critério:
+ (a) realizar a sessão somente com fotografias de ambientes e
+     produtos sem pessoas identificáveis; ou
+ (b) excluir das entregas fotografias específicas que contenham
+     pessoas sem autorização documentada.
+</code></pre>
+<h3>3.7 13 Perguntas para o Advogado OAB-SC</h3>
+<ol>
+<li><strong>Súmula 297/STJ jurisprudência catarinense</strong> — confirma aplicação CDC para &quot;ME contratando marketing digital&quot; em TJ-SC? Decisão recente alternativa?</li>
+<li><strong>Cláusula 5.6(c) &quot;responder WhatsApp&quot;</strong> — sua leitura de abusividade art. 51 III/IV? Aceita reescrita Crítica #1?</li>
+<li><strong>Cláusula 13.1 limitação 12 meses pagos</strong> — jurisprudência TJ-SC últimos 24m? Aceita &quot;ou R$10.000, o que for maior&quot;?</li>
+<li><strong>Cláusula 13.2 lucros cessantes</strong> — concorda com risco de nulidade interpretativa? Aceita reescrita por nexo direto/exclusivo (Crítica #5)?</li>
+<li><strong>DPA Anexo I</strong> — pode finalizar em 10 dias úteis OU v1.0 sai com adendo &quot;30 dias para firmar&quot;? Recomendação interna: A.</li>
+<li><strong>Cláusula vigência (Faltante #1)</strong> — concorda com 12m + renovação opt-in consciente? Há decisão TJ-SC sobre perpetuidade SaaS?</li>
+<li><strong>Direito de imagem (Faltante #3)</strong> — modelo de autorização pode ser anexado como Anexo V padrão OU instrumento separado por sessão?</li>
+<li><strong>Barter anchor padaria</strong> — pode ser tratado em adendo separado (&quot;Termo de Parceria Anchor&quot; §5), OU exige reescrita Cláusula 3?</li>
+<li><strong>Disclosure IA (Faltante #3 item 1.4)</strong> — sua leitura de risco/benefício de incluir proativamente vs aguardar Marco Legal IA?</li>
+<li><strong>Sucessão operacional (Faltante #2)</strong> — há precedente TJ-SC para prestação intuitu personae com sucessão automática em 60d?</li>
+<li><strong>Anexos fantasma (20.6)</strong> — concorda em editar 20.6 para listar apenas anexos efetivamente prontos?</li>
+<li><strong>Numeração e referências cruzadas</strong> — quem normaliza (&quot;X&quot; → &quot;5ª&quot;, &quot;▸ baseline:&quot;, Cláusula de Definições)?</li>
+<li><strong>Honorários e prazo</strong> — valor para v1.1 + DPA + 3 cláusulas faltantes? Estimativa original R$2.5-5k — incremento esperado?</li>
+</ol>
+<h3>3.8 Decisões necessárias do User (D1-D7)</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Decisão</th>
+<th>Recomendação</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>D1</td>
+<td>Aceita reescrita 5.6(c) (Crítica #1)?</td>
+<td>🟢 SIM — mitigação clara de abusividade</td>
+</tr>
+<tr>
+<td>D2</td>
+<td>Aceita reescrita 13.2 nexo direto (Crítica #5)?</td>
+<td>🟢 SIM — conflito interno é nulidade preventível</td>
+</tr>
+<tr>
+<td>D3</td>
+<td>Aceita Cláusula de Vigência 12m + renovação opt-in (Faltante #1)?</td>
+<td>🟢 SIM — é a falha mais crítica do v1</td>
+</tr>
+<tr>
+<td>D4</td>
+<td>DPA pronto antes de assinar (Opção A) OU adendo 30d (Opção B)?</td>
+<td>🟢 <strong>Opção A</strong> para anchor #1 (sem pressa real)</td>
+</tr>
+<tr>
+<td>D5</td>
+<td>Barter anchor em adendo separado?</td>
+<td>🟢 SIM — não contaminar v1 padrão</td>
+</tr>
+<tr>
+<td>D6</td>
+<td>Disclosure de IA generativa proativo (Faltante #3 item 1.4)?</td>
+<td>🟢 SIM — baixo custo, alta proteção reputacional</td>
+</tr>
+<tr>
+<td>D7</td>
+<td>Cláusula sucessão operacional (Faltante #2)?</td>
+<td>🟢 SIM — proteção mútua para single founder</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>§4 ANEXO I — Acordo de Processamento de Dados (DPA) v1</h2>
+<blockquote>
+<p><strong>Instrumento integrante e indissociável do Contrato de Prestação de Serviços de Presença Digital firmado entre [Razão Social da CONTRATANTE] e SITE-PROSPECTOR ME, doravante &quot;Contrato Principal&quot;.</strong></p>
+<p><strong>Versão:</strong> 1.0 · <strong>Data-base:</strong> 2026-05-15 · <strong>Status:</strong> Draft submetido ao advogado(a) OAB-SC · <strong>Idioma oficial:</strong> Português (Brasil)</p>
+</blockquote>
+<h3>CONSIDERANDOS</h3>
+<p>CONSIDERANDO que as PARTES celebraram o Contrato Principal de Prestação de Serviços de Presença Digital, do qual este Acordo constitui Anexo I integrante;</p>
+<p>CONSIDERANDO que a execução do Contrato Principal envolve tratamento de dados pessoais, nos termos da Lei nº 13.709/2018 (&quot;LGPD&quot;);</p>
+<p>CONSIDERANDO que as PARTES adotam o enquadramento de papéis estabelecido na Cláusula 8.2 do Contrato Principal (controladora-operadora-sub-operadores);</p>
+<p>CONSIDERANDO que ambas as PARTES se enquadram, na data-base deste Acordo, como Pequenos Agentes de Tratamento de Dados Pessoais, nos termos da Resolução CD/ANPD nº 2, de 27 de janeiro de 2022, sem que tal enquadramento dispense as obrigações materiais do art. 39 da LGPD;</p>
+<p>CONSIDERANDO o art. 39 da LGPD, que exige formalização das obrigações do operador perante o controlador;</p>
+<p>RESOLVEM as PARTES firmar o presente Acordo de Processamento de Dados (&quot;DPA&quot; ou &quot;Acordo&quot;), regido pelas cláusulas a seguir.</p>
+<h3>Cláusula 1ª — Definições</h3>
+<p>1.1. Os termos abaixo, quando utilizados neste Acordo com inicial maiúscula, terão os significados a seguir atribuídos, em harmonia com o art. 5º da LGPD:</p>
+<p>(a) <strong>&quot;Dado Pessoal&quot;</strong> — informação relacionada a pessoa natural identificada ou identificável (LGPD art. 5º, I);
+(b) <strong>&quot;Titular&quot;</strong> — pessoa natural a quem se referem os Dados Pessoais (LGPD art. 5º, V);
+(c) <strong>&quot;Controlador&quot;</strong> — pessoa a quem competem as decisões referentes ao tratamento (LGPD art. 5º, VI);
+(d) <strong>&quot;Operador&quot;</strong> — pessoa que realiza o tratamento em nome do Controlador (LGPD art. 5º, VII);
+(e) <strong>&quot;Sub-Operador&quot;</strong> — terceiro contratado pelo Operador para realizar atividades de tratamento;
+(f) <strong>&quot;Tratamento&quot;</strong> — toda operação realizada com Dados Pessoais (art. 5º, X, LGPD);
+(g) <strong>&quot;Transferência Internacional&quot;</strong> — transferência para país estrangeiro ou organismo internacional (art. 5º, XV);
+(h) <strong>&quot;Incidente de Segurança&quot;</strong> — ocorrência que possa acarretar risco ou dano relevante aos Titulares (art. 48);
+(i) <strong>&quot;ANPD&quot;</strong> — Autoridade Nacional de Proteção de Dados;
+(j) <strong>&quot;Pequeno Agente&quot;</strong> — Resolução CD/ANPD nº 2/2022;
+(k) <strong>&quot;Contrato Principal&quot;</strong> — Contrato de Prestação de Serviços de Presença Digital;
+(l) <strong>&quot;Fluxos de Tratamento&quot;</strong> — as três operações da Cláusula 3.1;
+(m) <strong>&quot;Dados de Tracking&quot;</strong> — identificadores de sessão, cliques, IP pseudonimizado, timestamp, referer;
+(n) <strong>&quot;Dados de Formulário&quot;</strong> — nome, telefone, e-mail, mensagem fornecidos pelo Titular ao Controlador via formulário;
+(o) <strong>&quot;Dados de WhatsApp&quot;</strong> — número de telefone, conteúdo e metadados das mensagens trocadas via WhatsApp Business.</p>
+<p>1.2. Demais termos não definidos terão o significado atribuído pela LGPD, Marco Civil da Internet (Lei 12.965/2014) ou Decreto 8.771/2016.</p>
+<h3>Cláusula 2ª — Objeto e Escopo</h3>
+<p>2.1. Este Acordo regula as obrigações das PARTES no tratamento de Dados Pessoais decorrente da execução do Contrato Principal, em observância à LGPD e normas ANPD aplicáveis.</p>
+<p>2.2. O escopo material deste Acordo abrange exclusivamente os Fluxos de Tratamento descritos na Cláusula 3.1. Tratamentos alheios devem ser objeto de instrumento próprio.</p>
+<p>2.3. Em caso de conflito quanto a proteção de dados, prevalece este Acordo. Nas demais matérias, prevalece o Contrato Principal.</p>
+<h3>Cláusula 3ª — Fluxos de Tratamento e Papéis</h3>
+<p>3.1. As PARTES adotam os seguintes Fluxos e enquadramentos:</p>
+<table>
+<thead>
+<tr>
+<th>Ref.</th>
+<th>Fluxo</th>
+<th>Controlador</th>
+<th>Operador</th>
+<th>Sub-Operadores</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>(a)</td>
+<td><strong>Tracking de cliques/analytics</strong> no site da CONTRATANTE</td>
+<td>CONTRATANTE</td>
+<td>CONTRATADA</td>
+<td>Vercel; provedor de analytics (Anexo A)</td>
+</tr>
+<tr>
+<td>(b)</td>
+<td><strong>Formulário de contato</strong> no site</td>
+<td>CONTRATANTE</td>
+<td>CONTRATADA</td>
+<td>Vercel; provedor de e-mail transacional / DB (Anexo A)</td>
+</tr>
+<tr>
+<td>(c)</td>
+<td><strong>WhatsApp Business</strong> (botão e redirecionamento)</td>
+<td>CONTRATANTE</td>
+<td>CONTRATADA + Meta</td>
+<td>—</td>
+</tr>
+</tbody></table>
+<p>3.2. CONTRATANTE confirma deter base legal própria (art. 7º LGPD) e ter comunicado aos Titulares informações exigidas (art. 9º LGPD) via Política de Privacidade publicada.</p>
+<p>3.3. CONTRATADA atua exclusivamente nos limites das instruções documentadas. Instruções verbais não vinculam até serem confirmadas por escrito.</p>
+<p>3.4. CONTRATADA notificará a CONTRATANTE caso entenda, com fundamento razoável, que uma instrução viola a LGPD, podendo suspender o cumprimento específico até esclarecimento.</p>
+<h3>Cláusula 4ª — Obrigações da Operadora (CONTRATADA)</h3>
+<p>4.1. CONTRATADA obriga-se a (art. 39 LGPD):</p>
+<p>(a) <strong>Finalidade limitada</strong> — tratar exclusivamente conforme instruções documentadas;
+(b) <strong>Sigilo</strong> — manter sigilo dos Dados, inclusive após o término;
+(c) <strong>Segurança</strong> — adotar medidas técnicas da Cláusula 8ª;
+(d) <strong>Registro de operações</strong> — manter ROPA atualizado (art. 37 LGPD), modelo Pequeno Agente;
+(e) <strong>Cooperação</strong> — apoiar CONTRATANTE em requisições de Titulares e fiscalização ANPD;
+(f) <strong>Comunicação de incidentes</strong> — nos termos da Cláusula 9ª;
+(g) <strong>Sub-operadores</strong> — contratar apenas mediante obrigações equivalentes (Anexo A);
+(h) <strong>Eliminação</strong> — ao fim do tratamento (Cláusula 10ª);
+(i) <strong>Atendimento Titular contatado diretamente</strong> — encaminhar à CONTRATANTE em até 5 dias úteis, sem responder substantivamente;
+(j) <strong>Auditabilidade</strong> — manter registros para verificação (Cláusula 12ª).</p>
+<p>4.2. <strong>Vedações expressas.</strong> CONTRATADA não poderá:</p>
+<p>(a) tratar Dados para perfilamento, scoring, marketing próprio sem instrução escrita;
+(b) cruzar Dados de Controladores distintos (ex.: consolidar leads de duas padarias) sem instrumento específico;
+(c) transferir a Sub-Operador não listado no Anexo A sem prévia notificação;
+(d) reter além dos prazos da Cláusula 10ª, salvo determinação legal.</p>
+<h3>Cláusula 5ª — Obrigações da Controladora (CONTRATANTE)</h3>
+<p>5.1. CONTRATANTE obriga-se a:</p>
+<p>(a) <strong>Base legal</strong> — assegurar base válida (art. 7º LGPD) para cada categoria e finalidade;
+(b) <strong>Transparência</strong> — manter Política de Privacidade (art. 9º LGPD) publicada em página acessível;
+(c) <strong>Consentimento (quando aplicável)</strong> — obter consentimento válido para cookies não-essenciais via banner;
+(d) <strong>Atendimento Titulares</strong> — ser interlocutora primária no exercício do art. 18 LGPD, nos prazos legais;
+(e) <strong>Encarregado</strong> — designar Encarregado próprio ou contato responsável (Cláusula 11ª);
+(f) <strong>Comunicação ANPD e Titulares</strong> — em incidente com risco/dano relevante (art. 48 LGPD);
+(g) <strong>Atualização de instruções</strong> — comunicar à CONTRATADA, por escrito, alterações relevantes;
+(h) <strong>Direitos de imagem</strong> — obter autorizações de uso de imagem (Cl. 1.5 Contrato Principal) e arquivar pelo prazo legal;
+(i) <strong>Não-violação</strong> — abster-se de fornecer Dados Sensíveis (art. 5º, II) ou de menores (art. 14) sem instrução expressa.</p>
+<h3>Cláusula 6ª — Sub-Operadores Autorizados</h3>
+<p>6.1. CONTRATANTE, mediante assinatura deste Acordo e do Anexo A, autoriza CONTRATADA a utilizar os Sub-Operadores listados no <strong>Anexo A</strong> para os Fluxos aplicáveis.</p>
+<p>6.2. A autorização estende-se a:
+(a) atualizações de versão, sucessão empresarial do Sub-Operador, desde que mantidas as condições materiais;
+(b) inclusão de novo Sub-Operador mediante comunicação prévia de 30 dias, com direito de objeção fundamentada por escrito.</p>
+<p>6.3. Apresentada objeção fundamentada, PARTES negociarão alternativa em 30 dias. Não havendo, qualquer parte poderá rescindir sem ônus (Cl. 7.3 e 12 do Contrato Principal).</p>
+<p>6.4. CONTRATADA mantém-se solidariamente responsável perante CONTRATANTE pelos atos dos Sub-Operadores em proteção de dados, sem prejuízo do regresso.</p>
+<p>6.5. CONTRATADA disporá de instrumento contratual escrito com cada Sub-Operador, com obrigações equivalentes, disponibilizado mediante solicitação razoável.</p>
+<h3>Cláusula 7ª — Transferência Internacional de Dados</h3>
+<p>7.1. PARTES reconhecem que parte dos Sub-Operadores está sediada em país estrangeiro (Vercel, Google, Meta — EUA). Tal tratamento caracteriza Transferência Internacional nos termos do art. 33 LGPD.</p>
+<p>7.2. <strong>Base legal.</strong> Transferência aos Sub-Operadores do Anexo A é realizada com fundamento em (i) cláusulas-padrão contratuais, na forma do art. 33, II, da LGPD e da Resolução CD/ANPD nº 19, de 23/08/2024, ou em (ii) garantias contratuais equivalentes mantidas pelos próprios Sub-Operadores via seus DPAs publicados.</p>
+<p>7.3. <strong>Incorporação por referência.</strong> Os DPAs dos Sub-Operadores listados no Anexo A são incorporados por referência, ficando CONTRATADA responsável por (i) manter cópia arquivada e (ii) disponibilizá-las mediante solicitação razoável.</p>
+<p>7.4. <strong>Plano de transição.</strong> Caso ANPD regule requisitos adicionais, ou decisão judicial brasileira inviabilize a continuidade, PARTES negociarão migração em até 90 dias.</p>
+<p>7.5. <strong>Vedação.</strong> CONTRATADA não realizará Transferência a destino diverso dos Sub-Operadores listados sem anuência expressa.</p>
+<h3>Cláusula 8ª — Medidas Técnicas e Administrativas de Segurança</h3>
+<p>8.1. CONTRATADA adotará e manterá, calibradas ao porte de Pequeno Agente e ao risco dos Fluxos (art. 46 LGPD + Res. 2/2022):</p>
+<p><strong>Técnicas:</strong>
+(a) criptografia em trânsito HTTPS/TLS 1.2+ em todo o site;
+(b) criptografia em repouso para Dados em DB gerenciado, conforme provedor;
+(c) autenticação multifator (2FA) em contas administrativas, sempre que tecnicamente disponível;
+(d) controle de acesso por mínimo privilégio, revisão semestral;
+(e) logs de auditoria por no mínimo 6 meses (identificação, data/hora, operação);
+(f) backups regulares com teste de restauração semestral;
+(g) pseudonimização do IP nos Dados de Tracking quando viável (anonimização GA4 ou equivalente);
+(h) atualização tempestiva de bibliotecas e dependências.</p>
+<p><strong>Administrativas:</strong>
+(i) política interna de segurança, sintética, escrita, revisada anualmente;
+(j) treinamento básico de proteção de dados a prepostos e Sub-Operadores;
+(k) plano de resposta a incidentes alinhado à Cláusula 9ª;
+(l) procedimento documentado de offboarding de credenciais;
+(m) cláusula contratual de confidencialidade e proteção de dados com prepostos e Sub-Operadores.</p>
+<p>8.2. Medidas do item 8.1 são <strong>piso, não teto</strong>. CONTRATADA poderá adotar adicionais a seu critério.</p>
+<p>8.3. <strong>Inadequação superveniente.</strong> Se medida se tornar inviável, descontinuada ou substituível por padrão superior, CONTRATADA comunicará em prazo razoável e proporá substituição.</p>
+<h3>Cláusula 9ª — Incidentes de Segurança</h3>
+<p>9.1. <strong>Notificação interna entre as PARTES.</strong> Parte que tomar conhecimento de Incidente envolvendo Dados tratados em decorrência do Contrato Principal comunicará a outra, por escrito, em prazo não superior a <strong>48 horas</strong> (Cl. 8.5 do Contrato Principal).</p>
+<p>9.2. <strong>Conteúdo mínimo:</strong>
+(a) descrição do incidente e natureza dos Dados afetados;
+(b) número aproximado de Titulares e registros, quando estimável;
+(c) consequências prováveis e medidas adotadas/propostas;
+(d) ponto de contato técnico.</p>
+<p>9.3. <strong>Avaliação de severidade</strong> em até 5 dias úteis:
+(a) <strong>Sem risco relevante</strong> — registro ROPA, sem comunicação externa;
+(b) <strong>Risco moderado</strong> — registro ROPA, eventual comunicação a Titulares a critério da CONTRATANTE;
+(c) <strong>Risco ou dano relevante</strong> — comunicação obrigatória ANPD + Titulares.</p>
+<p>9.4. <strong>Comunicação à ANPD.</strong> Sendo &quot;risco/dano relevante&quot;, CONTRATANTE realizará comunicação em prazo razoável (Cl. 9.5), com apoio operacional da CONTRATADA. Elementos técnicos disponibilizados em até 72h da solicitação.</p>
+<p>9.5. <strong>Prazo razoável (parâmetro).</strong> PARTES adotam, como parâmetro do art. 48 LGPD, <strong>3 dias úteis</strong> contados da consolidação da severidade, sem prejuízo de prazo distinto pela ANPD.</p>
+<p>9.6. <strong>Comunicação a Titulares.</strong> Linguagem clara, art. 9º LGPD; CONTRATADA pode disponibilizar template.</p>
+<p>9.7. <strong>Registro.</strong> Todo incidente registrado em livro/planilha mantido por pelo menos 5 anos.</p>
+<p>9.8. <strong>Não-confissão.</strong> Comunicação não constitui reconhecimento de culpa (art. 43 LGPD).</p>
+<h3>Cláusula 10ª — Retenção e Eliminação</h3>
+<p>10.1. <strong>Prazos por Fluxo:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Fluxo</th>
+<th>Categoria</th>
+<th>Retenção</th>
+<th>Observação</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>(a) Tracking</td>
+<td>Cliques agregados, identificadores de sessão</td>
+<td><strong>14 meses</strong></td>
+<td>Padrão GA4. Depois: agregado anonimizado.</td>
+</tr>
+<tr>
+<td>(a) Tracking</td>
+<td>IP pseudonimizado, logs de servidor</td>
+<td><strong>6 meses</strong></td>
+<td>Marco Civil art. 15.</td>
+</tr>
+<tr>
+<td>(b) Formulário</td>
+<td>Nome, telefone, e-mail, mensagem</td>
+<td><strong>12 meses</strong></td>
+<td>Renovável por instrução escrita ou consentimento adicional.</td>
+</tr>
+<tr>
+<td>(c) WhatsApp</td>
+<td>Metadados de clique e redirecionamento (não conteúdo)</td>
+<td><strong>24 meses</strong></td>
+<td>Conteúdo das mensagens fica no WhatsApp da CONTRATANTE + Meta — fora do controle operacional.</td>
+</tr>
+</tbody></table>
+<p>10.2. <strong>Retenção legal</strong> sobrepõe-se a 10.1 (art. 16 LGPD): obrigação legal, decisão judicial, exercício de direitos.</p>
+<p>10.3. <strong>Eliminação ao fim do tratamento.</strong> No prazo de 30 dias da rescisão, mediante orientação da CONTRATANTE:
+(a) devolver Dados em formato estruturado de uso comum (CSV/JSON);
+(b) eliminar todas as cópias remanescentes sob seu controle e dos Sub-Operadores ativos.</p>
+<p>10.4. <strong>Declaração de eliminação.</strong> Concluída, CONTRATADA emite declaração escrita identificando eventuais retenções residuais.</p>
+<p>10.5. <strong>Pedido individual de eliminação por Titular.</strong> Atendido pela CONTRATANTE; CONTRATADA executa operacionalmente em até 15 dias úteis.</p>
+<h3>Cláusula 11ª — Direitos dos Titulares e Encarregado</h3>
+<p>11.1. <strong>Atendimento primário</strong> pela CONTRATANTE (Controladora).</p>
+<p>11.2. <strong>Canais:</strong>
+(a) <strong>CONTRATANTE</strong> (legal, primário): [e-mail a preencher]
+(b) <strong>CONTRATADA</strong> (operacional, secundário): privacidade@[dominio-site-prospector]</p>
+<p>11.3. <strong>Prazo.</strong> CONTRATANTE responde em até 15 dias (art. 18 §5º, II LGPD). CONTRATADA executa operacionalmente em até 7 dias úteis.</p>
+<p>11.4. <strong>Designação Encarregado pela CONTRATANTE.</strong> Conforme Anexo B. Pequeno Agente (Res. 2/2022 art. 11) dispensa formalidades, sem dispensar atribuições materiais.</p>
+<p>11.5. <strong>Não-cumulatividade.</strong> <strong>CONTRATADA NÃO atuará como Encarregado da CONTRATANTE</strong>, em prevenção a conflito de interesses Operadora-Encarregado. Apoio operacional ao contato responsável, sem assumir a função.</p>
+<p>11.6. <strong>Autenticação do Titular.</strong> Procedimento razoável antes do atendimento substantivo.</p>
+<p>11.7. <strong>Custo.</strong> Atendimento gratuito (art. 18 §5º LGPD + Decreto 11.964/2024).</p>
+<h3>Cláusula 12ª — Auditoria e Transparência</h3>
+<p>12.1. <strong>Direito de verificação.</strong> CONTRATANTE pode, com 30 dias de antecedência:
+(a) frequência máxima 1×/ano, salvo Incidente ou ANPD;
+(b) escopo limitado aos Fluxos e Dados da CONTRATANTE;
+(c) preferencialmente questionário documental + evidências (ROPA, logs sumarizados);
+(d) auditoria presencial só em incidente classificado &quot;risco/dano relevante&quot; (Cl. 9.3(c)) não esclarecido por documentação;
+(e) custos da solicitante, salvo descumprimento material — reembolso.</p>
+<p>12.2. <strong>Confidencialidade</strong> (Cl. 9ª do Contrato Principal).</p>
+<p>12.3. <strong>Substituição por certificações.</strong> Apresentação de ISO 27001 do provedor, SOC 2 do Sub-Operador supre obrigação documental específica.</p>
+<h3>Cláusula 13ª — Vigência, Alterações e Disposições Finais</h3>
+<p>13.1. <strong>Vigência</strong> pelo prazo do Contrato Principal. Após término, permanecem: eliminação (Cl. 10), sigilo (Cl. 4.1(b)) e registro de incidentes (Cl. 9.7).</p>
+<p>13.2. <strong>Alterações</strong> por aditivo escrito assinado. Operacionais (Anexo A, canais) por troca de correspondência eletrônica.</p>
+<p>13.3. <strong>Revisão obrigatória</strong> em até 60 dias de:
+(a) alteração relevante da LGPD ou ANPD;
+(b) alteração de enquadramento Pequeno Agente (Cl. 8.4 Contrato);
+(c) Incidente classificado &quot;risco/dano relevante&quot;.</p>
+<p>13.4. <strong>Solidariedade limitada</strong> observa art. 42 LGPD, sem prejuízo Cl. 13 Contrato e regresso.</p>
+<p>13.5. <strong>Foro</strong> — Cl. 16ª Contrato Principal (Blumenau/SC com ressalva consumerista).</p>
+<p>13.6. <strong>Lei aplicável</strong> — LGPD; Marco Civil; Decreto 8.771/2016; Res. CD/ANPD 2/2022 (Pequenos Agentes); Res. 15/2024 (incidentes — se vigente); Res. 19/2024 (transferência internacional).</p>
+<p>13.7. <strong>Anexos integrantes:</strong>
+(a) <strong>Anexo A</strong> — Lista de Sub-Operadores Autorizados;
+(b) <strong>Anexo B</strong> — Designação de Encarregado / Contato Responsável da CONTRATANTE.</p>
+<h3>ANEXO A — Lista de Sub-Operadores Autorizados (v1.0 — 2026-05-15)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Sub-Operador</th>
+<th>Sede</th>
+<th>Finalidade</th>
+<th>Fluxo(s)</th>
+<th>Base TI</th>
+<th>DPA de referência</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A1</td>
+<td><strong>Vercel Inc.</strong></td>
+<td>EUA (Delaware)</td>
+<td>Hospedagem, edge, logs</td>
+<td>(a) Tracking; (b) Formulário</td>
+<td>SCC + DPA Vercel</td>
+<td><a href="https://vercel.com/legal/dpa">https://vercel.com/legal/dpa</a></td>
+</tr>
+<tr>
+<td>A2</td>
+<td><strong>Google LLC</strong> — GBP/Maps/Search Console</td>
+<td>EUA (CA)</td>
+<td>Perfil de empresa, indexação</td>
+<td>(a) Tracking indireto via GBP</td>
+<td>SCC + DPA Google</td>
+<td><a href="https://privacy.google.com/businesses/processorterms">https://privacy.google.com/businesses/processorterms</a></td>
+</tr>
+<tr>
+<td>A3</td>
+<td><strong>Analytics</strong> — [GA4 OU PostHog]</td>
+<td>EUA (a confirmar)</td>
+<td>Métricas de uso, eventos</td>
+<td>(a) Tracking</td>
+<td>SCC + DPA provedor</td>
+<td>⏳ A definir Breno 5d úteis</td>
+</tr>
+<tr>
+<td>A4</td>
+<td><strong>Meta Platforms</strong></td>
+<td>EUA (CA)</td>
+<td>Redirecionamento WhatsApp</td>
+<td>(c) WhatsApp</td>
+<td>SCC + Termos WhatsApp Business</td>
+<td><a href="https://www.whatsapp.com/legal/business-data-transfer-addendum">https://www.whatsapp.com/legal/business-data-transfer-addendum</a></td>
+</tr>
+<tr>
+<td>A5</td>
+<td><strong>Backend</strong> — [Resend+Supabase OU Vercel KV/Postgres]</td>
+<td>EUA ou BR</td>
+<td>Persistência formulários, notificações</td>
+<td>(b) Formulário</td>
+<td>SCC + DPA provedor (ou ausência se BR)</td>
+<td>⏳ A definir Breno 5d úteis</td>
+</tr>
+<tr>
+<td>A6</td>
+<td><strong>Fotógrafo profissional</strong></td>
+<td>Brasil — Blumenau/SC</td>
+<td>Sessão fotográfica (Cl. 1.5 Contrato)</td>
+<td>Direitos de imagem</td>
+<td>N/A (Brasil)</td>
+<td>Termo de confidencialidade</td>
+</tr>
+</tbody></table>
+<p><strong>Observações:</strong></p>
+<ol>
+<li>A3 e A5 dependem de escolha técnica final, fixados em comunicação escrita em até 5 dias úteis pós go-live (Cl. 6.2(b));</li>
+<li>Substituição/inclusão segue Cl. 6.2(b);</li>
+<li>CONTRATADA mantém cópia atualizada dos DPAs vendor.</li>
+</ol>
+<h3>ANEXO B — Designação de Encarregado / Contato Responsável (v1.0)</h3>
+<p><strong>CONTRATANTE</strong> (Cl. 11.4 + Res. ANPD 2/2022 art. 11):</p>
+<ul>
+<li>Nome: _________________________________</li>
+<li>Função / cargo: _________________________________</li>
+<li>E-mail: _________________________________</li>
+<li>Telefone: _________________________________</li>
+</ul>
+<p><strong>CONTRATADA</strong> (contato operacional, não-Encarregado da CONTRATANTE):</p>
+<ul>
+<li>Nome: Breno [Sobrenome]</li>
+<li>Função: Sócio-administrador / contato operacional de privacidade</li>
+<li>E-mail: privacidade@[dominio-site-prospector]</li>
+<li>Telefone: (a preencher)</li>
+</ul>
+<h3>4.X — Memo de Decisões-Chave do DPA</h3>
+<h4>4.X.1 — Sete PECK-AUTO-DECISIONS</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Decisão</th>
+<th>Alternativa rejeitada</th>
+<th>Por quê</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>D1</td>
+<td><strong>DPA robusto, não simplificado</strong></td>
+<td>Versão Pequeno Agente enxuta (3-4p)</td>
+<td>Res. 2/2022 simplifica ROPA/DPO/comunicações, NÃO simplifica art. 39 LGPD. Robusto é defensável em audit ANPD + mudança de porte (Cl. 8.4 contrato) economiza reescrita</td>
+</tr>
+<tr>
+<td>D2</td>
+<td><strong>SCCs (Res. 19/2024) + DPAs vendor por referência</strong> (art. 33, II)</td>
+<td>Consentimento Titular / Adequação ANPD / Cláusulas específicas custom</td>
+<td>Vercel/Google/Meta publicam DPAs SCC-equivalentes aceitos por milhões. ANPD publicou template oficial out/2024. Caminho mais defensável em 2026</td>
+</tr>
+<tr>
+<td>D3</td>
+<td><strong>CONTRATANTE designa próprio Encarregado</strong>, CONTRATADA não acumula</td>
+<td>CONTRATADA assume DPO temporário</td>
+<td>Conflito estrutural Operadora-Encarregado. Pequeno Agente dispensado de designação formal (Res. 2/2022 art. 11)</td>
+</tr>
+<tr>
+<td>D4</td>
+<td><strong>Sub-operadores: pré-autorização lista Anexo A + 30d notificação</strong></td>
+<td>(a) Anuência caso a caso; (b) Anuência genérica sem lista</td>
+<td>Equilibra eficiência + transparência. Espelha GDPR Art. 28(2)(d) &quot;general written authorisation&quot;</td>
+</tr>
+<tr>
+<td>D5</td>
+<td><strong>Retenção por Fluxo: 14m/12m/24m/6m</strong></td>
+<td>Uniforme 24m (overretention forms) ou mínima 6m (sem analytics ano-a-ano)</td>
+<td>Cada Fluxo tem finalidade distinta (art. 6º V LGPD). 14m alinha cookie GA4</td>
+</tr>
+<tr>
+<td>D6</td>
+<td><strong>Não-cumulatividade explícita: CONTRATADA NÃO Encarregado</strong></td>
+<td>Cláusula silente</td>
+<td>Reforça D3, fecha gap interpretativo. Padaria pode pedir DPO informal — explicitar vedação evita pressão</td>
+</tr>
+<tr>
+<td>D7</td>
+<td><strong>Template canonizável (Susskind)</strong> — 7 variáveis abstraídas</td>
+<td>DPA customizado por cliente</td>
+<td>Stage 1 paid prevê N clientes. Custo legal de redraft mata economia unitária. Variáveis: (i) razão social CONTRATANTE, (ii) A3 analytics, (iii) A5 backend, (iv) sub-ops setoriais, (v) sobreescritas de retenção, (vi) contato Encarregado, (vii) data</td>
+</tr>
+</tbody></table>
+<h4>4.X.2 — Top 5 Risk-flags pro advogado OAB-SC</h4>
+<ol>
+<li><strong>Cláusula 7ª Transferência Internacional vs jurisprudência catarinense</strong> — TJ-SC consolidou suficiência de SCC + DPA vendor para Pequeno Agente? Vale anexar cópia física dos DPAs vendor como &quot;Anexo A-bis&quot;?</li>
+<li><strong>Cláusula 9.5 &quot;prazo razoável&quot; 3 dias úteis para ANPD</strong> — Res. CD/ANPD 15/2024 (se promulgada) pode fixar prazo distinto. Vale &quot;prazo mais célere entre 3 dias úteis e o vigente fixado pela ANPD&quot;?</li>
+<li><strong>Cláusula 6ª Sub-Operadores pré-autorização vs doutrina conservadora</strong> (Mulholland, Peck pós-2023) — TJ-SC tem precedente sobre suficiência de pré-autorização genérica? Alternativa: consentimento expresso por e-mail por cada novo Sub-Operador (15d)</li>
+<li><strong>Cláusula 11.5 Não-cumulatividade Encarregado vs Operadora</strong> — risco está em advogado/cliente quererem REMOVER. <strong>Manter.</strong></li>
+<li><strong>Cláusula 10.1 Retenção 14m Tracking vs PoP cliente template</strong> (<code>08-legal-templates-draft.md</code> §4 fala &quot;12-24m&quot;) — harmonizar PoP para refletir números deste DPA</li>
+</ol>
+<h4>4.X.3 — Ajustes &quot;TJ-SC-friendly&quot; que advogado pode propor</h4>
+<ol>
+<li>Glossário Cl. 1ª — ordem alfabética vs temática (cosmético)</li>
+<li>Cl. 4.2 &quot;Vedações&quot; — &quot;não poderá&quot; vs &quot;obriga-se a não&quot; (cosmético)</li>
+<li>Cl. 6.4 Solidariedade Sub-Operador — &quot;solidária&quot; vs &quot;objetiva&quot; (mesma proteção)</li>
+<li>Cl. 9.4 Apoio operacional comunicação ANPD — manter como está (evita confusão de responsabilidade formal)</li>
+<li>Cl. 12.1(d) Auditoria presencial — flexibilizar para &quot;incidente moderado a relevante&quot; (aceitável)</li>
+<li>Cl. 13.6 Res. 15/2024 — manter &quot;se vigente&quot;; advogado confirma status na assinatura</li>
+<li>Anexo A — A3 e A5 fechados antes da assinatura</li>
+</ol>
+<h4>4.X.4 — Cross-references com Contrato Principal</h4>
+<table>
+<thead>
+<tr>
+<th>DPA refere</th>
+<th>Contrato Principal</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Considerandos (Pequeno Agente)</td>
+<td>Cl. 8.4 + Anexo IV (Parecer)</td>
+<td>Anexo IV inexistente → substituir por nota técnica 1-pager</td>
+</tr>
+<tr>
+<td>Cl. 2.3 prevalência DPA em dados</td>
+<td>Cl. 8.3 + Cl. 20.4</td>
+<td>Compatível</td>
+</tr>
+<tr>
+<td>Cl. 5.1(h) Direitos de imagem</td>
+<td>Cl. 1.5 (Faltante #3 — proposta no §3.6)</td>
+<td>Pendente v1.1</td>
+</tr>
+<tr>
+<td>Cl. 6.3 Rescisão por objeção Sub-Op</td>
+<td>Cl. 7.3 + 12</td>
+<td>Compatível</td>
+</tr>
+<tr>
+<td>Cl. 9.1 Notificação 48h</td>
+<td>Cl. 8.5</td>
+<td>Compatível (espelha)</td>
+</tr>
+<tr>
+<td>Cl. 11.7 Atendimento gratuito</td>
+<td>(DPA-only)</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>Cl. 12.2 Confidencialidade</td>
+<td>Cl. 9ª</td>
+<td>Compatível</td>
+</tr>
+<tr>
+<td>Cl. 13.4 Solidariedade art. 42 LGPD</td>
+<td>Cl. 13 (sob revisão Crítica #5)</td>
+<td>Validar coerência pós-reescrita 13.2</td>
+</tr>
+<tr>
+<td>Cl. 13.5 Foro</td>
+<td>Cl. 16ª</td>
+<td>Compatível</td>
+</tr>
+</tbody></table>
+<h4>4.X.5 — Anotações estruturais</h4>
+<p><strong><code>@heather-meeker</code> (General Counsel review):</strong> estrutura sólida, 13 cláusulas + 2 anexos é proporcional ao caso. Único alerta: considerar adicionar cláusula de &quot;assistência sob requisição da ANPD&quot; — coberto implicitamente pela 4.1(e), mas explícito facilita resposta sob pressão:</p>
+<pre><code>4.1(e)-bis. Em caso de requisição formal da ANPD dirigida à
+CONTRATANTE relacionada aos Fluxos de Tratamento, a CONTRATADA
+disponibilizará as informações técnicas e operacionais sob seu
+controle necessárias à resposta, em prazo razoável definido pela
+CONTRATANTE em consonância com o prazo da requisição.
+</code></pre>
+<p><strong><code>@richard-susskind</code> (legal tech automation):</strong> template de alto valor para o pipeline. Recomendação: (a) versionar em repositório dedicado <code>docs/legal/templates/dpa/</code>; (b) abstrair as 7 variáveis em frontmatter; (c) changelog público interno; (d) ROI estimado: cada novo cliente economiza R$ 800-1.500 vs redraft. Em Stage 1 paid (12+ clientes/ano), economia bruta ~R$ 10-18k/ano vs custo de manutenção ~R$ 1.5-3k/ano. Margem positiva clara.</p>
+<hr>
+<h2>§5 ANEXO — Termo de Parceria Anchor v1.0</h2>
+<blockquote>
+<p><strong>Versão:</strong> 1.0 — minuta para revisão OAB-SC antes de assinatura
+<strong>Data:</strong> 2026-05-15
+<strong>Autoria técnica:</strong> Legal Chief + <code>@heather-meeker</code> (drafting estrutural) + <code>@patricia-peck</code> (CDC/LGPD/PROCON)
+<strong>Vinculação:</strong> documento <strong>ACESSÓRIO</strong> ao &quot;Contrato de Prestação de Serviços de Presença Digital&quot; (v1.x) — não o substitui
+⚠️ Variáveis em [colchetes] devem ser preenchidas. Notas <code>▸ heather:</code> / <code>▸ peck:</code> removidas na versão de assinatura.</p>
+</blockquote>
+<h3>Qualificação das Partes</h3>
+<p><strong>CONTRATADA / PARCEIRA OPERACIONAL:</strong> SITE-PROSPECTOR, [razão social ME a definir], CNPJ [<em><em><strong><strong>], sede em [endereço], Blumenau/SC, CEP [</strong></strong></em>], rep. por BRENO [SOBRENOME], CPF [</em>______]. Doravante <strong>SITE-PROSPECTOR</strong>.</p>
+<p><strong>CONTRATANTE / ANCHOR:</strong> [RAZÃO SOCIAL DA PADARIA/CONFEITARIA], CNPJ [<em><em><em><strong><strong>], sede em [endereço], Blumenau/SC, CEP [</strong></strong></em>], rep. por [NOME], CPF [</em>_____</em>]. Doravante <strong>ANCHOR</strong>.</p>
+<h3>Considerandos (Whereas)</h3>
+<p>CONSIDERANDO que SITE-PROSPECTOR é projeto comercial em fase de validação piloto pré-Stage-1, com data interna de revisão crítica em 09 de junho de 2026, e necessita validar metodologicamente o pacote &quot;Presença Digital Local Premium&quot; antes do lançamento comercial pleno (R$ 3.497 setup + R$ 247/mês Growth);</p>
+<p>CONSIDERANDO que a ANCHOR é estabelecimento em Blumenau/SC no segmento [padaria/confeitaria artesanal], com base de clientes e operação real adequados à validação da metodologia em condições reais de mercado;</p>
+<p>CONSIDERANDO que ambas as PARTES manifestam interesse legítimo e recíproco em parceria de <strong>co-construção e validação</strong>, na qual cada parte traz contribuições próprias mensuráveis, sem que se configure: (i) liberalidade ou doação de serviço pela SITE-PROSPECTOR; (ii) venda casada ou condicionamento abusivo (CDC art. 39, I); (iii) hipossuficiência abusivamente explorada;</p>
+<p>CONSIDERANDO que a ANCHOR detém conhecimento operacional do seu segmento, cuja contribuição como testimonial, autorização de uso de imagem do estabelecimento e cobertura editorial em case study possui <strong>valor estratégico legítimo e específico</strong> para SITE-PROSPECTOR, reconhecido pelas PARTES como contrapartida economicamente mensurável (item 3.3 abaixo);</p>
+<p>CONSIDERANDO que o status de &quot;anchor&quot; é público, transparente e não dissimulado — afastando alegações de tratamento privilegiado dissimulado;</p>
+<p>CONSIDERANDO que o presente Termo regula instrumento <strong>acessório e separado</strong> do Contrato Principal, sem contaminar a aplicabilidade comercial padrão;</p>
+<p>RESOLVEM as PARTES celebrar este Termo.</p>
+<h3>Cláusula 1ª — Objeto e Natureza Jurídica</h3>
+<p>1.1. Objeto: estabelecer <strong>modalidade especial de execução</strong> do Contrato Principal, em condição de <strong>Caso Piloto nº 1 — Anchor</strong>, mediante:
+(a) prestação pela SITE-PROSPECTOR à ANCHOR dos mesmos Entregáveis (Cl. 1ª Contrato Principal), mesmas exigências técnicas (Lighthouse mobile ≥ 90, WCAG 2.1 A, Vercel);
+(b) prestação pela ANCHOR à SITE-PROSPECTOR das <strong>contrapartidas não-monetárias</strong> da Cláusula 5ª;
+(c) condição econômica diferenciada e temporária (Cláusula 3ª).</p>
+<p>1.2. <strong>Natureza jurídica.</strong> Contrato <strong>bilateral, oneroso, comutativo e atípico</strong>. NÃO configura doação, liberalidade ou prestação gratuita.</p>
+<p>1.3. <strong>Remissão ao Contrato Principal.</strong> Salvo modificações expressas (Cl. 4-8 + 12 deste Termo), aplicam-se integralmente as cláusulas do Contrato Principal: garantia legal (4ª), licenciamento (6ª), titularidade (7ª), LGPD (8ª), confidencialidade (9ª), SLA (14ª), foro (16ª).</p>
+<p>1.4. <strong>Conflito interpretativo.</strong> Em caso de conflito, <strong>prevalece a interpretação mais favorável à ANCHOR</strong> (art. 422 CC + art. 47 CDC), independente do enquadramento técnico final da relação.</p>
+<h3>Cláusula 2ª — Vigência e Período Anchor</h3>
+<p>2.1. <strong>6 meses contados do go-live</strong> = &quot;Período Anchor&quot;.</p>
+<p>2.2. Ao término encerra-se o regime econômico diferenciado (Cl. 3ª) sem aviso. Demais disposições do Contrato Principal seguem padrão.</p>
+<p>2.3. Vigência do Contrato Principal não é afetada — segue Cl. 12.0 v1.1.</p>
+<h3>Cláusula 3ª — Contraprestação Monetária da ANCHOR</h3>
+<p>3.1. Pela prestação dos Entregáveis em modalidade Anchor, ANCHOR pagará <strong>R$ 1.000,00</strong> à vista no ato da assinatura, via PIX ou boleto.</p>
+<p>3.2. <strong>Disclosures art. 52 CDC + Decreto 7.962/2013:</strong>
+(a) preço total à vista: R$ 1.000,00;
+(b) modalidade: pagamento único, sem parcelamento;
+(c) taxa de juros: 0,00% a.m.;
+(d) acréscimo financeiro: R$ 0,00.</p>
+<p>3.3. <strong>Reconhecimento expresso de valor de mercado.</strong>
+(a) Valor de mercado público pleno: <strong>R$ 3.497,00 setup + R$ 247,00/mês Growth recorrente</strong>;
+(b) Contrapartida monetária reduzida (R$ 1.000,00) reflete contribuição parcial em pecúnia, complementada pela contrapartida não-monetária da Cláusula 5ª como contraprestação adicional, formando contraprestação total economicamente equivalente;
+(c) Valor de mercado da contrapartida não-monetária estimado conjuntamente em <strong>R$ 2.497,00</strong> + equivalente a <strong>6 mensalidades do Growth</strong>, totalizando R$ 3.979,00 — referencial entre as PARTES, sem vincular terceiros, autoridades fiscais ou judiciais;
+(d) SITE-PROSPECTOR cumpre obrigações tributárias conforme orientação contábil própria.</p>
+<p>3.4. <strong>Mensalidade recorrente isenta</strong> durante Período Anchor (6 meses pós go-live).</p>
+<h3>Cláusula 4ª — Benefícios Anchor</h3>
+<p>4.1. Além da contrapartida monetária, ANCHOR tem direito durante e em razão do Período:
+(a) <strong>Isenção mensalidade Growth</strong> × 6 meses (valor referência: R$ 247 × 6 = R$ 1.482);
+(b) <strong>Prioridade operacional</strong> — prazos de suporte da Cl. 14.3 do Contrato Principal <strong>reduzidos em 50%</strong> (incidentes críticos 4h → 2h úteis);
+(c) <strong>Revisão metodológica conjunta</strong> ao final dos meses 2 e 4 (até 90 min cada, pauta aberta);
+(d) <strong>Direito de migração privilegiada pós-anchor</strong> (Cl. 6ª).</p>
+<h3>Cláusula 5ª — Contraprestação Não-Monetária da ANCHOR</h3>
+<p>5.1. <strong>Natureza obrigacional.</strong> Prestações da ANCHOR nesta Cláusula são <strong>obrigações contratuais firmes</strong>, exigíveis pela SITE-PROSPECTOR. NÃO condição implícita ou favor. Testimonial + autorização de imagem + cobertura editorial integram o sinalagma desta parceria.</p>
+<p>5.2. <strong>Testimonial em vídeo</strong> — até <strong>90 dias após go-live</strong>:
+(a) duração: 60s mín, 5min máx;
+(b) conteúdo mínimo obrigatório, autêntico e não-roteirizado:
+ (i) identificação ANCHOR + segmento;
+ (ii) relato de uso real;
+ (iii) descrição factual de resultados, sejam positivos, neutros ou inclusive críticos;
+ (iv) declaração de autorização para uso (item 5.5);
+(c) <strong>Vedações:</strong>
+ (i) SITE-PROSPECTOR <strong>não exigirá conteúdo elogioso específico</strong>, frases pré-escritas, superlativos forçados — sob pena de descaracterizar o testimonial e configurar publicidade enganosa (CDC art. 37 + CONAR);
+ (ii) inclusão de críticas/ressalvas factuais é legítima e não descaracteriza cumprimento;
+(d) <strong>Recusa fundamentada.</strong> Se ao final do prazo ANCHOR julgar de boa-fé que serviço não atende seu critério razoável para qualquer recomendação pública, comunicação por escrito → aplica-se Cl. 7ª (janela 30d).</p>
+<p>5.3. <strong>Autorização de uso de imagem do estabelecimento.</strong> ANCHOR autoriza, em caráter específico, escrito e oneroso (em troca dos benefícios da Cl. 4ª):
+(a) <strong>Objeto:</strong> fotografias e vídeos do <strong>estabelecimento físico</strong> (fachada, ambiente, balcão, vitrine, produtos);
+(b) <strong>Pessoas físicas identificáveis NÃO abrangidas</strong> — aplica-se item 1.5 Contrato Principal + Anexo I deste Termo;
+(c) <strong>Prazo:</strong> <strong>24 meses</strong> a partir da assinatura, prorrogável por períodos sucessivos de 12 meses mediante anuência expressa;
+(d) <strong>Territórios:</strong> Brasil, ênfase Blumenau/SC + Vale do Itajaí, e demais territórios onde SITE-PROSPECTOR opere;
+(e) <strong>Mídias autorizadas:</strong> site institucional + redes sociais + apresentações comerciais + materiais educacionais + case study + co-marketing pré-acordado;
+(f) <strong>Finalidades vedadas:</strong> contexto difamatório/depreciativo, revenda a terceiros não relacionados, edição que induza em erro consumidores;
+(g) <strong>Revogabilidade.</strong> <strong>Revogável a qualquer tempo</strong> mediante notificação escrita, <strong>com efeito prospectivo</strong> — não atinge usos já realizados; SITE-PROSPECTOR interrompe novos usos em 30d (online) / 90d (impressos). Revogação não dá direito à devolução de benefícios já usufruídos.</p>
+<p>5.4. <strong>Cobertura editorial em case study:</strong>
+(a) <strong>Conteúdo permitido:</strong> descrição do processo, metodologia, resultados técnicos (cliques, eventos sem dados pessoais), antes/depois, depoimento com aprovação prévia;
+(b) <strong>Aprovação prévia da ANCHOR</strong>, com 7 dias úteis: aprovar / solicitar correções factuais demonstráveis / solicitar remoção de info comercialmente sensível com justificativa razoável (resposta em 5d úteis);
+(c) <strong>Limitação ao direito de revisão</strong> — não constitui censura editorial absoluta; ANCHOR não pode vetar publicação por motivos não-fundamentados;
+(d) <strong>Dados sensíveis dos clientes finais da ANCHOR</strong> — case study NÃO conterá nomes, telefones, e-mails ou dados de identificação de clientes (LGPD + DPA Cl. 8ª Contrato).</p>
+<p>5.5. <strong>Recomendação ativa — facultativa.</strong> ANCHOR <strong>não é obrigada</strong> a recomendar ativamente. Se opte por recomendar e contrato resultante for fechado e adimplido nos primeiros 90 dias: bônus de <strong>R$ 200,00</strong> em crédito por mensalidade futura ou pagamento em pecúnia, à escolha da ANCHOR, por cada novo contrato. Não-recomendação não constitui inadimplemento.</p>
+<h3>Cláusula 6ª — Direitos Pós-Anchor</h3>
+<p>6.1. <strong>Migração ao término do Período Anchor (mês 6):</strong>
+(a) <strong>Migração privilegiada Growth ex-anchor:</strong> continuidade Growth a <strong>R$ 173,00/mês</strong> (30% desconto) durante <strong>12 meses subsequentes</strong>, depois preço público pleno;
+(b) <strong>Plano Essential</strong> (R$ 149/mês) ao preço público padrão;
+(c) <strong>Plano Scale</strong> (R$ 397/mês) ao preço público padrão;
+(d) <strong>Encerramento</strong> por aviso 30d, com Cl. 7ª Contrato Principal (devolução credenciais) + Cl. 12.4 (sucessão se aplicável).</p>
+<p>6.2. <strong>Manifestação de opção.</strong> SITE-PROSPECTOR notifica com <strong>45 dias</strong> de antecedência do término; ANCHOR tem <strong>30 dias</strong> para manifestar. Ausência = opção (d) — encerramento sem ônus.</p>
+<p>6.3. <strong>Manutenção dos Entregáveis</strong> — Cl. 6ª (licenciamento perpétuo) + Cl. 7ª (titularidade) do Contrato Principal aplicam-se integralmente.</p>
+<h3>Cláusula 7ª — Janela de Resolução Amigável e Proteção Reputacional Bilateral</h3>
+<p>7.1. Antes que qualquer das PARTES manifeste publicamente <strong>expressão negativa, depreciativa ou crítica</strong> sobre a outra (redes sociais, reviews públicos, declarações imprensa, denúncias administrativas, ações judiciais não-urgentes), parte que se considere prejudicada notificará a outra por escrito (e-mail + WhatsApp), expondo:
+(a) fatos problemáticos;
+(b) remediação pleiteada;
+(c) prazo razoável de resposta, <strong>não inferior a 30 dias corridos</strong>.</p>
+<p>7.2. <strong>Aplica-se reciprocamente</strong> — protege SITE-PROSPECTOR contra testimonial reverso E ANCHOR contra exposição comercial de insatisfação.</p>
+<p>7.3. <strong>Exclusões legítimas</strong> (não se aplicam à obrigação de 7.1):
+(a) comunicações urgentes a autoridades de proteção de dados (art. 48 LGPD prevalece);
+(b) denúncias a órgãos de defesa do consumidor com risco a novos consumidores;
+(c) medidas judiciais urgentes (tutela de urgência) com risco de perecimento de direito;
+(d) reviews públicos em plataformas (Google, ReclameAqui) APÓS decurso integral de 30 dias sem composição razoável.</p>
+<p>7.4. <strong>Efeito.</strong> Inobservância injustificada de 7.1 não impede manifestação per se (direito constitucional), mas é elemento de aferição de boa-fé.</p>
+<h3>Cláusula 8ª — LGPD Aplicada ao Testimonial, Imagens e Case Study</h3>
+<p>8.1. <strong>Bases legais:</strong>
+(a) <strong>art. 7º V LGPD</strong> (execução de contrato) — dados estritamente necessários;
+(b) <strong>art. 7º IX LGPD</strong> (interesse legítimo) — uso em portfólio/comerciais, com LIA documentado;
+(c) <strong>art. 7º I LGPD</strong> (consentimento) — pessoas físicas identificáveis publicamente expostas (Anexo I).</p>
+<p>8.2. <strong>Direitos do titular</strong> — art. 18 LGPD: acesso, correção, eliminação com consentimento, <strong>revogação prospectiva</strong> (item 5.3(g)).</p>
+<p>8.3. <strong>DPA aplicável.</strong> Fluxo de tratamento específico (vídeo testimonial, fotos, case study) integra DPA Anexo I do Contrato Principal, com tratamento em apartado conforme Anexo II deste Termo (a firmar em até 15 dias).</p>
+<p>8.4. <strong>Salvaguarda em caso de Anexo II não-firmado</strong> — aplicam-se diretamente arts. 6º, 39, 46 a 49 LGPD, com SITE-PROSPECTOR operadora dos dados da ANCHOR e controladora dos dados de uso institucional próprio.</p>
+<h3>Cláusula 9ª — Tributação e Emissão de Nota Fiscal</h3>
+<p>9.1. <strong>Emissão de NFS-e.</strong> SITE-PROSPECTOR emitirá NFS-e à ANCHOR no valor de <strong>R$ 1.000,00</strong> (item 3.1), conforme regramento ISS Blumenau e regime tributário aplicável (Simples Nacional).</p>
+<p>9.2. <strong>Tratamento contábil-tributário do diferencial.</strong> Diferencial R$ 3.979,00 entre valor de mercado público (R$ 4.979,00) e efetivamente pago (R$ 1.000,00) será tratado como <strong>bonificação publicitária com lastro contratual neste Termo</strong>, registrado no livro caixa da ME como contrapartida de valor não-monetário recebido sob forma de testimonial, autorização de imagem e cobertura editorial (Cl. 5ª).</p>
+<p>9.3. <strong>Não-configuração de permuta de serviços.</strong> PARTES reconhecem que contrapartida não-monetária da Cl. 5ª, embora dotada de valor econômico legítimo (Cl. 3.3(c)), <strong>não constitui prestação de serviço da ANCHOR à SITE-PROSPECTOR</strong> no sentido tributário do art. 1º LC 116/2003. ANCHOR não exerce atividade econômica regular de &quot;fornecimento de testimoniais&quot;, &quot;cessão de imagem comercial&quot; ou &quot;produção de case studies&quot; — trata-se de <strong>contribuição não-onerosa em sentido tributário</strong>, embora <strong>onerosa em sentido civil</strong>.</p>
+<p>9.4. <strong>Riscos próprios.</strong> Cada parte assume integralmente seus tributos. Em caso de fiscalização requalificar, cada parte responde sem regresso, salvo dolo/culpa grave na orientação inicial.</p>
+<h3>Cláusula 10ª — Saída Antecipada e Efeitos</h3>
+<p>10.1. <strong>Saída antecipada pela ANCHOR</strong> — aviso prévio escrito de 30 dias, sem multa.</p>
+<p>10.2. <strong>Efeitos prospectivos:</strong>
+(a) Entregáveis já entregues permanecem propriedade da ANCHOR (Contrato Principal);
+(b) SITE-PROSPECTOR mantém testimonial e cobertura já produzidos, respeitada revogabilidade prospectiva (5.3(g));
+(c) cessa isenção de mensalidade — migração para um dos planos da 6.1 a partir do ciclo seguinte;
+(d) setup R$ 1.000 não é restituído, salvo descumprimento essencial da SITE-PROSPECTOR sem composição (Cl. 7);
+(e) ANCHOR perde benefícios futuros não-usufruídos.</p>
+<p>10.3. <strong>Saída antecipada pela SITE-PROSPECTOR</strong> — só por: (a) descumprimento essencial pela ANCHOR após decurso do prazo de boa-fé do item 7; (b) impossibilidade operacional (Cl. 12.4 Contrato v1.1); (c) consenso mútuo.</p>
+<p>10.4. <strong>Indenização recíproca.</strong> Saídas antecipadas não geram dever de indenização per se, salvo descumprimento culposo demonstrado (Cl. 13 Contrato Principal).</p>
+<h3>Cláusula 11ª — Não-Exclusividade e Programa Anchor</h3>
+<p>11.1. SITE-PROSPECTOR pode estabelecer parcerias análogas com <strong>outros estabelecimentos</strong> no mesmo ou em diferentes segmentos, durante e após o Período Anchor.</p>
+<p>11.2. <strong>Programa Anchor SITE-PROSPECTOR — Caso Piloto.</strong> Opera <strong>até 3 anchors simultâneos</strong> em fase piloto pré-Stage-1, sendo este Termo o <strong>Caso Piloto nº 1</strong>. Anchors #2 e #3 podem operar em diferentes segmentos ou no mesmo, sem que isso constitua descumprimento, conflito ou tratamento privilegiado dissimulado.</p>
+<p>11.3. <strong>Transparência pública.</strong> SITE-PROSPECTOR pode publicar lista de anchors em seu site institucional.</p>
+<p>11.4. <strong>Confidencialidade entre anchors.</strong> Dados específicos da operação (vendas, faturamento, métricas internas) cobertos pela Cl. 9ª (Confidencialidade) — não compartilhados com outros anchors ou prospects.</p>
+<h3>Cláusula 12ª — Foro e Lei Aplicável</h3>
+<p>12.1. Aplicam-se integralmente Cl. 16ª (foro Blumenau/SC + ressalva consumerista), 17ª (lei aplicável) e 18ª (veto arbitragem CDC) do Contrato Principal.</p>
+<p>12.2. <strong>Reafirmação consumerista.</strong> Caso este Termo seja considerado relação consumerista (Súmula 297/STJ), prevalece direito da ANCHOR ao foro de domicílio, inversão do ônus quando aplicável (art. 6º VIII CDC) e demais direitos do art. 6º.</p>
+<h3>Cláusula 13ª — Disposições Gerais</h3>
+<p>13.1. <strong>Anexos integrantes:</strong>
+(a) <strong>Anexo I — Modelo de Autorização Individual de Uso de Imagem</strong> (item 5.3(b));
+(b) <strong>Anexo II — DPA específico para fluxo testimonial + imagens + case study</strong> (a firmar em até 15 dias).</p>
+<p>13.2. <strong>Comunicações</strong> — Cl. 20.1 Contrato Principal (e-mail + WhatsApp cadastrados).</p>
+<p>13.3. <strong>Assinatura eletrônica</strong> — Cl. 19ª Contrato Principal (MP 2.200-2/2001 + Lei 14.063/2020).</p>
+<p>13.4. <strong>Cessão</strong> — <strong>intuitu personae para AMBAS as PARTES</strong>, ressalvada sucessão empresarial regular.</p>
+<p>13.5. <strong>Autonomia das cláusulas.</strong></p>
+<p>13.6. <strong>Integralidade</strong> — este Termo + Contrato Principal + Anexos.</p>
+<hr>
+<p><strong>Blumenau, ___ de _________________ de 2026.</strong></p>
+<p>_______________________________________
+<strong>SITE-PROSPECTOR</strong> — Breno [Sobrenome] — CPF [_______]</p>
+<p>_______________________________________
+<strong>ANCHOR</strong> — [Nome] — CPF [_______]</p>
+<p><strong>Testemunhas:</strong></p>
+<ol>
+<li>Nome: ________________________ CPF: ____________ Assinatura: ________________</li>
+<li>Nome: ________________________ CPF: ____________ Assinatura: ________________</li>
+</ol>
+<h3>ANEXO I — Modelo de Autorização Individual de Uso de Imagem (placeholder)</h3>
+<blockquote>
+<p>Modelo a ser assinado individualmente por cada pessoa física identificável que apareça em fotos/vídeos da Cláusula 5ª. <strong>Modelo padrão completo a ser desenvolvido pelo advogado(a) OAB-SC.</strong></p>
+<p><strong>Conteúdo mínimo:</strong> qualificação completa do retratado; descrição específica das imagens (data, local, contexto); finalidades autorizadas (lista taxativa); prazo (24m prorrogáveis); territórios; mídias; direito de revogação prospectiva (art. 18 LGPD + CC 20); onerosidade/gratuidade; foro e lei.</p>
+</blockquote>
+<h3>ANEXO II — DPA Testimonial/Imagens/Case Study (placeholder)</h3>
+<blockquote>
+<p>Acordo de Processamento de Dados específico para esta parceria. <strong>A firmar em até 15 dias</strong> após a assinatura deste Termo. <strong>Conteúdo mínimo:</strong> identificação controlador/operador por fluxo; base legal por categoria; medidas técnicas e administrativas; prazos de retenção de imagens e vídeos; comunicação de incidentes (48h Cl. 8.5); atendimento titulares; subcontratados específicos.</p>
+</blockquote>
+<h3>5.X — Risk Memo do Termo Anchor</h3>
+<h4>5.X.1 — Verdict</h4>
+<p><strong>ASSINÁVEL após validação OAB-SC + contador, com 5 atenções operacionais críticas.</strong></p>
+<p>Arquitetura contratual deliberada mitiga 6 superfícies de risco: venda casada, dação em pagamento, direito de imagem, PROCON, concorrência desleal, reputação bilateral.</p>
+<p>Riscos residuais não-zeráveis (mitigação operacional, não-contratual): requalificação tributária pela RF/ISS Blumenau, eventual retratação do testimonial antes do prazo, jurisprudência TJ-SC oscilante.</p>
+<h4>5.X.2 — Top 5 Risk Flags</h4>
+<pre><code>🔴 RISK #1 — Requalificação tributária como permuta (CRÍTICA)
+  Cenário: RF/ISS Blumenau requalifica Cl. 9 como permuta
+           LC 116/2003 + SC RFB 8/2014 + SC Cosit 166/2019
+  Consequência: ANCHOR autuada não-emissão NFS-e R$ 3.979
+                + SITE-PROSPECTOR escritura receita adicional
+                Total exposição: R$ 400-800 tributos + multa 75-150%
+  Mitigação minuta: Cl. 3.3(c)(d) + Cl. 9.3 + Cl. 9.4
+  Mitigação operacional: contador profissional + dossiê de defesa
+  Severidade pós: MODERADA
+
+🟠 RISK #2 — Testimonial como venda casada CDC art. 39 I (ALTA)
+  Cenário: ANCHOR/PROCON alegam testimonial forçado
+  Consequência: nulidade Cl. 5ª → ANCHOR fica com serviço sem
+                contrapartida → desnatura sinalagma → reativa RISK #1
+                + multa PROCON Blumenau
+  Mitigação minuta: Considerandos densos + Cl. 1.2 + Cl. 5.1
+                    + Cl. 5.2(c) (proíbe elogio forçado) + Cl. 5.5
+  Mitigação operacional: gravar pitch oral pré-assinatura;
+                         nunca &quot;se não gravar, perde tudo&quot;;
+                         sempre usar linguagem Cl. 7 (janela 30d)
+  Severidade pós: MODERADA-BAIXA
+
+🟠 RISK #3 — Revogação tardia uso imagem (ALTA)
+  Cenário: ANCHOR revoga após case study amplamente publicado
+  Consequência: remoção 30d/90d + custos re-edição
+                + perda prova social principal mid-pilot
+  Mitigação minuta: Cl. 5.3(g) revogação prospectiva + prazos
+                    escalonados
+  Mitigação operacional: versionamento de materiais com nome
+                         do anchor; relação cordial mid-period;
+                         acionar Cl. 7 ao primeiro sinal
+  Severidade pós: MODERADA
+
+🟡 RISK #4 — Concorrência desleal alegada (MODERADA)
+  Cenário: padaria rival denuncia tratamento privilegiado
+           dissimulado / publicidade comparativa abusiva
+  Consequência: procedimento administrativo + dano reputacional
+  Mitigação minuta: Cl. 11.2 Programa público + Cl. 11.3
+                    + Considerandos (fase piloto, 3 anchors,
+                    09/Jun deadline)
+  Mitigação operacional: página pública &quot;Programa Anchor 2026&quot;;
+                         critério objetivo de seleção documentado
+  Severidade pós: BAIXA
+
+🟡 RISK #5 — Testimonial reverso / exposição unilateral (MODERADA)
+  Cenário: ANCHOR insatisfeita posta negativo antes da Cl. 7
+  Consequência: dano reputacional no momento mais frágil
+                + contamina anchors #2 #3
+  Mitigação minuta: Cl. 7 janela 30d + Cl. 5.2(d) recusa
+                    fundamentada
+  Mitigação operacional: checkpoints D+30/D+60/D+120;
+                         remediar fricção cedo;
+                         pós decurso 30d = direito constitucional
+  Severidade pós: BAIXA-MODERADA
+</code></pre>
+<h4>5.X.3 — Decisões Autônomas Tomadas</h4>
+<p><strong><code>[HEATHER-AUTO-DECISION]</code> Setup R$ 1.000 (não R$ 0)</strong> — elimina 3 cenários por fração trivial do valor de mercado (28,6% do setup público). Patricia Peck concordou.</p>
+<p><strong><code>[HEATHER-AUTO-DECISION]</code> Duração 6 meses</strong> — cobre dois quadrimestres operacionais (alta dez-mar + baixa abr-jul) permitindo validação metodológica sazonalmente diversa. 3-4m insuficiente, 12m desnatura anchor.</p>
+<p><strong><code>[HEATHER-AUTO-DECISION]</code> Pós-anchor: 30% × 12 meses no Growth</strong> — reconhece valor da contribuição sem ser concessão eterna. Alternativas descartadas: &quot;anchor permanente 20% eterno&quot; (assimétrica → CDC), &quot;sem desconto pós-anchor&quot; (desincentiva continuidade do que é cliente já educado).</p>
+<p><strong><code>[HEATHER-AUTO-DECISION]</code> 3 anchors no total</strong> — alinha com pilot 3 prospects da memória do projeto. Mais que 3 desnatura, menos não valida metodologia.</p>
+<p><strong><code>[PECK-AUTO-DECISION]</code> Tributação como bonificação publicitária (NÃO permuta)</strong> — permuta exigiria NFS-e bilateral (ANCHOR sem CNAE pertinente, exigi-lo seria abusivo e operacionalmente inviável). Solução: NFS-e R$ 1.000 + diferencial como bonificação publicitária com lastro contratual. Risco residual de requalificação endereçado por Cl. 9.4.</p>
+<p><strong><code>[PECK-AUTO-DECISION]</code> Revogação prospectiva 30d online / 90d impressos</strong> — jurisprudência consolidada (Marco Civil + LGPD + CONAR). Bloquear seria nulo (CC 20 + art. 18 LGPD).</p>
+<h4>5.X.4 — Variáveis Abstratas para Anchors #2 e #3</h4>
+<table>
+<thead>
+<tr>
+<th>Variável</th>
+<th>Anchor #1</th>
+<th>Padrão #2/#3</th>
+<th>Notas</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Setup pago</td>
+<td>R$ 1.000</td>
+<td>R$ 1.000 ou 25-30% do público</td>
+<td>Nunca R$ 0</td>
+</tr>
+<tr>
+<td>Período Anchor</td>
+<td>6 meses</td>
+<td>6 meses default, máx 9</td>
+<td>Nunca &gt; 12</td>
+</tr>
+<tr>
+<td>Bônus referral</td>
+<td>R$ 200/contrato</td>
+<td>R$ 200 default</td>
+<td>Pode escalar</td>
+</tr>
+<tr>
+<td>Desconto pós-anchor</td>
+<td>30% × 12m Growth</td>
+<td>Padronizar</td>
+<td>Consistência</td>
+</tr>
+<tr>
+<td>Prazo testimonial</td>
+<td>até 90 dias</td>
+<td>90 default</td>
+<td>60 se simples</td>
+</tr>
+<tr>
+<td>Aprovação case study</td>
+<td>7 dias úteis</td>
+<td>7 dias</td>
+<td>Não reduzir</td>
+</tr>
+<tr>
+<td>Revogação online</td>
+<td>30 dias</td>
+<td>30 dias</td>
+<td></td>
+</tr>
+<tr>
+<td>Revogação impressa</td>
+<td>90 dias</td>
+<td>90 dias</td>
+<td></td>
+</tr>
+<tr>
+<td>Janela Cl. 7</td>
+<td>30 dias</td>
+<td>30 default</td>
+<td>Nunca &lt; 20</td>
+</tr>
+<tr>
+<td>Total anchors</td>
+<td>3 simultâneos</td>
+<td>Manter até 09/Jun</td>
+<td>Revisar Stage-1</td>
+</tr>
+</tbody></table>
+<p><strong>Template reutilizável.</strong> Para #2 e #3 apenas variar: (a) Qualificação Partes, (b) Segmento nos Considerandos, (c) eventuais especificidades operacionais.</p>
+<h4>5.X.5 — Checklist Pré-Assinatura Anchor #1</h4>
+<ul>
+<li><input disabled="" type="checkbox"> Contrato Principal v1.1 assinado OU em assinatura simultânea</li>
+<li><input disabled="" type="checkbox"> CNPJ da ME SITE-PROSPECTOR ativo (ou PF documentada)</li>
+<li><input disabled="" type="checkbox"> Contador consultado sobre Cl. 9</li>
+<li><input disabled="" type="checkbox"> Advogado OAB-SC validou Termo v1 e produziu v1.1</li>
+<li><input disabled="" type="checkbox"> Anexo I (Autorização Individual Imagem) pronto antes da sessão</li>
+<li><input disabled="" type="checkbox"> Anexo II (DPA Testimonial) redigido OU commitment 15d</li>
+<li><input disabled="" type="checkbox"> Página pública &quot;Programa Anchor 2026&quot; publicada (RISK #4)</li>
+<li><input disabled="" type="checkbox"> Critério objetivo seleção 3 anchors documentado</li>
+<li><input disabled="" type="checkbox"> Checkpoints D+30 / D+60 / D+120 agendados (RISK #5)</li>
+<li><input disabled="" type="checkbox"> NFS-e R$ 1.000 emitida e arquivada (RISK #1)</li>
+<li><input disabled="" type="checkbox"> Pitch oral Anchor documentado em e-mail recap (RISK #2)</li>
+</ul>
+<hr>
+<h2>§6 Caminho Crítico até 09/Jun/2026</h2>
+<pre><code>Esta semana (15-22/Mai) — Onda 1 P0
+  ├─ Levar este pacote consolidado pro advogado OAB-SC
+  ├─ Breno fecha A3 stack (GA4 vs PostHog)
+  ├─ Breno fecha A5 stack (Resend+Supabase vs Vercel KV)
+  └─ Breno consulta contador (Cl. 9 Termo Anchor — RISK #1)
+
+Semana 2-3 (22/Mai - 05/Jun) — review profissional
+  ├─ Advogado devolve v1.1 do contrato (5 críticas + 3 cláusulas)
+  ├─ Advogado adapta DPA pra TJ-SC-friendly
+  ├─ Advogado produz Anexo I Termo Anchor (Cessão Imagem)
+  ├─ Advogado produz Anexo II Termo Anchor (DPA Testimonial)
+  ├─ Breno produz nota técnica Pequeno Agente ANPD (1 página)
+  └─ Breno harmoniza PoP cliente + institucional com retenções DPA
+
+Semana 4 (05-09/Jun) — checkpoint final
+  ├─ Checkpoint pré-assinatura
+  ├─ Assinatura SIMULTÂNEA:
+  │     Contrato Principal v1.1
+  │   + DPA
+  │   + Termo Anchor #1
+  │   + Documento de Transparência
+  │   + Spec Plano Growth
+  │   + Nota Pequeno Agente
+  └─ Hard review 09/Jun: GO / PIVOT / KILL Site-Prospector pilot
+</code></pre>
+<h3>Custo total estimado advogado</h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Orçamento original Contrato</td>
+<td>R$ 2.500–5.000</td>
+</tr>
+<tr>
+<td>Incremental v1.1 (5 críticas + 3 faltantes)</td>
+<td>R$ 800–2.000</td>
+</tr>
+<tr>
+<td>Revisão DPA + adaptação OAB-SC</td>
+<td>já incluso</td>
+</tr>
+<tr>
+<td>Anexo I Termo (Cessão Imagem)</td>
+<td>já incluso</td>
+</tr>
+<tr>
+<td>Anexo II Termo (DPA Testimonial)</td>
+<td>já incluso</td>
+</tr>
+<tr>
+<td><strong>Total estimado</strong></td>
+<td><strong>R$ 3.300–7.000</strong></td>
+</tr>
+</tbody></table>
+<p>Janela 25 dias é suficiente com 6-12h advogado.</p>
+<h3>Custos adicionais externos</h3>
+<ul>
+<li>Contador especializado Simples Nacional + ISS Blumenau — orçar separado</li>
+<li>Eventual parecer externo IP/right-of-publicity (AIOS mind clones, Onda 1 #3) — fora do escopo Site-Prospector</li>
+</ul>
+<hr>
+<h2>§7 Arquivos-Fonte (referência para auditoria)</h2>
+<p>Este relatório consolida verbatim ou em síntese o conteúdo de:</p>
+<table>
+<thead>
+<tr>
+<th>Arquivo</th>
+<th>Linhas</th>
+<th>Conteúdo</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>triage-2026-05-15.md</code></td>
+<td>177</td>
+<td>§2 deste relatório (Tier 0 + roster + fila)</td>
+</tr>
+<tr>
+<td><code>contrato-v1-baseline-extracted.txt</code></td>
+<td>366</td>
+<td>Input do advogado (não consolidado — referência)</td>
+</tr>
+<tr>
+<td><code>contrato-v1-review-2026-05-15.md</code></td>
+<td>329</td>
+<td>§3 deste relatório (review completo + 13 perguntas)</td>
+</tr>
+<tr>
+<td><code>dpa-site-prospector-v1-2026-05-15.md</code></td>
+<td>414</td>
+<td>§4 deste relatório (DPA verbatim + Anexos A/B)</td>
+</tr>
+<tr>
+<td><code>dpa-decisions-memo-2026-05-15.md</code></td>
+<td>166</td>
+<td>§4.X deste relatório (PECK-AUTO-DECISIONS + risk-flags)</td>
+</tr>
+<tr>
+<td><code>termo-parceria-anchor-v1-2026-05-15.md</code></td>
+<td>401</td>
+<td>§5 deste relatório (Termo verbatim + Anexos placeholder)</td>
+</tr>
+<tr>
+<td><code>anchor-risk-memo-2026-05-15.md</code></td>
+<td>267</td>
+<td>§5.X deste relatório (risk memo + decisões + checklist)</td>
+</tr>
+</tbody></table>
+<p><strong>Memória do squad legal-chief:</strong></p>
+<ul>
+<li><code>D:\AIOS\.claude\agent-memory\legal-chief\project_site_prospector_contract_v1.md</code></li>
+<li><code>D:\AIOS\.claude\agent-memory\legal-chief\project_site_prospector_dpa_v1.md</code></li>
+<li><code>D:\AIOS\.claude\agent-memory\legal-chief\project_site_prospector_anchor_termo.md</code></li>
+</ul>
+<p><strong>Memória de retomada (user session):</strong></p>
+<ul>
+<li><code>C:\Users\kingp\.claude\projects\D--AIOS\memory\session_site_prospector_legal_15mai.md</code></li>
+</ul>
+<hr>
+<h2>§8 Glossário Mínimo</h2>
+<table>
+<thead>
+<tr>
+<th>Termo</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>ANPD</strong></td>
+<td>Autoridade Nacional de Proteção de Dados (LGPD)</td>
+</tr>
+<tr>
+<td><strong>CDC</strong></td>
+<td>Código de Defesa do Consumidor (Lei 8.078/1990)</td>
+</tr>
+<tr>
+<td><strong>CDC art. 51</strong></td>
+<td>Cláusulas abusivas — IV é &quot;obrigações iníquas/excessivamente onerosas&quot;</td>
+</tr>
+<tr>
+<td><strong>CFM 2.454/2026</strong></td>
+<td>Resolução do Conselho Federal de Medicina sobre telemedicina/IA em saúde</td>
+</tr>
+<tr>
+<td><strong>DPA</strong></td>
+<td>Data Processing Agreement / Acordo de Processamento de Dados</td>
+</tr>
+<tr>
+<td><strong>GBP</strong></td>
+<td>Google Business Profile</td>
+</tr>
+<tr>
+<td><strong>LGPD</strong></td>
+<td>Lei Geral de Proteção de Dados (Lei 13.709/2018)</td>
+</tr>
+<tr>
+<td><strong>NFS-e</strong></td>
+<td>Nota Fiscal de Serviço eletrônica</td>
+</tr>
+<tr>
+<td><strong>OAB-SC</strong></td>
+<td>Ordem dos Advogados do Brasil, seccional Santa Catarina</td>
+</tr>
+<tr>
+<td><strong>Pequeno Agente</strong></td>
+<td>Resolução CD/ANPD nº 2/2022 — porte simplificado de tratamento</td>
+</tr>
+<tr>
+<td><strong>PoP</strong></td>
+<td>Política de Privacidade</td>
+</tr>
+<tr>
+<td><strong>ROPA</strong></td>
+<td>Registro de Operações de Tratamento (art. 37 LGPD)</td>
+</tr>
+<tr>
+<td><strong>SaMD</strong></td>
+<td>Software as Medical Device (FDA classification)</td>
+</tr>
+<tr>
+<td><strong>SCC</strong></td>
+<td>Standard Contractual Clauses (transferência internacional — Res. ANPD 19/2024)</td>
+</tr>
+<tr>
+<td><strong>Súmula 297/STJ</strong></td>
+<td>&quot;O Código de Defesa do Consumidor é aplicável às instituições financeiras&quot; — estendida por jurisprudência a casos de destinatário final vulnerável PJ</td>
+</tr>
+<tr>
+<td><strong>TJ-SC</strong></td>
+<td>Tribunal de Justiça de Santa Catarina</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>§9 Disclaimer Legal Obrigatório</h2>
+<p>⚠️ <strong>ESTE DOCUMENTO É ANÁLISE ORIENTATIVA E NÃO SUBSTITUI CONSULTA COM ADVOGADO(A) OAB-SC ATIVA.</strong></p>
+<p>Posições jurisprudenciais e doutrinárias citadas devem ser confirmadas em pesquisa atualizada antes da assinatura. Decisões tributárias finais (Cláusula 9 do Termo Anchor — RISK #1) dependem de validação por contador profissional habilitado em Simples Nacional + ISS Blumenau. As variáveis em [colchetes] devem ser preenchidas.</p>
+<p>Os mind clones <code>@patricia-peck</code>, <code>@heather-meeker</code>, <code>@lawrence-lessig</code>, <code>@richard-susskind</code>, <code>@adriana-dallari</code>, <code>@erik-nymanczuk</code>, <code>@bakul-patel</code>, <code>@lucia-savage</code> utilizados nesta análise são simulações computacionais baseadas em obras publicadas pelos autores; opiniões aqui apresentadas devem ser validadas por profissional habilitado antes da assinatura ou submissão a autoridades.</p>
+<p><strong>Caso #1 (Contrato Site-Prospector) e #5 (Anipis CFM regulatório) demandam OAB ativo registrado.</strong> O presente relatório destina-se ao trabalho preparatório do(a) advogado(a) OAB-SC contratado(a) para o Contrato Principal v1.1 + DPA + Termo Anchor.</p>
+<hr>
+<p><strong>Fim do Relatório Consolidado v1 — A → X</strong></p>
+<p><code>legal-chief</code> | Patricia Peck · Heather Meeker · Lawrence Lessig · Richard Susskind
+<code>aios-master</code> — orquestração e edição
+Brand: <strong>AIOX Squad v2.0 — Dark Cockpit Edition</strong> (<a href="https://brand.aioxsquad.ai/brandbook">https://brand.aioxsquad.ai/brandbook</a>)</p>
+<p>2026-05-15 · Blumenau/SC · Brasil</p>
+<pre><code>$ legal-chief --status
+✓ contract-v1: REVIEWED (CONCERNS — 5 ajustes + 3 faltantes)
+✓ dpa-v1: READY
+✓ termo-anchor-v1: READY
+→ next: handoff OAB-SC
+</code></pre>
+
+  <div class="doc-footer">
+    <span class="arrow">A → I → O → X</span> · AIOX Squad v2.0 — Dark Cockpit Edition · brand.aioxsquad.ai/brandbook
+  </div>
+</div>
+</body>
+</html>

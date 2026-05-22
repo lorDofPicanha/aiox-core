@@ -177,3 +177,757 @@ img {
   animation: fade-in-scroll 1s ease-out 2s both;
   will-change: opacity;
 }
+
+/* ═════════════════════════════════════════════════════════════════════════
+   Hero Coleção Premium V3 — cinematic atelier 7-movement narrative (05/Mai/2026)
+   Tokens: apps/tocks-website/src/styles/tokens-v3.json
+   Direction: Aston DRAMA + B&O DISCIPLINE + Tocks Gilded Noir identity
+   Replaces v2 (moved to .deprecated/hero-colecao-premium.v2-aston.tsx)
+   Build trigger: 2026-05-05T15:30Z (force HMR rebuild)
+   ═════════════════════════════════════════════════════════════════════════ */
+
+/* Local v3 token aliases (avoid breaking site-wide --accent-gold by repointing) */
+:root {
+  --tocks-v3-noir-ink:        #0B0B0F;
+  --tocks-v3-noir-ink-soft:   #13131A;
+  --tocks-v3-ivory-barely:    #FCFAEE;
+  --tocks-v3-ivory-manuscript:#F5F0E6;
+  --tocks-v3-ivory-linen:     #EDE7D7;
+  --tocks-v3-ivory-fog:       #A8A39A;
+  --tocks-v3-gold-300:        #D9C172;
+  --tocks-v3-gold-500:        #C9A55D;
+  --tocks-v3-gold-600:        #A98A45;
+  --tocks-v3-gold-700:        #8A6F3A;
+  --tocks-v3-tracking-mag:    0.055em;
+  --tocks-v3-tracking-her:    0.2em;
+  --tocks-v3-easing-luxe:     cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Stage — top-level wrapper */
+.hero-cp-stage {
+  display: block;
+  background-color: var(--tocks-v3-noir-ink);
+  color: var(--tocks-v3-ivory-barely);
+  font-family: var(--font-body), Inter, system-ui, sans-serif;
+  isolation: isolate; /* contain z-index of decorative veils */
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   Shared atoms — eyebrow magazine + microlabel (used across movements)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.hero-cp-eyebrow-magazine {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.625rem;
+  font-family: var(--font-body), Inter, system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: var(--tocks-v3-tracking-mag);
+  text-transform: uppercase;
+  color: var(--tocks-v3-gold-500);
+  margin: 0 0 2.5rem 0;
+}
+
+.hero-cp-eyebrow-magazine--gold {
+  color: var(--tocks-v3-gold-500);
+}
+
+.hero-cp-eyebrow-dot {
+  color: var(--tocks-v3-gold-700);
+  display: inline-block;
+  font-size: 0.875rem;
+  line-height: 1;
+}
+
+.hero-cp-microlabel {
+  font-family: var(--font-display), Montserrat, system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: var(--tocks-v3-tracking-her);
+  text-transform: uppercase;
+  color: var(--tocks-v3-gold-700);
+  margin: 0 0 1.5rem 0;
+}
+
+.hero-cp-microlabel--ink {
+  color: var(--tocks-v3-gold-700);
+}
+
+.hero-cp-microlabel--gold {
+  color: var(--tocks-v3-gold-500);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   MOVEMENT 1 — OVERTURE (100vh dark cinematic hero)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.hero-cp-overture {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  align-items: end;
+  padding: 3rem 1.5rem 4rem;
+  background-color: var(--tocks-v3-noir-ink);
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .hero-cp-overture {
+    padding: 4rem 5rem 5rem;
+  }
+}
+
+.hero-cp-overture-photo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-cp-overture-img {
+  object-fit: cover;
+  object-position: center 60%;
+  /* Cinematic warm tungsten treatment — push toward atelier drama */
+  filter: brightness(0.62) contrast(1.18) saturate(0.7);
+}
+
+/* Asymmetric vignette — strong shadow left-bottom, lighter right-top */
+.hero-cp-overture-veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      120deg,
+      rgba(11, 11, 15, 0.92) 0%,
+      rgba(11, 11, 15, 0.6) 35%,
+      rgba(11, 11, 15, 0.4) 60%,
+      rgba(11, 11, 15, 0.7) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(11, 11, 15, 0.4) 0%,
+      transparent 25%,
+      transparent 60%,
+      rgba(11, 11, 15, 0.85) 100%
+    );
+}
+
+.hero-cp-overture-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 56rem;
+  animation: hero-cp-fade-up 800ms var(--tocks-v3-easing-luxe) both;
+}
+
+.hero-cp-overture-h1 {
+  font-family: var(--font-heading), 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(3.25rem, 8vw, 6.25rem);
+  font-weight: 300;
+  line-height: 0.96;
+  letter-spacing: -0.025em;
+  color: var(--tocks-v3-ivory-barely);
+  margin: 0 0 2rem 0;
+}
+
+.hero-cp-overture-h1-line {
+  display: block;
+}
+
+.hero-cp-overture-h1-italic {
+  font-style: italic;
+  color: var(--tocks-v3-gold-500);
+  /* Slight kerning openness on italic for editorial feel */
+  letter-spacing: -0.015em;
+}
+
+.hero-cp-overture-lead {
+  font-family: var(--font-body), Inter, system-ui, sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--tocks-v3-ivory-fog);
+  max-width: 38rem;
+  margin: 0;
+}
+
+.hero-cp-scroll-cue {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 4rem;
+  font-family: var(--font-display), Montserrat, system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: var(--tocks-v3-tracking-her);
+  text-transform: uppercase;
+  color: var(--tocks-v3-gold-500);
+}
+
+.hero-cp-scroll-cue-line {
+  display: inline-block;
+  width: 4rem;
+  height: 1px;
+  background-color: var(--tocks-v3-gold-500);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   MOVEMENT 2 — MANIFESTO (cream linen warm bg, breathing massive type)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.hero-cp-manifesto {
+  background-color: var(--tocks-v3-ivory-linen);
+  color: var(--tocks-v3-noir-ink);
+  padding: 6rem 1.5rem;
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .hero-cp-manifesto {
+    padding: 8rem 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-cp-manifesto {
+    padding: 10rem 8rem;
+  }
+}
+
+.hero-cp-manifesto-h2 {
+  font-family: var(--font-heading), 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--tocks-v3-noir-ink);
+  margin: 0 0 2.5rem 0;
+  max-width: 56rem;
+}
+
+.hero-cp-manifesto-emphasis {
+  font-style: italic;
+  color: var(--tocks-v3-gold-700);
+}
+
+.hero-cp-manifesto-body {
+  font-family: var(--font-body), Inter, system-ui, sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #2A2A2E; /* Carbon-near, AAA on linen */
+  max-width: 42rem;
+  margin: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   MOVEMENTS 3 + 5 — CHAPTERS (Vértice + Elipse, dark atelier alternating)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.hero-cp-chapter {
+  background-color: var(--tocks-v3-noir-ink);
+  padding: 6rem 1.5rem;
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .hero-cp-chapter {
+    padding: 8rem 5rem;
+  }
+}
+
+.hero-cp-chapter-grid {
+  max-width: 1440px;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .hero-cp-chapter-grid {
+    grid-template-columns: 1.15fr 1fr;
+    gap: 5rem;
+  }
+}
+
+/* Asymmetric: Elipse flips to right-image / left-text for visual rhythm break */
+@media (min-width: 1024px) {
+  .hero-cp-chapter--elipse .hero-cp-chapter-grid {
+    grid-template-columns: 1fr 1.15fr;
+  }
+  .hero-cp-chapter--elipse .hero-cp-chapter-figure {
+    order: 2;
+  }
+  .hero-cp-chapter--elipse .hero-cp-chapter-text {
+    order: 1;
+  }
+}
+
+.hero-cp-chapter-figure {
+  margin: 0;
+  position: relative;
+}
+
+.hero-cp-chapter-photo {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background-color: var(--tocks-v3-noir-ink-soft);
+}
+
+@media (min-width: 768px) {
+  .hero-cp-chapter-photo {
+    aspect-ratio: 5 / 4;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-cp-chapter-photo {
+    aspect-ratio: 4 / 5; /* Vertical luxury — Aston DB12 portrait drama */
+  }
+}
+
+.hero-cp-chapter-img {
+  object-fit: cover;
+  filter: brightness(0.88) contrast(1.08) saturate(0.85);
+  transition: filter 800ms var(--tocks-v3-easing-luxe);
+}
+
+.hero-cp-chapter:hover .hero-cp-chapter-img {
+  filter: brightness(1) contrast(1.02) saturate(0.95);
+}
+
+.hero-cp-chapter-veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 110% 90% at 30% 35%,
+      transparent 40%,
+      rgba(11, 11, 15, 0.5) 100%
+    );
+}
+
+.hero-cp-chapter-figcaption {
+  font-family: var(--font-display), Montserrat, system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: var(--tocks-v3-tracking-her);
+  text-transform: uppercase;
+  color: var(--tocks-v3-gold-700);
+  margin-top: 1.25rem;
+}
+
+.hero-cp-chapter-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-cp-chapter-h2 {
+  font-family: var(--font-heading), 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 300;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--tocks-v3-ivory-barely);
+  margin: 0 0 1rem 0;
+}
+
+.hero-cp-chapter-tagline {
+  font-family: var(--font-heading), 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--tocks-v3-gold-300);
+  margin: 0 0 2rem 0;
+  max-width: 32rem;
+}
+
+.hero-cp-chapter-body {
+  font-family: var(--font-body), Inter, system-ui, sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--tocks-v3-ivory-fog);
+  margin: 0 0 2.5rem 0;
+  max-width: 32rem;
+}
+
+.hero-cp-chapter-specs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  padding: 1.5rem 0;
+  margin: 0 0 2.5rem 0;
+  border-top: 1px solid rgba(138, 111, 58, 0.3);
+  border-bottom: 1px solid rgba(138, 111, 58, 0.3);
+}
+
+.hero-cp-chapter-spec {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.hero-cp-chapter-spec-label {
+  font-family: var(--font-display), Montserrat, system-ui, sans-serif;
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: var(--tocks-v3-tracking-her);
+  text-transform: uppercase;
+  color: var(--tocks-v3-gold-700);
+  margin: 0;
+}
+
+.hero-cp-chapter-spec-value {
+  font-family: var(--font-body), Inter, system-ui, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: var(--tocks-v3-ivory-barely);
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.hero-cp-chapter-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+@media (min-width: 640px) {
+  .hero-cp-chapter-footer {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+}
+
+.hero-cp-chapter-price {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.hero-cp-chapter-price-prefix {
+  font-family: var(--font-display), Montserrat, system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: var(--tocks-v3-tracking-her);
+  text-transform: uppercase;
+  color: var(--tocks-v3-ivory-fog);
+  margin: 0;
+}
+
+.hero-cp-chapter-price-value {
+  font-family: var(--font-display), Montserrat, system-ui, sans-serif;
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  font-variant-numeric: tabular-nums;
+  color: var(--tocks-v3-ivory-manuscript);
+  margin: 0;
+  line-height: 1;
+}
+
+/* CTA Ghost — used in chapters (B&O 1px subtle border, no fill, radius 2px) */
+.hero-cp-cta-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display), Montserrat, system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: var(--tocks-v3-tracking-her);
+  text-transform: uppercase;
+  color: var(--tocks-v3-ivory-manuscript);
+  background-color: transparent;
+  padding: 1.125rem 2.5rem;
+  border: 1px solid rgba(245, 240, 230, 0.25);
+  border-radius: 2px;
+  text-decoration: none;
+  transition:
+    border-color 400ms var(--tocks-v3-easing-luxe),
+    color 400ms var(--tocks-v3-easing-luxe),
+    background-color 400ms var(--tocks-v3-easing-luxe);
+}
+
+.hero-cp-cta-ghost:hover,
+.hero-cp-cta-ghost:focus-visible {
+  border-color: var(--tocks-v3-gold-500);
+  color: var(--tocks-v3-gold-500);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   MOVEMENT 4 — INTERLUDE MACRO (full-bleed detail close-up + pull-quote)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.hero-cp-interlude {
+  position: relative;
+  min-height: 70vh;
+  display: grid;
+  place-items: center;
+  padding: 6rem 1.5rem;
+  background-color: #000000; /* True noir ONLY here — sub-gate B exception */
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .hero-cp-interlude {
+    min-height: 80vh;
+    padding: 10rem 5rem;
+  }
+}
+
+.hero-cp-interlude-photo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-cp-interlude-img {
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.4) contrast(1.25) saturate(0.65);
+}
+
+.hero-cp-interlude-veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 90% 70% at 50% 50%,
+      transparent 0%,
+      rgba(0, 0, 0, 0.55) 100%
+    );
+}
+
+.hero-cp-interlude-quote {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  text-align: center;
+  max-width: 50rem;
+}
+
+.hero-cp-interlude-text {
+  font-family: var(--font-heading), 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--tocks-v3-ivory-barely);
+  margin: 0 0 2rem 0;
+}
+
+.hero-cp-interlude-attr {
+  font-family: var(--font-display), Montserrat, system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: var(--tocks-v3-tracking-her);
+  text-transform: uppercase;
+  color: var(--tocks-v3-gold-500);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   MOVEMENT 6 — STATS LINE (conversion-locked from v2, preserved)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.hero-cp-stats {
+  background-color: var(--tocks-v3-noir-ink);
+  padding: 4rem 1.5rem;
+  border-top: 1px solid rgba(138, 111, 58, 0.2);
+  border-bottom: 1px solid rgba(138, 111, 58, 0.2);
+}
+
+@media (min-width: 1024px) {
+  .hero-cp-stats {
+    padding: 5rem 5rem;
+  }
+}
+
+.hero-cp-stats-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  max-width: 1280px;
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .hero-cp-stats-list {
+    flex-direction: row;
+    justify-content: center;
+    gap: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-cp-stats-list {
+    gap: 5rem;
+  }
+}
+
+.hero-cp-stats-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.hero-cp-stats-value {
+  font-family: var(--font-heading), 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--tocks-v3-gold-500);
+  font-variant-numeric: tabular-nums;
+}
+
+.hero-cp-stats-unit {
+  font-family: var(--font-display), Montserrat, system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: var(--tocks-v3-tracking-her);
+  text-transform: uppercase;
+  color: var(--tocks-v3-ivory-fog);
+}
+
+.hero-cp-stats-divider {
+  display: none;
+  width: 1px;
+  height: 2.5rem;
+  background-color: rgba(138, 111, 58, 0.3);
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .hero-cp-stats-divider {
+    display: block;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   MOVEMENT 7 — FINALE (single primary CTA, radius 40px UNIQUE B&O lock)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.hero-cp-finale {
+  background-color: var(--tocks-v3-noir-ink);
+  padding: 8rem 1.5rem 10rem;
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .hero-cp-finale {
+    padding: 12rem 5rem 14rem;
+  }
+}
+
+.hero-cp-finale > .hero-cp-microlabel {
+  display: block;
+}
+
+.hero-cp-finale-h2 {
+  font-family: var(--font-heading), 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--tocks-v3-ivory-barely);
+  margin: 0 auto 2rem;
+  max-width: 48rem;
+}
+
+.hero-cp-finale-h2-italic {
+  font-style: italic;
+  color: var(--tocks-v3-gold-500);
+}
+
+.hero-cp-finale-lead {
+  font-family: var(--font-body), Inter, system-ui, sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--tocks-v3-ivory-fog);
+  max-width: 38rem;
+  margin: 0 auto 3rem;
+}
+
+/* THE finale CTA — radius 40px UNIQUE in entire hero (B&O DISCIPLINA LOCK) */
+.hero-cp-cta-finale {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display), Montserrat, system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--tocks-v3-noir-ink);
+  background-color: var(--tocks-v3-gold-500);
+  padding: 1.5rem 3.5rem;
+  border: 0;
+  border-radius: 40px; /* UNIQUE — B&O 40px exclusive primary CTA */
+  text-decoration: none;
+  transition:
+    background-color 400ms var(--tocks-v3-easing-luxe),
+    transform 400ms var(--tocks-v3-easing-luxe);
+}
+
+.hero-cp-cta-finale:hover,
+.hero-cp-cta-finale:focus-visible {
+  background-color: var(--tocks-v3-gold-600);
+}
+
+.hero-cp-finale-fineprint {
+  font-family: var(--font-display), Montserrat, system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: var(--tocks-v3-tracking-her);
+  text-transform: uppercase;
+  color: var(--tocks-v3-ivory-fog);
+  margin: 2rem 0 0 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   Animations & a11y
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@keyframes hero-cp-fade-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-cp-overture-copy,
+  .hero-cp-chapter-img,
+  .hero-cp-cta-ghost,
+  .hero-cp-cta-finale {
+    animation: none !important;
+    transition: none !important;
+  }
+}

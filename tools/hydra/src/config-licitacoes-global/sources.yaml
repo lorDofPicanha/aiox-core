@@ -1,0 +1,207 @@
+# HYDRA Sources — Comparative Global Procurement Research (UE + LATAM + emerging + OCDS)
+# Curado 2026-05-15 para projeto buscador-licitacoes — comparativo de arquiteturas
+# Authority: 1 (weak) → 5 (oficial/canônico)
+# Domain: licitacoes-global
+
+sources:
+
+  web:
+    # =====================================================================
+    # GRUPO 1 — STANDARDS / ACADÊMICO (autoridade máxima)
+    # =====================================================================
+
+    - name: "Open Contracting Data Standard — Docs"
+      url: "https://standards.open-contracting.org/latest/en/"
+      frequency: "weekly"
+      domains: ["licitacoes-global", "engenharia"]
+      authority: 5
+
+    - name: "Open Contracting Partnership — Home"
+      url: "https://www.open-contracting.org/"
+      frequency: "weekly"
+      domains: ["licitacoes-global", "negocios"]
+      authority: 5
+
+    - name: "Open Contracting Partnership — Worldwide impact"
+      url: "https://www.open-contracting.org/worldwide/"
+      frequency: "weekly"
+      domains: ["licitacoes-global"]
+      authority: 5
+
+    - name: "OpenTender.eu — Academic Project"
+      url: "https://opentender.eu/all/about"
+      frequency: "monthly"
+      domains: ["licitacoes-global", "engenharia"]
+      authority: 5
+
+    - name: "DIGIWHIST Research Project"
+      url: "https://digiwhist.eu/"
+      frequency: "monthly"
+      domains: ["licitacoes-global"]
+      authority: 5
+
+    - name: "OpenPEPPOL — pan-European e-procurement"
+      url: "https://peppol.org/"
+      frequency: "monthly"
+      domains: ["licitacoes-global", "engenharia"]
+      authority: 5
+
+    # =====================================================================
+    # GRUPO 2 — UE / TED / Players Europeus
+    # =====================================================================
+
+    - name: "TED — Tenders Electronic Daily"
+      url: "https://ted.europa.eu/en/"
+      frequency: "weekly"
+      domains: ["licitacoes-global"]
+      authority: 5
+
+    - name: "TED — Data Documentation"
+      url: "https://docs.ted.europa.eu/"
+      frequency: "weekly"
+      domains: ["licitacoes-global", "engenharia"]
+      authority: 5
+
+    - name: "EU Single Market — Public Procurement"
+      url: "https://single-market-economy.ec.europa.eu/single-market/public-procurement_en"
+      frequency: "monthly"
+      domains: ["licitacoes-global", "legal"]
+      authority: 5
+
+    - name: "ProZorro — Ukraine procurement platform"
+      url: "https://prozorro.gov.ua/en"
+      frequency: "weekly"
+      domains: ["licitacoes-global", "engenharia"]
+      authority: 5
+
+    - name: "Mercell — Nordic procurement SaaS"
+      url: "https://www.mercell.com/"
+      frequency: "weekly"
+      domains: ["licitacoes-global", "negocios"]
+      authority: 4
+
+    - name: "Wikipedia — Public procurement in EU"
+      url: "https://en.wikipedia.org/wiki/Government_procurement_in_the_European_Union"
+      frequency: "monthly"
+      domains: ["licitacoes-global", "legal"]
+      authority: 3
+
+    - name: "Wikipedia — ProZorro"
+      url: "https://en.wikipedia.org/wiki/Prozorro"
+      frequency: "monthly"
+      domains: ["licitacoes-global", "engenharia"]
+      authority: 3
+
+    # =====================================================================
+    # GRUPO 3 — LATAM (Chile, Colombia, México, Argentina, Perú, Paraguay)
+    # =====================================================================
+
+    - name: "Mercado Público Chile"
+      url: "https://www.mercadopublico.cl/Portal/Modules/Site/Acerca/QueEsMercadoPublico.aspx"
+      frequency: "weekly"
+      domains: ["licitacoes-global"]
+      authority: 5
+
+    - name: "ChileCompra — sobre"
+      url: "https://www.chilecompra.cl/que-es-chilecompra/"
+      frequency: "weekly"
+      domains: ["licitacoes-global"]
+      authority: 5
+
+    - name: "Colombia Compra Eficiente — SECOP"
+      url: "https://www.colombiacompra.gov.co/secop/secop-ii"
+      frequency: "weekly"
+      domains: ["licitacoes-global"]
+      authority: 5
+
+    - name: "CompraNet México"
+      url: "https://compranetinfo.hacienda.gob.mx/"
+      frequency: "weekly"
+      domains: ["licitacoes-global"]
+      authority: 5
+
+    - name: "Comprar Argentina — ONC"
+      url: "https://comprar.gob.ar/"
+      frequency: "weekly"
+      domains: ["licitacoes-global"]
+      authority: 5
+
+    - name: "OSCE Perú"
+      url: "https://www.gob.pe/osce"
+      frequency: "monthly"
+      domains: ["licitacoes-global"]
+      authority: 5
+
+    - name: "DNCP Paraguay"
+      url: "https://www.contrataciones.gov.py/"
+      frequency: "monthly"
+      domains: ["licitacoes-global"]
+      authority: 4
+
+    - name: "Open Contracting LATAM impact"
+      url: "https://www.open-contracting.org/worldwide/latin-america-and-the-caribbean/"
+      frequency: "monthly"
+      domains: ["licitacoes-global"]
+      authority: 5
+
+    # =====================================================================
+    # GRUPO 4 — EMERGING (India, África, Indonésia, ONU)
+    # =====================================================================
+
+    - name: "GeM India — Government e-Marketplace"
+      url: "https://gem.gov.in/"
+      frequency: "weekly"
+      domains: ["licitacoes-global"]
+      authority: 5
+
+    - name: "CPPP India — Central Public Procurement"
+      url: "https://eprocure.gov.in/cppp/"
+      frequency: "monthly"
+      domains: ["licitacoes-global"]
+      authority: 5
+
+    - name: "South Africa eTenders"
+      url: "https://www.etenders.gov.za/"
+      frequency: "monthly"
+      domains: ["licitacoes-global"]
+      authority: 4
+
+    - name: "LKPP Indonesia"
+      url: "https://www.lkpp.go.id/"
+      frequency: "monthly"
+      domains: ["licitacoes-global"]
+      authority: 4
+
+    - name: "UN Global Marketplace"
+      url: "https://www.ungm.org/"
+      frequency: "monthly"
+      domains: ["licitacoes-global"]
+      authority: 5
+
+    - name: "World Bank — Procurement"
+      url: "https://www.worldbank.org/en/projects-operations/products-and-services/procurement-projects-programs"
+      frequency: "monthly"
+      domains: ["licitacoes-global"]
+      authority: 5
+
+    # =====================================================================
+    # GRUPO 5 — ARQUITETURA / TECH (papers, blog posts, engineering)
+    # =====================================================================
+
+    - name: "Open Contracting — Technology"
+      url: "https://www.open-contracting.org/resources/?_resource_type=tools-and-technology"
+      frequency: "weekly"
+      domains: ["licitacoes-global", "engenharia"]
+      authority: 4
+
+    - name: "OCDS GitHub repository"
+      url: "https://github.com/open-contracting/standard"
+      frequency: "weekly"
+      domains: ["licitacoes-global", "engenharia"]
+      authority: 5
+
+    - name: "Open Contracting case studies"
+      url: "https://www.open-contracting.org/resources/?_resource_type=case-studies-publications"
+      frequency: "monthly"
+      domains: ["licitacoes-global"]
+      authority: 4

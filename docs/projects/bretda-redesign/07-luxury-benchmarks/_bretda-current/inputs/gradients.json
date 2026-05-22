@@ -1,0 +1,39 @@
+{
+  "primary": "linear-gradient(180deg, transparent 60%, rgba(10,10,10,0.7) 100%)",
+  "secondary": "linear-gradient(var(--tw-gradient-stops))",
+  "total_unique": 8,
+  "top": [
+    {
+      "value": "linear-gradient(180deg, transparent 60%, rgba(10,10,10,0.7) 100%)",
+      "count": 3
+    },
+    {
+      "value": "linear-gradient(var(--tw-gradient-stops))",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(90deg, transparent, var(--color-gray-light), transparent)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(#0000 55%,#0a0a0a73 100%)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(#0a0a0a59 0%,#0a0a0a00 35%,#0a0a0a8c 100%)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(95deg,#0a0a0a00 50%,#0a0a0a73 100%)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(180deg, rgba(10,10,10,0.78) 0%, rgba(10,10,10,0.92) 30%, rgba(10,10,10,0.92) 65%, rgba(10,10,10,0.55) 80%, rgba(10,10,10,0.88) 100%)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(180deg, transparent 60%, rgba(10,10,10,0.55) 100%)",
+      "count": 1
+    }
+  ]
+}

@@ -46,6 +46,8 @@ heuristic_filter:
 
   # Story 3.2 — Per-source-type overrides
   source_overrides:
+    rss:
+      max_age_days: 365          # Educational/research content is evergreen (added 14/Mai/2026 for traffic-masters research)
     youtube:
       min_word_count: 100        # Transcripts should be substantial
       max_age_days: 365          # Video content stays relevant longer

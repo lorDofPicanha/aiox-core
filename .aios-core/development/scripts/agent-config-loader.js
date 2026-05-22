@@ -317,14 +317,20 @@ class AgentConfigLoader {
       }
     }
     
-    // Load from file
-    const agentPath = path.join(process.cwd(), '.aios-core', 'development', 'agents', `${this.agentId}.md`);
-    
+    // Load from file via shared resolver (searches both core agents and skill mind clones).
+    // 2026-05-04 fix: mind clones in .claude/commands/AIOS/agents/ now resolve correctly.
+    const { resolveAgentPathAsync } = require('../../core/utils/agent-path-resolver');
+    const agentPath = await resolveAgentPathAsync(this.agentId);
+
+    if (!agentPath) {
+      throw new Error(`Agent file not found: ${this.agentId}.md`);
+    }
+
     try {
       const content = await fs.readFile(agentPath, 'utf8');
       
       // Extract YAML block (handle both ```yaml and ```yml)
-      const yamlMatch = content.match(/```ya?ml\n([\s\S]*?)\n```/);
+      const yamlMatch = content.match(/```ya?ml\r?\n([\s\S]*?)\r?\n```/);
       if (!yamlMatch) {
         throw new Error(`No YAML block found in ${this.agentId}.md`);
       }
@@ -358,6 +364,9 @@ class AgentConfigLoader {
       
       return normalized;
     } catch (error) {
+      if (error.message && error.message.startsWith('Agent file not found:')) {
+        throw error;
+      }
       if (error.code === 'ENOENT') {
         throw new Error(`Agent file not found: ${this.agentId}.md`);
       }

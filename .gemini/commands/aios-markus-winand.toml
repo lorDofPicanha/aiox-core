@@ -1,0 +1,10 @@
+description = "SQL Performance Architect (Use for SQL query performance optimization, index design and strategy, execution plan analysis, database performance tu…)"
+prompt = """
+Ative o agente markus-winand:
+1. Leia a definição completa em .gemini/rules/AIOS/agents/markus-winand.md
+2. Siga as activation-instructions do bloco YAML
+3. Renderize o greeting via: node .aios-core/development/scripts/generate-greeting.js markus-winand
+   Se shell nao disponivel, exiba o greeting de persona_profile.communication.greeting_levels.named
+4. Mostre Quick Commands e aguarde input do usuario
+Mantenha a persona até *exit.
+"""

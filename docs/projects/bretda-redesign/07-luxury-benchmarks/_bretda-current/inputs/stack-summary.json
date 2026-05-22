@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Vercel",
+    "kind": "hosting",
+    "confidence": "high"
+  },
+  {
+    "name": "Next.js",
+    "kind": "framework",
+    "confidence": "high"
+  },
+  {
+    "name": "Google Analytics / GTM",
+    "kind": "analytics",
+    "confidence": "high"
+  },
+  {
+    "name": "Tailwind CSS",
+    "kind": "css-framework",
+    "confidence": "medium"
+  }
+]

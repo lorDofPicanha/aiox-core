@@ -21,7 +21,7 @@ const fs = require('fs-extra');
 const path = require('path');
 const yaml = require('js-yaml');
 
-const { parseAllAgents } = require('./agent-parser');
+const { parseAgentDirs } = require('./agent-parser');
 const { generateAllRedirects, writeRedirects } = require('./redirect-generator');
 const { validateAllIdes, formatValidationReport } = require('./validator');
 const { syncGeminiCommands, buildGeminiCommandFiles } = require('./gemini-commands');
@@ -55,6 +55,10 @@ function loadConfig(projectRoot) {
   const defaultConfig = {
     enabled: true,
     source: '.aios-core/development/agents',
+    sources: [
+      '.aios-core/development/agents',
+      '.claude/commands/AIOS/agents',
+    ],
     targets: {
       'claude-code': {
         enabled: true,
@@ -116,6 +120,14 @@ function loadConfig(projectRoot) {
   return defaultConfig;
 }
 
+function getSourceDirs(config, projectRoot) {
+  const sources = Array.isArray(config.sources) && config.sources.length > 0
+    ? config.sources
+    : [config.source];
+
+  return sources.map((source) => path.join(projectRoot, source));
+}
+
 /**
  * Get transformer for IDE format
  * @param {string} format - IDE format name
@@ -162,6 +174,10 @@ function syncIde(agents, ideConfig, ideName, projectRoot, options) {
 
   // Transform and write each agent
   for (const agent of agents) {
+    if (agent.error && options.redirectIds && options.redirectIds.has(agent.id)) {
+      continue;
+    }
+
     // Skip agents with fatal errors (no YAML block found or failed parse with no fallback)
     if (agent.error && agent.error === 'Failed to parse YAML') {
       result.errors.push({
@@ -225,12 +241,12 @@ async function commandSync(options) {
   }
 
   // Parse all agents
-  const agentsDir = path.join(projectRoot, config.source);
+  const agentsDirs = getSourceDirs(config, projectRoot);
   if (!options.quiet) {
-    console.log(`${colors.dim}Source: ${agentsDir}${colors.reset}`);
+    console.log(`${colors.dim}Sources: ${agentsDirs.join(', ')}${colors.reset}`);
   }
 
-  const agents = parseAllAgents(agentsDir);
+  const agents = parseAgentDirs(agentsDirs);
   if (!options.quiet) {
     console.log(`${colors.dim}Found ${agents.length} agents${colors.reset}`);
     console.log('');
@@ -261,7 +277,10 @@ async function commandSync(options) {
       console.log(`${colors.cyan}📁 Syncing ${ideName}...${colors.reset}`);
     }
 
-    const result = syncIde(agents, ideConfig, ideName, projectRoot, options);
+    const result = syncIde(agents, ideConfig, ideName, projectRoot, {
+      ...options,
+      redirectIds: new Set(Object.keys(config.redirects || {})),
+    });
 
     // Gemini CLI: also sync slash launcher command files (.gemini/commands/*.toml)
     if (ideName === 'gemini') {
@@ -346,8 +365,7 @@ async function commandValidate(options) {
   console.log('');
 
   // Parse all agents
-  const agentsDir = path.join(projectRoot, config.source);
-  const agents = parseAllAgents(agentsDir);
+  const agents = parseAgentDirs(getSourceDirs(config, projectRoot));
 
   // Build expected files for each IDE
   const ideConfigs = {};
@@ -531,6 +549,7 @@ if (require.main === module) {
 
 module.exports = {
   loadConfig,
+  getSourceDirs,
   getTransformer,
   syncIde,
   commandSync,

@@ -1,0 +1,145 @@
+deck:
+  title: "Amamentar sem mito"
+  subtitle: "O que a evidência diz — em 11 slides"
+  audience: "Mães · gestantes · profissionais não-médicos BR"
+  format: "16:9, 1920×1080, HTML standalone, PDF via Chrome headless"
+  total_slides: 11
+  roteiro_pattern: "Teaching+Sales hybrid — reframe → mechanism → proof × 2 → contrast wall → decision → CTA → manifesto"
+
+design_direction:
+  visual_thesis: "Editorial saúde — autoridade calma, whitespace estrutural, big-number drama, zero card walls"
+  audience_feel: "Folheto de clínica suíça moderno, não infográfico SUS"
+  motifs:
+    - "Big numbers Fraunces 200-300pt"
+    - "Headlines com italic editorial + grifo mint discreto"
+    - "Whitespace ≥40%"
+    - "Cores de acento usadas com parcimônia (≤1 cor de acento dominante por slide)"
+  layout_rules:
+    - "Cada slide tem ESTRUTURA DIFERENTE (structure ID único)"
+    - "Hud-rail simplificado: 1 linha topo só com slide ID"
+    - "Sem cards-grid genéricos (no v1 tinha 5 — no v2 permitido só 1 intencional)"
+  density_limit: 35
+  palette_use:
+    - "Forest Green: títulos + tipografia primária"
+    - "Mint Glaze: highlight discreto em UMA palavra-chave por slide"
+    - "Alert Rust: APENAS slides red-flag e contra-mitos"
+    - "Cream Canvas: BG dominante (sempre)"
+
+slide_function_map:
+  - n: 1
+    function: HOOK
+    structure_id: H05
+    structure_name: "One number opener"
+    action_title: "70% dos desmames precoces no Brasil acontecem por crença, não por doença."
+    visible_words_target: 22
+    visual: "Massive 70% Fraunces 320pt, subtítulo italic embaixo"
+  - n: 2
+    function: REFRAME
+    structure_id: R12
+    structure_name: "Assumption teardown"
+    action_title: "\"Leite fraco\" não existe — e essa frase é responsável por mais desmames que qualquer doença."
+    visible_words_target: 34
+    visual: "Headline gigante atravessa o slide; um único parágrafo de evidência ABAIXO em type menor"
+  - n: 3
+    function: TENSION
+    structure_id: H05_variant
+    structure_name: "One number opener (counterpoint version)"
+    action_title: "3,5 meses · a metade do recomendado pela OMS."
+    visible_words_target: 18
+    visual: "3,5 enormous numeral à esquerda + 6 menor à direita riscado em italic; nada mais"
+  - n: 4
+    function: MECHANISM
+    structure_id: M01
+    structure_name: "System mechanism"
+    action_title: "Uma única correção resolve 80% das dores na amamentação."
+    visible_words_target: 32
+    visual: "Layout central: 80% em corpo grande + 3 mini-steps em linha horizontal embaixo (boca aberta · lábios evertidos · queixo na mama)"
+  - n: 5
+    function: PROOF_ANCHOR
+    structure_id: P02_pullquote
+    structure_name: "Case card as editorial pull-quote"
+    action_title: "Com mastite, NÃO pare de amamentar — interromper piora o quadro."
+    visible_words_target: 33
+    visual: "Quote enorme tipográfico tipo NYT op-ed, com atribuição (ABM Protocol #36/2022) embaixo; nenhum bullet, nenhum card"
+  - n: 6
+    function: PROOF_REVEAL
+    structure_id: P05_artifact_reveal
+    structure_name: "Reveal of unknown condition (artifact = the name)"
+    action_title: "14% das mães sentem isso. Quase nenhuma sabe que tem nome."
+    visible_words_target: 35
+    visual: "Lado esquerdo: '14%' em Fraunces 240pt. Lado direito: 'D-MER' em mono caps 64pt como artifact + 3 linhas de manuscrito clínico ao lado"
+  - n: 7
+    function: CONTRAST_GALLERY
+    structure_id: D16_editorial_list
+    structure_name: "Anti-pattern gallery — editorial numbered list (NÃO cards)"
+    action_title: "Seis frases que custam mais leite que qualquer doença."
+    visible_words_target: 44
+    visual: "Lista numerada 01-06 tipográfica (não cards), cada item = mito em italic seguido de UMA palavra-resposta em Forest Green. Cabe num slide como editorial."
+    note: "Único slide do deck que excede 35 palavras — intencional (gallery format)"
+  - n: 8
+    function: DECISION
+    structure_id: D01_symptom_vs_root
+    structure_name: "Symptom vs root — split with alert"
+    action_title: "Quando é \"amanhã\" e quando é \"agora\"."
+    visible_words_target: 30
+    visual: "Split-screen: lado claro com 3 sinais 'agora' marcados ⚠ em rust + lado mint com 1 frase 'tudo o resto: consultora em 48h'"
+  - n: 9
+    function: SUPPORT
+    structure_id: M02_principle_stack
+    structure_name: "Principle stack — 4 lembretes editoriais"
+    action_title: "Quatro frases para lembrar quando duvidar do próprio corpo."
+    visible_words_target: 32
+    visual: "Quatro frases curtas em Fraunces italic médio, empilhadas verticalmente com bullets minúsculos · zero cards · whitespace generoso"
+  - n: 10
+    function: CTA
+    structure_id: CTA01_one_action
+    structure_name: "CTA panel — one action, hero treatment"
+    action_title: "Ligue 136. Não amamente sozinha."
+    visible_words_target: 26
+    visual: "'136' em Fraunces 280pt centralizado · subtítulo Disque Saúde 24/7 abaixo · linha única embaixo: '222 bancos de leite · ubsfree' como metadata"
+  - n: 11
+    function: MANIFESTO
+    structure_id: M99_closing_quote
+    structure_name: "Single quote slide"
+    action_title: "Amamentar é um aprendizado. A maioria das dores tem solução simples — quando se procura ajuda cedo."
+    visible_words_target: 22
+    visual: "Quote único centralizado, fundo Forest Green, texto Cream — único slide com BG inversão"
+
+evidence_ledger:
+  - claim: "70% dos desmames precoces por mitos"
+    source: "SBP 2024 + estudos PNS"
+    confidence: "média (estimativa derivada de literatura)"
+    slide: 1
+  - claim: "3,5 meses duração mediana aleitamento exclusivo BR"
+    source: "PNS 2019 IBGE"
+    confidence: "alta"
+    slide: 3
+  - claim: "Pega correta resolve ~80% das dores"
+    source: "ABM Protocol #36/2022"
+    confidence: "alta"
+    slide: 4
+  - claim: "Mastite — manter amamentação"
+    source: "ABM Clinical Protocol #36/2022 (Mastitis Spectrum)"
+    confidence: "alta"
+    slide: 5
+  - claim: "D-MER ~14% prevalence"
+    source: "ABM Protocol #20 + estudos prevalência 2024"
+    confidence: "média"
+    slide: 6
+  - claim: "Red flags clínicos"
+    source: "ABM #36 + SBP 2024"
+    confidence: "alta"
+    slide: 8
+  - claim: "Disque 136 + rBLH 222 bancos"
+    source: "Ministério da Saúde + rBLH/Fiocruz"
+    confidence: "alta"
+    slide: 10
+
+qa_score_target:
+  narrative: 92  # belief shift forte, story arc compacto, action titles fazem claim
+  editorial_design: 90  # 11 estruturas únicas, whitespace estrutural, zero card-wall
+  proof: 88  # claims com fonte explícita; assumption labels onde necessário
+  didactic_clarity: 90  # progressão simples, jargão controlado, vertical test passa
+  cta: 88  # ação única explícita (136), valor claro, sem fricção
+  technical: 92  # 16:9 OK, HTML+PDF render-tested, contraste WCAG
+  weighted: 90.5  # alvo ≥85 obrigatório, ≥90 desejável

@@ -1,0 +1,10 @@
+description = "VP of SEO & Audience Intelligence (Use for audience research and intelligence, SEO audit and strategy, zero-click marketing strategy, content quality asse…)"
+prompt = """
+Ative o agente rand-fishkin:
+1. Leia a definição completa em .gemini/rules/AIOS/agents/rand-fishkin.md
+2. Siga as activation-instructions do bloco YAML
+3. Renderize o greeting via: node .aios-core/development/scripts/generate-greeting.js rand-fishkin
+   Se shell nao disponivel, exiba o greeting de persona_profile.communication.greeting_levels.named
+4. Mostre Quick Commands e aguarde input do usuario
+Mantenha a persona até *exit.
+"""

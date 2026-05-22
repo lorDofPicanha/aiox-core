@@ -1,0 +1,774 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Deck — Amamentação sem mito</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #fffefc;
+  --brand: #0f3e17;
+  --brand-soft: #1f5b2a;
+  --mint: #b1dbb8;
+  --slate: #b6ced5;
+  --keylime: #e1f4df;
+  --mint-kiss: #cfe7d3;
+  --border: #e5e7eb;
+  --ink: #222222;
+  --charcoal: #333333;
+  --muted: #6e6e66;
+  --alert: #a23939;
+  --alert-soft: #f0d8d8;
+  --font-d: 'Fraunces', Georgia, serif;
+  --font-b: 'Inter', -apple-system, sans-serif;
+  --font-m: 'IBM Plex Mono', ui-monospace, monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: #1a1a1a; color: var(--ink);
+  font-family: var(--font-b); font-size: 16px;
+}
+body { padding: 28px 0; }
+.deck { display: flex; flex-direction: column; gap: 24px; max-width: 1920px; margin: 0 auto; padding: 0 28px; }
+
+.slide {
+  position: relative;
+  background: var(--bg);
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  padding: 52px 64px;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 18px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  border-radius: 4px;
+}
+
+/* HUD rails */
+.hud-top, .hud-bot {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-m); font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--muted);
+}
+.hud-top { border-bottom: 1px solid var(--border); padding-bottom: 14px; }
+.hud-bot { border-top: 1px solid var(--border); padding-top: 12px; }
+.hud-top .lime, .hud-bot .lime { color: var(--brand); font-weight: 600; }
+.hud-meta { display: flex; gap: 22px; }
+
+/* Display type */
+h1.title {
+  font-family: var(--font-d); font-weight: 300;
+  font-size: 84px; line-height: 1.02; letter-spacing: -0.025em;
+  color: var(--brand); max-width: 18ch;
+}
+h1.title em {
+  font-style: italic; font-weight: 400;
+  background: linear-gradient(transparent 70%, var(--mint) 70%);
+  padding: 0 6px;
+}
+h1.title.xl { font-size: 112px; max-width: 12ch; line-height: 0.95; }
+h1.title.s  { font-size: 56px; max-width: 24ch; }
+h2.subhead {
+  font-family: var(--font-d); font-weight: 300; font-style: italic;
+  font-size: 26px; color: var(--charcoal); line-height: 1.35; max-width: 56ch;
+}
+
+.label-tag {
+  display: inline-flex; gap: 10px; align-items: center;
+  font-family: var(--font-m); font-size: 13px; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--brand);
+}
+.label-tag .dot { width: 8px; height: 8px; background: var(--brand); border-radius: 50%; }
+
+.slide-body { display: flex; flex-direction: column; gap: 22px; justify-content: center; min-width: 0; }
+
+/* COVER ─── slide 1 */
+.cover-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background-image:
+    linear-gradient(rgba(15,62,23,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15,62,23,0.05) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+.cover-block { position: relative; z-index: 1; }
+
+.cover-meta {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px;
+  border-top: 1px solid var(--border); padding-top: 22px; margin-top: 32px;
+}
+.cover-meta .item .k {
+  font-family: var(--font-m); font-size: 11px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--muted);
+}
+.cover-meta .item .v {
+  font-family: var(--font-d); font-weight: 400; font-size: 18px;
+  color: var(--brand); margin-top: 6px; line-height: 1.3;
+}
+
+/* Reframe — big number vs counterpoint */
+.reframe-grid {
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; height: 100%;
+}
+.bignum {
+  font-family: var(--font-d); font-weight: 300;
+  font-size: 220px; line-height: 0.9; letter-spacing: -0.04em;
+  color: var(--brand);
+}
+.bignum .unit {
+  font-family: var(--font-d); font-weight: 400; font-style: italic;
+  font-size: 32px; color: var(--charcoal); display: block; margin-top: 14px; line-height: 1.3;
+}
+
+.counterpoint {
+  background: var(--keylime); border-radius: 14px; padding: 32px 36px;
+}
+.counterpoint .lbl {
+  font-family: var(--font-m); font-size: 11px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--brand); font-weight: 700;
+}
+.counterpoint .text {
+  font-family: var(--font-d); font-weight: 300; font-style: italic;
+  font-size: 26px; line-height: 1.35; color: var(--ink); margin-top: 14px;
+}
+.counterpoint .text strong { color: var(--brand); font-weight: 600; font-style: normal; font-family: var(--font-b); }
+
+/* Stat grid — slide 3 */
+.stat-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); border-radius: 14px; overflow: hidden;
+  margin-top: 24px;
+}
+.stat-cell { background: var(--bg); padding: 36px 32px; display: flex; flex-direction: column; gap: 12px; }
+.stat-cell .k { font-family: var(--font-m); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+.stat-cell .v { font-family: var(--font-d); font-weight: 300; font-size: 64px; line-height: 0.95; color: var(--brand); letter-spacing: -0.02em; }
+.stat-cell .v.alert { color: var(--alert); }
+.stat-cell .u { font-family: var(--font-b); font-size: 14px; color: var(--charcoal); line-height: 1.4; }
+
+/* Mechanism — slide 4 */
+.mechanism {
+  display: grid; grid-template-columns: 1fr;
+  gap: 28px; justify-items: center; padding: 20px 0;
+}
+.mech-card {
+  background: var(--mint); border-radius: 18px;
+  padding: 48px 56px; max-width: 920px; text-align: center;
+}
+.mech-card .pct {
+  font-family: var(--font-d); font-weight: 300; font-size: 140px;
+  color: var(--brand); line-height: 1;
+}
+.mech-card .pct-label {
+  font-family: var(--font-d); font-style: italic; font-weight: 400;
+  font-size: 28px; color: var(--brand-soft); margin-top: 14px;
+}
+.mech-card .why {
+  font-family: var(--font-b); font-size: 18px; color: var(--ink);
+  margin-top: 22px; line-height: 1.5; max-width: 56ch; margin-left: auto; margin-right: auto;
+}
+
+/* Proof — complications slides 5-8 */
+.proof-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start;
+  flex: 1;
+}
+.proof-block {
+  background: var(--keylime); border-radius: 14px; padding: 28px 32px;
+  height: 100%;
+}
+.proof-block.symptoms { background: var(--mint); }
+.proof-block.treatment { background: var(--mint-kiss); }
+.proof-block.alert { background: var(--slate); }
+.proof-block.takeaway { background: var(--bg); border: 1.5px solid var(--brand); }
+.proof-block .lbl {
+  font-family: var(--font-m); font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--brand); font-weight: 700;
+  display: block; margin-bottom: 14px;
+}
+.proof-block ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.proof-block li {
+  font-size: 15px; color: var(--ink); padding-left: 18px; position: relative; line-height: 1.45;
+}
+.proof-block li::before { content: "→"; position: absolute; left: 0; color: var(--brand); font-weight: 700; }
+.proof-block.alert li::before { content: "⚠"; color: var(--alert); }
+.proof-block .takeaway-text {
+  font-family: var(--font-d); font-weight: 400; font-style: italic;
+  font-size: 22px; color: var(--brand); line-height: 1.3;
+}
+
+.proof-head {
+  display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: baseline;
+  margin-bottom: 8px;
+}
+.proof-head .num {
+  font-family: var(--font-m); font-size: 14px; font-weight: 700;
+  color: var(--brand); background: var(--keylime); padding: 6px 14px; border-radius: 6px;
+  letter-spacing: 0.12em;
+}
+.proof-head h1 { font-family: var(--font-d); font-weight: 300; font-size: 56px; color: var(--brand); letter-spacing: -0.02em; line-height: 1.05; max-width: 26ch; }
+
+/* D-MER special slide */
+.dmer-hero {
+  display: grid; grid-template-columns: 1fr 1.3fr; gap: 48px; align-items: center; height: 100%;
+}
+.dmer-pct {
+  font-family: var(--font-d); font-weight: 300; font-size: 180px;
+  color: var(--brand); line-height: 0.9; letter-spacing: -0.04em;
+}
+.dmer-pct .sub {
+  font-family: var(--font-d); font-weight: 400; font-style: italic;
+  font-size: 24px; color: var(--charcoal); display: block; margin-top: 14px; line-height: 1.3;
+}
+.dmer-info { display: flex; flex-direction: column; gap: 18px; }
+.dmer-info .what {
+  font-family: var(--font-d); font-weight: 400; font-style: italic;
+  font-size: 22px; line-height: 1.4; color: var(--ink);
+}
+.dmer-info .relief {
+  background: var(--mint); border-radius: 14px; padding: 22px 26px;
+}
+.dmer-info .relief .lbl {
+  font-family: var(--font-m); font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--brand); font-weight: 700;
+}
+.dmer-info .relief p { font-size: 16px; color: var(--ink); margin-top: 8px; line-height: 1.5; }
+
+/* Mitos contrast — slides 9-10 */
+.mitos-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch;
+  flex: 1;
+}
+.mito-card {
+  display: flex; flex-direction: column;
+  border-radius: 14px; overflow: hidden;
+  border: 1px solid var(--border);
+}
+.mito-card .mito-claim {
+  background: var(--alert-soft); padding: 24px 26px; flex: 1;
+}
+.mito-card .mito-claim .lbl {
+  font-family: var(--font-m); font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--alert); font-weight: 700;
+}
+.mito-card .mito-claim p {
+  font-family: var(--font-d); font-style: italic; font-weight: 300;
+  font-size: 18px; line-height: 1.3; margin-top: 10px; color: var(--charcoal);
+}
+.mito-card .mito-truth {
+  background: var(--keylime); padding: 24px 26px;
+}
+.mito-card .mito-truth .lbl {
+  font-family: var(--font-m); font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--brand); font-weight: 700;
+}
+.mito-card .mito-truth p {
+  font-size: 14px; color: var(--ink); margin-top: 8px; line-height: 1.45;
+}
+.mito-card .mito-truth p strong { color: var(--brand); }
+
+/* Red flags slide 11 */
+.redflags-hero {
+  display: grid; grid-template-columns: 1fr 1.3fr; gap: 56px; align-items: center; height: 100%;
+}
+.redflags-icon {
+  font-family: var(--font-d); font-weight: 300; font-size: 200px;
+  color: var(--alert); line-height: 1; text-align: center;
+}
+.redflags-list {
+  background: var(--alert-soft); border-left: 5px solid var(--alert);
+  border-radius: 14px; padding: 32px 36px;
+}
+.redflags-list .lbl {
+  font-family: var(--font-m); font-size: 12px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--alert); font-weight: 700;
+}
+.redflags-list h3 {
+  font-family: var(--font-d); font-weight: 500; font-size: 32px;
+  color: var(--alert); margin-top: 8px; margin-bottom: 18px;
+}
+.redflags-list ul { list-style: none; padding: 0; }
+.redflags-list li {
+  font-size: 16px; color: var(--ink); padding-left: 20px; position: relative;
+  margin-bottom: 8px; line-height: 1.45;
+}
+.redflags-list li::before { content: "⚠"; position: absolute; left: 0; color: var(--alert); }
+
+/* CTA slide 12 */
+.cta-hero { display: flex; flex-direction: column; gap: 32px; justify-content: center; height: 100%; }
+.cta-big {
+  font-family: var(--font-d); font-weight: 300; font-size: 100px;
+  line-height: 0.98; letter-spacing: -0.03em; color: var(--brand); max-width: 16ch;
+}
+.cta-big em { font-style: italic; background: linear-gradient(transparent 70%, var(--mint) 70%); padding: 0 8px; }
+.cta-channels {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.cta-channel {
+  background: var(--mint); border-radius: 14px; padding: 28px 30px;
+}
+.cta-channel .num {
+  font-family: var(--font-d); font-weight: 400; font-size: 48px;
+  color: var(--brand); line-height: 1;
+}
+.cta-channel .name {
+  font-family: var(--font-m); font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--brand-soft); font-weight: 700;
+  margin-top: 14px;
+}
+.cta-channel .desc {
+  font-size: 14px; color: var(--ink); margin-top: 8px; line-height: 1.45;
+}
+
+/* MANIFESTO / quote slide */
+.quote-hero {
+  display: flex; flex-direction: column; justify-content: center; gap: 28px; height: 100%; padding: 40px 0;
+}
+.quote-text {
+  font-family: var(--font-d); font-weight: 400; font-style: italic;
+  font-size: 64px; line-height: 1.18; color: var(--brand); max-width: 22ch; letter-spacing: -0.02em;
+}
+.quote-text .qmark { color: var(--mint); font-size: 110px; line-height: 0; position: relative; top: 20px; }
+.quote-text em { background: linear-gradient(transparent 70%, var(--mint) 70%); font-style: italic; padding: 0 6px; }
+
+/* Slide number nav */
+.slide-num {
+  position: absolute; bottom: 28px; right: 28px;
+  font-family: var(--font-m); font-size: 11px; letter-spacing: 0.18em;
+  color: var(--muted); text-transform: uppercase; z-index: 5;
+}
+
+/* Print */
+@media print {
+  body { padding: 0; background: white; }
+  .deck { gap: 0; padding: 0; }
+  .slide { box-shadow: none; border-radius: 0; page-break-after: always; aspect-ratio: 16/9; }
+  @page { size: 1920px 1080px landscape; margin: 0; }
+}
+
+::selection { background: var(--mint); color: var(--brand); }
+</style>
+</head>
+<body>
+
+<div class="deck">
+
+<!-- ════════ SLIDE 01 — HOOK / COVER ════════ -->
+<section class="slide" id="s1">
+  <div class="cover-bg"></div>
+  <header class="hud-top cover-block">
+    <span>[ <span class="lime">EASE HEALTH</span> ] · GUIA CLÍNICO</span>
+    <span>AMAMENTAÇÃO · COMPLICAÇÕES + MITOS</span>
+  </header>
+  <div class="slide-body cover-block" style="justify-content: center;">
+    <span class="label-tag"><span class="dot"></span>SAÚDE MATERNO-INFANTIL · 2026</span>
+    <h1 class="title xl">Amamentar<br>sem <em>medo</em>,<br>sem <em>mito</em>.</h1>
+    <h2 class="subhead">O que a evidência atual diz sobre complicações, sinais de alerta e as crenças mais perigosas no Brasil.</h2>
+    <div class="cover-meta">
+      <div class="item"><span class="k">Conteúdo</span><span class="v">12 complicações<br>18 mitos · evidência atual</span></div>
+      <div class="item"><span class="k">Baseado em</span><span class="v">SBP 2024 · ABM #36/2022<br>OMS · Ministério da Saúde</span></div>
+      <div class="item"><span class="k">Audiência</span><span class="v">Mães · gestantes<br>profissionais não-médicos</span></div>
+    </div>
+  </div>
+  <footer class="hud-bot cover-block">
+    <span>SLIDE 01 / 12 · COVER</span>
+    <span class="hud-meta"><span>calm clinical canvas</span></span>
+  </footer>
+</section>
+
+<!-- ════════ SLIDE 02 — REFRAME ════════ -->
+<section class="slide" id="s2">
+  <header class="hud-top">
+    <span>[ <span class="lime">02</span> ] · REFRAME</span>
+    <span>O QUE CUSTA MAIS LEITE QUE DOENÇA</span>
+  </header>
+  <div class="slide-body">
+    <span class="label-tag"><span class="dot"></span>REENQUADRAMENTO</span>
+    <div class="reframe-grid">
+      <div>
+        <div class="bignum">
+          ~70<span style="color:var(--brand);font-size:140px;">%</span>
+          <span class="unit">dos desmames precoces no Brasil acontecem por <strong style="color:var(--brand)">mitos e dificuldades técnicas</strong> — não por causa do leite materno.</span>
+        </div>
+      </div>
+      <div class="counterpoint">
+        <span class="lbl">A MAIORIA TEM SOLUÇÃO SIMPLES</span>
+        <p class="text">A maior parte das complicações na amamentação tem <strong>solução clínica em uma única consulta</strong> com consultora certificada (IBCLC) ou banco de leite — gratuito pelo SUS.</p>
+      </div>
+    </div>
+  </div>
+  <footer class="hud-bot">
+    <span>SLIDE 02 / 12 · REFRAME</span>
+    <span class="hud-meta"><span>Fonte: SBP · Ministério da Saúde</span></span>
+  </footer>
+</section>
+
+<!-- ════════ SLIDE 03 — TENSION ════════ -->
+<section class="slide" id="s3">
+  <header class="hud-top">
+    <span>[ <span class="lime">03</span> ] · TENSION</span>
+    <span>O CENÁRIO BRASILEIRO</span>
+  </header>
+  <div class="slide-body">
+    <span class="label-tag"><span class="dot"></span>OS NÚMEROS QUE NINGUÉM CONTA</span>
+    <h1 class="title s">No Brasil, amamentação exclusiva <em>termina</em> aos 3,5 meses — metade do recomendado.</h1>
+    <div class="stat-grid">
+      <div class="stat-cell">
+        <span class="k">OMS recomenda</span>
+        <span class="v">6 meses</span>
+        <span class="u">de aleitamento materno exclusivo</span>
+      </div>
+      <div class="stat-cell">
+        <span class="k">Realidade BR</span>
+        <span class="v alert">3,5 meses</span>
+        <span class="u">duração mediana real (PNS 2019)</span>
+      </div>
+      <div class="stat-cell">
+        <span class="k">Redução de infecções</span>
+        <span class="v">−60%</span>
+        <span class="u">diarreia · −50% respiratória · −36% morte súbita</span>
+      </div>
+      <div class="stat-cell">
+        <span class="k">Bancos de leite</span>
+        <span class="v">222</span>
+        <span class="u">em todos os estados (rBLH/Fiocruz)</span>
+      </div>
+    </div>
+  </div>
+  <footer class="hud-bot">
+    <span>SLIDE 03 / 12 · TENSION</span>
+    <span class="hud-meta"><span>Fontes: PNS · OMS · rBLH-Fiocruz</span></span>
+  </footer>
+</section>
+
+<!-- ════════ SLIDE 04 — MECHANISM ════════ -->
+<section class="slide" id="s4">
+  <header class="hud-top">
+    <span>[ <span class="lime">04</span> ] · MECHANISM</span>
+    <span>A CAUSA-RAIZ</span>
+  </header>
+  <div class="slide-body">
+    <span class="label-tag" style="justify-content:center; width:100%;"><span class="dot"></span>UMA ÚNICA CAUSA EXPLICA 80%</span>
+    <div class="mechanism">
+      <div class="mech-card">
+        <div class="pct">~80<span style="font-size:80px;">%</span></div>
+        <div class="pct-label">das dores e fissuras vêm de <em>pega inadequada</em></div>
+        <p class="why">O bebê precisa abocanhar a <strong>aréola</strong>, não o mamilo. Boca bem aberta, lábios evertidos, queixo encostado na mama. Quando a pega corrige, a dor para — e o resto das complicações (fissura, mastite, ingurgitamento) deixa de evoluir.</p>
+      </div>
+    </div>
+  </div>
+  <footer class="hud-bot">
+    <span>SLIDE 04 / 12 · MECHANISM</span>
+    <span class="hud-meta"><span>Fonte: ABM Clinical Protocol #36/2022</span></span>
+  </footer>
+</section>
+
+<!-- ════════ SLIDE 05 — PROOF #1 FISSURA ════════ -->
+<section class="slide" id="s5">
+  <header class="hud-top">
+    <span>[ <span class="lime">05</span> ] · PROOF #1</span>
+    <span>FISSURA MAMILAR</span>
+  </header>
+  <div class="slide-body">
+    <div class="proof-head">
+      <span class="num">COMPLICAÇÃO 01</span>
+      <h1>Fissura cicatriza <em>quando a pega corrige</em> — não com pomada.</h1>
+    </div>
+    <div class="proof-grid">
+      <div class="proof-block symptoms">
+        <span class="lbl">Sinais</span>
+        <ul>
+          <li>Rachadura visível, sangramento</li>
+          <li>Dor em pontada durante toda a mamada</li>
+          <li>Mamilo branco ou roxo após mamar (vasoespasmo)</li>
+          <li>Crosta cicatricial</li>
+        </ul>
+      </div>
+      <div class="proof-block treatment">
+        <span class="lbl">Tratamento — evidência atual</span>
+        <ul>
+          <li>Corrigir pega primeiro · sem isso nada cicatriza</li>
+          <li>Passar o próprio leite no mamilo e secar ao ar</li>
+          <li>Lanolina HPA · silver caps em casos refratários</li>
+          <li>Começar pela mama menos dolorida</li>
+          <li>NÃO usar sabonete no mamilo</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <footer class="hud-bot">
+    <span>SLIDE 05 / 12 · PROOF</span>
+    <span class="hud-meta"><span>Fonte: ABM #36/2022 · BVS-MS</span></span>
+  </footer>
+</section>
+
+<!-- ════════ SLIDE 06 — PROOF #2 INGURGITAMENTO ════════ -->
+<section class="slide" id="s6">
+  <header class="hud-top">
+    <span>[ <span class="lime">06</span> ] · PROOF #2</span>
+    <span>INGURGITAMENTO · "LEITE EMPEDRADO"</span>
+  </header>
+  <div class="slide-body">
+    <div class="proof-head">
+      <span class="num">COMPLICAÇÃO 02</span>
+      <h1>O protocolo virou de cabeça pra baixo — <em>gelo</em>, não calor.</h1>
+    </div>
+    <div class="proof-grid">
+      <div class="proof-block symptoms">
+        <span class="lbl">Sinais (3º-5º dia tipicamente)</span>
+        <ul>
+          <li>Mamas duras, brilhantes, edemaciadas</li>
+          <li>Dor difusa, calor local</li>
+          <li>Aréola tensa dificultando pega</li>
+          <li>Febre baixa &lt;38°C possível</li>
+        </ul>
+      </div>
+      <div class="proof-block treatment">
+        <span class="lbl">Tratamento atualizado (ABM #36/2022)</span>
+        <ul>
+          <li><strong>Compressas FRIAS entre mamadas</strong> — mudança recente do protocolo</li>
+          <li>Pressão reversa de Cotterman para amolecer a aréola</li>
+          <li>Amamentar em livre demanda</li>
+          <li>Ibuprofeno seguro</li>
+          <li>EVITAR massagem agressiva — piora o edema</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <footer class="hud-bot">
+    <span>SLIDE 06 / 12 · PROOF</span>
+    <span class="hud-meta"><span>Mudança protocolo: gelo &gt; calor (revisão 2022)</span></span>
+  </footer>
+</section>
+
+<!-- ════════ SLIDE 07 — PROOF #3 MASTITE ════════ -->
+<section class="slide" id="s7">
+  <header class="hud-top">
+    <span>[ <span class="lime">07</span> ] · PROOF #3</span>
+    <span>MASTITE</span>
+  </header>
+  <div class="slide-body">
+    <div class="proof-head">
+      <span class="num">COMPLICAÇÃO 03</span>
+      <h1>Continue amamentando. <em>Parar piora</em> — o leite continua seguro.</h1>
+    </div>
+    <div class="proof-grid">
+      <div class="proof-block symptoms">
+        <span class="lbl">Sinais</span>
+        <ul>
+          <li>Vermelhidão em forma de cunha, quente e dolorida</li>
+          <li>Febre &gt;38,5°C</li>
+          <li>Calafrios, mialgia, sensação de gripe</li>
+          <li>Geralmente unilateral</li>
+        </ul>
+      </div>
+      <div class="proof-block alert">
+        <span class="lbl">Quando AGORA, não amanhã</span>
+        <ul>
+          <li>Febre &gt;38,5°C persistente &gt;24h</li>
+          <li>Vermelhidão que se expande</li>
+          <li>Nódulo com flutuação (abscesso)</li>
+          <li>Pus saindo do mamilo</li>
+          <li>Não-melhora após 48h de antibiótico</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <footer class="hud-bot">
+    <span>SLIDE 07 / 12 · PROOF</span>
+    <span class="hud-meta"><span>Tratamento: gelo · ibuprofeno · antibiótico se sistêmico &gt;24h</span></span>
+  </footer>
+</section>
+
+<!-- ════════ SLIDE 08 — PROOF #4 D-MER ════════ -->
+<section class="slide" id="s8">
+  <header class="hud-top">
+    <span>[ <span class="lime">08</span> ] · PROOF #4</span>
+    <span>D-MER · A COMPLICAÇÃO QUE NINGUÉM TE CONTOU</span>
+  </header>
+  <div class="slide-body">
+    <span class="label-tag"><span class="dot"></span>NEM TODA MÃE SABE QUE EXISTE NOME PRA ISSO</span>
+    <div class="dmer-hero">
+      <div>
+        <div class="dmer-pct">14<span style="font-size:90px;">%</span><span class="sub">das lactantes sentem<br>uma <strong>onda breve</strong> de tristeza<br>quando o leite desce.</span></div>
+      </div>
+      <div class="dmer-info">
+        <p class="what"><strong>D-MER (Dysphoric Milk Ejection Reflex):</strong> queda fisiológica de dopamina quando a prolactina sobe. Dura 30 segundos a poucos minutos. NÃO é depressão pós-parto. NÃO é aversão. NÃO é culpa da mãe.</p>
+        <div class="relief">
+          <span class="lbl">Por que isso importa</span>
+          <p>A maioria das mães que sente D-MER acha que está enlouquecendo ou que "não ama" o bebê. <strong>Saber que existe nome e fisiologia para isso alivia imediatamente</strong> — e diferencia de depressão (que precisa de tratamento).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="hud-bot">
+    <span>SLIDE 08 / 12 · PROOF</span>
+    <span class="hud-meta"><span>Fonte: ABM Protocol #20 · estudos prevalência 2024</span></span>
+  </footer>
+</section>
+
+<!-- ════════ SLIDE 09 — CONTRAST · MITOS QUE MATAM AMAMENTAÇÃO ════════ -->
+<section class="slide" id="s9">
+  <header class="hud-top">
+    <span>[ <span class="lime">09</span> ] · CONTRAST</span>
+    <span>OS 3 MITOS QUE CAUSAM DESMAME PRECOCE</span>
+  </header>
+  <div class="slide-body">
+    <span class="label-tag"><span class="dot"></span>SE ELIMINAR ESTES 3 — A MAIORIA DOS DESMAMES PRECOCES PARA</span>
+    <div class="mitos-grid">
+      <div class="mito-card">
+        <div class="mito-claim">
+          <span class="lbl">MITO 01</span>
+          <p>"Meu leite é fraco / ralo."</p>
+        </div>
+        <div class="mito-truth">
+          <span class="lbl">VERDADE</span>
+          <p><strong>Nenhum leite materno é fraco.</strong> O leite anterior é mais ralo (água + anticorpos) e o posterior mais gorduroso — é o mesmo leite, em fases. Até mães desnutridas produzem leite nutricionalmente adequado.</p>
+        </div>
+      </div>
+      <div class="mito-card">
+        <div class="mito-claim">
+          <span class="lbl">MITO 02</span>
+          <p>"Cerveja preta e canjica aumentam o leite."</p>
+        </div>
+        <div class="mito-truth">
+          <span class="lbl">VERDADE</span>
+          <p><strong>Sem evidência científica.</strong> O que aumenta o leite é sucção + hidratação. Cerveja preta tem álcool — <em>inibe</em> o reflexo de ejeção. Canjica tem leite de vaca — pode causar cólica.</p>
+        </div>
+      </div>
+      <div class="mito-card">
+        <div class="mito-claim">
+          <span class="lbl">MITO 03</span>
+          <p>"Depois de 6 meses o leite vira água."</p>
+        </div>
+        <div class="mito-truth">
+          <span class="lbl">VERDADE</span>
+          <p><strong>Fica MAIS calórico, não menos.</strong> 100mL após 1 ano são frequentemente mais densos em gordura que aos 3 meses. OMS, SBP e MS recomendam amamentação até 2 anos ou mais.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="hud-bot">
+    <span>SLIDE 09 / 12 · CONTRAST</span>
+    <span class="hud-meta"><span>Fontes: SBP 2024 · OMS · BVS-MS</span></span>
+  </footer>
+</section>
+
+<!-- ════════ SLIDE 10 — CONTRAST · MITOS LIBERADORES ════════ -->
+<section class="slide" id="s10">
+  <header class="hud-top">
+    <span>[ <span class="lime">10</span> ] · CONTRAST</span>
+    <span>3 MITOS QUE FAZEM MÃES PARAREM SEM PRECISAR</span>
+  </header>
+  <div class="slide-body">
+    <span class="label-tag"><span class="dot"></span>QUASE SEMPRE PODE — A REGRA TEM EXCEÇÕES, NÃO O CONTRÁRIO</span>
+    <div class="mitos-grid">
+      <div class="mito-card">
+        <div class="mito-claim">
+          <span class="lbl">MITO 04</span>
+          <p>"Com gripe ou Covid não pode amamentar."</p>
+        </div>
+        <div class="mito-truth">
+          <span class="lbl">VERDADE</span>
+          <p><strong>Pelo contrário — deve.</strong> O leite passa anticorpos contra o vírus para o bebê. Cuidados: máscara, higiene de mãos, evitar tossir próximo. Vale para gripe, Covid-19, resfriado.</p>
+        </div>
+      </div>
+      <div class="mito-card">
+        <div class="mito-claim">
+          <span class="lbl">MITO 05</span>
+          <p>"Mãe que toma remédio não pode amamentar."</p>
+        </div>
+        <div class="mito-truth">
+          <span class="lbl">VERDADE</span>
+          <p><strong>A maioria é compatível.</strong> Paracetamol, ibuprofeno, antibióticos comuns, antidepressivos (sertralina) — seguros. Consulte <strong>e-lactancia.org</strong> e <strong>LactMed</strong>. Drogas incompatíveis são poucas.</p>
+        </div>
+      </div>
+      <div class="mito-card">
+        <div class="mito-claim">
+          <span class="lbl">MITO 06</span>
+          <p>"Mamilo invertido impede amamentação."</p>
+        </div>
+        <div class="mito-truth">
+          <span class="lbl">VERDADE</span>
+          <p><strong>O bebê mama na aréola, não no mamilo.</strong> Com técnica adequada, seringa para evertir ou bico de silicone temporário, a grande maioria das mães com mamilo invertido amamenta normalmente.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="hud-bot">
+    <span>SLIDE 10 / 12 · CONTRAST</span>
+    <span class="hud-meta"><span>Fontes: SBP 2024 · LactMed NIH · e-lactancia.org</span></span>
+  </footer>
+</section>
+
+<!-- ════════ SLIDE 11 — DECISION · RED FLAGS ════════ -->
+<section class="slide" id="s11">
+  <header class="hud-top">
+    <span>[ <span class="lime">11</span> ] · DECISION</span>
+    <span>QUANDO É AGORA · NÃO ESPERA</span>
+  </header>
+  <div class="slide-body">
+    <span class="label-tag"><span class="dot"></span>SINAIS QUE NÃO PODEM ESPERAR AMANHÃ</span>
+    <div class="redflags-hero">
+      <div class="redflags-icon">⚠</div>
+      <div class="redflags-list">
+        <span class="lbl">PRONTO-SOCORRO / MÉDICO AGORA</span>
+        <h3>Vai imediatamente.</h3>
+        <ul>
+          <li><strong>Febre &gt;38,5°C</strong> persistente por mais de 24h</li>
+          <li>Vermelhidão na mama que <strong>se expande</strong> ou casca de laranja</li>
+          <li>Nódulo com flutuação — pode ser abscesso</li>
+          <li>Pus saindo do mamilo</li>
+          <li>Calafrios intensos com prostração severa</li>
+          <li>Mastite que não melhora em 48h de antibiótico</li>
+          <li>Bebê letárgico, difícil de acordar</li>
+          <li>Pensamentos de fazer mal a si ou ao bebê</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <footer class="hud-bot">
+    <span>SLIDE 11 / 12 · DECISION</span>
+    <span class="hud-meta"><span>Diferencial: dor leve vs sintoma sistêmico</span></span>
+  </footer>
+</section>
+
+<!-- ════════ SLIDE 12 — CTA ════════ -->
+<section class="slide" id="s12">
+  <header class="hud-top">
+    <span>[ <span class="lime">12</span> ] · CTA</span>
+    <span>ONDE ACHAR AJUDA — GRATUITA</span>
+  </header>
+  <div class="slide-body">
+    <div class="cta-hero">
+      <h1 class="cta-big">Ninguém precisa<br>amamentar <em>sozinha</em>.</h1>
+      <div class="cta-channels">
+        <div class="cta-channel">
+          <div class="num">136</div>
+          <div class="name">Disque Saúde</div>
+          <p class="desc">Linha gratuita 24/7 do Ministério da Saúde. Conecta com banco de leite mais próximo.</p>
+        </div>
+        <div class="cta-channel">
+          <div class="num">222</div>
+          <div class="name">Bancos de Leite</div>
+          <p class="desc">Em todos os estados (rBLH-Fiocruz). Atendimento presencial e por WhatsApp em muitos municípios.</p>
+        </div>
+        <div class="cta-channel">
+          <div class="num">SUS</div>
+          <div class="name">UBS · Hospital Amigo</div>
+          <p class="desc">Apoio inicial gratuito em qualquer Unidade Básica. Hospitais Amigos da Criança (OMS/UNICEF) priorizam amamentação.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="hud-bot">
+    <span>SLIDE 12 / 12 · CTA · FIM</span>
+    <span class="hud-meta"><span>calm clinical canvas · Ease Health design</span><span>2026</span></span>
+  </footer>
+</section>
+
+</div>
+</body>
+</html>

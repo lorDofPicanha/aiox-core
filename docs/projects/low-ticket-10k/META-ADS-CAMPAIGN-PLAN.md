@@ -1,12 +1,14 @@
 # META ADS CAMPAIGN PLAN -- Metodo 3C: 147 Prompts de IA para Advogados
 
 > **Produto:** Metodo 3C: 147 Prompts de IA para Advogados
-> **Preco:** R$37 (front) + R$17 (order bump) + R$197 (upsell)
+> **Preco:** R$37 (front) + R$27 (order bump) + R$197 (upsell)
 > **Pixel ID:** 26458851600417959
 > **Framework:** ABO 1-4-2 (Lucas Visky) + BPM Method (@depesh-mandalia)
 > **Especialistas aplicados:** @depesh-mandalia (BPM/Meta), @nicholas-kusmich (Lead Gen), @ralph-burns (Creative Lab/Scaling)
-> **Data:** 27/03/2026
+> **Data:** 27/03/2026 (bump corrigido 06/Mai/2026: R$17 -> R$27)
 > **Status:** PLANO COMPLETO -- pronto para execucao
+>
+> **DECISAO 06/Mai:** Bump definitivo R$27 (alinhado com PLANO-IMPLEMENTACAO Jarvis). User deve atualizar tambem no Kiwify produto SnVHKmN. Calculos financeiros abaixo (linhas 985+) ainda usam R$17 - revisar quando re-rodar projecoes.
 
 ---
 

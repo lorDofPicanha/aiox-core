@@ -1,0 +1,82 @@
+[
+  {
+    "name": "--header-color",
+    "declarations": 2,
+    "references": 46
+  },
+  {
+    "name": "--footer-link-gap",
+    "declarations": 4,
+    "references": 18
+  },
+  {
+    "name": "--big-footer-link-gap",
+    "declarations": 2,
+    "references": 10
+  },
+  {
+    "name": "--lateral-padding",
+    "declarations": 4,
+    "references": 10
+  },
+  {
+    "name": "--lateral-offset",
+    "declarations": 6,
+    "references": 10
+  },
+  {
+    "name": "--sub-width",
+    "declarations": 4,
+    "references": 6
+  },
+  {
+    "name": "--header-background-color",
+    "declarations": 2,
+    "references": 6
+  },
+  {
+    "name": "--header-height",
+    "declarations": 4,
+    "references": 6
+  },
+  {
+    "name": "--btn-header-height",
+    "declarations": 10,
+    "references": 6
+  },
+  {
+    "name": "--products-image",
+    "declarations": 4,
+    "references": 6
+  },
+  {
+    "name": "--header-background-accent-color-code",
+    "declarations": 2,
+    "references": 4
+  },
+  {
+    "name": "--vertical-offset",
+    "declarations": 2,
+    "references": 4
+  },
+  {
+    "name": "--logo-width",
+    "declarations": 4,
+    "references": 4
+  },
+  {
+    "name": "--header-opacity",
+    "declarations": 10,
+    "references": 2
+  },
+  {
+    "name": "--header-background-color-code",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--one_image",
+    "declarations": 1,
+    "references": 0
+  }
+]

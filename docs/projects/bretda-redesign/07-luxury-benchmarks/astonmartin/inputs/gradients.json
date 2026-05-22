@@ -1,0 +1,27 @@
+{
+  "primary": "linear-gradient(to bottom,#535353 35%,rgba(83,83,83,0) 100%)",
+  "secondary": "linear-gradient(to bottom,rgba(155,159,162,.01),#9b9fa2)",
+  "total_unique": 5,
+  "top": [
+    {
+      "value": "linear-gradient(to bottom,#535353 35%,rgba(83,83,83,0) 100%)",
+      "count": 2
+    },
+    {
+      "value": "linear-gradient(to bottom,rgba(155,159,162,.01),#9b9fa2)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(180deg,rgba(0,0,0,.2) 0,rgba(0,0,0,0) 58.33%)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(to left,#fff 0,rgba(255,255,255,0) 10%,rgba(255,255,255,0) 90%,#fff 100%)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(90deg,rgba(0,0,0,.2) 0,rgba(0,0,0,0) 58.33%)",
+      "count": 1
+    }
+  ]
+}

@@ -1,0 +1,314 @@
+[
+  {
+    "family": "AstonMartinSans",
+    "weight": "100",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/AstonMartinSans_Lt.woff2"
+    ],
+    "src_formats": [
+      "woff2"
+    ],
+    "source_css_url": "https://www.astonmartin.com/theme/10.3.47.0.4/assets/astonmartin/css/astonmartin.css",
+    "raw": "@font-face{font-family:AstonMartinSans;font-weight:100;font-style:normal;font-display:swap;src:url(../fonts/AstonMartinSans_Lt.woff2) format('woff2')}"
+  },
+  {
+    "family": "AstonMartinSans",
+    "weight": "400",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/AstonMartinSans_Rg.woff2"
+    ],
+    "src_formats": [
+      "woff2"
+    ],
+    "source_css_url": "https://www.astonmartin.com/theme/10.3.47.0.4/assets/astonmartin/css/astonmartin.css",
+    "raw": "@font-face{font-family:AstonMartinSans;font-weight:400;font-style:normal;font-display:swap;src:url(../fonts/AstonMartinSans_Rg.woff2) format('woff2')}"
+  },
+  {
+    "family": "AstonMartinSans",
+    "weight": "500",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/AstonMartinSans_Md.woff2"
+    ],
+    "src_formats": [
+      "woff2"
+    ],
+    "source_css_url": "https://www.astonmartin.com/theme/10.3.47.0.4/assets/astonmartin/css/astonmartin.css",
+    "raw": "@font-face{font-family:AstonMartinSans;font-weight:500;font-style:normal;font-display:swap;src:url(../fonts/AstonMartinSans_Md.woff2) format('woff2')}"
+  },
+  {
+    "family": "AstonMartinSans",
+    "weight": "700",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/AstonMartinSans_Bd.woff2"
+    ],
+    "src_formats": [
+      "woff2"
+    ],
+    "source_css_url": "https://www.astonmartin.com/theme/10.3.47.0.4/assets/astonmartin/css/astonmartin.css",
+    "raw": "@font-face{font-family:AstonMartinSans;font-weight:700;font-style:normal;font-display:swap;src:url(../fonts/AstonMartinSans_Bd.woff2) format('woff2')}"
+  },
+  {
+    "family": "AstonMartinSans",
+    "weight": "800",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/AstonMartinSans_XBd.woff2"
+    ],
+    "src_formats": [
+      "woff2"
+    ],
+    "source_css_url": "https://www.astonmartin.com/theme/10.3.47.0.4/assets/astonmartin/css/astonmartin.css",
+    "raw": "@font-face{font-family:AstonMartinSans;font-weight:800;font-style:normal;font-display:swap;src:url(../fonts/AstonMartinSans_XBd.woff2) format('woff2')}"
+  },
+  {
+    "family": "AstonMartinFlare",
+    "weight": "400",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/AstonMartinFlare_Rg.woff2"
+    ],
+    "src_formats": [
+      "woff2"
+    ],
+    "source_css_url": "https://www.astonmartin.com/theme/10.3.47.0.4/assets/astonmartin/css/astonmartin.css",
+    "raw": "@font-face{font-family:AstonMartinFlare;font-weight:400;font-style:normal;font-display:swap;src:url(../fonts/AstonMartinFlare_Rg.woff2) format('woff2')}"
+  },
+  {
+    "family": "AstonMartinFlare",
+    "weight": "500",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/AstonMartinFlare_Md.woff2"
+    ],
+    "src_formats": [
+      "woff2"
+    ],
+    "source_css_url": "https://www.astonmartin.com/theme/10.3.47.0.4/assets/astonmartin/css/astonmartin.css",
+    "raw": "@font-face{font-family:AstonMartinFlare;font-weight:500;font-style:normal;font-display:swap;src:url(../fonts/AstonMartinFlare_Md.woff2) format('woff2')}"
+  },
+  {
+    "family": "AstonMartinFlare",
+    "weight": "700",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/AstonMartinFlare_Bd.woff2"
+    ],
+    "src_formats": [
+      "woff2"
+    ],
+    "source_css_url": "https://www.astonmartin.com/theme/10.3.47.0.4/assets/astonmartin/css/astonmartin.css",
+    "raw": "@font-face{font-family:AstonMartinFlare;font-weight:700;font-style:normal;font-display:swap;src:url(../fonts/AstonMartinFlare_Bd.woff2) format('woff2')}"
+  },
+  {
+    "family": "AstonMartinFlare",
+    "weight": "800",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/AstonMartinFlare_XBd.woff2"
+    ],
+    "src_formats": [
+      "woff2"
+    ],
+    "source_css_url": "https://www.astonmartin.com/theme/10.3.47.0.4/assets/astonmartin/css/astonmartin.css",
+    "raw": "@font-face{font-family:AstonMartinFlare;font-weight:800;font-style:normal;font-display:swap;src:url(../fonts/AstonMartinFlare_XBd.woff2) format('woff2')}"
+  },
+  {
+    "family": "LocalSimHei",
+    "weight": "400",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [],
+    "src_formats": [],
+    "source_css_url": "https://www.astonmartin.com/theme/10.3.47.0.4/assets/astonmartin/css/astonmartin.css",
+    "raw": "@font-face{font-family:LocalSimHei;font-weight:400;font-style:normal;font-display:swap;src:local(\"SimHei\")}"
+  },
+  {
+    "family": "AstonMartinSans",
+    "weight": "100",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/AstonMartinSans_Lt.woff2"
+    ],
+    "src_formats": [
+      "woff2"
+    ],
+    "source_css_url": "https://www.astonmartin.com/theme/10.3.47.0.4/assets/astonmartin/css/font.css",
+    "raw": "@font-face{font-family:AstonMartinSans;font-weight:100;font-style:normal;font-display:swap;src:url(../fonts/AstonMartinSans_Lt.woff2) format('woff2')}"
+  },
+  {
+    "family": "AstonMartinSans",
+    "weight": "400",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/AstonMartinSans_Rg.woff2"
+    ],
+    "src_formats": [
+      "woff2"
+    ],
+    "source_css_url": "https://www.astonmartin.com/theme/10.3.47.0.4/assets/astonmartin/css/font.css",
+    "raw": "@font-face{font-family:AstonMartinSans;font-weight:400;font-style:normal;font-display:swap;src:url(../fonts/AstonMartinSans_Rg.woff2) format('woff2')}"
+  },
+  {
+    "family": "AstonMartinSans",
+    "weight": "500",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/AstonMartinSans_Md.woff2"
+    ],
+    "src_formats": [
+      "woff2"
+    ],
+    "source_css_url": "https://www.astonmartin.com/theme/10.3.47.0.4/assets/astonmartin/css/font.css",
+    "raw": "@font-face{font-family:AstonMartinSans;font-weight:500;font-style:normal;font-display:swap;src:url(../fonts/AstonMartinSans_Md.woff2) format('woff2')}"
+  },
+  {
+    "family": "AstonMartinSans",
+    "weight": "700",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/AstonMartinSans_Bd.woff2"
+    ],
+    "src_formats": [
+      "woff2"
+    ],
+    "source_css_url": "https://www.astonmartin.com/theme/10.3.47.0.4/assets/astonmartin/css/font.css",
+    "raw": "@font-face{font-family:AstonMartinSans;font-weight:700;font-style:normal;font-display:swap;src:url(../fonts/AstonMartinSans_Bd.woff2) format('woff2')}"
+  },
+  {
+    "family": "AstonMartinSans",
+    "weight": "800",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/AstonMartinSans_XBd.woff2"
+    ],
+    "src_formats": [
+      "woff2"
+    ],
+    "source_css_url": "https://www.astonmartin.com/theme/10.3.47.0.4/assets/astonmartin/css/font.css",
+    "raw": "@font-face{font-family:AstonMartinSans;font-weight:800;font-style:normal;font-display:swap;src:url(../fonts/AstonMartinSans_XBd.woff2) format('woff2')}"
+  },
+  {
+    "family": "AstonMartinFlare",
+    "weight": "400",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/AstonMartinFlare_Rg.woff2"
+    ],
+    "src_formats": [
+      "woff2"
+    ],
+    "source_css_url": "https://www.astonmartin.com/theme/10.3.47.0.4/assets/astonmartin/css/font.css",
+    "raw": "@font-face{font-family:AstonMartinFlare;font-weight:400;font-style:normal;font-display:swap;src:url(../fonts/AstonMartinFlare_Rg.woff2) format('woff2')}"
+  },
+  {
+    "family": "AstonMartinFlare",
+    "weight": "500",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/AstonMartinFlare_Md.woff2"
+    ],
+    "src_formats": [
+      "woff2"
+    ],
+    "source_css_url": "https://www.astonmartin.com/theme/10.3.47.0.4/assets/astonmartin/css/font.css",
+    "raw": "@font-face{font-family:AstonMartinFlare;font-weight:500;font-style:normal;font-display:swap;src:url(../fonts/AstonMartinFlare_Md.woff2) format('woff2')}"
+  },
+  {
+    "family": "AstonMartinFlare",
+    "weight": "700",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/AstonMartinFlare_Bd.woff2"
+    ],
+    "src_formats": [
+      "woff2"
+    ],
+    "source_css_url": "https://www.astonmartin.com/theme/10.3.47.0.4/assets/astonmartin/css/font.css",
+    "raw": "@font-face{font-family:AstonMartinFlare;font-weight:700;font-style:normal;font-display:swap;src:url(../fonts/AstonMartinFlare_Bd.woff2) format('woff2')}"
+  },
+  {
+    "family": "AstonMartinFlare",
+    "weight": "800",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/AstonMartinFlare_XBd.woff2"
+    ],
+    "src_formats": [
+      "woff2"
+    ],
+    "source_css_url": "https://www.astonmartin.com/theme/10.3.47.0.4/assets/astonmartin/css/font.css",
+    "raw": "@font-face{font-family:AstonMartinFlare;font-weight:800;font-style:normal;font-display:swap;src:url(../fonts/AstonMartinFlare_XBd.woff2) format('woff2')}"
+  },
+  {
+    "family": "LocalSimHei",
+    "weight": "400",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [],
+    "src_formats": [],
+    "source_css_url": "https://www.astonmartin.com/theme/10.3.47.0.4/assets/astonmartin/css/font.css",
+    "raw": "@font-face{font-family:LocalSimHei;font-weight:400;font-style:normal;font-display:swap;src:local(\"SimHei\")}"
+  }
+]

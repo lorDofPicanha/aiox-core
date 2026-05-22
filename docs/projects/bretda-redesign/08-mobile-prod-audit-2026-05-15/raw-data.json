@@ -1,0 +1,1510 @@
+{
+  "capturedAt": "2026-05-15T18:41:56.535Z",
+  "target": "https://bretda.com.br",
+  "device": "Pixel 7 (Chromium mobile emulation). NOTE: iPhone 13 descriptor was preferred but WebKit binary not installed in this env. Pixel 7 is a faithful Android-mid emulation but does NOT capture iOS Safari-specific behaviors (autoplay nuance, 100vh dynamic chrome bug, smart-app-banner).",
+  "routes": [
+    {
+      "name": "home",
+      "path": "/",
+      "url": "https://bretda.com.br/",
+      "status": 200,
+      "navTimeMs": 16207,
+      "perfMetrics": {
+        "lcp": 8384,
+        "fcp": 8384,
+        "cls": 0,
+        "clsEntries": [],
+        "longTaskCount": 7,
+        "longTaskMaxDuration": 153,
+        "domContentLoaded": 8625.30000000447,
+        "loadEventEnd": 9844.70000000298,
+        "ttfb": 24.899999998509884
+      },
+      "consoleErrors": [
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()",
+          "location": "https://www.bretda.com.br/newsletter?_rsc=1r34m:0"
+        }
+      ],
+      "consoleWarnings": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.bretda.com.br/videos/reels/design-process-1080.mp4",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.google.com/ccm/collect?rcb=5&frm=0&ae=g&en=page_view&dl=https%3A%2F%2Fwww.bretda.com.br%2F&scrsrc=www.googletagmanager.com&rnd=1442773322.1778870439&dt=Bretda%20%E2%80%94%20Mesas%20de%20Sinuca%20Artesanais%20de%20Luxo&auid=2076278671.1778870439&navt=n&npa=0&ep.ads_data_redaction=0&gtm=45Xe65d0v9195832744za200zd9195832744xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115938465~115938469&apve=1&apvf=f&apvc=1&tft=1778870438796&tfd=8876",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.google.com/ccm/collect?rcb=16&frm=0&en=page_view&dl=https%3A%2F%2Fwww.bretda.com.br%2F&scrsrc=www.googletagmanager.com&rnd=1442773322.1778870439&dt=Bretda%20%E2%80%94%20Mesas%20de%20Sinuca%20Artesanais%20de%20Luxo&auid=2076278671.1778870439&navt=n&npa=0&gtm=45be65d0v9205908775z89195832744za20gzb9195832744zd9195832744xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115938465~115938468&apve=1&apvf=f&apvc=0&tids=AW-16757160810&tid=AW-16757160810&tft=1778870439262&tfd=9343",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.google.com/ccm/collect?rcb=16&frm=0&ae=g&dl=https%3A%2F%2Fwww.bretda.com.br%2F&scrsrc=www.googletagmanager.com&rnd=1442773322.1778870439&dt=Bretda%20%E2%80%94%20Mesas%20de%20Sinuca%20Artesanais%20de%20Luxo&auid=2076278671.1778870439&navt=n&npa=0&_tu=CA&gtm=45be65d0v9205908775z89195832744za20gzb9195832744zd9195832744xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115938465~115938468&apve=1&apvf=f&apvc=0&tids=AW-16757160810&tid=AW-16757160810&tft=1778870439262&tfd=9343",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.google.com/rmkt/collect/16757160810/?random=1778870439200&cv=11&fst=1778870439200&fmt=8&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be65d0v9205908775z89195832744za20gzb9195832744zd9195832744xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115938465~115938468&u_w=412&u_h=839&url=https%3A%2F%2Fwww.bretda.com.br%2F&rcb=16&frm=0&tiba=Bretda%20%E2%80%94%20Mesas%20de%20Sinuca%20Artesanais%20de%20Luxo&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=2076278671.1778870439&uaa=arm&uab=64&uafvl=HeadlessChrome%3B147.0.7727.15%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.15&uamb=1&uam=&uap=Android&uapv=14&uaw=0&data=event%3Dgtag.config&gcp=5",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.google.com/rmkt/collect/16757160810/?random=1778870439254&cv=11&fst=1778870439254&fmt=8&bg=ffffff&guid=ON&async=1&gtm=45be65d0v9205908775z89195832744za20gzb9195832744zd9195832744xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115938465~115938468&u_w=412&u_h=839&url=https%3A%2F%2Fwww.bretda.com.br%2F&rcb=16&frm=0&tiba=Bretda%20%E2%80%94%20Mesas%20de%20Sinuca%20Artesanais%20de%20Luxo&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=2076278671.1778870439&uaa=arm&uab=64&uafvl=HeadlessChrome%3B147.0.7727.15%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.15&uamb=1&uam=&uap=Android&uapv=14&uaw=0&_tu=CA&gcp=5",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "http4xx5xx": [
+        {
+          "url": "https://www.bretda.com.br/newsletter?_rsc=1r34m",
+          "status": 404
+        }
+      ],
+      "horizontalOverflow": {
+        "documentScrollWidth": 412,
+        "documentClientWidth": 412,
+        "overflowDelta": 0,
+        "offendingSelectors": []
+      },
+      "smallTouchTargets": [
+        {
+          "tag": "a",
+          "text": "Bretda — Home",
+          "w": 107,
+          "h": 28
+        },
+        {
+          "tag": "button",
+          "text": "Abrir menu",
+          "w": 42,
+          "h": 29
+        },
+        {
+          "tag": "a",
+          "text": "Bretda — Home",
+          "w": 153,
+          "h": 40
+        },
+        {
+          "tag": "a",
+          "text": "Sinuca",
+          "w": 44,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Tênis de mesa",
+          "w": 94,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Shuffleboard",
+          "w": 84,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Pebolim",
+          "w": 52,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Os mestres",
+          "w": 74,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Madeiras nobres",
+          "w": 109,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Manifesto",
+          "w": 64,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Visite",
+          "w": 36,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Configurador",
+          "w": 86,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Encomenda particular",
+          "w": 143,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Para arquitetos",
+          "w": 98,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Cartas do Atelier",
+          "w": 109,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Privacidade",
+          "w": 65,
+          "h": 17
+        },
+        {
+          "tag": "a",
+          "text": "Termos",
+          "w": 41,
+          "h": 17
+        },
+        {
+          "tag": "a",
+          "text": "Falar pelo WhatsApp",
+          "w": 40,
+          "h": 40
+        }
+      ],
+      "viewportMeta": "width=device-width, initial-scale=1",
+      "hasHorizontalScroll": false,
+      "videoAutoplay": [
+        {
+          "selector": "video",
+          "paused": true,
+          "muted": true,
+          "readyState": 4
+        },
+        {
+          "selector": "video",
+          "paused": true,
+          "muted": true,
+          "readyState": 4
+        },
+        {
+          "selector": "video",
+          "paused": true,
+          "muted": true,
+          "readyState": 4
+        },
+        {
+          "selector": "video",
+          "paused": true,
+          "muted": true,
+          "readyState": 4
+        },
+        {
+          "selector": "video",
+          "paused": true,
+          "muted": true,
+          "readyState": 4
+        }
+      ],
+      "jsBundleBytes": 404250,
+      "imgBundleBytes": 191885,
+      "totalTransferBytes": 22966499,
+      "resourceCount": 51
+    },
+    {
+      "name": "colecao",
+      "path": "/colecao",
+      "url": "https://bretda.com.br/colecao",
+      "status": 200,
+      "navTimeMs": 7980,
+      "perfMetrics": {
+        "lcp": 556,
+        "fcp": 556,
+        "cls": 0,
+        "clsEntries": [],
+        "longTaskCount": 4,
+        "longTaskMaxDuration": 129,
+        "domContentLoaded": 430.70000000298023,
+        "loadEventEnd": 1571.7000000029802,
+        "ttfb": 17.600000001490116
+      },
+      "consoleErrors": [
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()",
+          "location": "https://www.bretda.com.br/newsletter?_rsc=os7dh:0"
+        }
+      ],
+      "consoleWarnings": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.google.com/ccm/collect?rcb=19&frm=0&ae=g&en=page_view&dl=https%3A%2F%2Fwww.bretda.com.br%2Fcolecao&scrsrc=www.googletagmanager.com&rnd=1515262989.1778870452&dt=Cole%C3%A7%C3%A3o%20%C2%B7%20Cat%C3%A1logo%20Completo%20%7C%20Bretda&auid=2123705919.1778870452&navt=n&npa=0&ep.ads_data_redaction=0&gtm=45Xe65d0v9195832744za200zd9195832744xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115616985~115938465~115938468&apve=1&apvf=f&apvc=1&tft=1778870452346&tfd=884",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.google.com/rmkt/collect/16757160810/?random=1778870452655&cv=11&fst=1778870452655&fmt=8&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be65d0v9205908775z89195832744za20gzb9195832744zd9195832744xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115616985~115938465~115938468~118131809&u_w=412&u_h=839&url=https%3A%2F%2Fwww.bretda.com.br%2Fcolecao&rcb=7&frm=0&tiba=Cole%C3%A7%C3%A3o%20%C2%B7%20Cat%C3%A1logo%20Completo%20%7C%20Bretda&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=2123705919.1778870452&uaa=arm&uab=64&uafvl=HeadlessChrome%3B147.0.7727.15%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.15&uamb=1&uam=&uap=Android&uapv=14&uaw=0&data=event%3Dgtag.config&gcp=5",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.google.com/ccm/collect?rcb=7&frm=0&ae=g&dl=https%3A%2F%2Fwww.bretda.com.br%2Fcolecao&scrsrc=www.googletagmanager.com&rnd=1515262989.1778870452&dt=Cole%C3%A7%C3%A3o%20%C2%B7%20Cat%C3%A1logo%20Completo%20%7C%20Bretda&auid=2123705919.1778870452&navt=n&npa=0&_tu=CA&gtm=45be65d0v9205908775z89195832744za20gzb9195832744zd9195832744xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115616985~115938465~115938468~118131809&apve=1&apvf=f&apvc=0&tids=AW-16757160810&tid=AW-16757160810&tft=1778870452695&tfd=1233",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.google.com/ccm/collect?rcb=7&frm=0&en=page_view&dl=https%3A%2F%2Fwww.bretda.com.br%2Fcolecao&scrsrc=www.googletagmanager.com&rnd=1515262989.1778870452&dt=Cole%C3%A7%C3%A3o%20%C2%B7%20Cat%C3%A1logo%20Completo%20%7C%20Bretda&auid=2123705919.1778870452&navt=n&npa=0&gtm=45be65d0v9205908775z89195832744za20gzb9195832744zd9195832744xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115616985~115938465~115938468&apve=1&apvf=f&apvc=0&tids=AW-16757160810&tid=AW-16757160810&tft=1778870452694&tfd=1232",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.google.com/rmkt/collect/16757160810/?random=1778870452688&cv=11&fst=1778870452688&fmt=8&bg=ffffff&guid=ON&async=1&gtm=45be65d0v9205908775z89195832744za20gzb9195832744zd9195832744xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115616985~115938465~115938468~118131809&u_w=412&u_h=839&url=https%3A%2F%2Fwww.bretda.com.br%2Fcolecao&rcb=7&frm=0&tiba=Cole%C3%A7%C3%A3o%20%C2%B7%20Cat%C3%A1logo%20Completo%20%7C%20Bretda&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=2123705919.1778870452&uaa=arm&uab=64&uafvl=HeadlessChrome%3B147.0.7727.15%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.15&uamb=1&uam=&uap=Android&uapv=14&uaw=0&_tu=CA&gcp=5",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.bretda.com.br/contato?modo=visita&_rsc=os7dh",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.bretda.com.br/contato?modo=trade&_rsc=gvz4y",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "http4xx5xx": [
+        {
+          "url": "https://www.bretda.com.br/newsletter?_rsc=os7dh",
+          "status": 404
+        }
+      ],
+      "horizontalOverflow": {
+        "documentScrollWidth": 412,
+        "documentClientWidth": 412,
+        "overflowDelta": 0,
+        "offendingSelectors": []
+      },
+      "smallTouchTargets": [
+        {
+          "tag": "a",
+          "text": "Bretda — Home",
+          "w": 107,
+          "h": 28
+        },
+        {
+          "tag": "button",
+          "text": "Abrir menu",
+          "w": 42,
+          "h": 29
+        },
+        {
+          "tag": "a",
+          "text": "Início",
+          "w": 33,
+          "h": 16
+        },
+        {
+          "tag": "button",
+          "text": "TUDO",
+          "w": 82,
+          "h": 35
+        },
+        {
+          "tag": "button",
+          "text": "SINUCA",
+          "w": 99,
+          "h": 35
+        },
+        {
+          "tag": "button",
+          "text": "TÊNIS DE MESA",
+          "w": 153,
+          "h": 35
+        },
+        {
+          "tag": "button",
+          "text": "SHUFFLEBOARD",
+          "w": 154,
+          "h": 35
+        },
+        {
+          "tag": "button",
+          "text": "PEBOLIM",
+          "w": 106,
+          "h": 35
+        },
+        {
+          "tag": "a",
+          "text": "Bretda — Home",
+          "w": 153,
+          "h": 40
+        },
+        {
+          "tag": "a",
+          "text": "Sinuca",
+          "w": 44,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Tênis de mesa",
+          "w": 94,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Shuffleboard",
+          "w": 84,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Pebolim",
+          "w": 52,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Os mestres",
+          "w": 74,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Madeiras nobres",
+          "w": 109,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Manifesto",
+          "w": 64,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Visite",
+          "w": 36,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Configurador",
+          "w": 86,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Encomenda particular",
+          "w": 143,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Para arquitetos",
+          "w": 98,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Cartas do Atelier",
+          "w": 109,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Privacidade",
+          "w": 65,
+          "h": 17
+        },
+        {
+          "tag": "a",
+          "text": "Termos",
+          "w": 41,
+          "h": 17
+        },
+        {
+          "tag": "a",
+          "text": "Falar pelo WhatsApp",
+          "w": 40,
+          "h": 40
+        }
+      ],
+      "viewportMeta": "width=device-width, initial-scale=1",
+      "hasHorizontalScroll": false,
+      "jsBundleBytes": 452507,
+      "imgBundleBytes": 170885,
+      "totalTransferBytes": 4658167,
+      "resourceCount": 49
+    },
+    {
+      "name": "colecao-todas",
+      "path": "/colecao/todas",
+      "url": "https://bretda.com.br/colecao/todas",
+      "status": 200,
+      "navTimeMs": 8331,
+      "perfMetrics": {
+        "lcp": 1556,
+        "fcp": 888,
+        "cls": 0,
+        "clsEntries": [],
+        "longTaskCount": 2,
+        "longTaskMaxDuration": 92,
+        "domContentLoaded": 771.7999999970198,
+        "loadEventEnd": 996.8999999985099,
+        "ttfb": 16.900000005960464
+      },
+      "consoleErrors": [
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()",
+          "location": "https://www.bretda.com.br/newsletter?_rsc=150sd:0"
+        }
+      ],
+      "consoleWarnings": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.google.com/ccm/collect?rcb=6&frm=0&ae=g&en=page_view&dl=https%3A%2F%2Fwww.bretda.com.br%2Fcolecao%2Ftodas&scrsrc=www.googletagmanager.com&rnd=32164423.1778870463&dt=Cole%C3%A7%C3%A3o%20%C2%B7%20Todas%20as%20pe%C3%A7as%20%7C%20Bretda&auid=367871162.1778870463&navt=n&npa=0&ep.ads_data_redaction=0&gtm=45Xe65d0v9195832744za200zd9195832744xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115938465~115938469~118168307&apve=1&apvf=f&apvc=1&tft=1778870463083&tfd=1113",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.google.com/rmkt/collect/16757160810/?random=1778870463327&cv=11&fst=1778870463327&fmt=8&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be65d0v9205908775z89195832744za20gzb9195832744zd9195832744xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115938465~115938468~116701381~117227716~118131808&u_w=412&u_h=839&url=https%3A%2F%2Fwww.bretda.com.br%2Fcolecao%2Ftodas&rcb=19&frm=0&tiba=Cole%C3%A7%C3%A3o%20%C2%B7%20Todas%20as%20pe%C3%A7as%20%7C%20Bretda&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=367871162.1778870463&uaa=arm&uab=64&uafvl=HeadlessChrome%3B147.0.7727.15%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.15&uamb=1&uam=&uap=Android&uapv=14&uaw=0&data=event%3Dgtag.config&gcp=5",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.google.com/ccm/collect?rcb=19&frm=0&en=page_view&dl=https%3A%2F%2Fwww.bretda.com.br%2Fcolecao%2Ftodas&scrsrc=www.googletagmanager.com&rnd=32164423.1778870463&dt=Cole%C3%A7%C3%A3o%20%C2%B7%20Todas%20as%20pe%C3%A7as%20%7C%20Bretda&auid=367871162.1778870463&navt=n&npa=0&gtm=45be65d0v9205908775z89195832744za20gzb9195832744zd9195832744xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115938465~115938468&apve=1&apvf=f&apvc=0&tids=AW-16757160810&tid=AW-16757160810&tft=1778870463364&tfd=1393",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.google.com/rmkt/collect/16757160810/?random=1778870463357&cv=11&fst=1778870463357&fmt=8&bg=ffffff&guid=ON&async=1&gtm=45be65d0v9205908775z89195832744za20gzb9195832744zd9195832744xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115938465~115938468~116701381~117227716~118131808&u_w=412&u_h=839&url=https%3A%2F%2Fwww.bretda.com.br%2Fcolecao%2Ftodas&rcb=19&frm=0&tiba=Cole%C3%A7%C3%A3o%20%C2%B7%20Todas%20as%20pe%C3%A7as%20%7C%20Bretda&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=367871162.1778870463&uaa=arm&uab=64&uafvl=HeadlessChrome%3B147.0.7727.15%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.15&uamb=1&uam=&uap=Android&uapv=14&uaw=0&_tu=CA&gcp=5",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.google.com/ccm/collect?rcb=19&frm=0&ae=g&dl=https%3A%2F%2Fwww.bretda.com.br%2Fcolecao%2Ftodas&scrsrc=www.googletagmanager.com&rnd=32164423.1778870463&dt=Cole%C3%A7%C3%A3o%20%C2%B7%20Todas%20as%20pe%C3%A7as%20%7C%20Bretda&auid=367871162.1778870463&navt=n&npa=0&_tu=CA&gtm=45be65d0v9205908775z89195832744za20gzb9195832744zd9195832744xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115938465~115938468~116701381~117227716~118131808&apve=1&apvf=f&apvc=0&tids=AW-16757160810&tid=AW-16757160810&tft=1778870463365&tfd=1395",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "http4xx5xx": [
+        {
+          "url": "https://www.bretda.com.br/newsletter?_rsc=150sd",
+          "status": 404
+        }
+      ],
+      "horizontalOverflow": {
+        "documentScrollWidth": 412,
+        "documentClientWidth": 412,
+        "overflowDelta": 0,
+        "offendingSelectors": []
+      },
+      "smallTouchTargets": [
+        {
+          "tag": "a",
+          "text": "Bretda — Home",
+          "w": 107,
+          "h": 28
+        },
+        {
+          "tag": "button",
+          "text": "Abrir menu",
+          "w": 42,
+          "h": 29
+        },
+        {
+          "tag": "button",
+          "text": "TUDO",
+          "w": 82,
+          "h": 35
+        },
+        {
+          "tag": "button",
+          "text": "SINUCA",
+          "w": 99,
+          "h": 35
+        },
+        {
+          "tag": "button",
+          "text": "TÊNIS DE MESA",
+          "w": 153,
+          "h": 35
+        },
+        {
+          "tag": "button",
+          "text": "SHUFFLEBOARD",
+          "w": 154,
+          "h": 35
+        },
+        {
+          "tag": "button",
+          "text": "PEBOLIM",
+          "w": 106,
+          "h": 35
+        },
+        {
+          "tag": "a",
+          "text": "Bretda — Home",
+          "w": 153,
+          "h": 40
+        },
+        {
+          "tag": "a",
+          "text": "Sinuca",
+          "w": 44,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Tênis de mesa",
+          "w": 94,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Shuffleboard",
+          "w": 84,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Pebolim",
+          "w": 52,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Os mestres",
+          "w": 74,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Madeiras nobres",
+          "w": 109,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Manifesto",
+          "w": 64,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Visite",
+          "w": 36,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Configurador",
+          "w": 86,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Encomenda particular",
+          "w": 143,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Para arquitetos",
+          "w": 98,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Cartas do Atelier",
+          "w": 109,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Privacidade",
+          "w": 65,
+          "h": 17
+        },
+        {
+          "tag": "a",
+          "text": "Termos",
+          "w": 41,
+          "h": 17
+        },
+        {
+          "tag": "a",
+          "text": "Falar pelo WhatsApp",
+          "w": 40,
+          "h": 40
+        }
+      ],
+      "viewportMeta": "width=device-width, initial-scale=1",
+      "hasHorizontalScroll": false,
+      "jsBundleBytes": 452484,
+      "imgBundleBytes": 110662,
+      "totalTransferBytes": 891799,
+      "resourceCount": 48
+    },
+    {
+      "name": "configurador",
+      "path": "/configurador",
+      "url": "https://bretda.com.br/configurador",
+      "status": 200,
+      "navTimeMs": 9568,
+      "perfMetrics": {
+        "lcp": 776,
+        "fcp": 776,
+        "cls": 0,
+        "clsEntries": [],
+        "longTaskCount": 61,
+        "longTaskMaxDuration": 873,
+        "domContentLoaded": 686.1000000014901,
+        "loadEventEnd": 857,
+        "ttfb": 15.600000001490116
+      },
+      "consoleErrors": [
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()",
+          "location": "https://www.bretda.com.br/newsletter?_rsc=1xjsn:0"
+        }
+      ],
+      "consoleWarnings": [
+        {
+          "text": "[.WebGL-0x56ec00185600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+        },
+        {
+          "text": "[.WebGL-0x56ec00185600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+        },
+        {
+          "text": "[.WebGL-0x56ec00185600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+        },
+        {
+          "text": "[.WebGL-0x56ec00185600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+        }
+      ],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.google.com/ccm/collect?rcb=4&frm=0&ae=g&en=page_view&dl=https%3A%2F%2Fwww.bretda.com.br%2Fconfigurador&scrsrc=www.googletagmanager.com&rnd=30399742.1778870472&dt=Configurador%20%C2%B7%20Bretda%20Atelier%20%7C%20Bretda&auid=2014275288.1778870472&navt=n&npa=0&ep.ads_data_redaction=0&gtm=45Xe65d0v9195832744za200zd9195832744xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115616986~115938465~115938468&apve=1&apvf=f&apvc=1&tft=1778870472394&tfd=1035",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.google.com/rmkt/collect/16757160810/?random=1778870475138&cv=11&fst=1778870475138&fmt=8&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be65d0v9205908775z89195832744za20gzb9195832744zd9195832744xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115938465~115938469~116701381&u_w=412&u_h=839&url=https%3A%2F%2Fwww.bretda.com.br%2Fconfigurador&rcb=17&frm=0&tiba=Configurador%20%C2%B7%20Bretda%20Atelier%20%7C%20Bretda&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=2014275288.1778870472&uaa=arm&uab=64&uafvl=HeadlessChrome%3B147.0.7727.15%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.15&uamb=1&uam=&uap=Android&uapv=14&uaw=0&data=event%3Dgtag.config&gcp=5",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.google.com/ccm/collect?rcb=17&frm=0&ae=g&dl=https%3A%2F%2Fwww.bretda.com.br%2Fconfigurador&scrsrc=www.googletagmanager.com&rnd=30399742.1778870472&dt=Configurador%20%C2%B7%20Bretda%20Atelier%20%7C%20Bretda&auid=2014275288.1778870472&navt=n&npa=0&_tu=CA&gtm=45be65d0v9205908775z89195832744za20gzb9195832744zd9195832744xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115938465~115938469~116701381&apve=1&apvf=f&apvc=0&tids=AW-16757160810&tid=AW-16757160810&tft=1778870475175&tfd=3816",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.google.com/ccm/collect?rcb=17&frm=0&en=page_view&dl=https%3A%2F%2Fwww.bretda.com.br%2Fconfigurador&scrsrc=www.googletagmanager.com&rnd=30399742.1778870472&dt=Configurador%20%C2%B7%20Bretda%20Atelier%20%7C%20Bretda&auid=2014275288.1778870472&navt=n&npa=0&gtm=45be65d0v9205908775z89195832744za20gzb9195832744zd9195832744xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115938465~115938469&apve=1&apvf=f&apvc=0&tids=AW-16757160810&tid=AW-16757160810&tft=1778870475174&tfd=3815",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.google.com/rmkt/collect/16757160810/?random=1778870475166&cv=11&fst=1778870475166&fmt=8&bg=ffffff&guid=ON&async=1&gtm=45be65d0v9205908775z89195832744za20gzb9195832744zd9195832744xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115938465~115938469~116701381&u_w=412&u_h=839&url=https%3A%2F%2Fwww.bretda.com.br%2Fconfigurador&rcb=17&frm=0&tiba=Configurador%20%C2%B7%20Bretda%20Atelier%20%7C%20Bretda&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=2014275288.1778870472&uaa=arm&uab=64&uafvl=HeadlessChrome%3B147.0.7727.15%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.15&uamb=1&uam=&uap=Android&uapv=14&uaw=0&_tu=CA&gcp=5",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "http4xx5xx": [
+        {
+          "url": "https://www.bretda.com.br/newsletter?_rsc=1xjsn",
+          "status": 404
+        }
+      ],
+      "horizontalOverflow": {
+        "documentScrollWidth": 412,
+        "documentClientWidth": 412,
+        "overflowDelta": 0,
+        "offendingSelectors": []
+      },
+      "smallTouchTargets": [
+        {
+          "tag": "a",
+          "text": "Bretda — Home",
+          "w": 107,
+          "h": 28
+        },
+        {
+          "tag": "button",
+          "text": "Abrir menu",
+          "w": 42,
+          "h": 29
+        },
+        {
+          "tag": "button",
+          "text": "MOVER",
+          "w": 77,
+          "h": 35
+        },
+        {
+          "tag": "button",
+          "text": "RESET",
+          "w": 64,
+          "h": 35
+        },
+        {
+          "tag": "button",
+          "text": "GRADE",
+          "w": 75,
+          "h": 35
+        },
+        {
+          "tag": "button",
+          "text": "AMBIENTE",
+          "w": 94,
+          "h": 35
+        },
+        {
+          "tag": "button",
+          "text": "PERSONALIZAR",
+          "w": 128,
+          "h": 35
+        },
+        {
+          "tag": "button",
+          "text": "SINUCA",
+          "w": 75,
+          "h": 35
+        },
+        {
+          "tag": "button",
+          "text": "PEBOLIM",
+          "w": 75,
+          "h": 35
+        },
+        {
+          "tag": "button",
+          "text": "TENIS",
+          "w": 75,
+          "h": 35
+        },
+        {
+          "tag": "button",
+          "text": "SHUFFLE",
+          "w": 75,
+          "h": 35
+        },
+        {
+          "tag": "button",
+          "text": "OPAL",
+          "w": 102,
+          "h": 35
+        },
+        {
+          "tag": "button",
+          "text": "AURORA",
+          "w": 102,
+          "h": 35
+        },
+        {
+          "tag": "button",
+          "text": "ZURITA",
+          "w": 102,
+          "h": 35
+        },
+        {
+          "tag": "button",
+          "text": "ESPINELA",
+          "w": 102,
+          "h": 35
+        },
+        {
+          "tag": "button",
+          "text": "CITRINO",
+          "w": 102,
+          "h": 35
+        },
+        {
+          "tag": "button",
+          "text": "AMBAR",
+          "w": 102,
+          "h": 35
+        },
+        {
+          "tag": "button",
+          "text": "Off White",
+          "w": 32,
+          "h": 32
+        },
+        {
+          "tag": "button",
+          "text": "Creme",
+          "w": 32,
+          "h": 32
+        },
+        {
+          "tag": "button",
+          "text": "Purpura",
+          "w": 32,
+          "h": 32
+        },
+        {
+          "tag": "button",
+          "text": "Vermelho",
+          "w": 32,
+          "h": 32
+        },
+        {
+          "tag": "button",
+          "text": "Laranja",
+          "w": 32,
+          "h": 32
+        },
+        {
+          "tag": "button",
+          "text": "Marrom",
+          "w": 32,
+          "h": 32
+        },
+        {
+          "tag": "button",
+          "text": "Azul Petroleo",
+          "w": 32,
+          "h": 32
+        },
+        {
+          "tag": "button",
+          "text": "Verde Esmeralda",
+          "w": 35,
+          "h": 35
+        },
+        {
+          "tag": "button",
+          "text": "Cinza Claro",
+          "w": 32,
+          "h": 32
+        },
+        {
+          "tag": "button",
+          "text": "Camel",
+          "w": 32,
+          "h": 32
+        },
+        {
+          "tag": "button",
+          "text": "Terracota",
+          "w": 32,
+          "h": 32
+        },
+        {
+          "tag": "button",
+          "text": "Cinza Rosado",
+          "w": 32,
+          "h": 32
+        },
+        {
+          "tag": "button",
+          "text": "Cinza Chumbo",
+          "w": 32,
+          "h": 32
+        }
+      ],
+      "viewportMeta": "width=device-width, initial-scale=1",
+      "hasHorizontalScroll": false,
+      "threeJsLoaded": true,
+      "jsBundleBytes": 452492,
+      "imgBundleBytes": 4077114,
+      "totalTransferBytes": 4851926,
+      "resourceCount": 86
+    },
+    {
+      "name": "atelier",
+      "path": "/atelier",
+      "url": "https://bretda.com.br/atelier",
+      "status": 200,
+      "navTimeMs": 8435,
+      "perfMetrics": {
+        "lcp": 892,
+        "fcp": 892,
+        "cls": 0,
+        "clsEntries": [],
+        "longTaskCount": 4,
+        "longTaskMaxDuration": 147,
+        "domContentLoaded": 871.5999999940395,
+        "loadEventEnd": 1991.7999999970198,
+        "ttfb": 16.80000000447035
+      },
+      "consoleErrors": [
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()",
+          "location": "https://www.bretda.com.br/newsletter?_rsc=1k77s:0"
+        }
+      ],
+      "consoleWarnings": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.bretda.com.br/videos/reels/cristine-socia-1080.mp4",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.google.com/ccm/collect?rcb=17&frm=0&ae=g&en=page_view&dl=https%3A%2F%2Fwww.bretda.com.br%2Fatelier&scrsrc=www.googletagmanager.com&rnd=1024360901.1778870489&dt=Atelier%20%7C%20Bretda&auid=840824401.1778870489&navt=n&npa=0&ep.ads_data_redaction=0&gtm=45Xe65d0v9195832744za200zd9195832744xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115616986~115938466~115938468&apve=1&apvf=f&apvc=1&tft=1778870488601&tfd=1149",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.google.com/rmkt/collect/16757160810/?random=1778870488885&cv=11&fst=1778870488885&fmt=8&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be65d0v9205908775z89195832744za20gzb9195832744zd9195832744xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115616986~115938466~115938468~118131810&u_w=412&u_h=839&url=https%3A%2F%2Fwww.bretda.com.br%2Fatelier&rcb=18&frm=0&tiba=Atelier%20%7C%20Bretda&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=840824401.1778870489&uaa=arm&uab=64&uafvl=HeadlessChrome%3B147.0.7727.15%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.15&uamb=1&uam=&uap=Android&uapv=14&uaw=0&data=event%3Dgtag.config&gcp=5",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.google.com/rmkt/collect/16757160810/?random=1778870488957&cv=11&fst=1778870488957&fmt=8&bg=ffffff&guid=ON&async=1&gtm=45be65d0v9205908775z89195832744za20gzb9195832744zd9195832744xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115616986~115938466~115938468~118131810&u_w=412&u_h=839&url=https%3A%2F%2Fwww.bretda.com.br%2Fatelier&rcb=18&frm=0&tiba=Atelier%20%7C%20Bretda&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=840824401.1778870489&uaa=arm&uab=64&uafvl=HeadlessChrome%3B147.0.7727.15%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.15&uamb=1&uam=&uap=Android&uapv=14&uaw=0&_tu=CA&gcp=5",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.google.com/ccm/collect?rcb=18&frm=0&ae=g&dl=https%3A%2F%2Fwww.bretda.com.br%2Fatelier&scrsrc=www.googletagmanager.com&rnd=1024360901.1778870489&dt=Atelier%20%7C%20Bretda&auid=840824401.1778870489&navt=n&npa=0&_tu=CA&gtm=45be65d0v9205908775z89195832744za20gzb9195832744zd9195832744xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115616986~115938466~115938468~118131810&apve=1&apvf=f&apvc=0&tids=AW-16757160810&tid=AW-16757160810&tft=1778870488965&tfd=1512",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.google.com/ccm/collect?rcb=18&frm=0&en=page_view&dl=https%3A%2F%2Fwww.bretda.com.br%2Fatelier&scrsrc=www.googletagmanager.com&rnd=1024360901.1778870489&dt=Atelier%20%7C%20Bretda&auid=840824401.1778870489&navt=n&npa=0&gtm=45be65d0v9205908775z89195832744za20gzb9195832744zd9195832744xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115616986~115938466~115938468&apve=1&apvf=f&apvc=0&tids=AW-16757160810&tid=AW-16757160810&tft=1778870488964&tfd=1511",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.bretda.com.br/contato?modo=trade&_rsc=1cazj",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.bretda.com.br/contato?modo=visita&_rsc=1cazj",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "http4xx5xx": [
+        {
+          "url": "https://www.bretda.com.br/newsletter?_rsc=1k77s",
+          "status": 404
+        }
+      ],
+      "horizontalOverflow": {
+        "documentScrollWidth": 412,
+        "documentClientWidth": 412,
+        "overflowDelta": 0,
+        "offendingSelectors": []
+      },
+      "smallTouchTargets": [
+        {
+          "tag": "a",
+          "text": "Bretda — Home",
+          "w": 107,
+          "h": 28
+        },
+        {
+          "tag": "button",
+          "text": "Abrir menu",
+          "w": 42,
+          "h": 29
+        },
+        {
+          "tag": "a",
+          "text": "Bretda — Home",
+          "w": 153,
+          "h": 40
+        },
+        {
+          "tag": "a",
+          "text": "Sinuca",
+          "w": 44,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Tênis de mesa",
+          "w": 94,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Shuffleboard",
+          "w": 84,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Pebolim",
+          "w": 52,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Os mestres",
+          "w": 74,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Madeiras nobres",
+          "w": 109,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Manifesto",
+          "w": 64,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Visite",
+          "w": 36,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Configurador",
+          "w": 86,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Encomenda particular",
+          "w": 143,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Para arquitetos",
+          "w": 98,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Cartas do Atelier",
+          "w": 109,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Privacidade",
+          "w": 65,
+          "h": 17
+        },
+        {
+          "tag": "a",
+          "text": "Termos",
+          "w": 41,
+          "h": 17
+        },
+        {
+          "tag": "a",
+          "text": "Falar pelo WhatsApp",
+          "w": 40,
+          "h": 40
+        }
+      ],
+      "viewportMeta": "width=device-width, initial-scale=1",
+      "hasHorizontalScroll": false,
+      "jsBundleBytes": 452408,
+      "imgBundleBytes": 1280877,
+      "totalTransferBytes": 31034048,
+      "resourceCount": 52
+    },
+    {
+      "name": "contato",
+      "path": "/contato",
+      "url": "https://bretda.com.br/contato",
+      "status": 200,
+      "navTimeMs": 7981,
+      "perfMetrics": {
+        "lcp": 604,
+        "fcp": 604,
+        "cls": 0,
+        "clsEntries": [],
+        "longTaskCount": 5,
+        "longTaskMaxDuration": 131,
+        "domContentLoaded": 415.59999999403954,
+        "loadEventEnd": 600.7999999970198,
+        "ttfb": 16.200000002980232
+      },
+      "consoleErrors": [
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()",
+          "location": "https://www.bretda.com.br/newsletter?_rsc=otxqc:0"
+        }
+      ],
+      "consoleWarnings": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.google.com/ccm/collect?rcb=10&frm=0&ae=g&en=page_view&dl=https%3A%2F%2Fwww.bretda.com.br%2Fcontato&scrsrc=www.googletagmanager.com&rnd=102637472.1778870499&dt=Contato%20%7C%20Bretda&auid=212139921.1778870499&navt=n&npa=0&ep.ads_data_redaction=0&gtm=45Xe65d0v9195832744za200zd9195832744xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115616985~115938466~115938468&apve=1&apvf=f&apvc=1&tft=1778870499043&tfd=794",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.google.com/rmkt/collect/16757160810/?random=1778870499383&cv=11&fst=1778870499383&fmt=8&bg=ffffff&guid=ON&async=1&gtm=45be65d0v9205908775z89195832744za20gzb9195832744zd9195832744xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115938466~115938469&u_w=412&u_h=839&url=https%3A%2F%2Fwww.bretda.com.br%2Fcontato&rcb=14&frm=0&tiba=Contato%20%7C%20Bretda&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=212139921.1778870499&uaa=arm&uab=64&uafvl=HeadlessChrome%3B147.0.7727.15%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.15&uamb=1&uam=&uap=Android&uapv=14&uaw=0&_tu=CA&gcp=5",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.google.com/ccm/collect?rcb=14&frm=0&en=page_view&dl=https%3A%2F%2Fwww.bretda.com.br%2Fcontato&scrsrc=www.googletagmanager.com&rnd=102637472.1778870499&dt=Contato%20%7C%20Bretda&auid=212139921.1778870499&navt=n&npa=0&gtm=45be65d0v9205908775z89195832744za20gzb9195832744zd9195832744xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115938466~115938469&apve=1&apvf=f&apvc=0&tids=AW-16757160810&tid=AW-16757160810&tft=1778870499391&tfd=1143",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.google.com/rmkt/collect/16757160810/?random=1778870499336&cv=11&fst=1778870499336&fmt=8&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be65d0v9205908775z89195832744za20gzb9195832744zd9195832744xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115938466~115938469&u_w=412&u_h=839&url=https%3A%2F%2Fwww.bretda.com.br%2Fcontato&rcb=14&frm=0&tiba=Contato%20%7C%20Bretda&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=212139921.1778870499&uaa=arm&uab=64&uafvl=HeadlessChrome%3B147.0.7727.15%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.15&uamb=1&uam=&uap=Android&uapv=14&uaw=0&data=event%3Dgtag.config&gcp=5",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.google.com/ccm/collect?rcb=14&frm=0&ae=g&dl=https%3A%2F%2Fwww.bretda.com.br%2Fcontato&scrsrc=www.googletagmanager.com&rnd=102637472.1778870499&dt=Contato%20%7C%20Bretda&auid=212139921.1778870499&navt=n&npa=0&_tu=CA&gtm=45be65d0v9205908775z89195832744za20gzb9195832744zd9195832744xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115938466~115938469&apve=1&apvf=f&apvc=0&tids=AW-16757160810&tid=AW-16757160810&tft=1778870499392&tfd=1144",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.bretda.com.br/contato?modo=visita&_rsc=gxpht",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "http4xx5xx": [
+        {
+          "url": "https://www.bretda.com.br/newsletter?_rsc=otxqc",
+          "status": 404
+        }
+      ],
+      "horizontalOverflow": {
+        "documentScrollWidth": 412,
+        "documentClientWidth": 412,
+        "overflowDelta": 0,
+        "offendingSelectors": []
+      },
+      "smallTouchTargets": [
+        {
+          "tag": "a",
+          "text": "Bretda — Home",
+          "w": 107,
+          "h": 28
+        },
+        {
+          "tag": "button",
+          "text": "Abrir menu",
+          "w": 42,
+          "h": 29
+        },
+        {
+          "tag": "a",
+          "text": "(47) 9225-9554",
+          "w": 364,
+          "h": 32
+        },
+        {
+          "tag": "a",
+          "text": "Conversar pelo WhatsApp\n→",
+          "w": 263,
+          "h": 23
+        },
+        {
+          "tag": "a",
+          "text": "contato@bretda.com.br",
+          "w": 261,
+          "h": 41
+        },
+        {
+          "tag": "a",
+          "text": "(47) 9225-9554",
+          "w": 200,
+          "h": 41
+        },
+        {
+          "tag": "a",
+          "text": "@bretda",
+          "w": 93,
+          "h": 41
+        },
+        {
+          "tag": "a",
+          "text": "Bretda — Home",
+          "w": 153,
+          "h": 40
+        },
+        {
+          "tag": "a",
+          "text": "Sinuca",
+          "w": 44,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Tênis de mesa",
+          "w": 94,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Shuffleboard",
+          "w": 84,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Pebolim",
+          "w": 52,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Os mestres",
+          "w": 74,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Madeiras nobres",
+          "w": 109,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Manifesto",
+          "w": 64,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Visite",
+          "w": 36,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Configurador",
+          "w": 86,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Encomenda particular",
+          "w": 143,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Para arquitetos",
+          "w": 98,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Cartas do Atelier",
+          "w": 109,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Privacidade",
+          "w": 65,
+          "h": 17
+        },
+        {
+          "tag": "a",
+          "text": "Termos",
+          "w": 41,
+          "h": 17
+        },
+        {
+          "tag": "a",
+          "text": "Falar pelo WhatsApp",
+          "w": 40,
+          "h": 40
+        }
+      ],
+      "viewportMeta": "width=device-width, initial-scale=1",
+      "hasHorizontalScroll": false,
+      "jsBundleBytes": 452382,
+      "imgBundleBytes": 168,
+      "totalTransferBytes": 754588,
+      "resourceCount": 35
+    },
+    {
+      "name": "encomenda-particular",
+      "path": "/encomenda-particular",
+      "url": "https://bretda.com.br/encomenda-particular",
+      "status": 200,
+      "navTimeMs": 8275,
+      "perfMetrics": {
+        "lcp": 776,
+        "fcp": 776,
+        "cls": 0,
+        "clsEntries": [],
+        "longTaskCount": 4,
+        "longTaskMaxDuration": 95,
+        "domContentLoaded": 685.5,
+        "loadEventEnd": 851.5,
+        "ttfb": 16.399999998509884
+      },
+      "consoleErrors": [
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()",
+          "location": "https://www.bretda.com.br/videos/reels/sensorial-poster.jpg:0"
+        },
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()",
+          "location": "https://www.bretda.com.br/newsletter?_rsc=11y2m:0"
+        }
+      ],
+      "consoleWarnings": [],
+      "pageErrors": [],
+      "failedRequests": [
+        {
+          "url": "https://www.google.com/ccm/collect?rcb=2&frm=0&ae=g&en=page_view&dl=https%3A%2F%2Fwww.bretda.com.br%2Fencomenda-particular&scrsrc=www.googletagmanager.com&rnd=555178461.1778870508&dt=Encomenda%20Particular%20%7C%20Bretda&auid=383457041.1778870508&navt=n&npa=0&ep.ads_data_redaction=0&gtm=45Xe65e0h2v9195832744za200zd9195832744xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115938465~115938469&apve=1&apvf=f&apvc=1&tft=1778870508194&tfd=1048",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.google.com/rmkt/collect/16757160810/?random=1778870508424&cv=11&fst=1778870508424&fmt=8&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be65e0h2v9205908775z89195832744za20gzb9195832744zd9195832744xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115616985~115938465~115938468~117227715&u_w=412&u_h=839&url=https%3A%2F%2Fwww.bretda.com.br%2Fencomenda-particular&rcb=5&frm=0&tiba=Encomenda%20Particular%20%7C%20Bretda&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=383457041.1778870508&uaa=arm&uab=64&uafvl=HeadlessChrome%3B147.0.7727.15%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.15&uamb=1&uam=&uap=Android&uapv=14&uaw=0&data=event%3Dgtag.config&gcp=5",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.google.com/ccm/collect?rcb=5&frm=0&en=page_view&dl=https%3A%2F%2Fwww.bretda.com.br%2Fencomenda-particular&scrsrc=www.googletagmanager.com&rnd=555178461.1778870508&dt=Encomenda%20Particular%20%7C%20Bretda&auid=383457041.1778870508&navt=n&npa=0&gtm=45be65e0h2v9205908775z89195832744za20gzb9195832744zd9195832744xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115616985~115938465~115938468&apve=1&apvf=f&apvc=0&tids=AW-16757160810&tid=AW-16757160810&tft=1778870508462&tfd=1316",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.google.com/rmkt/collect/16757160810/?random=1778870508456&cv=11&fst=1778870508456&fmt=8&bg=ffffff&guid=ON&async=1&gtm=45be65e0h2v9205908775z89195832744za20gzb9195832744zd9195832744xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115616985~115938465~115938468~117227715&u_w=412&u_h=839&url=https%3A%2F%2Fwww.bretda.com.br%2Fencomenda-particular&rcb=5&frm=0&tiba=Encomenda%20Particular%20%7C%20Bretda&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=383457041.1778870508&uaa=arm&uab=64&uafvl=HeadlessChrome%3B147.0.7727.15%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.15&uamb=1&uam=&uap=Android&uapv=14&uaw=0&_tu=CA&gcp=5",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.google.com/ccm/collect?rcb=5&frm=0&ae=g&dl=https%3A%2F%2Fwww.bretda.com.br%2Fencomenda-particular&scrsrc=www.googletagmanager.com&rnd=555178461.1778870508&dt=Encomenda%20Particular%20%7C%20Bretda&auid=383457041.1778870508&navt=n&npa=0&_tu=CA&gtm=45be65e0h2v9205908775z89195832744za20gzb9195832744zd9195832744xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115616985~115938465~115938468~117227715&apve=1&apvf=f&apvc=0&tids=AW-16757160810&tid=AW-16757160810&tft=1778870508463&tfd=1317",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "url": "https://www.bretda.com.br/contato?modo=trade&_rsc=11y2m",
+          "failure": "net::ERR_ABORTED"
+        }
+      ],
+      "http4xx5xx": [
+        {
+          "url": "https://www.bretda.com.br/videos/reels/sensorial-poster.jpg",
+          "status": 404
+        },
+        {
+          "url": "https://www.bretda.com.br/newsletter?_rsc=11y2m",
+          "status": 404
+        }
+      ],
+      "horizontalOverflow": {
+        "documentScrollWidth": 412,
+        "documentClientWidth": 412,
+        "overflowDelta": 0,
+        "offendingSelectors": []
+      },
+      "smallTouchTargets": [
+        {
+          "tag": "a",
+          "text": "Bretda — Home",
+          "w": 107,
+          "h": 28
+        },
+        {
+          "tag": "button",
+          "text": "Abrir menu",
+          "w": 42,
+          "h": 29
+        },
+        {
+          "tag": "a",
+          "text": "Bretda — Home",
+          "w": 153,
+          "h": 40
+        },
+        {
+          "tag": "a",
+          "text": "Sinuca",
+          "w": 44,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Tênis de mesa",
+          "w": 94,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Shuffleboard",
+          "w": 84,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Pebolim",
+          "w": 52,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Os mestres",
+          "w": 74,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Madeiras nobres",
+          "w": 109,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Manifesto",
+          "w": 64,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Visite",
+          "w": 36,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Configurador",
+          "w": 86,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Encomenda particular",
+          "w": 143,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Para arquitetos",
+          "w": 98,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Cartas do Atelier",
+          "w": 109,
+          "h": 16
+        },
+        {
+          "tag": "a",
+          "text": "Privacidade",
+          "w": 65,
+          "h": 17
+        },
+        {
+          "tag": "a",
+          "text": "Termos",
+          "w": 41,
+          "h": 17
+        },
+        {
+          "tag": "a",
+          "text": "Falar pelo WhatsApp",
+          "w": 40,
+          "h": 40
+        }
+      ],
+      "viewportMeta": "width=device-width, initial-scale=1",
+      "hasHorizontalScroll": false,
+      "jsBundleBytes": 452510,
+      "imgBundleBytes": 168,
+      "totalTransferBytes": 769622,
+      "resourceCount": 35
+    }
+  ],
+  "summary": {
+    "totalRoutes": 7,
+    "routesWithConsoleErrors": 7,
+    "routesWithHorizontalScroll": 0,
+    "routesWithFailedRequests": 7,
+    "routesWith4xx5xx": 7,
+    "routesWithSmallTouchTargets": 7,
+    "lcpAvgMs": 1934.857142857143
+  }
+}

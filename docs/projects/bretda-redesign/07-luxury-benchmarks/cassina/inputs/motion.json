@@ -1,0 +1,118 @@
+{
+  "durations": [
+    {
+      "value": "2s",
+      "count": 63
+    },
+    {
+      "value": "3s",
+      "count": 29
+    },
+    {
+      "value": "6s",
+      "count": 26
+    },
+    {
+      "value": "224ms",
+      "count": 11
+    },
+    {
+      "value": "192ms",
+      "count": 7
+    },
+    {
+      "value": "384ms",
+      "count": 4
+    },
+    {
+      "value": "1.5s",
+      "count": 3
+    },
+    {
+      "value": "1s",
+      "count": 2
+    },
+    {
+      "value": "0s",
+      "count": 2
+    },
+    {
+      "value": "5s",
+      "count": 2
+    }
+  ],
+  "easings": [
+    {
+      "value": "cubic-bezier(.25,1,.5,1)",
+      "count": 16
+    },
+    {
+      "value": "cubic-bezier(.215,.61,.355,1)",
+      "count": 16
+    },
+    {
+      "value": "cubic-bezier(0,0,.2,1)",
+      "count": 5
+    },
+    {
+      "value": "cubic-bezier(.4,0,.2,1)",
+      "count": 4
+    },
+    {
+      "value": "cubic-bezier(.4,0,1,1)",
+      "count": 4
+    },
+    {
+      "value": "ease-out",
+      "count": 4
+    },
+    {
+      "value": "linear",
+      "count": 3
+    },
+    {
+      "value": "cubic-bezier(0.5,1.8,0.9,0.8)",
+      "count": 2
+    },
+    {
+      "value": "cubic-bezier(0,0,0.2,1)",
+      "count": 2
+    },
+    {
+      "value": "cubic-bezier(0.4,0,1,1)",
+      "count": 2
+    }
+  ],
+  "keyframes": [
+    "cmp-search__loading-indicator-spin",
+    "spin",
+    "ping",
+    "pulse",
+    "bounce",
+    "swiper-preloader-spin",
+    "scroll-top",
+    "opacity",
+    "scroll-left",
+    "processing_favorite",
+    "load5",
+    "loader-rotation",
+    "loader-pulse",
+    "cmp-LoadingIndicator__indicator__rotation",
+    "cmp-OnePageCheckout__body__rotation",
+    "cmp-Checkout__flow__enter",
+    "cmp-Checkout__form__enter",
+    "cmp-AddressForm__addressForm__enter",
+    "cmp-ShoppingCart__product__processing_favorite",
+    "cmp-AddedToCart__product__processing_favorite",
+    "cmp-OnePageCheckout__flow__enter",
+    "cmp-OnePageCheckout__form__enter",
+    "cmp-OnePageCheckout__addressForm__enter",
+    "Toastify__trackProgress",
+    "Toastify__bounceInRight",
+    "Toastify__bounceOutRight",
+    "Toastify__bounceInLeft",
+    "Toastify__bounceOutLeft",
+    "Toastify__bounceInUp",
+    "Toastify__bounceOutUp"
+  ]
+}

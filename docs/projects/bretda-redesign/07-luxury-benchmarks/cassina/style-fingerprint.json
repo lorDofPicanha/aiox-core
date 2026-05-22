@@ -1,0 +1,30 @@
+{
+  "extracted_signals": {
+    "radius_scale": "high",
+    "color_saturation": "very-low",
+    "spacing_density": "very-roomy",
+    "typography_weight": "regular",
+    "shadow_intensity": "strong",
+    "surface_treatment": "glass"
+  },
+  "classification": {
+    "primary_archetype": "apple-glass",
+    "confidence_score": 90,
+    "secondary_archetype": null,
+    "explanation": "Matched apple-glass on: radius_scale=high, color_saturation=very-low, spacing_density=very-roomy, shadow_intensity=strong, surface_treatment=glass. Diverged on: typography_weight=regular (expected thin-bold|regular-bold|regular-medium-semibold-bold)."
+  },
+  "archetype_distance": {
+    "shadcn-neutral": 47.05882352941176,
+    "carbon-enterprise": 33.33333333333333,
+    "material-elevation": 18.75,
+    "polaris-friendly": 64.70588235294117,
+    "apple-glass": 90,
+    "brutalist-mono": 18.75,
+    "govuk-conservative": 0,
+    "porsche-precision": 37.5,
+    "ant-china-enterprise": 13.333333333333334,
+    "marketing-gradient": 75,
+    "community-polished": 0
+  },
+  "_reference": "lib/extractors.cjs:ARCHETYPES"
+}

@@ -1,7 +1,7 @@
 metadata:
   version: 1.0.0
-  lastUpdated: '2026-04-10T23:10:01.302Z'
-  entityCount: 1321
+  lastUpdated: '2026-05-21T00:20:21.875Z'
+  entityCount: 1327
   checksumAlgorithm: sha256
   resolutionRate: 100
 entities:
@@ -187,7 +187,6 @@ entities:
         - elicitation
         - advanced-elicitation
       usedBy:
-        - aios-master
         - analyst
       dependencies: []
       externalDeps: []
@@ -846,8 +845,7 @@ entities:
         - analyze
         - framework
         - 'task:'
-      usedBy:
-        - aios-master
+      usedBy: []
       dependencies:
         - framework-analyzer
         - usage-analytics
@@ -1400,8 +1398,7 @@ entities:
         - daily
         - status
         - report
-      usedBy:
-        - aios-master
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -2446,8 +2443,7 @@ entities:
         - corporation
         - engine
         - activation
-      usedBy:
-        - aios-master
+      usedBy: []
       dependencies:
         - task-router
         - scheduler
@@ -2471,7 +2467,6 @@ entities:
         - course
         - task
       usedBy:
-        - aios-master
         - pm
         - po
         - sm
@@ -2576,8 +2571,7 @@ entities:
         - agent
         - 'task:'
         - squad
-      usedBy:
-        - aios-master
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -2656,7 +2650,6 @@ entities:
         - task
         - creates
       usedBy:
-        - aios-master
         - analyst
         - architect
         - data-engineer
@@ -2690,7 +2683,6 @@ entities:
         - dynamically
         - during
       usedBy:
-        - aios-master
         - analyst
         - architect
         - data-engineer
@@ -2725,7 +2717,6 @@ entities:
         - story
         - task
       usedBy:
-        - aios-master
         - sm
       dependencies:
         - po-master-checklist
@@ -2846,8 +2837,7 @@ entities:
         - task-validation-checklist.md
         - validation
         - (follow-up
-      usedBy:
-        - aios-master
+      usedBy: []
       dependencies:
         - component-generator.js
       externalDeps: []
@@ -2875,8 +2865,7 @@ entities:
         - workflow-validation-checklist.md
         - validation
         - (follow-up
-      usedBy:
-        - aios-master
+      usedBy: []
       dependencies:
         - component-generator.js
       externalDeps: []
@@ -3963,8 +3952,7 @@ entities:
         - deprecation-checklist.md
         - validation
         - (follow-up
-      usedBy:
-        - aios-master
+      usedBy: []
       dependencies:
         - usage-tracker
         - component-search
@@ -4854,7 +4842,6 @@ entities:
         - validation
         - (follow-up
       usedBy:
-        - aios-master
         - analyst
         - architect
       dependencies: []
@@ -5087,8 +5074,7 @@ entities:
         - clones
         - mind
         - priority
-      usedBy:
-        - aios-master
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -5318,7 +5304,6 @@ entities:
         - executes
         - existing
       usedBy:
-        - aios-master
         - architect
         - data-engineer
         - design-lead
@@ -6534,8 +6519,7 @@ entities:
         - governor
         - 'task:'
         - commands
-      usedBy:
-        - aios-master
+      usedBy: []
       dependencies:
         - aios-master
         - dev
@@ -6633,8 +6617,7 @@ entities:
         - improve
         - self
         - improve-self
-      usedBy:
-        - aios-master
+      usedBy: []
       dependencies:
         - capability-analyzer
         - improvement-validator
@@ -6719,8 +6702,7 @@ entities:
         - task
         - maintains
         - documentation
-      usedBy:
-        - aios-master
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -7023,8 +7005,7 @@ entities:
         - needed
         - interactive
         - facilitation
-      usedBy:
-        - aios-master
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -7862,8 +7843,7 @@ entities:
         - metrics
         - usage
         - effectiveness
-      usedBy:
-        - aios-master
+      usedBy: []
       dependencies:
         - architect
         - pm
@@ -7986,8 +7966,7 @@ entities:
         - modify
         - agent
         - task
-      usedBy:
-        - aios-master
+      usedBy: []
       dependencies:
         - change-checklist
       externalDeps: []
@@ -8013,8 +7992,7 @@ entities:
       keywords:
         - modify
         - task
-      usedBy:
-        - aios-master
+      usedBy: []
       dependencies:
         - change-checklist
       externalDeps: []
@@ -8040,8 +8018,7 @@ entities:
         - modify
         - workflow
         - task
-      usedBy:
-        - aios-master
+      usedBy: []
       dependencies:
         - change-checklist
       externalDeps: []
@@ -9689,8 +9666,7 @@ entities:
         - aios
         - developer
         - task
-      usedBy:
-        - aios-master
+      usedBy: []
       dependencies:
         - dependency-impact-analyzer
         - change-checklist
@@ -10813,7 +10789,6 @@ entities:
         - task
       usedBy:
         - run-workflow
-        - aios-master
       dependencies:
         - workflow-state-manager.js
         - workflow-validator.js
@@ -10838,8 +10813,7 @@ entities:
         - run
         - workflow
         - task
-      usedBy:
-        - aios-master
+      usedBy: []
       dependencies:
         - run-workflow-engine
         - aios-master
@@ -11466,7 +11440,6 @@ entities:
         - processing
         - task
       usedBy:
-        - aios-master
         - pm
         - po
       dependencies: []
@@ -12581,8 +12554,7 @@ entities:
         - registry
         - intel
         - 'task:'
-      usedBy:
-        - aios-master
+      usedBy: []
       dependencies:
         - registry-syncer
         - aios-master
@@ -13074,8 +13046,7 @@ entities:
         - rollback
         - operation
         - built-in
-      usedBy:
-        - aios-master
+      usedBy: []
       dependencies:
         - backup-manager.js
       externalDeps: []
@@ -13122,8 +13093,7 @@ entities:
       keywords:
         - update
         - manifest
-      usedBy:
-        - aios-master
+      usedBy: []
       dependencies:
         - change-checklist
       externalDeps: []
@@ -13150,8 +13120,7 @@ entities:
         - source
         - tree
         - task
-      usedBy:
-        - aios-master
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -13415,8 +13384,7 @@ entities:
         - validate
         - workflow
         - task
-      usedBy:
-        - aios-master
+      usedBy: []
       dependencies:
         - workflow-validator.js
       externalDeps: []
@@ -13893,6 +13861,20 @@ entities:
         extensionPoints: []
       checksum: sha256:f128542695ae1bd358ab553fd777e41ead19c7af31bb97b31d89771f88960332
       lastVerified: '2026-04-10T23:10:00.693Z'
+    diagnose:
+      path: .aios-core/development/tasks/diagnose.md
+      type: task
+      purpose: A discipline for hard bugs and performance regressions. Skip phases only when explicitly justified.
+      keywords:
+        - diagnose
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.8
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:54be0262ba7903c39d96e4f49346df8a8ff6c1f003c159ed986e1ee4c75d355e
+      lastVerified: '2026-05-05T23:07:39.303Z'
   templates:
     activation-instructions-inline-greeting:
       path: .aios-core/product/templates/activation-instructions-inline-greeting.yaml
@@ -13949,7 +13931,6 @@ entities:
         - aios
       usedBy:
         - squad-creator-extend
-        - aios-master
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -13990,9 +13971,7 @@ entities:
       keywords:
         - architecture
         - tmpl
-      usedBy:
-        - aios-master
-        - architect
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -14012,8 +13991,7 @@ entities:
         - brainstorming
         - output
         - tmpl
-      usedBy:
-        - analyst
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -14033,9 +14011,7 @@ entities:
         - brownfield
         - architecture
         - tmpl
-      usedBy:
-        - aios-master
-        - architect
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -14055,9 +14031,7 @@ entities:
         - brownfield
         - prd
         - tmpl
-      usedBy:
-        - aios-master
-        - pm
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -14142,9 +14116,7 @@ entities:
         - competitor
         - analysis
         - tmpl
-      usedBy:
-        - aios-master
-        - analyst
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -14238,9 +14210,7 @@ entities:
         - end
         - architecture
         - tmpl
-      usedBy:
-        - aios-master
-        - architect
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -14261,10 +14231,7 @@ entities:
         - end
         - spec
         - tmpl
-      usedBy:
-        - aios-master
-        - ux-design-expert
-        - ux-designer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -14284,9 +14251,7 @@ entities:
         - fullstack
         - architecture
         - tmpl
-      usedBy:
-        - aios-master
-        - architect
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -14307,8 +14272,7 @@ entities:
         - actions
         - cd
         - template
-      usedBy:
-        - devops
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -14329,8 +14293,7 @@ entities:
         - actions
         - ci
         - template
-      usedBy:
-        - devops
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -14395,8 +14358,7 @@ entities:
         - index
         - strategy
         - tmpl
-      usedBy:
-        - data-engineer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -14416,9 +14378,7 @@ entities:
         - market
         - research
         - tmpl
-      usedBy:
-        - aios-master
-        - analyst
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -14438,8 +14398,7 @@ entities:
         - migration
         - plan
         - tmpl
-      usedBy:
-        - data-engineer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -14618,9 +14577,7 @@ entities:
       keywords:
         - prd
         - tmpl
-      usedBy:
-        - aios-master
-        - pm
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -14640,9 +14597,7 @@ entities:
         - project
         - brief
         - tmpl
-      usedBy:
-        - aios-master
-        - analyst
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -14662,8 +14617,7 @@ entities:
         - qa
         - gate
         - tmpl
-      usedBy:
-        - qa
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -14705,8 +14659,7 @@ entities:
         - rls
         - policies
         - tmpl
-      usedBy:
-        - data-engineer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -14726,8 +14679,7 @@ entities:
         - schema
         - design
         - tmpl
-      usedBy:
-        - data-engineer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -14769,8 +14721,7 @@ entities:
         - persistence
         - tmpl
         - .state.yaml
-      usedBy:
-        - ux-design-expert
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -14791,11 +14742,7 @@ entities:
       keywords:
         - story
         - tmpl
-      usedBy:
-        - aios-master
-        - po
-        - qa
-        - sm
+      usedBy: []
       dependencies:
         - dev
         - architect
@@ -14844,8 +14791,7 @@ entities:
         - task
         - template
         - '{{task_title}}'
-      usedBy:
-        - aios-master
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -14866,9 +14812,7 @@ entities:
         - schema
         - tmpl
         - design
-      usedBy:
-        - design-systems-engineer
-        - ux-design-expert
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -14889,8 +14833,7 @@ entities:
         - template
         - yamllint
         - disable
-      usedBy:
-        - aios-master
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -15250,9 +15193,7 @@ entities:
       keywords:
         - backup
         - manager
-      usedBy:
-        - improve-self
-        - undo-last
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -15569,6 +15510,7 @@ entities:
       usedBy: []
       dependencies:
         - activation-runtime
+        - mind-clone-pipeline
       externalDeps: []
       plannedDeps: []
       lifecycle: experimental
@@ -15576,8 +15518,8 @@ entities:
         score: 0.7
         constraints: []
         extensionPoints: []
-      checksum: sha256:49b857fe36a0216a0df8395a6847f14608bd6a228817276201d22598a6862a4f
-      lastVerified: '2026-04-10T23:10:00.727Z'
+      checksum: sha256:407de3e1b5a819ef2190c44d941a5f2dff75c5e399ede0807c9b7f7a831e0ce8
+      lastVerified: '2026-05-21T00:20:21.864Z'
     generate-mind-clone-skills:
       path: .aios-core/development/scripts/generate-mind-clone-skills.js
       layer: L2
@@ -15612,8 +15554,7 @@ entities:
       keywords:
         - git
         - wrapper
-      usedBy:
-        - improve-self
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -15641,10 +15582,12 @@ entities:
         - workflow-navigator
         - greeting-preference-manager
         - project-status-loader
+        - permissions
         - config-resolver
         - validate-user-profile
         - session-state
         - surface-checker
+        - thinking-budget
       externalDeps: []
       plannedDeps:
         - permissions
@@ -15653,8 +15596,8 @@ entities:
         score: 0.7
         constraints: []
         extensionPoints: []
-      checksum: sha256:12c40eca0d684871c7f87821c971f60113291d6a5c0032a038908a4359a7941a
-      lastVerified: '2026-04-10T23:10:00.730Z'
+      checksum: sha256:ec2e8dc6a52059afb905d8194d5337e675dfecf185e6c3a53871d38818ee5eb0
+      lastVerified: '2026-05-21T00:20:21.865Z'
     greeting-config-cli:
       path: .aios-core/development/scripts/greeting-config-cli.js
       layer: L2
@@ -16183,11 +16126,11 @@ entities:
         - context-loader
         - project-status-loader
         - git-config-detector
+        - permissions
         - greeting-preference-manager
         - context-detector
         - workflow-navigator
-        - atomic-write
-        - corporation-hooks
+        - pro-detector
       externalDeps: []
       plannedDeps:
         - permissions
@@ -16197,8 +16140,8 @@ entities:
         score: 0.7
         constraints: []
         extensionPoints: []
-      checksum: sha256:751eb233b1e9c183119575ba8b1eca55b39710e6e3f38d777646b5d8feb5bf41
-      lastVerified: '2026-04-10T23:10:00.742Z'
+      checksum: sha256:d80a26c57ee88ebbdcfb8b65365733d56fe548c5646888768cc7393d6df8e36c
+      lastVerified: '2026-05-21T00:20:21.866Z'
     usage-tracker:
       path: .aios-core/development/scripts/usage-tracker.js
       layer: L2
@@ -16336,7 +16279,6 @@ entities:
         - manager
       usedBy:
         - next
-        - run-workflow-engine
         - verify-workflow-gaps
       dependencies: []
       externalDeps: []
@@ -16357,8 +16299,6 @@ entities:
         - workflow
         - validator
       usedBy:
-        - run-workflow-engine
-        - validate-workflow
         - verify-workflow-gaps
         - squad-validator
         - framework-analyzer
@@ -16398,8 +16338,7 @@ entities:
       purpose: Entity at .aios-core\development\scripts\squad\index.js
       keywords:
         - index
-      usedBy:
-        - setup-project-docs
+      usedBy: []
       dependencies:
         - squad-loader
         - squad-validator
@@ -16448,7 +16387,6 @@ entities:
         - generated
         - '*design-squad'
       usedBy:
-        - squad-creator-design
         - index
       dependencies: []
       externalDeps: []
@@ -16514,8 +16452,6 @@ entities:
         - '*${taskname.replace(/-/g,'
         - '''-'')}'
       usedBy:
-        - squad-creator-create
-        - squad-creator-list
         - index
       dependencies: []
       externalDeps: []
@@ -16537,9 +16473,7 @@ entities:
         - loader
       usedBy:
         - squad-creator-analyze
-        - squad-creator-create
         - squad-creator-extend
-        - squad-creator-validate
         - index
         - squad-downloader
         - squad-publisher
@@ -16562,7 +16496,6 @@ entities:
         - squad
         - migrator
       usedBy:
-        - squad-creator-migrate
         - index
       dependencies: []
       externalDeps: []
@@ -16605,10 +16538,7 @@ entities:
         - squad
         - validator
       usedBy:
-        - squad-creator-create
         - squad-creator-extend
-        - squad-creator-migrate
-        - squad-creator-validate
         - verify-workflow-gaps
         - index
         - squad-downloader
@@ -16948,8 +16878,7 @@ entities:
       keywords:
         - corporation
         - hooks
-      usedBy:
-        - unified-activation-pipeline
+      usedBy: []
       dependencies:
         - org-engine
         - shadow-mode
@@ -17456,9 +17385,7 @@ entities:
         - build
         - loop
       usedBy:
-        - build-autonomous
         - build-orchestrator
-        - dev
       dependencies:
         - build-state-manager
         - recovery-tracker
@@ -17480,9 +17407,7 @@ entities:
       keywords:
         - build
         - orchestrator
-      usedBy:
-        - build
-        - dev
+      usedBy: []
       dependencies:
         - autonomous-build-loop
         - build-state-manager
@@ -17509,7 +17434,6 @@ entities:
       usedBy:
         - autonomous-build-loop
         - build-orchestrator
-        - dev
       dependencies:
         - stuck-detector
         - recovery-tracker
@@ -18045,7 +17969,6 @@ entities:
       lastVerified: '2026-04-10T23:10:00.781Z'
     consultation-engine:
       path: .aios-core/core/jarvis/consultation-engine.js
-      layer: L1
       type: module
       purpose: Entity at .aios-core\core\jarvis\consultation-engine.js
       keywords:
@@ -18055,18 +17978,14 @@ entities:
         - self-consultation
       dependencies:
         - project-detector
-      externalDeps: []
-      plannedDeps: []
-      lifecycle: production
       adaptability:
         score: 0.4
         constraints: []
         extensionPoints: []
       checksum: sha256:999b8da6f83d7acc201d84cec28fce2a1b618ff13db7f4ee96a6c1270e1022c1
-      lastVerified: '2026-04-10T23:10:00.781Z'
+      lastVerified: '2026-05-12T15:11:49.187Z'
     project-detector:
       path: .aios-core/core/jarvis/project-detector.js
-      layer: L1
       type: module
       purpose: Entity at .aios-core\core\jarvis\project-detector.js
       keywords:
@@ -18076,18 +17995,14 @@ entities:
         - consultation-engine
         - self-consultation
       dependencies: []
-      externalDeps: []
-      plannedDeps: []
-      lifecycle: production
       adaptability:
         score: 0.4
         constraints: []
         extensionPoints: []
       checksum: sha256:ec20dff73c091b51fd681176ffe16c115db219eae926db46a8721ff76d1c84ad
-      lastVerified: '2026-04-10T23:10:00.782Z'
+      lastVerified: '2026-05-12T15:11:49.188Z'
     self-consultation:
       path: .aios-core/core/jarvis/self-consultation.js
-      layer: L1
       type: module
       purpose: m[2].trim().substring(0, 200),
       keywords:
@@ -18097,15 +18012,12 @@ entities:
       dependencies:
         - project-detector
         - consultation-engine
-      externalDeps: []
-      plannedDeps: []
-      lifecycle: experimental
       adaptability:
         score: 0.4
         constraints: []
         extensionPoints: []
-      checksum: sha256:3d7ae73451f95d2b5333363d3a20ebd483acf08c7901c87703e018441dfcba23
-      lastVerified: '2026-04-10T23:10:00.782Z'
+      checksum: sha256:f0e7fb9bff86f34ddef3203f5d1db35a3b09d6a1311a079f1ff2ab225aa267f6
+      lastVerified: '2026-05-12T15:11:49.190Z'
     manifest-generator:
       path: .aios-core/core/manifest/manifest-generator.js
       layer: L1
@@ -18278,14 +18190,11 @@ entities:
         - gotchas
         - memory
       usedBy:
-        - gotcha
-        - gotchas
         - build-orchestrator
         - context-injector
         - subagent-dispatcher
         - ideation-engine
         - active-modules.verify
-        - dev
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -18782,7 +18691,6 @@ entities:
         - session
         - state
       usedBy:
-        - session-resume
         - greeting-builder
         - bob-orchestrator
         - brownfield-handler
@@ -18935,7 +18843,6 @@ entities:
         - workflow
         - executor
       usedBy:
-        - story-checkpoint
         - bob-orchestrator
         - brownfield-handler
         - greenfield-handler
@@ -21401,7 +21308,6 @@ entities:
         - atomic
         - write
       usedBy:
-        - unified-activation-pipeline
         - context-detector
       dependencies: []
       externalDeps: []
@@ -22397,6 +22303,22 @@ entities:
         extensionPoints: []
       checksum: sha256:dd025894f8f0d3bd22a147dbc0debef8b83e96f3c59483653404b3cd5a01d5aa
       lastVerified: '2026-04-10T23:10:00.858Z'
+    agent-path-resolver:
+      path: .aios-core/core/utils/agent-path-resolver.js
+      type: module
+      purpose: Entity at .aios-core\core\utils\agent-path-resolver.js
+      keywords:
+        - agent
+        - path
+        - resolver
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.4
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:6ef5a2a85cf46b92433b6ab384c6f9c94a0db3fb5ccd5a684098c5cad5018c28
+      lastVerified: '2026-05-21T00:20:21.846Z'
   agents:
     abby-covert:
       path: .aios-core/development/agents/abby-covert.md
@@ -22523,60 +22445,7 @@ entities:
         - sync-registry-intel
         - claude-rules
         - codex-rules
-      dependencies:
-        - advanced-elicitation
-        - briefing
-        - mind-clone-metrics
-        - corp-activate
-        - enrich-top-clones
-        - analyze-framework
-        - correct-course
-        - create-agent
-        - create-deep-research-prompt
-        - create-doc
-        - create-next-story
-        - create-task
-        - create-workflow
-        - deprecate-component
-        - document-project
-        - execute-checklist
-        - improve-self
-        - index-docs
-        - kb-mode-interaction
-        - modify-agent
-        - modify-task
-        - modify-workflow
-        - propose-modification
-        - shard-doc
-        - undo-last
-        - update-manifest
-        - update-source-tree
-        - validate-agents
-        - validate-workflow
-        - run-workflow
-        - run-workflow-engine
-        - ids-governor
-        - sync-registry-intel
-        - agent-template.yaml
-        - architecture-tmpl.yaml
-        - brownfield-architecture-tmpl.yaml
-        - brownfield-prd-tmpl.yaml
-        - competitor-analysis-tmpl.yaml
-        - front-end-architecture-tmpl.yaml
-        - front-end-spec-tmpl.yaml
-        - fullstack-architecture-tmpl.yaml
-        - market-research-tmpl.yaml
-        - prd-tmpl.yaml
-        - project-brief-tmpl.yaml
-        - story-tmpl.yaml
-        - task-template
-        - workflow-template.yaml
-        - architect-checklist
-        - change-checklist
-        - pm-checklist
-        - po-master-checklist
-        - story-dod-checklist
-        - story-draft-checklist
+      dependencies: []
       externalDeps: []
       plannedDeps:
         - add-tech-doc
@@ -22586,8 +22455,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:d4acb44ff41cecc99443e7292cc06e106e043776d2e9789b171a2a841c3e796e
-      lastVerified: '2026-04-10T23:10:00.878Z'
+      checksum: sha256:6551d1bb5b018edf915bfa47db6008b767c96e19b73768dca17f8f651dd5a06b
+      lastVerified: '2026-05-05T23:07:39.281Z'
     alan-nichol:
       path: .aios-core/development/agents/alan-nichol.md
       layer: L2
@@ -26773,6 +26642,43 @@ entities:
         extensionPoints: []
       checksum: sha256:1553da551a27d3b4d79500c1605cd084bef0c31c09f4306888a9e8fb55aaeaea
       lastVerified: '2026-04-10T23:10:01.108Z'
+    slide-creator:
+      path: .aios-core/development/agents/slide-creator.md
+      layer: L2
+      type: agent
+      purpose: >-
+        Narrative-first deck architect wrapping external slide-creator skill bundle (45 roteiros, 240+ slide structures,
+        14 chart data modes, 12 block_if gates).
+      keywords:
+        - slide
+        - deck
+        - presentation
+        - narrative
+        - sloan
+        - slides
+        - pptx
+        - keynote
+        - webinar
+        - pitch
+        - board
+      usedBy: []
+      dependencies: []
+      externalDeps:
+        - .claude/skills/slide-creator/SKILL.md
+        - .claude/skills/slide-creator/references/
+        - .claude/skills/slide-creator/templates/
+        - .claude/skills/slide-creator/scripts/
+      plannedDeps: []
+      lifecycle: production
+      adaptability:
+        score: 0.7
+        constraints:
+          - external_skill_bundle_required
+        extensionPoints:
+          - decision_tree_triggers
+          - block_if_conditions
+          - mind_clone_consultation
+      lastVerified: '2026-05-18T00:00:00.000Z'
     sm:
       path: .aios-core/development/agents/sm.md
       layer: L2
@@ -28231,6 +28137,60 @@ entities:
         extensionPoints: []
       checksum: sha256:1a7262912c8c8e264d307f0d38a1109bdb2b9bff9ea7d8855c768835201aa59b
       lastVerified: '2026-04-10T23:10:01.165Z'
+    _schema:
+      path: .aios-core/data/site-prospector/primers/_schema.yaml
+      type: data
+      purpose: '"close-up cinematic componente diesel (turbo / bico / cabeçote)"'
+      keywords:
+        - schema
+        - site-prospector
+        - vertical
+        - primer
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.5
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:562af1a00a7f045af168bb1b60a28b45576dd7d59335002841de99a7cbb0a0cf
+      lastVerified: '2026-05-12T22:27:24.284Z'
+    oficina-mecanica:
+      path: .aios-core/data/site-prospector/primers/oficina-mecanica.yaml
+      type: data
+      purpose: '"close-up cinematic turbo / bico injetor / cabeçote retificado (Singer-tier museum lighting)"'
+      keywords:
+        - oficina
+        - mecanica
+        - site-prospector
+        - primer
+        - mecânica
+        - auto
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.5
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:2a239fdb7350a56f9f2b3cdffc793ef3b1fd07205e0bdb5ab6819eb2ed3df7ff
+      lastVerified: '2026-05-12T22:27:24.305Z'
+    padaria-artesanal:
+      path: .aios-core/data/site-prospector/primers/padaria-artesanal.yaml
+      type: data
+      purpose: '"close-up cuca/sonho/torta crumb shot — Tartine direction adapted BR"'
+      keywords:
+        - padaria
+        - artesanal
+        - site-prospector
+        - primer
+        - padaria/confeitaria
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.5
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:3667347dca7a558dff1c2361fdf6d648e1f429ce1a5cfae083d1efad7a6ab33d
+      lastVerified: '2026-05-12T22:27:24.306Z'
   workflows:
     auto-worktree:
       path: .aios-core/development/workflows/auto-worktree.yaml
@@ -28387,8 +28347,7 @@ entities:
         - development
         - cycle
         - '============================================'
-      usedBy:
-        - story-checkpoint
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -28665,8 +28624,7 @@ entities:
       keywords:
         - approach
         - manager
-      usedBy:
-        - dev
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -28705,8 +28663,7 @@ entities:
       keywords:
         - asset
         - inventory
-      usedBy:
-        - devops
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -28910,8 +28867,7 @@ entities:
       keywords:
         - codebase
         - mapper
-      usedBy:
-        - architect
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -28973,17 +28929,6 @@ entities:
         - component
         - generator
       usedBy:
-        - build-component
-        - compose-molecule
-        - create-brownfield-story
-        - create-deep-research-prompt
-        - create-doc
-        - create-next-story
-        - create-suite
-        - create-task
-        - create-workflow
-        - generate-ai-frontend-prompt
-        - generate-migration-strategy
         - batch-creator
       dependencies:
         - template-engine
@@ -29414,8 +29359,7 @@ entities:
       keywords:
         - migrate
         - agent
-      usedBy:
-        - devops
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -29501,8 +29445,7 @@ entities:
       keywords:
         - path
         - analyzer
-      usedBy:
-        - devops
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -29523,7 +29466,6 @@ entities:
         - extractor
       usedBy:
         - extract-patterns
-        - analyst
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -29780,7 +29722,6 @@ entities:
         - autonomous-build-loop
         - build-state-manager
         - recovery-handler
-        - dev
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -29844,7 +29785,6 @@ entities:
       usedBy:
         - recovery-handler
         - epic-5-executor
-        - dev
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -29972,7 +29912,6 @@ entities:
         - build-state-manager
         - recovery-handler
         - epic-5-executor
-        - dev
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -30217,8 +30156,7 @@ entities:
       keywords:
         - validate
         - agents
-      usedBy:
-        - aios-master
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -30412,7 +30350,6 @@ entities:
         - remove-worktree
         - autonomous-build-loop
         - build-orchestrator
-        - dev
         - auto-worktree
         - project-status-loader
         - story-worktree-hooks
@@ -30527,8 +30464,7 @@ entities:
       keywords:
         - config
         - generator
-      usedBy:
-        - setup-project-docs
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -30548,8 +30484,7 @@ entities:
         - deployment
         - config
         - loader
-      usedBy:
-        - setup-project-docs
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -30568,8 +30503,7 @@ entities:
       keywords:
         - doc
         - generator
-      usedBy:
-        - setup-project-docs
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -30589,8 +30523,7 @@ entities:
         - gitignore
         - generator
         - '========================================'
-      usedBy:
-        - setup-project-docs
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -30609,9 +30542,7 @@ entities:
       keywords:
         - mode
         - detector
-      usedBy:
-        - analyze-brownfield
-        - setup-project-docs
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -30732,8 +30663,7 @@ entities:
         - install
         - llm
         - routing
-      usedBy:
-        - setup-llm-routing
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -30858,8 +30788,6 @@ entities:
         - github
         - cli
       usedBy:
-        - environment-bootstrap
-        - setup-github
         - devops
         - po
       dependencies: []
@@ -30885,8 +30813,7 @@ entities:
         - routing
         - tool
         - definition
-      usedBy:
-        - setup-llm-routing
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -30906,7 +30833,6 @@ entities:
         - railway
         - cli
       usedBy:
-        - environment-bootstrap
         - architect
       dependencies: []
       externalDeps: []
@@ -30929,7 +30855,6 @@ entities:
         - supabase
         - cli
       usedBy:
-        - environment-bootstrap
         - architect
         - data-engineer
       dependencies: []
@@ -31275,7 +31200,6 @@ entities:
         - solution
         - validation
       usedBy:
-        - aios-master
         - architect
       dependencies: []
       externalDeps: []
@@ -31307,7 +31231,6 @@ entities:
         - propose-modification
         - qa-review-proposal
         - update-manifest
-        - aios-master
         - pm
         - po
       dependencies: []
@@ -31462,7 +31385,6 @@ entities:
         - (pm)
         - requirements
       usedBy:
-        - aios-master
         - pm
       dependencies: []
       externalDeps: []
@@ -31498,7 +31420,6 @@ entities:
         - qa-trace-requirements
         - sm-create-next-story
         - validate-next-story
-        - aios-master
         - po
       dependencies: []
       externalDeps: []
@@ -31594,7 +31515,6 @@ entities:
       usedBy:
         - develop
         - quality-review
-        - aios-master
         - dev
       dependencies: []
       externalDeps: []
@@ -31617,7 +31537,6 @@ entities:
         - checklist
       usedBy:
         - sm-refine-story
-        - aios-master
         - sm
       dependencies:
         - dev

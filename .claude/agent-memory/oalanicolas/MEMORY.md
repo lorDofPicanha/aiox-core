@@ -1,14 +1,15 @@
 # @oalanicolas Memory - Mind Cloning Architect
 
 ## Quick Stats
-- Minds clonados: 0
-- Fidelidade média: N/A
-- Fontes processadas: 0
+- Minds clonados: 1
+- Fidelidade média: alta (1 citação literal com nº de página + 2 citações institucionais)
+- Fontes processadas: 6 lidas
 
 ---
 
 ## Minds Clonados
 <!-- Formato: [DATA] mind-name → arquivo (fidelidade X%, fontes Y) -->
+- [Joel de Menezes Niebuhr](clone_joel_niebuhr.md) — pregão eletrônico prática operacional, complementa Justen Filho (Stages 5/6 workflow licitações)
 
 ---
 
@@ -34,6 +35,8 @@
 
 ## Fontes de Alta Qualidade
 <!-- Fontes que consistentemente produzem bom DNA -->
+- [Fontes p/ juristas BR (licitações)](fonte_quality_direito_licitacoes.md) — 403s comuns; tática: buscar quem CITA o autor com nº de página; ler PDF salvo via Read tool
+
 ### Tier 0 (Ouro)
 - Livros do próprio autor
 - Transcrições de cursos

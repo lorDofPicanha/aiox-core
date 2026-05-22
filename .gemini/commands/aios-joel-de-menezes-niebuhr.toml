@@ -1,0 +1,10 @@
+description = "Prática Operacional do Pregão Eletrônico — Sessão, Habilitação, Fase Recursal (Lei 14.133/2021) (Use para a PRÁTICA OPERACIONAL de quem disputa pregão eletrônico pelo lado do licitante: mecânica da sessão (abertura d…)"
+prompt = """
+Ative o agente joel-de-menezes-niebuhr:
+1. Leia a definição completa em .gemini/rules/AIOS/agents/joel-de-menezes-niebuhr.md
+2. Siga as activation-instructions do bloco YAML
+3. Renderize o greeting via: node .aios-core/development/scripts/generate-greeting.js joel-de-menezes-niebuhr
+   Se shell nao disponivel, exiba o greeting de persona_profile.communication.greeting_levels.named
+4. Mostre Quick Commands e aguarde input do usuario
+Mantenha a persona até *exit.
+"""

@@ -1,0 +1,1171 @@
+# HYDRA Sources — Licitações DF + Águas Lindas-GO
+# Curado manualmente em 2026-05-14 para projeto buscador-licitacoes
+# Authority scale: 1 (weak) → 5 (S-tier canônico mundial/oficial)
+# Domains: licitacoes (primary), legal, negocios, engenharia
+
+sources:
+
+  # ========================================================================
+  # GRUPO 1 — OFICIAIS .GOV.BR / CANÔNICAS DO DOMÍNIO
+  # Authority: 5 (oficial irretocável)
+  # ========================================================================
+
+  web:
+    # --- PNCP — Portal Nacional de Contratações Públicas (CORE) ---
+    - name: "PNCP — Portal Oficial"
+      url: "https://pncp.gov.br/"
+      frequency: "daily"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    - name: "PNCP — Manual Integração APIs"
+      url: "https://www.gov.br/pncp/pt-br/acesso-a-informacao/manuais"
+      frequency: "weekly"
+      domains: ["licitacoes", "engenharia"]
+      authority: 5
+
+    - name: "PNCP API Docs (Swagger)"
+      url: "https://pncp.gov.br/api/pncp/swagger-ui/index.html"
+      frequency: "weekly"
+      domains: ["licitacoes", "engenharia"]
+      authority: 5
+
+    # --- Lei 14.133/2021 (texto oficial) ---
+    - name: "Planalto — Lei 14.133/2021 (íntegra)"
+      url: "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14133.htm"
+      frequency: "weekly"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    - name: "Planalto — Lei 10.520/2002 (Pregão)"
+      url: "https://www.planalto.gov.br/ccivil_03/leis/2002/l10520.htm"
+      frequency: "weekly"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    - name: "Planalto — Lei 8.666/1993 (legacy)"
+      url: "https://www.planalto.gov.br/ccivil_03/leis/l8666cons.htm"
+      frequency: "monthly"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    - name: "Planalto — Decreto 10.024/2019 (Pregão Eletrônico)"
+      url: "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/decreto/d10024.htm"
+      frequency: "monthly"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    - name: "Planalto — Decreto 11.246/2022 (Lei 14.133)"
+      url: "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2022/decreto/d11246.htm"
+      frequency: "monthly"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    - name: "Planalto — LC 123/2006 (ME/EPP)"
+      url: "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm"
+      frequency: "monthly"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    - name: "Planalto — Lei 12.527/2011 (LAI)"
+      url: "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12527.htm"
+      frequency: "monthly"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    - name: "Planalto — LGPD Lei 13.709/2018"
+      url: "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm"
+      frequency: "monthly"
+      domains: ["legal"]
+      authority: 5
+
+    # --- ComprasGov (federal) ---
+    - name: "ComprasGov — Portal"
+      url: "https://www.gov.br/compras/pt-br"
+      frequency: "daily"
+      domains: ["licitacoes"]
+      authority: 5
+
+    - name: "ComprasGov — Catálogo de Serviços"
+      url: "https://www.gov.br/compras/pt-br/acesso-a-informacao/manuais"
+      frequency: "weekly"
+      domains: ["licitacoes", "engenharia"]
+      authority: 5
+
+    - name: "Comprasnet (legado SIASGNet)"
+      url: "https://www.comprasnet.gov.br/seguro/loginPortal.asp"
+      frequency: "weekly"
+      domains: ["licitacoes"]
+      authority: 5
+
+    - name: "Dados Abertos ComprasGov"
+      url: "https://dados.gov.br/dados/conjuntos-dados?q=licitacao"
+      frequency: "weekly"
+      domains: ["licitacoes", "engenharia"]
+      authority: 5
+
+    # --- TCU / CGU / Controle Externo ---
+    - name: "TCU — Portal Oficial"
+      url: "https://portal.tcu.gov.br/"
+      frequency: "weekly"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    - name: "TCU — Jurisprudência"
+      url: "https://pesquisa.apps.tcu.gov.br/"
+      frequency: "weekly"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    - name: "CGU — Portal da Transparência"
+      url: "https://portaldatransparencia.gov.br/"
+      frequency: "weekly"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    - name: "CGU — Manual LAI"
+      url: "https://www.gov.br/cgu/pt-br/assuntos/transparencia-publica/lai"
+      frequency: "monthly"
+      domains: ["legal"]
+      authority: 5
+
+    # --- DF Específico (CORE PROJETO) ---
+    - name: "e-Compras DF (oficial)"
+      url: "https://www.compras.df.gov.br/"
+      frequency: "daily"
+      domains: ["licitacoes"]
+      authority: 5
+
+    - name: "GDF — Secretaria de Economia (compras)"
+      url: "https://www.economia.df.gov.br/"
+      frequency: "weekly"
+      domains: ["licitacoes"]
+      authority: 5
+
+    - name: "DODF — Diário Oficial DF"
+      url: "https://www.dodf.df.gov.br/"
+      frequency: "daily"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    - name: "TCDF — Tribunal de Contas DF"
+      url: "https://www.tc.df.gov.br/"
+      frequency: "weekly"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    - name: "CGDF — Controladoria Geral DF"
+      url: "https://www.cg.df.gov.br/"
+      frequency: "weekly"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    - name: "Câmara Legislativa DF — Licitações"
+      url: "https://www.cl.df.gov.br/licitacoes"
+      frequency: "weekly"
+      domains: ["licitacoes"]
+      authority: 5
+
+    - name: "Portal Transparência GDF"
+      url: "https://www.transparencia.df.gov.br/"
+      frequency: "weekly"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    # --- Goiás / Águas Lindas ---
+    - name: "Águas Lindas-GO — Portal Prefeitura"
+      url: "https://www.aguaslindas.go.gov.br/"
+      frequency: "daily"
+      domains: ["licitacoes"]
+      authority: 5
+
+    - name: "Águas Lindas-GO — Portal Transparência"
+      url: "https://www.aguaslindas.go.gov.br/transparencia"
+      frequency: "daily"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    - name: "ComprasNet Goiás"
+      url: "https://www.comprasnet.go.gov.br/"
+      frequency: "daily"
+      domains: ["licitacoes"]
+      authority: 5
+
+    - name: "TCE-GO"
+      url: "https://www.tce.go.gov.br/"
+      frequency: "weekly"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    - name: "Diário Oficial Goiás"
+      url: "https://www.casacivil.go.gov.br/"
+      frequency: "weekly"
+      domains: ["licitacoes", "legal"]
+      authority: 4
+
+    # --- BB Licitações / Bolsas ---
+    - name: "Licitações-e (Banco do Brasil)"
+      url: "https://www.licitacoes-e.com.br/"
+      frequency: "daily"
+      domains: ["licitacoes"]
+      authority: 5
+
+    - name: "BLL Compras"
+      url: "https://bllcompras.com/"
+      frequency: "weekly"
+      domains: ["licitacoes"]
+      authority: 4
+
+    - name: "BNC — Bolsa Nacional de Compras"
+      url: "https://www.bnc.org.br/"
+      frequency: "weekly"
+      domains: ["licitacoes"]
+      authority: 4
+
+    # --- ANPD / LGPD ---
+    - name: "ANPD — Autoridade Nacional Proteção Dados"
+      url: "https://www.gov.br/anpd/pt-br"
+      frequency: "weekly"
+      domains: ["legal"]
+      authority: 5
+
+    - name: "ANPD — Guias e Orientações"
+      url: "https://www.gov.br/anpd/pt-br/documentos-e-publicacoes"
+      frequency: "monthly"
+      domains: ["legal"]
+      authority: 5
+
+    # --- gov.br Design System ---
+    - name: "gov.br — Design System Oficial"
+      url: "https://www.gov.br/ds/home"
+      frequency: "monthly"
+      domains: ["licitacoes", "design-systems"]
+      authority: 5
+
+    # ========================================================================
+    # GRUPO 2 — DOUTRINA JURÍDICA / AUTORIDADES BR EM DIREITO ADMINISTRATIVO
+    # Authority: 4-5
+    # ========================================================================
+
+    - name: "Direito do Estado (Sundfeld)"
+      url: "http://www.direitodoestado.com.br/"
+      frequency: "weekly"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    - name: "Marçal Justen Filho — Site Oficial"
+      url: "https://www.justen.com.br/"
+      frequency: "weekly"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    - name: "JML Consultoria"
+      url: "https://www.jmleventos.com.br/"
+      frequency: "weekly"
+      domains: ["licitacoes", "legal"]
+      authority: 4
+
+    - name: "Joel de Menezes Niebuhr"
+      url: "https://www.menezesniebuhr.com.br/"
+      frequency: "monthly"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    - name: "AGU — Advocacia-Geral da União"
+      url: "https://www.gov.br/agu/pt-br"
+      frequency: "monthly"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    - name: "Conjur — Direito Administrativo"
+      url: "https://www.conjur.com.br/"
+      frequency: "daily"
+      domains: ["licitacoes", "legal"]
+      authority: 4
+
+    - name: "JOTA — Administrativo"
+      url: "https://www.jota.info/"
+      frequency: "daily"
+      domains: ["licitacoes", "legal"]
+      authority: 4
+
+    - name: "Migalhas"
+      url: "https://www.migalhas.com.br/"
+      frequency: "daily"
+      domains: ["licitacoes", "legal"]
+      authority: 4
+
+    - name: "Sollicita (blog jurídico licitação)"
+      url: "https://www.sollicita.com.br/Blog"
+      frequency: "weekly"
+      domains: ["licitacoes", "legal"]
+      authority: 3
+
+    - name: "Negócios Públicos"
+      url: "https://www.negociospublicos.com.br/"
+      frequency: "weekly"
+      domains: ["licitacoes", "negocios"]
+      authority: 3
+
+    # ========================================================================
+    # GRUPO 3 — PLAYERS COMERCIAIS / COMPETIDORES (LANDING + BLOG)
+    # Authority: 3-4
+    # ========================================================================
+
+    - name: "Effecti — Landing"
+      url: "https://www.effecti.com.br/"
+      frequency: "weekly"
+      domains: ["licitacoes", "negocios"]
+      authority: 4
+
+    - name: "Effecti — Blog"
+      url: "https://www.effecti.com.br/blog"
+      frequency: "weekly"
+      domains: ["licitacoes", "negocios"]
+      authority: 4
+
+    - name: "LicitaNet — Landing"
+      url: "https://www.licitanet.com.br/"
+      frequency: "weekly"
+      domains: ["licitacoes", "negocios"]
+      authority: 3
+
+    - name: "Conlicitação — Landing"
+      url: "https://www.conlicitacao.com.br/"
+      frequency: "weekly"
+      domains: ["licitacoes", "negocios"]
+      authority: 4
+
+    - name: "Conlicitação — Blog"
+      url: "https://www.conlicitacao.com.br/blog"
+      frequency: "weekly"
+      domains: ["licitacoes", "negocios"]
+      authority: 4
+
+    - name: "Licitar Digital"
+      url: "https://www.licitardigital.com.br/"
+      frequency: "weekly"
+      domains: ["licitacoes", "negocios"]
+      authority: 3
+
+    - name: "Sollicita — Landing"
+      url: "https://www.sollicita.com.br/"
+      frequency: "weekly"
+      domains: ["licitacoes", "negocios"]
+      authority: 3
+
+    - name: "Bidding"
+      url: "https://bidding.com.br/"
+      frequency: "monthly"
+      domains: ["licitacoes", "negocios"]
+      authority: 2
+
+    - name: "Edital365"
+      url: "https://edital365.com.br/"
+      frequency: "monthly"
+      domains: ["licitacoes", "negocios"]
+      authority: 2
+
+    - name: "Lance Fácil"
+      url: "https://www.lancefacil.com.br/"
+      frequency: "monthly"
+      domains: ["licitacoes"]
+      authority: 2
+
+    # ========================================================================
+    # GRUPO 4 — OPEN CONTRACTING / GOVTECH GLOBAL (Authority 5)
+    # ========================================================================
+
+    - name: "Open Contracting Partnership"
+      url: "https://www.open-contracting.org/"
+      frequency: "weekly"
+      domains: ["licitacoes", "engenharia"]
+      authority: 5
+
+    - name: "Open Contracting Data Standard (OCDS)"
+      url: "https://standard.open-contracting.org/latest/en/"
+      frequency: "weekly"
+      domains: ["licitacoes", "engenharia"]
+      authority: 5
+
+    - name: "Code for America — Blog"
+      url: "https://codeforamerica.org/news/"
+      frequency: "weekly"
+      domains: ["licitacoes", "negocios"]
+      authority: 5
+
+    - name: "USDS — United States Digital Service"
+      url: "https://www.usds.gov/"
+      frequency: "monthly"
+      domains: ["licitacoes", "engenharia"]
+      authority: 5
+
+    - name: "GOV.UK Design System"
+      url: "https://design-system.service.gov.uk/"
+      frequency: "monthly"
+      domains: ["licitacoes", "design-systems"]
+      authority: 5
+
+    - name: "Open Knowledge Brasil"
+      url: "https://ok.org.br/"
+      frequency: "weekly"
+      domains: ["licitacoes", "legal"]
+      authority: 4
+
+    - name: "Open Knowledge International"
+      url: "https://okfn.org/"
+      frequency: "monthly"
+      domains: ["licitacoes"]
+      authority: 5
+
+    - name: "Transparency International"
+      url: "https://www.transparency.org/en"
+      frequency: "monthly"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    # ========================================================================
+    # GRUPO 5 — TECH STACK CANÔNICO (Authority 4-5)
+    # ========================================================================
+
+    # --- Scraping ---
+    - name: "Scrapinghub/Zyte — Blog"
+      url: "https://www.zyte.com/blog/"
+      frequency: "weekly"
+      domains: ["engenharia"]
+      authority: 5
+
+    - name: "Crawl4AI — GitHub"
+      url: "https://github.com/unclecode/crawl4ai"
+      frequency: "weekly"
+      domains: ["engenharia"]
+      authority: 5
+
+    - name: "Firecrawl (Mendable)"
+      url: "https://www.firecrawl.dev/"
+      frequency: "weekly"
+      domains: ["engenharia"]
+      authority: 4
+
+    - name: "Playwright — Docs"
+      url: "https://playwright.dev/docs/intro"
+      frequency: "monthly"
+      domains: ["engenharia"]
+      authority: 5
+
+    - name: "Apify — Blog"
+      url: "https://blog.apify.com/"
+      frequency: "weekly"
+      domains: ["engenharia"]
+      authority: 4
+
+    # --- PDF Parsing / RAG ---
+    - name: "LlamaIndex / LlamaParse"
+      url: "https://www.llamaindex.ai/"
+      frequency: "weekly"
+      domains: ["engenharia", "ai-ml"]
+      authority: 5
+
+    - name: "Unstructured.io"
+      url: "https://unstructured.io/"
+      frequency: "monthly"
+      domains: ["engenharia", "ai-ml"]
+      authority: 5
+
+    - name: "Anthropic — Docs (Claude)"
+      url: "https://docs.anthropic.com/"
+      frequency: "weekly"
+      domains: ["ai-ml", "engenharia"]
+      authority: 5
+
+    - name: "Anthropic — Blog"
+      url: "https://www.anthropic.com/news"
+      frequency: "weekly"
+      domains: ["ai-ml"]
+      authority: 5
+
+    - name: "OpenAI — Docs"
+      url: "https://platform.openai.com/docs"
+      frequency: "weekly"
+      domains: ["ai-ml", "engenharia"]
+      authority: 5
+
+    # --- Search Engine ---
+    - name: "Meilisearch — Docs"
+      url: "https://www.meilisearch.com/docs"
+      frequency: "monthly"
+      domains: ["engenharia"]
+      authority: 5
+
+    - name: "Typesense — Docs"
+      url: "https://typesense.org/docs/"
+      frequency: "monthly"
+      domains: ["engenharia"]
+      authority: 4
+
+    - name: "Algolia — Blog"
+      url: "https://www.algolia.com/blog/"
+      frequency: "monthly"
+      domains: ["engenharia"]
+      authority: 5
+
+    - name: "Elastic — Blog"
+      url: "https://www.elastic.co/blog/"
+      frequency: "monthly"
+      domains: ["engenharia"]
+      authority: 5
+
+    - name: "pgvector — GitHub"
+      url: "https://github.com/pgvector/pgvector"
+      frequency: "monthly"
+      domains: ["engenharia"]
+      authority: 5
+
+    # --- NLP PT-BR Legal ---
+    - name: "NeuralMind (BERTimbau)"
+      url: "https://neuralmind.ai/"
+      frequency: "monthly"
+      domains: ["ai-ml", "engenharia"]
+      authority: 5
+
+    - name: "Hugging Face — Model Hub"
+      url: "https://huggingface.co/models"
+      frequency: "weekly"
+      domains: ["ai-ml"]
+      authority: 5
+
+    # --- Infra / Deploy ---
+    - name: "Vercel — Blog"
+      url: "https://vercel.com/blog"
+      frequency: "weekly"
+      domains: ["engenharia"]
+      authority: 5
+
+    - name: "Supabase — Blog"
+      url: "https://supabase.com/blog"
+      frequency: "weekly"
+      domains: ["engenharia"]
+      authority: 5
+
+    - name: "Inngest — Docs"
+      url: "https://www.inngest.com/docs"
+      frequency: "monthly"
+      domains: ["engenharia"]
+      authority: 4
+
+    - name: "Trigger.dev"
+      url: "https://trigger.dev/blog"
+      frequency: "monthly"
+      domains: ["engenharia"]
+      authority: 4
+
+    - name: "Railway — Blog"
+      url: "https://blog.railway.com/"
+      frequency: "monthly"
+      domains: ["engenharia"]
+      authority: 4
+
+    - name: "Resend — Blog"
+      url: "https://resend.com/blog"
+      frequency: "monthly"
+      domains: ["engenharia"]
+      authority: 4
+
+    # ========================================================================
+    # GRUPO 6 — DATA SYSTEMS / IR / DDIA-ESTILO (Authority 5)
+    # ========================================================================
+
+    - name: "Martin Fowler (refresh)"
+      url: "https://martinfowler.com/"
+      frequency: "weekly"
+      domains: ["engenharia"]
+      authority: 5
+
+    - name: "Werner Vogels — All Things Distributed"
+      url: "https://www.allthingsdistributed.com/"
+      frequency: "monthly"
+      domains: ["engenharia"]
+      authority: 5
+
+    # ========================================================================
+    # GRUPO 7 — UX / PRODUCT (Authority 4-5)
+    # ========================================================================
+
+    - name: "Nielsen Norman Group"
+      url: "https://www.nngroup.com/articles/"
+      frequency: "weekly"
+      domains: ["design-systems"]
+      authority: 5
+
+    - name: "Smashing Magazine — UX"
+      url: "https://www.smashingmagazine.com/category/user-experience/"
+      frequency: "weekly"
+      domains: ["design-systems"]
+      authority: 4
+
+    - name: "Lenny's Newsletter (refresh)"
+      url: "https://www.lennysnewsletter.com/"
+      frequency: "weekly"
+      domains: ["negocios"]
+      authority: 4
+
+    # ========================================================================
+    # GRUPO 8 — SaaS PRICING / GTM (Authority 4-5)
+    # ========================================================================
+
+    - name: "ProfitWell / Paddle Blog (Patrick Campbell)"
+      url: "https://www.paddle.com/blog"
+      frequency: "weekly"
+      domains: ["negocios"]
+      authority: 5
+
+    - name: "First Round Review"
+      url: "https://review.firstround.com/"
+      frequency: "monthly"
+      domains: ["negocios"]
+      authority: 5
+
+    - name: "Rob Walling — TinySeed Blog"
+      url: "https://tinyseed.com/latest/"
+      frequency: "monthly"
+      domains: ["negocios"]
+      authority: 5
+
+    - name: "SaaS Capital — Blog"
+      url: "https://www.saas-capital.com/blog/"
+      frequency: "monthly"
+      domains: ["negocios"]
+      authority: 4
+
+    # ========================================================================
+    # GRUPO 9 — ACADÊMICO / RESEARCH (Authority 5)
+    # ========================================================================
+
+    - name: "FGV — IBRE"
+      url: "https://portal.fgv.br/ibre"
+      frequency: "monthly"
+      domains: ["licitacoes", "negocios"]
+      authority: 5
+
+    - name: "IPEA — Instituto Pesquisa Econômica"
+      url: "https://www.ipea.gov.br/"
+      frequency: "monthly"
+      domains: ["licitacoes", "negocios"]
+      authority: 5
+
+    - name: "SciELO Brasil"
+      url: "https://scielo.org/"
+      frequency: "monthly"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    # ========================================================================
+    # GRUPO 10 — SEBRAE (CRÍTICO PARA ME/EPP)
+    # ========================================================================
+
+    - name: "Sebrae DF"
+      url: "https://sebrae.com.br/sites/PortalSebrae/ufs/df"
+      frequency: "weekly"
+      domains: ["licitacoes", "negocios"]
+      authority: 5
+
+    - name: "Sebrae — Compras Públicas"
+      url: "https://sebrae.com.br/sites/PortalSebrae/sebraeaz/compras-publicas"
+      frequency: "weekly"
+      domains: ["licitacoes", "negocios"]
+      authority: 5
+
+    # ========================================================================
+    # GRUPO 11 — DECRETOS DF / GOIÁS ESPECÍFICOS (Authority 5)
+    # ========================================================================
+
+    - name: "GDF — Decreto 40.205/2019 (Licitações DF)"
+      url: "http://www.sinj.df.gov.br/sinj/Norma/c0617122a3d748d997d068b21d8b80f9/Decreto_40205_28_10_2019.html"
+      frequency: "monthly"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    - name: "GDF — SINJ-DF (sistema integrado de normas)"
+      url: "http://www.sinj.df.gov.br/"
+      frequency: "monthly"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    - name: "Casa Civil GO — Normas"
+      url: "https://www.casacivil.go.gov.br/legislacao"
+      frequency: "monthly"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    - name: "AGU — Lei 14.133 Comentada"
+      url: "https://www.gov.br/agu/pt-br/comunicacao/noticias/lei-14-133"
+      frequency: "monthly"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    # ========================================================================
+    # GRUPO 12 — INSTITUTOS ESPECIALIZADOS BR
+    # ========================================================================
+
+    - name: "Instituto Negócios Públicos (INP)"
+      url: "https://www.negociospublicos.com.br/"
+      frequency: "weekly"
+      domains: ["licitacoes", "negocios"]
+      authority: 4
+
+    - name: "Fórum de Contratação e Gestão Pública"
+      url: "https://www.editoraforum.com.br/"
+      frequency: "monthly"
+      domains: ["licitacoes", "legal"]
+      authority: 4
+
+    - name: "Zênite — Boletim de Licitações"
+      url: "https://www.zenite.blog.br/"
+      frequency: "weekly"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    - name: "Editora Negócios Públicos — Cursos"
+      url: "https://negociospublicos.com.br/cursos"
+      frequency: "monthly"
+      domains: ["licitacoes", "legal"]
+      authority: 3
+
+    - name: "Direito Administrativo (Ricardo Alexandre)"
+      url: "https://www.ricardoalexandre.com.br/"
+      frequency: "monthly"
+      domains: ["legal"]
+      authority: 4
+
+    # ========================================================================
+    # GRUPO 13 — APIs / OPEN DATA / DEV
+    # ========================================================================
+
+    - name: "Brasil API — Documentação"
+      url: "https://brasilapi.com.br/docs"
+      frequency: "monthly"
+      domains: ["engenharia"]
+      authority: 4
+
+    - name: "Dados.gov.br (Portal Open Data BR)"
+      url: "https://dados.gov.br/"
+      frequency: "weekly"
+      domains: ["licitacoes", "engenharia"]
+      authority: 5
+
+    - name: "Receita Federal — Dados Abertos"
+      url: "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria/cadastros/consultas/dados-publicos-cnpj"
+      frequency: "monthly"
+      domains: ["licitacoes", "engenharia"]
+      authority: 5
+
+    # ========================================================================
+    # GRUPO 14 — UX/SEARCH AVANÇADO (refs mundiais)
+    # ========================================================================
+
+    - name: "Daniel Tunkelang — Medium"
+      url: "https://dtunkelang.medium.com/"
+      frequency: "monthly"
+      domains: ["engenharia"]
+      authority: 5
+
+    - name: "Andy Budd — Substack"
+      url: "https://andybudd.substack.com/"
+      frequency: "monthly"
+      domains: ["design-systems", "negocios"]
+      authority: 5
+
+    - name: "Stéphanie Walter — Blog"
+      url: "https://stephaniewalter.design/blog/"
+      frequency: "monthly"
+      domains: ["design-systems"]
+      authority: 5
+
+    - name: "Atlassian — Design"
+      url: "https://atlassian.design/"
+      frequency: "monthly"
+      domains: ["design-systems"]
+      authority: 5
+
+    - name: "Linear — Blog"
+      url: "https://linear.app/blog"
+      frequency: "monthly"
+      domains: ["design-systems", "negocios"]
+      authority: 5
+
+    # ========================================================================
+    # GRUPO 15 — GOVTECH GLOBAL / CIVIC TECH (Authority 5)
+    # ========================================================================
+
+    - name: "Jennifer Pahlka — Blog/Twitter scrape"
+      url: "https://www.recodinggov.com/"
+      frequency: "monthly"
+      domains: ["licitacoes", "negocios"]
+      authority: 5
+
+    - name: "18F (US gov digital service)"
+      url: "https://18f.gsa.gov/blog/"
+      frequency: "monthly"
+      domains: ["licitacoes", "engenharia"]
+      authority: 5
+
+    - name: "GDS UK — Blog"
+      url: "https://gds.blog.gov.uk/"
+      frequency: "monthly"
+      domains: ["licitacoes", "design-systems"]
+      authority: 5
+
+    - name: "Bonfire (gov procurement Canada/EUA)"
+      url: "https://gobonfire.com/blog/"
+      frequency: "monthly"
+      domains: ["licitacoes", "negocios"]
+      authority: 4
+
+    - name: "DemandStar (gov procurement EUA)"
+      url: "https://www.demandstar.com/blog"
+      frequency: "monthly"
+      domains: ["licitacoes", "negocios"]
+      authority: 4
+
+    - name: "TED EU (procurement EU)"
+      url: "https://ted.europa.eu/"
+      frequency: "monthly"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    - name: "Vortal (procurement Portugal/global)"
+      url: "https://www.vortal.biz/en/blog"
+      frequency: "monthly"
+      domains: ["licitacoes", "negocios"]
+      authority: 4
+
+    # ========================================================================
+    # GRUPO 16 — TECH NEWS / GOVTECH BR
+    # ========================================================================
+
+    - name: "Convergência Digital"
+      url: "https://www.convergenciadigital.com.br/"
+      frequency: "weekly"
+      domains: ["licitacoes", "negocios", "engenharia"]
+      authority: 4
+
+    - name: "TI Inside"
+      url: "https://tiinside.com.br/"
+      frequency: "weekly"
+      domains: ["engenharia", "negocios"]
+      authority: 4
+
+    - name: "Tele.Síntese"
+      url: "https://www.telesintese.com.br/"
+      frequency: "weekly"
+      domains: ["negocios"]
+      authority: 4
+
+    - name: "Distrito.me — Reports"
+      url: "https://distrito.me/blog/"
+      frequency: "monthly"
+      domains: ["negocios"]
+      authority: 4
+
+    - name: "Brasscom"
+      url: "https://brasscom.org.br/"
+      frequency: "monthly"
+      domains: ["negocios"]
+      authority: 4
+
+    # ========================================================================
+    # GRUPO 17 — PROCUREMENT INTL ACADÊMICO
+    # ========================================================================
+
+    - name: "GovLab NYU"
+      url: "https://thegovlab.org/"
+      frequency: "monthly"
+      domains: ["licitacoes"]
+      authority: 5
+
+    - name: "World Bank — Procurement"
+      url: "https://www.worldbank.org/en/projects-operations/products-and-services/procurement"
+      frequency: "monthly"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    - name: "OECD — Public Procurement"
+      url: "https://www.oecd.org/en/topics/public-procurement.html"
+      frequency: "monthly"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    # ========================================================================
+    # GRUPO 18 — AI/RAG/PDF CANÔNICOS (refresh + new)
+    # ========================================================================
+
+    - name: "LangChain — Blog"
+      url: "https://blog.langchain.dev/"
+      frequency: "weekly"
+      domains: ["ai-ml", "engenharia"]
+      authority: 5
+
+    - name: "Pinecone — Learning"
+      url: "https://www.pinecone.io/learn/"
+      frequency: "monthly"
+      domains: ["ai-ml", "engenharia"]
+      authority: 5
+
+    - name: "Qdrant — Blog"
+      url: "https://qdrant.tech/blog/"
+      frequency: "monthly"
+      domains: ["ai-ml", "engenharia"]
+      authority: 5
+
+    - name: "Weaviate — Blog"
+      url: "https://weaviate.io/blog"
+      frequency: "monthly"
+      domains: ["ai-ml", "engenharia"]
+      authority: 4
+
+    - name: "AWS — Machine Learning Blog"
+      url: "https://aws.amazon.com/blogs/machine-learning/"
+      frequency: "monthly"
+      domains: ["ai-ml", "engenharia"]
+      authority: 5
+
+    - name: "Google Cloud — AI Blog"
+      url: "https://cloud.google.com/blog/products/ai-machine-learning"
+      frequency: "monthly"
+      domains: ["ai-ml", "engenharia"]
+      authority: 5
+
+    # ========================================================================
+    # GRUPO 19 — PRIVACY / SECURITY ENGINEERING
+    # ========================================================================
+
+    - name: "IAPP (International Association of Privacy Professionals)"
+      url: "https://iapp.org/news/"
+      frequency: "weekly"
+      domains: ["legal"]
+      authority: 5
+
+    - name: "Patrícia Peck Advogados"
+      url: "https://www.patriciapeckpinheiroadvogados.com.br/"
+      frequency: "monthly"
+      domains: ["legal"]
+      authority: 5
+
+    - name: "Privacy Tools BR"
+      url: "https://privacytools.io/"
+      frequency: "monthly"
+      domains: ["legal"]
+      authority: 4
+
+    # ========================================================================
+    # GRUPO 20 — WHATSAPP API / NOTIFICAÇÕES
+    # ========================================================================
+
+    - name: "WAHA (WhatsApp HTTP API)"
+      url: "https://waha.devlike.pro/"
+      frequency: "monthly"
+      domains: ["engenharia"]
+      authority: 4
+
+    - name: "Twilio — Blog"
+      url: "https://www.twilio.com/en-us/blog"
+      frequency: "monthly"
+      domains: ["engenharia"]
+      authority: 5
+
+    - name: "Z-API"
+      url: "https://z-api.io/blog"
+      frequency: "monthly"
+      domains: ["engenharia"]
+      authority: 3
+
+    # ========================================================================
+    # GRUPO 21 — REGIONAL ESPECÍFICO ADICIONAL
+    # ========================================================================
+
+    - name: "SEPLAD-DF (Secretaria de Planejamento)"
+      url: "https://www.seplad.df.gov.br/"
+      frequency: "monthly"
+      domains: ["licitacoes"]
+      authority: 4
+
+    - name: "SEDET-DF (Desenvolvimento Econômico)"
+      url: "https://www.economia.df.gov.br/sedet/"
+      frequency: "monthly"
+      domains: ["negocios"]
+      authority: 4
+
+    - name: "Federação das Indústrias DF (FIBRA)"
+      url: "https://fibra.org.br/"
+      frequency: "monthly"
+      domains: ["negocios"]
+      authority: 4
+
+    - name: "ACE-DF (Associação Comercial e Empresarial)"
+      url: "https://www.acedf.com.br/"
+      frequency: "monthly"
+      domains: ["negocios"]
+      authority: 3
+
+    - name: "AGE-GO (Agência Goiana Empreendedora)"
+      url: "https://www.age.go.gov.br/"
+      frequency: "monthly"
+      domains: ["negocios"]
+      authority: 3
+
+  # ========================================================================
+  # RSS — Feeds que existem e são canônicos
+  # ========================================================================
+
+  rss:
+    - name: "Conjur — RSS Geral"
+      url: "https://www.conjur.com.br/rss.xml"
+      frequency: "daily"
+      domains: ["licitacoes", "legal"]
+      authority: 4
+
+    - name: "JOTA — RSS"
+      url: "https://www.jota.info/feed"
+      frequency: "daily"
+      domains: ["licitacoes", "legal"]
+      authority: 4
+
+    - name: "Migalhas — RSS"
+      url: "https://www.migalhas.com.br/rss/migalhasdiarias"
+      frequency: "daily"
+      domains: ["licitacoes", "legal"]
+      authority: 4
+
+    - name: "TCU — RSS Acórdãos"
+      url: "https://portal.tcu.gov.br/imprensa/noticias/rss.xml"
+      frequency: "daily"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+
+    - name: "ANPD — Notícias RSS"
+      url: "https://www.gov.br/anpd/pt-br/assuntos/noticias/rss"
+      frequency: "daily"
+      domains: ["legal"]
+      authority: 5
+
+    - name: "Hacker News Best (refresh)"
+      url: "https://hnrss.org/best"
+      frequency: "4h"
+      domains: ["engenharia", "ai-ml"]
+      authority: 4
+
+    - name: "Simon Willison (refresh)"
+      url: "https://simonwillison.net/atom/everything/"
+      frequency: "6h"
+      domains: ["ai-ml", "engenharia"]
+      authority: 5
+
+    - name: "Anthropic Blog RSS"
+      url: "https://www.anthropic.com/news/rss.xml"
+      frequency: "daily"
+      domains: ["ai-ml"]
+      authority: 5
+
+    - name: "Hugging Face Blog"
+      url: "https://huggingface.co/blog/feed.xml"
+      frequency: "daily"
+      domains: ["ai-ml", "engenharia"]
+      authority: 5
+
+  # ========================================================================
+  # GITHUB — Repos canônicos da área
+  # ========================================================================
+
+  github:
+    - name: "PNCP — API Client (oficial?)"
+      type: "repo-search"
+      query: "pncp api"
+      domains: ["licitacoes", "engenharia"]
+      authority: 4
+
+    - name: "ComprasGov Scrapers"
+      type: "repo-search"
+      query: "comprasnet scraper"
+      domains: ["licitacoes", "engenharia"]
+      authority: 4
+
+    - name: "Open Contracting Data Standard"
+      type: "releases"
+      repo: "open-contracting/standard"
+      domains: ["licitacoes", "engenharia"]
+      authority: 5
+
+    - name: "LlamaIndex — Releases"
+      type: "releases"
+      repo: "run-llama/llama_index"
+      domains: ["ai-ml", "engenharia"]
+      authority: 5
+
+    - name: "Crawl4AI — Releases"
+      type: "releases"
+      repo: "unclecode/crawl4ai"
+      domains: ["engenharia"]
+      authority: 5
+
+    - name: "Playwright — Releases"
+      type: "releases"
+      repo: "microsoft/playwright"
+      domains: ["engenharia"]
+      authority: 5
+
+    - name: "pgvector — Releases"
+      type: "releases"
+      repo: "pgvector/pgvector"
+      domains: ["engenharia"]
+      authority: 5
+
+    - name: "Inngest — Releases"
+      type: "releases"
+      repo: "inngest/inngest"
+      domains: ["engenharia"]
+      authority: 4
+
+    - name: "BERTimbau"
+      type: "releases"
+      repo: "neuralmind-ai/portuguese-bert"
+      domains: ["ai-ml"]
+      authority: 5
+
+    - name: "Unstructured"
+      type: "releases"
+      repo: "Unstructured-IO/unstructured"
+      domains: ["ai-ml", "engenharia"]
+      authority: 5
+
+  # ========================================================================
+  # YOUTUBE — Canais top em Direito Administrativo / Licitações
+  # ========================================================================
+
+  youtube:
+    - name: "Marçal Justen Filho — Canal"
+      url: "https://www.youtube.com/@MarcalJustenFilho"
+      frequency: "weekly"
+      domains: ["licitacoes", "legal"]
+      authority: 5
+      max_videos: 10
+
+    - name: "JML Eventos"
+      url: "https://www.youtube.com/@JMLEventos"
+      frequency: "weekly"
+      domains: ["licitacoes", "legal"]
+      authority: 4
+      max_videos: 10
+
+    - name: "Direito do Estado"
+      url: "https://www.youtube.com/@direitodoestado"
+      frequency: "monthly"
+      domains: ["licitacoes", "legal"]
+      authority: 4
+      max_videos: 5
+
+    - name: "Sebrae Brasil — Compras Públicas"
+      url: "https://www.youtube.com/@SebraeBrasil"
+      frequency: "monthly"
+      domains: ["licitacoes", "negocios"]
+      authority: 4
+      max_videos: 5

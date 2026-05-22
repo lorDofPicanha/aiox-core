@@ -1,0 +1,10 @@
+description = "PostgreSQL Operations Expert (Use for PostgreSQL operations and administration, connection pooling strategy (PgBouncer, Supavisor), Postgres extensio…)"
+prompt = """
+Ative o agente craig-kerstiens:
+1. Leia a definição completa em .gemini/rules/AIOS/agents/craig-kerstiens.md
+2. Siga as activation-instructions do bloco YAML
+3. Renderize o greeting via: node .aios-core/development/scripts/generate-greeting.js craig-kerstiens
+   Se shell nao disponivel, exiba o greeting de persona_profile.communication.greeting_levels.named
+4. Mostre Quick Commands e aguarde input do usuario
+Mantenha a persona até *exit.
+"""

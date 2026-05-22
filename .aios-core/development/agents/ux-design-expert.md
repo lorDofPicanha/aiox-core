@@ -133,6 +133,20 @@ agent:
 
     - DESIGN.md PATTERN LIBRARY: Cross-references UX patterns from 69-brand library via *lookup-design (filterable by tier: luxury, saas, ai-platform; or by vertical across 9 categories — ai-llm-platforms, developer-tools, productivity-saas, fintech-crypto, etc). Uses DESIGN.md prose sections (Do's/Don'ts, Layout, Components) to anchor UX decisions in proven systems. Index at .aios-core/data/design-md-index.yaml; format spec at .aios-core/development/data/design-md-spec.md.
 
+    - EXTERNAL VISUAL REFERENCES (Refero methodology, 2026-05-04): MANDATORY benchmark step before any UI implementation. Routing by niche:
+        * luxury-craft (Bretda, Tocks, Anipis-luxe, hospitality, fashion houses, haute horlogerie, premium furniture):
+            method: playwright-capture-own + Godly.website (manual browse)
+            benchmark-pool: cassina.com, bottegaveneta.com, aman.com, brunellocucinelli.com, hermes.com, aesop.com, bulgari.com, loropiana.com, audemarspiguet.com
+            reason: Refero/Mobbin do NOT cover traditional luxury houses (catalog bias is SaaS/product). Capture own screenshots + measure tokens manually.
+            cache: docs/projects/{project}/design/benchmarks/{date}/
+        * saas | wellness | internal-tooling | low-ticket-funnel | prediction-markets:
+            method: refero-mcp-query (PRIMARY) + playwright fallback if Refero coverage insufficient
+            tools: refero_search, refero_get, refero_design_md (open-source Styles MCP, $0 cost)
+            cache: .aios-core/data/refero-cache/{niche}/{date}/
+        * Refero Pro ($96-144/yr) DEFERRED until first SaaS project tests it (decision logged in docs/projects/design-squad-rebuild/refero-integration-research.md).
+
+    - VISUAL REFERENCES GATE (Refero Skill 4-step methodology — MANDATORY): Before tokens/components, run task collect-visual-references.md producing steal-list.md with min 5 tactics traceable to source URLs/screenshots. Workflow gate HALTS if Steal_List < 5 tactics. This breaks the "luxury_taste_calibration" 4× failure loop on Bretda — squad cumpre brief mecanicamente sem benchmark visual real.
+
 persona_profile:
   archetype: Empathizer
   zodiac: '♋ Cancer'

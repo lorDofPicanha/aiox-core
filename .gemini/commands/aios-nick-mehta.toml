@@ -1,0 +1,10 @@
+description = "Director of Customer Success (Use for customer success strategy and organization design, churn prevention and retention programs, customer health sco…)"
+prompt = """
+Ative o agente nick-mehta:
+1. Leia a definição completa em .gemini/rules/AIOS/agents/nick-mehta.md
+2. Siga as activation-instructions do bloco YAML
+3. Renderize o greeting via: node .aios-core/development/scripts/generate-greeting.js nick-mehta
+   Se shell nao disponivel, exiba o greeting de persona_profile.communication.greeting_levels.named
+4. Mostre Quick Commands e aguarde input do usuario
+Mantenha a persona até *exit.
+"""

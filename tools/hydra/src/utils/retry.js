@@ -58,17 +58,17 @@ export async function retryWithBackoff(fn, options = {}) {
  * @returns {boolean}
  */
 export function isRetryableError(error) {
-  // HTTP status-based retries
-  if (error.status === 429 || error.status === 503 || error.status === 502) return true;
+  // HTTP status-based retries (529 = Anthropic Overloaded, 502/503 = transient, 429 = rate limit)
+  if (error.status === 429 || error.status === 502 || error.status === 503 || error.status === 529) return true;
 
   // Response status in different error shapes
-  if (error.response?.status === 429 || error.response?.status === 503) return true;
+  if (error.response?.status === 429 || error.response?.status === 502 || error.response?.status === 503 || error.response?.status === 529) return true;
 
   // Network errors
   if (error.code === 'ECONNRESET' || error.code === 'ETIMEDOUT' || error.code === 'ECONNREFUSED') return true;
 
-  // Rate limit error messages
-  if (error.message && /rate.?limit/i.test(error.message)) return true;
+  // Rate limit + Overloaded error messages
+  if (error.message && /rate.?limit|overloaded/i.test(error.message)) return true;
 
   return false;
 }

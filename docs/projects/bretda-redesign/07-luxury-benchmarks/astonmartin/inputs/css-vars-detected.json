@@ -1,0 +1,9 @@
+[
+  {
+    "selector": "@media all and (max-width:768px)",
+    "name": "--content",
+    "value": "last-of-type{display:none",
+    "is_alias": false,
+    "line": 7
+  }
+]

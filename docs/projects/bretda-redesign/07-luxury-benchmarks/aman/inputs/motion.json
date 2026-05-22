@@ -1,0 +1,72 @@
+{
+  "durations": [
+    {
+      "value": "4s",
+      "count": 51
+    },
+    {
+      "value": "1s",
+      "count": 19
+    },
+    {
+      "value": "3s",
+      "count": 18
+    },
+    {
+      "value": "2s",
+      "count": 16
+    },
+    {
+      "value": "35s",
+      "count": 6
+    },
+    {
+      "value": "6s",
+      "count": 4
+    },
+    {
+      "value": "25s",
+      "count": 3
+    },
+    {
+      "value": "0.15s",
+      "count": 2
+    },
+    {
+      "value": "5s",
+      "count": 1
+    },
+    {
+      "value": "0.2s",
+      "count": 1
+    }
+  ],
+  "easings": [
+    {
+      "value": "cubic-bezier(0.19,1,0.22,1)",
+      "count": 2
+    },
+    {
+      "value": "cubic-bezier(.23,1,.32,1)",
+      "count": 1
+    }
+  ],
+  "keyframes": [
+    "rotateplane",
+    "slide-in-left",
+    "slide-fade-in-left",
+    "slide-in-right",
+    "slide-in-bottom",
+    "slide-in-top",
+    "slide-out-top",
+    "header-slide-out-top",
+    "slide-out-left",
+    "slide-out-right",
+    "slide-out-bottom",
+    "fade-in",
+    "fade-out",
+    "spin",
+    "socialSlideIn",
+    "fpFadeInDown"
+  ]
+}

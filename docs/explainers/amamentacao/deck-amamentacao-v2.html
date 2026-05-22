@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Amamentar sem mito — Deck Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #fffefc;
+  --bg-dark: #0f3e17;
+  --brand: #0f3e17;
+  --brand-soft: #1f5b2a;
+  --mint: #b1dbb8;
+  --mint-strong: #8cc599;
+  --slate: #b6ced5;
+  --keylime: #e1f4df;
+  --mint-kiss: #cfe7d3;
+  --border: #e5e7eb;
+  --ink: #222222;
+  --charcoal: #333333;
+  --muted: #6e6e66;
+  --alert: #a23939;
+  --alert-soft: #f0d8d8;
+
+  --f-display: 'Fraunces', Georgia, serif;
+  --f-body: 'Inter', -apple-system, sans-serif;
+  --f-mono: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #1a1a1a; color: var(--ink); font-family: var(--f-body); }
+body { padding: 28px 0; }
+.deck { display: flex; flex-direction: column; gap: 28px; max-width: 1920px; margin: 0 auto; padding: 0 28px; }
+
+.slide {
+  position: relative;
+  background: var(--bg);
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  box-shadow: 0 24px 70px rgba(0,0,0,0.45);
+  border-radius: 2px;
+  padding: 80px 96px;
+  display: flex;
+  flex-direction: column;
+}
+
+.slide-id {
+  position: absolute;
+  top: 48px; right: 96px;
+  font-family: var(--f-mono); font-size: 12px; font-weight: 500;
+  letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted);
+}
+.slide-id .lime { color: var(--brand); font-weight: 700; }
+.slide-tag {
+  position: absolute;
+  top: 48px; left: 96px;
+  font-family: var(--f-mono); font-size: 12px; font-weight: 500;
+  letter-spacing: 0.24em; text-transform: uppercase; color: var(--brand);
+}
+.source-cite {
+  position: absolute;
+  bottom: 56px; left: 96px;
+  font-family: var(--f-mono); font-size: 11px;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);
+}
+.source-cite .em { color: var(--brand-soft); font-weight: 600; }
+
+/* ════════════════ SLIDE 01 — HOOK H05 one number opener */
+.s01 { justify-content: space-between; padding-top: 100px; padding-bottom: 100px; }
+.s01 .hero {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 80px;
+  align-items: center;
+  height: 100%;
+}
+.s01 .bignum {
+  font-family: var(--f-display); font-weight: 300;
+  font-size: 380px; line-height: 0.86; letter-spacing: -0.055em;
+  color: var(--brand);
+}
+.s01 .bignum .pct {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: 180px; vertical-align: super;
+}
+.s01 .narrative {
+  font-family: var(--f-display); font-weight: 300;
+  font-size: 38px; line-height: 1.25; color: var(--ink); letter-spacing: -0.01em;
+}
+.s01 .narrative .lift {
+  background: linear-gradient(transparent 65%, var(--mint) 65%);
+  font-style: italic; padding: 0 4px;
+}
+.s01 .footmeta {
+  display: flex; gap: 56px;
+  font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--muted);
+}
+.s01 .footmeta .em { color: var(--brand); font-weight: 700; }
+
+/* ════════════════ SLIDE 02 — REFRAME R12 assumption teardown */
+.s02 { justify-content: center; align-items: center; text-align: left; padding: 60px 120px; }
+.s02 .stamp {
+  font-family: var(--f-mono); font-size: 14px; font-weight: 700;
+  letter-spacing: 0.34em; color: var(--alert); text-transform: uppercase;
+  border: 1.5px solid var(--alert); padding: 6px 16px;
+  display: inline-block; margin-bottom: 40px;
+  transform: rotate(-2deg);
+}
+.s02 .headline {
+  font-family: var(--f-display); font-weight: 300;
+  font-size: 116px; line-height: 1.02; letter-spacing: -0.035em;
+  color: var(--brand); max-width: 17ch;
+}
+.s02 .headline em {
+  font-style: italic; font-weight: 400;
+  background: linear-gradient(transparent 70%, var(--mint) 70%); padding: 0 6px;
+}
+.s02 .evidence {
+  font-family: var(--f-body); font-weight: 400;
+  font-size: 22px; line-height: 1.5; color: var(--charcoal);
+  max-width: 56ch; margin-top: 56px;
+  border-left: 2px solid var(--brand); padding-left: 28px;
+}
+.s02 .evidence strong { color: var(--brand); font-weight: 600; }
+
+/* ════════════════ SLIDE 03 — TENSION big number counterpoint */
+.s03 { justify-content: center; padding: 80px 120px; }
+.s03 .tension-grid {
+  display: grid; grid-template-columns: 1.3fr 1fr; gap: 80px; align-items: end;
+}
+.s03 .real {
+  font-family: var(--f-display); font-weight: 300;
+  font-size: 360px; line-height: 0.85; letter-spacing: -0.06em;
+  color: var(--brand);
+}
+.s03 .real .u {
+  font-family: var(--f-display); font-style: italic; font-weight: 400;
+  font-size: 38px; color: var(--charcoal); display: block; margin-top: 24px;
+  line-height: 1.3; letter-spacing: -0.005em;
+}
+.s03 .recommended {
+  font-family: var(--f-display); font-weight: 300;
+  font-size: 140px; line-height: 0.95; color: var(--muted);
+  letter-spacing: -0.04em; opacity: 0.7;
+  text-decoration: line-through; text-decoration-thickness: 4px;
+  text-decoration-color: var(--alert);
+}
+.s03 .recommended .u {
+  font-family: var(--f-display); font-style: italic; font-weight: 400;
+  font-size: 22px; color: var(--muted); display: block; margin-top: 18px;
+  text-decoration: none; line-height: 1.3;
+}
+
+/* ════════════════ SLIDE 04 — MECHANISM M01 system mechanism */
+.s04 { justify-content: center; padding: 80px 120px; }
+.s04 .mech-hero {
+  display: flex; flex-direction: column; align-items: center; gap: 64px;
+  text-align: center;
+}
+.s04 .big-pct {
+  font-family: var(--f-display); font-weight: 300;
+  font-size: 280px; line-height: 0.85; letter-spacing: -0.045em;
+  color: var(--brand);
+}
+.s04 .big-pct .pct { font-size: 140px; vertical-align: super; }
+.s04 .mech-statement {
+  font-family: var(--f-display); font-weight: 400; font-style: italic;
+  font-size: 30px; line-height: 1.4; color: var(--ink);
+  max-width: 50ch;
+}
+.s04 .mech-statement .em { font-style: normal; font-weight: 600; color: var(--brand); }
+.s04 .three-steps {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px;
+  width: 100%; max-width: 1100px;
+  border-top: 1px solid var(--border); padding-top: 32px; margin-top: 16px;
+}
+.s04 .three-steps .step { text-align: center; }
+.s04 .three-steps .num {
+  font-family: var(--f-mono); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.28em; color: var(--brand);
+}
+.s04 .three-steps .desc {
+  font-family: var(--f-display); font-weight: 400; font-style: italic;
+  font-size: 22px; line-height: 1.3; color: var(--ink); margin-top: 12px;
+}
+
+/* ════════════════ SLIDE 05 — PROOF P02 pullquote */
+.s05 { justify-content: center; padding: 80px 130px; }
+.s05 .pullquote {
+  font-family: var(--f-display); font-weight: 400; font-style: italic;
+  font-size: 84px; line-height: 1.06; letter-spacing: -0.025em;
+  color: var(--brand); max-width: 19ch;
+  position: relative;
+}
+.s05 .pullquote::before {
+  content: "\201C"; font-family: var(--f-display); font-weight: 400;
+  font-size: 240px; color: var(--mint); position: absolute;
+  left: -90px; top: -20px; line-height: 1;
+}
+.s05 .pullquote .em {
+  font-style: normal; font-weight: 500;
+  background: linear-gradient(transparent 70%, var(--mint) 70%); padding: 0 4px;
+}
+.s05 .attribution {
+  margin-top: 64px; padding-top: 24px;
+  border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: baseline;
+  max-width: 720px;
+}
+.s05 .attribution .who {
+  font-family: var(--f-mono); font-size: 12px;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--brand); font-weight: 700;
+}
+.s05 .attribution .what {
+  font-family: var(--f-body); font-size: 14px; color: var(--charcoal);
+  font-style: italic;
+}
+
+/* ════════════════ SLIDE 06 — PROOF P05 reveal artifact */
+.s06 { padding: 96px 120px; justify-content: center; }
+.s06 .reveal-grid {
+  display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 90px;
+  align-items: center; height: 100%;
+}
+.s06 .pct-stack { display: flex; flex-direction: column; gap: 8px; }
+.s06 .pct-stack .pct {
+  font-family: var(--f-display); font-weight: 300;
+  font-size: 320px; line-height: 0.86; letter-spacing: -0.05em; color: var(--brand);
+}
+.s06 .pct-stack .pct .sym { font-size: 160px; vertical-align: super; }
+.s06 .pct-stack .annot {
+  font-family: var(--f-display); font-weight: 400; font-style: italic;
+  font-size: 26px; line-height: 1.35; color: var(--charcoal); max-width: 24ch;
+}
+.s06 .artifact { display: flex; flex-direction: column; gap: 36px; }
+.s06 .artifact-tag {
+  font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--muted);
+}
+.s06 .artifact-name {
+  font-family: var(--f-mono); font-weight: 600;
+  font-size: 92px; letter-spacing: 0.06em; color: var(--brand);
+  padding: 16px 0; border-top: 2px solid var(--brand); border-bottom: 2px solid var(--brand);
+  display: inline-block;
+}
+.s06 .artifact-expand {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: 24px; line-height: 1.45; color: var(--ink); max-width: 40ch;
+}
+.s06 .artifact-expand strong { color: var(--brand); }
+.s06 .relief {
+  font-family: var(--f-display); font-weight: 500; font-style: italic;
+  font-size: 22px; color: var(--brand-soft); line-height: 1.35;
+}
+
+/* ════════════════ SLIDE 07 — CONTRAST D16 editorial list */
+.s07 { padding: 80px 120px; }
+.s07 .myth-headline {
+  font-family: var(--f-display); font-weight: 300;
+  font-size: 56px; line-height: 1.05; letter-spacing: -0.025em;
+  color: var(--brand); max-width: 28ch; margin-top: 36px; margin-bottom: 48px;
+}
+.s07 .myth-headline em {
+  font-style: italic; font-weight: 400;
+  background: linear-gradient(transparent 70%, var(--mint) 70%); padding: 0 4px;
+}
+.s07 .myth-list {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 28px 80px;
+}
+.s07 .myth-row {
+  display: grid; grid-template-columns: 36px 1fr;
+  gap: 18px; align-items: baseline;
+  padding: 14px 0; border-bottom: 1px dotted var(--border);
+}
+.s07 .myth-row .n {
+  font-family: var(--f-mono); font-size: 13px; font-weight: 700;
+  color: var(--brand); letter-spacing: 0.15em;
+}
+.s07 .myth-row .body { display: flex; flex-direction: column; gap: 4px; }
+.s07 .myth-row .myth {
+  font-family: var(--f-display); font-weight: 400; font-style: italic;
+  font-size: 19px; color: var(--charcoal); line-height: 1.3;
+}
+.s07 .myth-row .truth {
+  font-family: var(--f-body); font-weight: 600; font-size: 15px;
+  color: var(--brand);
+}
+
+/* ════════════════ SLIDE 08 — DECISION D01 symptom vs root */
+.s08 { padding: 80px 120px; }
+.s08 .head {
+  font-family: var(--f-display); font-weight: 300;
+  font-size: 76px; line-height: 1.04; letter-spacing: -0.03em;
+  color: var(--brand); max-width: 22ch; margin-top: 30px; margin-bottom: 60px;
+}
+.s08 .head em {
+  font-style: italic; background: linear-gradient(transparent 70%, var(--mint) 70%); padding: 0 4px;
+}
+.s08 .decision-split {
+  display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: start;
+}
+.s08 .now {
+  border-left: 3px solid var(--alert); padding-left: 32px;
+}
+.s08 .now-label {
+  font-family: var(--f-mono); font-size: 13px; font-weight: 700;
+  letter-spacing: 0.24em; text-transform: uppercase; color: var(--alert);
+}
+.s08 .now-title {
+  font-family: var(--f-display); font-weight: 500;
+  font-size: 36px; line-height: 1.15; color: var(--alert); margin-top: 12px; margin-bottom: 28px;
+}
+.s08 .now-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.s08 .now-list li {
+  font-family: var(--f-body); font-size: 18px; color: var(--ink); line-height: 1.4;
+  padding-left: 22px; position: relative;
+}
+.s08 .now-list li::before {
+  content: "⚠"; color: var(--alert); position: absolute; left: 0;
+}
+.s08 .now-list li strong { color: var(--alert); font-weight: 600; }
+.s08 .otherwise {
+  background: var(--mint); padding: 32px 36px; border-radius: 14px;
+}
+.s08 .otherwise-label {
+  font-family: var(--f-mono); font-size: 12px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--brand);
+}
+.s08 .otherwise-text {
+  font-family: var(--f-display); font-weight: 400; font-style: italic;
+  font-size: 26px; line-height: 1.35; color: var(--ink); margin-top: 14px;
+}
+.s08 .otherwise-text strong { color: var(--brand); font-style: normal; font-weight: 600; }
+
+/* ════════════════ SLIDE 09 — SUPPORT M02 principle stack */
+.s09 { padding: 100px 140px; justify-content: space-between; }
+.s09 .head {
+  font-family: var(--f-display); font-weight: 300;
+  font-size: 56px; line-height: 1.06; color: var(--brand); max-width: 28ch;
+  margin-top: 24px;
+}
+.s09 .principles { display: flex; flex-direction: column; gap: 32px; }
+.s09 .p {
+  display: grid; grid-template-columns: 56px 1fr; gap: 28px; align-items: baseline;
+  border-top: 1px solid var(--border); padding-top: 22px;
+}
+.s09 .p .num {
+  font-family: var(--f-display); font-weight: 300; font-size: 64px;
+  color: var(--brand); line-height: 1;
+}
+.s09 .p .text {
+  font-family: var(--f-display); font-weight: 400; font-style: italic;
+  font-size: 26px; line-height: 1.35; color: var(--ink); padding-top: 10px;
+}
+.s09 .p .text strong { color: var(--brand); font-style: normal; font-weight: 600; }
+
+/* ════════════════ SLIDE 10 — CTA01 hero number */
+.s10 { justify-content: center; align-items: center; padding: 60px 100px; text-align: center; }
+.s10 .preamble {
+  font-family: var(--f-display); font-weight: 400; font-style: italic;
+  font-size: 28px; color: var(--brand-soft); margin-bottom: 24px;
+}
+.s10 .heronum {
+  font-family: var(--f-display); font-weight: 300;
+  font-size: 540px; line-height: 0.82; letter-spacing: -0.06em;
+  color: var(--brand);
+}
+.s10 .channel {
+  font-family: var(--f-mono); font-size: 18px; font-weight: 600;
+  letter-spacing: 0.32em; text-transform: uppercase; color: var(--brand);
+  margin-top: 28px;
+}
+.s10 .availability {
+  font-family: var(--f-display); font-weight: 400; font-style: italic;
+  font-size: 22px; color: var(--ink); margin-top: 14px;
+}
+.s10 .meta-row {
+  margin-top: 60px; display: flex; gap: 56px; justify-content: center;
+  border-top: 1px solid var(--border); padding-top: 22px;
+}
+.s10 .meta-row .item {
+  font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--muted);
+}
+.s10 .meta-row .item strong { color: var(--brand); font-weight: 700; }
+
+/* ════════════════ SLIDE 11 — MANIFESTO M99 closing dark quote */
+.s11 {
+  background: var(--bg-dark); color: var(--bg);
+  justify-content: center; align-items: center; text-align: center;
+  padding: 100px 140px;
+}
+.s11 .slide-id { color: var(--mint); }
+.s11 .slide-id .lime { color: var(--mint-strong); }
+.s11 .slide-tag { color: var(--mint); }
+.s11 .source-cite { color: var(--mint); opacity: 0.7; }
+.s11 .source-cite .em { color: var(--mint-strong); }
+.s11 .quote {
+  font-family: var(--f-display); font-weight: 300; font-style: italic;
+  font-size: 76px; line-height: 1.18; letter-spacing: -0.025em;
+  color: var(--bg); max-width: 22ch;
+}
+.s11 .quote .em {
+  font-style: italic;
+  background: linear-gradient(transparent 70%, var(--mint) 70%);
+  color: var(--brand);
+  padding: 0 6px;
+}
+.s11 .quote .qmark { color: var(--mint); font-size: 110px; line-height: 0; position: relative; top: 18px; }
+.s11 .sign {
+  margin-top: 60px;
+  font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--mint);
+}
+
+/* Print */
+@media print {
+  body { padding: 0; background: white; }
+  .deck { gap: 0; padding: 0; }
+  .slide { box-shadow: none; border-radius: 0; page-break-after: always; aspect-ratio: 16/9; }
+  @page { size: 1920px 1080px landscape; margin: 0; }
+}
+
+::selection { background: var(--mint); color: var(--brand); }
+</style>
+</head>
+<body>
+
+<div class="deck">
+
+<!-- ════════ SLIDE 01 · HOOK · H05 ════════ -->
+<section class="slide s01">
+  <span class="slide-tag">EASE HEALTH · GUIA EDITORIAL</span>
+  <span class="slide-id">01 / 11 · <span class="lime">HOOK</span></span>
+  <div class="hero">
+    <div class="bignum">70<span class="pct">%</span></div>
+    <div>
+      <p class="narrative">dos desmames precoces no Brasil acontecem por <span class="lift">crença</span> — não por <span class="lift">doença</span>.</p>
+    </div>
+  </div>
+  <div class="footmeta">
+    <span><span class="em">2026</span> · Edição 1</span>
+    <span>SBP 2024 · ABM #36/2022</span>
+    <span>OMS · Ministério da Saúde</span>
+  </div>
+</section>
+
+<!-- ════════ SLIDE 02 · REFRAME · R12 ════════ -->
+<section class="slide s02">
+  <span class="slide-tag">REFRAME</span>
+  <span class="slide-id">02 / 11 · <span class="lime">DESMONTAGEM</span></span>
+  <span class="stamp">MITO MAIS CARO DO BRASIL</span>
+  <h1 class="headline">"<em>Leite fraco</em>" não existe.</h1>
+  <p class="evidence">Toda mama produz colostro, leite de transição e leite maduro — três fases naturais. Dentro da mesma mamada o leite anterior é mais ralo (água + anticorpos) e o posterior mais gorduroso. Mães desnutridas leves ou moderadas produzem leite <strong>nutricionalmente adequado</strong>. Essa frase é responsável por mais desmames precoces do que qualquer doença.</p>
+  <span class="source-cite">Fonte · <span class="em">Ministério da Saúde · SBP 2024</span></span>
+</section>
+
+<!-- ════════ SLIDE 03 · TENSION ════════ -->
+<section class="slide s03">
+  <span class="slide-tag">TENSION</span>
+  <span class="slide-id">03 / 11 · <span class="lime">O QUE FALTA</span></span>
+  <div class="tension-grid">
+    <div class="real">
+      3,5
+      <span class="u">meses · duração mediana real do<br>aleitamento materno exclusivo no Brasil.</span>
+    </div>
+    <div class="recommended">
+      6
+      <span class="u">meses · o que a OMS recomenda<br>como mínimo internacional.</span>
+    </div>
+  </div>
+  <span class="source-cite">Fonte · <span class="em">PNS 2019 · IBGE</span></span>
+</section>
+
+<!-- ════════ SLIDE 04 · MECHANISM · M01 ════════ -->
+<section class="slide s04">
+  <span class="slide-tag">MECHANISM</span>
+  <span class="slide-id">04 / 11 · <span class="lime">A CHAVE</span></span>
+  <div class="mech-hero">
+    <div class="big-pct">80<span class="pct">%</span></div>
+    <p class="mech-statement">das dores e fissuras vêm de uma única causa: <span class="em">pega inadequada</span>. O bebê precisa abocanhar a <span class="em">aréola</span>, não o mamilo.</p>
+    <div class="three-steps">
+      <div class="step"><div class="num">01</div><div class="desc">boca bem aberta</div></div>
+      <div class="step"><div class="num">02</div><div class="desc">lábios evertidos</div></div>
+      <div class="step"><div class="num">03</div><div class="desc">queixo encostado</div></div>
+    </div>
+  </div>
+  <span class="source-cite">Fonte · <span class="em">ABM Clinical Protocol #36 · 2022</span></span>
+</section>
+
+<!-- ════════ SLIDE 05 · PROOF ANCHOR · P02 pullquote ════════ -->
+<section class="slide s05">
+  <span class="slide-tag">PROOF · MASTITE</span>
+  <span class="slide-id">05 / 11 · <span class="lime">CONTRA-INTUITIVO</span></span>
+  <p class="pullquote">
+    Com mastite, <span class="em">continue amamentando</span> — interromper é o que piora o quadro.
+  </p>
+  <div class="attribution">
+    <span class="who">ABM Protocol #36 · 2022</span>
+    <span class="what">revisão Mastitis Spectrum</span>
+  </div>
+  <span class="source-cite">O leite da mama afetada <span class="em">continua seguro</span> para o bebê.</span>
+</section>
+
+<!-- ════════ SLIDE 06 · PROOF REVEAL · P05 ════════ -->
+<section class="slide s06">
+  <span class="slide-tag">PROOF · DESCONHECIDO</span>
+  <span class="slide-id">06 / 11 · <span class="lime">A NOMENCLATURA</span></span>
+  <div class="reveal-grid">
+    <div class="pct-stack">
+      <div class="pct">14<span class="sym">%</span></div>
+      <p class="annot">das lactantes sentem isso. Quase nenhuma sabe que tem nome.</p>
+    </div>
+    <div class="artifact">
+      <span class="artifact-tag">→ a complicação tem nome</span>
+      <div class="artifact-name">D-MER</div>
+      <p class="artifact-expand"><strong>Dysphoric Milk Ejection Reflex.</strong> Onda breve de tristeza ou náusea quando o leite desce — causada por queda fisiológica de dopamina. Dura 30 segundos.</p>
+      <p class="relief">Não é depressão. Não é aversão. Não é culpa.</p>
+    </div>
+  </div>
+  <span class="source-cite">Fonte · <span class="em">ABM Protocol #20 · estudos prevalência 2024</span></span>
+</section>
+
+<!-- ════════ SLIDE 07 · CONTRAST · D16 editorial list ════════ -->
+<section class="slide s07">
+  <span class="slide-tag">CONTRAST</span>
+  <span class="slide-id">07 / 11 · <span class="lime">FRASES QUE CUSTAM LEITE</span></span>
+  <h2 class="myth-headline">Seis frases que custam mais leite que <em>qualquer doença</em>.</h2>
+  <div class="myth-list">
+    <div class="myth-row">
+      <span class="n">01</span>
+      <div class="body">
+        <span class="myth">"Meu leite é fraco."</span>
+        <span class="truth">→ Nenhum leite materno é fraco.</span>
+      </div>
+    </div>
+    <div class="myth-row">
+      <span class="n">02</span>
+      <div class="body">
+        <span class="myth">"Depois de 6 meses vira água."</span>
+        <span class="truth">→ Fica mais calórico, não menos.</span>
+      </div>
+    </div>
+    <div class="myth-row">
+      <span class="n">03</span>
+      <div class="body">
+        <span class="myth">"Cerveja preta aumenta o leite."</span>
+        <span class="truth">→ Álcool inibe a ejeção. Sem evidência.</span>
+      </div>
+    </div>
+    <div class="myth-row">
+      <span class="n">04</span>
+      <div class="body">
+        <span class="myth">"Seio pequeno produz menos."</span>
+        <span class="truth">→ Tamanho é gordura, não glândula.</span>
+      </div>
+    </div>
+    <div class="myth-row">
+      <span class="n">05</span>
+      <div class="body">
+        <span class="myth">"Com gripe, não pode amamentar."</span>
+        <span class="truth">→ Deve. O leite passa anticorpos.</span>
+      </div>
+    </div>
+    <div class="myth-row">
+      <span class="n">06</span>
+      <div class="body">
+        <span class="myth">"Quem toma remédio não pode."</span>
+        <span class="truth">→ A maioria é compatível. Consulte LactMed.</span>
+      </div>
+    </div>
+  </div>
+  <span class="source-cite">Fontes · <span class="em">SBP 2024 · OMS · BVS-MS · LactMed (NIH)</span></span>
+</section>
+
+<!-- ════════ SLIDE 08 · DECISION · D01 ════════ -->
+<section class="slide s08">
+  <span class="slide-tag">DECISION</span>
+  <span class="slide-id">08 / 11 · <span class="lime">QUANDO É AGORA</span></span>
+  <h2 class="head">Quando é <em>amanhã</em> e quando é <em>agora</em>.</h2>
+  <div class="decision-split">
+    <div class="now">
+      <span class="now-label">⚠ Pronto-socorro hoje</span>
+      <h3 class="now-title">Não espera amanhã.</h3>
+      <ul class="now-list">
+        <li><strong>Febre &gt;38,5°C</strong> por mais de 24 horas</li>
+        <li>Vermelhidão <strong>que se expande</strong> ou casca de laranja</li>
+        <li>Nódulo com flutuação · pode ser abscesso</li>
+        <li><strong>Pus</strong> saindo do mamilo</li>
+        <li>Bebê <strong>letárgico</strong>, difícil de acordar</li>
+        <li>Pensamentos de fazer mal a si ou ao bebê</li>
+      </ul>
+    </div>
+    <div class="otherwise">
+      <span class="otherwise-label">Tudo o que não está acima</span>
+      <p class="otherwise-text">Procure <strong>consultora de amamentação</strong> ou banco de leite em até <strong>48 horas</strong>. Não fure — mas também não pare a amamentação preventivamente.</p>
+    </div>
+  </div>
+  <span class="source-cite">Fonte · <span class="em">ABM #36 / SBP 2024</span></span>
+</section>
+
+<!-- ════════ SLIDE 09 · SUPPORT · M02 ════════ -->
+<section class="slide s09">
+  <span class="slide-tag">SUPPORT</span>
+  <span class="slide-id">09 / 11 · <span class="lime">PARA LEMBRAR</span></span>
+  <h2 class="head">Quatro frases para repetir <em>quando duvidar</em>.</h2>
+  <div class="principles">
+    <div class="p">
+      <span class="num">1</span>
+      <p class="text"><strong>Dor persistente</strong> não é normal — é sinal de pega errada.</p>
+    </div>
+    <div class="p">
+      <span class="num">2</span>
+      <p class="text">Bebê mamando <strong>frequente</strong> é fisiológico, não sinal de pouco leite.</p>
+    </div>
+    <div class="p">
+      <span class="num">3</span>
+      <p class="text">Antes de suplementar com fórmula, <strong>procure uma consultora</strong>.</p>
+    </div>
+    <div class="p">
+      <span class="num">4</span>
+      <p class="text">A ajuda profissional é <strong>gratuita</strong> — não é luxo de quem pode pagar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ SLIDE 10 · CTA · CTA01 hero ════════ -->
+<section class="slide s10">
+  <span class="slide-tag">CTA</span>
+  <span class="slide-id">10 / 11 · <span class="lime">UMA AÇÃO</span></span>
+  <p class="preamble">Quando travar, ligue.</p>
+  <div class="heronum">136</div>
+  <span class="channel">Disque Saúde · Ministério</span>
+  <p class="availability">Gratuito · 24 horas · 7 dias</p>
+  <div class="meta-row">
+    <span class="item">222 <strong>bancos de leite</strong></span>
+    <span class="item">UBS · <strong>SUS</strong></span>
+    <span class="item">Hospital <strong>Amigo da Criança</strong></span>
+  </div>
+</section>
+
+<!-- ════════ SLIDE 11 · MANIFESTO ════════ -->
+<section class="slide s11">
+  <span class="slide-tag">FECHAMENTO</span>
+  <span class="slide-id">11 / 11 · <span class="lime">MANIFESTO</span></span>
+  <p class="quote">
+    <span class="qmark">"</span>Amamentar é um <em>aprendizado</em> — não um teste. A maioria das dores tem solução clínica simples quando se procura ajuda <em>cedo</em>.
+  </p>
+  <span class="sign">Ease Health · Edição 2026 · calm clinical canvas</span>
+</section>
+
+</div>
+</body>
+</html>

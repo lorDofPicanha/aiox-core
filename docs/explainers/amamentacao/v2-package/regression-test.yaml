@@ -1,0 +1,67 @@
+regression_test:
+  case_id: "deck-amamentacao-v1-rebuild"
+  source_inputs:
+    - "D:/AIOS/docs/explainers/amamentacao/guia-amamentacao.html (research, 3.100 words)"
+    - "D:/AIOS/docs/explainers/amamentacao/DESIGN.md (Ease Health calm clinical canvas)"
+    - "D:/AIOS/docs/explainers/amamentacao/deck-amamentacao.html (failed v1, 12 slides)"
+
+  old_failure_modes:
+    - failure: "card_wall"
+      evidence: "Slides 5/6/7 usaram mesma estrutura proof-grid 2x2 + slides 9/10 usaram mesma mitos-grid 3-col em sequência. Não há diferenciação visual entre função de hook, mechanism, proof e CTA."
+      blocked_by_gate: "layout_variety_gate"
+
+    - failure: "outline_to_deck_literalism"
+      evidence: "Estrutura do v1 espelha exatamente as 4 partes do guia HTML (complicações > mitos > red flags > fontes). Nenhuma compressão narrativa. Slides são tópicos, não momentos."
+      blocked_by_gate: "narrative_compression_gate"
+
+    - failure: "brand_skinning"
+      evidence: "Tokens Ease Health aplicados em 2-col/3-col cards genéricos. Composição é wireframe corporativo, não editorial saúde."
+      blocked_by_gate: "editorial_design_gate"
+
+    - failure: "density_blindness"
+      evidence: "Slide 9 (3 mitos cards) tem ~75-90 palavras visíveis. Slide 10 idem. Slides proof com 4 quadrantes têm ~80 palavras."
+      blocked_by_gate: "max_35_words_visible"
+
+    - failure: "weak_action_titles"
+      evidence: "Slide 9 = 'Os 3 mitos que causam desmame precoce' (label). Slide 11 = 'Quando vai agora vs espera amanhã' (descritivo). Vertical test falha."
+      blocked_by_gate: "action_title_gate"
+
+    - failure: "no_visual_function_difference"
+      evidence: "Hook (slide 1), proof (5-7), mechanism (4), CTA (12) usam mesma estrutura visual: hud-top + label-tag + title + content + hud-bot. Audiência não distingue função pela composição."
+      blocked_by_gate: "function_hierarchy_gate"
+
+  expected_skill_outputs:
+    - briefing-normalized
+    - audience-belief-shift
+    - story-arc
+    - slide-function-map
+    - slide-structure-selection
+    - design-direction
+    - deck-spec
+    - qa-report
+
+  key_slide_gate:
+    required: true
+    slides:
+      - cover
+      - reframe
+      - mechanism
+      - proof-anchor
+      - cta
+
+  pass_threshold:
+    weighted_score: 90
+
+  render_blockers:
+    - "Mais de 2 slides consecutivos com mesma structure ID"
+    - "Slide com >35 palavras visíveis (mais rígido que default 45)"
+    - "Action title que é label/tópico em vez de claim"
+    - "Mais de 1 slide com card-grid pattern no deck inteiro"
+    - "Slides hook/mechanism/proof/CTA visualmente indistinguíveis"
+
+  forward_tests:
+    FT01: "Cada slide declara structure ID único do library; máximo 1 estrutura repetida no deck"
+    FT02: "Vertical test: ler só os títulos conta a história em ≤2 minutos"
+    FT03: "Pelo menos 4 slides têm composição 'single dominant element' (big number, big claim isolado, quote único, artifact único)"
+    FT04: "Whitespace ≥40% em cada slide"
+    FT05: "Densidade ≤35 visible words/slide (exceto 1 slide-appendix permitido)"

@@ -9,14 +9,16 @@
 |---|---|---|---|---|---|
 | Base | Livro caixa | ✅ DECIDIDO (não-build) | — | — (adotar Granatum/SaaS BR — D4) | eric-ries |
 | 1 | **Monitorar** | ✅ FEITO (`03-spike-stage1`) | P0 | descoberta no raio sem webhook + custo LLM | pablo-hoffman, werner-vogels |
-| 2 | **Analisar 6m** | 🔲 PENDENTE | P1 | reconstruir histórico do órgão (cobertura de dados) | justen-filho, werner-vogels |
-| 3 | **Indicar diferencial** | 🔲 PENDENTE | P1 | síntese prescritiva 5-frases sem alucinar / sem virar consultoria | justen-filho, niebuhr |
-| 4 | **Habilitar** | 🔲 PENDENTE | P1 | parse de edital + match de docs + radar de impugnação | justen-filho, niebuhr |
+| 2 | **Analisar 6m** | ✅ SPIKE FEITO (`04-spike-stage2`) — experimento pendente | P1 | reconstruir histórico do órgão (cobertura de dados) | justen-filho, werner-vogels |
+| 3 | **Indicar diferencial** | ✅ FEITO (`05-spike-stage3`) | P1 | síntese prescritiva 5-frases sem alucinar / sem virar consultoria | justen-filho, niebuhr |
+| 4 | **Habilitar** | ✅ FEITO (`06-spike-stage4`) | P1 | parse de edital + match de docs + radar de impugnação | justen-filho, niebuhr |
 | 5 | **Acompanhar** | ✅ FEITO (`02-spike-stage5`) | P0 | estado de sessão tempo real (commodity vs moat) | niebuhr, pablo-hoffman |
-| 6 | **Recorrer** | 🔲 PENDENTE | P2 | classificar defeito substantivo vs sanável + minuta | niebuhr, justen-filho |
-| X1 | Adapters de fonte (BLL/BNC/PCP/SISLOG) | 🔲 PENDENTE | P1 | scraping resiliente das fontes sem API | pablo-hoffman |
-| X2 | Multi-CNPJ + 4 usuários (RLS/auth) | 🔲 PENDENTE | P1 | RLS multi-tenant + papéis | data-engineer, ann-cavoukian |
-| X3 | Vault de credenciais da cliente | 🔲 PENDENTE | P1 | guardar logins dos portais (segurança/LGPD) | bruce-schneier, ann-cavoukian |
+| 6 | **Recorrer** | ✅ FEITO (`07-spike-stage6`) | P2 | classificar defeito substantivo vs sanável + minuta | niebuhr, justen-filho |
+| X1 | Adapters de fonte (PCP/BLL/BNC/ComprasGov/SISLOG) | ✅ FEITO (`08-spike-x1`) | P1 | scraping resiliente das fontes sem API | pablo-hoffman |
+| X2 | Multi-CNPJ + 4 usuários (RLS/auth) | ✅ FEITO (`09-spike-x2`) | P1 | RLS multi-tenant + papéis | data-engineer, ann-cavoukian |
+| X3 | Vault de credenciais da cliente | ✅ FEITO (`10-spike-x3`) | P1 | guardar logins dos portais (segurança/LGPD) | bruce-schneier, ann-cavoukian |
+
+> **21/Mai/2026:** todos os spikes escritos (Stage 1-6 + X1/X2/X3). Plano de build consolidado em `11-build-plan-codex-handoff-21mai.md` (handoff p/ construção no Codex). Experimentos de gate (Stage 2 cobertura + Stage 4 parsing) seguem como pré-requisito antes de escalar.
 
 ## Detalhe dos spikes pendentes
 

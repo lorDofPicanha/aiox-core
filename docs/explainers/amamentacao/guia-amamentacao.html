@@ -1,0 +1,1168 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Guia da Amamentação — Complicações e Mitos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ─────────────────────────────────────────────────────────────
+   EASE HEALTH DESIGN TOKENS (calm clinical canvas)
+───────────────────────────────────────────────────────────── */
+:root {
+  --bg: #fffefc;            /* Cream Canvas */
+  --brand: #0f3e17;         /* Forest Green */
+  --brand-soft: #1f5b2a;
+  --mint-glaze: #b1dbb8;
+  --slate-mist: #b6ced5;
+  --keylime: #e1f4df;
+  --mint-kiss: #cfe7d3;
+  --border: #e5e7eb;
+  --ink: #222222;
+  --charcoal: #333333;
+  --muted: #6e6e66;
+  --alert: #a23939;
+  --alert-soft: #f0d8d8;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --radius: 14px;
+  --pad-card: 28px;
+  --pad-section: 40px;
+  --gap: 18px;
+}
+
+@page {
+  size: A4;
+  margin: 18mm 16mm 22mm 16mm;
+  @bottom-center {
+    content: "Guia da Amamentação · " counter(page) " / " counter(pages);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8.5pt;
+    color: #6e6e66;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  @bottom-right {
+    content: "calm clinical canvas";
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8pt;
+    color: #b1dbb8;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+}
+@page :first {
+  margin: 0;
+  @bottom-center { content: none; }
+  @bottom-right { content: none; }
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 11pt; line-height: 1.55; }
+body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 300; color: var(--brand); letter-spacing: -0.015em; line-height: 1.15; }
+h1 { font-size: 36pt; font-weight: 300; }
+h2 { font-size: 24pt; font-weight: 300; margin-top: 0; }
+h3 { font-size: 16pt; font-weight: 400; }
+h4 { font-size: 13pt; font-weight: 500; color: var(--brand-soft); }
+
+p { margin-bottom: 8px; color: var(--ink); }
+strong { font-weight: 600; color: var(--brand); }
+em { font-style: italic; }
+
+a { color: var(--brand); text-decoration: underline; text-decoration-thickness: 0.5px; text-underline-offset: 2px; }
+
+/* ─── COVER ───────────────────────────────────────────────── */
+.cover {
+  background: var(--bg);
+  padding: 48mm 22mm 30mm 22mm;
+  page-break-after: always;
+  position: relative;
+  min-height: 297mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0;
+}
+.cover-grid-bg {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(15,62,23,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15,62,23,0.04) 1px, transparent 1px);
+  background-size: 14mm 14mm;
+  z-index: 0;
+}
+.cover > * { position: relative; z-index: 1; }
+.cover-eyebrow {
+  font-family: var(--font-mono); font-size: 9pt;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--brand);
+}
+.cover-title {
+  font-family: var(--font-display); font-weight: 300;
+  font-size: 64pt; line-height: 0.98; letter-spacing: -0.03em;
+  color: var(--brand);
+  margin-top: 14mm;
+  max-width: 14ch;
+}
+.cover-title em {
+  font-style: italic; font-weight: 400;
+  background: linear-gradient(transparent 70%, var(--mint-glaze) 70%);
+  padding: 0 4px;
+}
+.cover-sub {
+  font-family: var(--font-display); font-weight: 300; font-style: italic;
+  font-size: 18pt; color: var(--charcoal);
+  margin-top: 10mm; max-width: 50ch; line-height: 1.4;
+}
+.cover-meta {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12mm;
+  border-top: 1px solid var(--border);
+  padding-top: 8mm;
+}
+.cover-meta .item .k {
+  font-family: var(--font-mono); font-size: 8pt;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);
+  display: block;
+}
+.cover-meta .item .v {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: 13pt; color: var(--brand); margin-top: 4px;
+  display: block;
+}
+
+/* ─── TOC ─────────────────────────────────────────────────── */
+.toc {
+  padding: 12mm 0;
+  page-break-after: always;
+}
+.toc h2 { margin-bottom: 12mm; }
+.toc .row {
+  display: grid; grid-template-columns: 48px 1fr 60px;
+  gap: 16px; align-items: baseline;
+  padding: 12px 0; border-bottom: 1px dotted var(--border);
+}
+.toc .row .n {
+  font-family: var(--font-mono); font-size: 9pt;
+  color: var(--brand); font-weight: 600; letter-spacing: 0.1em;
+}
+.toc .row .name { font-size: 11pt; color: var(--ink); }
+.toc .row .name strong { color: var(--brand); }
+.toc .row .pg {
+  font-family: var(--font-mono); font-size: 9pt;
+  color: var(--muted); text-align: right; letter-spacing: 0.1em;
+}
+
+/* ─── SECTION HEADERS ─────────────────────────────────────── */
+.part {
+  page-break-before: always;
+  padding: 6mm 0 4mm 0;
+}
+.part-label {
+  font-family: var(--font-mono); font-size: 9pt;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--brand); font-weight: 600;
+}
+.part-title {
+  margin-top: 8px; max-width: 22ch;
+}
+.part-intro {
+  font-family: var(--font-display); font-weight: 300; font-style: italic;
+  font-size: 14pt; color: var(--charcoal);
+  max-width: 60ch; margin-top: 10mm; line-height: 1.4;
+}
+
+/* ─── COMPLICATION CARD ───────────────────────────────────── */
+.comp-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--pad-card);
+  margin: 14mm 0;
+  page-break-inside: avoid;
+}
+.comp-card .num-row {
+  display: flex; align-items: baseline; gap: 14px;
+  margin-bottom: 6px;
+}
+.comp-card .num {
+  font-family: var(--font-mono); font-size: 11pt;
+  color: var(--brand); font-weight: 600;
+  background: var(--keylime); padding: 4px 10px;
+  border-radius: 4px; letter-spacing: 0.08em;
+}
+.comp-card h3 { margin: 0; }
+.comp-card .nicknames {
+  font-family: var(--font-display); font-style: italic; font-weight: 400;
+  font-size: 11pt; color: var(--charcoal); margin: 4px 0 12px 0;
+}
+.comp-card .blurb {
+  font-size: 11pt; color: var(--ink); margin: 10px 0 14px 0;
+}
+
+.info-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 12px; margin-top: 12px;
+}
+.info-grid .info-block {
+  border-radius: var(--radius);
+  padding: 18px 20px;
+}
+.info-block.symptoms { background: var(--mint-glaze); }
+.info-block.causes { background: var(--keylime); }
+.info-block.treatment { background: var(--mint-kiss); }
+.info-block.prevention { background: var(--keylime); }
+
+.info-block .lbl {
+  font-family: var(--font-mono); font-size: 8.5pt;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--brand); font-weight: 600; display: block;
+  margin-bottom: 8px;
+}
+.info-block ul { list-style: none; padding: 0; }
+.info-block li {
+  font-size: 10pt; color: var(--ink); line-height: 1.45;
+  padding-left: 14px; position: relative;
+  margin-bottom: 4px;
+}
+.info-block li::before {
+  content: "→"; position: absolute; left: 0; color: var(--brand);
+  font-weight: 600;
+}
+
+.alert-callout {
+  background: var(--slate-mist);
+  border-left: 3px solid var(--brand);
+  border-radius: var(--radius);
+  padding: 14px 18px; margin-top: 14px;
+}
+.alert-callout .lbl {
+  font-family: var(--font-mono); font-size: 8.5pt;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--brand); font-weight: 700;
+}
+.alert-callout p { margin-top: 6px; margin-bottom: 0; color: var(--ink); font-size: 10.5pt; }
+
+.myth-mini {
+  font-style: italic; font-family: var(--font-display); font-weight: 300;
+  color: var(--charcoal); font-size: 10pt;
+  border-top: 1px dotted var(--border);
+  padding-top: 10px; margin-top: 14px;
+}
+.myth-mini strong { color: var(--alert); font-style: normal; font-family: var(--font-body); }
+
+/* ─── MYTH vs TRUTH ───────────────────────────────────────── */
+.mvt {
+  display: grid; grid-template-columns: 1fr;
+  border: 1px solid var(--border); border-radius: var(--radius);
+  margin: 10mm 0; overflow: hidden;
+  page-break-inside: avoid;
+}
+.mvt .mvt-num {
+  background: var(--brand); color: var(--bg);
+  font-family: var(--font-mono); font-size: 10pt;
+  padding: 6px 16px; letter-spacing: 0.14em;
+}
+.mvt .mvt-claim {
+  background: var(--alert-soft); padding: 16px 22px;
+  border-bottom: 1px solid var(--border);
+}
+.mvt .mvt-claim .lbl {
+  font-family: var(--font-mono); font-size: 8.5pt;
+  letter-spacing: 0.16em; color: var(--alert); font-weight: 700;
+}
+.mvt .mvt-claim p {
+  font-family: var(--font-display); font-style: italic;
+  font-weight: 300; font-size: 13pt; color: var(--charcoal);
+  margin: 4px 0 0 0; line-height: 1.35;
+}
+.mvt .mvt-truth {
+  background: var(--keylime); padding: 16px 22px;
+}
+.mvt .mvt-truth .lbl {
+  font-family: var(--font-mono); font-size: 8.5pt;
+  letter-spacing: 0.16em; color: var(--brand); font-weight: 700;
+}
+.mvt .mvt-truth p {
+  font-size: 11pt; color: var(--ink); margin: 6px 0 0 0; line-height: 1.5;
+}
+.mvt .mvt-truth p strong { color: var(--brand); }
+
+/* ─── RED FLAGS ───────────────────────────────────────────── */
+.redflags {
+  background: var(--alert-soft);
+  border-left: 4px solid var(--alert);
+  border-radius: var(--radius);
+  padding: 22px 26px; margin: 10mm 0;
+  page-break-inside: avoid;
+}
+.redflags h4 {
+  color: var(--alert); margin-bottom: 12px;
+  font-family: var(--font-display); font-weight: 500;
+}
+.redflags ul { list-style: none; padding: 0; }
+.redflags li {
+  font-size: 10.5pt; color: var(--ink); padding-left: 18px;
+  position: relative; margin-bottom: 6px; line-height: 1.45;
+}
+.redflags li::before {
+  content: "⚠"; position: absolute; left: 0; color: var(--alert); font-size: 11pt;
+}
+
+.help-grid {
+  display: grid; grid-template-columns: 1fr;
+  gap: 12px; margin-top: 10mm;
+}
+.help-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+  page-break-inside: avoid;
+}
+.help-card.urgent { background: var(--slate-mist); border-color: var(--slate-mist); }
+.help-card.medium { background: var(--mint-glaze); border-color: var(--mint-glaze); }
+.help-card.advisor { background: var(--keylime); }
+.help-card.psych { background: var(--mint-kiss); }
+.help-card .when {
+  font-family: var(--font-mono); font-size: 9pt;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--brand); font-weight: 700;
+  display: block; margin-bottom: 10px;
+}
+.help-card ul { list-style: none; padding: 0; }
+.help-card li {
+  font-size: 10.5pt; color: var(--ink);
+  padding-left: 14px; position: relative; margin-bottom: 4px; line-height: 1.45;
+}
+.help-card li::before { content: "→"; position: absolute; left: 0; color: var(--brand); font-weight: 600; }
+
+/* ─── REFERENCES ──────────────────────────────────────────── */
+.refs-block {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 26px; margin: 10mm 0;
+  page-break-inside: avoid;
+}
+.refs-block h4 {
+  margin-bottom: 12px; color: var(--brand);
+  font-family: var(--font-display); font-weight: 500;
+}
+.refs-block ul { list-style: none; padding: 0; }
+.refs-block li {
+  font-size: 10pt; color: var(--ink);
+  padding-left: 16px; position: relative;
+  margin-bottom: 8px; line-height: 1.5;
+}
+.refs-block li::before {
+  content: "●"; position: absolute; left: 0;
+  color: var(--brand); font-size: 8pt; top: 5px;
+}
+.refs-block li strong { color: var(--brand); }
+.refs-block li code, .refs-block li a {
+  font-family: var(--font-mono); font-size: 9pt;
+  color: var(--brand-soft);
+}
+
+/* ─── BACK COVER ──────────────────────────────────────────── */
+.back-cover {
+  background: var(--brand); color: var(--bg);
+  padding: 48mm 22mm; page-break-before: always;
+  min-height: 297mm;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.back-cover h2 { color: var(--mint-glaze); font-weight: 300; font-size: 32pt; }
+.back-cover .quote {
+  font-family: var(--font-display); font-style: italic; font-weight: 300;
+  font-size: 22pt; line-height: 1.3; color: var(--bg); max-width: 24ch;
+  margin-top: 14mm;
+}
+.back-cover .quote em {
+  background: linear-gradient(transparent 70%, var(--mint-glaze) 70%);
+  color: var(--brand);
+}
+.back-cover .footer-meta {
+  font-family: var(--font-mono); font-size: 9pt;
+  color: var(--mint-glaze); letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border-top: 1px solid rgba(177,219,184,0.3);
+  padding-top: 8mm;
+}
+.back-cover .footer-meta p { color: var(--mint-glaze); margin-bottom: 4px; font-size: 9pt; }
+
+.section-divider {
+  font-family: var(--font-mono); font-size: 9pt;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--brand); text-align: center;
+  margin: 14mm 0 6mm 0;
+}
+.section-divider::before, .section-divider::after {
+  content: ""; display: inline-block;
+  width: 30mm; height: 1px; background: var(--border);
+  vertical-align: middle; margin: 0 12px;
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════ COVER ════════════════ -->
+<section class="cover">
+  <div class="cover-grid-bg"></div>
+  <div>
+    <span class="cover-eyebrow">Guia clínico · Saúde materno-infantil</span>
+    <h1 class="cover-title">
+      Amamentar<br>
+      sem <em>medo</em>,<br>
+      sem <em>mito</em>.
+    </h1>
+    <p class="cover-sub">
+      Complicações reais, sinais de alerta e o que a ciência diz sobre os mitos mais difundidos no Brasil — em uma leitura que cabe na bolsa da maternidade.
+    </p>
+  </div>
+  <div class="cover-meta">
+    <div class="item">
+      <span class="k">Conteúdo</span>
+      <span class="v">12 complicações<br>18 mitos vs verdades</span>
+    </div>
+    <div class="item">
+      <span class="k">Baseado em</span>
+      <span class="v">SBP 2024 · ABM #36/2022<br>OMS · Ministério da Saúde</span>
+    </div>
+    <div class="item">
+      <span class="k">Revisão</span>
+      <span class="v">2026<br>Versão 1.0</span>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ TOC ════════════════ -->
+<section class="toc">
+  <h2>Sumário</h2>
+  <div class="row"><span class="n">PARTE 1</span><span class="name"><strong>Complicações principais</strong> · 12 condições com sintomas, tratamento e prevenção</span><span class="pg">04</span></div>
+  <div class="row"><span class="n">PARTE 2</span><span class="name"><strong>Mitos & Verdades</strong> · O que circula no boca-a-boca vs evidência atual</span><span class="pg">14</span></div>
+  <div class="row"><span class="n">PARTE 3</span><span class="name"><strong>Quando procurar ajuda</strong> · Sinais de alerta vermelhos (red flags)</span><span class="pg">22</span></div>
+  <div class="row"><span class="n">PARTE 4</span><span class="name"><strong>Onde buscar apoio</strong> · Fontes oficiais brasileiras e internacionais</span><span class="pg">24</span></div>
+</section>
+
+<!-- ════════════════ PARTE 1 — COMPLICAÇÕES ════════════════ -->
+<section class="part">
+  <span class="part-label">— Parte 01</span>
+  <h2 class="part-title">Complicações <em>principais</em></h2>
+  <p class="part-intro">
+    Doze condições que aparecem com frequência na amamentação. A maioria começa com uma única causa: <strong>pega inadequada</strong>. Por isso ela vem em primeiro lugar.
+  </p>
+</section>
+
+<!-- ─── 1. Pega incorreta -->
+<div class="comp-card">
+  <div class="num-row"><span class="num">01</span><h3>Pega incorreta / Dor ao amamentar</h3></div>
+  <p class="nicknames">Pega inadequada · suboptimal latch</p>
+  <p class="blurb">O bebê abocanha apenas o mamilo (e não a aréola), gerando trauma mecânico, dor e baixa transferência de leite. É a <strong>causa raiz da maioria das complicações</strong> nesta lista.</p>
+
+  <div class="info-grid">
+    <div class="info-block symptoms">
+      <span class="lbl">Sintomas-chave</span>
+      <ul>
+        <li>Dor durante toda a mamada (não só nos primeiros segundos)</li>
+        <li>Mamilo sai achatado, comprimido ou em forma de "batom"</li>
+        <li>Estalos da língua audíveis</li>
+        <li>Bebê não engole audivelmente</li>
+        <li>Bochechas encovam ao sugar</li>
+      </ul>
+    </div>
+    <div class="info-block causes">
+      <span class="lbl">Causas</span>
+      <ul>
+        <li>Boca pouco aberta</li>
+        <li>Bebê longe do corpo da mãe</li>
+        <li>Cabeça desalinhada do tronco</li>
+        <li>Anquiloglossia (língua presa)</li>
+      </ul>
+    </div>
+    <div class="info-block treatment">
+      <span class="lbl">Como tratar</span>
+      <ul>
+        <li>Corrigir pega: boca bem aberta ("bocão"), lábios evertidos, queixo encostado na mama</li>
+        <li>Aréola abocanhada assimetricamente (mais parte inferior)</li>
+        <li>Procurar consultora de amamentação (IBCLC) ou banco de leite</li>
+        <li>Frenotomia se diagnóstico de língua presa significativa</li>
+      </ul>
+    </div>
+    <div class="info-block prevention">
+      <span class="lbl">Como prevenir</span>
+      <ul>
+        <li>Orientação ainda na gestação</li>
+        <li>Primeira mamada na sala de parto ("golden hour")</li>
+        <li>Pele a pele imediato</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="myth-mini"><strong>Mito relacionado:</strong> "Dor faz parte do começo." Verdade: dor leve nos primeiros segundos pode ocorrer, mas dor persistente ou trauma indica pega errada.</p>
+</div>
+
+<!-- ─── 2. Fissura mamilar -->
+<div class="comp-card">
+  <div class="num-row"><span class="num">02</span><h3>Fissura mamilar</h3></div>
+  <p class="nicknames">Trauma mamilar · rachadura, ferida no bico</p>
+  <p class="blurb">Lesão cutânea no mamilo ou aréola causada por trauma mecânico repetido.</p>
+
+  <div class="info-grid">
+    <div class="info-block symptoms">
+      <span class="lbl">Sintomas-chave</span>
+      <ul>
+        <li>Rachaduras visíveis no mamilo</li>
+        <li>Sangramento</li>
+        <li>Dor em pontada durante a mamada</li>
+        <li>Crosta cicatricial</li>
+        <li>Mamilo branco ou roxo após mamar (vasoespasmo)</li>
+      </ul>
+    </div>
+    <div class="info-block causes">
+      <span class="lbl">Causas</span>
+      <ul>
+        <li>Pega incorreta (causa #1)</li>
+        <li>Bomba com flange de tamanho errado</li>
+        <li>Sucção do bebê com língua presa</li>
+        <li>Retirada do bebê sem desfazer o vácuo</li>
+      </ul>
+    </div>
+    <div class="info-block treatment">
+      <span class="lbl">Como tratar</span>
+      <ul>
+        <li>Corrigir a pega primeiro — sem isso, nada cicatriza</li>
+        <li>Começar pela mama menos dolorida</li>
+        <li>Expor mamilo ao ar entre mamadas</li>
+        <li>Aplicar o próprio leite materno (ordenhado) e deixar secar — propriedades antimicrobianas comprovadas</li>
+        <li>Lanolina purificada (HPA); compressas de prata (silver caps) em casos refratários</li>
+      </ul>
+    </div>
+    <div class="info-block prevention">
+      <span class="lbl">Como prevenir</span>
+      <ul>
+        <li>Pega correta desde a primeira mamada</li>
+        <li>Desfazer vácuo com dedo mínimo antes de retirar o bebê</li>
+        <li>Não usar sabonete no mamilo</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="alert-callout">
+    <span class="lbl">Quando procurar médico</span>
+    <p>Sinais de infecção: pus, vermelhidão expandida, febre. Fissura que não cicatriza em 7 dias mesmo com pega corrigida.</p>
+  </div>
+</div>
+
+<!-- ─── 3. Ingurgitamento -->
+<div class="comp-card">
+  <div class="num-row"><span class="num">03</span><h3>Ingurgitamento mamário</h3></div>
+  <p class="nicknames">Engorgement · "leite empedrado", peito empedrado</p>
+  <p class="blurb">Acúmulo de leite somado a congestão linfática e vascular, geralmente entre 3º e 5º dia pós-parto (apojadura) ou em qualquer intervalo prolongado entre mamadas.</p>
+
+  <div class="info-grid">
+    <div class="info-block symptoms">
+      <span class="lbl">Sintomas-chave</span>
+      <ul>
+        <li>Mamas duras, brilhantes, edemaciadas</li>
+        <li>Dor difusa</li>
+        <li>Aréola tensa dificultando pega</li>
+        <li>Febre baixa &lt;38°C possível</li>
+        <li>Calor local</li>
+      </ul>
+    </div>
+    <div class="info-block causes">
+      <span class="lbl">Causas</span>
+      <ul>
+        <li>Apojadura natural</li>
+        <li>Mamadas espaçadas demais</li>
+        <li>Pega ruim impedindo esvaziamento</li>
+        <li>Desmame abrupto</li>
+      </ul>
+    </div>
+    <div class="info-block treatment">
+      <span class="lbl">Como tratar (protocolo ABM #36/2022)</span>
+      <ul>
+        <li>Amamentar em livre demanda</li>
+        <li><strong>Compressas frias</strong> entre as mamadas — mudança importante do protocolo</li>
+        <li>Ordenha manual suave da aréola (pressão reversa de Cotterman) antes da mamada</li>
+        <li>Ibuprofeno é seguro</li>
+        <li>Evitar massagem agressiva — pode piorar o edema</li>
+      </ul>
+    </div>
+    <div class="info-block prevention">
+      <span class="lbl">Como prevenir</span>
+      <ul>
+        <li>Mamadas frequentes em livre demanda desde o nascimento</li>
+        <li>Não pular mamadas durante a apojadura</li>
+        <li>Desmame gradual quando chegar a hora</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ─── 4. Bloqueio de ductos -->
+<div class="comp-card">
+  <div class="num-row"><span class="num">04</span><h3>Bloqueio de ductos (ducto entupido)</h3></div>
+  <p class="nicknames">Estase ductal · "ductal narrowing with stromal edema"</p>
+  <p class="blurb">Inflamação localizada com estreitamento de um ducto, formando nódulo doloroso. <strong>Atualização ABM 2022:</strong> não é literalmente um ducto entupido por leite, mas inflamação peri-ductal.</p>
+
+  <div class="info-grid">
+    <div class="info-block symptoms">
+      <span class="lbl">Sintomas-chave</span>
+      <ul>
+        <li>Nódulo localizado, vermelho, quente</li>
+        <li>Dor pontual (não difusa)</li>
+        <li>Sem febre alta</li>
+        <li>Pode ter pontinho branco no mamilo (bolha de leite / bleb)</li>
+      </ul>
+    </div>
+    <div class="info-block causes">
+      <span class="lbl">Causas</span>
+      <ul>
+        <li>Mamada incompleta</li>
+        <li>Pressão local (sutiã apertado, alça de bolsa)</li>
+        <li>Dormir de bruços</li>
+        <li>Hiperlactação</li>
+      </ul>
+    </div>
+    <div class="info-block treatment">
+      <span class="lbl">Tratamento atualizado (ABM #36/2022)</span>
+      <ul>
+        <li>Amamentar do lado afetado normalmente — <strong>sem forçar esvaziamento extra</strong></li>
+        <li>Gelo entre mamadas + ibuprofeno</li>
+        <li>Massagem linfática suave (toque de pluma em direção às axilas) — NÃO profunda</li>
+        <li>Lecitina de soja 5-10g/dia em casos recorrentes (ABM endorsa)</li>
+        <li><strong>Evitar:</strong> bombear excessivamente, massagem vigorosa, vibradores elétricos</li>
+      </ul>
+    </div>
+    <div class="info-block prevention">
+      <span class="lbl">Como prevenir</span>
+      <ul>
+        <li>Sutiãs sem aros e bem ajustados</li>
+        <li>Alternar mamas regularmente</li>
+        <li>Esvaziamento por sucção do bebê (não bomba)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="alert-callout">
+    <span class="lbl">Procurar médico se</span>
+    <p>Evoluir para febre &gt;38,5°C, vermelhidão expandida ou nódulo flutuante (sensação de líquido por baixo).</p>
+  </div>
+</div>
+
+<!-- ─── 5. Mastite -->
+<div class="comp-card">
+  <div class="num-row"><span class="num">05</span><h3>Mastite</h3></div>
+  <p class="nicknames">Mastite lactacional · "infecção na mama"</p>
+  <p class="blurb">Inflamação da mama, com ou sem infecção bacteriana. A ABM redefiniu mastite como <strong>espectro contínuo</strong>, não só infecção.</p>
+
+  <div class="info-grid">
+    <div class="info-block symptoms">
+      <span class="lbl">Sintomas-chave</span>
+      <ul>
+        <li>Área vermelha, quente, dolorida em forma de cunha</li>
+        <li>Febre <strong>&gt;38,5°C</strong></li>
+        <li>Calafrios, mialgia</li>
+        <li>Sensação de gripe</li>
+      </ul>
+    </div>
+    <div class="info-block causes">
+      <span class="lbl">Causas</span>
+      <ul>
+        <li>Disbiose do microbioma mamário</li>
+        <li>Trauma mamilar com entrada de bactérias</li>
+        <li>Estase prolongada</li>
+        <li>Estresse e fadiga materna</li>
+      </ul>
+    </div>
+    <div class="info-block treatment">
+      <span class="lbl">Como tratar</span>
+      <ul>
+        <li><strong>Manter a amamentação</strong> — interromper PIORA o quadro</li>
+        <li>Gelo + ibuprofeno + paracetamol</li>
+        <li>Repouso, hidratação</li>
+        <li>Antibiótico se sintomas sistêmicos &gt;24h: dicloxacilina, cefalexina ou clindamicina por 10-14 dias (compatíveis com amamentação)</li>
+        <li>Probióticos <em>Limosilactobacillus fermentum</em> ou <em>L. salivarius</em> — evidência crescente</li>
+      </ul>
+    </div>
+    <div class="info-block prevention">
+      <span class="lbl">Como prevenir</span>
+      <ul>
+        <li>Pega correta para evitar trauma mamilar</li>
+        <li>Esvaziamento adequado das mamas</li>
+        <li>Repouso e gerenciamento de estresse</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="alert-callout">
+    <span class="lbl">Procurar médico imediatamente</span>
+    <p>Febre &gt;38,5°C por mais de 24h · vermelhidão expansiva · área flutuante (abscesso) · pus saindo do mamilo · não-melhora após 48h de antibiótico.</p>
+  </div>
+
+  <p class="myth-mini"><strong>Mito relacionado:</strong> "Mastite contamina o leite, tem que jogar fora." <em>Falso.</em> O leite da mama afetada continua seguro para o bebê.</p>
+</div>
+
+<!-- ─── 6. Abscesso -->
+<div class="comp-card">
+  <div class="num-row"><span class="num">06</span><h3>Abscesso mamário</h3></div>
+  <p class="nicknames">Complicação grave da mastite não tratada</p>
+  <p class="blurb">Coleção de pus encapsulada — <strong>red flag absoluto</strong>. Não pode esperar.</p>
+
+  <div class="info-grid">
+    <div class="info-block symptoms">
+      <span class="lbl">Sintomas-chave</span>
+      <ul>
+        <li>Nódulo flutuante, muito dolorido</li>
+        <li>Pele tensa, brilhante</li>
+        <li>Febre alta persistente</li>
+        <li>Estado geral comprometido</li>
+      </ul>
+    </div>
+    <div class="info-block treatment">
+      <span class="lbl">Como tratar</span>
+      <ul>
+        <li><strong>Drenagem por punção guiada por ultrassom</strong> (1ª linha hoje, menos invasiva que cirúrgica)</li>
+        <li>Antibiótico sistêmico</li>
+        <li>Manutenção da amamentação na mama saudável e idealmente também na afetada</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ─── 7. Candidíase -->
+<div class="comp-card">
+  <div class="num-row"><span class="num">07</span><h3>Candidíase mamária (sapinho/monilíase)</h3></div>
+  <p class="nicknames">Candidíase mamária · sapinho, micose no peito</p>
+  <p class="blurb">Infecção fúngica (principalmente <em>Candida albicans</em>) do mamilo ou aréola e/ou ductos, frequentemente associada a sapinho oral no bebê.</p>
+
+  <div class="info-grid">
+    <div class="info-block symptoms">
+      <span class="lbl">Sintomas-chave</span>
+      <ul>
+        <li>Dor em <strong>agulhada/queimação</strong> que persiste após a mamada (às vezes piora)</li>
+        <li>Coceira</li>
+        <li>Mamilo rosa-brilhante ou descamativo</li>
+        <li>Bebê com placas brancas na boca (sapinho)</li>
+        <li>Dor entre mamadas sem febre</li>
+      </ul>
+    </div>
+    <div class="info-block causes">
+      <span class="lbl">Causas</span>
+      <ul>
+        <li>Uso recente de antibiótico (materno ou do bebê)</li>
+        <li>Trauma mamilar prévio</li>
+        <li>Diabetes</li>
+        <li>Imunossupressão</li>
+      </ul>
+    </div>
+    <div class="info-block treatment">
+      <span class="lbl">Como tratar</span>
+      <ul>
+        <li><strong>Mãe E bebê tratados juntos</strong>, mesmo se um não tiver sintoma</li>
+        <li>Mãe: nistatina creme 2-3x/dia por 14 dias; miconazol ou cetoconazol; em casos resistentes ou ductais: fluconazol 150-400mg dose única (off-label, prescrição)</li>
+        <li>Bebê: nistatina suspensão oral 1mL 4x/dia por 7-14 dias</li>
+        <li>Esterilizar chupetas, bicos, bombas diariamente</li>
+      </ul>
+    </div>
+    <div class="info-block prevention">
+      <span class="lbl">Como prevenir</span>
+      <ul>
+        <li>Secar mamilos após mamada</li>
+        <li>Trocar protetores de seio frequentemente</li>
+        <li>Tratar candidíase vaginal antes do parto</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ─── 8. Hipogalactia -->
+<div class="comp-card">
+  <div class="num-row"><span class="num">08</span><h3>Hipogalactia (baixa produção real)</h3></div>
+  <p class="nicknames">Baixa produção de leite</p>
+  <p class="blurb">Verdadeira hipogalactia é <strong>rara (~5%)</strong>, mas a <strong>hipogalactia percebida</strong> (mãe achando que tem pouco leite quando tem o suficiente) é extremamente comum — e principal causa de desmame precoce.</p>
+
+  <div class="info-grid">
+    <div class="info-block symptoms">
+      <span class="lbl">Sinais REAIS (confiáveis)</span>
+      <ul>
+        <li>Bebê não recupera peso de nascimento até 14-21 dias</li>
+        <li>Ganho de peso &lt;20g/dia após 1ª semana</li>
+        <li>Menos de 6 fraldas de xixi/dia após 5º dia</li>
+        <li>Xixi escuro / cristais de urato</li>
+        <li>Bebê letárgico, desidratado</li>
+      </ul>
+    </div>
+    <div class="info-block causes">
+      <span class="lbl">Sinais que ENGANAM (não confiar)</span>
+      <ul>
+        <li>Mama "mole" — é normal após estabilização</li>
+        <li>Bebê mamando frequente — é normal!</li>
+        <li>Tempo curto de mamada</li>
+        <li>Bebê chora</li>
+      </ul>
+    </div>
+    <div class="info-block treatment">
+      <span class="lbl">Causas REAIS</span>
+      <ul>
+        <li>Retenção placentária</li>
+        <li>Síndrome de Sheehan</li>
+        <li>Hipoplasia mamária (mamas tubulares)</li>
+        <li>Cirurgia mamária prévia</li>
+        <li>Hipotireoidismo, SOP, diabetes mal controlada</li>
+        <li>Tabagismo pesado</li>
+        <li>Combinados estrogênicos no pós-parto</li>
+      </ul>
+    </div>
+    <div class="info-block prevention">
+      <span class="lbl">O que fazer</span>
+      <ul>
+        <li>Investigar e tratar a causa</li>
+        <li>Aumentar frequência de mamadas + ordenha</li>
+        <li>Consultora IBCLC</li>
+        <li>Suplementação medicamentosa só em casos selecionados</li>
+        <li>Relactação é possível</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ─── 9. Hipergalactia -->
+<div class="comp-card">
+  <div class="num-row"><span class="num">09</span><h3>Hipergalactia / Reflexo de ejeção forte</h3></div>
+  <p class="nicknames">Hiperlactação (oversupply) · Forceful Letdown · ABM #32</p>
+  <p class="blurb">Produção &gt;1.200mL/dia somada a uma ejeção muito intensa que sufoca o bebê. Tão problemática quanto a baixa produção.</p>
+
+  <div class="info-grid">
+    <div class="info-block symptoms">
+      <span class="lbl">Sintomas (mãe)</span>
+      <ul>
+        <li>Mamas sempre pesadas</li>
+        <li>Vazamento constante</li>
+        <li>Dor</li>
+        <li>Ductos bloqueados recorrentes</li>
+        <li>Mastites recorrentes</li>
+      </ul>
+    </div>
+    <div class="info-block causes">
+      <span class="lbl">Sintomas (bebê)</span>
+      <ul>
+        <li>Engasgos durante a mamada</li>
+        <li>Solta o peito chorando</li>
+        <li>Gases excessivos, refluxo</li>
+        <li>Fezes verdes espumosas (desequilíbrio leite anterior/posterior)</li>
+        <li>Ganho de peso muito acelerado</li>
+      </ul>
+    </div>
+    <div class="info-block treatment">
+      <span class="lbl">Como tratar</span>
+      <ul>
+        <li><strong>Block feeding:</strong> mesma mama por 2-4h antes de trocar</li>
+        <li>Posição reclinada (bebê por cima, "biological nurturing") — gravidade desacelera o fluxo</li>
+        <li>Ordenhar um pouco antes da mamada para tirar o primeiro jato</li>
+        <li>Casos refratários: cabergolina 0,25-0,5mg (prescrição)</li>
+      </ul>
+    </div>
+    <div class="info-block prevention">
+      <span class="lbl">Como prevenir</span>
+      <ul>
+        <li><strong>NÃO</strong> ordenhar entre mamadas "para guardar" sem necessidade nos primeiros dias</li>
+        <li>Confiar na demanda do bebê</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ─── 10. D-MER -->
+<div class="comp-card" style="border-left: 4px solid var(--brand);">
+  <div class="num-row"><span class="num">10</span><h3>D-MER · Reflexo de Ejeção Disfórico</h3></div>
+  <p class="nicknames">Dysphoric Milk Ejection Reflex · ~14% das lactantes</p>
+  <p class="blurb">Onda <strong>breve</strong> de emoções negativas (tristeza, ansiedade, irritação, vazio, repulsa) que começa segundos antes do leite descer e dura 30 segundos a poucos minutos. Causa: queda súbita de dopamina quando a prolactina sobe. <strong>Não é depressão pós-parto, não é aversão à amamentação, não é culpa da mãe.</strong> É fisiológico.</p>
+
+  <div class="info-grid">
+    <div class="info-block symptoms">
+      <span class="lbl">Sintomas-chave</span>
+      <ul>
+        <li>Desânimo súbito ao mamar/bombear</li>
+        <li>Sensação de "buraco no estômago"</li>
+        <li>Náusea</li>
+        <li>Melhora rápida após descer o leite</li>
+      </ul>
+    </div>
+    <div class="info-block treatment">
+      <span class="lbl">Como tratar</span>
+      <ul>
+        <li>Conhecimento e validação já reduzem o sofrimento</li>
+        <li>Hidratação, sono, redução de cafeína</li>
+        <li>Casos severos: avaliação psiquiátrica; bupropiona testada em casos refratários</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="alert-callout">
+    <span class="lbl">Diferenciar de</span>
+    <p><strong>Depressão pós-parto:</strong> sintomas contínuos, não atrelados ao reflexo de descida. <strong>Aversão à amamentação:</strong> raiva sustentada durante toda a mamada.</p>
+  </div>
+</div>
+
+<!-- ─── 11. Galactocele -->
+<div class="comp-card">
+  <div class="num-row"><span class="num">11</span><h3>Galactocele</h3></div>
+  <p class="nicknames">Cisto benigno preenchido por leite</p>
+  <p class="blurb">Cisto benigno geralmente formado durante desmame ou redução de mamadas.</p>
+
+  <div class="info-grid">
+    <div class="info-block symptoms">
+      <span class="lbl">Sintomas-chave</span>
+      <ul>
+        <li>Nódulo macio/elástico, <strong>indolor</strong>, móvel</li>
+        <li>Sem vermelhidão</li>
+        <li>Sem febre</li>
+      </ul>
+    </div>
+    <div class="info-block treatment">
+      <span class="lbl">Como tratar</span>
+      <ul>
+        <li>Ultrassom mamário (padrão-ouro de diagnóstico)</li>
+        <li>Punção aspirativa esvazia</li>
+        <li>Tende à reabsorção espontânea após cessar lactação</li>
+        <li>Cirurgia raramente necessária</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="alert-callout">
+    <span class="lbl">Importante</span>
+    <p><strong>Todo nódulo persistente na mama lactante precisa de avaliação por ultrassom</strong> — para descartar outras causas, incluindo câncer de mama gestacional/lactacional.</p>
+  </div>
+</div>
+
+<!-- ─── 12. Mamilo invertido -->
+<div class="comp-card">
+  <div class="num-row"><span class="num">12</span><h3>Mamilo invertido / Plano</h3></div>
+  <p class="nicknames">Variação anatômica · grau I/II/III</p>
+  <p class="blurb"><strong>Mamilo invertido não impede amamentar.</strong> A maioria das mulheres consegue amamentar com sucesso recebendo apoio adequado nas primeiras 2 semanas.</p>
+
+  <div class="info-grid">
+    <div class="info-block symptoms">
+      <span class="lbl">Classificação</span>
+      <ul>
+        <li>Grau I — sai com estímulo</li>
+        <li>Grau II — sai parcialmente</li>
+        <li>Grau III — não sai (mais difícil)</li>
+      </ul>
+    </div>
+    <div class="info-block treatment">
+      <span class="lbl">Como tratar</span>
+      <ul>
+        <li>Foco na <strong>técnica</strong> — o bebê mama na <em>aréola</em>, não no mamilo</li>
+        <li>Bomba manual ou seringa invertida 30 segundos antes da mamada para evertir</li>
+        <li>Bico de silicone (nipple shield) — uso pontual com acompanhamento; risco de redução de transferência</li>
+        <li><strong>Exercícios de Hoffman e conchas mamárias na gestação: NÃO mais recomendados</strong> (sem evidência, podem desencadear contrações)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ─── 13. Crise de crescimento -->
+<div class="comp-card" style="background: var(--keylime);">
+  <div class="num-row"><span class="num">13</span><h3>Crise de crescimento / Cluster feeding</h3></div>
+  <p class="nicknames">NÃO é doença — mas precisa estar nesta lista</p>
+  <p class="blurb">Períodos de 2-7 dias em que o bebê mama muito mais frequente — o corpo está aumentando a produção via aumento da demanda. <strong>É a causa #1 de introdução desnecessária de fórmula e desmame precoce no Brasil.</strong></p>
+
+  <div class="info-grid">
+    <div class="info-block symptoms" style="background: white;">
+      <span class="lbl">Quando ocorrem</span>
+      <ul>
+        <li>~7-10 dias</li>
+        <li>3 semanas</li>
+        <li>6 semanas</li>
+        <li>3 meses</li>
+        <li>6 meses e 9 meses</li>
+      </ul>
+    </div>
+    <div class="info-block treatment" style="background: white;">
+      <span class="lbl">Sintomas e conduta</span>
+      <ul>
+        <li>Bebê chora, mama, solta, chora de novo</li>
+        <li>"Vontade de mamar o tempo todo"</li>
+        <li>Comum especialmente no fim da tarde</li>
+        <li><strong>Não suplementar com fórmula</strong> — reduz o estímulo e baixa a produção</li>
+        <li>Mamar em livre demanda resolve em poucos dias</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ PARTE 2 — MITOS vs VERDADES ════════════════ -->
+<section class="part">
+  <span class="part-label">— Parte 02</span>
+  <h2 class="part-title">Mitos & <em>verdades</em></h2>
+  <p class="part-intro">
+    Dezoito crenças populares sobre amamentação confrontadas com a evidência mais atual. Os dois mais perigosos — "leite fraco" e "cerveja preta aumenta o leite" — são os principais culpados pelo desmame precoce no Brasil.
+  </p>
+</section>
+
+<div class="mvt"><div class="mvt-num">MITO 01</div><div class="mvt-claim"><span class="lbl">O QUE DIZEM</span><p>"Tem que dar de mamar de 3 em 3 horas."</p></div><div class="mvt-truth"><span class="lbl">O QUE A EVIDÊNCIA DIZ</span><p><strong>Esquema de 3 em 3 horas vem da cultura da mamadeira</strong> (volume fixo, intervalo fixo). Ministério da Saúde e SBP recomendam <strong>livre demanda</strong>. Bebês em aleitamento exclusivo mamam de 8 a 12 vezes em 24h, sem horário. Restringir intervalos reduz produção e causa ingurgitamento.</p></div></div>
+
+<div class="mvt"><div class="mvt-num">MITO 02</div><div class="mvt-claim"><span class="lbl">O QUE DIZEM</span><p>"Existe leite fraco — o meu leite é ralo."</p></div><div class="mvt-truth"><span class="lbl">O QUE A EVIDÊNCIA DIZ</span><p><strong>Nenhum leite materno é fraco.</strong> O leite muda de composição naturalmente — colostro (1-5 dias, amarelado), de transição (6-15 dias), maduro (&gt;25 dias). Dentro da mesma mamada o leite anterior é mais ralo (água, lactose, anticorpos) e o posterior é mais gorduroso. Até mães desnutridas leves/moderadas produzem leite nutricionalmente adequado.</p></div></div>
+
+<div class="mvt"><div class="mvt-num">MITO 03</div><div class="mvt-claim"><span class="lbl">O QUE DIZEM</span><p>"Depois de 6 meses (ou 1 ano, ou 2 anos) o leite vira água e não alimenta mais."</p></div><div class="mvt-truth"><span class="lbl">O QUE A EVIDÊNCIA DIZ</span><p>Estudos mostram que <strong>100mL de leite materno após 1 ano continuam densos em calorias e gordura — frequentemente <em>mais</em> calóricos que aos 3 meses.</strong> OMS, UNICEF, SBP e Ministério da Saúde recomendam amamentação até 2 anos ou mais, com introdução alimentar a partir dos 6 meses.</p></div></div>
+
+<div class="mvt"><div class="mvt-num">MITO 04</div><div class="mvt-claim"><span class="lbl">O QUE DIZEM</span><p>"Cerveja preta, canjica, água inglesa aumentam o leite."</p></div><div class="mvt-truth"><span class="lbl">O QUE A EVIDÊNCIA DIZ</span><p><strong>Não há evidência científica</strong> de que qualquer alimento ou bebida aumente a produção. O que aumenta o leite é a sucção do bebê + hidratação materna. Cerveja preta contém álcool (passa para o leite e <strong>inibe</strong> o reflexo de ejeção). Canjica tem leite de vaca (pode causar cólica no bebê). Galactogogos farmacológicos exigem prescrição.</p></div></div>
+
+<div class="mvt"><div class="mvt-num">MITO 05</div><div class="mvt-claim"><span class="lbl">O QUE DIZEM</span><p>"Mãe magra / baixo peso / pequena produz menos leite."</p></div><div class="mvt-truth"><span class="lbl">O QUE A EVIDÊNCIA DIZ</span><p>O IMC materno <strong>não é</strong> fator limitante em mulheres saudáveis. Apenas desnutrição severa pode reduzir o volume produzido. Curiosamente, mães com obesidade têm <em>maior</em> chance de atraso na descida do leite, não menor.</p></div></div>
+
+<div class="mvt"><div class="mvt-num">MITO 06</div><div class="mvt-claim"><span class="lbl">O QUE DIZEM</span><p>"Seio pequeno produz menos leite."</p></div><div class="mvt-truth"><span class="lbl">O QUE A EVIDÊNCIA DIZ</span><p>O tamanho do seio é determinado pelo tecido <strong>adiposo</strong>, não pelo tecido <strong>glandular</strong>. A quantidade de glândulas é semelhante entre mulheres. O que muda é a <em>capacidade de armazenamento</em> — mães com mamas menores podem precisar amamentar com mais frequência, mas a produção em 24h é equivalente.</p></div></div>
+
+<div class="mvt"><div class="mvt-num">MITO 07</div><div class="mvt-claim"><span class="lbl">O QUE DIZEM</span><p>"Mamilo invertido impede amamentação."</p></div><div class="mvt-truth"><span class="lbl">O QUE A EVIDÊNCIA DIZ</span><p>O bebê mama na <strong>aréola</strong>, não no mamilo. Com técnica adequada, bomba ou seringa para evertir antes da mamada, e às vezes bico de silicone temporário, <strong>a grande maioria das mulheres com mamilo invertido amamenta com sucesso.</strong></p></div></div>
+
+<div class="mvt"><div class="mvt-num">MITO 08</div><div class="mvt-claim"><span class="lbl">O QUE DIZEM</span><p>"Mãe com gripe / Covid não pode amamentar."</p></div><div class="mvt-truth"><span class="lbl">O QUE A EVIDÊNCIA DIZ</span><p>Ao contrário — <strong>deve</strong> amamentar. O leite passa anticorpos contra o vírus para o bebê (imunidade passiva, mecanismo documentado). Cuidados: máscara, higiene de mãos, evitar tossir/espirrar próximo do bebê. Vale para gripe sazonal, Covid-19, resfriado comum.</p></div></div>
+
+<div class="mvt"><div class="mvt-num">MITO 09</div><div class="mvt-claim"><span class="lbl">O QUE DIZEM</span><p>"Mãe que toma remédio não pode amamentar."</p></div><div class="mvt-truth"><span class="lbl">O QUE A EVIDÊNCIA DIZ</span><p><strong>A maior parte dos medicamentos é compatível com amamentação.</strong> Paracetamol, ibuprofeno, dipirona, maioria dos antibióticos, anti-histamínicos 2ª geração (loratadina), antidepressivos (sertralina) — todos seguros. Consulte sempre <strong>e-lactancia.org</strong> e <strong>LactMed</strong> (NIH). Drogas realmente incompatíveis são poucas (alguns quimioterápicos, lítio, amiodarona, isotretinoína, drogas de abuso).</p></div></div>
+
+<div class="mvt"><div class="mvt-num">MITO 10</div><div class="mvt-claim"><span class="lbl">O QUE DIZEM</span><p>"Amamentar deforma os seios."</p></div><div class="mvt-truth"><span class="lbl">O QUE A EVIDÊNCIA DIZ</span><p>Quem altera o formato dos seios é a <strong>gestação</strong> (alterações hormonais, ganho de peso) e a <strong>genética/idade</strong> — não a amamentação. Estudos mostram que ptose mamária correlaciona com IMC, número de gestações, idade e tabagismo — NÃO com tempo de amamentação.</p></div></div>
+
+<div class="mvt"><div class="mvt-num">MITO 11</div><div class="mvt-claim"><span class="lbl">O QUE DIZEM</span><p>"Bico de silicone e mamadeira não atrapalham a pega."</p></div><div class="mvt-truth"><span class="lbl">O QUE A EVIDÊNCIA DIZ</span><p>A <strong>"confusão de bicos" é real</strong> para muitos bebês — o padrão de sucção na mamadeira (fluxo passivo) é diferente do peito (sucção ativa). Recomendação SBP: evitar mamadeira, chupeta e bico de silicone nas primeiras 4-6 semanas. Se precisar complementar, usar copinho, colher dosadora ou seringa.</p></div></div>
+
+<div class="mvt"><div class="mvt-num">MITO 12</div><div class="mvt-claim"><span class="lbl">O QUE DIZEM</span><p>"Tomar chá X cura cólica do bebê via leite."</p></div><div class="mvt-truth"><span class="lbl">O QUE A EVIDÊNCIA DIZ</span><p>Chás passam para o leite em quantidades mínimas e <strong>não tratam cólica</strong>. Alguns são <strong>perigosos</strong> (anis-estrelado verdadeiro pode causar convulsão em bebês; boldo, sene, erva-de-são-joão contraindicados). Cólica em bebê amamentado é fisiológica até 3-4 meses e melhora com colo, posição vertical, shantala e tempo.</p></div></div>
+
+<div class="mvt"><div class="mvt-num">MITO 13</div><div class="mvt-claim"><span class="lbl">O QUE DIZEM</span><p>"Quem fez cesárea demora pra descer o leite."</p></div><div class="mvt-truth"><span class="lbl">O QUE A EVIDÊNCIA DIZ</span><p><strong>Parcialmente verdade.</strong> A cesárea é fator de risco para atraso na lactogênese II (descida do leite após 72h), aparecendo em ~43% dos casos de atraso segundo estudos brasileiros. Mas isso <em>não</em> impede amamentação — só exige mais paciência, pele a pele precoce e mamadas frequentes desde a sala de recuperação.</p></div></div>
+
+<div class="mvt"><div class="mvt-num">MITO 14</div><div class="mvt-claim"><span class="lbl">O QUE DIZEM</span><p>"Tem que acordar o bebê para mamar."</p></div><div class="mvt-truth"><span class="lbl">O QUE A EVIDÊNCIA DIZ</span><p><strong>Depende.</strong> Nos primeiros 15 dias e em bebês com baixo ganho de peso ou icterícia: SIM, acordar a cada 3h dia e a cada 4h à noite. Depois, com ganho de peso adequado, o bebê pode espaçar e o sono deve ser respeitado.</p></div></div>
+
+<div class="mvt"><div class="mvt-num">MITO 15</div><div class="mvt-claim"><span class="lbl">O QUE DIZEM</span><p>"Bebê dorme mais quando toma fórmula = fórmula alimenta mais."</p></div><div class="mvt-truth"><span class="lbl">O QUE A EVIDÊNCIA DIZ</span><p>A fórmula é <strong>mais difícil de digerir</strong> que o leite materno, então o bebê fica mais tempo em digestão e dorme mais por <em>isso</em> — não porque está "melhor alimentado". Leite materno é digerido em ~90 minutos; fórmula em 3-4 horas.</p></div></div>
+
+<div class="mvt"><div class="mvt-num">MITO 16</div><div class="mvt-claim"><span class="lbl">O QUE DIZEM</span><p>"Leite materno mata a fome igual fórmula."</p></div><div class="mvt-truth"><span class="lbl">O QUE A EVIDÊNCIA DIZ</span><p><strong>Verdade — e muito mais.</strong> O leite materno nutre, hidrata, <strong>imuniza</strong>, fornece células-tronco, hormônios, microbiota viva e fatores de crescimento que nenhuma fórmula consegue replicar. Estudos mostram redução de infecções respiratórias (-50%), diarreia (-60%), otite (-50%), morte súbita (-36%), obesidade infantil, diabetes tipo 1 e 2, e leucemia.</p></div></div>
+
+<div class="mvt"><div class="mvt-num">MITO 17</div><div class="mvt-claim"><span class="lbl">O QUE DIZEM</span><p>"Amamentar como anticoncepcional (LAM) é seguro."</p></div><div class="mvt-truth"><span class="lbl">O QUE A EVIDÊNCIA DIZ</span><p><strong>Verdade — com condições rígidas.</strong> O Método de Amenorreia Lactacional é 98% eficaz <em>se TODAS estas condições forem atendidas:</em> (1) bebê &lt;6 meses; (2) aleitamento exclusivo, livre demanda, dia e noite, sem intervalos &gt;4h dia e &gt;6h noite; (3) mãe em amenorreia. Saindo de qualquer um dos três, a eficácia despenca. Após 6 meses, com introdução alimentar ou retorno ao trabalho, não confiar.</p></div></div>
+
+<div class="mvt"><div class="mvt-num">MITO 18</div><div class="mvt-claim"><span class="lbl">O QUE DIZEM</span><p>"Tem que lavar o seio antes e depois de cada mamada."</p></div><div class="mvt-truth"><span class="lbl">O QUE A EVIDÊNCIA DIZ</span><p>Lavar o mamilo <strong>retira a proteção natural</strong> das glândulas de Montgomery (que produzem secreção antimicrobiana e lubrificante). Banho diário é suficiente. <strong>Não usar sabonete no mamilo.</strong> Após a mamada, passar uma gota do próprio leite e deixar secar.</p></div></div>
+
+<!-- ════════════════ PARTE 3 — RED FLAGS ════════════════ -->
+<section class="part">
+  <span class="part-label">— Parte 03</span>
+  <h2 class="part-title">Quando procurar <em>ajuda</em></h2>
+  <p class="part-intro">
+    Sinais que separam o "espera amanhã" do "vai agora". Saber distinguir é o que evita complicações graves.
+  </p>
+</section>
+
+<div class="help-card urgent">
+  <span class="when">⚠ Pronto-socorro / médico agora</span>
+  <ul>
+    <li><strong>Febre &gt;38,5°C</strong> persistente por mais de 24h</li>
+    <li>Vermelhidão na mama que <strong>se expande</strong> ou tem aspecto de casca de laranja</li>
+    <li>Nódulo com <strong>flutuação</strong> (sensação de líquido por baixo) — pode ser abscesso</li>
+    <li><strong>Pus saindo do mamilo</strong></li>
+    <li>Calafrios intensos com prostração severa</li>
+    <li>Mastite que <strong>não melhora em 48h</strong> com antibiótico</li>
+    <li>Sangramento abundante do mamilo</li>
+  </ul>
+</div>
+
+<div class="help-card medium">
+  <span class="when">→ Consultora de amamentação / banco de leite em até 48h</span>
+  <ul>
+    <li>Dor durante toda a mamada (não passa após corrigir pega)</li>
+    <li>Bebê não está ganhando peso ou perdeu &gt;10% do peso de nascimento</li>
+    <li>Bebê faz menos de 6 fraldas de xixi/dia após o 5º dia</li>
+    <li>Bebê com aspecto letárgico, difícil de acordar</li>
+    <li>Xixi escuro com manchas alaranjadas (cristais de urato após 3º dia)</li>
+    <li>Fissura que não cicatriza em 1 semana</li>
+  </ul>
+</div>
+
+<div class="help-card advisor">
+  <span class="when">→ Ginecologista</span>
+  <ul>
+    <li>Nódulo persistente na mama que não some em 1-2 semanas (mesmo sem dor)</li>
+    <li>Secreção sanguinolenta unilateral persistente</li>
+    <li>Retração de pele ou mamilo recente</li>
+  </ul>
+</div>
+
+<div class="help-card psych">
+  <span class="when">→ Psicólogo / psiquiatra</span>
+  <ul>
+    <li>Tristeza/ansiedade que persiste fora dos episódios de descida do leite</li>
+    <li>Pensamentos de fazer mal a si ou ao bebê</li>
+    <li>Aversão sustentada à amamentação</li>
+    <li>D-MER severo que comprometa a relação com o bebê</li>
+  </ul>
+</div>
+
+<!-- ════════════════ PARTE 4 — FONTES ════════════════ -->
+<section class="part">
+  <span class="part-label">— Parte 04</span>
+  <h2 class="part-title">Onde buscar <em>apoio</em></h2>
+  <p class="part-intro">
+    Fontes confiáveis para aprofundar, validar e — sobretudo — para receber atendimento gratuito quando precisar.
+  </p>
+</section>
+
+<div class="refs-block">
+  <h4>Brasil — Oficiais</h4>
+  <ul>
+    <li><strong>Ministério da Saúde</strong> — Saúde da Criança / Aleitamento Materno · gov.br/saude</li>
+    <li><strong>Sociedade Brasileira de Pediatria (SBP)</strong> — Guia Prático de Aleitamento Materno (2024) · sbp.com.br</li>
+    <li><strong>Rede Brasileira de Bancos de Leite Humano (rBLH/Fiocruz)</strong> — 222 bancos em todos os estados · rblh.fiocruz.br · <strong>Disque Saúde 136</strong></li>
+    <li><strong>BVS-MS</strong> — Guia "Amamentação e Uso de Medicamentos e Outras Substâncias", 3ª edição</li>
+    <li><strong>IBFAN Brasil</strong> — ibfan.org.br · monitoramento do Código Internacional (NBCAL)</li>
+  </ul>
+</div>
+
+<div class="refs-block">
+  <h4>Internacionais</h4>
+  <ul>
+    <li><strong>OMS / UNICEF</strong> — Estratégia Global para Alimentação de Lactentes e Crianças Pequenas</li>
+    <li><strong>Academy of Breastfeeding Medicine (ABM)</strong> — Protocolos clínicos #36 Mastitis Spectrum 2022; #32 Hyperlactation; #20 D-MER · bfmed.org</li>
+    <li><strong>LactMed (NIH)</strong> — base de dados gratuita sobre medicamentos e amamentação · ncbi.nlm.nih.gov/books/NBK501922</li>
+    <li><strong>e-lactancia.org</strong> — base espanhola, código de cores semafórico</li>
+    <li><strong>International Breastfeeding Centre (Dr. Jack Newman)</strong> — ibconline.ca · versão em português</li>
+  </ul>
+</div>
+
+<div class="refs-block">
+  <h4>Brasil — Profissionais e materiais leigos</h4>
+  <ul>
+    <li><strong>Liga Aleitamento Brasil</strong> — formação IBCLC no Brasil · ligaaleitamentobrasil.com.br</li>
+    <li><strong>IBCLC</strong> (International Board Certified Lactation Consultant) — certificação internacional pelo IBLCE</li>
+    <li><strong>aleitamento.com.br</strong> — portal técnico de Marcus Renato de Carvalho (referência nacional)</li>
+    <li><strong>Mães com Ciência</strong> — divulgação científica (Pamela Lockhart, médica)</li>
+    <li><strong>Bruna Grazi</strong> — consultora de amamentação · brunagrazi.com</li>
+  </ul>
+</div>
+
+<div class="refs-block" style="background: var(--mint-glaze); border-color: var(--mint-glaze);">
+  <h4>Como encontrar ajuda gratuita</h4>
+  <ul>
+    <li><strong>Banco de Leite</strong> mais próximo: site rBLH ou <strong>Disque Saúde 136</strong></li>
+    <li><strong>UBS / posto de saúde</strong>: apoio inicial gratuito do SUS</li>
+    <li><strong>Hospital Amigo da Criança</strong> (IHAC) — programa OMS/UNICEF · unicef.org/brazil</li>
+    <li>Muitos <strong>bancos de leite municipais</strong> oferecem orientação por WhatsApp</li>
+  </ul>
+</div>
+
+<!-- ════════════════ BACK COVER ════════════════ -->
+<section class="back-cover">
+  <div>
+    <h2>Amamentar é<br>um aprendizado.</h2>
+    <p class="quote">
+      A grande maioria das dificuldades tem solução clínica simples<br><em>quando se procura ajuda cedo.</em>
+    </p>
+  </div>
+  <div class="footer-meta">
+    <p>Guia da Amamentação · Edição 2026</p>
+    <p>Conteúdo baseado em evidência · Verifique sempre com profissional de saúde</p>
+    <p>Design system: Ease Health · calm clinical canvas</p>
+  </div>
+</section>
+
+</body>
+</html>

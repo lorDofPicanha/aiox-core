@@ -1,0 +1,78 @@
+[
+  {
+    "family": "swiper-icons",
+    "weight": "400",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [],
+    "src_formats": [],
+    "source_css_url": "https://www.cassina.com/etc.clientlibs/cassina/clientlibs/clientlib-dependencies.ACSHASHb5598e91a2e7eb31d39eded61b9231d5.css",
+    "raw": "@font-face{font-family:swiper-icons;src:url(\"data:application/font-woff;charset=utf-8;base64, d09GRgABAAAAAAZgABAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABGRlRNAAAGRAAAABoAAAAci6qHkUdERUYAAAWgAAAAIwAAACQAYABXR1BPUwAABhQAAAAuAAAANuAY7+xHU1VCAAAFxAAAAFAAAABm2fPczU9TLzIAAAHcAAAASgAAAGBP9V5RY21hcAAAAkQAAACIAAABYt6F0cBjdnQgAAACzAAAAAQAAAAEABEBRGdhc3AAAAWYAAAACAAAAAj//wADZ2x5ZgAAAywAAADMAAAD2MHtryVoZWFkAAABbAAAADAAAAA2E2+eoWhoZWEAAAGcAAAAHwAAACQC9gDzaG10eAAAAigAAAAZAAAArgJkABFsb2NhAAAC0AAAAFoAAABaFQAUGG"
+  },
+  {
+    "family": "Neue Haas Grotesk Display Pro Roman",
+    "weight": "400",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "clientlib-site/resources/fonts/NeueHaasDisplayRoman.woff"
+    ],
+    "src_formats": [
+      "woff"
+    ],
+    "source_css_url": "https://www.cassina.com/etc.clientlibs/cassina/clientlibs/clientlib-site.ACSHASH59ee02433d4d360e8bfeeb031314c66b.css",
+    "raw": "@font-face{font-family:Neue Haas Grotesk Display Pro Roman;font-style:normal;font-weight:400;src:local(\"Neue Haas Grotesk Display Pro Roman\"),url(clientlib-site/resources/fonts/NeueHaasDisplayRoman.woff) format(\"woff\");font-display:swap}"
+  },
+  {
+    "family": "Neue Haas Grotesk Display Pro Roman Italic",
+    "weight": "400",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "clientlib-site/resources/fonts/NeueHaasDisplayRomanItalic.woff"
+    ],
+    "src_formats": [
+      "woff"
+    ],
+    "source_css_url": "https://www.cassina.com/etc.clientlibs/cassina/clientlibs/clientlib-site.ACSHASH59ee02433d4d360e8bfeeb031314c66b.css",
+    "raw": "@font-face{font-family:Neue Haas Grotesk Display Pro Roman Italic;font-style:normal;font-weight:400;src:local(\"Neue Haas Grotesk Display Pro Roman Italic\"),url(clientlib-site/resources/fonts/NeueHaasDisplayRomanItalic.woff) format(\"woff\");font-display:swap}"
+  },
+  {
+    "family": "Neue Haas Grotesk Display Pro Roman",
+    "weight": "600",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "clientlib-site/resources/fonts/NeueHaasDisplayBold.woff"
+    ],
+    "src_formats": [
+      "woff"
+    ],
+    "source_css_url": "https://www.cassina.com/etc.clientlibs/cassina/clientlibs/clientlib-site.ACSHASH59ee02433d4d360e8bfeeb031314c66b.css",
+    "raw": "@font-face{font-family:Neue Haas Grotesk Display Pro Roman;font-style:normal;font-weight:600;src:local(\"Neue Haas Grotesk Display Pro Bold\"),url(clientlib-site/resources/fonts/NeueHaasDisplayBold.woff) format(\"woff\");font-display:swap}"
+  },
+  {
+    "family": "Neue Haas Grotesk Display Pro Bold",
+    "weight": "400",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "clientlib-site/resources/fonts/NeueHaasDisplayBold.woff"
+    ],
+    "src_formats": [
+      "woff"
+    ],
+    "source_css_url": "https://www.cassina.com/etc.clientlibs/cassina/clientlibs/clientlib-site.ACSHASH59ee02433d4d360e8bfeeb031314c66b.css",
+    "raw": "@font-face{font-family:Neue Haas Grotesk Display Pro Bold;font-style:normal;font-weight:400;src:local(\"Neue Haas Grotesk Display Pro Bold\"),url(clientlib-site/resources/fonts/NeueHaasDisplayBold.woff) format(\"woff\");font-display:swap}"
+  }
+]
