@@ -120,12 +120,31 @@ npm run validate:codex-cutover
 
 `validate:parity` global continua sendo contrato multi-IDE e permanece fora do gate diario Codex. Ele bloqueia apenas uma declaracao futura de paridade global multi-IDE, nao a FASE 4 Codex-primary.
 
+**UPDATE 2026-05-21 (D2):** `validate:parity` agora **PASSA**. A causa do FAIL era a
+mesma do `codex-sync`: agents/commands novos nao propagados aos demais IDEs. Apos
+`npm run sync:ide` (todos os alvos), os 6 syncs ficaram verdes:
+
+```
+claude-sync, codex-sync, gemini-sync, cursor-sync,
+github-copilot-sync, antigravity-sync  -> todos PASS
+Parity validation passed
+```
+
+Resultado: a opcao 1 do P0-1 (sincronizar todos os alvos) foi cumprida, alem do
+contrato Codex-cutover (opcao 3). O bloqueio de paridade global multi-IDE para a
+FASE 5 esta **levantado**.
+
+Pendencia residual (nao-bloqueante, apenas WARN): o contrato AIOS 4.0.4 espera
+contagens antigas (58 agents / 59 commands) enquanto a fonte real tem 201 / 199 —
+atualizar os expected counts do contrato limpa os warnings. Tambem falta o arquivo
+`.gemini/rules.md` (hoje existe `.gemini/rules/` como diretorio).
+
 ## Log diario
 
 | Dia | Data | Codex checks | Trabalho novo feito em Codex? | Fallback Claude? | Regressoes | Contagem |
 |---|---|---|---|---|---|---|
 | D1 | 2026-05-20 | PASS (`codex-sync`, `codex-skills`, `codex-integration`, `codex-cutover`, `doctor`, `paths`) | Sim | Nao | Nenhuma regressao Codex; `validate:parity` global fica fora do gate diario | 1/5 |
-| D2 | 2026-05-21 | Pendente | Pendente | Pendente | Pendente | Pendente |
+| D2 | 2026-05-21 | PASS apos remediacao (`codex-sync` caiu p/ 139 missing: agents/commands novos de buscador-licitacoes+crm-novo nao propagados ao `.codex/`; `sync:ide:codex` -> 201/201; `codex-cutover` PASS) | Sim | Nao | Drift de sync (nao-funcional, fora dos criterios de regressao) corrigido; 1 WARN benigno skill-count 198/197 | 2/5 |
 | D3 | 2026-05-22 | Pendente | Pendente | Pendente | Pendente | Pendente |
 | D4 | 2026-05-23 | Pendente | Pendente | Pendente | Pendente | Pendente |
 | D5 | 2026-05-24 | Pendente | Pendente | Pendente | Pendente | Pendente |
@@ -160,6 +179,31 @@ Resultado:
 - `validate:parity`: FAIL esperado fora do gate Codex-primary; falhas apenas em `claude-sync`, `gemini-sync`, `cursor-sync`, `github-copilot-sync`, `antigravity-sync`.
 
 Conclusao: a parte automatizavel da FASE 4 esta verde para Codex-primary. O gate temporal de saida continua exigindo 5 dias consecutivos reais sem fallback Claude.
+
+## Execucao sequencial - 2026-05-21 (D2)
+
+Checklist diario rodado:
+
+```bash
+npm run validate:codex-sync       # FAIL inicial -> 201 expected, 139 missing, 0 drift
+npm run validate:codex-skills     # PASS - 58 skills
+npm run validate:codex-integration # PASS - agents 62, skills 59
+npm run validate:codex-cutover    # FAIL (por codex-sync)
+npm run validate:paths            # PASS - 61 files
+# remediacao:
+npm run sync:ide:codex            # 197 agents + 4 redirects sincronizados
+npm run validate:codex-sync       # PASS - 201/201, 0 missing, 0 drift
+npm run validate:codex-cutover    # PASS - MCP servers detected: 9
+```
+
+Diagnostico: nao foi regressao funcional do Codex. Os commits recentes
+(`feat(buscador-licitacoes)`, `feat(crm-novo)`) adicionaram agents/commands ao
+`.aios-core` canonico sem rodar `sync:ide`. Drift=0 confirma ausencia de
+divergencia de conteudo — apenas artefatos `.codex/` faltantes. Remediado e
+re-validado. Nenhum fallback Claude. D2 conta como 2/5.
+
+Acao preventiva sugerida: hook pre-push que roda `sync:ide:codex` quando
+houver alteracao em `.aios-core/development/agents` ou `.claude/commands/AIOS`.
 
 ## Gate de saida para FASE 5
 

@@ -8,7 +8,7 @@ Migrated from Claude Code → Codex on 2026-05-19.
 
 ## 1. Constitution (NON-NEGOTIABLE)
 
-Fonte de verdade: `.aios-core/constitution.md`. 6 artigos:
+Fonte de verdade: `.aios-core/constitution.md` (v1.1.0). 7 artigos:
 
 | # | Princípio | Severidade |
 |---|---|---|
@@ -18,6 +18,7 @@ Fonte de verdade: `.aios-core/constitution.md`. 6 artigos:
 | IV | No Invention (verificar antes de citar) | MUST |
 | V | Quality First (gates pre-push) | MUST |
 | VI | Absolute Imports | SHOULD |
+| VII | No Programmatic Claude for Automation (evitar `claude -p` em bulk/CI; interativo OK) | MUST |
 
 Quality gates pre-push: `npm run lint && npm run typecheck && npm test`.
 
@@ -186,15 +187,18 @@ Bridge data: `D:/jarvis/bridge-data/`. Ads data: `D:/jarvis/ads-data/`.
 
 ## 7-bis. Cross-Tool Bridge (CLI, não MCP)
 
-Conexão Claude ↔ Codex ↔ jarvis via **subprocess + arquivos** (zero handshake, funciona em todo IDE). Doc completo: `docs/migrations/claude-to-codex/05-cli-bridge-architecture.md`.
+Conexão Codex ↔ Gemini ↔ jarvis via **subprocess + arquivos** (zero handshake, funciona em todo IDE). Doc completo: `docs/migrations/claude-to-codex/05-cli-bridge-architecture.md`.
 
 **Delegate universal:**
 ```bash
-# Bulk/programmatic → Codex (billing OpenAI, barato)
+# Raciocínio + bulk/programmatic → Codex (superfície primária, billing OpenAI)
 node .aios-core/infrastructure/scripts/delegate.js --to codex "task"
+# Classificação / bulk barato → Gemini (Flash; --agent escolhe Flash/Pro)
+node .aios-core/infrastructure/scripts/delegate.js --to gemini --agent {a} "{task}"
 # Mind clone / conclave → jarvis (file-based, sem MCP)
 node .aios-core/infrastructure/scripts/delegate.js --to jarvis --topic "{tema}" --limit 3
 node .aios-core/infrastructure/scripts/delegate.js --to jarvis --project {p} --agent {a} "{pergunta}"
+# --to claude (claude -p) = programático → pool separado caro pós-15/Jun; pontual, nunca em automação
 ```
 
 **Mind clones direto (qualquer IDE, sem MCP):**
@@ -203,7 +207,26 @@ node .aios-core/core/jarvis/consultation-engine.js search --topic "{tema}" --lim
 node .aios-core/core/jarvis/self-consultation.js conclave --question "{q}" --project {p} --agent {a} --experts 3
 ```
 
-**Regra billing pós-15/Jun:** Claude pensa (interativo, barato) · Codex executa volume (OpenAI) · jarvis aconselha (local). NUNCA `claude -p` para bulk (pool caro).
+**Regra de papéis (Constitution Art. VII — MUST):** Codex é a superfície primária programática (raciocínio + execução) · Gemini para classificação/bulk barato · jarvis aconselha (local) · **Claude interativo** (você digita) é ótimo p/ raciocínio longo e segue **inalterado** no billing. ⚠️ Evitar **Claude programático** (`claude -p`, Agent SDK, GitHub Actions) em bulk/automação/CI — pós-15/Jun cai em **pool separado caro** (rates de API, sem rollover).
+
+**Divisão de trabalho — quando escalar para cada cérebro:**
+
+| Cérebro | Papel | Quando |
+|---|---|---|
+| ⚙️ **Codex** | Motorista primário | Execução, refactor, scaffolding, varredura, automação, o grosso do código |
+| 🧩 **Claude** (interativo) | Consultor de raciocínio profundo | Arquitetura, alto risco, legal, síntese de muito contexto, code review crítico, **segunda opinião** sobre o Codex |
+| ⚡ **Gemini** | Classificador barato | Triagem em volume, tagging, bulk de baixo risco (Flash) |
+| 🔮 **jarvis** | Conselho de especialistas | Pricing, security, UX, schema — antes de decisões |
+
+**Task Router (agnóstico de CLI — use antes de tarefas não-triviais):**
+```bash
+node .aios-core/infrastructure/scripts/route.js "descreva a tarefa"
+# ROTA: codex|gemini|jarvis|claude|current + comando pronto
+node .aios-core/infrastructure/scripts/route.js --exec "..."   # auto-roda o delegate (codex/gemini/jarvis)
+```
+- **codex/gemini/jarvis** → o router roda o `delegate.js` (programático).
+- **claude** → HANDOFF: o router salva o prompt em `.aios-core/tmp/route-handoff/` e pede pra você **abrir uma sessão Claude interativa** e trazer o output de volta (NUNCA `claude -p`).
+- **current** → faça direto na CLI atual.
 
 ---
 
