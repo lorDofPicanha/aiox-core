@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anipis — Decisões Founder Pré-Beta · 19/Mai/2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap');
+
+:root {
+  --canvas: #F7F4ED;
+  --surface: #FFFFFF;
+  --surface-sunken: #EFEAE0;
+  --ink: #1A1814;
+  --ink-soft: #3D3A35;
+  --ink-muted: #76726B;
+  --ink-disabled: #A8A39B;
+  --border-hair: #E8E2D4;
+  --border-strong: #D5CFC0;
+  --brand: #2F5235;
+  --brand-deep: #1F3823;
+  --brand-soft: #D4E0CE;
+  --brand-wash: #EBF1E6;
+  --mood-calm: #CFE0E8;
+  --mood-joy: #F4D9C2;
+  --mood-tender: #F0D5DC;
+  --mood-clear: #E0DDE8;
+  --mood-bright: #E5E5C0;
+  --mood-heavy: #C8C5BD;
+  --alarm-bg: #FFE17A;
+  --alarm-ink: #3B2D04;
+  --alarm-stroke: #8C6B0F;
+  --crisis: #A1311F;
+  --crisis-bg: #F6E0DC;
+  --success: #3F6A4A;
+  --info: #2F4F66;
+  --font-serif: 'Cormorant Garamond', 'Times New Roman', serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --duration-quick: 120ms;
+  --duration-base: 240ms;
+  --duration-slow: 480ms;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.6;
+  padding: 32px 16px 96px;
+}
+
+.container { max-width: 920px; margin: 0 auto; }
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border-hair);
+}
+.caption {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.012em;
+  margin: 12px 0;
+}
+.subtitle {
+  color: var(--ink-soft);
+  font-size: 17px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* Progress */
+.dashboard {
+  background: var(--surface);
+  border: 1px solid var(--border-hair);
+  border-radius: 8px;
+  padding: 24px 32px;
+  margin-bottom: 48px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: center;
+}
+.dashboard-metric {
+  font-family: var(--font-serif);
+  font-size: 36px;
+  font-weight: 300;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+}
+.dashboard-metric strong { color: var(--brand); font-weight: 400; }
+.dashboard-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.progress-track {
+  height: 6px;
+  background: var(--surface-sunken);
+  border-radius: 9999px;
+  overflow: hidden;
+  min-width: 180px;
+}
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--brand);
+  border-radius: 9999px;
+  transition: width var(--duration-slow) var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: shimmer 2s infinite;
+}
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Section */
+.section-header {
+  margin: 48px 0 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-hair);
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: -0.008em;
+}
+.section-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-left: auto;
+}
+
+/* Decision card */
+.decision {
+  background: var(--surface);
+  border: 1px solid var(--border-hair);
+  border-radius: 8px;
+  padding: 28px;
+  margin-bottom: 20px;
+  transition: border-color var(--duration-base);
+  position: relative;
+}
+.decision.answered {
+  background: var(--brand-wash);
+  border-color: var(--brand-soft);
+}
+.decision-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.decision-id {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-muted);
+  background: var(--surface-sunken);
+  padding: 3px 8px;
+  border-radius: 9999px;
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
+}
+.decision.answered .decision-id {
+  background: var(--brand-soft);
+  color: var(--brand-deep);
+}
+.decision-question {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.006em;
+  color: var(--ink);
+}
+.decision-context {
+  color: var(--ink-soft);
+  font-size: 14px;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+.decision-context code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: var(--surface-sunken);
+  padding: 1px 5px;
+  border-radius: 3px;
+  color: var(--ink);
+}
+.decision.answered .decision-context code { background: var(--surface); }
+
+/* Options */
+.options { display: flex; flex-direction: column; gap: 10px; }
+.option {
+  background: var(--canvas);
+  border: 1.5px solid var(--border-hair);
+  border-radius: 8px;
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: all var(--duration-base) var(--ease-out);
+  text-align: left;
+  font-family: var(--font-sans);
+  position: relative;
+}
+.option:hover { border-color: var(--border-strong); transform: translateY(-1px); }
+.option.picked {
+  background: var(--brand);
+  border-color: var(--brand-deep);
+  color: var(--surface);
+}
+.option.picked .option-consequence { color: var(--brand-wash); }
+.option.picked .option-meta { color: var(--brand-soft); }
+
+.option-header {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+.option-label {
+  font-weight: 600;
+  font-size: 15px;
+  flex: 1;
+}
+.option-meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+.option-tag-recommended {
+  background: var(--brand);
+  color: var(--surface);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  padding: 2px 6px;
+  border-radius: 9999px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.option.picked .option-tag-recommended {
+  background: var(--brand-wash);
+  color: var(--brand-deep);
+}
+.option-consequence {
+  font-size: 13px;
+  color: var(--ink-muted);
+  line-height: 1.5;
+  margin-top: 4px;
+}
+
+/* Pickmark */
+.option-pickmark {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1.5px solid var(--border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--duration-quick);
+}
+.option.picked .option-pickmark {
+  background: var(--brand-wash);
+  border-color: var(--brand-wash);
+}
+.option-pickmark svg {
+  width: 12px;
+  height: 12px;
+  stroke: var(--brand-deep);
+  stroke-width: 3;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  stroke-dasharray: 16;
+  stroke-dashoffset: 16;
+  transition: stroke-dashoffset 300ms var(--ease-out) 50ms, opacity var(--duration-quick);
+}
+.option.picked .option-pickmark svg {
+  opacity: 1;
+  stroke-dashoffset: 0;
+}
+
+/* Quick answer (yes/no/now/later) */
+.options.quick { flex-direction: row; flex-wrap: wrap; }
+.options.quick .option {
+  flex: 1;
+  min-width: 140px;
+  text-align: center;
+}
+
+/* Summary section */
+.summary {
+  background: var(--surface);
+  border: 1px solid var(--border-hair);
+  border-radius: 8px;
+  padding: 32px;
+  margin-top: 48px;
+}
+.summary-title {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: -0.008em;
+  margin-bottom: 8px;
+}
+.summary-subtitle {
+  color: var(--ink-muted);
+  font-size: 13px;
+  margin-bottom: 24px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.summary-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.summary-item {
+  display: grid;
+  grid-template-columns: 60px 1fr auto;
+  gap: 16px;
+  padding: 12px 16px;
+  background: var(--surface-sunken);
+  border-radius: 6px;
+  font-size: 14px;
+  align-items: baseline;
+}
+.summary-item.pending {
+  background: transparent;
+  border: 1px dashed var(--border-strong);
+  color: var(--ink-muted);
+}
+.summary-item-id {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-muted);
+  letter-spacing: 0.06em;
+}
+.summary-item.pending .summary-item-id { color: var(--ink-disabled); }
+.summary-item-question { color: var(--ink-soft); }
+.summary-item.pending .summary-item-question { color: var(--ink-muted); font-style: italic; }
+.summary-item-answer {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: var(--brand);
+  color: var(--surface);
+  padding: 4px 10px;
+  border-radius: 9999px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+.summary-item.pending .summary-item-answer {
+  background: transparent;
+  color: var(--ink-disabled);
+  border: 1px solid var(--ink-disabled);
+}
+
+.summary-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+.btn {
+  background: var(--brand);
+  color: var(--surface);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--duration-quick);
+}
+.btn:hover { background: var(--brand-deep); transform: translateY(-1px); }
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--border-strong);
+}
+.btn-ghost:hover { background: var(--surface-sunken); border-color: var(--ink-soft); }
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--ink);
+  color: var(--surface);
+  padding: 12px 24px;
+  border-radius: 9999px;
+  font-size: 14px;
+  opacity: 0;
+  transition: all var(--duration-base) var(--ease-out);
+  z-index: 100;
+  box-shadow: 0 4px 16px rgba(26,24,20,0.2);
+}
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* Pull quote */
+.pullquote {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--ink-soft);
+  border-left: 2px solid var(--brand);
+  padding: 12px 0 12px 20px;
+  margin: 32px 0;
+}
+
+/* Already-decided badge */
+.already-decided {
+  background: var(--mood-bright);
+  color: var(--alarm-ink);
+  border-radius: 4px;
+  padding: 12px 16px;
+  font-size: 13px;
+  margin-bottom: 32px;
+  border-left: 3px solid var(--alarm-stroke);
+}
+.already-decided strong { font-weight: 600; }
+.already-decided ul { margin: 8px 0 0 20px; }
+.already-decided li { margin-top: 2px; }
+
+footer {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border-hair);
+  text-align: center;
+  color: var(--ink-muted);
+  font-size: 12px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+  <div class="caption">DECISÕES FOUNDER · 19/MAI/2026 · D-11 AO CLOSED BETA</div>
+  <h1>Vamos com as decisões.</h1>
+  <p class="subtitle">14 escolhas estratégicas pendentes pré-Beta. Squad já recomendou em cada uma — você confirma, contraprõe, ou pede mais contexto.</p>
+</header>
+
+<!-- Already decided context -->
+<div class="already-decided">
+  <strong>Já decidido em 18/Mai (não precisa revisitar):</strong>
+  <ul>
+    <li>D1 · API host = <code>Railway BR sa-east-1</code></li>
+    <li>D2 · Anthropic = <code>DEFERIR 7d, reavaliar 25/Mai</code></li>
+    <li>D3 · Beta date = <code>30/Mai firme, slip seguro 7/Jun</code></li>
+    <li>D4 · Recrutamento = <code>20 Júlias rede pessoal pré-selecionada</code></li>
+  </ul>
+</div>
+
+<!-- Progress -->
+<div class="dashboard">
+  <div>
+    <div class="dashboard-label">Decisões fechadas</div>
+    <div class="dashboard-metric"><strong id="answered-count">0</strong> / 14</div>
+  </div>
+  <div style="flex: 1;">
+    <div class="dashboard-label">Progresso</div>
+    <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+  </div>
+</div>
+
+<!-- ====================================================================
+     URGENTE — esta semana
+     ==================================================================== -->
+<div class="section-header">
+  <h2 class="section-title">Urgente</h2>
+  <div class="section-meta">esta semana · pré-Patricia v2</div>
+</div>
+
+<!-- D5 Design Opção A/B/C -->
+<article class="decision" data-id="D5">
+  <div class="decision-header">
+    <span class="decision-id">D5</span>
+    <div class="decision-question">Design system — Caderno (atual) ou Pergaminho Clínico (mockup)?</div>
+  </div>
+  <p class="decision-context">
+    Em produção: Caderno v3 (Sepia Hazel <code>#7A4A2B</code>, Newsreader serif, locked 06/Mai). Mockup novo: Pergaminho Clínico (Verde-Musgo <code>#2F5235</code>, Tobias serif, 16/Mai). 11 dias até Beta — rebrand visual é alto-risco.
+  </p>
+  <div class="options">
+    <button class="option" data-value="A">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header">
+        <div class="option-label">Opção A · Manter Caderno</div>
+        <span class="option-tag-recommended">Recomendado</span>
+      </div>
+      <div class="option-consequence">Status quo. Pergaminho vira <code>v3.1-future-direction/</code> pós-Beta. Apenas fix DEV-2 tokens (15min). Risco zero.</div>
+    </button>
+    <button class="option" data-value="B">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header">
+        <div class="option-label">Opção B · Rebrand Pergaminho Clínico</div>
+        <span class="option-meta">1-2 sprints</span>
+      </div>
+      <div class="option-consequence">Migração brand + fonts + mood pastels + componentes. Slip Beta pra 7/Jun mandatório.</div>
+    </button>
+    <button class="option" data-value="C">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header">
+        <div class="option-label">Opção C · Híbrido</div>
+        <span class="option-meta">3 dias</span>
+      </div>
+      <div class="option-consequence">Verde-Musgo brand + 6 mood pastels sobre Caderno base. Mantém fonts. Slip 3 dias absorvível.</div>
+    </button>
+  </div>
+</article>
+
+<!-- D6 SCC Edição 2 caminho A vs B -->
+<article class="decision" data-id="D6">
+  <div class="decision-header">
+    <span class="decision-id">D6</span>
+    <div class="decision-question">SCC Edição 2 (Anexo I Supabase 5y archive) — Caminho A ou B?</div>
+  </div>
+  <p class="decision-context">
+    SCC v1 promete "5 anos arquivo segregado crisis_events" mas código pseudonimiza imediatamente. Caminho A = alinha contrato à realidade (doc-only). Caminho B = cria tabela <code>crisis_events_archive</code> + trigger + retention cron (1 dev-day).
+  </p>
+  <div class="options">
+    <button class="option" data-value="A">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header">
+        <div class="option-label">Caminho A · Doc-only (alinha SCC à realidade)</div>
+        <span class="option-tag-recommended">Squad rec</span>
+      </div>
+      <div class="option-consequence">Pseudonimização imediata + audit_events 5y (Art. 7º §3 CPC). 0 dev-time. Igualmente defensável ANPD.</div>
+    </button>
+    <button class="option" data-value="B">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header">
+        <div class="option-label">Caminho B · Implementar archive segregado</div>
+        <span class="option-meta">1 dev-day</span>
+      </div>
+      <div class="option-consequence">Migration nova + trigger ON DELETE + retention cron. Over-engineering 13d antes do launch.</div>
+    </button>
+  </div>
+</article>
+
+<!-- D7 DPIA 4 caminhos A confirm -->
+<article class="decision" data-id="D7">
+  <div class="decision-header">
+    <span class="decision-id">D7</span>
+    <div class="decision-question">DPIA v2 — confirma os 4 caminhos A que o squad já aplicou?</div>
+  </div>
+  <p class="decision-context">
+    INC-1 Anthropic deferida · INC-2 encaminhamento informativo (não circuit breaker) · INC-3 pseudonimização imediata · INC-4 transparency report. Squad recomendou A em todas. Documento <code>anipis-RIPD-DPIA-v2.md</code> já reflete.
+  </p>
+  <div class="options quick">
+    <button class="option" data-value="confirm-all-A">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header"><div class="option-label">Confirmar 4 caminhos A</div><span class="option-tag-recommended">Default</span></div>
+      <div class="option-consequence">Patricia recebe DPIA v2 como está. Sem rework.</div>
+    </button>
+    <button class="option" data-value="review-with-patricia">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header"><div class="option-label">Deixar Patricia opinar</div><span class="option-meta">+2-3 dias</span></div>
+      <div class="option-consequence">Envia "sugerimos A mas aceitamos contraproposta". Slip aceitável.</div>
+    </button>
+  </div>
+</article>
+
+<!-- D8 CNPJ Razão Social -->
+<article class="decision" data-id="D8">
+  <div class="decision-header">
+    <span class="decision-id">D8</span>
+    <div class="decision-question">CNPJ + Razão Social — abrir PJ agora ou usar PF/MEI?</div>
+  </div>
+  <p class="decision-context">
+    Hard gate D-3 (27/Mai). Patricia precisa do CNPJ pra assinar SCC, DPIA, Privacy Policy, Termos Beta. Abrir LTDA leva ~5-15 dias úteis. MEI pode ser aberto no mesmo dia mas tem limite R$81k/ano.
+  </p>
+  <div class="options">
+    <button class="option" data-value="ltda-now">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header"><div class="option-label">Abrir LTDA agora (com contador)</div><span class="option-meta">5-15 dias</span></div>
+      <div class="option-consequence">Custo R$1-3k abertura + ~R$300/mês contador. Aperta timeline D-3.</div>
+    </button>
+    <button class="option" data-value="mei-bridge">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header"><div class="option-label">MEI como bridge (Beta) + LTDA pós-launch</div><span class="option-tag-recommended">Pragmático</span></div>
+      <div class="option-consequence">MEI aberto em 1 dia (gratuito). Patricia assina contratos com MEI. LTDA depois pra escala. Limite R$81k/ano não bloqueia Beta gratuito.</div>
+    </button>
+    <button class="option" data-value="pf-individual">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header"><div class="option-label">Pessoa Física (CPF) como Controlador</div><span class="option-meta">risco</span></div>
+      <div class="option-consequence">Possível pela LGPD mas expõe patrimônio pessoal. Heather Meeker desaconselha pra dados sensíveis.</div>
+    </button>
+  </div>
+</article>
+
+<!-- D9 DPO interim -->
+<article class="decision" data-id="D9">
+  <div class="decision-header">
+    <span class="decision-id">D9</span>
+    <div class="decision-question">DPO interim — você mesmo ou terceirizar?</div>
+  </div>
+  <p class="decision-context">
+    LGPD Art. 41 exige Encarregado nomeado e contato público. Mercado: DPO terceirizado R$2-8k/mês (escritórios especializados). DPO interno = founder até hire dedicado.
+  </p>
+  <div class="options">
+    <button class="option" data-value="founder-interim">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header"><div class="option-label">Breno DPO interim (até hire)</div><span class="option-tag-recommended">Beta-fit</span></div>
+      <div class="option-consequence">Sem custo extra. Founder responde requisições pelos 14 dias Beta. Pré-condição: email <code>dpo@anipis.com.br</code> provisionado.</div>
+    </button>
+    <button class="option" data-value="outsource-dpo">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header"><div class="option-label">Terceirizar DPO (Patricia ou outro escritório)</div><span class="option-meta">R$2-8k/mês</span></div>
+      <div class="option-consequence">Patricia ou similar atua como Encarregado. Adiciona custo recorrente. Pode esperar pós-Beta.</div>
+    </button>
+  </div>
+</article>
+
+<!-- D10 Honorários Patricia -->
+<article class="decision" data-id="D10">
+  <div class="decision-header">
+    <span class="decision-id">D10</span>
+    <div class="decision-question">Honorários Patricia bundle — aceita range R$12-30k?</div>
+  </div>
+  <p class="decision-context">
+    Bundle = SCC v2 + DPIA v2 sign-off + Privacy Policy review + Termos Beta review + 2 LIAs review + parecer formal + negociação bilateral Anthropic/OpenAI. Squad estimou R$12-30k cobrindo até assinatura. Versão original (só SCC) era R$5-15k.
+  </p>
+  <div class="options quick">
+    <button class="option" data-value="accept-range">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header"><div class="option-label">Aceito range, ela define valor</div><span class="option-tag-recommended">Default</span></div>
+      <div class="option-consequence">Email manda "aceito R$12-30k, confirma". Patricia escolhe ponto.</div>
+    </button>
+    <button class="option" data-value="negotiate-mid">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header"><div class="option-label">Propor mid-range (R$18-20k)</div><span class="option-meta">negociação</span></div>
+      <div class="option-consequence">Email contraprõe valor específico. Risco rejeição ou desconforto.</div>
+    </button>
+    <button class="option" data-value="cap-lower">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header"><div class="option-label">Cap em R$15k</div><span class="option-meta">risco</span></div>
+      <div class="option-consequence">Pode forçar Patricia a reduzir escopo (e.g., parecer informal só). Apertado.</div>
+    </button>
+  </div>
+</article>
+
+<!-- ====================================================================
+     IMEDIATO — agora vs depois
+     ==================================================================== -->
+<div class="section-header">
+  <h2 class="section-title">Imediato</h2>
+  <div class="section-meta">decisões "agora vs depois"</div>
+</div>
+
+<!-- D11 Enviar email Patricia agora -->
+<article class="decision" data-id="D11">
+  <div class="decision-header">
+    <span class="decision-id">D11</span>
+    <div class="decision-question">Enviar email Patricia hoje (19/Mai) ou amanhã (20/Mai)?</div>
+  </div>
+  <p class="decision-context">
+    Email v2 com 9 anexos pronto pra copy/paste. Quanto mais cedo, mais slack Patricia tem pra v2 até D-9 (21/Mai). Slip aceitável até 22/Mai.
+  </p>
+  <div class="options quick">
+    <button class="option" data-value="now">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header"><div class="option-label">Enviar hoje</div><span class="option-tag-recommended">Maximiza slack</span></div>
+      <div class="option-consequence">Patricia tem ~5d úteis até D-3. Resposta provável em 2-3d.</div>
+    </button>
+    <button class="option" data-value="tomorrow">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header"><div class="option-label">Enviar amanhã 20/Mai manhã</div><span class="option-meta">+ 1d preparação</span></div>
+      <div class="option-consequence">Dorm sobre + revisa final. Apertado mas viável.</div>
+    </button>
+  </div>
+</article>
+
+<!-- D12 Aplicar migration 011 quando -->
+<article class="decision" data-id="D12">
+  <div class="decision-header">
+    <span class="decision-id">D12</span>
+    <div class="decision-question">Aplicar migration <code>011_ai_features_enabled</code> em Supabase prod — quando?</div>
+  </div>
+  <p class="decision-context">
+    Migration adiciona coluna boolean default TRUE. Zero downtime, zero impacto retro (DEV-2 middleware só usa em /chat). Pode ser aplicada já.
+  </p>
+  <div class="options quick">
+    <button class="option" data-value="now">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header"><div class="option-label">Aplicar agora</div><span class="option-tag-recommended">Safe</span></div>
+      <div class="option-consequence">Supabase dashboard > SQL Editor > paste migration > Run. ~30s.</div>
+    </button>
+    <button class="option" data-value="with-r1">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header"><div class="option-label">Junto com R1 Railway deploy</div><span class="option-meta">batch</span></div>
+      <div class="option-consequence">Pré-deploy. Se Railway falha, rollback de tudo no mesmo ciclo.</div>
+    </button>
+  </div>
+</article>
+
+<!-- D13 R1 Railway timing -->
+<article class="decision" data-id="D13">
+  <div class="decision-header">
+    <span class="decision-id">D13</span>
+    <div class="decision-question">R1 Railway BR setup — começar hoje ou amanhã?</div>
+  </div>
+  <p class="decision-context">
+    ~45min setup + ~24h DNS propagation. Quanto antes, mais cedo o smoke test pre-Beta pode rodar (DEV-3 Sentry, integration). D-4 (26/Mai) é deadline de smoke pre-go/no-go.
+  </p>
+  <div class="options quick">
+    <button class="option" data-value="now">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header"><div class="option-label">Hoje à noite</div><span class="option-tag-recommended">Buffer</span></div>
+      <div class="option-consequence">Tempo pra debug. Sentry/Langfuse online ~D-10.</div>
+    </button>
+    <button class="option" data-value="tomorrow">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header"><div class="option-label">Amanhã 20/Mai</div><span class="option-meta">ainda ok</span></div>
+      <div class="option-consequence">Smoke test cabe em D-7. Apertado mas viável.</div>
+    </button>
+    <button class="option" data-value="wait-friday">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header"><div class="option-label">Sexta 23/Mai</div><span class="option-meta">risco</span></div>
+      <div class="option-consequence">Smoke test cai em D-4. Sem margem se Railway tiver issue.</div>
+    </button>
+  </div>
+</article>
+
+<!-- D14 R2 OpenAI ZRT enrollment -->
+<article class="decision" data-id="D14">
+  <div class="decision-header">
+    <span class="decision-id">D14</span>
+    <div class="decision-question">R2 OpenAI ZRT enrollment — submit hoje?</div>
+  </div>
+  <p class="decision-context">
+    Submit form leva ~5min. OpenAI response em 24-48h. Boot prod em Railway falha se <code>OPENAI_ZDR_CONFIRMED=true</code> não setado. Sem ZRT = não tem Beta.
+  </p>
+  <div class="options quick">
+    <button class="option" data-value="now">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header"><div class="option-label">Submit hoje</div><span class="option-tag-recommended">Crítico</span></div>
+      <div class="option-consequence">Aguarda 24-48h. Buffer pra escalation se OpenAI travar.</div>
+    </button>
+    <button class="option" data-value="tomorrow">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header"><div class="option-label">Amanhã</div><span class="option-meta">tighter</span></div>
+      <div class="option-consequence">Response em ~22/Mai. Ainda ok mas sem buffer.</div>
+    </button>
+  </div>
+</article>
+
+<!-- D15 Patricia formato anexos -->
+<article class="decision" data-id="D15">
+  <div class="decision-header">
+    <span class="decision-id">D15</span>
+    <div class="decision-question">Patricia provavelmente prefere anexos em qual formato?</div>
+  </div>
+  <p class="decision-context">
+    Anexos atuais são <code>.md</code> (markdown). Escritórios jurídicos tradicionais preferem <code>.docx</code> ou <code>.pdf</code> pra revisão com track changes / comentários. Converter via Pandoc é trivial.
+  </p>
+  <div class="options">
+    <button class="option" data-value="md-default">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header"><div class="option-label">.md (markdown) — manda como está</div></div>
+      <div class="option-consequence">Patricia pode rejeitar ou abrir em editor markdown. Risco médio.</div>
+    </button>
+    <button class="option" data-value="pdf-readonly">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header"><div class="option-label">.pdf (review-only)</div><span class="option-meta">~15min</span></div>
+      <div class="option-consequence">Pandoc converte 9 anexos. Patricia comenta inline mas não edita texto. Eu manda ambos formatos.</div>
+    </button>
+    <button class="option" data-value="docx-editable">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header"><div class="option-label">.docx (editável) + .md fonte</div><span class="option-tag-recommended">Compatibilidade jurídica</span></div>
+      <div class="option-consequence">Pandoc converte. Patricia revisa com track changes Word. Padrão da indústria jurídica.</div>
+    </button>
+    <button class="option" data-value="ask-patricia">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header"><div class="option-label">Mandar .md + perguntar preferência</div></div>
+      <div class="option-consequence">Email pergunta "prefere PDF/DOCX?". Risco: +1 round-trip antes da revisão começar.</div>
+    </button>
+  </div>
+</article>
+
+<!-- D16 Upstash Pro timing -->
+<article class="decision" data-id="D16">
+  <div class="decision-header">
+    <span class="decision-id">D16</span>
+    <div class="decision-question">Upstash Pro upgrade + cutover SP — quando?</div>
+  </div>
+  <p class="decision-context">
+    Upgrade Pro ~$10/mês (necessário pra DPA). Cutover regional reduz operadoras estrangeiras 5→4 (Anthropic já fora = 4→3). Janela manutenção 5-10min madrugada BR.
+  </p>
+  <div class="options">
+    <button class="option" data-value="this-week">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header"><div class="option-label">Esta semana (D-7 sexta 23/Mai madrugada)</div><span class="option-tag-recommended">Pre-Patricia v2</span></div>
+      <div class="option-consequence">Patricia v2 recebe SCC com apenas 3 operadoras US. Argumento mais forte.</div>
+    </button>
+    <button class="option" data-value="post-beta">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header"><div class="option-label">Pós-Beta (junho)</div><span class="option-meta">simplifica timeline</span></div>
+      <div class="option-consequence">Mantém 4 operadoras US no Beta. SCC menciona Upstash sa-east-1 como roadmap. Aceitável.</div>
+    </button>
+    <button class="option" data-value="skip">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header"><div class="option-label">Pular (manter us-east-1 indefinido)</div><span class="option-meta">não-ótimo</span></div>
+      <div class="option-consequence">Anti-pattern. SCC fica com 4 operadoras US permanentes. Schrems II risk maior.</div>
+    </button>
+  </div>
+</article>
+
+<!-- D17 Sentry server-side scrub timing -->
+<article class="decision" data-id="D17">
+  <div class="decision-header">
+    <span class="decision-id">D17</span>
+    <div class="decision-question">Sentry server-side scrub (defense-in-depth) — configurar quando?</div>
+  </div>
+  <p class="decision-context">
+    Código já filtra PII via <code>beforeSend</code> 6-layer (DEV-3, 25 tests). Sentry SaaS server-side scrub é redundância extra. Configurar via dashboard ~30min.
+  </p>
+  <div class="options quick">
+    <button class="option" data-value="pre-beta">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header"><div class="option-label">Pré-Beta (D-3 ou D-2)</div><span class="option-tag-recommended">DPIA-aligned</span></div>
+      <div class="option-consequence">Cumprimento literal da DPIA §8.1(c) "Server-side scrub adicional".</div>
+    </button>
+    <button class="option" data-value="post-beta">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header"><div class="option-label">Pós-Beta primeira semana</div><span class="option-meta">aceitável</span></div>
+      <div class="option-consequence">Code-side já cobre 100%. Server-side é nice-to-have. DPIA atualizar nota.</div>
+    </button>
+  </div>
+</article>
+
+<!-- D18 Anthropic reavaliação 25/Mai criteria -->
+<article class="decision" data-id="D18">
+  <div class="decision-header">
+    <span class="decision-id">D18</span>
+    <div class="decision-question">Anthropic reavaliação 25/Mai — qual critério aceita reativação?</div>
+  </div>
+  <p class="decision-context">
+    D2 disse "DEFERIR 7d, reavaliar 25/Mai". Mas com base em quê? Squad pergunta o gate concreto.
+  </p>
+  <div class="options">
+    <button class="option" data-value="dpa-only">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header"><div class="option-label">DPA enterprise com cláusula ZDR explícita</div><span class="option-tag-recommended">Padrão LGPD</span></div>
+      <div class="option-consequence">Só reativa se Anthropic Sales fechar DPA enterprise. Dashboard ZDR isolado não basta. ~7-14 dias negociação.</div>
+    </button>
+    <button class="option" data-value="dashboard-only">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header"><div class="option-label">Dashboard ZDR Tier 2+ suficiente</div><span class="option-meta">risco</span></div>
+      <div class="option-consequence">Reativa se Anthropic conta atingir Tier 2 (~$100/mo). Sem cláusula contratual. Audit ANPD pode questionar.</div>
+    </button>
+    <button class="option" data-value="keep-deferred">
+      <div class="option-pickmark"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="option-header"><div class="option-label">Manter deferida indefinidamente pós-Beta</div><span class="option-meta">simplifica</span></div>
+      <div class="option-consequence">OpenAI ZRT como vendor LLM único. Sem fallback resilience. Plano B: switch via env var se OpenAI cair.</div>
+    </button>
+  </div>
+</article>
+
+<!-- ====================================================================
+     SUMMARY
+     ==================================================================== -->
+<section class="summary">
+  <div class="summary-title">Resumo das decisões</div>
+  <div class="summary-subtitle">Gerado automaticamente. Cada decisão fechada vira ação concreta.</div>
+  <ul class="summary-list" id="summary-list">
+    <!-- Auto-generated -->
+  </ul>
+  <div class="summary-actions">
+    <button class="btn" onclick="copyMarkdown()">Copiar resumo (markdown)</button>
+    <button class="btn btn-ghost" onclick="resetAll()">Resetar tudo</button>
+  </div>
+</section>
+
+<p class="pullquote">
+  "Decisão pequena agora salva sprint depois. Salva-as todas — depois esquece. Confia no que ficou."
+</p>
+
+<footer>
+  Decisões salvas automaticamente no navegador · <code>10-design-v3/DECISIONS.html</code>
+</footer>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const STORAGE_KEY = 'anipis-decisions-2026-05-19';
+
+const decisionsData = {
+  D5: {
+    question: 'Design system (Caderno vs Pergaminho vs Híbrido)',
+    options: {
+      A: 'Caderno (status quo)',
+      B: 'Rebrand Pergaminho (slip 7/Jun)',
+      C: 'Híbrido (Verde-Musgo + mood pastels, slip 3d)',
+    },
+  },
+  D6: {
+    question: 'SCC Edição 2 caminho',
+    options: {
+      A: 'Caminho A doc-only (aligne contrato)',
+      B: 'Caminho B implementar archive',
+    },
+  },
+  D7: {
+    question: 'DPIA v2 caminhos A confirma?',
+    options: {
+      'confirm-all-A': 'Confirmar 4 caminhos A',
+      'review-with-patricia': 'Deixar Patricia opinar (+2-3d)',
+    },
+  },
+  D8: {
+    question: 'CNPJ / PJ',
+    options: {
+      'ltda-now': 'Abrir LTDA agora (5-15d)',
+      'mei-bridge': 'MEI bridge + LTDA pós-Beta',
+      'pf-individual': 'PF como Controlador (risco)',
+    },
+  },
+  D9: {
+    question: 'DPO interim',
+    options: {
+      'founder-interim': 'Breno DPO interim',
+      'outsource-dpo': 'Terceirizar (R$2-8k/mês)',
+    },
+  },
+  D10: {
+    question: 'Honorários Patricia bundle',
+    options: {
+      'accept-range': 'Aceito R$12-30k, ela define',
+      'negotiate-mid': 'Propor R$18-20k',
+      'cap-lower': 'Cap R$15k',
+    },
+  },
+  D11: {
+    question: 'Email Patricia quando',
+    options: { now: 'Enviar hoje', tomorrow: 'Enviar amanhã' },
+  },
+  D12: {
+    question: 'Migration 011 quando',
+    options: { now: 'Agora', 'with-r1': 'Junto com R1 deploy' },
+  },
+  D13: {
+    question: 'R1 Railway timing',
+    options: {
+      now: 'Hoje à noite',
+      tomorrow: 'Amanhã 20/Mai',
+      'wait-friday': 'Sexta 23/Mai (risco)',
+    },
+  },
+  D14: {
+    question: 'R2 OpenAI ZRT submit',
+    options: { now: 'Hoje', tomorrow: 'Amanhã' },
+  },
+  D15: {
+    question: 'Patricia formato anexos',
+    options: {
+      'md-default': '.md como está',
+      'pdf-readonly': '.pdf review-only',
+      'docx-editable': '.docx editável + .md fonte',
+      'ask-patricia': 'Mandar .md e perguntar',
+    },
+  },
+  D16: {
+    question: 'Upstash Pro + cutover SP',
+    options: {
+      'this-week': 'Esta semana D-7',
+      'post-beta': 'Pós-Beta junho',
+      skip: 'Pular (anti-pattern)',
+    },
+  },
+  D17: {
+    question: 'Sentry server-side scrub',
+    options: {
+      'pre-beta': 'Pré-Beta D-3/D-2',
+      'post-beta': 'Pós-Beta primeira semana',
+    },
+  },
+  D18: {
+    question: 'Anthropic reavaliação 25/Mai critério',
+    options: {
+      'dpa-only': 'DPA enterprise + ZDR explícito',
+      'dashboard-only': 'Dashboard ZDR Tier 2+ basta',
+      'keep-deferred': 'Manter deferida pós-Beta',
+    },
+  },
+};
+
+let state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Apply persisted state + wire clicks
+  document.querySelectorAll('.decision').forEach(card => {
+    const id = card.dataset.id;
+    const saved = state[id];
+    card.querySelectorAll('.option').forEach(opt => {
+      if (opt.dataset.value === saved) {
+        opt.classList.add('picked');
+        card.classList.add('answered');
+      }
+      opt.addEventListener('click', () => pickOption(card, opt));
+    });
+  });
+  renderSummary();
+  updateProgress();
+});
+
+function pickOption(card, opt) {
+  const id = card.dataset.id;
+  const value = opt.dataset.value;
+  const wasPicked = opt.classList.contains('picked');
+
+  card.querySelectorAll('.option').forEach(o => o.classList.remove('picked'));
+
+  if (wasPicked) {
+    // Unpick
+    card.classList.remove('answered');
+    delete state[id];
+  } else {
+    opt.classList.add('picked');
+    card.classList.add('answered');
+    state[id] = value;
+    // gentle scroll-into-view next decision
+    setTimeout(() => {
+      const next = card.nextElementSibling;
+      if (next && next.classList.contains('decision') && !next.classList.contains('answered')) {
+        next.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }, 320);
+  }
+
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  renderSummary();
+  updateProgress();
+}
+
+function updateProgress() {
+  const total = Object.keys(decisionsData).length;
+  const done = Object.keys(state).filter(k => state[k]).length;
+  document.getElementById('answered-count').textContent = done;
+  document.getElementById('progress-fill').style.width = `${(done / total) * 100}%`;
+}
+
+function renderSummary() {
+  const ul = document.getElementById('summary-list');
+  ul.innerHTML = '';
+  Object.keys(decisionsData).forEach(id => {
+    const d = decisionsData[id];
+    const ans = state[id];
+    const li = document.createElement('li');
+    li.className = 'summary-item' + (ans ? '' : ' pending');
+    li.innerHTML = `
+      <span class="summary-item-id">${id}</span>
+      <span class="summary-item-question">${d.question}</span>
+      <span class="summary-item-answer">${ans ? d.options[ans] : 'pendente'}</span>
+    `;
+    ul.appendChild(li);
+  });
+}
+
+function copyMarkdown() {
+  let md = '# Anipis — Decisões founder 19/Mai/2026\n\n';
+  Object.keys(decisionsData).forEach(id => {
+    const d = decisionsData[id];
+    const ans = state[id];
+    md += `- **${id}** · ${d.question}: ${ans ? d.options[ans] : '⏳ pendente'}\n`;
+  });
+  navigator.clipboard.writeText(md).then(() => {
+    showToast('Resumo copiado ao clipboard.');
+  }).catch(() => {
+    showToast('Falha ao copiar. Tente Ctrl+C manualmente.');
+  });
+}
+
+function resetAll() {
+  if (!confirm('Resetar todas as decisões?')) return;
+  state = {};
+  localStorage.removeItem(STORAGE_KEY);
+  document.querySelectorAll('.decision').forEach(c => c.classList.remove('answered'));
+  document.querySelectorAll('.option').forEach(o => o.classList.remove('picked'));
+  renderSummary();
+  updateProgress();
+  showToast('Decisões resetadas.');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2400);
+}
+</script>
+
+</body>
+</html>

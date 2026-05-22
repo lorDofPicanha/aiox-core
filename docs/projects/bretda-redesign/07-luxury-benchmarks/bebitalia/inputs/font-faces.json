@@ -1,0 +1,404 @@
+[
+  {
+    "family": "Helvetica Neue LT Thin",
+    "weight": "300",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-thin.woff2",
+      "../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-thin.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.bebitalia.com/static/version1778579885/_cache/merged/3ed970f5c0ec922f4009e6d4b488ab53.min.css",
+    "raw": "@font-face{font-family:\"Helvetica Neue LT Thin\";src:url('../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-thin.woff2') format('woff2'),url('../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-thin.woff') format('woff');font-weight:300;font-style:normal;font-display:swap}"
+  },
+  {
+    "family": "Helvetica Neue LT Light",
+    "weight": "400",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-light.woff2",
+      "../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-light.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.bebitalia.com/static/version1778579885/_cache/merged/3ed970f5c0ec922f4009e6d4b488ab53.min.css",
+    "raw": "@font-face{font-family:\"Helvetica Neue LT Light\";src:url('../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-light.woff2') format('woff2'),url('../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-light.woff') format('woff');font-weight:400;font-style:normal;font-display:swap}"
+  },
+  {
+    "family": "Helvetica Neue LT Roman",
+    "weight": "500",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-roman.woff2",
+      "../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-roman.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.bebitalia.com/static/version1778579885/_cache/merged/3ed970f5c0ec922f4009e6d4b488ab53.min.css",
+    "raw": "@font-face{font-family:\"Helvetica Neue LT Roman\";src:url('../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-roman.woff2') format('woff2'),url('../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-roman.woff') format('woff');font-weight:500;font-style:normal;font-display:swap}"
+  },
+  {
+    "family": "Helvetica Neue LT Bold",
+    "weight": "700",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-bold.woff2",
+      "../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-bold.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.bebitalia.com/static/version1778579885/_cache/merged/3ed970f5c0ec922f4009e6d4b488ab53.min.css",
+    "raw": "@font-face{font-family:\"Helvetica Neue LT Bold\";src:url('../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-bold.woff2') format('woff2'),url('../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-bold.woff') format('woff');font-weight:700;font-style:normal;font-display:swap}"
+  },
+  {
+    "family": "Orpheus Pro Italic",
+    "weight": "400",
+    "style": "italic",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Italic.woff2",
+      "../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Italic.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.bebitalia.com/static/version1778579885/_cache/merged/3ed970f5c0ec922f4009e6d4b488ab53.min.css",
+    "raw": "@font-face{font-family:\"Orpheus Pro Italic\";src:url('../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Italic.woff2') format('woff2'),url('../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Italic.woff') format('woff');font-weight:400;font-style:italic;font-display:swap}"
+  },
+  {
+    "family": "Orpheus Pro Regular",
+    "weight": "400",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Regular.woff2",
+      "../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Regular.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.bebitalia.com/static/version1778579885/_cache/merged/3ed970f5c0ec922f4009e6d4b488ab53.min.css",
+    "raw": "@font-face{font-family:\"Orpheus Pro Regular\";src:url('../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Regular.woff2') format('woff2'),url('../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Regular.woff') format('woff');font-weight:400;font-style:normal;font-display:swap}"
+  },
+  {
+    "family": "Orpheus Pro Medium",
+    "weight": "500",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Medium.woff2",
+      "../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Medium.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.bebitalia.com/static/version1778579885/_cache/merged/3ed970f5c0ec922f4009e6d4b488ab53.min.css",
+    "raw": "@font-face{font-family:\"Orpheus Pro Medium\";src:url('../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Medium.woff2') format('woff2'),url('../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Medium.woff') format('woff');font-weight:500;font-style:normal;font-display:swap}"
+  },
+  {
+    "family": "Orpheus Pro Bold",
+    "weight": "700",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Bold.woff2",
+      "../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Bold.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.bebitalia.com/static/version1778579885/_cache/merged/3ed970f5c0ec922f4009e6d4b488ab53.min.css",
+    "raw": "@font-face{font-family:\"Orpheus Pro Bold\";src:url('../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Bold.woff2') format('woff2'),url('../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Bold.woff') format('woff');font-weight:700;font-style:normal;font-display:swap}"
+  },
+  {
+    "family": "Helvetica Neue LT",
+    "weight": "300",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-thin.woff2",
+      "../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-thin.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.bebitalia.com/static/version1778579885/_cache/merged/3ed970f5c0ec922f4009e6d4b488ab53.min.css",
+    "raw": "@font-face{font-family:\"Helvetica Neue LT\";src:url('../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-thin.woff2') format('woff2'),url('../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-thin.woff') format('woff');font-weight:300;font-style:normal;font-display:swap}"
+  },
+  {
+    "family": "Helvetica Neue LT",
+    "weight": "400",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-light.woff2",
+      "../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-light.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.bebitalia.com/static/version1778579885/_cache/merged/3ed970f5c0ec922f4009e6d4b488ab53.min.css",
+    "raw": "@font-face{font-family:\"Helvetica Neue LT\";src:url('../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-light.woff2') format('woff2'),url('../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-light.woff') format('woff');font-weight:400;font-style:normal;font-display:swap}"
+  },
+  {
+    "family": "Helvetica Neue LT",
+    "weight": "500",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-roman.woff2",
+      "../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-roman.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.bebitalia.com/static/version1778579885/_cache/merged/3ed970f5c0ec922f4009e6d4b488ab53.min.css",
+    "raw": "@font-face{font-family:\"Helvetica Neue LT\";src:url('../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-roman.woff2') format('woff2'),url('../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-roman.woff') format('woff');font-weight:500;font-style:normal;font-display:swap}"
+  },
+  {
+    "family": "Helvetica Neue LT",
+    "weight": "700",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-bold.woff2",
+      "../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-bold.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.bebitalia.com/static/version1778579885/_cache/merged/3ed970f5c0ec922f4009e6d4b488ab53.min.css",
+    "raw": "@font-face{font-family:\"Helvetica Neue LT\";src:url('../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-bold.woff2') format('woff2'),url('../../frontend/Jakala/BnB/en_US/fonts/helvetica/Helvetica-Neue-LT-bold.woff') format('woff');font-weight:700;font-style:normal;font-display:swap}"
+  },
+  {
+    "family": "Orpheus Pro",
+    "weight": "400",
+    "style": "italic",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Italic.woff2",
+      "../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Italic.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.bebitalia.com/static/version1778579885/_cache/merged/3ed970f5c0ec922f4009e6d4b488ab53.min.css",
+    "raw": "@font-face{font-family:\"Orpheus Pro\";src:url('../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Italic.woff2') format('woff2'),url('../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Italic.woff') format('woff');font-weight:400;font-style:italic;font-display:swap}"
+  },
+  {
+    "family": "Orpheus Pro",
+    "weight": "400",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Regular.woff2",
+      "../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Regular.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.bebitalia.com/static/version1778579885/_cache/merged/3ed970f5c0ec922f4009e6d4b488ab53.min.css",
+    "raw": "@font-face{font-family:\"Orpheus Pro\";src:url('../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Regular.woff2') format('woff2'),url('../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Regular.woff') format('woff');font-weight:400;font-style:normal;font-display:swap}"
+  },
+  {
+    "family": "Orpheus Pro",
+    "weight": "500",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Medium.woff2",
+      "../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Medium.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.bebitalia.com/static/version1778579885/_cache/merged/3ed970f5c0ec922f4009e6d4b488ab53.min.css",
+    "raw": "@font-face{font-family:\"Orpheus Pro\";src:url('../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Medium.woff2') format('woff2'),url('../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Medium.woff') format('woff');font-weight:500;font-style:normal;font-display:swap}"
+  },
+  {
+    "family": "Orpheus Pro",
+    "weight": "700",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Bold.woff2",
+      "../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Bold.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.bebitalia.com/static/version1778579885/_cache/merged/3ed970f5c0ec922f4009e6d4b488ab53.min.css",
+    "raw": "@font-face{font-family:\"Orpheus Pro\";src:url('../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Bold.woff2') format('woff2'),url('../../frontend/Jakala/BnB/en_US/fonts/orpheus/OrpheusPro-Bold.woff') format('woff');font-weight:700;font-style:normal;font-display:swap}"
+  },
+  {
+    "family": "Serrif Condensed",
+    "weight": "400",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../../frontend/Jakala/BnB/en_US/fonts/serrif/SerrifCondensed-Regular.woff2",
+      "../../frontend/Jakala/BnB/en_US/fonts/serrif/SerrifCondensed-Regular.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.bebitalia.com/static/version1778579885/_cache/merged/3ed970f5c0ec922f4009e6d4b488ab53.min.css",
+    "raw": "@font-face{font-family:\"Serrif Condensed\";src:url('../../frontend/Jakala/BnB/en_US/fonts/serrif/SerrifCondensed-Regular.woff2') format('woff2'),url('../../frontend/Jakala/BnB/en_US/fonts/serrif/SerrifCondensed-Regular.woff') format('woff');font-weight:400;font-style:normal;font-display:swap}"
+  },
+  {
+    "family": "Maison Neue",
+    "weight": "500",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../../frontend/Jakala/BnB/en_US/fonts/maison/MaisonNeue-Medium.woff2",
+      "../../frontend/Jakala/BnB/en_US/fonts/maison/MaisonNeue-Medium.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.bebitalia.com/static/version1778579885/_cache/merged/3ed970f5c0ec922f4009e6d4b488ab53.min.css",
+    "raw": "@font-face{font-family:\"Maison Neue\";src:url('../../frontend/Jakala/BnB/en_US/fonts/maison/MaisonNeue-Medium.woff2') format('woff2'),url('../../frontend/Jakala/BnB/en_US/fonts/maison/MaisonNeue-Medium.woff') format('woff');font-weight:500;font-style:normal;font-display:swap}"
+  },
+  {
+    "family": "icons-blank-theme",
+    "weight": "400",
+    "style": "normal",
+    "display": "block",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../../frontend/Jakala/BnB/en_US/fonts/Blank-Theme-Icons/Blank-Theme-Icons.woff2",
+      "../../frontend/Jakala/BnB/en_US/fonts/Blank-Theme-Icons/Blank-Theme-Icons.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.bebitalia.com/static/version1778579885/_cache/merged/3ed970f5c0ec922f4009e6d4b488ab53.min.css",
+    "raw": "@font-face{font-family:'icons-blank-theme';src:url('../../frontend/Jakala/BnB/en_US/fonts/Blank-Theme-Icons/Blank-Theme-Icons.woff2') format('woff2'),url('../../frontend/Jakala/BnB/en_US/fonts/Blank-Theme-Icons/Blank-Theme-Icons.woff') format('woff');font-weight:400;font-style:normal;font-display:block}"
+  },
+  {
+    "family": "pagebuilder-font",
+    "weight": "400",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../../frontend/Jakala/BnB/en_US/Magento_PageBuilder/fonts/pagebuilder-icons/pagebuilder-icons.eot"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://www.bebitalia.com/static/version1778579885/_cache/merged/3ed970f5c0ec922f4009e6d4b488ab53.min.css",
+    "raw": "@font-face{font-family:'pagebuilder-font';font-style:normal;font-weight:400;src:url('../../frontend/Jakala/BnB/en_US/Magento_PageBuilder/fonts/pagebuilder-icons/pagebuilder-icons.eot');src:url('../../frontend/Jakala/BnB/en_US/Magento_PageBuilder/fonts/pagebuilder-icons/pagebuilder-icons.eot?#iefix') format('embedded-opentype'),url('../../frontend/Jakala/BnB/en_US/Magento_PageBuilder/fonts/pagebuilder-icons/pagebuilder-icons.woff') format('woff'),url('../../frontend/Jakala/BnB/en_US/Magento_PageB"
+  },
+  {
+    "family": "Glyphicons Halflings",
+    "weight": null,
+    "style": null,
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../../frontend/Jakala/BnB/en_US/css/source/bootstrap/fonts/glyphicons-halflings-regular.eot"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://www.bebitalia.com/static/version1778579885/_cache/merged/3ed970f5c0ec922f4009e6d4b488ab53.min.css",
+    "raw": "@font-face{font-family:\"Glyphicons Halflings\";src:url(\"../../frontend/Jakala/BnB/en_US/css/source/bootstrap/fonts/glyphicons-halflings-regular.eot\");src:url(\"../../frontend/Jakala/BnB/en_US/css/source/bootstrap/fonts/glyphicons-halflings-regular.eot?#iefix\") format(\"embedded-opentype\"),url(\"../../frontend/Jakala/BnB/en_US/css/source/bootstrap/fonts/glyphicons-halflings-regular.woff2\") format(\"woff2\"),url(\"../../frontend/Jakala/BnB/en_US/css/source/bootstrap/fonts/glyphicons-halflings-regular.wof"
+  },
+  {
+    "family": "icons-blank-theme",
+    "weight": "400",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../../frontend/Jakala/BnB/en_US/fonts/Blank-Theme-Icons/Blank-Theme-Icons.woff2",
+      "../../frontend/Jakala/BnB/en_US/fonts/Blank-Theme-Icons/Blank-Theme-Icons.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.bebitalia.com/static/version1778579885/_cache/merged/3ed970f5c0ec922f4009e6d4b488ab53.min.css",
+    "raw": "@font-face{font-family:'icons-blank-theme';src:url('../../frontend/Jakala/BnB/en_US/fonts/Blank-Theme-Icons/Blank-Theme-Icons.woff2') format('woff2'),url('../../frontend/Jakala/BnB/en_US/fonts/Blank-Theme-Icons/Blank-Theme-Icons.woff') format('woff');font-weight:400;font-style:normal;font-display:swap}"
+  },
+  {
+    "family": "Glyphicons Halflings",
+    "weight": null,
+    "style": null,
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "source/bootstrap/fonts/glyphicons-halflings-regular.eot"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://www.bebitalia.com/static/version1778579885/frontend/Jakala/BnB/en_US/css/styles-l.min.css",
+    "raw": "@font-face{font-family:\"Glyphicons Halflings\";src:url(\"source/bootstrap/fonts/glyphicons-halflings-regular.eot\");src:url(\"source/bootstrap/fonts/glyphicons-halflings-regular.eot?#iefix\") format(\"embedded-opentype\"),url(\"source/bootstrap/fonts/glyphicons-halflings-regular.woff2\") format(\"woff2\"),url(\"source/bootstrap/fonts/glyphicons-halflings-regular.woff\") format(\"woff\"),url(\"source/bootstrap/fonts/glyphicons-halflings-regular.ttf\") format(\"truetype\"),url(\"source/bootstrap/fonts/glyphicons-half"
+  }
+]

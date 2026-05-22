@@ -1,9 +1,10 @@
-# Buscador de Licitações — Águas Lindas-GO + DF
+# Noyce — Buscador/Workflow de Licitações (raio ~500km de Águas Lindas-GO)
 
-**Status:** 🟢 NOVO PROJETO — research phase
+**Status:** 🟢 research + de-risking de arquitetura + branding concluído (pré-Sprint 0)
 **Início:** 2026-05-14
-**Owner:** Breno (uso pessoal + amigo na área)
+**Owner:** Breno (uso pessoal + amigo/cliente na área)
 **Workspace:** `docs/projects/buscador-licitacoes/`
+**Marca:** 🟦 **Noyce** (inspiração ENIAC / Robert Noyce). Kit de identidade completo em `07-brand-mockups/` + `00-context/BRAND-SYSTEM.md` (commit `a1e2584b`, 20/Mai).
 
 ---
 
@@ -299,7 +300,59 @@ A cliente esclareceu: **o livro caixa é separado do buscador.** Some a "BASE al
 
 ---
 
-*Última atualização: 2026-05-20 — v4 DIVERGÊNCIA: fontes reais (BLL/BNC/PCP/SISLOG/PNCP), 4 usuários, livro caixa separado (usar SaaS BR), escopo geográfico = raio ~500km da sede Águas Lindas (multi-estado, filtro por distância)*
+## 11. DATASET REAL — 11 editais da cliente (v5 — 21/Mai/2026)
+
+**Trigger:** cliente entregou 11 PDFs de editais reais em que a empresa-licitante participou nos últimos meses. Análise completa em `01-research/04-editais-reais-21mai.md`; texto extraído em `01-research/editais-reais/*.txt`.
+
+> ⚠️ **AMOSTRA PEQUENA (11 editais) — sinal direcional, não base estatística.** Dá noção do que dá pra fazer; **NÃO estreita escopo nem rebaixa fontes**. As 5 fontes (§10.2) e o raio ~500km (§10.7) permanecem integrais.
+
+### 11.1 — Quadro (resumo)
+| Órgão | Município/UF | Dist. AL | Modalidade | Plataforma | Valor |
+|---|---|---|---|---|---|
+| Pref. Águas Lindas (×4) | Águas Lindas/GO | 0 km | Concorrência eletrônica | **PCP** | R$ 175k–2,83M |
+| Pref. Novo Gama (×2) | Novo Gama/GO | ~30 km | Concorrência eletrônica | **BLL** | a confirmar |
+| Câmara Abadiânia | Abadiânia/GO | ~90 km | Concorrência eletrônica | **BNC** | R$ 670k |
+| Município Pirenópolis | Pirenópolis/GO | ~100 km | Concorrência eletrônica | **BNC** | R$ 1,03M |
+| Pref. Anápolis | Anápolis/GO | ~120 km | Concorrência eletrônica | **ComprasGov** | a confirmar |
+| CEASA/GO (×2, estatal) | Goiânia/GO | ~170 km | Pregão eletrônico (13.303) | **BLL** | a confirmar |
+
+### 11.2 — Achados que firmam decisões
+- **D1 (geografia) — 🟢 RAIO ~500km MANTIDO (decisão owner 21/Mai).** A amostra está 100% em GO num cluster ≤170km, mas isso é o *período observado*, não o limite de escopo. Filtro geográfico segue **haversine ~500km configurável da sede** (§10.7 válido). A concentração em GO serve para **priorizar cobertura P0 (GO + entorno DF) e seed de testes**, não para estreitar o raio.
+- **D2 (plataformas) — sinal direcional (amostra pequena):** na amostra, PCP=4 · BLL=4 · BNC=2 · ComprasGov=1 · **SISLOG=0**. ⚠️ **SISLOG MANTIDO em escopo** (fonte real de GO estadual; só não caiu nesta amostra). Nenhuma fonte rebaixada — as 5 (§10.2) seguem integrais. Prioridade P0/P1 sai da call (frequência real), não destes 11. PCP tem API pública; BLL sem API de consulta → sessão via scraping/robô (liga em D3).
+- **🆕 Segmento (não estava no CONTEXT): 100% OBRAS / ENGENHARIA CIVIL** em **Concorrência Eletrônica** (Lei 14.133); CEASA via Pregão (Lei 13.303). NÃO é pregão de bens. → filtro = **CNAE construção (41/42/43)** + obras; habilitação = **atestados técnico-operacional/profissional + CAT/CREA + garantia ~1% + planilha/BDI** (define o Stage 4).
+- **Valores:** R$ 174k – R$ 2,83M (obras municipais de médio porte).
+
+### 11.3 — Como destrava os gates
+- **Stage 2 (kill-gate):** os 11 viram conjunto-semente — medir se PNCP/OCDS recuperam editais + desfechos (foco em municípios pequenos: Abadiânia, Novo Gama).
+- **Stage 1:** filtros reais = CNAE obras + raio 500km + concorrência/pregão de obras.
+- **Stage 4:** 11 PDFs reais = corpus de teste do Docling (extração de habilitação técnica).
+
+### 11.4 — Decisões refinadas (atualiza §10.6)
+- [x] **D1** RAIO ~500km **mantido** (owner). Amostra real concentrada em GO ≤170km → prioriza cobertura, não estreita escopo.
+- [ ] **D2** Prioridade das 5 fontes (PCP/BLL/BNC/ComprasGov/**SISLOG mantido**) sai da call — amostra só dá sinal, não decide.
+- [ ] **D3** Stage 5 build-vs-integrate (BLL → Lance Fácil?) — ainda aberto.
+- [ ] Confirmar valores faltantes (CEASA/Anápolis/Novo Gama) nos anexos.
+
+---
+
+### 11.5 — Spikes completos + build no Codex (21/Mai)
+- **Todos os 9 spikes escritos:** Stage 1-6 (`02`,`03`,`04`,`05`,`06`,`07`-spike) + X1/X2/X3 (`08`,`09`,`10`-spike) em `02-architecture/`.
+- **Build será feito no Codex** (owner). AIOS entrega **raciocínio + pesquisa**, não código. Plano consolidado: **`02-architecture/11-build-plan-codex-handoff-21mai.md`** (stack, sprints gate-first, schema, decisões C1/D1-D5, itens de pesquisa).
+- **Gate-first mantido:** experimentos de cobertura (Stage 2) + parsing (Stage 4) com os 11 editais reais ANTES de escalar o build.
+- **Trigger:** `build noyce` / `handoff codex` → carrega `11-build-plan-codex-handoff`.
+
+### 11.6 — Rodada de pesquisa técnica (21/Mai) — 5 docs em `01-research/`
+- **`05-pcp-api`** — API PCP sem filtro server-side (só status+data); auth `publicKey`; chave ~7 dias úteis.
+- **`06-docling`** — MIT; ~3s/pág CPU / ~13s OCR (GPU ~6×); `docling-serve` Docker CUDA; TableFormer ACCURATE; `lang=["pt"]`.
+- **`07-discovery-call-script`** — roteiro da call (C1 + D1–D6, blocos A–F).
+- **`08-fontes-disputa-stage5`** — 🟢 **D3 resolvido: Stage 5 = BUILD** (automação de sessão com credencial/cert da cliente; Lance Fácil não integrável; SISLOG = maior risco ToS). Descoberta → sempre PNCP.
+- **`09-pncp-ibge-deep`** — 🚨 **§10.2.1 SUPERADO (confirmado ao vivo 21/Mai):** filtros `cnpj`/`codigoMunicipioIbge` em `publicacao` + `cnpjOrgao` em `contratos` **funcionam server-side** (testes HTTP 200: município 5200258→100% Águas Lindas; cnpj→as 4 concorrências do dataset; cnpjOrgao→124 contratos = histórico recuperável). **Sem dump de `/orgaos`**; rate limit não documentado (throttle+retry); modalidades **4=Concorrência Elet., 6=Pregão Elet.**; data `AAAAMMDD`; geo via **IBGE Localidades** (lat/long), código 7-díg == `codigoMunicipioIbge`.
+- **`10-embeddings-legal-bertimbau`** — 🔧 **trocar embedding:** Legal-BERTimbau-large é MLM (não serve); usar **`BAAI/bge-m3`** (`vector(1024)`, contexto 8192, MIT) como primário; pgvector `vector(1024)` + HNSW + cosine.
+
+---
+
+*Última atualização: 2026-05-21 — v5 DATASET REAL (amostra pequena, direcional): 11 editais (100% GO obras/engenharia, concorrência eletrônica). Sinal de plataformas (PCP/BLL fortes, BNC/ComprasGov presentes) — SISLOG e as 5 fontes MANTIDAS; raio ~500km MANTIDO (owner); marca Noyce registrada. Todos os spikes completos; build handoff p/ Codex em `02-architecture/11-build-plan-codex-handoff-21mai.md`.*
+*Histórico v4: 2026-05-20 — fontes reais (BLL/BNC/PCP/SISLOG/PNCP), 4 usuários, livro caixa separado (usar SaaS BR), escopo geográfico = raio ~500km da sede Águas Lindas (multi-estado, filtro por distância)*
 *Histórico:*
 - *2026-05-14 — research inaugural (buscador only)*
 - *2026-05-18 manhã — escopo expandido para 3 módulos (v2 com 4 empresas, anti-conluio central)*

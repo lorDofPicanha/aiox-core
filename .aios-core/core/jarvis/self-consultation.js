@@ -55,7 +55,44 @@ const SEARCH_PATHS = [
   path.join(MEGA_BRAIN_ROOT, 'agents', 'minds'),
   // Priority 2: AIOS development agents (full YAML definitions)
   path.join(AIOS_ROOT, '.aios-core', 'development', 'agents'),
+  // Priority 3: Codex-synced agents and mind clones
+  path.join(AIOS_ROOT, '.codex', 'agents'),
 ];
+
+function sourceForPath(searchPath) {
+  if (searchPath.includes('mega brain')) return 'mega-brain';
+  if (searchPath.includes(`${path.sep}.codex${path.sep}`) || searchPath.includes('/.codex/')) {
+    return 'codex-agent';
+  }
+  if (searchPath.includes(`${path.sep}squads${path.sep}`) || searchPath.includes('/squads/')) {
+    return 'squad-agent';
+  }
+  return 'aios-agent';
+}
+
+function getSearchPaths() {
+  const paths = [...SEARCH_PATHS];
+  const squadsRoot = path.join(AIOS_ROOT, 'squads');
+  if (fs.existsSync(squadsRoot)) {
+    try {
+      const squadAgentDirs = fs.readdirSync(squadsRoot, { withFileTypes: true })
+        .filter(entry => entry.isDirectory() && !entry.name.startsWith('.') && !entry.name.startsWith('_'))
+        .map(entry => path.join(squadsRoot, entry.name, 'agents'))
+        .filter(agentDir => fs.existsSync(agentDir));
+      paths.push(...squadAgentDirs);
+    } catch {
+      // Keep base paths if squads cannot be listed.
+    }
+  }
+  return paths;
+}
+
+function departmentForPath(searchPath, dept) {
+  if (sourceForPath(searchPath) === 'squad-agent') {
+    return path.basename(path.dirname(searchPath));
+  }
+  return dept || 'general';
+}
 
 // ─── Expert File Resolver ───────────────────────────
 
@@ -70,37 +107,15 @@ const SEARCH_PATHS = [
 function resolveExpert(expertId) {
   const filename = `${expertId}.md`;
 
-  // Search Mega Brain minds (recursive — files are in dept subdirs)
-  const mindsDir = SEARCH_PATHS[0];
-  if (fs.existsSync(mindsDir)) {
-    const found = findFileRecursive(mindsDir, filename);
+  for (const searchPath of getSearchPaths()) {
+    if (!fs.existsSync(searchPath)) continue;
+
+    const flatPath = path.join(searchPath, filename);
+    const found = fs.existsSync(flatPath) ? flatPath : findFileRecursive(searchPath, filename);
     if (found) {
       return {
         path: found,
-        source: 'mega-brain',
-        content: fs.readFileSync(found, 'utf-8'),
-      };
-    }
-  }
-
-  // Search AIOS agents (flat directory)
-  const agentsDir = SEARCH_PATHS[1];
-  const agentPath = path.join(agentsDir, filename);
-  if (fs.existsSync(agentPath)) {
-    return {
-      path: agentPath,
-      source: 'aios-agent',
-      content: fs.readFileSync(agentPath, 'utf-8'),
-    };
-  }
-
-  // Also check nested agent dirs (e.g., agents/architect/)
-  if (fs.existsSync(agentsDir)) {
-    const found = findFileRecursive(agentsDir, filename);
-    if (found) {
-      return {
-        path: found,
-        source: 'aios-agent',
+        source: sourceForPath(searchPath),
         content: fs.readFileSync(found, 'utf-8'),
       };
     }
@@ -116,7 +131,7 @@ function findFileRecursive(dir, filename) {
       if (entry.isFile() && entry.name === filename) {
         return path.join(dir, entry.name);
       }
-      if (entry.isDirectory() && !entry.name.startsWith('_')) {
+      if (entry.isDirectory() && !entry.name.startsWith('_') && !entry.name.startsWith('.')) {
         const found = findFileRecursive(path.join(dir, entry.name), filename);
         if (found) return found;
       }
@@ -240,7 +255,7 @@ async function consult({ expert, question, context = '', project = '', agent = '
     return {
       success: false,
       expert,
-      error: `Expert "${expert}" not found in Mega Brain or AIOS agents`,
+      error: `Expert "${expert}" not found in Mega Brain, AIOS agents, or Codex agents`,
       suggestion: `Run: node .aios-core/core/jarvis/self-consultation.js list-available`,
     };
   }
@@ -486,22 +501,22 @@ function saveResponse(consultationId, expertId, response) {
 function listAvailable() {
   const available = new Map();
 
-  for (const searchPath of SEARCH_PATHS) {
+  for (const searchPath of getSearchPaths()) {
     if (!fs.existsSync(searchPath)) continue;
 
-    const source = searchPath.includes('mega brain') ? 'mega-brain' : 'aios-agent';
+    const source = sourceForPath(searchPath);
     const scanDir = (dir, dept = '') => {
       try {
         const entries = fs.readdirSync(dir, { withFileTypes: true });
         for (const entry of entries) {
-          if (entry.isDirectory() && !entry.name.startsWith('_')) {
+          if (entry.isDirectory() && !entry.name.startsWith('_') && !entry.name.startsWith('.')) {
             scanDir(path.join(dir, entry.name), entry.name);
           }
           if (entry.isFile() && entry.name.endsWith('.md') && !entry.name.startsWith('_')) {
             const id = path.basename(entry.name, '.md');
             // Don't overwrite mega-brain entries with aios-agent
             if (!available.has(id)) {
-              available.set(id, { id, source, department: dept || 'general' });
+              available.set(id, { id, source, department: departmentForPath(searchPath, dept) });
             }
           }
         }
@@ -733,9 +748,13 @@ async function main() {
       const list = listAvailable();
       const megaBrain = list.filter(e => e.source === 'mega-brain');
       const aios = list.filter(e => e.source === 'aios-agent');
+      const codex = list.filter(e => e.source === 'codex-agent');
+      const squad = list.filter(e => e.source === 'squad-agent');
       console.log(`Available experts: ${list.length} total`);
       console.log(`  Mega Brain minds: ${megaBrain.length}`);
       console.log(`  AIOS agents: ${aios.length}`);
+      console.log(`  Codex agents: ${codex.length}`);
+      console.log(`  Squad agents: ${squad.length}`);
       console.log('\n' + JSON.stringify(list, null, 2));
       break;
     }

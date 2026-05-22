@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anipis v3 — Implementation Checklist · Pergaminho Clínico</title>
+<style>
+/* ============================================================================
+   Anipis Pergaminho Clínico tokens (do DESIGN.md 16/Mai)
+   ============================================================================ */
+:root {
+  --canvas: #F7F4ED;
+  --surface: #FFFFFF;
+  --surface-sunken: #EFEAE0;
+  --ink: #1A1814;
+  --ink-soft: #3D3A35;
+  --ink-muted: #76726B;
+  --ink-disabled: #A8A39B;
+  --border-hair: #E8E2D4;
+  --border-strong: #D5CFC0;
+  --border-divider: #1A1814;
+  --brand: #2F5235;
+  --brand-deep: #1F3823;
+  --brand-soft: #D4E0CE;
+  --brand-wash: #EBF1E6;
+
+  /* Mood pastels — categorização por prioridade */
+  --mood-calm: #CFE0E8;
+  --mood-joy: #F4D9C2;
+  --mood-tender: #F0D5DC;
+  --mood-clear: #E0DDE8;
+  --mood-bright: #E5E5C0;
+  --mood-heavy: #C8C5BD;
+
+  /* Alarm + crisis */
+  --alarm-bg: #FFE17A;
+  --alarm-ink: #3B2D04;
+  --alarm-stroke: #8C6B0F;
+  --crisis: #A1311F;
+  --crisis-bg: #F6E0DC;
+
+  --success: #3F6A4A;
+  --info: #2F4F66;
+
+  /* Fonts (Tobias licenciado — fallback Cormorant Garamond Google free) */
+  --font-serif: 'Cormorant Garamond', 'Times New Roman', serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Motion */
+  --duration-quick: 120ms;
+  --duration-base: 240ms;
+  --duration-slow: 480ms;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.6;
+  padding: 32px 16px 96px;
+  min-height: 100vh;
+}
+
+.container { max-width: 880px; margin: 0 auto; }
+
+/* ============================================================================
+   Header
+   ============================================================================ */
+header {
+  text-align: center;
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border-hair);
+}
+.caption {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.012em;
+  margin: 12px 0;
+  color: var(--ink);
+}
+.subtitle {
+  color: var(--ink-soft);
+  font-size: 17px;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+/* ============================================================================
+   Progress dashboard
+   ============================================================================ */
+.dashboard {
+  background: var(--surface);
+  border: 1px solid var(--border-hair);
+  border-radius: 8px;
+  padding: 32px;
+  margin-bottom: 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+}
+
+.metric { text-align: center; }
+.metric-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.metric-value {
+  font-family: var(--font-serif);
+  font-size: 40px;
+  font-weight: 300;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+  transition: color var(--duration-base) var(--ease-out);
+}
+.metric-value.done { color: var(--brand); }
+
+.progress-track {
+  margin-top: 12px;
+  height: 4px;
+  background: var(--surface-sunken);
+  border-radius: 9999px;
+  overflow: hidden;
+  position: relative;
+}
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--brand);
+  border-radius: 9999px;
+  transition: width var(--duration-slow) var(--ease-out);
+  position: relative;
+}
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: shimmer 2s infinite;
+}
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Critical decision banner */
+.decision-banner {
+  background: var(--alarm-bg);
+  border-left: 3px solid var(--alarm-stroke);
+  color: var(--alarm-ink);
+  padding: 16px 20px;
+  border-radius: 4px;
+  margin-bottom: 32px;
+  font-size: 14px;
+}
+.decision-banner strong { font-weight: 600; }
+
+.option-picker {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+.option-btn {
+  background: transparent;
+  border: 1px solid var(--alarm-stroke);
+  color: var(--alarm-ink);
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--duration-quick) var(--ease-out);
+}
+.option-btn:hover { background: var(--alarm-stroke); color: var(--alarm-bg); }
+.option-btn.active {
+  background: var(--alarm-stroke);
+  color: var(--alarm-bg);
+  box-shadow: 0 2px 8px rgba(140, 107, 15, 0.3);
+}
+
+/* ============================================================================
+   Priority sections
+   ============================================================================ */
+.section { margin-bottom: 48px; }
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-hair);
+}
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: -0.008em;
+  color: var(--ink);
+}
+.section-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.section-counter {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+
+/* Priority color strips */
+.section[data-priority="P0"] .section-title::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 24px;
+  background: var(--crisis);
+  border-radius: 9999px;
+  margin-right: 12px;
+  vertical-align: middle;
+}
+.section[data-priority="P1"] .section-title::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 24px;
+  background: var(--alarm-stroke);
+  border-radius: 9999px;
+  margin-right: 12px;
+  vertical-align: middle;
+}
+.section[data-priority="P2"] .section-title::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 24px;
+  background: var(--brand);
+  border-radius: 9999px;
+  margin-right: 12px;
+  vertical-align: middle;
+}
+
+/* ============================================================================
+   Checklist items
+   ============================================================================ */
+.items { display: flex; flex-direction: column; gap: 12px; }
+
+.item {
+  background: var(--surface);
+  border: 1px solid var(--border-hair);
+  border-radius: 8px;
+  padding: 20px 24px;
+  display: grid;
+  grid-template-columns: 32px 1fr auto;
+  gap: 16px;
+  align-items: start;
+  cursor: pointer;
+  transition: all var(--duration-base) var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+.item:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
+}
+.item.done {
+  background: var(--brand-wash);
+  border-color: var(--brand-soft);
+}
+.item.done .item-title { color: var(--ink-muted); }
+.item.done .item-detail { color: var(--ink-disabled); }
+
+/* Animated checkbox */
+.checkbox-wrap {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+.checkbox {
+  width: 24px;
+  height: 24px;
+  border: 1.5px solid var(--border-strong);
+  border-radius: 6px;
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--duration-base) var(--ease-out);
+  position: relative;
+}
+.item.done .checkbox {
+  background: var(--brand);
+  border-color: var(--brand);
+}
+
+.checkmark {
+  width: 14px;
+  height: 14px;
+  stroke: var(--surface);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  transition: stroke-dashoffset 400ms var(--ease-out) 100ms;
+}
+.item.done .checkmark {
+  stroke-dashoffset: 0;
+}
+
+/* Burst particles on check */
+.burst {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--brand);
+  opacity: 0;
+  pointer-events: none;
+}
+.item.bursting .burst {
+  animation: burst 600ms var(--ease-out) forwards;
+}
+.item.bursting .burst:nth-child(1) { --burst-x: 18px; --burst-y: -14px; background: var(--brand); }
+.item.bursting .burst:nth-child(2) { --burst-x: -18px; --burst-y: -14px; background: var(--brand-deep); }
+.item.bursting .burst:nth-child(3) { --burst-x: 18px; --burst-y: 14px; background: var(--success); }
+.item.bursting .burst:nth-child(4) { --burst-x: -18px; --burst-y: 14px; background: var(--brand); }
+.item.bursting .burst:nth-child(5) { --burst-x: 0; --burst-y: -22px; background: var(--brand-deep); }
+.item.bursting .burst:nth-child(6) { --burst-x: 0; --burst-y: 22px; background: var(--success); }
+
+@keyframes burst {
+  0% {
+    transform: translate(-50%, -50%) translate(0, 0) scale(0.6);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) translate(var(--burst-x), var(--burst-y)) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Item content */
+.item-content { min-width: 0; }
+.item-title {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 4px;
+  line-height: 1.4;
+  transition: color var(--duration-base);
+  position: relative;
+  display: inline-block;
+}
+.item-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 100%;
+  top: 50%;
+  height: 1.5px;
+  background: var(--ink-muted);
+  transition: right var(--duration-slow) var(--ease-out);
+}
+.item.done .item-title::after { right: 0; }
+.item-detail {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--ink-muted);
+  line-height: 1.5;
+  transition: color var(--duration-base);
+}
+
+.item-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-end;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
+}
+.item-effort {
+  background: var(--mood-calm);
+  color: var(--info);
+  padding: 3px 8px;
+  border-radius: 9999px;
+  font-weight: 500;
+}
+.item.done .item-effort {
+  background: var(--brand-soft);
+  color: var(--brand-deep);
+}
+
+/* Filter system */
+.filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.filter-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-right: 4px;
+}
+.filter-btn {
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  color: var(--ink-soft);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--duration-quick) var(--ease-out);
+}
+.filter-btn:hover { border-color: var(--ink-soft); }
+.filter-btn.active {
+  background: var(--ink);
+  color: var(--surface);
+  border-color: var(--ink);
+}
+
+.reset-btn {
+  margin-left: auto;
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  color: var(--ink-muted);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  cursor: pointer;
+  transition: all var(--duration-quick);
+}
+.reset-btn:hover {
+  border-color: var(--crisis);
+  color: var(--crisis);
+}
+
+/* Item hide animation */
+.item.hidden {
+  animation: collapse 320ms var(--ease-out) forwards;
+}
+@keyframes collapse {
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    border-width: 0;
+  }
+}
+
+/* Completion celebration */
+.celebration {
+  position: fixed;
+  inset: 0;
+  background: rgba(247, 244, 237, 0.92);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: fadein 360ms var(--ease-out);
+}
+.celebration.show { display: flex; }
+.celebration-card {
+  background: var(--surface);
+  border: 1px solid var(--border-hair);
+  border-radius: 16px;
+  padding: 48px;
+  text-align: center;
+  max-width: 420px;
+  box-shadow: 0 4px 24px rgba(26, 24, 20, 0.08);
+  animation: pop 480ms var(--ease-out);
+}
+@keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pop {
+  0% { transform: scale(0.85); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.celebration-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 24px;
+  border-radius: 50%;
+  background: var(--brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.celebration-icon svg {
+  width: 32px;
+  height: 32px;
+  stroke: var(--surface);
+  stroke-width: 3;
+  fill: none;
+  animation: drawcheck 600ms var(--ease-out) 200ms backwards;
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+  animation-fill-mode: forwards;
+}
+@keyframes drawcheck { to { stroke-dashoffset: 0; } }
+.celebration-title {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--ink);
+  margin-bottom: 12px;
+  letter-spacing: -0.012em;
+}
+.celebration-text {
+  color: var(--ink-soft);
+  font-size: 15px;
+  margin-bottom: 24px;
+}
+.celebration-close {
+  background: var(--brand);
+  color: var(--surface);
+  border: none;
+  padding: 10px 24px;
+  border-radius: 9999px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--duration-quick);
+}
+.celebration-close:hover { background: var(--brand-deep); }
+
+footer {
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border-hair);
+  text-align: center;
+  color: var(--ink-muted);
+  font-size: 12px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+}
+
+/* ============================================================================
+   Pull quote (Pergaminho pattern)
+   ============================================================================ */
+.pullquote {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.4;
+  letter-spacing: -0.008em;
+  color: var(--ink-soft);
+  border-left: 2px solid var(--brand);
+  padding: 12px 0 12px 20px;
+  margin: 32px 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+  <div class="caption">CHECKLIST · 19/MAI/2026 · D-11 AO CLOSED BETA</div>
+  <h1>Anipis v3 — Implementation Checklist</h1>
+  <p class="subtitle">Auditoria DESIGN.md Pergaminho Clínico vs produção · 14 items distribuídos em 3 prioridades</p>
+</header>
+
+<!-- ====================================================================
+     Decision banner (P0 single-pick)
+     ==================================================================== -->
+<div class="decision-banner">
+  <strong>🚨 Decisão founder bloqueia tudo:</strong> Existem 2 specs v3 em conflito (Caderno em produção vs Pergaminho Clínico no mockup). Escolha a direção antes de fechar os P0:
+  <div class="option-picker">
+    <button class="option-btn" data-option="A">Opção A · Manter Caderno (recomendado)</button>
+    <button class="option-btn" data-option="B">Opção B · Migrar Pergaminho (rebrand)</button>
+    <button class="option-btn" data-option="C">Opção C · Híbrido (Verde-Musgo + mood pastels)</button>
+  </div>
+</div>
+
+<!-- ====================================================================
+     Dashboard
+     ==================================================================== -->
+<div class="dashboard">
+  <div class="dashboard-grid">
+    <div class="metric">
+      <div class="metric-label">Progresso total</div>
+      <div class="metric-value" id="total-value">0/14</div>
+      <div class="progress-track"><div class="progress-fill" id="total-fill"></div></div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">P0 bloqueia Beta</div>
+      <div class="metric-value" id="p0-value">0/2</div>
+      <div class="progress-track"><div class="progress-fill" id="p0-fill" style="background: var(--crisis)"></div></div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">P1 ideal pré-Beta</div>
+      <div class="metric-value" id="p1-value">0/3</div>
+      <div class="progress-track"><div class="progress-fill" id="p1-fill" style="background: var(--alarm-stroke)"></div></div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">P2 pós-Beta</div>
+      <div class="metric-value" id="p2-value">0/9</div>
+      <div class="progress-track"><div class="progress-fill" id="p2-fill"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Filters -->
+<div class="filters">
+  <span class="filter-label">Mostrar</span>
+  <button class="filter-btn active" data-filter="all">Tudo</button>
+  <button class="filter-btn" data-filter="P0">P0</button>
+  <button class="filter-btn" data-filter="P1">P1</button>
+  <button class="filter-btn" data-filter="P2">P2</button>
+  <button class="filter-btn" data-filter="open">Em aberto</button>
+  <button class="filter-btn" data-filter="done">Concluídos</button>
+  <button class="reset-btn" onclick="resetAll()">Resetar tudo</button>
+</div>
+
+<!-- ====================================================================
+     P0 — Bloqueia Beta
+     ==================================================================== -->
+<section class="section" data-priority="P0">
+  <div class="section-header">
+    <div>
+      <div class="section-meta">P0 · BLOQUEIA BETA · 25 MIN TOTAL</div>
+      <h2 class="section-title">Caminho crítico</h2>
+    </div>
+    <div class="section-counter" id="p0-counter">0/2</div>
+  </div>
+  <div class="items">
+
+    <div class="item" data-priority="P0" data-id="p0-1">
+      <div class="checkbox-wrap">
+        <div class="checkbox">
+          <svg class="checkmark" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span class="burst"></span><span class="burst"></span><span class="burst"></span>
+        <span class="burst"></span><span class="burst"></span><span class="burst"></span>
+      </div>
+      <div class="item-content">
+        <div class="item-title">Founder decide Opção A / B / C</div>
+        <div class="item-detail">Caderno (status quo) vs Pergaminho Clínico (rebrand) vs Híbrido. Define escopo de todo o resto.</div>
+      </div>
+      <div class="item-meta">
+        <span class="item-effort">~10 min</span>
+        <span>founder</span>
+      </div>
+    </div>
+
+    <div class="item" data-priority="P0" data-id="p0-2">
+      <div class="checkbox-wrap">
+        <div class="checkbox">
+          <svg class="checkmark" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span class="burst"></span><span class="burst"></span><span class="burst"></span>
+        <span class="burst"></span><span class="burst"></span><span class="burst"></span>
+      </div>
+      <div class="item-content">
+        <div class="item-title">Fix DEV-2 tokens (InternationalTransferConsent + SubprocessorList)</div>
+        <div class="item-detail">Trocar tokens inventados (<code>--pergaminho-base #f6efde</code>, <code>--pergaminho-accent #a07d3c</code>) pelos reais do Caderno (<code>--surface-canvas</code>, <code>--brand-spot</code>). Aplica se Opção A.</div>
+      </div>
+      <div class="item-meta">
+        <span class="item-effort">~15 min</span>
+        <span>orion</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ====================================================================
+     P1 — Ideal pré-Beta
+     ==================================================================== -->
+<section class="section" data-priority="P1">
+  <div class="section-header">
+    <div>
+      <div class="section-meta">P1 · IDEAL PRÉ-BETA · 20 MIN TOTAL · SLIP OK</div>
+      <h2 class="section-title">Audits rápidos</h2>
+    </div>
+    <div class="section-counter" id="p1-counter">0/3</div>
+  </div>
+  <div class="items">
+
+    <div class="item" data-priority="P1" data-id="p1-1">
+      <div class="checkbox-wrap">
+        <div class="checkbox">
+          <svg class="checkmark" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span class="burst"></span><span class="burst"></span><span class="burst"></span>
+        <span class="burst"></span><span class="burst"></span><span class="burst"></span>
+      </div>
+      <div class="item-content">
+        <div class="item-title">Validar asymmetric tail em ChatBubble</div>
+        <div class="item-detail">Spec: companion tail bottom-left 2px, user tail bottom-right 2px. Auditar <code>ChatBubble.tsx</code>.</div>
+      </div>
+      <div class="item-meta">
+        <span class="item-effort">~5 min</span>
+        <span>audit</span>
+      </div>
+    </div>
+
+    <div class="item" data-priority="P1" data-id="p1-2">
+      <div class="checkbox-wrap">
+        <div class="checkbox">
+          <svg class="checkmark" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span class="burst"></span><span class="burst"></span><span class="burst"></span>
+        <span class="burst"></span><span class="burst"></span><span class="burst"></span>
+      </div>
+      <div class="item-content">
+        <div class="item-title">Verificar cor crisis em CrisisBanner / CrisisFullScreen</div>
+        <div class="item-detail">Spec: terracota <code>#A1311F</code> (não vermelho-sangue). Audita ambos componentes shared.</div>
+      </div>
+      <div class="item-meta">
+        <span class="item-effort">~10 min</span>
+        <span>audit</span>
+      </div>
+    </div>
+
+    <div class="item" data-priority="P1" data-id="p1-3">
+      <div class="checkbox-wrap">
+        <div class="checkbox">
+          <svg class="checkmark" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span class="burst"></span><span class="burst"></span><span class="burst"></span>
+        <span class="burst"></span><span class="burst"></span><span class="burst"></span>
+      </div>
+      <div class="item-content">
+        <div class="item-title">Validar motion-breath 4000ms em BreathingExercise</div>
+        <div class="item-detail">Spec: <code>--duration-breath: 4000ms</code> core breathing animation. Audit timing real vs spec.</div>
+      </div>
+      <div class="item-meta">
+        <span class="item-effort">~5 min</span>
+        <span>audit</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ====================================================================
+     P2 — Pós-Beta v3.1
+     ==================================================================== -->
+<section class="section" data-priority="P2">
+  <div class="section-header">
+    <div>
+      <div class="section-meta">P2 · PÓS-BETA · ESCOPO V3.1 SE OPÇÃO B/C</div>
+      <h2 class="section-title">Pergaminho Clínico full</h2>
+    </div>
+    <div class="section-counter" id="p2-counter">0/9</div>
+  </div>
+  <div class="items">
+
+    <div class="item" data-priority="P2" data-id="p2-1">
+      <div class="checkbox-wrap">
+        <div class="checkbox">
+          <svg class="checkmark" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span class="burst"></span><span class="burst"></span><span class="burst"></span>
+        <span class="burst"></span><span class="burst"></span><span class="burst"></span>
+      </div>
+      <div class="item-content">
+        <div class="item-title">Migração brand Sepia Hazel → Verde-Musgo</div>
+        <div class="item-detail">Trocar <code>#7A4A2B</code> por <code>#2F5235</code> em toda a hierarquia de tokens + ~30 componentes consumindo.</div>
+      </div>
+      <div class="item-meta">
+        <span class="item-effort">1-2 sprints</span>
+        <span>opção B</span>
+      </div>
+    </div>
+
+    <div class="item" data-priority="P2" data-id="p2-2">
+      <div class="checkbox-wrap">
+        <div class="checkbox">
+          <svg class="checkmark" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span class="burst"></span><span class="burst"></span><span class="burst"></span>
+        <span class="burst"></span><span class="burst"></span><span class="burst"></span>
+      </div>
+      <div class="item-content">
+        <div class="item-title">Adicionar 6 mood pastels ao token system</div>
+        <div class="item-detail">calm / joy / tender / clear / bright / heavy. Aplicar em <code>MoodSelector.tsx</code>, journal categories, memory tags.</div>
+      </div>
+      <div class="item-meta">
+        <span class="item-effort">~1 dia</span>
+        <span>opção B/C</span>
+      </div>
+    </div>
+
+    <div class="item" data-priority="P2" data-id="p2-3">
+      <div class="checkbox-wrap">
+        <div class="checkbox">
+          <svg class="checkmark" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span class="burst"></span><span class="burst"></span><span class="burst"></span>
+        <span class="burst"></span><span class="burst"></span><span class="burst"></span>
+      </div>
+      <div class="item-content">
+        <div class="item-title">Tobias font swap (Newsreader → Tobias)</div>
+        <div class="item-detail">Requer licença Tobias (~$200-500/ano). Sem licença, fallback Cormorant Garamond (Google Fonts free, visual próximo).</div>
+      </div>
+      <div class="item-meta">
+        <span class="item-effort">~4h + licença</span>
+        <span>opção B</span>
+      </div>
+    </div>
+
+    <div class="item" data-priority="P2" data-id="p2-4">
+      <div class="checkbox-wrap">
+        <div class="checkbox">
+          <svg class="checkmark" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span class="burst"></span><span class="burst"></span><span class="burst"></span>
+        <span class="burst"></span><span class="burst"></span><span class="burst"></span>
+      </div>
+      <div class="item-content">
+        <div class="item-title">Componente divider-section (Equals pattern)</div>
+        <div class="item-detail">1px ink horizontal rule + 64px margin top/bottom. Usado entre seções major dentro de página.</div>
+      </div>
+      <div class="item-meta">
+        <span class="item-effort">~2h</span>
+        <span>missing</span>
+      </div>
+    </div>
+
+    <div class="item" data-priority="P2" data-id="p2-5">
+      <div class="checkbox-wrap">
+        <div class="checkbox">
+          <svg class="checkmark" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span class="burst"></span><span class="burst"></span><span class="burst"></span>
+        <span class="burst"></span><span class="burst"></span><span class="burst"></span>
+      </div>
+      <div class="item-content">
+        <div class="item-title">Componente pull-quote Tobias italic</div>
+        <div class="item-detail">22px italic + brand border-left 2px + padding-left 20px. Usar em welcome message + consent + wrap-up.</div>
+      </div>
+      <div class="item-meta">
+        <span class="item-effort">~3h</span>
+        <span>missing</span>
+      </div>
+    </div>
+
+    <div class="item" data-priority="P2" data-id="p2-6">
+      <div class="checkbox-wrap">
+        <div class="checkbox">
+          <svg class="checkmark" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span class="burst"></span><span class="burst"></span><span class="burst"></span>
+        <span class="burst"></span><span class="burst"></span><span class="burst"></span>
+      </div>
+      <div class="item-content">
+        <div class="item-title">Adicionar token <code>card sm 8px</code> radius</div>
+        <div class="item-detail">Spec: cards default 8px. Produção pula de 4 → 12px. Adicionar entre.</div>
+      </div>
+      <div class="item-meta">
+        <span class="item-effort">~30 min</span>
+        <span>token</span>
+      </div>
+    </div>
+
+    <div class="item" data-priority="P2" data-id="p2-7">
+      <div class="checkbox-wrap">
+        <div class="checkbox">
+          <svg class="checkmark" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span class="burst"></span><span class="burst"></span><span class="burst"></span>
+        <span class="burst"></span><span class="burst"></span><span class="burst"></span>
+      </div>
+      <div class="item-content">
+        <div class="item-title">Remover shadows heavy de cards (Pergaminho consenso anti-shadow)</div>
+        <div class="item-detail">Spec rejeita <code>--elevation-raised</code> em cards principais. Substituir por <code>card: 0 1px 0 border-hair</code> (bottom hairline only).</div>
+      </div>
+      <div class="item-meta">
+        <span class="item-effort">~3h</span>
+        <span>filosofia</span>
+      </div>
+    </div>
+
+    <div class="item" data-priority="P2" data-id="p2-8">
+      <div class="checkbox-wrap">
+        <div class="checkbox">
+          <svg class="checkmark" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span class="burst"></span><span class="burst"></span><span class="burst"></span>
+        <span class="burst"></span><span class="burst"></span><span class="burst"></span>
+      </div>
+      <div class="item-content">
+        <div class="item-title">Trocar alarm-bg para âmbar urgente <code>#FFE17A</code></div>
+        <div class="item-detail">Produção usa <code>--brand-lamp #E8C77A</code> próximo mas off-spec. Alarm tem responsabilidade comunicativa diferente de brand.</div>
+      </div>
+      <div class="item-meta">
+        <span class="item-effort">~1h</span>
+        <span>opção B</span>
+      </div>
+    </div>
+
+    <div class="item" data-priority="P2" data-id="p2-9">
+      <div class="checkbox-wrap">
+        <div class="checkbox">
+          <svg class="checkmark" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span class="burst"></span><span class="burst"></span><span class="burst"></span>
+        <span class="burst"></span><span class="burst"></span><span class="burst"></span>
+      </div>
+      <div class="item-content">
+        <div class="item-title">Adicionar token mono JetBrains Mono</div>
+        <div class="item-detail">Spec usa mono pra timestamps em chat, IDs em settings, technical references. Produção não tem token mono.</div>
+      </div>
+      <div class="item-meta">
+        <span class="item-effort">~1h</span>
+        <span>token</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<p class="pullquote">
+  "Anipis é um caderno aberto. Cada check feito é uma página virada com cuidado — não com pressa."
+</p>
+
+<footer>
+  Checklist salvo automaticamente no navegador · Source: <code>10-design-v3/IMPLEMENTATION-CHECKLIST-19mai.md</code><br>
+  Mockup referência: <code>10-design-v3/mockups/anipis-v3-mockups.html</code>
+</footer>
+
+</div>
+
+<!-- Celebration overlay -->
+<div class="celebration" id="celebration">
+  <div class="celebration-card">
+    <div class="celebration-icon">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="celebration-title">Você chegou.</div>
+    <div class="celebration-text">14 itens fechados. O design v3 está alinhado ao Pergaminho Clínico.</div>
+    <button class="celebration-close" onclick="closeCelebration()">Continuar</button>
+  </div>
+</div>
+
+<script>
+const STORAGE_KEY = 'anipis-v3-checklist-2026-05-19';
+const OPTION_KEY = 'anipis-v3-decision';
+
+// Load persisted state
+let state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+let currentFilter = 'all';
+let chosenOption = localStorage.getItem(OPTION_KEY) || null;
+
+// Apply persisted state on load
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.item').forEach(item => {
+    const id = item.dataset.id;
+    if (state[id]) item.classList.add('done');
+
+    item.addEventListener('click', () => toggleItem(item));
+  });
+
+  // Decision banner
+  if (chosenOption) {
+    const btn = document.querySelector(`.option-btn[data-option="${chosenOption}"]`);
+    if (btn) btn.classList.add('active');
+  }
+  document.querySelectorAll('.option-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      chosenOption = btn.dataset.option;
+      localStorage.setItem(OPTION_KEY, chosenOption);
+    });
+  });
+
+  // Filters
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
+      applyFilter();
+    });
+  });
+
+  updateMetrics();
+});
+
+function toggleItem(item) {
+  const id = item.dataset.id;
+  const isDone = item.classList.contains('done');
+
+  if (!isDone) {
+    // Mark done with burst
+    item.classList.add('done', 'bursting');
+    state[id] = true;
+    setTimeout(() => item.classList.remove('bursting'), 700);
+  } else {
+    item.classList.remove('done');
+    state[id] = false;
+  }
+
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  updateMetrics();
+  if (currentFilter !== 'all') applyFilter();
+}
+
+function updateMetrics() {
+  const all = document.querySelectorAll('.item');
+  const counts = { total: 0, done: 0, P0: 0, P0done: 0, P1: 0, P1done: 0, P2: 0, P2done: 0 };
+
+  all.forEach(item => {
+    const p = item.dataset.priority;
+    counts.total++;
+    counts[p]++;
+    if (item.classList.contains('done')) {
+      counts.done++;
+      counts[p + 'done']++;
+    }
+  });
+
+  setMetric('total', counts.done, counts.total);
+  setMetric('p0', counts.P0done, counts.P0);
+  setMetric('p1', counts.P1done, counts.P1);
+  setMetric('p2', counts.P2done, counts.P2);
+
+  document.getElementById('p0-counter').textContent = `${counts.P0done}/${counts.P0}`;
+  document.getElementById('p1-counter').textContent = `${counts.P1done}/${counts.P1}`;
+  document.getElementById('p2-counter').textContent = `${counts.P2done}/${counts.P2}`;
+
+  if (counts.done === counts.total && counts.total > 0) {
+    setTimeout(showCelebration, 700);
+  }
+}
+
+function setMetric(prefix, done, total) {
+  const valueEl = document.getElementById(`${prefix}-value`);
+  const fillEl = document.getElementById(`${prefix}-fill`);
+  valueEl.textContent = `${done}/${total}`;
+  valueEl.classList.toggle('done', done === total && total > 0);
+  fillEl.style.width = total > 0 ? `${(done / total) * 100}%` : '0%';
+}
+
+function applyFilter() {
+  document.querySelectorAll('.item').forEach(item => {
+    let show = true;
+    const isDone = item.classList.contains('done');
+
+    if (currentFilter === 'open') show = !isDone;
+    else if (currentFilter === 'done') show = isDone;
+    else if (['P0', 'P1', 'P2'].includes(currentFilter)) show = item.dataset.priority === currentFilter;
+
+    if (show) {
+      item.classList.remove('hidden');
+      item.style.display = '';
+    } else {
+      item.classList.add('hidden');
+      setTimeout(() => { if (item.classList.contains('hidden')) item.style.display = 'none'; }, 320);
+    }
+  });
+
+  // Hide empty sections
+  document.querySelectorAll('.section').forEach(section => {
+    const visible = section.querySelectorAll('.item:not(.hidden)');
+    section.style.display = visible.length === 0 ? 'none' : '';
+  });
+}
+
+function resetAll() {
+  if (!confirm('Resetar todos os checks e a decisão Opção A/B/C?')) return;
+  state = {};
+  chosenOption = null;
+  localStorage.removeItem(STORAGE_KEY);
+  localStorage.removeItem(OPTION_KEY);
+  document.querySelectorAll('.item.done').forEach(item => item.classList.remove('done'));
+  document.querySelectorAll('.option-btn.active').forEach(btn => btn.classList.remove('active'));
+  updateMetrics();
+}
+
+function showCelebration() {
+  document.getElementById('celebration').classList.add('show');
+}
+
+function closeCelebration() {
+  document.getElementById('celebration').classList.remove('show');
+}
+</script>
+
+</body>
+</html>

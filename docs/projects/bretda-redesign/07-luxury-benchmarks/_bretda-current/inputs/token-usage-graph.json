@@ -1,0 +1,742 @@
+[
+  {
+    "name": "--spacing",
+    "declarations": 1,
+    "references": 123
+  },
+  {
+    "name": "--font-editorial",
+    "declarations": 2,
+    "references": 25
+  },
+  {
+    "name": "--tw-leading",
+    "declarations": 11,
+    "references": 19
+  },
+  {
+    "name": "--tw-space-y-reverse",
+    "declarations": 8,
+    "references": 14
+  },
+  {
+    "name": "--text-primary-source",
+    "declarations": 2,
+    "references": 14
+  },
+  {
+    "name": "--font-display",
+    "declarations": 1,
+    "references": 13
+  },
+  {
+    "name": "--tw-border-style",
+    "declarations": 2,
+    "references": 8
+  },
+  {
+    "name": "--tw-gradient-position",
+    "declarations": 2,
+    "references": 6
+  },
+  {
+    "name": "--tw-gradient-from",
+    "declarations": 5,
+    "references": 6
+  },
+  {
+    "name": "--tw-gradient-to",
+    "declarations": 4,
+    "references": 6
+  },
+  {
+    "name": "--tw-gradient-via-stops",
+    "declarations": 3,
+    "references": 6
+  },
+  {
+    "name": "--tw-gradient-from-position",
+    "declarations": 1,
+    "references": 6
+  },
+  {
+    "name": "--tw-gradient-to-position",
+    "declarations": 1,
+    "references": 6
+  },
+  {
+    "name": "--accent-brand-source",
+    "declarations": 2,
+    "references": 6
+  },
+  {
+    "name": "--color-cream-v2",
+    "declarations": 2,
+    "references": 5
+  },
+  {
+    "name": "--tw-shadow-color",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--tw-backdrop-blur",
+    "declarations": 2,
+    "references": 4
+  },
+  {
+    "name": "--tw-backdrop-brightness",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--tw-backdrop-contrast",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--tw-backdrop-grayscale",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--tw-backdrop-hue-rotate",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--tw-backdrop-invert",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--tw-backdrop-opacity",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--tw-backdrop-saturate",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--tw-backdrop-sepia",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--tw-duration",
+    "declarations": 4,
+    "references": 4
+  },
+  {
+    "name": "--color-black",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--default-transition-duration",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--default-transition-timing-function",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--ease-luxury",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--tw-ease",
+    "declarations": 0,
+    "references": 4
+  },
+  {
+    "name": "--font-small-caps",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--tw-translate-x",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--tw-translate-y",
+    "declarations": 3,
+    "references": 3
+  },
+  {
+    "name": "--tw-scale-x",
+    "declarations": 4,
+    "references": 3
+  },
+  {
+    "name": "--tw-scale-y",
+    "declarations": 4,
+    "references": 3
+  },
+  {
+    "name": "--tw-shadow",
+    "declarations": 3,
+    "references": 3
+  },
+  {
+    "name": "--tw-inset-shadow",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--tw-ring-shadow",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--tw-inset-ring-shadow",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--tw-ring-offset-shadow",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--tw-blur",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--tw-brightness",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--tw-contrast",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--tw-grayscale",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--tw-hue-rotate",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--tw-invert",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--tw-saturate",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--tw-sepia",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--tw-drop-shadow",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--color-white",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--color-cream",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--color-charcoal-v2",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--color-champagne-v2",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--color-hairline-v2",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--canvas-source",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--tw-gradient-via",
+    "declarations": 4,
+    "references": 2
+  },
+  {
+    "name": "--tw-gradient-via-position",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--text-xl",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--text-xl--line-height",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--text-3xl",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--text-3xl--line-height",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--text-4xl",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--text-4xl--line-height",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--font-weight-normal",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--font-weight-medium",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--font-weight-bold",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--tracking-wider",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--leading-tight",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--leading-snug",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--leading-relaxed",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--color-charcoal",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--color-ash-v2",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--text-secondary-source",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--text-muted-source",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--border-subtle-source",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--tw-rotate-x",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tw-rotate-y",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tw-rotate-z",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tw-skew-x",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tw-skew-y",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tw-gradient-stops",
+    "declarations": 7,
+    "references": 1
+  },
+  {
+    "name": "--tw-ring-color",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tw-ring-inset",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tw-ring-offset-width",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tw-outline-style",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--font-sans",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--font-mono",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color-red-400",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--color-red-700",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--container-md",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--container-lg",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--container-2xl",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--text-xs",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--text-xs--line-height",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--text-sm",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--text-sm--line-height",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--text-lg",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--text-lg--line-height",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--text-2xl",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--text-2xl--line-height",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--text-5xl",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--text-5xl--line-height",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--animate-spin",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--blur-sm",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--default-font-family",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--default-mono-font-family",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color-gray-light",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--color-champagne-soft-v2",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--font-body",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--ease-reveal",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--surface-raised-source",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--surface-overlay-source",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--accent-brand-hover-source",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--default-font-feature-settings",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--default-font-variation-settings",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--default-mono-font-feature-settings",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--default-mono-font-variation-settings",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--font-display-fallback",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font-body-fallback",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--tw-translate-z",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--tw-scale-z",
+    "declarations": 4,
+    "references": 0
+  },
+  {
+    "name": "--tw-font-weight",
+    "declarations": 4,
+    "references": 0
+  },
+  {
+    "name": "--tw-tracking",
+    "declarations": 15,
+    "references": 0
+  },
+  {
+    "name": "--tw-shadow-alpha",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--tw-inset-shadow-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--tw-inset-shadow-alpha",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--tw-inset-ring-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--tw-ring-offset-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--tw-opacity",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--tw-drop-shadow-color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--tw-drop-shadow-alpha",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--tw-drop-shadow-size",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--color-ink-v2",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--color-cream-dark",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--color-gray-medium",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--color-gray-muted",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--color-charcoal-secondary",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--color-charcoal-tertiary",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--color-border",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--color-whatsapp",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--color-whatsapp-hover",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--color-walnut-v2",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--color-ash-deep-v2",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--duration-hero-reveal",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--duration-card-reveal",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--blur-hero-start",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--blur-card-start",
+    "declarations": 2,
+    "references": 0
+  }
+]

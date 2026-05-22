@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pacote Consolidado — Site-Prospector / Advogado(a) OAB-SC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bb-limon: #D1FF00;
+  --bb-dark: #0F0F0F;
+  --bb-surface: #1C1C1C;
+  --bb-surface-2: #262626;
+  --bb-warm-white: #F5F2EA;
+  --bb-mid: #4A4A4A;
+  --bb-mid-2: #8A8A8A;
+  --bb-red: #FF453A;
+  --bb-yellow: #FFD60A;
+  --bb-green: #34D399;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bb-dark); color: var(--bb-warm-white);
+  font-family: 'Geist', sans-serif; font-weight: 400;
+  line-height: 1.7; font-size: 15px; letter-spacing: 0.005em;
+}
+.container { max-width: 940px; margin: 0 auto; padding: 60px 50px; }
+
+/* COVER */
+.cover {
+  padding: 60px 50px; margin-bottom: 70px;
+  border: 1px solid var(--bb-warm-white); position: relative; min-height: 520px;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.cover::before {
+  content: "§§"; position: absolute; top: 30px; right: 40px;
+  font-family: 'Space Grotesk', sans-serif; font-size: 42px; color: var(--bb-limon);
+  line-height: 1; letter-spacing: -0.05em;
+}
+.cover-tag {
+  font-family: 'Roboto Mono', monospace; font-weight: 500;
+  font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--bb-limon); margin-bottom: 24px;
+}
+.cover h1 {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  font-size: clamp(38px, 5.2vw, 60px); line-height: 1.02;
+  letter-spacing: -0.025em; margin-bottom: 24px; text-transform: uppercase;
+}
+.cover h1 .accent { color: var(--bb-limon); }
+.cover-subtitle {
+  font-size: 18px; color: var(--bb-warm-white); font-weight: 400;
+  margin-bottom: 40px; max-width: 620px; line-height: 1.55;
+}
+.cover-meta {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+  padding-top: 32px; border-top: 1px solid var(--bb-mid);
+}
+.cover-meta-item { font-family: 'Roboto Mono', monospace; font-size: 12px; }
+.cover-meta-label {
+  display: block; color: var(--bb-mid-2); text-transform: uppercase;
+  margin-bottom: 6px; font-size: 10px; letter-spacing: 0.15em;
+}
+.cover-meta-value { color: var(--bb-warm-white); font-weight: 500; font-size: 14px; }
+
+section { margin-bottom: 70px; scroll-margin-top: 40px; }
+.section-marker {
+  font-family: 'Roboto Mono', monospace; font-size: 11px;
+  letter-spacing: 0.25em; color: var(--bb-limon); text-transform: uppercase;
+  margin-bottom: 18px; display: flex; align-items: center; gap: 12px;
+}
+.section-marker::before {
+  content: ""; display: inline-block; width: 28px; height: 1px; background: var(--bb-limon);
+}
+h2 {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  font-size: clamp(28px, 3.4vw, 40px); line-height: 1.1;
+  letter-spacing: -0.02em; margin-bottom: 32px; color: var(--bb-warm-white); text-transform: uppercase;
+}
+h2 .accent { color: var(--bb-limon); }
+h3 {
+  font-family: 'Geist', sans-serif; font-weight: 700;
+  font-size: 21px; line-height: 1.3; margin-top: 40px; margin-bottom: 16px; color: var(--bb-warm-white);
+}
+h4 {
+  font-family: 'Geist', sans-serif; font-weight: 600;
+  font-size: 17px; margin-top: 28px; margin-bottom: 12px; color: var(--bb-warm-white);
+}
+p { margin-bottom: 18px; color: var(--bb-warm-white); line-height: 1.75; }
+p.lead { font-size: 17px; color: var(--bb-warm-white); line-height: 1.65; }
+strong, b { font-weight: 700; color: var(--bb-warm-white); }
+.limon { color: var(--bb-limon); font-weight: 600; }
+em { font-style: italic; color: var(--bb-mid-2); }
+
+ul, ol { margin: 16px 0 24px 0; padding-left: 24px; }
+ul li, ol li { margin-bottom: 10px; line-height: 1.7; color: var(--bb-warm-white); }
+ul li::marker { color: var(--bb-limon); }
+ol li::marker { color: var(--bb-limon); font-weight: 700; }
+
+/* COVER LETTER */
+.cover-letter {
+  background: var(--bb-surface); padding: 44px 50px;
+  margin: 0 -10px 60px -10px; border-left: 4px solid var(--bb-limon);
+}
+.cover-letter p { font-size: 16px; }
+.cover-letter .salutation {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  font-size: 22px; margin-bottom: 20px; color: var(--bb-warm-white);
+}
+.cover-letter .signature {
+  margin-top: 30px; padding-top: 20px;
+  border-top: 1px solid var(--bb-mid);
+  font-family: 'Roboto Mono', monospace; font-size: 13px; color: var(--bb-mid-2);
+}
+
+/* CALLOUTS */
+.callout {
+  background: var(--bb-surface); border-left: 4px solid var(--bb-limon);
+  padding: 22px 28px; margin: 24px 0;
+}
+.callout-title {
+  font-family: 'Roboto Mono', monospace; font-size: 11px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--bb-limon); margin-bottom: 10px;
+}
+.callout.warning { border-left-color: var(--bb-yellow); }
+.callout.warning .callout-title { color: var(--bb-yellow); }
+.callout.danger { border-left-color: var(--bb-red); }
+.callout.danger .callout-title { color: var(--bb-red); }
+.callout.success { border-left-color: var(--bb-green); }
+.callout.success .callout-title { color: var(--bb-green); }
+
+/* TABLES */
+.table-wrap { overflow-x: auto; margin: 26px 0; border: 1px solid var(--bb-mid); }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th {
+  background: var(--bb-surface-2); color: var(--bb-limon);
+  text-align: left; padding: 14px 16px;
+  font-family: 'Roboto Mono', monospace; font-weight: 500; font-size: 11px;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  border-bottom: 1px solid var(--bb-mid); vertical-align: top;
+}
+td {
+  padding: 16px; border-bottom: 1px solid var(--bb-mid);
+  vertical-align: top; color: var(--bb-warm-white); line-height: 1.6;
+}
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) td { background: var(--bb-surface); }
+td strong { color: var(--bb-limon); }
+
+/* AUDIT ITEMS */
+.audit-item {
+  display: grid; grid-template-columns: 50px 1fr; gap: 20px;
+  padding: 20px 26px; background: var(--bb-surface); border: 1px solid var(--bb-mid);
+  margin: 12px 0;
+}
+.audit-item.strength { border-left: 4px solid var(--bb-green); }
+.audit-item.attention { border-left: 4px solid var(--bb-yellow); }
+.audit-item.gap { border-left: 4px solid var(--bb-red); }
+.audit-num {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  font-size: 24px; line-height: 1; letter-spacing: -0.03em;
+}
+.audit-item.strength .audit-num { color: var(--bb-green); }
+.audit-item.attention .audit-num { color: var(--bb-yellow); }
+.audit-item.gap .audit-num { color: var(--bb-red); }
+.audit-clause {
+  font-family: 'Roboto Mono', monospace; font-size: 11px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--bb-mid-2); margin-bottom: 6px;
+}
+.audit-title {
+  font-family: 'Geist', sans-serif; font-weight: 700;
+  font-size: 15px; color: var(--bb-warm-white); margin-bottom: 6px;
+}
+.audit-desc { font-size: 14px; color: var(--bb-warm-white); line-height: 1.6; }
+.audit-desc strong { color: var(--bb-limon); }
+.audit-suggestion {
+  margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--bb-mid);
+  font-size: 13px; color: var(--bb-mid-2);
+}
+.audit-suggestion strong { color: var(--bb-limon); }
+
+/* CLAUSE BOX */
+.clause-box {
+  background: var(--bb-surface); border-left: 4px solid var(--bb-limon);
+  padding: 28px 36px; margin: 24px 0;
+}
+.clause-box .clause-header {
+  font-family: 'Roboto Mono', monospace; font-size: 11px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--bb-limon); margin-bottom: 18px;
+}
+.clause-box h4 {
+  font-family: 'Space Grotesk', sans-serif; text-transform: uppercase;
+  letter-spacing: -0.01em; margin-top: 0; margin-bottom: 16px; font-size: 16px;
+}
+.clause-box .sub-clause { margin: 16px 0; }
+.clause-box .sub-clause-id {
+  font-weight: 700; color: var(--bb-limon);
+  font-family: 'Roboto Mono', monospace; font-size: 13px;
+  display: inline-block; margin-right: 8px;
+}
+
+/* CLAUSE LIST 20 */
+.clause-list {
+  display: grid; gap: 12px; margin: 24px 0; list-style: none;
+  padding-left: 0; counter-reset: clause-counter;
+}
+.clause-list li {
+  counter-increment: clause-counter;
+  padding: 16px 20px 16px 64px; background: var(--bb-surface);
+  border-left: 3px solid var(--bb-limon); position: relative;
+  font-size: 14px; line-height: 1.6;
+}
+.clause-list li::before {
+  content: counter(clause-counter, decimal-leading-zero);
+  position: absolute; left: 20px; top: 16px;
+  font-family: 'Roboto Mono', monospace; color: var(--bb-limon);
+  font-weight: 700; font-size: 13px;
+}
+.clause-list li::marker { content: none; }
+.clause-list li strong { color: var(--bb-warm-white); display: block; margin-bottom: 4px; }
+.clause-list li span.note {
+  color: var(--bb-mid-2); font-size: 13px; font-style: italic;
+  display: block; margin-top: 6px;
+}
+.clause-list li.exclude { border-left-color: var(--bb-red); opacity: 0.7; }
+.clause-list li.exclude::before { color: var(--bb-red); }
+
+/* ANEXOS BLOCK */
+.anexo-block {
+  background: var(--bb-surface-2); border: 1px solid var(--bb-mid);
+  padding: 24px 30px; margin: 14px 0;
+}
+.anexo-id {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  font-size: 22px; color: var(--bb-limon); letter-spacing: -0.02em;
+  margin-bottom: 8px; text-transform: uppercase;
+}
+.anexo-title {
+  font-family: 'Geist', sans-serif; font-weight: 700;
+  font-size: 17px; color: var(--bb-warm-white); margin-bottom: 10px;
+}
+.anexo-desc { font-size: 14px; color: var(--bb-warm-white); line-height: 1.6; }
+.anexo-status {
+  display: inline-block; padding: 4px 10px; border-radius: 2px;
+  font-family: 'Roboto Mono', monospace; font-size: 10px;
+  letter-spacing: 0.15em; text-transform: uppercase; margin-top: 12px;
+}
+.anexo-status.pending { background: var(--bb-red); color: var(--bb-dark); }
+.anexo-status.draft { background: var(--bb-yellow); color: var(--bb-dark); }
+.anexo-status.done { background: var(--bb-green); color: var(--bb-dark); }
+
+/* QUESTION LIST */
+.q-list { list-style: none; padding-left: 0; counter-reset: q-counter; }
+.q-list li {
+  counter-increment: q-counter; padding: 16px 0 16px 50px;
+  border-bottom: 1px solid var(--bb-mid); position: relative; font-size: 14px;
+}
+.q-list li::before {
+  content: counter(q-counter, decimal-leading-zero);
+  position: absolute; left: 0; top: 16px;
+  font-family: 'Roboto Mono', monospace; color: var(--bb-limon);
+  font-weight: 600; font-size: 13px;
+}
+.q-list li::marker { content: none; }
+
+/* CHECKLIST */
+.checklist {
+  background: var(--bb-surface); border: 1px solid var(--bb-mid);
+  padding: 28px 36px; margin: 24px 0;
+}
+.checklist-item {
+  display: grid; grid-template-columns: 32px 1fr; gap: 14px;
+  padding: 10px 0; border-bottom: 1px solid var(--bb-mid);
+  font-size: 14px; line-height: 1.5;
+}
+.checklist-item:last-child { border-bottom: none; }
+.checklist-box {
+  display: inline-block; width: 18px; height: 18px;
+  border: 2px solid var(--bb-limon); margin-top: 2px;
+}
+
+/* TIMELINE */
+.timeline {
+  position: relative; padding-left: 32px; margin: 30px 0;
+  border-left: 2px solid var(--bb-mid);
+}
+.timeline-item { position: relative; padding: 14px 0 14px 0; margin-left: 8px; }
+.timeline-item::before {
+  content: ""; position: absolute; left: -42px; top: 22px;
+  width: 12px; height: 12px; background: var(--bb-limon);
+  border: 3px solid var(--bb-dark); border-radius: 50%; box-sizing: content-box;
+}
+.timeline-date {
+  font-family: 'Roboto Mono', monospace; font-size: 11px;
+  color: var(--bb-limon); letter-spacing: 0.1em;
+  text-transform: uppercase; margin-bottom: 4px;
+}
+.timeline-title {
+  font-family: 'Geist', sans-serif; font-weight: 600;
+  font-size: 16px; color: var(--bb-warm-white); margin-bottom: 4px;
+}
+.timeline-desc { font-size: 14px; color: var(--bb-mid-2); line-height: 1.55; }
+
+/* TOC */
+.toc {
+  background: var(--bb-surface); border: 1px solid var(--bb-mid);
+  padding: 24px 30px; margin-bottom: 60px;
+}
+.toc-title {
+  font-family: 'Roboto Mono', monospace; font-size: 11px;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--bb-limon); margin-bottom: 16px;
+}
+.toc-list {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+  list-style: none; padding-left: 0; margin: 0;
+}
+.toc-list li {
+  display: grid; grid-template-columns: 28px 1fr; gap: 10px;
+  align-items: baseline; padding: 4px 0; font-size: 14px;
+}
+.toc-list li::marker { content: none; }
+.toc-num {
+  font-family: 'Roboto Mono', monospace; color: var(--bb-limon);
+  font-weight: 600; font-size: 12px;
+}
+.toc-list a {
+  color: var(--bb-warm-white); text-decoration: none;
+  border-bottom: 1px solid transparent; transition: border-color 0.2s;
+}
+.toc-list a:hover { border-bottom-color: var(--bb-limon); color: var(--bb-limon); }
+
+code {
+  font-family: 'Roboto Mono', monospace; background: var(--bb-surface-2);
+  padding: 2px 6px; color: var(--bb-limon); font-size: 13px;
+}
+
+footer {
+  border-top: 2px solid var(--bb-warm-white); padding-top: 40px;
+  margin-top: 100px; text-align: center; color: var(--bb-mid-2);
+  font-size: 12px; font-family: 'Roboto Mono', monospace;
+  line-height: 1.7; letter-spacing: 0.05em;
+}
+footer .footer-mark {
+  font-family: 'Space Grotesk', sans-serif; font-size: 24px;
+  color: var(--bb-limon); display: block; margin-bottom: 14px;
+}
+
+@media print {
+  body { background: white; color: black; font-size: 11pt; }
+  .container { padding: 30px 40px; max-width: 100%; }
+  .cover, .cover-letter, .callout, .clause-box, .audit-item, .anexo-block, .checklist, .clause-list li, table, .toc {
+    background: white !important; border-color: #000 !important;
+  }
+  .cover h1, h2, h3, h4, p, td, th, strong, span { color: black !important; }
+  th { background: #f0f0f0 !important; color: #000 !important; }
+  .limon, .accent, .section-marker, .clause-header, .audit-num, .anexo-id, .timeline-date, .callout-title, .toc-num, .audit-clause, .audit-title, .clause-list li::before, .cover-meta-label, .cover-meta-value, .q-list li::before { color: #000 !important; }
+  .timeline-item::before { background: #000 !important; border-color: white !important; }
+  .timeline { border-color: #000 !important; }
+  .checklist-box { border-color: #000 !important; }
+  section { page-break-inside: avoid; }
+  h2 { page-break-after: avoid; }
+  .clause-box, .audit-item, .anexo-block { page-break-inside: avoid; }
+  .anexo-status.pending { background: #FFE5E5 !important; color: #000 !important; }
+  .anexo-status.draft { background: #FFF6D6 !important; color: #000 !important; }
+  .anexo-status.done { background: #D6F5E5 !important; color: #000 !important; }
+}
+
+@media (max-width: 720px) {
+  .container { padding: 40px 25px; }
+  .cover { padding: 40px 28px; }
+  .cover-meta, .toc-list { grid-template-columns: 1fr; }
+  .audit-item { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- COVER -->
+<div class="cover">
+  <div>
+    <div class="cover-tag">§§ Pacote consolidado v1 — Para advogado(a) OAB-SC</div>
+    <h1>Pacote<br><span class="accent">Consolidado</span><br>Jurídico</h1>
+    <p class="cover-subtitle">Briefing técnico-jurídico + auditoria de baseline preliminar + gaps identificados + anexos a produzir + checklist de entregáveis, consolidado para contratação de redação contratual profissional.</p>
+  </div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Projeto</span>
+      <span class="cover-meta-value">Site-Prospector / Piloto Blumenau</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Solicitante</span>
+      <span class="cover-meta-value">Breno (founder solo)</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Data</span>
+      <span class="cover-meta-value">15 de maio de 2026</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Prazo desejado entrega</span>
+      <span class="cover-meta-value">02 de junho de 2026</span>
+    </div>
+  </div>
+</div>
+
+<!-- COVER LETTER -->
+<div class="cover-letter">
+  <div class="salutation">Prezado(a) advogado(a),</div>
+  <p>Este pacote consolida três materiais para sua avaliação e trabalho profissional sobre o projeto <strong>Site-Prospector</strong>, uma agência de presença digital local em fase piloto no eixo Vale do Itajaí → Florianópolis, sediada em Blumenau/SC:</p>
+  <ol>
+    <li><strong>Briefing técnico-jurídico</strong> — contexto do projeto, escopo do trabalho contratado, parecer prévio da consultoria Patricia Peck, redação completa da cláusula de garantia comercial (X.1 a X.9) pronta para incorporação, lista das 20 cláusulas mandatórias mapeadas, framework LGPD e disclaimers obrigatórios;</li>
+    <li><strong>Auditoria de baseline preliminar</strong> — um draft de contrato (denominado "Baseline Claude") foi produzido por sistema de IA como referência interna de comparação. Esta auditoria identifica seus pontos fortes (10), pontos de atenção (6) e gaps críticos (7) que precisam ser endereçados na redação final;</li>
+    <li><strong>Lista de anexos a produzir</strong> — DPA (Data Processing Agreement), Documento de Transparência de Atribuição, Especificação Técnica do Plano contratado e Parecer de Enquadramento como Pequeno Agente ANPD.</li>
+  </ol>
+  <p>O escopo do trabalho contempla <strong>quatro entregáveis principais</strong>: redação do Contrato de Prestação de Serviços v1.0 com 20 cláusulas + cláusula de garantia X; produção dos 4 anexos integrantes; revisão de 7 templates LGPD adicionais (políticas, termos, cookies, LIA, ROPA); e parecer de enquadramento Pequeno Agente ANPD.</p>
+  <p>A consultoria preliminar foi realizada com a <strong>Drª Patricia Peck</strong> (Patricia Peck Advogados — Direito Digital), cuja análise está integralmente reproduzida neste pacote. Três correções "show-stopper" foram identificadas e já estão refletidas no material. O trabalho do(a) advogado(a) contratado(a) é validar, refinar e adaptar essas correções à jurisprudência catarinense + particularidades de ISS Blumenau.</p>
+  <p>A <strong>urgência</strong> é determinada por gate de decisão pré-registrado em <strong class="limon">09 de junho de 2026</strong>. Daí a sugestão de entrega até 02/Jun para margem de revisão final.</p>
+  <p>Os arquivos-fonte completos do projeto estão disponíveis em <code>docs/projects/site-prospector/</code> e podem ser solicitados em formato PDF, DOCX ou Markdown conforme preferência.</p>
+  <div class="signature">
+    Atenciosamente,<br>
+    <strong style="color: var(--bb-warm-white);">Breno</strong><br>
+    Site-Prospector (em constituição como ME)<br>
+    Blumenau/SC · 15 de maio de 2026
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+  <div class="toc-title">▸ Índice</div>
+  <ul class="toc-list">
+    <li><span class="toc-num">01</span><a href="#contexto">Contexto do projeto</a></li>
+    <li><span class="toc-num">02</span><a href="#escopo">Escopo do trabalho</a></li>
+    <li><span class="toc-num">03</span><a href="#parecer">Parecer Patricia Peck</a></li>
+    <li><span class="toc-num">04</span><a href="#garantia">Cláusula garantia (pronta)</a></li>
+    <li><span class="toc-num">05</span><a href="#clausulas">20 cláusulas mandatórias</a></li>
+    <li><span class="toc-num">06</span><a href="#auditoria">Auditoria do baseline</a></li>
+    <li><span class="toc-num">07</span><a href="#anexos">4 anexos a produzir</a></li>
+    <li><span class="toc-num">08</span><a href="#lgpd">Framework LGPD</a></li>
+    <li><span class="toc-num">09</span><a href="#disclaimers">Disclaimers obrigatórios</a></li>
+    <li><span class="toc-num">10</span><a href="#perguntas">Perguntas-chave</a></li>
+    <li><span class="toc-num">11</span><a href="#checklist">Checklist entregáveis</a></li>
+    <li><span class="toc-num">12</span><a href="#cronograma">Cronograma + pricing</a></li>
+  </ul>
+</div>
+
+<!-- 01. CONTEXTO -->
+<section id="contexto">
+  <div class="section-marker">01 · Contexto do projeto</div>
+  <h2>O que é o <span class="accent">Site-Prospector</span></h2>
+  <p class="lead">Agência de presença digital local em fase piloto, especializada em pequenos negócios físicos no eixo Blumenau → Florianópolis. O piloto v1 cobre exclusivamente o município de Blumenau, com foco em padarias e confeitarias artesanais.</p>
+
+  <h3>Modelo de negócio</h3>
+  <p>Contratação única <strong>upfront de R$ 3.497,00</strong> (parcelável em 6× de R$ 583,00 no cartão, sem juros) + <strong>mensalidade recorrente de R$ 247,00</strong> (plano Growth, padrão). Há também planos Essential (R$ 149/mês) e Scale (R$ 397/mês).</p>
+
+  <h3>Entregáveis ao cliente final</h3>
+  <ol>
+    <li>Site institucional desenvolvido em tecnologia moderna (Next.js), Lighthouse mobile ≥ 90</li>
+    <li>Reconstrução do perfil Google Business Profile (titularidade da contratante)</li>
+    <li>Ajustes no Instagram comercial (bio, destaques, 12 posts pilar — entrega única)</li>
+    <li>Sessão fotográfica presencial de 2 horas no estabelecimento</li>
+    <li>Suporte humano presencial em Blumenau quando necessário</li>
+  </ol>
+
+  <h3>Garantia comercial</h3>
+  <p>"Garantia Performance Local Blumenau" — modelo <strong class="limon">non-cash</strong> com concessão limitada a R$ 1.541,00 em valor de mercado (3 mensalidades Growth grátis + 1 sessão fotográfica sazonal extra). Custo real para a contratada de aproximadamente R$ 591,00. Acionamento condicionado a métricas técnicas auditáveis em 60 dias após go-live.</p>
+
+  <div class="callout">
+    <div class="callout-title">▸ Decisões já tomadas pelo cliente</div>
+    <ul style="margin-bottom: 0;">
+      <li>Garantia é <strong>não-cash</strong> (sem reembolso em dinheiro)</li>
+      <li>Critério de acionamento é <strong>técnico-objetivo</strong> (eventos rastreados)</li>
+      <li>Foro: Comarca de Blumenau/SC, com ressalva CDC art. 51, XV</li>
+      <li>Arbitragem rejeitada (art. 51, VII CDC)</li>
+      <li>Constituição em <strong>ME</strong> (não MEI)</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 02. ESCOPO -->
+<section id="escopo">
+  <div class="section-marker">02 · Escopo do trabalho</div>
+  <h2>4 entregáveis <span class="accent">esperados</span></h2>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>#</th><th>Entregável</th><th>Pricing bracket</th></tr></thead>
+    <tbody>
+    <tr><td><strong>01</strong></td><td><strong>Redação do Contrato v1.0</strong> — 20 cláusulas + cláusula X garantia + adaptação à legislação catarinense + ISS Blumenau + endereçamento dos gaps identificados na seção 06</td><td>R$ 1.500 — 3.000</td></tr>
+    <tr><td><strong>02</strong></td><td><strong>Produção dos 4 anexos integrantes</strong> — DPA + Documento Transparência Atribuição + Especificação Plano + Parecer Enquadramento ANPD</td><td>R$ 800 — 1.500</td></tr>
+    <tr><td><strong>03</strong></td><td><strong>Revisão dos 7 templates LGPD</strong> — Políticas (cliente + institucional), Termos, Cookies, LIA, ROPA, Documento Transparência</td><td>R$ 600 — 1.200</td></tr>
+    <tr><td><strong>04</strong></td><td><strong>Parecer breve enquadramento</strong> Pequeno Agente ANPD (Res. 2/2022)</td><td>R$ 300 — 500</td></tr>
+    <tr><td colspan="2"><strong>Total estimado</strong></td><td><strong class="limon">R$ 3.200 — 6.200</strong></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p style="margin-top: 16px; font-size: 13px; color: var(--bb-mid-2); font-style: italic;">Valores informados como referência de mercado para o escopo descrito. Valor final a ser ajustado conforme avaliação profissional após análise integral deste pacote.</p>
+</section>
+
+<!-- 03. PARECER PATRICIA PECK -->
+<section id="parecer">
+  <div class="section-marker">03 · Background técnico</div>
+  <h2>Parecer prévio — <span class="accent">Drª Patricia Peck</span></h2>
+  <p>Consultoria preliminar realizada em <strong>12 de maio de 2026</strong> com a Drª Patricia Peck (Patricia Peck Advogados — Direito Digital).</p>
+
+  <div class="callout">
+    <div class="callout-title">▸ Citação textual</div>
+    <p style="margin-bottom: 0; font-style: italic;">"A oferta é boa, o preço é coerente, a garantia é vendável. Mas o texto atual tem três falhas que, do meu lado da mesa, eu derrubaria em 15 minutos no juizado. Reescreva a garantia com critério técnico em vez de 'cliente'; troque 'vende' por 'recebe pedidos'; e antes do prospect #1, monte o kit jurídico."</p>
+  </div>
+
+  <h3>3 correções show-stopper aplicadas</h3>
+  <ol>
+    <li><strong>"VENDE" → "RECEBE PEDIDOS"</strong> — eliminar promessa de transação econômica completa (red flag art. 37 CDC)</li>
+    <li><strong>"0 CLIENTE NOVO" → "0 EVENTOS DE INTERESSE ATRIBUÍDOS"</strong> — substituir conceito jurídico-comercial por métrica técnica auditável (red flag art. 47 CDC)</li>
+    <li><strong>Cláusula completa X.1 a X.9 CDC-compliant</strong> — reproduzida integralmente na seção 04</li>
+  </ol>
+
+  <h3>Exposição financeira após correções</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Cenário</th><th>SEM ajustes</th><th>COM ajustes</th><th>Custo estimado</th></tr></thead>
+    <tbody>
+    <tr><td>Reclamação formal PROCON</td><td>15-25%</td><td><strong>5-10%</strong></td><td>R$ 2.000 — 8.000</td></tr>
+    <tr><td>Ação individual JEC</td><td>5-10%</td><td><strong>1-3%</strong></td><td>R$ 5.000 — 15.000</td></tr>
+    <tr><td>Ação coletiva (PROCON/MP)</td><td>Improvável até 50+ clientes</td><td>Idem</td><td>Variável</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- 04. CLÁUSULA GARANTIA -->
+<section id="garantia">
+  <div class="section-marker">04 · Para inserir no contrato</div>
+  <h2>Cláusula de <span class="accent">garantia</span> (pronta)</h2>
+  <p>Cláusula já redigida conceitualmente em consonância com CDC (arts. 26, 30, 37, 47 e 51). Sujeita à revisão profissional para adaptação à jurisprudência catarinense.</p>
+
+  <div class="clause-box">
+    <div class="clause-header">▸ Cláusula X — Garantia Comercial</div>
+    <h4>CLÁUSULA [X] — GARANTIA COMERCIAL "PERFORMANCE LOCAL BLUMENAU"</h4>
+
+    <div class="sub-clause"><span class="sub-clause-id">X.1.</span>A Contratada oferece, em adição à garantia legal prevista no art. 26, II, do CDC, garantia comercial complementar denominada "Performance Local Blumenau".</div>
+
+    <div class="sub-clause"><span class="sub-clause-id">X.2.</span><strong>Período de mensuração:</strong> 60 (sessenta) dias corridos, contados a partir da data de publicação do site (go-live) confirmada por mensagem eletrônica.</div>
+
+    <div class="sub-clause"><span class="sub-clause-id">X.3.</span><strong>Métricas objetivas auditadas:</strong> considera-se "evento de interesse comercial atribuído" o registro técnico, no painel de analytics fornecido pela Contratada, de qualquer dos seguintes:
+      <ul style="margin-top: 12px;">
+        <li>(a) clique único, originado de visitante único, no botão "Falar pelo WhatsApp" do site;</li>
+        <li>(b) clique em "Ligar" no perfil Google Business Profile administrado pela Contratada, com origem identificada na busca local de Blumenau/SC.</li>
+      </ul>
+    </div>
+
+    <div class="sub-clause"><span class="sub-clause-id">X.4.</span><strong>Condição de acionamento:</strong> se, ao término dos 60 dias, o painel registrar <strong class="limon">zero</strong> eventos atribuídos conforme X.3, a Contratante terá direito a:
+      <ul style="margin-top: 12px;">
+        <li>(a) crédito de 3 mensalidades subsequentes do plano Growth (total R$ 741,00);</li>
+        <li>(b) 1 sessão de fotografia sazonal adicional sem custo (valor de mercado R$ 800,00).</li>
+      </ul>
+    </div>
+
+    <div class="sub-clause"><span class="sub-clause-id">X.5.</span><strong>Manutenção dos entregáveis:</strong> o acionamento da garantia não afeta a propriedade da Contratante sobre os entregáveis já entregues.</div>
+
+    <div class="sub-clause"><span class="sub-clause-id">X.6.</span><strong>Condições objetivas de elegibilidade</strong> (cumulativas):
+      <ul style="margin-top: 12px;">
+        <li>(a) manteve o site no ar durante todo o período;</li>
+        <li>(b) não removeu, alterou ou desabilitou o botão WhatsApp, GBP ou scripts de mensuração;</li>
+        <li>(c) manteve <em>o canal WhatsApp recebendo mensagens</em> em horário comercial declarado;</li>
+        <li>(d) não realizou alterações no site fora do escopo sem comunicação prévia;</li>
+        <li>(e) <strong class="limon">manteve-se adimplente com as mensalidades</strong> durante o período <em>[adicionado por sugestão do baseline]</em>.</li>
+      </ul>
+    </div>
+
+    <div class="sub-clause"><span class="sub-clause-id">X.7.</span><strong>Não constituem evento atribuído:</strong> cliques duplicados; cliques originados de IP da Contratante ou Contratada; tráfego identificado como bot; cliques de campanhas pagas não contratadas via este instrumento.</div>
+
+    <div class="sub-clause"><span class="sub-clause-id">X.8.</span><strong>Auditoria e transparência:</strong> acesso de leitura ao painel + relatório mensal em PDF em linguagem comum + capturas de tela das métricas.</div>
+
+    <div class="sub-clause"><span class="sub-clause-id">X.9.</span><strong>Esta garantia não se confunde</strong> com promessa de venda, faturamento ou aumento de clientela.</div>
+
+    <div class="sub-clause"><span class="sub-clause-id">X.10.</span><strong class="limon">As condições do item X.6 deverão ser interpretadas razoavelmente e à luz do art. 47 do CDC</strong> <em>[adicionado por sugestão do baseline]</em>. Falhas técnicas pontuais (queda de internet, indisponibilidade do provedor) não descaracterizam o cumprimento, desde que comunicadas em prazo razoável.</div>
+  </div>
+</section>
+
+<!-- 05. 20 CLÁUSULAS -->
+<section id="clausulas">
+  <div class="section-marker">05 · Estrutura contratual</div>
+  <h2>20 cláusulas <span class="accent">mandatórias</span></h2>
+
+  <ol class="clause-list">
+    <li><strong>Qualificação completa das partes</strong>CNPJ da padaria + CPF/CNPJ do Breno (Site-Prospector ME).</li>
+    <li><strong>Objeto detalhado</strong>5 entregáveis técnicos. <span class="note">⚠ Separar OBJETO (técnico) de GARANTIA COMERCIAL — vacina contra art. 30 e 37 CDC.</span></li>
+    <li><strong>Prazo de execução por entregável + go-live</strong>Cronograma indicativo de 10 dias úteis.</li>
+    <li><strong>Preço, forma e condições de pagamento</strong><span class="note">Disclosures art. 52 CDC + Decreto 7.962/2013 obrigatórios: à vista R$ 3.497; a prazo R$ 3.498 (6×); cada prestação R$ 583; taxa juros 0,00% a.m.</span></li>
+    <li><strong>Garantia Performance Local Blumenau</strong>Cláusula X reescrita na seção 04. Inserir integralmente.</li>
+    <li><strong>Garantia legal art. 26 CDC preservada</strong><span class="note">"Esta garantia comercial é adicional à garantia legal de 90 dias prevista no art. 26, II, do CDC, não a substituindo nem reduzindo."</span></li>
+    <li><strong>Licenciamento dos entregáveis</strong>Licença perpétua, irrevogável e gratuita à Contratante após pagamento integral. Reserva de direitos morais sobre código + uso em portfólio à Contratada.</li>
+    <li><strong>Cessão de domínio e contas</strong>Domínio em nome da Contratante; GBP propriedade da Contratante; contas Google/Meta da Contratante. <span class="note">⚠ Cláusula "anti-sequestro": entrega credenciais em 15 dias após rescisão.</span></li>
+    <li><strong>Tratamento de dados (LGPD)</strong>Cláusula remetendo a DPA (Anexo I).</li>
+    <li><strong>Confidencialidade mútua</strong>5 anos pós-término.</li>
+    <li class="exclude"><strong>Não-compete por bairro</strong>NÃO USAR na v1 (Patricia: adiciona complexidade, dificulta venda).</li>
+    <li><strong>Suspensão por inadimplência</strong>Notificação por escrito + 30 dias para purgar mora (CDC art. 52).</li>
+    <li><strong>Rescisão</strong>Aviso prévio 30 dias; antecipada por descumprimento com notificação 15 dias.</li>
+    <li><strong>Limitação de responsabilidade</strong>Danos diretos limitados ao valor pago nos 12 meses anteriores; exclusão danos indiretos e lucros cessantes. <strong>NÃO</strong> limitação absoluta (nula art. 51 CDC). <span class="note">⚠ Listar exclusões: pagamento, confidencialidade, LGPD, fato exclusivo consumidor/terceiros.</span></li>
+    <li><strong>Manutenção e SLA</strong>Disponibilidade do site (99,0% mensal sugerido) + prazo de resposta a chamados.</li>
+    <li><strong>Sub-contratação</strong>Breno pode subcontratar (Vercel, fotógrafo) mantendo responsabilidade.</li>
+    <li><strong>Foro de eleição</strong>Comarca de Blumenau/SC, <strong>com ressalva</strong>: consumidor pode optar foro próprio domicílio (CDC art. 51, XV; CPC art. 63, §3º).</li>
+    <li><strong>Lei aplicável</strong>Legislação brasileira.</li>
+    <li><strong>Resolução de conflitos</strong>Conciliação amigável 30d → mediação opcional CEJUSC. <strong>Arbitragem NÃO recomendada</strong> (art. 51, VII CDC).</li>
+    <li><strong>Assinatura eletrônica</strong>DocuSign / ZapSign / Clicksign / gov.br assinatura digital, com timestamp e trilha auditável (MP 2.200-2/2001 + Lei 14.063/2020).</li>
+  </ol>
+</section>
+
+<!-- 06. AUDITORIA -->
+<section id="auditoria">
+  <div class="section-marker">06 · Auditoria preliminar</div>
+  <h2>Auditoria do <span class="accent">baseline</span> Claude IA</h2>
+  <p>Um draft de contrato (denominado "Baseline Claude") foi produzido como referência interna por sistema de IA. <strong class="limon">Não constitui parecer profissional</strong>. Esta seção identifica pontos fortes, atenção e gaps que precisam ser endereçados na redação final.</p>
+
+  <h3>✅ Pontos fortes do baseline (10)</h3>
+
+  <div class="audit-item strength">
+    <div class="audit-num">01</div>
+    <div>
+      <div class="audit-clause">Cláusula 1.3</div>
+      <div class="audit-title">"Vacina" contra art. 30 e 37 CDC</div>
+      <div class="audit-desc">Declaração explícita de que a Contratada não garante aumento de faturamento, número de clientes, posicionamento específico em buscadores ou crescimento de receita.</div>
+    </div>
+  </div>
+
+  <div class="audit-item strength">
+    <div class="audit-num">02</div>
+    <div>
+      <div class="audit-clause">Cláusula 4ª</div>
+      <div class="audit-title">Garantia legal 90d art. 26 CDC preservada</div>
+      <div class="audit-desc">Redação explícita afastando interpretação de que a garantia comercial substitui a garantia legal.</div>
+    </div>
+  </div>
+
+  <div class="audit-item strength">
+    <div class="audit-num">03</div>
+    <div>
+      <div class="audit-clause">Cláusula 5ª (X)</div>
+      <div class="audit-title">Cláusula X com melhorias sobre briefing original</div>
+      <div class="audit-desc">Sub-cláusulas X.1-X.9 do briefing + 2 inclusões inteligentes: <strong>5.6(e) adimplência</strong> (briefing omitia) + <strong>5.10 art. 47 CDC razoabilidade</strong>.</div>
+    </div>
+  </div>
+
+  <div class="audit-item strength">
+    <div class="audit-num">04</div>
+    <div>
+      <div class="audit-clause">Cláusula 6.3</div>
+      <div class="audit-title">Retirada de portfólio a pedido em 30 dias</div>
+      <div class="audit-desc">Boa-fé objetiva (art. 422 CC). Cliente pode pedir retirada da exposição em portfólio mediante comunicação escrita.</div>
+    </div>
+  </div>
+
+  <div class="audit-item strength">
+    <div class="audit-num">05</div>
+    <div>
+      <div class="audit-clause">Cláusula 7.3</div>
+      <div class="audit-title">Cláusula anti-sequestro</div>
+      <div class="audit-desc">Entrega de credenciais em 15 dias corridos após rescisão "sem cobrança adicional". Excelente proteção do cliente contra prática comum no mercado.</div>
+    </div>
+  </div>
+
+  <div class="audit-item strength">
+    <div class="audit-num">06</div>
+    <div>
+      <div class="audit-clause">Cláusula 8.5</div>
+      <div class="audit-title">Notificação interna de incidente LGPD em 48h</div>
+      <div class="audit-desc">Mais rigoroso que o "prazo razoável" do art. 48 LGPD (ANPD ainda não regulamentou prazo específico).</div>
+    </div>
+  </div>
+
+  <div class="audit-item strength">
+    <div class="audit-num">07</div>
+    <div>
+      <div class="audit-clause">Cláusula 13.3</div>
+      <div class="audit-title">Exclusões da limitação de responsabilidade</div>
+      <div class="audit-desc">Lista explícita: obrigações pagamento, confidencialidade, LGPD, fato exclusivo consumidor/terceiros. Fortalece argumento de razoabilidade vs nulidade art. 51 CDC.</div>
+    </div>
+  </div>
+
+  <div class="audit-item strength">
+    <div class="audit-num">08</div>
+    <div>
+      <div class="audit-clause">Cláusula 16.2</div>
+      <div class="audit-title">Ressalva consumerista no foro</div>
+      <div class="audit-desc">Direito da Contratante de optar pelo foro do seu domicílio (art. 101, I CDC + art. 63, §3º CPC).</div>
+    </div>
+  </div>
+
+  <div class="audit-item strength">
+    <div class="audit-num">09</div>
+    <div>
+      <div class="audit-clause">Cláusula 18.2</div>
+      <div class="audit-title">Arbitragem rejeitada explicitamente</div>
+      <div class="audit-desc">Vedação do art. 51, VII CDC para relação consumerista.</div>
+    </div>
+  </div>
+
+  <div class="audit-item strength">
+    <div class="audit-num">10</div>
+    <div>
+      <div class="audit-clause">Cláusula 15ª</div>
+      <div class="audit-title">Não-compete excluída com explicação</div>
+      <div class="audit-desc">Evita interpretação "por que pularam cláusula 15?" — declara expressamente a opção de não incluir não-compete na v1.</div>
+    </div>
+  </div>
+
+  <h3>🟡 Pontos de atenção (6)</h3>
+
+  <div class="audit-item attention">
+    <div class="audit-num">A1</div>
+    <div>
+      <div class="audit-clause">Cláusula 5.6(c)</div>
+      <div class="audit-title">"Responder WhatsApp em horário comercial" — risco de onerosidade excessiva</div>
+      <div class="audit-desc">Para microempresa solo (padaria sem funcionário dedicado), exigência de "responder" pode ser excessivamente onerosa (art. 51 CDC).</div>
+      <div class="audit-suggestion"><strong>Sugestão:</strong> redação mais branda — <em>"manter o canal WhatsApp recebendo mensagens"</em> (foco técnico, não comportamento humano).</div>
+    </div>
+  </div>
+
+  <div class="audit-item attention">
+    <div class="audit-num">A2</div>
+    <div>
+      <div class="audit-clause">Cláusula 6.2(c)</div>
+      <div class="audit-title">Frameworks proprietários com licença "exclusivamente aos Entregáveis"</div>
+      <div class="audit-desc">Pode engessar portabilidade se cliente quiser mudar de agência.</div>
+      <div class="audit-suggestion"><strong>Sugestão:</strong> clarificar — cliente pode continuar usando o site (incluindo bibliotecas reutilizadas) em qualquer hospedagem mesmo após rescisão?</div>
+    </div>
+  </div>
+
+  <div class="audit-item attention">
+    <div class="audit-num">A3</div>
+    <div>
+      <div class="audit-clause">Cláusula 7.3</div>
+      <div class="audit-title">Entrega de credenciais em 15d "sem cobrança adicional"</div>
+      <div class="audit-desc">E se Contratante estiver inadimplente? Transfere credenciais mesmo assim?</div>
+      <div class="audit-suggestion"><strong>Sugestão:</strong> adicionar condição — <em>"após regularização de mensalidades vencidas"</em> OU manter incondicional (avaliar trade-off).</div>
+    </div>
+  </div>
+
+  <div class="audit-item attention">
+    <div class="audit-num">A4</div>
+    <div>
+      <div class="audit-clause">Cláusula 11.1</div>
+      <div class="audit-title">Prazo de 30 dias para purgação de mora</div>
+      <div class="audit-desc">Defensável pelo art. 52 CDC mas pode variar conforme jurisprudência TJ-SC.</div>
+      <div class="audit-suggestion"><strong>Pedido ao advogado:</strong> confirmar prazo aplicável na jurisprudência catarinense (referência: TJ-SC, classe "Prestação de Serviço Digital").</div>
+    </div>
+  </div>
+
+  <div class="audit-item attention">
+    <div class="audit-num">A5</div>
+    <div>
+      <div class="audit-clause">Cláusula 14.1</div>
+      <div class="audit-title">SLA 99,0% sem SLA credit</div>
+      <div class="audit-desc">Sem penalidade por descumprimento, o SLA vira "best effort" sem consequência prática.</div>
+      <div class="audit-suggestion"><strong>Sugestão:</strong> adicionar mecanismo — <em>"cada 1% abaixo de 99% no mês = X% de crédito na próxima mensalidade, limitado ao valor da mensalidade"</em>.</div>
+    </div>
+  </div>
+
+  <div class="audit-item attention">
+    <div class="audit-num">A6</div>
+    <div>
+      <div class="audit-clause">Cláusula 19.2</div>
+      <div class="audit-title">Plataformas de assinatura eletrônica</div>
+      <div class="audit-desc">Lista DocuSign, ZapSign, Clicksign — falta <em>gov.br assinatura digital</em> (gratuita).</div>
+      <div class="audit-suggestion"><strong>Sugestão:</strong> incluir gov.br como opção, especialmente para clientes que já têm conta gov.br nível Prata ou Ouro.</div>
+    </div>
+  </div>
+
+  <h3>🔴 Gaps críticos a endereçar (7)</h3>
+
+  <div class="audit-item gap">
+    <div class="audit-num">G1</div>
+    <div>
+      <div class="audit-title">Cláusula sobre uso de IA generativa</div>
+      <div class="audit-desc">Patricia Peck flagou. Área cinzenta no direito brasileiro. Cliente pode contestar autoria de copy/imagens produzidos com IA.</div>
+      <div class="audit-suggestion"><strong>Necessário:</strong> declarar uso de IA, garantir revisão humana antes de entrega, registrar autoria da Contratada.</div>
+    </div>
+  </div>
+
+  <div class="audit-item gap">
+    <div class="audit-num">G2</div>
+    <div>
+      <div class="audit-title">Cessão de direitos autorais do fotógrafo</div>
+      <div class="audit-desc">Se fotos são produzidas por subcontratado, falta cláusula tripartite cedendo patrimoniais à Contratante (Lei 9.610/98 art. 49).</div>
+      <div class="audit-suggestion"><strong>Necessário:</strong> contrato com fotógrafo cedendo patrimoniais ao Site-Prospector OU diretamente à padaria-cliente. Reservar morais ao fotógrafo.</div>
+    </div>
+  </div>
+
+  <div class="audit-item gap">
+    <div class="audit-num">G3</div>
+    <div>
+      <div class="audit-title">Liberação de imagem de pessoas</div>
+      <div class="audit-desc">Se aparecerem funcionários ou clientes nas fotos, falta autorização nos termos do art. 20 CC.</div>
+      <div class="audit-suggestion"><strong>Necessário:</strong> template de autorização de uso de imagem assinada por cada pessoa identificável nas fotos.</div>
+    </div>
+  </div>
+
+  <div class="audit-item gap">
+    <div class="audit-num">G4</div>
+    <div>
+      <div class="audit-title">ISS Blumenau — retenção na fonte</div>
+      <div class="audit-desc">Não há cláusula sobre quem retém ISS. Contratante pode reter na fonte conforme legislação municipal.</div>
+      <div class="audit-suggestion"><strong>Necessário:</strong> clarificar se a Contratada é responsável pelo recolhimento integral ou se a Contratante retém na fonte. ISS Blumenau para serviços de TI: 2% a 5% conforme classificação.</div>
+    </div>
+  </div>
+
+  <div class="audit-item gap">
+    <div class="audit-num">G5</div>
+    <div>
+      <div class="audit-title">Emissão de NFS-e</div>
+      <div class="audit-desc">Não há cláusula sobre prazo e formato de emissão de Nota Fiscal de Serviço Eletrônica.</div>
+      <div class="audit-suggestion"><strong>Necessário:</strong> obrigação de emissão de NFS-e em X dias após o pagamento, com discriminação adequada do serviço.</div>
+    </div>
+  </div>
+
+  <div class="audit-item gap">
+    <div class="audit-num">G6</div>
+    <div>
+      <div class="audit-title">Rescisão antecipada após pagamento upfront</div>
+      <div class="audit-desc">Se cliente paga R$ 3.497 e rescinde em 60 dias por motivo próprio, <strong>há reembolso pro-rata?</strong> O baseline não responde isso claramente.</div>
+      <div class="audit-suggestion"><strong>Necessário:</strong> regra explícita — reembolso pro-rata sobre serviços não prestados? Retenção integral pelos entregáveis já feitos? Penalidade percentual?</div>
+    </div>
+  </div>
+
+  <div class="audit-item gap">
+    <div class="audit-num">G7</div>
+    <div>
+      <div class="audit-title">Política de Privacidade e Termos de Uso do site cliente</div>
+      <div class="audit-desc">Produzidos pela Contratada, usados pela Contratante. Como ficam contratualmente? Anexo? Licença? Propriedade?</div>
+      <div class="audit-suggestion"><strong>Necessário:</strong> clarificar — templates produzidos pela Contratada são entregáveis com licença ao cliente OU passam à titularidade dele?</div>
+    </div>
+  </div>
+</section>
+
+<!-- 07. ANEXOS -->
+<section id="anexos">
+  <div class="section-marker">07 · A produzir</div>
+  <h2>4 anexos <span class="accent">integrantes</span></h2>
+  <p>O contrato faz referência a 4 anexos como parte integrante. Esses anexos precisam ser produzidos antes da assinatura.</p>
+
+  <div class="anexo-block">
+    <div class="anexo-id">Anexo I</div>
+    <div class="anexo-title">Acordo de Processamento de Dados (DPA)</div>
+    <div class="anexo-desc">Detalha as obrigações específicas de cada papel (controlador/operador), medidas técnicas e administrativas de segurança, prazos de retenção, transferência internacional de dados, procedimentos de comunicação de incidentes, atendimento a titulares e demais requisitos do art. 39 LGPD.</div>
+    <span class="anexo-status pending">▸ A produzir</span>
+  </div>
+
+  <div class="anexo-block">
+    <div class="anexo-id">Anexo II</div>
+    <div class="anexo-title">Documento de Transparência de Atribuição</div>
+    <div class="anexo-desc">Documento de 1 página assinado presencialmente pelo cliente <strong>antes</strong> da assinatura do contrato. Elimina disputa "vocês prometeram cliente novo, eu tive cliques mas não venda". Define o que a garantia mede (clicks WhatsApp + GBP) e o que NÃO mede (vendas, boca a boca, Instagram, indicação).</div>
+    <span class="anexo-status draft">▸ Rascunho existe</span>
+  </div>
+
+  <div class="anexo-block">
+    <div class="anexo-id">Anexo III</div>
+    <div class="anexo-title">Especificação Técnica do Plano Contratado</div>
+    <div class="anexo-desc">Detalha o que cada plano (Essential R$ 149 / Growth R$ 247 / Scale R$ 397) inclui em termos de manutenção mensal, número de edições, posts no Instagram, suporte, relatórios.</div>
+    <span class="anexo-status pending">▸ A produzir</span>
+  </div>
+
+  <div class="anexo-block">
+    <div class="anexo-id">Anexo IV</div>
+    <div class="anexo-title">Parecer de Enquadramento Pequeno Agente ANPD</div>
+    <div class="anexo-desc">Parecer breve confirmando o enquadramento das Partes como Pequenos Agentes de Tratamento de Dados Pessoais conforme Resolução CD/ANPD nº 2/2022, com indicação dos requisitos cumpridos (canal LGPD ativo) e dispensa de DPO formal.</div>
+    <span class="anexo-status pending">▸ A produzir</span>
+  </div>
+</section>
+
+<!-- 08. LGPD FRAMEWORK -->
+<section id="lgpd">
+  <div class="section-marker">08 · Compliance</div>
+  <h2>Framework <span class="accent">LGPD</span></h2>
+
+  <h3>Papéis controlador/operador por fluxo</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Fluxo</th><th>Controlador</th><th>Operador</th></tr></thead>
+    <tbody>
+    <tr><td>Outreach a padarias (dados padaria/dono)</td><td><strong>Breno (Site-Prospector)</strong></td><td>—</td></tr>
+    <tr><td>Tracking de cliques WhatsApp/GBP no site cliente</td><td><strong>Padaria</strong></td><td>Breno</td></tr>
+    <tr><td>Formulário de contato no site cliente</td><td><strong>Padaria</strong></td><td>Breno</td></tr>
+    <tr><td>Integração WhatsApp Business</td><td>Padaria</td><td>Breno + Meta</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout warning">
+    <div class="callout-title">⚠ Regra crítica</div>
+    <p style="margin-bottom: 0;"><strong>NÃO consolidar dados de clientes finais entre padarias na v1.</strong> Cada cliente da padaria fica isolado na infraestrutura dela. Economiza ~80% da complexidade LGPD.</p>
+  </div>
+
+  <h3>Bases legais por fluxo</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Fluxo</th><th>Base legal LGPD</th></tr></thead>
+    <tbody>
+    <tr><td>Outreach B2B com dados públicos</td><td>Legítimo interesse (art. 7º, IX) + LIA arquivado</td></tr>
+    <tr><td>Tracking site cliente (cliques, analytics)</td><td>Execução de contrato (art. 7º, V) + Legítimo interesse (art. 7º, IX)</td></tr>
+    <tr><td>Cookies não-essenciais (GA4, Meta Pixel)</td><td><strong>Consentimento granular (art. 7º, I)</strong> via banner</td></tr>
+    <tr><td>Formulário de contato</td><td>Execução contrato OU consentimento conforme finalidade</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Enquadramento Pequeno Agente</h3>
+  <p>Padaria e Site-Prospector enquadram-se como <strong>Pequeno Agente de Tratamento</strong> (Resolução CD/ANPD nº 2/2022). <strong class="limon">DPO formal não é obrigatório</strong>, desde que:</p>
+  <ul>
+    <li>Padaria mantenha canal de comunicação com titular (email simples)</li>
+    <li>Site-Prospector mantenha canal público: <code>privacidade@[dominio]</code></li>
+  </ul>
+
+  <h3>Transferência internacional</h3>
+  <p>LGPD art. 33. Provedores Vercel/Google/Meta nos EUA, sem decisão de adequação ANPD. Base válida: <strong>cláusulas-padrão dos DPAs</strong> dos provedores, aceitos e arquivados em PDF com data.</p>
+</section>
+
+<!-- 09. DISCLAIMERS -->
+<section id="disclaimers">
+  <div class="section-marker">09 · Materiais comerciais</div>
+  <h2>Disclaimers <span class="accent">obrigatórios</span></h2>
+  <p>Textos obrigatórios em proposta comercial, landing page e materiais publicitários.</p>
+
+  <div class="callout">
+    <div class="callout-title">▸ 1. Sobre resultado</div>
+    <p style="margin-bottom: 0;">"Os resultados de marketing digital dependem de múltiplos fatores fora do controle da agência, incluindo qualidade do produto, atendimento, sazonalidade e concorrência. A Garantia Performance Local Blumenau cobre exclusivamente os critérios técnicos descritos no contrato (cláusula X) e não é promessa de aumento de faturamento."</p>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">▸ 2. Sobre Google/Meta</div>
+    <p style="margin-bottom: 0;">"Site-Prospector não tem vínculo de exclusividade, parceria ou representação com Google LLC ou Meta Platforms Inc. As plataformas mantêm autonomia sobre indexação, ranking e exibição. Não garantimos posição específica nas buscas."</p>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">▸ 3. Sobre preço</div>
+    <p style="margin-bottom: 0;">"Preço à vista R$ 3.497,00. À prazo em 6× de R$ 583,00 no cartão de crédito (sem juros), total a prazo R$ 3.498,00. Mensalidade recorrente Growth: R$ 247,00."</p>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">▸ 4. Sobre dados</div>
+    <p style="margin-bottom: 0;">"Coletamos e tratamos dados pessoais nos termos da Lei 13.709/2018 (LGPD). Consulte nossa Política de Privacidade em [URL]. Em caso de dúvida sobre tratamento de dados, contate <code>privacidade@[dominio]</code>."</p>
+  </div>
+
+  <div class="callout warning">
+    <div class="callout-title">⚠ 5. Sobre comparação "agência tradicional"</div>
+    <p><strong>EVITAR:</strong> "Agência tradicional cobraria R$ 7.500-9.000"</p>
+    <p style="margin-bottom: 0;"><strong>USAR:</strong> "Pacote equivalente em modelos tradicionais de agência costuma envolver investimento substancialmente superior, segundo levantamentos públicos de mercado (SEBRAE/ABRADi)"</p>
+  </div>
+</section>
+
+<!-- 10. PERGUNTAS-CHAVE -->
+<section id="perguntas">
+  <div class="section-marker">10 · Validação profissional</div>
+  <h2>Perguntas-chave <span class="accent">para o(a) advogado(a)</span></h2>
+
+  <ol class="q-list">
+    <li><strong>Súmula 297/STJ aplicada a esta relação?</strong> O baseline assume aplicação do CDC mesmo sendo Contratante PJ (microempresa de padaria como consumidora-equiparada). Validar tese para Blumenau especificamente.</li>
+    <li><strong>Jurisprudência TJ-SC sobre limitação de responsabilidade</strong> em prestação de serviço digital. Confirmar se "12 meses pagos" como teto é aceito como razoável vs alegação de nulidade art. 51 CDC.</li>
+    <li><strong>Defesa do enquadramento microempresa como consumidora-equiparada</strong> caso o cliente final discuta. Cuáles precedentes catarinenses?</li>
+    <li><strong>Jurisprudência sobre garantia comercial não-cash com critério técnico-objetivo</strong> — há precedentes que validem? Há risco de PROCON entender como "esquiva de garantia legal"?</li>
+    <li><strong>Avaliação do prazo de 48h</strong> para notificação interna de incidente LGPD entre as Partes — adequado ou pode ser visto como onerosidade excessiva?</li>
+    <li><strong>Avaliação do prazo de 30 dias</strong> para purgação de mora vs jurisprudência TJ-SC.</li>
+    <li><strong>Cláusula 7.3 (entrega credenciais em 15d)</strong> — incondicional ou condicionada à regularização de mora?</li>
+    <li><strong>ISS Blumenau</strong> — alíquota aplicável e regra de retenção na fonte.</li>
+    <li><strong>Cláusula sobre uso de IA generativa</strong> — qual redação recomendada na jurisprudência atual?</li>
+    <li><strong>Cessão tripartite fotógrafo → Site-Prospector → padaria-cliente</strong> — qual estrutura recomendada (art. 49 Lei 9.610/98)?</li>
+  </ol>
+</section>
+
+<!-- 11. CHECKLIST -->
+<section id="checklist">
+  <div class="section-marker">11 · Entregáveis esperados</div>
+  <h2>Checklist <span class="accent">final</span></h2>
+
+  <div class="checklist">
+    <div class="checklist-item"><span class="checklist-box"></span><div><strong>Contrato v1.0</strong> com 20 cláusulas + cláusula X + endereçamento dos 7 gaps + 6 pontos de atenção, em arquivo editável e PDF</div></div>
+    <div class="checklist-item"><span class="checklist-box"></span><div><strong>Anexo I — DPA</strong> entre Site-Prospector e cliente final</div></div>
+    <div class="checklist-item"><span class="checklist-box"></span><div><strong>Anexo II — Documento de Transparência de Atribuição</strong> revisado/validado</div></div>
+    <div class="checklist-item"><span class="checklist-box"></span><div><strong>Anexo III — Especificação Técnica do Plano</strong> (3 versões: Essential / Growth / Scale)</div></div>
+    <div class="checklist-item"><span class="checklist-box"></span><div><strong>Anexo IV — Parecer Enquadramento Pequeno Agente ANPD</strong></div></div>
+    <div class="checklist-item"><span class="checklist-box"></span><div><strong>Política de Privacidade — Site Cliente</strong> revisada (template)</div></div>
+    <div class="checklist-item"><span class="checklist-box"></span><div><strong>Termos de Uso — Site Cliente</strong> revisado (template)</div></div>
+    <div class="checklist-item"><span class="checklist-box"></span><div><strong>Política de Cookies + Banner Consent</strong> revisado</div></div>
+    <div class="checklist-item"><span class="checklist-box"></span><div><strong>Política de Privacidade — Site Institucional Site-Prospector</strong> revisada</div></div>
+    <div class="checklist-item"><span class="checklist-box"></span><div><strong>LIA — Legitimate Interest Assessment</strong> revisado e arquivado</div></div>
+    <div class="checklist-item"><span class="checklist-box"></span><div><strong>ROPA simplificado</strong> aderente ao modelo ANPD</div></div>
+    <div class="checklist-item"><span class="checklist-box"></span><div><strong>Modelo de Autorização de Uso de Imagem</strong> (para pessoas que aparecem nas fotos)</div></div>
+    <div class="checklist-item"><span class="checklist-box"></span><div><strong>Modelo de Cessão Tripartite</strong> (fotógrafo → Site-Prospector → cliente)</div></div>
+    <div class="checklist-item"><span class="checklist-box"></span><div><strong>Respostas escritas</strong> às 10 perguntas-chave da seção 10</div></div>
+    <div class="checklist-item"><span class="checklist-box"></span><div><strong>Versionamento e changelog</strong> dos documentos entregues (data, autor, mudanças)</div></div>
+  </div>
+</section>
+
+<!-- 12. CRONOGRAMA -->
+<section id="cronograma">
+  <div class="section-marker">12 · Cronograma + pricing</div>
+  <h2>Linha do <span class="accent">tempo</span></h2>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-date">▸ 15 — 20 Mai 2026 (Sem 1)</div>
+      <div class="timeline-title">Apresentação + cotação</div>
+      <div class="timeline-desc">Envio deste pacote, alinhamento de escopo, negociação de honorários.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">▸ 20 — 28 Mai 2026 (Sem 2)</div>
+      <div class="timeline-title">Redação do contrato + 4 anexos</div>
+      <div class="timeline-desc">Trabalho profissional sobre o material. Comunicação por email + 1 a 2 sessões de alinhamento.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">▸ 28 Mai — 02 Jun 2026 (Sem 3)</div>
+      <div class="timeline-title">Revisão final + ajustes</div>
+      <div class="timeline-desc">Devolução do material, revisão pelo cliente, ajustes finais.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">▸ 02 Jun 2026 — entrega</div>
+      <div class="timeline-title">Documentação pronta para uso</div>
+      <div class="timeline-desc">Contrato + 4 anexos + 7 templates + parecer → cliente pode iniciar Stage 1 paid em 03/Jun.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">▸ 09 Jun 2026 — GATE</div>
+      <div class="timeline-title">Hard review do piloto</div>
+      <div class="timeline-desc">Critério pré-registrado: sem documentação jurídica, piloto é descontinuado.</div>
+    </div>
+  </div>
+
+  <div class="callout warning">
+    <div class="callout-title">⚠ Modalidade preferida</div>
+    <p style="margin-bottom: 0;">Honorários fixos por escopo definido, com 50% no início e 50% na entrega. Documentação por email + 1 a 2 reuniões presenciais (ou videoconferência). Comunicação via WhatsApp para pontos rápidos é aceitável.</p>
+  </div>
+
+  <h3>Pré-requisitos do profissional</h3>
+  <ul>
+    <li><strong>Obrigatório:</strong> OAB-SC ativa</li>
+    <li><strong>Obrigatório:</strong> Especialização Direito Digital + LGPD + CDC</li>
+    <li><strong>Recomendado:</strong> Experiência SaaS / prestação de serviços recorrentes</li>
+    <li><strong>Recomendado:</strong> Atuação prévia com microempresa de tecnologia</li>
+    <li><strong>Bônus:</strong> Conhecimento ISS Blumenau</li>
+    <li><strong>Bônus:</strong> Network com PROCON Blumenau</li>
+  </ul>
+</section>
+
+<footer>
+  <span class="footer-mark">§§</span>
+  Pacote Consolidado v1.0 — Site-Prospector<br>
+  Briefing técnico-jurídico + Auditoria baseline + Gaps + Anexos<br>
+  Consultoria prévia: Drª Patricia Peck · 12 de maio de 2026<br>
+  Documento sintetizado em 15 de maio de 2026
+</footer>
+
+</div>
+</body>
+</html>

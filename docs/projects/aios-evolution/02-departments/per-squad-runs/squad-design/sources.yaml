@@ -1,0 +1,37 @@
+# Auto-generated for squad-design
+sources:
+  rss:
+    - name: "UX Collective"
+      url: "https://uxdesign.cc/feed"
+      frequency: "daily"
+      domains: ["design-systems"]
+      authority: 5
+      max_items: 30
+
+    - name: "A List Apart"
+      url: "https://alistapart.com/main/feed/"
+      frequency: "daily"
+      domains: ["design-systems"]
+      authority: 5
+      max_items: 30
+
+    - name: "Brad Frost"
+      url: "https://bradfrost.com/blog/feed/"
+      frequency: "daily"
+      domains: ["design-systems"]
+      authority: 5
+      max_items: 30
+
+    - name: "Sara Soueidan Blog"
+      url: "https://www.sarasoueidan.com/feed.xml"
+      frequency: "daily"
+      domains: ["design-systems"]
+      authority: 5
+      max_items: 30
+
+    - name: "Refactoring UI"
+      url: "https://www.refactoringui.com/feed.xml"
+      frequency: "daily"
+      domains: ["design-systems"]
+      authority: 5
+      max_items: 30

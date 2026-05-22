@@ -1,0 +1,73 @@
+{
+  "durations": [
+    {
+      "value": "4s",
+      "count": 10
+    },
+    {
+      "value": "300ms",
+      "count": 8
+    },
+    {
+      "value": "6s",
+      "count": 5
+    },
+    {
+      "value": "8s",
+      "count": 5
+    },
+    {
+      "value": "400ms",
+      "count": 4
+    },
+    {
+      "value": "3s",
+      "count": 3
+    },
+    {
+      "value": "7s",
+      "count": 2
+    },
+    {
+      "value": "1.2s",
+      "count": 2
+    },
+    {
+      "value": "1.1s",
+      "count": 2
+    },
+    {
+      "value": "350ms",
+      "count": 2
+    }
+  ],
+  "easings": [
+    {
+      "value": "cubic-bezier(.16,1,.3,1)",
+      "count": 15
+    },
+    {
+      "value": "cubic-bezier(0.16,1,0.3,1)",
+      "count": 8
+    },
+    {
+      "value": "cubic-bezier(.25,.46,.45,.94)",
+      "count": 4
+    },
+    {
+      "value": "cubic-bezier(.4,0,.2,1)",
+      "count": 1
+    },
+    {
+      "value": "cubic-bezier(.33,1,.68,1)",
+      "count": 1
+    }
+  ],
+  "keyframes": [
+    "heroFadeUp",
+    "scrollPulse",
+    "rotate-slow",
+    "whatsapp-pulse",
+    "spin"
+  ]
+}

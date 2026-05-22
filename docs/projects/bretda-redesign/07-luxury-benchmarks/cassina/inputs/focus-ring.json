@@ -1,0 +1,6 @@
+{
+  "detected": true,
+  "outline": "1px solid var(--cassina-global-color-red-cassina)",
+  "outline_offset": "2px",
+  "box_shadow": "0 0 0 2px rgb(var(--cassina-teal-light)),0 0 .5rem 2px rgba(var(--cassina-teal),.2)"
+}

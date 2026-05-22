@@ -53,7 +53,8 @@ function loadRoutingConfig(configDir) {
  * @returns {Array}
  */
 function loadMindCloneIndex(indexPath) {
-  const defaultPath = indexPath || path.resolve(__dirname, '../../../.aios-core/data/jarvis-mind-clone-index.json');
+  // Path: src/distribution/ → up 4 to D:/AIOS → .aios-core/data/...
+  const defaultPath = indexPath || path.resolve(__dirname, '../../../../.aios-core/data/jarvis-mind-clone-index.json');
   if (!fs.existsSync(defaultPath)) {
     return [];
   }
@@ -84,7 +85,8 @@ function loadDomainsConfig(configDir) {
  * @returns {Object}
  */
 function loadMindCloneMap(mapPath) {
-  const defaultPath = mapPath || path.resolve(__dirname, '../../../.aios-core/data/jarvis-mind-clone-map.yaml');
+  // Path: src/distribution/ → up 4 to D:/AIOS → .aios-core/data/...
+  const defaultPath = mapPath || path.resolve(__dirname, '../../../../.aios-core/data/jarvis-mind-clone-map.yaml');
   if (!fs.existsSync(defaultPath)) {
     return {};
   }

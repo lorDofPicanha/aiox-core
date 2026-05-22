@@ -1,0 +1,177 @@
+[
+  {
+    "selector": ":root",
+    "name": "--ai-font-size-base",
+    "value": "var(--font-size-base)",
+    "is_alias": true,
+    "line": 15
+  },
+  {
+    "selector": ":root",
+    "name": "--ai-font-size-s",
+    "value": "var(--font-size-s)",
+    "is_alias": true,
+    "line": 15
+  },
+  {
+    "selector": ":root",
+    "name": "--ai-font-size-xs",
+    "value": "var(--font-size-xs)",
+    "is_alias": true,
+    "line": 15
+  },
+  {
+    "selector": ":root",
+    "name": "--ai-font-size-xxs",
+    "value": "var(--font-size-xxs)",
+    "is_alias": true,
+    "line": 15
+  },
+  {
+    "selector": ":root",
+    "name": "--ai-font-size-h1",
+    "value": "var(--font-size-h1)",
+    "is_alias": true,
+    "line": 15
+  },
+  {
+    "selector": ":root",
+    "name": "--ai-font-size-h2",
+    "value": "var(--font-size-h2)",
+    "is_alias": true,
+    "line": 15
+  },
+  {
+    "selector": ":root",
+    "name": "--ai-font-size-h3",
+    "value": "var(--font-size-h3)",
+    "is_alias": true,
+    "line": 15
+  },
+  {
+    "selector": ":root",
+    "name": "--ai-font-size-h4",
+    "value": "var(--font-size-h4)",
+    "is_alias": true,
+    "line": 15
+  },
+  {
+    "selector": ":root",
+    "name": "--ai-font-size-h5",
+    "value": "var(--font-size-h5)",
+    "is_alias": true,
+    "line": 15
+  },
+  {
+    "selector": ":root",
+    "name": "--ai-font-size-h6",
+    "value": "var(--font-size-h6)",
+    "is_alias": true,
+    "line": 15
+  },
+  {
+    "selector": ":root",
+    "name": "--ai-text-color-muted",
+    "value": "var(--color-text-light)",
+    "is_alias": true,
+    "line": 15
+  },
+  {
+    "selector": ":root",
+    "name": "--ai-icon-size",
+    "value": "1.25rem",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": ":root",
+    "name": "--ai-icon-size-lg",
+    "value": "2rem",
+    "is_alias": false,
+    "line": 15
+  },
+  {
+    "selector": ".ai-icon-button--lg",
+    "name": "--ai-icon-size",
+    "value": "var(--ai-icon-size-lg)",
+    "is_alias": true,
+    "line": 16
+  },
+  {
+    "selector": ".ai-icon--lg",
+    "name": "--ai-icon-size",
+    "value": "var(--ai-icon-size-lg)",
+    "is_alias": true,
+    "line": 16
+  },
+  {
+    "selector": "/* ── https://www.aman.com/sites/default/files/css/css_680diA2E3JPyd_hNCqBGd_fkm4fz5toPBN4Tm7093wc.css?delta=1&language=en&theme=aman&include=eJx1kFFuxCAMRC9EliMhA97EisHINivR0zdttmp_-jd-0ow1AxSB0s6SgQ",
+    "name": "--header-menu-content-offset",
+    "value": "20px",
+    "is_alias": false,
+    "line": 26
+  },
+  {
+    "selector": "/* ── https://www.aman.com/sites/default/files/css/css_680diA2E3JPyd_hNCqBGd_fkm4fz5toPBN4Tm7093wc.css?delta=1&language=en&theme=aman&include=eJx1kFFuxCAMRC9EliMhA97EisHINivR0zdttmp_-jd-0ow1AxSB0s6SgQ",
+    "name": "--header-menu-height-lg",
+    "value": "88px",
+    "is_alias": false,
+    "line": 26
+  },
+  {
+    "selector": "/* ── https://www.aman.com/sites/default/files/css/css_680diA2E3JPyd_hNCqBGd_fkm4fz5toPBN4Tm7093wc.css?delta=1&language=en&theme=aman&include=eJx1kFFuxCAMRC9EliMhA97EisHINivR0zdttmp_-jd-0ow1AxSB0s6SgQ",
+    "name": "--booking-bar-height-lg",
+    "value": "70px",
+    "is_alias": false,
+    "line": 26
+  },
+  {
+    "selector": "/* ── https://www.aman.com/sites/default/files/css/css_680diA2E3JPyd_hNCqBGd_fkm4fz5toPBN4Tm7093wc.css?delta=1&language=en&theme=aman&include=eJx1kFFuxCAMRC9EliMhA97EisHINivR0zdttmp_-jd-0ow1AxSB0s6SgQ",
+    "name": "--header-menu-scrolled",
+    "value": "60px",
+    "is_alias": false,
+    "line": 26
+  },
+  {
+    "selector": "/* ── https://www.aman.com/sites/default/files/css/css_680diA2E3JPyd_hNCqBGd_fkm4fz5toPBN4Tm7093wc.css?delta=1&language=en&theme=aman&include=eJx1kFFuxCAMRC9EliMhA97EisHINivR0zdttmp_-jd-0ow1AxSB0s6SgQ",
+    "name": "--bn-col-gap",
+    "value": "49px",
+    "is_alias": false,
+    "line": 26
+  },
+  {
+    "selector": "@media screen and (max-width:1100px)",
+    "name": "--mini",
+    "value": "after{background:0 0",
+    "is_alias": false,
+    "line": 31
+  },
+  {
+    "selector": "@media screen and (min-width:1101px)",
+    "name": "--mini",
+    "value": "after{background-color:#f3eee7",
+    "is_alias": false,
+    "line": 31
+  },
+  {
+    "selector": "@media screen and (max-width:1023px)",
+    "name": "--advanced",
+    "value": "not(.card--media-3){display:block",
+    "is_alias": false,
+    "line": 31
+  },
+  {
+    "selector": "@media screen and (max-width:480px)",
+    "name": "--advanced",
+    "value": "not(.card--media-3) :not(.bg-white) .hgroup.card__copy--with-accordion{padding:0",
+    "is_alias": false,
+    "line": 31
+  },
+  {
+    "selector": "@media (max-width:350px)",
+    "name": "--select",
+    "value": "before{content:none",
+    "is_alias": false,
+    "line": 35
+  }
+]

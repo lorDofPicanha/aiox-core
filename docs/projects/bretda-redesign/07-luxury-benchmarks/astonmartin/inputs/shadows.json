@@ -1,0 +1,34 @@
+[
+  {
+    "value": "0 0 150px 150px rgba(0,0,0,.1)",
+    "count": 4
+  },
+  {
+    "value": "0 -49px 0 -48px #e5e5e5",
+    "count": 2
+  },
+  {
+    "value": "0 -25px 0 -24px #e5e5e5",
+    "count": 2
+  },
+  {
+    "value": "0 1px 4px rgba(0,64,58,.1),inset 0 1px 2px rgba(255,255,255,.2),inset 0 -1px 0 rgba(0,64,58,.1)",
+    "count": 1
+  },
+  {
+    "value": "0 1px 4px rgba(0,64,58,.1),inset 0 -1px 0 rgba(0,64,58,.1)",
+    "count": 1
+  },
+  {
+    "value": "0 1px 3px rgba(18,18,18,.2),inset 0 1px .5px rgba(255,255,255,.12),inset 0 -1px 0 rgba(18,18,18,.08)",
+    "count": 1
+  },
+  {
+    "value": "0 1px 2px rgba(0,64,58,.04),inset 0 1px 2px rgba(255,255,255,.3),inset 0 -1px 0 rgba(0,64,58,.03)",
+    "count": 1
+  },
+  {
+    "value": "0 1px 3px 0 rgba(18,18,18,.2),0 -1px 0 0 rgba(18,18,18,.08) inset,0 1px .5px 0 rgba(255,255,255,.12) inset",
+    "count": 1
+  }
+]

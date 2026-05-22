@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anipis v3 — Pergaminho Clínico · 5 Flows Mockup</title>
+<link rel="stylesheet" href="anipis-v3-tokens.css">
+<style>
+  body { padding: 48px 24px; }
+  .gallery-header { max-width: 1200px; margin: 0 auto 48px; text-align: center; }
+  .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 48px; max-width: 1920px; margin: 0 auto; justify-items: center; }
+  .flow-wrap { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .flow-title { font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: var(--ink-soft); letter-spacing: -0.005em; }
+  .flow-meta { font-family: var(--font-mono); font-size: 10px; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  .palette-strip { display: flex; gap: 8px; margin: 32px auto 48px; flex-wrap: wrap; justify-content: center; max-width: 800px; }
+  .swatch { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .swatch-color { width: 48px; height: 48px; border-radius: 8px; border: 1px solid var(--border-hair); }
+  .swatch-name { font-family: var(--font-mono); font-size: 9px; color: var(--ink-muted); }
+  .type-specimen { max-width: 1100px; margin: 0 auto 64px; background: var(--surface); border: 1px solid var(--border-hair); border-radius: 8px; padding: 48px; }
+  .type-specimen > * { margin-bottom: 18px; }
+</style>
+</head>
+<body>
+
+<header class="gallery-header">
+  <div class="caption">ANIPIS v3 · PERGAMINHO CLÍNICO · MOCKUP 16/MAI/2026</div>
+  <h1 class="display-lg" style="margin-top: 12px;">Caderno clínico aberto à luz da manhã.</h1>
+  <p class="body-lg" style="margin-top: 24px; max-width: 640px; margin-inline: auto; color: var(--ink-soft);">
+    Síntese de Granola, Hume AI, Ease Health, Equals e Aboard. Editorial-warm sobre pergaminho,
+    serif autoridade peso leve, verde-musgo grounding, mood pastels categorizing only.
+    Adjunto não substituto — visual reforça seriedade clínica sem cair em wellness fluffy
+    nem brutalist intimidante.
+  </p>
+</header>
+
+<!-- TYPE SPECIMEN -->
+<section class="type-specimen">
+  <div class="caption">TYPE SPECIMEN</div>
+  <div class="display-xl">Você não está sozinha.</div>
+  <div class="display-lg">Anipis é um caderno aberto.</div>
+  <div class="h1">Como você está hoje?</div>
+  <div class="h2">Vamos com calma.</div>
+  <div class="h3">Um lugar pra respirar.</div>
+  <p class="body-lg">Sou Anipis. Companheira clínica, não substituta. Aqui pra ficar com você no ritmo que precisar.</p>
+  <p class="body">Você pode escrever, gravar áudio, ou só ficar em silêncio. Tudo é válido.</p>
+  <p class="body-sm">Em crise? Ligue CVV 188 (24h, gratuito). SAMU 192. Estamos com você.</p>
+  <p class="pullquote">"Estar não-sozinha importa. Mais do que se sentir melhor."</p>
+  <p class="caption">CFM 2.454/2026 · LGPD COMPLIANT · ANPD CERTIFIED</p>
+</section>
+
+<!-- PALETTE -->
+<section class="palette-strip">
+  <div class="swatch"><div class="swatch-color" style="background:#F7F4ED"></div><span class="swatch-name">canvas</span></div>
+  <div class="swatch"><div class="swatch-color" style="background:#FFFFFF"></div><span class="swatch-name">surface</span></div>
+  <div class="swatch"><div class="swatch-color" style="background:#1A1814"></div><span class="swatch-name">ink</span></div>
+  <div class="swatch"><div class="swatch-color" style="background:#2F5235"></div><span class="swatch-name">brand</span></div>
+  <div class="swatch"><div class="swatch-color" style="background:#D4E0CE"></div><span class="swatch-name">brand-soft</span></div>
+  <div class="swatch"><div class="swatch-color" style="background:#CFE0E8"></div><span class="swatch-name">mood-calm</span></div>
+  <div class="swatch"><div class="swatch-color" style="background:#F4D9C2"></div><span class="swatch-name">mood-joy</span></div>
+  <div class="swatch"><div class="swatch-color" style="background:#F0D5DC"></div><span class="swatch-name">mood-tender</span></div>
+  <div class="swatch"><div class="swatch-color" style="background:#E0DDE8"></div><span class="swatch-name">mood-clear</span></div>
+  <div class="swatch"><div class="swatch-color" style="background:#E5E5C0"></div><span class="swatch-name">mood-bright</span></div>
+  <div class="swatch"><div class="swatch-color" style="background:#C8C5BD"></div><span class="swatch-name">mood-heavy</span></div>
+  <div class="swatch"><div class="swatch-color" style="background:#FFE17A"></div><span class="swatch-name">alarm</span></div>
+  <div class="swatch"><div class="swatch-color" style="background:#A1311F"></div><span class="swatch-name">crisis</span></div>
+</section>
+
+<!-- 5 FLOWS -->
+<section class="gallery">
+
+  <!-- FLOW 1: ONBOARDING WELCOME -->
+  <div class="flow-wrap">
+    <div class="flow-meta">FLOW 1 · ONBOARDING D0</div>
+    <div class="phone">
+      <div class="phone-header"><span class="brand-mark">anipis</span><span class="menu">⋯</span></div>
+      <div class="phone-body" style="display:flex; flex-direction:column; gap:24px; padding-top:32px;">
+        <div class="caption">PRIMEIRO ENCONTRO</div>
+        <h2 class="h1">Oi.</h2>
+        <p class="pullquote">Você não precisa começar com palavra. Pode só estar aqui.</p>
+        <p class="body" style="color:var(--ink-soft);">Sou Anipis. Companheira clínica, não substituta. Vou estar aqui no ritmo que você precisar — 14 dias contigo, no WhatsApp, com uma facilitadora humana acompanhando.</p>
+        <div class="card-sunken" style="margin-top:8px;">
+          <div class="label" style="color:var(--ink-soft); margin-bottom:8px;">O QUE VAI ACONTECER</div>
+          <p class="body-sm">Uma conversa por dia, no horário que combina pra você. Sem cobrança. Sem julgamento. Você pode sair quando quiser.</p>
+        </div>
+      </div>
+      <div class="phone-footer">
+        <button class="btn btn-ghost" style="flex:1;">Não agora</button>
+        <button class="btn btn-primary" style="flex:1;">Combinar</button>
+      </div>
+    </div>
+    <div class="flow-title">Welcome silencioso</div>
+  </div>
+
+  <!-- FLOW 2: MOOD CHECKIN -->
+  <div class="flow-wrap">
+    <div class="flow-meta">FLOW 2 · MOOD CHECK-IN</div>
+    <div class="phone">
+      <div class="phone-header"><span class="brand-mark">anipis</span><span class="menu">⋯</span></div>
+      <div class="phone-body" style="display:flex; flex-direction:column; gap:24px; padding-top:32px;">
+        <div class="caption">SEG · 16/MAI · 09:14</div>
+        <h2 class="h2" style="margin-top:0;">Como está hoje?</h2>
+        <p class="body" style="color:var(--ink-soft);">Não precisa ser uma resposta certa. Só uma aproximação.</p>
+        <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:8px;">
+          <button class="mood-chip calm">calmo</button>
+          <button class="mood-chip joy">leve</button>
+          <button class="mood-chip tender selected">terno</button>
+          <button class="mood-chip clear">disperso</button>
+          <button class="mood-chip bright">inquieto</button>
+          <button class="mood-chip heavy">pesado</button>
+        </div>
+        <div class="card-sunken" style="margin-top:16px;">
+          <p class="body-sm" style="color:var(--ink-soft); font-style:italic;">Terno, hoje. Anotado. Quer escrever uma linha, ou prefere ficar com isso?</p>
+        </div>
+        <button class="btn btn-ghost" style="margin-top:8px; align-self:flex-start;">Só anotar e fechar</button>
+      </div>
+      <div class="phone-footer"><button class="btn btn-primary" style="flex:1;">Continuar</button></div>
+    </div>
+    <div class="flow-title">6 estados, zero ranking</div>
+  </div>
+
+  <!-- FLOW 3: CHAT COMPANION -->
+  <div class="flow-wrap">
+    <div class="flow-meta">FLOW 3 · CONVERSA</div>
+    <div class="phone">
+      <div class="phone-header"><span class="brand-mark">anipis</span><span class="menu">⋯</span></div>
+      <div class="phone-body" style="padding:0;">
+        <div class="chat">
+          <div class="bubble companion">Oi, Júlia. Como foi o dia?</div>
+          <div class="ts">09:14</div>
+          <div class="bubble user">não muito bem na verdade</div>
+          <div class="ts">09:15</div>
+          <div class="bubble companion">Tá bom estar aqui. Conta o que tá pesando, no ritmo que der.</div>
+          <div class="ts">09:15</div>
+          <div class="bubble user">briguei com minha mãe de novo. acho que ela nunca vai entender</div>
+          <div class="ts">09:18</div>
+          <div class="bubble companion">Briga com mãe cansa diferente. É um peso que mistura raiva e querer ser entendida ao mesmo tempo.</div>
+          <div class="ts">09:18</div>
+        </div>
+      </div>
+      <div class="phone-footer" style="border-top:1px solid var(--border-hair); padding:12px 16px;">
+        <input class="input" placeholder="Escrever..." style="flex:1;">
+        <button class="btn btn-primary" style="padding:12px 18px;">→</button>
+      </div>
+    </div>
+    <div class="flow-title">Chat companion (warm)</div>
+  </div>
+
+  <!-- FLOW 4: BREATHING -->
+  <div class="flow-wrap">
+    <div class="flow-meta">FLOW 4 · RESPIRAÇÃO</div>
+    <div class="phone">
+      <div class="phone-header"><span class="brand-mark">anipis</span><span class="menu">⋯</span></div>
+      <div class="phone-body" style="display:flex; flex-direction:column; gap:16px; padding-top:24px;">
+        <div class="caption" style="text-align:center;">EXERCÍCIO 4-7-8</div>
+        <div class="breathing-stage">
+          <div class="orb"></div>
+          <div class="breathing-label">expire</div>
+          <p class="caption" style="text-align:center; max-width:240px; margin:0 auto;">Inspire 4s · Segure 7s · Expire 8s · Quatro ciclos</p>
+        </div>
+        <div class="card-sunken" style="margin-top:16px;">
+          <p class="body-sm" style="color:var(--ink-soft);">Você pode sair a qualquer momento. Som ambiente está desligado por padrão — toque pra ativar.</p>
+        </div>
+      </div>
+      <div class="phone-footer"><button class="btn btn-ghost" style="flex:1;">Sair com calma</button><button class="btn btn-secondary" style="flex:1;">Som ambiente</button></div>
+    </div>
+    <div class="flow-title">Orb respirando (8s ciclo)</div>
+  </div>
+
+  <!-- FLOW 5: CRISIS RED -->
+  <div class="flow-wrap">
+    <div class="flow-meta">FLOW 5 · CRISIS · RED LEVEL</div>
+    <div class="phone">
+      <div class="phone-header"><span class="brand-mark">anipis</span><span class="menu">⋯</span></div>
+      <div class="phone-body" style="display:flex; flex-direction:column; gap:20px; padding-top:16px;">
+        <div class="crisis-banner">
+          <strong style="font-weight:600;">Aqui é importante.</strong> Vamos pausar a conversa e te conectar com quem está preparado pra cuidar agora.
+        </div>
+        <h2 class="h2" style="margin-top:8px;">Você é importante, Júlia.</h2>
+        <p class="body" style="color:var(--ink-soft);">O que você sente é real. Ligue agora — tem alguém pronto pra escutar 24 horas, sem julgamento, gratuito.</p>
+        <button class="btn btn-crisis" style="width:100%; padding:18px;">📞 Ligue CVV — 188</button>
+        <button class="btn btn-ghost" style="width:100%;">SAMU — 192</button>
+        <button class="btn btn-ghost" style="width:100%;">CAPS perto de você</button>
+        <div class="card-sunken" style="margin-top:8px;">
+          <p class="body-sm" style="color:var(--ink-soft); line-height:1.5;">Eu fico aqui até você dizer que está com alguém. Sem pressa. Sem desligar.</p>
+        </div>
+      </div>
+      <div class="phone-footer"><button class="btn btn-ghost" style="flex:1;">Já estou com alguém</button></div>
+    </div>
+    <div class="flow-title">Crisis routing (Mr. Walker)</div>
+  </div>
+
+</section>
+
+<footer style="max-width:720px; margin:96px auto 48px; text-align:center;">
+  <div class="caption">SÍNTESE GRANOLA · HUME AI · EASE HEALTH · EQUALS · ABOARD</div>
+  <p class="body" style="margin-top:16px; color:var(--ink-soft);">
+    Nenhuma referência copiada. Padrões convergentes destiladas em direção própria pro contexto Anipis BR.
+  </p>
+  <p class="caption" style="margin-top:24px;">2026-05-16 · @orion · D:/AIOS/docs/projects/anipis/squad-16mai/10-design-v3/</p>
+</footer>
+
+</body>
+</html>

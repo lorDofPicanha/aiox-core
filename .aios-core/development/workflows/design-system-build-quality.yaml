@@ -1,7 +1,7 @@
 workflow:
   id: design-system-build-quality
   name: Design System Build Quality Pipeline
-  version: "2.0"
+  version: "2.2"
   description: >-
     Pipeline pos-migracao para Design System. Encadeia sequencialmente as etapas de
     build, documentacao, auditoria de acessibilidade e calculo de ROI para garantir
@@ -30,24 +30,92 @@ workflow:
       prompts: "10-15"
 
   phases:
+    - phase_0: Visual References Curation (Refero Skill 4-step)
     - phase_1: Build & Compile
     - phase_2: Documentation
     - phase_3: Quality Assurance
     - phase_4: ROI Analysis
 
   sequence:
+    - step: visual_references_curation
+      id: visual-references
+      phase: 0
+      agent: ux-design-expert
+      action: Curate 8+ visual references with Steal List (Refero Skill methodology, post-conclave v2.2)
+      artifacts:
+        - benchmark_pack
+        - steal_list_md
+        - visual_references_md
+        - visual_references_tokens_json
+        - human_reviewer_approval
+      gate:
+        condition: |
+          Steal_List >= 8 tactics traceable to source URL/screenshot/UUID with rationale
+          AND Playwright_captures >= 3 unique sources (mandatory for ALL niches, not only luxury)
+          AND Negative_anchor_BR_count >= 1 (Brazilian counter-example documented)
+          AND Counter_example >= 1 (1 site da MESMA categoria que parece BARATO, com 3 elementos a evitar)
+          AND Pre_mortem_documented = true (3 modos de falha antecipados antes de implementar)
+          AND Human_reviewer_approval present (User Breno default — sem isso, HALT)
+          AND Tokens_json exported (machine-readable, diff-able no git)
+        on_fail: "HALT — cannot proceed to build. Re-run collect-visual-references task with broader query, alternative method, OR obtain missing human approval. See task v1.1 4 sub-gates."
+      notes: |
+        MANDATORY first step. Breaks the "luxury_taste_calibration" failure loop where squad
+        implementa brief mecanicamente sem benchmark visual real ("startup tentando ser premium").
+
+        Post-conclave v2.2 (2026-05-04): threshold 5→8 tactics + 3+ Playwright captures
+        + 4 sub-gates novos (counter-example, pre-mortem, negative anchor BR, human reviewer)
+        + JSON tokens export. Validados por conclave Jarvis (Nova/Uma/DSE/Kahneman/Holiday).
+
+        Routing by niche (read from project brief):
+        - luxury-craft (Bretda, Tocks, Anipis-luxe, hospitality, fashion):
+            method: playwright-capture-own
+            pool: cassina.com, bottegaveneta.com, aman.com, brunellocucinelli.com, hermes.com, aesop.com, bulgari.com
+            output: docs/projects/{project}/design/benchmarks/{date}/
+            negative_anchors_BR: saccaro.com.br, artefacto.com.br, carbonodesign.com.br
+        - saas | wellness | internal | low-ticket | prediction-markets:
+            method: refero-mcp-search (refero_search + refero_design_md)
+            cache: .aios-core/data/refero-cache/{niche}/{date}/
+            playwright_captures: still mandatory min 3 (don't trust catalog alone)
+
+        Steps (Refero Skill 4-step + 4 sub-gates v1.1):
+        1. Discovery — clarify niche + archetype + brand position
+        2. Research — 5+ searches, narrow 50+ raw to 8-12 deep
+        3. Steal List — extract 8+ stealable tactics, each: source + tactic + how-to-apply
+        4. 80/20 Split — 80% proven patterns, 20% brand-unique + anti-AI-slop checklist
+        5. 4 Sub-gates — counter-example + pre-mortem + negative anchor BR + human reviewer
+
+        Criterios de sucesso:
+        - [ ] >= 8 tactics em Steal List, cada uma rastreavel a source
+        - [ ] >= 3 Playwright captures unique sources
+        - [ ] benchmark-pack/ com screenshots OU DESIGN.mds armazenados
+        - [ ] visual-references.md sintetizado e revisado
+        - [ ] visual-references-tokens.json exportado
+        - [ ] 4 sub-gates passados (Sub-gate A/B/C/D)
+      outputs:
+        - benchmark_pack
+        - steal_list_md
+        - visual_references_md
+        - visual_references_tokens_json
+        - human_reviewer_approval
+      task_reference: collect-visual-references.md
+
     - step: build_atomic_components
       id: build
       phase: 1
       agent: ux-design-expert
       action: Build de componentes atomicos
+      requires: visual-references
       artifacts:
         - build_report
         - compiled_tokens
         - component_bundle
       gate:
-        condition: "TypeScript 0 errors AND all components render AND all tokens compiled"
-        on_fail: "HALT and fix build errors before proceeding to documentation"
+        condition: |
+          TypeScript 0 errors
+          AND all components render
+          AND all tokens compiled
+          AND anti-tailwind-default-check.js violations <= 3 (post-conclave v2.2)
+        on_fail: "HALT and fix build errors before proceeding to documentation. If anti-tailwind violations > 3, run `node .aios-core/development/scripts/anti-tailwind-default-check.js` and override defaults flagged."
       notes: |
         Executa build dos componentes do Design System:
         - Compila tokens de design (cores, tipografia, espacamentos)
@@ -55,10 +123,18 @@ workflow:
         - Valida estrutura de arquivos e nomenclatura
         - Verifica dependencias e imports
 
+        Post-conclave v2.2 (2026-05-04): adicionado gate automatizado anti-tailwind-default-check.
+        Script scaneia CSS/Tailwind config buscando defaults indicadores de "barato"
+        (bg-blue-500, text-gray-900, font-sans sem override, hex #3b82f6, system-ui).
+        Threshold = 3 violations (> 3 HALT). Justificativa: alguns defaults legítimos
+        em utility classes podem aparecer (ex: text-gray-900 em prose), mas mais que 3
+        sinaliza falta de override do design system.
+
         Criterios de sucesso:
         - [ ] Build completo sem erros
         - [ ] Todos os tokens compilados
         - [ ] Componentes exportados corretamente
+        - [ ] anti-tailwind-default-check violations <= 3
       outputs:
         - build_report
         - compiled_tokens
@@ -174,7 +250,12 @@ workflow:
   flow_diagram: |
     ```mermaid
     graph TD
-        A[Start: Design System Quality Pipeline] --> B[ux-design-expert: Build componentes atomicos]
+        START[Start: Design System Quality Pipeline] --> VR[ux-design-expert: Visual References Curation - Refero Skill]
+        VR --> VRG{Steal List >= 5 tactics?}
+        VRG -->|Sim| B[ux-design-expert: Build componentes atomicos]
+        VRG -->|Nao| VRX[Re-run collect-visual-references com query mais ampla]
+        VRX --> VR
+
         B --> C{Build OK?}
         C -->|Sim| D[ux-design-expert: Gerar documentacao Pattern Library]
         C -->|Nao| E[Corrigir erros de build]
@@ -193,6 +274,7 @@ workflow:
         J --> L[Pipeline Completo]
 
         style L fill:#90EE90
+        style VR fill:#FFE4B5
         style B fill:#E6E6FA
         style D fill:#E6E6FA
         style G fill:#E6E6FA
@@ -200,6 +282,7 @@ workflow:
         style E fill:#FFB6C1
         style H fill:#FFB6C1
         style K fill:#FFB6C1
+        style VRX fill:#FFB6C1
     ```
 
   decision_guidance:
@@ -211,6 +294,15 @@ workflow:
       - Geracao de metricas para stakeholders
 
   handoff_prompts:
+    visual_references_complete: |
+      Visual References Curation concluida (Refero Skill 4-step).
+      Niche detectado: {{niche}}
+      Method: {{method}}  # playwright-capture-own | refero-mcp-search
+      Steal List tactics: {{tactic_count}} (gate min: 5)
+      Benchmarks capturados: {{benchmark_count}}
+      Artefatos: {{benchmark_pack_path}}, {{steal_list_path}}
+      Prosseguindo para build de componentes atomicos...
+
     build_complete: |
       Build de componentes concluido com sucesso.
       Tokens compilados: {{token_count}}
@@ -245,7 +337,12 @@ workflow:
 metadata:
   author: Orion (AIOS Master)
   created_date: 2025-01-30
-  version: 2.0.0
+  updated_date: 2026-05-04
+  version: 2.2.0
+  changelog:
+    - "v2.2.0 (2026-05-04): Conclave Jarvis MODIFY applied. Threshold raised 5→8 tactics + 3+ Playwright captures + 4 sub-gates novos (counter-example, pre-mortem, negative anchor BR, human reviewer) + JSON tokens export + anti-tailwind-default-check em phase_1 (>3 violations HALT). Patches v2 prontos pra smoke test em Tocks."
+    - "v2.1.0 (2026-05-04): Added phase_0 visual-references-curation step (Refero Skill 4-step methodology). Gate halts pipeline if Steal_List < 5 tactics. Breaks luxury_taste_calibration 4× failure loop on Bretda."
+    - "v2.0.0 (2025-01-30): Initial pipeline build->doc->a11y->roi"
   tags:
     - design-system
     - quality-assurance
@@ -253,3 +350,7 @@ metadata:
     - documentation
     - roi
     - brownfield
+    - visual-references
+    - refero-methodology
+    - conclave-validated
+    - anti-ai-slop

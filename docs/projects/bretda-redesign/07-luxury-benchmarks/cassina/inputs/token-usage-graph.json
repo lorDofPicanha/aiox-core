@@ -1,0 +1,1312 @@
+[
+  {
+    "name": "--cassina-global-fontFamily-neueHaasGrotesk",
+    "declarations": 1,
+    "references": 86
+  },
+  {
+    "name": "--cassina-global-fontSize-75",
+    "declarations": 1,
+    "references": 82
+  },
+  {
+    "name": "--cassina-global-padding-200",
+    "declarations": 1,
+    "references": 49
+  },
+  {
+    "name": "--cassina-error",
+    "declarations": 1,
+    "references": 31
+  },
+  {
+    "name": "--cassina-grey",
+    "declarations": 1,
+    "references": 29
+  },
+  {
+    "name": "--cassina-global-padding-600",
+    "declarations": 1,
+    "references": 28
+  },
+  {
+    "name": "--cassina-text",
+    "declarations": 2,
+    "references": 27
+  },
+  {
+    "name": "--cassina-global-fontFamily-neueHaasGroteskBold",
+    "declarations": 1,
+    "references": 25
+  },
+  {
+    "name": "--cassina-teal",
+    "declarations": 1,
+    "references": 22
+  },
+  {
+    "name": "--cassina-global-padding-800",
+    "declarations": 1,
+    "references": 20
+  },
+  {
+    "name": "--cassina-global-lineHeight-200",
+    "declarations": 1,
+    "references": 17
+  },
+  {
+    "name": "--cassina-header-height-desk",
+    "declarations": 1,
+    "references": 17
+  },
+  {
+    "name": "--cassina-global-padding-1000",
+    "declarations": 1,
+    "references": 16
+  },
+  {
+    "name": "--cassina-global-color-blue-5",
+    "declarations": 1,
+    "references": 15
+  },
+  {
+    "name": "--cassina-global-padding-30",
+    "declarations": 1,
+    "references": 15
+  },
+  {
+    "name": "--cassina-global-margin-600",
+    "declarations": 1,
+    "references": 14
+  },
+  {
+    "name": "--cassina-global-margin-1000",
+    "declarations": 1,
+    "references": 14
+  },
+  {
+    "name": "--cassina-text-alt",
+    "declarations": 1,
+    "references": 13
+  },
+  {
+    "name": "--cassina-global-color-red-cassina",
+    "declarations": 1,
+    "references": 13
+  },
+  {
+    "name": "--cassina-global-fontSize-100",
+    "declarations": 1,
+    "references": 13
+  },
+  {
+    "name": "--cassina-global-margin-200",
+    "declarations": 1,
+    "references": 12
+  },
+  {
+    "name": "--cassina-global-lineHeight-100",
+    "declarations": 1,
+    "references": 12
+  },
+  {
+    "name": "--cassina-global-lineHeight-250",
+    "declarations": 1,
+    "references": 12
+  },
+  {
+    "name": "--cassina-global-padding-1300",
+    "declarations": 1,
+    "references": 11
+  },
+  {
+    "name": "--cassina-global-margin-30",
+    "declarations": 1,
+    "references": 11
+  },
+  {
+    "name": "--cassina-global-margin-800",
+    "declarations": 1,
+    "references": 11
+  },
+  {
+    "name": "--cassina-global-lineHeight-180",
+    "declarations": 1,
+    "references": 10
+  },
+  {
+    "name": "--color",
+    "declarations": 8,
+    "references": 10
+  },
+  {
+    "name": "--tw-empty",
+    "declarations": 0,
+    "references": 10
+  },
+  {
+    "name": "--cassina-global-margin-1250",
+    "declarations": 1,
+    "references": 9
+  },
+  {
+    "name": "--cassina-global-fontWeight-normal",
+    "declarations": 1,
+    "references": 9
+  },
+  {
+    "name": "--cassina-border",
+    "declarations": 1,
+    "references": 8
+  },
+  {
+    "name": "--cassina-global-fontSize-250",
+    "declarations": 1,
+    "references": 8
+  },
+  {
+    "name": "--cassina-header-height",
+    "declarations": 1,
+    "references": 8
+  },
+  {
+    "name": "--cassina-teal-light",
+    "declarations": 2,
+    "references": 7
+  },
+  {
+    "name": "--cassina-global-title-color",
+    "declarations": 1,
+    "references": 7
+  },
+  {
+    "name": "--cassina-global-padding-40",
+    "declarations": 1,
+    "references": 7
+  },
+  {
+    "name": "--cassina-pre-header-height",
+    "declarations": 2,
+    "references": 6
+  },
+  {
+    "name": "--cassina-global-fontSize-200",
+    "declarations": 1,
+    "references": 5
+  },
+  {
+    "name": "--cassina-global-padding-300",
+    "declarations": 1,
+    "references": 5
+  },
+  {
+    "name": "--cassina-global-padding-1200",
+    "declarations": 1,
+    "references": 5
+  },
+  {
+    "name": "--cassina-global-margin-40",
+    "declarations": 1,
+    "references": 5
+  },
+  {
+    "name": "--cassina-global-lineHeight-160",
+    "declarations": 1,
+    "references": 5
+  },
+  {
+    "name": "--cassina-global-lineHeight-300",
+    "declarations": 1,
+    "references": 5
+  },
+  {
+    "name": "--base-z-index",
+    "declarations": 2,
+    "references": 5
+  },
+  {
+    "name": "--swiper-theme-color",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--swiper-navigation-size",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--cassina-global-fontSize-30",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--cassina-global-padding-400",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--cassina-global-padding-500",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--cassina-global-padding-1250",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--cassina-global-margin-10",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--cassina-anim-standard",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--cassina-global-color-gray-100",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--cassina-global-color-gray-700",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--cassina-global-color-gray-darker",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--cassina-global-color-neutral-4",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--cassina-global-fontSize-600",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--cassina-global-padding-900",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--cassina-global-padding-1100",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--cassina-global-padding-1350",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--cassina-global-margin-20",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--cassina-global-margin-50",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--cassina-global-margin-1100",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--toastify-color-info",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--toastify-color-success",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--toastify-color-warning",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--toastify-color-error",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--toastify-z-index",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--tw-shadow",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--tw-ring-inset",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--tw-ring-offset-width",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--tw-ring-offset-shadow",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--tw-ring-shadow",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--swiper-pagination-color",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--menuItemContentHeight",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--cassina-global-color-gray-300",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--cassina-global-color-gray-500",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--cassina-global-color-gray-900",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--cassina-global-color-red-700",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--cassina-global-color-minicart-select-quantity",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--cassina-global-fontSize-50",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--cassina-global-fontSize-85",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--cassina-global-fontSize-800",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--cassina-global-padding-20",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--cassina-global-padding-100",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--cassina-global-padding-1175",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--cassina-global-margin-75",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--cassina-global-margin-700",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--cassina-global-margin-1150",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--cassina-global-fontWeight-semibold",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--cassina-global-lineHeight-350",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--iconsBefore",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--tw-border-opacity",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tw-translate-x",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tw-translate-y",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tw-rotate",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tw-skew-x",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tw-skew-y",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tw-scale-x",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tw-scale-y",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tw-bg-opacity",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tw-ring-offset-color",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tw-ring-color",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tw-blur",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--tw-brightness",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tw-contrast",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tw-grayscale",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tw-hue-rotate",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tw-invert",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--tw-saturate",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tw-sepia",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tw-drop-shadow",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--swiper-navigation-color",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--swiper-preloader-color",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--menuItemContentOpacity",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-anim-bounce",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-anim-in",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-anim-out",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-grey-dark",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-teal-dark",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-warning-dark",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-warning-light",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-anim-in",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-anim-out",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-blue-400",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-blue-600",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-gray-50",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-gray-75",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-gray-600",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-neutral-1",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-neutral-2",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-neutral-3",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-red-1",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-red-2",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-red-3",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-red-4",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-blue-1",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-blue-2",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-blue-3",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-blue-4",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-green-1",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-green-2",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-green-3",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-green-4",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-violet-1",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-violet-2",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-violet-3",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-violet-4",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-orange-1",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-orange-2",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-orange-3",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-orange-4",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-background",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-border",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-error",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-color-text-alt",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-fontSize-40",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-fontSize-300",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-fontSize-400",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-fontSize-700",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-fontSize-900",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-padding-75",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-padding-1375",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-margin-100",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-margin-400",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-margin-500",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-margin-900",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-margin-1300",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-margin-1600",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-fontWeight-bold",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-lineHeight-140",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-lineHeight-175",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-lineHeight-600",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--minicart-header-height",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--max-z-index",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--toastify-color-light",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--toastify-color-dark",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--toastify-color-transparent",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--toastify-toast-width",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--toastify-toast-min-height",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--toastify-toast-max-height",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--toastify-font-family",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--toastify-text-color-light",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--toastify-text-color-dark",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--toastify-text-color-info",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--toastify-text-color-success",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--toastify-text-color-warning",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--toastify-text-color-error",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--toastify-spinner-color",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--toastify-spinner-color-empty-area",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--toastify-color-progress-light",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--toastify-color-progress-dark",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--toastify-color-progress-info",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--toastify-color-progress-success",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--toastify-color-progress-warning",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--toastify-color-progress-error",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--iconsAfter",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cassina-global-padding-250",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--text-transform",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--cassina-typography-body-S-fontSize",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--cassina-brand-color-1-700",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--active",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-black-text",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-white",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-error-alt",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-font",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-orange",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-teal-alt",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-text-hint",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-text-spot",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-anim-bounce",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-anim-standard",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-color-blue-100",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-color-blue-500",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-color-blue-700",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-color-blue-800",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-color-gray-200",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-color-gray-400",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-color-gray-800",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-color-gray",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-color-gray-dark",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-color-green-400",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-color-green-500",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-color-green-600",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-color-green-700",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-color-orange",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-color-red-400",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-color-red-500",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-color-red-600",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-color-red-800",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-color-teal",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-color-teal-dark",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-color-teal-light",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-color-text",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-color-text-hint",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-color-warning-dark",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-color-warning-light",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-fontFamily-sansSerif",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-fontFamily-neueHaasGroteskItalic",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-fontSize-500",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-fontSize-1000",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-fontSize-1100",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-fontSize-1200",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-fontSize-1400",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-padding-50",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-padding-700",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-padding-910",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-padding-1400",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-margin-300",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-margin-1200",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-margin-1400",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-lineHeight-150",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-lineHeight-400",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-lineHeight-500",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cassina-global-maxWidth",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--stroke",
+    "declarations": 4,
+    "references": 0
+  },
+  {
+    "name": "--toastify-icon-color-info",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--toastify-icon-color-success",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--toastify-icon-color-warning",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--toastify-icon-color-error",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--toastify-toast-background",
+    "declarations": 1,
+    "references": 0
+  }
+]

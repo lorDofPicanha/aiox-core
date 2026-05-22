@@ -3,6 +3,18 @@
 
 const fs = require('fs');
 const path = require('path');
+const { parseAgentDirs } = require('./ide-sync/agent-parser');
+
+const CODEX_REDIRECTS = new Set([
+  'aios-developer.md',
+  'aios-orchestrator.md',
+  'db-sage.md',
+  'github-devops.md',
+]);
+
+const ALLOWED_EXTRA_SKILLS = new Set([
+  'aios-memory',
+]);
 
 function getDefaultOptions() {
   const projectRoot = process.cwd();
@@ -12,6 +24,10 @@ function getDefaultOptions() {
     agentsDir: path.join(projectRoot, '.codex', 'agents'),
     skillsDir: path.join(projectRoot, '.codex', 'skills'),
     sourceAgentsDir: path.join(projectRoot, '.aios-core', 'development', 'agents'),
+    sourceAgentDirs: [
+      path.join(projectRoot, '.aios-core', 'development', 'agents'),
+      path.join(projectRoot, '.claude', 'commands', 'AIOS', 'agents'),
+    ],
     quiet: false,
     json: false,
   };
@@ -39,6 +55,13 @@ function countSkillFiles(skillsDir) {
     .length;
 }
 
+function countAllowedExtraSkillFiles(skillsDir) {
+  if (!fs.existsSync(skillsDir)) return 0;
+  return [...ALLOWED_EXTRA_SKILLS]
+    .filter((skillId) => fs.existsSync(path.join(skillsDir, skillId, 'SKILL.md')))
+    .length;
+}
+
 function validateCodexIntegration(options = {}) {
   const projectRoot = options.projectRoot || process.cwd();
   const resolved = {
@@ -49,6 +72,10 @@ function validateCodexIntegration(options = {}) {
     agentsDir: options.agentsDir || path.join(projectRoot, '.codex', 'agents'),
     skillsDir: options.skillsDir || path.join(projectRoot, '.codex', 'skills'),
     sourceAgentsDir: options.sourceAgentsDir || path.join(projectRoot, '.aios-core', 'development', 'agents'),
+    sourceAgentDirs: options.sourceAgentDirs || [
+      path.join(projectRoot, '.aios-core', 'development', 'agents'),
+      path.join(projectRoot, '.claude', 'commands', 'AIOS', 'agents'),
+    ],
   };
   const errors = [];
   const warnings = [];
@@ -67,16 +94,21 @@ function validateCodexIntegration(options = {}) {
     errors.push(`Missing Codex skills dir: ${path.relative(resolved.projectRoot, resolved.skillsDir)}`);
   }
 
-  const sourceCount = countMarkdownFiles(resolved.sourceAgentsDir);
+  const sourceAgents = parseAgentDirs(resolved.sourceAgentDirs);
+  const parseableSourceCount = sourceAgents
+    .filter((agent) => !agent.error || agent.error === 'YAML parse failed, using fallback extraction')
+    .length;
+  const expectedAgentCount = parseableSourceCount + CODEX_REDIRECTS.size;
+  const expectedSkillCount = parseableSourceCount + countAllowedExtraSkillFiles(resolved.skillsDir);
   const codexAgentsCount = countMarkdownFiles(resolved.agentsDir);
   const codexSkillsCount = countSkillFiles(resolved.skillsDir);
 
-  if (sourceCount > 0 && codexAgentsCount !== sourceCount) {
-    warnings.push(`Codex agent count differs from source (${codexAgentsCount}/${sourceCount})`);
+  if (parseableSourceCount > 0 && codexAgentsCount !== expectedAgentCount) {
+    warnings.push(`Codex agent count differs from source (${codexAgentsCount}/${expectedAgentCount})`);
   }
 
-  if (sourceCount > 0 && codexSkillsCount !== sourceCount) {
-    warnings.push(`Codex skill count differs from source (${codexSkillsCount}/${sourceCount})`);
+  if (parseableSourceCount > 0 && codexSkillsCount !== expectedSkillCount) {
+    warnings.push(`Codex skill count differs from source (${codexSkillsCount}/${expectedSkillCount})`);
   }
 
   return {
@@ -84,7 +116,9 @@ function validateCodexIntegration(options = {}) {
     errors,
     warnings,
     metrics: {
-      sourceAgents: sourceCount,
+      sourceAgents: parseableSourceCount,
+      expectedCodexAgents: expectedAgentCount,
+      expectedCodexSkills: expectedSkillCount,
       codexAgents: codexAgentsCount,
       codexSkills: codexSkillsCount,
     },
@@ -138,4 +172,5 @@ module.exports = {
   getDefaultOptions,
   countMarkdownFiles,
   countSkillFiles,
+  countAllowedExtraSkillFiles,
 };

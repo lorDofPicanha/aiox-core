@@ -8,9 +8,9 @@
 # - File types for categorization
 #
 version: 4.2.13
-generated_at: "2026-05-22T00:01:43.389Z"
+generated_at: "2026-05-22T12:24:52.050Z"
 generator: scripts/generate-install-manifest.js
-file_count: 1199
+file_count: 1212
 files:
   - path: cli/commands/config/index.js
     hash: sha256:ebcad2ce3807eda29dcddff76d7a95ddc9b7fa160df21fd608f94b802237e862
@@ -744,10 +744,18 @@ files:
     hash: sha256:70f2689446adb1dc72faf2bd2c26c2d142814d4be30fee4f0e58b9163095a400
     type: core
     size: 8850
+  - path: core/memory/aios-memory.js
+    hash: sha256:81c8eeaa0745f6874375d1dfbb845b0dbb53e2aed01b2c0a83f595c38236ff57
+    type: core
+    size: 11033
   - path: core/memory/gotchas-memory.js
     hash: sha256:b0fe8524e98e992653b1e6cdf06a2b102ddb4d8729b6fecf0fe981bec5decdf4
     type: core
     size: 33058
+  - path: core/memory/graphiti-sync.py
+    hash: sha256:ad1fd1eba4d5387140142999557669bdbd402bcab4db596a5c47e87e3d1cf7a3
+    type: core
+    size: 6866
   - path: core/migration/migration-config.yaml
     hash: sha256:2267027b27300a12173ba317c72df54732e865e3ed2305ad2553e6ddac3ec610
     type: core
@@ -1189,9 +1197,9 @@ files:
     type: data
     size: 7610
   - path: data/jarvis-mind-clone-index.json
-    hash: sha256:98b23daacf99ab509d63ab3bd12ddf8cbdacccd3579471158ba7e460cfcb26ee
+    hash: sha256:4d0a66dbff0a3bdf85286cb55e159fb7912205dfa2255b1a41bf74265b57c79a
     type: data
-    size: 386327
+    size: 431775
   - path: data/jarvis-mind-clone-map.yaml
     hash: sha256:d404e07f7de09951ca2770cb073e315b3d8f7dd93295c3f21fad04f17ab5e7b0
     type: data
@@ -1232,6 +1240,34 @@ files:
     hash: sha256:24ac0b160615583a0ff783d3da8af80b7f94191575d6db2054ec8e10a3f945dc
     type: data
     size: 68
+  - path: data/memory/decisions.json
+    hash: sha256:ede248c4a61766d56c206c2e83b5b1d4281c5d0a8051f2182a108377cd070c97
+    type: data
+    size: 946
+  - path: data/memory/events.jsonl
+    hash: sha256:1ae34a47fd11fa910ff59e3f25b4256f1042e0f67e3ef28b159cf6b06574b7fe
+    type: data
+    size: 1805
+  - path: data/memory/facts.json
+    hash: sha256:9decef01dea99464f188854fd2d7e28a43fa763a168809d8be5e1869a62f6f11
+    type: data
+    size: 1609
+  - path: data/memory/graphiti-episodes.jsonl
+    hash: sha256:d8258de29417ca8a87ff39a1e1d4e51a8826c095def179137307c416458f066b
+    type: data
+    size: 4217
+  - path: data/memory/graphiti-kuzu
+    hash: sha256:8c72db61b3dbe603ccbdf0b13673832d2f9d504f385bc848465f7719c8b43a75
+    type: data
+    size: 24576
+  - path: data/memory/graphiti-outbox.jsonl
+    hash: sha256:d8258de29417ca8a87ff39a1e1d4e51a8826c095def179137307c416458f066b
+    type: data
+    size: 4217
+  - path: data/memory/graphiti-state.json
+    hash: sha256:75484e14418e1950d23cd346a8144666c8f0742593cb90613c116f32921f7293
+    type: data
+    size: 59
   - path: data/site-prospector/primers/_schema.yaml
     hash: sha256:562af1a00a7f045af168bb1b60a28b45576dd7d59335002841de99a7cbb0a0cf
     type: data
@@ -3236,6 +3272,22 @@ files:
     hash: sha256:ad7dc26a91024d1a2846659b8bb091a936675235a3068ab587a4e212ee4e4024
     type: infrastructure
     size: 679
+  - path: infrastructure/graphiti/.env
+    hash: sha256:b1c15fc3a224c6e00aec0dcb76e8b7f577a6a2938e8fa95ca6da513bea9637ac
+    type: infrastructure
+    size: 210
+  - path: infrastructure/graphiti/.env.example
+    hash: sha256:80f9952ccbe8d243993f52dd773df83f6565cc26de71c07f1a5eddebe67abb3b
+    type: infrastructure
+    size: 504
+  - path: infrastructure/graphiti/docker-compose.yml
+    hash: sha256:c5c9ff8e79157364a8f25a871370e43ff5e97f729db71e6356fd61daaed0dd34
+    type: infrastructure
+    size: 249
+  - path: infrastructure/graphiti/requirements.txt
+    hash: sha256:56e60912a6c6830fdfcdcdba17613b54ae080a9e44c5eeec323d9e6073053a93
+    type: infrastructure
+    size: 29
   - path: infrastructure/index.js
     hash: sha256:8e05caec57188938d6f348444ad3abce2c06b53bdb46993fb2e8ff81c27fca4c
     type: infrastructure
@@ -3325,9 +3377,9 @@ files:
     type: infrastructure
     size: 4088
   - path: infrastructure/scripts/agent-call.js
-    hash: sha256:ccca273f1dccce5b6f74065909306c1cca1cbe26b47dc5b13548533ed088023b
+    hash: sha256:0f65f1d55a9b97f3ce06ef6fbbb100ef4ed32f7a8a51f4b934e1e6366ccd7b69
     type: script
-    size: 3045
+    size: 3898
   - path: infrastructure/scripts/aios-validator.js
     hash: sha256:a48d7e1a6f33ed8f751f2b00b79b316529cd68d181a62a7b4a72ecd4858fc770
     type: script

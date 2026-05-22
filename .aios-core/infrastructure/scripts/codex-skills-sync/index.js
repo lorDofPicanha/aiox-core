@@ -6,7 +6,7 @@ const path = require('path');
 const os = require('os');
 
 const {
-  parseAllAgents,
+  parseAgentDirs,
   normalizeCommands,
   getVisibleCommands,
 } = require('../ide-sync/agent-parser');
@@ -22,6 +22,10 @@ function getDefaultOptions() {
   return {
     projectRoot,
     sourceDir: path.join(projectRoot, '.aios-core', 'development', 'agents'),
+    sourceDirs: [
+      path.join(projectRoot, '.aios-core', 'development', 'agents'),
+      path.join(projectRoot, '.claude', 'commands', 'AIOS', 'agents'),
+    ],
     localSkillsDir: envLocalDir || path.join(projectRoot, '.codex', 'skills'),
     globalSkillsDir: envGlobalDir || path.join(getCodexHome(), 'skills'),
     global: false,
@@ -121,7 +125,7 @@ function syncSkills(options = {}) {
   if (resolved.globalOnly) {
     resolved.global = true;
   }
-  const agents = parseAllAgents(resolved.sourceDir);
+  const agents = parseAgentDirs(resolved.sourceDirs || [resolved.sourceDir]);
   const plan = buildSkillPlan(agents, resolved.localSkillsDir);
 
   if (!resolved.globalOnly) {

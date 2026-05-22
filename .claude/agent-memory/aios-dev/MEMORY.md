@@ -1,5 +1,17 @@
 # Dex (Builder) Agent Memory
 
+## Project State
+
+### Bretda Google Ads ECL Audit (2026-05-05)
+- See `bretda_ecl_audit_05mai.md` — Cenário D, no `apps/bretda-sales-ai`, no gclid capture, no Supabase on Bretda LP
+- All Bretda LP server actions (`contato`, `encomenda-particular`, `configurador`, `newsletter`) persist via Resend email + console.log only
+- Tocks Sales AI ECL infrastructure (`apps/tocks-sales-ai/src/integrations/google-ads-{oauth,conversions-client,conversions-types}.ts`) is 100% portable to Bretda — `customerId` is config field, not hardcoded
+- `GoogleAdsAdjustmentsClient` (RESTATE) has NO precedent in repo — greenfield 2d build (Tocks doesn't need it because Tray webhook = real value at first upload)
+- OAuth shared between Tocks + Bretda (same MCC `7943699417`, same refresh token); Testing-mode 7d expiry — Fase 0 Production migration BLOCKS Fase 2 production deploy
+- Bretda LP has zero `gclid` references in `apps/bretda-lp/src` — must add capture in `localStorage` (90d TTL = Google attribution window)
+- Story drafted at `docs/stories/active/STORY-BRETDA-ECL-1.1.md`, estimate 16d (range 15-20)
+- Fallback CSV manual upload path documented at `docs/projects/bretda-google-ads-reactivation/fase-2/fallback-csv-upload.md` — 1d setup, unblocks Phase 4 ramp at D+7
+
 ## Key Patterns
 
 ### Greeting System Architecture (Story ACT-6 Unified Pipeline)
@@ -95,6 +107,22 @@
 - `bin/aios-ids.js` is shared by multiple IDS stories (IDS-2, IDS-4a, IDS-7) - linter may auto-merge changes from other stories
 - DO NOT mock `populate-entity-registry.js` in tests - functions work on any filesystem path; just use `os.tmpdir()` temp dirs
 - `jest.mock()` path hoisting: cannot use `path.resolve()` in mock path argument because `jest.mock()` is hoisted before `const path = require('path')`
+
+### Google Ads conv_action immutability (Bretda 2026-05-05)
+- See `feedback_google_ads_conv_actions_immutable.md` — which fields you CAN/CAN'T mutate via API v20
+- Mutable: `value_settings.{default_value, default_currency_code, always_use_default_value}` — this is the bug-fix path for "R$100 fantasma"
+- Immutable after creation: `include_in_conversions_metric`, `primary_for_goal`, `category`, `type`
+- WEBPAGE_CODELESS conv actions are entirely read-only (returns `MUTATE_NOT_ALLOWED`)
+- To pull weak signals from Smart Bidding without delete: use `customer_conversion_goal/{CATEGORY}~{ORIGIN}` resource → set `biddable=false`. Side-effect: child conv_actions auto-flip include_in_conv to false
+- Endpoint: `customers/{cid}/customerConversionGoals:mutate` (NOT googleAds:mutate)
+- updateMask format: snake_case (`value_settings.default_value`) even though body uses camelCase (`valueSettings.defaultValue`)
+
+### Vercel + Git LFS gotcha (bretda-lp 2026-05-04)
+- See `feedback_vercel_lfs_image_400.md` — Vercel git integration clones WITHOUT LFS resolution
+- Symptom: `/_next/image` returns 400 "not a valid image" on previews while prod works
+- Root cause: assets are 130-byte LFS pointer text instead of real binaries
+- Fix requires: `GITHUB_LFS_TOKEN` Vercel env var + `scripts/vercel-install.sh` script (committed in `apps/bretda-lp` on branch `fix/bretda-lp-lazy-videos-PR1`)
+- `unoptimized: true` does NOT fix this — direct asset URLs still serve LFS pointer text bytes
 
 ## Gotchas
 - Double `loadUserProfile()` call caused test failures when `mockReturnValueOnce` was used for resolveConfig

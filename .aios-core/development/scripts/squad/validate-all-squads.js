@@ -13,7 +13,7 @@ async function main() {
   const validator = new SquadValidator();
   const dirs = fs
     .readdirSync(SQUADS_ROOT, { withFileTypes: true })
-    .filter((d) => d.isDirectory())
+    .filter((d) => d.isDirectory() && !d.name.startsWith('.'))
     .map((d) => d.name)
     .sort();
 

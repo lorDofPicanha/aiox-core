@@ -7,6 +7,19 @@
           {
             "type": "command",
             "command": "rtk hook claude"
+          },
+          {
+            "type": "command",
+            "command": "python \"D:/AIOS/.codex/hooks/sql-governance.py\""
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"D:/AIOS/.codex/hooks/mind-clone-governance.py\""
           }
         ]
       }

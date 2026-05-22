@@ -1,0 +1,1724 @@
+[
+  {
+    "selector": ".cormorant_garamond_dc7b523b-module__LNGNBq__variable",
+    "name": "--font-display-fallback",
+    "value": "\"Cormorant Garamond\", \"Cormorant Garamond Fallback\"",
+    "is_alias": false,
+    "line": 2
+  },
+  {
+    "selector": ".raleway_d917024c-module__NH6K5G__variable",
+    "name": "--font-body-fallback",
+    "value": "\"Raleway\", \"Raleway Fallback\"",
+    "is_alias": false,
+    "line": 3
+  },
+  {
+    "selector": ".inter_ca3e3315-module__vcxgDa__variable",
+    "name": "--font-editorial",
+    "value": "\"Inter\", \"Inter Fallback\"",
+    "is_alias": false,
+    "line": 4
+  },
+  {
+    "selector": ".josefin_sans_8fc4318f-module__17rPua__variable",
+    "name": "--font-small-caps",
+    "value": "\"Josefin Sans\", \"Josefin Sans Fallback\"",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-translate-x",
+    "value": "0",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-translate-y",
+    "value": "0",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-translate-z",
+    "value": "0",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-scale-x",
+    "value": "1",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-scale-y",
+    "value": "1",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-scale-z",
+    "value": "1",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-rotate-x",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-rotate-y",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-rotate-z",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-skew-x",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-skew-y",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-space-y-reverse",
+    "value": "0",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-border-style",
+    "value": "solid",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-gradient-position",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-gradient-from",
+    "value": "#0000",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-gradient-via",
+    "value": "#0000",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-gradient-to",
+    "value": "#0000",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-gradient-stops",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-gradient-via-stops",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-gradient-from-position",
+    "value": "0%",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-gradient-via-position",
+    "value": "50%",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-gradient-to-position",
+    "value": "100%",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-leading",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-font-weight",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-tracking",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-shadow",
+    "value": "0 0 #0000",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-shadow-color",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-shadow-alpha",
+    "value": "100%",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-inset-shadow",
+    "value": "0 0 #0000",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-inset-shadow-color",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-inset-shadow-alpha",
+    "value": "100%",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-ring-color",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-ring-shadow",
+    "value": "0 0 #0000",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-inset-ring-color",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-inset-ring-shadow",
+    "value": "0 0 #0000",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-ring-inset",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-ring-offset-width",
+    "value": "0px",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-ring-offset-color",
+    "value": "#fff",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-ring-offset-shadow",
+    "value": "0 0 #0000",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-outline-style",
+    "value": "solid",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-blur",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-brightness",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-contrast",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-grayscale",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-hue-rotate",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-invert",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-opacity",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-saturate",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-sepia",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-drop-shadow",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-drop-shadow-color",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-drop-shadow-alpha",
+    "value": "100%",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-drop-shadow-size",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-backdrop-blur",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-backdrop-brightness",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-backdrop-contrast",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-backdrop-grayscale",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-backdrop-hue-rotate",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-backdrop-invert",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-backdrop-opacity",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-backdrop-saturate",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-backdrop-sepia",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer properties",
+    "name": "--tw-duration",
+    "value": "initial",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--font-sans",
+    "value": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--font-mono",
+    "value": "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--color-red-400",
+    "value": "#ff6568",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--color-red-700",
+    "value": "#bf000f",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--color-black",
+    "value": "#000",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--color-white",
+    "value": "#fff",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--spacing",
+    "value": ".25rem",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--container-md",
+    "value": "28rem",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--container-lg",
+    "value": "32rem",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--container-2xl",
+    "value": "42rem",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--text-xs",
+    "value": ".75rem",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--text-xs--line-height",
+    "value": "calc(1 / .75)",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--text-sm",
+    "value": ".875rem",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--text-sm--line-height",
+    "value": "calc(1.25 / .875)",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--text-lg",
+    "value": "1.125rem",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--text-lg--line-height",
+    "value": "calc(1.75 / 1.125)",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--text-xl",
+    "value": "1.25rem",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--text-xl--line-height",
+    "value": "calc(1.75 / 1.25)",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--text-2xl",
+    "value": "1.5rem",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--text-2xl--line-height",
+    "value": "calc(2 / 1.5)",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--text-3xl",
+    "value": "1.875rem",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--text-3xl--line-height",
+    "value": "calc(2.25 / 1.875)",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--text-4xl",
+    "value": "2.25rem",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--text-4xl--line-height",
+    "value": "calc(2.5 / 2.25)",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--text-5xl",
+    "value": "3rem",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--text-5xl--line-height",
+    "value": "1",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--font-weight-normal",
+    "value": "400",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--font-weight-medium",
+    "value": "500",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--font-weight-bold",
+    "value": "700",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--tracking-wider",
+    "value": ".05em",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--leading-tight",
+    "value": "1.25",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--leading-snug",
+    "value": "1.375",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--leading-relaxed",
+    "value": "1.625",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--animate-spin",
+    "value": "spin 1s linear infinite",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--blur-sm",
+    "value": "8px",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--default-transition-duration",
+    "value": ".15s",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--default-transition-timing-function",
+    "value": "cubic-bezier(.4, 0, .2, 1)",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--default-font-family",
+    "value": "var(--font-sans)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--default-mono-font-family",
+    "value": "var(--font-mono)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--color-cream",
+    "value": "#fef7f2",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--color-gray-light",
+    "value": "#dfdeda",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--color-charcoal",
+    "value": "#2a2b26",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--color-cream-v2",
+    "value": "#f5f1ea",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--color-charcoal-v2",
+    "value": "#2b2826",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--color-champagne-v2",
+    "value": "#c9a979",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--color-champagne-soft-v2",
+    "value": "#d4b68c",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--color-ink-v2",
+    "value": "#0a0a0a",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--color-ash-v2",
+    "value": "#6b6760",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--color-hairline-v2",
+    "value": "#c9a97940",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--font-display",
+    "value": "\"TAN Aegean\", \"Cormorant Garamond\", Georgia, serif",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--font-body",
+    "value": "\"Century Gothic\", \"URW Gothic\", \"Avenir\", \"Raleway\", sans-serif",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--font-editorial",
+    "value": "\"Inter\", \"Helvetica Neue\", \"Arial\", sans-serif",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@layer theme",
+    "name": "--font-small-caps",
+    "value": "\"Josefin Sans\", \"Inter\", sans-serif",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@supports (color:lab(0% 0 0))",
+    "name": "--color-red-400",
+    "value": "lab(63.7053% 60.745 31.3109)",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@supports (color:lab(0% 0 0))",
+    "name": "--color-red-700",
+    "value": "lab(40.4273% 67.2623 53.7441)",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".-translate-x-1\\/2",
+    "name": "--tw-translate-x",
+    "value": "calc(calc(1 / 2 * 100%) * -1)",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".-translate-y-\\[7px\\]",
+    "name": "--tw-translate-y",
+    "value": "calc(7px * -1)",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".translate-y-\\[7px\\]",
+    "name": "--tw-translate-y",
+    "value": "7px",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".scale-110",
+    "name": "--tw-scale-x",
+    "value": "110%",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".scale-110",
+    "name": "--tw-scale-y",
+    "value": "110%",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".scale-110",
+    "name": "--tw-scale-z",
+    "value": "110%",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":where(.space-y-1\\.5>:not(:last-child))",
+    "name": "--tw-space-y-reverse",
+    "value": "0",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":where(.space-y-2>:not(:last-child))",
+    "name": "--tw-space-y-reverse",
+    "value": "0",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":where(.space-y-3>:not(:last-child))",
+    "name": "--tw-space-y-reverse",
+    "value": "0",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":where(.space-y-4>:not(:last-child))",
+    "name": "--tw-space-y-reverse",
+    "value": "0",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":where(.space-y-6>:not(:last-child))",
+    "name": "--tw-space-y-reverse",
+    "value": "0",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":where(.space-y-component>:not(:last-child))",
+    "name": "--tw-space-y-reverse",
+    "value": "0",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".border-none",
+    "name": "--tw-border-style",
+    "value": "none",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".bg-gradient-to-t",
+    "name": "--tw-gradient-position",
+    "value": "to top in oklab",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".from-black\\/70",
+    "name": "--tw-gradient-from",
+    "value": "#000000b3",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@supports (color:color-mix(in lab, red, red))",
+    "name": "--tw-gradient-from",
+    "value": "color-mix(in oklab, var(--color-black) 70%, transparent)",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".from-black\\/70",
+    "name": "--tw-gradient-stops",
+    "value": "var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ".from-black\\/80",
+    "name": "--tw-gradient-from",
+    "value": "#000c",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@supports (color:color-mix(in lab, red, red))",
+    "name": "--tw-gradient-from",
+    "value": "color-mix(in oklab, var(--color-black) 80%, transparent)",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".from-black\\/80",
+    "name": "--tw-gradient-stops",
+    "value": "var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ".via-black\\/40",
+    "name": "--tw-gradient-via",
+    "value": "#0006",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@supports (color:color-mix(in lab, red, red))",
+    "name": "--tw-gradient-via",
+    "value": "color-mix(in oklab, var(--color-black) 40%, transparent)",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".via-black\\/40",
+    "name": "--tw-gradient-via-stops",
+    "value": "var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ".via-black\\/40",
+    "name": "--tw-gradient-stops",
+    "value": "var(--tw-gradient-via-stops)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ".via-transparent",
+    "name": "--tw-gradient-via",
+    "value": "transparent",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".via-transparent",
+    "name": "--tw-gradient-via-stops",
+    "value": "var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ".via-transparent",
+    "name": "--tw-gradient-stops",
+    "value": "var(--tw-gradient-via-stops)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ".to-black\\/20",
+    "name": "--tw-gradient-to",
+    "value": "#0003",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@supports (color:color-mix(in lab, red, red))",
+    "name": "--tw-gradient-to",
+    "value": "color-mix(in oklab, var(--color-black) 20%, transparent)",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".to-black\\/20",
+    "name": "--tw-gradient-stops",
+    "value": "var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ".to-transparent",
+    "name": "--tw-gradient-to",
+    "value": "transparent",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".to-transparent",
+    "name": "--tw-gradient-stops",
+    "value": "var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ".leading-\\[1\\.1\\]",
+    "name": "--tw-leading",
+    "value": "1.1",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".leading-\\[1\\.2\\]",
+    "name": "--tw-leading",
+    "value": "1.2",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".leading-\\[1\\.3\\]",
+    "name": "--tw-leading",
+    "value": "1.3",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".leading-\\[1\\.5\\]",
+    "name": "--tw-leading",
+    "value": "1.5",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".leading-\\[1\\.6\\]",
+    "name": "--tw-leading",
+    "value": "1.6",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".leading-\\[1\\.55\\]",
+    "name": "--tw-leading",
+    "value": "1.55",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".leading-none",
+    "name": "--tw-leading",
+    "value": "1",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".leading-relaxed",
+    "name": "--tw-leading",
+    "value": "var(--leading-relaxed)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ".leading-snug",
+    "name": "--tw-leading",
+    "value": "var(--leading-snug)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ".leading-tight",
+    "name": "--tw-leading",
+    "value": "var(--leading-tight)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ".font-bold",
+    "name": "--tw-font-weight",
+    "value": "var(--font-weight-bold)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ".font-medium",
+    "name": "--tw-font-weight",
+    "value": "var(--font-weight-medium)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ".font-normal",
+    "name": "--tw-font-weight",
+    "value": "var(--font-weight-normal)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ".tracking-\\[\\*\\]",
+    "name": "--tw-tracking",
+    "value": "*",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".tracking-\\[0\\.1em\\]",
+    "name": "--tw-tracking",
+    "value": ".1em",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".tracking-\\[0\\.2em\\]",
+    "name": "--tw-tracking",
+    "value": ".2em",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".tracking-\\[0\\.04em\\]",
+    "name": "--tw-tracking",
+    "value": ".04em",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".tracking-\\[0\\.15em\\]",
+    "name": "--tw-tracking",
+    "value": ".15em",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".tracking-\\[0\\.18em\\]",
+    "name": "--tw-tracking",
+    "value": ".18em",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".tracking-\\[0\\.28em\\]",
+    "name": "--tw-tracking",
+    "value": ".28em",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".tracking-\\[0\\.32em\\]",
+    "name": "--tw-tracking",
+    "value": ".32em",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".tracking-\\[Nem\\]",
+    "name": "--tw-tracking",
+    "value": "Nem",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".tracking-display",
+    "name": "--tw-tracking",
+    "value": "-.01em",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".tracking-label",
+    "name": "--tw-tracking",
+    "value": ".12em",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".tracking-loose",
+    "name": "--tw-tracking",
+    "value": ".08em",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".tracking-wider",
+    "name": "--tw-tracking",
+    "value": "var(--tracking-wider)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ".shadow",
+    "name": "--tw-shadow",
+    "value": "0 1px 3px 0 var(--tw-shadow-color,#0000001a), 0 1px 2px -1px var(--tw-shadow-color,#0000001a)",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".shadow-lg",
+    "name": "--tw-shadow",
+    "value": "0 10px 15px -3px var(--tw-shadow-color,#0000001a), 0 4px 6px -4px var(--tw-shadow-color,#0000001a)",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".ring",
+    "name": "--tw-ring-shadow",
+    "value": "var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ".blur",
+    "name": "--tw-blur",
+    "value": "blur(8px)",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".invert",
+    "name": "--tw-invert",
+    "value": "invert(100%)",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".backdrop-blur-sm",
+    "name": "--tw-backdrop-blur",
+    "value": "blur(var(--blur-sm))",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".duration-300",
+    "name": "--tw-duration",
+    "value": ".3s",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".duration-600",
+    "name": "--tw-duration",
+    "value": ".6s",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".duration-700",
+    "name": "--tw-duration",
+    "value": ".7s",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@media (hover:hover)",
+    "name": "--tw-scale-x",
+    "value": "105%",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@media (hover:hover)",
+    "name": "--tw-scale-y",
+    "value": "105%",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@media (hover:hover)",
+    "name": "--tw-scale-z",
+    "value": "105%",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@media (hover:hover)",
+    "name": "--tw-scale-x",
+    "value": "110%",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@media (hover:hover)",
+    "name": "--tw-scale-y",
+    "value": "110%",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@media (hover:hover)",
+    "name": "--tw-scale-z",
+    "value": "110%",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".focus\\:outline-none:focus",
+    "name": "--tw-outline-style",
+    "value": "none",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".md\\:tracking-\\[0\\.2em\\]",
+    "name": "--tw-tracking",
+    "value": ".2em",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":where(.\\[\\&_ul\\]\\:space-y-2 ul>:not(:last-child))",
+    "name": "--tw-space-y-reverse",
+    "value": "0",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--color-cream",
+    "value": "#fef7f2",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--color-cream-dark",
+    "value": "#f5ede6",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--color-gray-light",
+    "value": "#dfdeda",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--color-gray-medium",
+    "value": "#b4b5ac",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--color-gray-muted",
+    "value": "#b0b1aa",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--color-charcoal",
+    "value": "#2a2b26",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--color-charcoal-secondary",
+    "value": "#353630",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--color-charcoal-tertiary",
+    "value": "#3e3f38",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--color-border",
+    "value": "#4a4b44",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--color-whatsapp",
+    "value": "#25d366",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--color-whatsapp-hover",
+    "value": "#1da851",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--color-cream-v2",
+    "value": "#f5f1ea",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--color-charcoal-v2",
+    "value": "#2b2826",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--color-champagne-v2",
+    "value": "#c9a979",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--color-champagne-soft-v2",
+    "value": "#d4b68c",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--color-ink-v2",
+    "value": "#0a0a0a",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--color-walnut-v2",
+    "value": "#4a3426",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--color-ash-v2",
+    "value": "#6b6760",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--color-ash-deep-v2",
+    "value": "#8a857c",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--color-hairline-v2",
+    "value": "#c9a97940",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--duration-hero-reveal",
+    "value": "1.4s",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--duration-card-reveal",
+    "value": "1.8s",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--blur-hero-start",
+    "value": "8px",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--blur-card-start",
+    "value": "12px",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--ease-luxury",
+    "value": "cubic-bezier(.25, .46, .45, .94)",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--ease-reveal",
+    "value": "cubic-bezier(.16, 1, .3, 1)",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root[data-palette=v2]",
+    "name": "--canvas-source",
+    "value": "var(--color-cream-v2)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ":root[data-palette=v2]",
+    "name": "--surface-raised-source",
+    "value": "var(--color-cream-v2)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ":root[data-palette=v2]",
+    "name": "--surface-overlay-source",
+    "value": "var(--color-cream-v2)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ":root[data-palette=v2]",
+    "name": "--text-primary-source",
+    "value": "var(--color-charcoal-v2)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ":root[data-palette=v2]",
+    "name": "--text-secondary-source",
+    "value": "var(--color-ash-v2)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ":root[data-palette=v2]",
+    "name": "--text-muted-source",
+    "value": "var(--color-ash-v2)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ":root[data-palette=v2]",
+    "name": "--border-subtle-source",
+    "value": "var(--color-hairline-v2)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ":root[data-palette=v2]",
+    "name": "--accent-brand-source",
+    "value": "var(--color-champagne-v2)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ":root[data-palette=v2]",
+    "name": "--accent-brand-hover-source",
+    "value": "var(--color-champagne-soft-v2)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--duration-hero-reveal",
+    "value": "1ms",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--duration-card-reveal",
+    "value": "1ms",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--blur-hero-start",
+    "value": "0px",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--blur-card-start",
+    "value": "0px",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root[data-edition=\"11r\"]",
+    "name": "--canvas-source",
+    "value": "#2b2826",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root[data-edition=\"11r\"]",
+    "name": "--surface-raised-source",
+    "value": "#3a3530",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root[data-edition=\"11r\"]",
+    "name": "--surface-overlay-source",
+    "value": "#1a1815",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root[data-edition=\"11r\"]",
+    "name": "--text-primary-source",
+    "value": "#f5f1ea",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root[data-edition=\"11r\"]",
+    "name": "--text-secondary-source",
+    "value": "#b5afa4",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root[data-edition=\"11r\"]",
+    "name": "--text-muted-source",
+    "value": "#8a857c",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root[data-edition=\"11r\"]",
+    "name": "--border-subtle-source",
+    "value": "#c9a97938",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root[data-edition=\"11r\"]",
+    "name": "--accent-brand-source",
+    "value": "#c9a979",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root[data-edition=\"11r\"]",
+    "name": "--accent-brand-hover-source",
+    "value": "#d4b886",
+    "is_alias": false,
+    "line": 6
+  }
+]

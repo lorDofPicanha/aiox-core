@@ -10,7 +10,8 @@ for /f "tokens=2 delims=," %%p in ('wmic process where "name='node.exe' and comm
   taskkill /PID %%p /F >nul 2>&1
 )
 
-REM Launch detached
-start "" /B "C:\Program Files\nodejs\node.exe" "node_modules\tsx\dist\cli.mjs" "src\cli\index.ts" "bot" "--start" >> data\bot.log 2>> data\bot-error.log
-echo [%date% %time%] bot launched >> data\bot.log
+REM Launch detached with bumped heap (2GB) to delay OOM on Gamma fetcher accumulation.
+REM 15/Mai: bot was OOMing after ~1000 scans with default ~1.5GB heap.
+start "" /B "C:\Program Files\nodejs\node.exe" --max-old-space-size=2048 "node_modules\tsx\dist\cli.mjs" "src\cli\index.ts" "bot" "--start" >> data\bot.log 2>> data\bot-error.log
+echo [%date% %time%] bot launched (heap=2048MB) >> data\bot.log
 exit /b 0

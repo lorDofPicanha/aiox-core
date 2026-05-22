@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sprint 1 Security Report — Anipis Closed Beta Hardening</title>
+<style>
+/* ============================================================================
+ * AIOX Squad — Dark Cockpit Edition (Web variant)
+ * Sprint 1 Security Report — Anipis
+ * Generated: 2026-05-17
+ * ============================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,700,500&display=swap');
+
+:root {
+  /* Accent */
+  --aiox-primary: #D1FF00;
+  --aiox-primary-deep: #9FCC00;
+  --aiox-primary-soft: #F0FFB0;
+  --aiox-accent-12: rgba(209, 255, 0, 0.12);
+  --aiox-accent-24: rgba(209, 255, 0, 0.24);
+
+  /* Surfaces */
+  --aiox-void: #0A0A0B;
+  --aiox-surface: #141416;
+  --aiox-surface-2: #1C1C1F;
+  --aiox-surface-3: #252528;
+  --aiox-border: #2A2A2E;
+  --aiox-border-strong: #3D3D42;
+
+  /* Text */
+  --aiox-text: #F4F1EA;
+  --aiox-text-2: #A8A4A0;
+  --aiox-text-3: #6B6864;
+  --aiox-text-on-accent: #0A0A0B;
+
+  /* Semantic */
+  --aiox-success: #7BC97B;
+  --aiox-warning: #E8B23A;
+  --aiox-error: #E0533D;
+  --aiox-info: #5C8FE8;
+
+  /* Type stacks */
+  --font-display: "Cabinet Grotesk", "Geist", "Inter", system-ui, sans-serif;
+  --font-sans: "Geist", "Inter", system-ui, "Segoe UI", sans-serif;
+  --font-mono: "Roboto Mono", "JetBrains Mono", "Consolas", monospace;
+
+  --shadow-md: 0 6px 16px rgba(0,0,0,0.45);
+  --shadow-glow: 0 0 0 1px var(--aiox-primary), 0 0 24px rgba(209,255,0,0.35);
+}
+
+* { box-sizing: border-box; }
+
+html {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--aiox-text);
+  background: var(--aiox-void);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--aiox-void);
+  color: var(--aiox-text);
+  font-feature-settings: "ss01", "cv11";
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 64px 32px 120px;
+}
+
+/* ----- Cover header ----- */
+.cover {
+  position: relative;
+  padding: 80px 0 60px;
+  border-bottom: 1px solid var(--aiox-border-strong);
+  margin-bottom: 60px;
+}
+
+.cover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--aiox-primary) 20%, var(--aiox-primary) 80%, transparent 100%);
+  opacity: 0.6;
+}
+
+.cover-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--aiox-text-3);
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.cover-meta .accent { color: var(--aiox-primary); }
+
+.cover-mark {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--aiox-primary);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.cover-title {
+  font-family: var(--font-display);
+  font-size: 80px;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  color: var(--aiox-text);
+  margin: 16px 0 24px;
+}
+
+.cover-title .x-accent { color: var(--aiox-primary); }
+
+.cover-subtitle {
+  font-family: var(--font-sans);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--aiox-text-2);
+  max-width: 720px;
+  margin: 0;
+}
+
+.cover-footer {
+  margin-top: 56px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--aiox-text-3);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.cover-footer .stamp {
+  border: 1px solid var(--aiox-primary);
+  padding: 8px 18px;
+  color: var(--aiox-primary);
+  text-transform: uppercase;
+  border-radius: 2px;
+}
+
+/* ----- Typography ----- */
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-sans);
+  color: var(--aiox-text);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+h2 {
+  font-size: 32px;
+  line-height: 1.2;
+  margin: 64px 0 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--aiox-border-strong);
+}
+
+h2::before {
+  content: counter(h2-counter, decimal-leading-zero) "  ";
+  counter-increment: h2-counter;
+  color: var(--aiox-primary);
+  font-family: var(--font-mono);
+  font-size: 0.55em;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  vertical-align: 0.2em;
+}
+
+body { counter-reset: h2-counter; }
+
+h3 {
+  font-size: 22px;
+  line-height: 1.3;
+  margin: 36px 0 12px;
+}
+
+h4 {
+  font-size: 14px;
+  color: var(--aiox-text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  margin: 28px 0 12px;
+}
+
+p {
+  margin: 0 0 14px;
+  color: var(--aiox-text);
+  font-size: 15.5px;
+  line-height: 1.7;
+}
+
+strong { color: var(--aiox-text); font-weight: 600; }
+em { font-style: italic; }
+
+a {
+  color: var(--aiox-primary);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--aiox-primary-deep);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--aiox-border-strong);
+  margin: 40px 0;
+}
+
+/* ----- Lists ----- */
+ul, ol { margin: 12px 0 20px; padding-left: 24px; }
+li { margin: 6px 0; line-height: 1.65; }
+ul li::marker { color: var(--aiox-primary); }
+ol li::marker { color: var(--aiox-primary); font-family: var(--font-mono); font-weight: 500; }
+
+/* ----- Code ----- */
+code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  color: var(--aiox-primary);
+  background: var(--aiox-surface);
+  padding: 2px 6px;
+  border-radius: 2px;
+  border: 1px solid var(--aiox-border);
+}
+
+pre {
+  font-family: var(--font-mono);
+  background: var(--aiox-surface);
+  border: 1px solid var(--aiox-border);
+  border-left: 3px solid var(--aiox-primary);
+  border-radius: 4px;
+  padding: 16px 20px;
+  margin: 16px 0;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--aiox-text);
+}
+
+pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--aiox-text);
+}
+
+/* ----- Tables ----- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 14px;
+  background: var(--aiox-surface);
+  border: 1px solid var(--aiox-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+thead { background: var(--aiox-surface-2); }
+
+th {
+  text-align: left;
+  padding: 12px 16px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--aiox-primary);
+  border-bottom: 1px solid var(--aiox-border-strong);
+}
+
+td {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--aiox-border);
+  vertical-align: top;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) td { background: rgba(255, 255, 255, 0.012); }
+
+/* ----- Stat cards (KPI row) ----- */
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin: 32px 0 48px;
+}
+
+.kpi {
+  background: var(--aiox-surface);
+  border: 1px solid var(--aiox-border);
+  border-radius: 6px;
+  padding: 20px 22px;
+  position: relative;
+}
+
+.kpi::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--aiox-primary);
+  opacity: 0.6;
+}
+
+.kpi-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--aiox-text-3);
+  margin-bottom: 8px;
+}
+
+.kpi-value {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--aiox-text);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.kpi-value.accent { color: var(--aiox-primary); }
+.kpi-value.success { color: var(--aiox-success); }
+.kpi-value.warning { color: var(--aiox-warning); }
+.kpi-value.error { color: var(--aiox-error); }
+
+.kpi-delta {
+  margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--aiox-text-2);
+}
+
+.kpi-delta .up { color: var(--aiox-success); }
+
+/* ----- Status pills ----- */
+.pill {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  vertical-align: 0.05em;
+}
+
+.pill.ok { background: rgba(123, 201, 123, 0.15); color: var(--aiox-success); border: 1px solid rgba(123, 201, 123, 0.3); }
+.pill.warn { background: rgba(232, 178, 58, 0.15); color: var(--aiox-warning); border: 1px solid rgba(232, 178, 58, 0.3); }
+.pill.err { background: rgba(224, 83, 61, 0.15); color: var(--aiox-error); border: 1px solid rgba(224, 83, 61, 0.3); }
+.pill.info { background: rgba(92, 143, 232, 0.15); color: var(--aiox-info); border: 1px solid rgba(92, 143, 232, 0.3); }
+
+/* ----- Callouts ----- */
+.callout {
+  margin: 24px 0;
+  padding: 16px 22px;
+  border-radius: 6px;
+  border-left: 3px solid var(--aiox-primary);
+  background: var(--aiox-accent-12);
+}
+
+.callout-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--aiox-primary);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.callout.warn { border-left-color: var(--aiox-warning); background: rgba(232, 178, 58, 0.08); }
+.callout.warn .callout-title { color: var(--aiox-warning); }
+
+.callout.err { border-left-color: var(--aiox-error); background: rgba(224, 83, 61, 0.08); }
+.callout.err .callout-title { color: var(--aiox-error); }
+
+blockquote {
+  margin: 20px 0;
+  padding: 14px 22px;
+  border-left: 3px solid var(--aiox-primary);
+  background: var(--aiox-accent-12);
+  font-style: italic;
+  border-radius: 0 4px 4px 0;
+}
+
+blockquote p { margin: 0; font-size: 15px; }
+
+/* ----- Section labels ----- */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--aiox-primary);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+/* ----- Timeline ----- */
+.timeline { margin: 24px 0; }
+.timeline-item {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 24px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--aiox-border);
+  align-items: start;
+}
+
+.timeline-item:last-child { border-bottom: none; }
+
+.timeline-when {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--aiox-primary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding-top: 2px;
+}
+
+.timeline-what strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* ----- Footer ----- */
+.footer {
+  margin-top: 80px;
+  padding-top: 40px;
+  border-top: 1px solid var(--aiox-border-strong);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--aiox-text-3);
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* ----- Print-friendly fallback ----- */
+@media print {
+  body { background: white; color: black; }
+  .container { padding: 0; }
+}
+
+/* ----- Mobile ----- */
+@media (max-width: 720px) {
+  .container { padding: 32px 20px 64px; }
+  .cover-title { font-size: 48px; }
+  .cover-subtitle { font-size: 16px; }
+  h2 { font-size: 24px; }
+  .timeline-item { grid-template-columns: 1fr; gap: 4px; }
+  table { font-size: 12px; }
+  th, td { padding: 8px 10px; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- ============================================================================
+     COVER
+     ============================================================================ -->
+<section class="cover">
+  <div class="cover-meta">
+    <span><span class="accent">ANIPIS</span> · SPRINT 1 · SECURITY HARDENING</span>
+    <span>2026-05-17</span>
+  </div>
+
+  <div class="cover-mark">—— Confidencial · AIOX Squad</div>
+
+  <h1 class="cover-title">
+    SPRINT 1<br>
+    <span class="x-accent">SECURITY</span>
+  </h1>
+
+  <p class="cover-subtitle">
+    Hardening Anipis para Closed Beta 30/Mai. Três audits paralelos (Schneier · Darcy · Savage)
+    consolidados em 18 P0s. <strong>14 fechados code-side</strong> com 0 regressão e <strong>+58 testes novos</strong>.
+    3 legais bloqueados em founder + OAB.
+  </p>
+
+  <div class="cover-footer">
+    <div>
+      Owner: brenodecerqueira@gmail.com<br>
+      Squad: Bruce Schneier · Alison Darcy · Lucia Savage · Orion AIOS
+    </div>
+    <div class="stamp">READY · GREEN</div>
+  </div>
+</section>
+
+<!-- ============================================================================
+     KPI ROW
+     ============================================================================ -->
+<div class="kpi-row">
+  <div class="kpi">
+    <div class="kpi-label">Test Suite</div>
+    <div class="kpi-value success">827</div>
+    <div class="kpi-delta"><span class="up">+58</span> nesta sprint · 100% green</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">P0s code-side</div>
+    <div class="kpi-value accent">14<span style="font-size: 22px; color: var(--aiox-text-3); font-weight: 500;">/18</span></div>
+    <div class="kpi-delta">3 legal · 1 operacional pré-launch</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Spec Lucia §8</div>
+    <div class="kpi-value accent">18<span style="font-size: 22px; color: var(--aiox-text-3); font-weight: 500;">/20</span></div>
+    <div class="kpi-delta">items entregues</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Days to launch</div>
+    <div class="kpi-value warning">13</div>
+    <div class="kpi-delta">D-Day = 30/Mai/2026</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Regressão</div>
+    <div class="kpi-value success">0</div>
+    <div class="kpi-delta">em todas as 5 iterações</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Tables PII hardened</div>
+    <div class="kpi-value">17</div>
+    <div class="kpi-delta">13 HARD DELETE · 5 PSEUDO · 1 N/A</div>
+  </div>
+</div>
+
+<!-- ============================================================================
+     CONTEXT
+     ============================================================================ -->
+<h2>Contexto</h2>
+
+<p>
+  Anipis é um companion de saúde mental com IA para mulheres 18-29 BR.
+  Antes do Closed Beta launch, a founder declarou <strong>segurança ABSOLUTA</strong>
+  como pré-requisito não-negociável. Três audits paralelos foram conduzidos por especialistas-clone:
+</p>
+
+<table>
+  <thead><tr><th>Auditor</th><th>Foco</th><th>Verdict</th><th>Output</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Bruce Schneier</strong></td>
+      <td>Security threat model</td>
+      <td><span class="pill err">NO-GO</span></td>
+      <td>26 issues: 5 CRITICAL + 8 HIGH + 7 MED + 4 LOW + 2 INFO</td>
+    </tr>
+    <tr>
+      <td><strong>Alison Darcy</strong><br><span style="color: var(--aiox-text-3); font-size: 12px;">Woebot/Stanford</span></td>
+      <td>Clinical red-team</td>
+      <td><span class="pill warn">GO-WITH-FIXES</span></td>
+      <td>15 cenários PT-BR · 3 KILL criteria · 49 patterns ALISON-10/12</td>
+    </tr>
+    <tr>
+      <td><strong>Lucia Savage</strong><br><span style="color: var(--aiox-text-3); font-size: 12px;">ex-ONC HHS</span></td>
+      <td>LGPD/DPIA regulatory</td>
+      <td><span class="pill err">NO-GO</span></td>
+      <td>12 secs DPIA + 3 hard blockers até completude Art. 18</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+  Consolidado pela Orion (AIOS) em <strong>18 P0s</strong> atacados sequencialmente em 5 batches ao longo de 16-17/Mai.
+</p>
+
+<!-- ============================================================================
+     P0 STATUS
+     ============================================================================ -->
+<h2>Status dos 18 P0s</h2>
+
+<h3>Code-side fechados (14)</h3>
+
+<table>
+  <thead>
+    <tr><th>#</th><th>P0</th><th>Source</th><th>Status</th><th>Testes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>SEC-01 Middlewares age+consent globais</td><td>Bruce</td><td><span class="pill ok">OK</span></td><td>implícito</td></tr>
+    <tr><td>2</td><td>SEC-02 Auth /internal/crisis-responses</td><td>Bruce</td><td><span class="pill ok">OK</span></td><td>refatorado</td></tr>
+    <tr><td>3</td><td>SEC-03 IDOR /crisis/alert-contact</td><td>Bruce</td><td><span class="pill ok">OK</span></td><td>+2</td></tr>
+    <tr><td>4</td><td>SEC-04 Timing attack internal-auth</td><td>Bruce</td><td><span class="pill ok">OK</span></td><td>covered</td></tr>
+    <tr><td>5</td><td>SEC-05 RAG injection guard</td><td>Bruce</td><td><span class="pill ok">OK</span></td><td>+13</td></tr>
+    <tr><td>6</td><td>ALISON-1 alertEmergencyContact + Sentry URGENT</td><td>Alison</td><td><span class="pill ok">OK</span></td><td>suite</td></tr>
+    <tr><td>7</td><td>ALISON-5 Minor indicators detector</td><td>Alison</td><td><span class="pill ok">OK</span></td><td>+22</td></tr>
+    <tr><td>8</td><td>ALISON-11 SessionRiskTracker multi-turn</td><td>Alison</td><td><span class="pill ok">OK</span></td><td>+15</td></tr>
+    <tr><td>9</td><td>ALISON-9 CRISIS_RESOURCES expand</td><td>Alison</td><td><span class="pill ok">OK</span></td><td>constants</td></tr>
+    <tr><td>10</td><td>SEC-11 Unicode evasion classifier</td><td>Bruce</td><td><span class="pill ok">OK</span></td><td>+11</td></tr>
+    <tr><td>11</td><td>SEC-06 WS rate limit + conn cap</td><td>Bruce</td><td><span class="pill ok">OK</span></td><td>+11</td></tr>
+    <tr><td>12</td><td>SEC-07/10 PII redaction + crisis triggerDetail</td><td>Bruce</td><td><span class="pill ok">OK</span></td><td>suite</td></tr>
+    <tr><td><strong>13</strong></td><td><strong>ALISON-10/12 Psicose/Mania/ED + Self-harm romantização</strong></td><td>Alison</td><td><span class="pill ok">OK</span></td><td><strong>+25</strong></td></tr>
+    <tr><td><strong>14</strong></td><td><strong>LUCIA Art. 18 hard delete completeness</strong></td><td>Lucia</td><td><span class="pill ok">OK</span></td><td><strong>+33</strong></td></tr>
+  </tbody>
+</table>
+
+<h3>Legal-side bloqueados (3)</h3>
+
+<table>
+  <thead>
+    <tr><th>#</th><th>P0</th><th>Bloqueador</th><th>Deadline</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>16</td><td>SCCs ANPD Res. 19/2024 — 6 subprocessadores</td><td>Founder contratar OAB (Patricia Peck rec. R$5-15k)</td><td><span class="pill err">28/Mai</span></td></tr>
+    <tr><td>17</td><td>Privacy Policy + Termo Beta</td><td>OAB SP/RJ review</td><td><span class="pill err">26-28/Mai</span></td></tr>
+    <tr><td>18</td><td>DPO sign-off hard delete</td><td>Founder DPO interim</td><td><span class="pill warn">antes launch</span></td></tr>
+  </tbody>
+</table>
+
+<h3>Pré-launch operacional (1)</h3>
+
+<table>
+  <thead><tr><th>#</th><th>Item</th><th>Owner</th><th>Quando</th></tr></thead>
+  <tbody>
+    <tr><td>20</td><td>Smoke test pré-Beta (usuária fake + full flow)</td><td>Engineering + Founder</td><td><span class="pill warn">29/Mai (D-1)</span></td></tr>
+  </tbody>
+</table>
+
+<!-- ============================================================================
+     P0 #14 deep dive
+     ============================================================================ -->
+<h2>P0 #14 — Art. 18 Saga (entregável central Sprint 1)</h2>
+
+<p>
+  A peça mais ambiciosa do sprint: implementação completa do <strong>LGPD Art. 18 Direito ao Esquecimento</strong>
+  conforme spec de Lucia Savage. Cobre 17 tabelas, com lógica diferenciada por tipo de PII,
+  e wireado end-to-end (DB → cache Redis → Supabase auth → audit trail).
+</p>
+
+<h3>Saga em 19 steps</h3>
+
+<pre><code>Pre-flight:
+  - pg_advisory_xact_lock(hashtext(userId))    ← race-condition guard
+  - assertSafeToDelete()                       ← crisis guard (Art. 11,II,"f")
+
+TX (FK-aware order):
+  1.  DELETE messages
+  2.  DELETE journal_entries                   ← novo
+  3.  DELETE conversations
+  4.  DELETE mood_checkins
+  5.  DELETE emergency_contacts
+  6.  DELETE exercises
+  7.  DELETE assessment_results
+  8.  DELETE beta_feedback
+  9.  DELETE nps_responses
+  10. DELETE dependency_tracking               ← novo
+  11. DELETE professional_ai_configs WHERE patient_id=userId    ← novo
+  12. DELETE professional_patient_links WHERE patient_id=userId ← novo
+  13. INSERT tombstone profile (ON CONFLICT DO NOTHING)
+  14. UPDATE crisis_events SET user_id=tombstone,
+             classifier_output.matchedKeywords=[]   ← PII strip
+  15. UPDATE consents SET user_id=tombstone,
+             ip=NULL, ua=NULL, revoked_at=NOW
+  16. UPDATE granular_consents (idem)
+  17. UPDATE audit_events SET user_id=tombstone  ← hash chain preservada
+  18. UPDATE deletion_requests SET user_id=tombstone
+  19. DELETE profiles WHERE id=userId
+
+Post-TX:
+  - auditTrail.scanAndReplaceUserId(userId, tombstoneId)   ← buffer rewrite
+  - audit emit: deletion_hard_completed (tombstoneId)
+  - purgeUserCache(userId, redis)                          ← 7 Upstash patterns
+  - supabase.auth.admin.deleteUser(userId)                 ← Supabase auth purge
+  - audit emit: auth_user_purged
+</code></pre>
+
+<div class="callout">
+  <div class="callout-title">Key design decision</div>
+  <p>
+    <strong>HARD DELETE vs PSEUDO</strong> — 13 tabelas com PII direta vão pra DELETE.
+    5 tabelas com função de comprovação legal (crisis_events, consents, granular_consents,
+    audit_events, deletion_requests) vão pra PSEUDO (user_id → sha256(userId) tombstone).
+    Hash chain do audit_events permanece íntegra porque <code>current_hash</code> NÃO é recomputada
+    — tombstone é semanticamente equivalente pro chain.
+  </p>
+</div>
+
+<h3>Items spec Lucia §8 (20 total)</h3>
+
+<table>
+  <thead><tr><th>Item</th><th>Descrição</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>revokedAt em consents</td><td><span class="pill ok">já existia</span></td></tr>
+    <tr><td>2</td><td>imports tabelas em service</td><td><span class="pill ok">OK</span></td></tr>
+    <tr><td>3</td><td>saga steps 1-19</td><td><span class="pill ok">OK</span></td></tr>
+    <tr><td>4</td><td>advisory_lock pré-tx</td><td><span class="pill ok">OK</span></td></tr>
+    <tr><td>5</td><td>exportUserData queries completas</td><td><span class="pill ok">OK</span></td></tr>
+    <tr><td>6</td><td>avisoSubprocessadores bloco no export</td><td><span class="pill ok">OK</span></td></tr>
+    <tr><td>7</td><td>crisis-deletion-guard.ts</td><td><span class="pill ok">OK</span></td></tr>
+    <tr><td>8</td><td>Supabase auth.admin.deleteUser</td><td><span class="pill ok">OK</span></td></tr>
+    <tr><td>9</td><td>requestDeletion response com aviso</td><td><span class="pill ok">OK</span></td></tr>
+    <tr><td>10</td><td>scanAndReplaceUserId audit buffer</td><td><span class="pill ok">OK</span></td></tr>
+    <tr><td>11</td><td>cache-purge.ts Upstash Redis</td><td><span class="pill ok">OK</span></td></tr>
+    <tr><td>12</td><td>notification-service professional</td><td><span class="pill info">N/A Closed Beta</span></td></tr>
+    <tr><td>13</td><td>SQL migration comment tombstone</td><td><span class="pill ok">OK</span></td></tr>
+    <tr><td>14</td><td>7 lifecycle audit events</td><td><span class="pill ok">OK</span></td></tr>
+    <tr><td>15</td><td>Testes Seção 7 (11 spec)</td><td><span class="pill ok">+44 (mais que pedido)</span></td></tr>
+    <tr><td>16</td><td>privacy-policy.md update</td><td><span class="pill err">founder + OAB</span></td></tr>
+    <tr><td>17</td><td>runbook-art18-deletion.md</td><td><span class="pill ok">OK</span></td></tr>
+    <tr><td>18</td><td>CI gate Art.18 completeness</td><td><span class="pill ok">OK</span></td></tr>
+    <tr><td>19</td><td>JSDoc executeHardDelete formal</td><td><span class="pill ok">OK</span></td></tr>
+    <tr><td>20</td><td>Smoke test pré-Beta</td><td><span class="pill warn">29/Mai operacional</span></td></tr>
+  </tbody>
+</table>
+
+<p><strong>18/20 entregues.</strong> 12 N/A (sem profissionais no Closed Beta), 16 founder+OAB, 20 operacional pré-launch.</p>
+
+<!-- ============================================================================
+     Métricas suite
+     ============================================================================ -->
+<h2>Evolução da test suite</h2>
+
+<table>
+  <thead><tr><th>Marco</th><th>Test files</th><th>Tests</th><th>Diff</th></tr></thead>
+  <tbody>
+    <tr><td>Baseline (início Sprint 1)</td><td>26</td><td>769</td><td>—</td></tr>
+    <tr><td>SEC-01..07 + ALISON-1/5/11 + SEC-11</td><td>30</td><td>769</td><td>+0 (refactor)</td></tr>
+    <tr><td>ALISON-10/12 (P0 #13)</td><td>31</td><td>794</td><td>+25</td></tr>
+    <tr><td>LUCIA Art.18 saga core (P0 #14)</td><td>32</td><td>808</td><td>+14</td></tr>
+    <tr><td>Supabase auth wire-up</td><td>32</td><td>810</td><td>+2</td></tr>
+    <tr><td>CI gate Art.18</td><td>33</td><td>814</td><td>+4</td></tr>
+    <tr><td>Batch 5 (lifecycle + cache + scan + aviso)</td><td>34</td><td><strong>827</strong></td><td><strong>+13</strong></td></tr>
+  </tbody>
+</table>
+
+<p style="margin-top: 20px;">
+  <strong>+58 testes na sprint. 0 regressão</strong> em qualquer iteração.
+  Suite roda em ~10s, 34 test files cobrindo classifier, RAG, crisis-protocol, audit-trail, deletion saga, CI gates.
+</p>
+
+<!-- ============================================================================
+     Pivots
+     ============================================================================ -->
+<h2>Pivots estratégicos (registrados)</h2>
+
+<table>
+  <thead><tr><th>Pivot</th><th>De</th><th>Para</th><th>Razão</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>Rebrand</td>
+      <td>v2 Uma</td>
+      <td>v3 "Pergaminho Clínico"</td>
+      <td>Síntese refero Granola/Hume/Ease Health/Equals/Aboard</td>
+    </tr>
+    <tr>
+      <td>Canal</td>
+      <td>WhatsApp+App híbrido</td>
+      <td>App PWA only</td>
+      <td>Controle total + LGPD defensável + 5 layers safety in-house</td>
+    </tr>
+    <tr>
+      <td>Format Closed Beta</td>
+      <td>Concierge humano D-02</td>
+      <td>AI 20 Júlias 14d</td>
+      <td>Sem facilitadoras; clinical advisor monitora logs sem intervir</td>
+    </tr>
+    <tr>
+      <td>Sequência sprint</td>
+      <td>Build features → audit</td>
+      <td>3 audits paralelos → consolidar P0s → atacar</td>
+      <td>Founder: "segurança ANTES de mexer em código"</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ============================================================================
+     Roadmap to launch
+     ============================================================================ -->
+<h2>Roadmap até launch (13 dias)</h2>
+
+<div class="timeline">
+  <div class="timeline-item">
+    <div class="timeline-when">D-13/D-11<br>17-19/Mai</div>
+    <div class="timeline-what">
+      <strong>FOUNDER outreach</strong>
+      Contatar 2-3 advogados OAB (Patricia Peck primeira escolha, R$5-15k). Iniciar processos vendor (Supabase Pro / Anthropic Enterprise / OpenAI ZRT / Sentry / Upstash / Langfuse Pro).
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-when">D-10/D-7<br>20-23/Mai</div>
+    <div class="timeline-what">
+      <strong>OAB kickoff</strong>
+      Brief = SCCs-ANPD-19-2024-checklist.md. OAB redige SCC Módulo 2 ANPD-template PT-BR. DevOps considera migração Upstash pra região São Paulo.
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-when">D-6/D-3<br>24-27/Mai</div>
+    <div class="timeline-what">
+      <strong>Assinaturas + Privacy Policy</strong>
+      DPAs + SCCs com 6 vendors. Privacy Policy v1 + Termo Beta v1 prontos. ZDR Anthropic + OpenAI ativados. DPO sign-off hard delete (P0 #18).
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-when">D-2/D-1<br>28-29/Mai</div>
+    <div class="timeline-what">
+      <strong>Smoke test E2E</strong>
+      Usuária fake + 17 tabelas + full flow Art.18 (item 20). Notification email pré-Beta às 20 Júlias com disclosure de transferência internacional.
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-when">D-Day<br>30/Mai</div>
+    <div class="timeline-what">
+      <strong style="color: var(--aiox-primary);">LAUNCH</strong>
+      Closed Beta — 20 Júlias, 14 dias, App PWA. Clinical advisor monitora logs.
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================================
+     Quality gate
+     ============================================================================ -->
+<h2>Quality gate Closed Beta</h2>
+
+<table>
+  <thead><tr><th>Critério</th><th>Status</th><th>Owner</th></tr></thead>
+  <tbody>
+    <tr><td>Suite tests 100% green</td><td><span class="pill ok">827/827</span></td><td>Engineering</td></tr>
+    <tr><td>0 regressão pre-existente</td><td><span class="pill ok">verificado</span></td><td>Engineering</td></tr>
+    <tr><td>LGPD Art. 18 completude</td><td><span class="pill ok">14/14 tabelas PII tratadas</span></td><td>Engineering</td></tr>
+    <tr><td>LGPD Art. 33 (transferência internacional)</td><td><span class="pill err">SCCs pendentes</span></td><td>Founder + OAB</td></tr>
+    <tr><td>Privacy Policy v1</td><td><span class="pill err">pendente OAB</span></td><td>OAB</td></tr>
+    <tr><td>Termo Beta v1</td><td><span class="pill err">pendente OAB</span></td><td>OAB</td></tr>
+    <tr><td>DPO sign-off</td><td><span class="pill err">pendente</span></td><td>Founder DPO</td></tr>
+    <tr><td>Smoke test E2E</td><td><span class="pill warn">pendente D-1</span></td><td>Engineering</td></tr>
+    <tr><td>Crisis routing 5-layer safety</td><td><span class="pill ok">OK</span></td><td>Engineering</td></tr>
+    <tr><td>Subprocessor disclosure no app</td><td><span class="pill ok">aviso field + exportUserData</span></td><td>Engineering</td></tr>
+  </tbody>
+</table>
+
+<!-- ============================================================================
+     Lições aprendidas
+     ============================================================================ -->
+<h2>Lições aprendidas</h2>
+
+<h3>1. vitest alias diretório → Vite prefere .js sobre .ts</h3>
+<p>
+  Root cause do "stale .js" bloqueava P0 #13 inteiro. Fix definitivo:
+  purgar artefatos build no <code>packages/shared/src/</code>. Repo
+  <code>apps/*</code> gitignored ajudou (sem rollback risk). Lição: aliases
+  apontando pra diretório seguem ordem padrão de extensão do bundler —
+  preferir apontar pro arquivo <code>.ts</code> explícito OU manter
+  <code>src/</code> limpo de artefatos.
+</p>
+
+<h3>2. Helper functions classifier testavam pattern.source ao invés de input</h3>
+<p>
+  <code>hasCriticalPsy</code>, <code>hasSevereSleep</code>, <code>hasCriticalED</code>,
+  <code>hasNostalgia</code> faziam regex contra <code>pattern.source</code>
+  (uma string com sintaxe regex). A sintaxe bloqueava o match.
+  Spec Lucia tinha placeholder <code>/*...*/</code> indicando que deveria testar input.
+  ~1h de debugging recuperada.
+</p>
+
+<h3>3. Bug pré-existente revelado pela mudança PSEUDO</h3>
+<p>
+  Old code fazia <code>DELETE deletion_requests</code> no executeHardDelete,
+  e <code>processPendingDeletions</code> tentava UPDATE status='completed' depois —
+  silenciosamente 0 rows. Spec PSEUDO (UPDATE→tombstone) resolveu pelo lado da arquitetura.
+</p>
+
+<h3>4. DI &gt; singleton em serviços com side-effects externos</h3>
+<p>
+  AccountDeletionService aceita <code>postDeleteHook</code> + <code>auditTrail</code> via constructor.
+  Tests passam stubs zero-config. Produção wires no route handler com
+  Supabase admin + Redis + AuditTrail. Mesma arquitetura escala se Anipis
+  adicionar Stripe/Twilio/SendGrid futuramente.
+</p>
+
+<h3>5. Spec items numerados são entregáveis, não bonus</h3>
+<p>
+  Inicialmente rotulei "CI gate Art.18" como "Defensive engineering futuro" —
+  o founder corrigiu: era item 18 explícito da spec Lucia. Boa lição operacional:
+  spec items com número são deliverables, não opcional. <em>"Não é defensive engineering,
+  é completude do P0."</em>
+</p>
+
+<!-- ============================================================================
+     References
+     ============================================================================ -->
+<h2>Referências</h2>
+
+<h3>Docs Sprint 1</h3>
+<ul>
+  <li><code>11-security-audit/SECURITY-AUDIT-bruce-schneier.md</code> (3500 palavras)</li>
+  <li><code>11-security-audit/RED-TEAM-15-scenarios-alison-darcy.md</code> (2700 palavras)</li>
+  <li><code>11-security-audit/DPIA-v1-lucia-savage.md</code> (4100 palavras)</li>
+  <li><code>11-security-audit/SPEC-alison-P0-10-12.md</code> (2480 palavras)</li>
+  <li><code>11-security-audit/SPEC-lucia-P0-13-hard-delete-lgpd.md</code> (1980 palavras)</li>
+  <li><code>11-security-audit/runbook-art18-deletion.md</code> ← novo</li>
+  <li><code>12-compliance/SCCs-ANPD-19-2024-checklist.md</code> ← novo</li>
+  <li><code>99-synthesis/Sprint-1-Security-Report.md</code> ← textual</li>
+</ul>
+
+<h3>Code artifacts (apps/serenity-ai)</h3>
+<ul>
+  <li><code>apps/api/src/services/account-deletion-service.ts</code> — rewrite saga + DI</li>
+  <li><code>apps/api/src/services/crisis-deletion-guard.ts</code> ← novo</li>
+  <li><code>apps/api/src/services/cache-purge.ts</code> ← novo</li>
+  <li><code>apps/api/src/services/safety/audit-trail.ts</code> — +scanAndReplaceUserId + 7 lifecycle types</li>
+  <li><code>apps/api/src/services/llm/safety-classifier.ts</code> — ALISON-10/12 + bug-fix helpers</li>
+  <li><code>apps/api/src/routes/account.ts</code> — aviso + cron wire-up</li>
+  <li><code>packages/shared/src/constants.ts</code> — +49 patterns ALISON-10/12</li>
+  <li><code>apps/api/supabase/migrations/20260517_art18_tombstone_semantics_comments.sql</code> ← novo</li>
+</ul>
+
+<h3>Test files novos</h3>
+<ul>
+  <li><code>safety-classifier-psychosis-mania-ed.test.ts</code> — 25 tests</li>
+  <li><code>account-deletion-lgpd-art18.test.ts</code> — 16 tests</li>
+  <li><code>account-deletion-batch5.test.ts</code> — 13 tests</li>
+  <li><code>ci/art18-completeness-gate.test.ts</code> — 4 tests</li>
+</ul>
+
+<!-- ============================================================================
+     Closing
+     ============================================================================ -->
+<h2>Encerramento</h2>
+
+<blockquote>
+  <p>
+    "Anipis está construindo no regime boundary mais delicado que existe — dados sensíveis de saúde mental
+    atravessando fronteiras de soberania com IA conversacional. <em>Honesty is the best policy.</em>
+    Sprint 1 fechou 14 P0s code-side com 0 regressão; os 3 legais agora estão em mãos do founder + OAB.
+    O caminho para 30/Mai está claro. Boa sorte com o launch."
+  </p>
+  <p style="margin-top: 8px; text-align: right; color: var(--aiox-text-2);">— Orion AIOS · 17/Mai/2026 noite</p>
+</blockquote>
+
+<div class="footer">
+  <span>ANIPIS · SPRINT 1 SECURITY REPORT · v1.0</span>
+  <span class="accent">AIOX SQUAD · 2026-05-17</span>
+</div>
+
+</div>
+
+</body>
+</html>

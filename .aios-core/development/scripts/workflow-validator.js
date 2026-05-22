@@ -101,7 +101,7 @@ class WorkflowValidator {
       return result; // Can't continue without parsed data
     }
 
-    const workflow = parseResult.data;
+    const workflow = this._normalizeWorkflowDocument(parseResult.data);
 
     // 3. Required fields
     const fieldsResult = this.validateRequiredFields(workflow, workflowPath);
@@ -146,6 +146,34 @@ class WorkflowValidator {
 
     this._log(`Validation complete: ${result.valid ? 'VALID' : 'INVALID'}`);
     return result;
+  }
+
+  /**
+   * Normalize legacy squad workflows that use top-level name/version/steps.
+   *
+   * @param {Object} data - Parsed YAML document
+   * @returns {Object} Workflow document with workflow root when possible
+   */
+  _normalizeWorkflowDocument(data) {
+    if (!data || typeof data !== 'object' || data.workflow || !Array.isArray(data.steps)) {
+      return data;
+    }
+
+    return {
+      ...data,
+      workflow: {
+        id: data.id || data.name,
+        name: data.name,
+        description: data.description,
+        type: data.type || 'saga',
+        sequence: data.steps.map((step) => ({
+          agent: step.actor,
+          action: step.type || step.name || step.id,
+          creates: step.output,
+          validates: step.validation || step.expected || step.checks,
+        })),
+      },
+    };
   }
 
   /**

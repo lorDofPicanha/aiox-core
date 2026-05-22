@@ -92,9 +92,25 @@ Write-Log ("heartbeat: scan=" + $hb.scanCount + " eligibleReal=" + $hb.eligibleR
 
 if ($ageMs -gt $StaleThresholdMs) {
     $lastTradeStr = if ($hb.lastTradeTs) { (Get-Date -UnixTimeSeconds ([math]::Floor([int64]$hb.lastTradeTs / 1000))).ToString('s') } else { 'never' }
-    $msg = "WARNING: Polymarket bot offline (no scan in $ageMin min). Last scan #" + $hb.scanCount + ", last trade: $lastTradeStr."
-    Send-TelegramAlert $msg
-    Write-Log "ALERT FIRED — bot stale."
+    Write-Log ("ALERT — bot stale (age=$ageMin min). Last scan #" + $hb.scanCount + ", last trade: $lastTradeStr.")
+    Send-TelegramAlert ("WARNING: Polymarket bot offline (no scan in $ageMin min). Last scan #" + $hb.scanCount + ", last trade: $lastTradeStr. Auto-restarting...")
+
+    # 15/Mai/2026 — Auto-restart on stale (Conclave-Ng didn't include restart, only alert).
+    # Without this, bot remains down between daily-checkup runs (14:30 BRT), wasting up to 24h.
+    $startBot = Join-Path $AppRoot 'scripts\start-bot.bat'
+    if (Test-Path $startBot) {
+        try {
+            Write-Log "Invoking start-bot.bat for auto-restart..."
+            Start-Process -FilePath $startBot -WorkingDirectory $AppRoot -WindowStyle Hidden -ErrorAction Stop
+            Write-Log "start-bot.bat invoked. Bot should be back within ~30s."
+            Send-TelegramAlert "Polymarket bot restart triggered by watchdog."
+        } catch {
+            Write-Log ("ERR: start-bot.bat invoke failed: " + $_.Exception.Message)
+            Send-TelegramAlert ("ERR: Polymarket watchdog failed to restart bot: " + $_.Exception.Message)
+        }
+    } else {
+        Write-Log "ERR: start-bot.bat not found at $startBot"
+    }
 } else {
-    Write-Log "OK — bot alive."
+    Write-Log ("OK — bot alive (heartbeat: scan=" + $hb.scanCount + " signals=" + $hb.signals + " age=" + $ageMin + "min)")
 }

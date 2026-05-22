@@ -1,0 +1,50 @@
+[
+  {
+    "id": "fact_aios_clones_250_allocated",
+    "schemaVersion": "aios-memory-v1",
+    "type": "fact",
+    "title": "AIOS clones allocated to squads",
+    "text": "AIOS has 250 indexed mind clones. All 250 are formally allocated to squads, with zero unassigned clones and zero missing squad references after the squad reorganization.",
+    "project": "aios",
+    "agent": "codex",
+    "tags": [
+      "squads",
+      "clones",
+      "index"
+    ],
+    "createdAt": "2026-05-22T11:50:00.000Z",
+    "source": "manual"
+  },
+  {
+    "id": "fact_aios_agent_aliases",
+    "schemaVersion": "aios-memory-v1",
+    "type": "fact",
+    "title": "AIOS agent aliases in PowerShell",
+    "text": "AIOS agent aliases can be loaded with scripts/aios-agent-aliases.ps1. After loading, agents can be called as aios-master, kasim-aslam, traffic-masters-chief, architect, qa, and other indexed agent IDs.",
+    "project": "aios",
+    "agent": "codex",
+    "tags": [
+      "agents",
+      "powershell",
+      "activation"
+    ],
+    "createdAt": "2026-05-22T11:50:02.000Z",
+    "source": "manual"
+  },
+  {
+    "id": "fact_chamar_agentes_powershell",
+    "schemaVersion": "aios-memory-v1",
+    "type": "fact",
+    "title": "Chamar agentes no PowerShell",
+    "text": "Para chamar agentes no PowerShell, carregue scripts/aios-agent-aliases.ps1 e use comandos como aios-master, kasim-aslam, traffic-masters-chief, architect ou qa.",
+    "project": "aios",
+    "agent": "codex",
+    "tags": [
+      "agentes",
+      "ativacao",
+      "powershell"
+    ],
+    "createdAt": "2026-05-22T11:50:03.000Z",
+    "source": "manual"
+  }
+]

@@ -48,10 +48,14 @@ class PersonalizedOutputFormatter {
         return;
       }
 
-      const agentPath = path.join(process.cwd(), '.aios-core', 'agents', `${this.agent.id}.md`);
-      
-      if (!fs.existsSync(agentPath)) {
-        console.warn(`[OutputFormatter] Agent file not found: ${agentPath}`);
+      // 2026-05-04 fix: use shared resolver. Previous path was wrong
+      // (`.aios-core/agents/` instead of `.aios-core/development/agents/`)
+      // AND missed mind clones in `.claude/commands/AIOS/agents/`.
+      const { resolveAgentPath } = require('../../core/utils/agent-path-resolver');
+      const agentPath = resolveAgentPath(this.agent.id);
+
+      if (!agentPath) {
+        console.warn(`[OutputFormatter] Agent file not found for: ${this.agent.id}`);
         this.personaProfile = this._getNeutralProfile();
         return;
       }

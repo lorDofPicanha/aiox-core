@@ -1,0 +1,54 @@
+domains:
+  licitacoes-global:
+    # Comparative architecture research — UE + LATAM + emerging + OCDS standard
+    # Keywords amplas (en/es/pt) — replicar sucesso run #1 (65 ingested), evitar wall run #2 (0 ingested)
+    keywords: [
+      # English core
+      "public procurement", "e-procurement", "tender platform",
+      "tender management", "tender intelligence", "contracts finder",
+      "procurement portal", "government tender", "RFP platform",
+      "bid search", "tender alert", "procurement notification",
+      # OCDS / Standards
+      "Open Contracting Data Standard", "OCDS", "Open Contracting Partnership",
+      "OCP", "open contracting", "procurement transparency",
+      "eForms", "OpenPEPPOL", "EU Publications Office",
+      # Architecture
+      "tender architecture", "procurement system architecture",
+      "tender search engine", "procurement data pipeline",
+      "tender API", "procurement API",
+      "tender data model", "procurement microservices",
+      # EU
+      "TED Tenders Electronic Daily", "ted.europa.eu",
+      "EU public procurement directive", "Directive 2014/24",
+      "Mercell", "OpenTender", "DIGIWHIST",
+      "ProZorro", "Ukraine procurement",
+      "single market public procurement",
+      # LATAM
+      "Mercado Público Chile", "ChileCompra", "DCC Chile",
+      "SECOP Colombia", "Colombia Compra Eficiente",
+      "CompraNet México", "compranet",
+      "Comprar Argentina", "ONC Argentina",
+      "OSCE Perú", "SEACE Perú",
+      "Paraguay contrataciones", "DNCP Paraguay",
+      # Emerging
+      "GeM India", "Government e-Marketplace India",
+      "CPPP India", "Central Public Procurement",
+      "eProcure India", "South Africa eTenders",
+      "LKPP Indonesia", "UN Global Marketplace", "UNGM",
+      # Spanish/Portuguese (broad)
+      "licitación pública", "concurso público",
+      "compras públicas", "contratación pública",
+      "pliego de condiciones", "convocatoria de licitación",
+      # Tech patterns
+      "Postgres full text search procurement",
+      "pgvector tender", "ElasticSearch tender",
+      "PDF extraction tender", "tender NLP",
+      "tender classification BERT",
+      "tender recommender system",
+      "WhatsApp tender alert", "Telegram procurement bot",
+      # Business/Market
+      "procurement SaaS", "tender SaaS",
+      "bid intelligence software", "GovWin Deltek",
+      "tender pricing model", "procurement platform pricing"
+    ]
+    projects: ["buscador-licitacoes"]

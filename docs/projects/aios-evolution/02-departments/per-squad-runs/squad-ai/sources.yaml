@@ -1,0 +1,37 @@
+# Auto-generated for squad-ai
+sources:
+  rss:
+    - name: "OpenAI Blog"
+      url: "https://openai.com/blog/rss.xml"
+      frequency: "daily"
+      domains: ["ai-ml"]
+      authority: 5
+      max_items: 30
+
+    - name: "ArXiv AI (cs.AI)"
+      url: "http://export.arxiv.org/rss/cs.AI"
+      frequency: "daily"
+      domains: ["ai-ml"]
+      authority: 4
+      max_items: 30
+
+    - name: "Lilian Weng Blog"
+      url: "https://lilianweng.github.io/index.xml"
+      frequency: "daily"
+      domains: ["ai-ml"]
+      authority: 5
+      max_items: 30
+
+    - name: "Sebastian Raschka Magazine"
+      url: "https://magazine.sebastianraschka.com/feed"
+      frequency: "daily"
+      domains: ["ai-ml"]
+      authority: 5
+      max_items: 30
+
+    - name: "Latent Space (swyx)"
+      url: "https://www.latent.space/feed"
+      frequency: "daily"
+      domains: ["ai-ml"]
+      authority: 5
+      max_items: 30

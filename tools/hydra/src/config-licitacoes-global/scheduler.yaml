@@ -1,0 +1,50 @@
+scheduler:
+  enabled: false   # Manual one-shot research, no cron
+  timezone: "America/Sao_Paulo"
+
+  schedules:
+    full_pipeline:
+      cron: "0 6,18 * * *"
+      enabled: false
+      options:
+        verbose: false
+        dryRun: false
+
+  lock:
+    file: "hydra-data/state/scheduler.lock"
+    ttlMs: 3600000
+    staleCheckMs: 300000
+
+  heartbeat:
+    file: "hydra-data/state/heartbeat.json"
+    intervalMs: 60000
+
+  gracefulShutdown:
+    timeoutMs: 30000
+
+  retry:
+    baseDelayMs: 1000
+    maxDelayMs: 60000
+    maxAttempts: 5
+    jitter: true
+
+  circuitBreaker:
+    failureThreshold: 3
+    cooldownMs: 300000
+    halfOpenMaxAttempts: 1
+    stateFile: "hydra-data/state/circuit-breakers.json"
+
+  rateLimits:
+    web:
+      requestsPerMinute: 10
+      burstSize: 2
+    github:
+      requestsPerMinute: 30
+      burstSize: 5
+
+alerts:
+  enabled: false
+  transports:
+    file:
+      enabled: true
+      directory: "hydra-data/alerts"

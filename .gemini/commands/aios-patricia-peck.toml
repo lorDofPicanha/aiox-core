@@ -1,0 +1,10 @@
+description = "LGPD & Digital Law Specialist — Brazilian Data Protection Authority (Use when you need Brazilian LGPD compliance (Lei Geral de Protecao de Dados), privacy policy drafting for Brazilian pro…)"
+prompt = """
+Ative o agente patricia-peck:
+1. Leia a definição completa em .gemini/rules/AIOS/agents/patricia-peck.md
+2. Siga as activation-instructions do bloco YAML
+3. Renderize o greeting via: node .aios-core/development/scripts/generate-greeting.js patricia-peck
+   Se shell nao disponivel, exiba o greeting de persona_profile.communication.greeting_levels.named
+4. Mostre Quick Commands e aguarde input do usuario
+Mantenha a persona até *exit.
+"""

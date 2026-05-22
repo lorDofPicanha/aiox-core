@@ -298,6 +298,32 @@ Ver `.claude/rules/mcp-usage.md` para regras detalhadas.
 
 ---
 
+## Cross-Tool Bridge (Claude ↔ Codex ↔ jarvis via CLI)
+
+Conexão entre sistemas via **subprocess + arquivos**, não MCP (MCP é frágil — quebra em handshake/versão). Doc: `docs/migrations/claude-to-codex/05-cli-bridge-architecture.md`.
+
+**Divisão billing-optimal (pós 2026-06-15):**
+- **Claude Code interativo** = subscription (barato) → raciocínio alto risco, decisões, arquitetura
+- **Codex** (`delegate --to codex`) = billing OpenAI → execução bulk/programmatic, refactors em volume
+- **jarvis** (`delegate --to jarvis`) = local files → mind clones / conclaves
+- ❌ NUNCA `claude -p` para bulk → cai no pool separado caro pós-15/Jun
+
+**Delegar trabalho pesado ao Codex (mantém Claude no pool barato):**
+```bash
+node .aios-core/infrastructure/scripts/delegate.js --to codex "refatore X nestes arquivos"
+node .aios-core/infrastructure/scripts/delegate.js --to codex --sandbox workspace-write "task com escrita"
+```
+
+**Mind clones (file-based, sem MCP — funciona em qualquer IDE):**
+```bash
+node .aios-core/infrastructure/scripts/delegate.js --to jarvis --topic "{tema}" --limit 3
+node .aios-core/core/jarvis/self-consultation.js conclave --question "{q}" --project {p} --agent {a} --experts 3
+```
+
+**MCP é opcional, nunca dependência crítica.** Se um MCP falhar, use o CLI-Bridge. Para Antigravity: jarvis SÓ via CLI (não configurar MCP — quebra o IDE).
+
+---
+
 ## Debug
 
 ### Habilitar Debug

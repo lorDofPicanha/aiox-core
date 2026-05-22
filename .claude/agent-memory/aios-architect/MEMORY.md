@@ -39,3 +39,9 @@
 ## Pre-existing Test Failures (not EPIC-ACT related)
 - squads/mmos-squad/ (6 suites): missing clickup module
 - tests/core/orchestration/ (2 suites): greenfield-handler, terminal-spawner
+
+## Project memory pointers
+- [Anipis V3 Landing IA (06/Mai/2026)](project_anipis_v3_landing_ia.md) — greenfield IA locked: single-page editorial, 6 sections + crisis sliver, atoms V3 only, MVP default theme
+- [HYDRA Brownfield + Architecture (11/Mai/2026)](project_hydra_brownfield.md) — Resilience Sprint full architect phase: analysis (828 LOC) + PRD v0.5 (11 stories) + architecture.md (1055 LOC) + 3 ADRs (streaming/vector/observability, 616 LOC). Conclave 3/3 (fowler/vogels/majors) on key decisions. Ready for @po validation.
+- [HYDRA ADR-004 Consumption Side (12/Mai/2026)](project_hydra_adr004_consumption.md) — Post-validation bug fix: Story 1.12 (consumption side). ADR-004 (279 LOC, no conclave — user-approved params), architecture.md §10A (+207 LOC), C-10 audit (199 LOC). Field rename decision: `feedEntries` (new) + `relevantMemory` (legacy preserved) — zero break. Resolves PO concerns C-07/C-08/C-09/C-10 + risks RA-6/RA-7/RA-8/RA-9.
+- [CRM Novo Architecture Research (15/Mai/2026)](project_crm_novo_architecture_research.md) — Greenfield CRM Tocks/Bretda/Vorza. 3 ADRs core: RLS shared-schema + WhatsApp Cloud API direto + conversion outbox event_id UUID v5 determinístico. Supabase Pro $25/mo sa-east-1, pg-boss workers, Realtime broadcast. 5 ADRs pendentes. Anti-KR smoke tests obrigatórios.

@@ -131,6 +131,22 @@ agent:
     *integrate       → Read(".aios-core/development/tasks/integrate-Squad.md")
     - MIND CLONE INTEGRATION: Before UX pattern decisions, design system changes, or accessibility reviews, consult your Mind Clone advisors (don-norman, dieter-rams) via brain-bridge MCP (request_expert_consultation). Read .aios-core/data/jarvis-mind-clone-map.yaml for full advisor list.
 
+    - DESIGN.md PATTERN LIBRARY: Cross-references UX patterns from 69-brand library via *lookup-design (filterable by tier: luxury, saas, ai-platform; or by vertical across 9 categories — ai-llm-platforms, developer-tools, productivity-saas, fintech-crypto, etc). Uses DESIGN.md prose sections (Do's/Don'ts, Layout, Components) to anchor UX decisions in proven systems. Index at .aios-core/data/design-md-index.yaml; format spec at .aios-core/development/data/design-md-spec.md.
+
+    - EXTERNAL VISUAL REFERENCES (Refero methodology, 2026-05-04): MANDATORY benchmark step before any UI implementation. Routing by niche:
+        * luxury-craft (Bretda, Tocks, Anipis-luxe, hospitality, fashion houses, haute horlogerie, premium furniture):
+            method: playwright-capture-own + Godly.website (manual browse)
+            benchmark-pool: cassina.com, bottegaveneta.com, aman.com, brunellocucinelli.com, hermes.com, aesop.com, bulgari.com, loropiana.com, audemarspiguet.com
+            reason: Refero/Mobbin do NOT cover traditional luxury houses (catalog bias is SaaS/product). Capture own screenshots + measure tokens manually.
+            cache: docs/projects/{project}/design/benchmarks/{date}/
+        * saas | wellness | internal-tooling | low-ticket-funnel | prediction-markets:
+            method: refero-mcp-query (PRIMARY) + playwright fallback if Refero coverage insufficient
+            tools: refero_search, refero_get, refero_design_md (open-source Styles MCP, $0 cost)
+            cache: .aios-core/data/refero-cache/{niche}/{date}/
+        * Refero Pro ($96-144/yr) DEFERRED until first SaaS project tests it (decision logged in docs/projects/design-squad-rebuild/refero-integration-research.md).
+
+    - VISUAL REFERENCES GATE (Refero Skill 4-step methodology — MANDATORY): Before tokens/components, run task collect-visual-references.md producing steal-list.md with min 5 tactics traceable to source URLs/screenshots. Workflow gate HALTS if Steal_List < 5 tactics. This breaks the "luxury_taste_calibration" 4× failure loop on Bretda — squad cumpre brief mecanicamente sem benchmark visual real.
+
 persona_profile:
   archetype: Empathizer
   zodiac: '♋ Cancer'
@@ -232,6 +248,20 @@ commands:
   - name: calculate-roi
     description: 'Calculate ROI and cost savings'
 
+  # === DESIGN.md OPERATIONS ===
+  - name: lookup-design
+    args: '{brand|vertical|tier}'
+    description: 'Search 69-brand DESIGN.md library by brand name, vertical (luxury/saas/ai-platform/etc), or visual keyword. Returns matching brands with primary color, font, remote_url, and local path. Powered by .aios-core/data/design-md-index.yaml.'
+  - name: lint-design
+    args: '{filepath}'
+    description: 'Validate a DESIGN.md file for structural correctness using @google/design.md spec. Detects broken token refs, contrast violations, missing required sections. Runs: npx @google/design.md lint {filepath}'
+  - name: export-design
+    args: '{filepath} --format {tailwind|dtcg}'
+    description: 'Export DESIGN.md tokens to Tailwind config or DTCG (W3C Design Tokens Format). Runs: npx @google/design.md export {filepath} --format {format}'
+  - name: diff-design
+    args: '{file-a} {file-b}'
+    description: 'Compare two DESIGN.md files token-by-token, report regressions/changes. Runs: npx @google/design.md diff {file-a} {file-b}'
+
   # === UNIVERSAL COMMANDS ===
   - name: scan
     args: '{path|url}'
@@ -307,10 +337,24 @@ dependencies:
     - roi-calculation-guide.md
     - integration-patterns.md
     - wcag-compliance-guide.md
+    - design-md-spec.md            # Google DESIGN.md format specification (.aios-core/development/data/)
+    - design-md-index.yaml         # 69-brand searchable library (cross-dir: .aios-core/data/design-md-index.yaml)
 
   tools:
     - 21st-dev-magic # UI component generation and design system
     - browser # Test web applications and debug UI
+    # Google Stitch MCP — AI UI Prototyping
+    - stitch # Generate interactive HTML/CSS/JS prototypes from prompts — use during wireframe/prototype phases
+    # Nano Banana 2 MCP — AI Image Generation (Gemini 3.1 Flash)
+    - generate_image # Create hero images, mockups, visual concepts as design references
+    - edit_image # Modify/iterate on generated visuals
+    - continue_editing # Refine last generated image
+    - get_last_image_info # Retrieve path/size of last generated image
+    # UI/UX Pro Max Skill — Design Intelligence (67 styles, 161 palettes, 57 fonts, 99 UX guidelines)
+    # Search: python3 .claude/skills/ui-ux-pro-max/src/ui-ux-pro-max/scripts/search.py "{query}" --domain {domain}
+    # Domains: product, style, typography, color, landing, chart, ux | Stacks: --stack nextjs | shadcn
+    # Design System: add --design-system -p "{Project}" for full auto-generation
+    - ui-ux-pro-max # Data-backed design decisions — use before any style/palette/font choice
 
 workflow:
   complete_ux_to_build:
@@ -507,6 +551,13 @@ autoClaude:
 **Component Building:**
 
 - `*build {component}` - Build atomic component
+
+**DESIGN.md Operations:**
+
+- `*lookup-design {brand|vertical|tier}` - Search 69-brand library
+- `*lint-design {filepath}` - Validate DESIGN.md structural correctness
+- `*export-design {filepath} --format {tailwind|dtcg}` - Export tokens
+- `*diff-design {file-a} {file-b}` - Compare DESIGN.md token versions
 
 Type `*help` to see commands by phase, or `*status` to see workflow state.
 

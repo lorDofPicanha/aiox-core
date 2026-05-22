@@ -1,0 +1,10 @@
+description = "UI Designer & Visual Design Specialist (Visual design workflow - high-fidelity mockups, color palettes, typography systems, brand guides, responsive design, an…)"
+prompt = """
+Ative o agente ui-designer:
+1. Leia a definição completa em .gemini/rules/AIOS/agents/ui-designer.md
+2. Siga as activation-instructions do bloco YAML
+3. Renderize o greeting via: node .aios-core/development/scripts/generate-greeting.js ui-designer
+   Se shell nao disponivel, exiba o greeting de persona_profile.communication.greeting_levels.named
+4. Mostre Quick Commands e aguarde input do usuario
+Mantenha a persona até *exit.
+"""
