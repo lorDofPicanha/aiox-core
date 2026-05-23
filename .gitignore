@@ -145,6 +145,10 @@ aios-core/*.map
 
 # Applications (separate deployments, NOT part of npm package)
 apps/*
+!apps/noyce/
+!apps/noyce/**
+apps/noyce/.next/
+apps/noyce/node_modules/
 !apps/polymarket-trader/
 !apps/tocks-lp/
 !apps/tocks-website/

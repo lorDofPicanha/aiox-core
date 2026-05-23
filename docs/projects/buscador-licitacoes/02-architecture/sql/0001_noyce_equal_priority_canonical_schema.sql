@@ -313,13 +313,17 @@ create table field_evidence (
   check ((source_record_id is not null) or (document_id is not null))
 );
 
+alter table field_evidence
+  add constraint field_evidence_org_id_id_unique
+  unique (org_id, id);
+
 alter table price_references
   add constraint price_references_evidence_fk
-  foreign key (evidence_id) references field_evidence(id) on delete set null;
+  foreign key (org_id, evidence_id) references field_evidence(org_id, id);
 
 alter table competitor_signals
   add constraint competitor_signals_evidence_fk
-  foreign key (evidence_id) references field_evidence(id) on delete set null;
+  foreign key (org_id, evidence_id) references field_evidence(org_id, id);
 
 create table field_confidence (
   id uuid primary key default gen_random_uuid(),
@@ -330,11 +334,15 @@ create table field_confidence (
   confidence_score numeric(5,2) not null check (confidence_score >= 0 and confidence_score <= 100),
   confidence_level confidence_level not null,
   reason text,
-  last_evidence_id uuid references field_evidence(id) on delete set null,
+  last_evidence_id uuid,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
   unique (org_id, entity_type, entity_id, field_name)
 );
+
+alter table field_confidence
+  add constraint field_confidence_last_evidence_fk
+  foreign key (org_id, last_evidence_id) references field_evidence(org_id, id);
 
 create table dedupe_links (
   id uuid primary key default gen_random_uuid(),
@@ -380,6 +388,12 @@ create index organization_members_user_idx on organization_members(user_id);
 create index companies_org_idx on companies(org_id);
 create index source_candidates_org_idx on source_candidates(org_id);
 create index source_records_org_source_idx on source_records(org_id, source_id, fetched_at desc);
+create unique index source_records_known_source_dedupe_idx
+  on source_records(org_id, source_id, coalesce(external_id, ''), raw_hash)
+  where source_id is not null;
+create unique index source_records_candidate_dedupe_idx
+  on source_records(org_id, source_candidate_id, coalesce(external_id, ''), raw_hash)
+  where source_candidate_id is not null;
 create index buyers_org_cnpj_idx on buyers(org_id, cnpj);
 create index suppliers_org_cnpj_idx on suppliers(org_id, cnpj);
 create index opportunities_org_stage_idx on opportunities(org_id, workflow_stage, proposal_deadline);
@@ -471,85 +485,86 @@ create policy organization_members_admin_write on organization_members
   with check (is_org_admin(organization_members.org_id));
 
 -- Repeatable tenant policy pattern. Service-role workers bypass RLS in Supabase;
--- application users are constrained by org membership.
+-- application users are constrained by org membership. Worker code must validate
+-- org_id before every write because service-role bypasses these policies.
 create policy companies_member_all on companies for all to authenticated
-  using (exists (select 1 from organization_members m where m.org_id = companies.org_id and m.user_id = auth.uid()))
-  with check (exists (select 1 from organization_members m where m.org_id = companies.org_id and m.user_id = auth.uid()));
+  using (is_org_member(companies.org_id))
+  with check (is_org_member(companies.org_id));
 
 create policy source_candidates_member_all on source_candidates for all to authenticated
-  using (exists (select 1 from organization_members m where m.org_id = source_candidates.org_id and m.user_id = auth.uid()))
-  with check (exists (select 1 from organization_members m where m.org_id = source_candidates.org_id and m.user_id = auth.uid()));
+  using (is_org_member(source_candidates.org_id))
+  with check (is_org_member(source_candidates.org_id));
 
 create policy ingestion_runs_member_all on ingestion_runs for all to authenticated
-  using (exists (select 1 from organization_members m where m.org_id = ingestion_runs.org_id and m.user_id = auth.uid()))
-  with check (exists (select 1 from organization_members m where m.org_id = ingestion_runs.org_id and m.user_id = auth.uid()));
+  using (is_org_member(ingestion_runs.org_id))
+  with check (is_org_member(ingestion_runs.org_id));
 
 create policy source_records_member_all on source_records for all to authenticated
-  using (exists (select 1 from organization_members m where m.org_id = source_records.org_id and m.user_id = auth.uid()))
-  with check (exists (select 1 from organization_members m where m.org_id = source_records.org_id and m.user_id = auth.uid()));
+  using (is_org_member(source_records.org_id))
+  with check (is_org_member(source_records.org_id));
 
 create policy buyers_member_all on buyers for all to authenticated
-  using (exists (select 1 from organization_members m where m.org_id = buyers.org_id and m.user_id = auth.uid()))
-  with check (exists (select 1 from organization_members m where m.org_id = buyers.org_id and m.user_id = auth.uid()));
+  using (is_org_member(buyers.org_id))
+  with check (is_org_member(buyers.org_id));
 
 create policy suppliers_member_all on suppliers for all to authenticated
-  using (exists (select 1 from organization_members m where m.org_id = suppliers.org_id and m.user_id = auth.uid()))
-  with check (exists (select 1 from organization_members m where m.org_id = suppliers.org_id and m.user_id = auth.uid()));
+  using (is_org_member(suppliers.org_id))
+  with check (is_org_member(suppliers.org_id));
 
 create policy opportunities_member_all on opportunities for all to authenticated
-  using (exists (select 1 from organization_members m where m.org_id = opportunities.org_id and m.user_id = auth.uid()))
-  with check (exists (select 1 from organization_members m where m.org_id = opportunities.org_id and m.user_id = auth.uid()));
+  using (is_org_member(opportunities.org_id))
+  with check (is_org_member(opportunities.org_id));
 
 create policy opportunity_source_records_member_all on opportunity_source_records for all to authenticated
-  using (exists (select 1 from organization_members m where m.org_id = opportunity_source_records.org_id and m.user_id = auth.uid()))
-  with check (exists (select 1 from organization_members m where m.org_id = opportunity_source_records.org_id and m.user_id = auth.uid()));
+  using (is_org_member(opportunity_source_records.org_id))
+  with check (is_org_member(opportunity_source_records.org_id));
 
 create policy opportunity_items_member_all on opportunity_items for all to authenticated
-  using (exists (select 1 from organization_members m where m.org_id = opportunity_items.org_id and m.user_id = auth.uid()))
-  with check (exists (select 1 from organization_members m where m.org_id = opportunity_items.org_id and m.user_id = auth.uid()));
+  using (is_org_member(opportunity_items.org_id))
+  with check (is_org_member(opportunity_items.org_id));
 
 create policy notice_documents_member_all on notice_documents for all to authenticated
-  using (exists (select 1 from organization_members m where m.org_id = notice_documents.org_id and m.user_id = auth.uid()))
-  with check (exists (select 1 from organization_members m where m.org_id = notice_documents.org_id and m.user_id = auth.uid()));
+  using (is_org_member(notice_documents.org_id))
+  with check (is_org_member(notice_documents.org_id));
 
 create policy process_events_member_all on process_events for all to authenticated
-  using (exists (select 1 from organization_members m where m.org_id = process_events.org_id and m.user_id = auth.uid()))
-  with check (exists (select 1 from organization_members m where m.org_id = process_events.org_id and m.user_id = auth.uid()));
+  using (is_org_member(process_events.org_id))
+  with check (is_org_member(process_events.org_id));
 
 create policy deadlines_member_all on deadlines for all to authenticated
-  using (exists (select 1 from organization_members m where m.org_id = deadlines.org_id and m.user_id = auth.uid()))
-  with check (exists (select 1 from organization_members m where m.org_id = deadlines.org_id and m.user_id = auth.uid()));
+  using (is_org_member(deadlines.org_id))
+  with check (is_org_member(deadlines.org_id));
 
 create policy price_references_member_all on price_references for all to authenticated
-  using (exists (select 1 from organization_members m where m.org_id = price_references.org_id and m.user_id = auth.uid()))
-  with check (exists (select 1 from organization_members m where m.org_id = price_references.org_id and m.user_id = auth.uid()));
+  using (is_org_member(price_references.org_id))
+  with check (is_org_member(price_references.org_id));
 
 create policy competitor_signals_member_all on competitor_signals for all to authenticated
-  using (exists (select 1 from organization_members m where m.org_id = competitor_signals.org_id and m.user_id = auth.uid()))
-  with check (exists (select 1 from organization_members m where m.org_id = competitor_signals.org_id and m.user_id = auth.uid()));
+  using (is_org_member(competitor_signals.org_id))
+  with check (is_org_member(competitor_signals.org_id));
 
 create policy analysis_runs_member_all on analysis_runs for all to authenticated
-  using (exists (select 1 from organization_members m where m.org_id = analysis_runs.org_id and m.user_id = auth.uid()))
-  with check (exists (select 1 from organization_members m where m.org_id = analysis_runs.org_id and m.user_id = auth.uid()));
+  using (is_org_member(analysis_runs.org_id))
+  with check (is_org_member(analysis_runs.org_id));
 
 create policy field_evidence_member_all on field_evidence for all to authenticated
-  using (exists (select 1 from organization_members m where m.org_id = field_evidence.org_id and m.user_id = auth.uid()))
-  with check (exists (select 1 from organization_members m where m.org_id = field_evidence.org_id and m.user_id = auth.uid()));
+  using (is_org_member(field_evidence.org_id))
+  with check (is_org_member(field_evidence.org_id));
 
 create policy field_confidence_member_all on field_confidence for all to authenticated
-  using (exists (select 1 from organization_members m where m.org_id = field_confidence.org_id and m.user_id = auth.uid()))
-  with check (exists (select 1 from organization_members m where m.org_id = field_confidence.org_id and m.user_id = auth.uid()));
+  using (is_org_member(field_confidence.org_id))
+  with check (is_org_member(field_confidence.org_id));
 
 create policy dedupe_links_member_all on dedupe_links for all to authenticated
-  using (exists (select 1 from organization_members m where m.org_id = dedupe_links.org_id and m.user_id = auth.uid()))
-  with check (exists (select 1 from organization_members m where m.org_id = dedupe_links.org_id and m.user_id = auth.uid()));
+  using (is_org_member(dedupe_links.org_id))
+  with check (is_org_member(dedupe_links.org_id));
 
 create policy document_chunks_member_all on document_chunks for all to authenticated
-  using (exists (select 1 from organization_members m where m.org_id = document_chunks.org_id and m.user_id = auth.uid()))
-  with check (exists (select 1 from organization_members m where m.org_id = document_chunks.org_id and m.user_id = auth.uid()));
+  using (is_org_member(document_chunks.org_id))
+  with check (is_org_member(document_chunks.org_id));
 
 create policy audit_events_member_read on audit_events for select to authenticated
-  using (exists (select 1 from organization_members m where m.org_id = audit_events.org_id and m.user_id = auth.uid()));
+  using (is_org_member(audit_events.org_id));
 
 create policy audit_events_member_insert on audit_events for insert to authenticated
-  with check (exists (select 1 from organization_members m where m.org_id = audit_events.org_id and m.user_id = auth.uid()));
+  with check (is_org_member(audit_events.org_id));

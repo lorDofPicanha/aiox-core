@@ -358,3 +358,26 @@ A cliente esclareceu: **o livro caixa é separado do buscador.** Some a "BASE al
 - *2026-05-18 manhã — escopo expandido para 3 módulos (v2 com 4 empresas, anti-conluio central)*
 - *2026-05-18 noite — v3 CORREÇÕES: 3 empresas (não 4), workflow 6 estágios + base, moat redefinido pós-mega-research, pricing workflow-as-a-service R$2.8k/mês*
 - *2026-05-20 — v4 DIVERGÊNCIA: áudios confirmam workflow; fontes reais corrigidas; 4 usuários; livro caixa decoupled (SaaS BR); escopo geográfico reaberto (GO estadual + bolsas nacionais)*
+
+## 12. CORRECAO OPERACIONAL - ENIAC single-company (23/Mai/2026)
+
+**Trigger:** owner confirmou que o buscador e para uma unica empresa, chamada **ENIAC**.
+
+Atualizacao:
+
+- O modulo de licitacoes agora deve ser tratado como **single-company** no tenant inicial.
+- Empresa licitante: **ENIAC**.
+- A premissa anterior de "3 empresas" nao vale para o buscador/licitações neste Sprint 0.
+- O modelo de dados multi-tenant continua valido para evolucao futura, mas o onboarding inicial deve configurar uma organizacao e uma empresa licitante.
+- Acesso aos buscadores/portais passa a ser pendencia operacional central.
+- Owner confirmou que a ENIAC usa todos os portais mapeados: PNCP, PCP, BLL, BNC, ComprasGov e SISLOG.
+
+Regra de seguranca:
+
+- Login e senha dos buscadores **nao devem ser salvos em docs, JSON, chat, git ou prints**.
+- Credenciais devem entrar apenas por vault/gerenciador de senhas.
+- Automacao autenticada continua bloqueada ate fechar consentimento, ToS, vault, logs e auditoria.
+
+Artefato de onboarding:
+
+- `00-context/ACCESS-ONBOARDING-ENIAC.md`

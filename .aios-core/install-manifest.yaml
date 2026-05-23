@@ -8,9 +8,9 @@
 # - File types for categorization
 #
 version: 4.2.13
-generated_at: "2026-05-22T22:50:06.039Z"
+generated_at: "2026-05-23T18:09:40.741Z"
 generator: scripts/generate-install-manifest.js
-file_count: 1212
+file_count: 1213
 files:
   - path: cli/commands/config/index.js
     hash: sha256:ebcad2ce3807eda29dcddff76d7a95ddc9b7fa160df21fd608f94b802237e862
@@ -1197,9 +1197,9 @@ files:
     type: data
     size: 7610
   - path: data/jarvis-mind-clone-index.json
-    hash: sha256:4d0a66dbff0a3bdf85286cb55e159fb7912205dfa2255b1a41bf74265b57c79a
+    hash: sha256:98b23daacf99ab509d63ab3bd12ddf8cbdacccd3579471158ba7e460cfcb26ee
     type: data
-    size: 431775
+    size: 386327
   - path: data/jarvis-mind-clone-map.yaml
     hash: sha256:d404e07f7de09951ca2770cb073e315b3d8f7dd93295c3f21fad04f17ab5e7b0
     type: data
@@ -1245,9 +1245,9 @@ files:
     type: data
     size: 946
   - path: data/memory/events.jsonl
-    hash: sha256:1ae34a47fd11fa910ff59e3f25b4256f1042e0f67e3ef28b159cf6b06574b7fe
+    hash: sha256:fac9da8b778507ec2f0c881fde7ae12f0a1a7c317eace94d4aa822d61e4a3d5a
     type: data
-    size: 1805
+    size: 2408
   - path: data/memory/facts.json
     hash: sha256:9decef01dea99464f188854fd2d7e28a43fa763a168809d8be5e1869a62f6f11
     type: data
@@ -1261,13 +1261,17 @@ files:
     type: data
     size: 24576
   - path: data/memory/graphiti-outbox.jsonl
-    hash: sha256:d8258de29417ca8a87ff39a1e1d4e51a8826c095def179137307c416458f066b
+    hash: sha256:00bfbfaf2f30938922d509553f96a84a56429916b0f7f3f5978a4559f9eec45b
     type: data
-    size: 4217
+    size: 5528
   - path: data/memory/graphiti-state.json
     hash: sha256:75484e14418e1950d23cd346a8144666c8f0742593cb90613c116f32921f7293
     type: data
     size: 59
+  - path: data/memory/summaries/aios-squads-agents-memory-graphiti-session-2026-05-22.md
+    hash: sha256:2944c8fa49ebb16ae66790da2207005744882248ce83ea379f198c1568862e51
+    type: data
+    size: 3882
   - path: data/site-prospector/primers/_schema.yaml
     hash: sha256:562af1a00a7f045af168bb1b60a28b45576dd7d59335002841de99a7cbb0a0cf
     type: data

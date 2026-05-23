@@ -33,8 +33,16 @@
 - **`13-sprint0-council-routing-22mai`** — consolidação dos councils Sprint 0: produto, jurídico, arquitetura, dados, UX e segurança
 - **`ADR-001-equal-priority-multisource-canonical-model-22mai`** — decisão arquitetural: multi-fonte sem fonte principal + `source_candidates`
 - **`14-sprint0-schema-adapters-implementation-plan-22mai`** — sequência de build: schema, adapters, fixtures, score, UX e gates
+- **`15-sprint0-execution-checklist-23mai`** — checklist ativo de execução: schema, contrato, fixtures, normalização, dedupe, score e UX
+- **`16-sprint0-normalization-dedupe-score-spec-23mai`** — especificação de persistência, evidência, confiança, dedupe e score v0
+- **`17-execution-roadmap-agent-ownership-23mai`** — roadmap operacional até piloto/produção com dono primário, council, stories e gates por fase
+- **`18-po-validation-and-phase12-story-slice-23mai`** — validação `@po` + fatiamento `@pm` de Fase 1/Fase 2 para execução imediata
+- **`fixtures/`** — fixtures sintéticas/anonimizadas para validar contrato multi-fonte antes de scaffold
 - **`sql/0001_noyce_equal_priority_canonical_schema.sql`** — SQL de referência para Supabase/Postgres
 - **`contracts/source-adapter.contract.ts`** — contrato único para todas as fontes
+- **`contracts/source-adapter.contract-tests.md`** — asserts mínimos para validar fixtures e adapters antes do app
+- **`scripts/sprint0-dry-run.mjs`** — dry-run local de confidence, dedupe e score usando fixtures
+- **`outputs/sprint0-dry-run/`** — saidas geradas do dry-run: field confidence, dedupe links, analysis runs e resumo
 
 **Pesquisa (`01-research/`)**
 - `04-editais-reais-21mai` — análise dos 11 editais reais
@@ -59,7 +67,8 @@
 
 ## ✅ Decisões resolvidas / ⏳ pendentes
 **Resolvidas (research):** raio ~500km mantido · 5 fontes mantidas (PCP/BLL/BNC/ComprasGov/SISLOG) · Stage 5 = **BUILD** (D3) · embedding = **bge-m3** · PDF = **Docling** · PNCP filtra por município/órgão (confirmado ao vivo) · geo via IBGE Localidades · livro caixa = SaaS BR externo (D4).
-**Pendentes (call de discovery):** C1 (empresas) · D1/D6 (raio fixo/config) · D2 (prioridade de fontes) · D5 (papéis dos 4 usuários).
+**Atualização 23/Mai:** buscador será para uma única empresa licitante: **ENIAC**. ENIAC usa PNCP, PCP, BLL, BNC, ComprasGov e SISLOG. Credenciais dos buscadores devem ser coletadas via vault, nunca em docs/chat/git. Ver `00-context/ACCESS-ONBOARDING-ENIAC.md`.
+**Pendentes (call de discovery):** CNPJ/razão social da ENIAC · D1/D6 (raio fixo/config) · D5 (papéis dos usuários) · URLs/login/2FA/certificado por portal · acessos aos buscadores via vault.
 
 ## 📊 Dataset real (11 editais)
 100% **Goiás** (Águas Lindas/Novo Gama/Abadiânia/Pirenópolis/Anápolis/CEASA), **obras/engenharia em Concorrência Eletrônica** (Lei 14.133; CEASA via Pregão/13.303). Plataformas na amostra: PCP=4, BLL=4, BNC=2, ComprasGov=1. ⚠️ Amostra **direcional**, não estatística — não estreita escopo nem rebaixa fontes.
@@ -69,6 +78,12 @@
 2. Usar o gate PNCP como evidência técnica, não como escopo total nem fonte principal. O Sprint 0 atual é **workflow-first + equal-priority multi-source canonical model**.
 3. Se PCP confirmar P0 na call → **solicitar chave da API PCP** (lead ~7 dias úteis).
 4. Sprint 0: schema canônico multi-fonte + RLS (X2) + contratos de adapters + score v0 + evidências/confiança por campo.
+5. Continuação atual: Fase 1/Fase 2 passaram em `02-architecture/18-po-validation-and-phase12-story-slice-23mai.md`; Fase 3 teve primeira iteração aprovada por `@ux-design-expert`.
+6. Protótipo operacional atual: `apps/noyce` (Next.js) com inbox ENIAC, detalhe de oportunidade, evidências, referências de preço, concorrência, checklist de habilitação, timeline e matriz de portais aguardando vault.
+7. Validação local: `npm test`, `npm run typecheck`, `npm run build` e browser QA em `http://localhost:3100` passaram em 2026-05-23.
+8. Fase 4 iniciada: score `deterministic-v0` calcula `opportunity_score` e `confidence_score` separadamente a partir das fixtures, com componentes e razões visíveis na tela de análise.
+9. Export local de dados: `http://localhost:3100/analysis-runs.json` expõe `analysis_runs` fixture-based com validação `noyce.analysis_run.v0`.
+10. Paridade Sprint 0: `http://localhost:3103/api/analysis-runs` expõe os 7 `analysis_runs` do dry-run em `sprint0AnalysisRuns`, incluindo fonte candidata, com `validation.ok=true`.
 
 ## Atualização 2026-05-22 — Sprint 0 atual
 O projeto não deve começar como "buscador PNCP". A rota correta é construir o Noyce como workflow de licitações:
