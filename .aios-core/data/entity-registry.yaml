@@ -1,7 +1,7 @@
 metadata:
   version: 1.0.0
-  lastUpdated: '2026-05-22T12:24:53.060Z'
-  entityCount: 1341
+  lastUpdated: '2026-05-23T18:09:42.503Z'
+  entityCount: 1342
   checksumAlgorithm: sha256
   resolutionRate: 100
 entities:
@@ -28280,6 +28280,32 @@ entities:
         extensionPoints: []
       checksum: sha256:3667347dca7a558dff1c2361fdf6d648e1f429ce1a5cfae083d1efad7a6ab33d
       lastVerified: '2026-05-12T22:27:24.306Z'
+    aios-squads-agents-memory-graphiti-session-2026-05-22:
+      path: .aios-core/data/memory/summaries/aios-squads-agents-memory-graphiti-session-2026-05-22.md
+      type: data
+      purpose: >-
+        ask Claude to critique the clone/squad allocation and recommend whether some clones should move from permanent
+        squads into an expert pool.
+      keywords:
+        - aios
+        - squads
+        - agents
+        - memory
+        - graphiti
+        - session
+        - '2026'
+        - '05'
+        - '22'
+        - summary
+        - '2026-05-22'
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.5
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:2944c8fa49ebb16ae66790da2207005744882248ce83ea379f198c1568862e51
+      lastVerified: '2026-05-23T18:09:42.486Z'
   workflows:
     auto-worktree:
       path: .aios-core/development/workflows/auto-worktree.yaml
