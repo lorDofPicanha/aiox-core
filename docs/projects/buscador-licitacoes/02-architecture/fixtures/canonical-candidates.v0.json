@@ -1,0 +1,471 @@
+[
+  {
+    "caseId": "same-opportunity-pncp",
+    "orgId": "fixture-org",
+    "sourceCode": "pncp",
+    "sourceRecordHash": "fixture_hash_pncp_0001",
+    "opportunity": {
+      "canonicalKey": "fixture-go-5200258-concorrencia-001-2026",
+      "object": "Contratacao de empresa de engenharia para reforma de unidade publica",
+      "modality": "concorrencia_eletronica",
+      "status": "recebendo_propostas",
+      "cityIbgeCode": "5200258",
+      "cityName": "Aguas Lindas de Goias",
+      "uf": "GO",
+      "estimatedValue": 1200000,
+      "currency": "BRL",
+      "publicationDate": "2026-05-20",
+      "proposalDeadline": "2026-06-05T13:00:00Z"
+    },
+    "buyer": {
+      "cnpj": "00000000000100",
+      "name": "Municipio Fixture GO",
+      "cityIbgeCode": "5200258",
+      "cityName": "Aguas Lindas de Goias",
+      "uf": "GO"
+    },
+    "items": [],
+    "documents": [],
+    "events": [],
+    "deadlines": [
+      {
+        "deadlineType": "proposal",
+        "endsAt": "2026-06-05T13:00:00Z",
+        "source": "pncp",
+        "confidence": "confirmed"
+      }
+    ],
+    "fieldEvidence": [
+      {
+        "entityType": "opportunity",
+        "entityLocalKey": "fixture-go-5200258-concorrencia-001-2026",
+        "fieldName": "object",
+        "rawValue": "Contratacao de empresa de engenharia para reforma de unidade publica",
+        "normalizedValue": "Contratacao de empresa de engenharia para reforma de unidade publica",
+        "extractionMethod": "api"
+      },
+      {
+        "entityType": "opportunity",
+        "entityLocalKey": "fixture-go-5200258-concorrencia-001-2026",
+        "fieldName": "estimatedValue",
+        "rawValue": "1200000.00",
+        "normalizedValue": "1200000",
+        "extractionMethod": "api"
+      }
+    ],
+    "qualityIssues": [],
+    "sourceLinks": [
+      {
+        "linkType": "primary",
+        "sourceCode": "pncp",
+        "externalId": "PNCP-5200258-2026-0001",
+        "externalUrl": "https://pncp.gov.br/app/editais/fixture/0001",
+        "confidence": "confirmed",
+        "reason": "Identificador PNCP presente."
+      }
+    ],
+    "adapterMeta": {
+      "adapterVersion": "source-adapter.contract.v0",
+      "authContext": "fixture",
+      "rawHash": "fixture_hash_pncp_0001"
+    }
+  },
+  {
+    "caseId": "same-opportunity-private-conflict",
+    "orgId": "fixture-org",
+    "sourceCode": "bll",
+    "sourceRecordHash": "fixture_hash_bll_0001",
+    "opportunity": {
+      "canonicalKey": "fixture-go-5200258-concorrencia-001-2026",
+      "object": "Reforma de unidade publica com fornecimento de material e mao de obra",
+      "modality": "concorrencia_eletronica",
+      "status": "recebendo_propostas",
+      "cityIbgeCode": "5200258",
+      "cityName": "Aguas Lindas de Goias",
+      "uf": "GO",
+      "estimatedValue": 1185000,
+      "currency": "BRL",
+      "publicationDate": "2026-05-20",
+      "proposalDeadline": "2026-06-05T13:00:00Z"
+    },
+    "buyer": {
+      "name": "Municipio Fixture GO",
+      "cityIbgeCode": "5200258",
+      "cityName": "Aguas Lindas de Goias",
+      "uf": "GO"
+    },
+    "items": [],
+    "documents": [],
+    "events": [],
+    "deadlines": [
+      {
+        "deadlineType": "proposal",
+        "endsAt": "2026-06-05T13:00:00Z",
+        "source": "bll",
+        "confidence": "strong"
+      }
+    ],
+    "fieldEvidence": [
+      {
+        "entityType": "opportunity",
+        "entityLocalKey": "fixture-go-5200258-concorrencia-001-2026",
+        "fieldName": "estimatedValue",
+        "rawValue": "1185000.00",
+        "normalizedValue": "1185000",
+        "extractionMethod": "html"
+      }
+    ],
+    "qualityIssues": [
+      {
+        "code": "VALUE_CONFLICT_WITH_PNCP_FIXTURE",
+        "severity": "warning",
+        "message": "Valor estimado diverge da observacao PNCP equivalente.",
+        "fieldName": "estimatedValue"
+      }
+    ],
+    "sourceLinks": [
+      {
+        "linkType": "same_opportunity",
+        "sourceCode": "pncp",
+        "externalId": "PNCP-5200258-2026-0001",
+        "confidence": "strong",
+        "reason": "Mesmo orgao, municipio, modalidade, prazo e objeto similar."
+      }
+    ],
+    "adapterMeta": {
+      "adapterVersion": "source-adapter.contract.v0",
+      "authContext": "fixture",
+      "rawHash": "fixture_hash_bll_0001"
+    }
+  },
+  {
+    "caseId": "missing-estimated-value",
+    "orgId": "fixture-org",
+    "sourceCode": "bnc",
+    "sourceRecordHash": "fixture_hash_bnc_0002",
+    "opportunity": {
+      "canonicalKey": "fixture-go-abadiania-concorrencia-002-2026",
+      "object": "Adequacao predial e reforma de plenaria",
+      "modality": "concorrencia_eletronica",
+      "cityName": "Abadiania",
+      "uf": "GO",
+      "currency": "BRL",
+      "publicationDate": "2026-05-21",
+      "proposalDeadline": "2026-06-10T12:00:00Z"
+    },
+    "buyer": {
+      "name": "Camara Fixture GO",
+      "cityName": "Abadiania",
+      "uf": "GO"
+    },
+    "items": [],
+    "documents": [],
+    "events": [],
+    "deadlines": [
+      {
+        "deadlineType": "proposal",
+        "endsAt": "2026-06-10T12:00:00Z",
+        "source": "bnc",
+        "confidence": "strong"
+      }
+    ],
+    "fieldEvidence": [
+      {
+        "entityType": "opportunity",
+        "entityLocalKey": "fixture-go-abadiania-concorrencia-002-2026",
+        "fieldName": "object",
+        "rawValue": "Adequacao predial e reforma de plenaria",
+        "normalizedValue": "Adequacao predial e reforma de plenaria",
+        "extractionMethod": "html"
+      }
+    ],
+    "qualityIssues": [
+      {
+        "code": "MISSING_ESTIMATED_VALUE",
+        "severity": "warning",
+        "message": "Fonte nao trouxe valor estimado; criar field_confidence como missing.",
+        "fieldName": "estimatedValue"
+      }
+    ],
+    "sourceLinks": [
+      {
+        "linkType": "primary",
+        "sourceCode": "bnc",
+        "externalId": "BNC-FIXTURE-0002",
+        "externalUrl": "https://bnc.org.br/processo/fixture-0002",
+        "confidence": "strong",
+        "reason": "Registro principal da fonte BNC."
+      }
+    ],
+    "adapterMeta": {
+      "adapterVersion": "source-adapter.contract.v0",
+      "authContext": "fixture",
+      "rawHash": "fixture_hash_bnc_0002"
+    }
+  },
+  {
+    "caseId": "pcp-public-api",
+    "orgId": "fixture-org",
+    "sourceCode": "pcp",
+    "sourceRecordHash": "fixture_hash_pcp_0004",
+    "opportunity": {
+      "canonicalKey": "fixture-go-5217302-concorrencia-0004-2026",
+      "object": "Construcao de cobertura metalica em equipamento publico",
+      "modality": "concorrencia_eletronica",
+      "cityIbgeCode": "5217302",
+      "cityName": "Pirenopolis",
+      "uf": "GO",
+      "estimatedValue": 1030000,
+      "currency": "BRL",
+      "publicationDate": "2026-05-21",
+      "proposalDeadline": "2026-06-11T13:30:00Z"
+    },
+    "buyer": {
+      "cnpj": "00000000000400",
+      "name": "Prefeitura Fixture GO",
+      "cityIbgeCode": "5217302",
+      "cityName": "Pirenopolis",
+      "uf": "GO"
+    },
+    "items": [],
+    "documents": [],
+    "events": [],
+    "deadlines": [
+      {
+        "deadlineType": "proposal",
+        "endsAt": "2026-06-11T13:30:00Z",
+        "source": "pcp",
+        "confidence": "strong"
+      }
+    ],
+    "fieldEvidence": [
+      {
+        "entityType": "opportunity",
+        "entityLocalKey": "fixture-go-5217302-concorrencia-0004-2026",
+        "fieldName": "estimatedValue",
+        "rawValue": "1030000.00",
+        "normalizedValue": "1030000",
+        "extractionMethod": "api"
+      }
+    ],
+    "qualityIssues": [
+      {
+        "code": "CLIENT_SIDE_FILTER_REQUIRED",
+        "severity": "info",
+        "message": "PCP fixture exige refinamento client-side.",
+        "fieldName": "cityIbgeCode"
+      }
+    ],
+    "sourceLinks": [
+      {
+        "linkType": "primary",
+        "sourceCode": "pcp",
+        "externalId": "PCP-FIXTURE-0004",
+        "externalUrl": "https://portaldecompraspublicas.com.br/processos/fixture-0004",
+        "confidence": "strong",
+        "reason": "Registro principal da fonte PCP."
+      }
+    ],
+    "adapterMeta": {
+      "adapterVersion": "source-adapter.contract.v0",
+      "authContext": "fixture",
+      "rawHash": "fixture_hash_pcp_0004"
+    }
+  },
+  {
+    "caseId": "comprasgov-public-api",
+    "orgId": "fixture-org",
+    "sourceCode": "comprasgov",
+    "sourceRecordHash": "fixture_hash_comprasgov_0005",
+    "opportunity": {
+      "canonicalKey": "fixture-go-5201108-pregao-0005-2026",
+      "object": "Servico comum de manutencao predial corretiva",
+      "modality": "pregao_eletronico",
+      "cityIbgeCode": "5201108",
+      "cityName": "Anapolis",
+      "uf": "GO",
+      "estimatedValue": 420000,
+      "currency": "BRL",
+      "publicationDate": "2026-05-22",
+      "proposalDeadline": "2026-06-06T14:00:00Z"
+    },
+    "buyer": {
+      "name": "Autarquia Fixture GO",
+      "cityIbgeCode": "5201108",
+      "cityName": "Anapolis",
+      "uf": "GO"
+    },
+    "items": [],
+    "documents": [],
+    "events": [],
+    "deadlines": [
+      {
+        "deadlineType": "proposal",
+        "endsAt": "2026-06-06T14:00:00Z",
+        "source": "comprasgov",
+        "confidence": "strong"
+      }
+    ],
+    "fieldEvidence": [
+      {
+        "entityType": "opportunity",
+        "entityLocalKey": "fixture-go-5201108-pregao-0005-2026",
+        "fieldName": "object",
+        "rawValue": "Servico comum de manutencao predial corretiva",
+        "normalizedValue": "Servico comum de manutencao predial corretiva",
+        "extractionMethod": "api"
+      }
+    ],
+    "qualityIssues": [
+      {
+        "code": "DOCUMENTS_NOT_FETCHED",
+        "severity": "warning",
+        "message": "Documentos nao foram baixados na fixture.",
+        "fieldName": "documents"
+      }
+    ],
+    "sourceLinks": [
+      {
+        "linkType": "primary",
+        "sourceCode": "comprasgov",
+        "externalId": "COMPRASGOV-FIXTURE-0005",
+        "externalUrl": "https://compras.gov.br/processo/fixture-0005",
+        "confidence": "strong",
+        "reason": "Registro principal da fonte ComprasGov."
+      }
+    ],
+    "adapterMeta": {
+      "adapterVersion": "source-adapter.contract.v0",
+      "authContext": "fixture",
+      "rawHash": "fixture_hash_comprasgov_0005"
+    }
+  },
+  {
+    "caseId": "sislog-public-web",
+    "orgId": "fixture-org",
+    "sourceCode": "sislog",
+    "sourceRecordHash": "fixture_hash_sislog_0006",
+    "opportunity": {
+      "canonicalKey": "fixture-go-5208707-concorrencia-0006-2026",
+      "object": "Obra de adequacao de unidade administrativa estadual",
+      "modality": "concorrencia_eletronica",
+      "cityIbgeCode": "5208707",
+      "cityName": "Goiania",
+      "uf": "GO",
+      "estimatedValue": 2830000,
+      "currency": "BRL",
+      "publicationDate": "2026-05-22"
+    },
+    "buyer": {
+      "name": "Estado Fixture GO",
+      "cityIbgeCode": "5208707",
+      "cityName": "Goiania",
+      "uf": "GO"
+    },
+    "items": [],
+    "documents": [],
+    "events": [],
+    "deadlines": [],
+    "fieldEvidence": [
+      {
+        "entityType": "opportunity",
+        "entityLocalKey": "fixture-go-5208707-concorrencia-0006-2026",
+        "fieldName": "estimatedValue",
+        "rawValue": "2830000.00",
+        "normalizedValue": "2830000",
+        "extractionMethod": "html"
+      }
+    ],
+    "qualityIssues": [
+      {
+        "code": "MISSING_PROPOSAL_DEADLINE",
+        "severity": "warning",
+        "message": "Criar field_confidence como missing para prazo de proposta.",
+        "fieldName": "proposalDeadline"
+      },
+      {
+        "code": "UNKNOWN_TOS_RISK",
+        "severity": "warning",
+        "message": "SISLOG permanece somente fixture/dry-run ate auditoria ToS.",
+        "fieldName": "sourceCode"
+      }
+    ],
+    "sourceLinks": [
+      {
+        "linkType": "primary",
+        "sourceCode": "sislog",
+        "externalId": "SISLOG-FIXTURE-0006",
+        "externalUrl": "https://sislog.go.gov.br/licitacao/fixture-0006",
+        "confidence": "weak",
+        "reason": "Registro principal de fonte publica web com ToS ainda nao auditada."
+      }
+    ],
+    "adapterMeta": {
+      "adapterVersion": "source-adapter.contract.v0",
+      "authContext": "fixture",
+      "rawHash": "fixture_hash_sislog_0006"
+    }
+  },
+  {
+    "caseId": "new-source-candidate",
+    "orgId": "fixture-org",
+    "sourceCode": "candidate:portal-regional-fixture",
+    "sourceRecordHash": "fixture_hash_candidate_0003",
+    "opportunity": {
+      "canonicalKey": "fixture-mg-3170404-concorrencia-0003-2026",
+      "object": "Execucao de obra de manutencao e drenagem urbana",
+      "modality": "concorrencia_eletronica",
+      "cityIbgeCode": "3170404",
+      "cityName": "Unai",
+      "uf": "MG",
+      "estimatedValue": 850000,
+      "currency": "BRL",
+      "publicationDate": "2026-05-22",
+      "proposalDeadline": "2026-06-12T14:00:00Z"
+    },
+    "items": [],
+    "documents": [],
+    "events": [],
+    "deadlines": [
+      {
+        "deadlineType": "proposal",
+        "endsAt": "2026-06-12T14:00:00Z",
+        "source": "candidate:portal-regional-fixture",
+        "confidence": "inferred"
+      }
+    ],
+    "fieldEvidence": [
+      {
+        "entityType": "source_candidate",
+        "entityLocalKey": "portal-regional-fixture",
+        "fieldName": "base_url",
+        "rawValue": "https://portal-regional.example",
+        "normalizedValue": "https://portal-regional.example",
+        "extractionMethod": "html"
+      }
+    ],
+    "qualityIssues": [
+      {
+        "code": "SOURCE_CANDIDATE",
+        "severity": "info",
+        "message": "Portal ainda nao integrado encontrado dentro do raio operacional.",
+        "fieldName": "sourceCode"
+      }
+    ],
+    "sourceLinks": [
+      {
+        "linkType": "primary",
+        "sourceCode": "candidate:portal-regional-fixture",
+        "externalId": "REGIONAL-FIXTURE-0003",
+        "externalUrl": "https://portal-regional.example/licitacao/0003",
+        "confidence": "weak",
+        "reason": "Fonte candidata sem adapter dedicado."
+      }
+    ],
+    "adapterMeta": {
+      "adapterVersion": "source-adapter.contract.v0",
+      "authContext": "fixture",
+      "rawHash": "fixture_hash_candidate_0003"
+    }
+  }
+]

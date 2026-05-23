@@ -1,0 +1,221 @@
+[
+  {
+    "caseId": "same-opportunity-pncp",
+    "orgId": "fixture-org",
+    "sourceCode": "pncp",
+    "externalId": "PNCP-5200258-2026-0001",
+    "externalUrl": "https://pncp.gov.br/app/editais/fixture/0001",
+    "rawHash": "fixture_hash_pncp_0001",
+    "fetchedAt": "2026-05-23T12:00:00Z",
+    "publishedAt": "2026-05-20T10:00:00Z",
+    "adapterVersion": "source-adapter.contract.v0",
+    "normalizationWarnings": [],
+    "rawPayload": {
+      "numeroControlePNCP": "PNCP-5200258-2026-0001",
+      "orgaoEntidade": {
+        "cnpj": "00000000000100",
+        "razaoSocial": "Municipio Fixture GO"
+      },
+      "unidadeOrgao": {
+        "codigoIbge": "5200258",
+        "municipioNome": "Aguas Lindas de Goias",
+        "uf": "GO"
+      },
+      "modalidadeNome": "Concorrencia eletronica",
+      "objetoCompra": "Contratacao de empresa de engenharia para reforma de unidade publica",
+      "valorTotalEstimado": 1200000.00,
+      "dataPublicacaoPncp": "2026-05-20",
+      "dataEncerramentoProposta": "2026-06-05T13:00:00Z"
+    }
+  },
+  {
+    "caseId": "same-opportunity-private-conflict",
+    "orgId": "fixture-org",
+    "sourceCode": "bll",
+    "externalId": "BLL-FIXTURE-0001",
+    "externalUrl": "https://bll.org.br/processo/fixture-0001",
+    "rawHash": "fixture_hash_bll_0001",
+    "fetchedAt": "2026-05-23T12:03:00Z",
+    "publishedAt": "2026-05-20T10:05:00Z",
+    "adapterVersion": "source-adapter.contract.v0",
+    "normalizationWarnings": [
+      {
+        "code": "VALUE_CONFLICT_WITH_PNCP_FIXTURE",
+        "severity": "warning",
+        "message": "Valor estimado diverge da observacao PNCP equivalente.",
+        "fieldName": "estimatedValue"
+      }
+    ],
+    "rawPayload": {
+      "processo": "001/2026",
+      "orgao": "Municipio Fixture GO",
+      "municipio": "Aguas Lindas de Goias",
+      "uf": "GO",
+      "modalidade": "Concorrencia eletronica",
+      "objeto": "Reforma de unidade publica com fornecimento de material e mao de obra",
+      "valorEstimado": 1185000.00,
+      "prazoProposta": "2026-06-05T13:00:00Z",
+      "situacao": "Recebendo propostas"
+    }
+  },
+  {
+    "caseId": "missing-estimated-value",
+    "orgId": "fixture-org",
+    "sourceCode": "bnc",
+    "externalId": "BNC-FIXTURE-0002",
+    "externalUrl": "https://bnc.org.br/processo/fixture-0002",
+    "rawHash": "fixture_hash_bnc_0002",
+    "fetchedAt": "2026-05-23T12:05:00Z",
+    "publishedAt": "2026-05-21T09:00:00Z",
+    "adapterVersion": "source-adapter.contract.v0",
+    "normalizationWarnings": [
+      {
+        "code": "MISSING_ESTIMATED_VALUE",
+        "severity": "warning",
+        "message": "Fonte nao trouxe valor estimado.",
+        "fieldName": "estimatedValue"
+      }
+    ],
+    "rawPayload": {
+      "processo": "002/2026",
+      "orgao": "Camara Fixture GO",
+      "municipio": "Abadiania",
+      "uf": "GO",
+      "modalidade": "Concorrencia eletronica",
+      "objeto": "Adequacao predial e reforma de plenaria",
+      "valorEstimado": null,
+      "prazoProposta": "2026-06-10T12:00:00Z"
+    }
+  },
+  {
+    "caseId": "pcp-public-api",
+    "orgId": "fixture-org",
+    "sourceCode": "pcp",
+    "externalId": "PCP-FIXTURE-0004",
+    "externalUrl": "https://portaldecompraspublicas.com.br/processos/fixture-0004",
+    "rawHash": "fixture_hash_pcp_0004",
+    "fetchedAt": "2026-05-23T12:06:00Z",
+    "publishedAt": "2026-05-21T11:00:00Z",
+    "adapterVersion": "source-adapter.contract.v0",
+    "normalizationWarnings": [
+      {
+        "code": "CLIENT_SIDE_FILTER_REQUIRED",
+        "severity": "info",
+        "message": "Fixture representa API com filtro limitado; refinamento por municipio/objeto ocorre no cliente.",
+        "fieldName": "cityIbgeCode"
+      }
+    ],
+    "rawPayload": {
+      "id": "PCP-FIXTURE-0004",
+      "orgao": "Prefeitura Fixture GO",
+      "cnpjOrgao": "00000000000400",
+      "municipio": "Pirenopolis",
+      "codigoIbge": "5217302",
+      "uf": "GO",
+      "modalidade": "Concorrencia eletronica",
+      "objeto": "Construcao de cobertura metalica em equipamento publico",
+      "valorReferencia": 1030000.00,
+      "dataPublicacao": "2026-05-21",
+      "dataAbertura": "2026-06-11T13:30:00Z"
+    }
+  },
+  {
+    "caseId": "comprasgov-public-api",
+    "orgId": "fixture-org",
+    "sourceCode": "comprasgov",
+    "externalId": "COMPRASGOV-FIXTURE-0005",
+    "externalUrl": "https://compras.gov.br/processo/fixture-0005",
+    "rawHash": "fixture_hash_comprasgov_0005",
+    "fetchedAt": "2026-05-23T12:07:00Z",
+    "publishedAt": "2026-05-22T09:30:00Z",
+    "adapterVersion": "source-adapter.contract.v0",
+    "normalizationWarnings": [
+      {
+        "code": "DOCUMENTS_NOT_FETCHED",
+        "severity": "warning",
+        "message": "Documentos nao foram baixados na fixture; registrar lacuna em notice_documents.",
+        "fieldName": "documents"
+      }
+    ],
+    "rawPayload": {
+      "uasg": "000005",
+      "numeroCompra": "90005/2026",
+      "orgao": "Autarquia Fixture GO",
+      "municipio": "Anapolis",
+      "codigoIbge": "5201108",
+      "uf": "GO",
+      "modalidade": "Pregao eletronico",
+      "objeto": "Servico comum de manutencao predial corretiva",
+      "valorEstimado": 420000.00,
+      "dataPublicacao": "2026-05-22",
+      "dataAberturaProposta": "2026-06-06T14:00:00Z"
+    }
+  },
+  {
+    "caseId": "sislog-public-web",
+    "orgId": "fixture-org",
+    "sourceCode": "sislog",
+    "externalId": "SISLOG-FIXTURE-0006",
+    "externalUrl": "https://sislog.go.gov.br/licitacao/fixture-0006",
+    "rawHash": "fixture_hash_sislog_0006",
+    "fetchedAt": "2026-05-23T12:08:00Z",
+    "publishedAt": "2026-05-22T10:00:00Z",
+    "adapterVersion": "source-adapter.contract.v0",
+    "normalizationWarnings": [
+      {
+        "code": "UNKNOWN_TOS_RISK",
+        "severity": "warning",
+        "message": "Fonte publica web com risco ToS ainda desconhecido; usar somente fixture/dry-run.",
+        "fieldName": "sourceCode"
+      },
+      {
+        "code": "MISSING_PROPOSAL_DEADLINE",
+        "severity": "warning",
+        "message": "Fixture nao possui prazo de proposta estruturado.",
+        "fieldName": "proposalDeadline"
+      }
+    ],
+    "rawPayload": {
+      "processo": "SISLOG-0006/2026",
+      "orgao": "Estado Fixture GO",
+      "municipio": "Goiania",
+      "codigoIbge": "5208707",
+      "uf": "GO",
+      "modalidade": "Concorrencia eletronica",
+      "objeto": "Obra de adequacao de unidade administrativa estadual",
+      "valorEstimado": 2830000.00,
+      "dataPublicacao": "2026-05-22",
+      "prazoProposta": null
+    }
+  },
+  {
+    "caseId": "new-source-candidate",
+    "orgId": "fixture-org",
+    "sourceCode": "candidate:portal-regional-fixture",
+    "externalId": "REGIONAL-FIXTURE-0003",
+    "externalUrl": "https://portal-regional.example/licitacao/0003",
+    "rawHash": "fixture_hash_candidate_0003",
+    "fetchedAt": "2026-05-23T12:10:00Z",
+    "publishedAt": "2026-05-22T08:00:00Z",
+    "adapterVersion": "source-adapter.contract.v0",
+    "normalizationWarnings": [
+      {
+        "code": "SOURCE_CANDIDATE",
+        "severity": "info",
+        "message": "Portal ainda nao integrado encontrado dentro do raio operacional.",
+        "fieldName": "sourceCode"
+      }
+    ],
+    "rawPayload": {
+      "portalName": "Portal Regional Fixture",
+      "buyer": "Prefeitura Fixture MG",
+      "cityIbgeCode": "3170404",
+      "cityName": "Unai",
+      "uf": "MG",
+      "object": "Execucao de obra de manutencao e drenagem urbana",
+      "modality": "Concorrencia eletronica",
+      "estimatedValue": 850000.00,
+      "proposalDeadline": "2026-06-12T14:00:00Z"
+    }
+  }
+]

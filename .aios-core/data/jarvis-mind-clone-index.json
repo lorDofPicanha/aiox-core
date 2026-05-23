@@ -2,7 +2,7 @@
   {
     "id": "demis-hassabis",
     "name": "demis-hassabis",
-    "department": "squad-ai",
+    "department": "ai-science",
     "source": "mega-brain",
     "role": ">",
     "keywords": [
@@ -108,18 +108,12 @@
       "exit",
       "help"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\ai-science\\demis-hassabis.md",
-    "membership": "pool",
-    "domain": "squad-ai",
-    "squads": [
-      "squad-ai",
-      "squad-executive"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\ai-science\\demis-hassabis.md"
   },
   {
     "id": "fei-fei-li",
     "name": "fei-fei-li",
-    "department": "squad-ai",
+    "department": "ai-science",
     "source": "mega-brain",
     "role": "Human-Centered AI Strategist & Research Infrastructure Architect",
     "keywords": [
@@ -199,17 +193,12 @@
       "constraint-analysis",
       "spatial-intelligence"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\ai-science\\fei-fei-li.md",
-    "membership": "pool",
-    "domain": "squad-ai",
-    "squads": [
-      "squad-ai"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\ai-science\\fei-fei-li.md"
   },
   {
     "id": "churn-prevention",
     "name": "Churn Prevention Agent — Retention Strategist",
-    "department": "squad-customer-success",
+    "department": "customer-ops",
     "source": "mega-brain",
     "role": "Vance detects churn risk before it becomes cancellation, designs retention interventions rooted in behavioral economics and Hormozi's offer architecture, and executes win-back campaigns for lost custo",
     "keywords": [
@@ -282,17 +271,12 @@
       "exit-interview",
       "churn-report"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\customer-ops\\churn-prevention.md",
-    "membership": "core",
-    "domain": "squad-customer-success",
-    "squads": [
-      "squad-customer-success"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\customer-ops\\churn-prevention.md"
   },
   {
     "id": "community-manager",
     "name": "Community Manager — Community Growth and Engagement Lead",
-    "department": "squad-customer-success",
+    "department": "customer-ops",
     "source": "mega-brain",
     "role": "Camden builds and nurtures the customer community as a living ecosystem — not just a support channel but a space where customers connect, share knowledge, and become invested in each other's success. ",
     "keywords": [
@@ -365,17 +349,12 @@
       "ugc-spotlight",
       "engagement-playbook"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\customer-ops\\community-manager.md",
-    "membership": "core",
-    "domain": "squad-customer-success",
-    "squads": [
-      "squad-customer-success"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\customer-ops\\community-manager.md"
   },
   {
     "id": "customer-success-manager",
     "name": "Customer Success Manager — Strategic Account Growth Partner",
-    "department": "squad-customer-success",
+    "department": "customer-ops",
     "source": "mega-brain",
     "role": "Cleo owns the ongoing relationship between the company and its customers post-onboarding. Responsible for monitoring account health, driving adoption depth, identifying and executing expansion opportu",
     "keywords": [
@@ -441,17 +420,12 @@
       "success-plan",
       "advocate-pipeline"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\customer-ops\\customer-success-manager.md",
-    "membership": "core",
-    "domain": "squad-customer-success",
-    "squads": [
-      "squad-customer-success"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\customer-ops\\customer-success-manager.md"
   },
   {
     "id": "customer-support-t1",
     "name": "Support Tier 1 — First-Line Customer Support",
-    "department": "squad-customer-success",
+    "department": "customer-ops",
     "source": "mega-brain",
     "role": "Sage is the frontline of customer support, handling initial contact across all channels with speed, empathy, and consistency. Responsible for resolving the majority of inbound tickets using establishe",
     "keywords": [
@@ -514,17 +488,12 @@
       "kb-gap-report",
       "escalate-t2"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\customer-ops\\customer-support-t1.md",
-    "membership": "core",
-    "domain": "squad-customer-success",
-    "squads": [
-      "squad-customer-success"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\customer-ops\\customer-support-t1.md"
   },
   {
     "id": "customer-support-t2",
     "name": "Support Tier 2 — Advanced Technical Support",
-    "department": "squad-customer-success",
+    "department": "customer-ops",
     "source": "mega-brain",
     "role": "Riven handles the issues that Tier 1 cannot resolve — complex technical problems, edge-case bugs, integration failures, and escalated customer situations. Responsible for deep-dive troubleshooting, th",
     "keywords": [
@@ -583,17 +552,12 @@
       "escalation-update",
       "create-runbook"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\customer-ops\\customer-support-t2.md",
-    "membership": "core",
-    "domain": "squad-customer-success",
-    "squads": [
-      "squad-customer-success"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\customer-ops\\customer-support-t2.md"
   },
   {
     "id": "onboarding-specialist",
     "name": "Onboarding Specialist — First-Run Experience Architect",
-    "department": "squad-customer-success",
+    "department": "customer-ops",
     "source": "mega-brain",
     "role": "Ori designs and optimizes the entire first-run experience, from account creation through first value moment. Responsible for reducing time-to-value, building activation flows that convert trial users ",
     "keywords": [
@@ -665,17 +629,12 @@
       "milestone-report",
       "optimize-ttv"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\customer-ops\\onboarding-specialist.md",
-    "membership": "core",
-    "domain": "squad-customer-success",
-    "squads": [
-      "squad-customer-success"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\customer-ops\\onboarding-specialist.md"
   },
   {
     "id": "voice-of-customer",
     "name": "Voice of Customer — Customer Intelligence Analyst",
-    "department": "squad-customer-success",
+    "department": "customer-ops",
     "source": "mega-brain",
     "role": "Vox is the systematic listener — responsible for capturing, aggregating, and translating the full spectrum of customer feedback into actionable intelligence. Owns NPS and CSAT programs, feature reques",
     "keywords": [
@@ -743,17 +702,12 @@
       "sentiment-analysis",
       "cab-prep"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\customer-ops\\voice-of-customer.md",
-    "membership": "core",
-    "domain": "squad-customer-success",
-    "squads": [
-      "squad-customer-success"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\customer-ops\\voice-of-customer.md"
   },
   {
     "id": "acacia-parks",
     "name": "acacia-parks",
-    "department": "squad-behavioral-design",
+    "department": "design-terapeutico",
     "source": "mega-brain",
     "role": ">",
     "keywords": [
@@ -843,18 +797,12 @@
       "adherence-audit",
       "design-study"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\design-terapeutico\\acacia-parks.md",
-    "membership": "pool",
-    "domain": "squad-behavioral-design",
-    "squads": [
-      "squad-behavioral-design",
-      "squad-health"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\design-terapeutico\\acacia-parks.md"
   },
   {
     "id": "bj-fogg",
     "name": "bj-fogg",
-    "department": "squad-behavioral-design",
+    "department": "design-terapeutico",
     "source": "mega-brain",
     "role": ">",
     "keywords": [
@@ -935,18 +883,12 @@
       "exit",
       "help"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\design-terapeutico\\bj-fogg.md",
-    "membership": "pool",
-    "domain": "squad-behavioral-design",
-    "squads": [
-      "squad-behavioral-design",
-      "squad-health"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\design-terapeutico\\bj-fogg.md"
   },
   {
     "id": "demis-hassabis-dossier",
     "name": "DOSSIE COMPLETO: DEMIS HASSABIS",
-    "department": "squad-ai",
+    "department": "design-terapeutico",
     "source": "mega-brain",
     "role": "",
     "keywords": [
@@ -1135,12 +1077,7 @@
       "2005-2009"
     ],
     "commands": [],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\design-terapeutico\\demis-hassabis-dossier.md",
-    "membership": "pool",
-    "domain": "squad-ai",
-    "squads": [
-      "squad-ai"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\design-terapeutico\\demis-hassabis-dossier.md"
   },
   {
     "id": "cco",
@@ -1203,12 +1140,7 @@
       "nps-report",
       "team-status"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\executive-team\\cco.md",
-    "membership": "governance",
-    "domain": "executive-team",
-    "squads": [
-      "executive-team"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\executive-team\\cco.md"
   },
   {
     "id": "ceo",
@@ -1268,12 +1200,7 @@
       "executive-report",
       "status"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\executive-team\\ceo.md",
-    "membership": "governance",
-    "domain": "executive-team",
-    "squads": [
-      "executive-team"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\executive-team\\ceo.md"
   },
   {
     "id": "cfo",
@@ -1333,12 +1260,7 @@
       "pl-report",
       "valuation"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\executive-team\\cfo.md",
-    "membership": "governance",
-    "domain": "executive-team",
-    "squads": [
-      "executive-team"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\executive-team\\cfo.md"
   },
   {
     "id": "cmo",
@@ -1411,12 +1333,7 @@
     "commands": [
       "team-status"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\executive-team\\cmo.md",
-    "membership": "governance",
-    "domain": "executive-team",
-    "squads": [
-      "executive-team"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\executive-team\\cmo.md"
   },
   {
     "id": "coo",
@@ -1475,12 +1392,7 @@
     "commands": [
       "efficiency-report"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\executive-team\\coo.md",
-    "membership": "governance",
-    "domain": "executive-team",
-    "squads": [
-      "executive-team"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\executive-team\\coo.md"
   },
   {
     "id": "cro",
@@ -1544,12 +1456,7 @@
       "pipeline-status",
       "team-status"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\executive-team\\cro.md",
-    "membership": "governance",
-    "domain": "executive-team",
-    "squads": [
-      "executive-team"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\executive-team\\cro.md"
   },
   {
     "id": "conclave-coordinator",
@@ -1565,17 +1472,12 @@
       "sync",
       "status"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\expert-council\\conclave-coordinator.md",
-    "membership": "runtime",
-    "domain": "expert-council",
-    "squads": [
-      "expert-council"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\expert-council\\conclave-coordinator.md"
   },
   {
     "id": "guillaume-moubeche",
     "name": "guillaume-moubeche",
-    "department": "squad-sales",
+    "department": "growth",
     "source": "mega-brain",
     "role": "Bootstrapped SaaS Growth Strategist & Founder-Led Sales Expert",
     "keywords": [
@@ -1686,17 +1588,12 @@
       "content-flywheel",
       "bootstrap-assessment"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\growth\\guillaume-moubeche.md",
-    "membership": "pool",
-    "domain": "squad-sales",
-    "squads": [
-      "squad-sales"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\growth\\guillaume-moubeche.md"
   },
   {
     "id": "stephen-hahn",
     "name": "stephen-hahn",
-    "department": "squad-health",
+    "department": "growth",
     "source": "mega-brain",
     "role": "Quality & Testing Architect — FDA-Grade Rigor for Product Excellence",
     "keywords": [
@@ -1793,17 +1690,12 @@
       "crisis-quality",
       "quality-culture"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\growth\\stephen-hahn.md",
-    "membership": "pool",
-    "domain": "squad-health",
-    "squads": [
-      "squad-health"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\growth\\stephen-hahn.md"
   },
   {
     "id": "atul-butte",
     "name": "atul-butte",
-    "department": "squad-health",
+    "department": "health-data",
     "source": "mega-brain",
     "role": "Translational Bioinformatics Strategist & Open Data Innovation Architect",
     "keywords": [
@@ -1921,17 +1813,12 @@
       "startup-from-data",
       "data-strategy"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\health-data\\atul-butte.md",
-    "membership": "pool",
-    "domain": "squad-health",
-    "squads": [
-      "squad-health"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\health-data\\atul-butte.md"
   },
   {
     "id": "halle-tecco",
     "name": "halle-tecco",
-    "department": "squad-health",
+    "department": "health-tech",
     "source": "mega-brain",
     "role": "Healthcare Investment Strategist & Incentive Systems Architect",
     "keywords": [
@@ -2022,17 +1909,12 @@
       "help",
       "guide"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\health-tech\\halle-tecco.md",
-    "membership": "pool",
-    "domain": "squad-health",
-    "squads": [
-      "squad-health"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\health-tech\\halle-tecco.md"
   },
   {
     "id": "sean-duffy",
     "name": "sean-duffy",
-    "department": "squad-health",
+    "department": "health-tech",
     "source": "mega-brain",
     "role": "Digital Health Integration Strategist & Chronic Disease Innovation Expert",
     "keywords": [
@@ -2113,12 +1995,7 @@
       "help",
       "guide"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\health-tech\\sean-duffy.md",
-    "membership": "pool",
-    "domain": "squad-health",
-    "squads": [
-      "squad-health"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\health-tech\\sean-duffy.md"
   },
   {
     "id": "eric-ries",
@@ -2226,18 +2103,12 @@
       "pivot-or-persevere",
       "five-whys"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\innovation\\eric-ries.md",
-    "membership": "pool",
-    "domain": "innovation",
-    "squads": [
-      "innovation",
-      "squad-operations"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\innovation\\eric-ries.md"
   },
   {
     "id": "werner-vogels",
     "name": "werner-vogels",
-    "department": "squad-engineering",
+    "department": "innovation",
     "source": "mega-brain",
     "role": "Cloud Architecture Advisor & Distributed Systems Strategist",
     "keywords": [
@@ -2331,17 +2202,12 @@
       "architecture-decision",
       "renaissance-assessment"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\innovation\\werner-vogels.md",
-    "membership": "pool",
-    "domain": "squad-engineering",
-    "squads": [
-      "squad-engineering"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\innovation\\werner-vogels.md"
   },
   {
     "id": "bakul-patel",
     "name": "bakul-patel",
-    "department": "squad-health",
+    "department": "legal",
     "source": "mega-brain",
     "role": "Digital Health Regulatory Architect & SaMD Strategy Expert",
     "keywords": [
@@ -2473,18 +2339,12 @@
       "industry must co-own regulatory evolution"
     ],
     "commands": [],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\legal\\bakul-patel.md",
-    "membership": "pool",
-    "domain": "squad-health",
-    "squads": [
-      "squad-health",
-      "squad-legal"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\legal\\bakul-patel.md"
   },
   {
     "id": "lucia-savage",
     "name": "lucia-savage",
-    "department": "squad-health",
+    "department": "legal",
     "source": "mega-brain",
     "role": "Health Privacy & Regulatory Strategy Expert",
     "keywords": [
@@ -2605,18 +2465,12 @@
       "consumer transparency check:"
     ],
     "commands": [],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\legal\\lucia-savage.md",
-    "membership": "pool",
-    "domain": "squad-health",
-    "squads": [
-      "squad-health",
-      "squad-legal"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\legal\\lucia-savage.md"
   },
   {
     "id": "analytics-agent",
     "name": "LENS — Marketing Analytics Agent",
-    "department": "marketing-traffic",
+    "department": "marketing-ops",
     "source": "mega-brain",
     "role": "LENS is the data backbone of the marketing squad, responsible for turning raw marketing data into actionable intelligence. LENS builds attribution models that reveal true channel performance, designs ",
     "keywords": [
@@ -2687,17 +2541,12 @@
       "channel-deep-dive",
       "performance-report"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\marketing-ops\\analytics-agent.md",
-    "membership": "core",
-    "domain": "marketing-traffic",
-    "squads": [
-      "marketing-traffic"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\marketing-ops\\analytics-agent.md"
   },
   {
     "id": "audience-researcher",
     "name": "RADAR — Audience Researcher",
-    "department": "marketing-traffic",
+    "department": "marketing-ops",
     "source": "mega-brain",
     "role": "RADAR is the audience intelligence specialist who uncovers the deep motivations, pain points, behaviors, and language of target audiences. Using a blend of qualitative research, psychographic profilin",
     "keywords": [
@@ -2766,17 +2615,12 @@
       "voc-mine",
       "decision-journey"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\marketing-ops\\audience-researcher.md",
-    "membership": "core",
-    "domain": "marketing-traffic",
-    "squads": [
-      "marketing-traffic"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\marketing-ops\\audience-researcher.md"
   },
   {
     "id": "campaign-manager",
     "name": "BLITZ — Campaign Manager",
-    "department": "marketing-traffic",
+    "department": "marketing-ops",
     "source": "mega-brain",
     "role": "BLITZ is the paid media strategist responsible for planning, executing, and optimizing campaigns across Google, Meta, TikTok, LinkedIn, and emerging ad platforms. Channeling Kasim Aslam's data-driven ",
     "keywords": [
@@ -2839,17 +2683,12 @@
       "audience-build",
       "bid-optimize"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\marketing-ops\\campaign-manager.md",
-    "membership": "core",
-    "domain": "marketing-traffic",
-    "squads": [
-      "marketing-traffic"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\marketing-ops\\campaign-manager.md"
   },
   {
     "id": "copy-specialist",
     "name": "HOOK — Copy Specialist",
-    "department": "marketing-traffic",
+    "department": "marketing-ops",
     "source": "mega-brain",
     "role": "HOOK is the conversion copywriter who turns words into revenue. Drawing from Joanna Wiebe's evidence-based copywriting methodology, HOOK writes copy that is rooted in voice-of-customer research, not a",
     "keywords": [
@@ -2916,17 +2755,12 @@
       "copy-audit",
       "messaging-guide"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\marketing-ops\\copy-specialist.md",
-    "membership": "core",
-    "domain": "marketing-traffic",
-    "squads": [
-      "marketing-traffic"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\marketing-ops\\copy-specialist.md"
   },
   {
     "id": "email-marketing-specialist",
     "name": "DRIP — Email Marketing Specialist",
-    "department": "marketing-traffic",
+    "department": "marketing-ops",
     "source": "mega-brain",
     "role": "DRIP is the email marketing architect who transforms subscriber lists into engaged audiences and loyal customers through the art of email storytelling. Drawing from Andre Chaperon's narrative-driven e",
     "keywords": [
@@ -2998,17 +2832,12 @@
       "deliverability-audit",
       "subject-line-test"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\marketing-ops\\email-marketing-specialist.md",
-    "membership": "core",
-    "domain": "marketing-traffic",
-    "squads": [
-      "marketing-traffic"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\marketing-ops\\email-marketing-specialist.md"
   },
   {
     "id": "funnel-architect",
     "name": "MAZE — Funnel Architect",
-    "department": "marketing-traffic",
+    "department": "marketing-ops",
     "source": "mega-brain",
     "role": "MAZE designs end-to-end customer value journeys that transform strangers into repeat buyers and brand advocates. Using Ryan Deiss's Customer Value Journey methodology, MAZE architects multi-stage funn",
     "keywords": [
@@ -3073,17 +2902,12 @@
       "value-ladder",
       "tripwire-strategy"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\marketing-ops\\funnel-architect.md",
-    "membership": "core",
-    "domain": "marketing-traffic",
-    "squads": [
-      "marketing-traffic"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\marketing-ops\\funnel-architect.md"
   },
   {
     "id": "growth-strategist",
     "name": "ATLAS — Growth Strategist",
-    "department": "marketing-traffic",
+    "department": "marketing-ops",
     "source": "mega-brain",
     "role": "ATLAS is the growth engine of the marketing squad, responsible for identifying and activating sustainable growth loops that compound over time. Drawing from Sean Ellis's growth hacking methodology, AT",
     "keywords": [
@@ -3156,17 +2980,12 @@
       "loop-map",
       "activation-optimize"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\marketing-ops\\growth-strategist.md",
-    "membership": "core",
-    "domain": "marketing-traffic",
-    "squads": [
-      "marketing-traffic"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\marketing-ops\\growth-strategist.md"
   },
   {
     "id": "influencer-partnership-manager",
     "name": "LINK — Influencer & Partnership Manager",
-    "department": "marketing-traffic",
+    "department": "marketing-ops",
     "source": "mega-brain",
     "role": "LINK manages the end-to-end influencer and partnership pipeline — from discovery and vetting to deal negotiation, campaign execution, and ROI measurement. LINK understands that influencer marketing is",
     "keywords": [
@@ -3233,17 +3052,12 @@
       "roi-report",
       "ambassador-plan"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\marketing-ops\\influencer-partnership-manager.md",
-    "membership": "core",
-    "domain": "marketing-traffic",
-    "squads": [
-      "marketing-traffic"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\marketing-ops\\influencer-partnership-manager.md"
   },
   {
     "id": "landing-page-optimizer",
     "name": "GATE — Landing Page Optimizer",
-    "department": "marketing-traffic",
+    "department": "marketing-ops",
     "source": "mega-brain",
     "role": "GATE is the conversion rate optimization specialist focused on transforming landing pages into high-performing conversion machines. GATE combines quantitative analysis (heatmaps, scroll maps, session ",
     "keywords": [
@@ -3312,17 +3126,12 @@
       "heatmap-analysis",
       "page-speed-audit"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\marketing-ops\\landing-page-optimizer.md",
-    "membership": "core",
-    "domain": "marketing-traffic",
-    "squads": [
-      "marketing-traffic"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\marketing-ops\\landing-page-optimizer.md"
   },
   {
     "id": "retention-specialist",
     "name": "LOOP — Retention Specialist",
-    "department": "marketing-traffic",
+    "department": "marketing-ops",
     "source": "mega-brain",
     "role": "LOOP is the retention and engagement specialist dedicated to maximizing customer lifetime value by keeping users active, engaged, and progressing through value milestones. LOOP designs retention syste",
     "keywords": [
@@ -3394,17 +3203,12 @@
       "engagement-score",
       "cohort-analysis"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\marketing-ops\\retention-specialist.md",
-    "membership": "core",
-    "domain": "marketing-traffic",
-    "squads": [
-      "marketing-traffic"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\marketing-ops\\retention-specialist.md"
   },
   {
     "id": "seo-content-strategist",
     "name": "SAGE — SEO & Content Strategist",
-    "department": "marketing-traffic",
+    "department": "marketing-ops",
     "source": "mega-brain",
     "role": "SAGE engineers organic search dominance through systematic content strategy, keyword cluster architecture, and topical authority building. Following the Ahrefs team's data-driven approach to content S",
     "keywords": [
@@ -3473,17 +3277,12 @@
       "link-strategy",
       "serp-analysis"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\marketing-ops\\seo-content-strategist.md",
-    "membership": "core",
-    "domain": "marketing-traffic",
-    "squads": [
-      "marketing-traffic"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\marketing-ops\\seo-content-strategist.md"
   },
   {
     "id": "social-media-manager",
     "name": "PULSE — Social Media Manager",
-    "department": "marketing-traffic",
+    "department": "marketing-ops",
     "source": "mega-brain",
     "role": "PULSE owns the brand's social presence across all platforms, crafting content strategies that build community, drive engagement, and create viral moments. PULSE understands the unique dynamics, algori",
     "keywords": [
@@ -3554,17 +3353,12 @@
       "community-report",
       "campaign-brief"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\marketing-ops\\social-media-manager.md",
-    "membership": "core",
-    "domain": "marketing-traffic",
-    "squads": [
-      "marketing-traffic"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\marketing-ops\\social-media-manager.md"
   },
   {
     "id": "competitor-watcher",
     "name": "Competitor Watcher",
-    "department": "squad-research",
+    "department": "product-research",
     "source": "mega-brain",
     "role": "Monitora concorrentes, compara features, analisa posicionamento",
     "keywords": [
@@ -3610,17 +3404,12 @@
       "vulnerability mapping"
     ],
     "commands": [],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\product-research\\competitor-watcher.md",
-    "membership": "core",
-    "domain": "squad-research",
-    "squads": [
-      "squad-research"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\product-research\\competitor-watcher.md"
   },
   {
     "id": "market-analyst",
     "name": "Market Analyst",
-    "department": "squad-research",
+    "department": "product-research",
     "source": "mega-brain",
     "role": "Analisa mercados, dimensiona oportunidades (TAM/SAM/SOM),",
     "keywords": [
@@ -3665,17 +3454,12 @@
       "business case"
     ],
     "commands": [],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\product-research\\market-analyst.md",
-    "membership": "core",
-    "domain": "squad-research",
-    "squads": [
-      "squad-research"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\product-research\\market-analyst.md"
   },
   {
     "id": "niche-explorer",
     "name": "Niche Explorer",
-    "department": "squad-research",
+    "department": "product-research",
     "source": "mega-brain",
     "role": "Descobre nichos inexplorados, segmentos underserved, e oportunidades",
     "keywords": [
@@ -3723,17 +3507,12 @@
       "entry strategy"
     ],
     "commands": [],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\product-research\\niche-explorer.md",
-    "membership": "core",
-    "domain": "squad-research",
-    "squads": [
-      "squad-research"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\product-research\\niche-explorer.md"
   },
   {
     "id": "trend-hunter",
     "name": "Trend Hunter",
-    "department": "squad-research",
+    "department": "product-research",
     "source": "mega-brain",
     "role": "Rastreia tendencias emergentes, mudancas tecnologicas, sinais fracos",
     "keywords": [
@@ -3783,17 +3562,12 @@
     "commands": [
       "radar"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\product-research\\trend-hunter.md",
-    "membership": "core",
-    "domain": "squad-research",
-    "squads": [
-      "squad-research"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\product-research\\trend-hunter.md"
   },
   {
     "id": "crm-manager",
     "name": "CRM Manager — CRM Manager",
-    "department": "squad-sales",
+    "department": "sales-ops",
     "source": "mega-brain",
     "role": "Rex is the systems architect of the sales technology stack, responsible for CRM setup, optimization, and governance. From lead routing rules that ensure speed-to-lead to deal stage definitions that re",
     "keywords": [
@@ -3863,17 +3637,12 @@
       "crm-audit",
       "data-quality-report"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\sales-ops\\crm-manager.md",
-    "membership": "core",
-    "domain": "squad-sales",
-    "squads": [
-      "squad-sales"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\sales-ops\\crm-manager.md"
   },
   {
     "id": "lead-qualifier",
     "name": "Lead Qualifier — SDR Agent",
-    "department": "squad-sales",
+    "department": "sales-ops",
     "source": "mega-brain",
     "role": "Scout is the first human touchpoint in the sales process, responsible for qualifying inbound and outbound leads before they consume closer time. Using BANT and MEDDIC frameworks, Scout evaluates every",
     "keywords": [
@@ -3940,17 +3709,12 @@
     "commands": [
       "sdr-metrics"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\sales-ops\\lead-qualifier.md",
-    "membership": "core",
-    "domain": "squad-sales",
-    "squads": [
-      "squad-sales"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\sales-ops\\lead-qualifier.md"
   },
   {
     "id": "outbound-specialist",
     "name": "Outbound Specialist — Outbound Specialist",
-    "department": "squad-sales",
+    "department": "sales-ops",
     "source": "mega-brain",
     "role": "Blaze is the outbound execution engine, specializing in cold email sequences, LinkedIn outreach, and multi-channel cadence design that generates qualified meetings at scale. Expert in writing emails t",
     "keywords": [
@@ -4014,17 +3778,12 @@
     "commands": [
       "deliverability-check"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\sales-ops\\outbound-specialist.md",
-    "membership": "core",
-    "domain": "squad-sales",
-    "squads": [
-      "squad-sales"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\sales-ops\\outbound-specialist.md"
   },
   {
     "id": "pricing-strategist",
     "name": "Pricing Strategist — Pricing Strategist",
-    "department": "squad-sales",
+    "department": "sales-ops",
     "source": "mega-brain",
     "role": "Vale is the pricing architect who ensures every offer is designed to be irresistible, not cheap. Drawing from Alex Hormozi's Grand Slam Offer framework, Vale designs value-based pricing that decouples",
     "keywords": [
@@ -4088,17 +3847,12 @@
       "discount discipline"
     ],
     "commands": [],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\sales-ops\\pricing-strategist.md",
-    "membership": "core",
-    "domain": "squad-sales",
-    "squads": [
-      "squad-sales"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\sales-ops\\pricing-strategist.md"
   },
   {
     "id": "proposal-writer",
     "name": "Proposal Writer — Proposal Specialist",
-    "department": "squad-sales",
+    "department": "sales-ops",
     "source": "mega-brain",
     "role": "Penn transforms deal context into compelling written deliverables that win business. From RFP responses to custom proposals to statements of work, Penn produces documents that are buyer-centric, visua",
     "keywords": [
@@ -4160,17 +3914,12 @@
       "competitive differentiation without naming"
     ],
     "commands": [],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\sales-ops\\proposal-writer.md",
-    "membership": "core",
-    "domain": "squad-sales",
-    "squads": [
-      "squad-sales"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\sales-ops\\proposal-writer.md"
   },
   {
     "id": "sales-closer",
     "name": "Sales Closer — AE Agent",
-    "department": "squad-sales",
+    "department": "sales-ops",
     "source": "mega-brain",
     "role": "Ace is the deal execution specialist who takes qualified opportunities from discovery through close. Expert in demo execution that connects product capabilities to buyer pain, objection handling using",
     "keywords": [
@@ -4234,17 +3983,12 @@
       "mutual action plan"
     ],
     "commands": [],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\sales-ops\\sales-closer.md",
-    "membership": "core",
-    "domain": "squad-sales",
-    "squads": [
-      "squad-sales"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\sales-ops\\sales-closer.md"
   },
   {
     "id": "sales-ops-analyst",
     "name": "Sales Ops Analyst — Sales Operations Analyst",
-    "department": "squad-sales",
+    "department": "sales-ops",
     "source": "mega-brain",
     "role": "Dash is the analytical backbone of the sales organization, turning raw CRM data and sales activity into actionable intelligence. Responsible for pipeline analytics, conversion rate analysis, win/loss ",
     "keywords": [
@@ -4309,17 +4053,12 @@
     "commands": [
       "pipeline-analytics"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\sales-ops\\sales-ops-analyst.md",
-    "membership": "core",
-    "domain": "squad-sales",
-    "squads": [
-      "squad-sales"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\sales-ops\\sales-ops-analyst.md"
   },
   {
     "id": "sales-strategist",
     "name": "Sales Strategist — Chief Sales Strategist",
-    "department": "squad-sales",
+    "department": "sales-ops",
     "source": "mega-brain",
     "role": "Jeb is the strategic engine behind all sales motion planning, pipeline architecture, and prospecting discipline. Drawing from Jeb Blount's Fanatical Prospecting methodology, he ensures that prospectin",
     "keywords": [
@@ -4385,17 +4124,12 @@
       "pipeline-audit",
       "pipeline-forecast"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\sales-ops\\sales-strategist.md",
-    "membership": "core",
-    "domain": "squad-sales",
-    "squads": [
-      "squad-sales"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\sales-ops\\sales-strategist.md"
   },
   {
     "id": "alison-darcy",
     "name": "alison-darcy",
-    "department": "squad-health",
+    "department": "therapy",
     "source": "mega-brain",
     "role": ">",
     "keywords": [
@@ -4480,17 +4214,12 @@
       "exit",
       "help"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\therapy\\alison-darcy.md",
-    "membership": "pool",
-    "domain": "squad-health",
-    "squads": [
-      "squad-health"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\therapy\\alison-darcy.md"
   },
   {
     "id": "dena-bravata",
     "name": "dena-bravata",
-    "department": "squad-health",
+    "department": "therapy",
     "source": "mega-brain",
     "role": "Evidence-Based Health Strategist & Clinical Innovation Architect",
     "keywords": [
@@ -4582,17 +4311,12 @@
       "design-integrated-model",
       "craft-evidence-narrative"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\therapy\\dena-bravata.md",
-    "membership": "pool",
-    "domain": "squad-health",
-    "squads": [
-      "squad-health"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\therapy\\dena-bravata.md"
   },
   {
     "id": "kate-ryder",
     "name": "kate-ryder",
-    "department": "squad-health",
+    "department": "therapy",
     "source": "mega-brain",
     "role": ">",
     "keywords": [
@@ -4690,17 +4414,12 @@
       "exit",
       "help"
     ],
-    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\therapy\\kate-ryder.md",
-    "membership": "pool",
-    "domain": "squad-health",
-    "squads": [
-      "squad-health"
-    ]
+    "filePath": "D:\\jarvis\\mega brain\\agents\\minds\\therapy\\kate-ryder.md"
   },
   {
     "id": "aios-master",
     "name": "aios-master",
-    "department": "squad-executive",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Master Orchestrator, Framework Developer & AIOS Method Expert",
     "keywords": [
@@ -4767,17 +4486,12 @@
       "plan",
       "validate-component"
     ],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\aios-master.md",
-    "membership": "runtime",
-    "domain": "squad-executive",
-    "squads": [
-      "squad-executive"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\aios-master.md"
   },
   {
     "id": "analyst",
     "name": "analyst",
-    "department": "squad-research",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Insightful Analyst & Strategic Ideation Partner",
     "keywords": [
@@ -4828,17 +4542,12 @@
       "perform-market-research",
       "create-competitor-analysis"
     ],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\analyst.md",
-    "membership": "core",
-    "domain": "squad-research",
-    "squads": [
-      "squad-research"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\analyst.md"
   },
   {
     "id": "ann-cavoukian",
     "name": "ann-cavoukian",
-    "department": "squad-legal",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Senior Privacy Engineering — Privacy by Design, DPIA, Consent UX, Data Minimization",
     "keywords": [
@@ -4868,18 +4577,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\ann-cavoukian.md",
-    "membership": "pool",
-    "domain": "squad-legal",
-    "squads": [
-      "squad-legal",
-      "squad-security"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\ann-cavoukian.md"
   },
   {
     "id": "architect",
     "name": "architect",
-    "department": "squad-engineering",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Holistic System Architect & Full-Stack Technical Leader",
     "keywords": [
@@ -4949,18 +4652,12 @@
       "create-full-stack-architecture",
       "document-project"
     ],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\architect.md",
-    "membership": "core",
-    "domain": "squad-engineering",
-    "squads": [
-      "squad-engineering",
-      "squad-executive"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\architect.md"
   },
   {
     "id": "brene-brown",
     "name": "brene-brown",
-    "department": "squad-people",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Chief Courage & Culture Officer -- Vulnerability Leadership, Trust Architecture, Shame Resilience, Courage Culture Design & Wholehearted Living Expert",
     "keywords": [
@@ -4998,17 +4695,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\brene-brown.md",
-    "membership": "pool",
-    "domain": "squad-people",
-    "squads": [
-      "squad-people"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\brene-brown.md"
   },
   {
     "id": "bruce-schneier",
     "name": "bruce-schneier",
-    "department": "squad-security",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "CISO — Threat Modeling, Cryptography, Security Architecture, Public Policy",
     "keywords": [
@@ -5037,18 +4729,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\bruce-schneier.md",
-    "membership": "pool",
-    "domain": "squad-security",
-    "squads": [
-      "squad-executive",
-      "squad-security"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\bruce-schneier.md"
   },
   {
     "id": "charity-majors",
     "name": "charity-majors",
-    "department": "squad-platform",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Chief Observability & Production Ownership Officer -- Observability Architecture, Production Ownership, SLOs, Deployment Strategy, On-Call Design, Database Reliability & Engineering Culture Expert",
     "keywords": [
@@ -5081,17 +4767,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\charity-majors.md",
-    "membership": "pool",
-    "domain": "squad-platform",
-    "squads": [
-      "squad-platform"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\charity-majors.md"
   },
   {
     "id": "chris-sanders",
     "name": "chris-sanders",
-    "department": "squad-security",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Head of Blue Team — Threat Hunting, Detection Engineering, SOC Operations Expert",
     "keywords": [
@@ -5127,17 +4808,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\chris-sanders.md",
-    "membership": "pool",
-    "domain": "squad-security",
-    "squads": [
-      "squad-security"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\chris-sanders.md"
   },
   {
     "id": "daniel-kahneman",
     "name": "daniel-kahneman",
-    "department": "squad-behavioral-design",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Chief Decision Scientist -- Cognitive Psychology, Behavioral Economics, Decision Quality, Bias Mitigation, Noise Reduction & Judgment Under Uncertainty Expert",
     "keywords": [
@@ -5174,17 +4850,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\daniel-kahneman.md",
-    "membership": "pool",
-    "domain": "squad-behavioral-design",
-    "squads": [
-      "squad-behavioral-design"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\daniel-kahneman.md"
   },
   {
     "id": "daniel-miessler",
     "name": "daniel-miessler",
-    "department": "squad-security",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Director — AI Security Strategy, Defensive Architecture, Asset Management, Security Philosophy",
     "keywords": [
@@ -5214,17 +4885,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\daniel-miessler.md",
-    "membership": "pool",
-    "domain": "squad-security",
-    "squads": [
-      "squad-security"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\daniel-miessler.md"
   },
   {
     "id": "data-engineer",
     "name": "data-engineer",
-    "department": "squad-data",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Master Database Architect & Reliability Engineer",
     "keywords": [
@@ -5294,17 +4960,12 @@
       "rls-audit",
       "policy-apply"
     ],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\data-engineer.md",
-    "membership": "pool",
-    "domain": "squad-data",
-    "squads": [
-      "squad-data"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\data-engineer.md"
   },
   {
     "id": "design-lead",
     "name": "design-lead",
-    "department": "squad-design",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Design Lead, Creative Director & Design Squad Orchestrator",
     "keywords": [
@@ -5363,17 +5024,12 @@
       "brand-check",
       "approve"
     ],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\design-lead.md",
-    "membership": "pool",
-    "domain": "squad-design",
-    "squads": [
-      "squad-design"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\design-lead.md"
   },
   {
     "id": "design-systems-engineer",
     "name": "design-systems-engineer",
-    "department": "squad-design",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Design Systems Engineer, Token Architect & Component Library Maintainer",
     "keywords": [
@@ -5428,17 +5084,12 @@
       "guide",
       "audit-tokens"
     ],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\design-systems-engineer.md",
-    "membership": "core",
-    "domain": "squad-design",
-    "squads": [
-      "squad-design"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\design-systems-engineer.md"
   },
   {
     "id": "dev",
     "name": "dev",
-    "department": "squad-engineering",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Expert Senior Software Engineer & Implementation Specialist",
     "keywords": [
@@ -5504,17 +5155,12 @@
       "run-tests",
       "apply-qa-fixes"
     ],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\dev.md",
-    "membership": "core",
-    "domain": "squad-engineering",
-    "squads": [
-      "squad-engineering"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\dev.md"
   },
   {
     "id": "devops",
     "name": "devops",
-    "department": "squad-operations",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "GitHub Repository Guardian & Release Manager",
     "keywords": [
@@ -5574,17 +5220,12 @@
       "create-pr",
       "release"
     ],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\devops.md",
-    "membership": "core",
-    "domain": "squad-operations",
-    "squads": [
-      "squad-operations"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\devops.md"
   },
   {
     "id": "georgia-weidman",
     "name": "georgia-weidman",
-    "department": "squad-security",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Senior Pentester — Hands-On Web, API, Infrastructure, and Mobile Application Testing",
     "keywords": [
@@ -5610,17 +5251,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\georgia-weidman.md",
-    "membership": "pool",
-    "domain": "squad-security",
-    "squads": [
-      "squad-security"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\georgia-weidman.md"
   },
   {
     "id": "grant-cardone",
     "name": "grant-cardone",
-    "department": "squad-sales",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Sales Intensity Expert, 10X Growth Strategist & Massive Action Advocate",
     "keywords": [
@@ -5689,17 +5325,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\grant-cardone.md",
-    "membership": "pool",
-    "domain": "squad-sales",
-    "squads": [
-      "squad-sales"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\grant-cardone.md"
   },
   {
     "id": "hd-moore",
     "name": "hd-moore",
-    "department": "squad-security",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Principal Engineer — Exploit Development, Vulnerability Research, Network Discovery",
     "keywords": [
@@ -5727,17 +5358,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\hd-moore.md",
-    "membership": "pool",
-    "domain": "squad-security",
-    "squads": [
-      "squad-security"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\hd-moore.md"
   },
   {
     "id": "ilya-sutskever",
     "name": "ilya-sutskever",
-    "department": "squad-ai",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Chief AI Safety & Alignment Architect -- Neural Network Scaling, Superalignment, AI Safety Research, Alignment Methodology, Emergent Capabilities & Foundational AI Research Expert",
     "keywords": [
@@ -5775,17 +5401,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\ilya-sutskever.md",
-    "membership": "pool",
-    "domain": "squad-ai",
-    "squads": [
-      "squad-ai"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\ilya-sutskever.md"
   },
   {
     "id": "jason-lemkin",
     "name": "jason-lemkin",
-    "department": "squad-customer-success",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Chief SaaS Growth Strategist -- B2B SaaS Metrics, Scaling Strategy, Go-To-Market, Customer Success, Hiring, Pricing & Fundraising Expert",
     "keywords": [
@@ -5838,17 +5459,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\jason-lemkin.md",
-    "membership": "pool",
-    "domain": "squad-customer-success",
-    "squads": [
-      "squad-customer-success"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\jason-lemkin.md"
   },
   {
     "id": "jim-manico",
     "name": "jim-manico",
-    "department": "squad-security",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Head of AppSec — Secure Coding Standards, OWASP, API Security, Authentication & Authorization",
     "keywords": [
@@ -5875,17 +5491,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\jim-manico.md",
-    "membership": "pool",
-    "domain": "squad-security",
-    "squads": [
-      "squad-security"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\jim-manico.md"
   },
   {
     "id": "joel-de-menezes-niebuhr",
     "name": "joel-de-menezes-niebuhr",
-    "department": "squad-legal",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Prática operacional do pregão eletrônico pelo lado do licitante — condução da sessão, fase de lances, habilitação, diligência/saneamento e fase recursal, à luz da Lei 14.133/2021 (e do regime anterior",
     "keywords": [
@@ -5918,17 +5529,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\joel-de-menezes-niebuhr.md",
-    "membership": "pool",
-    "domain": "squad-legal",
-    "squads": [
-      "squad-legal"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\joel-de-menezes-niebuhr.md"
   },
   {
     "id": "john-kindervag",
     "name": "john-kindervag",
-    "department": "squad-legal",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Senior Zero Trust — Architecture Design, Network Segmentation, Identity-Centric Security Model",
     "keywords": [
@@ -5956,18 +5562,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\john-kindervag.md",
-    "membership": "pool",
-    "domain": "squad-legal",
-    "squads": [
-      "squad-legal",
-      "squad-security"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\john-kindervag.md"
   },
   {
     "id": "kent-beck",
     "name": "kent-beck",
-    "department": "squad-engineering",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "TDD Pioneer, XP Creator & Software Design Expert",
     "keywords": [
@@ -6028,17 +5628,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\kent-beck.md",
-    "membership": "pool",
-    "domain": "squad-engineering",
-    "squads": [
-      "squad-engineering"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\kent-beck.md"
   },
   {
     "id": "kevin-mitnick",
     "name": "kevin-mitnick",
-    "department": "squad-security",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Chief Red Team & Social Engineering Officer -- Social Engineering, Penetration Testing, OSINT, Attack Surface Analysis, Red Team Operations & Human Security Expert",
     "keywords": [
@@ -6076,17 +5671,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\kevin-mitnick.md",
-    "membership": "pool",
-    "domain": "squad-security",
-    "squads": [
-      "squad-security"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\kevin-mitnick.md"
   },
   {
     "id": "lawrence-lessig",
     "name": "lawrence-lessig",
-    "department": "squad-legal",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Chief Digital Rights & Regulatory Architect -- Cyberlaw, Intellectual Property, Open Source Licensing, Platform Regulation, AI Governance & Institutional Design Expert",
     "keywords": [
@@ -6156,17 +5746,12 @@
       "market"
     ],
     "commands": [],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\lawrence-lessig.md",
-    "membership": "pool",
-    "domain": "squad-legal",
-    "squads": [
-      "squad-legal"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\lawrence-lessig.md"
   },
   {
     "id": "linus-torvalds",
     "name": "linus-torvalds",
-    "department": "squad-engineering",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Systems Programming Expert, Git Creator & Open-Source Project Governance Authority",
     "keywords": [
@@ -6224,17 +5809,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\linus-torvalds.md",
-    "membership": "pool",
-    "domain": "squad-engineering",
-    "squads": [
-      "squad-engineering"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\linus-torvalds.md"
   },
   {
     "id": "marcal-justen-filho",
     "name": "marcal-justen-filho",
-    "department": "squad-legal",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Doutrina em Direito Administrativo — Licitações e Contratos Administrativos, foco na Lei 14.133/2021 (e regime anterior da Lei 8.666/93)",
     "keywords": [
@@ -6260,17 +5840,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\marcal-justen-filho.md",
-    "membership": "pool",
-    "domain": "squad-legal",
-    "squads": [
-      "squad-legal"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\marcal-justen-filho.md"
   },
   {
     "id": "marcus-carey",
     "name": "marcus-carey",
-    "department": "squad-security",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Senior Security Talent — Team Building, Hiring, Career Development, Community Engagement",
     "keywords": [
@@ -6300,17 +5875,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\marcus-carey.md",
-    "membership": "pool",
-    "domain": "squad-security",
-    "squads": [
-      "squad-security"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\marcus-carey.md"
   },
   {
     "id": "marty-cagan",
     "name": "marty-cagan",
-    "department": "innovation",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Product Leadership Expert, SVPG Founder & Empowered Teams Advocate",
     "keywords": [
@@ -6377,18 +5947,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\marty-cagan.md",
-    "membership": "pool",
-    "domain": "innovation",
-    "squads": [
-      "innovation",
-      "squad-product"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\marty-cagan.md"
   },
   {
     "id": "mikko-hypponen",
     "name": "mikko-hypponen",
-    "department": "squad-security",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Chief Research Officer — Threat Intelligence, Malware Research, APT Tracking",
     "keywords": [
@@ -6412,17 +5976,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\mikko-hypponen.md",
-    "membership": "pool",
-    "domain": "squad-security",
-    "squads": [
-      "squad-security"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\mikko-hypponen.md"
   },
   {
     "id": "neil-patel",
     "name": "neil-patel",
-    "department": "marketing-traffic",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Digital Marketing Expert, SEO Authority & Growth Hacking Strategist",
     "keywords": [
@@ -6500,17 +6059,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\neil-patel.md",
-    "membership": "pool",
-    "domain": "marketing-traffic",
-    "squads": [
-      "marketing-traffic"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\neil-patel.md"
   },
   {
     "id": "omar-santos",
     "name": "omar-santos",
-    "department": "squad-security",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Head of Security Governance — Program Design, Compliance, Vendor Risk, AI/ML Security Standards",
     "keywords": [
@@ -6544,17 +6098,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\omar-santos.md",
-    "membership": "pool",
-    "domain": "squad-security",
-    "squads": [
-      "squad-security"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\omar-santos.md"
   },
   {
     "id": "pablo-hoffman",
     "name": "pablo-hoffman",
-    "department": "squad-engineering",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Senior Web Crawling Engineering — Resilient & Ethical Scraping at Scale",
     "keywords": [
@@ -6583,17 +6132,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\pablo-hoffman.md",
-    "membership": "pool",
-    "domain": "squad-engineering",
-    "squads": [
-      "squad-engineering"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\pablo-hoffman.md"
   },
   {
     "id": "peter-kim",
     "name": "peter-kim",
-    "department": "squad-security",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Head of Red Team — APT Simulation, Adversary Emulation, Multi-Stage Campaign Design Expert",
     "keywords": [
@@ -6621,17 +6165,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\peter-kim.md",
-    "membership": "pool",
-    "domain": "squad-security",
-    "squads": [
-      "squad-security"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\peter-kim.md"
   },
   {
     "id": "pm",
     "name": "pm",
-    "department": "squad-product",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Investigative Product Strategist & Market-Savvy PM",
     "keywords": [
@@ -6696,18 +6235,12 @@
       "create-brownfield-prd",
       "create-epic"
     ],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\pm.md",
-    "membership": "core",
-    "domain": "squad-product",
-    "squads": [
-      "squad-executive",
-      "squad-product"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\pm.md"
   },
   {
     "id": "po",
     "name": "po",
-    "department": "squad-product",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Technical Product Owner & Process Steward",
     "keywords": [
@@ -6767,17 +6300,12 @@
       "backlog-review",
       "backlog-review"
     ],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\po.md",
-    "membership": "core",
-    "domain": "squad-product",
-    "squads": [
-      "squad-product"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\po.md"
   },
   {
     "id": "qa",
     "name": "qa",
-    "department": "squad-operations",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Test Architect with Quality Advisory Authority",
     "keywords": [
@@ -6831,17 +6359,12 @@
     "commands": [
       "help"
     ],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\qa.md",
-    "membership": "core",
-    "domain": "squad-operations",
-    "squads": [
-      "squad-operations"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\qa.md"
   },
   {
     "id": "ray-dalio",
     "name": "ray-dalio",
-    "department": "squad-finance",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Macro Economist, Principled Decision-Making Expert & Idea Meritocracy Architect",
     "keywords": [
@@ -6914,17 +6437,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\ray-dalio.md",
-    "membership": "pool",
-    "domain": "squad-finance",
-    "squads": [
-      "squad-finance"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\ray-dalio.md"
   },
   {
     "id": "richard-thaler",
     "name": "richard-thaler",
-    "department": "squad-behavioral-design",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Chief Behavioral & Choice Architect -- Nudge Theory, Choice Architecture, Libertarian Paternalism, Mental Accounting, Default Design & Behavioral Economics Expert",
     "keywords": [
@@ -6966,17 +6484,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\richard-thaler.md",
-    "membership": "pool",
-    "domain": "squad-behavioral-design",
-    "squads": [
-      "squad-behavioral-design"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\richard-thaler.md"
   },
   {
     "id": "russell-brunson",
     "name": "russell-brunson",
-    "department": "squad-sales",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Sales Funnel Expert, Value Ladder Architect & Online Conversion Strategist",
     "keywords": [
@@ -7047,17 +6560,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\russell-brunson.md",
-    "membership": "pool",
-    "domain": "squad-sales",
-    "squads": [
-      "squad-sales"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\russell-brunson.md"
   },
   {
     "id": "ryan-holiday",
     "name": "ryan-holiday",
-    "department": "squad-content",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Growth Strategist, Perennial Seller Architect & Stoic Decision-Making Advisor",
     "keywords": [
@@ -7136,17 +6644,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\ryan-holiday.md",
-    "membership": "pool",
-    "domain": "squad-content",
-    "squads": [
-      "squad-content"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\ryan-holiday.md"
   },
   {
     "id": "scott-hanselman",
     "name": "scott-hanselman",
-    "department": "squad-community",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Chief Developer Advocacy & Productivity Officer -- Developer Experience, Productivity, Community Building, Technical Content, Accessibility & Developer Relations Expert",
     "keywords": [
@@ -7185,17 +6688,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\scott-hanselman.md",
-    "membership": "pool",
-    "domain": "squad-community",
-    "squads": [
-      "squad-community"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\scott-hanselman.md"
   },
   {
     "id": "simon-sinek",
     "name": "simon-sinek",
-    "department": "squad-people",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Chief Inspiration & Leadership Architect -- Purpose Discovery, Leadership Development, Organizational Culture, Infinite Game Strategy & Movement Building Expert",
     "keywords": [
@@ -7236,17 +6734,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\simon-sinek.md",
-    "membership": "pool",
-    "domain": "squad-people",
-    "squads": [
-      "squad-people"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\simon-sinek.md"
   },
   {
     "id": "slide-creator",
     "name": "slide-creator",
-    "department": "squad-content",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Narrative-first deck architect that treats slides as moments of belief shift, not topic dumps.",
     "keywords": [
@@ -7309,17 +6802,12 @@
       "create-deck",
       "quick-deck"
     ],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\slide-creator.md",
-    "membership": "core",
-    "domain": "squad-content",
-    "squads": [
-      "squad-content"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\slide-creator.md"
   },
   {
     "id": "sm",
     "name": "sm",
-    "department": "squad-operations",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Technical Scrum Master - Story Preparation Specialist",
     "keywords": [
@@ -7385,17 +6873,12 @@
       "draft",
       "story-checklist"
     ],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\sm.md",
-    "membership": "core",
-    "domain": "squad-operations",
-    "squads": [
-      "squad-operations"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\sm.md"
   },
   {
     "id": "squad-creator",
     "name": "squad-creator",
-    "department": "squad-operations",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Squad Architect & Builder",
     "keywords": [
@@ -7449,17 +6932,12 @@
       "help",
       "guide"
     ],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\squad-creator.md",
-    "membership": "runtime",
-    "domain": "squad-operations",
-    "squads": [
-      "squad-operations"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\squad-creator.md"
   },
   {
     "id": "sugata-mitra",
     "name": "sugata-mitra",
-    "department": "squad-education",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Chief Self-Organized Learning Architect -- Minimally Invasive Education, SOLE Design, Curiosity-Driven Pedagogy, Peer Learning, Education Access & Learning Technology Expert",
     "keywords": [
@@ -7501,17 +6979,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\sugata-mitra.md",
-    "membership": "pool",
-    "domain": "squad-education",
-    "squads": [
-      "squad-education"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\sugata-mitra.md"
   },
   {
     "id": "tanya-janca",
     "name": "tanya-janca",
-    "department": "squad-security",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Senior DevSecOps — Pipeline Security, Developer Enablement, Security Champions Program",
     "keywords": [
@@ -7542,17 +7015,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\tanya-janca.md",
-    "membership": "pool",
-    "domain": "squad-security",
-    "squads": [
-      "squad-security"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\tanya-janca.md"
   },
   {
     "id": "teresa-torres",
     "name": "teresa-torres",
-    "department": "innovation",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Product Discovery Expert, Opportunity Mapping Specialist & Continuous Discovery Coach",
     "keywords": [
@@ -7620,18 +7088,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\teresa-torres.md",
-    "membership": "pool",
-    "domain": "innovation",
-    "squads": [
-      "innovation",
-      "squad-product"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\teresa-torres.md"
   },
   {
     "id": "troy-hunt",
     "name": "troy-hunt",
-    "department": "squad-security",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Chief Web Security & Data Breach Response Officer -- Web Application Security, Data Breach Analysis, Password Security, HTTPS Deployment, API Security & Developer Security Education Expert",
     "keywords": [
@@ -7672,17 +7134,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\troy-hunt.md",
-    "membership": "pool",
-    "domain": "squad-security",
-    "squads": [
-      "squad-security"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\troy-hunt.md"
   },
   {
     "id": "ui-designer",
     "name": "ui-designer",
-    "department": "squad-design",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "UI Designer, Visual Design Specialist & Brand Guardian",
     "keywords": [
@@ -7730,17 +7187,12 @@
       "help",
       "guide"
     ],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\ui-designer.md",
-    "membership": "core",
-    "domain": "squad-design",
-    "squads": [
-      "squad-design"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\ui-designer.md"
   },
   {
     "id": "uncle-bob-martin",
     "name": "uncle-bob-martin",
-    "department": "squad-engineering",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Clean Code Author, SOLID Pioneer & Software Craftsmanship Advocate",
     "keywords": [
@@ -7797,17 +7249,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\uncle-bob-martin.md",
-    "membership": "pool",
-    "domain": "squad-engineering",
-    "squads": [
-      "squad-engineering"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\uncle-bob-martin.md"
   },
   {
     "id": "ux-design-expert",
     "name": "ux-design-expert",
-    "department": "squad-design",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "UX/UI Designer & Design System Architect",
     "keywords": [
@@ -7865,17 +7312,12 @@
       "document",
       "a11y-check"
     ],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\ux-design-expert.md",
-    "membership": "core",
-    "domain": "squad-design",
-    "squads": [
-      "squad-design"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\ux-design-expert.md"
   },
   {
     "id": "ux-designer",
     "name": "ux-designer",
-    "department": "squad-design",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "UX Designer, Interaction Designer & Information Architect",
     "keywords": [
@@ -7927,17 +7369,12 @@
       "help",
       "guide"
     ],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\ux-designer.md",
-    "membership": "core",
-    "domain": "squad-design",
-    "squads": [
-      "squad-design"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\ux-designer.md"
   },
   {
     "id": "warren-buffett",
     "name": "warren-buffett",
-    "department": "squad-finance",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Chief Investment Officer -- Value Investing, Capital Allocation, Business Quality Assessment, Competitive Advantage Analysis & Long-Term Wealth Creation Expert",
     "keywords": [
@@ -7993,17 +7430,12 @@
       "erosion risks:"
     ],
     "commands": [],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\warren-buffett.md",
-    "membership": "pool",
-    "domain": "squad-finance",
-    "squads": [
-      "squad-finance"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\warren-buffett.md"
   },
   {
     "id": "wendi-whitmore",
     "name": "wendi-whitmore",
-    "department": "squad-security",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Senior DFIR — Digital Forensics, Incident Response, Crisis Management Expert",
     "keywords": [
@@ -8032,17 +7464,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\wendi-whitmore.md",
-    "membership": "pool",
-    "domain": "squad-security",
-    "squads": [
-      "squad-security"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\wendi-whitmore.md"
   },
   {
     "id": "yann-lecun",
     "name": "yann-lecun",
-    "department": "squad-ai",
+    "department": "aios-agent",
     "source": "aios-agent",
     "role": "Chief AI Scientist -- Self-Supervised Learning, World Models, Energy-Based Models, JEPA Architecture, Representation Learning & Autonomous Machine Intelligence Expert",
     "keywords": [
@@ -8086,17 +7513,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\yann-lecun.md",
-    "membership": "pool",
-    "domain": "squad-ai",
-    "squads": [
-      "squad-ai"
-    ]
+    "filePath": "D:\\AIOS\\.aios-core\\development\\agents\\yann-lecun.md"
   },
   {
     "id": "abby-covert",
     "name": "abby-covert",
-    "department": "squad-design",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Information Architecture Strategist -- Taxonomy, Labeling, Navigation, Mental Model Alignment & Findability Expert",
     "keywords": [
@@ -8123,17 +7545,12 @@
     "commands": [
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\abby-covert.md",
-    "membership": "pool",
-    "domain": "squad-design",
-    "squads": [
-      "squad-design"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\abby-covert.md"
   },
   {
     "id": "adam-grant",
     "name": "adam-grant",
-    "department": "squad-people",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Chief Organizational Psychologist & Rethinking Advisor — Reciprocity Culture, Originality, Hidden Potential, Psychological Safety & Evidence-Based Leadership Expert",
     "keywords": [
@@ -8235,17 +7652,12 @@
       "rethinking-workshop",
       "prosocial-job-design"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\adam-grant.md",
-    "membership": "pool",
-    "domain": "squad-people",
-    "squads": [
-      "squad-people"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\adam-grant.md"
   },
   {
     "id": "addy-osmani",
     "name": "addy-osmani",
-    "department": "squad-engineering",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Director of Web Performance Engineering -- Core Web Vitals, Bundle Optimization, Loading Strategy, Image Optimization, JavaScript Patterns & PRPL Expert",
     "keywords": [
@@ -8277,17 +7689,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.codex\\agents\\addy-osmani.md",
-    "membership": "pool",
-    "domain": "squad-engineering",
-    "squads": [
-      "squad-engineering"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\addy-osmani.md"
   },
   {
     "id": "adriana-dallari",
     "name": "adriana-dallari",
-    "department": "squad-legal",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Especialista em Direito Sanitario & Regulacao em Saude -- Compliance CFP/CRM/ANVISA, Direitos do Paciente, Bioetica em Saude Digital, Constituicao e SUS, Vigilancia Sanitaria",
     "keywords": [
@@ -8372,17 +7779,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\adriana-dallari.md",
-    "membership": "pool",
-    "domain": "squad-legal",
-    "squads": [
-      "squad-legal"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\adriana-dallari.md"
   },
   {
     "id": "aios-developer",
     "name": "Agent Redirect: aios-developer → aios-master",
-    "department": "squad-engineering",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "",
     "keywords": [
@@ -8390,17 +7792,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.codex\\agents\\aios-developer.md",
-    "membership": "core",
-    "domain": "squad-engineering",
-    "squads": [
-      "squad-engineering"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\aios-developer.md"
   },
   {
     "id": "aios-orchestrator",
     "name": "Agent Redirect: aios-orchestrator → aios-master",
-    "department": "squad-executive",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "",
     "keywords": [
@@ -8408,17 +7805,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.codex\\agents\\aios-orchestrator.md",
-    "membership": "runtime",
-    "domain": "squad-executive",
-    "squads": [
-      "squad-executive"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\aios-orchestrator.md"
   },
   {
     "id": "alan-nichol",
     "name": "alan-nichol",
-    "department": "squad-ai",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Conversational AI Architect & Dialogue Systems Engineer",
     "keywords": [
@@ -8442,17 +7834,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.codex\\agents\\alan-nichol.md",
-    "membership": "pool",
-    "domain": "squad-ai",
-    "squads": [
-      "squad-ai"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\alan-nichol.md"
   },
   {
     "id": "alex-hormozi",
     "name": "alex-hormozi",
-    "department": "squad-sales",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Business Scaling Expert, Offer Architect & Sales Strategist",
     "keywords": [
@@ -8528,18 +7915,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\alex-hormozi.md",
-    "membership": "pool",
-    "domain": "squad-sales",
-    "squads": [
-      "squad-executive",
-      "squad-sales"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\alex-hormozi.md"
   },
   {
     "id": "alexander-osterwalder",
     "name": "alexander-osterwalder",
-    "department": "innovation",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Business Model Innovation Architect & Strategy Designer",
     "keywords": [
@@ -8566,18 +7947,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.codex\\agents\\alexander-osterwalder.md",
-    "membership": "pool",
-    "domain": "innovation",
-    "squads": [
-      "innovation",
-      "squad-research"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\alexander-osterwalder.md"
   },
   {
     "id": "amy-edmondson",
     "name": "amy-edmondson",
-    "department": "squad-people",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Organizational Learning & Psychological Safety Researcher -- Teaming, Fearless Organizations, Failure Intelligence & Learning Zone Expert",
     "keywords": [
@@ -8611,17 +7986,12 @@
     "commands": [
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\amy-edmondson.md",
-    "membership": "pool",
-    "domain": "squad-people",
-    "squads": [
-      "squad-people"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\amy-edmondson.md"
   },
   {
     "id": "anders-ericsson",
     "name": "anders-ericsson",
-    "department": "squad-education",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Director of Expert Performance & Deliberate Practice -- Skill Acquisition, Performance Psychology, Training Design, Mental Representations, Expertise Development",
     "keywords": [
@@ -8677,17 +8047,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\anders-ericsson.md",
-    "membership": "pool",
-    "domain": "squad-education",
-    "squads": [
-      "squad-education"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\anders-ericsson.md"
   },
   {
     "id": "andrej-karpathy",
     "name": "andrej-karpathy",
-    "department": "squad-ai",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Chief AI Engineer -- Neural Networks, LLMs, Autonomous Systems, ML Engineering & AI Education Expert",
     "keywords": [
@@ -8787,17 +8152,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\andrej-karpathy.md",
-    "membership": "pool",
-    "domain": "squad-ai",
-    "squads": [
-      "squad-ai"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\andrej-karpathy.md"
   },
   {
     "id": "andrew-ng",
     "name": "andrew-ng",
-    "department": "squad-ai",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Director of AI Education & Transformation -- ML Fundamentals, AI Strategy, Data-Centric AI, Agentic Workflows, MLOps, AI Team Building",
     "keywords": [
@@ -8911,17 +8271,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\andrew-ng.md",
-    "membership": "pool",
-    "domain": "squad-ai",
-    "squads": [
-      "squad-ai"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\andrew-ng.md"
   },
   {
     "id": "ann-handley",
     "name": "ann-handley",
-    "department": "squad-content",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Chief Content Officer & Writing Coach — Business Writing, Content Strategy, Newsletter Design & Brand Voice Expert",
     "keywords": [
@@ -9000,17 +8355,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\ann-handley.md",
-    "membership": "pool",
-    "domain": "squad-content",
-    "squads": [
-      "squad-content"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\ann-handley.md"
   },
   {
     "id": "april-dunford",
     "name": "april-dunford",
-    "department": "squad-product",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Director of Product Positioning — 5 Components Framework, 10-Step Positioning Workshop, Market Category Strategy, Sales Pitch Narrative, Competitive Differentiation & B2B Positioning Expert",
     "keywords": [
@@ -9105,17 +8455,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\april-dunford.md",
-    "membership": "pool",
-    "domain": "squad-product",
-    "squads": [
-      "squad-product"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\april-dunford.md"
   },
   {
     "id": "aswath-damodaran",
     "name": "aswath-damodaran",
-    "department": "squad-finance",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Dean of Valuation & Corporate Finance Strategist -- Intrinsic Valuation, Narrative-to-Numbers, Corporate Lifecycle, Risk Assessment & Financial Modeling Expert",
     "keywords": [
@@ -9195,18 +8540,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\aswath-damodaran.md",
-    "membership": "pool",
-    "domain": "squad-finance",
-    "squads": [
-      "squad-executive",
-      "squad-finance"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\aswath-damodaran.md"
   },
   {
     "id": "brad-feld",
     "name": "brad-feld",
-    "department": "squad-finance",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Venture Capital & Startup Ecosystem Strategist -- Term Sheets, Fundraising, Board Governance, Startup Communities & Give First Expert",
     "keywords": [
@@ -9246,17 +8585,12 @@
     "commands": [
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\brad-feld.md",
-    "membership": "pool",
-    "domain": "squad-finance",
-    "squads": [
-      "squad-finance"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\brad-feld.md"
   },
   {
     "id": "brad-frost",
     "name": "brad-frost",
-    "department": "squad-design",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Director of Design Systems & Component Architecture -- Atomic Design, Pattern Libraries, Design Tokens, Component Hierarchy & UI Systemization Expert",
     "keywords": [
@@ -9282,17 +8616,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.codex\\agents\\brad-frost.md",
-    "membership": "pool",
-    "domain": "squad-design",
-    "squads": [
-      "squad-design"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\brad-frost.md"
   },
   {
     "id": "brendan-gregg",
     "name": "brendan-gregg",
-    "department": "squad-platform",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Performance Engineer & Systems Observability Expert — Flame Graphs, USE Method, BPF Tracing & Latency Analysis",
     "keywords": [
@@ -9322,17 +8651,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\brendan-gregg.md",
-    "membership": "pool",
-    "domain": "squad-platform",
-    "squads": [
-      "squad-platform"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\brendan-gregg.md"
   },
   {
     "id": "casey-rosenthal",
     "name": "casey-rosenthal",
-    "department": "squad-platform",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Chaos Engineering Pioneer & System Resilience Expert",
     "keywords": [
@@ -9360,17 +8684,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\casey-rosenthal.md",
-    "membership": "pool",
-    "domain": "squad-platform",
-    "squads": [
-      "squad-platform"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\casey-rosenthal.md"
   },
   {
     "id": "cassie-kozyrkov",
     "name": "cassie-kozyrkov",
-    "department": "squad-ai",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Director of Decision Intelligence -- Decision Science, Applied Statistics, A/B Testing, Data-Driven Culture, Analytics Leadership, AI Decision-Making Expert",
     "keywords": [
@@ -9453,17 +8772,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\cassie-kozyrkov.md",
-    "membership": "pool",
-    "domain": "squad-ai",
-    "squads": [
-      "squad-ai"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\cassie-kozyrkov.md"
   },
   {
     "id": "cathy-pearl",
     "name": "cathy-pearl",
-    "department": "squad-design",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Conversational UX Architect & Voice Interface Design Expert",
     "keywords": [
@@ -9486,17 +8800,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.codex\\agents\\cathy-pearl.md",
-    "membership": "pool",
-    "domain": "squad-design",
-    "squads": [
-      "squad-design"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\cathy-pearl.md"
   },
   {
     "id": "charles-spurgeon",
     "name": "charles-spurgeon",
-    "department": "squad-content",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": ">",
     "keywords": [
@@ -9558,17 +8867,12 @@
       "consult",
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\charles-spurgeon.md",
-    "membership": "pool",
-    "domain": "squad-content",
-    "squads": [
-      "squad-content"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\charles-spurgeon.md"
   },
   {
     "id": "chip-huyen",
     "name": "chip-huyen",
-    "department": "squad-ai",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "AI Engineering Architect -- Production ML Systems, Foundation Model Adaptation, Evaluation-Driven Development & ML System Design Expert",
     "keywords": [
@@ -9650,18 +8954,12 @@
     "commands": [
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\chip-huyen.md",
-    "membership": "pool",
-    "domain": "squad-ai",
-    "squads": [
-      "squad-ai",
-      "squad-data"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\chip-huyen.md"
   },
   {
     "id": "chris-voss",
     "name": "chris-voss",
-    "department": "squad-sales",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "VP of Sales & Negotiation — Enterprise Deals, Conflict Resolution & Tactical Communication Expert",
     "keywords": [
@@ -9760,17 +9058,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\chris-voss.md",
-    "membership": "pool",
-    "domain": "squad-sales",
-    "squads": [
-      "squad-sales"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\chris-voss.md"
   },
   {
     "id": "christian-dunker",
     "name": "christian-dunker",
-    "department": "squad-health",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Clinical Psychologist, Digital Mental Health Specialist & CRP Ethics Expert",
     "keywords": [
@@ -9858,17 +9151,12 @@
       "help",
       "guide"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\christian-dunker.md",
-    "membership": "pool",
-    "domain": "squad-health",
-    "squads": [
-      "squad-health"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\christian-dunker.md"
   },
   {
     "id": "clayton-christensen",
     "name": "clayton-christensen",
-    "department": "innovation",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Director of Innovation Strategy -- Disruptive Innovation Theory, Jobs to Be Done, RPV Framework, Innovation Portfolio Management, Strategic Growth, Theory of Measurement",
     "keywords": [
@@ -9929,18 +9217,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\clayton-christensen.md",
-    "membership": "pool",
-    "domain": "innovation",
-    "squads": [
-      "innovation",
-      "squad-research"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\clayton-christensen.md"
   },
   {
     "id": "craig-kerstiens",
     "name": "craig-kerstiens",
-    "department": "squad-data",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "PostgreSQL Operations Expert -- Postgres at Scale, Extensions, Connection Pooling, Performance Tuning, Monitoring & Database Operations",
     "keywords": [
@@ -9986,17 +9268,12 @@
     "commands": [
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\craig-kerstiens.md",
-    "membership": "pool",
-    "domain": "squad-data",
-    "squads": [
-      "squad-data"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\craig-kerstiens.md"
   },
   {
     "id": "dan-abramov",
     "name": "dan-abramov",
-    "department": "squad-engineering",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "React Architecture Expert & Component Design Craftsman",
     "keywords": [
@@ -10015,17 +9292,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.codex\\agents\\dan-abramov.md",
-    "membership": "pool",
-    "domain": "squad-engineering",
-    "squads": [
-      "squad-engineering"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\dan-abramov.md"
   },
   {
     "id": "danijel-overtime",
     "name": "danijel-overtime",
-    "department": "squad-finance",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "DeFi Sports Betting Architect, On-Chain Markets Builder & Decentralized Infrastructure Expert",
     "keywords": [
@@ -10104,18 +9376,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\danijel-overtime.md",
-    "membership": "pool",
-    "domain": "squad-finance",
-    "squads": [
-      "squad-finance",
-      "squad-markets-intelligence"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\danijel-overtime.md"
   },
   {
     "id": "darren-murph",
     "name": "darren-murph",
-    "department": "squad-people",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Remote Work Architect & Distributed Culture Expert",
     "keywords": [
@@ -10142,17 +9408,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\darren-murph.md",
-    "membership": "pool",
-    "domain": "squad-people",
-    "squads": [
-      "squad-people"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\darren-murph.md"
   },
   {
     "id": "dave-snowden",
     "name": "dave-snowden",
-    "department": "squad-research",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Complexity Science & Sensemaking Authority — Cynefin Framework, Knowledge Management & Narrative Research Expert",
     "keywords": [
@@ -10184,17 +9445,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\dave-snowden.md",
-    "membership": "pool",
-    "domain": "squad-research",
-    "squads": [
-      "squad-research"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\dave-snowden.md"
   },
   {
     "id": "david-ebersman",
     "name": "david-ebersman",
-    "department": "squad-health",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": ">",
     "keywords": [
@@ -10292,17 +9548,12 @@
       "roi-case",
       "scale-audit"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\david-ebersman.md",
-    "membership": "pool",
-    "domain": "squad-health",
-    "squads": [
-      "squad-health"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\david-ebersman.md"
   },
   {
     "id": "db-sage",
     "name": "Agent Redirect: db-sage → data-engineer",
-    "department": "squad-data",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "",
     "keywords": [
@@ -10310,17 +9561,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.codex\\agents\\db-sage.md",
-    "membership": "core",
-    "domain": "squad-data",
-    "squads": [
-      "squad-data"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\db-sage.md"
   },
   {
     "id": "dieter-rams",
     "name": "dieter-rams",
-    "department": "squad-design",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": ">",
     "keywords": [
@@ -10362,17 +9608,12 @@
       "longevity-review",
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\dieter-rams.md",
-    "membership": "pool",
-    "domain": "squad-design",
-    "squads": [
-      "squad-design"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\dieter-rams.md"
   },
   {
     "id": "domer-polymarket",
     "name": "domer-polymarket",
-    "department": "squad-finance",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "\"#1 All-Time Polymarket Trader, Volume Strategy Architect & Risk Manager\"",
     "keywords": [
@@ -10424,18 +9665,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\domer-polymarket.md",
-    "membership": "pool",
-    "domain": "squad-finance",
-    "squads": [
-      "squad-finance",
-      "squad-markets-intelligence"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\domer-polymarket.md"
   },
   {
     "id": "don-norman",
     "name": "don-norman",
-    "department": "squad-design",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": ">",
     "keywords": [
@@ -10519,18 +9754,12 @@
       "exit",
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\don-norman.md",
-    "membership": "pool",
-    "domain": "squad-design",
-    "squads": [
-      "squad-design",
-      "squad-product"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\don-norman.md"
   },
   {
     "id": "donald-miller",
     "name": "donald-miller",
-    "department": "squad-content",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "VP of Brand Messaging & Story — StoryBrand Framework, BrandScript Creation, Website Wireframe, Sales Funnel & Messaging Clarity Expert",
     "keywords": [
@@ -10622,17 +9851,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\donald-miller.md",
-    "membership": "pool",
-    "domain": "squad-content",
-    "squads": [
-      "squad-content"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\donald-miller.md"
   },
   {
     "id": "eduardo-bunge",
     "name": "eduardo-bunge",
-    "department": "squad-health",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": ">",
     "keywords": [
@@ -10697,17 +9921,12 @@
       "consult",
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\eduardo-bunge.md",
-    "membership": "pool",
-    "domain": "squad-health",
-    "squads": [
-      "squad-health"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\eduardo-bunge.md"
   },
   {
     "id": "edward-tufte",
     "name": "edward-tufte",
-    "department": "squad-design",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Data Visualization Master — Data-Ink Ratio, Chartjunk Elimination, Small Multiples, Sparklines & Visual Evidence Expert",
     "keywords": [
@@ -10739,17 +9958,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\edward-tufte.md",
-    "membership": "pool",
-    "domain": "squad-design",
-    "squads": [
-      "squad-design"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\edward-tufte.md"
   },
   {
     "id": "eliyahu-goldratt",
     "name": "eliyahu-goldratt",
-    "department": "squad-operations",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Director of Operations Excellence -- Theory of Constraints, Bottleneck Analysis, Throughput Accounting, Critical Chain Project Management, Thinking Processes, Systems Optimization Expert",
     "keywords": [
@@ -10810,17 +10024,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\eliyahu-goldratt.md",
-    "membership": "pool",
-    "domain": "squad-operations",
-    "squads": [
-      "squad-operations"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\eliyahu-goldratt.md"
   },
   {
     "id": "eric-topol",
     "name": "eric-topol",
-    "department": "squad-health",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "AI-Augmented Medicine Strategist & Digital Health Visionary",
     "keywords": [
@@ -10850,17 +10059,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.codex\\agents\\eric-topol.md",
-    "membership": "pool",
-    "domain": "squad-health",
-    "squads": [
-      "squad-health"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\eric-topol.md"
   },
   {
     "id": "erik-nymanczuk",
     "name": "erik-nymanczuk",
-    "department": "squad-legal",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Especialista em Direito Digital em Saude & Compliance LGPD -- Estrategia Regulatoria para Healthtechs, Privacidade de Dados de Saude, Termos de Uso, Classificacao Wellness/Health, Go-to-Market Regulat",
     "keywords": [
@@ -10947,17 +10151,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\erik-nymanczuk.md",
-    "membership": "pool",
-    "domain": "squad-legal",
-    "squads": [
-      "squad-legal"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\erik-nymanczuk.md"
   },
   {
     "id": "erik-spiekermann",
     "name": "erik-spiekermann",
-    "department": "squad-design",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": ">",
     "keywords": [
@@ -10999,17 +10198,12 @@
       "web-typography-audit",
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\erik-spiekermann.md",
-    "membership": "pool",
-    "domain": "squad-design",
-    "squads": [
-      "squad-design"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\erik-spiekermann.md"
   },
   {
     "id": "gary-vaynerchuk",
     "name": "gary-vaynerchuk",
-    "department": "marketing-traffic",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Chief Attention Officer — Social Media Strategy, Content at Scale, Personal Branding & Attention Arbitrage Expert",
     "keywords": [
@@ -11117,17 +10311,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\gary-vaynerchuk.md",
-    "membership": "pool",
-    "domain": "marketing-traffic",
-    "squads": [
-      "marketing-traffic"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\gary-vaynerchuk.md"
   },
   {
     "id": "gcr-crypto",
     "name": "gcr-crypto",
-    "department": "squad-finance",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Crypto Whale, Contrarian Trader & Cross-Domain Pattern Analyst",
     "keywords": [
@@ -11185,18 +10374,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\gcr-crypto.md",
-    "membership": "pool",
-    "domain": "squad-finance",
-    "squads": [
-      "squad-finance",
-      "squad-markets-intelligence"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\gcr-crypto.md"
   },
   {
     "id": "gene-kim",
     "name": "gene-kim",
-    "department": "squad-platform",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Director of DevOps Transformation & IT Operations Excellence -- Value Stream Mapping, Three Ways, Five Ideals, DORA Metrics, Organizational Wiring, Technical Debt Strategy & Flow Optimization Expert",
     "keywords": [
@@ -11273,17 +10456,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\gene-kim.md",
-    "membership": "pool",
-    "domain": "squad-platform",
-    "squads": [
-      "squad-platform"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\gene-kim.md"
   },
   {
     "id": "geoff-cook",
     "name": "geoff-cook",
-    "department": "squad-health",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": ">",
     "keywords": [
@@ -11366,17 +10544,12 @@
       "consult",
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\geoff-cook.md",
-    "membership": "pool",
-    "domain": "squad-health",
-    "squads": [
-      "squad-health"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\geoff-cook.md"
   },
   {
     "id": "github-devops",
     "name": "Agent Redirect: github-devops → devops",
-    "department": "squad-platform",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "",
     "keywords": [
@@ -11384,17 +10557,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.codex\\agents\\github-devops.md",
-    "membership": "core",
-    "domain": "squad-platform",
-    "squads": [
-      "squad-platform"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\github-devops.md"
   },
   {
     "id": "guillermo-rauch",
     "name": "guillermo-rauch",
-    "department": "squad-engineering",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Frontend Infrastructure Architect -- Next.js, Edge Computing, Serverless, DX-First Development, Deployment Automation & Real-Time Architecture Expert",
     "keywords": [
@@ -11449,17 +10617,12 @@
     "commands": [
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\guillermo-rauch.md",
-    "membership": "pool",
-    "domain": "squad-engineering",
-    "squads": [
-      "squad-engineering"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\guillermo-rauch.md"
   },
   {
     "id": "harrison-chase",
     "name": "harrison-chase",
-    "department": "squad-ai",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Director of AI Agent Architecture -- Agent Design, Graph Orchestration, Multi-Agent Systems, Tool-Use, Human-in-the-Loop & LLM Application Reliability Expert",
     "keywords": [
@@ -11535,17 +10698,12 @@
     "commands": [
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\harrison-chase.md",
-    "membership": "pool",
-    "domain": "squad-ai",
-    "squads": [
-      "squad-ai"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\harrison-chase.md"
   },
   {
     "id": "heather-meeker",
     "name": "heather-meeker",
-    "department": "squad-legal",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "General Counsel -- Open Source Licensing, IP Strategy, COSS Business Models, M&A Due Diligence, Source-Available License Design & Compliance Program Architecture Expert",
     "keywords": [
@@ -11648,17 +10806,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\heather-meeker.md",
-    "membership": "pool",
-    "domain": "squad-legal",
-    "squads": [
-      "squad-legal"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\heather-meeker.md"
   },
   {
     "id": "jay-abraham",
     "name": "jay-abraham",
-    "department": "squad-sales",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Revenue Growth Strategist & Partnership Architect",
     "keywords": [
@@ -11685,17 +10838,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\jay-abraham.md",
-    "membership": "pool",
-    "domain": "squad-sales",
-    "squads": [
-      "squad-sales"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\jay-abraham.md"
   },
   {
     "id": "jeb-blount",
     "name": "jeb-blount",
-    "department": "squad-sales",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Director of Sales Operations -- Prospecting, Pipeline Management, Objection Handling, Virtual Selling, Sales EQ & Cold Outreach Expert",
     "keywords": [
@@ -11792,17 +10940,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\jeb-blount.md",
-    "membership": "pool",
-    "domain": "squad-sales",
-    "squads": [
-      "squad-sales"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\jeb-blount.md"
   },
   {
     "id": "jerry-liu",
     "name": "jerry-liu",
-    "department": "squad-ai",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Director of Knowledge & Retrieval Systems -- RAG Architecture, Indexing, Knowledge Graphs, Hybrid Retrieval, Agentic RAG, Structured Extraction & Retrieval Evaluation Expert",
     "keywords": [
@@ -11873,17 +11016,12 @@
     "commands": [
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\jerry-liu.md",
-    "membership": "pool",
-    "domain": "squad-ai",
-    "squads": [
-      "squad-ai"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\jerry-liu.md"
   },
   {
     "id": "jez-humble",
     "name": "jez-humble",
-    "department": "squad-operations",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Continuous Delivery & DevOps Engineering Architect -- Deployment Pipelines, Trunk-Based Development, Feature Toggles, DORA Metrics & Lean Enterprise Expert",
     "keywords": [
@@ -11919,17 +11057,12 @@
     "commands": [
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\jez-humble.md",
-    "membership": "pool",
-    "domain": "squad-operations",
-    "squads": [
-      "squad-operations"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\jez-humble.md"
   },
   {
     "id": "jim-fan",
     "name": "jim-fan",
-    "department": "squad-ai",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Senior Research Director -- Embodied AI, Foundation Agents, Sim-to-Real, GPU-Accelerated AI & Multimodal Systems Expert",
     "keywords": [
@@ -11963,17 +11096,12 @@
     "commands": [
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\jim-fan.md",
-    "membership": "pool",
-    "domain": "squad-ai",
-    "squads": [
-      "squad-ai"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\jim-fan.md"
   },
   {
     "id": "joanna-wiebe",
     "name": "joanna-wiebe",
-    "department": "squad-content",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Conversion Copywriting Director — Landing Pages, Headlines, Email Sequences, CTAs, SaaS Copy, Message Mining & A/B Test Strategy Expert",
     "keywords": [
@@ -12044,17 +11172,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\joanna-wiebe.md",
-    "membership": "pool",
-    "domain": "squad-content",
-    "squads": [
-      "squad-content"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\joanna-wiebe.md"
   },
   {
     "id": "joe-pulizzi",
     "name": "joe-pulizzi",
-    "department": "squad-content",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "VP of Content Strategy & Content Entrepreneurship — Content Marketing Strategy, Audience-First Business Building, Content Tilt Discovery & Content Monetization Expert",
     "keywords": [
@@ -12142,17 +11265,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\joe-pulizzi.md",
-    "membership": "pool",
-    "domain": "squad-content",
-    "squads": [
-      "squad-content"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\joe-pulizzi.md"
   },
   {
     "id": "joe-reis",
     "name": "joe-reis",
-    "department": "squad-data",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Data Engineering Lifecycle Architect -- Data Architecture, Pipeline Design, Storage Strategy, Orchestration, DataOps & Undercurrents Expert",
     "keywords": [
@@ -12183,17 +11301,12 @@
     "commands": [
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\joe-reis.md",
-    "membership": "pool",
-    "domain": "squad-data",
-    "squads": [
-      "squad-data"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\joe-reis.md"
   },
   {
     "id": "johannes-thrul",
     "name": "johannes-thrul",
-    "department": "squad-health",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": ">",
     "keywords": [
@@ -12275,17 +11388,12 @@
       "consult",
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\johannes-thrul.md",
-    "membership": "pool",
-    "domain": "squad-health",
-    "squads": [
-      "squad-health"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\johannes-thrul.md"
   },
   {
     "id": "john-maeda",
     "name": "john-maeda",
-    "department": "squad-design",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": ">",
     "keywords": [
@@ -12343,17 +11451,12 @@
       "design-leadership",
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\john-maeda.md",
-    "membership": "pool",
-    "domain": "squad-design",
-    "squads": [
-      "squad-design"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\john-maeda.md"
   },
   {
     "id": "josh-bersin",
     "name": "josh-bersin",
-    "department": "squad-people",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Chief Learning & HR Transformation Analyst -- Corporate Learning Strategy, L&D Maturity, HR Technology, Skills-Based Organizations, Workforce Transformation, AI in HR",
     "keywords": [
@@ -12441,17 +11544,12 @@
     "commands": [
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\josh-bersin.md",
-    "membership": "pool",
-    "domain": "squad-people",
-    "squads": [
-      "squad-people"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\josh-bersin.md"
   },
   {
     "id": "julie-zhuo",
     "name": "julie-zhuo",
-    "department": "squad-design",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": ">",
     "keywords": [
@@ -12516,17 +11614,12 @@
       "product-diagnosis",
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\julie-zhuo.md",
-    "membership": "pool",
-    "domain": "squad-design",
-    "squads": [
-      "squad-design"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\julie-zhuo.md"
   },
   {
     "id": "kat-holmes",
     "name": "kat-holmes",
-    "department": "squad-design",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Inclusive Design Leader — Accessibility, Persona Spectrum, Mismatch Analysis & Universal Design Expert",
     "keywords": [
@@ -12559,17 +11652,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\kat-holmes.md",
-    "membership": "pool",
-    "domain": "squad-design",
-    "squads": [
-      "squad-design"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\kat-holmes.md"
   },
   {
     "id": "kelsey-hightower",
     "name": "kelsey-hightower",
-    "department": "squad-platform",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Platform Engineering & Cloud-Native Infrastructure Strategist -- Fundamentals-First Technology Assessment, Developer Experience Design, Platform-as-Product Strategy, Infrastructure Simplification & Te",
     "keywords": [
@@ -12631,17 +11719,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\kelsey-hightower.md",
-    "membership": "pool",
-    "domain": "squad-platform",
-    "squads": [
-      "squad-platform"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\kelsey-hightower.md"
   },
   {
     "id": "kent-c-dodds",
     "name": "kent-c-dodds",
-    "department": "squad-engineering",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Director of Testing & React Quality -- React Testing, Component Design, Testing Philosophy, JavaScript Education & Accessibility Expert",
     "keywords": [
@@ -12691,17 +11774,12 @@
     "commands": [
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\kent-c-dodds.md",
-    "membership": "pool",
-    "domain": "squad-engineering",
-    "squads": [
-      "squad-engineering"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\kent-c-dodds.md"
   },
   {
     "id": "larry-kim",
     "name": "larry-kim",
-    "department": "marketing-traffic",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Director of Paid Media & PPC Strategy -- Google Ads, Quality Score, Ad Copy, Campaign Structure, Bid Strategy & Paid Media ROI Expert",
     "keywords": [
@@ -12737,17 +11815,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.codex\\agents\\larry-kim.md",
-    "membership": "pool",
-    "domain": "marketing-traffic",
-    "squads": [
-      "marketing-traffic"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\larry-kim.md"
   },
   {
     "id": "laszlo-bock",
     "name": "laszlo-bock",
-    "department": "squad-people",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Director of People Analytics — Data-Driven HR, Hiring at Scale, Culture at Scale, Management Science & OKR Expert",
     "keywords": [
@@ -12835,17 +11908,12 @@
     "commands": [
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\laszlo-bock.md",
-    "membership": "pool",
-    "domain": "squad-people",
-    "squads": [
-      "squad-people"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\laszlo-bock.md"
   },
   {
     "id": "lilian-weng",
     "name": "lilian-weng",
-    "department": "squad-ai",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "AI Research-to-Product Strategist & Safety Expert",
     "keywords": [
@@ -12873,17 +11941,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\lilian-weng.md",
-    "membership": "pool",
-    "domain": "squad-ai",
-    "squads": [
-      "squad-ai"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\lilian-weng.md"
   },
   {
     "id": "lincoln-murphy",
     "name": "lincoln-murphy",
-    "department": "squad-customer-success",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "VP of Customer Success Growth -- Desired Outcome Strategy, CS-Driven Growth Architecture, Expansion Revenue Design & Lifecycle Engineering Expert",
     "keywords": [
@@ -12974,17 +12037,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\lincoln-murphy.md",
-    "membership": "pool",
-    "domain": "squad-customer-success",
-    "squads": [
-      "squad-customer-success"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\lincoln-murphy.md"
   },
   {
     "id": "liran-tal",
     "name": "liran-tal",
-    "department": "squad-legal",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Node.js Security Guardian -- npm Supply Chain Security, Secure Coding, Dependency Management, OWASP for Node & CI/CD Security Expert",
     "keywords": [
@@ -13036,17 +12094,12 @@
     "commands": [
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\liran-tal.md",
-    "membership": "pool",
-    "domain": "squad-legal",
-    "squads": [
-      "squad-legal"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\liran-tal.md"
   },
   {
     "id": "luana-lopes-lara",
     "name": "luana-lopes-lara",
-    "department": "squad-markets-intelligence",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Regulated Prediction Markets Expert, Institutional Strategy Architect & Compliance Advisor",
     "keywords": [
@@ -13113,17 +12166,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\luana-lopes-lara.md",
-    "membership": "pool",
-    "domain": "squad-markets-intelligence",
-    "squads": [
-      "squad-markets-intelligence"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\luana-lopes-lara.md"
   },
   {
     "id": "mariana-mazzucato",
     "name": "mariana-mazzucato",
-    "department": "innovation",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Director of Innovation Economics & Public Purpose -- Mission-Oriented Innovation, Market Shaping, Value Creation vs. Extraction, Risk-Reward Nexus, Industrial Strategy, Public-Private Partnerships, Pu",
     "keywords": [
@@ -13193,18 +12241,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\mariana-mazzucato.md",
-    "membership": "pool",
-    "domain": "innovation",
-    "squads": [
-      "innovation",
-      "squad-finance"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\mariana-mazzucato.md"
   },
   {
     "id": "markus-winand",
     "name": "markus-winand",
-    "department": "squad-data",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "SQL Performance Architect -- Index Design, Query Optimization, Execution Plan Analysis & Modern SQL Expert",
     "keywords": [
@@ -13250,17 +12292,12 @@
     "commands": [
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\markus-winand.md",
-    "membership": "pool",
-    "domain": "squad-data",
-    "squads": [
-      "squad-data"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\markus-winand.md"
   },
   {
     "id": "martin-fowler",
     "name": "martin-fowler",
-    "department": "squad-engineering",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Director of Software Engineering Practices -- Refactoring, Architecture Patterns, CI/CD, Testing Strategy, Technical Debt, Domain-Driven Design & Evolutionary Architecture Expert",
     "keywords": [
@@ -13359,17 +12396,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\martin-fowler.md",
-    "membership": "pool",
-    "domain": "squad-engineering",
-    "squads": [
-      "squad-engineering"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\martin-fowler.md"
   },
   {
     "id": "martin-kleppmann",
     "name": "martin-kleppmann",
-    "department": "squad-data",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Director of Distributed Data Systems -- Consistency Models, Replication, Partitioning, Event Sourcing, Stream Processing, CRDTs & Distributed Correctness Expert",
     "keywords": [
@@ -13427,17 +12459,12 @@
     "commands": [
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\martin-kleppmann.md",
-    "membership": "pool",
-    "domain": "squad-data",
-    "squads": [
-      "squad-data"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\martin-kleppmann.md"
   },
   {
     "id": "marty-neumeier",
     "name": "marty-neumeier",
-    "department": "squad-design",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Brand Strategist & Differentiation Architect",
     "keywords": [
@@ -13467,17 +12494,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\marty-neumeier.md",
-    "membership": "pool",
-    "domain": "squad-design",
-    "squads": [
-      "squad-design"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\marty-neumeier.md"
   },
   {
     "id": "matt-dixon",
     "name": "matt-dixon",
-    "department": "squad-sales",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "VP of Sales Strategy & Research -- Challenger Methodology, Customer Effort, Indecision Resolution, Commercial Teaching & Data-Driven Sales Transformation Expert",
     "keywords": [
@@ -13579,17 +12601,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\matt-dixon.md",
-    "membership": "pool",
-    "domain": "squad-sales",
-    "squads": [
-      "squad-sales"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\matt-dixon.md"
   },
   {
     "id": "matt-pocock",
     "name": "matt-pocock",
-    "department": "squad-engineering",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "TypeScript Wizard -- Advanced Types, Generics, Type-Level Programming, Library Authoring & TypeScript DX Expert",
     "keywords": [
@@ -13631,17 +12648,12 @@
     "commands": [
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\matt-pocock.md",
-    "membership": "pool",
-    "domain": "squad-engineering",
-    "squads": [
-      "squad-engineering"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\matt-pocock.md"
   },
   {
     "id": "micky-tripathi",
     "name": "micky-tripathi",
-    "department": "squad-health",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": ">",
     "keywords": [
@@ -13743,17 +12755,12 @@
       "consult",
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\micky-tripathi.md",
-    "membership": "pool",
-    "domain": "squad-health",
-    "squads": [
-      "squad-health"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\micky-tripathi.md"
   },
   {
     "id": "mitchell-hashimoto",
     "name": "mitchell-hashimoto",
-    "department": "squad-platform",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Infrastructure-as-Code Architect -- IaC Design, Secrets Management, Service Mesh, DevOps Tooling & Immutable Infrastructure Expert",
     "keywords": [
@@ -13806,17 +12813,12 @@
     "commands": [
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\mitchell-hashimoto.md",
-    "membership": "pool",
-    "domain": "squad-platform",
-    "squads": [
-      "squad-platform"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\mitchell-hashimoto.md"
   },
   {
     "id": "morgan-housel",
     "name": "morgan-housel",
-    "department": "squad-finance",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Behavioral Finance Philosopher & Wealth Psychology Expert -- Long-Term Thinking, Human Behavior, Compounding, Risk Psychology, Financial Independence",
     "keywords": [
@@ -13893,17 +12895,12 @@
       "investment-philosophy",
       "financial-narrative"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\morgan-housel.md",
-    "membership": "pool",
-    "domain": "squad-finance",
-    "squads": [
-      "squad-finance"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\morgan-housel.md"
   },
   {
     "id": "motion-designer",
     "name": "motion-designer",
-    "department": "squad-design",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Motion Designer, Animation Specialist & Micro-interaction Expert",
     "keywords": [
@@ -13953,17 +12950,12 @@
       "guide",
       "easing-guide"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\motion-designer.md",
-    "membership": "core",
-    "domain": "squad-design",
-    "squads": [
-      "squad-design"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\motion-designer.md"
   },
   {
     "id": "nate-silver",
     "name": "nate-silver",
-    "department": "squad-data",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Statistical Modeler, Prediction Market Analyst & Signal Extraction Expert",
     "keywords": [
@@ -14035,18 +13027,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\nate-silver.md",
-    "membership": "pool",
-    "domain": "squad-data",
-    "squads": [
-      "squad-data",
-      "squad-markets-intelligence"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\nate-silver.md"
   },
   {
     "id": "niall-murphy",
     "name": "niall-murphy",
-    "department": "squad-platform",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Site Reliability Engineering Authority — SLO Design, Error Budgets, Incident Management & Toil Reduction Expert",
     "keywords": [
@@ -14077,17 +13063,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\niall-murphy.md",
-    "membership": "pool",
-    "domain": "squad-platform",
-    "squads": [
-      "squad-platform"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\niall-murphy.md"
   },
   {
     "id": "nick-mehta",
     "name": "nick-mehta",
-    "department": "squad-customer-success",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Director of Customer Success — Retention Strategy, Churn Prevention, CS Operations & Expansion Revenue Expert",
     "keywords": [
@@ -14172,17 +13153,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\nick-mehta.md",
-    "membership": "pool",
-    "domain": "squad-customer-success",
-    "squads": [
-      "squad-customer-success"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\nick-mehta.md"
   },
   {
     "id": "nicole-forsgren",
     "name": "nicole-forsgren",
-    "department": "squad-operations",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Engineering Excellence Scientist -- Developer Productivity, DORA Metrics, SPACE Framework, Delivery Performance & Engineering Culture Expert",
     "keywords": [
@@ -14243,17 +13219,12 @@
     "commands": [
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\nicole-forsgren.md",
-    "membership": "pool",
-    "domain": "squad-operations",
-    "squads": [
-      "squad-operations"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\nicole-forsgren.md"
   },
   {
     "id": "nir-eyal",
     "name": "nir-eyal",
-    "department": "squad-behavioral-design",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": ">",
     "keywords": [
@@ -14344,17 +13315,12 @@
       "exit",
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\nir-eyal.md",
-    "membership": "pool",
-    "domain": "squad-behavioral-design",
-    "squads": [
-      "squad-behavioral-design"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\nir-eyal.md"
   },
   {
     "id": "oalanicolas",
     "name": "oalanicolas",
-    "department": "squad-executive",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Mind Cloning Architect & Voice DNA Extraction Expert",
     "keywords": [
@@ -14420,17 +13386,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\oalanicolas.md",
-    "membership": "runtime",
-    "domain": "squad-executive",
-    "squads": [
-      "squad-executive"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\oalanicolas.md"
   },
   {
     "id": "oli-gardner",
     "name": "oli-gardner",
-    "department": "marketing-traffic",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": ">",
     "keywords": [
@@ -14481,17 +13442,12 @@
       "form-optimization",
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\oli-gardner.md",
-    "membership": "pool",
-    "domain": "marketing-traffic",
-    "squads": [
-      "marketing-traffic"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\oli-gardner.md"
   },
   {
     "id": "patricia-peck",
     "name": "patricia-peck",
-    "department": "squad-legal",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "LGPD & Digital Law Specialist — Brazilian Data Protection Expert",
     "keywords": [
@@ -14567,17 +13523,12 @@
       "help",
       "guide"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\patricia-peck.md",
-    "membership": "pool",
-    "domain": "squad-legal",
-    "squads": [
-      "squad-legal"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\patricia-peck.md"
   },
   {
     "id": "patrick-campbell",
     "name": "patrick-campbell",
-    "department": "squad-sales",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "VP of Pricing & Monetization -- SaaS Pricing Strategy, Subscription Metrics, Retention & Expansion Revenue Expert",
     "keywords": [
@@ -14664,17 +13615,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\patrick-campbell.md",
-    "membership": "pool",
-    "domain": "squad-sales",
-    "squads": [
-      "squad-sales"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\patrick-campbell.md"
   },
   {
     "id": "patty-mccord",
     "name": "patty-mccord",
-    "department": "squad-people",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Chief People Officer — Culture, Talent Density, Organizational Design & Radical Honesty Expert",
     "keywords": [
@@ -14766,18 +13712,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\patty-mccord.md",
-    "membership": "pool",
-    "domain": "squad-people",
-    "squads": [
-      "squad-executive",
-      "squad-people"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\patty-mccord.md"
   },
   {
     "id": "paul-copplestone",
     "name": "paul-copplestone",
-    "department": "squad-platform",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Postgres-First Platform Architect -- Supabase Design, RLS, Auth, Realtime, Edge Functions, Open-Source Infrastructure & Developer Experience Expert",
     "keywords": [
@@ -14829,17 +13769,12 @@
     "commands": [
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\paul-copplestone.md",
-    "membership": "pool",
-    "domain": "squad-platform",
-    "squads": [
-      "squad-platform"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\paul-copplestone.md"
   },
   {
     "id": "pedro-valerio",
     "name": "pedro-valerio",
-    "department": "squad-operations",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Process Absolutist & Workflow Quality Guardian",
     "keywords": [
@@ -14882,17 +13817,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\pedro-valerio.md",
-    "membership": "core",
-    "domain": "squad-operations",
-    "squads": [
-      "squad-operations"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\pedro-valerio.md"
   },
   {
     "id": "peep-laja",
     "name": "peep-laja",
-    "department": "marketing-traffic",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "CRO Scientist & B2B Messaging Strategist -- Conversion Research, A/B Testing Methodology, Landing Page Optimization, User Research, Heuristic Analysis & Differentiation Strategy Expert",
     "keywords": [
@@ -14968,17 +13898,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\peep-laja.md",
-    "membership": "pool",
-    "domain": "marketing-traffic",
-    "squads": [
-      "marketing-traffic"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\peep-laja.md"
   },
   {
     "id": "peter-diamandis",
     "name": "peter-diamandis",
-    "department": "innovation",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Director of Innovation & Moonshots -- Exponential Technologies, Abundance Mindset, Moonshot Thinking, XPRIZE Design & Longevity Expert",
     "keywords": [
@@ -15085,18 +14010,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\peter-diamandis.md",
-    "membership": "pool",
-    "domain": "innovation",
-    "squads": [
-      "innovation",
-      "squad-research"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\peter-diamandis.md"
   },
   {
     "id": "philip-tetlock",
     "name": "philip-tetlock",
-    "department": "squad-data",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Superforecasting Expert, Prediction Scientist & Calibration Coach",
     "keywords": [
@@ -15165,18 +14084,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\philip-tetlock.md",
-    "membership": "pool",
-    "domain": "squad-data",
-    "squads": [
-      "squad-data",
-      "squad-markets-intelligence"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\philip-tetlock.md"
   },
   {
     "id": "rafael-calvo",
     "name": "rafael-calvo",
-    "department": "squad-behavioral-design",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Therapeutic & Wellbeing Design Architect -- Positive Computing, Wellbeing-Supportive Design, METUX Framework, Affective Computing, Ethical Technology Design & Self-Determination Theory in HCI Expert",
     "keywords": [
@@ -15275,18 +14188,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\rafael-calvo.md",
-    "membership": "pool",
-    "domain": "squad-behavioral-design",
-    "squads": [
-      "squad-behavioral-design",
-      "squad-health"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\rafael-calvo.md"
   },
   {
     "id": "rand-fishkin",
     "name": "rand-fishkin",
-    "department": "marketing-traffic",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "VP of SEO & Audience Intelligence -- Audience Research, Zero-Click Marketing, SEO Strategy & Sustainable Business Building Expert",
     "keywords": [
@@ -15395,17 +14302,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\rand-fishkin.md",
-    "membership": "pool",
-    "domain": "marketing-traffic",
-    "squads": [
-      "marketing-traffic"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\rand-fishkin.md"
   },
   {
     "id": "refika-anadol",
     "name": "refika-anadol",
-    "department": "squad-design",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": ">",
     "keywords": [
@@ -15459,17 +14361,12 @@
       "visual-experience-concept",
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\refika-anadol.md",
-    "membership": "pool",
-    "domain": "squad-design",
-    "squads": [
-      "squad-design"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\refika-anadol.md"
   },
   {
     "id": "richard-susskind",
     "name": "richard-susskind",
-    "department": "squad-legal",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Director of Legal Technology Transformation & Access to Justice -- Legal Service Evolution, Online Courts, Professional Transformation, AI Impact Assessment, Decomposition & Multi-Sourcing Expert",
     "keywords": [
@@ -15560,17 +14457,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\richard-susskind.md",
-    "membership": "pool",
-    "domain": "squad-legal",
-    "squads": [
-      "squad-legal"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\richard-susskind.md"
   },
   {
     "id": "rob-walling",
     "name": "rob-walling",
-    "department": "squad-finance",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Bootstrapping Expert & SaaS Growth Strategist",
     "keywords": [
@@ -15606,17 +14498,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\rob-walling.md",
-    "membership": "pool",
-    "domain": "squad-finance",
-    "squads": [
-      "squad-finance"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\rob-walling.md"
   },
   {
     "id": "robert-mckee",
     "name": "robert-mckee",
-    "department": "squad-content",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Chief Narrative Architect -- Story Structure, Narrative Design, Pitch Storytelling, Dialogue Craft & Business Narrative Expert",
     "keywords": [
@@ -15701,17 +14588,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\robert-mckee.md",
-    "membership": "pool",
-    "domain": "squad-content",
-    "squads": [
-      "squad-content"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\robert-mckee.md"
   },
   {
     "id": "robin-hanson",
     "name": "robin-hanson",
-    "department": "squad-data",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Prediction Market Architect, Contrarian Economist & Social Epistemologist",
     "keywords": [
@@ -15792,18 +14674,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\robin-hanson.md",
-    "membership": "pool",
-    "domain": "squad-data",
-    "squads": [
-      "squad-data",
-      "squad-markets-intelligence"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\robin-hanson.md"
   },
   {
     "id": "ryan-dahl",
     "name": "ryan-dahl",
-    "department": "squad-engineering",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Director of Runtime Architecture -- JavaScript Runtimes, Event-Driven Architecture, Server-Side JS, Security Models, Web Standards & I/O Systems Expert",
     "keywords": [
@@ -15860,17 +14736,12 @@
     "commands": [
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\ryan-dahl.md",
-    "membership": "pool",
-    "domain": "squad-engineering",
-    "squads": [
-      "squad-engineering"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\ryan-dahl.md"
   },
   {
     "id": "sal-khan",
     "name": "sal-khan",
-    "department": "squad-education",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Director of Education Innovation & AI-Powered Learning -- Mastery Learning, Flipped Classroom, AI Tutoring, Ed-Tech Strategy, Education Democratization",
     "keywords": [
@@ -15932,17 +14803,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\sal-khan.md",
-    "membership": "pool",
-    "domain": "squad-education",
-    "squads": [
-      "squad-education"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\sal-khan.md"
   },
   {
     "id": "sam-newman",
     "name": "sam-newman",
-    "department": "squad-engineering",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Director of Service Architecture -- Microservices, Service Decomposition, API Design, Consumer-Driven Contracts, Migration Strategy & Distributed Systems Pragmatics Expert",
     "keywords": [
@@ -15999,17 +14865,12 @@
     "commands": [
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\sam-newman.md",
-    "membership": "pool",
-    "domain": "squad-engineering",
-    "squads": [
-      "squad-engineering"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\sam-newman.md"
   },
   {
     "id": "sarah-drasner",
     "name": "sarah-drasner",
-    "department": "squad-community",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": ">",
     "keywords": [
@@ -16061,17 +14922,12 @@
       "generative-design-plan",
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\sarah-drasner.md",
-    "membership": "pool",
-    "domain": "squad-community",
-    "squads": [
-      "squad-community"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\sarah-drasner.md"
   },
   {
     "id": "scott-alexander",
     "name": "scott-alexander",
-    "department": "squad-markets-intelligence",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Bayesian Reasoning Expert, Prediction Calibration Coach & Rationality Guide",
     "keywords": [
@@ -16132,17 +14988,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\scott-alexander.md",
-    "membership": "pool",
-    "domain": "squad-markets-intelligence",
-    "squads": [
-      "squad-markets-intelligence"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\scott-alexander.md"
   },
   {
     "id": "scott-galloway",
     "name": "scott-galloway",
-    "department": "squad-research",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Chief Market Strategist & Business Analyst -- Tech Market Dynamics, Company Valuation, Career Strategy & Wealth Building Expert",
     "keywords": [
@@ -16238,17 +15089,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\scott-galloway.md",
-    "membership": "pool",
-    "domain": "squad-research",
-    "squads": [
-      "squad-research"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\scott-galloway.md"
   },
   {
     "id": "seth-godin",
     "name": "seth-godin",
-    "department": "squad-executive",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "VP of Marketing & Brand Strategy — Positioning, Permission Marketing, Tribe Building & Remarkable Product Strategy Expert",
     "keywords": [
@@ -16333,17 +15179,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\seth-godin.md",
-    "membership": "pool",
-    "domain": "squad-executive",
-    "squads": [
-      "squad-executive"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\seth-godin.md"
   },
   {
     "id": "simon-willison",
     "name": "simon-willison",
-    "department": "squad-community",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Practical AI Toolsmith -- LLM Tool Design, Prompt Engineering, AI Security, Open-Source Architecture & Technical Blogging Expert",
     "keywords": [
@@ -16412,17 +15253,12 @@
     "commands": [
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\simon-willison.md",
-    "membership": "pool",
-    "domain": "squad-community",
-    "squads": [
-      "squad-community"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\simon-willison.md"
   },
   {
     "id": "sop-extractor",
     "name": "sop-extractor",
-    "department": "squad-executive",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "SOP Extraction Specialist & Process Documentation Expert",
     "keywords": [
@@ -16465,17 +15301,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\sop-extractor.md",
-    "membership": "runtime",
-    "domain": "squad-executive",
-    "squads": [
-      "squad-executive"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\sop-extractor.md"
   },
   {
     "id": "steve-blank",
     "name": "steve-blank",
-    "department": "innovation",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Customer Development Pioneer & Startup Validation Expert",
     "keywords": [
@@ -16506,18 +15337,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\steve-blank.md",
-    "membership": "pool",
-    "domain": "innovation",
-    "squads": [
-      "innovation",
-      "squad-research"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\steve-blank.md"
   },
   {
     "id": "swyx",
     "name": "swyx",
-    "department": "squad-ai",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "AI Engineering Expert & Developer Experience Advocate",
     "keywords": [
@@ -16543,17 +15368,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\swyx.md",
-    "membership": "pool",
-    "domain": "squad-ai",
-    "squads": [
-      "squad-ai"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\swyx.md"
   },
   {
     "id": "theo-polymarket",
     "name": "theo-polymarket",
-    "department": "squad-finance",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Information Arbitrage Expert, Private Research Strategist & Political Betting Specialist",
     "keywords": [
@@ -16619,18 +15439,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\theo-polymarket.md",
-    "membership": "pool",
-    "domain": "squad-finance",
-    "squads": [
-      "squad-finance",
-      "squad-markets-intelligence"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\theo-polymarket.md"
   },
   {
     "id": "timnit-gebru",
     "name": "timnit-gebru",
-    "department": "squad-ai",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "AI Ethics Researcher & Responsible AI Advocate",
     "keywords": [
@@ -16656,17 +15470,12 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\.codex\\agents\\timnit-gebru.md",
-    "membership": "pool",
-    "domain": "squad-ai",
-    "squads": [
-      "squad-ai"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\timnit-gebru.md"
   },
   {
     "id": "tobias-van-schneider",
     "name": "tobias-van-schneider",
-    "department": "squad-design",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": ">",
     "keywords": [
@@ -16716,17 +15525,12 @@
       "design-portfolio-review",
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\tobias-van-schneider.md",
-    "membership": "pool",
-    "domain": "squad-design",
-    "squads": [
-      "squad-design"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\tobias-van-schneider.md"
   },
   {
     "id": "ux-researcher",
     "name": "ux-researcher",
-    "department": "squad-design",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "UX Researcher, User Advocate & Insights Specialist",
     "keywords": [
@@ -16783,17 +15587,12 @@
       "usability-test",
       "insights-report"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\ux-researcher.md",
-    "membership": "core",
-    "domain": "squad-design",
-    "squads": [
-      "squad-design"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\ux-researcher.md"
   },
   {
     "id": "ux-writer",
     "name": "ux-writer",
-    "department": "squad-design",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "UX Writer, Content Designer & Microcopy Specialist",
     "keywords": [
@@ -16838,17 +15637,12 @@
       "guide",
       "a11y-content"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\ux-writer.md",
-    "membership": "core",
-    "domain": "squad-design",
-    "squads": [
-      "squad-design"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\ux-writer.md"
   },
   {
     "id": "val-head",
     "name": "val-head",
-    "department": "squad-design",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": ">",
     "keywords": [
@@ -16891,17 +15685,12 @@
       "accessibility-motion-audit",
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\val-head.md",
-    "membership": "pool",
-    "domain": "squad-design",
-    "squads": [
-      "squad-design"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\val-head.md"
   },
   {
     "id": "vitaly-friedman",
     "name": "vitaly-friedman",
-    "department": "squad-design",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": ">",
     "keywords": [
@@ -16950,17 +15739,12 @@
       "mobile-first-strategy",
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\vitaly-friedman.md",
-    "membership": "pool",
-    "domain": "squad-design",
-    "squads": [
-      "squad-design"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\vitaly-friedman.md"
   },
   {
     "id": "wes-bush",
     "name": "wes-bush",
-    "department": "marketing-traffic",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Product-Led Growth Strategist — PLG Assessment, Onboarding, Activation Funnels & Freemium Strategy Expert",
     "keywords": [
@@ -17001,17 +15785,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\wes-bush.md",
-    "membership": "pool",
-    "domain": "marketing-traffic",
-    "squads": [
-      "marketing-traffic"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\wes-bush.md"
   },
   {
     "id": "will-larson",
     "name": "will-larson",
-    "department": "squad-engineering",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "VP of Engineering Management -- Organizational Design, Team Scaling, Technical Strategy, Staff+ Engineering, Migrations & Engineering Quality Expert",
     "keywords": [
@@ -17122,17 +15901,12 @@
       "help",
       "yolo"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\will-larson.md",
-    "membership": "pool",
-    "domain": "squad-engineering",
-    "squads": [
-      "squad-engineering"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\will-larson.md"
   },
   {
     "id": "yu-kai-chou",
     "name": "yu-kai-chou",
-    "department": "squad-behavioral-design",
+    "department": "codex-agent",
     "source": "codex-agent",
     "role": "Gamification & Behavioral Design Architect -- Octalysis Framework, Engagement Loops, Motivation Systems, Reward Design & Player Journey Expert",
     "keywords": [
@@ -17169,12 +15943,7 @@
     "commands": [
       "help"
     ],
-    "filePath": "D:\\AIOS\\.codex\\agents\\yu-kai-chou.md",
-    "membership": "pool",
-    "domain": "squad-behavioral-design",
-    "squads": [
-      "squad-behavioral-design"
-    ]
+    "filePath": "D:\\AIOS\\.codex\\agents\\yu-kai-chou.md"
   },
   {
     "id": "template-mind-clone",
@@ -17189,12 +15958,7 @@
     ],
     "frameworks": [],
     "commands": [],
-    "filePath": "D:\\AIOS\\squads\\expert-council\\agents\\template-mind-clone.md",
-    "membership": "runtime",
-    "domain": "expert-council",
-    "squads": [
-      "expert-council"
-    ]
+    "filePath": "D:\\AIOS\\squads\\expert-council\\agents\\template-mind-clone.md"
   },
   {
     "id": "andre-chaperon",
@@ -17330,12 +16094,7 @@
       "customer sequence (8-12 emails)"
     ],
     "commands": [],
-    "filePath": "D:\\AIOS\\squads\\marketing-traffic\\agents\\andre-chaperon.md",
-    "membership": "pool",
-    "domain": "marketing-traffic",
-    "squads": [
-      "marketing-traffic"
-    ]
+    "filePath": "D:\\AIOS\\squads\\marketing-traffic\\agents\\andre-chaperon.md"
   },
   {
     "id": "depesh-mandalia",
@@ -17422,12 +16181,7 @@
       "dance"
     ],
     "commands": [],
-    "filePath": "D:\\AIOS\\squads\\marketing-traffic\\agents\\depesh-mandalia.md",
-    "membership": "pool",
-    "domain": "marketing-traffic",
-    "squads": [
-      "marketing-traffic"
-    ]
+    "filePath": "D:\\AIOS\\squads\\marketing-traffic\\agents\\depesh-mandalia.md"
   },
   {
     "id": "kasim-aslam",
@@ -17479,12 +16233,7 @@
       "tool"
     ],
     "commands": [],
-    "filePath": "D:\\AIOS\\squads\\marketing-traffic\\agents\\kasim-aslam.md",
-    "membership": "pool",
-    "domain": "marketing-traffic",
-    "squads": [
-      "marketing-traffic"
-    ]
+    "filePath": "D:\\AIOS\\squads\\marketing-traffic\\agents\\kasim-aslam.md"
   },
   {
     "id": "molly-pittman",
@@ -17547,12 +16296,7 @@
       "scale strategically"
     ],
     "commands": [],
-    "filePath": "D:\\AIOS\\squads\\marketing-traffic\\agents\\molly-pittman.md",
-    "membership": "pool",
-    "domain": "marketing-traffic",
-    "squads": [
-      "marketing-traffic"
-    ]
+    "filePath": "D:\\AIOS\\squads\\marketing-traffic\\agents\\molly-pittman.md"
   },
   {
     "id": "nicholas-kusmich",
@@ -17619,12 +16363,7 @@
       "before any ad creation or before declaring \"this is an lp form ad\":"
     ],
     "commands": [],
-    "filePath": "D:\\AIOS\\squads\\marketing-traffic\\agents\\nicholas-kusmich.md",
-    "membership": "pool",
-    "domain": "marketing-traffic",
-    "squads": [
-      "marketing-traffic"
-    ]
+    "filePath": "D:\\AIOS\\squads\\marketing-traffic\\agents\\nicholas-kusmich.md"
   },
   {
     "id": "pedro-sobral",
@@ -17668,12 +16407,7 @@
       "destination type validation"
     ],
     "commands": [],
-    "filePath": "D:\\AIOS\\squads\\marketing-traffic\\agents\\pedro-sobral.md",
-    "membership": "pool",
-    "domain": "marketing-traffic",
-    "squads": [
-      "marketing-traffic"
-    ]
+    "filePath": "D:\\AIOS\\squads\\marketing-traffic\\agents\\pedro-sobral.md"
   },
   {
     "id": "ralph-burns",
@@ -17755,12 +16489,7 @@
       "schedule d+7 roas gate"
     ],
     "commands": [],
-    "filePath": "D:\\AIOS\\squads\\marketing-traffic\\agents\\ralph-burns.md",
-    "membership": "pool",
-    "domain": "marketing-traffic",
-    "squads": [
-      "marketing-traffic"
-    ]
+    "filePath": "D:\\AIOS\\squads\\marketing-traffic\\agents\\ralph-burns.md"
   },
   {
     "id": "tom-breeze",
@@ -17869,12 +16598,7 @@
       "brand lift study"
     ],
     "commands": [],
-    "filePath": "D:\\AIOS\\squads\\marketing-traffic\\agents\\tom-breeze.md",
-    "membership": "pool",
-    "domain": "marketing-traffic",
-    "squads": [
-      "marketing-traffic"
-    ]
+    "filePath": "D:\\AIOS\\squads\\marketing-traffic\\agents\\tom-breeze.md"
   },
   {
     "id": "traffic-masters-chief",
@@ -17955,11 +16679,6 @@
       "waba"
     ],
     "commands": [],
-    "filePath": "D:\\AIOS\\squads\\marketing-traffic\\agents\\traffic-masters-chief.md",
-    "membership": "pool",
-    "domain": "marketing-traffic",
-    "squads": [
-      "marketing-traffic"
-    ]
+    "filePath": "D:\\AIOS\\squads\\marketing-traffic\\agents\\traffic-masters-chief.md"
   }
 ]
