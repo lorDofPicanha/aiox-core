@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bretda · Blueprint Demand Gen — Intenção de Luxo</title>
+<!--
+  AIOX Squad — Dark Cockpit Edition
+  Source design: docs/projects/anipis/squad-16mai/05-design/AIOX-DESIGN.md
+  Content: docs/projects/bretda/plans/demand-gen-luxo-blueprint-2026-05-25.md
+  Fonts: Geist + Roboto Mono via Google Fonts. TASA Orbiter (display) falls back to Geist if not installed.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Accent */
+  --primary:#D1FF00; --primary-deep:#9FCC00; --primary-soft:#F0FFB0;
+  /* Neutrals — dark cockpit */
+  --void:#0A0A0B; --surface:#141416; --surface-2:#1C1C1F; --surface-3:#252528;
+  --border:#2A2A2E; --border-strong:#3D3D42;
+  /* Text */
+  --text-primary:#F4F1EA; --text-secondary:#A8A4A0; --text-tertiary:#6B6864; --text-on-accent:#0A0A0B;
+  /* Semantic */
+  --success:#7BC97B; --warning:#E8B23A; --error:#E0533D; --info:#5C8FE8;
+  --accent-12:rgba(209,255,0,.12); --accent-24:rgba(209,255,0,.24);
+  /* Type */
+  --font-display:'TASA Orbiter','Geist',system-ui,sans-serif;
+  --font-body:'Geist',system-ui,-apple-system,sans-serif;
+  --font-mono:'Roboto Mono',ui-monospace,Menlo,monospace;
+  /* Radius */
+  --r-xs:2px; --r-sm:4px; --r-md:6px; --r-lg:10px; --r-pill:999px;
+  /* Shadow */
+  --sh-sm:0 2px 4px rgba(0,0,0,.35); --sh-md:0 6px 16px rgba(0,0,0,.45);
+  --glow:0 0 0 1px #D1FF00,0 0 24px rgba(209,255,0,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{
+  background:var(--void); color:var(--text-primary);
+  font-family:var(--font-body); font-size:15px; line-height:1.65; font-weight:400;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px; margin:0 auto; padding:0 32px 120px}
+.col{max-width:760px}
+
+/* ---------- Cover ---------- */
+.cover{
+  position:relative; padding:96px 32px 64px; margin:0 -32px 64px;
+  background:linear-gradient(180deg,#0A0A0B 0%,#141416 100%);
+  border-bottom:1px solid var(--border-strong); overflow:hidden;
+}
+.cover::before{
+  content:""; position:absolute; top:0; left:0; right:0; height:3px; background:var(--primary);
+  box-shadow:0 0 24px rgba(209,255,0,.45);
+}
+.cover .kicker{
+  font-family:var(--font-body); font-size:11px; font-weight:600; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--primary); margin-bottom:20px; display:flex; gap:10px; align-items:center;
+}
+.cover .kicker::before{content:"▸"; color:var(--primary)}
+.cover h1{
+  font-family:var(--font-display); font-weight:800; font-size:64px; line-height:1.0;
+  letter-spacing:-.03em; color:var(--text-primary); margin-bottom:8px;
+}
+.cover h1 em{font-style:normal; color:var(--primary)}
+.cover .sub{
+  font-size:17px; color:var(--text-secondary); max-width:620px; line-height:1.5; margin-bottom:36px;
+}
+.metarow{display:flex; flex-wrap:wrap; gap:0; border-top:1px solid var(--border); }
+.metarow .m{padding:14px 22px 14px 0; margin-right:22px; border-right:1px solid var(--border)}
+.metarow .m:last-child{border-right:none}
+.metarow .lbl{font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-tertiary); margin-bottom:4px}
+.metarow .val{font-size:13px; color:var(--text-primary); font-weight:500}
+.metarow .val.mono{font-family:var(--font-mono); font-size:12px}
+
+/* ---------- Section ---------- */
+.divider{display:flex; align-items:center; gap:14px; margin:64px 0 24px}
+.divider .num{
+  font-family:var(--font-mono); font-size:11px; font-weight:600; color:var(--text-on-accent);
+  background:var(--primary); padding:3px 8px; border-radius:var(--r-xs);
+}
+.divider .lbl{font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--primary); font-weight:600}
+.divider .line{flex:1; height:1px; background:var(--border-strong)}
+h2{font-family:var(--font-body); font-size:28px; font-weight:700; letter-spacing:-.015em; line-height:1.2; margin:0 0 16px; color:var(--text-primary)}
+h3{font-size:20px; font-weight:600; letter-spacing:-.01em; margin:32px 0 12px; color:var(--text-primary)}
+h4{font-size:15px; font-weight:600; margin:0 0 6px; color:var(--text-primary)}
+p{margin:0 0 14px; color:var(--text-primary)}
+p.muted{color:var(--text-secondary)}
+a{color:var(--primary); text-decoration:none; border-bottom:1px solid rgba(209,255,0,.3)}
+strong{color:var(--text-primary); font-weight:600}
+ul,ol{margin:0 0 18px; padding-left:22px}
+li{margin-bottom:8px; color:var(--text-primary)}
+code{font-family:var(--font-mono); font-size:12.5px; background:var(--surface-3); color:var(--primary-soft); padding:1px 6px; border-radius:var(--r-xs); border:1px solid var(--border)}
+
+/* ---------- Callouts ---------- */
+.callout{border-radius:var(--r-xs); padding:16px 20px; margin:0 0 22px; background:var(--surface); border-left:3px solid var(--info)}
+.callout.accent{background:var(--accent-12); border-left-color:var(--primary)}
+.callout.warning{border-left-color:var(--warning)}
+.callout.error{border-left-color:var(--error)}
+.callout .ct{font-size:11px; letter-spacing:.08em; text-transform:uppercase; font-weight:600; margin-bottom:6px}
+.callout.accent .ct{color:var(--primary)} .callout.warning .ct{color:var(--warning)}
+.callout.error .ct{color:var(--error)} .callout.info .ct{color:var(--info)}
+.callout p:last-child{margin-bottom:0}
+.bignote{background:var(--surface-2); border:1px solid var(--error); border-left:4px solid var(--error); border-radius:var(--r-md); padding:24px 28px; margin:0 0 28px}
+.bignote h4{color:var(--error); font-size:13px; letter-spacing:.06em; text-transform:uppercase; margin-bottom:10px}
+.bignote .hl{color:var(--primary); font-weight:600}
+
+/* ---------- Cards ---------- */
+.cards{display:grid; grid-template-columns:repeat(auto-fill,minmax(330px,1fr)); gap:16px; margin:0 0 24px}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--r-md); padding:22px}
+.card .cn{font-family:var(--font-mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--primary); margin-bottom:8px}
+.card h4{font-size:16px; margin-bottom:10px}
+.card .field{margin:8px 0}
+.card .fl{font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--text-tertiary); display:block; margin-bottom:2px}
+.card .fv{font-size:13.5px; color:var(--text-primary)}
+.card .fv.head{color:var(--primary-soft); font-weight:500}
+
+/* ---------- Tables ---------- */
+.tablewrap{overflow-x:auto; margin:0 0 24px; border:1px solid var(--border); border-radius:var(--r-md)}
+table{width:100%; border-collapse:collapse; font-size:13px}
+thead th{background:var(--surface-2); color:var(--text-primary); text-align:left; font-size:11px; letter-spacing:.06em; text-transform:uppercase; font-weight:600; padding:12px 16px; border-bottom:1px solid var(--border-strong)}
+tbody td{padding:12px 16px; border-bottom:1px solid var(--border); color:var(--text-primary); vertical-align:top; line-height:1.55}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even) td{background:rgba(209,255,0,.022)}
+td code, th code{font-size:12px}
+
+/* ---------- Pills ---------- */
+.pill{display:inline-block; font-family:var(--font-mono); font-size:10px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; padding:3px 9px; border-radius:var(--r-pill); border:1px solid var(--border-strong); white-space:nowrap}
+.pill.ok{color:var(--success); border-color:rgba(123,201,123,.4); background:rgba(123,201,123,.08)}
+.pill.block{color:var(--error); border-color:rgba(224,83,61,.45); background:rgba(224,83,61,.1)}
+.pill.warn{color:var(--warning); border-color:rgba(232,178,58,.4); background:rgba(232,178,58,.08)}
+.pill.neutral{color:var(--primary); background:var(--surface-3)}
+
+/* ---------- Code block ---------- */
+.code{background:var(--surface-2); border:1px solid var(--border); border-radius:var(--r-md); padding:16px 18px; margin:0 0 22px; overflow-x:auto}
+.code pre{font-family:var(--font-mono); font-size:12.5px; line-height:1.7; color:var(--primary-soft); white-space:pre}
+.code .cm{color:var(--text-tertiary)}
+
+/* ---------- Two-col compare ---------- */
+.compare{display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--border); border-radius:var(--r-md); overflow:hidden; margin:0 0 24px}
+.compare .colh{padding:12px 18px; font-size:11px; letter-spacing:.06em; text-transform:uppercase; font-weight:600; background:var(--surface-2); border-bottom:1px solid var(--border-strong)}
+.compare .ok-h{color:var(--success)} .compare .no-h{color:var(--text-tertiary); border-left:1px solid var(--border)}
+.compare ul{margin:0; padding:18px 18px 18px 36px; list-style:none}
+.compare ul li{position:relative; font-size:13px; margin-bottom:10px}
+.compare .ok-c li::before{content:"✓"; position:absolute; left:-22px; color:var(--success); font-weight:700}
+.compare .no-c{border-left:1px solid var(--border)}
+.compare .no-c li{color:var(--text-secondary)}
+.compare .no-c li::before{content:"✕"; position:absolute; left:-22px; color:var(--text-tertiary)}
+
+/* ---------- Exec steps ---------- */
+.steps{counter-reset:step; list-style:none; padding:0; margin:0 0 24px}
+.steps li{position:relative; padding:0 0 18px 48px; margin:0}
+.steps li::before{
+  counter-increment:step; content:counter(step,decimal-leading-zero);
+  position:absolute; left:0; top:0; font-family:var(--font-mono); font-size:12px; font-weight:600;
+  color:var(--primary); border:1px solid var(--border-strong); border-radius:var(--r-sm);
+  width:32px; height:32px; display:flex; align-items:center; justify-content:center; background:var(--surface);
+}
+.steps li:not(:last-child)::after{content:""; position:absolute; left:15px; top:32px; bottom:0; width:1px; background:var(--border)}
+
+/* ---------- Footer trigger ---------- */
+.trigger{margin-top:64px; background:var(--surface); border:1px solid var(--border-strong); border-radius:var(--r-lg); padding:36px 32px; text-align:center}
+.trigger .tl{font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--text-secondary); margin-bottom:16px}
+.cmd{display:inline-block; font-family:var(--font-mono); font-size:15px; font-weight:600; background:var(--primary); color:var(--text-on-accent); padding:14px 26px; border-radius:var(--r-sm); text-transform:none; letter-spacing:0}
+.trigger .cond{font-size:12.5px; color:var(--text-tertiary); margin-top:16px}
+.aux{margin-top:18px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap}
+.aux code{background:var(--surface-3); color:var(--primary); border-color:var(--border-strong); padding:5px 11px; font-size:11.5px}
+
+footer.fin{margin-top:48px; padding-top:24px; border-top:1px solid var(--border); font-size:11px; color:var(--text-tertiary); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px}
+footer.fin .sig{color:var(--primary)}
+
+@media (max-width:680px){
+  .cover h1{font-size:42px} .compare{grid-template-columns:1fr}
+  .compare .no-c{border-left:none; border-top:1px solid var(--border)}
+  .compare .no-h{border-left:none}
+}
+@media print{
+  body{font-size:11px} .wrap{padding:0 0 40px} .cover{margin:0 0 32px}
+  .divider{margin:36px 0 16px} .trigger{break-inside:avoid}
+  .tablewrap,.card,.bignote,.steps li{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<header class="cover">
+  <div class="wrap" style="padding-bottom:0">
+    <div class="kicker">AIOX · Traffic Masters Chief — Tier 1 Google (@kasim-aslam)</div>
+    <h1>Intenção de <em>Luxo</em></h1>
+    <p class="sub">Bretda — Blueprint nível-parâmetro para Google Demand Gen / YouTube. Audiência modelada por Custom Segment como substituto honesto do Lookalike de comprador que a conta ainda não pode montar.</p>
+    <div class="metarow">
+      <div class="m"><div class="lbl">Data</div><div class="val">25 Mai 2026</div></div>
+      <div class="m"><div class="lbl">Status</div><div class="val"><span class="pill warn">Planejamento · 0 escrita</span></div></div>
+      <div class="m"><div class="lbl">Canal</div><div class="val">Demand Gen / YouTube</div></div>
+      <div class="m"><div class="lbl">Conta Google</div><div class="val mono">8167636084 · MCC 7943699417</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ============ ATENÇÃO ============ -->
+<div class="bignote">
+  <h4>⛔ Leia antes de qualquer coisa</h4>
+  <p><span class="hl">Este plano não pode gastar 1 centavo enquanto a "Fundação" não estiver verde.</span> A conta Google da Bretda hoje está <strong>cega pra vendas</strong>. Subir tráfego pago numa conta que não enxerga conversão real é exatamente a "doença" já diagnosticada nas 3 contas (Bretda / Tocks / KR): otimizar por volume/vaidade em vez de por comprador.</p>
+  <p class="muted">Demand Gen é uma campanha de IA — ela <strong>precisa</strong> de sinal de conversão pra aprender. Sem <code>close-sale</code> ligado, o algoritmo otimiza por clique barato e entrega lixo. <strong>Foundation First é inegociável (Quality Gate #1).</strong></p>
+</div>
+
+<div class="callout warning col">
+  <div class="ct">⚠️ Nota de proveniência</div>
+  <p style="margin-bottom:0">O <code>mcp-ads-bridge</code> não estava disponível na sessão que escreveu este blueprint, então não houve leitura ao vivo aqui. <strong>Porém</strong> a Fundação §1 foi reconciliada com um snapshot LIVE de hoje (25/Mai, OAuth já restaurado). Números de saldo/conversão decaem — re-verificar no momento de executar. Estimativas estão marcadas com 📊.</p>
+</div>
+
+<!-- ============ 1. FOUNDATION ============ -->
+<div class="divider"><span class="num">01</span><span class="lbl">Pré-requisitos bloqueantes</span><span class="line"></span></div>
+<h2>Foundation First — verde antes de gastar</h2>
+<p class="muted col">Nada do §2 em diante pode rodar enquanto estes itens não estiverem confirmados VERDES.</p>
+
+<div class="tablewrap">
+<table>
+<thead><tr><th style="width:42px">#</th><th>Item</th><th style="width:130px">Status (live 25/Mai)</th><th style="width:120px">Quem resolve</th><th style="width:90px">Bloqueia?</th></tr></thead>
+<tbody>
+<tr><td><code>F-1</code></td><td><strong>OAuth Google válido</strong> — <code>ads_connection_test</code> PASS</td><td><span class="pill ok">🟢 Verde</span></td><td>—</td><td>resolvido</td></tr>
+<tr><td><code>F-2</code></td><td><strong>Close-sale / conversão de venda EM USO</strong> — a conta enxerga VENDA real. A ação offline <code>Bretda Sale Closed (Offline OC)</code> existe mas <strong>nunca recebeu upload</strong>: configurada mas operacionalmente cega. Mínimo viável: garantir que o lead biddable dispare na LP. Ideal: iniciar rotina de upload de OC (close-sale) do CRM.</td><td><span class="pill block">🔴 OC nunca usada</span></td><td>Founder + @kasim-aslam</td><td><span class="pill block">Hard block</span></td></tr>
+<tr><td><code>F-3</code></td><td><strong>Conversões PRIMARY enxugadas (máx 2)</strong> — hoje há <strong>5 PRIMARY</strong>: OC R$1500 + Lead Form Web R$1500 + Lead Pág. Obrigado R$1500 + <code>[AGD] Lead</code> R$100 (fantasma) + <code>Contato</code> R$0. Otimizar contra 5 PRIMARY infla e confunde o algoritmo. Demotar tudo menos 2 (manter: venda OC + 1 lead biddable; zerar <code>default_value</code> dos leads).</td><td><span class="pill block">🔴 5 PRIMARY</span></td><td>@kasim-aslam (sob aprovação)</td><td><span class="pill block">Hard block</span></td></tr>
+<tr><td><code>F-4</code></td><td><strong>Saldo / billing OK</strong> — runway &gt; 5 dias (via <code>display_string</code>, não o campo <code>balance</code>). Billing do Google é conta/cartão separado do Meta — confirmar live.</td><td><span class="pill warn">⚠️ Verificar</span></td><td>Founder</td><td><span class="pill block">Hard block</span></td></tr>
+<tr><td><code>F-5</code></td><td><strong>Timezone da conta = São Paulo</strong> — confirmado live ainda <code>America/Fortaleza</code> (ação UI de 05/Mai nunca feita). Operação de UI permanente.</td><td><span class="pill block">🔴 Fortaleza</span></td><td>Founder (UI)</td><td><span class="pill warn">Soft</span></td></tr>
+<tr><td><code>F-6</code></td><td><strong>LP de destino pronta e rastreada</strong> — coleção (Aurora/Citrino/Opal/Zurita/Âmbar) com tag de conversão disparando + sem preço na dobra. Audit live: <strong>post-click quality score = 2</strong> (LP abaixo da média) → afeta entrega/custo.</td><td><span class="pill warn">⚠️ QS2 fraca</span></td><td>Founder + @aios-dev</td><td><span class="pill block">Hard (tag)</span></td></tr>
+<tr><td><code>F-7</code></td><td><strong>Domínios dos concorrentes confirmados</strong> (ver §3 — Usal pendente)</td><td><span class="pill warn">🟡 4/5</span></td><td>Founder</td><td><span class="pill warn">Soft</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="callout accent col">
+  <div class="ct">Regra de ouro</div>
+  <p style="margin-bottom:0">Se <code>F-2</code>, <code>F-3</code>, <code>F-4</code> ou a tag de <code>F-6</code> estiver vermelho → <strong>HALT</strong>. A causa-raiz do "0 conversões" do Google hoje <strong>não é tag quebrada</strong> — é <strong>inanição estrutural</strong> (740 impressões/30d, ~90% budget-lost-IS) somada à conta nunca ter recebido upload de venda. O Demand Gen ataca a inanição, mas só vale a pena <strong>depois</strong> que a conta registra conversão real.</p>
+</div>
+
+<h3>Re-confirmação de estado live (rodar ao executar — valores decaem)</h3>
+<div class="code"><pre><span class="cm"># OAuth ainda fresh? (F-1)</span>
+ads_connection_test
+<span class="cm"># PRIMARY ainda 5? OC já recebeu upload? (F-2/F-3)</span>
+google_ads_conversion_actions &lt;customer_id&gt;
+<span class="cm"># saldo/runway Google via display_string (F-4)</span>
+google_ads_overview &lt;customer_id&gt;</pre></div>
+
+<!-- ============ 2. ESTRUTURA ============ -->
+<div class="divider"><span class="num">02</span><span class="lbl">Estrutura da campanha</span><span class="line"></span></div>
+<h2>Uma campanha, dois sinais</h2>
+
+<div class="tablewrap">
+<table>
+<thead><tr><th style="width:160px">Parâmetro</th><th style="width:230px">Valor</th><th>Por quê</th></tr></thead>
+<tbody>
+<tr><td><strong>Tipo</strong></td><td>Demand Gen <span class="pill neutral">não PMax</span> <span class="pill neutral">não Search</span></td><td>Único formato que entrega no YouTube + Shorts + Discover + Gmail com audiência MODELADA a partir de Custom Segment. Substituto honesto do LAL de comprador que a Bretda ainda não pode montar (&lt;100 clientes).</td></tr>
+<tr><td><strong>Nome</strong></td><td><code>[DG] Intenção de Luxo — YouTube/Discover — 2026-05-25</code></td><td>Naming consistente com a convenção da conta</td></tr>
+<tr><td><strong>Objetivo</strong></td><td>Leads / "Visualizações de página + Lead"</td><td>Bretda vende ticket alto sob consulta → o evento de valor é <strong>lead qualificado por FIT</strong>, não venda direta no site</td></tr>
+<tr><td><strong>Meta de conversão</strong></td><td>A conversão de Lead qualificado (F-2/F-3). NUNCA cliques/views</td><td>Evita a doença de vaidade</td></tr>
+<tr><td><strong>Status inicial</strong></td><td><span class="pill warn">PAUSED</span></td><td>Sobe pausada, founder aprova, só então ENABLE</td></tr>
+<tr><td><strong>Nº de ad groups</strong></td><td><strong>2</strong></td><td>Separar os dois sinais de Custom Segment pra medir qual traz lead melhor — não misturar</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>Lógica de separação dos 2 ad groups</h3>
+<div class="callout accent col">
+  <p style="margin-bottom:0">A separação <strong>não é por geo nem por criativo</strong> — é pelo <strong>tipo de sinal de audiência</strong>. Os dois sinais têm qualidade e custo diferentes e precisam ser medidos separados. Mesmo geo, mesmo criativo nos dois, só muda o Custom Segment anexado.</p>
+</div>
+<div class="cards">
+  <div class="card">
+    <div class="cn">AG-1</div>
+    <h4>Concorrente (sites de luxo)</h4>
+    <p class="muted" style="font-size:13.5px;margin-bottom:0">Custom Segment por <strong>URL de concorrente</strong> (audiência modelada "parecida com quem navega esses sites"). Sinal mais largo, topo de funil, CPL mais alto e lead mais frio. <span style="color:var(--text-secondary)">Hipótese a testar.</span></p>
+  </div>
+  <div class="card" style="border-color:var(--border-strong)">
+    <div class="cn" style="color:var(--primary)">AG-2 · aposta principal</div>
+    <h4>Intenção de Categoria (termos)</h4>
+    <p class="muted" style="font-size:13.5px;margin-bottom:0">Custom Segment por <strong>termos de busca de categoria de luxo</strong>. Sinal mais quente (a pessoa pesquisou ativamente). CPL menor e lead melhor.</p>
+  </div>
+</div>
+<p class="muted col">Medir AG-1 vs AG-2 no kill-gate (§7) e realocar budget pro vencedor.</p>
+
+<!-- ============ 3. CUSTOM SEGMENT ============ -->
+<div class="divider"><span class="num">03</span><span class="lbl">O Custom Segment (exato)</span><span class="line"></span></div>
+<h2>A diferença que importa</h2>
+<p class="col">O Google oferece dois botões ao montar um Custom Segment, e eles fazem coisas diferentes:</p>
+
+<div class="cards">
+  <div class="card" style="border-color:var(--border-strong)">
+    <div class="cn" style="color:var(--success)">Sinal quente → AG-2</div>
+    <h4>"Pessoas que pesquisaram estes termos"</h4>
+    <p class="muted" style="font-size:13.5px;margin-bottom:0">Mira <strong>comportamento ATIVO recente</strong>: gente que digitou aquilo na Busca/YouTube nos últimos dias. É o sinal mais quente e mais honesto — a pessoa demonstrou interesse de fato.</p>
+  </div>
+  <div class="card">
+    <div class="cn" style="color:var(--warning)">Sinal frio/modelado → AG-1</div>
+    <h4>"Pessoas com estes interesses" + URLs</h4>
+    <p class="muted" style="font-size:13.5px;margin-bottom:0">Mira gente cujo <strong>comportamento de navegação se parece</strong> com quem visita aqueles sites. <strong>Não são os visitantes reais dos concorrentes</strong> — é audiência modelada/lookalike. O Google usa o domínio inteiro e ignora a página específica.</p>
+  </div>
+</div>
+
+<div class="callout accent col">
+  <div class="ct">Resumo honesto</div>
+  <p style="margin-bottom:0">Não estamos "roubando a audiência do Breton". Estamos dizendo ao Google <em>"ache gente que se comporta como quem se interessa por móvel de luxo desse tipo"</em> — e o algoritmo modela. Por isso o <strong>AG-2 (termos)</strong> é a aposta principal e o <strong>AG-1 (URLs)</strong> é o experimento de topo.</p>
+</div>
+
+<h3>3.2 · Lista de URLs de concorrentes — AG-1</h3>
+<p class="muted col">Formato aceito pelo Google (domínio sem <code>https://</code>, sem <code>www</code>, sem caminho):</p>
+<div class="code"><pre>breton.com.br
+artefacto.com.br
+mulapreta.com
+boobam.com.br</pre></div>
+<div class="callout warning col">
+  <div class="ct">🟡 Usal — pendente confirmação do founder</div>
+  <p style="margin-bottom:0">A busca pública só achou <code>usalproject.com</code>, que é uma marca de OUTDOOR de Los Angeles (não a marca de móveis BR citada). Não vou inventar domínio. Founder precisa confirmar a URL exata da "Usal" móveis BR — até lá AG-1 sobe com 4 domínios. <strong>TODO →</strong> <code>usal dominio aqui {url}</code></p>
+</div>
+<div class="callout info col">
+  <div class="ct">Expansão opcional (founder decide)</div>
+  <p style="margin-bottom:0">Adicionar mais sinais de domínio de luxo adjacente pra dar volume ao modelo — ex.: <code>westwing.com.br</code>, <code>dpot.com.br</code>, <code>micasa.com.br</code>. Não adicionar sem aprovação; cada domínio extra dilui o foco.</p>
+</div>
+
+<h3>3.3 · Lista de termos de categoria de luxo — AG-2</h3>
+<p class="muted col">Sem marca de concorrente (evita risco STJ). Foco no objeto + qualificador de luxo/sob-medida:</p>
+<div class="code"><pre>mesa de sinuca de luxo
+mesa de bilhar sob medida
+mesa de sinuca madeira maciça
+mesa de jantar de luxo sob medida
+mesa de jantar madeira maciça grande
+móveis de luxo sob medida
+mobiliário de alto padrão
+mesa de bilhar premium
+mesa de sinuca personalizada
+marcenaria de luxo
+móveis assinados design brasileiro
+mesa de jantar 12 lugares madeira</pre></div>
+<div class="callout warning col">
+  <p style="margin-bottom:0">Refinar com base no portfólio real (Aurora/Citrino/Opal/Zurita/Âmbar = sinuca; linha jantar). <strong>Não incluir nome de concorrente como termo</strong> (seria conquesting de marca → risco STJ).</p>
+</div>
+
+<!-- ============ 4. SEGMENTAÇÃO ============ -->
+<div class="divider"><span class="num">04</span><span class="lbl">Segmentação complementar</span><span class="line"></span></div>
+<h2>Camadas de targeting</h2>
+<div class="tablewrap">
+<table>
+<thead><tr><th style="width:130px">Camada</th><th style="width:48%">Configuração</th><th>Justificativa</th></tr></thead>
+<tbody>
+<tr><td><strong>Geo</strong></td><td>Brasil (2076) com <strong>PRESENCE</strong> ("pessoas que estão/frequentam", não "interesse no local"). Capitais + regiões de alta renda, <strong>não isolar só Sudeste</strong> (gotcha G-011): SP capital + interior rico (Campinas/Ribeirão), RJ (zona sul/Barra), DF, BH, Curitiba, Floripa, Balneário Camboriú, Goiânia, capitais NE (Recife/Fortaleza/Salvador).</td><td>Público de luxo BR é nacional, concentrado em bolsões de renda. PRESENCE evita quem só "pesquisou viagem pro Brasil".</td></tr>
+<tr><td><strong>Idade</strong></td><td>30–65</td><td>Decisor de compra de móvel de luxo sob encomenda</td></tr>
+<tr><td><strong>Renda</strong></td><td>Se disponível BR: <strong>Top 10% + 11–20%</strong>. ⚠️ Income targeting nem sempre disponível no Brasil — TODO confirmar. Se indisponível, o filtro vem do geo + Custom Segment de termos de luxo.</td><td>Reforça poder de compra sem mostrar preço</td></tr>
+<tr><td><strong>Devices</strong></td><td>Todos, leve preferência mobile (YouTube/Shorts é mobile-first). Não excluir desktop.</td><td>Decisão de móvel caro acontece no desktop também</td></tr>
+<tr><td><strong>Idioma</strong></td><td>Português (1014)</td><td>Mercado BR</td></tr>
+<tr><td><strong>Exclusões</strong></td><td>(a) RTG do próprio site (isto é prospecção); (b) cargo <strong>arquiteto/designer de interior</strong> se disponível (mirar comprador-final, não o revendedor); (c) placements infantis/games no YouTube.</td><td>Evita canibalizar RTG, evita gastar com intermediário, protege a marca</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- ============ 5. CRIATIVO ============ -->
+<div class="divider"><span class="num">05</span><span class="lbl">Criativo</span><span class="line"></span></div>
+<h2>Sem preço — regra inegociável</h2>
+<div class="bignote" style="border-color:var(--primary); border-left-color:var(--primary)">
+  <h4 style="color:var(--primary)">🔴 Nenhum preço, "a partir de", "parcelas", "R$" ou desconto</h4>
+  <p style="margin-bottom:0" class="muted">Em criativo, headline, descrição ou thumbnail. Posicionamento luxo — decisão dos donos. O filtro de orçamento do lead vem da <strong>qualificação por FIT</strong>, não do preço no anúncio.</p>
+</div>
+
+<div class="callout accent col">
+  <div class="ct">🟢 Decisão do founder — lançar IMAGE-ONLY</div>
+  <p>Demand Gen <strong>não exige vídeo</strong>. Imagem única/carrossel é formato completo de lançamento — e a Bretda <strong>já tem a fotografia profissional de produto/ambiente</strong> (as mesmas lifestyle do site). Zero produção nova pra começar.</p>
+  <p style="margin-bottom:0">Com imagem, o anúncio entrega em <strong>Discover + Gmail + feed do YouTube</strong> (a maior fatia). Fica de fora só o <strong>in-stream e o grosso do Shorts</strong> (esses pedem vídeo). <strong>Vídeo vira Fase 2 opcional</strong> — só se o teste de 14d validar o ângulo, e gerável das próprias fotos.</p>
+</div>
+
+<h3>Specs Demand Gen (Google Ads Help 2025)</h3>
+<div class="tablewrap">
+<table>
+<thead><tr><th style="width:90px">Asset</th><th>Especificação</th></tr></thead>
+<tbody>
+<tr><td><strong>Imagem</strong><br><span class="pill ok" style="margin-top:6px">Lançamento</span></td><td>Aspect ratios <strong>1.91:1</strong> (landscape), <strong>1:1</strong> (square), <strong>4:5</strong> (portrait). Subir as 3 proporções de cada conceito. Foco em <strong>ambiente/lifestyle</strong> (a mesa montada num salão sofisticado), não foto técnica fundo-branco. <em>Serve em Discover + Gmail + feed do YouTube.</em></td></tr>
+<tr><td><strong>Vídeo</strong><br><span class="pill warn" style="margin-top:6px">Fase 2</span></td><td>Opcional — <strong>não bloqueia o lançamento.</strong> Entra só se o ângulo validar (kill-gate 14d); desbloqueia in-stream + Shorts. <strong>Gerável das fotos existentes</strong> (pan/zoom ou IA imagem→vídeo, 8–20s, hook nos 3s, sem preço). YouTube, 16:9 / 1:1 / 4:5 / 9:16, MP4 / H.264.</td></tr>
+<tr><td><strong>Texto</strong></td><td>Até <strong>5 headlines × 40 caracteres</strong> · até <strong>5 descrições × 90 caracteres</strong> · business name 25 caracteres ("Bretda").</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>5 conceitos — comprador-final de luxo, sem preço</h3>
+<div class="cards">
+  <div class="card">
+    <div class="cn">Conceito 1 · Herança</div>
+    <h4>Passa de geração</h4>
+    <div class="field"><span class="fl">Headline</span><span class="fv head">A mesa que vira herança de família</span></div>
+    <div class="field"><span class="fl">Headline</span><span class="fv head">Feita à mão para durar décadas</span></div>
+    <div class="field"><span class="fl">Descrição</span><span class="fv">Madeira maciça selecionada, marcenaria autoral. Uma peça única para o seu salão.</span></div>
+    <div class="field"><span class="fl">Formato</span><span class="fv">Imagem 1.91:1 + 4:5, peça em ambiente residencial sofisticado.</span></div>
+  </div>
+  <div class="card">
+    <div class="cn">Conceito 2 · Artesanato</div>
+    <h4>Mestre marceneiro</h4>
+    <div class="field"><span class="fl">Headline</span><span class="fv head">O trabalho de um mestre marceneiro</span></div>
+    <div class="field"><span class="fl">Headline</span><span class="fv head">Cada detalhe pensado à mão</span></div>
+    <div class="field"><span class="fl">Descrição</span><span class="fv">Da seleção da madeira ao acabamento final. Mobiliário de alto padrão sob encomenda.</span></div>
+    <div class="field"><span class="fl">Formato</span><span class="fv">Imagem 1:1 + 4:5, close do acabamento / textura da madeira.</span></div>
+  </div>
+  <div class="card">
+    <div class="cn">Conceito 3 · Sob medida</div>
+    <h4>Exclusividade</h4>
+    <div class="field"><span class="fl">Headline</span><span class="fv head">Sua mesa, do seu jeito, só sua</span></div>
+    <div class="field"><span class="fl">Headline</span><span class="fv head">Sob medida para o seu ambiente</span></div>
+    <div class="field"><span class="fl">Descrição</span><span class="fv">Tamanho, madeira e acabamento personalizados. Exclusividade que combina com sua casa.</span></div>
+    <div class="field"><span class="fl">Formato</span><span class="fv">Imagem 4:5 + 1:1 da peça (Aurora/Opal) em ambiente amplo.</span></div>
+  </div>
+  <div class="card">
+    <div class="cn">Conceito 4 · Ambiente</div>
+    <h4>O salão dos sonhos</h4>
+    <div class="field"><span class="fl">Headline</span><span class="fv head">O salão de jogos que você sempre quis</span></div>
+    <div class="field"><span class="fl">Headline</span><span class="fv head">Design assinado para a sua casa</span></div>
+    <div class="field"><span class="fl">Descrição</span><span class="fv">Mesas de sinuca e jantar que transformam o ambiente. Peças de design brasileiro autoral.</span></div>
+    <div class="field"><span class="fl">Formato</span><span class="fv">Imagem 1.91:1 lifestyle (ambiente elegante em volta da mesa).</span></div>
+  </div>
+  <div class="card" style="border-color:var(--border-strong)">
+    <div class="cn" style="color:var(--primary)">Conceito 5 · CTA de lead</div>
+    <h4>Convite consultivo</h4>
+    <div class="field"><span class="fl">Headline</span><span class="fv head">Converse com nosso atelier</span></div>
+    <div class="field"><span class="fl">Headline</span><span class="fv head">Projete a sua peça exclusiva</span></div>
+    <div class="field"><span class="fl">Descrição</span><span class="fv">Atendimento personalizado para criar o móvel de luxo da sua casa. Fale com um especialista.</span></div>
+    <div class="field"><span class="fl">CTA</span><span class="fv">"Saiba mais" / "Fale conosco" → LP de coleção com formulário de lead.</span></div>
+  </div>
+</div>
+<div class="callout accent col">
+  <p style="margin-bottom:0">Os 5 conceitos rodam <strong>iguais nos 2 ad groups</strong> (única variável = sinal de audiência). Ativar 3 conceitos no D+0 (1, 3, 5); guardar 2 e 4 como variação de rotação após o primeiro aprendizado — evita fragmentar o orçamento de teste.</p>
+</div>
+
+<!-- ============ 6. LANCE E ORÇAMENTO ============ -->
+<div class="divider"><span class="num">06</span><span class="lbl">Lance e orçamento</span><span class="line"></span></div>
+<h2>Deixar a IA aprender antes de travar o alvo</h2>
+<div class="tablewrap">
+<table>
+<thead><tr><th style="width:230px">Fase</th><th style="width:200px">Estratégia</th><th>Por quê</th></tr></thead>
+<tbody>
+<tr><td><strong>D+0 → primeiras ~15-20 conv</strong></td><td>Maximize Conversions (sem tCPA)</td><td>Conta nova + conversão imaculada precisa de volume de aprendizado ANTES de travar num alvo de CPA. Travar tCPA cedo sufoca a entrega e o algoritmo nunca aprende. Demand Gen é IA — deixa ela explorar primeiro.</td></tr>
+<tr><td><strong>Após ~15-20 conv / ~D+14</strong></td><td>Migrar para tCPA (alvo = mediana do CPL real)</td><td>Só depois de ter baseline real de CPL é honesto travar tCPA. Define o alvo pelo dado, não pelo chute.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="callout info col">
+  <p style="margin-bottom:0">Espelha a regra "Smart Bidding só com baseline" já usada em Search. Aqui o baseline se forma nos primeiros 14 dias em Maximize Conversions.</p>
+</div>
+
+<h3>Orçamento de teste</h3>
+<div class="cards">
+  <div class="card" style="border-color:var(--border-strong)">
+    <div class="cn" style="color:var(--primary)">Diário</div>
+    <h4 style="font-size:28px;font-family:var(--font-display);color:var(--primary)">R$ 50<span style="font-size:14px;color:var(--text-secondary);font-family:var(--font-body)">/dia</span></h4>
+    <p class="muted" style="font-size:13px;margin-bottom:0">CBO entre os 2 ad groups. Faixa aceitável R$ 30–50. Abaixo de R$30 o Demand Gen mal sai do learning.</p>
+  </div>
+  <div class="card">
+    <div class="cn">Teto de risco (14d)</div>
+    <h4 style="font-size:28px;font-family:var(--font-display)">~R$ 700</h4>
+    <p class="muted" style="font-size:13px;margin-bottom:0">R$50/dia × 14d = risco máximo do experimento antes do kill-gate.</p>
+  </div>
+  <div class="card">
+    <div class="cn">CPL estimado 📊</div>
+    <h4 style="font-size:28px;font-family:var(--font-display)">R$ 30–80</h4>
+    <p class="muted" style="font-size:13px;margin-bottom:0">Estimativa sem dado live. Ticket alto + funil longo → lead raro e mais caro. Gera ~1–2 leads/dia.</p>
+  </div>
+</div>
+<div class="callout warning col">
+  <p style="margin-bottom:0"><strong>Regra de escala (Quality Gate #7):</strong> quando escalar, máx <strong>+20%/dia</strong> (cap +30%), nunca 2x.</p>
+</div>
+
+<!-- ============ 7. MEDIÇÃO ============ -->
+<div class="divider"><span class="num">07</span><span class="lbl">Medição e kill-gate</span><span class="line"></span></div>
+<h2>Anti-doença de vaidade</h2>
+<div class="compare">
+  <div class="colh ok-h">✅ Observar — sinal de comprador</div>
+  <div class="colh no-h">🚫 Ignorar — vaidade</div>
+  <ul class="ok-c">
+    <li><strong>Leads qualificados por FIT</strong> (ambiente, orçamento real, prazo)</li>
+    <li><strong>CPL de lead qualificado</strong> (custo por lead que presta)</li>
+    <li><strong>Taxa lead→conversa→proposta</strong></li>
+    <li><strong>Qual AG</strong> (URL vs termos) traz lead melhor</li>
+    <li><strong>CPA real de venda</strong> (quando close-sale amadurecer)</li>
+  </ul>
+  <ul class="no-c">
+    <li>Volume bruto de cliques</li>
+    <li>CTR alto isolado</li>
+    <li>Impressões / views</li>
+    <li>"Engajamento" do YouTube</li>
+    <li>CPL "barato" de lead lixo</li>
+  </ul>
+</div>
+<div class="callout accent col">
+  <p style="margin-bottom:0">A doença diagnosticada nas 3 contas foi otimizar por volume/clique barato. Aqui o veredito é sempre <strong>qualidade do lead por FIT</strong>, validada com o time de vendas — não o número que o painel exibe maior.</p>
+</div>
+
+<h3>Kill-gate objetivo — janela de 14 dias</h3>
+<div class="tablewrap">
+<table>
+<thead><tr><th style="width:55%">Cenário em D+14</th><th>Decisão</th></tr></thead>
+<tbody>
+<tr><td>≥ 1 lead <strong>qualificado por FIT</strong> com CPL ≤ ~R$ 80 (📊 alvo) E AG vencedor identificado</td><td><span class="pill ok">Escalar</span> o AG vencedor +20%/dia; migrar pra tCPA</td></tr>
+<tr><td>Leads chegam mas <strong>nenhum</strong> passa no FIT (todos lixo/curiosos)</td><td><span class="pill block">Matar o ângulo</span> de concorrente. Volta o foco 100% pro motor Meta (blueprint 23/Mai)</td></tr>
+<tr><td>CPL de lead qualificado &gt; ~R$ 150 sustentado</td><td><span class="pill warn">Pausar</span>, revisar criativo/segmento antes de gastar mais</td></tr>
+<tr><td>Zero conversão / entrega travada em learning</td><td><span class="pill block">HALT + diagnosticar</span> (provável conversão/tag quebrada → volta pra Foundation §1)</td></tr>
+</tbody>
+</table>
+</div>
+<div class="callout info col">
+  <p style="margin-bottom:0"><strong>Checkpoints intermediários:</strong> D+3 (saiu do learning? gasto dentro?), D+7 (primeiros leads — qualidade preliminar). Sem decisão de escala antes de D+14 (não thrashing de dados).</p>
+</div>
+
+<!-- ============ 8. SEQUÊNCIA ============ -->
+<div class="divider"><span class="num">08</span><span class="lbl">Sequência de execução</span><span class="line"></span></div>
+<h2>Ordem exata (descrita, não executada)</h2>
+<p class="muted col">Quando o founder aprovar <strong>e</strong> a Fundação (§1) estiver verde:</p>
+<ol class="steps">
+  <li><strong>Pre-flight</strong> — <code>ads_connection_test</code> (OAuth fresh — estava VERDE 25/Mai). Se 401 → HALT, pede reauth.</li>
+  <li><strong>Foundation gate</strong> — <code>google_ads_conversion_actions</code> confirma ≤2 PRIMARY (demotar <code>[AGD] Lead</code>, <code>Contato</code> e um R$1500 pra SECONDARY; zerar <code>default_value</code> dos leads) + sinal de conversão fluindo. <code>google_ads_overview</code> confirma runway. Se vermelho → HALT. <em>A demoção de PRIMARY é WRITE → entra no triple-gate e exige aprovação.</em></li>
+  <li><strong>Jarvis self-consultation</strong> (Quality Gate nova campanha): conclave 3 experts sobre o setup Demand Gen Bretda antes de criar.</li>
+  <li><strong>Criar 2 Custom Segments</strong>: <code>CS-Concorrente-URLs</code> (4 domínios §3.2) e <code>CS-Categoria-Luxo-Termos</code> (§3.3).</li>
+  <li><strong>Criar campanha</strong> <code>[DG] Intenção de Luxo</code> PAUSED — Leads, Maximize Conversions, CBO R$50/d, geo BR 2076 PRESENCE não-isolado-Sudeste, idade 30-65, pt, exclusões §4.</li>
+  <li><strong>Criar AG-1</strong> + anexar <code>CS-Concorrente-URLs</code>. <strong>Criar AG-2</strong> + anexar <code>CS-Categoria-Luxo-Termos</code>.</li>
+  <li><strong>Subir assets</strong> (imagens 1.91:1/1:1/4:5 das fotos existentes — vídeo é Fase 2 opcional) e montar 3 ads (conceitos 1, 3, 5) em CADA ad group.</li>
+  <li><strong>Triple-gate de write</strong> em cada mutação: <code>ads_guardrails</code> OK → <code>ads_action_log</code> com <code>client_request_id</code> (UUID v4) → budget circuit-breaker.</li>
+  <li><strong>Deixar tudo PAUSED.</strong> Reportar ao founder pra revisão visual no painel.</li>
+  <li><strong>ENABLE só após "ok pode ligar"</strong> do founder. Pós-launch: <code>ads_action_log</code> verificado, memória atualizada, insights publicados, monitor D+3/D+7/D+14.</li>
+</ol>
+<div class="callout error col">
+  <div class="ct">Rollback</div>
+  <p style="margin-bottom:0">Qualquer anomalia (CPL absurdo, gasto disparado, conversão quebrada) → PAUSE a campanha (reversível) e diagnosticar. Saga: se a criação falhar no meio, reverter os recursos já criados.</p>
+</div>
+
+<!-- ============ DECISÕES + TODOs ============ -->
+<div class="divider"><span class="num">★</span><span class="lbl">Decisões fechadas &amp; TODOs</span><span class="line"></span></div>
+<div class="cards" style="grid-template-columns:1fr 1fr">
+  <div class="card">
+    <div class="cn" style="color:var(--success)">Decisões fechadas (não relitigar)</div>
+    <ul style="margin:8px 0 0;padding-left:18px;font-size:13.5px">
+      <li>Canal = Google Demand Gen/YouTube via Custom Segment. Meta descartado pra este ângulo (mantém blueprint 23/Mai).</li>
+      <li>Search conquesting de marca = <strong>PROIBIDO</strong> (risco STJ 09/07/2024).</li>
+      <li>Concorrentes: Breton, Mula Preta, Artefacto, Usal (domínio a confirmar), Boobam.</li>
+      <li>Nunca mostrar preço.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="cn" style="color:var(--warning)">TODOs explícitos (não inventados)</div>
+    <ul style="margin:8px 0 0;padding-left:18px;font-size:13px">
+      <li><strong>F-2 (HARD):</strong> sinal de conversão fluindo — lead biddable na LP e/ou rotina de upload de OC.</li>
+      <li><strong>F-3 (HARD):</strong> demotar PRIMARY 5→2, zerar <code>default_value</code> dos leads.</li>
+      <li><strong>F-4 (HARD):</strong> confirmar billing/saldo Google (conta separada do Meta).</li>
+      <li><strong>F-5 (soft):</strong> timezone Fortaleza → São Paulo (UI).</li>
+      <li><strong>F-6:</strong> revisar LP (QS=2) + confirmar tag dispara.</li>
+      <li>Domínio correto da "Usal" móveis BR.</li>
+      <li>Confirmar se income targeting está disponível na conta BR.</li>
+      <li>Refinar termos §3.3 com SKUs reais do portfólio.</li>
+      <li>Conclave Jarvis antes de criar (passo 3).</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============ TRIGGER ============ -->
+<div class="trigger">
+  <div class="tl">Comando-gatilho pro founder</div>
+  <span class="cmd">executa demand gen luxo bretda</span>
+  <div class="cond">Só roda após Foundation §1 verde + este consentimento por texto.</div>
+  <div class="aux">
+    <code>usal dominio aqui {url}</code>
+    <code>confirma conta bretda</code>
+    <code>liga close-sale bretda</code>
+    <code>revisa blueprint demand gen</code>
+  </div>
+</div>
+
+<footer class="fin">
+  <span>Bretda · Google Ads <span style="font-family:var(--font-mono)">8167636084</span> · MCC <span style="font-family:var(--font-mono)">7943699417</span></span>
+  <span class="sig">AIOX Squad — Dark Cockpit Edition · Traffic Masters Chief · 25 Mai 2026</span>
+</footer>
+
+</div>
+</body>
+</html>
