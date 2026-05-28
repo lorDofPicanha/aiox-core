@@ -358,6 +358,61 @@ npm run typecheck
 npm run build
 ```
 
+## Fase 5 execution result - 2026-05-28
+
+Owner sequence:
+
+- Orchestration: `@aios-master`
+- Legal/process owner: `@joel-de-menezes-niebuhr`
+- Implementation: `@dev`
+- Gate: `@qa`
+
+Result:
+
+- PASS: `NOYCE-LEGAL-01 - Legal/process fixture model`.
+- Implemented fixture-only domain model and UI panel for habilitation, process windows, decision points, appeal intent and appeal reasons.
+- External acts remain blocked by default.
+- Appeal intent remains structurally separate from appeal reasons.
+- No credentials, authenticated portal access, production database, push or deploy.
+
+Validation evidence:
+
+- PASS: `node docs/projects/buscador-licitacoes/02-architecture/fixtures/validate-fixtures.mjs`
+- PASS: `node docs/projects/buscador-licitacoes/02-architecture/scripts/sprint0-dry-run.mjs`
+- PASS: `npm test` in `apps/noyce` with 8 tests.
+- PASS: `npm run typecheck` in `apps/noyce`.
+- PASS: `npm run build` in `apps/noyce`.
+- PASS: Browser QA at `http://localhost:3100`, mobile 390px without horizontal overflow.
+
+Next agent:
+
+`@aios-master` should route the next slice to either `@cyber-chief` for Fase 7 security/vault preparation or `@data-engineer` for Fase 8 public/manual adapters. Authenticated automation remains blocked.
+
+## Fases 6-11 offline execution result - 2026-05-28
+
+Owner sequence:
+
+- Fase 6: `@pm`
+- Fase 7: `@cyber-chief`
+- Fase 8: `@data-engineer`
+- Fase 9: `@devops`
+- Fase 10: `@aios-master`
+- Fase 11: `@devops`
+
+Result:
+
+- PASS offline: execution pack `20-fases6-10-execution-pack-28mai.md`.
+- PASS app readiness: `/api/readiness` exposes `validation.ok=true`.
+- PASS UI readiness: dashboard shows offline phase status, tomorrow blockers and dry-run jobs.
+- BLOCKED human: ENIAC CNPJ/roles, vault mechanism, portal ToS review, production DB approval and permission for first real PNCP dry-run.
+- BLOCKED production: Fase 11 requires QA/security/devops/founder go/no-go.
+
+Validation evidence:
+
+- PASS: `npm test` in `apps/noyce` with readiness tests.
+- PASS: `npm run typecheck` in `apps/noyce`.
+- PASS: `npm run build` in `apps/noyce`.
+
 Blockers:
 
 - Push remains `@devops` only.
@@ -365,8 +420,29 @@ Blockers:
 
 ## Next delegation
 
-Current next agent: `@aios-master`.
+Current next agent: `@dev`.
 
 Instruction:
 
-Review Fase 4 Sprint 0 parity and delegate either score calibration with real outcomes later or legal/process modeling for Fase 5.
+Implement `NOYCE-LEGAL-01 - Legal/process fixture model` from `19-fase5-legal-process-model-28mai.md`.
+
+Decision:
+
+- Fase 5 legal/process modeling selected on 2026-05-28.
+- Score calibration with real outcomes remains later because ENIAC outcomes are not available yet.
+- External acts, authenticated portal automation, credentials, real document vault, push and deploy remain blocked.
+
+Required output:
+
+- TypeScript domain types for habilitation requirements/documents, process events, decision points, appeal intent and appeal reasons.
+- Fixture-only data in `apps/noyce`.
+- UI panel showing legal/process status with external acts blocked by default.
+- Tests proving appeal intent is separate from appeal reasons and external acts cannot be treated as automated.
+
+Validation commands:
+
+```bash
+npm test
+npm run typecheck
+npm run build
+```

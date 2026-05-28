@@ -3,7 +3,8 @@
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import { opportunities, portalAccess } from "@/lib/noyce-data";
-import { formatCurrency, formatDateTime, scoreHealth } from "@/lib/noyce-model";
+import { formatCurrency, formatDateTime, legalReviewLabel, scoreHealth } from "@/lib/noyce-model";
+import { buildReadinessReport } from "@/lib/noyce-readiness";
 import type { Opportunity } from "@/lib/noyce-model";
 
 type SortMode = "best" | "worst" | "deadline";
@@ -40,6 +41,7 @@ export default function Home() {
   const selectedOpportunity = filteredOpportunities[0] ?? opportunities[0];
   const selectedState = operationalState(selectedOpportunity);
   const selectedBlockers = operationalBlockers(selectedOpportunity);
+  const readiness = useMemo(() => buildReadinessReport(), []);
 
   return (
     <main className="shell">
@@ -279,6 +281,84 @@ export default function Home() {
               </div>
             </section>
 
+            <section className="legal-process" id="recorrer" aria-labelledby="legal-process-title">
+              <div className="section-heading compact">
+                <div>
+                  <p className="eyebrow">Fase 5 juridico/processo</p>
+                  <h3 id="legal-process-title">Atos externos bloqueados</h3>
+                </div>
+                <span>Copiloto, nao representante</span>
+              </div>
+
+              <div className="legal-grid">
+                <div className="legal-panel">
+                  <div className="panel-heading">
+                    <p className="eyebrow">Habilitacao por requisito</p>
+                    <h4>Documento, evidencia e dono</h4>
+                  </div>
+                  {selectedOpportunity.legalProcess.requirements.map((requirement) => (
+                    <div className={`legal-row ${requirement.criticality}`} key={requirement.id}>
+                      <div>
+                        <strong>{requirement.label}</strong>
+                        <p>{requirement.note}</p>
+                        <small>{requirement.evidenceLabel}</small>
+                        <small>Dono: {requirement.humanOwner}</small>
+                        {selectedOpportunity.legalProcess.documents
+                          .filter((document) => document.requirementId === requirement.id)
+                          .map((document) => (
+                            <small key={document.id}>
+                              Documento: {document.label} · {document.status}
+                            </small>
+                          ))}
+                      </div>
+                      <span>{requirement.status}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="legal-panel">
+                  <div className="panel-heading">
+                    <p className="eyebrow">Janelas processuais</p>
+                    <h4>Prazo, risco e consequencia</h4>
+                  </div>
+                  {selectedOpportunity.legalProcess.events.map((event) => (
+                    <div className={`legal-event ${event.riskLevel}`} key={event.id}>
+                      <div>
+                        <strong>{event.label}</strong>
+                        <p>{event.consequenceIfMissed}</p>
+                      </div>
+                      <span>{event.riskLevel}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="appeal-box">
+                <div>
+                  <p className="eyebrow">Recurso</p>
+                  <h4>Intencao separada das razoes</h4>
+                  <span>{selectedOpportunity.legalProcess.appealIntent.groundsSummary}</span>
+                </div>
+                <div className="appeal-status">
+                  <strong>{selectedOpportunity.legalProcess.appealIntent.submissionStatus}</strong>
+                  <small>Intencao: {selectedOpportunity.legalProcess.appealIntent.windowStatus}</small>
+                  <small>Razoes: {selectedOpportunity.legalProcess.appealReasons.draftStatus}</small>
+                </div>
+              </div>
+
+              <div className="decision-points">
+                {selectedOpportunity.legalProcess.decisionPoints.map((decision) => (
+                  <div className="decision-point" key={decision.id}>
+                    <div>
+                      <strong>{decision.recommendedAction}</strong>
+                      <p>{legalReviewLabel(decision)}</p>
+                    </div>
+                    <span>{decision.externalActBlocked ? "ato externo bloqueado" : "preparo interno"}</span>
+                  </div>
+                ))}
+              </div>
+            </section>
+
             <section className="timeline" id="acompanhar">
               <h3>Linha do tempo</h3>
               {selectedOpportunity.timeline.map((event) => (
@@ -312,6 +392,49 @@ export default function Home() {
                 <small>ToS: {portal.tosStatus} · 2FA: {portal.requires2fa}</small>
               </div>
             ))}
+          </div>
+        </section>
+
+        <section className="readiness-matrix" aria-labelledby="readiness-title">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">Fases 6-10</p>
+              <h2 id="readiness-title">Readiness do piloto</h2>
+            </div>
+            <span>{readiness.validation.ok ? "offline PASS" : "revisar gates"}</span>
+          </div>
+
+          <div className="readiness-grid">
+            {Object.entries(readiness.phases).map(([phase, status]) => (
+              <div className={`readiness-card ${status}`} key={phase}>
+                <span>{phase.toUpperCase()}</span>
+                <strong>{status}</strong>
+              </div>
+            ))}
+          </div>
+
+          <div className="morning-grid">
+            <div className="morning-panel">
+              <h3>Bloqueios para amanha</h3>
+              {readiness.humanBlockers.map((blocker) => (
+                <div className="morning-row" key={blocker.id}>
+                  <strong>{blocker.label}</strong>
+                  <p>{blocker.reason}</p>
+                  <span>{blocker.requiredFrom}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="morning-panel">
+              <h3>Jobs liberados em dry-run</h3>
+              {readiness.jobs.map((job) => (
+                <div className="morning-row" key={job.id}>
+                  <strong>{job.label}</strong>
+                  <p>{job.idempotencyKey}</p>
+                  <span>{job.mode}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
       </section>
