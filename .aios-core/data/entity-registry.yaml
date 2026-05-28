@@ -1,6 +1,6 @@
 metadata:
   version: 1.0.0
-  lastUpdated: '2026-05-23T18:09:42.503Z'
+  lastUpdated: '2026-05-28T01:47:32.362Z'
   entityCount: 1342
   checksumAlgorithm: sha256
   resolutionRate: 100
@@ -164,8 +164,7 @@ entities:
         - mcp
         - server
         - task
-      usedBy:
-        - devops
+      usedBy: []
       dependencies:
         - analyst
       externalDeps: []
@@ -186,8 +185,7 @@ entities:
         - advanced
         - elicitation
         - advanced-elicitation
-      usedBy:
-        - analyst
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -284,8 +282,6 @@ entities:
         - 'task:'
       usedBy:
         - andrej-karpathy
-        - ilya-sutskever
-        - yann-lecun
       dependencies:
         - architect
       externalDeps: []
@@ -311,7 +307,6 @@ entities:
         - path
       usedBy:
         - andrej-karpathy
-        - sugata-mitra
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -337,7 +332,6 @@ entities:
         - (thera-turing
       usedBy:
         - eduardo-bunge
-        - yann-lecun
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -363,7 +357,6 @@ entities:
         - framework
         - design
       usedBy:
-        - lawrence-lessig
         - micky-tripathi
       dependencies: []
       externalDeps: []
@@ -444,7 +437,6 @@ entities:
         - assessment
         - professions
       usedBy:
-        - lawrence-lessig
         - patricia-peck
       dependencies: []
       externalDeps: []
@@ -571,7 +563,6 @@ entities:
         - practical
       usedBy:
         - andrej-karpathy
-        - ilya-sutskever
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -595,7 +586,6 @@ entities:
         - plan
       usedBy:
         - andrej-karpathy
-        - ilya-sutskever
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -768,7 +758,6 @@ entities:
         - practices
       usedBy:
         - cassie-kozyrkov
-        - neil-patel
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -870,8 +859,7 @@ entities:
         - analyze
         - performance
         - 'task:'
-      usedBy:
-        - data-engineer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -896,8 +884,7 @@ entities:
         - analyze
         - project
         - structure
-      usedBy:
-        - architect
+      usedBy: []
       dependencies:
         - code-intel
         - planning-helper
@@ -926,8 +913,7 @@ entities:
         - apply
         - qa
         - fixes
-      usedBy:
-        - dev
+      usedBy: []
       dependencies:
         - qa
         - dev
@@ -952,8 +938,7 @@ entities:
         - architect
         - analyze
         - impact
-      usedBy:
-        - architect
+      usedBy: []
       dependencies:
         - dependency-impact-analyzer
         - modification-risk-assessment
@@ -988,7 +973,6 @@ entities:
       usedBy:
         - martin-fowler
         - simon-willison
-        - uncle-bob-martin
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -1037,8 +1021,7 @@ entities:
         - workflow
         - 'task:'
         - analysis
-      usedBy:
-        - kevin-mitnick
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -1116,7 +1099,6 @@ entities:
         - calculate-roi
         - consolidate-patterns
         - generate-shock-report
-        - design-systems-engineer
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -1219,7 +1201,6 @@ entities:
         - analytics
       usedBy:
         - cassie-kozyrkov
-        - daniel-kahneman
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -1321,8 +1302,6 @@ entities:
         - (sb7
       usedBy:
         - donald-miller
-        - russell-brunson
-        - simon-sinek
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -1414,8 +1393,7 @@ entities:
         - create
         - epic
         - task
-      usedBy:
-        - pm
+      usedBy: []
       dependencies:
         - code-intel
         - planning-helper
@@ -1453,8 +1431,7 @@ entities:
         - create
         - story
         - task
-      usedBy:
-        - pm
+      usedBy: []
       dependencies:
         - po-master-checklist
         - po
@@ -1480,8 +1457,7 @@ entities:
         - build
         - autonomous
         - 'task:'
-      usedBy:
-        - dev
+      usedBy: []
       dependencies:
         - autonomous-build-loop.js
         - plan-execute-subtask
@@ -1510,7 +1486,6 @@ entities:
         - compose-molecule
         - generate-documentation
         - run-design-system-pipeline
-        - design-systems-engineer
       dependencies:
         - component-generator.js
       externalDeps: []
@@ -1533,8 +1508,7 @@ entities:
         - build
         - resume
         - 'task:'
-      usedBy:
-        - dev
+      usedBy: []
       dependencies:
         - dev
       externalDeps: []
@@ -1556,8 +1530,7 @@ entities:
         - build
         - status
         - 'task:'
-      usedBy:
-        - dev
+      usedBy: []
       dependencies:
         - dev
       externalDeps: []
@@ -1698,8 +1671,7 @@ entities:
         - docs
         - links
         - check-docs-links
-      usedBy:
-        - devops
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -1723,7 +1695,6 @@ entities:
         - workflow
         - 'task:'
       usedBy:
-        - jason-lemkin
         - patrick-campbell
       dependencies: []
       externalDeps: []
@@ -1797,8 +1768,7 @@ entities:
         - configure
         - ci/cd
         - pipeline
-      usedBy:
-        - devops
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -1877,7 +1847,6 @@ entities:
       usedBy:
         - list-worktrees
         - remove-worktree
-        - devops
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -1949,10 +1918,7 @@ entities:
         - workflow
         - 'task:'
       usedBy:
-        - kent-beck
-        - linus-torvalds
         - martin-fowler
-        - uncle-bob-martin
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -2000,8 +1966,7 @@ entities:
         - collaborative
         - edit
         - collaborative-edit
-      usedBy:
-        - architect
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -2055,7 +2020,6 @@ entities:
       usedBy:
         - april-dunford
         - scott-galloway
-        - warren-buffett
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -2096,8 +2060,7 @@ entities:
         - compose
         - molecule
         - atoms
-      usedBy:
-        - design-systems-engineer
+      usedBy: []
       dependencies:
         - build-component
         - component-generator.js
@@ -2173,7 +2136,6 @@ entities:
         - (voss
         - methodology)
       usedBy:
-        - brene-brown
         - chris-voss
       dependencies: []
       externalDeps: []
@@ -2281,7 +2243,6 @@ entities:
         - lens)
       usedBy:
         - gary-vaynerchuk
-        - neil-patel
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -2355,9 +2316,6 @@ entities:
         - (generosity-based)
       usedBy:
         - joe-pulizzi
-        - neil-patel
-        - ryan-holiday
-        - scott-hanselman
         - seth-godin
         - simon-willison
       dependencies: []
@@ -2455,10 +2413,7 @@ entities:
         - correct
         - course
         - task
-      usedBy:
-        - pm
-        - po
-        - sm
+      usedBy: []
       dependencies:
         - change-checklist
       externalDeps: []
@@ -2583,8 +2538,7 @@ entities:
         - brownfield
         - story
         - task
-      usedBy:
-        - po
+      usedBy: []
       dependencies:
         - po-master-checklist
         - component-generator.js
@@ -2638,11 +2592,7 @@ entities:
         - needed
         - task
         - creates
-      usedBy:
-        - analyst
-        - architect
-        - data-engineer
-        - pm
+      usedBy: []
       dependencies:
         - component-generator.js
         - pm
@@ -2671,12 +2621,7 @@ entities:
         - determined
         - dynamically
         - during
-      usedBy:
-        - analyst
-        - architect
-        - data-engineer
-        - design-lead
-        - pm
+      usedBy: []
       dependencies:
         - code-intel
         - planning-helper
@@ -2704,8 +2649,7 @@ entities:
         - next
         - story
         - task
-      usedBy:
-        - sm
+      usedBy: []
       dependencies:
         - po-master-checklist
         - component-generator.js
@@ -2766,8 +2710,7 @@ entities:
       keywords:
         - create
         - service
-      usedBy:
-        - dev
+      usedBy: []
       dependencies:
         - code-intel
         - dev-helper
@@ -2793,8 +2736,7 @@ entities:
         - test-suite-checklist.md
         - validation
         - (follow-up
-      usedBy:
-        - qa
+      usedBy: []
       dependencies:
         - component-generator.js
         - dev
@@ -2879,8 +2821,6 @@ entities:
       usedBy:
         - list-worktrees
         - remove-worktree
-        - dev
-        - devops
         - auto-worktree
       dependencies:
         - worktree-manager
@@ -2988,7 +2928,6 @@ entities:
         - success
         - design
       usedBy:
-        - jason-lemkin
         - nick-mehta
       dependencies: []
       externalDeps: []
@@ -3113,10 +3052,7 @@ entities:
         - company
         - health
       usedBy:
-        - brene-brown
         - geoff-cook
-        - ray-dalio
-        - simon-sinek
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -3288,8 +3224,7 @@ entities:
         - 'task:'
         - (with
         - snapshot
-      usedBy:
-        - data-engineer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -3313,8 +3248,7 @@ entities:
         - 'task:'
         - supabase
         - project
-      usedBy:
-        - data-engineer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -3338,8 +3272,7 @@ entities:
         - modeling
         - 'task:'
         - session
-      usedBy:
-        - data-engineer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -3364,8 +3297,7 @@ entities:
         - 'task:'
         - migration
         - dry-run
-      usedBy:
-        - data-engineer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -3388,8 +3320,7 @@ entities:
         - env
         - check
         - 'task:'
-      usedBy:
-        - data-engineer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -3463,8 +3394,7 @@ entities:
         - 'task:'
         - data
         - safely
-      usedBy:
-        - data-engineer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -3489,8 +3419,7 @@ entities:
         - 'task:'
         - rls
         - template
-      usedBy:
-        - data-engineer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -3536,8 +3465,7 @@ entities:
         - rollback
         - 'task:'
         - database
-      usedBy:
-        - data-engineer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -3560,8 +3488,7 @@ entities:
         - run
         - sql
         - 'task:'
-      usedBy:
-        - data-engineer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -3608,8 +3535,7 @@ entities:
         - 'task:'
         - apply
         - data
-      usedBy:
-        - data-engineer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -3632,8 +3558,7 @@ entities:
         - smoke
         - test
         - 'task:'
-      usedBy:
-        - data-engineer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -3657,8 +3582,7 @@ entities:
         - 'task:'
         - create
         - database
-      usedBy:
-        - data-engineer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -3732,8 +3656,7 @@ entities:
         - 'task:'
         - ddl
         - ordering
-      usedBy:
-        - data-engineer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -3759,7 +3682,6 @@ entities:
         - construction
       usedBy:
         - aswath-damodaran
-        - warren-buffett
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -3812,10 +3734,6 @@ entities:
         - design
       usedBy:
         - cassie-kozyrkov
-        - daniel-kahneman
-        - ray-dalio
-        - ryan-holiday
-        - warren-buffett
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -3839,7 +3757,6 @@ entities:
         - assess
       usedBy:
         - cassie-kozyrkov
-        - daniel-kahneman
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -3914,7 +3831,6 @@ entities:
         - 'task:'
         - assessment
       usedBy:
-        - charity-majors
         - gene-kim
       dependencies: []
       externalDeps: []
@@ -4092,7 +4008,6 @@ entities:
         - digital
       usedBy:
         - christian-dunker
-        - richard-thaler
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -4393,7 +4308,6 @@ entities:
         - story
         - task
       usedBy:
-        - dev
         - constitution-gates
       dependencies:
         - decision-recorder
@@ -4428,8 +4342,7 @@ entities:
         - task
         - performs
         - automated
-      usedBy:
-        - dev
+      usedBy: []
       dependencies:
         - code-quality-improver
       externalDeps: []
@@ -4458,8 +4371,7 @@ entities:
         - aios
         - developer
         - task
-      usedBy:
-        - dev
+      usedBy: []
       dependencies:
         - performance-optimizer
       externalDeps: []
@@ -4489,8 +4401,7 @@ entities:
         - aios
         - developer
         - task
-      usedBy:
-        - dev
+      usedBy: []
       dependencies:
         - refactoring-suggester
       externalDeps: []
@@ -4828,9 +4739,7 @@ entities:
         - project-documentation-checklist.md
         - validation
         - (follow-up
-      usedBy:
-        - analyst
-        - architect
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -4939,7 +4848,6 @@ entities:
       usedBy:
         - donald-miller
         - joanna-wiebe
-        - russell-brunson
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -5036,7 +4944,6 @@ entities:
         - 'task:'
         - engineering
       usedBy:
-        - charity-majors
         - will-larson
       dependencies: []
       externalDeps: []
@@ -5085,7 +4992,6 @@ entities:
         - environment-bootstrap
       usedBy:
         - setup-github
-        - devops
       dependencies:
         - config-resolver
         - github-cli.yaml
@@ -5169,8 +5075,7 @@ entities:
         - review
         - workflow
         - 'task:'
-      usedBy:
-        - lawrence-lessig
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -5291,15 +5196,6 @@ entities:
         - executes
         - existing
       usedBy:
-        - architect
-        - data-engineer
-        - design-lead
-        - design-systems-engineer
-        - dev
-        - pm
-        - po
-        - sm
-        - ux-designer
         - ux-researcher
       dependencies:
         - qa
@@ -5326,8 +5222,7 @@ entities:
         - epic
         - plan
         - task
-      usedBy:
-        - pm
+      usedBy: []
       dependencies:
         - pm
         - po
@@ -5480,8 +5375,7 @@ entities:
         - tokens
         - dtcg
         - w3c
-      usedBy:
-        - design-systems-engineer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -5504,8 +5398,7 @@ entities:
         - extend
         - pattern
         - existing
-      usedBy:
-        - design-systems-engineer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -5577,8 +5470,7 @@ entities:
         - design
         - consolidated
         - patterns
-      usedBy:
-        - design-systems-engineer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -5624,8 +5516,7 @@ entities:
         - facilitate
         - brainstorming
         - session
-      usedBy:
-        - analyst
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -5748,7 +5639,6 @@ entities:
         - 'task:'
       usedBy:
         - gene-kim
-        - scott-hanselman
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -5949,7 +5839,6 @@ entities:
         - library
       usedBy:
         - run-design-system-pipeline
-        - design-systems-engineer
       dependencies:
         - build-component
       externalDeps: []
@@ -5973,8 +5862,7 @@ entities:
         - migration
         - strategy
         - phased
-      usedBy:
-        - design-systems-engineer
+      usedBy: []
       dependencies:
         - component-generator.js
       externalDeps: []
@@ -6027,7 +5915,6 @@ entities:
         - github-pr-automation.md
       usedBy:
         - resolve-github-issue
-        - devops
       dependencies:
         - repository-detector
         - devops-helper
@@ -6063,7 +5950,6 @@ entities:
       usedBy:
         - publish-npm
         - resolve-github-issue
-        - devops
       dependencies:
         - repository-detector
         - devops-helper
@@ -6090,8 +5976,7 @@ entities:
         - repository
         - cleanup
         - repository-cleanup.md
-      usedBy:
-        - devops
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -6116,8 +6001,7 @@ entities:
         - version
         - management
         - version-management.md
-      usedBy:
-        - devops
+      usedBy: []
       dependencies:
         - repository-detector
       externalDeps: []
@@ -6196,8 +6080,6 @@ entities:
         - (godin
         - principles)
       usedBy:
-        - jason-lemkin
-        - ryan-holiday
         - seth-godin
       dependencies: []
       externalDeps: []
@@ -6218,8 +6100,7 @@ entities:
         - gotcha
         - 'task:'
         - add
-      usedBy:
-        - dev
+      usedBy: []
       dependencies:
         - gotchas-memory.js
         - gotchas
@@ -6246,7 +6127,6 @@ entities:
       usedBy:
         - document-gotchas
         - gotcha
-        - dev
       dependencies:
         - gotchas-memory.js
         - dev
@@ -6295,9 +6175,6 @@ entities:
         - cross-market
       usedBy:
         - geoff-cook
-        - jason-lemkin
-        - neil-patel
-        - ryan-holiday
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -6399,7 +6276,6 @@ entities:
         - talent
         - density
       usedBy:
-        - jason-lemkin
         - patty-mccord
       dependencies: []
       externalDeps: []
@@ -6653,8 +6529,7 @@ entities:
         - response
         - workflow
         - 'task:'
-      usedBy:
-        - troy-hunt
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -6880,8 +6755,6 @@ entities:
         - model
       usedBy:
         - aswath-damodaran
-        - ray-dalio
-        - warren-buffett
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -6956,7 +6829,6 @@ entities:
         - done
       usedBy:
         - clayton-christensen
-        - teresa-torres
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -7058,9 +6930,7 @@ entities:
         - spurgeon
         - organizational
       usedBy:
-        - brene-brown
         - charles-spurgeon
-        - simon-sinek
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -7207,7 +7077,6 @@ entities:
         - through
       usedBy:
         - sal-khan
-        - sugata-mitra
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -7326,8 +7195,7 @@ entities:
         - list
         - mcps
         - list-mcps
-      usedBy:
-        - devops
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -7350,8 +7218,6 @@ entities:
       usedBy:
         - create-worktree
         - remove-worktree
-        - dev
-        - devops
       dependencies:
         - worktree-manager
         - create-worktree
@@ -7481,7 +7347,6 @@ entities:
         - 'task:'
       usedBy:
         - julie-zhuo
-        - marty-cagan
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -7676,7 +7541,6 @@ entities:
         - merge-worktree
       usedBy:
         - create-worktree
-        - devops
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -8272,7 +8136,6 @@ entities:
         - behavioral
       usedBy:
         - laszlo-bock
-        - richard-thaler
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -8320,7 +8183,6 @@ entities:
         - (rlmaa
         - framework)
       usedBy:
-        - grant-cardone
         - jeb-blount
       dependencies: []
       externalDeps: []
@@ -8612,7 +8474,6 @@ entities:
         - (sports
         - team
       usedBy:
-        - marty-cagan
         - patty-mccord
       dependencies: []
       externalDeps: []
@@ -8835,7 +8696,6 @@ entities:
         - 'task:'
         - health
       usedBy:
-        - grant-cardone
         - jeb-blount
       dependencies: []
       externalDeps: []
@@ -8905,8 +8765,7 @@ entities:
         - create
         - context
         - 'pipeline:'
-      usedBy:
-        - architect
+      usedBy: []
       dependencies:
         - code-intel
         - planning-helper
@@ -8937,8 +8796,7 @@ entities:
         - implementation
         - execution
         - 'pipeline:'
-      usedBy:
-        - architect
+      usedBy: []
       dependencies:
         - code-intel
         - planning-helper
@@ -8968,7 +8826,6 @@ entities:
         - agent)
       usedBy:
         - build-autonomous
-        - dev
       dependencies:
         - plan-tracker
         - dev
@@ -9021,8 +8878,7 @@ entities:
         - close
         - story
         - 'task:'
-      usedBy:
-        - po
+      usedBy: []
       dependencies:
         - validate-next-story
         - po
@@ -9048,9 +8904,7 @@ entities:
         - story
         - backlog
         - manage-story-backlog
-      usedBy:
-        - dev
-        - po
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -9079,8 +8933,7 @@ entities:
         - from
         - clickup
         - pull-story-from-clickup
-      usedBy:
-        - po
+      usedBy: []
       dependencies:
         - story-manager
         - po-master-checklist
@@ -9106,8 +8959,7 @@ entities:
         - pull
         - story
         - pull-story
-      usedBy:
-        - po
+      usedBy: []
       dependencies:
         - pm-adapter-factory
         - story-manager
@@ -9165,8 +9017,7 @@ entities:
         - to
         - clickup
         - sync-story-to-clickup
-      usedBy:
-        - po
+      usedBy: []
       dependencies:
         - story-manager
         - po-master-checklist
@@ -9194,8 +9045,7 @@ entities:
         - sync
         - story
         - sync-story
-      usedBy:
-        - po
+      usedBy: []
       dependencies:
         - pm-adapter-factory
         - story-manager
@@ -9226,7 +9076,6 @@ entities:
         - (smallest
         - viable
       usedBy:
-        - ryan-holiday
         - seth-godin
       dependencies: []
       externalDeps: []
@@ -9449,7 +9298,6 @@ entities:
         - workflow
         - 'task:'
       usedBy:
-        - jason-lemkin
         - patrick-campbell
       dependencies: []
       externalDeps: []
@@ -9547,7 +9395,6 @@ entities:
         - data,
       usedBy:
         - julie-zhuo
-        - marty-cagan
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -9570,9 +9417,7 @@ entities:
         - 'task:'
         - assessment
       usedBy:
-        - charity-majors
         - chip-huyen
-        - linus-torvalds
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -9699,7 +9544,6 @@ entities:
         - 'task:'
         - fanatical
       usedBy:
-        - grant-cardone
         - jeb-blount
       dependencies: []
       externalDeps: []
@@ -9846,8 +9690,7 @@ entities:
         - console
         - check
         - task
-      usedBy:
-        - qa
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -9870,7 +9713,6 @@ entities:
         - request
         - task
       usedBy:
-        - qa
         - qa-loop
       dependencies:
         - qa-review-story
@@ -9897,8 +9739,7 @@ entities:
         - evidence
         - requirements
         - task
-      usedBy:
-        - qa
+      usedBy: []
       dependencies:
         - qa
       externalDeps: []
@@ -9921,8 +9762,7 @@ entities:
         - positive
         - detection
         - task
-      usedBy:
-        - qa
+      usedBy: []
       dependencies:
         - qa
       externalDeps: []
@@ -9948,8 +9788,7 @@ entities:
         - issue
         - fixer
         - task
-      usedBy:
-        - dev
+      usedBy: []
       dependencies:
         - plan-tracker
         - dev
@@ -9977,7 +9816,6 @@ entities:
         - qa-gate
       usedBy:
         - quality-review
-        - qa
       dependencies:
         - qa
         - devops
@@ -10011,8 +9849,7 @@ entities:
         - test-generation-checklist.md
         - validation
         - (follow-up
-      usedBy:
-        - qa
+      usedBy: []
       dependencies:
         - test-generator
         - coverage-analyzer
@@ -10040,8 +9877,7 @@ entities:
         - library
         - validation
         - task
-      usedBy:
-        - qa
+      usedBy: []
       dependencies:
         - context7
       externalDeps: []
@@ -10063,8 +9899,7 @@ entities:
         - migration
         - validation
         - task
-      usedBy:
-        - qa
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -10085,8 +9920,7 @@ entities:
         - nfr
         - assess
         - nfr-assess
-      usedBy:
-        - qa
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -10115,8 +9949,7 @@ entities:
         - 10-phase
         - quality
         - assurance
-      usedBy:
-        - qa
+      usedBy: []
       dependencies:
         - qa
         - dev
@@ -10142,8 +9975,7 @@ entities:
         - aios
         - developer
         - task
-      usedBy:
-        - qa
+      usedBy: []
       dependencies:
         - dependency-impact-analyzer
         - diff-generator
@@ -10173,7 +10005,6 @@ entities:
         - review-story
       usedBy:
         - qa-create-fix-request
-        - qa
         - qa-loop
       dependencies:
         - qa
@@ -10203,8 +10034,7 @@ entities:
         - risk
         - profile
         - risk-profile
-      usedBy:
-        - qa
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -10230,8 +10060,7 @@ entities:
         - (with
         - code
         - quality
-      usedBy:
-        - qa
+      usedBy: []
       dependencies:
         - dev
         - qa
@@ -10256,8 +10085,7 @@ entities:
         - security
         - checklist
         - task
-      usedBy:
-        - qa
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -10280,8 +10108,7 @@ entities:
         - test
         - design
         - test-design
-      usedBy:
-        - qa
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -10307,8 +10134,7 @@ entities:
         - trace
         - requirements
         - trace-requirements
-      usedBy:
-        - qa
+      usedBy: []
       dependencies:
         - po-master-checklist
       externalDeps: []
@@ -10386,7 +10212,6 @@ entities:
         - workflow
         - 'task:'
       usedBy:
-        - kent-beck
         - martin-fowler
       dependencies: []
       externalDeps: []
@@ -10438,7 +10263,6 @@ entities:
         - design
         - (hard
       usedBy:
-        - lawrence-lessig
         - lucia-savage
         - micky-tripathi
         - patricia-peck
@@ -10466,7 +10290,6 @@ entities:
         - releases
       usedBy:
         - publish-npm
-        - devops
       dependencies:
         - po
         - devops
@@ -10491,8 +10314,7 @@ entities:
         - remove
         - mcp
         - remove-mcp
-      usedBy:
-        - devops
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -10515,8 +10337,6 @@ entities:
       usedBy:
         - create-worktree
         - list-worktrees
-        - dev
-        - devops
       dependencies:
         - worktree-manager
         - create-worktree
@@ -10566,8 +10386,7 @@ entities:
         - workflow
         - 'task:'
         - design
-      usedBy:
-        - ilya-sutskever
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -10590,7 +10409,6 @@ entities:
         - resolve-github-issue.md
       usedBy:
         - triage-github-issues
-        - devops
       dependencies:
         - triage-github-issues
         - github-devops-pre-push-quality-gate
@@ -10640,8 +10458,7 @@ entities:
         - pr
         - 'task:'
         - external
-      usedBy:
-        - linus-torvalds
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -10689,9 +10506,7 @@ entities:
         - comprehensive
       usedBy:
         - aswath-damodaran
-        - daniel-kahneman
         - morgan-housel
-        - ray-dalio
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -10817,7 +10632,6 @@ entities:
         - health
         - review
       usedBy:
-        - jason-lemkin
         - patrick-campbell
       dependencies: []
       externalDeps: []
@@ -10845,7 +10659,6 @@ entities:
         - (voss
       usedBy:
         - chris-voss
-        - grant-cardone
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -10897,7 +10710,6 @@ entities:
         - 5-step
       usedBy:
         - donald-miller
-        - russell-brunson
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -10949,7 +10761,6 @@ entities:
         - complete
         - creation
       usedBy:
-        - grant-cardone
         - jeb-blount
       dependencies: []
       externalDeps: []
@@ -10996,8 +10807,6 @@ entities:
         - 'task:'
       usedBy:
         - alex-hormozi
-        - grant-cardone
-        - jason-lemkin
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -11018,8 +10827,7 @@ entities:
         - mcp
         - catalog
         - task
-      usedBy:
-        - devops
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -11061,9 +10869,7 @@ entities:
         - audit
         - workflow
         - 'task:'
-      usedBy:
-        - kevin-mitnick
-        - troy-hunt
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -11083,8 +10889,7 @@ entities:
         - security
         - audit
         - 'task:'
-      usedBy:
-        - data-engineer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -11221,8 +11026,7 @@ entities:
         - session
         - resume
         - task
-      usedBy:
-        - pm
+      usedBy: []
       dependencies:
         - session-state.js
       externalDeps: []
@@ -11244,8 +11048,7 @@ entities:
         - setup
         - database
         - 'task:'
-      usedBy:
-        - data-engineer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -11269,8 +11072,7 @@ entities:
         - design
         - system
         - structure
-      usedBy:
-        - design-systems-engineer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -11295,8 +11097,7 @@ entities:
         - setup
         - github
         - setup-github
-      usedBy:
-        - devops
+      usedBy: []
       dependencies:
         - environment-bootstrap
         - github-cli.yaml
@@ -11349,8 +11150,7 @@ entities:
         - mcp
         - docker
         - toolkit
-      usedBy:
-        - devops
+      usedBy: []
       dependencies:
         - devops
       externalDeps: []
@@ -11408,9 +11208,7 @@ entities:
         - document
         - processing
         - task
-      usedBy:
-        - pm
-        - po
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -11681,7 +11479,6 @@ entities:
         - complexity
         - 'pipeline:'
       usedBy:
-        - architect
         - spec-pipeline
       dependencies:
         - architect
@@ -11707,7 +11504,6 @@ entities:
         - 'pipeline:'
         - specification
       usedBy:
-        - qa
         - spec-pipeline
       dependencies:
         - qa
@@ -11736,7 +11532,6 @@ entities:
         - requirements
         - 'pipeline:'
       usedBy:
-        - pm
         - spec-pipeline
       dependencies:
         - pm
@@ -11763,7 +11558,6 @@ entities:
         - dependencies
         - 'pipeline:'
       usedBy:
-        - analyst
         - spec-pipeline
       dependencies:
         - analyst
@@ -11790,7 +11584,6 @@ entities:
         - 'pipeline:'
         - specification
       usedBy:
-        - pm
         - spec-pipeline
       dependencies:
         - pm
@@ -11848,8 +11641,7 @@ entities:
         - creator
         - analyze
         - task
-      usedBy:
-        - squad-creator
+      usedBy: []
       dependencies:
         - squad-loader
         - squad-analyzer
@@ -11873,8 +11665,7 @@ entities:
         - creator
         - create
         - '*create-squad'
-      usedBy:
-        - squad-creator
+      usedBy: []
       dependencies:
         - squad-generator.js
         - squad-validator.js
@@ -11901,8 +11692,7 @@ entities:
         - creator
         - design
         - '*design-squad'
-      usedBy:
-        - squad-creator
+      usedBy: []
       dependencies:
         - squad-designer.js
       externalDeps: []
@@ -11926,8 +11716,7 @@ entities:
         - creator
         - download
         - '*download-squad'
-      usedBy:
-        - squad-creator
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -11950,8 +11739,7 @@ entities:
         - creator
         - extend
         - task
-      usedBy:
-        - squad-creator
+      usedBy: []
       dependencies:
         - squad-loader
         - squad-extender
@@ -11977,8 +11765,7 @@ entities:
         - creator
         - list
         - '*list-squads'
-      usedBy:
-        - squad-creator
+      usedBy: []
       dependencies:
         - squad-generator.js
       externalDeps: []
@@ -12001,8 +11788,7 @@ entities:
         - creator
         - migrate
         - '*migrate-squad'
-      usedBy:
-        - squad-creator
+      usedBy: []
       dependencies:
         - squad-migrator.js
         - squad-validator.js
@@ -12027,8 +11813,7 @@ entities:
         - creator
         - publish
         - '*publish-squad'
-      usedBy:
-        - squad-creator
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -12073,8 +11858,7 @@ entities:
         - sync
         - synkra
         - '*sync-squad-synkra'
-      usedBy:
-        - squad-creator
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -12095,8 +11879,7 @@ entities:
         - creator
         - validate
         - '*validate-squad'
-      usedBy:
-        - squad-creator
+      usedBy: []
       dependencies:
         - squad-loader.js
         - squad-validator.js
@@ -12150,7 +11933,6 @@ entities:
         - startup/young
       usedBy:
         - aswath-damodaran
-        - warren-buffett
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -12298,7 +12080,6 @@ entities:
         - design
         - system
       usedBy:
-        - daniel-kahneman
         - laszlo-bock
       dependencies: []
       externalDeps: []
@@ -12499,8 +12280,7 @@ entities:
         - sync
         - documentation
         - sync-documentation
-      usedBy:
-        - dev
+      usedBy: []
       dependencies:
         - documentation-synchronizer
       externalDeps: []
@@ -12595,11 +12375,7 @@ entities:
         - (keeper
         - test
       usedBy:
-        - kent-beck
-        - marty-cagan
         - patty-mccord
-        - teresa-torres
-        - uncle-bob-martin
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -12626,8 +12402,6 @@ entities:
         - assessment
       usedBy:
         - adam-grant
-        - brene-brown
-        - simon-sinek
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -12771,8 +12545,7 @@ entities:
         - 'task:'
         - (rls
         - testing)
-      usedBy:
-        - data-engineer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -12821,7 +12594,6 @@ entities:
         - workflow
         - 'task:'
       usedBy:
-        - kent-beck
         - martin-fowler
       dependencies: []
       externalDeps: []
@@ -12889,8 +12661,7 @@ entities:
         - model
         - workflow
         - 'task:'
-      usedBy:
-        - kevin-mitnick
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -12938,7 +12709,6 @@ entities:
         - design
       usedBy:
         - eduardo-bunge
-        - kevin-mitnick
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -12961,7 +12731,6 @@ entities:
         - triage-github-issues.md
       usedBy:
         - resolve-github-issue
-        - devops
       dependencies:
         - resolve-github-issue
         - devops
@@ -13107,8 +12876,7 @@ entities:
         - 'task:'
         - (seven
         - stages
-      usedBy:
-        - scott-hanselman
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -13131,8 +12899,7 @@ entities:
         - wireframes
         - interaction
         - flows
-      usedBy:
-        - ux-designer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -13184,7 +12951,6 @@ entities:
         - needs
         - analysis
       usedBy:
-        - ux-designer
         - ux-researcher
       dependencies: []
       externalDeps: []
@@ -13254,8 +13020,6 @@ entities:
         - task
       usedBy:
         - po-close-story
-        - dev
-        - po
       dependencies:
         - po-master-checklist
         - dev
@@ -13321,8 +13085,7 @@ entities:
         - tech
         - preset
         - \*validate-tech-preset
-      usedBy:
-        - architect
+      usedBy: []
       dependencies:
         - architect
       externalDeps: []
@@ -13372,7 +13135,6 @@ entities:
         - (narrative-to-numbers)
       usedBy:
         - aswath-damodaran
-        - warren-buffett
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -13420,8 +13182,7 @@ entities:
       keywords:
         - verify
         - subtask
-      usedBy:
-        - dev
+      usedBy: []
       dependencies:
         - dev
         - architect
@@ -13494,8 +13255,7 @@ entities:
         - '`*waves`'
         - wave
         - analysis
-      usedBy:
-        - dev
+      usedBy: []
       dependencies:
         - dev
       externalDeps: []
@@ -13597,7 +13357,6 @@ entities:
         - 'task:'
       usedBy:
         - alex-hormozi
-        - russell-brunson
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -13900,8 +13659,8 @@ entities:
         score: 0.5
         constraints: []
         extensionPoints: []
-      checksum: sha256:4ad34c41d9e7546c208e4680faa8a30969d6505d59d17111b27d2963a8a22e73
-      lastVerified: '2026-04-10T23:10:00.698Z'
+      checksum: sha256:fa7d5e99aa252c79e687682b67bf95030eb258ef380d999e3433380e5b87bdcf
+      lastVerified: '2026-05-28T01:47:32.359Z'
     aios-ai-config:
       path: .aios-core/product/templates/aios-ai-config.yaml
       layer: L2
@@ -14034,8 +13793,7 @@ entities:
       keywords:
         - changelog
         - template
-      usedBy:
-        - devops
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -14275,8 +14033,7 @@ entities:
         - template
         - pull
         - request
-      usedBy:
-        - devops
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -14879,18 +14636,7 @@ entities:
         - (codex
         - cli)
       usedBy: []
-      dependencies:
-        - architect
-        - dev
-        - qa
-        - pm
-        - po
-        - sm
-        - analyst
-        - devops
-        - data-engineer
-        - ux-design-expert
-        - aios-master
+      dependencies: []
       externalDeps: []
       plannedDeps: []
       lifecycle: experimental
@@ -14898,8 +14644,8 @@ entities:
         score: 0.5
         constraints: []
         extensionPoints: []
-      checksum: sha256:e8345404f17977a268b917a4ff86e4f10f80174a6bb572865e5413c8f7dd217a
-      lastVerified: '2026-04-10T23:10:00.716Z'
+      checksum: sha256:7398345ed6ccd035f8566317dc88375e5baf213d6048f73dd3e35c1ed6021b92
+      lastVerified: '2026-05-28T01:47:32.359Z'
     copilot-rules:
       path: .aios-core/product/templates/ide-rules/copilot-rules.md
       layer: L2
@@ -16007,8 +15753,8 @@ entities:
         score: 0.7
         constraints: []
         extensionPoints: []
-      checksum: sha256:9f9039281dd3b8ca3fd8de29ae946b000f8235b10cf294a01d0cf1bf109356d8
-      lastVerified: '2026-04-10T23:10:00.741Z'
+      checksum: sha256:9bec9e42bf6e52361ac2e8c10750342b3250ff0b0adc70a1edee66a36c33dc21
+      lastVerified: '2026-05-28T01:47:32.358Z'
     test-generator:
       path: .aios-core/development/scripts/test-generator.js
       layer: L2
@@ -16399,8 +16145,8 @@ entities:
         score: 0.7
         constraints: []
         extensionPoints: []
-      checksum: sha256:a1489000b34226f8ccd6c09eb36c2d0a09eb3c0493dfe7301761919666122007
-      lastVerified: '2026-04-10T23:10:00.747Z'
+      checksum: sha256:779d50622b8b7a336ef018eaa8233c63b7945eca711d55d32177f55abc18be6f
+      lastVerified: '2026-05-28T01:47:32.357Z'
     squad-generator:
       path: .aios-core/development/scripts/squad/squad-generator.js
       layer: L2
@@ -22440,7 +22186,6 @@ entities:
         - run-workflow
         - sync-registry-intel
         - claude-rules
-        - codex-rules
       dependencies: []
       externalDeps: []
       plannedDeps:
@@ -22451,8 +22196,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:6551d1bb5b018edf915bfa47db6008b767c96e19b73768dca17f8f651dd5a06b
-      lastVerified: '2026-05-05T23:07:39.281Z'
+      checksum: sha256:0507e08cdd1f7d6fba826c16a6a87c5848d54db7cd2a7e193407f05bb3098055
+      lastVerified: '2026-05-28T01:47:32.302Z'
     alan-nichol:
       path: .aios-core/development/agents/alan-nichol.md
       layer: L2
@@ -22585,7 +22330,6 @@ entities:
         - story-tmpl
         - antigravity-rules
         - claude-rules
-        - codex-rules
         - cursor-rules
         - entity-registry
         - brownfield-discovery
@@ -22594,21 +22338,7 @@ entities:
         - greenfield-service
         - greenfield-ui
         - spec-pipeline
-      dependencies:
-        - facilitate-brainstorming-session
-        - create-deep-research-prompt
-        - create-doc
-        - advanced-elicitation
-        - document-project
-        - spec-research-dependencies
-        - project-brief-tmpl.yaml
-        - market-research-tmpl.yaml
-        - competitor-analysis-tmpl.yaml
-        - brainstorming-output-tmpl.yaml
-        - google-workspace
-        - exa
-        - context7
-        - pattern-extractor.js
+      dependencies: []
       externalDeps: []
       plannedDeps: []
       lifecycle: production
@@ -22616,8 +22346,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:7f1e6697547a34dbe25558f5d4e69f4b738c63d7818a598b28635118d46f38e7
-      lastVerified: '2026-04-10T23:10:00.892Z'
+      checksum: sha256:89f98d52274a53d97c7593a2d29591f6c31298196075ddd21697d9c2be694301
+      lastVerified: '2026-05-28T01:47:32.320Z'
     anders-ericsson:
       path: .aios-core/development/agents/anders-ericsson.md
       layer: L2
@@ -22720,8 +22450,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:9c7673acd972e5decec3c3cc71081132813bcfecc5a73192d8f1391f34a72154
-      lastVerified: '2026-05-22T12:24:53.037Z'
+      checksum: sha256:51005e7a3e169aa57dcf19ec050ced5998e30b498e37deaf5aeba917297a0e22
+      lastVerified: '2026-05-28T01:47:32.321Z'
     ann-handley:
       path: .aios-core/development/agents/ann-handley.md
       layer: L2
@@ -22815,7 +22545,6 @@ entities:
         - story-tmpl
         - antigravity-rules
         - claude-rules
-        - codex-rules
         - cursor-rules
         - brownfield-compatibility-checklist
         - constitution-gates
@@ -22828,28 +22557,7 @@ entities:
         - greenfield-ui
         - spec-pipeline
         - story-draft-checklist
-      dependencies:
-        - analyze-project-structure
-        - architect-analyze-impact
-        - collaborative-edit
-        - create-deep-research-prompt
-        - create-doc
-        - document-project
-        - execute-checklist
-        - validate-tech-preset
-        - spec-assess-complexity
-        - plan-create-implementation
-        - plan-create-context
-        - architecture-tmpl.yaml
-        - front-end-architecture-tmpl.yaml
-        - fullstack-architecture-tmpl.yaml
-        - brownfield-architecture-tmpl.yaml
-        - architect-checklist
-        - exa
-        - context7
-        - supabase-cli
-        - railway-cli
-        - codebase-mapper.js
+      dependencies: []
       externalDeps:
         - git
         - coderabbit
@@ -22859,8 +22567,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:6ada1a691d43f8f2ddc66650db08cd2da088f8be1934b5309d77bb88ebbda6ba
-      lastVerified: '2026-04-10T23:10:00.907Z'
+      checksum: sha256:5c47dfa00db8a3941a9dda5190d4d54588828dea08af426835c41e2fc6a65de1
+      lastVerified: '2026-05-28T01:47:32.322Z'
     aswath-damodaran:
       path: .aios-core/development/agents/aswath-damodaran.md
       layer: L2
@@ -23040,11 +22748,7 @@ entities:
         - brown
         - brene-brown
       usedBy: []
-      dependencies:
-        - leadership-framework-workflow
-        - conflict-resolution-workflow
-        - team-psychological-safety-workflow
-        - culture-audit-workflow
+      dependencies: []
       externalDeps: []
       plannedDeps: []
       lifecycle: experimental
@@ -23052,8 +22756,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:f2a1e57ed918f2e799ccf65170ba5df2d06d8b4ceb84aa4d5ebc8f337b10078c
-      lastVerified: '2026-04-10T23:10:00.921Z'
+      checksum: sha256:caf51b9747e3c32a10c787ff3ed89e5c5a0bd246f53f0fd4d230562b420ebac2
+      lastVerified: '2026-05-28T01:47:32.322Z'
     bruce-schneier:
       path: .aios-core/development/agents/bruce-schneier.md
       type: agent
@@ -23068,8 +22772,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:03154cf0e8f0aab456cd496e44c83f81d480a8cf6d34603107a825966159dbf0
-      lastVerified: '2026-05-22T12:24:53.038Z'
+      checksum: sha256:5d5fe7e7b620e24d55ef911cdc41de81a24741c98b4790a43dd9bda131838368
+      lastVerified: '2026-05-28T01:47:32.323Z'
     casey-rosenthal:
       path: .aios-core/development/agents/casey-rosenthal.md
       layer: L2
@@ -23151,10 +22855,7 @@ entities:
         - majors
         - charity-majors
       usedBy: []
-      dependencies:
-        - production-readiness-workflow
-        - eng-org-design-workflow
-        - deployment-pipeline-workflow
+      dependencies: []
       externalDeps: []
       plannedDeps:
         - grafana-api
@@ -23164,8 +22865,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:ed028de602aef35d862d367f82b4b7b80ac608f6cda791bf57cdcbe88697677f
-      lastVerified: '2026-04-10T23:10:00.929Z'
+      checksum: sha256:c53ac8615aeb4f96a538bd677feb4ce0ff8f37ccb22b3a36290ce14a271716c9
+      lastVerified: '2026-05-28T01:47:32.324Z'
     charles-spurgeon:
       path: .aios-core/development/agents/charles-spurgeon.md
       layer: L2
@@ -23363,12 +23064,7 @@ entities:
         - kahneman
         - daniel-kahneman
       usedBy: []
-      dependencies:
-        - decision-quality-workflow
-        - decision-framework-workflow
-        - bias-detection-workflow
-        - structured-hiring-workflow
-        - risk-assessment-workflow
+      dependencies: []
       externalDeps: []
       plannedDeps: []
       lifecycle: experimental
@@ -23376,8 +23072,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:d2d951ce10f7ab64a972777fad376dcfbee4424fef056c4ecca22f8254110073
-      lastVerified: '2026-04-10T23:10:00.942Z'
+      checksum: sha256:c4fd4fda75c1ebe25995ebaf3729c2cf86627c9ae6574817ef0f51ed5b4d27da
+      lastVerified: '2026-05-28T01:47:32.326Z'
     daniel-miessler:
       path: .aios-core/development/agents/daniel-miessler.md
       type: agent
@@ -23392,8 +23088,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:cda434f5004a3d0d764a26a292e5b5984dc29b487d436b38b1eb09563c0ad628
-      lastVerified: '2026-05-22T12:24:53.040Z'
+      checksum: sha256:5e3ce5d4b75f48bd15675a3e96e8c9ce277ba56b1e8e84e836b602ee8c377ded
+      lastVerified: '2026-05-28T01:47:32.326Z'
     danijel-overtime:
       path: .aios-core/development/agents/danijel-overtime.md
       layer: L2
@@ -23452,37 +23148,8 @@ entities:
         - validate-story-draft
         - story-tmpl
         - claude-rules
-        - codex-rules
         - brownfield-discovery
-      dependencies:
-        - create-doc
-        - db-domain-modeling
-        - setup-database
-        - db-env-check
-        - db-bootstrap
-        - db-apply-migration
-        - db-dry-run
-        - db-seed
-        - db-snapshot
-        - db-rollback
-        - db-smoke-test
-        - security-audit
-        - analyze-performance
-        - db-policy-apply
-        - test-as-user
-        - db-verify-order
-        - db-load-csv
-        - db-run-sql
-        - execute-checklist
-        - create-deep-research-prompt
-        - schema-design-tmpl.yaml
-        - rls-policies-tmpl.yaml
-        - migration-plan-tmpl.yaml
-        - index-strategy-tmpl.yaml
-        - dba-predeploy-checklist
-        - dba-rollback-checklist
-        - database-design-checklist
-        - supabase-cli
+      dependencies: []
       externalDeps:
         - coderabbit
       plannedDeps:
@@ -23502,8 +23169,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:878d9531550e73db5e2ee0642fd66dc0563b0dcca6e8723e3753520bb21f8ca9
-      lastVerified: '2026-04-10T23:10:00.948Z'
+      checksum: sha256:e8af2b9a5c11715a78113654d475eb3688ea1ca1428dfa384888a5f0c50cb93e
+      lastVerified: '2026-05-28T01:47:32.327Z'
     dave-snowden:
       path: .aios-core/development/agents/dave-snowden.md
       layer: L2
@@ -23605,11 +23272,7 @@ entities:
         - lead
         - design-lead
       usedBy: []
-      dependencies:
-        - create-doc
-        - execute-checklist
-        - component-quality-checklist
-        - accessibility-wcag-checklist
+      dependencies: []
       externalDeps: []
       plannedDeps:
         - mcp-design-studio
@@ -23618,8 +23281,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:e0ab2f4c9f8f56919144dffd4f5a8cba8e4981e59b2e8e5fc322b129e866b39a
-      lastVerified: '2026-04-10T23:10:00.955Z'
+      checksum: sha256:38376150932a3f95408bc7b6934c50ec3fedeb03205c02c2ffb5ff3bfbabb62e
+      lastVerified: '2026-05-28T01:47:32.327Z'
     design-systems-engineer:
       path: .aios-core/development/agents/design-systems-engineer.md
       layer: L2
@@ -23631,20 +23294,7 @@ entities:
         - engineer
         - design-systems-engineer
       usedBy: []
-      dependencies:
-        - extract-tokens
-        - audit-codebase
-        - generate-migration-strategy
-        - export-design-tokens-dtcg
-        - build-component
-        - compose-molecule
-        - extend-pattern
-        - setup-design-system
-        - generate-documentation
-        - execute-checklist
-        - tokens-schema-tmpl.yaml
-        - component-quality-checklist
-        - accessibility-wcag-checklist
+      dependencies: []
       externalDeps: []
       plannedDeps:
         - integrate-Squad
@@ -23657,8 +23307,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:8c5dae5202772f3be21374e724f13728516fb91ead3a5234a1b68fdada620d2e
-      lastVerified: '2026-04-10T23:10:00.956Z'
+      checksum: sha256:253f6d6173e97470f94abbcf8d322ff2172be27d83527972c92d81bb0091c83c
+      lastVerified: '2026-05-28T01:47:32.328Z'
     dev:
       path: .aios-core/development/agents/dev.md
       layer: L2
@@ -23717,7 +23367,6 @@ entities:
         - story-tmpl
         - antigravity-rules
         - claude-rules
-        - codex-rules
         - cursor-rules
         - brownfield-compatibility-checklist
         - constitution-gates
@@ -23734,44 +23383,6 @@ entities:
         - story-draft-checklist
       dependencies:
         - decision-log-generator
-        - apply-qa-fixes
-        - qa-fix-issues
-        - create-service
-        - dev-develop-story
-        - execute-checklist
-        - plan-execute-subtask
-        - verify-subtask
-        - dev-improve-code-quality
-        - po-manage-story-backlog
-        - dev-optimize-performance
-        - dev-suggest-refactoring
-        - sync-documentation
-        - validate-next-story
-        - waves
-        - build-resume
-        - build-status
-        - build-autonomous
-        - gotcha
-        - gotchas
-        - create-worktree
-        - list-worktrees
-        - remove-worktree
-        - story-dod-checklist
-        - self-critique-checklist
-        - context7
-        - supabase
-        - n8n
-        - browser
-        - ffmpeg
-        - recovery-tracker.js
-        - stuck-detector.js
-        - approach-manager.js
-        - rollback-manager.js
-        - build-state-manager.js
-        - autonomous-build-loop.js
-        - build-orchestrator.js
-        - gotchas-memory.js
-        - worktree-manager.js
       externalDeps:
         - coderabbit
         - git
@@ -23781,8 +23392,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:572acdbdbf239c9f60b2e732640077bdf66f3359cfef802935ca5f6d9a42eab3
-      lastVerified: '2026-04-10T23:10:00.958Z'
+      checksum: sha256:1344bd39812dcccac7a1050788f7aecc3e5b829fb09187afc04c6508a19c346f
+      lastVerified: '2026-05-28T01:47:32.329Z'
     devops:
       path: .aios-core/development/agents/devops.md
       layer: L2
@@ -23815,42 +23426,10 @@ entities:
         - validate-story-draft
         - story-tmpl
         - claude-rules
-        - codex-rules
         - constitution-gates
         - memory-audit-checklist
         - greenfield-fullstack
-      dependencies:
-        - environment-bootstrap
-        - setup-github
-        - github-devops-version-management
-        - github-devops-pre-push-quality-gate
-        - github-devops-github-pr-automation
-        - ci-cd-configuration
-        - github-devops-repository-cleanup
-        - release-management
-        - search-mcp
-        - add-mcp
-        - list-mcps
-        - remove-mcp
-        - setup-mcp-docker
-        - check-docs-links
-        - triage-github-issues
-        - resolve-github-issue
-        - create-worktree
-        - list-worktrees
-        - remove-worktree
-        - cleanup-worktrees
-        - merge-worktree
-        - github-pr-template
-        - github-actions-ci.yml
-        - github-actions-cd.yml
-        - changelog-template
-        - pre-push-checklist
-        - release-checklist
-        - github-cli
-        - asset-inventory.js
-        - path-analyzer.js
-        - migrate-agent.js
+      dependencies: []
       externalDeps:
         - coderabbit
         - git
@@ -23862,8 +23441,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:17e87acc12317985eb3a95b48d6e276ea2de00823eb04b0b809c90ab2bdc9ecf
-      lastVerified: '2026-04-10T23:10:00.960Z'
+      checksum: sha256:fa7fa1d1e2d7c6c4f488367b79576d73160724a7437800299b2a013b124c94ea
+      lastVerified: '2026-05-28T01:47:32.329Z'
     dieter-rams:
       path: .aios-core/development/agents/dieter-rams.md
       layer: L2
@@ -24251,13 +23830,7 @@ entities:
         - cardone
         - grant-cardone
       usedBy: []
-      dependencies:
-        - sales-playbook-workflow
-        - objection-handling-workflow
-        - sales-call-script-workflow
-        - scaling-plan-workflow
-        - prospecting-plan-workflow
-        - pipeline-audit-workflow
+      dependencies: []
       externalDeps: []
       plannedDeps: []
       lifecycle: experimental
@@ -24265,8 +23838,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:f154d16c1dd0c3d341d6ff8e79b4428147bd8fd7d733cd10d3a2d2b886b2baa9
-      lastVerified: '2026-04-10T23:10:00.988Z'
+      checksum: sha256:dcf65b9282cbf64a79555fe7dff3165c85adf8e695228907b073389f83aafadb
+      lastVerified: '2026-05-28T01:47:32.330Z'
     guillaume-moubeche:
       path: .aios-core/development/agents/guillaume-moubeche.md
       layer: L2
@@ -24395,11 +23968,7 @@ entities:
         - sutskever
         - ilya-sutskever
       usedBy: []
-      dependencies:
-        - ai-safety-review-workflow
-        - ai-scaling-workflow
-        - ai-architecture-review-workflow
-        - research-direction-workflow
+      dependencies: []
       externalDeps: []
       plannedDeps:
         - huggingface-api
@@ -24409,8 +23978,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:1942632dfe8a39efd02f53e720209e009153be34a0515c55aac1f1ea1de1abd3
-      lastVerified: '2026-04-10T23:10:00.996Z'
+      checksum: sha256:d406f3ca7fdce3529eb215a729f368eb29c6a367111f8a77b9dbc8e46adef8c6
+      lastVerified: '2026-05-28T01:47:32.331Z'
     jason-lemkin:
       path: .aios-core/development/agents/jason-lemkin.md
       layer: L2
@@ -24421,15 +23990,7 @@ entities:
         - lemkin
         - jason-lemkin
       usedBy: []
-      dependencies:
-        - saas-metrics-workflow
-        - growth-strategy-workflow
-        - churn-analysis-workflow
-        - hiring-strategy-workflow
-        - cs-strategy-workflow
-        - pricing-audit-workflow
-        - scaling-plan-workflow
-        - go-to-market-workflow
+      dependencies: []
       externalDeps: []
       plannedDeps:
         - hubspot-crm
@@ -24439,8 +24000,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:c19b769b7be6508dd89f4ea53e4ccc0f1846278cb80c632536d77d22d05d1338
-      lastVerified: '2026-04-10T23:10:00.997Z'
+      checksum: sha256:79d84eb2819c57af9234b95898cc0390eca13ae7ab482ca829bee23a446996a3
+      lastVerified: '2026-05-28T01:47:32.332Z'
     jay-abraham:
       path: .aios-core/development/agents/jay-abraham.md
       layer: L2
@@ -24672,8 +24233,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:0e7fb1df0ef7dcf0def758f91da0ca47c3b22a2f91a60c194618ca0daf1ee9a2
-      lastVerified: '2026-05-22T12:24:53.045Z'
+      checksum: sha256:1bfbf5d21d6ee02a929d15460c358f0b16b4d6fc5fe6ca24c75bb6d4b7182436
+      lastVerified: '2026-05-28T01:47:32.334Z'
     john-maeda:
       path: .aios-core/development/agents/john-maeda.md
       layer: L2
@@ -24838,11 +24399,7 @@ entities:
         - beck
         - kent-beck
       usedBy: []
-      dependencies:
-        - testing-strategy-workflow
-        - refactoring-plan-workflow
-        - code-smell-audit-workflow
-        - team-assessment-workflow
+      dependencies: []
       externalDeps: []
       plannedDeps:
         - semgrep-cli
@@ -24852,8 +24409,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:d23436575ffc89767a1e0fb5e4e4bad1a02def06cf023c3600841e026c1cc60c
-      lastVerified: '2026-04-10T23:10:01.018Z'
+      checksum: sha256:c57cac483c3d003eb00899df716d603532d4a820825b7be86de90545dc0c9375
+      lastVerified: '2026-05-28T01:47:32.334Z'
     kent-c-dodds:
       path: .aios-core/development/agents/kent-c-dodds.md
       layer: L2
@@ -24884,11 +24441,7 @@ entities:
         - mitnick
         - kevin-mitnick
       usedBy: []
-      dependencies:
-        - attacker-profile-workflow
-        - threat-model-workflow
-        - security-audit-workflow
-        - training-program-workflow
+      dependencies: []
       externalDeps: []
       plannedDeps:
         - snyk-api
@@ -24899,8 +24452,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:a877101ab7b4bbfae9c147bf6f1093c527dd229792a2f35ee09662e3892edbf1
-      lastVerified: '2026-04-10T23:10:01.025Z'
+      checksum: sha256:421d558878a02e4a90bf85c5b0cb4eecabac3a7148927a4bb8105fc4cf779f57
+      lastVerified: '2026-05-28T01:47:32.335Z'
     larry-kim:
       path: .aios-core/development/agents/larry-kim.md
       layer: L2
@@ -24959,11 +24512,7 @@ entities:
         - lessig
         - lawrence-lessig
       usedBy: []
-      dependencies:
-        - ai-governance-workflow
-        - regulatory-strategy-workflow
-        - ai-legal-impact-workflow
-        - ethics-review-workflow
+      dependencies: []
       externalDeps: []
       plannedDeps:
         - docassemble-api
@@ -24972,8 +24521,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:1c34d4681b2e8e88f9c9f8939802a3dcfe538b563759a621453fe3fa34560926
-      lastVerified: '2026-04-10T23:10:01.029Z'
+      checksum: sha256:d3ad9a7942a9dcb5db895e20e28fe83e6a63faf09136b03671428aa7e2c84e99
+      lastVerified: '2026-05-28T01:47:32.336Z'
     lilian-weng:
       path: .aios-core/development/agents/lilian-weng.md
       layer: L2
@@ -25033,10 +24582,7 @@ entities:
         - torvalds
         - linus-torvalds
       usedBy: []
-      dependencies:
-        - code-smell-audit-workflow
-        - review-contributor-pr
-        - production-readiness-workflow
+      dependencies: []
       externalDeps: []
       plannedDeps:
         - github-api
@@ -25045,8 +24591,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:5748e058f401a0ee0e4bf3c17a950e60aab32ec1a9b5a910dcca1610da79571b
-      lastVerified: '2026-04-10T23:10:01.032Z'
+      checksum: sha256:9829e29738b67237f6f819ca0a31e8a54db4cbc952033749330fc1d5529729b7
+      lastVerified: '2026-05-28T01:47:32.337Z'
     liran-tal:
       path: .aios-core/development/agents/liran-tal.md
       layer: L2
@@ -25227,11 +24773,7 @@ entities:
         - cagan
         - marty-cagan
       usedBy: []
-      dependencies:
-        - team-assessment-workflow
-        - org-design-workflow
-        - product-diagnosis-workflow
-        - manager-assessment-workflow
+      dependencies: []
       externalDeps: []
       plannedDeps:
         - linear-api
@@ -25241,8 +24783,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:21ef853e3732d039d6ded1f39caac3a159355b8ddac6d9400e3dd0fb1b8bb8d6
-      lastVerified: '2026-04-10T23:10:01.042Z'
+      checksum: sha256:c86248b608798879822a1d6d2b013e8b3d93a139ce1249deb85b90e044338fd9
+      lastVerified: '2026-05-28T01:47:32.339Z'
     marty-neumeier:
       path: .aios-core/development/agents/marty-neumeier.md
       layer: L2
@@ -25357,8 +24899,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:5645bd2d1f0e2d1e6f2bed62fedde119d158c433d0b559dbed34f8cf42165255
-      lastVerified: '2026-05-22T12:24:53.047Z'
+      checksum: sha256:fe99be722a33cf8a094cb3c65f4194155ffb1f6026202a8ffeaf9cc2c177521a
+      lastVerified: '2026-05-28T01:47:32.340Z'
     mitchell-hashimoto:
       path: .aios-core/development/agents/mitchell-hashimoto.md
       layer: L2
@@ -25474,11 +25016,7 @@ entities:
         - patel
         - neil-patel
       usedBy: []
-      dependencies:
-        - analytics-audit-workflow
-        - content-strategy-workflow
-        - content-audit-workflow
-        - growth-strategy-workflow
+      dependencies: []
       externalDeps: []
       plannedDeps:
         - google-search-console
@@ -25489,8 +25027,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:01fc527f5375174c9e89c45eff4474479b4b8b2a7a4fb17c6aa93b84de54ebc7
-      lastVerified: '2026-04-10T23:10:01.055Z'
+      checksum: sha256:2c0f9718191d416a1f047383caf64318f4dbab465c41f7e04e6c38a4f685a6ac
+      lastVerified: '2026-05-28T01:47:32.340Z'
     niall-murphy:
       path: .aios-core/development/agents/niall-murphy.md
       layer: L2
@@ -25851,7 +25389,6 @@ entities:
         - story-tmpl
         - antigravity-rules
         - claude-rules
-        - codex-rules
         - cursor-rules
         - brownfield-discovery
         - brownfield-fullstack
@@ -25864,21 +25401,6 @@ entities:
       dependencies:
         - data-lifecycle-manager
         - bob-orchestrator
-        - create-doc
-        - correct-course
-        - create-deep-research-prompt
-        - brownfield-create-epic
-        - brownfield-create-story
-        - execute-checklist
-        - shard-doc
-        - spec-gather-requirements
-        - spec-write-spec
-        - session-resume
-        - execute-epic-plan
-        - prd-tmpl.yaml
-        - brownfield-prd-tmpl.yaml
-        - pm-checklist
-        - change-checklist
       externalDeps: []
       plannedDeps: []
       lifecycle: production
@@ -25886,8 +25408,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:fa6207d4211811eb0d5c35d4e4bebc3517b3941d171bbe4e50e3738d1fb6fce6
-      lastVerified: '2026-04-10T23:10:01.073Z'
+      checksum: sha256:f351809a0a15dfd7a2a26ddd87bc393356a667448f91f822a8f01245c66dbde6
+      lastVerified: '2026-05-28T01:47:32.342Z'
     po:
       path: .aios-core/development/agents/po.md
       layer: L2
@@ -25920,7 +25442,6 @@ entities:
         - design-story-tmpl
         - antigravity-rules
         - claude-rules
-        - codex-rules
         - cursor-rules
         - constitution-gates
         - memory-audit-checklist
@@ -25931,23 +25452,7 @@ entities:
         - greenfield-service
         - greenfield-ui
         - story-development-cycle
-      dependencies:
-        - correct-course
-        - create-brownfield-story
-        - execute-checklist
-        - po-manage-story-backlog
-        - po-pull-story
-        - shard-doc
-        - po-sync-story
-        - validate-next-story
-        - po-close-story
-        - po-sync-story-to-clickup
-        - po-pull-story-from-clickup
-        - story-tmpl.yaml
-        - po-master-checklist
-        - change-checklist
-        - github-cli
-        - context7
+      dependencies: []
       externalDeps: []
       plannedDeps: []
       lifecycle: production
@@ -25955,8 +25460,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:7a478d045b754ba32cccf43c146bd950a029e3058ece8121eb2d210c34a5b8e4
-      lastVerified: '2026-04-10T23:10:01.074Z'
+      checksum: sha256:f91318c7106d39a83ac582b8152316a546291c21f14bb63478c084a55d2cd739
+      lastVerified: '2026-05-28T01:47:32.343Z'
     qa:
       path: .aios-core/development/agents/qa.md
       layer: L2
@@ -25996,7 +25501,6 @@ entities:
         - story-tmpl
         - antigravity-rules
         - claude-rules
-        - codex-rules
         - cursor-rules
         - constitution-gates
         - brownfield-discovery
@@ -26010,31 +25514,7 @@ entities:
         - spec-pipeline
         - story-development-cycle
         - story-draft-checklist
-      dependencies:
-        - qa-create-fix-request
-        - qa-generate-tests
-        - qa-nfr-assess
-        - qa-gate
-        - qa-review-build
-        - qa-review-proposal
-        - qa-review-story
-        - qa-risk-profile
-        - qa-run-tests
-        - qa-test-design
-        - qa-trace-requirements
-        - create-suite
-        - spec-critique
-        - qa-library-validation
-        - qa-security-checklist
-        - qa-migration-validation
-        - qa-evidence-requirements
-        - qa-false-positive-detection
-        - qa-browser-console-check
-        - qa-gate-tmpl.yaml
-        - story-tmpl.yaml
-        - browser
-        - context7
-        - supabase
+      dependencies: []
       externalDeps:
         - coderabbit
         - git
@@ -26045,8 +25525,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:4a870138624f37fb5a2e9cc4ce8be3fc62e8fbbac468df290fb0b4f0ecd81c02
-      lastVerified: '2026-04-10T23:10:01.075Z'
+      checksum: sha256:24443f840f1ec9b8b6482a14056bb1f94c384e236dc84e9248c6f12c77c43402
+      lastVerified: '2026-05-28T01:47:32.343Z'
     rafael-calvo:
       path: .aios-core/development/agents/rafael-calvo.md
       layer: L2
@@ -26115,11 +25595,7 @@ entities:
         - dalio
         - ray-dalio
       usedBy: []
-      dependencies:
-        - decision-framework-workflow
-        - culture-audit-workflow
-        - investment-review-workflow
-        - risk-assessment-workflow
+      dependencies: []
       externalDeps: []
       plannedDeps:
         - alpha-vantage-api
@@ -26129,8 +25605,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:168e3b0d5f2aa5ccc1ee995854dcf38907fa42a34f421bbb34e75e93e481b78a
-      lastVerified: '2026-04-10T23:10:01.080Z'
+      checksum: sha256:9c9c4934f18b7b1e5e3d3945d33d81e8320f1cef4aff5d769119bdcd43755716
+      lastVerified: '2026-05-28T01:47:32.344Z'
     refika-anadol:
       path: .aios-core/development/agents/refika-anadol.md
       layer: L2
@@ -26182,9 +25658,7 @@ entities:
         - thaler
         - richard-thaler
       usedBy: []
-      dependencies:
-        - nudge-program-workflow
-        - design-intervention-workflow
+      dependencies: []
       externalDeps: []
       plannedDeps: []
       lifecycle: experimental
@@ -26192,8 +25666,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:28c61b96c7bf2d85cf50246c175d1758cf6323dc9a66fe05226cb787759134c4
-      lastVerified: '2026-04-10T23:10:01.085Z'
+      checksum: sha256:1ec48979db06f057f2ad662446612d87088f94c752a5ccc7ccfa2517ea05e922
+      lastVerified: '2026-05-28T01:47:32.345Z'
     rob-walling:
       path: .aios-core/development/agents/rob-walling.md
       layer: L2
@@ -26273,11 +25747,7 @@ entities:
         - brunson
         - russell-brunson
       usedBy: []
-      dependencies:
-        - sales-funnel-workflow
-        - write-sales-copy-workflow
-        - brand-story-workflow
-        - email-sequence-workflow
+      dependencies: []
       externalDeps: []
       plannedDeps:
         - stripe-api
@@ -26286,8 +25756,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:a5c59de3c2f3d18bea217f73b5af561703d33f32337d5ea48d0e7af4c900d5e3
-      lastVerified: '2026-04-10T23:10:01.091Z'
+      checksum: sha256:10a7c78d3d6d72c1e04228f2337587a980aaa97bbc73ef6102786773aab694b0
+      lastVerified: '2026-05-28T01:47:32.345Z'
     ryan-dahl:
       path: .aios-core/development/agents/ryan-dahl.md
       layer: L2
@@ -26318,12 +25788,7 @@ entities:
         - holiday
         - ryan-holiday
       usedBy: []
-      dependencies:
-        - growth-strategy-workflow
-        - go-to-market-workflow
-        - content-strategy-workflow
-        - positioning-strategy-workflow
-        - decision-framework-workflow
+      dependencies: []
       externalDeps: []
       plannedDeps: []
       lifecycle: experimental
@@ -26331,8 +25796,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:864486355c623e3681766ef2a5c8e0f3be7a93dc2a76b84d0aba1c6af77361ae
-      lastVerified: '2026-04-10T23:10:01.093Z'
+      checksum: sha256:86567347e0f6b7f6790d79066796f679abe02c6cb5f8b794c2f539bb48f3616f
+      lastVerified: '2026-05-28T01:47:32.346Z'
     sal-khan:
       path: .aios-core/development/agents/sal-khan.md
       layer: L2
@@ -26463,10 +25928,7 @@ entities:
         - hanselman
         - scott-hanselman
       usedBy: []
-      dependencies:
-        - usability-review-workflow
-        - flow-optimization-workflow
-        - content-strategy-workflow
+      dependencies: []
       externalDeps: []
       plannedDeps:
         - github-api
@@ -26476,8 +25938,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:a5b1199c53f06d65edf048addf881f207143a29e63c38e5841b9beefa0a2278b
-      lastVerified: '2026-04-10T23:10:01.102Z'
+      checksum: sha256:426e583bb0a93374c41ec5ca02491d4da97befb44cdaf10e7b29b9e9bbfc3434
+      lastVerified: '2026-05-28T01:47:32.346Z'
     sean-duffy:
       path: .aios-core/development/agents/sean-duffy.md
       layer: L2
@@ -26548,11 +26010,7 @@ entities:
         - sinek
         - simon-sinek
       usedBy: []
-      dependencies:
-        - leadership-framework-workflow
-        - team-psychological-safety-workflow
-        - brand-story-workflow
-        - culture-audit-workflow
+      dependencies: []
       externalDeps: []
       plannedDeps: []
       lifecycle: experimental
@@ -26560,8 +26018,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:de57377970c8254ec486eae7f5b4a30485a6b48d7ec1779d65350b3da4363e6d
-      lastVerified: '2026-04-10T23:10:01.106Z'
+      checksum: sha256:257b7ab272a679c620fc18ca73c1c5fa49e0fa40d3faa566506eea84502fd208
+      lastVerified: '2026-05-28T01:47:32.347Z'
     simon-willison:
       path: .aios-core/development/agents/simon-willison.md
       layer: L2
@@ -26604,8 +26062,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:858ec34df8c7abbe6d0e1f9ba7afa73f37f99a43e6682fe2872c664600afe13c
-      lastVerified: '2026-05-22T12:24:53.050Z'
+      checksum: sha256:1861c867ce2fc90bd018dcf9dcdf495ad0add2d93563d57e0a4bd869f69e07f2
+      lastVerified: '2026-05-28T01:47:32.347Z'
     sm:
       path: .aios-core/development/agents/sm.md
       layer: L2
@@ -26627,7 +26085,6 @@ entities:
         - design-story-tmpl
         - antigravity-rules
         - claude-rules
-        - codex-rules
         - cursor-rules
         - constitution-gates
         - brownfield-fullstack
@@ -26637,14 +26094,7 @@ entities:
         - greenfield-service
         - greenfield-ui
         - story-development-cycle
-      dependencies:
-        - create-next-story
-        - execute-checklist
-        - correct-course
-        - story-tmpl.yaml
-        - story-draft-checklist
-        - clickup
-        - context7
+      dependencies: []
       externalDeps:
         - git
       plannedDeps: []
@@ -26653,8 +26103,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:d5c1de7d275ef201c24a8c2574c3c3da52f04952e166f7be158731212c6ddba2
-      lastVerified: '2026-04-10T23:10:01.109Z'
+      checksum: sha256:464e4ea7a337b26a403b1e5808debbe050a55bf07b8b58c6ce647ec1cbb52980
+      lastVerified: '2026-05-28T01:47:32.348Z'
     sop-extractor:
       path: .aios-core/development/agents/sop-extractor.md
       layer: L2
@@ -26685,18 +26135,7 @@ entities:
         - creator
         - squad-creator
       usedBy: []
-      dependencies:
-        - squad-creator-design
-        - squad-creator-create
-        - squad-creator-validate
-        - squad-creator-list
-        - squad-creator-migrate
-        - squad-creator-analyze
-        - squad-creator-extend
-        - squad-creator-download
-        - squad-creator-publish
-        - squad-creator-sync-synkra
-        - context7
+      dependencies: []
       externalDeps:
         - git
       plannedDeps:
@@ -26712,8 +26151,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:96a945827e15b25a6cd13eb01b423b6dfb0fa7be8256edc5cec47a6635231536
-      lastVerified: '2026-04-10T23:10:01.111Z'
+      checksum: sha256:4b6c7843f71b452486730288d82a4df48219cee84a8b9c4f7c4e8f48043ef5eb
+      lastVerified: '2026-05-28T01:47:32.348Z'
     stephen-hahn:
       path: .aios-core/development/agents/stephen-hahn.md
       layer: L2
@@ -26764,9 +26203,7 @@ entities:
         - mitra
         - sugata-mitra
       usedBy: []
-      dependencies:
-        - ai-education-workflow
-        - learning-review-workflow
+      dependencies: []
       externalDeps: []
       plannedDeps: []
       lifecycle: experimental
@@ -26774,8 +26211,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:cb591db9392b6fd3f8ef45948ac171a6448e3ce35b0a0aff303208154acd4411
-      lastVerified: '2026-04-10T23:10:01.115Z'
+      checksum: sha256:e905e6071e83c737dcb1499c844ba15261474aba3aa6f040f89a2fe4d1e7dc0d
+      lastVerified: '2026-05-28T01:47:32.349Z'
     swyx:
       path: .aios-core/development/agents/swyx.md
       layer: L2
@@ -26804,9 +26241,7 @@ entities:
         - torres
         - teresa-torres
       usedBy: []
-      dependencies:
-        - jtbd-discovery-workflow
-        - team-assessment-workflow
+      dependencies: []
       externalDeps: []
       plannedDeps: []
       lifecycle: experimental
@@ -26814,8 +26249,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:26e966b7b52e1ad0343aefaf8247eee2e3dd7d114be664b61ca1f602d47d3206
-      lastVerified: '2026-04-10T23:10:01.117Z'
+      checksum: sha256:6c062bdee5ea301b40aea7e7c476465ae695598fefbf490c22630b27edaff83c
+      lastVerified: '2026-05-28T01:47:32.350Z'
     theo-polymarket:
       path: .aios-core/development/agents/theo-polymarket.md
       layer: L2
@@ -26889,9 +26324,7 @@ entities:
         - hunt
         - troy-hunt
       usedBy: []
-      dependencies:
-        - security-audit-workflow
-        - incident-response-workflow
+      dependencies: []
       externalDeps: []
       plannedDeps: []
       lifecycle: experimental
@@ -26899,8 +26332,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:dad28ad7fef77de540ab999fa47b19b6971f81e6d3061d32b6475ccbf141e701
-      lastVerified: '2026-04-10T23:10:01.122Z'
+      checksum: sha256:7a1b2dd7a9e3848f640fc055781ff29e3026e39e0d153109a6fff68a483ee799
+      lastVerified: '2026-05-28T01:47:32.351Z'
     ui-designer:
       path: .aios-core/development/agents/ui-designer.md
       layer: L2
@@ -26944,8 +26377,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:6d6c8b3448913b45f4347d332cd4080d8514e82c79a712108ed3a409cf48f748
-      lastVerified: '2026-04-10T23:10:01.123Z'
+      checksum: sha256:c6cd6033347e1769766c7133c966da1f31a7be3fc687096d5b47961155c2eb65
+      lastVerified: '2026-05-28T01:47:32.351Z'
     uncle-bob-martin:
       path: .aios-core/development/agents/uncle-bob-martin.md
       layer: L2
@@ -26957,10 +26390,7 @@ entities:
         - martin
         - uncle-bob-martin
       usedBy: []
-      dependencies:
-        - code-smell-audit-workflow
-        - architecture-patterns-workflow
-        - team-assessment-workflow
+      dependencies: []
       externalDeps: []
       plannedDeps: []
       lifecycle: experimental
@@ -26968,8 +26398,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:9d81d7249073abdd0a277bfc2c3e634ce29266e179e969e6ee7b4ce7b8ecf505
-      lastVerified: '2026-04-10T23:10:01.124Z'
+      checksum: sha256:5c8642096e62cd99b082112d0daad1aed48a7b49e2795227a802a0911fa221c0
+      lastVerified: '2026-05-28T01:47:32.352Z'
     ux-design-expert:
       path: .aios-core/development/agents/ux-design-expert.md
       layer: L2
@@ -26988,7 +26418,6 @@ entities:
         - design-story-tmpl
         - story-tmpl
         - claude-rules
-        - codex-rules
         - constitution-gates
         - design-dod-checklist
         - brownfield-discovery
@@ -27009,8 +26438,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:053e9127b156f280603b0f22d10b15fc99d16dcbd810486582abb0bffd0f9748
-      lastVerified: '2026-05-22T12:24:53.052Z'
+      checksum: sha256:5c201cc72a6d31fa8c11babd17e087f7fc2df47bad4ac7354480c93312ba862e
+      lastVerified: '2026-05-28T01:47:32.353Z'
     ux-designer:
       path: .aios-core/development/agents/ux-designer.md
       layer: L2
@@ -27021,12 +26450,7 @@ entities:
         - designer
         - ux-designer
       usedBy: []
-      dependencies:
-        - ux-create-wireframe
-        - ux-user-research
-        - execute-checklist
-        - front-end-spec-tmpl.yaml
-        - accessibility-wcag-checklist
+      dependencies: []
       externalDeps: []
       plannedDeps:
         - integrate-Squad
@@ -27048,8 +26472,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:4d8958017f801dbae780a0ffbf1337379161fef17d170bcef7045b4346db892c
-      lastVerified: '2026-04-10T23:10:01.127Z'
+      checksum: sha256:38987d04ec8a437910fb241d98d3198e7f0dc0b430319f18b56b483393e80293
+      lastVerified: '2026-05-28T01:47:32.353Z'
     ux-researcher:
       path: .aios-core/development/agents/ux-researcher.md
       layer: L2
@@ -27170,13 +26594,7 @@ entities:
         - buffett
         - warren-buffett
       usedBy: []
-      dependencies:
-        - valuation-workflow
-        - competitive-landscape-workflow
-        - investment-review-workflow
-        - dcf-model-workflow
-        - decision-framework-workflow
-        - startup-valuation-workflow
+      dependencies: []
       externalDeps: []
       plannedDeps: []
       lifecycle: experimental
@@ -27184,8 +26602,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:ed0bd1cba235ce1a7c58e73e4f292d8a0b2b33b63f3f5c540a317a67bce8ab1e
-      lastVerified: '2026-04-10T23:10:01.133Z'
+      checksum: sha256:170f5ce6108a6afde53fe8beaca42c74d32695a03fb9fb55feda83629a39bcf5
+      lastVerified: '2026-05-28T01:47:32.354Z'
     werner-vogels:
       path: .aios-core/development/agents/werner-vogels.md
       layer: L2
@@ -27265,9 +26683,7 @@ entities:
         - lecun
         - yann-lecun
       usedBy: []
-      dependencies:
-        - ai-architecture-review-workflow
-        - ai-evaluation-workflow
+      dependencies: []
       externalDeps: []
       plannedDeps: []
       lifecycle: experimental
@@ -27275,8 +26691,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:19ea2586dfc0eeabaabe4338dd0e699dbb55cf9f225f35aeb62d75bc89baa29b
-      lastVerified: '2026-04-10T23:10:01.139Z'
+      checksum: sha256:57bf265aaf9891ab48aae9ca517f5a3566fbd28ba6e5f965bbea53277cce466f
+      lastVerified: '2026-05-28T01:47:32.357Z'
     yu-kai-chou:
       path: .aios-core/development/agents/yu-kai-chou.md
       layer: L2
@@ -27333,8 +26749,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:f03a8f327345334465bd824e98efedaaeb5e4f685324967c6bee9af6e15c590f
-      lastVerified: '2026-05-22T12:24:53.039Z'
+      checksum: sha256:7bb27fba90d0c4503e0967fc102ce3fcc4ee57c94036672af91fd3cf3d30b91e
+      lastVerified: '2026-05-28T01:47:32.325Z'
     georgia-weidman:
       path: .aios-core/development/agents/georgia-weidman.md
       type: agent
@@ -27349,8 +26765,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:abeb577cc9a67f48df280b977b10be54fa9adf4747c2ec14e3a67510252c93e1
-      lastVerified: '2026-05-22T12:24:53.041Z'
+      checksum: sha256:c3409c2d5033547d4747bc4fd811c47d3c8e1707a1d09718cde92b4b8afb27e7
+      lastVerified: '2026-05-28T01:47:32.330Z'
     hd-moore:
       path: .aios-core/development/agents/hd-moore.md
       type: agent
@@ -27365,8 +26781,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:5831251edc6f5c2585b168653026721e94f7236cd5efedb438c57d2a7a418881
-      lastVerified: '2026-05-22T12:24:53.042Z'
+      checksum: sha256:23e9e9ee6cb6228bbbcc35c9ed2362e4fc3ccbc045bbb11127a10b4f03faecf1
+      lastVerified: '2026-05-28T01:47:32.331Z'
     jim-manico:
       path: .aios-core/development/agents/jim-manico.md
       type: agent
@@ -27381,8 +26797,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:67e6daf8208e97534189843fd8f9b11388ac815051ccc1d63314480c1c5d99b7
-      lastVerified: '2026-05-22T12:24:53.043Z'
+      checksum: sha256:bdef4629190071dc40d150b92225105f9a7410860642cb2cf8f19ddbac1c8f12
+      lastVerified: '2026-05-28T01:47:32.332Z'
     joel-de-menezes-niebuhr:
       path: .aios-core/development/agents/joel-de-menezes-niebuhr.md
       type: agent
@@ -27399,8 +26815,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:1b5e84839445baf3c3b5dada07c4983505d6da17e67385a4b880bb43c76307ac
-      lastVerified: '2026-05-22T12:24:53.044Z'
+      checksum: sha256:de43cf593eb8b3d8ff0401d332bd7a2c4b7e745db4dbc1a9100b50474d79753e
+      lastVerified: '2026-05-28T01:47:32.333Z'
     marcal-justen-filho:
       path: .aios-core/development/agents/marcal-justen-filho.md
       type: agent
@@ -27416,8 +26832,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:d9da331c4cd3823e0af769a13454da7a703ba38fc37a8775c21530899b323cc9
-      lastVerified: '2026-05-22T12:24:53.046Z'
+      checksum: sha256:2298c988eaeb04cf794f2bbd544580d66195edc30846163e41da3030339b544f
+      lastVerified: '2026-05-28T01:47:32.338Z'
     marcus-carey:
       path: .aios-core/development/agents/marcus-carey.md
       type: agent
@@ -27432,8 +26848,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:6e74df34e6dc7c569a3f35d2bfca1b9cd1a8d7c6e0dd0a4a676b687058e121dd
-      lastVerified: '2026-05-22T12:24:53.046Z'
+      checksum: sha256:06d5201ce1f61e12f9bc697c1ed5233b8dd228f40963db6e9004012bf3f79379
+      lastVerified: '2026-05-28T01:47:32.339Z'
     omar-santos:
       path: .aios-core/development/agents/omar-santos.md
       type: agent
@@ -27448,8 +26864,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:be28cca67b8fee90480edf02f66c4bf8088036f5e923eb82b02cc3079e7ee4bf
-      lastVerified: '2026-05-22T12:24:53.048Z'
+      checksum: sha256:f8f4c713b0b7eab69830484e8ce77a4b63668536cefc81385c462fb9ad3628e9
+      lastVerified: '2026-05-28T01:47:32.341Z'
     pablo-hoffman:
       path: .aios-core/development/agents/pablo-hoffman.md
       type: agent
@@ -27464,8 +26880,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:a5e8ddf9a1f82a519beacdf7807f12a9ea1316841ecbd03631c4fde5c997b8bf
-      lastVerified: '2026-05-22T12:24:53.048Z'
+      checksum: sha256:efebd92932b9102c9d1d5ccda4d8802249c08d37db1b7fef90ddc00f6aa3f577
+      lastVerified: '2026-05-28T01:47:32.341Z'
     peter-kim:
       path: .aios-core/development/agents/peter-kim.md
       type: agent
@@ -27480,8 +26896,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:5c0ce5d05a1bcfaf30d350a0cabab61b4a198056daa47f1ca176c61b96d078d2
-      lastVerified: '2026-05-22T12:24:53.049Z'
+      checksum: sha256:fd6a64d96bcdc536a4ef8c6094146dc47ce4c2451f4b5da9225b039a92aa35eb
+      lastVerified: '2026-05-28T01:47:32.342Z'
     tanya-janca:
       path: .aios-core/development/agents/tanya-janca.md
       type: agent
@@ -27496,8 +26912,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:071821d0181007ddf1288b0ec53589631d5ff6f0c16666ea29f7bc8fba5d5924
-      lastVerified: '2026-05-22T12:24:53.051Z'
+      checksum: sha256:c1ba21970492fb2347654cd333e24dd82bf9cd01cd1bfc087e2ed840d20045a6
+      lastVerified: '2026-05-28T01:47:32.349Z'
     wendi-whitmore:
       path: .aios-core/development/agents/wendi-whitmore.md
       type: agent
@@ -27512,8 +26928,8 @@ entities:
         score: 0.3
         constraints: []
         extensionPoints: []
-      checksum: sha256:c6f7d39544f55fc2a0b49f04c3f446f2349d34e169f8b0f08733fedc7103e179
-      lastVerified: '2026-05-22T12:24:53.053Z'
+      checksum: sha256:bd8e7564886e587e4f88154bf1233e0112a555e574dcc478432e9b87cb43e7e5
+      lastVerified: '2026-05-28T01:47:32.355Z'
   checklists:
     agent-quality-gate:
       path: .aios-core/development/checklists/agent-quality-gate.md
@@ -30902,9 +30318,7 @@ entities:
       keywords:
         - github
         - cli
-      usedBy:
-        - devops
-        - po
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -30947,8 +30361,7 @@ entities:
       keywords:
         - railway
         - cli
-      usedBy:
-        - architect
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -30969,9 +30382,7 @@ entities:
       keywords:
         - supabase
         - cli
-      usedBy:
-        - architect
-        - data-engineer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -30989,8 +30400,7 @@ entities:
       purpose: Complete, cross-platform solution for recording, converting, and streaming audio and video
       keywords:
         - ffmpeg
-      usedBy:
-        - dev
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -31030,9 +30440,7 @@ entities:
       purpose: Puppeteer-based browser automation for web scraping, testing, and interaction with web applications
       keywords:
         - browser
-      usedBy:
-        - dev
-        - qa
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -31053,8 +30461,7 @@ entities:
       purpose: ClickUp project management with pre-execution validation and API complexity handling
       keywords:
         - clickup
-      usedBy:
-        - sm
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -31074,13 +30481,10 @@ entities:
         - context7
       usedBy:
         - qa-library-validation
-        - analyst
-        - architect
         - atul-butte
         - bakul-patel
         - charles-spurgeon
         - dena-bravata
-        - dev
         - eduardo-bunge
         - gene-kim
         - geoff-cook
@@ -31090,12 +30494,8 @@ entities:
         - lucia-savage
         - martin-fowler
         - micky-tripathi
-        - po
-        - qa
         - rafael-calvo
         - sean-duffy
-        - sm
-        - squad-creator
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -31140,13 +30540,11 @@ entities:
       usedBy:
         - adam-grant
         - alex-hormozi
-        - analyst
         - anders-ericsson
         - andrej-karpathy
         - andrew-ng
         - ann-handley
         - april-dunford
-        - architect
         - aswath-damodaran
         - atul-butte
         - bakul-patel
@@ -31217,8 +30615,7 @@ entities:
       keywords:
         - google
         - workspace
-      usedBy:
-        - analyst
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -31236,8 +30633,7 @@ entities:
       purpose: n8n workflow management with execution validation and credential handling
       keywords:
         - n8n
-      usedBy:
-        - dev
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -31257,9 +30653,7 @@ entities:
         subscriptions
       keywords:
         - supabase
-      usedBy:
-        - dev
-        - qa
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -31283,10 +30677,7 @@ entities:
         - accessibility
         - wcag
         - checklist
-      usedBy:
-        - design-lead
-        - design-systems-engineer
-        - ux-designer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -31307,8 +30698,7 @@ entities:
         - checklist
         - solution
         - validation
-      usedBy:
-        - architect
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -31339,8 +30729,6 @@ entities:
         - propose-modification
         - qa-review-proposal
         - update-manifest
-        - pm
-        - po
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -31360,9 +30748,7 @@ entities:
         - component
         - quality
         - checklist
-      usedBy:
-        - design-lead
-        - design-systems-engineer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -31382,8 +30768,7 @@ entities:
         - database
         - design
         - checklist
-      usedBy:
-        - data-engineer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -31404,8 +30789,7 @@ entities:
         - predeploy
         - checklist
         - pre-deploy
-      usedBy:
-        - data-engineer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -31425,8 +30809,7 @@ entities:
         - dba
         - rollback
         - checklist
-      usedBy:
-        - data-engineer
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -31489,8 +30872,7 @@ entities:
         - manager
         - (pm)
         - requirements
-      usedBy:
-        - pm
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -31525,7 +30907,6 @@ entities:
         - qa-trace-requirements
         - sm-create-next-story
         - validate-next-story
-        - po
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -31548,8 +30929,7 @@ entities:
         - pre-push
         - quality
         - gate
-      usedBy:
-        - devops
+      usedBy: []
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -31570,7 +30950,6 @@ entities:
         - checklist
       usedBy:
         - publish-npm
-        - devops
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -31593,7 +30972,6 @@ entities:
         - self-critique
       usedBy:
         - build-autonomous
-        - dev
       dependencies:
         - dev
       externalDeps: []
@@ -31620,7 +30998,6 @@ entities:
       usedBy:
         - develop
         - quality-review
-        - dev
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -31642,7 +31019,6 @@ entities:
         - checklist
       usedBy:
         - sm-refine-story
-        - sm
       dependencies:
         - dev
         - architect
