@@ -44,6 +44,7 @@ activation-instructions:
 agent:
   name: Dex
   id: dev
+  class: operational
   title: Full Stack Developer
   icon: 💻
   whenToUse: 'Use for code implementation, debugging, refactoring, and development best practices'

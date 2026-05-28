@@ -46,6 +46,7 @@ activation-instructions:
 agent:
   name: Mitra
   id: sugata-mitra
+  class: consultation
   title: Chief Self-Organized Learning Architect
   icon: "\U0001F331"
   whenToUse: |
@@ -238,8 +239,6 @@ CRITICAL_LOADER_RULE: |
 
 dependencies:
   tasks:
-    - ai-education-workflow.md
-    - learning-review-workflow.md
   templates: []
   checklists: []
   data:

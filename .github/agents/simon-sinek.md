@@ -46,6 +46,7 @@ activation-instructions:
 agent:
   name: Sinek
   id: simon-sinek
+  class: consultation
   title: Chief Inspiration & Leadership Architect
   icon: "\U0001F3AF"
   whenToUse: |
@@ -233,10 +234,6 @@ CRITICAL_LOADER_RULE: |
 
 dependencies:
   tasks:
-    - leadership-framework-workflow.md
-    - team-psychological-safety-workflow.md
-    - brand-story-workflow.md
-    - culture-audit-workflow.md
   templates: []
   checklists: []
   data:

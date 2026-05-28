@@ -17,7 +17,7 @@ IDE Sync keeps agent definitions in `.aios-core/development/agents/` synchronize
 - `.cursor/rules/agents/` (Cursor)
 - `.antigravity/rules/agents/` (Antigravity)
 
-For Codex `/skills` activators, use the dedicated skills sync:
+Codex agents are synced to `.codex/agents/`. `/skills` is reserved for reusable capabilities, not agent activation. Use the dedicated skills sync only to prepare skills directories:
 
 ```bash
 npm run sync:skills:codex

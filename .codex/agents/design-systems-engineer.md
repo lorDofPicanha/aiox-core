@@ -58,6 +58,7 @@ activation-instructions:
 agent:
   name: Token
   id: design-systems-engineer
+  class: operational
   title: Design Systems Engineer & Token Architect
   icon: ⚙️
   whenToUse: 'Design token systems, component libraries, design-to-code pipelines, Atomic Design implementation, W3C Design Tokens, Tailwind theming, and shadcn/ui setup'

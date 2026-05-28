@@ -15,14 +15,15 @@ class TemplateValidator {
     this.requiredVariables = {
       agent: [
         'AGENT_NAME',
-        'AGENT_ID', 
+        'AGENT_ID',
+        'AGENT_CLASS',
         'AGENT_TITLE',
         'AGENT_ICON',
         'WHEN_TO_USE',
         'PERSONA_ROLE',
         'PERSONA_STYLE',
         'PERSONA_IDENTITY',
-        'PERSONA_FOCUS'
+        'PERSONA_FOCUS',
       ],
       task: [
         'TASK_TITLE',
@@ -30,7 +31,7 @@ class TemplateValidator {
         'AGENT_NAME',
         'VERSION',
         'TASK_DESCRIPTION',
-        'OUTPUT_DESCRIPTION'
+        'OUTPUT_DESCRIPTION',
       ],
       workflow: [
         'WORKFLOW_ID',
@@ -40,8 +41,8 @@ class TemplateValidator {
         'WORKFLOW_TYPE',
         'AUTHOR',
         'CREATED_DATE',
-        'LAST_MODIFIED'
-      ]
+        'LAST_MODIFIED',
+      ],
     };
   }
 
@@ -58,7 +59,7 @@ class TemplateValidator {
     } catch (error) {
       return {
         valid: false,
-        errors: [`Failed to read template file: ${error.message}`]
+        errors: [`Failed to read template file: ${error.message}`],
       };
     }
   }
@@ -77,7 +78,7 @@ class TemplateValidator {
     if (!this.requiredVariables[templateType]) {
       return {
         valid: false,
-        errors: [`Unknown template type: ${templateType}`]
+        errors: [`Unknown template type: ${templateType}`],
       };
     }
     
@@ -119,7 +120,7 @@ class TemplateValidator {
       valid: errors.length === 0,
       errors,
       warnings,
-      variables: this.engine.getTemplateVariables(template)
+      variables: this.engine.getTemplateVariables(template),
     };
   }
 
@@ -237,7 +238,7 @@ class TemplateValidator {
       { pattern: /eval\s*\(/, message: 'Template contains eval() - security risk' },
       { pattern: /Function\s*\(/, message: 'Template contains Function() - security risk' },
       { pattern: /require\s*\([^'"]+\)/, message: 'Dynamic require detected - potential security risk' },
-      { pattern: /<script/i, message: 'Script tags detected in template' }
+      { pattern: /<script/i, message: 'Script tags detected in template' },
     ];
     
     for (const { pattern, message } of dangerousPatterns) {

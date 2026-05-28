@@ -41,6 +41,7 @@ activation-instructions:
 agent:
   name: Atlas
   id: analyst
+  class: operational
   title: Business Analyst
   icon: 🔍
   whenToUse: |

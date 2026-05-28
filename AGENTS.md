@@ -37,15 +37,15 @@ Quality gates pre-push: `npm run lint && npm run typecheck && npm test`.
 ## 3. Agent shortcuts
 
 Atalhos preferenciais:
-1. `/skills` e selecionar `aios-<agent-id>` em `.codex/skills/`
-2. Ou `@<agent>` direto: `@architect`, `@dev`, `@qa`, etc.
-3. Ou `/<agent>` slash command em `.codex/prompts/`
+1. `@<agent>` direto: `@architect`, `@dev`, `@qa`, etc.
+2. Ou `/<agent>` slash command em `.codex/prompts/`
+3. Ou carregar o arquivo correspondente em `.codex/agents/<agent-id>.md`
 
 **Core agents AIOS:** `@aios-master`, `@analyst`, `@architect`, `@data-engineer`, `@dev`, `@devops`, `@pm`, `@po`, `@qa`, `@sm`, `@squad-creator`, `@ux-design-expert`
 
 **Squad chiefs (Tier 0 routing):** `@cyber-chief`, `@design-chief`, `@data-chief`, `@legal-chief`, `@story-chief`, `@copy-chief`, `@traffic-masters-chief`, `@design-system`, `@oalanicolas`, `@pedro-valerio`, `@sop-extractor`
 
-**Mind clones (250 via brain-bridge MCP + `/skills` shortcuts):** `@<person-slug>`. Exemplos: `@patricia-peck`, `@martin-fowler`, `@april-dunford`, `@cassie-kozyrkov`, etc. Cada clone tem atalho `aios-<id>` em `.codex/skills/` (246 SKILL.md com frontmatter name/description) que carrega a persona de `.aios-core/development/agents/` ou `squads/*/agents/`.
+**Mind clones (250 via brain-bridge MCP + atalhos de agente):** `@<person-slug>`. Exemplos: `@patricia-peck`, `@martin-fowler`, `@april-dunford`, `@cassie-kozyrkov`, etc. Cada clone/agente deve carregar a persona de `.aios-core/development/agents/`, `.codex/agents/` ou `squads/*/agents/`; não use `.codex/skills/aios-*` para agentes.
 
 Carregue o arquivo correspondente de `.codex/agents/` ao ativar atalho. Mostre 3-6 comandos principais (`*help`, `*create`, etc.). Stay in character até receber `*exit`.
 
@@ -242,9 +242,9 @@ node .aios-core/infrastructure/scripts/route.js --exec "..."   # auto-roda o del
 
 ## 8. Skills disponíveis
 
-55 skills em `.codex/skills/`. Ativar via `/skills <name>`.
+Skills em `.codex/skills/` são capacidades reutilizáveis, não agentes. Ativar via `/skills <name>` apenas para skills reais.
 
-**Core AIOS:** `aios-master`, `aios-architect`, `aios-dev`, `aios-qa`, `aios-pm`, `aios-po`, `aios-sm`, `aios-analyst`, `aios-data-engineer`, `aios-devops`, `aios-ux-design-expert`, `aios-squad-creator`
+**Agentes Core AIOS:** `aios-master`, `aios-architect`, `aios-dev`, `aios-qa`, `aios-pm`, `aios-po`, `aios-sm`, `aios-analyst`, `aios-data-engineer`, `aios-devops`, `aios-ux-design-expert`, `aios-squad-creator` vivem em `.aios-core/development/agents/` e `.codex/agents/`.
 
 **Squad chiefs:** `aios-copy-chief`, `aios-cyber-chief`, `aios-data-chief`, `aios-design-chief`, `aios-legal-chief`, `aios-story-chief`, `aios-traffic-masters-chief`
 

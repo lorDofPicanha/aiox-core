@@ -4,6 +4,7 @@
 const fs = require('fs');
 const path = require('path');
 const { parseAgentDirs } = require('./ide-sync/agent-parser');
+const { validateCodexSkills } = require('./codex-skills-sync/validate');
 
 const CODEX_REDIRECTS = new Set([
   'aios-developer.md',
@@ -50,15 +51,8 @@ function countSkillFiles(skillsDir) {
   if (!fs.existsSync(skillsDir)) return 0;
   const entries = fs.readdirSync(skillsDir, { withFileTypes: true });
   return entries
-    .filter((entry) => entry.isDirectory() && entry.name.startsWith('aios-'))
+    .filter((entry) => entry.isDirectory())
     .filter((entry) => fs.existsSync(path.join(skillsDir, entry.name, 'SKILL.md')))
-    .length;
-}
-
-function countAllowedExtraSkillFiles(skillsDir) {
-  if (!fs.existsSync(skillsDir)) return 0;
-  return [...ALLOWED_EXTRA_SKILLS]
-    .filter((skillId) => fs.existsSync(path.join(skillsDir, skillId, 'SKILL.md')))
     .length;
 }
 
@@ -99,16 +93,22 @@ function validateCodexIntegration(options = {}) {
     .filter((agent) => !agent.error || agent.error === 'YAML parse failed, using fallback extraction')
     .length;
   const expectedAgentCount = parseableSourceCount + CODEX_REDIRECTS.size;
-  const expectedSkillCount = parseableSourceCount + countAllowedExtraSkillFiles(resolved.skillsDir);
   const codexAgentsCount = countMarkdownFiles(resolved.agentsDir);
   const codexSkillsCount = countSkillFiles(resolved.skillsDir);
+  const skillsValidation = validateCodexSkills({
+    projectRoot: resolved.projectRoot,
+    sourceDirs: resolved.sourceAgentDirs,
+    skillsDir: resolved.skillsDir,
+    strict: true,
+    quiet: true,
+  });
 
   if (parseableSourceCount > 0 && codexAgentsCount !== expectedAgentCount) {
     warnings.push(`Codex agent count differs from source (${codexAgentsCount}/${expectedAgentCount})`);
   }
 
-  if (parseableSourceCount > 0 && codexSkillsCount !== expectedSkillCount) {
-    warnings.push(`Codex skill count differs from source (${codexSkillsCount}/${expectedSkillCount})`);
+  if (!skillsValidation.ok) {
+    errors.push(...skillsValidation.errors);
   }
 
   return {
@@ -118,7 +118,7 @@ function validateCodexIntegration(options = {}) {
     metrics: {
       sourceAgents: parseableSourceCount,
       expectedCodexAgents: expectedAgentCount,
-      expectedCodexSkills: expectedSkillCount,
+      expectedCodexSkills: ALLOWED_EXTRA_SKILLS.size,
       codexAgents: codexAgentsCount,
       codexSkills: codexSkillsCount,
     },
@@ -172,5 +172,4 @@ module.exports = {
   getDefaultOptions,
   countMarkdownFiles,
   countSkillFiles,
-  countAllowedExtraSkillFiles,
 };

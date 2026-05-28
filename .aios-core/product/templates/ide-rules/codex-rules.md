@@ -35,8 +35,8 @@ Este arquivo define as instrucoes do projeto para o Codex CLI.
 
 - `npm run sync:ide`
 - `npm run sync:ide:check`
-- `npm run sync:skills:codex`
-- `npm run sync:skills:codex:global` (opcional; neste repo o padrao e local-first)
+- `npm run sync:skills:codex` (prepara o diretorio para skills reais; nao gera agentes)
+- `npm run sync:skills:codex:global` (opcional; apenas para skills reais globais)
 - `npm run validate:structure`
 - `npm run validate:agents`
 <!-- AIOS-MANAGED-END: commands -->
@@ -45,8 +45,9 @@ Este arquivo define as instrucoes do projeto para o Codex CLI.
 ## Agent Shortcuts
 
 Preferencia de ativacao no Codex CLI:
-1. Use `/skills` e selecione `aios-<agent-id>` vindo de `.codex/skills` (ex.: `aios-architect`)
-2. Se preferir, use os atalhos abaixo (`@architect`, `/architect`, etc.)
+1. Para agentes, use os atalhos do `AGENTS.md` e carregue a definicao em `.codex/agents/<agent-id>.md` (ex.: `.codex/agents/architect.md`)
+2. Use `/skills` apenas para capacidades reutilizaveis, nao para agentes `aios-*`
+3. Se preferir, use os atalhos abaixo (`@architect`, `/architect`, etc.)
 
 Interprete os atalhos abaixo carregando o arquivo correspondente em `.aios-core/development/agents/` (fallback: `.codex/agents/`), renderize o greeting via `generate-greeting.js` e assuma a persona ate `*exit`:
 

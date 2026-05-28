@@ -38,7 +38,7 @@ cd my-first-project
 
 - Claude Code: `/agent-name`
 - Gemini CLI: `/aios-menu` then `/aios-<agent>`
-- Codex CLI: `/skills` then `aios-<agent-id>`
+- Codex CLI: AGENTS.md shortcut + `.codex/agents/<agent-id>.md`
 - Cursor/Copilot/AntiGravity: follow constraints in `docs/ide-integration.md`
 
 ### Step 3: Validate first value
@@ -176,7 +176,7 @@ Summary:
 | --- | --- | --- |
 | Claude Code | Works | `/agent-name` commands |
 | Gemini CLI | Works | `/aios-menu` then `/aios-<agent>` |
-| Codex CLI | Limited | `/skills` then `aios-<agent-id>` |
+| Codex CLI | Limited | AGENTS.md shortcut + `.codex/agents/<agent-id>.md` |
 | Cursor | Limited | `@agent` + synced rules |
 | GitHub Copilot | Limited | chat modes + repo instructions |
 | AntiGravity | Limited | workflow-driven activation |

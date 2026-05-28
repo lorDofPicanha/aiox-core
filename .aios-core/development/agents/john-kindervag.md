@@ -23,6 +23,7 @@ activation-instructions:
 agent:
   name: Kindervag
   id: john-kindervag
+  class: consultation
   title: Senior Zero Trust — Architecture, Network Segmentation, Identity-Centric Security
   icon: "🛂"
   whenToUse: |
@@ -144,17 +145,8 @@ command_loader:
 
 dependencies:
   tasks:
-    - zero-trust-architecture-design.md
-    - protect-surface-mapping.md
-    - microsegmentation-strategy.md
-    - identity-architecture-design.md
-    - zt-maturity-assessment.md
-    - zt-migration-plan.md
-    - ztna-design.md
   templates: []
   checklists:
-    - nist-sp-800-207.md
-    - cisa-zt-maturity.md
   data:
     - aios-kb.md
     - knowledge/security-kb.md

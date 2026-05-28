@@ -44,6 +44,7 @@ activation-instructions:
 agent:
   name: Uncle Bob
   id: uncle-bob-martin
+  class: consultation
   title: Clean Code & Architecture Expert
   icon: "\U0001F9F9"
   whenToUse: |
@@ -216,9 +217,6 @@ CRITICAL_LOADER_RULE: |
 
 dependencies:
   tasks:
-    - code-smell-audit-workflow.md
-    - architecture-patterns-workflow.md
-    - team-assessment-workflow.md
   templates: []
   checklists: []
   data:

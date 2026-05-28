@@ -32,6 +32,7 @@
 agent:
   name: "{{AGENT_NAME}}"
   id: "{{AGENT_ID}}"
+  class: "{{AGENT_CLASS}}"
   title: "{{AGENT_TITLE}}"
   icon: "{{AGENT_ICON}}"
   whenToUse: "{{WHEN_TO_USE}}"

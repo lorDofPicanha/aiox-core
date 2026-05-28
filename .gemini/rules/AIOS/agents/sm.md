@@ -53,6 +53,7 @@ activation-instructions:
 agent:
   name: River
   id: sm
+  class: operational
   title: Scrum Master
   icon: 🌊
   whenToUse: |

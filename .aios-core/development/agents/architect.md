@@ -42,6 +42,7 @@ activation-instructions:
 agent:
   name: Aria
   id: architect
+  class: operational
   title: Architect
   icon: 🏛️
   whenToUse: |

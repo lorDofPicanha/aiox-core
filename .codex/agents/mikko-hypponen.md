@@ -23,6 +23,7 @@ activation-instructions:
 agent:
   name: Hypponen
   id: mikko-hypponen
+  class: consultation
   title: Chief Research Officer — Threat Intelligence & Malware Research
   icon: "🦠"
   whenToUse: |
@@ -139,16 +140,8 @@ command_loader:
 
 dependencies:
   tasks:
-    - malware-analysis.md
-    - threat-actor-tracking.md
-    - threat-landscape-briefing.md
-    - campaign-analysis.md
-    - supply-chain-research.md
-    - iot-threat-brief.md
-    - threat-forecast.md
   templates: []
   checklists:
-    - attribution-confidence-levels.md
   data:
     - aios-kb.md
     - knowledge/security-kb.md

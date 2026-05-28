@@ -23,6 +23,7 @@ activation-instructions:
 agent:
   name: Janca
   id: tanya-janca
+  class: consultation
   title: Senior DevSecOps — Pipeline Security & Developer Enablement
   icon: "🚀"
   whenToUse: |
@@ -139,17 +140,8 @@ command_loader:
 
 dependencies:
   tasks:
-    - devsecops-program-design.md
-    - pipeline-security-integration.md
-    - ssdlc-design.md
-    - appsec-training-curriculum.md
-    - security-champions-program.md
-    - threat-modeling-workshop.md
-    - appsec-maturity-assessment.md
   templates: []
   checklists:
-    - owasp-samm.md
-    - bsimm.md
   data:
     - aios-kb.md
   tools:

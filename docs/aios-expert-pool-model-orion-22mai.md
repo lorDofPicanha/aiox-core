@@ -32,7 +32,7 @@ A Fase 2 **não** arrancou os mind clones dos `squad.yaml` (isso esvaziaria os s
 | **Registro** | `jarvis-mind-clone-index.json` (250 clones, `membership` + `domain` + `squads`) |
 | **Retrieval** | brain-bridge MCP (`request_expert_consultation`) + `self-consultation.js conclave` (debate multi-expert) |
 | **Ponto de entrada** | `expert-council` (ponte Conclave/JARVIS) |
-| **Ativação direta** | `.codex/skills/aios-<id>` (246 shortcuts, `/skills` no Codex) |
+| **Ativação direta** | Atalhos de agente + `.codex/agents/<id>.md`; `.codex/skills` fica reservado para capacidades reutilizáveis |
 
 ## 3. Implicação para roteamento
 - **core** (51) → executam dentro dos squads (DRIs). Roteamento determinístico por domínio.

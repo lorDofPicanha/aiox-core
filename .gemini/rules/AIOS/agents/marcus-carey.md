@@ -23,6 +23,7 @@ activation-instructions:
 agent:
   name: Carey
   id: marcus-carey
+  class: consultation
   title: Senior — Security Team Building, Hiring & Community
   icon: "🤝"
   whenToUse: |
@@ -143,13 +144,6 @@ command_loader:
 
 dependencies:
   tasks:
-    - security-team-building.md
-    - security-hiring-guide.md
-    - security-career-advice.md
-    - mentorship-program-design.md
-    - security-community-engagement.md
-    - leveling-rubric-design.md
-    - inclusive-culture-playbook.md
   templates: []
   checklists: []
   data:

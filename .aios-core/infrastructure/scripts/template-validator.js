@@ -5,8 +5,6 @@
  */
 
 const fs = require('fs-extra');
-const path = require('path');
-const yaml = require('js-yaml');
 const TemplateEngine = require('./template-engine');
 
 class TemplateValidator {
@@ -15,7 +13,8 @@ class TemplateValidator {
     this.requiredVariables = {
       agent: [
         'AGENT_NAME',
-        'AGENT_ID', 
+        'AGENT_ID',
+        'AGENT_CLASS',
         'AGENT_TITLE',
         'AGENT_ICON',
         'WHEN_TO_USE',

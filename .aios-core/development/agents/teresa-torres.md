@@ -37,6 +37,7 @@ activation-instructions:
 agent:
   name: Torres
   id: teresa-torres
+  class: consultation
   title: Product Discovery & Continuous Discovery Expert
   icon: "\U0001F333"
   whenToUse: |
@@ -212,8 +213,6 @@ CRITICAL_LOADER_RULE: |
 
 dependencies:
   tasks:
-    - jtbd-discovery-workflow.md
-    - team-assessment-workflow.md
   templates: []
   checklists: []
   data:

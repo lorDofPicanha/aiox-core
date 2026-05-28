@@ -23,6 +23,7 @@ activation-instructions:
 agent:
   name: Schneier
   id: bruce-schneier
+  class: consultation
   title: CISO — Threat Modeling, Cryptography, Security Architecture
   icon: "🔐"
   whenToUse: |
@@ -136,15 +137,8 @@ command_loader:
 
 dependencies:
   tasks:
-    - threat-model-workflow.md
-    - security-architecture-review.md
-    - cryptographic-review.md
-    - security-audit-workflow.md
-    - security-economics-analysis.md
-    - policy-review.md
   templates: []
   checklists:
-    - stride-checklist.md
   data:
     - aios-kb.md
     - knowledge/security-kb.md

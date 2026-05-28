@@ -46,6 +46,7 @@ activation-instructions:
 agent:
   name: Lemkin
   id: jason-lemkin
+  class: consultation
   title: Chief SaaS Growth Strategist
   icon: "\U0001F4C8"
   whenToUse: |
@@ -252,14 +253,6 @@ CRITICAL_LOADER_RULE: |
 
 dependencies:
   tasks:
-    - saas-metrics-workflow.md
-    - growth-strategy-workflow.md
-    - churn-analysis-workflow.md
-    - hiring-strategy-workflow.md
-    - cs-strategy-workflow.md
-    - pricing-audit-workflow.md
-    - scaling-plan-workflow.md
-    - go-to-market-workflow.md
   templates: []
   checklists: []
   data:

@@ -5,7 +5,6 @@ const fs = require('fs');
 const path = require('path');
 
 const { parseAgentDirs } = require('../ide-sync/agent-parser');
-const { getSkillId } = require('./index');
 
 const ALLOWED_EXTRA_SKILLS = new Set([
   // Migration archive skill: preserves Claude-era project memory for Codex.
@@ -16,7 +15,6 @@ function getDefaultOptions() {
   const projectRoot = process.cwd();
   return {
     projectRoot,
-    sourceDir: path.join(projectRoot, '.aios-core', 'development', 'agents'),
     sourceDirs: [
       path.join(projectRoot, '.aios-core', 'development', 'agents'),
       path.join(projectRoot, '.claude', 'commands', 'AIOS', 'agents'),
@@ -41,31 +39,25 @@ function isParsableAgent(agent) {
   return !agent.error || agent.error === 'YAML parse failed, using fallback extraction';
 }
 
-function validateSkillContent(content, expected) {
-  const issues = [];
-  const requiredChecks = [
-    { ok: content.includes(`name: ${expected.skillId}`), reason: `missing frontmatter name "${expected.skillId}"` },
-    {
-      ok: content.includes(`.aios-core/development/agents/${expected.filename}`),
-      reason: `missing canonical agent path "${expected.filename}"`,
-    },
-    {
-      ok: content.includes(`generate-greeting.js ${expected.agentId}`),
-      reason: `missing canonical greeting command for "${expected.agentId}"`,
-    },
-    {
-      ok: content.includes('source of truth'),
-      reason: 'missing source-of-truth activation note',
-    },
-  ];
+function getAgentSkillId(agentId) {
+  const id = String(agentId || '').trim();
+  return id.startsWith('aios-') ? id : `aios-${id}`;
+}
 
-  for (const check of requiredChecks) {
-    if (!check.ok) {
-      issues.push(check.reason);
-    }
-  }
+function listSkillDirs(skillsDir) {
+  if (!fs.existsSync(skillsDir)) return [];
+  return fs.readdirSync(skillsDir, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .filter((entry) => fs.existsSync(path.join(skillsDir, entry.name, 'SKILL.md')))
+    .map((entry) => entry.name);
+}
 
-  return issues;
+function isAgentActivatorSkill(content, agent) {
+  return (
+    content.includes(`.aios-core/development/agents/${agent.filename}`) ||
+    content.includes(`generate-greeting.js ${agent.agentId}`) ||
+    (content.includes('Activator') && content.includes('Activation Protocol') && content.includes('source of truth'))
+  );
 }
 
 function validateCodexSkills(options = {}) {
@@ -75,79 +67,71 @@ function validateCodexSkills(options = {}) {
 
   if (!fs.existsSync(resolved.skillsDir)) {
     errors.push(`Skills directory not found: ${resolved.skillsDir}`);
-    return { ok: false, checked: 0, expected: 0, errors, warnings, missing: [], orphaned: [] };
+    return { ok: false, checked: 0, errors, warnings, forbiddenAgentSkills: [] };
   }
 
-  const agents = parseAgentDirs(resolved.sourceDirs || [resolved.sourceDir]).filter(isParsableAgent);
-  const expected = agents.map(agent => ({
-    agentId: agent.id,
-    filename: agent.filename,
-    skillId: getSkillId(agent.id),
-  }));
+  const agents = parseAgentDirs(resolved.sourceDirs).filter(isParsableAgent);
+  const agentBySkillId = new Map(
+    agents.map((agent) => [
+      getAgentSkillId(agent.id),
+      {
+        agentId: agent.id,
+        filename: agent.filename,
+      },
+    ]),
+  );
 
-  const missing = [];
-  for (const item of expected) {
-    const skillPath = path.join(resolved.skillsDir, item.skillId, 'SKILL.md');
-    if (!fs.existsSync(skillPath)) {
-      missing.push(item.skillId);
-      errors.push(`Missing skill file: ${path.relative(resolved.projectRoot, skillPath)}`);
-      continue;
-    }
-
-    let content;
+  const forbiddenAgentSkills = [];
+  for (const skillId of listSkillDirs(resolved.skillsDir)) {
+    const skillPath = path.join(resolved.skillsDir, skillId, 'SKILL.md');
+    let content = '';
     try {
       content = fs.readFileSync(skillPath, 'utf8');
     } catch (error) {
-      errors.push(`${item.skillId}: unable to read skill file (${error.message})`);
+      errors.push(`${skillId}: unable to read skill file (${error.message})`);
       continue;
     }
-    const issues = validateSkillContent(content, item);
-    for (const issue of issues) {
-      errors.push(`${item.skillId}: ${issue}`);
+
+    const matchingAgent = agentBySkillId.get(skillId);
+    if (matchingAgent && isAgentActivatorSkill(content, matchingAgent)) {
+      forbiddenAgentSkills.push(skillId);
+      errors.push(
+        `${skillId}: agent activator stored as a skill; keep the agent in .codex/agents and reserve .codex/skills for reusable skills`,
+      );
+      continue;
+    }
+
+    if (resolved.strict && skillId.startsWith('aios-') && !ALLOWED_EXTRA_SKILLS.has(skillId) && matchingAgent) {
+      forbiddenAgentSkills.push(skillId);
+      errors.push(`${skillId}: agent-like skill id is not allowed in strict mode`);
     }
   }
 
-  const expectedIds = new Set(expected.map(item => item.skillId));
-  const orphaned = [];
-  if (resolved.strict) {
-    const dirs = fs.readdirSync(resolved.skillsDir, { withFileTypes: true })
-      .filter(entry => entry.isDirectory() && entry.name.startsWith('aios-'))
-      .map(entry => entry.name);
-    for (const dir of dirs) {
-      if (!expectedIds.has(dir) && !ALLOWED_EXTRA_SKILLS.has(dir)) {
-        orphaned.push(dir);
-        errors.push(`Orphaned skill directory: ${path.join(path.relative(resolved.projectRoot, resolved.skillsDir), dir)}`);
-      }
-    }
-  }
-
-  if (expected.length === 0) {
-    warnings.push('No parseable agents found in sourceDir');
+  if (agents.length === 0) {
+    warnings.push('No parseable agents found in sourceDirs');
   }
 
   return {
     ok: errors.length === 0,
-    checked: expected.length,
-    expected: expected.length,
+    checked: listSkillDirs(resolved.skillsDir).length,
     errors,
     warnings,
-    missing,
-    orphaned,
+    forbiddenAgentSkills,
   };
 }
 
 function formatHumanReport(result) {
   if (result.ok) {
-    return `✅ Codex skills validation passed (${result.checked} skills checked)`;
+    return `Codex skills validation passed (${result.checked} skill(s) checked; agent activators forbidden)`;
   }
 
   const lines = [
-    `❌ Codex skills validation failed (${result.errors.length} issue(s))`,
-    ...result.errors.map(error => `- ${error}`),
+    `Codex skills validation failed (${result.errors.length} issue(s))`,
+    ...result.errors.map((error) => `- ${error}`),
   ];
 
   if (result.warnings.length > 0) {
-    lines.push(...result.warnings.map(warning => `⚠️ ${warning}`));
+    lines.push(...result.warnings.map((warning) => `Warning: ${warning}`));
   }
   return lines.join('\n');
 }
@@ -175,7 +159,7 @@ if (require.main === module) {
 
 module.exports = {
   validateCodexSkills,
-  validateSkillContent,
   parseArgs,
   getDefaultOptions,
+  getAgentSkillId,
 };

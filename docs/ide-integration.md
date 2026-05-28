@@ -32,7 +32,7 @@ AIOS supports multiple AI-powered development platforms. Choose the one that bes
 | --- | --- | --- | --- | --- |
 | Claude Code | Works | `/agent-name` commands | Works (full) | -- |
 | Gemini CLI | Works | `/aios-menu` then `/aios-<agent>` | Works (minor differences in event handling) | -- |
-| Codex CLI | Limited | `/skills` then `aios-<agent-id>` | Limited (some checks need manual sync) | Run `npm run sync:ide:codex` and follow `/skills` flow |
+| Codex CLI | Limited | Load `.codex/agents/<agent-id>.md` via AGENTS.md/agent shortcut | Limited (some checks need manual sync) | Run `npm run sync:ide:codex` and keep `/skills` for reusable skills only |
 | Cursor | Limited | `@agent` + synced rules | Not available | Follow synced rules and run validators manually (`npm run validate:parity`) |
 | GitHub Copilot | Limited | chat modes + repo instructions | Not available | Use repo instructions and VS Code MCP config for context |
 | AntiGravity | Limited | workflow-driven activation | Not available | Use generated workflows and run validators manually |
@@ -50,7 +50,7 @@ Some IDEs run automatic checks before and after each action (e.g., validating co
 | --- | --- | --- | --- |
 | Claude Code | Full | Nothing | Built-in checks handle everything |
 | Gemini CLI | High | Minor timing differences in checks | Gemini native checks cover most scenarios |
-| Codex CLI | Partial | Less automatic session tracking; some pre/post-action checks need manual trigger | Use `AGENTS.md` + `/skills` + sync/validation scripts |
+| Codex CLI | Partial | Less automatic session tracking; some pre/post-action checks need manual trigger | Use `AGENTS.md` + `.codex/agents` + sync/validation scripts |
 | Cursor | None | No automatic pre/post-action checks; no automatic audit trail | Follow synced rules, use MCP for context, run validators |
 | GitHub Copilot | None | Same as Cursor, plus more reliance on manual workflow | Use repo instructions, chat modes, VS Code MCP |
 | AntiGravity | None | No automatic check equivalents | Use generated workflows and run validators |
@@ -60,7 +60,7 @@ Some IDEs run automatic checks before and after each action (e.g., validating co
 If your goal is to get started as fast as possible:
 
 1. **Best option:** Use `Claude Code` or `Gemini CLI` -- they have the most automation and fewest manual steps.
-2. **Good option:** Use `Codex CLI` if you prefer a terminal-first workflow and can follow the `/skills` activation flow.
+2. **Good option:** Use `Codex CLI` if you prefer a terminal-first workflow and can follow the AGENTS.md + `.codex/agents` activation flow.
 3. **Usable with extra steps:** Use `Cursor`, `Copilot`, or `AntiGravity` -- they work but require more manual validation steps (see workarounds in the table above).
 
 ### Practical Consequences by Capability
@@ -70,7 +70,7 @@ If your goal is to get started as fast as possible:
   - Manual or partial on Codex, Cursor, Copilot, and AntiGravity.
 - **Pre/post-action guardrails** (checks that run before and after each tool use):
   - Full on Claude Code and Gemini CLI.
-  - Partial on Codex CLI (run sync scripts to compensate).
+  - Partial on Codex CLI (run agent sync and validators to compensate).
   - Not available on Cursor, Copilot, and AntiGravity (run validators manually).
 - **Automatic audit trail** (record of what happened in each session):
   - Richest on Claude Code and Gemini CLI.
@@ -123,13 +123,14 @@ ls -la .claude/commands/AIOS/agents/
 ```yaml
 config_file: AGENTS.md
 agent_folder: .codex/agents
-activation: terminal instructions
+activation: AGENTS.md agent shortcuts + .codex/agents
 skills_folder: .codex/skills (source), ~/.codex/skills (Codex menu)
 format: markdown
 mcp_support: native via Codex tooling
 special_features:
   - AGENTS.md project instructions
-  - /skills activators (aios-<agent-id>)
+  - .codex/agents synced from the AIOS agent source of truth
+  - /skills reserved for reusable capabilities, not agents
   - Strong CLI workflow support
   - Easy integration with repository scripts
   - Notify command plus emerging tool hooks in recent Codex releases
@@ -139,9 +140,9 @@ special_features:
 
 1. Keep `AGENTS.md` at repository root
 2. Run `npm run sync:ide:codex` to sync auxiliary agent files
-3. Run `npm run sync:skills:codex` to generate project-local skills in `.codex/skills`
-4. Use `/skills` and choose `aios-architect`, `aios-dev`, etc.
-5. Use `npm run sync:skills:codex:global` only when you explicitly want global installation
+3. Use agent shortcuts from `AGENTS.md` and load the matching `.codex/agents/<agent-id>.md` definition
+4. Run `npm run sync:skills:codex` only to prepare the skills directory for real reusable skills
+5. Use `/skills` only for capabilities such as `agent-evals`, `brainstorming`, or `frontend-patterns`, not for `aios-*` agents
 
 **Configuration:**
 

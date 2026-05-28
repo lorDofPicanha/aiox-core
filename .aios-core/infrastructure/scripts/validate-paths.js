@@ -35,7 +35,7 @@ function parseArgs(argv = process.argv.slice(2)) {
 function listSkillFiles(skillsDir) {
   if (!fs.existsSync(skillsDir)) return [];
   return fs.readdirSync(skillsDir, { withFileTypes: true })
-    .filter(entry => entry.isDirectory() && entry.name.startsWith('aios-'))
+    .filter(entry => entry.isDirectory())
     .map(entry => path.join(skillsDir, entry.name, 'SKILL.md'))
     .filter(file => fs.existsSync(file));
 }
@@ -56,11 +56,13 @@ function collectAbsolutePathViolations(content, filePath) {
 
 function validateSkillPathConventions(content, filePath) {
   const errors = [];
-  if (!content.includes('.aios-core/development/agents/')) {
-    errors.push(`${filePath} missing canonical source path ".aios-core/development/agents/"`);
-  }
-  if (!content.includes('.aios-core/development/scripts/generate-greeting.js')) {
-    errors.push(`${filePath} missing canonical greeting script path`);
+  const isAgentActivator = (
+    content.includes('Activation Protocol') &&
+    content.includes('.aios-core/development/agents/') &&
+    content.includes('.aios-core/development/scripts/generate-greeting.js')
+  );
+  if (isAgentActivator) {
+    errors.push(`${filePath} is an agent activator; agents belong in ".codex/agents/", not ".codex/skills/"`);
   }
   return errors;
 }

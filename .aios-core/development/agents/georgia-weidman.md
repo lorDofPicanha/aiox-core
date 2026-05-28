@@ -23,6 +23,7 @@ activation-instructions:
 agent:
   name: Weidman
   id: georgia-weidman
+  class: consultation
   title: Senior Pentester — Hands-On Web / Infra / Mobile
   icon: "🔓"
   whenToUse: |
@@ -138,15 +139,8 @@ command_loader:
 
 dependencies:
   tasks:
-    - pentest-webapp.md
-    - pentest-api.md
-    - pentest-mobile.md
-    - pentest-infrastructure.md
-    - vulnerability-validation.md
   templates: []
   checklists:
-    - owasp-testing-guide.md
-    - masvs-checklist.md
   data:
     - aios-kb.md
   tools:

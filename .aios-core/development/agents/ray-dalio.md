@@ -37,6 +37,7 @@ activation-instructions:
 agent:
   name: Dalio
   id: ray-dalio
+  class: consultation
   title: Macro Economics & Principled Decision-Making Expert
   icon: "\U0001F30D"
   whenToUse: |
@@ -215,10 +216,6 @@ CRITICAL_LOADER_RULE: |
 
 dependencies:
   tasks:
-    - decision-framework-workflow.md
-    - culture-audit-workflow.md
-    - investment-review-workflow.md
-    - risk-assessment-workflow.md
   templates: []
   checklists: []
   data:

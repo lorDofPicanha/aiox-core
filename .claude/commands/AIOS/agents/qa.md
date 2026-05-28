@@ -41,6 +41,7 @@ activation-instructions:
 agent:
   name: Quinn
   id: qa
+  class: operational
   title: Test Architect & Quality Advisor
   icon: ✅
   whenToUse: Use for comprehensive test architecture review, quality gate decisions, and code improvement. Provides thorough analysis including requirements traceability, risk assessment, and test strategy. Advisory only - teams choose their quality bar.
@@ -194,7 +195,7 @@ dependencies:
   tasks:
     - qa-create-fix-request.md
     - qa-generate-tests.md
-    - manage-story-backlog.md
+    - po-manage-story-backlog.md
     - qa-nfr-assess.md
     - qa-gate.md
     - qa-review-build.md

@@ -46,6 +46,7 @@ activation-instructions:
 agent:
   name: Thaler
   id: richard-thaler
+  class: consultation
   title: Chief Behavioral & Choice Architect
   icon: "\U0001F4A1"
   whenToUse: |
@@ -250,8 +251,6 @@ CRITICAL_LOADER_RULE: |
 
 dependencies:
   tasks:
-    - nudge-program-workflow.md
-    - design-intervention-workflow.md
   templates: []
   checklists: []
   data:

@@ -33,7 +33,7 @@ AIOS es compatible con 6 plataformas de desarrollo potenciadas por IA. Elige la 
 | --- | --- | --- | --- |
 | Claude Code | Completa | Ninguno (comportamiento de referencia) | Hooks nativos + pipeline completo de AIOS |
 | Gemini CLI | Alta | Diferencias menores en el modelo de eventos | Hooks nativos de Gemini + mapeo unificado |
-| Codex CLI | Limitada/parcial | Menor automatización del ciclo de sesión y menor enforcement pre/post-tool | `AGENTS.md` + `/skills` + MCP + scripts de sync/validación |
+| Codex CLI | Limitada/parcial | Menor automatización del ciclo de sesión y menor enforcement pre/post-tool | `AGENTS.md` + `.codex/agents` + MCP + scripts de sync/validación |
 | Cursor | Sin hooks de ciclo equivalentes | Sin interceptación nativa pre/post-tool y trazabilidad automática más débil | Reglas sincronizadas + MCP + disciplina de workflow |
 | GitHub Copilot | Sin hooks de ciclo equivalentes | Mismo impacto que Cursor, con mayor dependencia de flujo manual | Instrucciones de repositorio, chat modes y MCP en VS Code |
 | AntiGravity | Basado en workflow (no en hooks) | Sin paridad de ciclo de vida estilo Claude | Generación de workflows + sync de agentes |
@@ -114,7 +114,7 @@ special_features:
 1. Mantén `AGENTS.md` en la raíz del repositorio
 2. Ejecuta `npm run sync:ide:codex`
 3. Ejecuta `npm run sync:skills:codex`
-4. Usa `/skills` y selecciona `aios-<agent-id>`
+4. Usa los atajos de `AGENTS.md` y carga la definición correspondiente en `.codex/agents/<agent-id>.md`; reserva `/skills` para capacidades reutilizables, no agentes
 5. Usa `sync:skills:codex:global` solo cuando quieras instalación global
 
 ```bash

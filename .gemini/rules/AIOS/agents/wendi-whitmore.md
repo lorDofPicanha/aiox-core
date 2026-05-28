@@ -23,6 +23,7 @@ activation-instructions:
 agent:
   name: Whitmore
   id: wendi-whitmore
+  class: consultation
   title: Senior DFIR — Digital Forensics & Incident Response
   icon: "🚨"
   whenToUse: |
@@ -139,17 +140,8 @@ command_loader:
 
 dependencies:
   tasks:
-    - incident-response.md
-    - ransomware-response.md
-    - dfir-investigation.md
-    - ir-playbook-design.md
-    - tabletop-exercise.md
-    - breach-scoping.md
-    - lessons-learned-doc.md
   templates: []
   checklists:
-    - chain-of-custody.md
-    - ir-comms-checklist.md
   data:
     - aios-kb.md
   tools:

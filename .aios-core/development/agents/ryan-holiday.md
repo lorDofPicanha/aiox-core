@@ -37,6 +37,7 @@ activation-instructions:
 agent:
   name: Holiday
   id: ryan-holiday
+  class: consultation
   title: Growth Hacking & Perennial Strategy Expert
   icon: "\U0001F3DB"
   whenToUse: |
@@ -214,11 +215,6 @@ CRITICAL_LOADER_RULE: |
 
 dependencies:
   tasks:
-    - growth-strategy-workflow.md
-    - go-to-market-workflow.md
-    - content-strategy-workflow.md
-    - positioning-strategy-workflow.md
-    - decision-framework-workflow.md
   templates: []
   checklists: []
   data:

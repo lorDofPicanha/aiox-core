@@ -5,12 +5,6 @@ const fs = require('fs-extra');
 const path = require('path');
 const os = require('os');
 
-const {
-  parseAgentDirs,
-  normalizeCommands,
-  getVisibleCommands,
-} = require('../ide-sync/agent-parser');
-
 function getCodexHome() {
   return process.env.CODEX_HOME || path.join(os.homedir(), '.codex');
 }
@@ -21,11 +15,6 @@ function getDefaultOptions() {
   const envGlobalDir = process.env.AIOS_CODEX_GLOBAL_SKILLS_DIR;
   return {
     projectRoot,
-    sourceDir: path.join(projectRoot, '.aios-core', 'development', 'agents'),
-    sourceDirs: [
-      path.join(projectRoot, '.aios-core', 'development', 'agents'),
-      path.join(projectRoot, '.claude', 'commands', 'AIOS', 'agents'),
-    ],
     localSkillsDir: envLocalDir || path.join(projectRoot, '.codex', 'skills'),
     globalSkillsDir: envGlobalDir || path.join(getCodexHome(), 'skills'),
     global: false,
@@ -35,89 +24,13 @@ function getDefaultOptions() {
   };
 }
 
-function trimText(text, max = 220) {
-  const normalized = String(text || '').replace(/\s+/g, ' ').trim();
-  if (normalized.length <= max) return normalized;
-  return `${normalized.slice(0, max - 3).trim()}...`;
-}
-
-function getSkillId(agentId) {
-  const id = String(agentId || '').trim();
-  if (id.startsWith('aios-')) return id;
-  return `aios-${id}`;
-}
-
-function buildSkillContent(agentData) {
-  const agent = agentData.agent || {};
-  const name = agent.name || agentData.id;
-  const title = agent.title || 'AIOS Agent';
-  const whenToUse = trimText(agent.whenToUse || `Use @${agentData.id} for specialized tasks.`);
-
-  const allCommands = normalizeCommands(agentData.commands || []);
-  const quick = getVisibleCommands(allCommands, 'quick');
-  const key = getVisibleCommands(allCommands, 'key');
-  const commands = [...quick, ...key.filter(k => !quick.some(q => q.name === k.name))]
-    .slice(0, 8)
-    .map(c => `- \`*${c.name}\` - ${c.description || 'No description'}`)
-    .join('\n');
-
-  const skillName = getSkillId(agentData.id);
-  const description = trimText(`${title} (${name}). ${whenToUse}`, 180);
-
-  return `---
-name: ${skillName}
-description: ${description}
----
-
-# AIOS ${title} Activator
-
-## When To Use
-${whenToUse}
-
-## Activation Protocol
-1. Load \`.aios-core/development/agents/${agentData.filename}\` as source of truth (fallback: \`.codex/agents/${agentData.filename}\`).
-2. Adopt this agent persona and command system.
-3. Generate greeting via \`node .aios-core/development/scripts/generate-greeting.js ${agentData.id}\` and show it first.
-4. Stay in this persona until the user asks to switch or exit.
-
-## Starter Commands
-${commands || '- `*help` - List available commands'}
-
-## Non-Negotiables
-- Follow \`.aios-core/constitution.md\`.
-- Execute workflows/tasks only from declared dependencies.
-- Do not invent requirements outside the project artifacts.
-`;
-}
-
-function buildSkillPlan(agents, skillsDir) {
-  return agents
-    .filter(a => !a.error || a.error === 'YAML parse failed, using fallback extraction')
-    .map(agentData => {
-      const skillId = getSkillId(agentData.id);
-      const targetDir = path.join(skillsDir, skillId);
-      const targetFile = path.join(targetDir, 'SKILL.md');
-      return {
-        agentId: agentData.id,
-        skillId,
-        targetDir,
-        targetFile,
-        content: buildSkillContent(agentData),
-      };
-    });
-}
-
-function writeSkillPlan(plan, options) {
-  for (const item of plan) {
-    if (!options.dryRun) {
-      try {
-        fs.ensureDirSync(item.targetDir);
-        fs.writeFileSync(item.targetFile, item.content, 'utf8');
-      } catch (error) {
-        throw new Error(`Failed to write skill ${item.skillId} at ${item.targetFile}: ${error.message}`);
-      }
-    }
-  }
+function buildSkillPlan(skillsDir) {
+  return {
+    skillsDir,
+    generated: 0,
+    message:
+      'Codex agent activator generation is disabled. Agents sync to .codex/agents; .codex/skills is reserved for real reusable skills.',
+  };
 }
 
 function syncSkills(options = {}) {
@@ -125,23 +38,22 @@ function syncSkills(options = {}) {
   if (resolved.globalOnly) {
     resolved.global = true;
   }
-  const agents = parseAgentDirs(resolved.sourceDirs || [resolved.sourceDir]);
-  const plan = buildSkillPlan(agents, resolved.localSkillsDir);
 
-  if (!resolved.globalOnly) {
-    writeSkillPlan(plan, resolved);
+  if (!resolved.globalOnly && !resolved.dryRun) {
+    fs.ensureDirSync(resolved.localSkillsDir);
   }
 
-  if (resolved.global) {
-    const globalPlan = buildSkillPlan(agents, resolved.globalSkillsDir);
-    writeSkillPlan(globalPlan, resolved);
+  if (resolved.global && !resolved.dryRun) {
+    fs.ensureDirSync(resolved.globalSkillsDir);
   }
 
+  const plan = buildSkillPlan(resolved.localSkillsDir);
   return {
-    generated: plan.length,
+    generated: plan.generated,
     localSkillsDir: resolved.localSkillsDir,
     globalSkillsDir: resolved.global || resolved.globalOnly ? resolved.globalSkillsDir : null,
     dryRun: resolved.dryRun,
+    message: plan.message,
   };
 }
 
@@ -161,13 +73,14 @@ function main() {
 
   if (!options.quiet) {
     if (!options.globalOnly) {
-      console.log(`✅ Generated ${result.generated} Codex skills in ${result.localSkillsDir}`);
+      console.log(`Codex skills directory ready: ${result.localSkillsDir}`);
     }
     if (result.globalSkillsDir) {
-      console.log(`✅ Installed ${result.generated} Codex skills in ${result.globalSkillsDir}`);
+      console.log(`Codex global skills directory ready: ${result.globalSkillsDir}`);
     }
+    console.log(result.message);
     if (result.dryRun) {
-      console.log('ℹ️ Dry-run mode: no files written');
+      console.log('Dry-run mode: no files written');
     }
   }
 }
@@ -177,10 +90,8 @@ if (require.main === module) {
 }
 
 module.exports = {
-  buildSkillContent,
   buildSkillPlan,
   syncSkills,
   parseArgs,
   getCodexHome,
-  getSkillId,
 };
