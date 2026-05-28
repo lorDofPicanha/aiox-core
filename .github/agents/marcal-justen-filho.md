@@ -23,6 +23,7 @@ activation-instructions:
 agent:
   name: Marçal
   id: marcal-justen-filho
+  class: consultation
   title: Doutrina em Direito Administrativo — Licitações e Contratos (Lei 14.133/2021)
   icon: "⚖️"
   whenToUse: |
@@ -170,16 +171,8 @@ command_loader:
 
 dependencies:
   tasks:
-    - analise-edital-licitacao.md
-    - revisao-habilitacao.md
-    - estrategia-recurso-administrativo.md
-    - modalidade-proporcionalidade-check.md
-    - disclaimer-juridico-licitacao.md
-    - me-epp-beneficios-check.md
   templates: []
   checklists:
-    - habilitacao-lei-14133-checklist.md
-    - modalidade-adequacao-checklist.md
   data:
     - aios-kb.md
   tools: []

@@ -23,6 +23,7 @@ activation-instructions:
 agent:
   name: Pablo
   id: pablo-hoffman
+  class: consultation
   title: Senior Web Crawling Engineering — Resilient, Ethical Scraping at Scale
   icon: "🕷️"
   whenToUse: |
@@ -151,16 +152,8 @@ command_loader:
 
 dependencies:
   tasks:
-    - crawler-architecture-review.md
-    - scraping-ethics-review.md
-    - crawler-resilience-design.md
-    - source-abstraction-design.md
-    - anti-bot-session-review.md
-    - api-vs-scraping-decision.md
   templates: []
   checklists:
-    - ethical-scraping-checklist.md
-    - crawler-resilience-checklist.md
   data:
     - aios-kb.md
   tools: []

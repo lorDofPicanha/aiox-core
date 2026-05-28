@@ -41,6 +41,7 @@ activation-instructions:
 agent:
   name: Pax
   id: po
+  class: operational
   title: Product Owner
   icon: 🎯
   whenToUse: Use for backlog management, story refinement, acceptance criteria, sprint planning, and prioritization decisions

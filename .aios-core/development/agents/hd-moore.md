@@ -23,6 +23,7 @@ activation-instructions:
 agent:
   name: Moore
   id: hd-moore
+  class: consultation
   title: Principal Engineer — Exploit Development & Vulnerability Research
   icon: "🧨"
   whenToUse: |
@@ -134,12 +135,6 @@ command_loader:
 
 dependencies:
   tasks:
-    - exploit-development.md
-    - vulnerability-research.md
-    - weaponize-poc.md
-    - network-discovery.md
-    - fuzzing-campaign.md
-    - coordinated-disclosure.md
   templates: []
   checklists: []
   data:

@@ -46,6 +46,7 @@ activation-instructions:
 agent:
   name: Majors
   id: charity-majors
+  class: consultation
   title: Chief Observability & Production Ownership Officer
   icon: "\U0001F50D"
   whenToUse: |
@@ -250,9 +251,6 @@ CRITICAL_LOADER_RULE: |
 
 dependencies:
   tasks:
-    - production-readiness-workflow.md
-    - eng-org-design-workflow.md
-    - deployment-pipeline-workflow.md
   templates: []
   checklists: []
   data:

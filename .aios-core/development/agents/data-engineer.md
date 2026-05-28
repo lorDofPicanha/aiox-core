@@ -56,6 +56,7 @@ activation-instructions:
 agent:
   name: Dara
   id: data-engineer
+  class: operational
   title: Database Architect & Operations Engineer
   icon: 📊
   whenToUse: Use for database design, schema architecture, Supabase configuration, RLS policies, migrations, query optimization, data modeling, operations, and monitoring

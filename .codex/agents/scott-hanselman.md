@@ -46,6 +46,7 @@ activation-instructions:
 agent:
   name: Hanselman
   id: scott-hanselman
+  class: consultation
   title: Chief Developer Advocacy & Productivity Officer
   icon: "\u2328\uFE0F"
   whenToUse: |
@@ -248,9 +249,6 @@ CRITICAL_LOADER_RULE: |
 
 dependencies:
   tasks:
-    - usability-review-workflow.md
-    - flow-optimization-workflow.md
-    - content-strategy-workflow.md
   templates: []
   checklists: []
   data:

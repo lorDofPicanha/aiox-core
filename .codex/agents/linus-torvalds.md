@@ -37,6 +37,7 @@ activation-instructions:
 agent:
   name: Linus
   id: linus-torvalds
+  class: consultation
   title: Systems Programming & Git Strategy Expert
   icon: "\U0001F427"
   whenToUse: |
@@ -212,9 +213,6 @@ CRITICAL_LOADER_RULE: |
 
 dependencies:
   tasks:
-    - code-smell-audit-workflow.md
-    - review-contributor-pr.md
-    - production-readiness-workflow.md
   templates: []
   checklists: []
   data:

@@ -234,10 +234,26 @@ function insertAutoClaudeSection(content, autoClaudeYaml) {
   // Insert autoClaude section before the closing ```
   const newContent = content.replace(
     yamlBlockMatch[0],
-    `${beforeClosing}\n${autoClaudeYaml}\n${closing}`
+    `${beforeClosing}\n${autoClaudeYaml}\n${closing}`,
   );
 
   return { content: newContent };
+}
+
+/**
+ * Insert default operational class into an agent YAML block.
+ */
+function insertAgentClass(content, agentId) {
+  if (/\n {2}class:\s*(operational|consultation)\b/.test(content)) {
+    return content;
+  }
+
+  const idPattern = new RegExp(`(agent:\\r?\\n(?:  [^\\r\\n]*\\r?\\n)*?  id:\\s*${agentId}\\r?\\n)`);
+  if (!idPattern.test(content)) {
+    return content;
+  }
+
+  return content.replace(idPattern, '$1  class: operational\n');
 }
 
 /**
@@ -247,9 +263,9 @@ function generateDiff(agentId, autoClaude) {
   const lines = [];
 
   lines.push('');
-  lines.push(`═══════════════════════════════════════════════════════════`);
+  lines.push('═══════════════════════════════════════════════════════════');
   lines.push(`  Migration Preview: ${agentId}.md (V2 → V3)`);
-  lines.push(`═══════════════════════════════════════════════════════════`);
+  lines.push('═══════════════════════════════════════════════════════════');
   lines.push('');
   lines.push('+ Added autoClaude section:');
   lines.push('');
@@ -260,7 +276,7 @@ function generateDiff(agentId, autoClaude) {
   });
 
   lines.push('');
-  lines.push(`═══════════════════════════════════════════════════════════`);
+  lines.push('═══════════════════════════════════════════════════════════');
 
   return lines.join('\n');
 }
@@ -326,10 +342,11 @@ async function migrateAgent(rootPath, agentId, options = {}) {
     await fs.writeFile(backupFile, content);
   }
 
-  // Insert autoClaude section
+  // Insert operational class and autoClaude section
+  const classifiedContent = insertAgentClass(content, agentId);
   const { content: newContent, error: insertError } = insertAutoClaudeSection(
-    content,
-    autoClaudeYaml
+    classifiedContent,
+    autoClaudeYaml,
   );
 
   if (insertError) {

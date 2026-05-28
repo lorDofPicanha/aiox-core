@@ -58,6 +58,7 @@ activation-instructions:
 agent:
   name: Uma
   id: ux-design-expert
+  class: operational
   title: UX/UI Designer & Design System Architect
   icon: 🎨
   whenToUse: 'Complete design workflow - user research, wireframes, design systems, token extraction, component building, and quality assurance'

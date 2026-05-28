@@ -574,6 +574,7 @@ ${context.description}
 agent:
   name: ${context.componentName}
   id: ${context.componentName}
+  class: operational
   title: "Agent Title"
   icon: "🤖"
 
@@ -585,9 +586,7 @@ commands:
   - help: "Show available commands"
   - exit: "Exit agent mode"
 
-dependencies:
-  tasks: []
-  templates: []
+dependencies: {}
 \`\`\`
 `,
 

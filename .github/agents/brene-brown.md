@@ -46,6 +46,7 @@ activation-instructions:
 agent:
   name: Brown
   id: brene-brown
+  class: consultation
   title: Chief Courage & Culture Officer
   icon: "\U0001F49C"
   whenToUse: |
@@ -235,10 +236,6 @@ CRITICAL_LOADER_RULE: |
 
 dependencies:
   tasks:
-    - leadership-framework-workflow.md
-    - conflict-resolution-workflow.md
-    - team-psychological-safety-workflow.md
-    - culture-audit-workflow.md
   templates: []
   checklists: []
   data:

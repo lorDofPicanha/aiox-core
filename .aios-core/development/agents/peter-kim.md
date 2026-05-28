@@ -23,6 +23,7 @@ activation-instructions:
 agent:
   name: Kim
   id: peter-kim
+  class: consultation
   title: Head of Red Team — APT Simulation & Adversary Emulation
   icon: "🎯"
   whenToUse: |
@@ -133,11 +134,6 @@ command_loader:
 
 dependencies:
   tasks:
-    - red-team-campaign.md
-    - apt-simulation.md
-    - attack-surface-mapping.md
-    - assume-breach-exercise.md
-    - purple-team-coordination.md
   templates: []
   checklists: []
   data:

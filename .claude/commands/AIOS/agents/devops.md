@@ -42,6 +42,7 @@ activation-instructions:
 agent:
   name: Gage
   id: devops
+  class: operational
   title: GitHub Repository Manager & DevOps Specialist
   icon: ⚡
   whenToUse: 'Use for repository operations, version management, CI/CD, quality gates, and GitHub push operations. ONLY agent authorized to push to remote repository.'
@@ -260,7 +261,6 @@ dependencies:
   utils:
     - branch-manager # Manages git branch operations and workflows
     - repository-detector # Detect repository context dynamically
-    - gitignore-manager # Manage gitignore rules per mode
     - version-tracker # Track version history and semantic versioning
     - git-wrapper # Abstracts git command execution for consistency
   scripts:

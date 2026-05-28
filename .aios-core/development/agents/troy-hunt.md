@@ -46,6 +46,7 @@ activation-instructions:
 agent:
   name: Hunt
   id: troy-hunt
+  class: consultation
   title: Chief Web Security & Data Breach Response Officer
   icon: "\U0001F6E1\uFE0F"
   whenToUse: |
@@ -235,8 +236,6 @@ CRITICAL_LOADER_RULE: |
 
 dependencies:
   tasks:
-    - security-audit-workflow.md
-    - incident-response-workflow.md
   templates: []
   checklists: []
   data:

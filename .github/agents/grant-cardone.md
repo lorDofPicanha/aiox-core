@@ -37,6 +37,7 @@ activation-instructions:
 agent:
   name: Cardone
   id: grant-cardone
+  class: consultation
   title: Sales Intensity & 10X Growth Expert
   icon: "\U0001F525"
   whenToUse: |
@@ -211,12 +212,6 @@ CRITICAL_LOADER_RULE: |
 
 dependencies:
   tasks:
-    - sales-playbook-workflow.md
-    - objection-handling-workflow.md
-    - sales-call-script-workflow.md
-    - scaling-plan-workflow.md
-    - prospecting-plan-workflow.md
-    - pipeline-audit-workflow.md
   templates: []
   checklists: []
   data:

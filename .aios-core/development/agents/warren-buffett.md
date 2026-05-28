@@ -46,6 +46,7 @@ activation-instructions:
 agent:
   name: Buffett
   id: warren-buffett
+  class: consultation
   title: Chief Investment Officer (CIO)
   icon: "\U0001F4B0"
   whenToUse: |
@@ -252,12 +253,6 @@ CRITICAL_LOADER_RULE: |
 
 dependencies:
   tasks:
-    - valuation-workflow.md
-    - competitive-landscape-workflow.md
-    - investment-review-workflow.md
-    - dcf-model-workflow.md
-    - decision-framework-workflow.md
-    - startup-valuation-workflow.md
   templates: []
   checklists: []
   data:

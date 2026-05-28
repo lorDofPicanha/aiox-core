@@ -23,6 +23,7 @@ activation-instructions:
 agent:
   name: Cavoukian
   id: ann-cavoukian
+  class: consultation
   title: Senior Privacy Engineering — Privacy by Design
   icon: "🌐"
   whenToUse: |
@@ -140,17 +141,8 @@ command_loader:
 
 dependencies:
   tasks:
-    - privacy-by-design-review.md
-    - dpia-workflow.md
-    - consent-ux-design.md
-    - data-minimization-analysis.md
-    - privacy-preserving-tech-selection.md
-    - ai-privacy-review.md
-    - privacy-policy-review.md
   templates: []
   checklists:
-    - pbd-7-principles.md
-    - dpia-checklist.md
   data:
     - aios-kb.md
     - knowledge/security-kb.md

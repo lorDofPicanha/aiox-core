@@ -1,86 +1,65 @@
-# Integracao AIOS com Codex CLI (Estado Atual)
+# Integracao AIOS com Codex CLI
 
-Este documento descreve o estado operacional atual da integracao AIOS + Codex CLI no AIOS `4.2.11`.
-O foco aqui nao e historico: e operacao pratica, compatibilidade real e como manter sem regressao.
+Este documento descreve o estado operacional da integracao AIOS + Codex CLI.
+O foco aqui e operacao pratica, compatibilidade real e como manter sem regressao.
 
 ## Resumo Executivo
 
-O Codex hoje e alvo de primeira classe no AIOS:
+O Codex e alvo de primeira classe no AIOS:
 
 - `AGENTS.md` como contrato operacional do projeto no Codex
-- suporte oficial no installer/sync (`codex` em `ide-configs`)
-- skills nativas via `.codex/skills` com estrategia local-first
+- agentes sincronizados em `.codex/agents`
+- skills em `.codex/skills` reservadas para capacidades reutilizaveis, nao agentes
 - pipeline canonico de greeting/ativacao compartilhado
 - validadores dedicados para detectar drift rapidamente
 - suporte a notify command e hooks de ferramenta em releases recentes do Codex CLI
 
-Em termos praticos: Codex esta no mesmo trilho arquitetural das integracoes principais do AIOS, sem caminho paralelo legado.
+## Status de Compatibilidade
 
-## Status de Compatibilidade (AIOS 4.2)
-
-| O que você quer fazer | Funciona no Codex? | Como fazer |
+| O que voce quer fazer | Funciona no Codex? | Como fazer |
 | --- | --- | --- |
-| Ativar agentes AIOS | Works | `/skills` depois escolha `aios-<agent-id>` |
+| Ativar agentes AIOS | Works | use atalhos do `AGENTS.md` e carregue `.codex/agents/<agent-id>.md` |
+| Usar skills | Works | use `/skills` apenas para capacidades reutilizaveis |
 | Sincronizar e validar arquivos AIOS | Works | `npm run sync:ide:codex` e `npm run validate:codex-sync` |
-| Checagens automáticas antes/depois de ações | Limited | Rode `npm run validate:parity` manualmente; parte da automação depende de disciplina no fluxo |
+| Checagens automaticas antes/depois de acoes | Limited | rode `npm run validate:parity` manualmente quando necessario |
 
-Regra prática para iniciantes:
-- Se você quer o máximo de automação (checagens automáticas sem precisar rodar comandos), prefira Claude Code ou Gemini CLI.
-- Se você usa Codex, siga o fluxo local-first: ative agentes via `/skills` e rode os validadores após cada mudança.
+Regra pratica: no Codex, agente e agente (`.codex/agents`); skill e capacidade (`.codex/skills`).
 
 ## Arquitetura Canonica
 
 ### Fonte de verdade
 
 - Agentes canonicos: `.aios-core/development/agents/*.md`
+- Agentes sincronizados para Codex: `.codex/agents/*.md`
 - Regras de projeto Codex: `AGENTS.md`
+- Skills locais: `.codex/skills/*/SKILL.md`, sem ativadores de agentes `aios-*`
 
 ### Pipeline de ativacao
 
 - Runtime: `.aios-core/development/scripts/activation-runtime.js`
 - Entrada de greeting: `.aios-core/development/scripts/generate-greeting.js`
-- Contrato: skills e atalhos carregam agente canonico e renderizam greeting via pipeline unificado
-
-### Artefatos Codex no projeto
-
-- Agentes auxiliares: `.codex/agents/`
-- Skills locais: `.codex/skills/aios-*/SKILL.md`
+- Contrato: atalhos carregam agente canonico e renderizam greeting via pipeline unificado
 
 ## Fluxo Operacional Recomendado
 
-1. Sincronizar artefatos Codex de projeto:
+1. Sincronizar agentes Codex de projeto:
    - `npm run sync:ide:codex`
-2. Gerar/atualizar skills locais:
+2. Preparar diretorio de skills reais:
    - `npm run sync:skills:codex`
 3. Validar consistencia:
    - `npm run validate:codex-sync`
    - `npm run validate:codex-integration`
    - `npm run validate:codex-skills`
    - `npm run validate:paths`
-4. No Codex, usar `/skills` e escolher `aios-<agent-id>` como ativacao padrao.
+4. No Codex, ativar agente pelo atalho do `AGENTS.md` e pela definicao em `.codex/agents/<agent-id>.md`.
 
-Fallback: atalhos definidos em `AGENTS.md` (`@architect`, `/architect`, etc.).
-
-## Politica de Escopo (Importante)
-
-Este repositorio usa local-first para skills:
-
-- preferir `.codex/skills` versionado no projeto
-- evitar duplicar com `~/.codex/skills`
-- usar `npm run sync:skills:codex:global` apenas quando quiser instalacao global explicitamente
-
-Isso evita menu duplicado no `/skills` e reduz drift entre equipe/CI.
+`/skills` fica reservado para capacidades reutilizaveis como `agent-evals`, `brainstorming` e `frontend-patterns`.
 
 ## Guardrails e Anti-Regressao
 
 Comando consolidado de paridade:
-- `npm run validate:parity` (Claude + Codex + Gemini + guardrails de paths/skills)
 
-### Validadores
-
-- Integracao estrutural: `.aios-core/infrastructure/scripts/validate-codex-integration.js`
-- Skills: `.aios-core/infrastructure/scripts/codex-skills-sync/validate.js`
-- Paths/contratos: `.aios-core/infrastructure/scripts/validate-paths.js`
+- `npm run validate:parity`
 
 ### Smoke test rapido
 
@@ -97,72 +76,46 @@ Criterio de sucesso:
 
 - `AGENTS.md` presente e coerente
 - `.codex/agents/*.md` existente
-- `.codex/skills/aios-*/SKILL.md` existente
+- `.codex/skills/*/SKILL.md` sem ativadores de agentes `aios-*`
 - validadores sem erro
-
-## Recursos Recentes do Codex (AIOS 4.0)
-
-- `notify` command configuravel no `config.toml`
-- aprovacoes por preset (`suggest`/`auto-edit`/`full-auto`)
-- hooks de ferramenta e de execucao de comandos em evolucao no CLI
-
-No AIOS, o caminho recomendado continua: `AGENTS.md` + `/skills` + MCP + scripts de sync/validacao.
-
-## Limitacoes de Hooks no Codex (Impacto Real)
-
-Mesmo com melhorias recentes, o Codex ainda nao replica 1:1 o lifecycle de hooks do Claude.
-
-Impactos praticos:
-
-- menor automacao de eventos de ciclo de sessao (`SessionStart/SessionEnd`) no padrao AIOS
-- menor capacidade de enforcement automatico em `beforeTool/afterTool`
-- trilha automatica de auditoria menos rica quando comparada ao fluxo com hooks completos
-
-Mitigacao operacional no AIOS:
-
-- fortalecer `AGENTS.md` como contrato de execucao
-- usar `/skills` como ativacao padrao de agentes
-- usar MCP para contexto e integracoes
-- rodar sync + validadores com disciplina (`sync:ide:codex`, `sync:skills:codex`, `validate:codex-sync`, `validate:codex-integration`, `validate:codex-skills`)
 
 ## Problemas Classicos e Correcao
 
-### Skills duplicadas no `/skills`
+### Agente AIOS apareceu como skill
 
 Causa tipica:
-- artefatos duplicados entre `.codex/skills` e `~/.codex/skills`
+
+- gerador antigo ou artefato legado criou `.codex/skills/aios-*/SKILL.md`
 
 Correcao:
-- manter local-first neste repo
-- evitar sync global durante desenvolvimento local
+
+- remover o ativador de agente de `.codex/skills`
+- rodar `npm run sync:ide:codex`
+- validar com `npm run validate:codex-skills`
 
 ### Greeting diferente entre Codex e outros alvos
 
 Causa tipica:
+
 - pular pipeline canonico de greeting
 
 Correcao:
-- sempre gerar greeting via `generate-greeting.js` (runtime unificado)
-- garantir skill apontando para agente canonico em `.aios-core/development/agents/`
 
-### Drift entre agente canonico e skill
+- sempre gerar greeting via `generate-greeting.js`
+- garantir que o atalho carregue o agente canonico em `.aios-core/development/agents/` ou `.codex/agents/`
+
+### Skills duplicadas no `/skills`
 
 Causa tipica:
-- editar skill manualmente sem resync
+
+- artefatos duplicados entre `.codex/skills` e `~/.codex/skills`
 
 Correcao:
-- rodar `npm run sync:skills:codex`
-- validar com `npm run validate:codex-skills`
 
-## Relacao com a Documentacao Geral
+- manter local-first neste repo
+- evitar sync global durante desenvolvimento local
 
-Este documento complementa:
-
-- `AGENTS.md` (contrato operacional no Codex)
-- `docs/ide-integration.md` (visao comparativa por IDE)
-- `README.md` (quick start e comandos principais)
-
-Se houver divergencia entre estes documentos, a ordem de verdade para operacao de projeto e:
+## Ordem de Verdade
 
 1. `AGENTS.md`
 2. scripts reais em `package.json`

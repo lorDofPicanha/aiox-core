@@ -40,6 +40,7 @@ activation-instructions:
 agent:
   name: Craft
   id: squad-creator
+  class: operational
   title: Squad Creator
   icon: '🏗️'
   aliases: ['craft']

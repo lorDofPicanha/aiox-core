@@ -46,6 +46,7 @@ activation-instructions:
 agent:
   name: Kahneman
   id: daniel-kahneman
+  class: consultation
   title: Chief Decision Scientist
   icon: "\U0001F9E9"
   whenToUse: |
@@ -249,11 +250,6 @@ CRITICAL_LOADER_RULE: |
 
 dependencies:
   tasks:
-    - decision-quality-workflow.md
-    - decision-framework-workflow.md
-    - bias-detection-workflow.md
-    - structured-hiring-workflow.md
-    - risk-assessment-workflow.md
   templates: []
   checklists: []
   data:

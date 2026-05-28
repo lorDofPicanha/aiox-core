@@ -58,6 +58,7 @@ activation-instructions:
 agent:
   name: Pixel
   id: ui-designer
+  class: consultation
   title: UI Designer & Visual Design Specialist
   icon: 🖌️
   whenToUse: 'Visual design workflow - high-fidelity mockups, color palettes, typography systems, brand guides, responsive design, and visual QA'

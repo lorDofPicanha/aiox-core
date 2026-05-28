@@ -272,10 +272,11 @@ class ComponentGenerator {
     const variables = {};
     
     switch (componentType) {
-      case 'agent':
+      case 'agent': {
         // Basic info
         variables.AGENT_NAME = answers.agentName;
         variables.AGENT_ID = answers.agentName;
+        variables.AGENT_CLASS = answers.agentClass || 'operational';
         variables.AGENT_TITLE = answers.agentTitle;
         variables.AGENT_ICON = answers.agentIcon;
         variables.WHEN_TO_USE = answers.whenToUse;
@@ -346,8 +347,9 @@ class ComponentGenerator {
           variables.CUSTOMIZATION = answers.customBehavior;
         }
         break;
+      }
         
-      case 'task':
+      case 'task': {
         variables.TASK_TITLE = answers.taskTitle;
         variables.TASK_ID = answers.taskId;
         variables.AGENT_NAME = answers.agentName;
@@ -413,8 +415,9 @@ class ComponentGenerator {
         // Notes
         variables.EACH_NOTES = ['Generated using Synkra AIOS template system'];
         break;
+      }
         
-      case 'workflow':
+      case 'workflow': {
         variables.WORKFLOW_ID = answers.workflowId;
         variables.WORKFLOW_NAME = answers.workflowName;
         variables.WORKFLOW_DESCRIPTION = answers.workflowDescription;
@@ -487,6 +490,7 @@ class ComponentGenerator {
           variables.AUDIT_LOGGING = answers.enableAuditLog || false;
         }
         break;
+      }
     }
     
     return variables;
@@ -498,7 +502,7 @@ class ComponentGenerator {
    */
   validateVariables(componentType, variables) {
     const requiredFields = {
-      agent: ['AGENT_NAME', 'AGENT_ID', 'AGENT_TITLE'],
+      agent: ['AGENT_NAME', 'AGENT_ID', 'AGENT_CLASS', 'AGENT_TITLE'],
       task: ['TASK_TITLE', 'TASK_ID', 'AGENT_NAME'],
       workflow: ['WORKFLOW_ID', 'WORKFLOW_NAME', 'WORKFLOW_TYPE'],
     };

@@ -23,6 +23,7 @@ activation-instructions:
 agent:
   name: Santos
   id: omar-santos
+  class: consultation
   title: Head of Security Governance — Frameworks, Compliance, Vendor Security
   icon: "📋"
   whenToUse: |
@@ -143,18 +144,8 @@ command_loader:
 
 dependencies:
   tasks:
-    - security-program-design.md
-    - compliance-framework-mapping.md
-    - security-policy-review.md
-    - risk-assessment.md
-    - vendor-security-assessment.md
-    - psirt-setup.md
-    - ai-security-governance.md
   templates: []
   checklists:
-    - nist-csf.md
-    - iso-27001-controls.md
-    - soc2-trust-services.md
   data:
     - aios-kb.md
   tools: []

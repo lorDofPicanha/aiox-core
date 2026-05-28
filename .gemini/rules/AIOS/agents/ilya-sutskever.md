@@ -46,6 +46,7 @@ activation-instructions:
 agent:
   name: Sutskever
   id: ilya-sutskever
+  class: consultation
   title: Chief AI Safety & Alignment Architect
   icon: "\U0001F9E0"
   whenToUse: |
@@ -237,10 +238,6 @@ CRITICAL_LOADER_RULE: |
 
 dependencies:
   tasks:
-    - ai-safety-review-workflow.md
-    - ai-scaling-workflow.md
-    - ai-architecture-review-workflow.md
-    - research-direction-workflow.md
   templates: []
   checklists: []
   data:

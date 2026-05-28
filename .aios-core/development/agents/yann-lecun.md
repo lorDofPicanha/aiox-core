@@ -46,6 +46,7 @@ activation-instructions:
 agent:
   name: LeCun
   id: yann-lecun
+  class: consultation
   title: Chief AI Scientist -- Self-Supervised Learning & World Models
   icon: "\U0001F52C"
   whenToUse: |
@@ -247,8 +248,6 @@ CRITICAL_LOADER_RULE: |
 
 dependencies:
   tasks:
-    - ai-architecture-review-workflow.md
-    - ai-evaluation-workflow.md
   templates: []
   checklists: []
   data:

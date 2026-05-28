@@ -34,7 +34,7 @@ Founder (Operador)
 │      cada um: 1 chief (Tier 0) → core (execução) → consulta pool
 │
 ├── 🔵 EXPERT POOL (186 mind clones — consultivo, por domínio)
-│      via brain-bridge MCP + Conclave + /skills · ponte: expert-council
+│      via brain-bridge MCP + Conclave + atalhos de agente · ponte: expert-council
 │
 └── 🧪 TASK FORCES (efêmeras — montadas por projeto a partir de squads + pool)
        ex.: Noyce/buscador-licitacoes, polymarket-trader
@@ -101,7 +101,7 @@ Founder (Operador)
 Os 186 experts **não** são acionados por padrão. O chief do squad (ou um workflow) os consulta **por tag de `domain`** quando a tarefa é nova/incerta/alto-risco:
 - **Registro:** `jarvis-mind-clone-index.json` (cada clone tem `membership`, `domain`, `squads`).
 - **Retrieval:** brain-bridge MCP (`request_expert_consultation`) + `self-consultation.js conclave` (debate multi-expert).
-- **Ativação direta:** `.codex/skills/aios-<id>` (246 shortcuts no `/skills` do Codex).
+- **Ativação direta:** atalhos de agente + `.codex/agents/<id>.md`; `.codex/skills` fica reservado para capacidades reutilizáveis.
 - **Entrada:** `expert-council`.
 
 ## 5. Roteamento (modelo híbrido)
@@ -121,7 +121,7 @@ Hierarquia: `chief → specialist → clone` (`config.toml max_depth=2`).
 | **Human approval** (ação irreversível/externa) | Founder | policy + push só via @devops |
 
 ## 7. Como acionar (referência rápida)
-- **Agente/clone:** `@<id>` ou `/skills` → `aios-<id>` (Codex) · carrega persona de `.aios-core/development/agents/` ou `squads/*/agents/`.
+- **Agente/clone:** `@<id>` ou `.codex/agents/<id>.md` (Codex) · carrega persona de `.aios-core/development/agents/` ou `squads/*/agents/`.
 - **Consulta multi-expert:** `node .aios-core/core/jarvis/self-consultation.js conclave --question "..." --experts 3`.
 - **Chiefs (Tier 0):** ver tabela §3 (ex.: `@architect`, `@bruce-schneier`, `@traffic-masters-chief`).
 

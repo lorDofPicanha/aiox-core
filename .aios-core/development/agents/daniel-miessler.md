@@ -23,6 +23,7 @@ activation-instructions:
 agent:
   name: Miessler
   id: daniel-miessler
+  class: consultation
   title: Director — AI Security, Defensive Architecture, Asset Management
   icon: "🧠"
   whenToUse: |
@@ -133,16 +134,8 @@ command_loader:
 
 dependencies:
   tasks:
-    - ai-security-strategy.md
-    - defensive-architecture-design.md
-    - asset-management-strategy.md
-    - appsec-strategy.md
-    - llm-threat-model.md
-    - security-essay.md
   templates: []
   checklists:
-    - owasp-llm-top10.md
-    - owasp-ai-security.md
   data:
     - aios-kb.md
     - knowledge/security-kb.md

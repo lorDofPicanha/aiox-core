@@ -36,6 +36,8 @@ const UTILS_DIR = path.join(ROOT_DIR, 'development', 'utils');
 const WORKFLOWS_DIR = path.join(ROOT_DIR, 'development', 'workflows');
 const SCRIPTS_DIR = path.join(ROOT_DIR, 'development', 'scripts');
 
+const AGENT_CLASSES = new Set(['operational', 'consultation']);
+
 // Commands that are allowed to be shared by multiple agents
 // These are utility/infrastructure commands, not domain-specific
 const SHARED_COMMANDS = new Set([
@@ -63,6 +65,19 @@ const SHARED_COMMANDS = new Set([
   'rollback',
   // Correct-course (all agents can use on own domain)
   'correct-course',
+  // Domain review commands intentionally reused by expert agents. The active
+  // agent namespace disambiguates ownership while preserving familiar verbs.
+  'ai-governance',
+  'api-security',
+  'architecture-review',
+  'attack-surface',
+  'code-review',
+  'content-strategy',
+  'crypto-review',
+  'decision-framework',
+  'policy-review',
+  'risk-assessment',
+  'security-audit',
 ]);
 
 /**
@@ -124,6 +139,36 @@ async function fileExists(filePath) {
   } catch {
     return false;
   }
+}
+
+function getAgentClass(agent) {
+  const agentClass = agent.parsed?.agent?.class;
+  if (AGENT_CLASSES.has(agentClass)) {
+    return agentClass;
+  }
+  return 'operational';
+}
+
+function getDependencyPathCandidates(depDirCandidates, depType, depFile) {
+  const baseCandidates = depDirCandidates.map((depDir) => path.join(depDir, depFile));
+
+  if ((depType === 'scripts' || depType === 'utils') && !path.extname(depFile)) {
+    return baseCandidates.flatMap((depPath) => [depPath, `${depPath}.js`, `${depPath}.md`]);
+  }
+
+  return baseCandidates;
+}
+
+function getAgentScopedDependencyPathCandidates(agent, depType, depFile) {
+  if (typeof agent.dependencies?.skill_bundle !== 'string') {
+    return [];
+  }
+
+  if (!['references', 'scripts', 'templates', 'schemas'].includes(depType)) {
+    return [];
+  }
+
+  return [path.join(ROOT_DIR, '..', agent.dependencies.skill_bundle, depFile)];
 }
 
 /**
@@ -188,17 +233,40 @@ async function validateDependencies(agents) {
   const warnings = [];
 
   const depDirs = {
-    tasks: TASKS_DIR,
-    templates: TEMPLATES_DIR,
-    checklists: CHECKLISTS_DIR,
-    data: DATA_DIR,
-    utils: UTILS_DIR,
-    workflows: WORKFLOWS_DIR,
-    scripts: SCRIPTS_DIR,
+    tasks: [TASKS_DIR],
+    templates: [TEMPLATES_DIR, path.join(ROOT_DIR, 'product', 'templates')],
+    checklists: [CHECKLISTS_DIR, path.join(ROOT_DIR, 'product', 'checklists')],
+    data: [DATA_DIR, path.join(ROOT_DIR, 'data'), path.join(ROOT_DIR, 'product', 'data')],
+    utils: [
+      UTILS_DIR,
+      SCRIPTS_DIR,
+      path.join(ROOT_DIR, 'scripts'),
+      path.join(ROOT_DIR, 'core', 'execution'),
+      path.join(ROOT_DIR, 'core', 'memory'),
+      path.join(ROOT_DIR, 'infrastructure', 'scripts'),
+    ],
+    workflows: [WORKFLOWS_DIR],
+    scripts: [
+      SCRIPTS_DIR,
+      path.join(ROOT_DIR, 'scripts'),
+      path.join(ROOT_DIR, 'core', 'execution'),
+      path.join(ROOT_DIR, 'core', 'memory'),
+      path.join(ROOT_DIR, 'infrastructure', 'scripts'),
+    ],
   };
 
   // Dependency types that are not file-based (external tools, integrations)
-  const skipDepTypes = new Set(['tools', 'coderabbit_integration', 'pr_automation', 'repository_agnostic_design', 'git_authority', 'workflow_examples']);
+  const skipDepTypes = new Set([
+    'tools',
+    'coderabbit_integration',
+    'pr_automation',
+    'repository_agnostic_design',
+    'git_authority',
+    'workflow_examples',
+    'skill_bundle',
+    'references',
+    'schemas',
+  ]);
 
   for (const agent of agents) {
     const deps = agent.dependencies;
@@ -208,8 +276,8 @@ async function validateDependencies(agents) {
       if (skipDepTypes.has(depType)) continue;
       if (!Array.isArray(depList)) continue;
 
-      const depDir = depDirs[depType];
-      if (!depDir) {
+      const depDirCandidates = depDirs[depType];
+      if (!depDirCandidates) {
         warnings.push({
           type: 'UNKNOWN_DEP_TYPE',
           agent: agent.id,
@@ -220,8 +288,11 @@ async function validateDependencies(agents) {
       }
 
       for (const depFile of depList) {
-        const depPath = path.join(depDir, depFile);
-        const exists = await fileExists(depPath);
+        const depPathCandidates = [
+          ...getDependencyPathCandidates(depDirCandidates, depType, depFile),
+          ...getAgentScopedDependencyPathCandidates(agent, depType, depFile),
+        ];
+        const exists = (await Promise.all(depPathCandidates.map((depPath) => fileExists(depPath)))).some(Boolean);
 
         if (!exists) {
           // Missing dependencies are warnings, not errors (pre-existing technical debt)
@@ -230,9 +301,9 @@ async function validateDependencies(agents) {
             agent: agent.id,
             depType,
             depFile,
-            expectedPath: depPath,
+            expectedPath: depPathCandidates[0],
             message: `Missing dependency: @${agent.id} → ${depType}/${depFile}`,
-            suggestion: `Create the file at ${depPath} or remove from agent dependencies.`,
+            suggestion: `Create the file in one of: ${depPathCandidates.join(', ')} or remove from agent dependencies.`,
           });
         }
       }
@@ -289,6 +360,17 @@ function validateAgentFormat(agents) {
       });
     }
 
+    const agentClass = parsed.agent.class;
+    if (agentClass && !AGENT_CLASSES.has(agentClass)) {
+      errors.push({
+        type: 'UNKNOWN_AGENT_CLASS',
+        agent: id,
+        field: 'agent.class',
+        message: `Unknown agent.class '${agentClass}' in ${file}`,
+        suggestion: 'Use operational or consultation. Unknown classes fail closed as operational.',
+      });
+    }
+
     // Check command format
     // Accepted formats:
     // 1. { name: 'cmd', description: '...' } - explicit format (preferred)
@@ -302,20 +384,20 @@ function validateAgentFormat(agents) {
           type: 'DEPRECATED_COMMAND_FORMAT',
           agent: id,
           command: cmd,
-          message: `Command "${cmd}" in @${id} uses deprecated string format`,
-          suggestion: `Consider converting to: - name: ${cmd.split(':')[0].trim()}\n    description: "${cmd.split(':')[1]?.trim() || 'TODO: add description'}"`,
+          message: `Command '${cmd}' in @${id} uses deprecated string format`,
+          suggestion: `Consider converting to: - name: ${cmd.split(':')[0].trim()}\n    description: '${cmd.split(':')[1]?.trim() || 'TODO: add description'}'`,
         });
       }
       // Note: { cmd: 'description' } shorthand format is valid and does NOT generate errors
     }
 
-    // Check autoClaude section
-    if (!parsed.autoClaude) {
-      warnings.push({
+    // Check autoClaude section. Missing/unknown class is fail-closed as operational.
+    if (getAgentClass(agent) === 'operational' && !parsed.autoClaude) {
+      errors.push({
         type: 'MISSING_AUTOCLAUDE',
         agent: id,
-        message: `Missing autoClaude section in ${file} (V2 format)`,
-        suggestion: `Add autoClaude section with version: '3.0'`,
+        message: `Missing autoClaude section in operational agent ${file} (V2 format)`,
+        suggestion: 'Add autoClaude section with version: \'3.0\'',
       });
     }
 
@@ -328,7 +410,7 @@ function validateAgentFormat(agents) {
           type: 'DEPRECATED_GREETING',
           agent: id,
           message: `@${id} uses deprecated generate-greeting.js`,
-          suggestion: `Change to greeting-builder.js`,
+          suggestion: 'Change to greeting-builder.js',
         });
       }
     }
@@ -514,6 +596,7 @@ module.exports = {
   validateCommandUniqueness,
   validateDependencies,
   validateAgentFormat,
+  getAgentClass,
   loadAllAgents,
 };
 

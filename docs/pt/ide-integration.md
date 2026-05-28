@@ -19,7 +19,7 @@ O AIOS suporta 6 plataformas de desenvolvimento com IA. Escolha a que melhor se 
 
 | Funcionalidade         | Claude Code | Codex CLI | Cursor | Copilot | AntiGravity | Gemini CLI |
 | ---------------------- | :---------: | :-------: | :----: | :-----: | :---------: | :--------: |
-| **Ativação de Agente** |  /command   |  /skills  | @mention | chat modes | workflow-based | prompt mention |
+| **Ativação de Agente** |  /command   |  AGENTS.md + .codex/agents  | @mention | chat modes | workflow-based | prompt mention |
 | **Suporte MCP**        |   Native    |  Native   | Config | Config | Provider-specific | Native |
 | **Tarefas de Subagente** |   Yes     |    Yes    |   No   |   No   |     Yes     |     No     |
 | **Auto-sync**          |     Yes     |    Yes    |  Yes   |  Yes   |     Yes     |    Yes     |
@@ -33,7 +33,7 @@ O AIOS suporta 6 plataformas de desenvolvimento com IA. Escolha a que melhor se 
 | --- | --- | --- | --- |
 | Claude Code | Completa | Nenhum (comportamento de referência) | Hooks nativos + pipeline completo do AIOS |
 | Gemini CLI | Alta | Pequenas diferenças de modelo de eventos | Hooks nativos do Gemini + mapeamento unificado |
-| Codex CLI | Limitada/parcial | Menor automação de ciclo de sessão e menor enforcement pre/post-tool | `AGENTS.md` + `/skills` + MCP + scripts de sync/validação |
+| Codex CLI | Limitada/parcial | Menor automação de ciclo de sessão e menor enforcement pre/post-tool | `AGENTS.md` + `.codex/agents` + MCP + scripts de sync/validação |
 | Cursor | Sem hooks de ciclo equivalentes | Sem interceptação nativa pre/post-tool e trilha automática mais fraca | Regras sincronizadas + MCP + disciplina de workflow |
 | GitHub Copilot | Sem hooks de ciclo equivalentes | Mesmo impacto do Cursor, com maior dependência de fluxo manual | Instruções de repo, chat modes e MCP no VS Code |
 | AntiGravity | Baseado em workflow (não em hooks) | Sem paridade de ciclo de vida ao estilo Claude | Geração de workflows + sync de agentes |
@@ -98,13 +98,14 @@ ls -la .claude/commands/AIOS/agents/
 ```yaml
 config_file: AGENTS.md
 agent_folder: .codex/agents
-activation: /skills + atalhos AGENTS.md
+activation: atalhos AGENTS.md + .codex/agents
 skills_folder: .codex/skills (local), ~/.codex/skills (global)
 format: markdown
 mcp_support: nativo via Codex
 special_features:
   - AGENTS.md como contrato operacional
-  - Skills locais versionadas no projeto
+  - Agentes locais versionados em `.codex/agents`
+  - Skills reservadas para capacidades reutilizáveis, não agentes
   - Pipeline de greeting compartilhado com Claude
   - Comando de notify e hooks de ferramenta emergentes nas releases recentes do Codex
 ```
@@ -113,9 +114,9 @@ special_features:
 
 1. Mantenha `AGENTS.md` na raiz do repositório
 2. Execute `npm run sync:ide:codex`
-3. Execute `npm run sync:skills:codex`
-4. Use `/skills` e selecione `aios-<agent-id>`
-5. Use `sync:skills:codex:global` só quando quiser instalação global
+3. Ative agentes pelos atalhos do `AGENTS.md` carregando a definição correspondente em `.codex/agents/<agent-id>.md`
+4. Execute `npm run sync:skills:codex` apenas para preparar o diretório de skills reais
+5. Use `/skills` apenas para capacidades como `agent-evals`, `brainstorming` ou `frontend-patterns`, não para agentes `aios-*`
 
 ```bash
 npm run sync:ide:codex

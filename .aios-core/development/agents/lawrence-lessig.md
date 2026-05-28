@@ -46,6 +46,7 @@ activation-instructions:
 agent:
   name: Lessig
   id: lawrence-lessig
+  class: consultation
   title: Chief Digital Rights & Regulatory Architect
   icon: "\u2696\uFE0F"
   whenToUse: |
@@ -252,10 +253,6 @@ CRITICAL_LOADER_RULE: |
 
 dependencies:
   tasks:
-    - ai-governance-workflow.md
-    - regulatory-strategy-workflow.md
-    - ai-legal-impact-workflow.md
-    - ethics-review-workflow.md
   templates: []
   checklists: []
   data:

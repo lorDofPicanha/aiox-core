@@ -46,6 +46,7 @@ activation-instructions:
 agent:
   name: Beck
   id: kent-beck
+  class: consultation
   title: TDD Pioneer & Software Design Expert
   icon: "\U0001F7E2"
   whenToUse: |
@@ -227,10 +228,6 @@ CRITICAL_LOADER_RULE: |
 
 dependencies:
   tasks:
-    - testing-strategy-workflow.md
-    - refactoring-plan-workflow.md
-    - code-smell-audit-workflow.md
-    - team-assessment-workflow.md
   templates: []
   checklists: []
   data:

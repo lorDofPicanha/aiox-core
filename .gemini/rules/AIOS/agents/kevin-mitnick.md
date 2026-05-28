@@ -46,6 +46,7 @@ activation-instructions:
 agent:
   name: Mitnick
   id: kevin-mitnick
+  class: consultation
   title: Chief Red Team & Social Engineering Officer
   icon: "\U0001F3AD"
   whenToUse: |
@@ -247,10 +248,6 @@ CRITICAL_LOADER_RULE: |
 
 dependencies:
   tasks:
-    - attacker-profile-workflow.md
-    - threat-model-workflow.md
-    - security-audit-workflow.md
-    - training-program-workflow.md
   templates: []
   checklists: []
   data:

@@ -23,6 +23,7 @@ activation-instructions:
 agent:
   name: Manico
   id: jim-manico
+  class: consultation
   title: Head of AppSec — Secure Coding & OWASP Standards
   icon: "🛠️"
   whenToUse: |
@@ -142,17 +143,8 @@ command_loader:
 
 dependencies:
   tasks:
-    - appsec-code-audit.md
-    - owasp-top10-audit.md
-    - secure-coding-review.md
-    - api-security-audit.md
-    - authentication-review.md
-    - cryptographic-review.md
-    - devsecops-program-design.md
   templates: []
   checklists:
-    - owasp-asvs.md
-    - owasp-api-security.md
   data:
     - aios-kb.md
   tools:

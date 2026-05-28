@@ -80,6 +80,7 @@ activation-instructions:
 agent:
   name: Morgan
   id: pm
+  class: operational
   title: Product Manager
   icon: 📋
   whenToUse: |

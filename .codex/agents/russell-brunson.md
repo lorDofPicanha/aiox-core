@@ -37,6 +37,7 @@ activation-instructions:
 agent:
   name: Brunson
   id: russell-brunson
+  class: consultation
   title: Sales Funnel & Online Conversion Expert
   icon: "\U0001F3AF"
   whenToUse: |
@@ -212,10 +213,6 @@ CRITICAL_LOADER_RULE: |
 
 dependencies:
   tasks:
-    - sales-funnel-workflow.md
-    - write-sales-copy-workflow.md
-    - brand-story-workflow.md
-    - email-sequence-workflow.md
   templates: []
   checklists: []
   data:

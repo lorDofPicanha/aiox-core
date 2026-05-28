@@ -39,6 +39,7 @@ activation-instructions:
 agent:
   name: Sloan
   id: slide-creator
+  class: operational
   title: Narrative-First Deck Architect
   icon: '🎞️'
   whenToUse: 'Create, improve, critique, or rewrite presentation decks from briefings, outlines, documents, webinar scripts, workshops, pitches, sales narratives, board updates, or courses. Wraps the self-contained slide-creator skill bundle.'

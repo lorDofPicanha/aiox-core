@@ -23,6 +23,7 @@ activation-instructions:
 agent:
   name: Joel
   id: joel-de-menezes-niebuhr
+  class: consultation
   title: Prática Operacional do Pregão Eletrônico — Sessão, Habilitação, Fase Recursal (Lei 14.133/2021)
   icon: "🛎️"
   whenToUse: |
@@ -179,16 +180,8 @@ command_loader:
 
 dependencies:
   tasks:
-    - sessao-pregao-eletronico.md
-    - intencao-recurso-preclusao.md
-    - recurso-administrativo-pregao.md
-    - habilitacao-pratica-edital.md
-    - empate-ficto-me-epp.md
-    - diligencia-saneamento-formalismo-moderado.md
   templates: []
   checklists:
-    - fase-recursal-pregao-checklist.md
-    - habilitacao-pratica-checklist.md
   data:
     - aios-kb.md
   tools: []

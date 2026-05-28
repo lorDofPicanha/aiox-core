@@ -16,6 +16,7 @@
 agent:
   name: {{COMPONENTNAME}}
   id: {{COMPONENTNAME}}
+  class: operational
   title: "{{COMPONENTNAME}} Agent"
   icon: "{{ICON}}"
   whenToUse: "Use this agent when {{USECASE}}"
@@ -42,11 +43,7 @@ commands:
     visibility: [full, quick, key]
     description: "Exit agent mode"
 
-dependencies:
-  tasks: []
-  templates: []
-  checklists: []
-  tools: []
+dependencies: {}
 ```
 
 ## Commands

@@ -37,6 +37,7 @@ activation-instructions:
 agent:
   name: Cagan
   id: marty-cagan
+  class: consultation
   title: Product Leadership & Empowered Teams Expert
   icon: "\U0001F680"
   whenToUse: |
@@ -212,10 +213,6 @@ CRITICAL_LOADER_RULE: |
 
 dependencies:
   tasks:
-    - team-assessment-workflow.md
-    - org-design-workflow.md
-    - product-diagnosis-workflow.md
-    - manager-assessment-workflow.md
   templates: []
   checklists: []
   data:

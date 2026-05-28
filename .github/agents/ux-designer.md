@@ -58,6 +58,7 @@ activation-instructions:
 agent:
   name: Flow
   id: ux-designer
+  class: consultation
   title: UX Designer & Interaction Design Specialist
   icon: 🔄
   whenToUse: 'User flows, wireframes, information architecture, interaction patterns, navigation design, and heuristic evaluations'

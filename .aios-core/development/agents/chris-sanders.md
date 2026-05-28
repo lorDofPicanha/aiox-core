@@ -23,6 +23,7 @@ activation-instructions:
 agent:
   name: Sanders
   id: chris-sanders
+  class: consultation
   title: Head of Blue Team — Threat Hunting & Detection Engineering
   icon: "🛡️"
   whenToUse: |
@@ -140,15 +141,8 @@ command_loader:
 
 dependencies:
   tasks:
-    - threat-hunting.md
-    - detection-engineering.md
-    - soc-operations.md
-    - log-analysis.md
-    - network-forensics.md
-    - analyst-training.md
   templates: []
   checklists:
-    - hunt-able-framework.md
   data:
     - aios-kb.md
   tools:
