@@ -86,6 +86,119 @@ export interface Opportunity {
     date: string;
     status: "done" | "open" | "missing" | "risk";
   }>;
+  legalProcess: LegalProcess;
+}
+
+export type HabilitationRequirementCategory =
+  | "juridica"
+  | "fiscal"
+  | "trabalhista"
+  | "economico_financeira"
+  | "tecnica"
+  | "proposta"
+  | "outro";
+
+export type LegalCriticality = "blocker" | "high" | "medium" | "low";
+
+export interface HabilitationRequirement {
+  id: string;
+  category: HabilitationRequirementCategory;
+  label: string;
+  requirementText: string;
+  criticality: LegalCriticality;
+  status: "not_started" | "needs_document" | "ready_for_review" | "approved_by_human" | "gap" | "not_applicable";
+  confidence: ConfidenceLevel;
+  humanOwner: string;
+  evidenceLabel: string;
+  note: string;
+}
+
+export interface HabilitationDocument {
+  id: string;
+  requirementId: string;
+  label: string;
+  documentType: string;
+  status: "missing" | "available" | "expired" | "needs_review" | "accepted_by_human";
+  validUntil: string | null;
+  source: "manual_fixture" | "vault_pending" | "user_uploaded_future";
+  sensitive: boolean;
+  redactionRequired: boolean;
+}
+
+export type LegalEventType =
+  | "publication"
+  | "clarification"
+  | "proposal_deadline"
+  | "session_open"
+  | "bid_round"
+  | "habilitation_review"
+  | "diligence"
+  | "adjudication"
+  | "homologation"
+  | "appeal_intent_window"
+  | "appeal_reasons_deadline"
+  | "counterarguments_deadline"
+  | "other";
+
+export interface LegalProcessEvent {
+  id: string;
+  stage: WorkflowStage;
+  eventType: LegalEventType;
+  label: string;
+  eventTime: string | null;
+  status: "observed" | "inferred" | "expected" | "missed" | "cancelled";
+  requiresHumanAction: boolean;
+  riskLevel: "none" | "watch" | "urgent" | "critical";
+  consequenceIfMissed: string;
+  evidenceLabel: string;
+}
+
+export type DecisionType =
+  | "prepare_documents"
+  | "ask_clarification"
+  | "continue_bid"
+  | "stop_bid"
+  | "request_diligence_review"
+  | "manifest_appeal_intent"
+  | "draft_appeal_reasons"
+  | "submit_counterarguments"
+  | "ignore";
+
+export interface DecisionPoint {
+  id: string;
+  decisionType: DecisionType;
+  recommendedAction: string;
+  basis: "fact" | "inference" | "missing_data" | "legal_review_needed";
+  confidenceScore: number;
+  blockingLacunas: string[];
+  humanApprovalRequired: boolean;
+  externalActBlocked: boolean;
+}
+
+export interface AppealIntent {
+  id: string;
+  windowStatus: "not_open" | "open_manual_entry" | "closing_soon" | "closed" | "unknown";
+  groundsSummary: string;
+  humanDecision: "undecided" | "intend_to_appeal" | "do_not_appeal" | "needs_lawyer_review";
+  submissionStatus: "blocked_not_automated" | "manually_submitted_by_user" | "not_submitted" | "unknown";
+}
+
+export interface AppealReasons {
+  id: string;
+  intentId: string;
+  draftStatus: "not_started" | "outline" | "draft_for_review" | "approved_by_lawyer" | "discarded";
+  argumentTopics: string[];
+  reviewOwner: string;
+  externalSubmissionStatus: "blocked_not_automated" | "manually_submitted_by_user" | "not_submitted" | "unknown";
+}
+
+export interface LegalProcess {
+  requirements: HabilitationRequirement[];
+  documents: HabilitationDocument[];
+  events: LegalProcessEvent[];
+  decisionPoints: DecisionPoint[];
+  appealIntent: AppealIntent;
+  appealReasons: AppealReasons;
 }
 
 export interface ScoreInput {
@@ -231,6 +344,19 @@ export function scoreHealth(score: number): "high" | "medium" | "low" {
   if (score >= 70) return "high";
   if (score >= 45) return "medium";
   return "low";
+}
+
+export function isExternalActSafelyBlocked(decision: DecisionPoint): boolean {
+  if (!decision.externalActBlocked) return true;
+  return decision.humanApprovalRequired && decision.externalActBlocked;
+}
+
+export function legalReviewLabel(decision: DecisionPoint): ActionLabel {
+  if (decision.externalActBlocked || decision.basis === "legal_review_needed") {
+    return "revisao obrigatoria";
+  }
+  if (decision.blockingLacunas.length > 0) return "promissora, mas incompleta";
+  return "avaliar rapido";
 }
 
 function distanceScore(distanceKm: number): number {

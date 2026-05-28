@@ -37,6 +37,7 @@
 - **`16-sprint0-normalization-dedupe-score-spec-23mai`** — especificação de persistência, evidência, confiança, dedupe e score v0
 - **`17-execution-roadmap-agent-ownership-23mai`** — roadmap operacional até piloto/produção com dono primário, council, stories e gates por fase
 - **`18-po-validation-and-phase12-story-slice-23mai`** — validação `@po` + fatiamento `@pm` de Fase 1/Fase 2 para execução imediata
+- **`19-fase5-legal-process-model-28mai`** — modelo de Fase 5 para habilitação, sessão/diligência/preclusão e recurso com atos externos bloqueados
 - **`fixtures/`** — fixtures sintéticas/anonimizadas para validar contrato multi-fonte antes de scaffold
 - **`sql/0001_noyce_equal_priority_canonical_schema.sql`** — SQL de referência para Supabase/Postgres
 - **`contracts/source-adapter.contract.ts`** — contrato único para todas as fontes
@@ -84,6 +85,8 @@
 8. Fase 4 iniciada: score `deterministic-v0` calcula `opportunity_score` e `confidence_score` separadamente a partir das fixtures, com componentes e razões visíveis na tela de análise.
 9. Export local de dados: `http://localhost:3100/analysis-runs.json` expõe `analysis_runs` fixture-based com validação `noyce.analysis_run.v0`.
 10. Paridade Sprint 0: `http://localhost:3103/api/analysis-runs` expõe os 7 `analysis_runs` do dry-run em `sprint0AnalysisRuns`, incluindo fonte candidata, com `validation.ok=true`.
+11. Fase 5 jurídico/processo: `apps/noyce` agora modela habilitação, documentos, janelas processuais, decision points, intenção de recurso e razões recursais com dados fixture-only e atos externos bloqueados por padrão.
+12. Fases 6-11 offline: `http://localhost:3100/api/readiness` expõe readiness do onboarding, segurança/vault/ToS, adapters dry-run/manual import, jobs dry-run, piloto e gate de produção controlada; itens humanos ficam separados para resolver de manhã.
 
 ## Atualização 2026-05-22 — Sprint 0 atual
 O projeto não deve começar como "buscador PNCP". A rota correta é construir o Noyce como workflow de licitações:
@@ -105,4 +108,4 @@ Política de fontes atualizada: nenhuma fonte é principal. Todas as fontes conh
 `continua buscador licitações` · `build noyce` / `handoff codex` · `fontes reais buscador` · `escopo geografico buscador` · `gate buscador licitações` · `agendar call amigo`.
 
 ---
-*README mantido por Orion (aios-master). Última atualização: 2026-05-22.*
+*README mantido por Orion (aios-master). Última atualização: 2026-05-28.*

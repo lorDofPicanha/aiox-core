@@ -330,11 +330,17 @@ Estes itens nao devem ser executados por Codex sem aprovacao explicita:
 13. `@aios-master` decide proxima fatia: paridade completa com dry-run Sprint 0 ou Fase 5 juridico/processo. Status: done, consultation `6f614982-f04a-4b6f-b222-45b6114ac610`.
 14. `@data-engineer` implementa paridade completa com 7 `analysis_runs` do dry-run Sprint 0. Status: PASS, consultation `ae9b0d0b-0efc-43f2-9e62-22461726bd23`.
 15. `@qa` registra gate de paridade Sprint 0. Status: PASS, consultation `5c4b306d-df0f-4d77-8225-825ed0087da0`.
-16. `@aios-master` decide proxima fatia: calibracao futura com outcomes reais ou Fase 5 juridico/processo. Status: next.
+16. `@aios-master` decide proxima fatia: calibracao futura com outcomes reais ou Fase 5 juridico/processo. Status: done, Fase 5 selected because real ENIAC outcomes remain unavailable.
+17. `@joel-de-menezes-niebuhr` inicia Fase 5 - modelagem juridico/processual. Status: PASS, artifact `19-fase5-legal-process-model-28mai.md`, conclave `16332252-be48-430b-bcc4-a0079a149ef4`.
+18. `@dev` implementa `NOYCE-LEGAL-01` em `apps/noyce`. Status: PASS.
+19. `@qa` registra gate Fase 5. Status: PASS, 8 tests, typecheck/build/browser QA passed.
+20. `@pm`, `@cyber-chief`, `@data-engineer`, `@devops` e `@aios-master` executam pacote offline Fases 6-10. Status: PASS offline, artifact `20-fases6-10-execution-pack-28mai.md`, conclave `78abaf54-5035-43b1-ab41-979508a835e1`.
+21. `@devops` prepara gate de Fase 11 producao controlada. Status: prepared/blocked, artifact `21-fase11-production-control-gate-28mai.md`.
 
 Artefato de execucao:
 
 - `18-po-validation-and-phase12-story-slice-23mai.md`
+- `19-fase5-legal-process-model-28mai.md`
 
 Validacao mais recente:
 
@@ -346,6 +352,9 @@ Validacao mais recente:
 - Fase 4 score `deterministic-v0`: PASS, com opportunity score e confidence score separados e breakdown visivel na UI.
 - Export local `http://localhost:3100/analysis-runs.json`: PASS, `validation.ok=true`.
 - Paridade Sprint 0 `http://localhost:3103/api/analysis-runs`: PASS, `validation.ok=true`, `sprint0Count=7`.
+- Fase 5 legal/process model: PASS, with external acts blocked, appeal intent separated from appeal reasons, fixture-only data and browser QA at `http://localhost:3100`.
+- Fases 6-11 offline readiness: PASS, `/api/readiness` exposes blockers, source governance, dry-run jobs, pilot steps and production control gate. Human/ENIAC inputs remain queued for morning.
+- Fase 11 production gate: prepared but BLOCKED pending QA/security/devops/founder go-no-go.
 
 ## Definition of ready para execucao Codex
 
