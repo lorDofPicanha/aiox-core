@@ -1,0 +1,1456 @@
+{
+  "generatedAt": "2026-05-29T15:14:02.039Z",
+  "source": "PNCP /contratos + /contratacoes (public, read-only)",
+  "windowMonths": 12,
+  "note": "Batch snapshot. Live API not called in-request (cnpjOrgao is flaky). avgDiscount/recurrence/vsEniac are inference/gap by design.",
+  "orgaos": [
+    {
+      "orgaoCnpj": "01616520000196",
+      "orgaoName": "Município de Águas Lindas de Goiás",
+      "municipio": "Águas Lindas",
+      "uf": "GO",
+      "objetoClass": "obras/engenharia",
+      "windowMonths": 12,
+      "distinctWinners": 20,
+      "contractCount": 39,
+      "allContractCount": 230,
+      "obrasShareOfOrgao": 17,
+      "totalContractedBRL": 16317404,
+      "hhi": 2054,
+      "concentration": "moderado",
+      "modalityMix": {
+        "4": 33,
+        "6": 96,
+        "8": 192
+      },
+      "recurrenceMonths": null,
+      "outsiderWinRatePct": null,
+      "coveragePct": 0.12,
+      "coverageProvisional": true,
+      "priceBand": {
+        "p25BRL": 10475,
+        "medianBRL": 110000,
+        "p75BRL": 405555,
+        "sampleSize": 39,
+        "grounding": "grounded"
+      },
+      "competitors": [
+        {
+          "cnpj": "13723532000107",
+          "name": "NIVELAR ENGENHARIA LTDA",
+          "winCount": 11,
+          "totalWonBRL": 4824412,
+          "sharePct": 29.6,
+          "avgTicketBRL": 438583,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2025-09-03",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (20 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01616520000196-1-000078/2024",
+            "01616520000196-1-000078/2024",
+            "01616520000196-1-000078/2024",
+            "01616520000196-1-000054/2025",
+            "01616520000196-1-000078/2024"
+          ]
+        },
+        {
+          "cnpj": "15108646000164",
+          "name": "MOURA SERVICOS ESPECIALIZADOS LTDA",
+          "winCount": 1,
+          "totalWonBRL": 4449410,
+          "sharePct": 27.3,
+          "avgTicketBRL": 4449410,
+          "avgDiscountPct": null,
+          "isIncumbent": true,
+          "lastWinDate": "2026-02-11",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (20 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01616520000196-1-000216/2025"
+          ]
+        },
+        {
+          "cnpj": "23103767000141",
+          "name": "MARCELO MACHADO FILHO TERRAPLANAGEM",
+          "winCount": 2,
+          "totalWonBRL": 2618000,
+          "sharePct": 16,
+          "avgTicketBRL": 1309000,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2025-04-23",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (20 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01616520000196-1-000071/2024",
+            "01616520000196-1-000074/2024"
+          ]
+        },
+        {
+          "cnpj": "16749485000150",
+          "name": "ADP TRANSPORTE E TURISMO EIRELI",
+          "winCount": 1,
+          "totalWonBRL": 1862640,
+          "sharePct": 11.4,
+          "avgTicketBRL": 1862640,
+          "avgDiscountPct": null,
+          "isIncumbent": true,
+          "lastWinDate": "2026-02-11",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (20 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01616520000196-1-000216/2025"
+          ]
+        },
+        {
+          "cnpj": "49947683000188",
+          "name": "STARKER GOTT ENGENHARIA LTDA",
+          "winCount": 2,
+          "totalWonBRL": 701124,
+          "sharePct": 4.3,
+          "avgTicketBRL": 350562,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2025-03-14",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (20 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01616520000196-1-000086/2024",
+            "01616520000196-1-000086/2024"
+          ]
+        },
+        {
+          "cnpj": "27112137000194",
+          "name": "IMEX CONSTRUTORA LTDA",
+          "winCount": 1,
+          "totalWonBRL": 617049,
+          "sharePct": 3.8,
+          "avgTicketBRL": 617049,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2025-07-02",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (20 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01616520000196-1-000092/2025"
+          ]
+        },
+        {
+          "cnpj": "38251225000193",
+          "name": "PRESTAD PRESTADORA DE SERVICOS LTDA",
+          "winCount": 1,
+          "totalWonBRL": 581064,
+          "sharePct": 3.6,
+          "avgTicketBRL": 581064,
+          "avgDiscountPct": null,
+          "isIncumbent": true,
+          "lastWinDate": "2026-02-11",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (20 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01616520000196-1-000216/2025"
+          ]
+        },
+        {
+          "cnpj": "36821330000195",
+          "name": "MAPAJU COMERCIO E DISTRIBUICAO LTDA",
+          "winCount": 3,
+          "totalWonBRL": 238436,
+          "sharePct": 1.5,
+          "avgTicketBRL": 79479,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2025-03-27",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (20 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01616520000196-1-000115/2024",
+            "01616520000196-1-000115/2024",
+            "01616520000196-1-000115/2024"
+          ]
+        },
+        {
+          "cnpj": "33988004000189",
+          "name": "INSTITUTO CIENCIAS APLICADAS, TECNOLOGIA & INOVACAO-PLENUS",
+          "winCount": 1,
+          "totalWonBRL": 110000,
+          "sharePct": 0.7,
+          "avgTicketBRL": 110000,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2025-06-12",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (20 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01616520000196-1-000106/2025"
+          ]
+        },
+        {
+          "cnpj": "45896074000196",
+          "name": "SANTA PIEDADE - LOCACAO DE IMOVEIS PROPRIOS LTDA",
+          "winCount": 1,
+          "totalWonBRL": 99200,
+          "sharePct": 0.6,
+          "avgTicketBRL": 99200,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2025-01-02",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (20 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01616520000196-1-000022/2025"
+          ]
+        },
+        {
+          "cnpj": "00712405000152",
+          "name": "MAMUTE CONSTRUTORA E COMERCIO LTDA",
+          "winCount": 5,
+          "totalWonBRL": 95861,
+          "sharePct": 0.6,
+          "avgTicketBRL": 19172,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2025-03-20",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (20 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01616520000196-1-000035/2025",
+            "01616520000196-1-000042/2025",
+            "01616520000196-1-000042/2025",
+            "01616520000196-1-000042/2025",
+            "01616520000196-1-000042/2025"
+          ]
+        },
+        {
+          "cnpj": "15463983000170",
+          "name": "SL COMERCIO DE ALIMENTOS EIRELI",
+          "winCount": 1,
+          "totalWonBRL": 57404,
+          "sharePct": 0.4,
+          "avgTicketBRL": 57404,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2025-03-13",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (20 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01616520000196-1-000036/2025"
+          ]
+        },
+        {
+          "cnpj": "37278673000118",
+          "name": "EREMASTER DISTRIBUIDORA DE FERRAGENS E FERRAMENTAS LTDA",
+          "winCount": 1,
+          "totalWonBRL": 23745,
+          "sharePct": 0.1,
+          "avgTicketBRL": 23745,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2026-01-15",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (20 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01616520000196-1-000209/2025"
+          ]
+        },
+        {
+          "cnpj": "49066745000142",
+          "name": "S. L. L. DE A. FILHO LTDA",
+          "winCount": 1,
+          "totalWonBRL": 13950,
+          "sharePct": 0.1,
+          "avgTicketBRL": 13950,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2026-01-15",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (20 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01616520000196-1-000209/2025"
+          ]
+        },
+        {
+          "cnpj": "05966179000150",
+          "name": "CONSORCIO AGUAS LINDAS - SANEAGO CAESB",
+          "winCount": 1,
+          "totalWonBRL": 7000,
+          "sharePct": 0,
+          "avgTicketBRL": 7000,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2024-02-05",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (20 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01616520000196-1-000012/2024"
+          ]
+        },
+        {
+          "cnpj": "60502441000113",
+          "name": "60.502.441 ANDREZA PEREIRA DOS SANTOS",
+          "winCount": 1,
+          "totalWonBRL": 7000,
+          "sharePct": 0,
+          "avgTicketBRL": 7000,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2025-05-26",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (20 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01616520000196-1-000095/2025"
+          ]
+        },
+        {
+          "cnpj": "54065238000124",
+          "name": "CHERUBIN COMERCIAL LTDA",
+          "winCount": 2,
+          "totalWonBRL": 6285,
+          "sharePct": 0,
+          "avgTicketBRL": 3142,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2024-09-30",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (20 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01616520000196-1-000115/2024",
+            "01616520000196-1-000115/2024"
+          ]
+        },
+        {
+          "cnpj": "00360305000104",
+          "name": "CAIXA ECONOMICA FEDERAL",
+          "winCount": 1,
+          "totalWonBRL": 1700,
+          "sharePct": 0,
+          "avgTicketBRL": 1700,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2024-08-06",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (20 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01616520000196-1-000109/2024"
+          ]
+        },
+        {
+          "cnpj": "02608297000106",
+          "name": "MAQUIALLIS COMERCIO E SERVICOS LTDA",
+          "winCount": 1,
+          "totalWonBRL": 1625,
+          "sharePct": 0,
+          "avgTicketBRL": 1625,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2024-02-02",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (20 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01616520000196-1-000015/2024"
+          ]
+        },
+        {
+          "cnpj": "01616929000102",
+          "name": "SANEAMENTO DE GOIAS S/A SANEAGO",
+          "winCount": 1,
+          "totalWonBRL": 1500,
+          "sharePct": 0,
+          "avgTicketBRL": 1500,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2024-09-23",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (20 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01616520000196-1-000108/2024"
+          ]
+        }
+      ],
+      "fetchStats": {
+        "windowsOk": 1,
+        "windowsFail": 2,
+        "windowsEmpty": 6
+      },
+      "grounding": "grounded"
+    },
+    {
+      "orgaoCnpj": "01629276000104",
+      "orgaoName": "Município de Novo Gama",
+      "municipio": "Novo Gama",
+      "uf": "GO",
+      "objetoClass": "obras/engenharia",
+      "windowMonths": 12,
+      "distinctWinners": 13,
+      "contractCount": 14,
+      "allContractCount": 49,
+      "obrasShareOfOrgao": 29,
+      "totalContractedBRL": 16506524,
+      "hhi": 3018,
+      "concentration": "concentrado",
+      "modalityMix": {},
+      "recurrenceMonths": null,
+      "outsiderWinRatePct": null,
+      "coveragePct": null,
+      "coverageProvisional": true,
+      "priceBand": {
+        "p25BRL": 54447,
+        "medianBRL": 432600,
+        "p75BRL": 1242263,
+        "sampleSize": 14,
+        "grounding": "grounded"
+      },
+      "competitors": [
+        {
+          "cnpj": "19985088000176",
+          "name": "MAXPAV TERRAPLANAGEM E CONSTRUÇÕES LTDA",
+          "winCount": 1,
+          "totalWonBRL": 7999086,
+          "sharePct": 48.5,
+          "avgTicketBRL": 7999086,
+          "avgDiscountPct": null,
+          "isIncumbent": true,
+          "lastWinDate": "2026-05-26",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (13 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01629276000104-1-000084/2026"
+          ]
+        },
+        {
+          "cnpj": "46536568000122",
+          "name": "A2M ARQUITETURA E URBANISMO LTDA",
+          "winCount": 2,
+          "totalWonBRL": 3557500,
+          "sharePct": 21.6,
+          "avgTicketBRL": 1778750,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2026-04-17",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (13 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01629276000104-1-000069/2026",
+            "01629276000104-1-000017/2026"
+          ]
+        },
+        {
+          "cnpj": "13723532000107",
+          "name": "NIVELAR ENGENHARIA LTDA",
+          "winCount": 1,
+          "totalWonBRL": 1653019,
+          "sharePct": 10,
+          "avgTicketBRL": 1653019,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2026-04-28",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (13 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01629276000104-1-000012/2026"
+          ]
+        },
+        {
+          "cnpj": "20735589000183",
+          "name": "LATINS ENGENHARIA LTDA",
+          "winCount": 1,
+          "totalWonBRL": 1291518,
+          "sharePct": 7.8,
+          "avgTicketBRL": 1291518,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2025-09-19",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (13 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01629276000104-1-000082/2024"
+          ]
+        },
+        {
+          "cnpj": "11054864000102",
+          "name": "CONSTRUTORA OESTE BAHIA E EMPREENDIMENTOS LTDA",
+          "winCount": 1,
+          "totalWonBRL": 868364,
+          "sharePct": 5.3,
+          "avgTicketBRL": 868364,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2026-05-20",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (13 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01629276000104-1-000078/2026"
+          ]
+        },
+        {
+          "cnpj": "05523239000160",
+          "name": "SOLUTEL TECNOLOGIA E CONSTRUÇÕES LTDA",
+          "winCount": 1,
+          "totalWonBRL": 600200,
+          "sharePct": 3.6,
+          "avgTicketBRL": 600200,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2026-03-04",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (13 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01629276000104-1-000014/2026"
+          ]
+        },
+        {
+          "cnpj": "25245914000143",
+          "name": "SWS ENGENHARIA LTDA",
+          "winCount": 1,
+          "totalWonBRL": 265000,
+          "sharePct": 1.6,
+          "avgTicketBRL": 265000,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2025-09-26",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (13 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01629276000104-1-000117/2025"
+          ]
+        },
+        {
+          "cnpj": "00956415725",
+          "name": "ANTONIO ACÁCIO DE FREITAS",
+          "winCount": 1,
+          "totalWonBRL": 90000,
+          "sharePct": 0.5,
+          "avgTicketBRL": 90000,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2026-02-24",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (13 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01629276000104-1-000056/2026"
+          ]
+        },
+        {
+          "cnpj": "15327418120",
+          "name": "EDSON DE QUEIROZ LEANDRO",
+          "winCount": 1,
+          "totalWonBRL": 69360,
+          "sharePct": 0.4,
+          "avgTicketBRL": 69360,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2025-07-31",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (13 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01629276000104-1-000147/2025"
+          ]
+        },
+        {
+          "cnpj": "12218201000149",
+          "name": "JM ARAÚJO PARTICIPAÇÕES E INCORPORAÇÕES LTDA",
+          "winCount": 1,
+          "totalWonBRL": 49476,
+          "sharePct": 0.3,
+          "avgTicketBRL": 49476,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2025-10-01",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (13 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01629276000104-1-000191/2025"
+          ]
+        },
+        {
+          "cnpj": "52485203000119",
+          "name": "LK CONSTRUÇÃO E SERVIÇOS LTDA",
+          "winCount": 1,
+          "totalWonBRL": 38000,
+          "sharePct": 0.2,
+          "avgTicketBRL": 38000,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2026-05-14",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (13 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01629276000104-1-000106/2026"
+          ]
+        },
+        {
+          "cnpj": "45046011000140",
+          "name": "RMS CONSULTORIA E SOLUÇÕES ELÉTRICAS LTDA",
+          "winCount": 1,
+          "totalWonBRL": 25000,
+          "sharePct": 0.2,
+          "avgTicketBRL": 25000,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2026-03-20",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (13 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01629276000104-1-000075/2026"
+          ]
+        },
+        {
+          "cnpj": "17522237000135",
+          "name": "PRAGMASUD ENGENHARIA LTDA",
+          "winCount": 1,
+          "totalWonBRL": 1,
+          "sharePct": 0,
+          "avgTicketBRL": 1,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2025-12-16",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (13 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01629276000104-1-000180/2025"
+          ]
+        }
+      ],
+      "fetchStats": {
+        "windowsOk": 9,
+        "windowsFail": 3,
+        "windowsEmpty": 0
+      },
+      "grounding": "grounded"
+    },
+    {
+      "orgaoCnpj": "01067941000105",
+      "orgaoName": "Município de Pirenópolis",
+      "municipio": "Pirenópolis",
+      "uf": "GO",
+      "objetoClass": "obras/engenharia",
+      "windowMonths": 12,
+      "distinctWinners": 13,
+      "contractCount": 13,
+      "allContractCount": 102,
+      "obrasShareOfOrgao": 13,
+      "totalContractedBRL": 57119136,
+      "hhi": 2929,
+      "concentration": "concentrado",
+      "modalityMix": {
+        "4": 13,
+        "6": 47,
+        "8": 48
+      },
+      "recurrenceMonths": null,
+      "outsiderWinRatePct": null,
+      "coveragePct": 0.12,
+      "coverageProvisional": true,
+      "priceBand": {
+        "p25BRL": 7538.75,
+        "medianBRL": 1185120.9,
+        "p75BRL": 4478654.5,
+        "sampleSize": 13,
+        "grounding": "grounded"
+      },
+      "competitors": [
+        {
+          "cnpj": "26921551000181",
+          "name": "QUEBEC CONSTRUÇÕES E TECNOLOGIA AMBIENTAL S/A.",
+          "winCount": 1,
+          "totalWonBRL": 27728789,
+          "sharePct": 48.5,
+          "avgTicketBRL": 27728789,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2026-04-20",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (13 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01067941000105-1-000013/2026"
+          ]
+        },
+        {
+          "cnpj": "37649134000148",
+          "name": "REAL ELETROMATERIAIS EIRELI",
+          "winCount": 1,
+          "totalWonBRL": 10619909,
+          "sharePct": 18.6,
+          "avgTicketBRL": 10619909,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2026-04-27",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (13 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01067941000105-1-000009/2026"
+          ]
+        },
+        {
+          "cnpj": "08864437000185",
+          "name": "T OLIVER ASFALTOS LTDA",
+          "winCount": 1,
+          "totalWonBRL": 5083605,
+          "sharePct": 8.9,
+          "avgTicketBRL": 5083605,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2026-04-28",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (13 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01067941000105-1-000017/2026"
+          ]
+        },
+        {
+          "cnpj": "15971773000192",
+          "name": "SIMONE E RIBEIRO LTDA.",
+          "winCount": 1,
+          "totalWonBRL": 4478655,
+          "sharePct": 7.8,
+          "avgTicketBRL": 4478655,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2026-04-27",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (13 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01067941000105-1-000009/2026"
+          ]
+        },
+        {
+          "cnpj": "07265785000173",
+          "name": "M. FORTES ENGENHARIA E CONSTRUÇÃO CIVIL LTDA",
+          "winCount": 1,
+          "totalWonBRL": 3768110,
+          "sharePct": 6.6,
+          "avgTicketBRL": 3768110,
+          "avgDiscountPct": null,
+          "isIncumbent": true,
+          "lastWinDate": "2026-05-21",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (13 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01067941000105-1-000014/2026"
+          ]
+        },
+        {
+          "cnpj": "11388431000193",
+          "name": "PEDRAS MULTICORES LTDA.",
+          "winCount": 1,
+          "totalWonBRL": 3450000,
+          "sharePct": 6,
+          "avgTicketBRL": 3450000,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2026-04-27",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (13 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01067941000105-1-000009/2026"
+          ]
+        },
+        {
+          "cnpj": "34298386000181",
+          "name": "RENASCER CASA E ACABAMENTO LTDA",
+          "winCount": 1,
+          "totalWonBRL": 1185121,
+          "sharePct": 2.1,
+          "avgTicketBRL": 1185121,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2026-04-27",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (13 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01067941000105-1-000009/2026"
+          ]
+        },
+        {
+          "cnpj": "15006573000108",
+          "name": "MSR ENGENHARIA LTDA",
+          "winCount": 1,
+          "totalWonBRL": 611064,
+          "sharePct": 1.1,
+          "avgTicketBRL": 611064,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2026-01-19",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (13 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01067941000105-1-000004/2026"
+          ]
+        },
+        {
+          "cnpj": "49943275000158",
+          "name": "PAR CONSULTORIA E ASSESSORIA LTDA",
+          "winCount": 1,
+          "totalWonBRL": 180000,
+          "sharePct": 0.3,
+          "avgTicketBRL": 180000,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2026-02-25",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (13 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01067941000105-1-000016/2026"
+          ]
+        },
+        {
+          "cnpj": "02598300000140",
+          "name": "CASA DO CAMPO DEBA LTDA",
+          "winCount": 1,
+          "totalWonBRL": 7539,
+          "sharePct": 0,
+          "avgTicketBRL": 7539,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2026-04-27",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (13 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01067941000105-1-000009/2026"
+          ]
+        },
+        {
+          "cnpj": "50878617000182",
+          "name": "CONFFER DISTRIBUIDORA E CONSTRUCAO LTDA",
+          "winCount": 1,
+          "totalWonBRL": 2920,
+          "sharePct": 0,
+          "avgTicketBRL": 2920,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2026-04-27",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (13 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01067941000105-1-000009/2026"
+          ]
+        },
+        {
+          "cnpj": "29803352000167",
+          "name": "CIMB CONSTRU??ES E COMERCIO LTDA",
+          "winCount": 1,
+          "totalWonBRL": 2225,
+          "sharePct": 0,
+          "avgTicketBRL": 2225,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2026-04-27",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (13 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01067941000105-1-000009/2026"
+          ]
+        },
+        {
+          "cnpj": "10867306000101",
+          "name": "BRAVA FORTE COMERCIAL EIRELI",
+          "winCount": 1,
+          "totalWonBRL": 1200,
+          "sharePct": 0,
+          "avgTicketBRL": 1200,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2026-04-27",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (13 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01067941000105-1-000009/2026"
+          ]
+        }
+      ],
+      "fetchStats": {
+        "windowsOk": 7,
+        "windowsFail": 2,
+        "windowsEmpty": 1
+      },
+      "grounding": "grounded"
+    },
+    {
+      "orgaoCnpj": "01067479000146",
+      "orgaoName": "Prefeitura de Anápolis",
+      "municipio": "Anápolis",
+      "uf": "GO",
+      "objetoClass": "obras/engenharia",
+      "windowMonths": 12,
+      "distinctWinners": 8,
+      "contractCount": 10,
+      "allContractCount": 92,
+      "obrasShareOfOrgao": 11,
+      "totalContractedBRL": 47922306,
+      "hhi": 4447,
+      "concentration": "concentrado",
+      "modalityMix": {
+        "4": 32,
+        "6": 197,
+        "8": 219
+      },
+      "recurrenceMonths": null,
+      "outsiderWinRatePct": null,
+      "coveragePct": 0.02,
+      "coverageProvisional": true,
+      "priceBand": {
+        "p25BRL": 197225,
+        "medianBRL": 2694722,
+        "p75BRL": 7588500,
+        "sampleSize": 10,
+        "grounding": "grounded"
+      },
+      "competitors": [
+        {
+          "cnpj": "07628572000169",
+          "name": "VALDETE RODRIGUES DE OLIVEIRA EMPREENDIMENTOS LTDA",
+          "winCount": 2,
+          "totalWonBRL": 29998000,
+          "sharePct": 62.6,
+          "avgTicketBRL": 14999000,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2025-09-23",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Incumbente dominante (63% do gasto). Para bater: ataque preço agressivo + diferencial técnico (atestado superior); órgão concentrado favorece o atual.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01067479000146-1-000043/2025",
+            "01067479000146-1-000043/2025"
+          ]
+        },
+        {
+          "cnpj": "25177059000180",
+          "name": "PLANEJE LOCACAO E CONSTRUCAO LTDA",
+          "winCount": 1,
+          "totalWonBRL": 9215000,
+          "sharePct": 19.2,
+          "avgTicketBRL": 9215000,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2025-10-01",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (8 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01067479000146-1-000056/2025"
+          ]
+        },
+        {
+          "cnpj": "26656820000120",
+          "name": "SMARTGRID ENGENHARIA E CONSTRUCOES LTDA",
+          "winCount": 2,
+          "totalWonBRL": 5389443,
+          "sharePct": 11.2,
+          "avgTicketBRL": 2694722,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2025-07-16",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (8 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01067479000146-1-000003/2025",
+            "01067479000146-1-000004/2025"
+          ]
+        },
+        {
+          "cnpj": "19230918000155",
+          "name": "GUAXIMA ENGENHARIA LTDA",
+          "winCount": 1,
+          "totalWonBRL": 2709000,
+          "sharePct": 5.7,
+          "avgTicketBRL": 2709000,
+          "avgDiscountPct": null,
+          "isIncumbent": true,
+          "lastWinDate": "2026-03-17",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (8 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01067479000146-1-000048/2025"
+          ]
+        },
+        {
+          "cnpj": "46672831000100",
+          "name": "2V EMPREENDIMENTOS, NEGOCIOS E SERVICOS LTDA",
+          "winCount": 1,
+          "totalWonBRL": 284900,
+          "sharePct": 0.6,
+          "avgTicketBRL": 284900,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2025-10-20",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (8 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01067479000146-1-000093/2025"
+          ]
+        },
+        {
+          "cnpj": "24857765000100",
+          "name": "ASSOCIACAO BENEFICENTE IRMAS DORCAS",
+          "winCount": 1,
+          "totalWonBRL": 168000,
+          "sharePct": 0.4,
+          "avgTicketBRL": 168000,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2026-03-02",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (8 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01067479000146-1-000024/2026"
+          ]
+        },
+        {
+          "cnpj": "00044909000141",
+          "name": "DIOCESE DE ANAPOLIS",
+          "winCount": 1,
+          "totalWonBRL": 120000,
+          "sharePct": 0.3,
+          "avgTicketBRL": 120000,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2026-03-13",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (8 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01067479000146-1-000034/2026"
+          ]
+        },
+        {
+          "cnpj": "65593537100",
+          "name": "EMERSON JOSE GUNDIM",
+          "winCount": 1,
+          "totalWonBRL": 37962,
+          "sharePct": 0.1,
+          "avgTicketBRL": 37962,
+          "avgDiscountPct": null,
+          "isIncumbent": false,
+          "lastWinDate": "2025-10-13",
+          "objectAffinity": "media",
+          "vsEniac": {
+            "encounters": 0,
+            "eniacWins": 0,
+            "lostByPct": null,
+            "grounding": "gap"
+          },
+          "howToBeat": "Mercado disputado (8 vencedores). Para ganhar: preço competitivo na faixa P25-mediana; sem incumbente dominante.",
+          "grounding": "grounded",
+          "sourceContractIds": [
+            "01067479000146-1-000113/2025"
+          ]
+        }
+      ],
+      "fetchStats": {
+        "windowsOk": 10,
+        "windowsFail": 2,
+        "windowsEmpty": 0
+      },
+      "grounding": "grounded"
+    },
+    {
+      "orgaoCnpj": "01098797000174",
+      "orgaoName": "CEASA/GO",
+      "municipio": "Goiânia",
+      "uf": "GO",
+      "objetoClass": "obras/engenharia",
+      "windowMonths": 12,
+      "distinctWinners": 0,
+      "contractCount": 0,
+      "allContractCount": 0,
+      "obrasShareOfOrgao": 0,
+      "totalContractedBRL": 0,
+      "hhi": 0,
+      "concentration": "pulverizado",
+      "modalityMix": {
+        "4": 355,
+        "6": 2027,
+        "8": 2335
+      },
+      "recurrenceMonths": null,
+      "outsiderWinRatePct": null,
+      "coveragePct": 0,
+      "coverageProvisional": false,
+      "priceBand": {
+        "p25BRL": null,
+        "medianBRL": null,
+        "p75BRL": null,
+        "sampleSize": 0,
+        "grounding": "inferred"
+      },
+      "competitors": [],
+      "fetchStats": {
+        "windowsOk": 0,
+        "windowsFail": 0,
+        "windowsEmpty": 12
+      },
+      "grounding": "grounded"
+    }
+  ]
+}
