@@ -41,6 +41,7 @@ export interface EvidenceItem {
 export interface PortalAccess {
   source: SourceCode;
   name: string;
+  portalUrl?: string;
   status: "publico" | "aguarda_vault" | "dry_run";
   requiresLogin: boolean;
   requires2fa: "unknown" | "yes" | "no";
@@ -65,20 +66,9 @@ export interface Opportunity {
   risks: string[];
   evidence: EvidenceItem[];
   missingData: string[];
-  priceReferences: Array<{
-    label: string;
-    value: number | null;
-    note: string;
-    confidence: ConfidenceLevel;
-  }>;
   habilitationChecklist: Array<{
     label: string;
     status: "ok" | "warning" | "missing";
-    note: string;
-  }>;
-  competitors: Array<{
-    name: string;
-    level: "confirmed" | "probable" | "possible" | "no_evidence";
     note: string;
   }>;
   timeline: Array<{
@@ -87,6 +77,9 @@ export interface Opportunity {
     status: "done" | "open" | "missing" | "risk";
   }>;
   legalProcess: LegalProcess;
+  market: MarketStructure | null; // deep competitor intelligence; null → UI "dados insuficientes"
+  stage3?: Stage3Synthesis | null; // prescriptive 5-frases (gated by kill-gate)
+  triage: DiscoveryTriage; // Monitorar verdict (Vai/Olha/Pula)
 }
 
 export type HabilitationRequirementCategory =
@@ -199,6 +192,106 @@ export interface LegalProcess {
   decisionPoints: DecisionPoint[];
   appealIntent: AppealIntent;
   appealReasons: AppealReasons;
+}
+
+// ── Deep competitor-intelligence module (Stage 2/3 MOAT) ──────────────────
+// Replaces the fake competitors[]/priceReferences[] (which derived "level" from
+// the opportunity score). Every grounded field traces to a real PNCP contract
+// (numeroControlePncpCompra in sourceContractIds); everything else is labelled
+// inferred|gap and must render with a visible provenance chip in the UI.
+// ANTI-REGRESSION: no field here may be derived from opportunityScore/confidenceScore.
+
+export type Grounding = "grounded" | "inferred" | "gap";
+export type MarketConcentration = "pulverizado" | "moderado" | "concentrado";
+
+/** One real rival reconstructed from PNCP /contratos for this órgão × objeto-class. */
+export interface Competitor {
+  cnpj: string; // niFornecedor (GROUNDED)
+  name: string; // nomeRazaoSocialFornecedor (GROUNDED)
+  winCount: number; // GROUNDED
+  totalWonBRL: number; // Σ valorGlobal (GROUNDED)
+  sharePct: number; // 0..100 of órgão spend — number GROUNDED, read with coveragePct
+  avgTicketBRL: number; // GROUNDED
+  avgDiscountPct: number | null; // INFERENCE: needs valorTotalEstimado join; null when sigiloso
+  isIncumbent: boolean; // holds latest/active contract (GROUNDED)
+  lastWinDate: string | null; // dataAssinatura ISO (GROUNDED)
+  objectAffinity: "alta" | "media" | "baixa"; // INFERENCE: text/CNAE match
+  vsEniac: {
+    encounters: number;
+    eniacWins: number;
+    lostByPct: number | null;
+    grounding: Grounding; // ~always "gap": PNCP /contratos shows only the winner
+  };
+  howToBeat: string; // INFERENCE: rule-based prescriptive line
+  grounding: Grounding; // row-level provenance
+  sourceContractIds: string[]; // numeroControlePncpCompra[] — citable
+}
+
+/** Real price band from won contracts of the same objeto-class (replaces ×0.86/×1.14). */
+export interface PriceBand {
+  p25BRL: number | null;
+  medianBRL: number | null;
+  p75BRL: number | null;
+  sampleSize: number;
+  grounding: Grounding; // "grounded" if sampleSize >= N_MIN, else "inferred"
+}
+
+/** Market structure of this órgão × objeto-class, reconstructed from a batch snapshot. */
+export interface MarketStructure {
+  orgaoCnpj: string; // orgaoEntidade.cnpj (GROUNDED)
+  orgaoName: string; // orgaoEntidade.razaoSocial (GROUNDED)
+  municipio?: string;
+  uf?: string;
+  objetoClass: string; // INFERENCE: category/CNAE bucket
+  windowMonths: number;
+  distinctWinners: number; // GROUNDED
+  contractCount: number; // obras-filtered set (GROUNDED)
+  allContractCount?: number; // every category at the órgão (context)
+  obrasShareOfOrgao?: number; // % of órgão contracts that are obras (INFERENCE: keyword filter)
+  totalContractedBRL: number; // GROUNDED
+  hhi: number; // 0..10000 — number GROUNDED
+  concentration: MarketConcentration; // INFERENCE: labelled convention, biased by coverage
+  modalityMix: Record<string, number>; // {"4":n,"6":n,"8":n} from /contratacoes (GROUNDED)
+  recurrenceMonths: number | null; // INFERENCE: null until >=2 cycles / backfill
+  outsiderWinRatePct: number | null; // INFERENCE
+  coveragePct: number | null; // /contratos ÷ /contratacoes — TRUST GATE (measured-with-confidence)
+  coverageProvisional?: boolean; // true if fetch had failures / no denominator
+  priceBand: PriceBand;
+  competitors: Competitor[]; // ranked desc by totalWonBRL
+  grounding: Grounding;
+  error?: string;
+}
+
+// Stage-3 prescriptive synthesis (schema-locked; every phrase cites a source or downgrades).
+export type PrescriptiveKind =
+  | "preco_alvo"
+  | "diferencial"
+  | "concorrente_provavel"
+  | "risco"
+  | "timing";
+
+export interface PrescriptivePhrase {
+  kind: PrescriptiveKind;
+  text: string;
+  source: { type: "contrato" | "edital" | "calculo"; ref: string };
+  grounding: Grounding;
+  confidence: ConfidenceLevel;
+}
+
+export interface Stage3Synthesis {
+  phrases: PrescriptivePhrase[];
+  disclaimer: string;
+}
+
+// Discovery triage (Monitorar): turns a raw PNCP contratação into Vai/Olha/Pula with a reason.
+export type TriageVerdict = "vai" | "olha" | "pula";
+
+export interface DiscoveryTriage {
+  verdict: TriageVerdict;
+  score: number; // 0..100
+  reason: string;
+  daysToDeadline: number | null;
+  obrasRelevant: boolean;
 }
 
 export interface ScoreInput {

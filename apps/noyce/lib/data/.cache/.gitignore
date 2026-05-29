@@ -1,0 +1,4 @@
+# Raw PNCP contract caches (regenerable via scripts/noyce/build-competitor-snapshot.js).
+# The derived market-snapshot.json IS committed; these raw dumps are not.
+*
+!.gitignore

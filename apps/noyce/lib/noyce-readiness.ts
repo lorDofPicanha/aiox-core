@@ -14,6 +14,7 @@ export interface HumanBlocker {
 export interface SourceGovernance {
   source: SourceCode;
   label: string;
+  portalUrl?: string;
   accessMode: "public" | "manual_import" | "pending_vault";
   tosStatus: "ok_public_only" | "pending_review";
   automationStatus: "allowed_public_dry_run" | "blocked_until_vault";
@@ -39,9 +40,31 @@ export interface PilotStep {
   blockerId?: string;
 }
 
+export interface EniacOnboardingProfile {
+  company: {
+    tradeName: "ENIAC";
+    cnpj: string;
+    legalName: string;
+    legalNameStatus: "founder_provided";
+  };
+  users: {
+    totalExpected: number;
+    accessModel: "equivalent_operational_access";
+    masterProfile: string;
+    remainingUsersStatus: "deferred_by_founder";
+  };
+  prioritySources: SourceCode[];
+  publicDryRunAuthorized: boolean;
+  tosRiskOwner: string;
+  vaultRecommendation: string;
+  recordedAt: string;
+  securityNote: string;
+}
+
 export interface ReadinessReport {
   generatedFrom: "noyce.fases6_10.offline.v0";
   phases: Record<PhaseId, "ready_offline" | "blocked_human" | "ready_for_dry_run">;
+  onboarding: EniacOnboardingProfile;
   sourceGovernance: SourceGovernance[];
   humanBlockers: HumanBlocker[];
   jobs: DryRunJob[];
@@ -52,21 +75,42 @@ export interface ReadinessReport {
   };
 }
 
+export const eniacOnboarding: EniacOnboardingProfile = {
+  company: {
+    tradeName: "ENIAC",
+    cnpj: "38.417.933/0001-05",
+    legalName: "ENIAC",
+    legalNameStatus: "founder_provided",
+  },
+  users: {
+    totalExpected: 4,
+    accessModel: "equivalent_operational_access",
+    masterProfile: "Stafani",
+    remainingUsersStatus: "deferred_by_founder",
+  },
+  prioritySources: ["bll", "bnc", "pcp"],
+  publicDryRunAuthorized: true,
+  tosRiskOwner: "Stafani",
+  vaultRecommendation: "Use 1Password or Bitwarden/Vaultwarden with MFA, per-portal items, least privilege and audit history.",
+  recordedAt: "2026-05-29",
+  securityNote: "No credentials, tokens, cookies, certificates or 2FA codes are stored here.",
+};
+
 export const humanBlockers: HumanBlocker[] = [
   {
     id: "eniac-cnpj-razao-social",
     phase: "fase6",
     owner: "@pm",
-    label: "CNPJ e razao social da ENIAC",
-    reason: "Necessario para configurar tenant, filtros, documentos e success plan.",
+    label: "Validacao cadastral formal da ENIAC",
+    reason: "CNPJ e nome ENIAC foram informados pelo founder; validacao cadastral formal pode ser feita depois, sem bloquear dry-run publico.",
     requiredFrom: "ENIAC",
   },
   {
     id: "eniac-user-roles",
     phase: "fase6",
     owner: "@pm",
-    label: "Usuarios e papeis reais",
-    reason: "Necessario para workflow, aprovacao humana e responsabilidades.",
+    label: "Identidade dos 3 usuarios operadores restantes",
+    reason: "Stafani foi definida como admin; nomes/e-mails dos demais operadores foram explicitamente adiados pelo founder.",
     requiredFrom: "ENIAC",
   },
   {
@@ -116,29 +160,32 @@ export const sourceGovernance: SourceGovernance[] = [
   {
     source: "pcp",
     label: "Portal de Compras Publicas",
+    portalUrl: "https://operacao.portaldecompraspublicas.com.br/4/Pregoes/",
     accessMode: "manual_import",
     tosStatus: "pending_review",
     automationStatus: "blocked_until_vault",
     adapterStatus: "manual_import_ready",
-    nextHumanInput: "URL, tipo de acesso, 2FA e permissao de uso.",
+    nextHumanInput: "Prioritario. URL, tipo de acesso, 2FA e permissao de uso.",
   },
   {
     source: "bll",
     label: "BLL",
+    portalUrl: "https://bllcompras.com/Participant/ProcessSearch?param1=0",
     accessMode: "manual_import",
     tosStatus: "pending_review",
     automationStatus: "blocked_until_vault",
     adapterStatus: "manual_import_ready",
-    nextHumanInput: "Confirmar login/certificado via vault e limites de uso.",
+    nextHumanInput: "Prioritario. Confirmar login/certificado via vault e limites de uso.",
   },
   {
     source: "bnc",
     label: "BNC",
+    portalUrl: "https://bnccompras.com/Participant/ProcessSearch?param1=0",
     accessMode: "manual_import",
     tosStatus: "pending_review",
     automationStatus: "blocked_until_vault",
     adapterStatus: "manual_import_ready",
-    nextHumanInput: "Confirmar login/certificado via vault e limites de uso.",
+    nextHumanInput: "Prioritario. Confirmar login/certificado via vault e limites de uso.",
   },
   {
     source: "comprasgov",
@@ -220,6 +267,12 @@ export const pilotSteps: PilotStep[] = [
     blockerId: "portal-credentials-vault",
   },
   {
+    id: "pilot-public-pncp-dry-run",
+    label: "Rodar dry-run publico PNCP autorizado",
+    successSignal: "Uma oportunidade publica entra no fluxo sem login, segredo ou efeito externo.",
+    allowedNow: true,
+  },
+  {
     id: "pilot-real-source-run",
     label: "Rodar primeira fonte real permitida",
     successSignal: "Uma oportunidade real entra no fluxo sem segredo exposto.",
@@ -232,13 +285,14 @@ export function buildReadinessReport(): ReadinessReport {
   const report: ReadinessReport = {
     generatedFrom: "noyce.fases6_10.offline.v0",
     phases: {
-      fase6: "blocked_human",
+      fase6: "ready_for_dry_run",
       fase7: "blocked_human",
       fase8: "ready_for_dry_run",
       fase9: "ready_for_dry_run",
       fase10: "ready_offline",
       fase11: "blocked_human",
     },
+    onboarding: eniacOnboarding,
     sourceGovernance,
     humanBlockers,
     jobs: dryRunJobs,

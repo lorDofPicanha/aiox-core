@@ -1,13 +1,40 @@
-﻿import type { Opportunity, PortalAccess } from '@/lib/noyce-model';
+﻿import type { Opportunity, PortalAccess, SourceCode, WorkflowStage } from '@/lib/noyce-model';
 import { buildAnalysisRun, classifyAction } from '@/lib/noyce-model';
+import { getMarketForOrgao } from '@/lib/noyce-market';
+import { buildTriage } from '@/lib/noyce-operational';
+import discoverySnapshot from '@/lib/data/discovery-snapshot.json';
 
 export const portalAccess: PortalAccess[] = [
   { source: 'pncp', name: 'PNCP', status: 'publico', requiresLogin: false, requires2fa: 'no', tosStatus: 'ok' },
-  { source: 'pcp', name: 'Portal de Compras Públicas', status: 'dry_run', requiresLogin: true, requires2fa: 'unknown', tosStatus: 'ok' },
-  { source: 'bll', name: 'BLL', status: 'dry_run', requiresLogin: true, requires2fa: 'unknown', tosStatus: 'ok' },
-  { source: 'bnc', name: 'BNC', status: 'dry_run', requiresLogin: true, requires2fa: 'unknown', tosStatus: 'ok' },
-  { source: 'comprasgov', name: 'ComprasGov', status: 'dry_run', requiresLogin: true, requires2fa: 'unknown', tosStatus: 'ok' },
-  { source: 'sislog', name: 'SISLOG', status: 'dry_run', requiresLogin: true, requires2fa: 'unknown', tosStatus: 'ok' },
+  {
+    source: 'pcp',
+    name: 'Portal de Compras Públicas',
+    portalUrl: 'https://operacao.portaldecompraspublicas.com.br/4/Pregoes/',
+    status: 'aguarda_vault',
+    requiresLogin: true,
+    requires2fa: 'unknown',
+    tosStatus: 'pending',
+  },
+  {
+    source: 'bll',
+    name: 'BLL',
+    portalUrl: 'https://bllcompras.com/Participant/ProcessSearch?param1=0',
+    status: 'aguarda_vault',
+    requiresLogin: true,
+    requires2fa: 'unknown',
+    tosStatus: 'pending',
+  },
+  {
+    source: 'bnc',
+    name: 'BNC',
+    portalUrl: 'https://bnccompras.com/Participant/ProcessSearch?param1=0',
+    status: 'aguarda_vault',
+    requiresLogin: true,
+    requires2fa: 'unknown',
+    tosStatus: 'pending',
+  },
+  { source: 'comprasgov', name: 'ComprasGov', status: 'dry_run', requiresLogin: true, requires2fa: 'unknown', tosStatus: 'pending' },
+  { source: 'sislog', name: 'SISLOG', status: 'aguarda_vault', requiresLogin: true, requires2fa: 'unknown', tosStatus: 'pending' },
 ];
 
 function hasMissingData(item: { missingData: readonly string[] }, field: string) {
@@ -16,68 +43,64 @@ function hasMissingData(item: { missingData: readonly string[] }, field: string)
 
 const SCORE_AS_OF = '2026-05-23T00:00:00Z';
 
-const baseOpportunities = [
-  {
-    id: 'pncp-aguas-lindas-90021',
-    source: 'pncp' as const,
-    title: 'Pregão 90021/2026 - material e manutenção predial',
-    buyer: 'Município de Águas Lindas',
-    city: 'Águas Lindas de Goiás',
-    uf: 'GO',
-    distanceKm: 38,
-    estimatedValue: 248000,
-    proposalDeadline: '2026-06-04T12:00:00Z',
-    stage: 'monitorar' as const,
+// Real opportunities sourced from the PNCP discovery snapshot (scripts/noyce/build-discovery-snapshot.js).
+// Each is triaged (Vai/Olha/Pula) and enriched below; market comes from the competitor snapshot
+// when the órgão CNPJ matches, else null (honest "dados insuficientes").
+interface DiscoveryItem {
+  id: string;
+  source: string;
+  title: string;
+  buyer: string;
+  buyerCnpj: string | null;
+  city: string;
+  uf: string;
+  ibge: string;
+  distanceKm: number;
+  estimatedValue: number | null;
+  publicationDate: string | null;
+  proposalDeadline: string | null;
+  modality: string;
+  situacao: string | null;
+  sourceUrl: string | null;
+}
+
+const KNOWN_SOURCES = ['pncp', 'pcp', 'bll', 'bnc', 'comprasgov', 'sislog'];
+function normalizeSource(value: string): SourceCode {
+  return KNOWN_SOURCES.includes(value) ? (value as SourceCode) : 'pncp';
+}
+
+const discovery = discoverySnapshot as unknown as { items: DiscoveryItem[] };
+const TRIAGE_RANK: Record<string, number> = { vai: 0, olha: 1, pula: 2 };
+
+const baseOpportunities = discovery.items
+  .map((d) => ({
+    id: d.id,
+    orgaoCnpj: d.buyerCnpj,
+    source: normalizeSource(d.source),
+    title: d.title,
+    buyer: d.buyer,
+    city: d.city,
+    uf: d.uf,
+    distanceKm: d.distanceKm,
+    estimatedValue: d.estimatedValue,
+    proposalDeadline: d.proposalDeadline,
+    stage: 'monitorar' as WorkflowStage,
     hasConflict: false,
-    risks: ['Fontes confirmadas: PNCP e ComprasGov convergem no objeto, valor e prazo.'],
-    missingData: [],
-  },
-  {
-    id: 'bll-anapolis-045',
-    source: 'bll' as const,
-    title: 'SRP 045/2026 - serviços de drenagem urbana',
-    buyer: 'Prefeitura de Anápolis',
-    city: 'Anápolis',
-    uf: 'GO',
-    distanceKm: 156,
-    estimatedValue: 1380000,
-    proposalDeadline: '2026-06-08T13:30:00Z',
-    stage: 'acompanhar' as const,
-    hasConflict: false,
-    risks: ['Manifestar intenção em até 10 minutos após resultado declarado.'],
-    missingData: ['ata', 'contrato_anterior'],
-  },
-  {
-    id: 'comprasgov-formosa-778',
-    source: 'comprasgov' as const,
-    title: 'Concorrência 778/2026 - reforma de unidade pública',
-    buyer: 'Governo do Distrito Federal',
-    city: 'Formosa',
-    uf: 'GO',
-    distanceKm: 82,
-    estimatedValue: 920000,
-    proposalDeadline: '2026-06-12T17:00:00Z',
-    stage: 'analisar' as const,
-    hasConflict: false,
-    risks: ['Checar preclusão antes de orientar recurso ou impugnação.'],
-    missingData: ['visita_tecnica'],
-  },
-  {
-    id: 'pcp-luziania-233',
-    source: 'pcp' as const,
-    title: 'Tomada 233/2026 - cobertura metálica em escola',
-    buyer: 'Prefeitura de Luziânia',
-    city: 'Luziânia',
-    uf: 'GO',
-    distanceKm: 64,
-    estimatedValue: 510000,
-    proposalDeadline: '2026-06-18T14:00:00Z',
-    stage: 'monitorar' as const,
-    hasConflict: false,
-    risks: ['Fonte confirmada, mas edital completo depende de login no portal.'],
-    missingData: ['anexos_tecnicos'],
-  },
-];
+    risks: d.situacao ? [`Situação PNCP: ${d.situacao}.`] : [],
+    missingData: [] as string[],
+    triage: buildTriage({
+      title: d.title,
+      distanceKm: d.distanceKm,
+      estimatedValue: d.estimatedValue,
+      proposalDeadline: d.proposalDeadline,
+    }),
+  }))
+  .sort((a, b) => {
+    const rankDelta = TRIAGE_RANK[a.triage.verdict] - TRIAGE_RANK[b.triage.verdict];
+    if (rankDelta !== 0) return rankDelta;
+    return b.triage.score - a.triage.score;
+  })
+  .slice(0, 80);
 
 export const opportunities: Opportunity[] = baseOpportunities.map((item) => {
   const analysisRun = buildAnalysisRun({
@@ -106,15 +129,9 @@ export const opportunities: Opportunity[] = baseOpportunities.map((item) => {
       { kind: 'inferencia', label: 'Score determinístico', value: analysisRun.opportunity.components.map((component) => `${component.label}: ${component.value}/${component.max}`).join(' · '), source: item.source, confidence: 'strong' },
       { kind: 'lacuna', label: 'Pendências', value: item.missingData.length ? item.missingData.join(', ') : 'Sem lacunas críticas no fixture.', source: item.source, confidence: item.missingData.length ? 'missing' : 'confirmed' },
     ],
-    competitors: [
-      { name: 'Concorrente Alfa', level: opportunityScore >= 88 ? 'probable' : 'possible', note: 'Histórico do órgão nos últimos 6 meses indica presença recorrente.' },
-      { name: 'Concorrente Beta', level: confidenceScore >= 85 ? 'possible' : 'no_evidence', note: 'Sinal parcial por objeto semelhante; não usar como fato confirmado.' },
-    ],
-    priceReferences: [
-      { label: 'P25 histórico', value: item.estimatedValue ? Math.round(item.estimatedValue * 0.86) : null, note: 'Faixa inferior calculada no dry-run v0.', confidence: 'inferred' },
-      { label: 'Mediana', value: item.estimatedValue, note: 'Valor estimado da oportunidade usado como centro da faixa.', confidence: item.estimatedValue ? 'strong' : 'missing' },
-      { label: 'P75 histórico', value: item.estimatedValue ? Math.round(item.estimatedValue * 1.14) : null, note: 'Faixa superior para revisar margem e risco.', confidence: 'inferred' },
-    ],
+    // Real competitor intelligence from PNCP snapshot (replaces the fake Alfa/Beta + ×0.86/×1.14).
+    // null when the órgão is outside the radius seed or is a coverage hole (honest "dados insuficientes").
+    market: getMarketForOrgao(item.orgaoCnpj),
     habilitationChecklist: [
       { label: 'Fiscal e trabalhista', status: 'ok', note: 'Certidões devem ser conferidas antes da proposta.' },
       { label: 'Qualificação técnica', status: hasMissingData(item, 'anexos_tecnicos') ? 'missing' : 'warning', note: hasMissingData(item, 'anexos_tecnicos') ? 'Anexos técnicos dependem do portal.' : 'Validar acervo e exigências específicas.' },
