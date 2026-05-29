@@ -43,7 +43,7 @@ Validar a dor real e fixar a fundação de produto (ICP, promessa, oferta piloto
 
 ## Tasks
 
-- [ ] **T1 (@analyst):** Escrever roteiro de 10 perguntas (AC-3) e validar com clone `teresa-torres` (discovery contínuo, não-indução).
+- [x] **T1 (@analyst):** Escrever roteiro de 10 perguntas (AC-3) e validar com clone `teresa-torres` (discovery contínuo, não-indução). → `discovery/roteiro-entrevista-10q.md` + `discovery/entrevistas/_template-entrevista.md` (29/Mai).
 - [ ] **T2 (@analyst):** Recrutar e realizar ≥8 entrevistas (meta 10) com contadores do perfil ICP.
 - [ ] **T3 (@analyst):** Consolidar matriz de dores priorizada (AC-4).
 - [ ] **T4 (@pm):** Documentar ICP final (AC-1) e reconfirmar escopo IN/OUT (AC-6).
