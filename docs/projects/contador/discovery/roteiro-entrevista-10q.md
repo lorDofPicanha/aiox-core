@@ -53,12 +53,13 @@ Mapear contexto rápido: tamanho do escritório (nº pessoas), nº aproximado de
 
 **P7 — Reforma Tributária.** "Como a Reforma Tributária está aparecendo no seu dia a dia hoje — clientes perguntando, você estudando, algo concreto?"
 - Probes: o que os clientes perguntam? você se sente preparado? é urgência ou ainda distante?  · _Sinais: S4_
+- ⚠️ **Entrevistador:** NÃO sugira que "a gente calcula a Reforma pra você" — linha vermelha Trust C3. Ouça a ansiedade, não prometa apuração. (achado do stress-test E-00-MOCK)
 
 **P8 — Tentativas anteriores.** "O que você já tentou para organizar tudo isso? (planilha, sistema, contratar alguém, processo). O que funcionou e o que abandonou?"
 - Probes: por que abandonou? o que faltou? quanto custou (tempo/dinheiro)?  · _Sinais: S1, S2_
 
-**P9 — Custo da dor / disposição a pagar.** "Se você pensar no tempo e nas dores de cabeça que isso gera por mês, o que isso representa pro escritório? Já chegou a pagar por algo pra resolver?"
-- Probes: quanto de hora-time? já contratou ferramenta/pessoa pra isso? quanto pagou/pagaria sem pestanejar vs. caro?  · _Sinais: S2_  · (Ancore em gasto REAL passado, não hipótese.)
+**P9 — Custo da dor / disposição a pagar.** **Âncora obrigatória PRIMEIRO** (achado do stress-test E-00-MOCK — sem isso a resposta vira hipótese inútil): "Hoje você já paga por alguma coisa pra ajudar nisso — sistema, ferramenta, uma pessoa dedicada? Quanto?" **Só depois:** "E se isso resolvesse de vez, o que faria sentido pagar?"
+- Probes: quanto de hora-time perdido? quanto custou a última multa/retrabalho? o gasto atual de sistema é quanto?  · _Sinais: S2_  · (Comportamento real de gasto > hipótese. NUNCA aceite só o número hipotético.)
 
 **P10 — Varinha mágica (fecho aberto).** "Se você pudesse resolver UMA coisa dessa rotina amanhã, sem esforço, qual seria? Por quê essa?"
 - Probes: por que essa e não outra? o que mudaria no seu dia?  · _Sinais: S1 (prioriza a dor #1)_
