@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tocks · Variante 3 — Galeria</title>
+<style>
+@font-face{font-family:"Libre Caslon Text";src:url("../fonts/LibreCaslonText-Regular.ttf");font-weight:400;font-display:swap}
+@font-face{font-family:"Libre Caslon Text";src:url("../fonts/LibreCaslonText-Italic.ttf");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Libre Caslon Text";src:url("../fonts/LibreCaslonText-Bold.ttf");font-weight:700;font-display:swap}
+@font-face{font-family:"Poppins";src:url("../fonts/Poppins-Light.ttf");font-weight:300;font-display:swap}
+@font-face{font-family:"Poppins";src:url("../fonts/Poppins-Regular.ttf");font-weight:400;font-display:swap}
+@font-face{font-family:"Poppins";src:url("../fonts/Poppins-Medium.ttf");font-weight:500;font-display:swap}
+:root{
+  --bg:#FAF8F3;--ink:#14110D;--ink2:#5A554C;--muted:#A39C8F;--line:rgba(20,17,13,.14);
+  --gold:#9A7B3F;--disp:"Libre Caslon Text",Georgia,serif;--ui:"Poppins",system-ui,sans-serif;
+  --gut:clamp(1.25rem,5vw,5rem);--max:1440px;--ease:cubic-bezier(.16,1,.30,1)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--ui);font-weight:300;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+.kick{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);font-weight:400}
+.num{font-family:var(--disp);font-size:.8rem;color:var(--gold)}
+.disp{font-family:var(--disp);font-weight:400;line-height:1.02;letter-spacing:-.01em}
+.it{font-style:italic}
+.wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--gut)}
+.sec{padding-block:clamp(5rem,12vw,11rem)}
+.rule{height:1px;background:var(--line)}
+.btn{display:inline-flex;align-items:center;gap:.6em;font-size:.74rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;padding:13px 0;border-bottom:1px solid var(--ink);transition:.4s var(--ease)}
+.btn:hover{gap:1.1em;border-color:var(--gold);color:var(--gold)}
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;height:78px;display:flex;align-items:center;mix-blend-mode:multiply;transition:.4s var(--ease)}
+.nav.on{background:rgba(250,248,243,.92);backdrop-filter:blur(10px);mix-blend-mode:normal;border-bottom:1px solid var(--line);height:62px}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+.logo{display:flex;align-items:center;gap:.6rem;font-family:var(--disp);font-size:1.3rem;letter-spacing:.04em}
+.logo img{width:26px;filter:grayscale(1) brightness(.3)}
+.nlinks{display:flex;gap:2.4rem;list-style:none}
+.nlinks a{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2)}
+.nlinks a:hover{color:var(--gold)}
+.nright{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;display:flex;gap:1.6rem}
+/* hero — gallery, vast whitespace */
+.hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:78px;position:relative}
+.hero .top{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem}
+.hero h1{font-size:clamp(3rem,11vw,9.5rem);margin:0}
+.hero .meta{text-align:right;flex:none}
+.hero-fig{margin-top:clamp(2rem,5vw,4rem);position:relative}
+.hero-fig img{width:100%;aspect-ratio:21/8;object-fit:cover}
+.hero-fig .tag{position:absolute;left:0;bottom:-2.4rem;display:flex;gap:1rem;align-items:center}
+/* index list of pieces */
+.index .row{display:grid;grid-template-columns:60px 1fr auto auto;gap:1.5rem;align-items:center;padding:1.6rem 0;border-top:1px solid var(--line);transition:.4s var(--ease)}
+.index .row:last-child{border-bottom:1px solid var(--line)}
+.index .row:hover{padding-left:1rem;color:var(--gold)}
+.index .row .nm{font-family:var(--disp);font-size:clamp(1.4rem,3vw,2.2rem)}
+.index .row .ln{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.index .row .pr{font-variant-numeric:tabular-nums;font-weight:400}
+.index .row .go{font-size:1.4rem}
+/* big plate */
+.plate{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch}
+.plate img{width:100%;height:100%;object-fit:cover;min-height:60vh}
+.plate .txt{padding:clamp(2rem,5vw,5rem);display:flex;flex-direction:column;justify-content:center;background:#fff}
+.plate .txt .q{font-family:var(--disp);font-style:italic;font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.25;color:var(--ink)}
+/* footer */
+.foot{padding-block:5rem 2rem}
+.foot .big{font-family:var(--disp);font-size:clamp(2rem,6vw,4.5rem);line-height:1;letter-spacing:-.01em}
+.foot .cols{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:4rem;padding-top:2.5rem;border-top:1px solid var(--line)}
+.foot h5{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+.foot a{display:block;font-size:.86rem;color:var(--ink2);padding:.25rem 0}.foot a:hover{color:var(--gold)}
+.foot .bot{margin-top:3rem;font-size:.74rem;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+@media(max-width:900px){.nlinks{display:none}.plate{grid-template-columns:1fr}.index .row{grid-template-columns:40px 1fr auto}.index .row .go{display:none}.foot .cols{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="nav" id="nav"><div class="wrap">
+  <a class="logo" href="#"><img src="../tocks-symbol-blue.svg" alt="">Tocks Custom</a>
+  <ul class="nlinks"><li><a href="#">Coleção</a></li><li><a href="#">Linhas</a></li><li><a href="#">Atelier</a></li><li><a href="#">Contato</a></li></ul>
+  <div class="nright"><a href="#">Concierge</a><a href="#">Carrinho · 2</a></div>
+</div></header>
+
+<section class="hero wrap">
+  <div class="top">
+    <div>
+      <div class="kick">Ateliê de mesas · Itajaí-SC</div>
+      <h1 class="disp">A Coleção<br><span class="it">Tocks.</span></h1>
+    </div>
+    <div class="meta">
+      <div class="num">MMXXVI</div>
+      <div class="kick" style="margin-top:.5rem">16 peças<br>sob encomenda</div>
+    </div>
+  </div>
+  <figure class="hero-fig">
+    <img src="../produtos/aparato/lifestyle.jpg" alt="Mesa Aparato">
+    <div class="tag"><span class="num">Nº 13</span><span class="kick">Aparato Alto Padrão — R$ 26.900</span></div>
+  </figure>
+</section>
+
+<section class="sec wrap index">
+  <div class="kick" style="margin-bottom:2.5rem">O acervo</div>
+  <a class="row" href="#"><span class="num">01</span><span class="nm">Vértice</span><span class="ln">Original</span><span class="pr">R$ 15.900 &nbsp;<span class="go">→</span></span></a>
+  <a class="row" href="#"><span class="num">02</span><span class="nm">Elipse</span><span class="ln">Original</span><span class="pr">R$ 19.900 &nbsp;<span class="go">→</span></span></a>
+  <a class="row" href="#"><span class="num">03</span><span class="nm">Mônaco 2 em 1</span><span class="ln">Premium · Sinuca e Jantar</span><span class="pr">R$ 12.990 &nbsp;<span class="go">→</span></span></a>
+  <a class="row" href="#"><span class="num">04</span><span class="nm">Gabe Madeira Maciça</span><span class="ln">Premium</span><span class="pr">R$ 14.990 &nbsp;<span class="go">→</span></span></a>
+  <a class="row" href="#"><span class="num">05</span><span class="nm">Aparato Alto Padrão</span><span class="ln">Premium</span><span class="pr">R$ 26.900 &nbsp;<span class="go">→</span></span></a>
+  <div style="margin-top:2.5rem"><a class="btn" href="#">Ver as 16 mesas</a></div>
+</section>
+
+<section class="plate">
+  <img src="../produtos/elipse/gallery-02.jpg" alt="">
+  <div class="txt">
+    <div class="kick" style="color:var(--gold)">O ofício — desde 1994</div>
+    <p class="q" style="margin-top:1.2rem">Selecionamos a madeira, desenhamos a estrutura e acabamos cada superfície à mão. A pressa é uma forma de pobreza.</p>
+    <div style="margin-top:2rem"><a class="btn" href="#">Conheça o atelier</a></div>
+  </div>
+</section>
+
+<footer class="foot wrap">
+  <div class="big disp">Pronto para a<br>sua mesa?</div>
+  <div style="margin-top:2rem"><a class="btn" href="#">Falar com um especialista</a></div>
+  <div class="cols">
+    <div><h5>Coleção</h5><a href="#">Original</a><a href="#">Premium</a><a href="#">Pebolim</a></div>
+    <div><h5>Atelier</h5><a href="#">A história</a><a href="#">O ofício</a></div>
+    <div><h5>Atendimento</h5><a href="#">Concierge</a><a href="#">WhatsApp</a></div>
+    <div><h5>Legal</h5><a href="#">Garantia</a><a href="#">Privacidade</a></div>
+  </div>
+  <div class="bot"><span>Tocks Indústria e Comércio · © 2026 · Itajaí-SC</span><span>Instagram · Pinterest</span></div>
+</footer>
+<script>const n=document.getElementById('nav');addEventListener('scroll',()=>n.classList.toggle('on',scrollY>80),{passive:true})</script>
+</body></html>

@@ -153,6 +153,11 @@ apps/noyce/node_modules/
 !apps/tocks-lp/
 !apps/tocks-website/
 !apps/tocks-tracking/
+!apps/tocks-store/
+!apps/tocks-store/**
+apps/tocks-store/.next/
+apps/tocks-store/node_modules/
+apps/tocks-store/public/mockups/shots/
 
 # External projects (separate repositories)
 aios-guide-app/
@@ -194,6 +199,7 @@ PRN
 
 # Framework runtime artifacts
 .aios-core/.session/
+.aios-core/tmp/
 .aios-core/manifests/*.csv
 .aios-core/core/registry/service-registry.json
 

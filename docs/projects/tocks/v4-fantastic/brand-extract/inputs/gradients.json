@@ -1,0 +1,47 @@
+{
+  "primary": "linear-gradient(90deg, var(--button_buy), var(--button_buy2))",
+  "secondary": "linear-gradient(90deg, var(--button_buy2), var(--button_buy))",
+  "total_unique": 21,
+  "top": [
+    {
+      "value": "linear-gradient(90deg, var(--button_buy), var(--button_buy2))",
+      "count": 3
+    },
+    {
+      "value": "linear-gradient(90deg, var(--button_buy2), var(--button_buy))",
+      "count": 2
+    },
+    {
+      "value": "linear-gradient(90deg, var(--bg_button_primary), var(--bg_button_secondary))",
+      "count": 2
+    },
+    {
+      "value": "linear-gradient(270deg, rgba(0, 0, 0, .5), transparent)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(90deg, rgba(0, 0, 0, .5), transparent)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(0, rgba(0, 0, 0, .5), transparent)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(180deg, rgba(0, 0, 0, .5), transparent)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(90deg, var(--bg_button_secondary), var(--bg_button_primary))",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(90deg, var(--border_top), var(--border_top2))",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(90deg, var(--bg_category_section), var(--bg2_category_section))",
+      "count": 1
+    }
+  ]
+}
