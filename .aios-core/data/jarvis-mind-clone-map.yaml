@@ -216,6 +216,30 @@ projects:
       - scaling architecture
       - autonomous operations
 
+  contador:
+    description: "Radar Fiscal + Operação do Escritório Contábil (ICP: escritórios 5-40 pessoas, 50-500 CNPJs, MEI+Simples)"
+    additional_experts:
+      # Domínio fiscal/contábil BR (clonados 29/Mai/2026 de fontes primárias reais)
+      - heleno-taveira-torres  # Tributarista/Reforma — Trust C3 (limites de responsabilidade, linguagem fiscal)
+      - roberto-dias-duarte    # Tecnologia fiscal/Fisco digital/SPED — Dados & Domínio Fiscal B2
+      - anderson-hernandes     # Gestão/precificação de escritório — CS A3 + Pricing A4 (voz do ICP)
+      # Produto & mercado
+      - marty-cagan            # Discovery, riscos de produto
+      - teresa-torres          # Discovery contínuo (entrevistas com contadores)
+      - april-dunford          # Posicionamento/categoria
+      - aswath-damodaran       # Unit economics, ROI
+      - lincoln-murphy         # Customer success, onboarding
+      # Trust (veto)
+      - patricia-peck          # LGPD, dados fiscais
+      - bruce-schneier         # Segurança, certificado/procuração
+    priority_topics:
+      - matriz de obrigações (MEI + Simples Nacional)
+      - risco de CNPJ inapto
+      - Reforma Tributária como gatilho comercial (sem virar consultoria)
+      - precificação do SaaS (por escritório / CNPJ / usuário)
+      - LGPD e trilha de auditoria de dados fiscais
+      - onboarding e adoção por escritórios contábeis
+
   polymarket-trader:
     description: "Autonomous prediction market trading system"
     additional_experts:
