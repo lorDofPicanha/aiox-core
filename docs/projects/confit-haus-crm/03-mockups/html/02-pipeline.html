@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Confit Haus CRM - Pipeline de Vendas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Newsreader:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#c7e7ff",
+                        "on-background": "#1f1b14",
+                        "primary": "#1e5b7c",
+                        "text-muted": "#6B6B6B",
+                        "on-primary-container": "#e8f4ff",
+                        "primary-container": "#3c7496",
+                        "surface-container-low": "#fcf2e7",
+                        "secondary-container": "#c5e5cc",
+                        "on-tertiary-container": "#fff0d8",
+                        "background": "#fff8f2",
+                        "surface-container": "#f6ece1",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#866a2c",
+                        "surface-container-high": "#f0e7dc",
+                        "on-secondary-fixed-variant": "#314d3a",
+                        "surface-dim": "#e1d9ce",
+                        "surface-tint": "#296485",
+                        "on-primary-fixed-variant": "#024c6c",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#eae1d6",
+                        "secondary-fixed": "#caead1",
+                        "on-primary-fixed": "#001e2e",
+                        "tertiary-fixed": "#ffdea0",
+                        "outline": "#71787e",
+                        "primary-fixed-dim": "#97cdf3",
+                        "on-tertiary-fixed-variant": "#5b4306",
+                        "surface-container-highest": "#eae1d6",
+                        "surface": "#FFFFFF",
+                        "inverse-surface": "#343028",
+                        "brand-dark": "#324C3A",
+                        "primary-hover": "#2F6A97",
+                        "text-strong": "#1A1A1A",
+                        "border-neutral": "#DDD6CA",
+                        "on-secondary-fixed": "#052011",
+                        "on-secondary-container": "#4b6753",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "on-surface": "#1f1b14",
+                        "tertiary-fixed-dim": "#e5c27b",
+                        "outline-variant": "#c1c7ce",
+                        "surface-bright": "#fff8f2",
+                        "inverse-primary": "#97cdf3",
+                        "on-tertiary-fixed": "#261a00",
+                        "tertiary": "#6b5216",
+                        "secondary-fixed-dim": "#afceb6",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#41484d",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#f9efe4",
+                        "secondary": "#486551"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "container-padding": "24px",
+                        "unit": "4px",
+                        "gutter": "16px",
+                        "margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Newsreader"],
+                        "label-md": ["Inter"],
+                        "display-lg-mobile": ["Newsreader"],
+                        "headline-md": ["Newsreader"],
+                        "display-lg": ["Newsreader"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "title-lg": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "500" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Minimal custom scrollbar for kanban board */
+        .kanban-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+        .kanban-scroll::-webkit-scrollbar-track {
+            background: transparent; 
+        }
+        .kanban-scroll::-webkit-scrollbar-thumb {
+            background-color: #c1c7ce; 
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-surface-container-highest text-on-surface h-screen flex overflow-hidden antialiased">
+<!-- SideNavBar (Shared Component) -->
+<nav class="docked left-0 h-screen w-64 bg-primary-container dark:bg-on-primary-fixed-variant shadow-md flex flex-col py-container-padding z-30 shrink-0 hidden md:flex">
+<!-- Header -->
+<div class="px-container-padding mb-8">
+<h1 class="font-headline-md text-headline-md text-white">Confit Haus</h1>
+<p class="font-body-md text-body-md text-primary-fixed-dim mt-1">CRM & Relacionamento</p>
+</div>
+<!-- Main Navigation -->
+<ul class="flex flex-col gap-2 px-margin-mobile flex-1">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-primary-container dark:text-primary-fixed-dim hover:bg-primary-hover/50 hover:bg-primary-hover dark:hover:bg-primary transition-all duration-200 scale-98 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">inbox</span>
+<span class="font-label-md text-label-md">Caixa de Entrada</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary-hover dark:bg-primary text-white font-bold rounded-lg hover:bg-primary-hover dark:hover:bg-primary transition-all duration-200 scale-98 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-label-md text-label-md">Funil</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-primary-container dark:text-primary-fixed-dim hover:bg-primary-hover/50 hover:bg-primary-hover dark:hover:bg-primary transition-all duration-200 scale-98 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">contacts</span>
+<span class="font-label-md text-label-md">Contatos</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-primary-container dark:text-primary-fixed-dim hover:bg-primary-hover/50 hover:bg-primary-hover dark:hover:bg-primary transition-all duration-200 scale-98 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md">Análise</span>
+</a>
+</li>
+</ul>
+<!-- Footer Navigation -->
+<ul class="flex flex-col gap-2 px-margin-mobile mt-auto pt-4 border-t border-primary-hover/30">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-primary-container dark:text-primary-fixed-dim hover:bg-primary-hover/50 hover:bg-primary-hover dark:hover:bg-primary transition-all duration-200 scale-98 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md text-label-md">Ajuda</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-primary-container dark:text-primary-fixed-dim hover:bg-primary-hover/50 hover:bg-primary-hover dark:hover:bg-primary transition-all duration-200 scale-98 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Sair</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col h-full overflow-hidden relative z-10">
+<!-- Header Section -->
+<header class="bg-surface border-b border-border-neutral py-6 px-margin-desktop flex flex-col md:flex-row md:items-center justify-between gap-4 shrink-0">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary">Pipeline de Vendas</h2>
+<p class="font-body-md text-body-md text-text-muted mt-1">Gerencie oportunidades e acompanhe negociações em andamento.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-muted text-[20px]">search</span>
+<input class="pl-10 pr-4 py-2 border border-border-neutral rounded-lg font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary w-full md:w-64 bg-surface-container-lowest" placeholder="Buscar empresas..." type="text"/>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface border border-primary text-primary rounded-lg font-label-md text-label-md hover:bg-primary/5 transition-colors">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                    Filtros
+                </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg font-label-md text-label-md hover:bg-primary-hover transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    Novo lead
+                </button>
+</div>
+</header>
+<!-- Kanban Board Area -->
+<div class="flex-1 overflow-x-auto overflow-y-hidden kanban-scroll p-margin-desktop flex gap-gutter items-start">
+<!-- Column 1: Novo lead -->
+<div class="w-[320px] shrink-0 flex flex-col h-full max-h-full">
+<div class="flex items-center justify-between mb-4 px-1">
+<h3 class="font-title-lg text-title-lg text-brand-dark flex items-center gap-2">
+                        Novo lead
+                        <span class="bg-surface-variant text-text-muted text-[12px] py-0.5 px-2 rounded-full font-label-sm">2</span>
+</h3>
+</div>
+<div class="flex flex-col gap-4 overflow-y-auto pb-8 pr-1 kanban-scroll">
+<!-- Card 1 -->
+<div class="bg-surface rounded-xl border border-border-neutral p-container-padding shadow-sm flex flex-col gap-3 cursor-pointer hover:shadow-md hover:-translate-y-0.5 transition-all">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm px-2.5 py-1 bg-tertiary-container/20 text-tertiary rounded-full uppercase tracking-wider">Restaurante</span>
+<span class="font-label-sm text-label-sm px-2.5 py-1 bg-surface-variant text-text-muted rounded-full flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                                Frio
+                            </span>
+</div>
+<div>
+<h4 class="font-title-lg text-title-lg text-text-strong">Bistrô do Vale</h4>
+<p class="font-body-md text-body-md text-text-muted mt-1">R$ 1.200,00</p>
+</div>
+<div class="mt-2 pt-3 border-t border-border-neutral flex items-center gap-2 text-text-muted">
+<span class="material-symbols-outlined text-[16px]">call</span>
+<span class="font-label-md text-label-md">Agendar ligação inicial</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface rounded-xl border border-border-neutral p-container-padding shadow-sm flex flex-col gap-3 cursor-pointer hover:shadow-md hover:-translate-y-0.5 transition-all">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm px-2.5 py-1 bg-primary-container/20 text-primary-tint rounded-full uppercase tracking-wider">Café</span>
+<span class="font-label-sm text-label-sm px-2.5 py-1 bg-surface-variant text-text-muted rounded-full flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                                Frio
+                            </span>
+</div>
+<div>
+<h4 class="font-title-lg text-title-lg text-text-strong">Café da Manhã &amp; Co.</h4>
+<p class="font-body-md text-body-md text-text-muted mt-1">R$ 800,00</p>
+</div>
+<div class="mt-2 pt-3 border-t border-border-neutral flex items-center gap-2 text-text-muted">
+<span class="material-symbols-outlined text-[16px]">mail</span>
+<span class="font-label-md text-label-md">Enviar catálogo - 10/11</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Column 2: Contato feito -->
+<div class="w-[320px] shrink-0 flex flex-col h-full max-h-full">
+<div class="flex items-center justify-between mb-4 px-1">
+<h3 class="font-title-lg text-title-lg text-primary flex items-center gap-2">
+                        Contato feito
+                        <span class="bg-surface-variant text-text-muted text-[12px] py-0.5 px-2 rounded-full font-label-sm">1</span>
+</h3>
+</div>
+<div class="flex flex-col gap-4 overflow-y-auto pb-8 pr-1 kanban-scroll">
+<!-- Card 3 -->
+<div class="bg-surface rounded-xl border border-border-neutral p-container-padding shadow-sm flex flex-col gap-3 cursor-pointer hover:shadow-md hover:-translate-y-0.5 transition-all">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm px-2.5 py-1 bg-secondary-container/30 text-secondary rounded-full uppercase tracking-wider">Empório</span>
+<span class="font-label-sm text-label-sm px-2.5 py-1 bg-tertiary-fixed text-on-tertiary-fixed rounded-full flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                                Morno
+                            </span>
+</div>
+<div>
+<h4 class="font-title-lg text-title-lg text-text-strong">Mercado Gourmet</h4>
+<p class="font-body-md text-body-md text-text-muted mt-1">R$ 3.500,00</p>
+</div>
+<div class="mt-2 pt-3 border-t border-border-neutral flex items-center gap-2 text-text-muted">
+<span class="material-symbols-outlined text-[16px]">forum</span>
+<span class="font-label-md text-label-md">Retorno via WhatsApp - 12/11</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Column 3: Qualificado -->
+<div class="w-[320px] shrink-0 flex flex-col h-full max-h-full">
+<div class="flex items-center justify-between mb-4 px-1">
+<h3 class="font-title-lg text-title-lg text-primary flex items-center gap-2">
+                        Qualificado
+                        <span class="bg-surface-variant text-text-muted text-[12px] py-0.5 px-2 rounded-full font-label-sm">1</span>
+</h3>
+</div>
+<div class="flex flex-col gap-4 overflow-y-auto pb-8 pr-1 kanban-scroll">
+<!-- Card 4 -->
+<div class="bg-surface rounded-xl border border-border-neutral p-container-padding shadow-sm flex flex-col gap-3 cursor-pointer hover:shadow-md hover:-translate-y-0.5 transition-all">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm px-2.5 py-1 bg-surface-variant text-text-strong rounded-full uppercase tracking-wider">Corporativo</span>
+<span class="font-label-sm text-label-sm px-2.5 py-1 bg-secondary-fixed text-on-secondary-fixed rounded-full flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-dark"></span>
+                                Quente
+                            </span>
+</div>
+<div>
+<h4 class="font-title-lg text-title-lg text-text-strong">Tech Solutions Cestas</h4>
+<p class="font-body-md text-body-md text-text-muted mt-1">R$ 12.000,00</p>
+</div>
+<div class="mt-2 pt-3 border-t border-border-neutral flex items-center gap-2 text-text-muted">
+<span class="material-symbols-outlined text-[16px]">inventory_2</span>
+<span class="font-label-md text-label-md">Preparar kits amostra</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Column 4: Amostra/Proposta -->
+<div class="w-[320px] shrink-0 flex flex-col h-full max-h-full">
+<div class="flex items-center justify-between mb-4 px-1">
+<h3 class="font-title-lg text-title-lg text-primary flex items-center gap-2">
+                        Amostra/Proposta
+                        <span class="bg-surface-variant text-text-muted text-[12px] py-0.5 px-2 rounded-full font-label-sm">1</span>
+</h3>
+</div>
+<div class="flex flex-col gap-4 overflow-y-auto pb-8 pr-1 kanban-scroll">
+<!-- Card 5 -->
+<div class="bg-surface rounded-xl border border-border-neutral p-container-padding shadow-sm flex flex-col gap-3 cursor-pointer hover:shadow-md hover:-translate-y-0.5 transition-all">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm px-2.5 py-1 bg-tertiary-container/20 text-tertiary rounded-full uppercase tracking-wider">Restaurante</span>
+<span class="font-label-sm text-label-sm px-2.5 py-1 bg-secondary-fixed text-on-secondary-fixed rounded-full flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-dark"></span>
+                                Quente
+                            </span>
+</div>
+<div>
+<h4 class="font-title-lg text-title-lg text-text-strong">Casa de Carnes Silva</h4>
+<p class="font-body-md text-body-md text-text-muted mt-1">R$ 2.800,00</p>
+</div>
+<div class="mt-2 pt-3 border-t border-border-neutral flex items-center gap-2 text-text-muted">
+<span class="material-symbols-outlined text-[16px]">local_shipping</span>
+<span class="font-label-md text-label-md">Amostras enviadas - 08/11</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Column 5: Negociação -->
+<div class="w-[320px] shrink-0 flex flex-col h-full max-h-full">
+<div class="flex items-center justify-between mb-4 px-1">
+<h3 class="font-title-lg text-title-lg text-primary flex items-center gap-2">
+                        Negociação
+                        <span class="bg-surface-variant text-text-muted text-[12px] py-0.5 px-2 rounded-full font-label-sm">0</span>
+</h3>
+</div>
+<div class="flex flex-col gap-4 overflow-y-auto pb-8 pr-1 kanban-scroll">
+<!-- Empty State -->
+<div class="bg-transparent border-2 border-dashed border-border-neutral rounded-xl p-8 flex flex-col items-center justify-center text-center opacity-70">
+<span class="material-symbols-outlined text-[32px] text-text-muted mb-2">handshake</span>
+<p class="font-body-md text-body-md text-text-muted">Nenhum negócio em fase de negociação.</p>
+</div>
+</div>
+</div>
+<!-- Column: Ganho -->
+<div class="w-[320px] shrink-0 flex flex-col h-full max-h-full">
+<div class="flex items-center justify-between mb-4 px-1">
+<h3 class="font-title-lg text-title-lg text-primary flex items-center gap-2">
+                        Ganho
+                        <span class="bg-surface-variant text-text-muted text-[12px] py-0.5 px-2 rounded-full font-label-sm">2</span>
+</h3>
+</div>
+<div class="flex flex-col gap-4 overflow-y-auto pb-8 pr-1 kanban-scroll">
+<div class="bg-surface rounded-xl border border-border-neutral p-container-padding shadow-sm flex flex-col gap-3 cursor-pointer hover:shadow-md hover:-translate-y-0.5 transition-all">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm px-2.5 py-1 bg-surface-variant text-text-strong rounded-full uppercase tracking-wider">RESTAURANTE</span>
+<span class="font-label-sm text-label-sm px-2.5 py-1 rounded-full flex items-center gap-1" style="background:#3A5643;color:#fff;"><span class="material-symbols-outlined text-[14px]">check</span>Ganho</span>
+</div>
+<div>
+<h4 class="font-title-lg text-title-lg text-text-strong">Casa de Carnes Silva</h4>
+<p class="font-body-md text-body-md text-text-muted mt-1">R$ 2.800,00</p>
+</div>
+<div class="mt-2 pt-3 border-t border-border-neutral flex items-center gap-2 text-text-muted">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span class="font-label-md text-label-md">Pedido confirmado - 05/11</span>
+</div>
+</div><div class="bg-surface rounded-xl border border-border-neutral p-container-padding shadow-sm flex flex-col gap-3 cursor-pointer hover:shadow-md hover:-translate-y-0.5 transition-all">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm px-2.5 py-1 bg-surface-variant text-text-strong rounded-full uppercase tracking-wider">CORPORATIVO</span>
+<span class="font-label-sm text-label-sm px-2.5 py-1 rounded-full flex items-center gap-1" style="background:#3A5643;color:#fff;"><span class="material-symbols-outlined text-[14px]">check</span>Ganho</span>
+</div>
+<div>
+<h4 class="font-title-lg text-title-lg text-text-strong">Tech Solutions Cestas</h4>
+<p class="font-body-md text-body-md text-text-muted mt-1">R$ 12.000,00</p>
+</div>
+<div class="mt-2 pt-3 border-t border-border-neutral flex items-center gap-2 text-text-muted">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span class="font-label-md text-label-md">1ª compra - 02/11</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Column: Recompra -->
+<div class="w-[320px] shrink-0 flex flex-col h-full max-h-full">
+<div class="flex items-center justify-between mb-4 px-1">
+<h3 class="font-title-lg text-title-lg text-primary flex items-center gap-2">
+                        Recompra
+                        <span class="bg-surface-variant text-text-muted text-[12px] py-0.5 px-2 rounded-full font-label-sm">1</span>
+</h3>
+</div>
+<div class="flex flex-col gap-4 overflow-y-auto pb-8 pr-1 kanban-scroll">
+<div class="bg-surface rounded-xl border border-border-neutral p-container-padding shadow-sm flex flex-col gap-3 cursor-pointer hover:shadow-md hover:-translate-y-0.5 transition-all">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm px-2.5 py-1 bg-surface-variant text-text-strong rounded-full uppercase tracking-wider">EMPÓRIO</span>
+<span class="font-label-sm text-label-sm px-2.5 py-1 rounded-full flex items-center gap-1" style="background:#EFCB83;color:#3a2c10;"><span class="material-symbols-outlined text-[14px]">autorenew</span>Recorrente</span>
+</div>
+<div>
+<h4 class="font-title-lg text-title-lg text-text-strong">Empório Sabores</h4>
+<p class="font-body-md text-body-md text-text-muted mt-1">R$ 2.500,00</p>
+</div>
+<div class="mt-2 pt-3 border-t border-border-neutral flex items-center gap-2 text-text-muted">
+<span class="material-symbols-outlined text-[16px]">autorenew</span>
+<span class="font-label-md text-label-md">Recompra prevista - 28/11</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Spacer for visual breathing room at end of horizontal scroll -->
+<div class="w-[16px] shrink-0"></div>
+</div>
+</main>
+</body></html>
