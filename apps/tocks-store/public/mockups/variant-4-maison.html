@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tocks · Variante 4 — Maison Patrimoine</title>
+<style>
+@font-face{font-family:"Libre Caslon Text";src:url("../fonts/LibreCaslonText-Regular.ttf");font-weight:400;font-display:swap}
+@font-face{font-family:"Libre Caslon Text";src:url("../fonts/LibreCaslonText-Italic.ttf");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Libre Caslon Text";src:url("../fonts/LibreCaslonText-Bold.ttf");font-weight:700;font-display:swap}
+@font-face{font-family:"Poppins";src:url("../fonts/Poppins-Light.ttf");font-weight:300;font-display:swap}
+@font-face{font-family:"Poppins";src:url("../fonts/Poppins-Regular.ttf");font-weight:400;font-display:swap}
+@font-face{font-family:"Poppins";src:url("../fonts/Poppins-Medium.ttf");font-weight:500;font-display:swap}
+@font-face{font-family:"Poppins";src:url("../fonts/Poppins-SemiBold.ttf");font-weight:600;font-display:swap}
+:root{
+  --bg:#162820;--bg-d:#0F1C16;--surface:#1D3328;--ink:#F1EBDB;--ink2:#BCC5B6;--muted:#7E8A7C;
+  --brass:#C6A15B;--brass-h:#DCBA78;--line:rgba(198,161,91,.30);--line-n:rgba(241,235,219,.1);
+  --disp:"Libre Caslon Text",Georgia,serif;--ui:"Poppins",system-ui,sans-serif;
+  --gut:clamp(1.5rem,5vw,4.5rem);--max:1320px;--ease:cubic-bezier(.16,1,.30,1)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--ui);background:
+  radial-gradient(80% 60% at 50% 0%,#1B3026 0%,var(--bg) 45%,var(--bg-d) 100%) fixed;
+  color:var(--ink);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+.kick{font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;color:var(--brass);font-weight:500}
+.disp{font-family:var(--disp);font-weight:700;line-height:1;letter-spacing:-.015em}
+.h2{font-family:var(--disp);font-weight:400;font-size:clamp(1.9rem,4vw,3rem);line-height:1.1}
+.it{font-style:italic}.brass{color:var(--brass)}
+.lead{font-size:1.2rem;line-height:1.6;color:var(--ink2);max-width:56ch}
+.wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--gut)}
+.sec{padding-block:clamp(4rem,11vw,10rem)}
+.orn{display:flex;align-items:center;gap:1rem;justify-content:center;color:var(--brass)}
+.orn::before,.orn::after{content:"";height:1px;width:60px;background:var(--line)}
+.orn .d{width:6px;height:6px;background:var(--brass);transform:rotate(45deg)}
+.btn{display:inline-flex;align-items:center;gap:.5em;font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:15px 32px;border-radius:2px;transition:.4s var(--ease)}
+.btn-fill{background:var(--brass);color:var(--bg-d)}.btn-fill:hover{background:var(--brass-h);box-shadow:0 14px 34px rgba(0,0,0,.4)}
+.btn-out{border:1px solid var(--line);color:var(--brass)}.btn-out:hover{background:rgba(198,161,91,.1)}
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;height:84px;display:flex;align-items:center;transition:.4s var(--ease)}
+.nav.on{height:66px;background:rgba(22,40,32,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+.logo{display:flex;align-items:center;gap:.6rem;font-family:var(--disp);font-size:1.4rem;letter-spacing:.03em}
+.logo img{width:30px}
+.nlinks{display:flex;gap:2.2rem;list-style:none}
+.nlinks a{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)}
+.nlinks a:hover{color:var(--brass)}
+.nright{display:flex;gap:1.4rem;align-items:center;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase}
+/* hero — heritage, centered crest */
+.hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding-top:84px;position:relative}
+.hero .est{font-family:var(--disp);font-style:italic;color:var(--brass);font-size:1.1rem;margin-bottom:1rem}
+.hero h1{font-size:clamp(2.8rem,8vw,6.5rem);margin:.4rem 0 1.4rem}
+.hero img.crest{width:54px;margin-bottom:1.6rem}
+.hero .hcta{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:2rem}
+.hero-band{width:100%;margin-top:clamp(2.5rem,6vw,5rem)}
+.hero-band img{width:100%;aspect-ratio:21/7;object-fit:cover;box-shadow:0 40px 90px -20px rgba(0,0,0,.6)}
+/* featured */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.card{background:var(--surface);border:1px solid transparent;border-radius:3px;overflow:hidden;transition:.5s var(--ease)}
+.card .m{aspect-ratio:4/3;overflow:hidden;position:relative}
+.card .m::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 60% at 50% 45%,rgba(198,161,91,.14),transparent 70%);opacity:.5;transition:.5s}
+.card img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.card:hover{border-color:var(--line);box-shadow:0 28px 60px -25px rgba(0,0,0,.6);transform:translateY(-4px)}
+.card:hover img{transform:scale(1.06)}.card:hover .m::after{opacity:1}
+.card .b{padding:1.3rem 1.5rem;display:flex;justify-content:space-between;align-items:flex-end}
+.card .b .n{font-family:var(--disp);font-size:1.4rem}.card .b .t{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:.3rem}
+.card .b .pr{font-weight:500;font-variant-numeric:tabular-nums}
+/* heritage band */
+.heritage{text-align:center}
+.heritage .q{font-family:var(--disp);font-style:italic;font-size:clamp(1.7rem,3.6vw,2.7rem);color:var(--brass);max-width:24ch;margin:1.5rem auto 0;line-height:1.25}
+.yrs{display:flex;gap:clamp(2rem,6vw,5rem);justify-content:center;margin-top:3rem;flex-wrap:wrap}
+.yrs .y{text-align:center}.yrs .y .n{font-family:var(--disp);font-size:2.4rem;color:var(--brass)}.yrs .y .l{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+/* footer */
+.foot{background:var(--bg-d);padding-top:5rem;border-top:1px solid var(--line)}
+.foot .top{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:flex-start;padding-bottom:3rem}
+.foot h2{font-family:var(--disp);font-weight:400;font-size:clamp(1.7rem,3vw,2.5rem);max-width:16ch}
+.foot .cols{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;padding-block:3rem;border-top:1px solid var(--line-n)}
+.foot h5{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);margin-bottom:1rem}
+.foot a{display:block;font-size:.88rem;color:var(--ink2);padding:.25rem 0}.foot a:hover{color:var(--brass)}
+.foot .bot{padding-block:1.5rem;border-top:1px solid var(--line-n);font-size:.76rem;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+@media(max-width:900px){.grid3{grid-template-columns:1fr}.nlinks{display:none}.foot .cols{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="nav" id="nav"><div class="wrap">
+  <a class="logo" href="#"><img src="../tocks-symbol-gold.svg" alt="">Tocks Custom</a>
+  <ul class="nlinks"><li><a href="#">Coleção</a></li><li><a href="#">Linhas</a></li><li><a href="#">Maison</a></li><li><a href="#">Contato</a></li></ul>
+  <div class="nright"><a class="brass" href="#">Concierge</a><a href="#">Carrinho · 2</a></div>
+</div></header>
+
+<section class="hero wrap">
+  <img class="crest" src="../tocks-symbol-gold.svg" alt="">
+  <div class="est">Maison desde 1994 · Itajaí-SC</div>
+  <h1 class="disp">O ofício de uma<br><span class="it brass">mesa para a vida.</span></h1>
+  <p class="lead" style="margin-inline:auto">Bilhar, sinuca e mesas conversíveis em madeira maciça — herança de marcenaria, sob encomenda.</p>
+  <div class="hcta"><a class="btn btn-fill" href="#">Ver a coleção</a><a class="btn btn-out" href="#">Agendar visita</a></div>
+  <div class="hero-band"><img src="../produtos/vertice/hero.jpg" alt="Mesa Vértice"></div>
+</section>
+
+<section class="sec wrap">
+  <div class="orn"><span class="d"></span></div>
+  <h2 class="h2" style="text-align:center;margin:1.5rem 0 2.5rem">A seleção da maison</h2>
+  <div class="grid3">
+    <a class="card" href="#"><div class="m"><img src="../produtos/elipse/hero.jpg" alt=""></div><div class="b"><div><div class="n">Elipse</div><div class="t">Original · Bilhar</div></div><div class="pr">R$ 19.900</div></div></a>
+    <a class="card" href="#"><div class="m"><img src="../produtos/aparato/hero.jpg" alt=""></div><div class="b"><div><div class="n">Aparato</div><div class="t">Premium · Bilhar</div></div><div class="pr">R$ 26.900</div></div></a>
+    <a class="card" href="#"><div class="m"><img src="../produtos/nobus-premium/hero.png" alt=""></div><div class="b"><div><div class="n">Nobus</div><div class="t">Premium · Sinuca</div></div><div class="pr">R$ 14.990</div></div></a>
+  </div>
+</section>
+
+<section class="heritage sec wrap">
+  <div class="orn"><span class="d"></span></div>
+  <div class="kick" style="margin-top:1.5rem">Patrimônio vivo</div>
+  <p class="q">"Antes Skara, hoje Tocks Custom — três décadas no mesmo ateliê."</p>
+  <div class="yrs">
+    <div class="y"><div class="n">30</div><div class="l">anos de ofício</div></div>
+    <div class="y"><div class="n">10</div><div class="l">madeiras nobres</div></div>
+    <div class="y"><div class="n">16</div><div class="l">tecidos</div></div>
+    <div class="y"><div class="n">100%</div><div class="l">sob encomenda</div></div>
+  </div>
+</section>
+
+<footer class="foot"><div class="wrap">
+  <div class="top"><div><img src="../tocks-symbol-gold.svg" style="width:40px;margin-bottom:1rem" alt=""><h2>Tocks Custom — três décadas de ofício, Itajaí-SC.</h2></div><a class="btn btn-out" href="#">Agendar visita à maison</a></div>
+  <div class="cols">
+    <div><h5>Coleção</h5><a href="#">Original</a><a href="#">Premium</a><a href="#">Pebolim</a></div>
+    <div><h5>Maison</h5><a href="#">A história</a><a href="#">O ofício</a><a href="#">Visita</a></div>
+    <div><h5>Atendimento</h5><a href="#">Concierge</a><a href="#">WhatsApp</a></div>
+    <div><h5>Legal</h5><a href="#">Garantia</a><a href="#">Privacidade</a></div>
+  </div>
+  <div class="bot"><span>Tocks Indústria e Comércio · © 2026</span><span>Instagram · Pinterest</span></div>
+</div></footer>
+<script>const n=document.getElementById('nav');addEventListener('scroll',()=>n.classList.toggle('on',scrollY>100),{passive:true})</script>
+</body></html>

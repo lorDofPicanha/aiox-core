@@ -1,0 +1,782 @@
+[
+  {
+    "family": "swiper-icons",
+    "weight": "400",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [],
+    "src_formats": [],
+    "source_css_url": "https://images.tcdn.com.br/files/1364175/themes/53/css/default.min.css?0a593ad89b30a5c9f8e860fabe2fca1e",
+    "raw": "@font-face {\n    font-family: swiper-icons;\n    src: url(\"data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAAAZgABAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABGRlRNAAAGRAAAABoAAAAci6qHkUdERUYAAAWgAAAAIwAAACQAYABXR1BPUwAABhQAAAAuAAAANuAY7+xHU1VCAAAFxAAAAFAAAABm2fPczU9TLzIAAAHcAAAASgAAAGBP9V5RY21hcAAAAkQAAACIAAABYt6F0cBjdnQgAAACzAAAAAQAAAAEABEBRGdhc3AAAAWYAAAACAAAAAj//wADZ2x5ZgAAAywAAADMAAAD2MHtryVoZWFkAAABbAAAADAAAAA2E2+eoWhoZWEAAAGcAAAAHwAAACQC9gDzaG10eAAAAigAAAAZAAAArgJkABFsb2NhAAAC0AAAAF"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "100",
+    "style": "italic",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq6R8aX8.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: italic;\n  font-weight: 100;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq6R8aX8.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "200",
+    "style": "italic",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jqyR9aX8.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: italic;\n  font-weight: 200;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jqyR9aX8.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "300",
+    "style": "italic",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq_p9aX8.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: italic;\n  font-weight: 300;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq_p9aX8.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "400",
+    "style": "italic",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq6R9aX8.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: italic;\n  font-weight: 400;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq6R9aX8.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "500",
+    "style": "italic",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq5Z9aX8.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: italic;\n  font-weight: 500;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq5Z9aX8.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "600",
+    "style": "italic",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq3p6aX8.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: italic;\n  font-weight: 600;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq3p6aX8.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "700",
+    "style": "italic",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq0N6aX8.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: italic;\n  font-weight: 700;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq0N6aX8.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "800",
+    "style": "italic",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jqyR6aX8.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: italic;\n  font-weight: 800;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jqyR6aX8.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "900",
+    "style": "italic",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jqw16aX8.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: italic;\n  font-weight: 900;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jqw16aX8.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "100",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Uw-.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 100;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Uw-.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "200",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvr6Ew-.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 200;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvr6Ew-.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "300",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCs16Ew-.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 300;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCs16Ew-.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "400",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Ew-.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 400;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Ew-.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "500",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtZ6Ew-.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 500;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtZ6Ew-.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "600",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCu170w-.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 600;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCu170w-.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "700",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCuM70w-.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 700;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCuM70w-.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "800",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvr70w-.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 800;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvr70w-.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "900",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvC70w-.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 900;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvC70w-.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "100",
+    "style": "italic",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq6R8aX8.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: italic;\n  font-weight: 100;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq6R8aX8.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "200",
+    "style": "italic",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jqyR9aX8.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: italic;\n  font-weight: 200;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jqyR9aX8.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "300",
+    "style": "italic",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq_p9aX8.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: italic;\n  font-weight: 300;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq_p9aX8.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "400",
+    "style": "italic",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq6R9aX8.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: italic;\n  font-weight: 400;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq6R9aX8.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "500",
+    "style": "italic",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq5Z9aX8.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: italic;\n  font-weight: 500;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq5Z9aX8.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "600",
+    "style": "italic",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq3p6aX8.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: italic;\n  font-weight: 600;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq3p6aX8.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "700",
+    "style": "italic",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq0N6aX8.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: italic;\n  font-weight: 700;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq0N6aX8.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "800",
+    "style": "italic",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jqyR6aX8.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: italic;\n  font-weight: 800;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jqyR6aX8.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "900",
+    "style": "italic",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jqw16aX8.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: italic;\n  font-weight: 900;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jqw16aX8.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "100",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Uw-.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 100;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Uw-.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "200",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvr6Ew-.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 200;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvr6Ew-.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "300",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCs16Ew-.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 300;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCs16Ew-.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "400",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Ew-.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 400;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Ew-.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "500",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtZ6Ew-.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 500;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtZ6Ew-.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "600",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCu170w-.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 600;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCu170w-.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "700",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCuM70w-.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 700;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCuM70w-.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "800",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvr70w-.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 800;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvr70w-.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Montserrat",
+    "weight": "900",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvC70w-.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 900;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/montserrat/v31/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvC70w-.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Playfair Display",
+    "weight": "400",
+    "style": "italic",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/playfairdisplay/v40/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_qiTbtY.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Playfair Display';\n  font-style: italic;\n  font-weight: 400;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_qiTbtY.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Playfair Display",
+    "weight": "500",
+    "style": "italic",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/playfairdisplay/v40/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_pqTbtY.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Playfair Display';\n  font-style: italic;\n  font-weight: 500;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_pqTbtY.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Playfair Display",
+    "weight": "600",
+    "style": "italic",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/playfairdisplay/v40/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_naUbtY.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Playfair Display';\n  font-style: italic;\n  font-weight: 600;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_naUbtY.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Playfair Display",
+    "weight": "700",
+    "style": "italic",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/playfairdisplay/v40/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_k-UbtY.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Playfair Display';\n  font-style: italic;\n  font-weight: 700;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_k-UbtY.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Playfair Display",
+    "weight": "800",
+    "style": "italic",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/playfairdisplay/v40/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_iiUbtY.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Playfair Display';\n  font-style: italic;\n  font-weight: 800;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_iiUbtY.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Playfair Display",
+    "weight": "900",
+    "style": "italic",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/playfairdisplay/v40/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_gGUbtY.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Playfair Display';\n  font-style: italic;\n  font-weight: 900;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_gGUbtY.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Playfair Display",
+    "weight": "400",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/playfairdisplay/v40/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdFvUDQ.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Playfair Display';\n  font-style: normal;\n  font-weight: 400;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdFvUDQ.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Playfair Display",
+    "weight": "500",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/playfairdisplay/v40/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKd3vUDQ.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Playfair Display';\n  font-style: normal;\n  font-weight: 500;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKd3vUDQ.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Playfair Display",
+    "weight": "600",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/playfairdisplay/v40/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKebukDQ.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Playfair Display';\n  font-style: normal;\n  font-weight: 600;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKebukDQ.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Playfair Display",
+    "weight": "700",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/playfairdisplay/v40/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKeiukDQ.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Playfair Display';\n  font-style: normal;\n  font-weight: 700;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKeiukDQ.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Playfair Display",
+    "weight": "800",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/playfairdisplay/v40/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKfFukDQ.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Playfair Display';\n  font-style: normal;\n  font-weight: 800;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKfFukDQ.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Playfair Display",
+    "weight": "900",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/playfairdisplay/v40/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKfsukDQ.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+    "raw": "@font-face {\n  font-family: 'Playfair Display';\n  font-style: normal;\n  font-weight: 900;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKfsukDQ.ttf) format('truetype');\n}"
+  }
+]

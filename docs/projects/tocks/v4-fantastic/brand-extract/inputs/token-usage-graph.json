@@ -1,0 +1,1132 @@
+[
+  {
+    "name": "--color_primary",
+    "declarations": 1,
+    "references": 24
+  },
+  {
+    "name": "--text_input",
+    "declarations": 1,
+    "references": 9
+  },
+  {
+    "name": "--bg_button_primary",
+    "declarations": 1,
+    "references": 8
+  },
+  {
+    "name": "--color_text_menu",
+    "declarations": 1,
+    "references": 8
+  },
+  {
+    "name": "--title_popup_news",
+    "declarations": 1,
+    "references": 6
+  },
+  {
+    "name": "--color_text",
+    "declarations": 1,
+    "references": 6
+  },
+  {
+    "name": "--border_input",
+    "declarations": 1,
+    "references": 6
+  },
+  {
+    "name": "--header_icon_top",
+    "declarations": 1,
+    "references": 6
+  },
+  {
+    "name": "--button_buy",
+    "declarations": 1,
+    "references": 6
+  },
+  {
+    "name": "--button_buy2",
+    "declarations": 1,
+    "references": 6
+  },
+  {
+    "name": "--color_second",
+    "declarations": 1,
+    "references": 5
+  },
+  {
+    "name": "--color_title_footer",
+    "declarations": 1,
+    "references": 5
+  },
+  {
+    "name": "--color_footer_newsletter_input_color",
+    "declarations": 1,
+    "references": 5
+  },
+  {
+    "name": "--header_text_search_top",
+    "declarations": 1,
+    "references": 5
+  },
+  {
+    "name": "--title_list",
+    "declarations": 1,
+    "references": 5
+  },
+  {
+    "name": "--color_border",
+    "declarations": 1,
+    "references": 5
+  },
+  {
+    "name": "--color_box_product",
+    "declarations": 1,
+    "references": 5
+  },
+  {
+    "name": "--swiper-navigation-size",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--bg_body",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--cart_number",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--cart_number_bg",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--color_footer_newsletter_text",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--preco_color",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--bg_box_product",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--swiper-theme-color",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--color_button_primary",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--bg_button_secondary",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--title_depoimento",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--color_footer2",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--social_bg",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--header_top",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--header_text_top",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--nav_color_border",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--rastreio_bg",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--btn_header_fundo_text",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--swiper-pagination-color",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--cat_fundo_item",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--cat_borda_item",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--cor_borda_vitrine",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--color_footer",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--color_border_footer",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--color_footer_newsletter",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--color_fundo_newsletter",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--bg_input",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--border_top2",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--border_top",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--header_menu",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--header_text_search_bg",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--header_text_hover",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--bg_sub",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--nav_color_sub",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--banner_info_color",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--tag_destaque_bg",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--button_details",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--button_details_hover",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--button_frete",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--button_frete2",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--rastreio_text",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--bg_menu_mobile2",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--border_category_section",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--go_to_top_text",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--fundo_variacoes",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--heads_descricao_produto",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--color_contador_aviso_topo",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--color_fundo_contador_aviso_topo",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--color_texto_aviso_meio",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--color_fundo_contador_aviso_meio",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--heads_categorias",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--filter_title",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--btn_header_fundo_hover_text",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--fundo_bloco_tamanho",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--swiper-navigation-color",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--color_fundo_regua_fio_topo",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color_texto1_regua_fio_topo",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color_texto2_regua_fio_topo",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color_texto2_regua_fio_desktop",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color_fundo_regua_fio_mobile",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color_texto1_regua_fio_mobile",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--bg_popup_news",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--text_popup_news",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--btn_bg_popup_news",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--btn_text_popup_news",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color_fundo_news",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color_texto_news",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color_fundo_liquida",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color_texto_liquida",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--brands_fundo_item",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--brands_borda_item",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--brands_borda_item_hover",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cat_fundo_item_hover",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cat_borda_item_hover",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--cat_text_item",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--bg_blog",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--button_blog",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--button_blog2",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color_button_blog",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color_title_blog",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color_blog",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--bg_depoimento",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--text_depoimento",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color_text_footer",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color_icon_footer",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color_footer_newsletter_input",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--header_search_icon",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--header_text_search_border",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--header_top_border",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--nav_bg",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--nav_color",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--banner_info_bg",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--banner_featured_color",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color_title_category_per",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tag_desconto_bg",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tag_frete_bg",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tag_lancamento_bg",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--payment_color",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color_name_product",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tag_color",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color_text_footer_link",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--bg_banner_full",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--bg_dots_banner_full",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--button_buy_color",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--bg_menu_mobile",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--bg_category_section",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--bg2_category_section",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color_category_title",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--chat_cart",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--go_to_top_background",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--texto_variacoes",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color_menu",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--hover_color_menu",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--fundo_menu",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--hover_fundo_menu",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--texto_descricao_produto",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--ol_li_color_descricao_produto",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--ol_li_fundo_descricao_produto",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color_fundo_aviso_topo",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color_texto_aviso_topo",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color_texto_span_aviso_topo",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color_fundo_aviso_meio",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color_texto_span_aviso_meio",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color_contador_aviso_meio",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--filter_item_checked_fundo",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--filter_item_checked_borda",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--filter_button_text",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--filter_button_fundo",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color_text_tamanho",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color_fundo_text_tamanho",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--padding_home",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--arrow_third",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--arrow_right",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--arrow_select",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--trash",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--arrow_slide",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--arrow_post",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--star",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--star_check",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color_text_category_per",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--bg_button_category_per",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--color_button_category_per",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--bg_button_hover_category_per",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--bg_cat",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--color_titles",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--color_texto2_regua_fio_mobile",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--swiper-preloader-color",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--color_fundo_regua_fio_desktop",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--color_texto1_regua_fio_desktop",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--color_texto2_regua_fio_dmobile",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--close_bg_popup",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--close_text_popup",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--bgd_loadmore",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--bgd_loadmore_hover",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font_loadmore",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--font_loadmore_hover",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--border_loadmore",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--border_loadmore_hover",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cor_titulo_vitrine",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cor_titulo_vitrine_span",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cor_fundo_titulo_vitrine",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cor_link_vitrine",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--color_text_description",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--bg_post",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--border_title_list",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--color_text_button_footer",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--social_bg_hover",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--social_color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--header_top_second",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--banner_dot",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--tags_product_bg",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--preco_color_product",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--payment_color_product",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--input_frete_color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--input_frete_bg",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--input_frete_border",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--bg_category_per",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--rastreio_bg2",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--rastreio_button",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--rastreio_button_hover",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--color_bar_text_footer",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--button_frete_color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--bg_form",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--variant_border",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--input_quant",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--variant_selected",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--variant_selected_check",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--arrow_slide_color",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--fundo_comprar_tamanho",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--texto_comprar_tamanho",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--texto_comprar_tamanho_hover",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--texto_fundo_comprar_tamanho",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--texto_fundo_comprar_tamanho_hover",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--texto_comprar_tamanho_border_box",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--texto_comprar_tamanho_border_box_hover",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cor_titulo_comprar_tamanho",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--texto_opcoes_produto",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--fundo_opcoes_produto",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--cor_texto_head_descricao_produto",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--fundo_texto_head_descricao_produto",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--fundo_ativo_opcoes_produto",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--filter_title_item",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--btn_header_cor_text",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--loading_page_img",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--loading_item_img",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--variant_selected_check_image",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--arrow_button",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--arrow_filter",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--zoom_icon",
+    "declarations": 1,
+    "references": 0
+  }
+]

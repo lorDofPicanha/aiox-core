@@ -1,0 +1,15 @@
+{
+  "external": [
+    "https://images.tcdn.com.br/files/1364175/themes/53/css/cookieconsent.min.css?0a593ad89b30a5c9f8e860fabe2fca1e",
+    "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
+    "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+  ],
+  "preload": [
+    "https://images.tcdn.com.br/files/1364175/themes/53/css/default.min.css?0a593ad89b30a5c9f8e860fabe2fca1e",
+    "https://images.tcdn.com.br/files/1364175/themes/53/css/venturaweb.min.css?0a593ad89b30a5c9f8e860fabe2fca1e"
+  ],
+  "inline_style_blocks": 2,
+  "inline_style_attrs": 5,
+  "imports_resolved": 0,
+  "failed": []
+}

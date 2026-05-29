@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mesa de Bilhar Elipse — Tocks Custom</title>
+<link rel="stylesheet" href="atelier-noir.css">
+</head>
+<body>
+
+<header class="nav scrolled" id="nav">
+  <div class="container">
+    <a class="nav-logo" href="home.html"><img src="../tocks-symbol-gold.svg" alt="">Tocks Custom</a>
+    <nav><ul class="nav-links">
+      <li><a href="colecao.html">Coleção</a></li>
+      <li><a href="home.html#linhas">Linhas</a></li>
+      <li><a href="home.html#atelier">Atelier</a></li>
+      <li><a href="#">Contato</a></li>
+    </ul></nav>
+    <div class="nav-right">
+      <a href="#" class="gold" style="font-size:var(--fs-nav);letter-spacing:.06em;text-transform:uppercase">Concierge</a>
+      <a href="checkout.html" class="nav-cart">Carrinho<span class="cart-dot">2</span></a>
+    </div>
+  </div>
+</header>
+
+<!-- ABOVE THE FOLD -->
+<section class="container" style="padding-top:128px;padding-bottom:var(--space-9)">
+  <div class="small" style="margin-bottom:var(--space-5)"><a href="colecao.html" class="gold">Coleção</a> · Linha Original · Elipse</div>
+  <div class="pdp">
+    <!-- gallery -->
+    <div>
+      <div class="gallery-stage"><img id="stage" src="../produtos/elipse/hero.jpg" alt="Mesa de Bilhar Elipse, acabamento Ébano Linheiro"></div>
+      <div class="thumbs">
+        <img class="active" src="../produtos/elipse/hero.jpg" alt="" onclick="setStage(this)">
+        <img src="../produtos/elipse/gallery-02.jpg" alt="" onclick="setStage(this)">
+        <img src="../produtos/elipse/gallery-03.jpg" alt="" onclick="setStage(this)">
+        <img src="../produtos/elipse/gallery-04.jpg" alt="" onclick="setStage(this)">
+        <img src="../produtos/elipse/detail-base.jpg" alt="" onclick="setStage(this)">
+      </div>
+    </div>
+    <!-- info -->
+    <div class="pdp-info">
+      <div class="eyebrow gold">Linha Original · Bilhar</div>
+      <h1 class="h1">Elipse</h1>
+      <p class="body">Formato elíptico, pernas estriadas cilíndricas e detalhes dourados. A expressão mais ornamental da Linha Original — uma escultura que também é mesa de jogo.</p>
+      <div class="price-lg"><span class="cur">R$</span> 19.900</div>
+      <div class="parcela">ou 12× de R$ 1.658 sem juros · à vista no PIX com condição especial</div>
+      <div class="pdp-cta">
+        <a href="checkout.html" class="btn btn-gold">Adicionar ao carrinho</a>
+        <a href="#" class="btn btn-ghost">Falar com especialista</a>
+      </div>
+      <ul class="highlights">
+        <li>Silhueta elíptica com pernas estriadas cilíndricas</li>
+        <li>Detalhes dourados e bordas trabalhadas</li>
+        <li>Madeira maciça · 10 madeiras e 16 tecidos à escolha</li>
+        <li>Feita à mão sob encomenda no ateliê de Itajaí-SC</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FINISHES — Atelier Bench -->
+<section class="container" id="bench" style="padding-bottom:var(--space-9)">
+  <div class="bench">
+    <div class="bench-head">
+      <div><div class="eyebrow gold">Componha sua mesa</div><h2 class="h3" style="margin-top:var(--space-2)">Atelier Bench</h2></div>
+      <div class="small">10 madeiras · 16 tecidos</div>
+    </div>
+
+    <div class="track">
+      <h4>Track 1 — Madeira</h4>
+      <div class="woods" id="woods">
+        <button class="swatch sel" data-name="Carvalho Branco Linheiro"><img class="chip-img" src="../acabamentos/madeiras/carvalho-branco-linheiro.png" alt="Madeira Carvalho Branco Linheiro"><span class="lbl">Carvalho Branco</span></button>
+        <button class="swatch" data-name="Ébano Linheiro"><img class="chip-img" src="../acabamentos/madeiras/ebano-linheiro.png" alt="Madeira Ébano Linheiro"><span class="lbl">Ébano Linheiro</span></button>
+        <button class="swatch" data-name="Freijó"><img class="chip-img" src="../acabamentos/madeiras/freijo.png" alt="Madeira Freijó"><span class="lbl">Freijó</span></button>
+        <button class="swatch" data-name="Goiabão Escuro"><img class="chip-img" src="../acabamentos/madeiras/goiabao-escuro.png" alt="Madeira Goiabão Escuro"><span class="lbl">Goiabão Escuro</span></button>
+        <button class="swatch" data-name="Itaúba"><img class="chip-img" src="../acabamentos/madeiras/itauba.png" alt="Madeira Itaúba"><span class="lbl">Itaúba</span></button>
+        <button class="swatch" data-name="Wengue"><img class="chip-img" src="../acabamentos/madeiras/wengue.png" alt="Madeira Wengue"><span class="lbl">Wengue</span></button>
+        <button class="swatch" data-name="Canelão"><img class="chip-img" src="../acabamentos/madeiras/canelao.png" alt="Madeira Canelão"><span class="lbl">Canelão</span></button>
+        <button class="swatch" data-name="Marupá"><img class="chip-img" src="../acabamentos/madeiras/marupa.png" alt="Madeira Marupá"><span class="lbl">Marupá</span></button>
+        <button class="swatch" data-name="Cerejeira"><img class="chip-img" src="../acabamentos/madeiras/cerejeira.png" alt="Madeira Cerejeira"><span class="lbl">Cerejeira</span></button>
+        <button class="swatch" data-name="Angelin"><img class="chip-img" src="../acabamentos/madeiras/angelin.png" alt="Madeira Angelin"><span class="lbl">Angelin</span></button>
+      </div>
+    </div>
+
+    <div class="track">
+      <h4>Track 2 — Tecido <span style="color:var(--color-text-muted);text-transform:none;letter-spacing:0">(arraste →)</span></h4>
+      <div class="fabrics" id="fabrics">
+        <button class="swatch sel" data-name="154-9"><img class="chip-img" src="../acabamentos/tecidos/154-9.png" alt="Tecido 154-9"><span class="lbl">154-9</span></button>
+        <button class="swatch" data-name="102"><img class="chip-img" src="../acabamentos/tecidos/102.png" alt="Tecido 102"><span class="lbl">102</span></button>
+        <button class="swatch" data-name="103-91"><img class="chip-img" src="../acabamentos/tecidos/103-91.png" alt="Tecido 103-91"><span class="lbl">103-91</span></button>
+        <button class="swatch" data-name="143-1"><img class="chip-img" src="../acabamentos/tecidos/143-1.png" alt="Tecido 143-1"><span class="lbl">143-1</span></button>
+        <button class="swatch" data-name="145-9"><img class="chip-img" src="../acabamentos/tecidos/145-9.png" alt="Tecido 145-9"><span class="lbl">145-9</span></button>
+        <button class="swatch" data-name="148-91"><img class="chip-img" src="../acabamentos/tecidos/148-91.png" alt="Tecido 148-91"><span class="lbl">148-91</span></button>
+        <button class="swatch" data-name="191-801"><img class="chip-img" src="../acabamentos/tecidos/191-801.png" alt="Tecido 191-801"><span class="lbl">191-801</span></button>
+        <button class="swatch" data-name="212-23"><img class="chip-img" src="../acabamentos/tecidos/212-23.png" alt="Tecido 212-23"><span class="lbl">212-23</span></button>
+        <button class="swatch" data-name="247-24"><img class="chip-img" src="../acabamentos/tecidos/247-24.png" alt="Tecido 247-24"><span class="lbl">247-24</span></button>
+        <button class="swatch" data-name="269-9"><img class="chip-img" src="../acabamentos/tecidos/269-9.png" alt="Tecido 269-9"><span class="lbl">269-9</span></button>
+        <button class="swatch" data-name="269-21"><img class="chip-img" src="../acabamentos/tecidos/269-21.png" alt="Tecido 269-21"><span class="lbl">269-21</span></button>
+        <button class="swatch" data-name="275-9"><img class="chip-img" src="../acabamentos/tecidos/275-9.png" alt="Tecido 275-9"><span class="lbl">275-9</span></button>
+        <button class="swatch" data-name="284"><img class="chip-img" src="../acabamentos/tecidos/284.png" alt="Tecido 284"><span class="lbl">284</span></button>
+        <button class="swatch" data-name="300-1"><img class="chip-img" src="../acabamentos/tecidos/300-1.png" alt="Tecido 300-1"><span class="lbl">300-1</span></button>
+        <button class="swatch" data-name="309"><img class="chip-img" src="../acabamentos/tecidos/309.png" alt="Tecido 309"><span class="lbl">309</span></button>
+        <button class="swatch" data-name="310"><img class="chip-img" src="../acabamentos/tecidos/310.png" alt="Tecido 310"><span class="lbl">310</span></button>
+      </div>
+    </div>
+
+    <div class="bench-summary">Sua composição: Madeira <b id="sel-wood">Carvalho Branco Linheiro</b> · Tecido <b id="sel-fabric">154-9</b></div>
+  </div>
+</section>
+
+<!-- SPECS -->
+<section class="container" style="padding-bottom:var(--space-9)">
+  <div class="eyebrow gold" style="margin-bottom:var(--space-6)">Ficha técnica</div>
+  <div class="specs">
+    <div class="row"><span class="k">Dimensões (8 pés)</span><span class="v">254 × 142 cm</span></div>
+    <div class="row"><span class="k">Altura</span><span class="v">82 cm</span></div>
+    <div class="row"><span class="k">Tampo de jogo</span><span class="v">Ardósia / MDF naval</span></div>
+    <div class="row"><span class="k">Estrutura</span><span class="v">Madeira maciça</span></div>
+    <div class="row"><span class="k">Acabamentos</span><span class="v">10 madeiras · 16 tecidos</span></div>
+    <div class="row"><span class="k">Produção sob encomenda</span><span class="v">45–60 dias</span></div>
+    <div class="row"><span class="k">Entrega e montagem</span><span class="v">Brasil · sob medida</span></div>
+    <div class="row"><span class="k">Garantia do atelier</span><span class="v">5 anos estrutura</span></div>
+  </div>
+</section>
+
+<!-- CRAFT full-bleed -->
+<section style="position:relative">
+  <img src="../produtos/elipse/gallery-03.jpg" style="width:100%;height:60vh;object-fit:cover" alt="Detalhe do acabamento e das pernas estriadas">
+  <div class="container" style="position:absolute;inset:0;display:flex;align-items:flex-end;padding-bottom:var(--space-7)">
+    <blockquote class="pull-quote">"O detalhe dourado não é enfeite — é assinatura."</blockquote>
+  </div>
+</section>
+
+<!-- RELATED -->
+<section class="container section">
+  <div class="eyebrow gold">Da mesma linha</div>
+  <h2 class="h2" style="margin:var(--space-4) 0 var(--space-7)">Você também vai gostar</h2>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-6)">
+    <a href="produto.html" class="card"><div class="card-media"><img src="../produtos/vertice/hero.jpg" alt=""></div><div class="card-info"><div><div class="name">Vértice</div><div class="tag">Original · Bilhar</div></div><div class="price">R$ 15.900</div></div><span class="card-see">Ver mesa →</span></a>
+    <a href="produto.html" class="card"><div class="card-media"><img src="../produtos/aparato/hero.jpg" alt=""></div><div class="card-info"><div><div class="name">Aparato</div><div class="tag">Premium · Bilhar</div></div><div class="price">R$ 26.900</div></div><span class="card-see">Ver mesa →</span></a>
+    <a href="produto.html" class="card"><div class="card-media"><img src="../produtos/monaco-premium/hero.png" alt=""></div><div class="card-info"><div><div class="name">Mônaco 2 em 1</div><div class="tag">Premium · Sinuca e Jantar</div></div><div class="price">R$ 12.990</div></div><span class="card-see">Ver mesa →</span></a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-cols" style="border-top:none">
+      <div><h5>Coleção</h5><a href="colecao.html">Linha Original</a><a href="colecao.html">Linha Premium</a><a href="colecao.html">Linha Pebolim</a></div>
+      <div><h5>Atelier</h5><a href="home.html#atelier">A história</a><a href="#">O ofício</a></div>
+      <div><h5>Atendimento</h5><a href="#">Concierge</a><a href="#">WhatsApp</a><a href="#">contato@tockscustom.com.br</a></div>
+      <div><h5>Legal</h5><a href="#">Garantia</a><a href="#">Privacidade</a></div>
+    </div>
+    <div class="footer-bottom"><span>Tocks Indústria e Comércio · © 2026</span><span>Instagram · Pinterest</span></div>
+  </div>
+</footer>
+
+<script>
+  function setStage(t){document.getElementById('stage').src=t.src;document.querySelectorAll('.thumbs img').forEach(i=>i.classList.remove('active'));t.classList.add('active');}
+  function bindTrack(id,out){const g=document.getElementById(id);g.querySelectorAll('.swatch').forEach(s=>s.addEventListener('click',()=>{g.querySelector('.sel')?.classList.remove('sel');s.classList.add('sel');document.getElementById(out).textContent=s.dataset.name;}));}
+  bindTrack('woods','sel-wood');bindTrack('fabrics','sel-fabric');
+</script>
+</body>
+</html>

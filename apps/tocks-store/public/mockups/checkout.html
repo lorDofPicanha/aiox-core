@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Finalizar — Tocks Custom</title>
+<link rel="stylesheet" href="atelier-noir.css">
+<style>
+  .checkout{display:grid;grid-template-columns:1.3fr .7fr;gap:var(--space-8);align-items:start}
+  .step{border-top:1px solid var(--color-hairline);padding:var(--space-6) 0}
+  .step:first-child{border-top:none}
+  .step-head{display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-5)}
+  .step-num{width:30px;height:30px;border-radius:var(--radius-pill);border:1px solid var(--color-hairline);display:grid;place-items:center;font-size:var(--fs-small);color:var(--color-accent)}
+  .step.done .step-num,.step.active .step-num{background:var(--color-accent);color:var(--color-on-accent);border-color:var(--color-accent)}
+  .step-title{font-family:var(--font-display);font-size:1.4rem}
+  .fieldrow{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-4)}
+  .field{display:flex;flex-direction:column;gap:.4rem}
+  .field.full{grid-column:1/-1}
+  .field label{font-size:var(--fs-label);letter-spacing:.18em;text-transform:uppercase;color:var(--color-text-muted)}
+  .field input,.field select{background:var(--color-surface-2);border:1px solid var(--color-border);border-radius:var(--radius-xs);padding:13px 15px;color:var(--color-text);font-family:var(--font-ui);font-size:var(--fs-body-sm);transition:all var(--dur-base) var(--ease-out-luxe)}
+  .field input:focus,.field select:focus{outline:none;border-color:var(--color-accent);box-shadow:0 0 0 3px var(--color-accent-soft)}
+  .pay{display:flex;gap:var(--space-3);flex-wrap:wrap}
+  .pay .opt{flex:1;min-width:120px;border:1px solid var(--color-border);border-radius:var(--radius-sm);padding:var(--space-4);text-align:center;cursor:pointer;font-size:var(--fs-body-sm);transition:all var(--dur-base)}
+  .pay .opt.sel{border-color:var(--color-accent);background:var(--color-accent-soft);color:var(--color-accent)}
+  .summary{position:sticky;top:96px;background:var(--color-surface);border:1px solid var(--color-hairline);border-radius:var(--radius-md);padding:var(--space-6)}
+  .li{display:flex;gap:var(--space-4);padding-bottom:var(--space-5);border-bottom:1px solid var(--color-border)}
+  .li img{width:88px;height:66px;object-fit:cover;flex:none}
+  .li .nm{font-family:var(--font-display);font-size:1.2rem}
+  .li .fin{font-size:var(--fs-small);color:var(--color-text-muted);margin-top:.3rem}
+  .li .pr{margin-top:.4rem;font-variant-numeric:tabular-nums;font-weight:500}
+  .sumrow{display:flex;justify-content:space-between;padding:var(--space-3) 0;font-size:var(--fs-body-sm);color:var(--color-text-secondary)}
+  .sumrow.total{border-top:1px solid var(--color-hairline);margin-top:var(--space-2);padding-top:var(--space-4);font-size:var(--fs-price);color:var(--color-text);font-variant-numeric:tabular-nums}
+  .trust{display:flex;flex-direction:column;gap:var(--space-2);margin:var(--space-5) 0;font-size:var(--fs-small);color:var(--color-text-muted)}
+  .trust span::before{content:"— ";color:var(--color-accent)}
+  .concierge{margin-top:var(--space-6);padding:var(--space-5);border:1px dashed var(--color-hairline);border-radius:var(--radius-sm);text-align:center}
+  @media(max-width:1024px){.checkout{grid-template-columns:1fr}.summary{position:static}}
+  @media(max-width:560px){.fieldrow{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="nav scrolled" id="nav">
+  <div class="container">
+    <a class="nav-logo" href="home.html"><img src="../tocks-symbol-gold.svg" alt="">Tocks Custom</a>
+    <nav><ul class="nav-links">
+      <li><a href="colecao.html">Coleção</a></li><li><a href="home.html#atelier">Atelier</a></li><li><a href="#">Contato</a></li>
+    </ul></nav>
+    <div class="nav-right"><a href="#" class="gold" style="font-size:var(--fs-nav);letter-spacing:.06em;text-transform:uppercase">Concierge</a></div>
+  </div>
+</header>
+
+<section class="container" style="padding-top:128px;padding-bottom:var(--space-10)">
+  <div class="eyebrow gold">Finalizar pedido</div>
+  <h1 class="h1" style="margin:var(--space-4) 0 var(--space-8)">Quase sua.</h1>
+
+  <div class="checkout">
+    <!-- FORM -->
+    <div>
+      <div class="step done">
+        <div class="step-head"><span class="step-num">1</span><span class="step-title">Contato</span></div>
+        <div class="fieldrow">
+          <div class="field"><label>Nome</label><input value="Cliente Tocks"></div>
+          <div class="field"><label>Telefone / WhatsApp</label><input value="(47) 9 9999-9999"></div>
+          <div class="field full"><label>E-mail</label><input value="cliente@email.com"></div>
+        </div>
+      </div>
+
+      <div class="step active">
+        <div class="step-head"><span class="step-num">2</span><span class="step-title">Entrega</span></div>
+        <div class="fieldrow">
+          <div class="field"><label>CEP</label><input placeholder="00000-000"></div>
+          <div class="field"><label>Cidade / UF</label><input placeholder="Cidade — UF"></div>
+          <div class="field full"><label>Endereço</label><input placeholder="Rua, número, complemento"></div>
+        </div>
+        <p class="small">A entrega e montagem de mesas é feita sob medida em todo o Brasil — um especialista confirma o frete após o pedido.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-head"><span class="step-num">3</span><span class="step-title">Pagamento</span></div>
+        <div class="pay">
+          <div class="opt sel">PIX</div>
+          <div class="opt">Cartão · até 12×</div>
+          <div class="opt">Boleto</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUMMARY -->
+    <aside class="summary">
+      <div class="eyebrow gold" style="margin-bottom:var(--space-5)">Seu pedido</div>
+      <div class="li">
+        <img src="../produtos/elipse/hero.jpg" alt="">
+        <div>
+          <div class="nm">Elipse</div>
+          <div class="fin">Madeira Carvalho Branco · Tecido 154-9</div>
+          <div class="pr">R$ 19.900</div>
+        </div>
+      </div>
+      <div class="sumrow"><span>Subtotal</span><span class="tnum">R$ 19.900</span></div>
+      <div class="sumrow"><span>Frete e montagem</span><span>Sob medida</span></div>
+      <div class="sumrow total"><span>Total</span><span>R$ 19.900</span></div>
+      <div class="parcela" style="margin-top:var(--space-2)">ou 12× de R$ 1.658 sem juros</div>
+
+      <a href="#" class="btn btn-gold" style="width:100%;justify-content:center;margin-top:var(--space-5)">Finalizar pedido</a>
+
+      <div class="trust" style="margin-top:var(--space-5)">
+        <span>Garantia de 5 anos do atelier</span>
+        <span>Três décadas de ofício em Itajaí-SC</span>
+        <span>Frete e montagem sob medida</span>
+      </div>
+
+      <div class="concierge">
+        <div class="small" style="color:var(--color-text-secondary)">Prefere finalizar com calma?</div>
+        <a href="#" class="gold" style="font-size:var(--fs-body-sm);font-weight:500">Agende uma conversa com um especialista →</a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom" style="border-top:none"><span>Tocks Indústria e Comércio · © 2026</span><span>Pagamento seguro</span></div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.pay .opt').forEach(o=>o.addEventListener('click',()=>{document.querySelector('.pay .sel')?.classList.remove('sel');o.classList.add('sel')}));
+</script>
+</body>
+</html>

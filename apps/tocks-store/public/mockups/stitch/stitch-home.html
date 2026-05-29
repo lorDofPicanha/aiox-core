@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tocks Custom - Marcenaria de Herança</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#ccc5c6",
+                      "background": "#fcf8f7",
+                      "outline": "#767872",
+                      "on-surface-variant": "#454742",
+                      "surface-container-highest": "#e5e2e1",
+                      "primary": "#5e5e5c",
+                      "on-secondary-fixed": "#1a1c1c",
+                      "primary-container": "#faf8f4",
+                      "tertiary-fixed": "#e8e1e2",
+                      "secondary-container": "#dfe0e0",
+                      "on-error-container": "#93000a",
+                      "inverse-on-surface": "#f4f0ef",
+                      "primary-fixed": "#e4e2de",
+                      "on-primary-fixed": "#1b1c1a",
+                      "on-tertiary-container": "#757071",
+                      "on-primary": "#ffffff",
+                      "secondary": "#5d5f5f",
+                      "primary-fixed-dim": "#c8c6c3",
+                      "on-tertiary": "#ffffff",
+                      "secondary-fixed": "#e2e2e2",
+                      "on-error": "#ffffff",
+                      "surface": "#fcf8f7",
+                      "on-tertiary-fixed": "#1e1b1c",
+                      "inverse-primary": "#c8c6c3",
+                      "surface-tint": "#5e5e5c",
+                      "on-primary-container": "#72726f",
+                      "tertiary": "#625d5e",
+                      "surface-container-high": "#ebe7e6",
+                      "surface-dim": "#ddd9d8",
+                      "secondary-fixed-dim": "#c6c6c7",
+                      "on-secondary": "#ffffff",
+                      "outline-variant": "#c6c7c0",
+                      "on-tertiary-fixed-variant": "#4a4647",
+                      "on-secondary-container": "#616363",
+                      "on-background": "#1c1b1b",
+                      "surface-variant": "#e5e2e1",
+                      "error-container": "#ffdad6",
+                      "surface-bright": "#fcf8f7",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-container": "#fef6f7",
+                      "surface-container": "#f1edec",
+                      "surface-container-low": "#f7f3f2",
+                      "on-surface": "#1c1b1b",
+                      "on-primary-fixed-variant": "#474744",
+                      "inverse-surface": "#313030",
+                      "on-secondary-fixed-variant": "#454747",
+                      "error": "#ba1a1a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-desktop": "80px",
+                      "container-max": "1440px",
+                      "unit": "8px",
+                      "margin-mobile": "24px",
+                      "gutter": "32px"
+              },
+              "fontFamily": {
+                      "headline-md": [
+                              "Playfair Display"
+                      ],
+                      "body-md": [
+                              "Montserrat"
+                      ],
+                      "display-xl": [
+                              "Playfair Display"
+                      ],
+                      "display-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "display-lg": [
+                              "Playfair Display"
+                      ],
+                      "label-caps": [
+                              "Montserrat"
+                      ],
+                      "button": [
+                              "Montserrat"
+                      ],
+                      "body-lg": [
+                              "Montserrat"
+                      ]
+              },
+              "fontSize": {
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-xl": [
+                              "80px",
+                              {
+                                      "lineHeight": "96px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "40px",
+                              {
+                                      "lineHeight": "48px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "56px",
+                              {
+                                      "lineHeight": "64px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.15em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "button": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+          .bg-champagne { background-color: #CFA47D; }
+          .text-champagne { color: #CFA47D; }
+          .border-champagne { border-color: #CFA47D; }
+          .bg-navy { background-color: #1F1D2D; }
+          .text-navy { color: #1F1D2D; }
+          .border-navy { border-color: #1F1D2D; }
+          .bg-warm-white { background-color: #FAF8F4; }
+          
+          .long-shadow {
+              filter: drop-shadow(0 40px 60px rgba(31, 29, 45, 0.08));
+          }
+      </style>
+</head>
+<body class="bg-warm-white text-navy font-body-md antialiased selection:bg-champagne selection:text-white">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-transparent backdrop-blur-md bg-surface/10 dark:bg-surface-dim/10 transition-all duration-300" id="main-nav">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-6 w-full max-w-container-max mx-auto">
+<a class="font-headline-md text-headline-md font-medium text-navy scale-95 active:scale-90 transition-transform" href="#">
+                Tocks Custom
+            </a>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-button text-button text-navy/80 font-medium hover:text-champagne transition-colors duration-300 scale-95 active:scale-90 transition-transform" href="#">Atelier</a>
+<a class="font-button text-button text-champagne font-bold border-b-2 border-champagne pb-1 hover:text-champagne transition-colors duration-300 scale-95 active:scale-90 transition-transform" href="#">Coleções</a>
+<a class="font-button text-button text-navy/80 font-medium hover:text-champagne transition-colors duration-300 scale-95 active:scale-90 transition-transform" href="#">Processo</a>
+<a class="font-button text-button text-navy/80 font-medium hover:text-champagne transition-colors duration-300 scale-95 active:scale-90 transition-transform" href="#">Configurador</a>
+</div>
+<div class="flex items-center gap-6">
+<a class="hidden md:flex font-button text-button text-navy/80 font-medium hover:text-champagne transition-colors duration-300" href="#">Concierge</a>
+<button class="bg-navy text-white px-6 py-3 rounded-full font-button text-button hover:bg-champagne transition-colors duration-300 scale-95 active:scale-90 transition-transform flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 18px;">shopping_bag</span>
+                    Solicitar Orçamento
+                </button>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-24">
+<!-- Hero Section -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-24 grid grid-cols-1 md:grid-cols-12 gap-gutter items-center min-h-[80vh]">
+<div class="md:col-span-5 flex flex-col items-start z-10">
+<span class="font-label-caps text-label-caps text-champagne uppercase tracking-widest mb-6">ATELIÊ TOCKS · ITAJAÍ-SC · DESDE 1994</span>
+<h1 class="font-display-lg-mobile md:font-display-xl text-display-lg-mobile md:text-display-xl text-navy mb-8 leading-tight">
+                    A sua mesa, <br/>
+<span class="text-champagne italic">do seu jeito.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-navy/70 mb-12 max-w-md">
+                    Descubra a fusão perfeita entre marcenaria artesanal de precisão e design contemporâneo. Cada peça é esculpida para se tornar o centro arquitetônico do seu ambiente.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+<a class="bg-champagne text-white px-8 py-4 rounded-full font-button text-button text-center hover:bg-champagne/90 transition-all duration-300 shadow-lg shadow-champagne/20" href="#">Ver a coleção</a>
+<a class="border border-navy text-navy px-8 py-4 rounded-full font-button text-button text-center hover:bg-navy hover:text-white transition-all duration-300" href="#">Configurar a sua</a>
+</div>
+</div>
+<div class="md:col-span-7 relative mt-12 md:mt-0">
+<div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden long-shadow">
+<img alt="Uma mesa de bilhar de luxo em um ambiente minimalista, iluminada por luz natural suave" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAF1eBqZGqCRLGR0Z9UudV6VKSxIL97iMwQjhVhqfH4Eg26tXVXwQY9OcV0oKJyt5ZI-meQsjskmce_gmQMV5IZghL_qOZ_3Ll7h7SwHZaGLHZ0HFqMkBPgsumwCkOvmWWe1XpbuhEq56sFaeBra9vxPUuW9DttX0gD4zj8ps7nDhPamUAAJCdKcfkcPSSi2K7w4fC8WFxIlIgTR6iQAnrpRXQ5GsVEc5rzKDkPaPy0Niko5O9V0GZ-X7-90J7iAPzHRWQ_mvwKeeQN"/>
+</div>
+<div class="absolute bottom-8 left-8 md:-left-12 bg-white/90 backdrop-blur-md px-6 py-4 rounded-2xl shadow-xl flex flex-col gap-1 border border-white">
+<span class="font-label-caps text-label-caps text-navy/60">Aparato Alto Padrão</span>
+<span class="font-button text-button text-navy">a partir de R$ 26.900</span>
+</div>
+</div>
+</section>
+<!-- Manifesto -->
+<section class="py-32 px-margin-mobile md:px-margin-desktop bg-white">
+<div class="max-w-4xl mx-auto text-center">
+<span class="material-symbols-outlined text-champagne mb-8" style="font-size: 48px; font-weight: 200;">check_circle</span>
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-navy leading-tight">
+                    "Cada mesa é uma peça de marcenaria que se joga."
+                </h2>
+<div class="w-16 h-[1px] bg-champagne mx-auto mt-12"></div>
+</div>
+</section>
+<!-- Featured Tables -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex justify-between items-end mb-16">
+<div>
+<h3 class="font-headline-md text-headline-md text-navy mb-2">Coleção Destacada</h3>
+<p class="font-body-md text-body-md text-navy/60">Obras-primas disponíveis em nosso ateliê.</p>
+</div>
+<a class="hidden md:flex font-button text-button text-champagne hover:text-navy transition-colors items-center gap-2 border-b border-champagne pb-1" href="#">
+                    Ver todas
+                    <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Large Card -->
+<div class="md:col-span-8 group cursor-pointer">
+<div class="relative w-full aspect-[16/10] rounded-2xl overflow-hidden mb-6 long-shadow bg-surface-container-low">
+<img alt="Uma sala ampla de ateliê exibindo várias mesas de bilhar de madeira com tampos em diferentes cores" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0pclMgs2jSoHb0FXvo4DGA8md7DgRTkijQ9R7X9mybF9oQyzVKwORmVr4isq_BZn55FxQhbgkvlH5klsyJMTD7pBBSXw2zqJt6TUx3ZmguA7pnhoH_0HtqXqQ2HN3ii4lp64Des6BrSLufAQ4UINkh6OyJLJ7aWwn6-oZyBe0nk9xaBzfR5vBaSCGJi1LZKMt1wKNnKwhh0b7Mj05LUHNl5HegJnMy3g5h_IHDfPPKFst-7HKfT-sjrY_N3GZiCpH1StITjMAlYGR"/>
+<div class="absolute top-6 left-6 bg-white px-4 py-2 rounded-full border border-champagne/30">
+<span class="font-label-caps text-label-caps text-navy">SOLID WOOD</span>
+</div>
+</div>
+<div class="flex justify-between items-start pr-4">
+<div>
+<h4 class="font-headline-md text-headline-md text-navy mb-1 group-hover:text-champagne transition-colors">Modelo Atelier</h4>
+<p class="font-body-md text-body-md text-navy/60">Madeira maciça de demolição</p>
+</div>
+<span class="font-button text-button text-navy">R$ 19.900</span>
+</div>
+</div>
+<!-- Small Cards -->
+<div class="md:col-span-4 flex flex-col gap-12">
+<div class="group cursor-pointer">
+<div class="relative w-full aspect-square rounded-2xl overflow-hidden mb-6 long-shadow bg-surface-container-low">
+<img alt="Detalhe do canto em madeira entalhada de uma mesa de bilhar luxuosa" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtmQ0DSu5OY4QJmPZaiIvzJ553CGF6vpznK9DahP_FwjRuFrGoi5J2Ahm57ZNlcQ0mPV-UIeiUotJYfMMQwOnrHk0l0Ap1Y6A9oUYFvqnEvoAnBNWcdBhFHp7VeONRzrIKkwvxmuTrKOMXdEk-2MQ4qqLxdBQqnEx0UORTtw1CE-8eS3nhzuiLFnEbC8ot-gTp74MaBHZlOfeouixp7umfjOQ0zR5utZ_5vnkt3UVyDhbgW9HYIn956BHXQz8DYAURLRYNNur_8HMG"/>
+<div class="absolute top-6 left-6 bg-white px-4 py-2 rounded-full border border-champagne/30">
+<span class="font-label-caps text-label-caps text-navy">BESPOKE FINISH</span>
+</div>
+</div>
+<div class="flex justify-between items-start pr-4">
+<div>
+<h4 class="font-headline-md text-[24px] leading-8 font-medium text-navy mb-1 group-hover:text-champagne transition-colors">Detalhe Heritage</h4>
+<p class="font-body-md text-body-md text-navy/60">Acabamento manual artesanal</p>
+</div>
+<span class="font-button text-button text-navy">R$ 15.900</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Configurator Teaser -->
+<section class="my-24 mx-margin-mobile md:mx-margin-desktop bg-surface-container rounded-3xl overflow-hidden max-w-container-max md:mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2">
+<div class="p-12 md:p-24 flex flex-col justify-center">
+<span class="font-label-caps text-label-caps text-champagne mb-4">EXPERIÊNCIA SOB MEDIDA</span>
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-navy mb-8 leading-tight">
+                        Componha em 5 etapas. <br/>Veja o preço ao vivo.
+                    </h2>
+<div class="flex flex-col gap-4 mb-12">
+<div class="flex items-center gap-4 border-b border-navy/10 pb-4">
+<span class="font-headline-md text-headline-md text-champagne w-8">01</span>
+<span class="font-body-lg text-body-lg text-navy">Seleção da Madeira</span>
+</div>
+<div class="flex items-center gap-4 border-b border-navy/10 pb-4">
+<span class="font-headline-md text-headline-md text-champagne w-8">02</span>
+<span class="font-body-lg text-body-lg text-navy">Cor do Tecido</span>
+</div>
+<div class="flex items-center gap-4 border-b border-navy/10 pb-4">
+<span class="font-headline-md text-headline-md text-champagne w-8">03</span>
+<span class="font-body-lg text-body-lg text-navy/50">Acabamento</span>
+</div>
+<div class="flex items-center gap-4 border-b border-navy/10 pb-4">
+<span class="font-headline-md text-headline-md text-champagne/50 w-8">04</span>
+<span class="font-body-lg text-body-lg text-navy/50">Acessórios</span>
+</div>
+<div class="flex items-center gap-4 pb-4">
+<span class="font-headline-md text-headline-md text-champagne/50 w-8">05</span>
+<span class="font-body-lg text-body-lg text-navy/50">Resumo da Peça</span>
+</div>
+</div>
+<a class="inline-flex bg-champagne text-white px-8 py-4 rounded-full font-button text-button items-center justify-center hover:bg-champagne/90 transition-all duration-300 w-fit" href="#">
+                        Configurar a sua mesa
+                    </a>
+</div>
+<div class="relative h-full min-h-[400px] bg-white">
+<div class="absolute inset-0 p-12 flex flex-col items-center justify-center">
+<div class="w-full max-w-sm">
+<p class="font-label-caps text-label-caps text-navy/60 mb-6 text-center">AMOSTRAS DE MATERIAIS</p>
+<div class="flex gap-4 justify-center">
+<div class="w-16 h-16 rounded-full bg-[#8B5A2B] shadow-lg border-2 border-white cursor-pointer hover:scale-110 transition-transform"></div>
+<div class="w-16 h-16 rounded-full bg-[#2F4F4F] shadow-lg border-2 border-white cursor-pointer hover:scale-110 transition-transform"></div>
+<div class="w-16 h-16 rounded-full bg-[#CD853F] shadow-lg border-2 border-white cursor-pointer hover:scale-110 transition-transform -translate-y-4"></div>
+<div class="w-16 h-16 rounded-full bg-[#A9A9A9] shadow-lg border-2 border-white cursor-pointer hover:scale-110 transition-transform"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-navy w-full py-20 px-margin-mobile md:px-margin-desktop border-t border-surface-dim/20">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-container-max mx-auto mb-16">
+<div class="md:col-span-1">
+<h3 class="font-display-lg-mobile text-[32px] leading-10 text-champagne mb-4">Tocks Custom</h3>
+<p class="font-body-md text-body-md text-white/70">
+                    Três décadas de ofício, esculpindo mesas que redefinem o ambiente.<br/>Itajaí-SC, Brasil.
+                </p>
+</div>
+<div class="md:col-start-3 md:col-span-1">
+<h4 class="font-button text-button text-champagne mb-6 uppercase tracking-wider">Navegação</h4>
+<ul class="flex flex-col gap-4">
+<li><a class="font-body-md text-body-md text-tertiary-fixed-dim opacity-80 hover:opacity-100 hover:text-white transition-colors" href="#">Privacidade</a></li>
+<li><a class="font-body-md text-body-md text-tertiary-fixed-dim opacity-80 hover:opacity-100 hover:text-white transition-colors" href="#">Termos</a></li>
+<li><a class="font-body-md text-body-md text-tertiary-fixed-dim opacity-80 hover:opacity-100 hover:text-white transition-colors" href="#">Contato</a></li>
+<li><a class="font-body-md text-body-md text-tertiary-fixed-dim opacity-80 hover:opacity-100 hover:text-white transition-colors" href="#">Showroom</a></li>
+</ul>
+</div>
+<div class="md:col-span-1">
+<h4 class="font-button text-button text-champagne mb-6 uppercase tracking-wider">Contato</h4>
+<ul class="flex flex-col gap-4">
+<li class="font-body-md text-body-md text-white/70">atendimento@tockscustom.com</li>
+<li class="font-body-md text-body-md text-white/70">+55 (47) 9999-0000</li>
+</ul>
+</div>
+</div>
+<div class="max-w-container-max mx-auto border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-body-md text-[14px] text-white/50">© 1994-2024 Tocks Custom. Marcenaria de Herança.</p>
+<div class="flex gap-4 text-white/50">
+<span class="material-symbols-outlined hover:text-white cursor-pointer transition-colors" style="font-size: 20px;">language</span>
+<span class="material-symbols-outlined hover:text-white cursor-pointer transition-colors" style="font-size: 20px;">share</span>
+</div>
+</div>
+</footer>
+<script>
+        // Simple script for nav background blur on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-white/90', 'shadow-sm');
+                nav.classList.remove('bg-transparent');
+            } else {
+                nav.classList.remove('bg-white/90', 'shadow-sm');
+                nav.classList.add('bg-transparent');
+            }
+        });
+    </script>
+</body></html>
