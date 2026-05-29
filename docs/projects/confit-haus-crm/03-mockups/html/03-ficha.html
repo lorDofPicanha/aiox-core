@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact Details - Confit Haus</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Newsreader:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#c7e7ff",
+                        "border-neutral": "#DDD6CA",
+                        "background": "#fff8f2",
+                        "inverse-primary": "#97cdf3",
+                        "on-surface-variant": "#41484d",
+                        "inverse-on-surface": "#f9efe4",
+                        "tertiary-fixed-dim": "#e5c27b",
+                        "secondary-container": "#c5e5cc",
+                        "surface-bright": "#fff8f2",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#e1d9ce",
+                        "secondary-fixed-dim": "#afceb6",
+                        "on-primary-fixed-variant": "#024c6c",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#fff0d8",
+                        "secondary": "#486551",
+                        "inverse-surface": "#343028",
+                        "on-tertiary-fixed": "#261a00",
+                        "surface-variant": "#eae1d6",
+                        "surface": "#FFFFFF",
+                        "primary": "#1e5b7c",
+                        "surface-container-high": "#f0e7dc",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#314d3a",
+                        "surface-container-low": "#fcf2e7",
+                        "text-muted": "#6B6B6B",
+                        "secondary-fixed": "#caead1",
+                        "on-tertiary-fixed-variant": "#5b4306",
+                        "on-secondary-fixed": "#052011",
+                        "brand-dark": "#324C3A",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#e8f4ff",
+                        "primary-fixed-dim": "#97cdf3",
+                        "surface-tint": "#296485",
+                        "on-surface": "#1f1b14",
+                        "tertiary-container": "#866a2c",
+                        "outline-variant": "#c1c7ce",
+                        "tertiary": "#6b5216",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "text-strong": "#1A1A1A",
+                        "on-primary-fixed": "#001e2e",
+                        "primary-hover": "#2F6A97",
+                        "outline": "#71787e",
+                        "primary-container": "#3c7496",
+                        "on-secondary-container": "#4b6753",
+                        "tertiary-fixed": "#ffdea0",
+                        "error-container": "#ffdad6",
+                        "on-background": "#1f1b14",
+                        "surface-container": "#f6ece1",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#eae1d6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "card": "12px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "unit": "4px",
+                        "gutter": "16px",
+                        "margin-mobile": "16px",
+                        "container-padding": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Newsreader"],
+                        "headline-lg": ["Newsreader"],
+                        "display-lg": ["Newsreader"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Newsreader"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}]
+                    },
+                    "boxShadow": {
+                        "soft": "0 4px 20px rgba(60, 116, 150, 0.05)"
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            left: 11px;
+            top: 24px;
+            bottom: -24px;
+            width: 2px;
+            background-color: #DDD6CA;
+        }
+        .timeline-item:last-child .timeline-line::before {
+            display: none;
+        }
+        /* Custom progress circle */
+        .progress-ring__circle {
+            transition: stroke-dashoffset 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+    </style>
+</head>
+<body class="bg-[#EDE4D9] text-on-surface font-body-lg min-h-screen flex">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-primary dark:bg-primary shadow-sm z-50">
+<div class="flex flex-col h-full py-spacing-margin-desktop px-gutter">
+<!-- Header -->
+<div class="flex flex-col items-center mb-8 text-center">
+<img alt="Confit Haus Logo" class="w-16 h-16 rounded-full mb-3" data-alt="A clean, minimalist logo featuring the letters CH in a modern serif font, surrounded by a subtle circular border. The background is pristine white, and the typography is a deep, sophisticated artisanal blue. The design feels premium, warm, and institutional, perfectly suited for a gourmet preserves CRM." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB89fYQtN_u0xfw-BOWFQ0w-PHAtKjRaGC1Qj51H93uJocYLBAyj9aGTmqmvy0Z_yUgvWq5taccXHf2xg5kVVquimfWA1PY88iV7mhqNKF_xlaFPE3CvZAk5Ho8oFY_jvEJ2wEwLcZ_PWjAz0Pf4_tki_vlfsaHOzsZXHpXYVanFZg9wMpt_DBOPZLPGKbqog2SNdqYmvFHfU_iqhFmBv7LITDruenPL9AQ2mQBGylMH2Mw48fLpeLEBfaH_8rJJvZZ77wEVBU-vK70"/>
+<h1 class="font-display-lg text-display-lg-mobile text-on-primary">Confit Haus</h1>
+<p class="font-body-md text-body-md text-on-primary-fixed-variant opacity-80 mt-1">CRM & Relacionamento</p>
+</div>
+<!-- CTA -->
+<button class="w-full bg-inverse-primary text-on-primary-fixed hover:bg-inverse-primary/90 rounded-lg py-2 px-4 mb-8 font-title-lg text-body-md transition-all duration-200 ease-in-out flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                Novo lead
+            </button>
+<!-- Navigation -->
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-primary-fixed-variant opacity-80 hover:bg-primary-hover hover:opacity-100 transition-all duration-200 ease-in-out font-Inter text-body-md" href="#">
+<span class="material-symbols-outlined">inbox</span>
+                    Caixa de Entrada
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-primary-fixed-variant opacity-80 hover:bg-primary-hover hover:opacity-100 transition-all duration-200 ease-in-out font-Inter text-body-md" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+                    Funil
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-primary bg-primary-container/20 border-l-4 border-inverse-primary transition-all duration-200 ease-in-out font-Inter text-body-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+                    Contatos
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-primary-fixed-variant opacity-80 hover:bg-primary-hover hover:opacity-100 transition-all duration-200 ease-in-out font-Inter text-body-md" href="#">
+<span class="material-symbols-outlined">analytics</span>
+                    Análise
+                </a>
+</nav>
+<!-- Footer -->
+<div class="mt-auto space-y-2 border-t border-primary-hover pt-4">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-primary-fixed-variant opacity-80 hover:bg-primary-hover hover:opacity-100 transition-all duration-200 ease-in-out font-Inter text-body-md" href="#">
+<span class="material-symbols-outlined">settings</span>
+                    Configurações
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-primary-fixed-variant opacity-80 hover:bg-primary-hover hover:opacity-100 transition-all duration-200 ease-in-out font-Inter text-body-md" href="#">
+<span class="material-symbols-outlined">help</span>
+                    Ajuda
+                </a>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-0 md:ml-64 w-full">
+<!-- TopNavBar (Responsive simplified for desktop) -->
+<header class="bg-surface dark:bg-surface border-b border-border-neutral shadow-sm docked full-width top-0 sticky z-40 h-16 flex justify-between items-center px-spacing-margin-desktop">
+<div class="flex items-center gap-4">
+<!-- Back button contextual -->
+<button class="text-text-muted hover:text-primary transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<span class="font-Inter text-body-md text-text-muted">Voltar para Contatos</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-text-muted hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-text-muted hover:text-primary transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<div class="p-spacing-margin-desktop max-w-7xl mx-auto space-y-8">
+<!-- 1. Header Profile Area -->
+<section class="flex flex-col md:flex-row items-start md:items-center gap-6">
+<img alt="Carlos Silva Profile" class="w-24 h-24 rounded-full border-4 border-surface shadow-sm" data-alt="A professional yet warm portrait placeholder for a male client named Carlos Silva. The background is a soft beige, and the initials CS are in a deep artisanal blue. The design is clean, corporate, but with a touch of humanity, fitting a high-end gourmet CRM." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8tTd6XlJhF2ETj4MBucCZ4NeQ4w726TZ-pXhN6dP-wknwfhnXL1N428zIKfEW0-XPPWwbFGf8jYrvu97ABD4XajEz5mZbnWQhbdADcooBj8EvGQNff2Ri4V4z4ebvJm6HaiqvWQdGzMDhsZotHhqfAeCBLd-CrDEwoIjFFNKfD_lg-guwHtzpHDGDeTsaz1SVW7DlrF-e5VFyyDW8acm9FSWThnUzJsAK75LauM20ecQ8EIn6WAEnlaLny6XGXJde3TQJiLgaIv5p"/>
+<div class="flex-1">
+<div class="flex items-center gap-4 mb-2">
+<h2 class="font-headline-lg text-headline-lg text-text-strong">Carlos Silva</h2>
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-[#EFCB83]/20 text-[#866a2c] font-label-md text-label-md border border-[#EFCB83]/30">
+<span class="w-2 h-2 rounded-full bg-[#EFCB83] mr-2"></span>
+                            Quente
+                        </span>
+</div>
+<div class="flex items-center gap-6 text-text-muted font-body-md">
+<a class="flex items-center gap-2 hover:text-primary transition-colors" href="https://wa.me/5511987654321">
+<span class="material-symbols-outlined text-[18px]">phone_iphone</span>
+                            +55 11 98765-4321
+                        </a>
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+                            carlos.silva@emporioexemplo.com.br
+                        </span>
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+                            São Paulo, SP
+                        </span>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="bg-surface border border-border-neutral hover:border-primary text-primary font-label-md text-label-md px-4 py-2 rounded-lg transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+                        Editar
+                    </button>
+<button class="bg-primary hover:bg-primary-hover text-on-primary font-label-md text-label-md px-4 py-2 rounded-lg shadow-sm transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">send</span>
+                        Mensagem
+                    </button>
+</div>
+</section>
+<!-- Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Left Column (Wider) -->
+<div class="lg:col-span-2 space-y-gutter">
+<!-- Card 1 - Classificação -->
+<div class="bg-surface rounded-card border border-border-neutral shadow-soft p-container-padding">
+<h3 class="font-headline-md text-headline-md text-text-strong mb-6 border-b border-border-neutral pb-2">Classificação &amp; Perfil</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Details -->
+<div class="space-y-6">
+<div>
+<span class="block font-label-sm text-label-sm text-text-muted uppercase tracking-wider mb-1">Nicho de Mercado</span>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-surface-container-high text-on-surface-variant rounded-full font-label-md text-label-md">Empório</span>
+<span class="px-3 py-1 bg-surface-container-high text-on-surface-variant rounded-full font-label-md text-label-md">Loja de Presente</span>
+</div>
+</div>
+<div>
+<span class="block font-label-sm text-label-sm text-text-muted uppercase tracking-wider mb-1">Status de Compra</span>
+<span class="flex items-center gap-2 font-body-lg text-body-lg text-secondary">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+                                        Cliente Ativo
+                                    </span>
+</div>
+<div>
+<span class="block font-label-sm text-label-sm text-text-muted uppercase tracking-wider mb-1">Responsável</span>
+<div class="flex items-center gap-3 mt-2">
+<img alt="Ana Paula" class="w-8 h-8 rounded-full" data-alt="A small, professional avatar placeholder for a sales rep named Ana Paula. The background is a soft beige, and the initials AP are in a deep artisanal blue. It conveys a sense of trusted partnership in a modern CRM environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP25i6rF03PL1gw50zxBrOUBFKmHnW-c20HT40Cp-TYtxiBNE0YCXTTPFhzo18AGRFpsUFPA3u4_OFjiilAuz8BjZoYSLuJkJ_RdQVllokOFxqmE_m8DI1tZB6nOCCLqt8Q6kD4YNgDUkvTPvX3AYGSE1uqUJlVrfJ0cH9FdbrIM1k8h7I9KREZoST5ish7oWOLd1kbR1R0iy2PKtFCXvecxIqCbPgWc-ubKSa75fnIl3rSkNkZZIcqoiTYlpC2l_Z_B2Vm4FdfM1e"/>
+<span class="font-body-md text-body-md text-text-strong">Ana Paula</span>
+</div>
+</div>
+</div>
+<!-- Lead Score Meter -->
+<div class="flex flex-col items-center justify-center bg-surface-container-lowest rounded-lg p-6 border border-border-neutral/50">
+<span class="font-label-sm text-label-sm text-text-muted uppercase tracking-wider mb-4">Lead Score</span>
+<div class="relative w-32 h-32">
+<svg class="w-full h-full" viewbox="0 0 100 100">
+<!-- Background circle -->
+<circle class="text-surface-variant stroke-current" cx="50" cy="50" fill="transparent" r="40" stroke-width="8"></circle>
+<!-- Progress circle -->
+<circle class="text-[#EFCB83] stroke-current progress-ring__circle" cx="50" cy="50" fill="transparent" r="40" stroke-dasharray="251.2" stroke-dashoffset="45.216" stroke-linecap="round" stroke-width="8"></circle> <!-- 82% of 251.2 -->
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-display-lg-mobile text-display-lg-mobile text-text-strong">82</span>
+<span class="font-label-sm text-label-sm text-text-muted">/ 100</span>
+</div>
+</div>
+<p class="font-label-md text-label-md text-text-muted mt-4 text-center">Alta probabilidade de recompra este mês.</p>
+</div>
+</div>
+</div>
+<!-- Card 4 - Pedidos -->
+<div class="bg-surface rounded-card border border-border-neutral shadow-soft p-container-padding">
+<div class="flex justify-between items-center mb-6 border-b border-border-neutral pb-2">
+<h3 class="font-headline-md text-headline-md text-text-strong">Histórico de Pedidos</h3>
+<button class="text-primary hover:text-primary-hover font-label-md text-label-md flex items-center gap-1 transition-colors">
+                                Ver todos
+                                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-surface-variant">
+<th class="py-3 font-label-sm text-label-sm text-text-muted uppercase tracking-wider font-medium">Data</th>
+<th class="py-3 font-label-sm text-label-sm text-text-muted uppercase tracking-wider font-medium">Pedido</th>
+<th class="py-3 font-label-sm text-label-sm text-text-muted uppercase tracking-wider font-medium">Valor</th>
+<th class="py-3 font-label-sm text-label-sm text-text-muted uppercase tracking-wider font-medium">Status</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md text-text-strong divide-y divide-surface-variant/50">
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-4">12 Out 2023</td>
+<td class="py-4 font-medium">Geleias Variadas - Lote Outono</td>
+<td class="py-4">R$ 450,00</td>
+<td class="py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-secondary-container/30 text-secondary font-label-sm text-label-sm">Entregue</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-4">28 Ago 2023</td>
+<td class="py-4 font-medium">Kit Degustação Premium</td>
+<td class="py-4">R$ 180,00</td>
+<td class="py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-secondary-container/30 text-secondary font-label-sm text-label-sm">Entregue</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors text-text-muted">
+<td class="py-4">15 Jul 2023</td>
+<td class="py-4">Amostras Iniciais</td>
+<td class="py-4">R$ 0,00</td>
+<td class="py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-surface-variant text-text-muted font-label-sm text-label-sm">Concluído</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Right Column (Narrower) -->
+<div class="space-y-gutter">
+<!-- Card 2 - Linha do tempo -->
+<div class="bg-surface rounded-card border border-border-neutral shadow-soft p-container-padding">
+<h3 class="font-headline-md text-headline-md text-text-strong mb-6 border-b border-border-neutral pb-2">Linha do Tempo</h3>
+<div class="relative pl-2">
+<!-- Timeline Items -->
+<div class="timeline-item relative pb-8">
+<div class="timeline-line"></div>
+<div class="flex items-start gap-4">
+<div class="w-6 h-6 rounded-full bg-primary-container text-on-primary flex items-center justify-center shrink-0 z-10 border-2 border-surface shadow-sm">
+<span class="material-symbols-outlined text-[14px]">repeat</span>
+</div>
+<div>
+<p class="font-title-lg text-body-lg text-text-strong">Recompra (Geleias Variadas)</p>
+<p class="font-body-md text-label-md text-text-muted mt-1">12 Outubro 2023 • 14:30</p>
+</div>
+</div>
+</div>
+<div class="timeline-item relative pb-8">
+<div class="timeline-line"></div>
+<div class="flex items-start gap-4">
+<div class="w-6 h-6 rounded-full bg-surface border border-primary text-primary flex items-center justify-center shrink-0 z-10 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">shopping_bag</span>
+</div>
+<div>
+<p class="font-title-lg text-body-lg text-text-strong">Primeira compra</p>
+<p class="font-body-md text-label-md text-text-muted mt-1">28 Agosto 2023 • 09:15</p>
+</div>
+</div>
+</div>
+<div class="timeline-item relative pb-8">
+<div class="timeline-line"></div>
+<div class="flex items-start gap-4">
+<div class="w-6 h-6 rounded-full bg-surface border border-outline-variant text-text-muted flex items-center justify-center shrink-0 z-10 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">local_shipping</span>
+</div>
+<div>
+<p class="font-title-lg text-body-lg text-text-strong">Amostra enviada</p>
+<p class="font-body-md text-label-md text-text-muted mt-1">15 Julho 2023 • 16:45</p>
+</div>
+</div>
+</div>
+<div class="timeline-item relative">
+<div class="timeline-line"></div>
+<div class="flex items-start gap-4">
+<div class="w-6 h-6 rounded-full bg-surface border border-outline-variant text-text-muted flex items-center justify-center shrink-0 z-10 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">chat_bubble</span>
+</div>
+<div>
+<p class="font-title-lg text-body-lg text-text-strong">Primeira mensagem (WhatsApp)</p>
+<p class="font-body-md text-label-md text-text-muted mt-1">02 Julho 2023 • 11:20</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3 - Consentimento & LGPD -->
+<div class="bg-surface rounded-card border border-border-neutral shadow-soft p-container-padding">
+<div class="flex items-center gap-2 mb-6 border-b border-border-neutral pb-2">
+<span class="material-symbols-outlined text-text-muted">shield_lock</span>
+<h3 class="font-headline-md text-headline-md text-text-strong">Privacidade &amp; LGPD</h3>
+</div>
+<div class="space-y-6">
+<!-- Toggle -->
+<div class="flex items-center justify-between">
+<div>
+<p class="font-title-lg text-body-md text-text-strong">Marketing Opt-in</p>
+<p class="font-label-md text-label-md text-text-muted mt-0.5">Recebe ofertas e novidades.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-border-neutral after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<hr class="border-border-neutral/50"/>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-3">
+<button class="w-full bg-surface border border-border-neutral hover:border-primary text-text-strong font-label-md text-label-md px-4 py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                                    Exportar dados
+                                </button>
+<button class="w-full bg-surface border border-error-container hover:bg-error-container text-error font-label-md text-label-md px-4 py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">delete_forever</span>
+                                    Excluir dados
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>
