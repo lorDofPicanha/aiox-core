@@ -8,9 +8,9 @@
 # - File types for categorization
 #
 version: 4.2.13
-generated_at: "2026-05-28T01:47:58.200Z"
+generated_at: "2026-05-29T14:11:43.703Z"
 generator: scripts/generate-install-manifest.js
-file_count: 1214
+file_count: 1217
 files:
   - path: cli/commands/config/index.js
     hash: sha256:ebcad2ce3807eda29dcddff76d7a95ddc9b7fa160df21fd608f94b802237e862
@@ -1197,13 +1197,13 @@ files:
     type: data
     size: 7610
   - path: data/jarvis-mind-clone-index.json
-    hash: sha256:98b23daacf99ab509d63ab3bd12ddf8cbdacccd3579471158ba7e460cfcb26ee
+    hash: sha256:379f38dcd1c6d53e7b95f9906481f162929dceead2351883862e24d5af58bb41
     type: data
-    size: 386327
+    size: 388461
   - path: data/jarvis-mind-clone-map.yaml
-    hash: sha256:d404e07f7de09951ca2770cb073e315b3d8f7dd93295c3f21fad04f17ab5e7b0
+    hash: sha256:b672fbfa59d9a65bef749ec4db84e4b8111e7ba5a6615e05ddb083b95defc311
     type: data
-    size: 9417
+    size: 10839
   - path: data/knowledge/ai-strategy-kb.md
     hash: sha256:52bac6ccd67dfbb4d946d7fe593cf5ac6657cc4afa74a43c977ad48e7a526fde
     type: data
@@ -1352,6 +1352,10 @@ files:
     hash: sha256:89f98d52274a53d97c7593a2d29591f6c31298196075ddd21697d9c2be694301
     type: agent
     size: 10196
+  - path: development/agents/anderson-hernandes.md
+    hash: sha256:696a6010493bdc186be59d009a9550729c9121986e3c936cd06c52c3446f7b9d
+    type: agent
+    size: 31076
   - path: development/agents/ann-cavoukian.md
     hash: sha256:51005e7a3e169aa57dcf19ec050ced5998e30b498e37deaf5aeba917297a0e22
     type: agent
@@ -1416,6 +1420,10 @@ files:
     hash: sha256:23e9e9ee6cb6228bbbcc35c9ed2362e4fc3ccbc045bbb11127a10b4f03faecf1
     type: agent
     size: 8168
+  - path: development/agents/heleno-taveira-torres.md
+    hash: sha256:7370829926f081f25e9feaee6ee7610b24c7a609c3eeed7ddebdb48cce4539c9
+    type: agent
+    size: 28092
   - path: development/agents/ilya-sutskever.md
     hash: sha256:d406f3ca7fdce3529eb215a729f368eb29c6a367111f8a77b9dbc8e46adef8c6
     type: agent
@@ -1504,6 +1512,10 @@ files:
     hash: sha256:1ec48979db06f057f2ad662446612d87088f94c752a5ccc7ccfa2517ea05e922
     type: agent
     size: 26831
+  - path: development/agents/roberto-dias-duarte.md
+    hash: sha256:2927e8bd6509b31dc6348b756e3fde3125d9d84c7c02fceb6b70bafeb95525f0
+    type: agent
+    size: 38904
   - path: development/agents/russell-brunson.md
     hash: sha256:10a7c78d3d6d72c1e04228f2337587a980aaa97bbc73ef6102786773aab694b0
     type: agent

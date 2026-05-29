@@ -1,0 +1,898 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projeto Contador - Relatorio AIOX</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0a0b'/%3E%3Cpath d='M7 17h12l-4 4 2 2 8-8-8-8-2 2 4 4H7v4z' fill='%23d1ff00'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --aiox-primary: #d1ff00;
+      --aiox-primary-deep: #9fcc00;
+      --aiox-primary-soft: #f0ffb0;
+      --aiox-accent-12: rgba(209, 255, 0, 0.12);
+      --aiox-void: #0a0a0b;
+      --aiox-surface: #141416;
+      --aiox-surface-2: #1c1c1f;
+      --aiox-surface-3: #252528;
+      --aiox-border: #2a2a2e;
+      --aiox-border-strong: #3d3d42;
+      --aiox-text: #f4f1ea;
+      --aiox-text-2: #a8a4a0;
+      --aiox-text-3: #6b6864;
+      --aiox-success: #7bc97b;
+      --aiox-warning: #e8b23a;
+      --aiox-error: #e0533d;
+      --aiox-info: #5c8fe8;
+      --font-display: "TASA Orbiter", "Cabinet Grotesk", "Geist", "Segoe UI", sans-serif;
+      --font-sans: "Geist", "Segoe UI", system-ui, sans-serif;
+      --font-mono: "Roboto Mono", "Cascadia Code", "Consolas", monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--aiox-void);
+      color: var(--aiox-text);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255,255,255,0.025) 1px, transparent 1px),
+        var(--aiox-void);
+      background-size: 56px 56px;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          rgba(255,255,255,0.018),
+          rgba(255,255,255,0.018) 1px,
+          transparent 1px,
+          transparent 4px
+        );
+      mix-blend-mode: screen;
+      opacity: 0.35;
+    }
+
+    a {
+      color: var(--aiox-primary);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--aiox-primary-deep);
+    }
+
+    .shell {
+      width: min(1180px, calc(100vw - 36px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0 28px;
+      color: var(--aiox-text-3);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .mark {
+      color: var(--aiox-primary);
+      font-weight: 700;
+    }
+
+    .hero {
+      min-height: 56vh;
+      display: grid;
+      align-items: end;
+      padding: 80px 0 44px;
+      border-top: 1px solid var(--aiox-border-strong);
+      border-bottom: 1px solid var(--aiox-border-strong);
+      position: relative;
+    }
+
+    .hero::after {
+      content: "AIOX";
+      position: absolute;
+      right: 0;
+      top: 30px;
+      font-family: var(--font-display);
+      font-size: clamp(64px, 16vw, 220px);
+      font-weight: 800;
+      line-height: 0.8;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(209,255,0,0.18);
+      letter-spacing: -0.08em;
+      z-index: 0;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      color: var(--aiox-primary);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: var(--aiox-primary);
+    }
+
+    h1 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(44px, 8vw, 96px);
+      line-height: 0.95;
+      letter-spacing: -0.045em;
+      text-transform: uppercase;
+    }
+
+    .lead {
+      max-width: 760px;
+      margin: 24px 0 0;
+      color: var(--aiox-text-2);
+      font-size: 18px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .meta {
+      min-height: 90px;
+      padding: 16px;
+      background: var(--aiox-surface);
+      border: 1px solid var(--aiox-border);
+      border-radius: 6px;
+    }
+
+    .meta span {
+      display: block;
+      color: var(--aiox-text-3);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .meta strong {
+      display: block;
+      margin-top: 10px;
+      color: var(--aiox-text);
+      font-size: 16px;
+      line-height: 1.25;
+    }
+
+    section {
+      padding: 44px 0 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--aiox-border-strong);
+      padding-bottom: 14px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .section-index {
+      color: var(--aiox-primary);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .panel {
+      background: var(--aiox-surface);
+      border: 1px solid var(--aiox-border);
+      border-radius: 6px;
+      padding: 22px;
+    }
+
+    .panel.elevated {
+      background: var(--aiox-surface-2);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.38);
+    }
+
+    .callout {
+      background: var(--aiox-accent-12);
+      border-left: 3px solid var(--aiox-primary);
+      border-radius: 2px;
+      padding: 18px 20px;
+    }
+
+    .warning {
+      background: var(--aiox-surface);
+      border-left-color: var(--aiox-warning);
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      line-height: 1.25;
+    }
+
+    p {
+      margin: 0 0 12px;
+      color: var(--aiox-text-2);
+    }
+
+    ul, ol {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--aiox-text-2);
+    }
+
+    li {
+      margin: 7px 0;
+    }
+
+    li::marker {
+      color: var(--aiox-primary);
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 4px 10px;
+      border: 1px solid var(--aiox-border-strong);
+      border-radius: 999px;
+      background: var(--aiox-surface-3);
+      color: var(--aiox-primary);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border: 1px solid var(--aiox-border);
+      border-radius: 6px;
+      background: var(--aiox-surface);
+    }
+
+    th, td {
+      text-align: left;
+      vertical-align: top;
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--aiox-border);
+    }
+
+    th {
+      background: var(--aiox-surface-2);
+      color: var(--aiox-text);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    td {
+      color: var(--aiox-text-2);
+      font-size: 14px;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .metric {
+      display: grid;
+      gap: 6px;
+      padding: 18px;
+      min-height: 128px;
+      background: var(--aiox-surface);
+      border: 1px solid var(--aiox-border);
+      border-radius: 6px;
+    }
+
+    .metric strong {
+      color: var(--aiox-primary);
+      font-family: var(--font-display);
+      font-size: 30px;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .metric span {
+      color: var(--aiox-text-2);
+      font-size: 13px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 10px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 16px;
+      border: 1px solid var(--aiox-border);
+      border-radius: 6px;
+      background: var(--aiox-surface);
+    }
+
+    .num {
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      background: var(--aiox-primary);
+      color: var(--aiox-void);
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .step strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--aiox-text);
+    }
+
+    .step span {
+      color: var(--aiox-text-2);
+      font-size: 14px;
+    }
+
+    .footer {
+      margin-top: 52px;
+      padding-top: 18px;
+      border-top: 1px solid var(--aiox-border-strong);
+      color: var(--aiox-text-3);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 860px) {
+      .hero {
+        min-height: auto;
+        padding-top: 52px;
+      }
+
+      .meta-grid,
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      th {
+        white-space: normal;
+      }
+    }
+
+    @media print {
+      body {
+        background: var(--aiox-void);
+      }
+
+      .shell {
+        width: auto;
+        padding: 0;
+      }
+
+      .panel,
+      .metric,
+      .step,
+      table {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div><span class="mark">AIOX</span> Squad / Dark Cockpit Edition</div>
+      <div>Projeto Contador / 2026-05-28</div>
+    </header>
+
+    <section class="hero" aria-label="Capa">
+      <div class="hero-content">
+        <div class="eyebrow">Relatorio de adicoes</div>
+        <h1>Projeto Contador</h1>
+        <p class="lead">
+          Inventario executivo de tudo que foi adicionado na fase inicial: pesquisa HYDRA,
+          conclave de agentes, decisao de MVP, responsabilidades, riscos e proximo corte de trabalho.
+        </p>
+        <div class="meta-grid">
+          <div class="meta">
+            <span>Arquivos novos</span>
+            <strong>2 documentos base + documento consolidado</strong>
+          </div>
+          <div class="meta">
+            <span>Diretorio</span>
+            <strong>docs/projects/contador</strong>
+          </div>
+          <div class="meta">
+            <span>MVP decidido</span>
+            <strong>Radar Fiscal + Operacao</strong>
+          </div>
+          <div class="meta">
+            <span>Estado</span>
+            <strong>Pronto para Story 0.1</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>O Que Foi Adicionado</h2>
+        <span class="section-index">01 / INVENTARIO</span>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Arquivo</th>
+            <th>Conteudo</th>
+            <th>Uso</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="00-mega-pesquisa-hydra.md">00-mega-pesquisa-hydra.md</a></td>
+            <td>Mega pesquisa inicial sobre mercado, dores, regulacao, concorrentes, fontes HYDRA e hipoteses de MVP.</td>
+            <td>Base factual para decisoes de produto e conclave.</td>
+          </tr>
+          <tr>
+            <td><a href="01-conclave-agentes-mvp.md">01-conclave-agentes-mvp.md</a></td>
+            <td>Sintese do conclave: consenso, dissenso, blind spots, veredito, agentes responsaveis e plano imediato.</td>
+            <td>Documento de alinhamento para transformar a pesquisa em PRD, epicos e stories.</td>
+          </tr>
+          <tr>
+            <td><strong>02-relatorio-aiox-adicionados.html</strong></td>
+            <td>Este relatorio visual seguindo o AIOX Design: dark cockpit, Kinetic Limon, tabelas e callouts.</td>
+            <td>Leitura executiva e compartilhavel do que foi criado.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Pesquisa HYDRA</h2>
+        <span class="section-index">02 / BASE</span>
+      </div>
+
+      <div class="grid-2">
+        <article class="panel elevated">
+          <h3>Resultado operacional</h3>
+          <p>
+            O corpus HYDRA local nao tinha material relevante sobre contabilidade.
+            Foram validadas fontes novas via HYDRA e complementadas com pesquisa web atual.
+          </p>
+          <div class="tag-row">
+            <span class="tag">Receita Federal</span>
+            <span class="tag">Serpro</span>
+            <span class="tag">SPED</span>
+            <span class="tag">Simples Nacional</span>
+            <span class="tag">Omie</span>
+            <span class="tag">Contabilizei</span>
+          </div>
+        </article>
+
+        <aside class="callout">
+          <h3>Tese inicial</h3>
+          <p>
+            O projeto nao deve nascer como dashboard financeiro. A oportunidade esta em reduzir
+            risco operacional: prazos perdidos, pendencias fiscais, documentos atrasados,
+            retrabalho e comunicacao quebrada entre escritorio e cliente.
+          </p>
+        </aside>
+      </div>
+
+      <div class="grid-3" style="margin-top: 12px;">
+        <div class="metric">
+          <strong>4.438</strong>
+          <span>URLs rastreadas no HYDRA local antes da pesquisa.</span>
+        </div>
+        <div class="metric">
+          <strong>3.209</strong>
+          <span>Arquivos originals disponiveis no HYDRA.</span>
+        </div>
+        <div class="metric">
+          <strong>40</strong>
+          <span>Runs registrados no HYDRA, ultimo em 2026-05-20.</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Decisao de Produto</h2>
+        <span class="section-index">03 / MVP</span>
+      </div>
+
+      <div class="grid-2">
+        <article class="panel">
+          <h3>Veredito</h3>
+          <p>
+            Construir como <strong>Radar Fiscal + Operacao do Escritorio Contabil</strong>.
+            A primeira promessa e dar visibilidade e dono para obrigacoes, documentos e
+            pendencias antes que virem multa, retrabalho ou CNPJ inapto.
+          </p>
+          <div class="tag-row">
+            <span class="tag">Fiscal ops</span>
+            <span class="tag">Pendencias</span>
+            <span class="tag">Documentos</span>
+            <span class="tag">SLA</span>
+          </div>
+        </article>
+
+        <article class="panel">
+          <h3>ICP inicial</h3>
+          <ul>
+            <li>Escritorios contabeis pequenos e medios.</li>
+            <li>5 a 40 colaboradores.</li>
+            <li>50 a 500 CNPJs na carteira.</li>
+            <li>Primeiro regime: MEI + Simples Nacional.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Como Vai Funcionar</h2>
+        <span class="section-index">04 / OPERACAO</span>
+      </div>
+
+      <div class="grid-2">
+        <article class="panel elevated">
+          <h3>Fluxo principal</h3>
+          <ol>
+            <li>O escritorio cadastra usuarios internos, clientes e CNPJs.</li>
+            <li>Cada cliente recebe tipo operacional: MEI, Simples Nacional e, depois, Lucro Presumido.</li>
+            <li>O sistema gera checklists mensais por tipo de cliente.</li>
+            <li>Obrigacoes, documentos e pendencias entram em um kanban operacional.</li>
+            <li>Cada cliente e cada obrigacao tem dono interno, status e prazo.</li>
+            <li>O cliente recebe link ou portal para enviar documentos pendentes.</li>
+            <li>O gestor acompanha vencidos, gargalos, clientes em risco e SLA por responsavel.</li>
+          </ol>
+        </article>
+
+        <article class="panel">
+          <h3>Status operacional</h3>
+          <p>O produto organiza o trabalho com uma matriz simples de estados, visivel para o escritorio inteiro.</p>
+          <div class="tag-row">
+            <span class="tag">ok</span>
+            <span class="tag">pendente cliente</span>
+            <span class="tag">pendente contador</span>
+            <span class="tag">em revisao</span>
+            <span class="tag">entregue</span>
+            <span class="tag">risco</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="callout" style="margin-top: 12px;">
+        <h3>Promessa do produto</h3>
+        <p>
+          Uma central para o escritorio enxergar obrigacoes, pendencias e documentos por cliente
+          antes que virem multa, retrabalho ou CNPJ inapto.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Escopo Adicionado</h2>
+        <span class="section-index">05 / CORTE</span>
+      </div>
+
+      <div class="grid-2">
+        <article class="panel elevated">
+          <h3>Dentro do MVP</h3>
+          <ul>
+            <li>Cadastro de escritorio, usuarios e clientes/CNPJs.</li>
+            <li>Carteira por responsavel interno.</li>
+            <li>Checklist mensal por tipo de cliente.</li>
+            <li>Kanban de obrigacoes e pendencias.</li>
+            <li>Portal/link do cliente para documentos.</li>
+            <li>Alertas por email ou WhatsApp manual/semi-automatizado.</li>
+            <li>Trilha de auditoria simples.</li>
+            <li>Dashboard operacional com clientes em risco, vencidos e SLA.</li>
+          </ul>
+        </article>
+
+        <article class="panel">
+          <h3>Fora do MVP</h3>
+          <ul>
+            <li>Apuracao tributaria completa.</li>
+            <li>Escrituracao completa.</li>
+            <li>Substituir Domínio, Alterdata, Fortes ou similares.</li>
+            <li>Armazenar certificado A1.</li>
+            <li>Scraping e-CAC em massa.</li>
+            <li>Envio fiscal automatico sem aprovacao humana.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Decisoes do Conclave</h2>
+        <span class="section-index">06 / DECISOES</span>
+      </div>
+
+      <div class="timeline">
+        <div class="step">
+          <div class="num">01</div>
+          <div>
+            <strong>Cliente inicial: escritorio contabil</strong>
+            <span>O empreendedor final fica fora do primeiro corte. O escritorio tem muitos CNPJs, dor recorrente e maior valor por conta.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">02</div>
+          <div>
+            <strong>Nao substituir incumbentes</strong>
+            <span>O produto opera acima de Domínio, Alterdata, Fortes e similares como central de visibilidade, cobranca e rotina.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">03</div>
+          <div>
+            <strong>Wedge operacional</strong>
+            <span>A dor inicial e nao perder prazo, nao esquecer documento e nao deixar cliente sem dono.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">04</div>
+          <div>
+            <strong>Reforma Tributaria como gatilho comercial</strong>
+            <span>Usar como checklist e preparacao, sem prometer motor completo de calculo tributario no MVP.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">05</div>
+          <div>
+            <strong>Integra Contador fica para fase 2</strong>
+            <span>Primeiro validar manualmente. APIs oficiais entram depois por exigirem e-CNPJ, procuracao, seguranca e custo.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">06</div>
+          <div>
+            <strong>LGPD e seguranca desde o inicio</strong>
+            <span>Mesmo sem guardar certificado A1, dados fiscais exigem mapa de dados, permissoes, auditoria e limites claros.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Agentes e Clones</h2>
+        <span class="section-index">07 / ORQUESTRACAO</span>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Frente</th>
+            <th>Dono</th>
+            <th>Responsabilidade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Orquestracao</td>
+            <td>@aios-master</td>
+            <td>Gates, alinhamento, conclaves e sequenciamento do projeto.</td>
+          </tr>
+          <tr>
+            <td>Pesquisa</td>
+            <td>@analyst</td>
+            <td>Entrevistas com contadores, concorrentes, jobs-to-be-done e fontes.</td>
+          </tr>
+          <tr>
+            <td>Produto</td>
+            <td>@pm + @marty-cagan</td>
+            <td>PRD, ICP, MVP, metricas, backlog e riscos de valor.</td>
+          </tr>
+          <tr>
+            <td>Arquitetura</td>
+            <td>@architect + @martin-fowler</td>
+            <td>Multi-tenant, modelo de dados, integracoes e fronteiras de sistema.</td>
+          </tr>
+          <tr>
+            <td>Seguranca</td>
+            <td>@cyber-chief + @bruce-schneier</td>
+            <td>Threat model, certificados, procuracoes, acesso e auditoria.</td>
+          </tr>
+          <tr>
+            <td>Legal/LGPD</td>
+            <td>@legal-chief + @patricia-peck</td>
+            <td>Mapa de dados, termos, DPA, limites de responsabilidade.</td>
+          </tr>
+          <tr>
+            <td>Go-to-market</td>
+            <td>@traffic-masters-chief + @april-dunford</td>
+            <td>Posicionamento, oferta piloto e script comercial.</td>
+          </tr>
+          <tr>
+            <td>Customer Success</td>
+            <td>@lincoln-murphy / @nick-mehta</td>
+            <td>Onboarding, TTFV, retencao, expansao e operacao recorrente.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Riscos Registrados</h2>
+        <span class="section-index">08 / BLIND SPOTS</span>
+      </div>
+
+      <div class="grid-3">
+        <div class="callout warning">
+          <h3>Voz do cliente</h3>
+          <p>Ainda faltam entrevistas reais com contadores. O conclave recomenda 10 entrevistas e 3 pilotos manuais.</p>
+        </div>
+        <div class="callout warning">
+          <h3>Obrigacoes por regime</h3>
+          <p>MEI, Simples, Lucro Presumido e Lucro Real exigem matrizes diferentes. O MVP deve limitar o primeiro regime.</p>
+        </div>
+        <div class="callout warning">
+          <h3>Dados sensiveis</h3>
+          <p>Certificados, procuracoes e dados fiscais exigem mapa LGPD e threat model antes da implementacao.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Proximo Corte</h2>
+        <span class="section-index">09 / ACAO</span>
+      </div>
+
+      <div class="timeline">
+        <div class="step">
+          <div class="num">01</div>
+          <div>
+            <strong>Criar PRD v0.1</strong>
+            <span>Escopo: Radar Fiscal + Operacao do Escritorio.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">02</div>
+          <div>
+            <strong>Preparar 10 entrevistas</strong>
+            <span>Roteiro para validar dor, workflow atual, willingness to pay e piloto.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">03</div>
+          <div>
+            <strong>Definir piloto manual</strong>
+            <span>3 escritorios, operacao concierge, sem automacao fiscal profunda.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">04</div>
+          <div>
+            <strong>Criar Story 0.1</strong>
+            <span>ICP, promessa, oferta piloto, matriz de dores e fora de escopo.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Story 0.1</h2>
+        <span class="section-index">10 / PRIMEIRA STORY</span>
+      </div>
+
+      <div class="grid-2">
+        <article class="panel elevated">
+          <h3>Story recomendada</h3>
+          <p><strong>Definir ICP, promessa e piloto manual do Projeto Contador.</strong></p>
+          <p>
+            Esta story vem antes de codigo. Ela transforma a pesquisa e o conclave em um corte
+            comercial e operacional validavel.
+          </p>
+        </article>
+
+        <article class="panel">
+          <h3>Acceptance criteria</h3>
+          <ul>
+            <li>ICP documentado.</li>
+            <li>Oferta piloto documentada.</li>
+            <li>Roteiro de entrevista com 10 perguntas.</li>
+            <li>Matriz de dores priorizadas.</li>
+            <li>Lista de 3 escritorios-alvo para piloto.</li>
+            <li>Escopo MVP e fora de escopo definidos.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer">
+      AIOX Squad / Relatorio gerado a partir dos documentos adicionados em docs/projects/contador
+    </footer>
+  </main>
+</body>
+</html>
