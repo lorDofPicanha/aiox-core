@@ -1,0 +1,35 @@
+{
+  "version": "2026-06-04-p4",
+  "source": "docs 26/28 corpus annotation seed",
+  "note": "Only Novo Gama EDITAL 7/8 are curated in this seed. Remaining corpus entries require human annotation before entering the gate.",
+  "editais": [
+    {
+      "editalId": "novo-gama-edital-7",
+      "file": "novo-gama-edital-7.json",
+      "arquivoOriginal": "EDITAL (7)",
+      "orgao": "Prefeitura Municipal de Novo Gama",
+      "municipioIbge": "5214887",
+      "aliases": [
+        "EDITAL (7)",
+        "EDITAL 7",
+        "novo-gama-edital-7",
+        "novo-gama-edital-7.json"
+      ],
+      "status": "curado_parcial"
+    },
+    {
+      "editalId": "novo-gama-edital-8",
+      "file": "novo-gama-edital-8.json",
+      "arquivoOriginal": "EDITAL (8)",
+      "orgao": "Prefeitura Municipal de Novo Gama",
+      "municipioIbge": "5214887",
+      "aliases": [
+        "EDITAL (8)",
+        "EDITAL 8",
+        "novo-gama-edital-8",
+        "novo-gama-edital-8.json"
+      ],
+      "status": "curado_parcial"
+    }
+  ]
+}

@@ -1,13 +1,32 @@
 import { formatCurrency, formatDateTime, scoreHealth } from "@/lib/noyce-model";
-import type { Opportunity } from "@/lib/noyce-model";
+import type { Opportunity, SuspicionSignal } from "@/lib/noyce-model";
 import { buildNextStep, lacunaTasks, operationalBlockers, operationalState } from "@/lib/noyce-operational";
 import { MarketSection, ScoreBreakdownList } from "@/components/shell/bits";
+
+const SUSPICION_DISCLAIMER =
+  "Sinal baseado em dados públicos e na Lei 14.133 — indício para avaliação, não afirmação de irregularidade. Não substitui análise jurídica.";
+
+type OpportunityWithSuspicion = Opportunity & { suspicionSignals?: SuspicionSignal[] };
+
+const HABILITATION_LABEL: Record<string, string> = {
+  GO: "GO",
+  GO_COM_TAREFAS: "GO com tarefas",
+  PENDENTE_DADO: "Pendente de dado",
+  NO_GO: "NO-GO",
+};
+
+function impugnationWindowLabel(action: string): string {
+  const match = /até (\d{4}-\d{2}-\d{2})/.exec(action);
+  return match?.[1] ?? "conforme art. 164";
+}
 
 export function AnalisarTab({ opportunity }: { opportunity: Opportunity }) {
   const state = operationalState(opportunity);
   const nextAction = buildNextStep(opportunity);
   const lacunas = lacunaTasks(opportunity);
   const blockers = operationalBlockers(opportunity);
+  const suspicionSignals = (opportunity as OpportunityWithSuspicion).suspicionSignals ?? [];
+  const habilitationResult = opportunity.habilitationResult ?? null;
 
   return (
     <section className="area area-analisar">
@@ -42,6 +61,12 @@ export function AnalisarTab({ opportunity }: { opportunity: Opportunity }) {
       </section>
 
       <div className="detail-band">
+        <div>
+          <span>Elegibilidade</span>
+          <strong>
+            {habilitationResult ? HABILITATION_LABEL[habilitationResult.verdict] ?? habilitationResult.verdict : "ERM pendente"}
+          </strong>
+        </div>
         <div>
           <span>Valor</span>
           <strong>{formatCurrency(opportunity.estimatedValue)}</strong>
@@ -91,6 +116,33 @@ export function AnalisarTab({ opportunity }: { opportunity: Opportunity }) {
                 </p>
               </div>
               <span>{task.blocking ? "bloqueia" : "reduz confiança"}</span>
+            </div>
+          ))}
+        </section>
+      ) : null}
+
+      {suspicionSignals.length > 0 ? (
+        <section className="lacuna-tasks" aria-labelledby="suspicion-title">
+          <div className="section-heading compact">
+            <div>
+              <p className="eyebrow">Risco/Armadilha</p>
+              <h3 id="suspicion-title">Exigências atípicas para revisão</h3>
+            </div>
+            <span>{suspicionSignals.length} sinal(is)</span>
+          </div>
+          {suspicionSignals.map((signal) => (
+            <div className="lacuna-row blocking" key={`${signal.tipo}-${signal.evidenciaEdital.numero}`}>
+              <div>
+                <strong>
+                  Risco/Armadilha: cláusula {signal.evidenciaEdital.numero} · {signal.hookLegal.artigo}.
+                </strong>
+                <p>
+                  {signal.evidenciaEdital.trecho ?? signal.evidenciaEdital.texto} · Ação: {signal.acao} · Janela de
+                  impugnação: {impugnationWindowLabel(signal.acao)}.
+                </p>
+                <p>{SUSPICION_DISCLAIMER}</p>
+              </div>
+              <span>{signal.severidade}</span>
             </div>
           ))}
         </section>

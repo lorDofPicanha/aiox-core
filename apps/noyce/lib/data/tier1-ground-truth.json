@@ -1,0 +1,72 @@
+{
+  "_meta": {
+    "version": "2026-06-04-p4",
+    "scope": "Tier 1 zero-false-positive gate seed",
+    "curados": 2,
+    "pendentesAnotacaoHumana": 11,
+    "nota": "Ground truth completo depende de anotacao humana da secao de habilitacao. Os 10 editais restantes do corpus e Valparaiso nao foram inferidos pelo Codex.",
+    "pendentes": [
+      "edital-5-abadiana",
+      "edital-6-ceasa-go",
+      "edital-9-pirenopolis",
+      "ce-002-2026-anapolis",
+      "sei-59297613-ceasa-go",
+      "edital-01-2026-sec-gestao",
+      "edital-0405-sec-assistencia",
+      "edital-5-2026-republicado-sec-cultura",
+      "ubs-ii-sec-saude",
+      "concorrencia-03-2026-sec-saude",
+      "valparaiso"
+    ]
+  },
+  "novo-gama-edital-7": {
+    "flagsEsperados": [],
+    "camposNull": [
+      "meta.cnpjOrgao",
+      "meta.valorEstimado",
+      "meta.dataPublicacao",
+      "meta.dataSessao",
+      "economicoFinanceira.exigePL",
+      "economicoFinanceira.percentualPL",
+      "economicoFinanceira.indices.LC",
+      "economicoFinanceira.indices.LG",
+      "economicoFinanceira.indices.SG",
+      "economicoFinanceira.justificativaPresente",
+      "economicoFinanceira.garantiaPropostaPct",
+      "economicoFinanceira.clausula",
+      "tecnica.parcelasMaiorRelevancia",
+      "tecnica.tetoQuantitativo",
+      "tecnica.restricaoTempoLocal",
+      "tecnica.marcaSemSimilar",
+      "tecnica.clausula",
+      "juridica.clausula",
+      "fiscalTrabalhista.SICAF",
+      "fiscalTrabalhista.clausula"
+    ]
+  },
+  "novo-gama-edital-8": {
+    "flagsEsperados": [],
+    "camposNull": [
+      "meta.cnpjOrgao",
+      "meta.valorEstimado",
+      "meta.dataPublicacao",
+      "meta.dataSessao",
+      "economicoFinanceira.exigePL",
+      "economicoFinanceira.percentualPL",
+      "economicoFinanceira.indices.LC",
+      "economicoFinanceira.indices.LG",
+      "economicoFinanceira.indices.SG",
+      "economicoFinanceira.justificativaPresente",
+      "economicoFinanceira.garantiaPropostaPct",
+      "economicoFinanceira.clausula",
+      "tecnica.parcelasMaiorRelevancia",
+      "tecnica.tetoQuantitativo",
+      "tecnica.restricaoTempoLocal",
+      "tecnica.marcaSemSimilar",
+      "tecnica.clausula",
+      "juridica.clausula",
+      "fiscalTrabalhista.SICAF",
+      "fiscalTrabalhista.clausula"
+    ]
+  }
+}

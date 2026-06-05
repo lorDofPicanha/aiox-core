@@ -1,0 +1,134 @@
+[
+  {
+    "servicoCanonico": "EDIFICACAO_ALVENARIA",
+    "unidade": "m2",
+    "sinonimos": ["edificio de alvenaria", "construcao predio alvenaria", "execucao predio alvenaria"],
+    "provisorio": true
+  },
+  {
+    "servicoCanonico": "REFORMA_PREDIAL",
+    "unidade": "m2",
+    "sinonimos": ["reforma de edificio", "reforma predial"],
+    "provisorio": true
+  },
+  {
+    "servicoCanonico": "ESTRUTURA_CONCRETO_ARMADO",
+    "unidade": "m2",
+    "sinonimos": ["estrutura concreto armado"],
+    "provisorio": true
+  },
+  {
+    "servicoCanonico": "ESTRUTURA_METALICA",
+    "unidade": "m2",
+    "sinonimos": ["estrutura metalica"],
+    "provisorio": true
+  },
+  {
+    "servicoCanonico": "LAJE_PRE_FABRICADA",
+    "unidade": "m2",
+    "sinonimos": ["laje pre-moldada", "laje pre-fabricada"],
+    "provisorio": true
+  },
+  {
+    "servicoCanonico": "ALVENARIA_ESTRUTURAL",
+    "unidade": "m2",
+    "sinonimos": ["alvenaria estrutural"],
+    "provisorio": true
+  },
+  {
+    "servicoCanonico": "COBERTURA_TELHAMENTO",
+    "unidade": "m2",
+    "sinonimos": ["telhamento", "cobertura"],
+    "provisorio": true
+  },
+  {
+    "servicoCanonico": "REDE_HIDROSSANITARIA",
+    "unidade": "m2",
+    "sinonimos": ["instalacoes hidraulicas", "rede hidro-sanitaria"],
+    "provisorio": true
+  },
+  {
+    "servicoCanonico": "INSTALACAO_ELETRICA_BT",
+    "unidade": "kVA",
+    "sinonimos": ["instalacao eletrica baixa tensao"],
+    "provisorio": true
+  },
+  {
+    "servicoCanonico": "PAVIMENTACAO_CONCRETO",
+    "unidade": "m2",
+    "sinonimos": ["pavimentacao de concreto"],
+    "provisorio": true
+  },
+  {
+    "servicoCanonico": "PAVIMENTACAO_ASFALTICA",
+    "unidade": "m2",
+    "sinonimos": ["pavimentacao asfaltica"],
+    "provisorio": true
+  },
+  {
+    "servicoCanonico": "PAVIMENTACAO_PARALELEPIPEDO",
+    "unidade": "m2",
+    "sinonimos": ["pavimentacao paralelepipedo"],
+    "provisorio": true
+  },
+  {
+    "servicoCanonico": "TERRAPLENAGEM",
+    "unidade": "m2",
+    "sinonimos": ["terraplenagem", "servicos afins terraplenagem"],
+    "provisorio": true
+  },
+  {
+    "servicoCanonico": "DRENAGEM",
+    "unidade": "m2/m",
+    "sinonimos": ["drenagem"],
+    "provisorio": true
+  },
+  {
+    "servicoCanonico": "CONCRETO_USINADO",
+    "unidade": "m3",
+    "sinonimos": ["concreto usinado"],
+    "provisorio": true
+  },
+  {
+    "servicoCanonico": "MEIO_FIO_GUIA",
+    "unidade": "m",
+    "sinonimos": ["meio-fio", "guias"],
+    "provisorio": true
+  },
+  {
+    "servicoCanonico": "TOPOGRAFIA",
+    "unidade": "m2",
+    "sinonimos": ["topografia georreferenciada", "levantamento topografico"],
+    "provisorio": true
+  },
+  {
+    "servicoCanonico": "PARCELAMENTO_SOLO",
+    "unidade": "m2",
+    "sinonimos": ["parcelamento do solo"],
+    "provisorio": true
+  },
+  {
+    "servicoCanonico": "PAISAGISMO_URBANO",
+    "unidade": "un/m2",
+    "sinonimos": ["paisagismo", "mobiliario urbano"],
+    "provisorio": true
+  },
+  {
+    "servicoCanonico": "RESERVATORIO",
+    "unidade": "m3",
+    "sinonimos": ["reservatorio", "tanque"],
+    "provisorio": true
+  },
+  {
+    "servicoCanonico": "ACESSIBILIDADE",
+    "unidade": "m2",
+    "sinonimos": ["acessibilidade de pracas", "acessibilidade de parques"],
+    "provisorio": true
+  },
+  {
+    "servicoCanonico": "PINTURA",
+    "unidade": "m2",
+    "sinonimos": ["pintura", "emassamento e pintura"],
+    "provisorio": true
+  }
+]

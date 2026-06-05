@@ -80,6 +80,7 @@ export interface Opportunity {
   market: MarketStructure | null; // deep competitor intelligence; null → UI "dados insuficientes"
   stage3?: Stage3Synthesis | null; // prescriptive 5-frases (gated by kill-gate)
   triage: DiscoveryTriage; // Monitorar verdict (Vai/Olha/Pula)
+  habilitationResult?: HabilitationResult | null;
 }
 
 export type HabilitationRequirementCategory =
@@ -280,6 +281,273 @@ export interface PrescriptivePhrase {
 
 export interface Stage3Synthesis {
   phrases: PrescriptivePhrase[];
+  disclaimer: string;
+}
+
+// Tier 1 habilitation nucleus (P1): static capability profile + edital requirements.
+// Unknown accounting/profile fields stay null until a grounded source is parsed.
+export interface ClauseReference {
+  numero: string;
+  texto: string;
+  pagina?: number;
+  trecho?: string;
+}
+
+export interface CompanyIdentity {
+  razaoSocial: string;
+  cnpj: string;
+  creaEmpresa: string | null;
+  porte: "ME" | "EPP" | "DEMAIS" | null;
+  regime: "Simples" | "Lucro Presumido" | "Lucro Real" | null;
+  sedeMunicipioIbge: string;
+}
+
+export interface TechnicalProfessional {
+  id: string;
+  nome: string;
+  titulo: string;
+  crea: string | null;
+  rnp: string | null;
+  vinculo: {
+    tipo: string;
+    desde: string | null;
+  } | null;
+}
+
+export interface AcervoItem {
+  servicoCanonico: string;
+  qtd: number;
+  unidade: string;
+  descricaoOriginal: string;
+  clausulaOrigem: ClauseReference | null;
+}
+
+export interface Acervo {
+  id: string;
+  tipo: "CAT_PROFISSIONAL" | "CAO_OPERACIONAL" | "ATESTADO_SIMPLES";
+  numero: string | null;
+  rtId: string;
+  participacaoTecnica: "Individual" | "Corresponsavel";
+  contratante: string;
+  tipoContratante: "publico" | "privado" | null;
+  valor: number | null;
+  periodo: string | null;
+  status: string | null;
+  itens: AcervoItem[];
+}
+
+export interface FinancialSnapshot {
+  exercicio: number;
+  patrimonioLiquido: number | null;
+  capitalSocial: number | null;
+  ativoCirc: number | null;
+  passivoCirc: number | null;
+  ativoTotal: number | null;
+  realizavelLongoPrazo: number | null;
+  exigivelLongoPrazo: number | null;
+  receitaBruta: number | null;
+  resultado: number | null;
+  fonte: string;
+}
+
+export interface RegularityDoc {
+  id: string;
+  tipo: string;
+  status: "vigente" | "vencido" | "pendente" | "desconhecido";
+  validade: string | null;
+  fonte: string | null;
+}
+
+export interface CapabilityByService {
+  maxSingle: number;
+  somaTop2: number;
+  unidade: string;
+  fontes: string[];
+}
+
+export interface CompanyCapabilityProfile {
+  identity: CompanyIdentity;
+  rts: TechnicalProfessional[];
+  acervo: Acervo[];
+  financials: FinancialSnapshot[];
+  regularity: RegularityDoc[];
+  derived: {
+    capabilityByService: Record<string, CapabilityByService>;
+  };
+}
+
+export interface ServiceTaxonomyEntry {
+  servicoCanonico: string;
+  unidade: string;
+  sinonimos: string[];
+  provisorio: boolean;
+}
+
+export interface EditalRequirementsModel {
+  meta: {
+    orgao: string;
+    cnpjOrgao: string | null;
+    municipioIbge: string | null;
+    modalidade: string | number | null;
+    valorEstimado: number | null;
+    dataPublicacao: string | null;
+    dataSessao: string | null;
+    criterioJulgamento: string | null;
+    regimeExecucao: string | null;
+  };
+  economicoFinanceira: {
+    exigePL: boolean | null;
+    percentualPL: number | null;
+    indices: {
+      LC?: number | null;
+      LG?: number | null;
+      SG?: number | null;
+    };
+    justificativaPresente: boolean | null;
+    garantiaPropostaPct: number | null;
+    clausula: ClauseReference | null;
+  };
+  tecnica: {
+    profissional: Array<{
+      servico: string;
+      qtdMin?: number | null;
+      un: string | null;
+    }>;
+    operacional: Array<{
+      servico: string;
+      qtdMin: number | null;
+      qtdObjeto: number | null;
+      un: string | null;
+    }>;
+    parcelasMaiorRelevancia: string[] | null;
+    tetoQuantitativo: number | null;
+    somatorio: {
+      permitido: boolean | null;
+      maxAtestados?: number;
+    };
+    aceitaAcervoConsorcio: boolean | null;
+    restricaoTempoLocal: boolean | null;
+    marcaSemSimilar: boolean | null;
+    clausula: ClauseReference | null;
+  };
+  juridica: {
+    declaracoes: string[];
+    clausula: ClauseReference | null;
+  };
+  fiscalTrabalhista: {
+    CNDs: string[];
+    SICAF: boolean | null;
+    clausula: ClauseReference | null;
+  };
+}
+
+export type SuspicionType =
+  | "PRAZO_EXIGUO"
+  | "GARANTIA_PROPOSTA_ACIMA_LIMITE"
+  | "QUANTITATIVO_ATESTADO_SEM_PARCELA"
+  | "QUANTITATIVO_ACIMA_TETO"
+  | "RESTRICAO_TEMPO_LOCAL"
+  | "MARCA_SEM_SIMILAR"
+  | "INDICE_ECON_FIN_SEM_JUSTIFICATIVA";
+
+export type SuspicionSeverity = "alta" | "media" | "revisao";
+
+export interface LegalHook {
+  artigo: string;
+  descricao: string;
+}
+
+export interface SuspicionSignal {
+  tier: 1;
+  tipo: SuspicionType;
+  evidenciaEdital: ClauseReference;
+  hookLegal: LegalHook;
+  severidade: SuspicionSeverity;
+  acao: string;
+  proveniencia: Grounding;
+}
+
+export const HabilitationVerdict = {
+  GO: "GO",
+  GO_COM_TAREFAS: "GO_COM_TAREFAS",
+  PENDENTE_DADO: "PENDENTE_DADO",
+  NO_GO: "NO_GO",
+} as const;
+
+export type HabilitationVerdict = (typeof HabilitationVerdict)[keyof typeof HabilitationVerdict];
+
+export type HabilitationStatus =
+  | "ATENDE"
+  | "ATENDE_COM_RESSALVA"
+  | "PARCIAL"
+  | "NAO_ATENDE"
+  | "INDETERMINADO";
+
+export type Sanability = "SANAVEL" | "INSANAVEL";
+
+export type HabilitationBlockId =
+  | "tecnico_profissional"
+  | "tecnico_operacional"
+  | "economico_financeira"
+  | "juridica_fiscal_trabalhista";
+
+export interface HabilitationGap {
+  classe: string;
+  faltante: number | null;
+  unidade: string | null;
+  sanabilidade: Sanability;
+  descricao: string;
+  bloco: HabilitationBlockId;
+}
+
+export interface RequirementEvaluation {
+  id: string;
+  requisito: string;
+  status: HabilitationStatus;
+  evidencia: string[];
+  proveniencia: Grounding;
+  qtdMin?: number | null;
+  disponivel?: number | null;
+  unidade?: string | null;
+  gaps: HabilitationGap[];
+  tarefas: string[];
+}
+
+export interface HabilitationBlockResult {
+  id: HabilitationBlockId;
+  label: string;
+  status: HabilitationStatus;
+  eliminatorio: boolean;
+  evaluations: RequirementEvaluation[];
+  gaps: HabilitationGap[];
+  tarefas: string[];
+}
+
+export interface ConsortiumEvaluation {
+  enabled: boolean;
+  aceitaPeloEdital: boolean | null;
+  members: Array<{
+    label: string;
+    porte: CompanyIdentity["porte"];
+    participacaoPct: number;
+  }>;
+  acrescimo30Dispensado: boolean;
+  vantagemMeEpp: boolean;
+  note: string;
+}
+
+export interface HabilitationResult {
+  verdict: HabilitationVerdict;
+  porBloco: Record<HabilitationBlockId, HabilitationBlockResult>;
+  lacunas: HabilitationGap[];
+  tarefas: string[];
+  solo: {
+    verdict: HabilitationVerdict;
+    tetoSolo: number | null;
+    patrimonioLiquido: number | null;
+    exercicio: number | null;
+  };
+  consorcio: ConsortiumEvaluation | null;
   disclaimer: string;
 }
 
