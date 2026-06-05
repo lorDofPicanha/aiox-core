@@ -1,0 +1,82 @@
+{
+  "version": "2026-06-04",
+  "publicationMinimumsStatus": "a confirmar D-27.1",
+  "publicationMinimums": [
+    {
+      "id": "bens_menor_preco_maior_desconto",
+      "objeto": "bens",
+      "criterios": ["menor_preco", "maior_desconto"],
+      "regimes": [],
+      "minBusinessDays": 8,
+      "legalHook": {
+        "artigo": "Lei 14.133/2021, art. 55",
+        "descricao": "Prazo minimo de divulgacao do edital para bens por menor preco ou maior desconto."
+      }
+    },
+    {
+      "id": "bens_demais",
+      "objeto": "bens",
+      "criterios": ["demais"],
+      "regimes": [],
+      "minBusinessDays": 15,
+      "legalHook": {
+        "artigo": "Lei 14.133/2021, art. 55",
+        "descricao": "Prazo minimo de divulgacao do edital para bens nos demais criterios."
+      }
+    },
+    {
+      "id": "engenharia_menor_preco_empreitada",
+      "objeto": "obras_servicos_engenharia",
+      "criterios": ["menor_preco", "maior_desconto"],
+      "regimes": ["empreitada_unitaria", "empreitada_global", "empreitada_tarefa"],
+      "minBusinessDays": 10,
+      "legalHook": {
+        "artigo": "Lei 14.133/2021, art. 55",
+        "descricao": "Prazo minimo de divulgacao para obras e servicos de engenharia por menor preco ou maior desconto em empreitada unitaria, global ou tarefa."
+      }
+    },
+    {
+      "id": "engenharia_demais",
+      "objeto": "obras_servicos_engenharia",
+      "criterios": ["demais"],
+      "regimes": ["contratacao_integrada", "contratacao_semi_integrada", "tecnica_preco"],
+      "minBusinessDays": 25,
+      "legalHook": {
+        "artigo": "Lei 14.133/2021, art. 55",
+        "descricao": "Prazo minimo de divulgacao para obras e servicos de engenharia nos demais regimes e criterios."
+      }
+    },
+    {
+      "id": "tecnica_preco_maior_retorno",
+      "objeto": "tecnica_preco_maior_retorno",
+      "criterios": ["tecnica_preco", "maior_retorno_economico"],
+      "regimes": [],
+      "minBusinessDays": 35,
+      "legalHook": {
+        "artigo": "Lei 14.133/2021, art. 55",
+        "descricao": "Prazo minimo indicado para tecnica e preco ou maior retorno economico; confirmar D-27.1."
+      }
+    }
+  ],
+  "proposalGuaranteeMaxPct": {
+    "valuePct": 1,
+    "legalHook": {
+      "artigo": "Lei 14.133/2021, art. 58",
+      "descricao": "Garantia de proposta limitada a 1% do valor estimado."
+    }
+  },
+  "technicalQuantityCeilingPct": {
+    "value": 0.5,
+    "legalHook": {
+      "artigo": "Lei 14.133/2021, art. 67; Sumula TCU 263",
+      "descricao": "Quantitativos minimos de capacidade tecnico-operacional devem observar o teto de 50% da parcela de maior relevancia."
+    }
+  },
+  "impugnationWindowBusinessDays": {
+    "value": 3,
+    "legalHook": {
+      "artigo": "Lei 14.133/2021, art. 164",
+      "descricao": "Pedido de impugnacao ate 3 dias uteis antes da data de abertura do certame."
+    }
+  }
+}

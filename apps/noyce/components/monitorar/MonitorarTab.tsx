@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { opportunities } from "@/lib/noyce-data";
 import { formatCurrency, formatDateTime } from "@/lib/noyce-model";
+import type { Opportunity, SuspicionSignal } from "@/lib/noyce-model";
 import { deadlineTime, operationalState, sourceClass, sourceLabel } from "@/lib/noyce-operational";
 import { ScorePill } from "@/components/shell/bits";
 
@@ -10,6 +11,7 @@ type SortMode = "triagem" | "best" | "worst" | "deadline";
 type VerdictFilter = "all" | "vai" | "olha" | "pula";
 const RANK: Record<string, number> = { vai: 0, olha: 1, pula: 2 };
 const VERDICT_LABEL: Record<string, string> = { vai: "Vai", olha: "Olha", pula: "Pula" };
+type OpportunityWithSuspicion = Opportunity & { suspicionSignals?: SuspicionSignal[] };
 
 export function MonitorarTab({
   selectedId,
@@ -121,6 +123,9 @@ export function MonitorarTab({
                 </span>
                 <span className={`source source-${sourceClass(opportunity.source)}`}>{sourceLabel(opportunity.source)}</span>
                 <span className={`state-badge ${operationalState(opportunity).tone}`}>{operationalState(opportunity).label}</span>
+                {((opportunity as OpportunityWithSuspicion).suspicionSignals?.length ?? 0) > 0 ? (
+                  <span className="state-badge review">⚠️ exigência atípica</span>
+                ) : null}
               </div>
               <h3>{opportunity.title}</h3>
               <p>

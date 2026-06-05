@@ -1,0 +1,48 @@
+{
+  "meta": {
+    "orgao": "Prefeitura Municipal de Novo Gama",
+    "cnpjOrgao": null,
+    "municipioIbge": "5214887",
+    "modalidade": 4,
+    "valorEstimado": null,
+    "dataPublicacao": null,
+    "dataSessao": null,
+    "criterioJulgamento": "menor preco",
+    "regimeExecucao": "empreitada"
+  },
+  "economicoFinanceira": {
+    "exigePL": null,
+    "percentualPL": null,
+    "indices": {
+      "LC": null,
+      "LG": null,
+      "SG": null
+    },
+    "justificativaPresente": null,
+    "garantiaPropostaPct": null,
+    "clausula": null
+  },
+  "tecnica": {
+    "profissional": [],
+    "operacional": [],
+    "parcelasMaiorRelevancia": null,
+    "tetoQuantitativo": null,
+    "somatorio": {
+      "permitido": true,
+      "maxAtestados": 2
+    },
+    "aceitaAcervoConsorcio": true,
+    "restricaoTempoLocal": null,
+    "marcaSemSimilar": null,
+    "clausula": null
+  },
+  "juridica": {
+    "declaracoes": [],
+    "clausula": null
+  },
+  "fiscalTrabalhista": {
+    "CNDs": [],
+    "SICAF": null,
+    "clausula": null
+  }
+}

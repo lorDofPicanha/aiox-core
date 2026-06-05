@@ -1,8 +1,16 @@
 ﻿import type { Opportunity, PortalAccess, SourceCode, WorkflowStage } from '@/lib/noyce-model';
 import { buildAnalysisRun, classifyAction } from '@/lib/noyce-model';
+import type { CompanyCapabilityProfile } from '@/lib/noyce-model';
+import type { EditalRequirementsModel } from '@/lib/noyce-model';
+import { withComputedCapabilities } from '@/lib/noyce-capability';
+import { buildHabilitationResult } from '@/lib/noyce-habilitation';
 import { getMarketForOrgao } from '@/lib/noyce-market';
 import { buildTriage } from '@/lib/noyce-operational';
+import { buildSuspicionSignals, type HolidayCalendar, type LegalConstants } from '@/lib/noyce-suspicion';
 import discoverySnapshot from '@/lib/data/discovery-snapshot.json';
+import eniacCcpSeed from '@/lib/data/eniac-ccp.json';
+import feriadosNacionais from '@/lib/data/feriados-nacionais.json';
+import legalConstants from '@/lib/data/legal-constants.json';
 
 export const portalAccess: PortalAccess[] = [
   { source: 'pncp', name: 'PNCP', status: 'publico', requiresLogin: false, requires2fa: 'no', tosStatus: 'ok' },
@@ -62,6 +70,7 @@ interface DiscoveryItem {
   modality: string;
   situacao: string | null;
   sourceUrl: string | null;
+  editalRequirements?: EditalRequirementsModel | null;
 }
 
 const KNOWN_SOURCES = ['pncp', 'pcp', 'bll', 'bnc', 'comprasgov', 'sislog'];
@@ -70,6 +79,7 @@ function normalizeSource(value: string): SourceCode {
 }
 
 const discovery = discoverySnapshot as unknown as { items: DiscoveryItem[] };
+const eniacCcp = withComputedCapabilities(eniacCcpSeed as CompanyCapabilityProfile);
 const TRIAGE_RANK: Record<string, number> = { vai: 0, olha: 1, pula: 2 };
 
 const baseOpportunities = discovery.items
@@ -88,6 +98,7 @@ const baseOpportunities = discovery.items
     hasConflict: false,
     risks: d.situacao ? [`Situação PNCP: ${d.situacao}.`] : [],
     missingData: [] as string[],
+    editalRequirements: d.editalRequirements ?? null,
     triage: buildTriage({
       title: d.title,
       distanceKm: d.distanceKm,
@@ -116,9 +127,15 @@ export const opportunities: Opportunity[] = baseOpportunities.map((item) => {
   });
   const opportunityScore = analysisRun.opportunity.score;
   const confidenceScore = analysisRun.confidence.score;
+  const suspicionSignals = item.editalRequirements
+    ? buildSuspicionSignals(item.editalRequirements, legalConstants as LegalConstants, feriadosNacionais as HolidayCalendar)
+    : null;
+  const habilitationResult = item.editalRequirements ? buildHabilitationResult(eniacCcp, item.editalRequirements) : null;
 
   return {
     ...item,
+    ...(item.editalRequirements ? { suspicionSignals: suspicionSignals ?? [] } : {}),
+    habilitationResult,
     opportunityScore,
     confidenceScore,
     analysisRun,

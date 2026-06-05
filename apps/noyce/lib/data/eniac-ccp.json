@@ -1,0 +1,254 @@
+{
+  "identity": {
+    "razaoSocial": "ENIAC EMPREENDIMENTOS LTDA",
+    "cnpj": "36.819.268/0001-05",
+    "creaEmpresa": "CREA-GO 39711",
+    "porte": "ME",
+    "regime": "Simples",
+    "sedeMunicipioIbge": "5200258"
+  },
+  "rts": [
+    {
+      "id": "alice",
+      "nome": "Alice Ramos Silva",
+      "titulo": "Eng. Civil",
+      "crea": "CREA-GO 1022381563D-GO",
+      "rnp": null,
+      "vinculo": {
+        "tipo": "responsavel_tecnico",
+        "desde": "2025-09-17"
+      }
+    },
+    {
+      "id": "rodrigo",
+      "nome": "Rodrigo Piloto Amaro",
+      "titulo": "Eng. Civil",
+      "crea": "CREA 23733/D-DF",
+      "rnp": null,
+      "vinculo": null
+    }
+  ],
+  "acervo": [
+    {
+      "id": "reforma-ceo",
+      "tipo": "CAT_PROFISSIONAL",
+      "numero": null,
+      "rtId": "alice",
+      "participacaoTecnica": "Individual",
+      "contratante": "Fundo Saude Aguas Lindas",
+      "tipoContratante": "publico",
+      "valor": 103000,
+      "periodo": null,
+      "status": null,
+      "itens": [
+        {
+          "servicoCanonico": "REFORMA_PREDIAL",
+          "qtd": 208.9,
+          "unidade": "m2",
+          "descricaoOriginal": "REFORMA_PREDIAL 208,90 m2",
+          "clausulaOrigem": null
+        },
+        {
+          "servicoCanonico": "PINTURA",
+          "qtd": 480,
+          "unidade": "m2",
+          "descricaoOriginal": "PINTURA 480 m2",
+          "clausulaOrigem": null
+        }
+      ]
+    },
+    {
+      "id": "mestre-zezito",
+      "tipo": "CAT_PROFISSIONAL",
+      "numero": null,
+      "rtId": "alice",
+      "participacaoTecnica": "Corresponsavel",
+      "contratante": "SCB Engenharia",
+      "tipoContratante": "privado",
+      "valor": 587860,
+      "periodo": null,
+      "status": null,
+      "itens": [
+        {
+          "servicoCanonico": "EDIFICACAO_ALVENARIA",
+          "qtd": 1613.12,
+          "unidade": "m2",
+          "descricaoOriginal": "EDIFICACAO_ALVENARIA 1.613,12 m2",
+          "clausulaOrigem": null
+        },
+        {
+          "servicoCanonico": "ESTRUTURA_METALICA",
+          "qtd": 1613.12,
+          "unidade": "m2",
+          "descricaoOriginal": "ESTRUTURA_METALICA 1.613,12 m2",
+          "clausulaOrigem": null
+        },
+        {
+          "servicoCanonico": "REDE_HIDROSSANITARIA",
+          "qtd": 1613.12,
+          "unidade": "m2",
+          "descricaoOriginal": "REDE_HIDROSSANITARIA 1.613,12 m2",
+          "clausulaOrigem": null
+        }
+      ]
+    },
+    {
+      "id": "escola-ednalda",
+      "tipo": "CAT_PROFISSIONAL",
+      "numero": null,
+      "rtId": "rodrigo",
+      "participacaoTecnica": "Individual",
+      "contratante": "Pref. Aguas Lindas",
+      "tipoContratante": "publico",
+      "valor": 886828.39,
+      "periodo": null,
+      "status": null,
+      "itens": [
+        {
+          "servicoCanonico": "EDIFICACAO_ALVENARIA",
+          "qtd": 1622.59,
+          "unidade": "m2",
+          "descricaoOriginal": "EDIFICACAO_ALVENARIA 1.622,59 m2",
+          "clausulaOrigem": null
+        },
+        {
+          "servicoCanonico": "ESTRUTURA_CONCRETO_ARMADO",
+          "qtd": 1622.59,
+          "unidade": "m2",
+          "descricaoOriginal": "ESTRUTURA_CONCRETO_ARMADO 1.622,59 m2",
+          "clausulaOrigem": null
+        },
+        {
+          "servicoCanonico": "LAJE_PRE_FABRICADA",
+          "qtd": 1622.59,
+          "unidade": "m2",
+          "descricaoOriginal": "LAJE_PRE_FABRICADA 1.622,59 m2",
+          "clausulaOrigem": null
+        },
+        {
+          "servicoCanonico": "RESERVATORIO_ACO",
+          "qtd": 30,
+          "unidade": "m3",
+          "descricaoOriginal": "RESERVATORIO_ACO 30 m3",
+          "clausulaOrigem": null
+        }
+      ]
+    },
+    {
+      "id": "praca",
+      "tipo": "CAT_PROFISSIONAL",
+      "numero": null,
+      "rtId": "rodrigo",
+      "participacaoTecnica": "Corresponsavel",
+      "contratante": "Pref. Aguas Lindas",
+      "tipoContratante": "publico",
+      "valor": 473300,
+      "periodo": null,
+      "status": null,
+      "itens": [
+        {
+          "servicoCanonico": "TERRAPLENAGEM",
+          "qtd": 3000,
+          "unidade": "m2",
+          "descricaoOriginal": "TERRAPLENAGEM 3.000 m2",
+          "clausulaOrigem": null
+        },
+        {
+          "servicoCanonico": "DRENAGEM",
+          "qtd": 500,
+          "unidade": "m2",
+          "descricaoOriginal": "DRENAGEM 500 m2",
+          "clausulaOrigem": null
+        },
+        {
+          "servicoCanonico": "PAVIMENTACAO_CONCRETO",
+          "qtd": 3000,
+          "unidade": "m",
+          "descricaoOriginal": "PAVIMENTACAO_CONCRETO 3.000 m",
+          "clausulaOrigem": null
+        },
+        {
+          "servicoCanonico": "INSTALACAO_ELETRICA_BT",
+          "qtd": 75,
+          "unidade": "kVA",
+          "descricaoOriginal": "INSTALACAO_ELETRICA_BT 75 kVA",
+          "clausulaOrigem": null
+        },
+        {
+          "servicoCanonico": "CONCRETO_USINADO",
+          "qtd": 75,
+          "unidade": "m3",
+          "descricaoOriginal": "CONCRETO_USINADO 75 m3",
+          "clausulaOrigem": null
+        },
+        {
+          "servicoCanonico": "PAISAGISMO",
+          "qtd": 150,
+          "unidade": "un",
+          "descricaoOriginal": "PAISAGISMO 150 un",
+          "clausulaOrigem": null
+        }
+      ]
+    },
+    {
+      "id": "topografia",
+      "tipo": "CAT_PROFISSIONAL",
+      "numero": null,
+      "rtId": "rodrigo",
+      "participacaoTecnica": "Individual",
+      "contratante": "Pref. Aguas Lindas",
+      "tipoContratante": "publico",
+      "valor": null,
+      "periodo": null,
+      "status": null,
+      "itens": [
+        {
+          "servicoCanonico": "TOPOGRAFIA",
+          "qtd": 21829,
+          "unidade": "m2",
+          "descricaoOriginal": "TOPOGRAFIA 21.829 m2",
+          "clausulaOrigem": null
+        },
+        {
+          "servicoCanonico": "TERRAPLENAGEM",
+          "qtd": 21829,
+          "unidade": "m2",
+          "descricaoOriginal": "TERRAPLENAGEM 21.829 m2",
+          "clausulaOrigem": null
+        }
+      ]
+    }
+  ],
+  "financials": [
+    {
+      "exercicio": 2024,
+      "patrimonioLiquido": null,
+      "capitalSocial": null,
+      "ativoCirc": null,
+      "passivoCirc": null,
+      "ativoTotal": null,
+      "realizavelLongoPrazo": null,
+      "exigivelLongoPrazo": null,
+      "receitaBruta": 0,
+      "resultado": null,
+      "fonte": "balanco_2024_pendente_parse"
+    },
+    {
+      "exercicio": 2025,
+      "patrimonioLiquido": null,
+      "capitalSocial": null,
+      "ativoCirc": null,
+      "passivoCirc": null,
+      "ativoTotal": null,
+      "realizavelLongoPrazo": null,
+      "exigivelLongoPrazo": null,
+      "receitaBruta": 314963.26,
+      "resultado": 29170.54,
+      "fonte": "balanco_2025_d26_1_pendente"
+    }
+  ],
+  "regularity": [],
+  "derived": {
+    "capabilityByService": {}
+  }
+}
