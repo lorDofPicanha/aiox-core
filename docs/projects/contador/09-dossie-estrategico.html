@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dossiê Estratégico — Projeto Contador | SaaS Fiscal para Escritórios</title>
+<style>
+  :root{
+    --bg:#0a0e14; --bg2:#0d1117; --surface:#141a23; --surface2:#1b232e;
+    --line:#232c39; --text:#e6edf3; --muted:#8b97a7; --muted2:#5d6b7d;
+    --lime:#b6f24a; --lime-dim:#8fc23a; --teal:#2dd4bf; --amber:#f5b945;
+    --red:#ff6b6b; --violet:#a78bfa; --blue:#5b9dff;
+    --r:16px; --shadow:0 10px 40px rgba(0,0,0,.45);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:'Inter','Segoe UI',system-ui,-apple-system,sans-serif;
+    line-height:1.65; font-size:16px; -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(900px 500px at 85% -5%, rgba(182,242,74,.07), transparent 60%),
+                     radial-gradient(700px 500px at 5% 10%, rgba(45,212,191,.06), transparent 55%);
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  a{color:var(--lime);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* HERO */
+  header.hero{padding:84px 0 56px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);background:rgba(182,242,74,.08);border:1px solid rgba(182,242,74,.25);padding:6px 14px;border-radius:100px;margin-bottom:24px}
+  .hero h1{font-size:clamp(34px,5.5vw,56px);line-height:1.08;font-weight:800;letter-spacing:-.02em;margin-bottom:18px}
+  .hero h1 .hl{background:linear-gradient(120deg,var(--lime),var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero .sub{font-size:19px;color:var(--muted);max-width:680px}
+  .hero .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+  .hero .meta span{font-size:13px;color:var(--muted);background:var(--surface);border:1px solid var(--line);padding:7px 14px;border-radius:100px}
+  .hero .meta b{color:var(--text);font-weight:600}
+
+  /* NAV */
+  nav.toc{position:sticky;top:0;z-index:50;background:rgba(10,14,20,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:12px 0}
+  nav.toc .wrap{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+  nav.toc .wrap::-webkit-scrollbar{display:none}
+  nav.toc a{white-space:nowrap;font-size:13.5px;font-weight:500;color:var(--muted);padding:7px 13px;border-radius:9px;transition:.18s}
+  nav.toc a:hover{color:var(--text);background:var(--surface);text-decoration:none}
+
+  /* SECTIONS */
+  section{padding:60px 0;border-bottom:1px solid var(--line)}
+  .sectlabel{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--lime-dim);margin-bottom:12px}
+  h2{font-size:clamp(26px,3.6vw,36px);font-weight:800;letter-spacing:-.02em;margin-bottom:10px;line-height:1.15}
+  h2 .num{color:var(--muted2);font-weight:600;margin-right:10px}
+  .lead{font-size:18px;color:var(--muted);max-width:760px;margin-bottom:34px}
+  h3{font-size:21px;font-weight:700;margin:30px 0 14px;letter-spacing:-.01em}
+  p{margin-bottom:16px;color:#cfd8e3}
+  strong{color:var(--text);font-weight:650}
+
+  /* STAT GRID */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:8px 0 10px}
+  .stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+  .stat .v{font-size:34px;font-weight:800;letter-spacing:-.02em;background:linear-gradient(120deg,var(--lime),var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1}
+  .stat .l{font-size:13.5px;color:var(--muted);margin-top:8px}
+
+  /* CARDS */
+  .cards{display:grid;gap:16px}
+  .cards.c2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+  .cards.c3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:24px;transition:.2s}
+  .card:hover{border-color:var(--lime-dim);transform:translateY(-2px)}
+  .card .ico{font-size:24px;margin-bottom:12px}
+  .card h4{font-size:17px;font-weight:700;margin-bottom:8px}
+  .card p{font-size:14.5px;color:var(--muted);margin:0}
+  .card .tag{display:inline-block;font-size:11.5px;font-weight:600;color:var(--lime);background:rgba(182,242,74,.1);padding:3px 9px;border-radius:6px;margin-top:12px}
+
+  /* MODULE LADDER */
+  .ladder{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+  .rung{display:grid;grid-template-columns:52px 1fr auto;gap:18px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px 22px}
+  .rung .n{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;font-weight:800;font-size:17px;background:rgba(182,242,74,.12);color:var(--lime);border:1px solid rgba(182,242,74,.3)}
+  .rung h4{font-size:16.5px;margin-bottom:3px}
+  .rung p{font-size:14px;color:var(--muted);margin:0}
+  .rung .pill{font-size:12px;font-weight:600;padding:5px 11px;border-radius:100px;white-space:nowrap}
+  .pill.core{background:rgba(182,242,74,.14);color:var(--lime)}
+  .pill.mina{background:rgba(245,185,69,.14);color:var(--amber)}
+  .pill.over{background:rgba(167,139,250,.14);color:var(--violet)}
+  .pill.add{background:rgba(91,157,255,.13);color:var(--blue)}
+
+  /* TIMELINE */
+  .timeline{position:relative;margin:20px 0 0;padding-left:28px}
+  .timeline::before{content:'';position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--lime),var(--teal),var(--violet))}
+  .tl{position:relative;margin-bottom:22px}
+  .tl::before{content:'';position:absolute;left:-28px;top:5px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--lime)}
+  .tl.sunset::before{border-color:var(--red)}
+  .tl.tail::before{border-color:var(--teal)}
+  .tl .yr{font-weight:800;font-size:17px;color:var(--text)}
+  .tl .yr span{font-size:13px;font-weight:600;color:var(--muted);margin-left:8px}
+  .tl p{font-size:14.5px;color:var(--muted);margin:4px 0 0}
+
+  /* CALLOUT */
+  .callout{border-radius:var(--r);padding:24px 26px;margin:24px 0;border:1px solid;position:relative}
+  .callout .ct{font-weight:700;font-size:16px;margin-bottom:8px;display:flex;align-items:center;gap:9px}
+  .callout p{margin:0;font-size:15px}
+  .callout.key{background:linear-gradient(135deg,rgba(182,242,74,.09),rgba(45,212,191,.05));border-color:rgba(182,242,74,.3)}
+  .callout.key .ct{color:var(--lime)}
+  .callout.warn{background:rgba(245,185,69,.07);border-color:rgba(245,185,69,.28)}
+  .callout.warn .ct{color:var(--amber)}
+  .callout.danger{background:rgba(255,107,107,.07);border-color:rgba(255,107,107,.28)}
+  .callout.danger .ct{color:var(--red)}
+
+  /* TABLE */
+  .tbl{width:100%;border-collapse:collapse;margin:14px 0;font-size:14.5px;background:var(--surface);border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
+  .tbl th{text-align:left;padding:14px 16px;background:var(--surface2);font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600;border-bottom:1px solid var(--line)}
+  .tbl td{padding:13px 16px;border-bottom:1px solid var(--line);color:#cfd8e3;vertical-align:top}
+  .tbl tr:last-child td{border-bottom:none}
+  .tbl tr:hover td{background:rgba(255,255,255,.015)}
+  .chk{color:var(--lime);font-weight:700}
+  .no{color:var(--muted2)}
+
+  /* RISK */
+  .risk{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;margin-bottom:12px}
+  .risk .sev{font-size:11px;font-weight:700;padding:5px 10px;border-radius:7px;white-space:nowrap;height:fit-content}
+  .sev.hi{background:rgba(255,107,107,.15);color:var(--red)}
+  .sev.md{background:rgba(245,185,69,.15);color:var(--amber)}
+  .risk h4{font-size:15.5px;margin-bottom:4px}
+  .risk p{font-size:13.5px;color:var(--muted);margin:0}
+  .risk .mit{font-size:13px;color:var(--teal);margin-top:6px}
+
+  /* CONCLAVE */
+  .voices{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px}
+  .voice{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px}
+  .voice .hd{display:flex;align-items:center;gap:11px;margin-bottom:11px}
+  .voice .av{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;font-size:19px;background:var(--surface2);border:1px solid var(--line)}
+  .voice .nm{font-weight:700;font-size:15px;line-height:1.2}
+  .voice .rl{font-size:12px;color:var(--muted)}
+  .voice p{font-size:13.5px;color:#cfd8e3;margin:0}
+  .voice .q{color:var(--lime-dim);font-style:italic}
+
+  /* VERDICT */
+  .verdict{background:linear-gradient(135deg,rgba(182,242,74,.08),rgba(45,212,191,.04));border:1px solid rgba(182,242,74,.3);border-radius:var(--r);padding:30px}
+  .verdict .badge{display:inline-block;font-weight:800;font-size:14px;letter-spacing:.1em;color:var(--bg);background:var(--lime);padding:6px 16px;border-radius:100px;margin-bottom:16px}
+
+  ul.clean{list-style:none;margin:8px 0 16px}
+  ul.clean li{padding-left:26px;position:relative;margin-bottom:10px;color:#cfd8e3;font-size:15px}
+  ul.clean li::before{content:'▹';position:absolute;left:4px;color:var(--lime)}
+  ol.num{margin:8px 0 16px 20px}
+  ol.num li{margin-bottom:9px;color:#cfd8e3;padding-left:6px}
+
+  footer{padding:50px 0 70px}
+  footer .src{font-size:12.5px;color:var(--muted2);line-height:1.9}
+  footer .src a{color:var(--muted)}
+  .sig{margin-top:30px;font-size:14px;color:var(--muted)}
+  .sig b{color:var(--lime)}
+  @media(max-width:640px){
+    .rung{grid-template-columns:44px 1fr;}
+    .rung .pill{grid-column:2;justify-self:start;margin-top:6px}
+    section{padding:46px 0}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">● Dossiê Estratégico · Confidencial</span>
+    <h1>Projeto Contador<br><span class="hl">o copiloto fiscal do escritório</span> na era da Reforma</h1>
+    <p class="sub">SaaS vendido <b>para o escritório contábil</b>, que o usa nos clientes. Mega-pesquisa de fontes primárias + conclave de 11 especialistas, consolidando a visão dos sócios numa estratégia executável.</p>
+    <div class="meta">
+      <span>📅 <b>05 jun 2026</b></span>
+      <span>🔬 Pesquisa: <b>fontes primárias reais</b></span>
+      <span>🧠 Conclave: <b>11 clones</b></span>
+      <span>📡 HYDRA: <b>config fiscal dedicado</b></span>
+      <span>🎙️ Base: <b>reunião de sócios (103 min)</b></span>
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="wrap">
+    <a href="#resumo">Resumo</a>
+    <a href="#mercado">Mercado</a>
+    <a href="#produto">Produto</a>
+    <a href="#reforma">A Reforma</a>
+    <a href="#concorrencia">Concorrência</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#riscos">Riscos</a>
+    <a href="#conclave">Conclave</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#fontes">Fontes</a>
+  </div>
+</nav>
+
+<!-- RESUMO -->
+<section id="resumo">
+  <div class="wrap">
+    <div class="sectlabel">Sumário Executivo</div>
+    <h2>A tese em uma frase</h2>
+    <p class="lead">Num mercado fragmentado onde <b>ninguém junta</b> inteligência fiscal + gestão + comercial agressivo, há uma cunha defensável — turbinada pelo maior vento de cauda da década: a Reforma Tributária.</p>
+
+    <div class="stats">
+      <div class="stat"><div class="v">~95k</div><div class="l">escritórios contábeis ativos no Brasil (CFC)</div></div>
+      <div class="stat"><div class="v">56%</div><div class="l">faturam até R$100k/mês — o ICP é o grosso do mercado</div></div>
+      <div class="stat"><div class="v">2027</div><div class="l">extinção definitiva do PIS/COFINS — janela monofásico fecha</div></div>
+      <div class="stat"><div class="v">7 anos</div><div class="l">de transição (2026-2033) = trabalho recorrente novo</div></div>
+    </div>
+
+    <div class="callout key">
+      <div class="ct">✦ O insight central</div>
+      <p>A <b>morte de um play é o nascimento de outro</b>. O sunset do PIS/COFINS (2027) fecha a recuperação de monofásico — mas a <b>mesma Reforma</b> abre 7 anos de reclassificação <code>cClassTrib</code> recorrente. Posicionar o produto como <b>"copiloto da Reforma"</b> transforma a maior ameaça do setor no maior ativo comercial.</p>
+    </div>
+
+    <h3>Os três pilares da decisão</h3>
+    <div class="cards c3">
+      <div class="card"><div class="ico">🎣</div><h4>Entrada barata, escada de valor</h4><p>Captura de nota abre a porta (~R$200); auditoria, e-CAC e emissão sobem o ticket e o custo de troca.</p><span class="tag">Recorrente é o ativo</span></div>
+      <div class="card"><div class="ico">⚡</div><h4>Comercial provado</h4><p>O sócio comercial vendia <b>R$600k/mês</b> na CIEG. Captação previsível — o ativo mais raro do setor (a maioria trava em indicação).</p><span class="tag">Distribuição = moat</span></div>
+      <div class="card"><div class="ico">🌊</div><h4>Timing da Reforma</h4><p>Todo escritório <b>precisa</b> navegar 2026-2027. Starving crowd + padronização NFS-e nacional + janela de recuperação.</p><span class="tag">Tailwind de 7 anos</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MERCADO -->
+<section id="mercado">
+  <div class="wrap">
+    <div class="sectlabel">Escopo 1 · Mercado</div>
+    <h2><span class="num">01</span>O ICP é o grosso do mercado</h2>
+    <p class="lead">Os dados do CFC e de Anderson Hernandes confirmam: o alvo "escritório pequeno/médio" não é um nicho — é a esmagadora maioria.</p>
+
+    <div class="cards c2">
+      <div class="card"><h4>Tamanho & estrutura</h4><p>~95-98 mil organizações contábeis ativas (CFC); <b>538 mil profissionais</b> registrados. <b>+50% têm menos de 10 colaboradores</b>; só 10,7% acima de 50. Crescimento de 41% em 4 anos, puxado pela digitalização e complexidade tributária.</p></div>
+      <div class="card"><h4>Faturamento & dor</h4><p><b>56% faturam até R$100k/mês</b>; só 15% passam de R$300k (média R$177,8k). Estruturas enxutas, forte presença regional. A dor: não conseguem escalar nem contratar o suficiente — exatamente o que a automação resolve.</p></div>
+    </div>
+
+    <div class="callout key">
+      <div class="ct">✦ Implicação de ICP</div>
+      <p>O ICP-alvo (escritório &lt;10 pessoas, &lt;R$100k/mês) <b>é o mercado</b> — mas é <b>sensível a preço e a implantação</b>. A entrada tem que ser barata e a implantação, assistida. Dominar esse "small pond" antes de mirar os grandes (que exigem muita vantagem e confiança para trocar de fornecedor).</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUTO -->
+<section id="produto">
+  <div class="wrap">
+    <div class="sectlabel">Escopo 2 · Produto</div>
+    <h2><span class="num">02</span>A escada de módulos</h2>
+    <p class="lead">Um leva ao outro. Cada degrau é vendável sozinho, cada degrau aumenta o custo de troca. O <b>core</b> é o ciclo da nota fiscal; o resto orbita.</p>
+
+    <div class="ladder">
+      <div class="rung"><div class="n">1</div><div><h4>Captura automática de notas</h4><p>Cadastra o certificado → varredura puxa NF-e, NFS-e, CTE, compra/venda. Agente local + web. A porta de entrada barata.</p></div><span class="pill core">CORE · entrada</span></div>
+      <div class="rung"><div class="n">2</div><div><h4>Auditoria de tributação</h4><p>Antes do lançamento, compara a tributação aplicada vs a base de referência <code>cClassTrib/NCM</code>. Aponta o que corrigir. O diferencial real.</p></div><span class="pill core">CORE · diferencial</span></div>
+      <div class="rung"><div class="n">3</div><div><h4>Diagnóstico e-CAC em lote</h4><p>Caixa postal, situação fiscal, CNDs e certidões de toda a carteira numa tela só — via API oficial Integra Contador (SERPRO).</p></div><span class="pill mina">A MINA</span></div>
+      <div class="rung"><div class="n">4</div><div><h4>Emissor NFS-e Nacional</h4><p>Emite já com tributação correta → auto-auditoria → lançamento. Na onda da padronização nacional 2026.</p></div><span class="pill add">ADD-ON</span></div>
+      <div class="rung"><div class="n">5</div><div><h4>Recuperação de crédito</h4><p>Monofásico PIS/COFINS dos últimos 5 anos, como honorário de êxito. Esporádico, time-boxed até 2027.</p></div><span class="pill over">OVERLAY · gancho</span></div>
+      <div class="rung"><div class="n">6</div><div><h4>Gestão / Obrigações (o "Gestor")</h4><p>Ativo herdado: 23 funcionalidades maduras de gestão de obrigações acessórias. Reativar como camada de gestão.</p></div><span class="pill add">ADD-ON · herdado</span></div>
+    </div>
+
+    <div class="callout warn">
+      <div class="ct">⚠ O erro a evitar (consenso do conclave)</div>
+      <p>A recuperação é <b>gancho de venda, não fundação de valor</b> — é esporádica E em sunset. O valor-âncora é <b>otimizar o tempo do contador</b> ("vender uma ferramenta que faz 5 pessoas virarem 3"). Não construir o LTV em cima da recuperação.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REFORMA -->
+<section id="reforma">
+  <div class="wrap">
+    <div class="sectlabel">Escopo 3 · O motor temporal</div>
+    <h2><span class="num">03</span>O paradoxo da Reforma</h2>
+    <p class="lead">O cronograma confirmado pela Receita Federal define a janela de cada play. Ler isto certo é a diferença entre surfar e afundar.</p>
+
+    <div class="timeline">
+      <div class="tl"><div class="yr">2026 <span>fase de testes</span></div><p>CBS (0,9%) e IBS (0,1%) começam a ser destacados nas NF-e. Real/Presumido já informam <code>cClassTrib</code>. <b>NFS-e padrão nacional obrigatória</b> (LC 214/2025) — acaba com os layouts municipais divergentes. <b>Ago/2026:</b> fontes do setor apontam adesão de autônomos e Simples à NFS-e Nacional (achado HYDRA Tier-S) — onda de migração no ano.</p></div>
+      <div class="tl sunset"><div class="yr">2027 <span>🔴 sunset PIS/COFINS</span></div><p>CBS com alíquota cheia. <b>PIS e COFINS extintos definitivamente</b>. Simples/MEI passam a informar cClassTrib. A geração de novo crédito monofásico acaba — só resta a janela retroativa.</p></div>
+      <div class="tl tail"><div class="yr">2028 <span>consolidação</span></div><p>CBS em regime normal; ICMS/ISS ainda vigentes aguardando transição.</p></div>
+      <div class="tl tail"><div class="yr">2029–2032 <span>transição ICMS/ISS → IBS</span></div><p>Alíquotas de ICMS/ISS reduzidas progressivamente (9/10 → 6/10). A fase mais longa — reclassificação e dupla apuração contínuas.</p></div>
+      <div class="tl"><div class="yr">2033 <span>conclusão</span></div><p>ICMS e ISS extintos. IBS pleno. Fim da transição.</p></div>
+    </div>
+
+    <div class="cards c2" style="margin-top:26px">
+      <div class="card" style="border-color:rgba(255,107,107,.3)"><div class="ico">⏳</div><h4>Sunset — colher agora</h4><p>A recuperação de monofásico tem prazo: PIS/COFINS morre em 2027. A janela retroativa de 5 anos dá uma cauda até ~2032, mas <b>sem geração nova</b>. É um play de captura de valor imediato.</p></div>
+      <div class="card" style="border-color:rgba(45,212,191,.3)"><div class="ico">🌱</div><h4>Tailwind — o jogo longo</h4><p>A reclassificação <code>cClassTrib</code> e a dupla apuração 2026-2033 são <b>trabalho recorrente novo por 7 anos</b>. Mesmo NCM pode ter cClassTrib diferente — a base de referência é o <b>moat</b> da auditoria.</p></div>
+    </div>
+
+    <div class="callout danger">
+      <div class="ct">⚠ Cautela jurídica (clone Heleno Taveira Torres)</div>
+      <p>O produto <b>informa o direito posto, não emite parecer</b>. Não pode prometer "crédito garantido" nem "apuração correta" — a não-cumulatividade plena ainda é regime disputado e a recuperação tem litigiosidade. Linguagem: <i>"identifica indícios de crédito potencialmente recuperável"</i> + disclaimer + parceiro tributarista habilitado.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONCORRENCIA -->
+<section id="concorrencia">
+  <div class="wrap">
+    <div class="sectlabel">Escopo 4 · Concorrência</div>
+    <h2><span class="num">04</span>A cunha: ninguém junta os três</h2>
+    <p class="lead">O mercado tem dois campos que não se sobrepõem. A oportunidade é ser o que falta no meio — com o comercial que os técnicos não têm.</p>
+
+    <table class="tbl">
+      <thead><tr><th>Campo</th><th>Players</th><th>Força</th><th>Fraqueza</th></tr></thead>
+      <tbody>
+        <tr><td><b>Captura / Fiscal</b></td><td>GOB, IRIS (CIEG), VERI, G-TAX, Klaus, Arquivei/Qive</td><td>Tech fiscal forte</td><td><span class="no">Comercial fraco</span></td></tr>
+        <tr><td><b>Gestão / Obrigações</b></td><td>Nibo, Tareffa, GClick, Confi, MakroSystem, Acessórias</td><td>Workflow maduro</td><td><span class="no">Sem inteligência fiscal profunda</span></td></tr>
+        <tr><td style="color:var(--lime)"><b>O meio (vocês)</b></td><td>—</td><td class="chk">Fiscal + Gestão + Comercial agressivo</td><td>A construir</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Gestor herdado × concorrentes — o gap mapeado</h3>
+    <p>A planilha herdada já prova quantitativamente: o "Gestor" cobre gestão, e suas lacunas <b>são exatamente o core fiscal</b> que se quer construir.</p>
+    <table class="tbl">
+      <thead><tr><th>Funcionalidade</th><th>Gestor tem?</th><th>= Módulo do core</th></tr></thead>
+      <tbody>
+        <tr><td>Agenda de obrigações, certidões, log de leitura, robô de upload</td><td class="chk">✓ (23 features)</td><td>Gestão (#6)</td></tr>
+        <tr><td>Diagnóstico fiscal e-CAC</td><td class="no">✗</td><td>🔥 ECAC (#3) — a mina</td></tr>
+        <tr><td>Emissão NFS-e / boletos</td><td class="no">✗</td><td>Emissor (#4)</td></tr>
+        <tr><td>Robôs de leitura XML/PDF + recálculo</td><td class="no">✗</td><td>Captura + Auditoria (#1, #2)</td></tr>
+        <tr><td>Integração WhatsApp oficial + app cliente</td><td class="no">✗</td><td>Comunicação</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout key">
+      <div class="ct">✦ Posicionamento (clone April Dunford)</div>
+      <p>A alternativa competitiva real <b>não é outro SaaS</b> — é o <b>status quo</b> (contador manual + ferramentas soltas tipo Qive/Nibo desconectadas). Posicionar contra "a colcha de retalhos + trabalho manual". <b>Big fish, small pond:</b> dominar o nicho de escritórios com clientes de alto-SKU (farmácia, mercado, posto) antes de generalizar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="sectlabel">Escopo 5 · Pricing</div>
+    <h2><span class="num">05</span>O corredor de preço está definido</h2>
+    <p class="lead">Os concorrentes ancoram o mercado. O modelo de escada + por volume + emissor-revenda é sólido — desde que o valor seja empacotado, não descontado.</p>
+
+    <table class="tbl">
+      <thead><tr><th>Player</th><th>Faixa mensal</th><th>Posição</th></tr></thead>
+      <tbody>
+        <tr><td>Arquivei / Qive (captura XML)</td><td>desde R$39,90</td><td>Líder de captura; escritório = sob consulta</td></tr>
+        <tr><td>Nibo</td><td>R$58 – R$216</td><td>Foco financeiro/contábil, produto p/ contador</td></tr>
+        <tr><td>Conta Azul</td><td>R$89,90 – R$249,90</td><td>Gestão ampla (comprada por ~R$1,7bi)</td></tr>
+        <tr><td style="color:var(--lime)"><b>Projeto Contador — core</b></td><td class="chk">R$200 – R$400+</td><td>Captura + Auditoria + e-CAC empacotados</td></tr>
+      </tbody>
+    </table>
+
+    <div class="cards c3" style="margin-top:24px">
+      <div class="card"><div class="ico">📊</div><h4>Value metric</h4><p>Preço por volume de nota / nº de CNPJs — alinha preço a valor (clone Patrick Campbell).</p></div>
+      <div class="card"><div class="ico">🚫</div><h4>Nunca descontar</h4><p>Desconto destrói LTV em 30%+. "Sem fidelidade" do Renan OK — mas via valor, não preço.</p></div>
+      <div class="card"><div class="ico">🔁</div><h4>Implantação + recorrente</h4><p>Fee de implantação cobre o CAC; a mensalidade é o ativo. Emissor revendido paga a própria assinatura.</p></div>
+    </div>
+
+    <div class="callout key">
+      <div class="ct">✦ Modelo de recuperação (success-fee)</div>
+      <p>Mercado pratica <b>1%–20%</b> de honorário de êxito (o áudio falava 30% — agressivo). Modelo consagrado = <b>parceria contador + tributarista</b> com contrato de associação. Recebimento em <b>dinheiro (RT)</b> é mais seguro que compensação (PERComp tem risco de multa de até 150%).</p>
+    </div>
+  </div>
+</section>
+
+<!-- RISCOS -->
+<section id="riscos">
+  <div class="wrap">
+    <div class="sectlabel">Escopo 6 · Riscos</div>
+    <h2><span class="num">06</span>Registro de riscos (ranqueado)</h2>
+    <p class="lead">Os quatro maiores são jurídico-fiscais — e a pesquisa já mapeou a mitigação de cada um.</p>
+
+    <div class="risk"><span class="sev hi">ALTA</span><div><h4>Certificado digital = bomba LGPD</h4><p>Guardar e-CNPJ de centenas de empresas é o maior risco operacional/legal — e ninguém no áudio mencionou. Multa ANPD até 2% do faturamento (teto R$50M).</p><p class="mit">→ Privacy by Design desde o schema: criptografia, isolamento multi-tenant, log de acesso, DPA com o escritório.</p></div></div>
+
+    <div class="risk"><span class="sev hi">ALTA</span><div><h4>Multa 150% no PERComp</h4><p>Compensar crédito glosado depois gera multa pesada — o "buffone" cai no cliente do contador.</p><p class="mit">→ Default = restituição em dinheiro (RT); humano no loop; parceiro tributarista protocola.</p></div></div>
+
+    <div class="risk"><span class="sev hi">ALTA</span><div><h4>Consultoria tributária regulada</h4><p>Auditar tributação pode ser enquadrado como consultoria (atividade regulada).</p><p class="mit">→ Disclaimer + responsável técnico habilitado + linguagem "indícios", nunca "garantido".</p></div></div>
+
+    <div class="risk"><span class="sev md">MÉDIA</span><div><h4>Conflito de canal</h4><p>Se o contador percebe que você vende pros clientes dele, vira concorrente.</p><p class="mit">→ Política de canal explícita: focar Lucro Real/não-Simples, ou só análise prévia; deixar o contador no split (alinha incentivo).</p></div></div>
+
+    <div class="risk"><span class="sev md">MÉDIA</span><div><h4>Falso-positivo da auditoria</h4><p>Auditoria que erra em silêncio destrói a confiança do contador (paralelo ao "classificador de crise silencioso").</p><p class="mit">→ Golden-set + evaluation antes de escalar; observabilidade do motor (clone Chip Huyen / Werner Vogels).</p></div></div>
+
+    <div class="risk"><span class="sev md">MÉDIA</span><div><h4>Dependência do Renan</h4><p>O comercial é o ativo E o ponto único de falha. A ferramenta anterior morreu quando o dev solo debandou.</p><p class="mit">→ Transformar o comercial em processo replicável (script, SDR, playbook).</p></div></div>
+
+    <div class="callout key">
+      <div class="ct">✦ Risco que virou oportunidade</div>
+      <p>Os <b>15 layouts de NFS-e municipal</b> — que mataram a velocidade da ferramenta antiga — estão sendo <b>eliminados pela própria Reforma</b>: a NFS-e padrão nacional (obrigatória 2026) unifica tudo num layout só. Construir agora é surfar a padronização, não lutar contra ela.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONCLAVE -->
+<section id="conclave">
+  <div class="wrap">
+    <div class="sectlabel">Conclave HYDRA · 11 especialistas</div>
+    <h2><span class="num">07</span>As vozes dos responsáveis por área</h2>
+    <p class="lead">Cada posição fundamentada nos frameworks reais extraídos de cada clone — não role-play genérico.</p>
+
+    <div class="voices">
+      <div class="voice"><div class="hd"><div class="av">🏛️</div><div><div class="nm">Heleno Taveira Torres</div><div class="rl">Tributário · Reforma</div></div></div><p><span class="q">"Informa o direito posto, não emite parecer."</span> Não prometer crédito garantido. O monofásico tem litigiosidade — o produto sinaliza indícios; o parecer é do tributarista.</p></div>
+      <div class="voice"><div class="hd"><div class="av">📡</div><div><div class="nm">Roberto Dias Duarte</div><div class="rl">Fisco digital · SPED</div></div></div><p><span class="q">"Infraestrutura vs. acessório."</span> Captura e e-CAC são infraestrutura → prioridade. <span class="q">"Inteligência é automatizável; julgamento, não"</span> → humano no loop é design.</p></div>
+      <div class="voice"><div class="hd"><div class="av">💼</div><div><div class="nm">Anderson Hernandes</div><div class="rl">Gestão · Precificação · ICP</div></div></div><p><span class="q">"Vender contabilidade sem vender contabilidade"</span> — o cliente compra o ganho. <span class="q">"Produtiza o burocrático."</span> Captação previsível &gt; indicação (por isso travam &lt;100 clientes).</p></div>
+      <div class="voice"><div class="hd"><div class="av">🎯</div><div><div class="nm">April Dunford</div><div class="rl">Posicionamento</div></div></div><p><span class="q">"Competitive alternatives first"</span> — a alternativa é o status quo, não outro SaaS. <span class="q">"Big fish, small pond."</span> O inimigo real é a indecisão.</p></div>
+      <div class="voice"><div class="hd"><div class="av">💲</div><div><div class="nm">Patrick Campbell</div><div class="rl">Pricing</div></div></div><p><span class="q">"Discounting destroys value"</span> (-30% LTV). Segmentar (só-emissor ≠ core). <b>Dissenso:</b> recuperação é esporádica — não construir o LTV nela.</p></div>
+      <div class="voice"><div class="hd"><div class="av">🧪</div><div><div class="nm">Eric Ries</div><div class="rl">Lean · MVP</div></div></div><p>MVP ≠ os 5 módulos. É o menor experimento que valida "o contador paga recorrente pela captura+auditoria". Começar com captura + 1 piloto do Renan.</p></div>
+      <div class="voice"><div class="hd"><div class="av">⚖️</div><div><div class="nm">Patrícia Peck</div><div class="rl">LGPD</div></div></div><p>O certificado digital é "a chave" → o maior risco. Privacy by Design desde o schema. Resolver a tensão XML 15 anos (retenção) × direito de exclusão.</p></div>
+      <div class="voice"><div class="hd"><div class="av">🤖</div><div><div class="nm">Chip Huyen</div><div class="rl">Motor de auditoria IA</div></div></div><p><span class="q">"Simplicity must be earned"</span> — regras + RAG sobre cClassTrib, não fine-tune. <span class="q">"Evaluation before everything"</span> — golden-set antes; falso-positivo é caro.</p></div>
+      <div class="voice"><div class="hd"><div class="av">☁️</div><div><div class="nm">Werner Vogels</div><div class="rl">Arquitetura</div></div></div><p><span class="q">"Everything fails"</span> — captura/SERPRO vão falhar → filas, retry, idempotência. <span class="q">"Observe everything"</span> — auditoria que erra em silêncio é o risco.</p></div>
+      <div class="voice"><div class="hd"><div class="av">🔥</div><div><div class="nm">Alex Hormozi</div><div class="rl">Oferta</div></div></div><p><span class="q">"Starving crowd"</span> — a Reforma criou a turba faminta; timing é o ativo. <span class="q">"Compete on value, never price"</span> — empacotar valor, não baixar preço.</p></div>
+      <div class="voice"><div class="hd"><div class="av">🧭</div><div><div class="nm">Marty Cagan</div><div class="rl">Descoberta de produto</div></div></div><p>Os 4 riscos: value (piloto) · usability (implantação é o gargalo do escritório pequeno) · feasibility (via SERPRO) · viability (LGPD/margem).</p></div>
+    </div>
+
+    <h3 style="margin-top:34px">Síntese</h3>
+    <div class="cards c3">
+      <div class="card" style="border-color:rgba(182,242,74,.25)"><h4 style="color:var(--lime)">✓ Consenso</h4><ul class="clean" style="margin:6px 0 0"><li>Captura + e-CAC = infraestrutura, prioridade</li><li>Humano no loop é obrigatório (e protege juridicamente)</li><li>Recorrente é o ativo; recuperação é gancho</li><li>Posicionar como "copiloto da Reforma"</li><li>LGPD/certificado by design desde o dia 1</li></ul></div>
+      <div class="card" style="border-color:rgba(245,185,69,.25)"><h4 style="color:var(--amber)">⚔ Dissenso resolvido</h4><ul class="clean" style="margin:6px 0 0"><li>Cautela jurídica × oferta agressiva → vender o ganho com disclaimer + parceiro</li><li>"Mais barato" × valor → entrada barata, core empacotado</li><li>Sequência → MVP mínimo (pró-Ries)</li></ul></div>
+      <div class="card" style="border-color:rgba(255,107,107,.25)"><h4 style="color:var(--red)">🕳 Blind spots</h4><ul class="clean" style="margin:6px 0 0"><li>Conflito de canal não resolvido</li><li>Risco de "consultoria regulada"</li><li>Certificado = bomba LGPD</li><li>Falso-positivo da auditoria</li><li>Dependência do Renan</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap">
+  <div class="wrap">
+    <div class="sectlabel">Veredito & Execução</div>
+    <h2><span class="num">08</span>GO — com sequência disciplinada</h2>
+
+    <div class="verdict">
+      <span class="badge">VEREDITO: GO ✓</span>
+      <p style="font-size:17px;color:#dfe8f0">O negócio tem tese real e cunha defensável. Os dois maiores ativos são o <b>comercial provado do Renan</b> e o <b>timing da Reforma</b>. O maior erro seria tratar a recuperação como fundação (é gancho) e construir os 5 módulos antes de validar o primeiro.</p>
+    </div>
+
+    <div class="ladder" style="margin-top:26px">
+      <div class="rung"><div class="n">0</div><div><h4>Captura + armazenamento → 1-2 pilotos do Renan</h4><p>Infra barata, valida a hipótese central. Fundamento: Ries (MVP) + Roberto (infraestrutura).</p></div><span class="pill core">FASE 0</span></div>
+      <div class="rung"><div class="n">1</div><div><h4>Auditoria de tributação</h4><p>Regras + RAG sobre base cClassTrib, golden-set, humano no loop. O diferencial. Fundamento: Chip + Heleno.</p></div><span class="pill core">FASE 1</span></div>
+      <div class="rung"><div class="n">2</div><div><h4>e-CAC via Integra Contador</h4><p>A mina, homologada, centavos por consulta. Fundamento: Roberto + Anderson.</p></div><span class="pill mina">FASE 2</span></div>
+      <div class="rung"><div class="n">3</div><div><h4>Emissor NFS-e Nacional + reativar Gestor</h4><p>Na onda da padronização 2026. Fundamento: Cagan + pesquisa.</p></div><span class="pill add">FASE 3</span></div>
+      <div class="rung"><div class="n">★</div><div><h4>Recuperação monofásico (overlay)</h4><p>Success-fee time-boxed 2026-27, com parceiro tributarista + disclaimer. Fundamento: Heleno + Campbell.</p></div><span class="pill over">OVERLAY</span></div>
+    </div>
+
+    <h3>Constraints não-negociáveis</h3>
+    <ul class="clean">
+      <li><b>Humano no loop</b> em tudo que toca apuração (Roberto/Heleno)</li>
+      <li><b>LGPD/certificado by design</b> desde o schema (Peck/Werner)</li>
+      <li><b>Evaluation antes de escalar</b> a auditoria (Chip)</li>
+      <li><b>Nunca prometer "crédito garantido"</b> ou "apuração correta" (Heleno)</li>
+    </ul>
+
+    <h3>Resolver ANTES de escalar</h3>
+    <ol class="num">
+      <li><b>Política de canal</b> — evitar virar concorrente do contador</li>
+      <li><b>Estrutura jurídica da recuperação</b> — quem protocola o PER/DCOMP</li>
+      <li><b>Dependência do Renan</b> — transformar o comercial em processo replicável</li>
+    </ol>
+
+    <div class="callout warn">
+      <div class="ct">📥 Pendente (material do Renan a chegar)</div>
+      <p>Estado real do Gestor (código deployável ou mockup?) · base tributária de referência (têm/constroem/licenciam?) · custo Integra Contador no volume real · pipeline da "mina de ouro" (1000+ clientes) · unit economics para margem.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FONTES -->
+<footer id="fontes">
+  <div class="wrap">
+    <div class="sectlabel">Metodologia & Fontes</div>
+    <h2 style="font-size:24px;margin-bottom:14px">Como este dossiê foi construído</h2>
+    <p style="font-size:15px;color:var(--muted);max-width:760px">Transcrição da reunião de sócios (103 min, faster-whisper) → mega-pesquisa de fontes primárias reais (web) → mineração HYDRA (config fiscal dedicado, provider OpenAI) → conclave de 11 clones via <code>self-consultation.js</code> (frameworks reais extraídos) → consolidação. Documentos-fonte em <code>docs/projects/contador/</code> (05 visão · 06 comparativo · 07 análise · 08 conclave).</p>
+
+    <p class="src" style="margin-top:24px">
+      <b style="color:var(--muted)">Fontes primárias consultadas:</b><br>
+      Receita Federal — Reforma do Consumo · Câmara dos Deputados — cronograma transição ·
+      <a href="https://www.jettax.com.br/blog/cronograma-e-fases-da-reforma-tributaria-de-2026-a-2033/">Jettax — cronograma 2026-2033</a> ·
+      <a href="https://www.contabeis.com.br/noticias/74339/cbs-e-ibs-em-2026-exigem-revisao-do-cclasstrib-nas-nf-e/">Contábeis — cClassTrib/NF-e 2026</a> ·
+      <a href="https://blog.tecnospeed.com.br/tabela-cclasstrib/">Tecnospeed — tabela cClassTrib</a> ·
+      <a href="https://andersonhernandes.com.br/numero-de-escritorios-contabeis-no-brasil/">Anderson Hernandes — nº de escritórios</a> ·
+      <a href="https://labcont.com.br/estudo-sobre-o-mercado-contabil-no-brasil-2025/">Labcont — mercado contábil 2025</a> ·
+      <a href="https://arquivei.com.br/planos">Arquivei/Qive — planos</a> ·
+      <a href="https://www.nibo.com.br/empresa/planos-e-precos">Nibo — preços</a> ·
+      <a href="https://contaazul.com/planos/">Conta Azul — planos</a> ·
+      <a href="https://blog.tecnospeed.com.br/nfse-nacional-tudo/">Tecnospeed — NFS-e Nacional</a> ·
+      <a href="https://loja.serpro.gov.br/integra-contador/product/integracontador">SERPRO — Integra Contador</a> ·
+      <a href="https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2022/maio/procuracao-digital-para-acesso-ao-e-cac-ja-pode-ser-outorgada-diretamente-pelo-e-cac">Receita — procuração e-CAC</a> ·
+      <a href="https://recuperasimples.com.br/como-recuperar-pis-e-cofins-monofasico-simples-nacional/">Recuperação monofásico</a> ·
+      <a href="https://cfc.org.br/noticias/especial-como-o-profissional-da-contabilidade-e-empresas-contabeis-podem-garantir-a-conformidade-com-a-lgpd/">CFC — LGPD na contabilidade</a> ·
+      <a href="https://www.contabeis.com.br/artigos/74281/contadores-e-advogados-parceria-para-regularizacao-fiscal/">Contábeis — parceria contador/advogado</a>
+    </p>
+
+    <div class="sig">
+      Orquestrado por <b>Orion</b> — AIOS Master · disclaimer: este dossiê é apoio à decisão de produto, não substitui parecer de contador ou tributarista habilitado para o caso concreto.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

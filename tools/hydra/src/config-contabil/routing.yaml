@@ -1,0 +1,149 @@
+routing:
+  min_relevance_score: 0.3
+  max_clones_per_item: 25
+  tier_priority_map:
+    S: urgent
+    A: normal
+    B: low
+  keyword_weight: 0.6
+  department_weight: 0.3
+  tier_weight: 0.1
+  feedback_floor: 0.2
+  retention_days: 30
+
+  # Forced routes: domain -> clones always included
+  # IMPORTANT: only clones that exist in jarvis-mind-clone-index.json route successfully.
+  # Fixed 2026-05-14 (Orion): previous routes referenced clones not in index → 0 distribution.
+  forced_routes:
+    ai-ml:
+      # squad-ai full membership (15) added 2026-05-15 Mega Research
+      - demis-hassabis
+      - fei-fei-li
+      - andrew-ng
+      - andrej-karpathy
+      - chip-huyen
+      - cassie-kozyrkov
+      - ilya-sutskever
+      - yann-lecun
+      - harrison-chase
+      - jerry-liu
+      - alan-nichol
+      - timnit-gebru
+      - swyx
+      - lilian-weng
+      - jim-fan
+      # AI Orchestration consumers (AIOS)
+      - architect
+      - dev
+      - aios-master
+    marketing:
+      # Traffic Masters squad (added 14/Mai/2026) — paid traffic specialists
+      - molly-pittman          # Traffic Engine 9 steps, DigitalMarketer
+      - depesh-mandalia        # BPM Method, Meta + ecommerce
+      - kasim-aslam            # Golden Ratio, Google Ads, Solutions 8
+      - tom-breeze             # ADUCATE, YouTube Ads, Viewability
+      - nicholas-kusmich       # 4-Step Framework, Meta Lead Gen
+      - ralph-burns            # Creative Lab, DPI², Tier 11
+      - pedro-sobral           # Metodologia ABC, Brasil paid traffic
+      - neil-patel             # SEO/marketing (aios-agent)
+      - russell-brunson        # funnels (aios-agent)
+      - grant-cardone          # sales/marketing (aios-agent)
+    engenharia:
+      - kent-beck              # XP/TDD founder (aios-agent)
+      - linus-torvalds         # systems eng (aios-agent)
+      - charity-majors         # observability/SRE (aios-agent)
+      - uncle-bob-martin       # clean code (aios-agent)
+      - scott-hanselman        # full-stack/dx (aios-agent)
+      - werner-vogels          # cloud/distributed (innovation)
+      - architect              # AIOS architect agent
+      - dev                    # AIOS dev agent
+      - devops                 # AIOS devops agent
+      - data-engineer          # AIOS data agent
+      - qa                     # AIOS qa agent
+    # Design Systems (added 27/Apr/2026) — drives AIOS design squad
+    design-systems:
+      - design-lead            # AIOS design lead agent
+      - design-systems-engineer # AIOS design eng agent
+      - ui-designer            # AIOS UI agent
+      - ux-designer            # AIOS UX agent
+      - ux-design-expert       # AIOS UX expert agent
+    # Product / strategy
+    product:
+      - marty-cagan            # product mgmt (aios-agent)
+      - teresa-torres          # discovery (aios-agent)
+      - jason-lemkin           # SaaS (aios-agent)
+      - eric-ries              # lean (innovation)
+      - pm                     # AIOS PM agent
+      - po                     # AIOS PO agent
+      - sm                     # AIOS SM agent
+    # Innovation / business
+    innovation:
+      - eric-ries
+      - werner-vogels
+      - ray-dalio
+      - warren-buffett
+    # Health-tech (Anipis project)
+    health-tech:
+      - halle-tecco
+      - sean-duffy
+      - atul-butte
+      - alison-darcy
+      - kate-ryder
+    # Customer ops (multi-project support)
+    customer-ops:
+      - voice-of-customer
+      - customer-success-manager
+      - onboarding-specialist
+      - churn-prevention
+    # Cybersecurity (added 15/Mai/2026)
+    cybersecurity:
+      - kevin-mitnick          # social engineering / hacking (aios-agent)
+      - troy-hunt              # data breaches / pwned (aios-agent)
+      - charity-majors         # ops/observability (aios-agent)
+    # Legal (added 15/Mai/2026)
+    legal:
+      - lawrence-lessig        # internet law (aios-agent)
+      - bakul-patel            # FDA/digital health (legal dept)
+      - lucia-savage           # health-law / compliance (legal dept)
+    # Mental health (Anipis primary)
+    saude-mental:
+      - acacia-parks           # positive psychology
+      - bj-fogg                # behavior design
+      - alison-darcy           # Woebot / digital therapy
+      - dena-bravata           # clinical research
+      - kate-ryder             # Maven / women's health
+      - sean-duffy             # Omada / chronic care
+    # Business / strategy (added 15/Mai/2026)
+    negocios:
+      - warren-buffett         # investing/business (aios-agent)
+      - ray-dalio              # principles/macro (aios-agent)
+      - marty-cagan            # product strategy (aios-agent)
+      - jason-lemkin           # SaaS economics (aios-agent)
+      - neil-patel             # marketing/growth (aios-agent)
+      - russell-brunson        # funnels (aios-agent)
+      - ceo
+      - cfo
+      - cmo
+    # Interior design (Tocks primary)
+    design-interiores:
+      - design-lead
+      - ui-designer
+      - ux-designer
+      - ux-design-expert
+
+  # Bridge publisher config
+  bridge:
+    max_publishes_per_cycle: 10
+    pending_file: pending-bridge-publish.jsonl
+
+  # Digest config
+  digest:
+    output_dir: digests/distribution
+
+  # Feedback config
+  feedback:
+    reset_interval_days: 30
+    min_relevance_floor: 0.2
+    boost_increment: 0.05
+    penalty_increment: 0.05
+    irrelevant_threshold: 0.5

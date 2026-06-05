@@ -1,0 +1,231 @@
+# HYDRA Sources — Contabilidade / Fiscal / Reforma Tributária BR
+# Curado em 2026-06-04 para projeto contador (SaaS p/ escritórios contábeis)
+# Authority: 1 (weak) → 5 (oficial/canônico)
+# Domains: fiscal (primary), contabil, legal, negocios, ai-ml, engenharia
+
+sources:
+
+  # ========================================================================
+  # GRUPO 1 — OFICIAIS .GOV.BR (Reforma, Fisco digital, NF-e)
+  # ========================================================================
+  web:
+    - name: "Receita Federal — Orientação Tributária"
+      url: "https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria"
+      frequency: "weekly"
+      domains: ["fiscal", "legal"]
+      authority: 5
+
+    - name: "Reforma Tributária — Portal Oficial gov.br"
+      url: "https://www.gov.br/fazenda/pt-br/acesso-a-informacao/acoes-e-programas/reforma-tributaria"
+      frequency: "daily"
+      domains: ["fiscal", "legal"]
+      authority: 5
+
+    - name: "Planalto — EC 132/2023 (Reforma Tributária)"
+      url: "https://www.planalto.gov.br/ccivil_03/constituicao/emendas/emc/emc132.htm"
+      frequency: "monthly"
+      domains: ["fiscal", "legal"]
+      authority: 5
+
+    - name: "Planalto — LC 214/2025 (regulamentação IBS/CBS/IS)"
+      url: "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214.htm"
+      frequency: "weekly"
+      domains: ["fiscal", "legal"]
+      authority: 5
+
+    - name: "Portal NF-e Nacional"
+      url: "https://www.nfe.fazenda.gov.br/portal/principal.aspx"
+      frequency: "weekly"
+      domains: ["fiscal", "engenharia"]
+      authority: 5
+
+    - name: "SPED — Sistema Público de Escrituração Digital"
+      url: "http://sped.rfb.gov.br/"
+      frequency: "weekly"
+      domains: ["fiscal", "contabil"]
+      authority: 5
+
+    - name: "Simples Nacional — Portal Receita"
+      url: "https://www8.receita.fazenda.gov.br/SimplesNacional/"
+      frequency: "weekly"
+      domains: ["fiscal", "contabil"]
+      authority: 5
+
+    - name: "e-CAC — Centro Virtual de Atendimento"
+      url: "https://cav.receita.fazenda.gov.br/autenticacao/login"
+      frequency: "monthly"
+      domains: ["fiscal", "contabil"]
+      authority: 5
+
+    - name: "CONFAZ — Conselho Nacional de Política Fazendária"
+      url: "https://www.confaz.fazenda.gov.br/"
+      frequency: "weekly"
+      domains: ["fiscal", "legal"]
+      authority: 5
+
+    - name: "CFC — Conselho Federal de Contabilidade"
+      url: "https://cfc.org.br/"
+      frequency: "weekly"
+      domains: ["contabil", "legal"]
+      authority: 5
+
+    - name: "ANPD — Proteção de Dados (LGPD)"
+      url: "https://www.gov.br/anpd/pt-br"
+      frequency: "weekly"
+      domains: ["legal"]
+      authority: 5
+
+    # ========================================================================
+    # GRUPO 2 — DOUTRINA / NEWS FISCAL-CONTÁBIL (Authority 4-5)
+    # ========================================================================
+    - name: "Contábeis — Portal (o maior do BR)"
+      url: "https://www.contabeis.com.br/"
+      frequency: "daily"
+      domains: ["contabil", "fiscal"]
+      authority: 4
+
+    - name: "Jornal Contábil"
+      url: "https://www.jornalcontabil.com.br/"
+      frequency: "daily"
+      domains: ["contabil", "fiscal"]
+      authority: 3
+
+    - name: "Conjur — Tributário"
+      url: "https://www.conjur.com.br/secoes/tributario/"
+      frequency: "daily"
+      domains: ["fiscal", "legal"]
+      authority: 4
+
+    - name: "JOTA — Tributos"
+      url: "https://www.jota.info/tributos"
+      frequency: "daily"
+      domains: ["fiscal", "legal"]
+      authority: 5
+
+    - name: "IBPT — Instituto Brasileiro Planejamento Tributário"
+      url: "https://ibpt.com.br/"
+      frequency: "weekly"
+      domains: ["fiscal", "negocios"]
+      authority: 4
+
+    - name: "Heleno Taveira Torres — Artigos Conjur"
+      url: "https://www.conjur.com.br/autores/heleno-taveira-torres/"
+      frequency: "weekly"
+      domains: ["fiscal", "legal"]
+      authority: 5
+
+    # ========================================================================
+    # GRUPO 3 — PLAYERS / COMPETIDORES (captura, emissor, gestão)
+    # ========================================================================
+    - name: "Arquivei — Blog (líder captura XML)"
+      url: "https://blog.arquivei.com.br/"
+      frequency: "weekly"
+      domains: ["fiscal", "negocios"]
+      authority: 4
+
+    - name: "Tecnospeed — Blog (SDK fiscal)"
+      url: "https://www.tecnospeed.com.br/blog/"
+      frequency: "weekly"
+      domains: ["fiscal", "engenharia"]
+      authority: 4
+
+    - name: "Conta Azul — Blog"
+      url: "https://blog.contaazul.com/"
+      frequency: "weekly"
+      domains: ["contabil", "negocios"]
+      authority: 4
+
+    - name: "Nibo — Blog"
+      url: "https://www.nibo.com.br/blog/"
+      frequency: "weekly"
+      domains: ["contabil", "negocios"]
+      authority: 4
+
+    - name: "Omie — Blog"
+      url: "https://www.omie.com.br/blog/"
+      frequency: "weekly"
+      domains: ["contabil", "negocios"]
+      authority: 3
+
+    - name: "Acessórias — Blog (gestão obrigações)"
+      url: "https://acessorias.com/blog/"
+      frequency: "weekly"
+      domains: ["contabil", "negocios"]
+      authority: 3
+
+    - name: "Sage Brasil — Blog Contábil"
+      url: "https://blog.sage.com.br/"
+      frequency: "monthly"
+      domains: ["contabil", "negocios"]
+      authority: 3
+
+    - name: "e-Auditoria — Blog (auditoria fiscal/recuperação)"
+      url: "https://www.e-auditoria.com.br/blog/"
+      frequency: "weekly"
+      domains: ["fiscal", "negocios"]
+      authority: 3
+
+  # ========================================================================
+  # RSS — Feeds rápidos e canônicos
+  # ========================================================================
+  rss:
+    - name: "Contábeis — RSS"
+      url: "https://www.contabeis.com.br/rss/noticias/"
+      frequency: "daily"
+      domains: ["contabil", "fiscal"]
+      authority: 4
+
+    - name: "Conjur — RSS Geral"
+      url: "https://www.conjur.com.br/rss.xml"
+      frequency: "daily"
+      domains: ["fiscal", "legal"]
+      authority: 4
+
+    - name: "JOTA — RSS"
+      url: "https://www.jota.info/feed"
+      frequency: "daily"
+      domains: ["fiscal", "legal"]
+      authority: 5
+
+    - name: "Migalhas — RSS"
+      url: "https://www.migalhas.com.br/rss/migalhasdiarias"
+      frequency: "daily"
+      domains: ["fiscal", "legal"]
+      authority: 4
+
+    - name: "Jornal Contábil — RSS"
+      url: "https://www.jornalcontabil.com.br/feed/"
+      frequency: "daily"
+      domains: ["contabil", "fiscal"]
+      authority: 3
+
+    - name: "ANPD — Notícias RSS"
+      url: "https://www.gov.br/anpd/pt-br/assuntos/noticias/rss"
+      frequency: "daily"
+      domains: ["legal"]
+      authority: 5
+
+  # ========================================================================
+  # YOUTUBE — Os 3 clones fiscais reais + canais fortes
+  # ========================================================================
+  youtube:
+    - name: "Roberto Dias Duarte — Canal (SPED/Fisco digital)"
+      url: "https://www.youtube.com/@robertodiasduarte"
+      frequency: "weekly"
+      domains: ["fiscal", "contabil"]
+      authority: 5
+      max_videos: 10
+
+    - name: "Anderson Hernandes — Tactus (gestão escritório)"
+      url: "https://www.youtube.com/@AndersonHernandes"
+      frequency: "weekly"
+      domains: ["contabil", "negocios"]
+      authority: 5
+      max_videos: 10
+
+    - name: "Sage Brasil — Contábil"
+      url: "https://www.youtube.com/@SageBrasil"
+      frequency: "monthly"
+      domains: ["contabil", "negocios"]
+      authority: 3
+      max_videos: 5
