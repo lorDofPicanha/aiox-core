@@ -1,0 +1,713 @@
+{
+    "schema":  "noyce.eniac_document_inventory.v0",
+    "generatedAt":  "2026-06-08",
+    "sourceBatch":  "downloads-founder-2026-06-08",
+    "guardrails":  [
+                       "No credentials, tokens, cookies, certificates, private keys or 2FA codes are stored here.",
+                       "Financial fields remain null until structured extraction and human validation.",
+                       "Duplicate documents must not be parsed twice.",
+                       "External legal/process acts remain blocked."
+                   ],
+    "documents":  [
+                      {
+                          "documentId":  "balan-o-patrimonial-2024",
+                          "originalFileName":  "BALANÃ‡O PATRIMONIAL 2024.pdf",
+                          "normalizedName":  "balanco-patrimonial-2024",
+                          "kind":  "BALANCO",
+                          "hashSha256":  "8cb52930f4b6a81c757128be1ff2588f543acca0a8dd6abc40cdd44e2ec533c9",
+                          "lengthBytes":  1060673,
+                          "duplicateOf":  null,
+                          "status":  "received",
+                          "expectedFields":  [
+                                                 "exercicio",
+                                                 "patrimonioLiquido",
+                                                 "capitalSocial",
+                                                 "ativoCirc",
+                                                 "passivoCirc",
+                                                 "ativoTotal",
+                                                 "realizavelLongoPrazo",
+                                                 "exigivelLongoPrazo",
+                                                 "receitaBruta",
+                                                 "resultado",
+                                                 "fontePagina"
+                                             ],
+                          "extractedFields":  {
+
+                                              },
+                          "confidence":  0,
+                          "requiresHumanValidation":  true,
+                          "notes":  "Campos financeiros criticos exigem parse estruturado e validacao humana; nao inferir PL.",
+                          "originalPath":  "Downloads/BALANÃ‡O PATRIMONIAL 2024.pdf"
+                      },
+                      {
+                          "documentId":  "balan-o-patrimonial-2025",
+                          "originalFileName":  "BALANÃ‡O PATRIMONIAL 2025.pdf",
+                          "normalizedName":  "balanco-patrimonial-2025",
+                          "kind":  "BALANCO",
+                          "hashSha256":  "c12d269ca95c31ae8b89b8ebbf8a008aa25b98f3d8fdce6962f509857a6340f8",
+                          "lengthBytes":  1165801,
+                          "duplicateOf":  null,
+                          "status":  "received",
+                          "expectedFields":  [
+                                                 "exercicio",
+                                                 "patrimonioLiquido",
+                                                 "capitalSocial",
+                                                 "ativoCirc",
+                                                 "passivoCirc",
+                                                 "ativoTotal",
+                                                 "realizavelLongoPrazo",
+                                                 "exigivelLongoPrazo",
+                                                 "receitaBruta",
+                                                 "resultado",
+                                                 "fontePagina"
+                                             ],
+                          "extractedFields":  {
+
+                                              },
+                          "confidence":  0,
+                          "requiresHumanValidation":  true,
+                          "notes":  "Campos financeiros criticos exigem parse estruturado e validacao humana; nao inferir PL.",
+                          "originalPath":  "Downloads/BALANÃ‡O PATRIMONIAL 2025.pdf"
+                      },
+                      {
+                          "documentId":  "cat-1020250004388-reforma-ceo-1",
+                          "originalFileName":  "CAT 1020250004388 - REFORMA CEO (1).pdf",
+                          "normalizedName":  "cat-1020250004388-reforma-ceo-1",
+                          "kind":  "CAT",
+                          "hashSha256":  "6a543b6cef22a0a1e8ade1894ee7d8954a440842d37e0e8807262b47bdb16bd3",
+                          "lengthBytes":  1137440,
+                          "duplicateOf":  null,
+                          "status":  "received",
+                          "expectedFields":  [
+                                                 "numero",
+                                                 "rt",
+                                                 "crea",
+                                                 "contratante",
+                                                 "tipoContratante",
+                                                 "participacaoTecnica",
+                                                 "valor",
+                                                 "periodo",
+                                                 "itensServicoQuantidadeUnidade"
+                                             ],
+                          "extractedFields":  {
+
+                                              },
+                          "confidence":  0,
+                          "requiresHumanValidation":  true,
+                          "notes":  "Usar para CCP; confirmar numero, RT, itens e unidade antes de atendimento duro.",
+                          "originalPath":  "Downloads/CAT 1020250004388 - REFORMA CEO (1).pdf"
+                      },
+                      {
+                          "documentId":  "cat-1020250004388-reforma-ceo",
+                          "originalFileName":  "CAT 1020250004388 - REFORMA CEO.pdf",
+                          "normalizedName":  "cat-1020250004388-reforma-ceo",
+                          "kind":  "CAT",
+                          "hashSha256":  "6a543b6cef22a0a1e8ade1894ee7d8954a440842d37e0e8807262b47bdb16bd3",
+                          "lengthBytes":  1137440,
+                          "duplicateOf":  "CAT 1020250004388 - REFORMA CEO (1).pdf",
+                          "status":  "duplicate",
+                          "expectedFields":  [
+                                                 "numero",
+                                                 "rt",
+                                                 "crea",
+                                                 "contratante",
+                                                 "tipoContratante",
+                                                 "participacaoTecnica",
+                                                 "valor",
+                                                 "periodo",
+                                                 "itensServicoQuantidadeUnidade"
+                                             ],
+                          "extractedFields":  {
+
+                                              },
+                          "confidence":  1,
+                          "requiresHumanValidation":  true,
+                          "notes":  "Duplicata exata por SHA-256; nao processar duas vezes.",
+                          "originalPath":  "Downloads/CAT 1020250004388 - REFORMA CEO.pdf"
+                      },
+                      {
+                          "documentId":  "cat-1020260001207-mestre-zezito-1",
+                          "originalFileName":  "CAT 1020260001207 - MESTRE ZEZITO (1).pdf",
+                          "normalizedName":  "cat-1020260001207-mestre-zezito-1",
+                          "kind":  "CAT",
+                          "hashSha256":  "889d2ae02474ce10fa07babec30d07afaeadd1d5d5b1567f0a2a22df79e8a459",
+                          "lengthBytes":  1974079,
+                          "duplicateOf":  null,
+                          "status":  "received",
+                          "expectedFields":  [
+                                                 "numero",
+                                                 "rt",
+                                                 "crea",
+                                                 "contratante",
+                                                 "tipoContratante",
+                                                 "participacaoTecnica",
+                                                 "valor",
+                                                 "periodo",
+                                                 "itensServicoQuantidadeUnidade"
+                                             ],
+                          "extractedFields":  {
+
+                                              },
+                          "confidence":  0,
+                          "requiresHumanValidation":  true,
+                          "notes":  "Usar para CCP; confirmar numero, RT, itens e unidade antes de atendimento duro.",
+                          "originalPath":  "Downloads/CAT 1020260001207 - MESTRE ZEZITO (1).pdf"
+                      },
+                      {
+                          "documentId":  "cat-1020260001207-mestre-zezito",
+                          "originalFileName":  "CAT 1020260001207 - MESTRE ZEZITO.pdf",
+                          "normalizedName":  "cat-1020260001207-mestre-zezito",
+                          "kind":  "CAT",
+                          "hashSha256":  "889d2ae02474ce10fa07babec30d07afaeadd1d5d5b1567f0a2a22df79e8a459",
+                          "lengthBytes":  1974079,
+                          "duplicateOf":  "CAT 1020260001207 - MESTRE ZEZITO (1).pdf",
+                          "status":  "duplicate",
+                          "expectedFields":  [
+                                                 "numero",
+                                                 "rt",
+                                                 "crea",
+                                                 "contratante",
+                                                 "tipoContratante",
+                                                 "participacaoTecnica",
+                                                 "valor",
+                                                 "periodo",
+                                                 "itensServicoQuantidadeUnidade"
+                                             ],
+                          "extractedFields":  {
+
+                                              },
+                          "confidence":  1,
+                          "requiresHumanValidation":  true,
+                          "notes":  "Duplicata exata por SHA-256; nao processar duas vezes.",
+                          "originalPath":  "Downloads/CAT 1020260001207 - MESTRE ZEZITO.pdf"
+                      },
+                      {
+                          "documentId":  "cat-escola-ednalda-guedes",
+                          "originalFileName":  "CAT Escola Ednalda Guedes.pdf",
+                          "normalizedName":  "cat-escola-ednalda-guedes",
+                          "kind":  "CAT",
+                          "hashSha256":  "000a28097157ca6cf7a0051a14c6b402a6c9bff4c509a40bdf8d14bb423186c1",
+                          "lengthBytes":  2011782,
+                          "duplicateOf":  null,
+                          "status":  "received",
+                          "expectedFields":  [
+                                                 "numero",
+                                                 "rt",
+                                                 "crea",
+                                                 "contratante",
+                                                 "tipoContratante",
+                                                 "participacaoTecnica",
+                                                 "valor",
+                                                 "periodo",
+                                                 "itensServicoQuantidadeUnidade"
+                                             ],
+                          "extractedFields":  {
+
+                                              },
+                          "confidence":  0,
+                          "requiresHumanValidation":  true,
+                          "notes":  "Usar para CCP; confirmar numero, RT, itens e unidade antes de atendimento duro.",
+                          "originalPath":  "Downloads/CAT Escola Ednalda Guedes.pdf"
+                      },
+                      {
+                          "documentId":  "cat-pra-a-1020250002836",
+                          "originalFileName":  "CAT- PRAÃ‡A 1020250002836.pdf",
+                          "normalizedName":  "cat-praca-1020250002836",
+                          "kind":  "CAT",
+                          "hashSha256":  "efdc273d483393e975b7d3897c8ae853e7b79aba5cd6960a8015a8072d42b137",
+                          "lengthBytes":  299599,
+                          "duplicateOf":  null,
+                          "status":  "received",
+                          "expectedFields":  [
+                                                 "numero",
+                                                 "rt",
+                                                 "crea",
+                                                 "contratante",
+                                                 "tipoContratante",
+                                                 "participacaoTecnica",
+                                                 "valor",
+                                                 "periodo",
+                                                 "itensServicoQuantidadeUnidade"
+                                             ],
+                          "extractedFields":  {
+
+                                              },
+                          "confidence":  0,
+                          "requiresHumanValidation":  true,
+                          "notes":  "Usar para CCP; confirmar numero, RT, itens e unidade antes de atendimento duro.",
+                          "originalPath":  "Downloads/CAT- PRAÃ‡A 1020250002836.pdf"
+                      },
+                      {
+                          "documentId":  "cat-topografia-rodrigo",
+                          "originalFileName":  "CAT TOPOGRAFIA RODRIGO.pdf",
+                          "normalizedName":  "cat-topografia-rodrigo",
+                          "kind":  "CAT",
+                          "hashSha256":  "457614e95c1c37c135257f8669ae97a8464b592920af87843894ec49c8cb6cb5",
+                          "lengthBytes":  149947,
+                          "duplicateOf":  null,
+                          "status":  "received",
+                          "expectedFields":  [
+                                                 "numero",
+                                                 "rt",
+                                                 "crea",
+                                                 "contratante",
+                                                 "tipoContratante",
+                                                 "participacaoTecnica",
+                                                 "valor",
+                                                 "periodo",
+                                                 "itensServicoQuantidadeUnidade"
+                                             ],
+                          "extractedFields":  {
+
+                                              },
+                          "confidence":  0,
+                          "requiresHumanValidation":  true,
+                          "notes":  "Usar para CCP; confirmar numero, RT, itens e unidade antes de atendimento duro.",
+                          "originalPath":  "Downloads/CAT TOPOGRAFIA RODRIGO.pdf"
+                      },
+                      {
+                          "documentId":  "ce-002-2026-edital-1",
+                          "originalFileName":  "CE 002-2026 - Edital (1).pdf",
+                          "normalizedName":  "ce-002-2026-edital-1",
+                          "kind":  "EDITAL",
+                          "hashSha256":  "363fefb23a0db24eb6a405c3c9823fb20bd0c2f7e56465d1391b8a9138ad4db4",
+                          "lengthBytes":  12623676,
+                          "duplicateOf":  null,
+                          "status":  "received",
+                          "expectedFields":  [
+                                                 "orgao",
+                                                 "modalidade",
+                                                 "numero",
+                                                 "objeto",
+                                                 "valorEstimado",
+                                                 "dataPublicacao",
+                                                 "dataSessao",
+                                                 "requisitosHabilitacao",
+                                                 "clausulas",
+                                                 "fontePortal"
+                                             ],
+                          "extractedFields":  {
+
+                                              },
+                          "confidence":  0,
+                          "requiresHumanValidation":  true,
+                          "notes":  "Usar para ERM e ground truth manual; detector silencia campos null.",
+                          "originalPath":  "Downloads/CE 002-2026 - Edital (1).pdf"
+                      },
+                      {
+                          "documentId":  "edital-5",
+                          "originalFileName":  "EDITAL (5).pdf",
+                          "normalizedName":  "edital-5",
+                          "kind":  "EDITAL",
+                          "hashSha256":  "ca973314fcbdfd1841e84ecd6310f4db72abc65ab630ba91367f56a2a35d658b",
+                          "lengthBytes":  1035678,
+                          "duplicateOf":  null,
+                          "status":  "received",
+                          "expectedFields":  [
+                                                 "orgao",
+                                                 "modalidade",
+                                                 "numero",
+                                                 "objeto",
+                                                 "valorEstimado",
+                                                 "dataPublicacao",
+                                                 "dataSessao",
+                                                 "requisitosHabilitacao",
+                                                 "clausulas",
+                                                 "fontePortal"
+                                             ],
+                          "extractedFields":  {
+
+                                              },
+                          "confidence":  0,
+                          "requiresHumanValidation":  true,
+                          "notes":  "Usar para ERM e ground truth manual; detector silencia campos null.",
+                          "originalPath":  "Downloads/EDITAL (5).pdf"
+                      },
+                      {
+                          "documentId":  "edital-6",
+                          "originalFileName":  "EDITAL (6).pdf",
+                          "normalizedName":  "edital-6",
+                          "kind":  "EDITAL",
+                          "hashSha256":  "8eea7b9868e384801e6caf1d5434e2ade07fe4b36bcdc8f8e10eb9cd1ced4ad2",
+                          "lengthBytes":  722282,
+                          "duplicateOf":  null,
+                          "status":  "received",
+                          "expectedFields":  [
+                                                 "orgao",
+                                                 "modalidade",
+                                                 "numero",
+                                                 "objeto",
+                                                 "valorEstimado",
+                                                 "dataPublicacao",
+                                                 "dataSessao",
+                                                 "requisitosHabilitacao",
+                                                 "clausulas",
+                                                 "fontePortal"
+                                             ],
+                          "extractedFields":  {
+
+                                              },
+                          "confidence":  0,
+                          "requiresHumanValidation":  true,
+                          "notes":  "Usar para ERM e ground truth manual; detector silencia campos null.",
+                          "originalPath":  "Downloads/EDITAL (6).pdf"
+                      },
+                      {
+                          "documentId":  "edital-7",
+                          "originalFileName":  "EDITAL (7).pdf",
+                          "normalizedName":  "edital-7",
+                          "kind":  "EDITAL",
+                          "hashSha256":  "a320b510a4c5023daf8e7b5f19823159bedfd52c154bfa8ef9aabb1c5c1ba5b4",
+                          "lengthBytes":  5094566,
+                          "duplicateOf":  null,
+                          "status":  "received",
+                          "expectedFields":  [
+                                                 "orgao",
+                                                 "modalidade",
+                                                 "numero",
+                                                 "objeto",
+                                                 "valorEstimado",
+                                                 "dataPublicacao",
+                                                 "dataSessao",
+                                                 "requisitosHabilitacao",
+                                                 "clausulas",
+                                                 "fontePortal"
+                                             ],
+                          "extractedFields":  {
+
+                                              },
+                          "confidence":  0,
+                          "requiresHumanValidation":  true,
+                          "notes":  "Usar para ERM e ground truth manual; detector silencia campos null.",
+                          "originalPath":  "Downloads/EDITAL (7).pdf"
+                      },
+                      {
+                          "documentId":  "edital-8",
+                          "originalFileName":  "EDITAL (8).pdf",
+                          "normalizedName":  "edital-8",
+                          "kind":  "EDITAL",
+                          "hashSha256":  "2e0beeba1b436659a34995e173764e6e255b294ce38656eb0dea4622a3a265e4",
+                          "lengthBytes":  5085185,
+                          "duplicateOf":  null,
+                          "status":  "received",
+                          "expectedFields":  [
+                                                 "orgao",
+                                                 "modalidade",
+                                                 "numero",
+                                                 "objeto",
+                                                 "valorEstimado",
+                                                 "dataPublicacao",
+                                                 "dataSessao",
+                                                 "requisitosHabilitacao",
+                                                 "clausulas",
+                                                 "fontePortal"
+                                             ],
+                          "extractedFields":  {
+
+                                              },
+                          "confidence":  0,
+                          "requiresHumanValidation":  true,
+                          "notes":  "Usar para ERM e ground truth manual; detector silencia campos null.",
+                          "originalPath":  "Downloads/EDITAL (8).pdf"
+                      },
+                      {
+                          "documentId":  "edital-9",
+                          "originalFileName":  "EDITAL (9).pdf",
+                          "normalizedName":  "edital-9",
+                          "kind":  "EDITAL",
+                          "hashSha256":  "3c41875519ae6ea38b74bdbf6b67f59753f3390f3127782b401d136c75276662",
+                          "lengthBytes":  3166000,
+                          "duplicateOf":  null,
+                          "status":  "received",
+                          "expectedFields":  [
+                                                 "orgao",
+                                                 "modalidade",
+                                                 "numero",
+                                                 "objeto",
+                                                 "valorEstimado",
+                                                 "dataPublicacao",
+                                                 "dataSessao",
+                                                 "requisitosHabilitacao",
+                                                 "clausulas",
+                                                 "fontePortal"
+                                             ],
+                          "extractedFields":  {
+
+                                              },
+                          "confidence":  0,
+                          "requiresHumanValidation":  true,
+                          "notes":  "Usar para ERM e ground truth manual; detector silencia campos null.",
+                          "originalPath":  "Downloads/EDITAL (9).pdf"
+                      },
+                      {
+                          "documentId":  "edital-01-2026-assinado-1",
+                          "originalFileName":  "EDITAL 01-2026_Assinado (1).pdf",
+                          "normalizedName":  "edital-01-2026-assinado-1",
+                          "kind":  "EDITAL",
+                          "hashSha256":  "9912821c86856f434881b1e20314b4ac6444563af31632343cc3cafe5c04eedf",
+                          "lengthBytes":  1226795,
+                          "duplicateOf":  null,
+                          "status":  "received",
+                          "expectedFields":  [
+                                                 "orgao",
+                                                 "modalidade",
+                                                 "numero",
+                                                 "objeto",
+                                                 "valorEstimado",
+                                                 "dataPublicacao",
+                                                 "dataSessao",
+                                                 "requisitosHabilitacao",
+                                                 "clausulas",
+                                                 "fontePortal"
+                                             ],
+                          "extractedFields":  {
+
+                                              },
+                          "confidence":  0,
+                          "requiresHumanValidation":  true,
+                          "notes":  "Usar para ERM e ground truth manual; detector silencia campos null.",
+                          "originalPath":  "Downloads/EDITAL 01-2026_Assinado (1).pdf"
+                      },
+                      {
+                          "documentId":  "edital-5-2026-republica-o-assinado-1",
+                          "originalFileName":  "EDITAL 5-2026 - RepublicaÃ§Ã£o _Assinado (1).pdf",
+                          "normalizedName":  "edital-5-2026-republicacao-assinado-1",
+                          "kind":  "EDITAL",
+                          "hashSha256":  "6e0d34329f9a6b84898965f5fcacfbfdff7fb18952ec84b3363edacee3ea6779",
+                          "lengthBytes":  905120,
+                          "duplicateOf":  null,
+                          "status":  "received",
+                          "expectedFields":  [
+                                                 "orgao",
+                                                 "modalidade",
+                                                 "numero",
+                                                 "objeto",
+                                                 "valorEstimado",
+                                                 "dataPublicacao",
+                                                 "dataSessao",
+                                                 "requisitosHabilitacao",
+                                                 "clausulas",
+                                                 "fontePortal"
+                                             ],
+                          "extractedFields":  {
+
+                                              },
+                          "confidence":  0,
+                          "requiresHumanValidation":  true,
+                          "notes":  "Usar para ERM e ground truth manual; detector silencia campos null.",
+                          "originalPath":  "Downloads/EDITAL 5-2026 - RepublicaÃ§Ã£o _Assinado (1).pdf"
+                      },
+                      {
+                          "documentId":  "edital-concorr-ncia-03-2026-assinado-1",
+                          "originalFileName":  "Edital ConcorrÃªncia 03-2026_Assinado (1).pdf",
+                          "normalizedName":  "edital-concorrencia-03-2026-assinado-1",
+                          "kind":  "EDITAL",
+                          "hashSha256":  "647e1cacf3d8088558695718dd127ee3f70255f0f972dd8d9a76565b4ab1db8d",
+                          "lengthBytes":  1252664,
+                          "duplicateOf":  null,
+                          "status":  "received",
+                          "expectedFields":  [
+                                                 "orgao",
+                                                 "modalidade",
+                                                 "numero",
+                                                 "objeto",
+                                                 "valorEstimado",
+                                                 "dataPublicacao",
+                                                 "dataSessao",
+                                                 "requisitosHabilitacao",
+                                                 "clausulas",
+                                                 "fontePortal"
+                                             ],
+                          "extractedFields":  {
+
+                                              },
+                          "confidence":  0,
+                          "requiresHumanValidation":  true,
+                          "notes":  "Usar para ERM e ground truth manual; detector silencia campos null.",
+                          "originalPath":  "Downloads/Edital ConcorrÃªncia 03-2026_Assinado (1).pdf"
+                      },
+                      {
+                          "documentId":  "edital-04052026104831-1",
+                          "originalFileName":  "edital_04052026104831 (1).pdf",
+                          "normalizedName":  "edital-04052026104831-1",
+                          "kind":  "EDITAL",
+                          "hashSha256":  "5712c1344b4482043c9cdb8f36e1d15fd2d8ecc994fd15d5db7e427f5db73196",
+                          "lengthBytes":  883185,
+                          "duplicateOf":  null,
+                          "status":  "received",
+                          "expectedFields":  [
+                                                 "orgao",
+                                                 "modalidade",
+                                                 "numero",
+                                                 "objeto",
+                                                 "valorEstimado",
+                                                 "dataPublicacao",
+                                                 "dataSessao",
+                                                 "requisitosHabilitacao",
+                                                 "clausulas",
+                                                 "fontePortal"
+                                             ],
+                          "extractedFields":  {
+
+                                              },
+                          "confidence":  0,
+                          "requiresHumanValidation":  true,
+                          "notes":  "Usar para ERM e ground truth manual; detector silencia campos null.",
+                          "originalPath":  "Downloads/edital_04052026104831 (1).pdf"
+                      },
+                      {
+                          "documentId":  "edital-assinado-ubs-ii-1",
+                          "originalFileName":  "EDITAL_Assinado UBS II (1).pdf",
+                          "normalizedName":  "edital-assinado-ubs-ii-1",
+                          "kind":  "EDITAL",
+                          "hashSha256":  "29585e7607f31147f18f84cf8ea9cab14610ac02ec5abb947d6c1dbd92221fd5",
+                          "lengthBytes":  1228264,
+                          "duplicateOf":  null,
+                          "status":  "received",
+                          "expectedFields":  [
+                                                 "orgao",
+                                                 "modalidade",
+                                                 "numero",
+                                                 "objeto",
+                                                 "valorEstimado",
+                                                 "dataPublicacao",
+                                                 "dataSessao",
+                                                 "requisitosHabilitacao",
+                                                 "clausulas",
+                                                 "fontePortal"
+                                             ],
+                          "extractedFields":  {
+
+                                              },
+                          "confidence":  0,
+                          "requiresHumanValidation":  true,
+                          "notes":  "Usar para ERM e ground truth manual; detector silencia campos null.",
+                          "originalPath":  "Downloads/EDITAL_Assinado UBS II (1).pdf"
+                      },
+                      {
+                          "documentId":  "sei-governadoria-59297613-edital-1",
+                          "originalFileName":  "SEI_GOVERNADORIA - 59297613 - Edital (1).pdf",
+                          "normalizedName":  "sei-governadoria-59297613-edital-1",
+                          "kind":  "EDITAL",
+                          "hashSha256":  "2f08b9171c5dd9b3c2b03653f7920c6705bd4b764547cb473922a8fc511dbf5c",
+                          "lengthBytes":  1005390,
+                          "duplicateOf":  null,
+                          "status":  "received",
+                          "expectedFields":  [
+                                                 "orgao",
+                                                 "modalidade",
+                                                 "numero",
+                                                 "objeto",
+                                                 "valorEstimado",
+                                                 "dataPublicacao",
+                                                 "dataSessao",
+                                                 "requisitosHabilitacao",
+                                                 "clausulas",
+                                                 "fontePortal"
+                                             ],
+                          "extractedFields":  {
+
+                                              },
+                          "confidence":  0,
+                          "requiresHumanValidation":  true,
+                          "notes":  "Usar para ERM e ground truth manual; detector silencia campos null.",
+                          "originalPath":  "Downloads/SEI_GOVERNADORIA - 59297613 - Edital (1).pdf"
+                      },
+                      {
+                          "documentId":  "termo-de-abertura-2024-assinado-1",
+                          "originalFileName":  "TERMO_DE_ABERTURA_-_2024_assinado (1).pdf",
+                          "normalizedName":  "termo-de-abertura-2024-assinado-1",
+                          "kind":  "TERMO_CONTABIL",
+                          "hashSha256":  "aa5da45564a559601ef0d1df9171eb7628882d10eec94e1a8b917269abb59de0",
+                          "lengthBytes":  131649,
+                          "duplicateOf":  null,
+                          "status":  "received",
+                          "expectedFields":  [
+                                                 "exercicio",
+                                                 "tipoTermo",
+                                                 "numeroLivro",
+                                                 "dataAssinatura",
+                                                 "assinantes"
+                                             ],
+                          "extractedFields":  {
+
+                                              },
+                          "confidence":  0,
+                          "requiresHumanValidation":  true,
+                          "notes":  "Documento recebido para curadoria.",
+                          "originalPath":  "Downloads/TERMO_DE_ABERTURA_-_2024_assinado (1).pdf"
+                      },
+                      {
+                          "documentId":  "termo-de-abertura-2024-assinado",
+                          "originalFileName":  "TERMO_DE_ABERTURA_-_2024_assinado.pdf",
+                          "normalizedName":  "termo-de-abertura-2024-assinado",
+                          "kind":  "TERMO_CONTABIL",
+                          "hashSha256":  "aa5da45564a559601ef0d1df9171eb7628882d10eec94e1a8b917269abb59de0",
+                          "lengthBytes":  131649,
+                          "duplicateOf":  "TERMO_DE_ABERTURA_-_2024_assinado (1).pdf",
+                          "status":  "duplicate",
+                          "expectedFields":  [
+                                                 "exercicio",
+                                                 "tipoTermo",
+                                                 "numeroLivro",
+                                                 "dataAssinatura",
+                                                 "assinantes"
+                                             ],
+                          "extractedFields":  {
+
+                                              },
+                          "confidence":  1,
+                          "requiresHumanValidation":  true,
+                          "notes":  "Duplicata exata por SHA-256; nao processar duas vezes.",
+                          "originalPath":  "Downloads/TERMO_DE_ABERTURA_-_2024_assinado.pdf"
+                      },
+                      {
+                          "documentId":  "termo-de-encerramento-2024-assinado-1",
+                          "originalFileName":  "TERMO_DE_ENCERRAMENTO_-_2024_assinado (1).pdf",
+                          "normalizedName":  "termo-de-encerramento-2024-assinado-1",
+                          "kind":  "TERMO_CONTABIL",
+                          "hashSha256":  "f926b118ccc9280a759dbaa8160dea9d69378b46cc0fe761e31d1986278f5c43",
+                          "lengthBytes":  132497,
+                          "duplicateOf":  null,
+                          "status":  "received",
+                          "expectedFields":  [
+                                                 "exercicio",
+                                                 "tipoTermo",
+                                                 "numeroLivro",
+                                                 "dataAssinatura",
+                                                 "assinantes"
+                                             ],
+                          "extractedFields":  {
+
+                                              },
+                          "confidence":  0,
+                          "requiresHumanValidation":  true,
+                          "notes":  "Documento recebido para curadoria.",
+                          "originalPath":  "Downloads/TERMO_DE_ENCERRAMENTO_-_2024_assinado (1).pdf"
+                      },
+                      {
+                          "documentId":  "termo-de-encerramento-2024-assinado",
+                          "originalFileName":  "TERMO_DE_ENCERRAMENTO_-_2024_assinado.pdf",
+                          "normalizedName":  "termo-de-encerramento-2024-assinado",
+                          "kind":  "TERMO_CONTABIL",
+                          "hashSha256":  "f926b118ccc9280a759dbaa8160dea9d69378b46cc0fe761e31d1986278f5c43",
+                          "lengthBytes":  132497,
+                          "duplicateOf":  "TERMO_DE_ENCERRAMENTO_-_2024_assinado (1).pdf",
+                          "status":  "duplicate",
+                          "expectedFields":  [
+                                                 "exercicio",
+                                                 "tipoTermo",
+                                                 "numeroLivro",
+                                                 "dataAssinatura",
+                                                 "assinantes"
+                                             ],
+                          "extractedFields":  {
+
+                                              },
+                          "confidence":  1,
+                          "requiresHumanValidation":  true,
+                          "notes":  "Duplicata exata por SHA-256; nao processar duas vezes.",
+                          "originalPath":  "Downloads/TERMO_DE_ENCERRAMENTO_-_2024_assinado.pdf"
+                      }
+                  ]
+}

@@ -29,7 +29,7 @@ test("readiness report exposes tomorrow morning human blockers", () => {
 test("readiness report records ENIAC onboarding metadata without secrets", () => {
   const report = buildReadinessReport();
 
-  assert.equal(report.onboarding.company.cnpj, "38.417.933/0001-05");
+  assert.equal(report.onboarding.company.cnpj, "36.819.268/0001-05");
   assert.equal(report.onboarding.company.legalName, "ENIAC");
   assert.equal(report.onboarding.company.legalNameStatus, "founder_provided");
   assert.equal(report.onboarding.users.totalExpected, 4);

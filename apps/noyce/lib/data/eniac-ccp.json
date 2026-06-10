@@ -32,7 +32,7 @@
     {
       "id": "reforma-ceo",
       "tipo": "CAT_PROFISSIONAL",
-      "numero": null,
+      "numero": "1020250004388",
       "rtId": "alice",
       "participacaoTecnica": "Individual",
       "contratante": "Fundo Saude Aguas Lindas",
@@ -60,7 +60,7 @@
     {
       "id": "mestre-zezito",
       "tipo": "CAT_PROFISSIONAL",
-      "numero": null,
+      "numero": "1020260001207",
       "rtId": "alice",
       "participacaoTecnica": "Corresponsavel",
       "contratante": "SCB Engenharia",
@@ -126,7 +126,7 @@
           "clausulaOrigem": null
         },
         {
-          "servicoCanonico": "RESERVATORIO_ACO",
+          "servicoCanonico": "RESERVATORIO",
           "qtd": 30,
           "unidade": "m3",
           "descricaoOriginal": "RESERVATORIO_ACO 30 m3",
@@ -137,7 +137,7 @@
     {
       "id": "praca",
       "tipo": "CAT_PROFISSIONAL",
-      "numero": null,
+      "numero": "1020250002836",
       "rtId": "rodrigo",
       "participacaoTecnica": "Corresponsavel",
       "contratante": "Pref. Aguas Lindas",
@@ -182,7 +182,7 @@
           "clausulaOrigem": null
         },
         {
-          "servicoCanonico": "PAISAGISMO",
+          "servicoCanonico": "PAISAGISMO_URBANO",
           "qtd": 150,
           "unidade": "un",
           "descricaoOriginal": "PAISAGISMO 150 un",

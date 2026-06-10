@@ -55,8 +55,8 @@
   },
   {
     "servicoCanonico": "PAVIMENTACAO_CONCRETO",
-    "unidade": "m2",
-    "sinonimos": ["pavimentacao de concreto"],
+    "unidade": "m",
+    "sinonimos": ["pavimentacao de concreto", "pavimento em concreto", "pista em concreto"],
     "provisorio": true
   },
   {
@@ -79,7 +79,7 @@
   },
   {
     "servicoCanonico": "DRENAGEM",
-    "unidade": "m2/m",
+    "unidade": "m2",
     "sinonimos": ["drenagem"],
     "provisorio": true
   },
@@ -109,7 +109,7 @@
   },
   {
     "servicoCanonico": "PAISAGISMO_URBANO",
-    "unidade": "un/m2",
+    "unidade": "un",
     "sinonimos": ["paisagismo", "mobiliario urbano"],
     "provisorio": true
   },
@@ -129,6 +129,30 @@
     "servicoCanonico": "PINTURA",
     "unidade": "m2",
     "sinonimos": ["pintura", "emassamento e pintura"],
+    "provisorio": true
+  },
+  {
+    "servicoCanonico": "PISO_CONCRETO_ARMADO",
+    "unidade": "m2",
+    "sinonimos": ["piso em concreto armado", "piso industrial com junta plastica", "concreto armado semi polido"],
+    "provisorio": true
+  },
+  {
+    "servicoCanonico": "PINTURA_PISO_EPOXI",
+    "unidade": "m2",
+    "sinonimos": ["pintura de piso com tinta epoxi", "primer epoxi", "pintura epoxi em piso"],
+    "provisorio": true
+  },
+  {
+    "servicoCanonico": "ALAMBRADO_QUADRA",
+    "unidade": "m2",
+    "sinonimos": ["alambrado para quadras esportivas", "tela de arame galvanizado", "alambrado de quadra"],
+    "provisorio": true
+  },
+  {
+    "servicoCanonico": "PASSEIO_CONCRETO",
+    "unidade": "m3",
+    "sinonimos": ["passeio de concreto", "calcada em concreto", "concreto moldado in loco"],
     "provisorio": true
   }
 ]

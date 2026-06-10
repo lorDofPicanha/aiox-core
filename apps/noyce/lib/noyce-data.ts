@@ -7,43 +7,21 @@ import { buildHabilitationResult } from '@/lib/noyce-habilitation';
 import { getMarketForOrgao } from '@/lib/noyce-market';
 import { buildTriage } from '@/lib/noyce-operational';
 import { buildSuspicionSignals, type HolidayCalendar, type LegalConstants } from '@/lib/noyce-suspicion';
+import { noyceSources } from './noyce-source-registry';
 import discoverySnapshot from '@/lib/data/discovery-snapshot.json';
 import eniacCcpSeed from '@/lib/data/eniac-ccp.json';
 import feriadosNacionais from '@/lib/data/feriados-nacionais.json';
 import legalConstants from '@/lib/data/legal-constants.json';
 
-export const portalAccess: PortalAccess[] = [
-  { source: 'pncp', name: 'PNCP', status: 'publico', requiresLogin: false, requires2fa: 'no', tosStatus: 'ok' },
-  {
-    source: 'pcp',
-    name: 'Portal de Compras Públicas',
-    portalUrl: 'https://operacao.portaldecompraspublicas.com.br/4/Pregoes/',
-    status: 'aguarda_vault',
-    requiresLogin: true,
-    requires2fa: 'unknown',
-    tosStatus: 'pending',
-  },
-  {
-    source: 'bll',
-    name: 'BLL',
-    portalUrl: 'https://bllcompras.com/Participant/ProcessSearch?param1=0',
-    status: 'aguarda_vault',
-    requiresLogin: true,
-    requires2fa: 'unknown',
-    tosStatus: 'pending',
-  },
-  {
-    source: 'bnc',
-    name: 'BNC',
-    portalUrl: 'https://bnccompras.com/Participant/ProcessSearch?param1=0',
-    status: 'aguarda_vault',
-    requiresLogin: true,
-    requires2fa: 'unknown',
-    tosStatus: 'pending',
-  },
-  { source: 'comprasgov', name: 'ComprasGov', status: 'dry_run', requiresLogin: true, requires2fa: 'unknown', tosStatus: 'pending' },
-  { source: 'sislog', name: 'SISLOG', status: 'aguarda_vault', requiresLogin: true, requires2fa: 'unknown', tosStatus: 'pending' },
-];
+export const portalAccess: PortalAccess[] = noyceSources.map((source) => ({
+  source: source.source,
+  name: source.label,
+  portalUrl: source.portalUrl,
+  status: source.allowedNow ? 'publico' : source.accessMode === 'manual_import' ? 'dry_run' : 'aguarda_vault',
+  requiresLogin: source.requiresLogin,
+  requires2fa: source.requires2fa,
+  tosStatus: source.tosStatus === 'ok_public_only' ? 'ok' : 'pending',
+}));
 
 function hasMissingData(item: { missingData: readonly string[] }, field: string) {
   return item.missingData.includes(field);
@@ -73,9 +51,9 @@ interface DiscoveryItem {
   editalRequirements?: EditalRequirementsModel | null;
 }
 
-const KNOWN_SOURCES = ['pncp', 'pcp', 'bll', 'bnc', 'comprasgov', 'sislog'];
+const KNOWN_SOURCES = noyceSources.map((source) => source.source);
 function normalizeSource(value: string): SourceCode {
-  return KNOWN_SOURCES.includes(value) ? (value as SourceCode) : 'pncp';
+  return (KNOWN_SOURCES as readonly string[]).includes(value) ? (value as SourceCode) : 'pncp';
 }
 
 const discovery = discoverySnapshot as unknown as { items: DiscoveryItem[] };

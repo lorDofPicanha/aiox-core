@@ -1,32 +1,88 @@
 {
   "meta": {
     "orgao": "Prefeitura Municipal de Novo Gama",
-    "cnpjOrgao": null,
+    "cnpjOrgao": "01.629.276/0001-04",
     "municipioIbge": "5214887",
     "modalidade": 4,
-    "valorEstimado": null,
-    "dataPublicacao": null,
-    "dataSessao": null,
+    "valorEstimado": 2908504.07,
+    "dataPublicacao": "2026-04-07",
+    "dataSessao": "2026-04-22",
     "criterioJulgamento": "menor preco",
-    "regimeExecucao": "empreitada"
+    "regimeExecucao": "empreitada global"
   },
   "economicoFinanceira": {
-    "exigePL": null,
+    "exigePL": false,
     "percentualPL": null,
     "indices": {
-      "LC": null,
-      "LG": null,
-      "SG": null
+      "LC": 1,
+      "LG": 1,
+      "SG": 1
     },
     "justificativaPresente": null,
     "garantiaPropostaPct": null,
-    "clausula": null
+    "clausula": {
+      "numero": "8.3.1.7",
+      "texto": "A boa situacao financeira da empresa sera avaliada pela apresentacao dos Indices de Liquidez Geral - LG (nao inferior a 1,0), Solvencia Geral - SG (nao inferior a 1,0) e Liquidez Corrente - LC (nao inferior a 1,0).",
+      "pagina": 14,
+      "trecho": "LG, SG e LC nao inferiores a 1,0, calculados a partir do Balanco Patrimonial."
+    }
   },
   "tecnica": {
-    "profissional": [],
-    "operacional": [],
-    "parcelasMaiorRelevancia": null,
-    "tetoQuantitativo": null,
+    "profissional": [
+      {
+        "servico": "PISO_CONCRETO_ARMADO",
+        "qtdMin": 350.88,
+        "un": "m2"
+      },
+      {
+        "servico": "PINTURA_PISO_EPOXI",
+        "qtdMin": 350.88,
+        "un": "m2"
+      },
+      {
+        "servico": "ALAMBRADO_QUADRA",
+        "qtdMin": 234.47,
+        "un": "m2"
+      },
+      {
+        "servico": "PASSEIO_CONCRETO",
+        "qtdMin": 35.84,
+        "un": "m3"
+      }
+    ],
+    "operacional": [
+      {
+        "servico": "PISO_CONCRETO_ARMADO",
+        "qtdMin": 350.88,
+        "qtdObjeto": 701.76,
+        "un": "m2"
+      },
+      {
+        "servico": "PINTURA_PISO_EPOXI",
+        "qtdMin": 350.88,
+        "qtdObjeto": 701.76,
+        "un": "m2"
+      },
+      {
+        "servico": "ALAMBRADO_QUADRA",
+        "qtdMin": 234.47,
+        "qtdObjeto": 468.94,
+        "un": "m2"
+      },
+      {
+        "servico": "PASSEIO_CONCRETO",
+        "qtdMin": 35.84,
+        "qtdObjeto": 71.69,
+        "un": "m3"
+      }
+    ],
+    "parcelasMaiorRelevancia": [
+      "PISO_CONCRETO_ARMADO",
+      "PINTURA_PISO_EPOXI",
+      "ALAMBRADO_QUADRA",
+      "PASSEIO_CONCRETO"
+    ],
+    "tetoQuantitativo": 0.5,
     "somatorio": {
       "permitido": true,
       "maxAtestados": 2
@@ -34,11 +90,23 @@
     "aceitaAcervoConsorcio": true,
     "restricaoTempoLocal": null,
     "marcaSemSimilar": null,
-    "clausula": null
+    "clausula": {
+      "numero": "8.4.1.13.3/8.4.1.13.13/8.4.1.13.16",
+      "texto": "O edital define parcelas de maior relevancia para comprovacao tecnico-profissional e tecnico-operacional, limita quantitativos a 50% e admite somatorio de diferentes atestados em no maximo 2 atestados.",
+      "pagina": 16,
+      "trecho": "Qnt. Exigida (50%); sera admitida a soma dos atestados; no maximo em 2 atestados."
+    }
   },
   "juridica": {
-    "declaracoes": [],
-    "clausula": null
+    "declaracoes": [
+      "declaracao de responsabilidade tecnica",
+      "termo de vistoria ou declaracao de renuncia a visita"
+    ],
+    "clausula": {
+      "numero": "8.4.1.8/8.4.1.13.7",
+      "texto": "Termo de vistoria ou declaracao de renuncia a visita; declaracao de responsabilidade tecnica assinada pelo profissional e representante legal.",
+      "pagina": 15
+    }
   },
   "fiscalTrabalhista": {
     "CNDs": [],

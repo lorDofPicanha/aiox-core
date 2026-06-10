@@ -474,7 +474,7 @@ export const HabilitationVerdict = {
   NO_GO: "NO_GO",
 } as const;
 
-export type HabilitationVerdict = (typeof HabilitationVerdict)[keyof typeof HabilitationVerdict];
+export type HabilitationVerdictValue = (typeof HabilitationVerdict)[keyof typeof HabilitationVerdict];
 
 export type HabilitationStatus =
   | "ATENDE"
@@ -537,12 +537,12 @@ export interface ConsortiumEvaluation {
 }
 
 export interface HabilitationResult {
-  verdict: HabilitationVerdict;
+  verdict: HabilitationVerdictValue;
   porBloco: Record<HabilitationBlockId, HabilitationBlockResult>;
   lacunas: HabilitationGap[];
   tarefas: string[];
   solo: {
-    verdict: HabilitationVerdict;
+    verdict: HabilitationVerdictValue;
     tetoSolo: number | null;
     patrimonioLiquido: number | null;
     exercicio: number | null;

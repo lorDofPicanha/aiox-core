@@ -22,24 +22,11 @@
   "novo-gama-edital-7": {
     "flagsEsperados": [],
     "camposNull": [
-      "meta.cnpjOrgao",
-      "meta.valorEstimado",
-      "meta.dataPublicacao",
-      "meta.dataSessao",
-      "economicoFinanceira.exigePL",
       "economicoFinanceira.percentualPL",
-      "economicoFinanceira.indices.LC",
-      "economicoFinanceira.indices.LG",
-      "economicoFinanceira.indices.SG",
       "economicoFinanceira.justificativaPresente",
       "economicoFinanceira.garantiaPropostaPct",
-      "economicoFinanceira.clausula",
-      "tecnica.parcelasMaiorRelevancia",
-      "tecnica.tetoQuantitativo",
       "tecnica.restricaoTempoLocal",
       "tecnica.marcaSemSimilar",
-      "tecnica.clausula",
-      "juridica.clausula",
       "fiscalTrabalhista.SICAF",
       "fiscalTrabalhista.clausula"
     ]

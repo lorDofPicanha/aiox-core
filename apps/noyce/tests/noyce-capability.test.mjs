@@ -13,7 +13,15 @@ const ccpPath = path.join(
   "data",
   "eniac-ccp.json",
 );
+const taxonomyPath = path.join(
+  path.dirname(fileURLToPath(import.meta.url)),
+  "..",
+  "lib",
+  "data",
+  "service-taxonomy.json",
+);
 const seed = JSON.parse(readFileSync(ccpPath, "utf8"));
+const taxonomy = JSON.parse(readFileSync(taxonomyPath, "utf8"));
 
 test("computes EDIFICACAO_ALVENARIA capability from the two largest acervos", () => {
   const ccp = withComputedCapabilities(seed);
@@ -32,6 +40,31 @@ test("keeps TERRAPLENAGEM available in the derived service map", () => {
   assert.ok(terraplenagem, "expected TERRAPLENAGEM in capabilityByService");
   assert.equal(terraplenagem.maxSingle, 21829);
   assert.equal(terraplenagem.somaTop2, 24829);
+});
+
+test("all acervo service keys exist in taxonomy with matching units", () => {
+  const taxonomyByService = new Map(taxonomy.map((entry) => [entry.servicoCanonico, entry]));
+
+  for (const acervo of seed.acervo) {
+    for (const item of acervo.itens) {
+      const taxonomyEntry = taxonomyByService.get(item.servicoCanonico);
+
+      assert.ok(taxonomyEntry, `missing taxonomy entry for ${item.servicoCanonico}`);
+      assert.equal(
+        taxonomyEntry.unidade,
+        item.unidade,
+        `${item.servicoCanonico} unit mismatch between CCP and taxonomy`,
+      );
+    }
+  }
+});
+
+test("curated CAT identifiers are present for numbered ENIAC acervos", () => {
+  const byId = new Map(seed.acervo.map((item) => [item.id, item]));
+
+  assert.equal(byId.get("reforma-ceo")?.numero, "1020250004388");
+  assert.equal(byId.get("mestre-zezito")?.numero, "1020260001207");
+  assert.equal(byId.get("praca")?.numero, "1020250002836");
 });
 
 test("does not invent 2025 patrimonioLiquido while D-26.1 is pending", () => {

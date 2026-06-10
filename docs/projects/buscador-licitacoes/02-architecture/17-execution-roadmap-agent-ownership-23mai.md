@@ -336,6 +336,10 @@ Estes itens nao devem ser executados por Codex sem aprovacao explicita:
 19. `@qa` registra gate Fase 5. Status: PASS, 8 tests, typecheck/build/browser QA passed.
 20. `@pm`, `@cyber-chief`, `@data-engineer`, `@devops` e `@aios-master` executam pacote offline Fases 6-10. Status: PASS offline, artifact `20-fases6-10-execution-pack-28mai.md`, conclave `78abaf54-5035-43b1-ab41-979508a835e1`.
 21. `@devops` prepara gate de Fase 11 producao controlada. Status: prepared/blocked, artifact `21-fase11-production-control-gate-28mai.md`.
+22. Founder informa onboarding ENIAC: CNPJ `36.819.268/0001-05` alinhado ao acervo real, nome ENIAC, 4 usuarios operacionais, Stafani admin/owner ToS, URLs BLL/BNC/PCP e autorizacao para dry-run publico PNCP. Status: Fase 6 liberada para dry-run publico; Fase 7 continua bloqueada para vault/ToS; automacao autenticada segue bloqueada.
+23. `@cyber-chief` recomenda vault pragmatico para piloto. Status: usar 1Password ou Bitwarden/Vaultwarden com MFA, item por portal, minimo privilegio e auditoria; conclave `88e5afb9-02b2-4331-b6ce-b94a9ebc8b69`.
+24. `@data-engineer` executa dry-run publico PNCP e normaliza registros para candidatos canonicos. Status: PASS, 40 registros PNCP -> 40 `CanonicalCandidate`, 40 com prazo, 34 com valor estimado positivo, 22 com URL de origem; outputs em `outputs/pncp-public-dry-run/`.
+25. Founder define direcao automation-first para todos os buscadores. Status: aprovado com gates; automatizar descoberta/normalizacao/score/alerta interno/fila, bloquear atos externos e login sem vault/ToS; artifact `23-automation-first-roadmap-29mai.md`, conclave `35cd914e-7468-4e04-806a-1cf435d2598c`.
 
 Artefato de execucao:
 
@@ -355,6 +359,9 @@ Validacao mais recente:
 - Fase 5 legal/process model: PASS, with external acts blocked, appeal intent separated from appeal reasons, fixture-only data and browser QA at `http://localhost:3100`.
 - Fases 6-11 offline readiness: PASS, `/api/readiness` exposes blockers, source governance, dry-run jobs, pilot steps and production control gate. Human/ENIAC inputs remain queued for morning.
 - Fase 11 production gate: prepared but BLOCKED pending QA/security/devops/founder go-no-go.
+- Onboarding ENIAC 2026-05-29: PASS partial. CNPJ/nome, Stafani admin/ToS owner, priority portal URLs and PNCP public dry-run authorization recorded. BLL/BNC/PCP authenticated automation remains BLOCKED pending vault and ToS by portal.
+- PNCP public dry-run 2026-05-29: PASS. `pncp-public-dry-run.mjs` captured 40 public records with 0 errors; `pncp-records-to-canonical.mjs` produced 40 canonical candidates with evidence, source links, deadlines and quality issues. No login, credentials, database write or external message.
+- Automation-first direction 2026-05-29: PASS as product/architecture direction. Full read-side automation is allowed by gates; external acts remain human-only.
 
 ## Definition of ready para execucao Codex
 
@@ -378,3 +385,23 @@ Uma fase so fecha quando:
 - nenhum bloqueio de seguranca foi contornado;
 - `@qa` registrou o resultado;
 - `@aios-master` atualizou a proxima delegacao.
+
+## Proxima delegacao - 2026-05-29
+
+Owner: `@data-engineer`
+
+Council: `@cyber-chief`, `@qa`, `@aios-master`
+
+Tarefa:
+
+- usar os 40 candidatos canonicos PNCP para triagem ENIAC;
+- priorizar oportunidades com objeto de obra/engenharia, prazo aberto e valor estimado positivo;
+- manter BLL/BNC/PCP como fonte de confirmacao manual ate vault/ToS;
+- decidir se a proxima automacao e ranking fixture-only ou enriquecimento PNCP publico de documentos/anexos.
+
+Gate:
+
+- 0 segredo em log/output;
+- 0 login/portal autenticado;
+- output marcado como dry-run;
+- `@qa` valida regressao antes de qualquer proxima fonte.

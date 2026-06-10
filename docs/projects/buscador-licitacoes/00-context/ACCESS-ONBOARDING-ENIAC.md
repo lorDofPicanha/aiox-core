@@ -3,6 +3,22 @@
 Data: 2026-05-23
 Status: pending credentials, do not store secrets in repo
 
+Atualizacao founder 2026-05-29:
+
+- CNPJ informado e alinhado ao acervo real ENIAC: `36.819.268/0001-05`.
+- Razao social/nome operacional informado: ENIAC.
+- Usuarios: 4 pessoas com acesso operacional equivalente.
+- Perfil master/admin: Stafani, com acesso geral.
+- Demais usuarios: podem operar; nomes/e-mails ficam para registrar depois.
+- Portais prioritarios informados: BLL, BNC e Portal de Compras Publicas.
+- URLs informadas:
+  - BLL: `https://bllcompras.com/Participant/ProcessSearch?param1=0`
+  - BNC: `https://bnccompras.com/Participant/ProcessSearch?param1=0`
+  - Portal de Compras Publicas: `https://operacao.portaldecompraspublicas.com.br/4/Pregoes/`
+- Owner indicado para aceite/risco ToS: Stafani.
+- Autorizacao founder: primeiro dry-run real com fonte publica autorizado.
+- Observacao de seguranca: esta atualizacao nao inclui login, senha, token, certificado, cookie ou qualquer segredo.
+
 ## Escopo corrigido
 
 O Noyce, neste momento, sera usado para uma unica empresa:
@@ -38,6 +54,14 @@ Confirmacao owner 2026-05-23:
 - ENIAC usa todos os portais acima.
 - Prioridade inicial de integracao deve considerar todos como fontes operacionais reais.
 - PNCP permanece publico; os demais exigem onboarding de acesso antes de qualquer automacao autenticada.
+
+Confirmacao founder 2026-05-29:
+
+- Fontes mais frequentes nesta fase: BLL, BNC e Portal de Compras Publicas.
+- Nao existe um portal unico prioritario; a prioridade operacional deve tratar essas tres fontes como primeiro recorte.
+- Stafani fica como perfil master e owner humano para risco ToS.
+- PNCP publico esta autorizado para primeiro dry-run real sem login.
+- Automacao autenticada continua bloqueada ate vault, ToS por portal, consentimento documentado, logs/auditoria e feature flag.
 
 ## Dados que podem ser registrados em doc
 
@@ -83,6 +107,21 @@ O Sprint 0 continua multi-fonte, mas o tenant inicial e single-company:
 
 - uma organizacao;
 - uma empresa licitante: ENIAC;
-- usuarios e papeis ainda pendentes;
-- fonte publica primeiro;
+- CNPJ informado e alinhado ao acervo real ENIAC: `36.819.268/0001-05`;
+- razao social/nome operacional informado: ENIAC;
+- 4 usuarios previstos com acesso operacional equivalente;
+- Stafani como perfil master/admin e owner de aceite/risco ToS;
+- fonte publica PNCP primeiro, com dry-run autorizado;
 - fonte autenticada somente depois de vault, consentimento, ToS e logs.
+
+## Recomendacao de seguranca para vault - 2026-05-29
+
+Consulta solicitada ao council de seguranca: `88e5afb9-02b2-4331-b6ce-b94a9ebc8b69`.
+
+Recomendacao pragmatica para piloto:
+
+- Usar um cofre compartilhado com MFA e controle de acesso por item, preferencialmente 1Password ou Bitwarden/Vaultwarden.
+- Stafani deve ser admin do cofre do cliente; operadores recebem acesso minimo necessario.
+- Cada portal deve ter item separado no vault, com URL, responsavel, tipo de 2FA/certificado e escopo permitido.
+- Noyce nao deve armazenar segredo no banco/app nesta fase; apenas status, owner, URL publica/login e referencia ao item do vault.
+- Automacao autenticada so libera depois de ToS por portal, consentimento, auditoria/redaction e feature flag por fonte.
