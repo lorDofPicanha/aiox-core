@@ -157,6 +157,11 @@ apps/noyce/node_modules/
 !apps/tocks-store/**
 apps/tocks-store/.next/
 apps/tocks-store/node_modules/
+!apps/radar-fiscal/
+!apps/radar-fiscal/**
+apps/radar-fiscal/.next/
+apps/radar-fiscal/node_modules/
+apps/radar-fiscal/tsconfig.tsbuildinfo
 apps/tocks-store/public/mockups/shots/
 
 # External projects (separate repositories)
