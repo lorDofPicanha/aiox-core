@@ -67,11 +67,16 @@ test("curated CAT identifiers are present for numbered ENIAC acervos", () => {
   assert.equal(byId.get("praca")?.numero, "1020250002836");
 });
 
-test("does not invent 2025 patrimonioLiquido while D-26.1 is pending", () => {
+test("carries grounded 2025 patrimonioLiquido extracted from the real balance (D-26.1 resolved)", () => {
   const financial2025 = seed.financials.find((snapshot) => snapshot.exercicio === 2025);
 
   assert.ok(financial2025, "expected 2025 financial snapshot");
-  assert.equal(financial2025.patrimonioLiquido, null);
+  // D-26.1 resolvido: PL = Ativo 927.943,53 - Passivo exigivel 8.772,99 (BALANÇO 2025.pdf via PyMuPDF).
+  assert.equal(financial2025.patrimonioLiquido, 919170.54);
+  assert.equal(financial2025.ativoTotal, 927943.53);
+  assert.equal(financial2025.passivoCirc, 8772.99);
+  // Proveniencia obrigatoria: o valor cita o documento-fonte, nunca e um chute.
+  assert.match(String(financial2025.fonte).toLowerCase(), /balan|pymupdf/);
 });
 
 test("seed does not carry CPF, admin, or credential fields", () => {

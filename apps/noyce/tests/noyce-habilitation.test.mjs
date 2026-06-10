@@ -149,9 +149,38 @@ test("RT sem vinculo gera GO_COM_TAREFAS e nao NO_GO", () => {
   assert.equal(professional.gaps[0].sanabilidade, "SANAVEL");
 });
 
-test("PL null em edital de R$ 2.830.000 com percentual 10% deixa econ-fin INDETERMINADO e PENDENTE_DADO", () => {
+test("edital de R$ 2.830.000 com PL real (919k) atende econ-fin: teto solo cobre sem consorcio", () => {
   const result = buildHabilitationResult(
     seed,
+    baseErm({
+      meta: { valorEstimado: 2830000 },
+      economicoFinanceira: {
+        exigePL: true,
+        percentualPL: 0.1,
+      },
+    }),
+  );
+
+  // PL 919.170,54 / 0,10 = teto solo 9.191.705,40 -> cobre os 2,83M (D-26.1 resolvido).
+  assert.equal(result.porBloco.economico_financeira.status, "ATENDE");
+  assert.equal(result.solo.patrimonioLiquido, 919170.54);
+  assert.ok(result.solo.tetoSolo >= 2830000);
+});
+
+test("PL ausente (ccp sem balanco) deixa econ-fin INDETERMINADO e PENDENTE_DADO", () => {
+  const rawSeed = JSON.parse(readFileSync(ccpPath, "utf8"));
+  const seedSemPL = withComputedCapabilities({
+    ...rawSeed,
+    financials: rawSeed.financials.map((snapshot) => ({
+      ...snapshot,
+      patrimonioLiquido: null,
+      ativoCirc: null,
+      passivoCirc: null,
+      ativoTotal: null,
+    })),
+  });
+  const result = buildHabilitationResult(
+    seedSemPL,
     baseErm({
       meta: { valorEstimado: 2830000 },
       economicoFinanceira: {

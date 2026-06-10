@@ -222,29 +222,29 @@
   "financials": [
     {
       "exercicio": 2024,
-      "patrimonioLiquido": null,
-      "capitalSocial": null,
-      "ativoCirc": null,
-      "passivoCirc": null,
-      "ativoTotal": null,
-      "realizavelLongoPrazo": null,
-      "exigivelLongoPrazo": null,
+      "patrimonioLiquido": 76361.76,
+      "capitalSocial": 110000,
+      "ativoCirc": 77061.76,
+      "passivoCirc": 700,
+      "ativoTotal": 77061.76,
+      "realizavelLongoPrazo": 0,
+      "exigivelLongoPrazo": 0,
       "receitaBruta": 0,
       "resultado": null,
-      "fonte": "balanco_2024_pendente_parse"
+      "fonte": "BALANÇO PATRIMONIAL 2024.pdf (PyMuPDF, BP completo pag.1): TOTAL PATRIMONIO LIQUIDO 76.361,76 = Capital Social 110.000 - Prejuizos Acumulados 33.638,24"
     },
     {
       "exercicio": 2025,
-      "patrimonioLiquido": null,
+      "patrimonioLiquido": 919170.54,
       "capitalSocial": null,
-      "ativoCirc": null,
-      "passivoCirc": null,
-      "ativoTotal": null,
-      "realizavelLongoPrazo": null,
-      "exigivelLongoPrazo": null,
+      "ativoCirc": 927943.53,
+      "passivoCirc": 8772.99,
+      "ativoTotal": 927943.53,
+      "realizavelLongoPrazo": 0,
+      "exigivelLongoPrazo": 0,
       "receitaBruta": 314963.26,
       "resultado": 29170.54,
-      "fonte": "balanco_2025_d26_1_pendente"
+      "fonte": "BALANÇO PATRIMONIAL 2025.pdf (PyMuPDF, pag. Coeficientes de Análise): PL = Ativo 927.943,53 - Passivo Exigivel 8.772,99 = 919.170,54; LG/LC/SG=105,77 (RLP=0, PNC=0). capitalSocial nao detalhado nesta pagina (full BP 2025 ausente do PDF)"
     }
   ],
   "regularity": [],

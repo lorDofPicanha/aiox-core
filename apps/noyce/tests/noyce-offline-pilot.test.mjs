@@ -29,8 +29,10 @@ test("offline pilot uses a real curated Novo Gama edital and does not force GO",
 
   assert.equal(result.verdict, "NO_GO");
   assert.equal(result.porBloco.tecnico_operacional.status, "NAO_ATENDE");
-  assert.equal(result.porBloco.economico_financeira.status, "INDETERMINADO");
-  assert.ok(result.tarefas.includes("obter totais contabeis para calcular LC"));
+  // Econ-fin agora RESOLVE: LC/LG/SG = 105,77 (>= 1,0 exigido) com os totais reais do balanco.
+  assert.equal(result.porBloco.economico_financeira.status, "ATENDE");
+  assert.ok(!result.tarefas.includes("obter totais contabeis para calcular LC"));
+  // O NO_GO vem do gap tecnico-operacional, nao mais de dado financeiro ausente.
   assert.ok(result.disclaimer.includes("revisao humana"));
 });
 
