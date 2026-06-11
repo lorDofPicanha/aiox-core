@@ -51,12 +51,14 @@ Os 5 documentos não são "um PDF de atestado" — são **2 acervos profissionai
 
 ### 1.2 — Econômico-financeira: capacidade é TEMPORAL e cresceu (correção do owner)
 
-| Exercício | Receita Bruta | Resultado líquido | Leitura |
-|---|---|---|---|
-| **2024** | ~R$ 0 (pré-operacional) | Lucro bruto R$ 0,00 / despesas R$ 15.397 | empresa recém-aberta |
-| **2025** | **R$ 314.963,26** | **+R$ 29.170,54** | **operacional e lucrativa** |
+| Exercício | Receita Bruta | Resultado líquido | **Patrimônio Líquido** | Leitura |
+|---|---|---|---|---|
+| **2024** | ~R$ 0 (pré-operacional) | Lucro bruto R$ 0,00 / despesas R$ 15.397 | **R$ 76.361,76** (Capital 110k − Prej. acum. 33.638,24) | empresa recém-aberta |
+| **2025** | **R$ 314.963,26** | **+R$ 29.170,54** | **R$ 919.170,54** (Ativo 927.943,53 − Passivo exigível 8.772,99) | **operacional, lucrativa e capitalizada** |
 
-> ⚠️ Os valores exatos do **Patrimônio Líquido** de cada exercício precisam de parse limpo (a extração `pdftotext` embaralhou o balanço patrimonial; a DRE saiu legível). Mas a **direção é inequívoca e confirmada pelo owner: a ENIAC cresceu**.
+> ✅ **D-26.1 RESOLVIDA (10/Jun, PyMuPDF — sem Docling):** PL exato extraído do balanço assinado. Índices 2025: **LG/LC/SG = 105,77** (passivo exigível quase nulo). A direção confirmada pelo owner ("a ENIAC cresceu") agora tem número: **PL saltou 12× entre 2024 e 2025**.
+>
+> 🔄 **VIRADA ESTRATÉGICA que esse número impõe:** teto solo dinâmico = PL/0,10 = **R$ 9.191.705,40**. O maior edital do corpus (R$ 2,83M, Águas Lindas) cabe **3,2× dentro do teto solo** → no critério econômico-financeiro a ENIAC habilita **SOZINHA em 100% do corpus atual**. O consórcio (R2, §4) **deixa de ser necessidade econômico-financeira e vira opção estratégica** — o gargalo real de habilitação migra para a **TÉCNICA** (quantitativos de acervo CAT/CAO vs parcelas de maior relevância, §3.2).
 
 **Princípio arquitetural que isso impõe — `FinancialSnapshot` versionado por exercício:**
 - A capacidade econômico-financeira **NÃO é um atributo fixo da empresa**; é um **snapshot datado** (`exercicio: 2024 | 2025 | ...`).
@@ -108,9 +110,9 @@ Fecha **D-S4.2**. É o estado persistido que todas as abas consultam. Camadas:
 | Campo | 2025 | Uso |
 |---|---|---|
 | `exercicio` | 2025 | seleção do "último exercício" |
-| `patrimonioLiquido` | (parse limpo pendente) | **regra dos 10%** |
-| `capitalSocial` | ~R$ 110k | alternativa ao PL no art. 69 |
-| `ativoCirculante` / `passivoCirculante` | | **índices LC/LG/SG** (art. 69 §1º) |
+| `patrimonioLiquido` | **R$ 919.170,54** (2024: 76.361,76) | **regra dos 10%** |
+| `capitalSocial` | R$ 110k | alternativa ao PL no art. 69 |
+| `ativoCirculante` / `passivoCirculante` | 927.943,53 / 8.772,99 | **índices LC/LG/SG = 105,77** (art. 69 §1º) |
 | `receitaBruta` | 314.963,26 | porte/tendência |
 | `resultado` | +29.170,54 | saúde |
 | `fonte` | Balanço 2025 assinado (protocolo 260654779) | rastreio/citação |
@@ -178,10 +180,11 @@ Para cada serviço exigido no nome do profissional: existe `Acervo(tipo=CAT_PROF
 5. Acervo via `Corresponsavel`/consórcio → ver §4 (aproveitamento integral na técnica, art. 15 §2º).
 
 ### 3.3 — Econômico-financeira (art. 69) — usa o `FinancialSnapshot` mais recente
-- **Regra dos 10%:** `ATENDE` se `PL(últimoExercício) ≥ percentualPL × valorEstimado` (ou capitalSocial conforme o edital). Com o crescimento 2025, recalcular sempre.
-- **Índices** (quando exigidos): LC = AC/PC, LG, SG ≥ limiar do edital (tipicamente ≥1,0).
-- **Teto solo dinâmico:** `valorMaxSolo = PL(últimoExercício) / 0,10`. Acima disso → **gatilho automático de Modo Consórcio (R2)** ou sinalização "abaixo da capacidade solo".
-- Saída inclui o **headroom**: "habilita solo até R$ X; este edital é R$ Y" — número acionável, não cru.
+- **Regra dos 10%:** `ATENDE` se `PL(últimoExercício) ≥ percentualPL × valorEstimado` (ou capitalSocial conforme o edital). Com PL 2025 = R$ 919.170,54, **ATENDE em todo o corpus atual**.
+- **Índices** (quando exigidos): LC = AC/PC, LG, SG ≥ limiar do edital (tipicamente ≥1,0). ENIAC 2025: **105,77** — folga máxima.
+- **Teto solo dinâmico:** `valorMaxSolo = PL(últimoExercício) / 0,10` = **R$ 9,19mi com o snapshot 2025**. Acima disso → **gatilho automático de Modo Consórcio (R2)** ou sinalização "abaixo da capacidade solo". *(Nenhum edital do corpus chega perto; o gatilho hoje é teórico.)*
+- Saída inclui o **headroom**: "habilita solo até R$ X; este edital é R$ Y" — número acionável, não cru. Ex. real: *"solo até R$ 9,19mi; edital Águas Lindas R$ 2,83M — headroom 3,2×"*.
+- ⚠️ Testes do motor refletem o PL real desde 10/Jun (89/89 verdes); caso PL-ausente coberto via CCP sintético (`PENDENTE_DADO`).
 
 ### 3.4 — Jurídica / Fiscal / Trabalhista
 Casa `ERM.juridica/fiscalTrabalhista` × `CCP.RegularityDoc` por tipo + **validade na data da sessão**. CND vencida/ausente → lacuna com prazo. Declarações exigidas → fila de auto-preenchimento (**R4**, revisão humana).
@@ -200,7 +203,9 @@ Empresa opera em 2 modos; o motor precisa avaliar **ambos** e mostrar o melhor c
 | **…exceção ME/EPP** | **…dispensado se o consórcio for composto INTEGRALMENTE por ME/EPP** | art. 15, §4º |
 | **Formalização** | compromisso de constituição **assinado por todos** + **líder com poderes** + responsabilidade solidária; docs de cada consorciado | art. 15, §1º |
 
-**Desenho:** `ConsortiumProfile` = CCP **virtual/derivado** = união de itens de acervo (soma integral) + PL somado **na proporção** dos membros, com `liderId`, `percentualParticipacao[]` e `acrescimo30: bool`. O motor roda o §3 sobre o profile virtual. **Como a ENIAC é ME, um consórcio ENIAC+outra ME dispensa o acréscimo de 30%** — vantagem a sinalizar. Saída comparativa: *"Solo: NO-GO (PL insuficiente p/ R$2,83M). Consórcio c/ parceira de PL ≥ R$ Z (proporção X%): GO."* — transforma o gargalo do §1.2 em **recomendação acionável**.
+**Desenho:** `ConsortiumProfile` = CCP **virtual/derivado** = união de itens de acervo (soma integral) + PL somado **na proporção** dos membros, com `liderId`, `percentualParticipacao[]` e `acrescimo30: bool`. O motor roda o §3 sobre o profile virtual. **Como a ENIAC é ME, um consórcio ENIAC+outra ME dispensa o acréscimo de 30%** — vantagem a sinalizar.
+
+> 🔄 **REVISÃO 10-11/Jun (D-26.1):** com PL real 2025 = R$ 919.170,54, o exemplo anterior *"Solo: NO-GO (PL insuficiente p/ R$2,83M)"* está **MORTO** — no econômico-financeiro a ENIAC habilita solo em todo o corpus (teto R$ 9,19mi, §3.3). O Modo Consórcio **continua modelado e necessário**, mas seu gatilho real muda de eixo: dispara por **lacuna TÉCNICA** (quantitativo de acervo abaixo da parcela de maior relevância — soma integral do §2º resolve o que a ENIAC não cobre sozinha), não por PL. Saída comparativa atualizada: *"Solo: GO no econ-fin (headroom 3,2×) · lacuna técnica em [classe X: faltam Y m²]. Consórcio c/ parceira detentora de acervo ≥ Y m² em [classe X]: GO pleno."* — a recomendação acionável agora aponta **qual acervo procurar no parceiro**, não qual PL.
 
 **Onde consórcios mais são inabilitados (Niebuhr):** compromisso de constituição mal formalizado (falta assinatura de algum) e líder sem poderes → o dossiê (§7) **deve montar e validar esses documentos**, não só somar números.
 
@@ -255,8 +260,10 @@ Interesse da liderança e **não depende de doc do cliente** (usa o histórico P
 **Fecha (conclave Justen+Niebuhr, 04/Jun — §10):**
 - ✅ **D-26.4 RESOLVIDA.** Consórcio = **Lei 14.133 art. 15**: técnica = **soma integral** (§2º); econ-fin = **soma proporcional** (§3º); **acréscimo até 30%** (§4º) **salvo consórcio 100% ME/EPP (dispensado)**. Somatório de atestados (mesma empresa) = **admitido como regra**, vedação só se expressa+justificada. RT por **declaração de contratação futura** (não CLT). Régua **sanável×insanável** (art. 64) incorporada ao motor (§3).
 
+**Fecha (extração PyMuPDF, 10/Jun — commit `d6493d88`):**
+- ✅ **D-26.1 RESOLVIDA.** PL extraído do balanço assinado **sem Docling** (PyMuPDF): **2025 = R$ 919.170,54** (Ativo 927.943,53 − Passivo exigível 8.772,99; LG/LC/SG = 105,77) · **2024 = R$ 76.361,76** (Capital 110k − Prej. acum. 33.638,24). `FinancialSnapshot` preenchido (`eniac-ccp.json`), testes do motor atualizados (89/89). **Consequência: virada estratégica do consórcio** — teto solo R$ 9,19mi cobre todo o corpus; consórcio agora é alavanca TÉCNICA, não econômica (§1.2, §3.3, §4).
+
 **Abre / pendências:**
-- [ ] **D-26.1** Parse limpo do **Patrimônio Líquido 2024 e 2025** (pdftotext embaralhou o BP). Docling ou OCR estruturado → preencher `FinancialSnapshot` com números exatos antes de calcular teto solo real.
 - [ ] **D-26.2** **CAO operacional da ENIAC** ainda não veio (só CATs profissionais). Cobrar no "arquivo Mega" (R7) ou emitir via CREA. Slot reservado.
 - [ ] **D-26.3** Granularidade da **Service Taxonomy** (30 vs 50 classes) — definir com Alice quais classes são as que aparecem nos editais do nicho.
 - ✅ **D-26.5 RESOLVIDA (varredura 04/Jun, §11):** **0/12 vedam** o somatório; **2/12 admitem explicitamente com teto de 2 atestados** (Novo Gama/BLL); **10/12 silentes**. Achado: existe **limite de QUANTIDADE de atestados** → novo campo `somatorio.maxAtestados` no ERM + regra "N maiores acervos" no matcher (§3.2.3). Editais silentes → `ATENDE_COM_RESSALVA` é o caminho padrão.
@@ -306,4 +313,6 @@ Varredura `pdftotext -layout` + grep nas cláusulas de qualificação técnica.
 **Síntese:** **VEDA 0** · **ADMITE explícito 2** (teto de 2 atestados) · **SILENTE 10**. Os "concomitantemente/simultaneamente" achados nos silentes referem-se ao envio de habilitação junto com a proposta (inversão de fases), **não** restringem somatório (descartados como falso-positivo). Vários editais silentes **reproduzem o art. 15** para consórcio — confirmação cruzada do §4. *Município de 5 templates (UBS/reforma predial) a confirmar — provável Águas Lindas/entorno.*
 
 ---
-*Doc por Orion (aios-master). Aterrado em: 5 CATs/atestados reais + Balanços 2024/2025 + 12 editais (cláusulas 12.6.5 e 12.7.4 confirmadas) + Lei 14.133 arts. 14/15/67/69 + Súmula TCU 263. Supera os "desconhecidos" do spike 06 com dado real; fecha D-S4.2; introduz o FinancialSnapshot temporal (correção do owner: ENIAC cresceu 2024→2025). **D-26.4 validada juridicamente (conclave Justen+Niebuhr, §10): consórcio = art. 15, somatório admitido, RT por declaração, régua sanável×insanável.** **D-26.5 resolvida (§11): 0/12 vedam somatório; 2 admitem c/ teto de 2 atestados; 10 silentes → novo campo `somatorio.maxAtestados`.** Próximo concreto sugerido: D-26.1 (parse limpo do PL via Docling) + D-26.3 (taxonomia c/ Alice).*
+*Doc por Orion (aios-master). Aterrado em: 5 CATs/atestados reais + Balanços 2024/2025 + 12 editais (cláusulas 12.6.5 e 12.7.4 confirmadas) + Lei 14.133 arts. 14/15/67/69 + Súmula TCU 263. Supera os "desconhecidos" do spike 06 com dado real; fecha D-S4.2; introduz o FinancialSnapshot temporal (correção do owner: ENIAC cresceu 2024→2025). **D-26.4 validada juridicamente (conclave Justen+Niebuhr, §10): consórcio = art. 15, somatório admitido, RT por declaração, régua sanável×insanável.** **D-26.5 resolvida (§11): 0/12 vedam somatório; 2 admitem c/ teto de 2 atestados; 10 silentes → novo campo `somatorio.maxAtestados`.***
+
+*🔄 **REVISÃO 11/Jun/2026 — D-26.1 RESOLVIDA (commit `d6493d88`, PyMuPDF):** PL 2025 = R$ 919.170,54 → teto solo R$ 9,19mi → **virada estratégica do consórcio**: ENIAC habilita SOLO no econ-fin em 100% do corpus (maior edital R$ 2,83M = headroom 3,2×); Modo Consórcio (R2) permanece modelado mas o gatilho migra do PL para **lacunas TÉCNICAS de acervo** (§§1.2, 3.3, 4, 8 atualizados). Pendências restantes: D-26.2 (CAO operacional) + D-26.3 (taxonomia c/ Alice).*
