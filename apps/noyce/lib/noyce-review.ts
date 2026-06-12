@@ -3,6 +3,7 @@
 // o humano revisa item a item; o que o humano CORRIGIR fica travado — o motor nunca
 // sobrescreve um valor humano (proveniência vira "humano", com registro do valor original).
 import type { CompanyCapabilityProfile, Opportunity } from "./noyce-model";
+import { derivePorte } from "./noyce-porte.ts";
 
 export interface ReviewItem {
   id: string;
@@ -11,6 +12,11 @@ export interface ReviewItem {
   /** Valor pré-preenchido pelo motor, sempre com proveniência. */
   valorMotor: string;
   proveniencia: string;
+  /** Item NÃO pode ser aprovado como está — só corrigido (placeholder, porte desenquadrado, dado faltante).
+   *  Conclave 12/Jun (Niebuhr: reticências assinadas; Justen: declaração falsa art. 155 VIII). */
+  requerCorrecao?: boolean;
+  /** Aviso exibido junto ao item (ex.: desenquadramento iminente) — não bloqueia, exige atenção. */
+  aviso?: string;
 }
 
 export type ReviewDecision =
@@ -87,13 +93,26 @@ export function buildReviewDossier(
       valorMotor: `${empresa} declara, sob as penas da lei, que não há fato impeditivo à sua habilitação, ciente da obrigação de declarar ocorrências posteriores (art. 63, I, Lei 14.133/2021).`,
       proveniencia: "Template 14.133 + identidade do CCP",
     },
-    {
-      id: `${oid}-decl-meepp`,
-      secao: "Declarações (pré-redigidas)",
-      label: "Enquadramento ME/EPP",
-      valorMotor: `${empresa} declara que cumpre os requisitos legais para qualificação como ${ccp.identity.porte ?? "ME/EPP"}, nos termos da LC 123/2006, estando apta a usufruir do tratamento favorecido.`,
-      proveniencia: "Template LC 123 + porte do CCP",
-    },
+    // Porte DERIVADO do balanço, nunca do cadastro (A2 — conclave 12/Jun, Justen).
+    ...(() => {
+      const porteInfo = derivePorte(ccp);
+      const desenquadrado = porteInfo.alerta === "desenquadrado_do_declarado";
+      return [
+        {
+          id: `${oid}-decl-meepp`,
+          secao: "Declarações (pré-redigidas)",
+          label: "Enquadramento ME/EPP",
+          valorMotor: desenquadrado
+            ? `⛔ NÃO PRÉ-REDIGIDA. ${porteInfo.nota}`
+            : `${empresa} declara que cumpre os requisitos legais para qualificação como ${porteInfo.porte ?? "ME/EPP"}, nos termos da LC 123/2006, estando apta a usufruir do tratamento favorecido.`,
+          proveniencia: desenquadrado
+            ? "Motor RECUSOU redigir — porte calculado diverge do cadastro"
+            : `Porte ${porteInfo.porte} derivado da receita ${porteInfo.exercicio ?? "?"} (não do cadastro)`,
+          requerCorrecao: desenquadrado || porteInfo.alerta === "sem_receita",
+          aviso: porteInfo.alerta ? porteInfo.nota : undefined,
+        },
+      ];
+    })(),
     {
       id: `${oid}-decl-menor`,
       secao: "Declarações (pré-redigidas)",

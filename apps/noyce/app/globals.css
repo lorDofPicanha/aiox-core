@@ -533,3 +533,5 @@
 .review-edit button{font-family:var(--mono);font-size:10.5px;font-weight:800;border:1px solid var(--line);border-radius:8px;background:#fff;padding:5px 9px;cursor:pointer}
 .review-edit .approve{border-color:#1c7c4c66;color:#1c7c4c}
 .review-foot{font-size:10.5px;color:var(--muted)}
+.review-warning{display:block;margin-top:4px;font-size:10.5px;color:#a33;background:#fdf0ef;border:1px solid #a3333344;border-radius:6px;padding:4px 6px}
+.review-actions button:disabled{opacity:.45;cursor:not-allowed}

@@ -492,6 +492,7 @@ function evaluation(input: {
   proveniencia?: Grounding;
   qtdMin?: number | null;
   disponivel?: number | null;
+  disponivelConservador?: number | null;
   unidade?: string | null;
   gaps?: HabilitationGap[];
   tarefas?: string[];

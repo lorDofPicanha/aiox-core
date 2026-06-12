@@ -79,6 +79,9 @@ export function ReviewDossier({ opportunity }: { opportunity: Opportunity }) {
                 <div className="review-main">
                   <strong>{item.label}</strong>
                   <p>{item.valorFinal}</p>
+                  {item.aviso && item.status !== "corrigido" ? (
+                    <small className="review-warning">⚠️ {item.aviso}</small>
+                  ) : null}
                   {item.status === "corrigido" ? (
                     <small className="review-history">
                       🔒 corrigido por humano — motor dizia: “{item.valorMotor}”. O motor não sobrescreve este item.
@@ -93,6 +96,8 @@ export function ReviewDossier({ opportunity }: { opportunity: Opportunity }) {
                       <button
                         type="button"
                         className="approve"
+                        disabled={Boolean(item.requerCorrecao)}
+                        title={item.requerCorrecao ? "Este item exige correção humana — não pode ser aprovado como está." : undefined}
                         onClick={() => decide(item.id, { status: "aprovado", em: new Date().toISOString() })}
                       >
                         ✓ Aprovar
