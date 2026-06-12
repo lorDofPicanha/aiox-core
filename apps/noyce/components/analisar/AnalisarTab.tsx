@@ -1,4 +1,9 @@
+"use client";
+
 import { formatCurrency, formatDateTime, scoreHealth } from "@/lib/noyce-model";
+import { SCORE_AS_OF } from "@/lib/noyce-data";
+import { buildVictoryPlan } from "@/lib/noyce-victory-plan";
+import { useLiveChecklist } from "@/components/shell/useLiveChecklist";
 import type { Opportunity, SuspicionSignal } from "@/lib/noyce-model";
 import { buildNextStep, lacunaTasks, operationalBlockers, operationalState } from "@/lib/noyce-operational";
 import { MarketSection, ScoreBreakdownList } from "@/components/shell/bits";
@@ -31,6 +36,13 @@ export function AnalisarTab({
   onToggleInterest?: () => void;
 }) {
   const state = operationalState(opportunity);
+  const liveChecklist = useLiveChecklist(opportunity);
+  const victoryPlan = buildVictoryPlan({
+    checklist: liveChecklist,
+    proposalDeadline: opportunity.proposalDeadline,
+    asOf: SCORE_AS_OF,
+    reviewProgress: null,
+  });
   const nextAction = buildNextStep(opportunity);
   const lacunas = lacunaTasks(opportunity);
   const blockers = operationalBlockers(opportunity);
@@ -172,6 +184,28 @@ export function AnalisarTab({
           ))}
         </section>
       ) : null}
+
+      <section className="victory-plan" aria-labelledby="victory-plan-title">
+        <div className="section-heading compact">
+          <div>
+            <p className="eyebrow">Plano de Vitória</p>
+            <h3 id="victory-plan-title">O que fazer, quem faz e até quando</h3>
+          </div>
+          <span>{victoryPlan.filter((a) => a.status === "atrasado" || a.status === "urgente").length} crítico(s)</span>
+        </div>
+        {victoryPlan.map((action) => (
+          <div className={`victory-row ${action.status}`} key={action.id}>
+            <span className={`victory-due ${action.status}`}>{action.dueLabel}</span>
+            <div>
+              <strong>{action.acao}</strong>
+              <p>
+                {action.dono} · {action.fonte}
+              </p>
+            </div>
+            <em>{action.status === "atrasado" ? "⛔ atrasado" : action.status === "urgente" ? "⚠️ urgente" : "no prazo"}</em>
+          </div>
+        ))}
+      </section>
 
       <MarketSection market={opportunity.market} />
 
