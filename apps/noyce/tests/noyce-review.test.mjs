@@ -102,3 +102,24 @@ test("A3: nenhuma declaração pré-redigida contém reticências/placeholder ap
   assert.ok(!/\.\.\./.test(indep.valorMotor), "texto completo, sem reticências");
   assert.ok(indep.aviso, "aviso de que o modelo do edital prevalece");
 });
+
+// ── A4 (conclave 12/Jun, Justen): clamp de exequibilidade art. 59 §§4º-5º ──
+
+test("A4: mediana abaixo de 75% do estimado é clampada no piso legal", () => {
+  const opp = {
+    ...OPPORTUNITY,
+    estimatedValue: 1_000_000,
+    market: { priceBand: { medianBRL: 600_000, p25BRL: 500_000, p75BRL: 700_000 } },
+  };
+  const item = buildReviewDossier(opp, CCP).find((i) => i.label === "Valor de abertura sugerido");
+  assert.match(item.valorMotor, /ABAIXO do piso legal/);
+  assert.match(item.valorMotor, /750\.000/); // sugerido = piso 75%
+  assert.ok(item.aviso, "abaixo de 85% → aviso de garantia adicional (§5º)");
+});
+
+test("A4: sem histórico, a faixa legal aparece (piso 75% + teto estimado)", () => {
+  const opp = { ...OPPORTUNITY, estimatedValue: 1_000_000, market: null };
+  const item = buildReviewDossier(opp, CCP).find((i) => i.label === "Valor de abertura sugerido");
+  assert.match(item.valorMotor, /750\.000/);
+  assert.match(item.valorMotor, /art\. 59/);
+});

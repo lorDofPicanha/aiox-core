@@ -170,6 +170,33 @@ function economicoFinanceira(ccp: CompanyCapabilityProfile, input: ChecklistInpu
   };
 }
 
+// A4 (conclave 12/Jun, Niebuhr): garantia de proposta (art. 58, ~1%) leva DIAS para emitir —
+// todo edital do corpus exige; alertar em D-7, não em D-1. Visita técnica/declaração de pleno
+// conhecimento idem: quem não visitou e não declarou está fora.
+function garantiaEVisita(input: ChecklistInput): ChecklistItem {
+  const label = "Garantia de proposta e visita técnica";
+  const days = daysBetween(input.proposalDeadline, input.asOf);
+  const valorGarantia = input.estimatedValue !== null ? brl(input.estimatedValue * 0.01) : null;
+  const base = valorGarantia
+    ? `Se o edital exigir (típico em obras): garantia ~1% = ${valorGarantia} (art. 58)`
+    : "Se o edital exigir: garantia de até 1% do estimado (art. 58)";
+  if (days !== null && days < 0) {
+    return { label, status: "missing", note: "Prazo encerrado — sem janela para garantia ou visita." };
+  }
+  if (days !== null && days <= 7) {
+    return {
+      label,
+      status: "missing",
+      note: `JANELA CRÍTICA (${days}d): ${base} precisa estar EMITIDA já — seguro/fiança leva dias. Conferir também visita técnica/declaração de pleno conhecimento do local.`,
+    };
+  }
+  return {
+    label,
+    status: "warning",
+    note: `${base} — emitir até D-7 da sessão (emissão leva dias). Conferir no edital: visita técnica obrigatória OU declaração de pleno conhecimento do local (clássico de obra municipal).`,
+  };
+}
+
 function propostaPlanilha(input: ChecklistInput): ChecklistItem {
   const label = "Proposta e planilha";
   const days = daysBetween(input.proposalDeadline, input.asOf);
@@ -201,6 +228,7 @@ export function buildHabilitationChecklist(
     fiscalTrabalhista(ccp, input),
     qualificacaoTecnica(ccp, input),
     economicoFinanceira(ccp, input),
+    garantiaEVisita(input),
     propostaPlanilha(input),
   ];
 }

@@ -148,3 +148,27 @@ test("invariante: score e ação não têm componente de concorrência", () => {
   const action = classifyAction(80, 80, false, true);
   assert.equal(action, "priorizar agora");
 });
+
+// ── A4 (conclave 12/Jun): garantia art. 58 com lead time D-7 ──
+
+test("A4: garantia — janela crítica (<=7d) vira missing; folga vira warning com D-7", () => {
+  const critico = buildHabilitationChecklist(ccpBase(), {
+    estimatedValue: 2_831_789.56,
+    proposalDeadline: "2026-05-28T13:00:00Z",
+    habilitationResult: null,
+    asOf: ASOF,
+  }).find((i) => i.label.includes("Garantia"));
+  assert.equal(critico.status, "missing");
+  assert.match(critico.note, /JANELA CRÍTICA/);
+  assert.match(critico.note, /R\$ 28 mil/);
+
+  const folga = buildHabilitationChecklist(ccpBase(), {
+    estimatedValue: 2_831_789.56,
+    proposalDeadline: "2026-06-30T13:00:00Z",
+    habilitationResult: null,
+    asOf: ASOF,
+  }).find((i) => i.label.includes("Garantia"));
+  assert.equal(folga.status, "warning");
+  assert.match(folga.note, /D-7/);
+  assert.match(folga.note, /visita técnica|pleno conhecimento/);
+});

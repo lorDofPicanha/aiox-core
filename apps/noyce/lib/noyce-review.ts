@@ -135,16 +135,36 @@ export function buildReviewDossier(
     },
   );
 
-  // 4. Proposta — valor de abertura sugerido (mercado real quando existe)
+  // 4. Proposta — valor de abertura sugerido com CLAMP de exequibilidade (A4 — conclave 12/Jun, Justen).
+  // Art. 59, §4º: em obras/engenharia, proposta < 75% do orçado é PRESUMIDAMENTE INEXEQUÍVEL (desclassificável).
+  // §5º: abaixo de 85% pode ser exigida garantia adicional. O P25 histórico pode estar sob o piso legal.
   const median = opportunity.market?.priceBand.medianBRL ?? null;
+  const est = opportunity.estimatedValue;
+  const pisoLegal = est !== null ? est * 0.75 : null;
+  const faixaGarantiaAdicional = est !== null ? est * 0.85 : null;
+  let propostaTexto: string;
+  let propostaAviso: string | undefined;
+  if (median !== null && est !== null && pisoLegal !== null) {
+    const sugerido = Math.min(Math.max(median, pisoLegal), est);
+    const clampado = sugerido !== median;
+    propostaTexto = clampado
+      ? `${fmtBRL(sugerido)} — mediana histórica deste órgão (${fmtBRL(median)}) está ${median < pisoLegal ? "ABAIXO do piso legal de exequibilidade" : "acima do estimado"}; sugerido o limite legal. Piso art. 59 §4º: ${fmtBRL(pisoLegal)} (75% do estimado).`
+      : `${fmtBRL(sugerido)} (mediana real de obras deste órgão). Piso legal de exequibilidade: ${fmtBRL(pisoLegal)} (75%, art. 59 §4º) — abaixo disso, desclassificação presumida.`;
+    if (faixaGarantiaAdicional !== null && sugerido < faixaGarantiaAdicional) {
+      propostaAviso = `Valor sugerido abaixo de 85% do estimado (${fmtBRL(faixaGarantiaAdicional)}) — o órgão pode exigir garantia adicional (art. 59 §5º).`;
+    }
+  } else if (est !== null && pisoLegal !== null) {
+    propostaTexto = `Sem histórico de preço deste órgão no PNCP — teto: estimado ${fmtBRL(est)}; piso legal de exequibilidade: ${fmtBRL(pisoLegal)} (75%, art. 59 §4º). Compor BDI próprio dentro dessa faixa.`;
+  } else {
+    propostaTexto = "Valor estimado não extraído — confirmar no edital antes de compor proposta (sem ele não há piso de exequibilidade calculável).";
+  }
   items.push({
     id: `${oid}-proposta-abertura`,
     secao: "Proposta",
     label: "Valor de abertura sugerido",
-    valorMotor: median
-      ? `${fmtBRL(median)} (mediana real de obras deste órgão; piso de disputa P25 ${fmtBRL(opportunity.market?.priceBand.p25BRL ?? null)})`
-      : `Sem histórico de preço deste órgão no PNCP — usar o valor estimado ${fmtBRL(opportunity.estimatedValue)} como teto e compor BDI próprio.`,
-    proveniencia: median ? "Vencedores reais PNCP (market snapshot)" : "Lacuna honesta — sem histórico recuperável",
+    valorMotor: propostaTexto,
+    proveniencia: median !== null ? "Vencedores reais PNCP + clamp art. 59 §§4º-5º" : "Faixa legal art. 59 — sem histórico recuperável",
+    aviso: propostaAviso,
   });
 
   // Guarda anti-placeholder (A3): nenhum texto com reticências/colchetes-de-preenchimento em
