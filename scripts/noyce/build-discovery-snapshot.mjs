@@ -215,6 +215,18 @@ async function main() {
     },
     items,
   };
+  // Guard: um run bloqueado por WAF (0 itens) NÃO pode sobrescrever um snapshot bom.
+  // Em 10-11/Jun isso apagou silenciosamente o snapshot real de 29/Mai (150 itens) e
+  // derrubou todas as abas de detalhe do app. Para forçar, use --allow-empty.
+  if (items.length === 0 && !process.argv.includes('--allow-empty')) {
+    console.error(
+      `\nABORTADO sem escrever: 0 itens (queries ok=${okQueries} fail=${failQueries}).` +
+      `\nSnapshot existente preservado em ${ARGS.out}.` +
+      `\nSe o vazio for intencional, repita com --allow-empty.`,
+    );
+    process.exitCode = 1;
+    return;
+  }
   fs.mkdirSync(path.dirname(ARGS.out), { recursive: true });
   fs.writeFileSync(ARGS.out, `${JSON.stringify(snapshot, null, 2)}\n`, 'utf8');
   console.log(

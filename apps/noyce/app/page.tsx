@@ -20,8 +20,9 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState<TabId>("mesa");
   const [selectedOpportunityId, setSelectedOpportunityId] = useState(opportunities[0]?.id ?? "");
 
+  // opportunities pode vir vazio (ex.: snapshot de discovery vazio) — sem guard, as abas de detalhe quebram o app inteiro.
   const selectedOpportunity =
-    opportunities.find((opportunity) => opportunity.id === selectedOpportunityId) ?? opportunities[0];
+    opportunities.find((opportunity) => opportunity.id === selectedOpportunityId) ?? opportunities[0] ?? null;
 
   const vaultPending = portalAccess.filter((portal) => portal.status === "aguarda_vault").length;
   const inDispute = opportunities.filter((opportunity) => opportunity.stage === "acompanhar").length;
@@ -55,19 +56,32 @@ export default function Home() {
           </div>
         </header>
 
-        {DETAIL_TABS.includes(activeTab) ? (
-          <LifecycleBreadcrumb stage={selectedOpportunity.stage} active={activeTab} onJump={setActiveTab} />
-        ) : null}
+        {selectedOpportunity === null && activeTab !== "mesa" && activeTab !== "governanca" ? (
+          <div className="empty-state" role="status">
+            <h2>Nenhuma oportunidade carregada</h2>
+            <p>
+              O snapshot de discovery está vazio. Rode{" "}
+              <code>node --experimental-strip-types scripts/noyce/build-discovery-snapshot.mjs</code> de um IP com
+              acesso ao PNCP (ou restaure o snapshot anterior) e recarregue.
+            </p>
+          </div>
+        ) : (
+          <>
+            {DETAIL_TABS.includes(activeTab) && selectedOpportunity ? (
+              <LifecycleBreadcrumb stage={selectedOpportunity.stage} active={activeTab} onJump={setActiveTab} />
+            ) : null}
 
-        {activeTab === "mesa" ? <MesaTab onOpen={openInTab} /> : null}
-        {activeTab === "monitorar" ? (
-          <MonitorarTab selectedId={selectedOpportunity.id} onSelect={(id) => openInTab(id, "analisar")} />
-        ) : null}
-        {activeTab === "analisar" ? <AnalisarTab opportunity={selectedOpportunity} /> : null}
-        {activeTab === "habilitar" ? <HabilitarTab opportunity={selectedOpportunity} /> : null}
-        {activeTab === "acompanhar" ? <AcompanharTab opportunity={selectedOpportunity} /> : null}
-        {activeTab === "recorrer" ? <RecorrerTab opportunity={selectedOpportunity} /> : null}
-        {activeTab === "governanca" ? <GovernancaTab /> : null}
+            {activeTab === "mesa" ? <MesaTab onOpen={openInTab} /> : null}
+            {activeTab === "monitorar" && selectedOpportunity ? (
+              <MonitorarTab selectedId={selectedOpportunity.id} onSelect={(id) => openInTab(id, "analisar")} />
+            ) : null}
+            {activeTab === "analisar" && selectedOpportunity ? <AnalisarTab opportunity={selectedOpportunity} /> : null}
+            {activeTab === "habilitar" && selectedOpportunity ? <HabilitarTab opportunity={selectedOpportunity} /> : null}
+            {activeTab === "acompanhar" && selectedOpportunity ? <AcompanharTab opportunity={selectedOpportunity} /> : null}
+            {activeTab === "recorrer" && selectedOpportunity ? <RecorrerTab opportunity={selectedOpportunity} /> : null}
+            {activeTab === "governanca" ? <GovernancaTab /> : null}
+          </>
+        )}
       </section>
     </main>
   );

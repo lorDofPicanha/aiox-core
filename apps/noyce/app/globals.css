@@ -502,3 +502,7 @@
 .morning-row span{display:inline-block;margin-top:5px;font-family:var(--mono);font-size:10px;font-weight:800;color:var(--ink-2);background:#fff;border:1px solid var(--line);border-radius:7px;padding:4px 7px}
 @media (max-width:1100px){.shell{grid-template-columns:1fr}.shell .rail{display:none}.content-grid{grid-template-columns:1fr}.metric-row,.portal-grid{grid-template-columns:repeat(2,1fr)}.readiness-grid{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:720px){.workspace{padding:16px}.topbar,.detail-header{flex-direction:column}.metric-row,.detail-band,.decision-grid,.checklist-grid,.portal-grid,.analysis-filters,.score-grid,.decision-summary,.legal-grid,.appeal-box,.decision-points,.morning-grid{grid-template-columns:1fr}.readiness-grid{grid-template-columns:1fr 1fr}.evidence-row{grid-template-columns:1fr}.status-strip{justify-content:flex-start}.blocker-list{justify-content:flex-start}.card-footer{align-items:flex-start}.card-footer span{text-align:left}.appeal-status{text-align:left}}
+.empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-height:320px;border:1px dashed var(--line);border-radius:14px;background:#fff;text-align:center;padding:32px}
+.empty-state h2{font-size:16px}
+.empty-state p{font-size:12.5px;color:var(--muted);max-width:520px}
+.empty-state code{font-family:var(--mono);font-size:11px;background:var(--paper,#f6f6f4);border:1px solid var(--line);border-radius:6px;padding:2px 6px}
