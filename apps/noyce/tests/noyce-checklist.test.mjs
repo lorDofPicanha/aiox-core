@@ -172,3 +172,29 @@ test("A4: garantia — janela crítica (<=7d) vira missing; folga vira warning c
   assert.match(folga.note, /D-7/);
   assert.match(folga.note, /visita técnica|pleno conhecimento/);
 });
+
+// ── D1 (12/Jun): vault de documentos alimenta a frente fiscal ──
+
+test("D1: certidões do vault viram RegularityDoc e a frente fiscal confere contra a sessão", async () => {
+  const { vaultToRegularity } = await import("../lib/noyce-vault.ts");
+  const meta = [
+    { id: "v1", tipo: "CND Federal", fileName: "cnd.pdf", byteLength: 100, validade: "2026-12-01", uploadedAt: "2026-06-12" },
+    { id: "v2", tipo: "CNDT", fileName: "cndt.pdf", byteLength: 100, validade: "2026-06-01", uploadedAt: "2026-06-12" },
+    { id: "v3", tipo: "Edital (PDF)", fileName: "edital.pdf", byteLength: 100, validade: null, uploadedAt: "2026-06-12" },
+  ];
+  const regs = vaultToRegularity(meta, "2026-06-12T00:00:00Z");
+  assert.equal(regs.length, 2, "Edital não entra na regularidade");
+  assert.equal(regs.find((r) => r.tipo === "CND Federal").status, "vigente");
+  assert.equal(regs.find((r) => r.tipo === "CNDT").status, "vencido");
+
+  // integração: CND vigente na sessão + CNDT vencida → frente fiscal aponta a CNDT nominalmente
+  const ccp = ccpBase({ regularity: regs });
+  const fiscal = buildHabilitationChecklist(ccp, {
+    estimatedValue: null,
+    proposalDeadline: "2026-06-30T13:00:00Z",
+    habilitationResult: null,
+    asOf: "2026-06-12T00:00:00Z",
+  }).find((i) => i.label === "Fiscal e trabalhista");
+  assert.equal(fiscal.status, "missing");
+  assert.match(fiscal.note, /CNDT/);
+});

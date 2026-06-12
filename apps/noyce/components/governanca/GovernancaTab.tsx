@@ -1,12 +1,14 @@
 import { portalAccess } from "@/lib/noyce-data";
 import { buildReadinessReport } from "@/lib/noyce-readiness";
 import { sourceClass, sourceLabel } from "@/lib/noyce-operational";
+import { VaultUpload } from "@/components/governanca/VaultUpload";
 
 export function GovernancaTab() {
   const readiness = buildReadinessReport();
 
   return (
     <section className="area area-governanca">
+      <VaultUpload />
       <section className="portal-matrix" aria-labelledby="portal-title">
         <div className="section-heading">
           <div>

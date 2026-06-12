@@ -6,6 +6,7 @@
 import { useEffect, useMemo, useState } from "react";
 import type { Opportunity } from "@/lib/noyce-model";
 import { eniacCcp } from "@/lib/noyce-data";
+import { useLiveChecklist } from "@/components/shell/useLiveChecklist";
 import {
   buildReviewDossier,
   mergeReview,
@@ -37,7 +38,11 @@ export function ReviewDossier({ opportunity }: { opportunity: Opportunity }) {
     setEditing(null);
   }, [opportunity.id]);
 
-  const dossier = useMemo(() => buildReviewDossier(opportunity, eniacCcp), [opportunity]);
+  const liveChecklist = useLiveChecklist(opportunity);
+  const dossier = useMemo(
+    () => buildReviewDossier({ ...opportunity, habilitationChecklist: liveChecklist }, eniacCcp),
+    [opportunity, liveChecklist],
+  );
   const reviewed = useMemo(() => mergeReview(dossier, state), [dossier, state]);
   const progress = reviewProgress(reviewed);
 

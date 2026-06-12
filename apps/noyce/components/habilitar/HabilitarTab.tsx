@@ -1,4 +1,7 @@
+"use client";
+
 import type { Opportunity } from "@/lib/noyce-model";
+import { useLiveChecklist } from "@/components/shell/useLiveChecklist";
 
 const VERDICT_LABEL: Record<string, string> = {
   GO: "GO",
@@ -8,6 +11,7 @@ const VERDICT_LABEL: Record<string, string> = {
 };
 
 export function HabilitarTab({ opportunity }: { opportunity: Opportunity }) {
+  const liveChecklist = useLiveChecklist(opportunity);
   const result = opportunity.habilitationResult ?? null;
   const blocks = result ? Object.values(result.porBloco) : [];
   const sanaveis = result?.lacunas.filter((gap) => gap.sanabilidade === "SANAVEL") ?? [];
@@ -131,7 +135,7 @@ export function HabilitarTab({ opportunity }: { opportunity: Opportunity }) {
           <span>Revisão humana obrigatória</span>
         </div>
         <div className="checklist-grid">
-          {opportunity.habilitationChecklist.map((item) => (
+          {liveChecklist.map((item) => (
             <div className={`habilitation-item ${item.status}`} key={item.label}>
               <span aria-hidden="true" />
               <div>

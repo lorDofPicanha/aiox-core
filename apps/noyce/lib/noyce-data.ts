@@ -28,7 +28,7 @@ function hasMissingData(item: { missingData: readonly string[] }, field: string)
   return item.missingData.includes(field);
 }
 
-const SCORE_AS_OF = '2026-05-23T00:00:00Z';
+export const SCORE_AS_OF = '2026-05-23T00:00:00Z';
 
 // Real opportunities sourced from the PNCP discovery snapshot (scripts/noyce/build-discovery-snapshot.mjs,
 // wired through the lib/sources legal-calibrated pipeline: pncp-public-adapter → normalizer → dedupe).
