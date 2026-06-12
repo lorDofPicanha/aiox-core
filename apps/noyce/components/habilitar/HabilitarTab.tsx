@@ -50,7 +50,10 @@ export function HabilitarTab({ opportunity }: { opportunity: Opportunity }) {
                   {block.evaluations.map((evaluation) => (
                     <p key={evaluation.id}>
                       {evaluation.requisito}: {evaluation.status}
-                      {evaluation.disponivel !== undefined ? ` · disponivel ${evaluation.disponivel}` : ""}
+                      {evaluation.disponivel !== undefined ? ` · tese ${evaluation.disponivel}` : ""}
+                      {evaluation.disponivelConservador !== undefined && evaluation.disponivelConservador !== evaluation.disponivel
+                        ? ` · conservador ${evaluation.disponivelConservador}`
+                        : ""}
                       {evaluation.qtdMin !== undefined ? ` · exigido ${evaluation.qtdMin}` : ""}
                       {evaluation.proveniencia === "inferred" ? " · proxy inferred" : ""}
                     </p>

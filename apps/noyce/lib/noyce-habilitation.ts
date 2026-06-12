@@ -155,19 +155,30 @@ function evaluateTechnicalOperational(
     }
 
     const capability = ccp.derived.capabilityByService[requirement.servico];
-    const sources = acervoQuantities(ccp.acervo, requirement.servico);
     const maxAtestados = erm.tecnica.somatorio.maxAtestados;
-    const topLimit = maxAtestados ?? sources.length;
-    const available =
-      erm.tecnica.somatorio.permitido === false
-        ? capability?.maxSingle ?? topN(sources, 1)
-        : topN(sources, topLimit);
-    const hasCao = ccp.acervo.some(
-      (acervo) =>
-        acervo.tipo === "CAO_OPERACIONAL" &&
-        acervo.itens.some((item) => item.servicoCanonico === requirement.servico),
+
+    // Conclave 12/Jun (Niebuhr+Justen+Norman): DOIS cenários, um veredito com delta condicional.
+    // TESE (otimista): todo acervo conta — CAT profissional como proxy + corresponsável integral (art. 15 §2º como tese defensável).
+    // CONSERVADOR: apenas acervo em NOME DA EMPRESA (CAO operacional / atestado do contratante) — é o que a comissão
+    // pode exigir ("cadê o atestado em nome da ENIAC?"). As TAREFAS derivam do conservador.
+    const sourcesTese = acervoQuantities(ccp.acervo, requirement.servico);
+    const sourcesConservador = acervoQuantities(
+      ccp.acervo.filter((acervo) => acervo.tipo === "CAO_OPERACIONAL"),
+      requirement.servico,
     );
-    const proxyTasks = hasCao ? [] : ["emitir/anexar CAO operacional"];
+    const topLimit = maxAtestados ?? sourcesTese.length;
+    const sumWithRules = (sources: readonly number[], fallbackMax: number | undefined) =>
+      erm.tecnica.somatorio.permitido === false
+        ? fallbackMax ?? topN(sources, 1)
+        : topN(sources, maxAtestados ?? sources.length);
+    const available = sumWithRules(sourcesTese, capability?.maxSingle);
+    const availableConservador = sourcesConservador.length ? sumWithRules(sourcesConservador, undefined) : 0;
+
+    const hasCao = sourcesConservador.length > 0;
+    // Justen (Res. CONFEA 1.025/2009 + art. 67, II): CREA não emite acervo de PJ — a tarefa correta
+    // é obter atestado do CONTRATANTE em nome da empresa, nunca "emitir CAO via CREA".
+    const atestadoTask =
+      "obter atestado de capacidade operacional emitido pelo contratante em nome da empresa (art. 67, II — CREA nao emite acervo de PJ)";
     const proxyProveniencia: Grounding = hasCao ? "grounded" : "inferred";
     const somatorioTasks =
       erm.tecnica.somatorio.permitido === null ? ["confirmar somatorio via esclarecimento"] : [];
@@ -175,6 +186,7 @@ function evaluateTechnicalOperational(
       erm.tecnica.somatorio.permitido === false
         ? "Somatorio vedado: usado maior atestado individual."
         : `Somatorio usado com limite de ${topLimit || 0} atestado(s).`;
+    const cenarioEvidence = `Tese: ${round(available)} ${requirement.un ?? ""} (inclui CAT profissional/corresponsavel). Conservador (somente acervo em nome da empresa): ${round(availableConservador)}.`;
 
     if (available < requirement.qtdMin) {
       const missing = round(requirement.qtdMin - available);
@@ -184,40 +196,74 @@ function evaluateTechnicalOperational(
         missing,
         requirement.un,
         "INSANAVEL",
-        `capacidade operacional ${missing} ${requirement.un ?? ""} abaixo do exigido`,
+        `capacidade operacional ${missing} ${requirement.un ?? ""} abaixo do exigido (mesmo na tese otimista)`,
       );
       return evaluation({
         id: `op-${index}`,
         requisito: requirement.servico,
         status: "NAO_ATENDE",
         gaps: [gap],
-        tarefas: proxyTasks,
+        tarefas: hasCao ? [] : [atestadoTask],
         evidencia: [
           `Disponivel ${round(available)} ${requirement.un ?? capability?.unidade ?? ""}; exigido ${requirement.qtdMin}.`,
+          cenarioEvidence,
           somatorioEvidence,
         ],
         proveniencia: proxyProveniencia,
         qtdMin: requirement.qtdMin,
         disponivel: round(available),
+        disponivelConservador: round(availableConservador),
+        unidade: requirement.un ?? capability?.unidade ?? null,
+      });
+    }
+
+    // Tese cobre, mas o cenário conservador NÃO: nunca dar verde liso — delta condicional + tarefa prioritária.
+    if (availableConservador < requirement.qtdMin) {
+      const missingConservador = round(requirement.qtdMin - availableConservador);
+      const gap = gapFor(
+        "tecnico_operacional",
+        requirement.servico,
+        missingConservador,
+        requirement.un,
+        "SANAVEL",
+        `capacidade comprovada apenas por CAT profissional/corresponsavel — se a comissao exigir atestado em nome da empresa, faltam ${missingConservador} ${requirement.un ?? ""}`,
+      );
+      return evaluation({
+        id: `op-${index}`,
+        requisito: requirement.servico,
+        status: "ATENDE_COM_RESSALVA",
+        gaps: [gap],
+        tarefas: [atestadoTask, ...somatorioTasks],
+        evidencia: [
+          `Disponivel ${round(available)} ${requirement.un ?? capability?.unidade ?? ""}; exigido ${requirement.qtdMin}.`,
+          cenarioEvidence,
+          somatorioEvidence,
+        ],
+        proveniencia: "inferred",
+        qtdMin: requirement.qtdMin,
+        disponivel: round(available),
+        disponivelConservador: round(availableConservador),
         unidade: requirement.un ?? capability?.unidade ?? null,
       });
     }
 
     const status: HabilitationStatus =
-      !hasCao || erm.tecnica.somatorio.permitido === null ? "ATENDE_COM_RESSALVA" : "ATENDE";
+      erm.tecnica.somatorio.permitido === null ? "ATENDE_COM_RESSALVA" : "ATENDE";
 
     return evaluation({
       id: `op-${index}`,
       requisito: requirement.servico,
       status,
-      tarefas: [...somatorioTasks, ...proxyTasks],
+      tarefas: [...somatorioTasks],
       evidencia: [
         `Disponivel ${round(available)} ${requirement.un ?? capability?.unidade ?? ""}; exigido ${requirement.qtdMin}.`,
+        cenarioEvidence,
         somatorioEvidence,
       ],
       proveniencia: proxyProveniencia,
       qtdMin: requirement.qtdMin,
       disponivel: round(available),
+      disponivelConservador: round(availableConservador),
       unidade: requirement.un ?? capability?.unidade ?? null,
     });
   });

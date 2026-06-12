@@ -91,9 +91,54 @@ test("alvenaria >= 3000 m2 com somatorio silente atende com ressalva via somaTop
 
   assert.equal(operational.status, "ATENDE_COM_RESSALVA");
   assert.equal(operational.disponivel, 3235.71);
+  // Conclave 12/Jun (A1): cenário conservador exposto — só acervo em NOME DA EMPRESA conta sem ressalva.
+  assert.equal(operational.disponivelConservador, 0);
   assert.equal(operational.proveniencia, "inferred");
   assert.ok(operational.tarefas.includes("confirmar somatorio via esclarecimento"));
-  assert.ok(operational.tarefas.includes("emitir/anexar CAO operacional"));
+  // Justen: "emitir CAO via CREA" é juridicamente impossível (Res. CONFEA 1.025/2009) —
+  // a tarefa correta é obter atestado do CONTRATANTE em nome da empresa (art. 67, II).
+  assert.ok(operational.tarefas.some((t) => t.includes("atestado de capacidade operacional emitido pelo contratante")));
+  assert.ok(!operational.tarefas.includes("emitir/anexar CAO operacional"));
+  // Gap do delta condicional é SANÁVEL pré-sessão (dá tempo de obter o atestado)
+  assert.ok(operational.gaps.some((g) => g.sanabilidade === "SANAVEL" && g.descricao.includes("nome da empresa")));
+});
+
+test("A1: CAO em nome da empresa cobre o exigido → ATENDE sem ressalva de eixo", () => {
+  const seedComCao = structuredClone(seed);
+  seedComCao.acervo.push({
+    id: "cao-eniac-1",
+    tipo: "CAO_OPERACIONAL",
+    numero: "ATESTADO-PM-AL-001",
+    rtId: "rt-alice",
+    participacaoTecnica: "Individual",
+    contratante: "Prefeitura de Aguas Lindas",
+    tipoContratante: "publico",
+    valor: 900000,
+    periodo: "2025",
+    status: "Concluida",
+    itens: [
+      {
+        servicoCanonico: "EDIFICACAO_ALVENARIA",
+        qtd: 3500,
+        unidade: "m2",
+        descricaoOriginal: "Atestado em nome da ENIAC",
+        clausulaOrigem: null,
+      },
+    ],
+  });
+  const result = buildHabilitationResult(
+    seedComCao,
+    baseErm({
+      tecnica: {
+        operacional: [{ servico: "EDIFICACAO_ALVENARIA", qtdMin: 3000, qtdObjeto: 6000, un: "m2" }],
+        somatorio: { permitido: true },
+      },
+    }),
+  );
+  const operational = result.porBloco.tecnico_operacional.evaluations[0];
+  assert.equal(operational.status, "ATENDE");
+  assert.ok(operational.disponivelConservador >= 3000);
+  assert.ok(!operational.tarefas.some((t) => t.includes("atestado de capacidade operacional")));
 });
 
 test("alvenaria >= 3000 m2 com maxAtestados=1 vira NAO_ATENDE insanavel e NO_GO", () => {

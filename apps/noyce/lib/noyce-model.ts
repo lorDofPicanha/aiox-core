@@ -508,6 +508,9 @@ export interface RequirementEvaluation {
   proveniencia: Grounding;
   qtdMin?: number | null;
   disponivel?: number | null;
+  /** Cenário conservador (apenas acervo em NOME DA EMPRESA — CAO operacional). Conclave 12/Jun:
+   *  veredito único com delta condicional; tarefas derivam deste número, não da tese. */
+  disponivelConservador?: number | null;
   unidade?: string | null;
   gaps: HabilitationGap[];
   tarefas: string[];
