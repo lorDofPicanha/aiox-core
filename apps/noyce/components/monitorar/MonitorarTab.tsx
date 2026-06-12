@@ -16,9 +16,13 @@ type OpportunityWithSuspicion = Opportunity & { suspicionSignals?: SuspicionSign
 export function MonitorarTab({
   selectedId,
   onSelect,
+  interested,
+  onToggleInterest,
 }: {
   selectedId: string;
   onSelect: (id: string) => void;
+  interested: Set<string>;
+  onToggleInterest: (id: string) => void;
 }) {
   const [sortMode, setSortMode] = useState<SortMode>("triagem");
   const [cityFilter, setCityFilter] = useState("all");
@@ -144,6 +148,18 @@ export function MonitorarTab({
                 </small>
               </div>
               <span>{formatDateTime(opportunity.proposalDeadline)}</span>
+              <button
+                type="button"
+                className={`interest-btn ${interested.has(opportunity.id) ? "active" : ""}`}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  onToggleInterest(opportunity.id);
+                  if (!interested.has(opportunity.id)) onSelect(opportunity.id);
+                }}
+                aria-pressed={interested.has(opportunity.id)}
+              >
+                {interested.has(opportunity.id) ? "⭐ Em análise" : "☆ Tenho interesse"}
+              </button>
             </div>
           </article>
         ))}

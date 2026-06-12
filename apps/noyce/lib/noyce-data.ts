@@ -59,7 +59,7 @@ function normalizeSource(value: string): SourceCode {
 }
 
 const discovery = discoverySnapshot as unknown as { items: DiscoveryItem[] };
-const eniacCcp = withComputedCapabilities(eniacCcpSeed as CompanyCapabilityProfile);
+export const eniacCcp = withComputedCapabilities(eniacCcpSeed as CompanyCapabilityProfile);
 const TRIAGE_RANK: Record<string, number> = { vai: 0, olha: 1, pula: 2 };
 
 const baseOpportunities = discovery.items

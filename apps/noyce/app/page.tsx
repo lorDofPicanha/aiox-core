@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { opportunities, portalAccess } from "@/lib/noyce-data";
 import { Rail, type RailBadge } from "@/components/shell/Rail";
 import { LifecycleBreadcrumb } from "@/components/shell/LifecycleBreadcrumb";
@@ -16,9 +16,32 @@ import { GovernancaTab } from "@/components/governanca/GovernancaTab";
 // Detail tabs work on the selected opportunity; Mesa/Monitorar/Governança are list/overview.
 const DETAIL_TABS: TabId[] = ["analisar", "habilitar", "acompanhar", "recorrer"];
 
+const INTEREST_KEY = "noyce.interesse.v1";
+
 export default function Home() {
   const [activeTab, setActiveTab] = useState<TabId>("mesa");
   const [selectedOpportunityId, setSelectedOpportunityId] = useState(opportunities[0]?.id ?? "");
+  // Oportunidades marcadas como "tenho interesse" (Monitorar) → entram no fluxo de revisão (Analisar).
+  const [interested, setInterested] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    try {
+      const saved = JSON.parse(globalThis.localStorage?.getItem(INTEREST_KEY) ?? "[]");
+      if (Array.isArray(saved)) setInterested(new Set(saved));
+    } catch {
+      /* estado limpo */
+    }
+  }, []);
+
+  function toggleInterest(id: string) {
+    setInterested((current) => {
+      const next = new Set(current);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      globalThis.localStorage?.setItem(INTEREST_KEY, JSON.stringify([...next]));
+      return next;
+    });
+  }
 
   // opportunities pode vir vazio (ex.: snapshot de discovery vazio) — sem guard, as abas de detalhe quebram o app inteiro.
   const selectedOpportunity =
@@ -73,9 +96,20 @@ export default function Home() {
 
             {activeTab === "mesa" ? <MesaTab onOpen={openInTab} /> : null}
             {activeTab === "monitorar" && selectedOpportunity ? (
-              <MonitorarTab selectedId={selectedOpportunity.id} onSelect={(id) => openInTab(id, "analisar")} />
+              <MonitorarTab
+                selectedId={selectedOpportunity.id}
+                onSelect={(id) => openInTab(id, "analisar")}
+                interested={interested}
+                onToggleInterest={toggleInterest}
+              />
             ) : null}
-            {activeTab === "analisar" && selectedOpportunity ? <AnalisarTab opportunity={selectedOpportunity} /> : null}
+            {activeTab === "analisar" && selectedOpportunity ? (
+              <AnalisarTab
+                opportunity={selectedOpportunity}
+                interested={interested.has(selectedOpportunity.id)}
+                onToggleInterest={() => toggleInterest(selectedOpportunity.id)}
+              />
+            ) : null}
             {activeTab === "habilitar" && selectedOpportunity ? <HabilitarTab opportunity={selectedOpportunity} /> : null}
             {activeTab === "acompanhar" && selectedOpportunity ? <AcompanharTab opportunity={selectedOpportunity} /> : null}
             {activeTab === "recorrer" && selectedOpportunity ? <RecorrerTab opportunity={selectedOpportunity} /> : null}

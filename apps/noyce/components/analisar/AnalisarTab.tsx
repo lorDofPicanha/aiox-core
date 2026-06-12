@@ -2,6 +2,7 @@ import { formatCurrency, formatDateTime, scoreHealth } from "@/lib/noyce-model";
 import type { Opportunity, SuspicionSignal } from "@/lib/noyce-model";
 import { buildNextStep, lacunaTasks, operationalBlockers, operationalState } from "@/lib/noyce-operational";
 import { MarketSection, ScoreBreakdownList } from "@/components/shell/bits";
+import { ReviewDossier } from "@/components/analisar/ReviewDossier";
 
 const SUSPICION_DISCLAIMER =
   "Sinal baseado em dados públicos e na Lei 14.133 — indício para avaliação, não afirmação de irregularidade. Não substitui análise jurídica.";
@@ -20,7 +21,15 @@ function impugnationWindowLabel(action: string): string {
   return match?.[1] ?? "conforme art. 164";
 }
 
-export function AnalisarTab({ opportunity }: { opportunity: Opportunity }) {
+export function AnalisarTab({
+  opportunity,
+  interested = false,
+  onToggleInterest,
+}: {
+  opportunity: Opportunity;
+  interested?: boolean;
+  onToggleInterest?: () => void;
+}) {
   const state = operationalState(opportunity);
   const nextAction = buildNextStep(opportunity);
   const lacunas = lacunaTasks(opportunity);
@@ -43,6 +52,22 @@ export function AnalisarTab({ opportunity }: { opportunity: Opportunity }) {
           <span>{state.label}</span>
         </div>
       </div>
+
+      {interested ? (
+        <ReviewDossier opportunity={opportunity} />
+      ) : (
+        <section className="review-invite" role="note">
+          <p>
+            Sem dossiê de revisão: esta licitação ainda não foi marcada como interesse.
+            {onToggleInterest ? " Marque para o motor pré-preencher tudo que o certame vai precisar." : ""}
+          </p>
+          {onToggleInterest ? (
+            <button type="button" className="interest-btn" onClick={onToggleInterest}>
+              ☆ Tenho interesse — gerar dossiê
+            </button>
+          ) : null}
+        </section>
+      )}
 
       <section className={`decision-summary ${nextAction.tone}`} aria-labelledby="decision-summary-title">
         <div>
