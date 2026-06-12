@@ -13,6 +13,7 @@ import {
   reviewProgress,
   type ReviewState,
 } from "@/lib/noyce-review";
+import { canGenerate, declarationFileName, generateDeclarationBlob } from "@/lib/noyce-docgen";
 
 const STORAGE_PREFIX = "noyce.review.v1.";
 
@@ -59,6 +60,24 @@ export function ReviewDossier({ opportunity }: { opportunity: Opportunity }) {
     setState(next);
     saveState(opportunity.id, next);
   }
+
+  // D2: gerar .docx — SÓ de item revisado (portão humano do conclave).
+  async function downloadDocx(item: (typeof reviewed)[number]) {
+    if (!canGenerate(item)) return;
+    const blob = await generateDeclarationBlob({
+      item,
+      ccp: eniacCcp,
+      certame: { titulo: opportunity.title, orgao: opportunity.buyer },
+    });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = declarationFileName(item, eniacCcp.identity.cnpj);
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  const declaracoesProntas = reviewed.filter((i) => i.secao.startsWith("Declarações") && canGenerate(i));
 
   const sections = Array.from(new Set(reviewed.map((item) => item.secao)));
 
@@ -119,9 +138,16 @@ export function ReviewDossier({ opportunity }: { opportunity: Opportunity }) {
                       </button>
                     </>
                   ) : (
-                    <button type="button" className="reopen" onClick={() => reopen(item.id)}>
-                      {item.status === "aprovado" ? "✓ aprovado" : "🔒 corrigido"} · reabrir
-                    </button>
+                    <>
+                      <button type="button" className="reopen" onClick={() => reopen(item.id)}>
+                        {item.status === "aprovado" ? "✓ aprovado" : "🔒 corrigido"} · reabrir
+                      </button>
+                      {item.secao.startsWith("Declarações") ? (
+                        <button type="button" className="docgen" onClick={() => downloadDocx(item)}>
+                          ⬇ gerar .docx
+                        </button>
+                      ) : null}
+                    </>
                   )}
                 </div>
                 {editing === item.id ? (
@@ -153,9 +179,26 @@ export function ReviewDossier({ opportunity }: { opportunity: Opportunity }) {
             ))}
         </div>
       ))}
+      {declaracoesProntas.length > 0 ? (
+        <div className="docgen-bar">
+          <span>
+            {declaracoesProntas.length} declaração(ões) revisada(s) pronta(s) para gerar — arquivo sai exatamente com o
+            texto que você aprovou/corrigiu.
+          </span>
+          <button
+            type="button"
+            className="docgen"
+            onClick={async () => {
+              for (const item of declaracoesProntas) await downloadDocx(item);
+            }}
+          >
+            ⬇ Gerar todas (.docx)
+          </button>
+        </div>
+      ) : null}
       <p className="review-foot">
-        Correções ficam gravadas neste navegador (Sprint atual) e valem sobre o motor. Nada é enviado a portal — revisão
-        é preparação; o ato vinculante continua humano.
+        Correções ficam gravadas neste navegador (Sprint atual) e valem sobre o motor. Arquivos .docx só são gerados de
+        itens REVISADOS. Nada é enviado a portal — o envio e a assinatura continuam humanos.
       </p>
     </section>
   );
