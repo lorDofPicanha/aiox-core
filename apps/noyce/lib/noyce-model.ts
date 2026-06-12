@@ -394,6 +394,8 @@ export interface EditalRequirementsModel {
     dataSessao: string | null;
     criterioJulgamento: string | null;
     regimeExecucao: string | null;
+    /** Art. 55, II, a/b: obra/serviço COMUM (10 d.u.) × ESPECIAL (25 d.u.). null = não extraído → sem sinal de prazo (não chuta). */
+    objetoComum?: boolean | null;
   };
   economicoFinanceira: {
     exigePL: boolean | null;

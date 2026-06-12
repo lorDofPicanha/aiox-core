@@ -84,3 +84,21 @@ test("progresso: pendentes contam; 100% revisado = pronto", () => {
   assert.equal(full.done, full.total);
   assert.equal(full.ready, true);
 });
+
+// ── A3 (conclave 12/Jun, Niebuhr): placeholder assinado é bomba armada ──
+
+test("A3: nenhuma declaração pré-redigida contém reticências/placeholder aprovável", () => {
+  const items = buildReviewDossier(OPPORTUNITY, CCP);
+  const declaracoes = items.filter((i) => i.secao.startsWith("Declarações"));
+  assert.ok(declaracoes.length >= 4);
+  for (const decl of declaracoes) {
+    const temPlaceholder = /\.\.\.|\bTBD\b|\bXXX\b/i.test(decl.valorMotor);
+    if (temPlaceholder) {
+      assert.equal(decl.requerCorrecao, true, `"${decl.label}" tem placeholder e PRECISA estar travada`);
+    }
+  }
+  // A declaração de elaboração independente especificamente não pode mais ter reticências
+  const indep = declaracoes.find((i) => i.label.includes("independente"));
+  assert.ok(!/\.\.\./.test(indep.valorMotor), "texto completo, sem reticências");
+  assert.ok(indep.aviso, "aviso de que o modelo do edital prevalece");
+});

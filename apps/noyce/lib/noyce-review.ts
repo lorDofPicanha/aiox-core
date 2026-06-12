@@ -90,8 +90,11 @@ export function buildReviewDossier(
       id: `${oid}-decl-impeditivo`,
       secao: "Declarações (pré-redigidas)",
       label: "Inexistência de fato impeditivo",
-      valorMotor: `${empresa} declara, sob as penas da lei, que não há fato impeditivo à sua habilitação, ciente da obrigação de declarar ocorrências posteriores (art. 63, I, Lei 14.133/2021).`,
-      proveniencia: "Template 14.133 + identidade do CCP",
+      // Citação corrigida (conclave 12/Jun, Justen): art. 63, I da 14.133 é a declaração SUBSTITUTIVA;
+      // a de fato impeditivo é praxe editalícia herdada do art. 32, §2º, da Lei 8.666/93.
+      valorMotor: `${empresa} declara, sob as penas da lei, que não há fato impeditivo à sua habilitação, ciente da obrigação de declarar ocorrências posteriores (praxe editalícia herdada do art. 32, §2º, Lei 8.666/93 — o modelo anexo do edital prevalece).`,
+      proveniencia: "Template praxe editalícia + identidade do CCP — conferir modelo do edital",
+      aviso: "O modelo anexo do edital prevalece sobre este template — conferir antes de assinar.",
     },
     // Porte DERIVADO do balanço, nunca do cadastro (A2 — conclave 12/Jun, Justen).
     ...(() => {
@@ -124,8 +127,11 @@ export function buildReviewDossier(
       id: `${oid}-decl-proposta`,
       secao: "Declarações (pré-redigidas)",
       label: "Elaboração independente de proposta",
-      valorMotor: `${empresa} declara que a proposta foi elaborada de forma independente, sem conluio com outros licitantes (art. 63, §4º... conferir redação exata exigida no edital).`,
-      proveniencia: "Template 14.133 — conferir redação do edital",
+      // Placeholder com reticências MORTO (conclave 12/Jun, Niebuhr: "texto-placeholder dentro de
+      // documento que será assinado é bomba armada"). Texto completo; modelo do edital prevalece.
+      valorMotor: `${empresa} declara, sob as penas da lei, que a proposta apresentada foi elaborada de maneira independente, que seu conteúdo não foi, no todo ou em parte, direta ou indiretamente, informado, discutido ou recebido de qualquer outro participante potencial ou de fato deste certame, e que não tentou influenciar a decisão de qualquer outro participante quanto a participar ou não da licitação.`,
+      proveniencia: "Template praxe consolidada (declaração de elaboração independente) — o modelo anexo do edital prevalece",
+      aviso: "Conferir o modelo anexo do edital — a redação do edital prevalece sobre este template.",
     },
   );
 
@@ -140,6 +146,16 @@ export function buildReviewDossier(
       : `Sem histórico de preço deste órgão no PNCP — usar o valor estimado ${fmtBRL(opportunity.estimatedValue)} como teto e compor BDI próprio.`,
     proveniencia: median ? "Vencedores reais PNCP (market snapshot)" : "Lacuna honesta — sem histórico recuperável",
   });
+
+  // Guarda anti-placeholder (A3): nenhum texto com reticências/colchetes-de-preenchimento em
+  // DECLARAÇÃO pode ser aprovável como está — placeholder assinado é bomba armada (Niebuhr).
+  const PLACEHOLDER_RE = /\.\.\.|\[[^\]]*(preencher|confirmar|conferir|xxx|tbd)[^\]]*\]|\bTBD\b|\bXXX\b/i;
+  for (const item of items) {
+    if (item.secao.startsWith("Declarações") && PLACEHOLDER_RE.test(item.valorMotor)) {
+      item.requerCorrecao = true;
+      item.aviso = `${item.aviso ? item.aviso + " " : ""}Texto contém trecho a preencher — corrija antes; aprovação bloqueada.`;
+    }
+  }
 
   return items;
 }

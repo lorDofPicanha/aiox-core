@@ -227,19 +227,30 @@ function minimumPublicationDays(
   const regime = normalizeText(erm.meta.regimeExecucao);
   if (!criterio || !regime) return null;
 
-  if (hasAny(criterio, ["tecnica e preco", "tecnica preco", "maior retorno economico"])) {
-    return findMinimum(constants, "tecnica_preco_maior_retorno");
+  // Art. 55, IV e V (conclave 12/Jun, Justen): o REGIME prevalece sobre o critério —
+  // contratação integrada por técnica-e-preço exige 60 d.u., não 35. Semi-integrada antes
+  // de integrada no teste de substring ("semi integrada" contém "integrada").
+  if (hasAny(regime, ["semi integrada", "semi-integrada"])) {
+    return findMinimum(constants, "contratacao_semi_integrada");
+  }
+  if (hasAny(regime, ["contratacao integrada", "integrada"])) {
+    return findMinimum(constants, "contratacao_integrada");
   }
 
-  if (hasAny(regime, ["contratacao integrada", "contratacao semi integrada", "semi integrada"])) {
-    return findMinimum(constants, "engenharia_demais");
+  // Art. 55, III: técnica e preço / melhor técnica / maior retorno econômico = 35 d.u.
+  if (hasAny(criterio, ["tecnica e preco", "tecnica preco", "melhor tecnica", "maior retorno economico"])) {
+    return findMinimum(constants, "tecnica_preco_melhor_tecnica");
   }
 
+  // Art. 55, II, a/b: menor preço/maior desconto em obra COMUM (10 d.u.) × ESPECIAL (25 d.u.).
+  // objetoComum não extraído → não chuta (sem sinal de prazo; melhor silêncio que falso alarme/falsa calma).
   if (
     hasAny(criterio, ["menor preco", "maior desconto"]) &&
     hasAny(regime, ["empreitada unitaria", "empreitada global", "empreitada tarefa", "tarefa"])
   ) {
-    return findMinimum(constants, "engenharia_menor_preco_empreitada");
+    if (erm.meta.objetoComum === true) return findMinimum(constants, "engenharia_comum_menor_preco");
+    if (erm.meta.objetoComum === false) return findMinimum(constants, "engenharia_especial_menor_preco");
+    return null;
   }
 
   return null;

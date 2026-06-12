@@ -166,3 +166,47 @@ test("dataLimiteImpugnacao pula fim de semana e feriado nacional", () => {
 
   assert.equal(deadline, "2025-12-30");
 });
+
+// ── A3 (conclave 12/Jun, Justen): tabela art. 55 corrigida — regime ANTES do critério ──
+
+test("A3: contratação integrada exige 60 d.u. — 20 dias corridos dispara PRAZO_EXIGUO", () => {
+  const signals = signalsFor(
+    baseErm({ meta: { regimeExecucao: "contratacao integrada", criterioJulgamento: "menor preco" } }),
+  );
+  const prazo = signals.find((s) => s.tipo === "PRAZO_EXIGUO");
+  assert.ok(prazo, "integrada com ~12 d.u. de janela deve disparar prazo exíguo (mínimo legal: 60)");
+  assert.match(prazo.hookLegal.artigo, /art\. 55, IV/);
+});
+
+test("A3: integrada julgada por técnica e preço usa 60 d.u. (regime prevalece), não 35", () => {
+  const signals = signalsFor(
+    baseErm({ meta: { regimeExecucao: "contratacao integrada", criterioJulgamento: "tecnica e preco" } }),
+  );
+  const prazo = signals.find((s) => s.tipo === "PRAZO_EXIGUO");
+  assert.ok(prazo);
+  assert.match(prazo.hookLegal.artigo, /art\. 55, IV/, "deve rotear pelo inciso IV (60 d.u.), não III (35)");
+});
+
+test("A3: semi-integrada roteia pro inciso V (35 d.u.)", () => {
+  const signals = signalsFor(
+    baseErm({ meta: { regimeExecucao: "contratacao semi-integrada", criterioJulgamento: "menor preco" } }),
+  );
+  const prazo = signals.find((s) => s.tipo === "PRAZO_EXIGUO");
+  assert.ok(prazo, "semi-integrada com ~12 d.u. < 35 dispara");
+  assert.match(prazo.hookLegal.artigo, /art\. 55, V/);
+});
+
+test("A3: obra comum 10 d.u. × especial 25 d.u. × não-extraído = silêncio (não chuta)", () => {
+  const comum = signalsFor(
+    baseErm({ meta: { objetoComum: true, dataPublicacao: "2026-01-02", dataSessao: "2026-01-09" } }),
+  );
+  assert.ok(comum.find((s) => s.tipo === "PRAZO_EXIGUO"), "comum: 5 d.u. < 10 dispara (II, a)");
+
+  const especial = signalsFor(baseErm({ meta: { objetoComum: false } }));
+  const sinalEspecial = especial.find((s) => s.tipo === "PRAZO_EXIGUO");
+  assert.ok(sinalEspecial, "especial: 12 d.u. < 25 dispara (II, b)");
+  assert.match(sinalEspecial.hookLegal.artigo, /art\. 55, II, b/);
+
+  const indeterminado = signalsFor(baseErm({ meta: { objetoComum: null } }));
+  assert.ok(!indeterminado.find((s) => s.tipo === "PRAZO_EXIGUO"), "objetoComum null: sem sinal — não chuta");
+});

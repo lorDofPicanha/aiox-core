@@ -1,6 +1,6 @@
 {
-  "version": "2026-06-04",
-  "publicationMinimumsStatus": "a confirmar D-27.1",
+  "version": "2026-06-12",
+  "publicationMinimumsStatus": "corrigido conclave 12/Jun (Justen) — art. 55, I a V; regime testado ANTES do criterio",
   "publicationMinimums": [
     {
       "id": "bens_menor_preco_maior_desconto",
@@ -9,8 +9,8 @@
       "regimes": [],
       "minBusinessDays": 8,
       "legalHook": {
-        "artigo": "Lei 14.133/2021, art. 55",
-        "descricao": "Prazo minimo de divulgacao do edital para bens por menor preco ou maior desconto."
+        "artigo": "Lei 14.133/2021, art. 55, I, a",
+        "descricao": "Bens: 8 dias uteis quando menor preco ou maior desconto."
       }
     },
     {
@@ -20,41 +20,63 @@
       "regimes": [],
       "minBusinessDays": 15,
       "legalHook": {
-        "artigo": "Lei 14.133/2021, art. 55",
-        "descricao": "Prazo minimo de divulgacao do edital para bens nos demais criterios."
+        "artigo": "Lei 14.133/2021, art. 55, I, b",
+        "descricao": "Bens: 15 dias uteis nas demais hipoteses."
       }
     },
     {
-      "id": "engenharia_menor_preco_empreitada",
-      "objeto": "obras_servicos_engenharia",
+      "id": "engenharia_comum_menor_preco",
+      "objeto": "obras_servicos_engenharia_comuns",
       "criterios": ["menor_preco", "maior_desconto"],
       "regimes": ["empreitada_unitaria", "empreitada_global", "empreitada_tarefa"],
       "minBusinessDays": 10,
       "legalHook": {
-        "artigo": "Lei 14.133/2021, art. 55",
-        "descricao": "Prazo minimo de divulgacao para obras e servicos de engenharia por menor preco ou maior desconto em empreitada unitaria, global ou tarefa."
+        "artigo": "Lei 14.133/2021, art. 55, II, a",
+        "descricao": "Obras e servicos COMUNS de engenharia: 10 dias uteis quando menor preco ou maior desconto."
       }
     },
     {
-      "id": "engenharia_demais",
-      "objeto": "obras_servicos_engenharia",
-      "criterios": ["demais"],
-      "regimes": ["contratacao_integrada", "contratacao_semi_integrada", "tecnica_preco"],
+      "id": "engenharia_especial_menor_preco",
+      "objeto": "obras_servicos_engenharia_especiais",
+      "criterios": ["menor_preco", "maior_desconto"],
+      "regimes": ["empreitada_unitaria", "empreitada_global", "empreitada_tarefa"],
       "minBusinessDays": 25,
       "legalHook": {
-        "artigo": "Lei 14.133/2021, art. 55",
-        "descricao": "Prazo minimo de divulgacao para obras e servicos de engenharia nos demais regimes e criterios."
+        "artigo": "Lei 14.133/2021, art. 55, II, b",
+        "descricao": "Obras e servicos ESPECIAIS de engenharia: 25 dias uteis quando menor preco ou maior desconto."
       }
     },
     {
-      "id": "tecnica_preco_maior_retorno",
-      "objeto": "tecnica_preco_maior_retorno",
-      "criterios": ["tecnica_preco", "maior_retorno_economico"],
+      "id": "tecnica_preco_melhor_tecnica",
+      "objeto": "qualquer",
+      "criterios": ["tecnica_preco", "melhor_tecnica", "maior_retorno_economico"],
       "regimes": [],
       "minBusinessDays": 35,
       "legalHook": {
-        "artigo": "Lei 14.133/2021, art. 55",
-        "descricao": "Prazo minimo indicado para tecnica e preco ou maior retorno economico; confirmar D-27.1."
+        "artigo": "Lei 14.133/2021, art. 55, III",
+        "descricao": "Tecnica e preco, melhor tecnica ou maior retorno economico: 35 dias uteis."
+      }
+    },
+    {
+      "id": "contratacao_integrada",
+      "objeto": "obras_servicos_engenharia",
+      "criterios": [],
+      "regimes": ["contratacao_integrada"],
+      "minBusinessDays": 60,
+      "legalHook": {
+        "artigo": "Lei 14.133/2021, art. 55, IV",
+        "descricao": "Contratacao INTEGRADA: 60 dias uteis. O regime prevalece sobre o criterio de julgamento."
+      }
+    },
+    {
+      "id": "contratacao_semi_integrada",
+      "objeto": "obras_servicos_engenharia",
+      "criterios": [],
+      "regimes": ["contratacao_semi_integrada"],
+      "minBusinessDays": 35,
+      "legalHook": {
+        "artigo": "Lei 14.133/2021, art. 55, V",
+        "descricao": "Contratacao SEMI-INTEGRADA: 35 dias uteis. O regime prevalece sobre o criterio."
       }
     }
   ],
