@@ -9,7 +9,12 @@
 - **Favorável (ou silêncio + ausência de vedação)** → move os níveis de "monitorar/operar autenticado" de *mitigação* para **permitido com lastro documental**. Guardar a resposta = prova de boa-fé.
 - **PCP/ECUSTOMIZE é o gate crítico** — o regulamento proíbe automação *não autorizada* (cláusula 5.3.1.1/5.3.1.2); a permissão expressa OU a API homologada é o que torna lícito.
 
-> ⚠️ Antes de enviar: confirmar com a Stéfani/Alice o e-mail institucional remetente da ENIAC e se preferem CC do jurídico. Os contatos dos destinatários: **BNC = `contato@bnc.org.br`** (confirmado em edital); **BLL e PCP** = confirmar canal oficial atual em `bll.org.br` e `portaldecompraspublicas.com.br` (formulário "Fale Conosco" / suporte) antes do disparo.
+> ⚠️ Antes de enviar: confirmar com a Stéfani/Alice o e-mail institucional remetente da ENIAC e se preferem CC do jurídico.
+>
+> **Destinatários CONFIRMADOS (verificados 12/Jun nos canais oficiais):**
+> - **BNC** = `contato@bnc.org.br` (confirmado em edital)
+> - **BLL** = `contato@bll.org.br` (canal de fornecedores) · tel (41) 3097-4600 · WhatsApp (41) 3149-9300 — fonte: bll.org.br/contato
+> - **PCP** = `fornecedor@portaldecompraspublicas.com.br` · tel 3003-5455 (capitais) / 0800 730 5455 — fonte: portaldecompraspublicas.com.br/fale-conosco. ⭐ O próprio site anuncia **"API Integration: direct system connections for partners"** — citar isso no pedido reforça que o trilho oficial existe.
 
 ---
 
