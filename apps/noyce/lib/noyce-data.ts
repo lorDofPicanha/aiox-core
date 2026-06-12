@@ -4,6 +4,7 @@ import type { CompanyCapabilityProfile } from '@/lib/noyce-model';
 import type { EditalRequirementsModel } from '@/lib/noyce-model';
 import { withComputedCapabilities } from '@/lib/noyce-capability';
 import { buildHabilitationResult } from '@/lib/noyce-habilitation';
+import { buildHabilitationChecklist } from '@/lib/noyce-checklist';
 import { getMarketForOrgao } from '@/lib/noyce-market';
 import { buildTriage } from '@/lib/noyce-operational';
 import { buildSuspicionSignals, type HolidayCalendar, type LegalConstants } from '@/lib/noyce-suspicion';
@@ -128,12 +129,14 @@ export const opportunities: Opportunity[] = baseOpportunities.map((item) => {
     // Real competitor intelligence from PNCP snapshot (replaces the fake Alfa/Beta + ×0.86/×1.14).
     // null when the órgão is outside the radius seed or is a coverage hole (honest "dados insuficientes").
     market: getMarketForOrgao(item.orgaoCnpj),
-    habilitationChecklist: [
-      { label: 'Fiscal e trabalhista', status: 'ok', note: 'Certidões devem ser conferidas antes da proposta.' },
-      { label: 'Qualificação técnica', status: hasMissingData(item, 'anexos_tecnicos') ? 'missing' : 'warning', note: hasMissingData(item, 'anexos_tecnicos') ? 'Anexos técnicos dependem do portal.' : 'Validar acervo e exigências específicas.' },
-      { label: 'Econômico-financeira', status: 'warning', note: 'Conferir índices e balanço exigidos no edital.' },
-      { label: 'Proposta e planilha', status: item.stage === 'acompanhar' ? 'warning' : 'ok', note: 'Revisar composição antes de sessão ou envio.' },
-    ],
+    // Checklist CALCULADO pelo motor (owner 12/Jun: "o Noyce faz sozinho") — certidões do vault
+    // × data da sessão, acervo × edital quando parseado, PL/teto solo × valor estimado, prazo.
+    habilitationChecklist: buildHabilitationChecklist(eniacCcp, {
+      estimatedValue: item.estimatedValue,
+      proposalDeadline: item.proposalDeadline,
+      habilitationResult,
+      asOf: SCORE_AS_OF,
+    }),
     timeline: [
       { label: 'Publicação', date: 'Confirmada na fonte', status: 'done' },
       { label: 'Preclusão', date: 'Monitorar prazo de impugnação e esclarecimentos', status: opportunityScore >= 81 ? 'open' : 'risk' },

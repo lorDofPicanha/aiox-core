@@ -145,6 +145,11 @@ export function MarketSection({ market }: { market: MarketStructure | null }) {
             : ""}
           Vencedores reais do PNCP ({market.windowMonths}m). Desconto e derrota-ENIAC = lacuna (PNCP expõe só o vencedor).
         </p>
+        <p className="market-action">
+          <strong>Invariante:</strong> concorrência é contexto de preço e estratégia — existe em todo lugar e{" "}
+          <strong>nunca desclassifica</strong> uma oportunidade. Quem decide GO/NO-GO é a habilitação (acervo, PL,
+          certidões), não o HHI.
+        </p>
       </div>
     </section>
   );

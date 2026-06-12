@@ -605,6 +605,10 @@ export function buildAnalysisRun(input: ScoreInput): AnalysisRun {
   };
 }
 
+// INVARIANTE (owner 12/Jun): concorrência (market/HHI/incumbente) NÃO entra no score, na triagem
+// nem em classifyAction — "concorrência tem em todo lugar, não é motivo para desclassificar".
+// É contexto informativo de preço/estratégia na aba Analisar. ScoreInput não tem campo market
+// de propósito; teste de contrato em noyce-checklist.test.mjs trava isso.
 export function calculateOpportunityScore(input: ScoreInput): ScoreBreakdown {
   const components: ScoreComponent[] = [
     {
