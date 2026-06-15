@@ -14,6 +14,10 @@ import {
   type ReviewState,
 } from "@/lib/noyce-review";
 import { canGenerate, declarationFileName, generateDeclarationBlob } from "@/lib/noyce-docgen";
+import { buildDossierHtml, buildProposalCsv, isPackageFinal } from "@/lib/noyce-package";
+import { buildVictoryPlan } from "@/lib/noyce-victory-plan";
+import { SCORE_AS_OF } from "@/lib/noyce-data";
+import { loadVaultMeta } from "@/lib/noyce-vault";
 
 const STORAGE_PREFIX = "noyce.review.v1.";
 
@@ -78,6 +82,45 @@ export function ReviewDossier({ opportunity }: { opportunity: Opportunity }) {
   }
 
   const declaracoesProntas = reviewed.filter((i) => i.secao.startsWith("Declarações") && canGenerate(i));
+
+  // E1: pacote completo do certame — HTML A4 (imprime → PDF) + planilha CSV de proposta.
+  function downloadBlobAs(content: string, mime: string, fileName: string) {
+    const blob = new Blob([content], { type: mime });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = fileName;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  function gerarPacote() {
+    const html = buildDossierHtml({
+      opportunity: { ...opportunity, habilitationChecklist: liveChecklist },
+      ccp: eniacCcp,
+      checklist: liveChecklist,
+      victoryPlan: buildVictoryPlan({
+        checklist: liveChecklist,
+        proposalDeadline: opportunity.proposalDeadline,
+        asOf: SCORE_AS_OF,
+        reviewProgress: progress,
+      }),
+      reviewed,
+      vaultMeta: loadVaultMeta(),
+      generatedAtLabel: new Date().toLocaleString("pt-BR"),
+    });
+    downloadBlobAs(html, "text/html;charset=utf-8", `dossie-${opportunity.id}.html`);
+    // abre pra imprimir → "Salvar como PDF" do navegador
+    const win = globalThis.open?.("", "_blank");
+    if (win) {
+      win.document.write(html);
+      win.document.close();
+    }
+  }
+
+  function gerarPlanilha() {
+    downloadBlobAs("﻿" + buildProposalCsv(opportunity), "text/csv;charset=utf-8", `proposta-${opportunity.id}.csv`);
+  }
 
   const sections = Array.from(new Set(reviewed.map((item) => item.secao)));
 
@@ -179,6 +222,24 @@ export function ReviewDossier({ opportunity }: { opportunity: Opportunity }) {
             ))}
         </div>
       ))}
+      <div className="docgen-bar package-bar">
+        <span>
+          <strong>Pacote do certame:</strong> dossiê completo (HTML → imprimir como PDF) + planilha de proposta na faixa
+          legal.{" "}
+          {isPackageFinal(reviewed)
+            ? "Revisão 100% — sai como PACOTE FINAL."
+            : `Revisão ${progress.done}/${progress.total} — sai com marca d'água RASCUNHO até concluir.`}
+        </span>
+        <span className="package-actions">
+          <button type="button" className="docgen" onClick={gerarPacote}>
+            ⬇ Dossiê (HTML/PDF)
+          </button>
+          <button type="button" className="docgen" onClick={gerarPlanilha}>
+            ⬇ Planilha (CSV)
+          </button>
+        </span>
+      </div>
+
       {declaracoesProntas.length > 0 ? (
         <div className="docgen-bar">
           <span>

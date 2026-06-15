@@ -28,7 +28,21 @@ const ORGAOS = [
   { cnpj: '01098797000174', name: 'CEASA/GO', municipio: 'Goiânia', uf: 'GO', ibge: '5208707', distanceKm: 170 },
 ];
 
+// Big obras-relevant órgãos in the wider ~500km radius (Estado GO, DF obras, DNIT, Goiânia,
+// saneamento) — CNPJs confirmed from the live discovery snapshot. Added only with --radius500
+// so the app's default market-snapshot scope (ENIAC's immediate cluster) stays intact. These
+// surface the LARGEST construtoras (big state/capital contracts), the "model" companies.
+const RADIUS500_ORGAOS = [
+  { cnpj: '01409580000138', name: 'Estado de Goiás', municipio: 'Goiânia', uf: 'GO', ibge: '5208707', distanceKm: 170 },
+  { cnpj: '00394742000149', name: 'Secretaria de Estado de Obras e Infraestrutura (DF)', municipio: 'Brasília', uf: 'DF', ibge: '5300108', distanceKm: 50 },
+  { cnpj: '04892707000100', name: 'DNIT', municipio: 'Brasília', uf: 'DF', ibge: '5300108', distanceKm: 50 },
+  { cnpj: '32295411000148', name: 'Fundo Municipal de Saneamento Ambiental (Águas Lindas)', municipio: 'Águas Lindas', uf: 'GO', ibge: '5200258', distanceKm: 0 },
+  { cnpj: '17577524000142', name: 'Secretaria Municipal de Administração (Goiânia)', municipio: 'Goiânia', uf: 'GO', ibge: '5208707', distanceKm: 170 },
+  { cnpj: '18443577000133', name: 'Consórcio Intermunicipal Brasil Central', municipio: 'Goiânia', uf: 'GO', ibge: '5208707', distanceKm: 170 },
+];
+
 const ARGS = parseArgs(process.argv.slice(2));
+const ORGAOS_TO_RUN = ARGS.radius500 ? ORGAOS.concat(RADIUS500_ORGAOS) : ORGAOS;
 const CACHE_DIR = path.join(ROOT, 'apps', 'noyce', 'lib', 'data', '.cache');
 
 // Obras/engenharia filter — ENIAC competes in construction (CNAE 41/42/43), not energy/payments/health.
@@ -40,7 +54,7 @@ function isObras(c) {
 }
 
 function parseArgs(argv) {
-  const a = { months: 12, retries: 5, delayMs: 450, timeoutMs: 14000, fromCache: false, all: false, out: path.join(ROOT, 'apps', 'noyce', 'lib', 'data', 'market-snapshot.json') };
+  const a = { months: 12, retries: 5, delayMs: 450, timeoutMs: 14000, fromCache: false, all: false, radius500: false, out: path.join(ROOT, 'apps', 'noyce', 'lib', 'data', 'market-snapshot.json') };
   for (let i = 0; i < argv.length; i++) {
     if (argv[i] === '--months') a.months = Number(argv[++i]);
     else if (argv[i] === '--retries') a.retries = Number(argv[++i]);
@@ -48,6 +62,7 @@ function parseArgs(argv) {
     else if (argv[i] === '--out') a.out = path.resolve(argv[++i]);
     else if (argv[i] === '--from-cache') a.fromCache = true; // re-aggregate from cached raw contracts (no network)
     else if (argv[i] === '--all') a.all = true; // do not filter to obras (full market)
+    else if (argv[i] === '--radius500') a.radius500 = true; // add the big ~500km obras órgãos
   }
   return a;
 }
@@ -223,10 +238,10 @@ function buildHowToBeat(s, grandTotal, distinct) {
 }
 
 async function main() {
-  console.log(`# Noyce competitor snapshot — ${ORGAOS.length} órgãos, ${ARGS.months} meses\n`);
+  console.log(`# Noyce competitor snapshot — ${ORGAOS_TO_RUN.length} órgãos${ARGS.radius500 ? ' (raio 500km)' : ''}, ${ARGS.months} meses\n`);
   fs.mkdirSync(CACHE_DIR, { recursive: true });
   const orgaos = [];
-  for (const orgao of ORGAOS) {
+  for (const orgao of ORGAOS_TO_RUN) {
     process.stdout.write(`- ${orgao.name} (${orgao.cnpj})... `);
     try {
       const cachePath = path.join(CACHE_DIR, `contracts-${orgao.cnpj}.json`);
@@ -263,7 +278,7 @@ async function main() {
   fs.writeFileSync(ARGS.out, `${JSON.stringify(snapshot, null, 2)}\n`, 'utf8');
   console.log(`\nsnapshot: ${ARGS.out}`);
   const withData = orgaos.filter((o) => o.competitors && o.competitors.length).length;
-  console.log(`órgãos com dado real: ${withData}/${ORGAOS.length}`);
+  console.log(`órgãos com dado real: ${withData}/${ORGAOS_TO_RUN.length}`);
 }
 
 main().catch((e) => { console.error(e.stack || e.message); process.exitCode = 1; });

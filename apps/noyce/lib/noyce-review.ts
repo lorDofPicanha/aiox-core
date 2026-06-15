@@ -21,7 +21,14 @@ export interface ReviewItem {
 
 export type ReviewDecision =
   | { status: "aprovado"; em: string }
-  | { status: "corrigido"; valorHumano: string; em: string };
+  | {
+      status: "corrigido";
+      valorHumano: string;
+      em: string;
+      /** E2: correção pode ser um ARQUIVO subido pelo humano (blob no vault) — ele vira o documento oficial do item. */
+      arquivoId?: string;
+      arquivoNome?: string;
+    };
 
 /** Estado de revisão por item — persiste fora do motor (localStorage hoje, DB depois). */
 export type ReviewState = Record<string, ReviewDecision>;
@@ -32,6 +39,9 @@ export interface ReviewedItem extends ReviewItem {
   valorFinal: string;
   valorHumano?: string;
   revisadoEm?: string;
+  /** E2: arquivo do revisor humano (substitui a geração .docx deste item). */
+  arquivoId?: string;
+  arquivoNome?: string;
 }
 
 function fmtBRL(value: number | null): string {

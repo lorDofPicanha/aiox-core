@@ -4,8 +4,17 @@ import type { DecisionPoint, DiscoveryTriage, Opportunity, TriageVerdict } from 
 // and the actionability layer (buildNextStep / describeLacuna / legalDecisionAction) that
 // turns passive labels into concrete actions: verb + object + owner + deadline + why.
 
+// Legacy fixture anchor — kept only for tests that pin a deterministic "as of".
+// Production deadline math uses the REAL current date (see daysUntil/nowIso), so the
+// Mesa/Monitorar "faltam X dias" reflects today, not a frozen snapshot era.
 export const REFERENCE_DATE = "2026-05-23T00:00:00Z";
 export type OperationalTone = "ready" | "review" | "blocked";
+
+// The "as of" clock for deadline math. Defaults to the real current date so the app
+// never labels an already-closed edital as open; injectable for deterministic tests.
+export function nowIso(): string {
+  return new Date().toISOString();
+}
 
 export interface OperationalState {
   label: string;
@@ -40,9 +49,16 @@ export function deadlineTime(value: string | null): number {
   return value ? new Date(value).getTime() : Number.MAX_SAFE_INTEGER;
 }
 
-export function daysUntil(value: string | null): number {
+export function daysUntil(value: string | null, asOf: string = nowIso()): number {
   if (!value) return Number.MAX_SAFE_INTEGER;
-  return Math.ceil((new Date(value).getTime() - new Date(REFERENCE_DATE).getTime()) / 86_400_000);
+  return Math.ceil((new Date(value).getTime() - new Date(asOf).getTime()) / 86_400_000);
+}
+
+// True when the proposal deadline has already passed relative to `asOf` (real now by
+// default). Use to keep closed editais out of "open opportunity" surfaces.
+export function isDeadlinePassed(value: string | null, asOf: string = nowIso()): boolean {
+  if (!value) return false;
+  return new Date(value).getTime() < new Date(asOf).getTime();
 }
 
 export function formatShortDate(iso: string | null): string {

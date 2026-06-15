@@ -1,0 +1,2685 @@
+---
+title: Edital de referência — SEI_GOVERNADORIA - 59297613 - Edital (1)
+docId: edital-sei-governadoria-59297613-edital
+tags: [edital, referencia, licitacao, habilitacao, eniac]
+audience: agents
+sourceRefs: [Downloads/SEI_GOVERNADORIA - 59297613 - Edital (1).pdf]
+---
+
+> Edital de referência (arquivo enviado pela ENIAC). Extraído de `SEI_GOVERNADORIA - 59297613 - Edital (1).pdf` (74 págs). Use para consultar cláusulas de habilitação, modelos de proposta e prazos reais.
+
+## Página 1
+EDITAL DE LICITAÇÃO ELETRÔNICO
+
+PROCEDIMENTO DE LICITAÇÃO Nº 010/2025 – CEASA
+Lei nº 13.303/2016
+PROCESSO Nº 202500057001548
+MODO DE DISPUTA: ABERTO
+FORMA DE CONDUÇÃO: ELETRÔNICO
+CRITÉRIO DE JULGAMENTO: MENOR PREÇO GLOBAL
+
+OBJETO: Contratação de empresa especializada para execução da reforma geral do prédio
+administrativo da Centrais de Abastecimento de Goiás S/A (CEASA-GO), conforme condições,
+quantidades e exigências estabelecidas neste instrumento.
+
+ABERTURA: Dia 17/11/2025, às 09h00min (horário de Brasília)
+LOCAL/PLATAFORMA DE REALIZAÇÃO: https://bll.org.br/
+ÓRGÃO SOLICITANTE: Centrais de Abastecimento de Goiás S/A – CEASA/GO
+FONTE DE RECURSOS: PRÓPRIO
+IMPUGNAÇÕES E ESCLARECIMENTOS: Até dia 10/11/2025, às 23h59min
+
+Edital e seus Anexos poderão ser obtidos através da Internet pelos endereços eletrônicos:
+www.ceasa.go.gov.br e https://bll.org.br/.
+
+## Página 2
+SUMÁRIO
+
+PREÂMBULO
+
+1
+DO OBJETO
+
+2
+DA DATA, DO HORÁRIO E DO LOCAL DA LICITAÇÃO
+
+3
+FUNDAMENTAÇÃO DA CONTRATAÇÃO
+
+4
+REQUISITOS DA CONTRATAÇÃO
+
+5
+DA GESTÃO DO CONTRATO
+
+6
+DOS PRAZOS E PRORROGAÇÃO
+
+7
+DA
+EXPECTATIVA
+DO
+VALOR
+ESTIMADO,
+DOS
+RECURSOS
+FINANCEIROS E DO PAGAMENTO
+
+8
+DO ANTEPROJETO
+
+9
+DO EDITAL
+
+10
+DAS CONDIÇÕES PARA PARTICIPAÇÃO
+
+11
+DA REPRESENTAÇÃO E DO CREDENCIAMENTO
+
+12
+DA APRSENTAÇÃO DA PROPOSTA
+
+13
+DA PROPOSTA DE MENOR PREÇO (ENVELOPE 1)
+
+14
+DA DOCUMENTAÇÃO DE HABILITAÇÃO (ENVELOPE 2)
+
+15
+DAS GENERALIDADES
+
+16
+DA AVALIAÇÃO E JULGAMENTO DAS PROPOSTAS
+
+17
+DO PROCESSO E CRITÉRIOS DE JULGAMENTO
+
+18
+DA HOMOLOGAÇÃO E ADJUDICAÇÃO
+
+19
+DA GESTÃO DO CONTRATO
+
+20
+DO CONTRATO, DAS MULTAS E DAS SANÇÕES
+
+21
+DA RESCISÃO DO CONTRATO
+
+22
+
+DISPOSIÇÕES FINAIS
+ANEXO I – Termo de Referência
+ANEXO II – Memorial Descritivo
+ANEXO III – Projeto Executivo
+ANEXO IV – Planilha Orientativa
+  ANEXO V – Carta de Credenciamento
+ANEXO VI – Declaração de Enquadramento ME/EPP
+ANEXO VII - Modelo de proposta
+ANEXO VIII - Declaração de inexistência de fatos supervenientes
+ANEXO IX – Declaração de que não emprega menores
+ANEXO X - Declaração de conhecimento/visita
+ANEXO XI – Minuta de Contrato
+
+## Página 3
+EDITAL
+PROCEDIMENTO DE LICITAÇÃO N° 010/2025 - Lei 13.303/2016
+ELETRÔNICO
+PREÂMBULO
+
+A Centrais de Abastecimento de Goiás S/A – CEASA/GO, Pessoa Jurídica de Direito Privado,
+Sociedade de Economia Mista, inscrita no CNPJ/MF SOB o Nº 01.098.797/0001-74 com sede
+na Rod. BR 153, Km 5,5 saída para Anápolis, Goiânia-Goiás, CEP: 74.675-090, através de
+sua Comissão Permanente de Licitação designada através da Portaria nº 009/2024, de
+16/05/2024, torna público aos interessados que fará  realizar no endereço eletrônico acima
+mencionado, em sessão pública, às 09 horas do dia 17 de novembro de 2025,  na forma da
+Lei Federal nº 13.303/2016, do Regulamento de Licitações e Contratos da Centrais de
+Abastecimento de Goiás S/A – CEASA/GO aprovado pelo Conselho de Administração,
+versão original aprovada em 10.01.2015, publicado no Diário Oficial do Estado nº 22.734,
+folha nº 30, de 23/01/2018, atualizado em 02/09/2022, da Lei Estadual nº 17.928/12, na Lei
+Complementar Federal nº 123/06 e demais normas aplicáveis  à espécie e pelas disposições
+fixadas neste Edital e seus anexos, o  PROCEDIMENTO DE LICITAÇÃO PREGÃO
+ELETRÔNICO na forma estabelecida na Lei nº 13.303/20216, contratação de empresa
+especializada para execução da reforma geral do prédio administrativo da Centrais de
+Abastecimento de Goiás (CEASA-GO), conforme condições, quantidades e exigências
+estabelecidas neste instrumento, sem inversão de fases, modo de disputa ABERTO,
+tendo como critério de julgamento MENOR PREÇO GLOBAL, na forma de condução
+ELETRÔNICO, conforme  consta do processo Nº 202500057001548.
+Este Edital está disponível aos interessados junto a Comissão de Licitação, no horário de 8h
+às 11h e das 14h às 17h, na sede da CEASA/GO, localizada na Rodovia BR-153 KM5,5
+Jardim Guanabara, Telefone: (62) 3522-9000.
+O Edital e seus anexos encontram-se publicados no site www.ceasa.go.gov.br de livre acesso.
+
+1
+DO OBJETO
+1.2
+A presente licitação tem por objeto a contratação de empresa especializada para
+execução da reforma geral do prédio administrativo da Centrais de
+Abastecimento de Goiás (CEASA-GO), incluindo reparos estruturais,
+
+## Página 4
+pintura, substituição de instalações elétricas e hidráulicas, revitalização de
+pisos e revestimentos, adequações de acessibilidade e melhorias de iluminação
+e ventilação, conforme tabelas orçamentárias e projetos em anexo.
+1.3
+- Prazo do contrato: 04 (quatro) meses, com possibilidade de prorrogação
+conforme legislação vigente.
+1.4
+- Integram o edital:
+ANEXO I – Termo de Referência
+ANEXO II – Memorial Descritivo
+ANEXO III – Projeto Executivo
+ANEXO IV – Planilha Orientativa
+ ANEXO V – Carta de Credenciamento
+ANEXO VI – Declaração de Enquadramento ME/EPP
+ANEXO VII - Modelo de proposta
+ANEXO VIII - Declaração de inexistência de fatos supervenientes
+ANEXO IX – Declaração de que não emprega menores
+ANEXO X - Declaração de conhecimento/visita
+ANEXO XI – Minuta de Contrato
+
+2 DA DATA, DO HORÁRIO E DO LOCAL DA LICITAÇÃO
+2.1- LOCAL/PLATAFORMA DE REALIZAÇÃO: https://bll.org.br/.
+2.2- A abertura da sessão pública será de forma eletrônica e está prevista na data, horário e
+local, conforme disposto no Edital de Licitação, estando sob o comando da Presidente da
+Comissão de Licitação.
+2.3- A referência de tempo contida neste Edital, no Aviso e durante a Sessão Pública
+observarão, obrigatoriamente, o horário de Brasília-DF e, desta forma, serão registradas em
+Ata e na documentação relativa ao certame.
+
+3 FUNDAMENTAÇÃO DA CONTRATAÇÃO
+3.1- A presente licitação reger-se-à na forma da Lei Federal Nº 13.303/2016 e Regulamento
+de Licitações e Contratos da Centrais de Abastecimento de Goiás – CEASA-GO, aprovado
+pelo Conselho de Administração, Versão original aprovada em 19.01.2018, conforme extrato
+publicado no Diário Oficial do Estado nº 22.734, folha nº 30, de 23.01.2018, atualizado em
+
+## Página 5
+02.09.2022, da Lei Estadual nº 17.928/12, na Lei Complementar Federal nº 123/06  e demais
+normas aplicáveis  à espécie e pelas disposições fixadas neste Edital e seus anexos.
+3.2 – Forma de realização da Licitação: A licitação será realizada na forma ELETRÔNICO,
+LOCAL/PLATAFORMA DE REALIZAÇÃO: https://bll.org.br/.
+3.3- Modo de Disputa: ABERTO
+3.4- Critério de Julgamento: MENOR PREÇO GLOBAL
+
+4 REQUISITOS DA CONTRATAÇÃO
+4.1- A seleção do fornecedor será feita por meio de Procedimento de Licitação Pregão
+Eletrônico, adotando-se o critério de julgamento MENOR PREÇO GLOBAL.
+4.2- Habilitação jurídica
+4.3.
+Pessoa física: cédula de identidade (RG) ou documento equivalente que, por força de
+lei, tenha validade para fins de identificação em todo o território nacional;
+4.4.
+Empresário individual: inscrição no Registro Público de Empresas Mercantis, a cargo
+da Junta Comercial da respectiva sede;
+4.4.1. Microempreendedor
+Individual
+-
+MEI:
+Certificado
+da
+Condição
+de
+Microempreendedor Individual - CCMEI, cuja aceitação ficará condicionada à verificação da
+autenticidade no sítio https://www.gov.br/empresas-e-negocios/pt-br/empreendedor;
+4.4.2. Sociedade empresária, sociedade limitada unipessoal – SLU ou sociedade identificada
+como empresa individual de responsabilidade limitada - EIRELI: inscrição do ato
+constitutivo, estatuto ou contrato social no Registro Público de Empresas Mercantis, a cargo
+da Junta Comercial da respectiva sede, acompanhada de documento comprobatório de seus
+administradores;
+4.4.3. Sociedade empresária estrangeira: portaria de autorização de funcionamento no Brasil,
+publicada no Diário Oficial da União e arquivada na Junta Comercial da unidade federativa
+onde se localizar a filial, agência, sucursal ou estabelecimento, a qual será considerada como
+sua sede.
+4.4.4. Sociedade simples: inscrição do ato constitutivo no Registro Civil de Pessoas Jurídicas
+do local de sua sede, acompanhada de documento comprobatório de seus administradores;
+4.4.5. Filial, sucursal ou agência de sociedade simples ou empresária: inscrição do ato
+constitutivo da filial, sucursal ou agência da sociedade simples ou empresária,
+respectivamente, no Registro Civil das Pessoas Jurídicas ou no Registro Público de Empresas
+Mercantis onde opera, com averbação no Registro onde tem sede a matriz
+
+## Página 6
+4.4.6. Os documentos apresentados deverão estar acompanhados de todas as alterações ou da
+consolidação respectiva.
+4.5.
+Regularidade fiscal e trabalhista
+4.5.1. Prova de inscrição no Cadastro Nacional de Pessoas Jurídicas ou no Cadastro de
+Pessoas Físicas, conforme o caso;
+4.5.2. Prova de regularidade fiscal perante a Fazenda Nacional, mediante apresentação de
+certidão expedida conjuntamente pela Secretaria da Receita Federal do Brasil (RFB) e pela
+Procuradoria-Geral da Fazenda Nacional (PGFN), referente a todos os créditos tributários
+federais e à Dívida Ativa da União (DAU) por elas administrados, inclusive aqueles relativos
+à Seguridade Social, nos termos da Portaria Conjunta nº 1.751, de 02 de outubro de 2014, do
+Secretário da Receita Federal do Brasil e da Procuradora-Geral da Fazenda Nacional.
+4.5.3. Prova de regularidade com o Fundo de Garantia do Tempo de Serviço (FGTS);
+4.5.4. Prova de inexistência de débitos inadimplidos perante a Justiça do Trabalho, mediante
+a apresentação de certidão negativa ou positiva com efeito de negativa, nos termos do Título
+VII-A da Consolidação das Leis do Trabalho, aprovada pelo Decreto-Lei nº 5.452, de 1º de
+maio de 1943;
+4.5.5. Prova de inscrição no cadastro de contribuintes Estadual/Distrital ou Municipal
+relativo ao domicílio ou sede do fornecedor, pertinente ao seu ramo de atividade e compatível
+com o objeto contratual;
+4.5.6. Prova de regularidade com a Fazenda Estadual/Distrital e Municipal do domicílio ou
+sede do fornecedor, relativa à atividade em cujo exercício contrata ou concorre;
+4.5.7. Caso o fornecedor seja considerado isento dos tributos Estadual/Distrital ou Municipal
+relacionados ao objeto contratual, deverá comprovar tal condição mediante a apresentação de
+declaração da Fazenda respectiva do seu domicílio ou sede, ou outra equivalente, na forma da
+lei.
+4.5.8. O fornecedor enquadrado como microempreendedor individual que pretenda auferir os
+benefícios do tratamento diferenciado previstos na Lei Complementar n. 123, de 2006, estará
+dispensado da prova de inscrição nos cadastros de contribuintes estadual e municipal.
+4.6.
+Qualificação Técnica
+4.6.1. Registro ou inscrição da empresa na entidade profissional CREA, em plena validade;
+
+5 DA GESTÃO DO CONTRATO
+
+## Página 7
+5.1 - A execução do contrato será acompanhada e fiscalizada por uma equipe designada pela
+CEASA/GO, que será responsável por monitorar a qualidade dos serviços prestados, a
+regularidade das prestações e o cumprimento das cláusulas contratuais, além da emissão de
+relatórios periódicos para avaliar o desempenho dos prestadores.
+
+6 DOS PRAZOS E PRORROGAÇÃO
+6.1 – O prazo de vigência do contrato será de 4 (quatro) meses, com possibilidade de
+prorrogação conforme legislação vigente.
+
+7 DA
+EXPECTATIVA
+DO
+VALOR
+ESTIMADO,
+DOS
+RECURSOS
+FINANCEIROS E DO PAGAMENTO
+7.1 - Nos termos do art. 7º do Regulamento Interno de Licitações e Contratos da CEASA-GO,
+o valor estimado da presente contratação será mantido em caráter sigiloso, até a fase prevista
+na Seção II do Capítulo IV do referido regulamento, conforme permitido pela legislação
+aplicável.
+7.2 - A medida visa preservar o princípio da competitividade, evitar práticas anticompetitivas
+e garantir a seleção da proposta mais vantajosa para a Administração Pública.
+7.3 - Ressalta-se que tal sigilo não prejudica a divulgação dos quantitativos, exigências
+técnicas, critérios de julgamento e demais elementos necessários à elaboração das propostas,
+todos claramente descritos no Termo de Referência e nos demais anexos do presente edital.
+
+8 DO EDITAL
+8.1 – Cópia deste Edital e seus anexos estão disponíveis aos interessados junto a Comissão
+Permanente de Licitação, no horário de 8h às 11h e das 14h às 17h, na sede da CEASA/GO,
+localizada na Rod. BR 153, km 5,5 saída para Anápolis ou publicados no site
+www.ceasa.go.gov.br de livre acesso. Quaisquer dúvidas poderão ser obtidas através do
+telefone (62) 3522-9283 ou pelo e-mail licitações@ceasa.go.gov.br.
+
+9 DAS CONDIÇÕES PARA PARTICIPAÇÃO
+9.1- Poderá participar desta licitação toda e qualquer empresa, legalmente estabelecida no
+país, especializada no ramo do objeto deste Edital, desde que atenderem a todas as condições
+exigidas para cadastramento.
+
+## Página 8
+9.2 - A participação nesta licitação implica automaticamente na aceitação integral dos termos
+deste Edital e seus anexos, regulamentos, instruções e leis aplicáveis.
+9.3 - O não cumprimento dos requisitos de proposta e de habilitação sujeitará o fornecedor(es)
+às sanções previstas neste Edital e na legislação vigente.
+9.4 - Nos termos do Art. 38, Lei Federal nº 13.303/16, estará impedida de participar de
+licitações e de ser contratada pela empresa pública ou sociedade de economia mista a
+empresa:
+I - cujo administrador ou sócio detentor de mais de 5% (cinco por cento) do capital social seja
+diretor ou empregado da empresa pública ou sociedade de economia mista contratante;
+II - suspensa pela empresa pública ou sociedade de economia mista;
+III - declarada inidônea pela União, por Estado, pelo Distrito Federal ou pela unidade
+federativa a que está vinculada a empresa pública ou sociedade de economia mista, enquanto
+perdurarem os efeitos da sanção;
+IV - constituída por sócio de empresa que estiver suspensa, impedida ou declarada inidônea;
+V - cujo administrador seja sócio de empresa suspensa, impedida ou declarada inidônea;
+VI - constituída por sócio que tenha sido sócio ou administrador de empresa suspensa,
+impedida ou declarada inidônea, no período dos fatos que deram ensejo à sanção;
+VII - cujo administrador tenha sido sócio ou administrador de empresa suspensa, impedida ou
+declarada inidônea, no período dos fatos que deram ensejo à sanção;
+VIII - que tiver, nos seus quadros de diretoria, pessoa que participou, em razão de vínculo de
+mesma natureza, de empresa declarada inidônea;
+Observação: Além dos termos acima descritos em lei, a empresa ou firma que esteja sob
+falência, recuperação judicial ou extrajudicial, sob concurso de credores, em dissolução ou em
+liquidação.
+9.4.1 - Aplica-se a vedação prevista no item nº 10.4:
+I - à contratação do próprio empregado ou dirigente, como pessoa física, bem como à
+participação dele em procedimentos licitatórios, na condição de licitante;
+II - a quem tenha relação de parentesco, até o terceiro grau civil, com:
+a) dirigente de empresa pública ou sociedade de economia mista;
+b) empregado de empresa pública ou sociedade de economia mista cujas atribuições
+envolvam a atuação na área responsável pela licitação ou contratação;
+c) autoridade do ente público a que a empresa pública ou sociedade de economia mista esteja
+vinculada.
+
+## Página 9
+III - cujo proprietário, mesmo na condição de sócio, tenha terminado seu prazo de gestão ou
+rompido seu vínculo com a respectiva empresa pública ou sociedade de economia mista
+promotora da licitação ou contratante há menos de 6 (seis) meses.
+9.5. O(s) licitante(es) poderão apresentar os documentos solicitados em original, por qualquer
+processo de cópia autenticada ou publicação em órgão da Imprensa Oficial, perfeitamente
+legível. De toda documentação apresentada em fotocópia poderá ser solicitado o original para
+conferência.
+9.6- Os interessados poderão solicitar em tempo hábil, quaisquer esclarecimentos e
+informações, por meio de comunicação ao Presidente da Comissão Permanente de Licitações
+por carta ou e-mail, no endereço da CEASA indicado no “Edital”.
+
+10 DA REPRESENTAÇÃO E DO CREDENCIAMENTO
+10.1 Para participar do Pregão, a licitante deverá credenciar-se no sistema “Pregão
+Eletrônico”, através do site https://bll.org.br/cadastro-para-fornecedores/.
+ 10.2. O CREDENCIAMENTO FAR-SE-Á POR MEIO DE:
+ 10.2.1 Atribuição de login e senha, pessoais e intransferíveis, para acesso ao sistema
+Eletrônico, validado quando da homologação do cadastro do fornecedor.
+ 10.3 O credenciamento do licitante junto ao provedor do sistema implica a sua
+responsabilidade ou do seu representante legal e a presunção de sua capacidade técnica para
+realização das transações inerentes ao Pregão ELETRÔNICO.
+ 10.4 O uso da senha de acesso ao sistema Eletrônico é de inteira e exclusiva responsabilidade
+do licitante, incluindo qualquer transação efetuada diretamente ou por seu representante, não
+cabendo ao provedor do sistema ou à CEASA, promotora da licitação, responsabilidade por
+eventuais danos decorrentes de uso indevido da senha, ainda que por terceiros.
+ 10.5 A representação da licitante far-se-á por meio de instrumento particular e/ou público de
+procuração com firma reconhecida em cartório, que comprove os necessários poderes para
+praticar todos os atos inerentes ao certame em nome do proponente. Em sendo sócio,
+proprietário, dirigente (ou assemelhado) da empresa proponente, deverá apresentar cópia do
+estatuto ou contrato social, ou instrumento específico no qual estejam expressos seus poderes
+para exercer e assumir obrigações em decorrência de tal investidura.
+
+11 ETAPAS DA SESSÃO
+
+## Página 10
+11.1 – Os proponentes que desejarem participar deste certame deverão cadastrar-se no sistema
+definido, para cumprir as duas fases:
+FASE 1
+FASE 2
+PROPOSTA
+HABILITAÇÃO
+11.2 - Não serão aceitos pedidos de prorrogações dos horários para protocolo.
+11.3 - O licitante deverá apresentar os documentos estritamente necessários, evitando
+duplicidade e a inclusão de documentos supérfluos ou dispensáveis.
+11.4 - A participação neste certame é ABERTA a quaisquer interessados, inclusive as
+Microempresas, Empresas de Pequeno Porte e Equiparados, nos termos da legislação vigente.
+11.5 - Não poderão participar os interessados que se enquadrem nas situações previstas no
+item nº 10.4.
+
+12 FASE 1 - DA PROPOSTA DE MENOR PREÇO
+12.1- A Licitante deverá encaminhar proposta, exclusivamente por meio do sistema
+eletrônico, até a data e horário marcados para abertura da sessão pública, quando então
+encerrar-se-á automaticamente a fase de recebimento de propostas.
+ 12.2 A Licitante deverá declarar, em campo próprio do sistema eletrônico, que cumpre
+plenamente os requisitos de habilitação e que sua proposta está em conformidade com as
+exigências do Edital.
+ 12.3 As propostas ficarão disponíveis no sistema eletrônico.
+ 12.3.1 Até a abertura da sessão pública, a Licitante poderá retirar ou substituir a proposta
+anteriormente encaminhada.
+ 12.3.2 A Pregoeira deverá suspender a sessão pública do Pregão quando constatar que a
+avaliação da conformidade das propostas, irá perdurar por mais de um dia.
+ 12.3.3 Após a suspensão da sessão pública, a Pregoeira enviará, via chat, mensagens às
+licitantes informando a data e o horário previstos para o início da oferta de lances.
+ 12.4 As propostas terão validade de 60 (sessenta) dias, contados da data de abertura da sessão
+pública estabelecida no preâmbulo deste Edital.
+ 12.4.1 Decorrido o prazo de validade das propostas, sem convocação para contratação, ficam
+as Licitantes liberadas dos compromissos assumidos.
+
+## Página 11
+12.4.2 Só será aceita uma proposta relativa ao LOTE, para o licitante e, ao término do prazo
+es pulado para a fase de registro de propostas, o sistema automaticamente bloqueará o envio
+de novas propostas.
+ 12.5 Os quantitativos dos bens/materiais são os constantes do Anexo I – Termo de
+Referência, e demais anexos do Edital.
+ 12.6 A Proposta de Preço deverá ser formulada contendo o “VALOR GLOBAL”, conforme
+Termo de Referência, enviada exclusivamente por meio do Sistema Eletrônico.
+ 12.7 O sistema https://bll.org.br/ possibilita à licitante a exclusão/alteração da proposta
+dentro do prazo estipulado no Edital para registro de propostas. Ao término desse prazo, não
+haverá possibilidade de exclusão/alteração das propostas, as quais serão analisadas conforme
+definido no edital.
+ 12.8 Caso haja apresentação de propostas de valores idênticos, prevalecerá aquela que for
+recebida e registrada primeiro.
+ 12.9 A Pregoeira e Equipe de Apoio poderá realizar diligências para aferir a exequibilidade
+da proposta ou exigir do Licitante que ela seja demonstrada.
+ 12.10 A licitante se responsabilizará por todas as transações que forem efetuadas em seu
+nome no sistema eletrônico, assumindo como firmes e verdadeiras suas propostas, assim
+como os lances inseridos durante a sessão pública.
+ 12.11 Todas as empresas deverão cotar seus Preços com todos os tributos cabíveis inclusos,
+bem como todos os demais custos diretos e indiretos necessários ao atendimento das
+exigências do Edital e seus anexos.
+ 12.12 Quaisquer tributos, custos e despesas diretas ou indiretas omitidas na proposta ou
+incorretamente cotados, serão considerados como inclusos nos Preços, não sendo aceitos
+pleitos de acréscimos, a esse ou qualquer outro tulo.
+ 12.12.1 Quaisquer tributos, despesas e custos diretos e indiretos omitidos na proposta ou
+incorretamente cotados, serão considerados como inclusos nos preços, não sendo aceitos
+pleitos de acréscimos, a esse ou qualquer outro tulo, devendo os serviços ser fornecido sem
+ônus adicionais.
+ 12.13 Os preços propostos serão de exclusiva responsabilidade do Licitante, não lhe
+assistindo o direito de pleitear qualquer alteração dos mesmos, sob alegação de erro, omissão
+ou qualquer outro pretexto.
+ 12.14 O Licitante será responsável por todas as transações que forem efetuadas em seu nome
+no sistema eletrônico, assumindo como firmes e verdadeiras a sua proposta e lances.
+
+## Página 12
+12.15 Incumbirá ao Licitante acompanhar as operações no sistema eletrônico durante a
+sessão pública do Pregão, ficando responsável pelo ônus decorrente da perda de negócios
+diante da inobservância de quaisquer mensagens emitidas pelo sistema ou de sua desconexão.
+ 12.16 Se, por motivo de força maior, a adjudicação não puder ocorrer dentro do período de
+validade da proposta, ou seja, de, no mínimo, 60 (sessenta) dias, e caso persista o interesse da
+CEASA-GO, poderá ser solicitada prorrogação da vigência acima referida, por igual prazo.
+ 12.17 Declaração de concordância da retenção pela CEASA, correspondente ao percentual
+pertinente à execução do objeto, quando for o caso, frente ao disposto na Resolução nº 071 do
+INSS.
+ 12.18 Poderão ser admitidas, pela Pregoeira, falhas de natureza formal, que não alterem a
+essência do conteúdo e desde que não haja comprometimento do interesse público e ofensa
+aos princípios da isonomia e legalidade.
+
+13 DA ABERTURA DA SESSÃO, CLASSIFICAÇÃO DAS PROPOSTAS E
+FORMULAÇÃO DE LANCES
+ 13.1 A abertura da presente licitação dar-se-á automaticamente em sessão pública, por meio
+de sistema eletrônico, na data, horário e local indicados neste Edital.
+ 13.2. Os licitantes poderão retirar ou substituir a proposta, anteriormente inseridos no
+sistema, até o prazo final para encaminhamento das propostas.
+ 13.3. O sistema disponibilizará campo próprio para troca de mensagens entre o Pregoeiro e
+os licitantes.
+ 13.4. Iniciada a etapa competitiva, os licitantes deverão encaminhar lances exclusivamente
+por meio de sistema eletrônico, sendo imediatamente informados do seu recebimento e do
+valor consignado no registro.
+13.5. O lance deverá ser ofertado pelo valor global.
+13.6. Os licitantes poderão oferecer lances sucessivos, observando o horário fixado para
+abertura da sessão e as regras estabelecidas no Edital.
+13.7. O licitante somente poderá oferecer lance de valor inferior ao último por ele ofertado e
+registrado pelo sistema.
+13.8. O intervalo mínimo de diferença de valores ou percentuais entre os lances, que incidirá
+tanto em relação aos lances intermediários quanto em relação à proposta que cobrir a melhor
+oferta será informado dentro do próprio sistema;
+
+## Página 13
+13.9. O licitante poderá, uma única vez, excluir seu último lance ofertado, no intervalo de
+quinze segundos após o registro no sistema, na hipótese de lance inconsistente ou inexequível.
+ 13.10. O procedimento seguirá de acordo com o modo de disputa adotado.
+ 13.11. Caso seja adotado para o envio de lances no pregão eletrônico o modo de disputa
+“aberto”, os licitantes apresentarão lances públicos e sucessivos, com prorrogações.
+ 13.11.1. A etapa de lances da sessão pública terá duração de dez minutos e, após isso, será
+prorrogada automaticamente pelo sistema quando houver lance ofertado nos últimos dois
+minutos do período de duração da sessão pública.
+ 13.11.2. A prorrogação automática da etapa de lances, de que trata o subitem anterior, será de
+dois minutos e ocorrerá sucessivamente sempre que houver lances enviados nesse período de
+prorrogação, inclusive no caso de lances intermediários.
+ 13.11.3. Não havendo novos lances na forma estabelecida nos itens anteriores, a sessão
+pública encerrar-se-á automaticamente, e o sistema ordenará e divulgará os lances conforme a
+ordem final de classificação.
+ 13.11.4. Definida a melhor proposta, se a diferença em relação à proposta classificada em
+segundo lugar for de pelo menos 5% (cinco por cento), o pregoeiro, auxiliado pela equipe de
+apoio, poderá admitir o reinício da disputa aberta, para a definição das demais colocações.
+ 13.11.5. Após o reinício previsto no item supra, os licitantes serão convocados para
+apresentar lances intermediários.
+ 13.12. Caso seja adotado para o envio de lances no pregão eletrônico o modo de disputa
+“aberto e fechado”, os licitantes apresentarão lances públicos e sucessivos, com lance final e
+fechado.
+ 13.12.1. A etapa de lances da sessão pública terá duração inicial de quinze minutos. Após
+esse prazo, o sistema encaminhará aviso de fechamento iminente dos lances, após o que
+transcorrerá o período de até dez minutos, aleatoriamente determinado, findo o qual será
+automaticamente encerrada a recepção de lances.
+ 13.12.2. Encerrado o prazo previsto no subitem anterior, o sistema abrirá oportunidade para
+que o autor da oferta de valor mais baixo e os das ofertas com preços até 10% (dez por cento)
+superior àquela possam ofertar um lance final e fechado em até cinco minutos, o qual será
+sigiloso até o encerramento deste prazo.
+ 13.12.3. No procedimento de que trata o subitem supra, o licitante poderá optar por manter o
+seu último lance da etapa aberta, ou por ofertar melhor lance.
+
+## Página 14
+13.12.4. Não havendo pelo menos três ofertas nas condições definidas neste item, poderão os
+autores dos melhores lances subsequentes, na ordem de classificação, até o máximo de três,
+oferecer um lance final e fechado em até cinco minutos, o qual será sigiloso até o
+encerramento deste prazo.
+ 13.12.5. Após o término dos prazos estabelecidos nos itens anteriores, o sistema ordenará e
+divulgará os lances segundo a ordem crescente de valores.
+ 13.13. Caso seja adotado para o envio de lances no pregão eletrônico o modo de disputa
+“fechado e aberto”, poderão participar da etapa aberta somente os licitantes que apresentarem
+a proposta de menor preço/ maior percentual de desconto e os das propostas até 10% (dez por
+cento) superiores/inferiores àquela, em que os licitantes apresentarão lances públicos e
+sucessivos, até o encerramento da sessão e eventuais prorrogações.
+ 13.13.1. Não havendo pelo menos 3 (três) propostas nas condições definidas no item 14.13,
+poderão os licitantes que apresentaram as três melhores propostas, consideradas as empatadas,
+oferecer novos lances sucessivos.
+ 13.13.2. A etapa de lances da sessão pública terá duração de dez minutos e, após isso, será
+prorrogada automaticamente pelo sistema quando houver lance ofertado nos últimos dois
+minutos do período de duração da sessão pública.
+ 13.13.3. A prorrogação automática da etapa de lances, de que trata o subitem anterior, será de
+dois minutos e ocorrerá sucessivamente sempre que houver lances enviados nesse período de
+prorrogação, inclusive no caso de lances intermediários.
+ 13.13.4. Não havendo novos lances na forma estabelecida nos itens anteriores, a sessão
+pública encerrar-se-á automaticamente, e o sistema ordenará e divulgará os lances conforme a
+ordem final de classificação.
+ 13.13.5. Definida a melhor proposta, se a diferença em relação à proposta classificada em
+segundo lugar for de pelo menos 5% (cinco por cento), o pregoeiro, auxiliado pela equipe de
+apoio, poderá admitir o reinício da disputa aberta, para a definição das demais colocações.
+ 13.13.6. Após o reinício previsto no subitem supra, os licitantes serão convocados para
+apresentar lances intermediários.
+ 13.14. Após o término dos prazos estabelecidos nos subitens anteriores, o sistema ordenará e
+divulgará os lances segundo a ordem crescente de valores.
+13.15. Não serão aceitos dois ou mais lances de mesmo valor, prevalecendo aquele que for
+recebido e registrado em primeiro lugar.
+
+## Página 15
+13.16. Durante o transcurso da sessão pública, os licitantes serão informados, em tempo real,
+do valor do menor lance registrado, vedada a identificação do licitante.
+ 13.17. No caso de desconexão com o Pregoeiro, no decorrer da etapa competitiva do Pregão,
+o sistema eletrônico poderá permanecer acessível aos licitantes para a recepção dos lances.
+ 13.18. Quando a desconexão do sistema eletrônico para o pregoeiro persistir por tempo
+superior a dez minutos, a sessão pública será suspensa e reiniciada somente após decorridas
+vinte e quatro horas da comunicação do fato pelo Pregoeiro aos participantes, no sítio
+eletrônico u lizado para divulgação.
+ 13.19. Caso o licitante não apresente lances, concorrerá com o valor de sua proposta.
+ 13.20. Em relação a itens não exclusivos para participação de microempresas e empresas de
+pequeno porte, uma vez encerrada a etapa de lances, será efetivada a verificação automática,
+junto à Receita Federal, do porte da entidade empresarial. O sistema identificará em coluna
+própria as microempresas e empresas de pequeno porte participantes, procedendo à
+comparação com os valores da primeira colocada, se esta for empresa de maior porte, assim
+como das demais classificadas, para o fim de aplicar-se o disposto nos arts. 44 e 45 da Lei
+Complementar nº 123, de 2006, regulamentada pelo Decreto nº 8.538, de 2015.
+ 13.20.1. Nessas condições, as propostas de microempresas e empresas de pequeno porte que
+se encontrarem na faixa de até 5% (cinco por cento) acima da melhor proposta ou melhor
+lance serão consideradas empatadas com a primeira colocada.
+ 13.20.2. A melhor classificada nos termos do subitem anterior terá o direito de encaminhar
+uma última oferta para desempate, obrigatoriamente em valor inferior ao da primeira
+colocada, no prazo de 05 (cinco) minutos controlados pelo sistema, contados após a
+comunicação automática para tanto.
+ 13.20.3. Caso a microempresa ou a empresa de pequeno porte melhor classificada desista ou
+não se manifeste no prazo estabelecido, serão convocadas as demais licitantes microempresa e
+empresa de pequeno porte que se encontrem naquele intervalo de 5% (cinco por cento), na
+ordem de classificação, para o exercício do mesmo direito, no prazo estabelecido no subitem
+anterior.
+ 13.20.4. No caso de equivalência dos valores apresentados pelas microempresas e empresas
+de pequeno porte que se encontrem nos intervalos estabelecidos nos subitens anteriores, será
+realizado sorteio entre elas para que se identifique aquela que primeiro poderá apresentar
+melhor oferta.
+
+## Página 16
+13.21. Só poderá haver empate entre propostas iguais (não seguidas de lances), ou entre
+lances finais da fase fechada do modo de disputa aberto e fechado.
+ 13.21.1. Havendo eventual empate entre propostas ou lances, o critério de desempate será
+aquele previsto no art. 55 da Lei nº 13.303/2016.
+ 13.22. Encerrada a etapa de envio de lances da sessão pública, na hipótese da proposta do
+primeiro colocado permanecer acima do preço máximo ou inferior ao desconto definido para
+a contratação, o pregoeiro poderá negociar condições mais vantajosas, após definido o
+resultado do julgamento.
+ 13.22.1. A negociação poderá ser feita com os demais licitantes, segundo a ordem de
+classificação inicialmente estabelecida, quando o primeiro colocado, mesmo após a
+negociação, for desclassificado em razão de sua proposta permanecer acima do preço máximo
+definido pela Administração.
+ 13.22.2. A negociação será realizada por meio do sistema, podendo ser acompanhada pelos
+demais licitantes.
+ 13.22.3. O resultado da negociação será divulgado a todos os licitantes e anexado aos autos
+do processo licitatório.
+ 13.22.4. O pregoeiro solicitará ao licitante mais bem classificado que, no prazo mínimo de 2
+(duas) horas, envie a proposta adequada ao último lance ofertado após a negociação realizada,
+conforme o modelo do ANEXO II, acompanhada dos documentos de habilitação.
+ 13.22.5. É facultado ao pregoeiro prorrogar o prazo estabelecido, a partir de solicitação
+fundamentada feita no chat pelo licitante, antes de findo o prazo.
+ 13.23. Após a negociação do preço, o Pregoeiro iniciará a fase de aceitação e julgamento da
+proposta.
+
+14 DA FASE DE JULGAMENTO
+ 14.1. Encerrada a etapa de negociação, o pregoeiro verificará se o licitante provisoriamente
+classificado em primeiro lugar atende às condições de participação no certame e no item 3.6
+do edital, especialmente quanto à existência de sanção que impeça a participação no certame
+ou a futura contratação, mediante a consulta aos seguintes cadastros:
+14.1.1. Cadastro Nacional de Empresas Inidôneas e Suspensas - CEIS, mantido pela
+Controladoria-Geral da União (h ps://www.portaltransparencia.gov.br/sancoes/ceis); e
+14.1.2. Cadastro Nacional de Empresas Punidas – CNEP, mantido pela Controladoria Geral
+da União (hps://www.portaltransparencia.gov.br/sancoes/cnep).
+
+## Página 17
+14.3. A consulta aos cadastros será realizada em nome da empresa licitante e também de seu
+sócio majoritário, por força da vedação de que trata o ar go 12 da Lei n° 8.429, de 1992.
+14.4. Caso conste na Consulta de Situação do licitante a existência de Ocorrências
+Impeditivas Indiretas, o Pregoeiro diligenciará para verificar se houve fraude por parte das
+empresas apontadas no Relatório de Ocorrências Impeditivas Indiretas.
+14.4.1. A tentativa de burla será verificada por meio dos vínculos societários, linhas de
+fornecimento similares, dentre outros.
+ 14.4.2. O licitante será convocado para manifestação previamente a uma eventual
+desclassificação.
+ 14.4.3. Constatada a existência de sanção, o licitante será reputado inabilitado, por falta de
+condição de participação.
+ 14.5. Na hipótese de inversão das fases de habilitação e julgamento, caso atendidas as
+condições de participação, será iniciado o procedimento de habilitação.
+ 14.6. Caso o licitante provisoriamente classificado em primeiro lugar tenha se utilizado de
+algum tratamento favorecido às ME/EPPs, o pregoeiro verificará se faz jus ao benefício, em
+conformidade com os itens 3.5.1 e 4.6 deste edital.
+ 14.7. Verificadas as condições de participação e de utilização do tratamento favorecido, o
+pregoeiro examinará a proposta classificada em primeiro lugar quanto à adequação ao objeto
+e à compatibilidade do preço em relação ao máximo es pulado para contratação neste Edital e
+em seus anexos.
+ 14.8. Será desclassificada a proposta vencedora que:
+ 14.8.1.
+contiver vícios insanáveis;
+ 14.8.2.
+não obedecer às especificações técnicas contidas no Termo de Referência;
+ 14.8.3.
+apresentar preços inexequíveis ou permanecerem acima do preço máximo
+definido para a contratação;
+ 14.8.4.
+não
+verem
+sua
+exequibilidade
+demonstrada,
+quando
+exigido
+pela
+Administração;
+ 14.8.5.
+apresentar desconformidade com quaisquer outras exigências deste Edital ou
+seus anexos, desde que insanável.
+ 14.9. No caso de bens e serviços em geral, é indício de inexequibilidade das propostas
+valores inferiores a 50% (cinquenta por cento) do valor orçado pela Administração.
+ 14.9.1. A inexequibilidade, na hipótese de que trata o caput, só será considerada após
+diligência do pregoeiro, que comprove:
+
+## Página 18
+14.9.1.1.
+que o custo do licitante ultrapassa o valor da proposta; e
+ 14.9.1.2.
+inexistirem custos de oportunidade capazes de jus ficar o vulto da oferta.
+ 14.10. Se houver indícios de inexequibilidade da proposta de preço, ou em caso da
+necessidade de esclarecimentos complementares, poderão ser efetuadas diligências, para que a
+empresa comprove a exequibilidade da proposta.
+ 14.11. Caso o custo global estimado do objeto licitado tenha sido decomposto em seus
+respectivos custos unitários por meio de Planilha de Custos e Formação de Preços elaborada
+pela Administração, o licitante classificado em primeiro lugar será convocado para apresentar
+Planilha por ele elaborada, com os respectivos valores adequados ao valor final da sua
+proposta, sob pena de não aceitação da proposta.
+ 14.12. Erros no preenchimento da planilha não constituem motivo para a desclassificação da
+proposta. A planilha poderá ser ajustada pelo fornecedor, no prazo indicado peló sistema,
+desde que não haja majoração do preço e que se comprove que este é o bastante para arcar
+com todos os custos da contratação;
+ 14.12.1.
+O ajuste de que trata este dispositivo se limita a sanar erros ou falhas que não
+alterem a substância das propostas;
+ 14.12.2.
+Considera-se erro no preenchimento da planilha passível de correção a
+indicação de recolhimento de impostos e contribuições na forma do Simples Nacional,
+quando não cabível esse regime.
+ 14.13. Para fins de análise da proposta quanto ao cumprimento das especificações do objeto,
+poderá ser colhida a manifestação escrita do setor requisitante do serviço ou da área
+especializada no objeto.
+ 14.14. Caso o Termo de Referência exija a apresentação de amostra, o licitante classificado
+em primeiro lugar deverá apresentá-la, conforme disciplinado no Termo de Referência, sob
+pena de não aceitação da proposta.
+ 14.15. Por meio de mensagem no sistema, será divulgado o local e horário de realização do
+procedimento para a avaliação das amostras, cuja presença será facultada a todos os
+interessados, incluindo os demais licitantes.
+ 14.16. Os resultados das avaliações serão divulgados por meio de mensagem no sistema.
+ 14.17. No caso de não haver prestação da amostra ou ocorrer atraso na prestação, sem
+justificativa aceita pelo Pregoeiro, ou havendo prestação de amostra fora das especificações
+previstas neste Edital, a proposta do licitante será recusada.
+
+## Página 19
+14.18. Se a(s) amostra(s) apresentada(s) pelo primeiro classificado não for(em) aceita(s), o
+Pregoeiro analisará a aceitabilidade da proposta ou lance ofertado pelo segundo classificado.
+Seguir-se-á com a verificação da(s) amostra(s) e, assim, sucessivamente, até a verificação de
+uma que atenda às especificações constantes no Termo de Referência.
+
+15 DA DOCUMENTAÇÃO DE HABILITAÇÃO - FASE 2
+15.1- Será oportunizado o prazo de 02 (duas) horas para juntada do documento de
+habilitação da empresa vencedora
+15.2 – Para a habilitação dos interessados na licitação exigir-se-ão, exclusivamente,
+documentos relativos a habilitação jurídica, regularidade fiscal e trabalhista, qualificação
+econômico-financeira, bem como a declaração de não-realização, no estabelecimento, de
+trabalho noturno, perigoso ou insalubre por menores de 18 (dezoito) anos e de qualquer
+trabalho por menores de 16 (dezesseis) anos, salvo, na condição de aprendizes, a partir de 14
+(quatorze) anos.
+15.3 –DOCUMENTAÇÃO RELATIVA À HABILITAÇÃO JURÍDICA (Art. 58, I da Lei
+nº 13.303/2016)
+15.3.1– A documentação relativa a habilitação jurídica consistirá em:
+15.3.1.1 – cédula de identidade do representante(s) legal(is);
+15.3.1.2 – registro comercial, no caso de empresário individual; no caso de sociedades
+comerciais, ato constitutivo, estatuto ou contrato social em vigor, devidamente inscrito no
+Registro Público de Empresas Mercantis; em se tratando de sociedade simples, ato
+constitutivo averbado no Registro Civil das Pessoas Jurídicas;
+15.3.1.3 - em se tratando de sociedades por ações, é imprescindível a documentação de
+eleição dos seus administradores;
+15.3.1.4 - decreto de autorização, no caso de empresário individual ou sociedade estrangeira
+em funcionamento no país;
+15.3.1.5 – ato de registro ou autorização para funcionamento expedido pelo órgão
+competente, quando a atividade assim o exigir.
+15.3.1.6 – Procuração pública ou particular passada pela licitante, assinada por quem de
+direito, outorgando ao seu representante poder para responder por ele e tomar as decisões que
+julgar necessárias, durante o procedimento da habilitação e abertura das propostas, inclusive
+poderes para recorrer e renunciar a interposição de recursos administrativos. É necessário o
+reconhecimento de firma no caso de instrumento particular. A falta do documento previsto
+
+## Página 20
+neste item não inabilita a licitante, ficando, porém, impedido o representante não credenciado
+de qualquer interferência no processo licitatório;
+
+15.4
+–
+DOCUMENTAÇÃO
+RELATIVA
+À
+REGULARIDADE
+FISCAL
+E
+TRABALHISTA (Art. 58, I DA LEI Nº 13.303/16)
+15.4.1 – Prova de inscrição no Cadastro Nacional de Pessoa Jurídica (CNPJ);
+15.4.2 – Prova de inexistência de débitos inadimplidos perante a Justiça do Trabalho,
+mediante a apresentação da Certidão Negativa de Débitos Trabalhistas (CNDT).
+15.4.3 – Prova de regularidade para com a Fazenda Federal, mediante a apresentação da
+Certidão Conjunta de Débitos Rela vos aos Tributos Federais/Dívida Ativa da
+União/Seguridade Social, expedida em conjunto pela Procuradoria Geral da Fazenda Nacional
+e Secretaria da Receita Federal do Brasil;
+ 15.4.4 – Prova de regularidade para com a Fazenda Estadual, mediante a apresentação de
+certidão expedida pela Secretaria da Fazenda do Estado onde a licitante tem sua sede;
+ a) no caso de licitantes com sede fora do Estado de Goiás, deverá ser apresentada também a
+prova de regularidade para com a Fazenda Pública Estadual de Goiás, expedida pela
+Secretaria da Fazenda do Estado de Goiás. A certidão de regularidade para com a Fazenda
+Pública Estadual de Goiás poderá ser obtida em www.sefaz.go.gov.br, em “Serviços” –
+“Certidão Negativa de Débitos” – “Emissão de Certidão Negativa de Débitos” – “Certidão de
+Dívida Ativa”;
+ 15.4.5 – Prova de regularidade para com a Fazenda Municipal, mediante a apresentação de
+Certidão expedida pelo órgão competente do município da sede da empresa licitante;
+ 15.4.6 – Prova de regularidade relativa ao Fundo de Garantia por Tempo de Serviço – FGTS,
+mediante a apresentação de certidão expedida pela Caixa Econômica Federal para a sede da
+empresa licitante;
+15.4.7 – Certidão negativa de suspensão e/ou impedimento de licitar ou contratar com a
+Administração Pública do Estado de Goiás. Esta poderá ser emitida no momento da sessão
+pela CPL, caso o licitante não apresente.
+15.5- QUALIFICAÇÃO TÉCNICA
+15.5.1. Para fins de comprovação da qualificação técnica, a licitante deverá apresentar:
+a)
+Registro ou inscrição perante conselho profissional CREA;
+15.5.2. CERTIFICADO DE VISITA TÉCNICA/DISPENSA DE VISITA, CONFORME
+O MODELO CONSTANTE DOS ANEXOS.
+
+## Página 21
+14.6.5. Declarações:
+15.6.5.1 Declaração expressa da licitante da inexistência de fato superveniente impeditivo à
+habilitação, conforme modelo.
+ 15.6.5.2 Declaração do licitante de que não possui em seu quadro de pessoal empregado(s)
+com menos de 18 (dezoito) anos em trabalho noturno, perigoso ou insalubre e de 15 (quinze)
+anos em qualquer trabalho, salvo na condição de aprendiz, nos termos do inciso XXXIII do
+Art. 7° da Constituição Federal de 1988 (Lei Nº 9.854/1999), conforme modelo do ANEXO
+VI.
+ 16.6.5.3 Declaração de que tomou conhecimento de todas as informações e das condições
+locais para o cumprimento das obrigações, assim como de todos os aspectos que possam
+influir direta ou indiretamente na execução do objeto da licitação assinada pelo Responsável
+Legal, conforme modelo do ANEXO VII.
+15.7- Não serão aceitos protocolos de prestação ou solicitações de documentos, em
+substituição aos documentos requeridos no presente Edital e seus anexos.
+15.8 - Para microempresas e empresas de pequeno porte, em cumprimento ao Artigo 43 da
+Lei Complementar Nº 123/2006, caso haja alguma restrição na comprovação da regularidade
+fiscal será assegurado o prazo de 05 (cinco) dias úteis (a partir do momento que for declarada
+vencedora do certame), prorrogáveis, a critério da Administração por igual período, para a
+regularização da documentação, pagamento ou parcelamento do débito, e emissão de
+eventuais certidões negativas ou positivas com efeito de negativa. A não regularização da
+documentação no prazo aqui previsto implicará na decadência do direito de contratação, sem
+prejuízo das sanções previstas em Lei.
+15.9. – Os documentos extraídos por via INTERNET terão seus dados conferidos pela Equipe
+de Apoio perante o site correspondente.
+15.10.  Documentos apresentados com a validade expirada acarretarão a inabilitação da
+licitante. As certidões que não possuírem prazo de validade, somente serão aceitas com data
+de emissão não superior a 60 (sessenta) dias contados da data da publicação do Edital.
+
+16. DAS GENERALIDADES
+16.1 – As especificações, condições de participação, localização, e outras informações
+pertinentes encontram-se nos anexos, os quais ficam fazendo parte integrante e inseparável
+deste Edital.
+
+## Página 22
+16.2 – Este Edital será fornecido aos interessados, via internet, mediante download, no site
+www.ceasa.go.gov.br.
+16.3 – A Comissão de Licitação permanecerá à disposição dos interessados, para esclarecer
+quaisquer dúvidas e prestar informações, de 8h às 11h e das 14h às 17h, no endereço: BR
+153, Km 5,5, saída para Anápolis, Jardim Guanabara, Goiânia, Goiás, Fone (62) 3522-9000,
+email: licitacoes@ceasa.go.gov.br.
+16.3.1- Os questionamentos encaminhados por e-mail deverão estar em arquivo editável
+(.doc, .xls, .odt, etc.), e após respondidos serão disponibilizados a todos os interessados para
+consulta no site www.ceasa.go.gov.br.
+16.4 – A não solicitação de informações complementares e/ou apresentação de impugnação
+nos deste edital por parte de alguma proponente, implica na tácita admissão de que as
+informações técnicas e jurídicas foram consideradas suficientes.
+16.5 - Caso a data prevista para realização da presente licitação seja declarada feriado ou
+ponto facultativo, não havendo retificação da convocação, esta realizar-se-á no primeiro dia
+útil subsequente, no mesmo local e hora previstos.
+16.6 - O presente edital encontra-se vinculado ao lance ou propostas do licitante vencedor,
+nos termos do item VIII, Art. 69, da Lei Federal nº 13.303/2016.
+
+17. DA HOMOLOGAÇÃO E ADJUDICAÇÃO
+17.1 – Decididos so recursos, ou findo o prazo legal para sua interposição, o processo será
+encaminhado à Presidência da CEASA/GO, sugerindo sua homologação e providências
+finais.
+17.2 – A decisão da Comissão de Licitação somente será considerada definitiva após
+homologação pelo Presidente da CEASA/GO.
+17.3 – A adjudicação do item será feita ao Licitante que apresente proposta mais vantajosa
+para a CEASA/GO.
+17.4.  Após a devida conclusão do processo licitatório, será(ão) formalizado(s) o(s)
+Contrato(s), entre a CEASA-GO e  a(s) proponente(s) vencedora(s).
+
+18. DA GESTÃO DO CONTRATO
+18.1 – A Gestão de todo o procedimento de contratação, inclusive o acompanhamento ou
+execução administrativa do contrato, será feita por servidor especialmente designado, pela
+
+## Página 23
+Diretoria competente, para tal finalidade, observadas as disposições dos artigos 51 a 54 da Lei
+Estadual nº 17.928, de 27 de dezembro de 2012.
+
+19. DO CONTRATO, DAS MULTAS E DAS SANÇÕES
+19.1- A recusa em assinar contrato, sem justificativa aceita pela CEASA-GO, dentro do prazo
+estabelecido, acarretará à adjudicatária a suspensão temporária de participar de licitação,
+impedimento de contratar com a Administração pelo período de 24 (vinte e quatro) meses e
+declaração de inidoneidade para licitar ou contratar com a Administração Pública, na forma da
+Lei.
+19.2 – A licitante que praticar, por meios dolosos, fraude fiscal no recolhimento de qualquer
+tributo, ou atos ilegais visando frustrar os objetivos da licitação; retirar sua proposta comercial
+após conhecer os preços das demais participantes, ou ainda demonstrar não possuir
+idoneidade para contratar com a CEASA/GO em virtude de quaisquer outros atos ilícitos
+praticados estará sujeita às penalidades no Manual de Compras da CEASA-GO e outras que
+couberem.
+19.3 – Sem prejuízo das penalidades previstas no Manual de Compras da CEASA-GO, a
+Comissão de Licitação poderá inabilitar a licitante ou desclassificar a proposta comercial sem
+que isto gere direitos indenizatórios ou de reembolso, caso tome conhecimento de fato ou
+circunstância que desabone a idoneidade comercial ou afete a capacidade financeira, técnica,
+jurídica ou de produção da licitante.
+
+20. DA RESCISÃO DO CONTRATO
+20.1 – A inexecução total ou parcial do contrato enseja a sua rescisão, cujas hipóteses estão
+previstas no Manual de Compras da CEASA-GO e suas alterações posteriores.
+
+21. DISPOSIÇÕES FINAIS
+21.1 – Lavrar-se-ão atas das reuniões públicas da Comissão de Licitação que, depois de lidas
+e aprovadas, serão assinadas pelos seus membros e pelos representantes das licitantes
+presentes;
+21.1.1– Os demais atos serão registrados no processo da licitação.
+21.2.  A licitante deverá examinar detidamente as disposições contidas neste Edital e seus
+anexos, pois a simples apresentação da DOCUMENTAÇÃO e da PROPOSTA COMERCIAL
+submete a licitante à aceitação incondicional de seus termos, independente de transcrição,
+
+## Página 24
+bem como o conhecimento integral do objeto em licitação, não sendo aceita alegação de
+desconhecimento de qualquer pormenor;
+21.3 – No caso de eventual divergência entre o Edital de licitação e seus anexos prevalecerão
+as demais disposições do primeiro.
+21.4 – A CEASA/GO reserva-se o direito de revogar a presente licitação por razões de
+interesse público ou anulá-la, no todo ou em parte, por vício ou ilegalidade, bem como
+prorrogar o prazo para recebimento e/ou abertura da DOCUMENTAÇÃO DE
+HABILITAÇÃO ou da PROPOSTA COMERCIAL.
+21.5 – É facultada à Comissão de Licitação, em qualquer fase da licitação, a promoção de
+diligência destinada a inclusão ou a complementar a instrução do processo, vedada a licitante
+a inclusão posterior de documento ou informação que deveria constar originalmente da
+DOCUMENTAÇÃO DE HABILITAÇÃO ou da PROPOSTA COMERCIAL;
+21.6 – Qualquer cidadão poderá impugnar termos do edital de licitação por irregularidade na
+aplicação da Lei Federal Nº 13.303/2016 devendo protocolar junto a Comissão Permanente de
+Licitações o pedido até 05 (cinco) dias úteis antes da data fixada para a ocorrência do
+certame, a qual deverá julgar e responder à impugnação em até 03 (três) dias úteis.
+21.7 – É facultado a CEASA-GO quando a licitante adjudicatária não assinar o Contrato
+respectivo no prazo estabelecido, convidar a segunda classificada e assim sucessivamente,
+para assinar o Contrato nas mesmas condições da primeira colocada, inclusive quanto ao
+preço, ou revogar a licitação;
+21.8 – A CEASA-GO poderá, ocorrendo rescisão ou destrato do Contrato, convidar a segunda
+classificada e assim sucessivamente, para complementar o prazo contratual originalmente
+previsto, nas mesmas condições da primeira classificada, inclusive quanto ao preço;
+21.9 – O Foro de Goiânia – GO será competente para dirimir questões oriundas da presente
+convocação, renunciando as partes a qualquer outro, por mais privilegiado que seja.
+
+Encontram-se anexos ao processo e ao Edital e disponibilizados no site
+www.ceasa.go.gov.br e https://bll.org.br/ - Acesso à Informação – Licitações em Andamento,
+Procedimento Licitatório Nº 010/2025.
+
+Goiânia – GO, aos 20 dias do mês de outubro do ano 2025.
+
+## Página 25
+____________________________________________
+Marco Túlio de Godoy Alves Bessa
+Presidente da CPL
+
+_____________________________________________
+Lívia Mônica Sales Nogueira Almeida
+Membro da CPL
+
+_______________________________________________
+Josué Lopes Siqueira
+Membro da CPL
+
+ANEXO I – Termo de Referência
+ANEXO II – Memorial Descritivo
+ANEXO III – Projeto Executivo
+ANEXO IV – Planilha Orientativa
+ ANEXO V – Carta de Credenciamento
+ANEXO VI – Declaração de Enquadramento ME/EPP
+ANEXO VII - Modelo de proposta
+ANEXO VIII - Declaração de inexistência de fatos supervenientes
+ANEXO IX – Declaração de que não emprega menores
+
+## Página 26
+ANEXO X - Declaração de conhecimento/visita
+ANEXO XI – Minuta de Contrato
+
+## Página 27
+ANEXO I - TERMO DE REFERÊNCIA
+
+1.
+OBJETO
+1.1.
+Contratação de empresa especializada para execução da reforma geral do prédio
+administrativo da Centrais de Abastecimento de Goiás (CEASA-GO), conforme descritivos e
+quantitativos abaixo:
+Item
+Descritivo do Item
+1
+Serviços de reforma geral do prédio administrativo da CEASA-GO, incluindo
+reparos estruturais, pintura, substituição de instalações elétricas e hidráulicas,
+revitalização de pisos e revestimentos, adequações de acessibilidade e melhorias
+de iluminação e ventilação, conforme tabelas orçamentárias e projetos em anexo.
+
+1.2.
+Os serviços objeto desta contratação são caracterizados como comuns.
+1.3.
+O custo estimado total da contratação é sigiloso, nos termos do artigo 7º, do
+Regulamento Interno de Licitações e Contratos da Centrais de Abastecimento de Goiás S.A
+(CEASA).
+
+2.
+DO PRAZO CONTRATUAL
+2.1.
+O prazo de vigência da contratação é de 04 meses contados da assinatura do contrato,
+na forma do artigo 63, do Regulamento Interno de Licitações e Contratos da Centrais de
+Abastecimento de Goiás S.A (CEASA).
+
+3.
+FUNDAMENTAÇÃO
+E
+DESCRIÇÃO
+DA
+NECESSIDADE
+DA
+CONTRATAÇÃO
+3.1.
+A presente contratação está prevista com os planejamentos orçamentários do órgão.
+
+4.
+DESCRIÇÃO DA SOLUÇÃO COMO UM TODO
+4.1.
+A descrição da solução como um todo encontra-se pormenorizada em tópico
+específico dos Estudos Técnicos Preliminares, apêndice deste Termo de Referência.
+
+5.
+REQUISITOS DA CONTRATAÇÃO
+5.1. Os serviços a serem prestados pela CONTRATADA incluem:
+
+## Página 28
+5.1.1. Cumprimento integral do cronograma físico-financeiro e de todos os projetos, conforme
+documentos em anexo.
+Sustentabilidade
+5.7.1. Os critérios de sustentabilidade foram apontados em tópico específico do ETP.
+5.8.
+Subcontratação
+5.8.1. Não é admitida a subcontratação do objeto contratual.
+5.9.
+Garantia
+5.9.1. Não haverá exigência da garantia da contratação dos artigos 60 e seguintes da
+Regulamento Interno de Licitações e Contratos da Centrais de Abastecimento de Goiás S.A
+(CEASA), pelas razões constantes do Estudo Técnico Preliminar.
+
+6.
+MODELO DE EXECUÇÃO DO OBJETO
+6.7.
+Condições de execução
+6.8.
+Início da execução do objeto: os serviços serão iniciados no dia da assinatura do
+contrato;
+
+6.9.
+Garantia do serviço
+6.9.1. O prazo de garantia contratual dos serviços é aquele estabelecido na Lei nº 8.078, de
+11 de setembro de 1990 (Código de Defesa do Consumidor).
+
+7.
+GESTÃO DO CONTRATO
+7.7.
+O contrato deverá ser executado fielmente pelas partes, de acordo com as cláusulas
+avençadas e as normas da Lei nº 13.303, de 30 de junho de 2016, e cada parte responderá
+pelas consequências de sua inexecução total ou parcial.
+7.8.
+Em consonância com os artigos 51 a 54 da Lei Estadual nº 17.928, de 27 de dezembro
+de 2012, toda contratação de obra, serviço de engenharia, serviços continuados ou
+fornecimentos parcelados celebrada pela CEASA-GO deverá, obrigatoriamente, contar com a
+designação formal de um Gestor de Contrato, responsável pelo acompanhamento,
+gerenciamento físico e financeiro e fiscalização da execução contratual.
+7.9.
+Designação do Gestor de Contrato
+7.10. A autoridade competente da CEASA-GO deverá designar, mediante portaria ou ato
+equivalente, um servidor como Gestor de Contrato, cuja indicação deve constar
+expressamente como cláusula do respectivo instrumento contratual.
+7.11. Requisitos do Gestor:
+
+## Página 29
+7.12. Preferencialmente, ser ocupante de cargo efetivo ou emprego público.
+7.13. Possuir competência técnica compatível com as peculiaridades do contrato.
+7.14. Quando se tratar de obra ou serviço de engenharia, deve ser servidor habilitado e
+registrado no CREA.
+7.15. É permitida a contratação de terceiros para assisti-lo, fornecendo suporte técnico
+necessário.
+7.16. Vedações:
+7.17. Não pode ser designado como gestor o servidor que:
+7.18. Integre a comissão de licitação, seja pregoeiro ou membro da equipe de apoio
+envolvida na formalização do contrato.
+7.19. Mantenha parentesco até o terceiro grau com sócios ou empregados da contratada.
+7.20. Possua punição administrativa ou tenha sido condenado por crime contra a
+Administração Pública.
+7.21. Tenha relação empresarial, civil ou trabalhista com a contratada.
+7.22. Competências e Atribuições do Gestor
+7.23. O Gestor do Contrato da CEASA-GO deve atuar de forma permanente e diligente no
+acompanhamento da execução contratual, exercendo, entre outras, as seguintes atribuições:
+7.24. Registrar, em ordem cronológica, as ocorrências relativas à execução do contrato,
+adotando medidas corretivas, quando necessário.
+7.25. Transmitir instruções ao contratado e comunicar eventuais alterações, mediante prévia
+autorização da autoridade competente.
+7.26. Comunicar formalmente à Administração sobre incidentes que possam justificar
+sanções ou rescisão contratual.
+7.27. Acompanhar e atestar a execução dos serviços ou fornecimentos, promovendo
+medições e verificações, bem como atestando as notas fiscais/faturas para fins de pagamento.
+7.28. Manter controle rigoroso dos pagamentos e dos saldos orçamentários, físicos e
+financeiros do contrato.
+7.29. Verificar a qualidade dos materiais e serviços, exigindo, se necessário, sua substituição
+ou refazimento.
+7.30. Esclarecer
+dúvidas
+do
+contratado,
+podendo
+requisitar
+pareceres
+técnicos
+especializados.
+7.31. Controlar os prazos contratuais, promovendo interlocução com o contratado para o fiel
+cumprimento dos cronogramas.
+
+## Página 30
+7.32. Manifestar-se formalmente sobre a necessidade de prorrogação contratual ou da
+deflagração de nova licitação, respeitando prazos mínimos de 60 dias e 120 dias,
+respectivamente.
+7.33. Fiscalizar o cumprimento das exigências contratuais, inclusive quanto à manutenção
+das condições de habilitação e qualificação e ao cumprimento das obrigações trabalhistas e
+previdenciárias.
+7.34. Responsabilidade do Gestor
+7.35. O Gestor do Contrato será responsável diretamente perante os órgãos de controle pelo
+adequado cumprimento de suas atribuições, respondendo, especialmente, nas seguintes
+hipóteses:
+7.36. Ocorrência de mora na execução contratual.
+7.37. Inexecução ou irregularidades no cumprimento das cláusulas contratuais.
+7.38. Omissão na comunicação tempestiva de fatos relevantes à autoridade competente.
+7.39. Recebimento provisório ou definitivo do objeto com falhas ou incorreções não
+apontadas.
+7.40. Liquidação indevida de obrigações contratuais não cumpridas, com emissão de
+autorização para pagamento sem a devida execução.
+7.41. Possibilidade de Desmembramento de Atribuições
+7.42. Nos casos de maior complexidade contratual, a CEASA-GO poderá optar pelo
+desmembramento das competências de gestão e fiscalização, designando servidores ou grupos
+distintos para realizar atividades específicas, promovendo assim maior eficiência e segurança
+na condução contratual.
+
+8.
+CRITÉRIOS DE PAGAMENTO
+8.7.
+Será indicada a retenção ou glosa no pagamento, proporcional à irregularidade
+verificada, sem prejuízo das sanções cabíveis, caso se constate que a Contratada:
+8.7.1. não produzir os resultados acordados,
+8.7.2. deixar de executar, ou não executar com a qualidade mínima exigida as atividades
+contratadas; ou
+8.7.3. deixar de utilizar materiais e recursos humanos exigidos para a execução do serviço,
+ou utilizá-los com qualidade ou quantidade inferior à demandada.
+8.8.
+Recebimento do serviço
+
+## Página 31
+8.8.1. Os serviços serão recebidos provisoriamente no prazo de 3 (três) dias, pelos fiscais
+técnico e administrativo, mediante termos detalhados, quando verificado o cumprimento das
+exigências de caráter técnico e administrativo.
+8.8.2. O prazo da disposição acima será contado do recebimento de comunicação de
+cobrança oriunda do contratado com a comprovação da prestação dos serviços a que se refere
+a parcela a ser paga.
+8.8.3. Os fiscais técnico e administrativo do contrato realizarão o recebimento provisório do
+objeto do contrato mediante termo detalhado que comprove o cumprimento das exigências de
+caráter técnico.
+8.8.4. O fiscal setorial do contrato, quando houver, realizará o recebimento provisório sob o
+ponto de vista técnico e administrativo.
+8.8.5. Para efeito de recebimento provisório, ao final de cada período de faturamento, o
+fiscal técnico do contrato irá apurar o resultado das avaliações da execução do objeto e, se for
+o caso, a análise do desempenho e qualidade da prestação dos serviços realizados em
+consonância com os indicadores previstos, que poderá resultar no redimensionamento de
+valores a serem pagos à contratada, registrando em relatório a ser encaminhado ao gestor do
+contrato.
+8.8.6. O Contratado fica obrigado a reparar, corrigir, remover, reconstruir ou substituir, às
+suas expensas, no todo ou em parte, o objeto em que se verificarem vícios, defeitos ou
+incorreções resultantes da execução ou materiais empregados, cabendo à fiscalização não
+atestar a última e/ou única medição de serviços até que sejam sanadas todas as eventuais
+pendências que possam vir a ser apontadas no Recebimento Provisório.
+8.8.7. A fiscalização não efetuará o ateste da última e/ou única medição de serviços até que
+sejam sanadas todas as eventuais pendências que possam vir a ser apontadas no Recebimento
+Provisório
+8.8.8. O recebimento provisório também ficará sujeito, quando cabível, à conclusão de todos
+os testes de campo e à entrega dos Manuais e Instruções exigíveis.
+8.8.9. Os serviços poderão ser rejeitados, no todo ou em parte, quando em desacordo com as
+especificações constantes neste Termo de Referência e na proposta, sem prejuízo da aplicação
+das penalidades.
+8.8.10. Quando a fiscalização for exercida por um único servidor, o Termo Detalhado deverá
+conter o registro, a análise e a conclusão acerca das ocorrências na execução do contrato, em
+
+## Página 32
+relação à fiscalização técnica e administrativa e demais documentos que julgar necessários,
+devendo encaminhá-los ao gestor do contrato para recebimento definitivo.
+8.8.11. Os serviços serão recebidos definitivamente no prazo de 5 (cinco) dias, contados do
+recebimento provisório, por servidor ou comissão designada pela autoridade competente, após
+a verificação da qualidade e quantidade do serviço e consequente aceitação mediante termo
+detalhado, obedecendo os seguintes procedimentos:
+8.8.12. Emitir documento comprobatório da avaliação realizada pelos fiscais técnico,
+administrativo e setorial, quando houver, no cumprimento de obrigações assumidas pelo
+contratado, com menção ao seu desempenho na execução contratual, baseado em indicadores
+objetivamente definidos e aferidos, e a eventuais penalidades aplicadas, devendo constar do
+cadastro de atesto de cumprimento de obrigações, conforme regulamento.
+8.8.13. Realizar a análise dos relatórios e de toda a documentação apresentada pela
+fiscalização e, caso haja irregularidades que impeçam a liquidação e o pagamento da despesa,
+indicar as cláusulas contratuais pertinentes, solicitando à CONTRATADA, por escrito, as
+respectivas correções;
+8.8.14. Emitir Termo Circunstanciado para efeito de recebimento definitivo dos serviços
+prestados, com base nos relatórios e documentações apresentadas; e
+8.8.15. Comunicar à empresa para que emita a Nota Fiscal ou Fatura, com o valor exato
+dimensionado pela fiscalização.
+8.8.16. Enviar a documentação pertinente ao setor de contratos para a formalização dos
+procedimentos de liquidação e pagamento, no valor dimensionado pela fiscalização e gestão.
+8.8.17. Nenhum prazo de recebimento ocorrerá enquanto pendente a solução, pelo contratado,
+de inconsistências verificadas na execução do objeto ou no instrumento de cobrança.
+8.8.18. O recebimento provisório ou definitivo não excluirá a responsabilidade civil pela
+solidez e pela segurança do serviço nem a responsabilidade ético-profissional pela perfeita
+execução do contrato.
+8.9.
+Liquidação
+8.9.1. Recebida a Nota Fiscal ou documento de cobrança equivalente, correrá o prazo de até
+5 (cinco) dias para fins de liquidação, na forma desta seção, prorrogáveis por igual período.
+8.9.2. Para fins de liquidação, o setor competente deverá verificar se a nota fiscal ou
+instrumento de cobrança equivalente apresentado expressa os elementos necessários e
+essenciais do documento, tais como:
+8.9.3. o prazo de validade;
+
+## Página 33
+8.9.4. a data da emissão;
+8.9.5. os dados do contrato e do órgão contratante;
+8.9.6. o período respectivo de execução do contrato;
+8.9.7. o valor a pagar; e
+8.9.8. eventual destaque do valor de retenções tributárias cabíveis.
+8.9.9.  Havendo erro na apresentação da nota fiscal ou instrumento de cobrança equivalente,
+ou circunstância que impeça a liquidação da despesa, esta ficará sobrestada até que o
+contratado providencie as medidas saneadoras, reiniciando-se o prazo após a comprovação da
+regularização da situação, sem ônus ao contratante;
+8.9.10.  A nota fiscal ou instrumento de cobrança equivalente deverá ser obrigatoriamente
+acompanhado da comprovação da regularidade fiscal, mediante consulta aos sítios eletrônicos
+oficiais ou à documentação mencionada no art. 68 da Lei nº 14.133, de 2021.
+8.9.11. A Administração deverá realizar consulta para verificar a manutenção das condições
+de habilitação exigidas no edital; identificar possível razão que impeça a participação em
+licitação, no âmbito do órgão ou entidade, que implique proibição de contratar com o Poder
+Público, bem como ocorrências impeditivas indiretas.
+8.9.12. Constatando-se a situação de irregularidade do contratado, será providenciada sua
+notificação, por escrito, para que, no prazo de 5 (cinco) dias úteis, regularize sua situação ou,
+no mesmo prazo, apresente sua defesa. O prazo poderá ser prorrogado uma vez, por igual
+período, a critério do contratante.
+8.9.13. Não havendo regularização ou sendo a defesa considerada improcedente, o contratante
+deverá comunicar aos órgãos responsáveis pela fiscalização da regularidade fiscal quanto à
+inadimplência do contratado, bem como quanto à existência de pagamento a ser efetuado,
+para que sejam acionados os meios pertinentes e necessários para garantir o recebimento de
+seus créditos.
+8.9.14. Persistindo a irregularidade, o contratante deverá adotar as medidas necessárias à
+rescisão contratual nos autos do processo administrativo correspondente, assegurada ao
+contratado a ampla defesa.
+8.9.15. Havendo a efetiva execução do objeto, os pagamentos serão realizados normalmente,
+até que se decida pela rescisão do contrato, caso o contratado não regularize sua situação.
+8.10. Prazo para pagamento
+8.10.1. O pagamento será efetuado no prazo de até 15 (quinze) dias contados da finalização da
+liquidação da despesa.
+
+## Página 34
+8.10.2. No caso de atraso pelo Contratante, os valores devidos ao contratado serão atualizados
+monetariamente entre o termo final do prazo de pagamento até a data de sua efetiva
+realização, mediante aplicação do índice IPCA de correção monetária.
+8.11. Forma de pagamento
+8.11.1. O pagamento será realizado por meio de ordem bancária, para crédito em banco,
+agência e conta corrente indicados pelo contratado.
+8.11.2. Será considerada data do pagamento o dia em que constar como emitida a ordem
+bancária para pagamento.
+8.11.3. Quando do pagamento, será efetuada a retenção tributária prevista na legislação
+aplicável.
+8.11.4. Independentemente do percentual de tributo inserido na planilha, quando houver, serão
+retidos na fonte, quando da realização do pagamento, os percentuais estabelecidos na
+legislação vigente.
+8.11.5. O contratado regularmente optante pelo Simples Nacional, nos termos da Lei
+Complementar nº 123, de 2006, não sofrerá a retenção tributária quanto aos impostos e
+contribuições abrangidos por aquele regime. No entanto, o pagamento ficará condicionado à
+apresentação de comprovação, por meio de documento oficial, de que faz jus ao tratamento
+tributário favorecido previsto na referida Lei Complementar.
+
+9.
+CRITÉRIOS DE SELEÇÃO DO FORNECEDOR
+9.7.
+Julgamento da proposta
+9.7.1. O fornecedor será selecionado por meio da realização de procedimento de Pregão
+Eletrônico, com adoção do critério de julgamento Menor Preço Global.
+9.7.2. Razões técnicas para o Menor Preço Global
+9.7.3. Interdependência de etapas: reparos estruturais precedem fechamentos e
+acabamentos; substituições elétricas/hidráulicas interferem em alvenarias, forros e pisos;
+acessibilidade (rampas, sinalização, portas) demanda compatibilização com rotas de fuga,
+iluminação e ventilação. A fragmentação por itens/disciplinas elevaria riscos de
+incompatibilidades, retrabalhos e paralisações.
+
+## Página 35
+9.7.4. Um único contratado responde por planejamento, sequenciamento e logística
+(bloqueios temporários de áreas, proteção de instalações ativas, mitigação de poeira/ruído em
+ambiente operacional).
+9.7.5. Risco de jogo de planilha: a adjudicação por item incentiva sobre/subprecificação de
+itens, com desequilíbrio econômico e ordens de serviço litigiosas. O preço global, com limites
+unitários (tabelas) e BDI parametrizado, tende a reduzir disputas e sinistros contratuais.
+9.7.6. Qualidade e desempenho: a responsabilidade unitária favorece a compatibilização
+entre
+projetos,
+materiais
+e
+métodos,
+preservando
+o
+desempenho
+global
+(iluminação/ventilação/acústica e acessibilidade).
+9.7.7. Segurança do trabalho e operação: atuação de um contratado evita sobreposição de
+equipes e “zonas cinzentas” de responsabilidade, importante em prédio em uso.
+9.7.8. Razões econômicas e de eficiência
+9.7.9. Menor dispêndio: ao unificar mobilização, equipamentos, tapumes, andaimes,
+geradores e gestão, há economias de escala e de transação, alinhadas ao objetivo legal de
+menor dispêndio;
+9.7.10. Controle de custos unitários: mesmo no julgamento global, o edital trará critérios de
+aceitabilidade por preço unitário máximo (SINAPI/GOINFRA) para itens relevantes,
+prevenindo sobrepreços e aditivos indevidos;
+9.7.11. Mitigação de aditivos: a alocação clara de riscos e a coordenação única reduzem
+reajustes por interferências entre lotes/empresas e custos de fiscalização contratual.
+9.7.12. Competitividade preservada: o mercado regional dispõe de empresas com
+capacidade multidisciplinar para absorver o escopo; as exigências de habilitação serão
+proporcionais ao objeto, assegurando ampla competição
+9.7.13. Diante da interdependência técnica do escopo, da necessidade de coordenação
+unificada, dos ganhos econômicos de escala e da possibilidade de controle por preços
+unitários máximos referenciados em SINAPI/GOINFRA, a Administração justifica a adoção
+do critério Menor Preço Global, assegurando vantajosidade, objetividade e competitividade
+do certame.
+
+## Página 36
+9.8.
+Habilitação jurídica
+9.8.1. Pessoa física: cédula de identidade (RG) ou documento equivalente que, por força de
+lei, tenha validade para fins de identificação em todo o território nacional;
+9.8.2. Empresário individual: inscrição no Registro Público de Empresas Mercantis, a cargo
+da Junta Comercial da respectiva sede;
+9.8.3. Microempreendedor
+Individual
+-
+MEI:
+Certificado
+da
+Condição
+de
+Microempreendedor Individual - CCMEI, cuja aceitação ficará condicionada à
+verificação da autenticidade no sítio https://www.gov.br/empresas-e-negocios/pt-
+br/empreendedor;
+9.8.4. Sociedade empresária, sociedade limitada unipessoal – SLU ou sociedade identificada
+como empresa individual de responsabilidade limitada - EIRELI: inscrição do ato
+constitutivo, estatuto ou contrato social no Registro Público de Empresas Mercantis, a
+cargo da Junta Comercial da respectiva sede, acompanhada de documento
+comprobatório de seus administradores;
+9.8.5. Sociedade empresária estrangeira: portaria de autorização de funcionamento no Brasil,
+publicada no Diário Oficial da União e arquivada na Junta Comercial da unidade
+federativa onde se localizar a filial, agência, sucursal ou estabelecimento, a qual será
+considerada como sua sede.
+9.8.6. Sociedade simples: inscrição do ato constitutivo no Registro Civil de Pessoas Jurídicas
+do local de sua sede, acompanhada de documento comprobatório de seus
+administradores;
+9.8.7. Filial, sucursal ou agência de sociedade simples ou empresária: inscrição do ato
+constitutivo da filial, sucursal ou agência da sociedade simples ou empresária,
+respectivamente, no Registro Civil das Pessoas Jurídicas ou no Registro Público de
+Empresas Mercantis onde opera, com averbação no Registro onde tem sede a matriz
+9.8.8. Os documentos apresentados deverão estar acompanhados de todas as alterações ou da
+consolidação respectiva.
+9.9.Regularidade fiscal e trabalhista
+9.9.1. Prova de inscrição no Cadastro Nacional de Pessoas Jurídicas ou no Cadastro de
+Pessoas Físicas, conforme o caso;
+9.9.2. Prova de regularidade fiscal perante a Fazenda Nacional, mediante apresentação de
+certidão expedida conjuntamente pela Secretaria da Receita Federal do Brasil (RFB) e
+pela Procuradoria-Geral da Fazenda Nacional (PGFN), referente a todos os créditos
+
+## Página 37
+tributários federais e à Dívida Ativa da União (DAU) por elas administrados, inclusive
+aqueles relativos à Seguridade Social, nos termos da Portaria Conjunta nº 1.751, de 02
+de outubro de 2014, do Secretário da Receita Federal do Brasil e da Procuradora-Geral
+da Fazenda Nacional.
+9.9.3. Prova de regularidade com o Fundo de Garantia do Tempo de Serviço (FGTS);
+9.9.4. Prova de inexistência de débitos inadimplidos perante a Justiça do Trabalho, mediante
+a apresentação de certidão negativa ou positiva com efeito de negativa, nos termos do
+Título VII-A da Consolidação das Leis do Trabalho, aprovada pelo Decreto-Lei nº
+5.452, de 1º de maio de 1943;
+9.9.5. Prova de inscrição no cadastro de contribuintes Estadual/Distrital ou Municipal
+relativo ao domicílio ou sede do fornecedor, pertinente ao seu ramo de atividade e
+compatível com o objeto contratual;
+9.9.6. Prova de regularidade com a Fazenda Estadual/Distrital e Municipal do domicílio ou
+sede do fornecedor, relativa à atividade em cujo exercício contrata ou concorre;
+9.9.7. Caso o fornecedor seja considerado isento dos tributos Estadual/Distrital ou Municipal
+relacionados ao objeto contratual, deverá comprovar tal condição mediante a
+apresentação de declaração da Fazenda respectiva do seu domicílio ou sede, ou outra
+equivalente, na forma da lei.
+9.9.8. O fornecedor enquadrado como microempreendedor individual que pretenda auferir os
+benefícios do tratamento diferenciado previstos na Lei Complementar n. 123, de 2006,
+estará dispensado da prova de inscrição nos cadastros de contribuintes estadual e
+municipal.
+9.10. Qualificação Técnica
+9.10.1. Registro ou inscrição da empresa na entidade profissional CREA, em plena validade;
+
+10.
+ADEQUAÇÃO ORÇAMENTÁRIA
+11.
+As despesas decorrentes da presente contratação correrão à conta de recursos
+específicos consignados no Orçamento Geral.
+12.
+A contratação será atendida pela seguinte dotação:
+Fonte:
+Recursos próprios CEASA-GO
+Identificação
+(plano
+de
+contas):
+4.21.03.025 - Serviços Prestados por Pessoa Jurídica
+
+## Página 38
+Conta:
+Banco – Caixa Econômica Federal (CEF)
+Agência – 4204
+Conta Corrente – 576996455-0
+Objeto:
+Contratação de empresa especializada para execução da reforma geral do
+prédio administrativo da Centrais de Abastecimento de Goiás (CEASA-GO).
+
+13.
+A dotação relativa aos exercícios financeiros subsequentes será indicada após
+aprovação da Lei Orçamentária respectiva e liberação dos créditos correspondentes, mediante
+apostilamento.
+
+14.
+OBRIGAÇÕES DA CONTRATADA
+14.7. Manter, durante toda a execução do contrato, em compatibilidade com as obrigações
+assumidas, todas as condições de habilitação e qualificação exigidas na contratação;
+14.8. Prestar o serviço em perfeitas condições, conforme especificações, prazo e local
+constantes no Termo de Referência e seus anexos, acompanhado da respectiva nota fiscal.
+14.9. Responsabilizar-se pelos encargos e quaisquer outras despesas com a equipe de
+trabalho.
+14.10. Responsabilizar-se pelos vícios e danos decorrentes do serviço de acordo com os
+artigos 12, 13, 18 e 26, do Código de Defesa do Consumidor (Lei nº 8.078, de 1990)
+14.11. O dever previsto no subitem anterior implica na obrigação de, a critério da
+Administração, substituir, reparar, corrigir, remover, ou reconstruir, às suas expensas, no
+prazo fixado neste termo;
+14.12. Atender prontamente a quaisquer exigências da Administração, inerentes ao objeto da
+presente licitação;
+
+15.
+OBRIGAÇÕES DA CONTRATANTE
+15.7. A Contratante obriga-se a:
+15.8. Receber provisoriamente o serviço;
+15.9. Verificar minuciosamente, no prazo fixado, a conformidade do serviço com as
+especificações constantes do Termo de Referência e da proposta, para fins de aceitação e
+recebimento definitivos;
+
+## Página 39
+15.10. Acompanhar e fiscalizar o cumprimento das obrigações da Contratada, através de
+servidor especialmente designado;
+15.11. Comunicar à Contratada, por escrito, sobre imperfeições, falhas ou irregularidades
+verificadas no objeto fornecido, para que seja substituído, reparado ou corrigido
+
+16.
+DAS ALTERAÇÕES CONTRATUAIS
+16.7. Os preços são fixos e irreajustáveis no prazo de um ano contado da data do orçamento
+estimado dos autos.
+16.8. Dentro do prazo de vigência do contrato e mediante solicitação da contratada, os
+preços contratados poderão sofrer reajuste após o intervalo de um ano contados do orçamento
+estimado, aplicando-se o índice INPC.
+16.9. Nos reajustes subsequentes ao primeiro, o intervalo mínimo de um ano será contado a
+partir dos efeitos financeiros do último reajuste.
+16.10. No caso de atraso ou não divulgação do índice de reajustamento, o CONTRATANTE
+pagará à CONTRATADA a importância calculada pela última variação conhecida, liquidando
+a diferença correspondente tão logo seja divulgado o índice definitivo. Fica a CONTRATADA
+obrigada a apresentar memória de cálculo referente ao reajustamento de preços do valor
+remanescente, sempre que este ocorrer.
+16.11. Nas aferições finais, o índice utilizado para reajuste será, obrigatoriamente, o
+definitivo.
+16.12. Caso o índice estabelecido para reajustamento venha a ser extinto ou de qualquer
+forma não possa mais ser utilizado, será adotado, em substituição, o que vier a ser
+determinado pela legislação então em vigor.
+16.13. Na ausência de previsão legal quanto ao índice substituto, as partes elegerão novo
+índice oficial, para reajustamento do preço do valor remanescente, por meio de termo aditivo.
+16.14. O reajuste será realizado por Apostilamento.
+16.15. Durante a vigência do contrato, caso ocorra algum fato imprevisível ou previsível de
+efeitos incalculáveis, que causem o desequilíbrio econômico financeiro do contrato, a
+contratada poderá pleitear o reequilíbrio do contrato.
+16.16. A recomposição de preços com vistas ao restabelecimento do equilíbrio econômico
+financeiro somente se dará após o prazo da validade da proposta, que não deverá ser inferior à
+60 (Sessenta) dias, mediante apresentação de requerimento apresentando a planilha de
+
+## Página 40
+composição de preços dos produtos, bem como documentos que comprovem
+satisfatoriamente a quebra do equilíbrio econômico financeiro do contrato.
+16.17. O Contrato poderá ser alterado, mediante Termo Aditivo e com as devidas
+justificativas;
+16.18. A CONTRATADA fica obrigada a aceitar, nas mesmas condições contratuais, os
+acréscimos ou supressões do objeto deste Contrato, até o limite de 25% (vinte e cinco por
+cento) de seu valor inicial, conforme previsto artigo 81, §1º da Lei nº 13.303, de 30 de junho
+de 2016.
+
+17.
+ALTERAÇÃO SUBJETIVA
+17.7. É admissível a fusão, cisão ou incorporação da contratada com/em outra pessoa
+jurídica, desde que sejam observados pela nova pessoa jurídica todos os requisitos de
+habilitação exigidos na licitação original; sejam mantidas as demais cláusulas e condições do
+contrato; não haja prejuízo à execução do objeto pactuado e haja a anuência expressa da
+Administração à continuidade do contrato
+
+18.
+MEDIDAS ACAUTELATÓRIAS
+18.7. Consoante o artigo 45 da Lei nº 9.784, de 1999, a Administração Pública poderá, sem
+a prévia manifestação do interessado, motivadamente, adotar providências acauteladoras,
+inclusive retendo o pagamento, em caso de risco iminente, como forma de prevenir a
+ocorrência de dano de difícil ou impossível reparação.
+
+19.
+INFRAÇÕES ADMINISTRATIVAS
+1.1.
+Pela inexecução total ou parcial do objeto deste contrato, a Administração pode aplicar
+à CONTRATADA as seguintes sanções, conforme disposto no artigo 66 e ss do Regulamento
+Interno de Licitações e Contratos da Centrais de Abastecimento de Goiás S.A (CEASA).
+Goiânia/GO 20 de outubro de 2025.
+
+RAIANE BATISTA LEITE
+Engenheira Civil
+
+## Página 41
+ANEXO II – MEMORIAL DESCRITIVO
+(Documento em anexo)
+
+## Página 42
+ANEXO III – PROJETO EXECUTIVO
+(Documento em anexo)
+
+## Página 43
+ANEXO IV – PLANILHA ORIENTATIVA
+(Documento em anexo)
+
+## Página 44
+ANEXO V – CARTA DE CREDENCIAMENTO
+
+(MODELO – PAPEL TIMBRADO DA LICITANTE)
+
+À
+CENTRAIS DE ABASTECIMENTO DO ESTADO DE GOIÁS - CEASA/GO
+BR-153, KM 5,5 saída para Anápolis, Goiânia/GO, CEP: 74.675-090.
+Ref.: LICITAÇÃO Nº __/2025 - CPL/CEASA/GO
+
+Objeto:
+Contratação
+de
+prestação
+de
+________________________________________________________.
+
+Assunto: Credenciamento Prezados Senhores,
+
+Na qualidade de responsável legal pela empresa, CNPJ nº, credenciamos o Sr., portador da
+carteira de identidade nº, para nos representar na licitação em referência, conferindo a este,
+ilimitados poderes para assinar quaisquer documentos relacionados com a licitação, inclusive
+interpor e/ou desistir da interposição de recursos.
+
+Local e data.
+
+(nome e assinatura do responsável legal)
+
+## Página 45
+ANEXO VI - DECLARAÇÃO DE ENQUADRAMENTO COMO BENEFICIÁRIA DA
+LEI COMPLEMENTAR Nº 123, DE 14 DE DEZEMBRO DE 2006 (MODELO –
+PAPEL TIMBRADO DA LICITANTE)
+
+A ….....................(nome da empresa)…......................., inscrita no CNPJ sob o nº
+…........................................,
+por
+intermédio
+de
+seu
+representante
+legal,
+o(a)
+Sr.(a)..........................................................., portador(a) da Carteira de Identidade nº
+…......................., e do CPF nº …...................................., DECLARA, para fins do disposto
+no PROCEDIMENTO LICITATÓRIO : MODO DE DISPUTA ABERTO nº _____/2025,
+sob as sanções Administrativas cabíveis e sob as penas da Lei, que esta empresa, na presente
+data, é beneficiária da Lei Complementar nº 123, de 14 de dezembro de 2006, alterada pela
+LC 147/2014.
+
+Declara ainda que a empresa está excluída das vedações constantes do Parágrafo 4º do ar go
+3º da Lei Complementar.
+
+Local, .............de .............de ........
+
+(nome e assinatura do responsável legal)
+(carteira de identidade número e órgão emissor)
+
+## Página 46
+ANEXO VII - PROPOSTA DE PREÇO
+(MODELO – PAPEL TIMBRADO DA LICITANTE)
+
+À
+CENTRAIS DE ABASTECIMENTO DO ESTADO DE GOIÁS -
+CEASA/GO MODO DE DISPUTA ABERTO Nº
+___/_____
+PROCESSO Nº _______________________
+OBJETO:
+______________________________________________________________
+
+ Prezados Senhores,
+
+O signatário da presente Proposta de Preços, em nome da empresa
+.........................................., inscrita no CNPJ sob o nº ….................................., com endereço
+à …......................................., Setor ........., na cidade de ............... Estado de.............. vem,
+pela presente, submeter à apreciação de Vossa Senhoria, a Proposta de MENOR PREÇO
+GLOBAL relativa à licitação em epígrafe, declarando que executará os serviços objeto desta
+Licitação, o que resulta no valor global de R$ ….......................(.......................... ).
+
+1 - Informamos que o valor oferecido incide sobre os preços de todos os
+itens do orçamento estimado
+constante no instrumento convocatório. 2 - O prazo para execução dos serviços será de ( )
+dias, contado a partir do recebimento da Ordem de Serviço e o prazo de vigência do contrato
+de ( ) dias, a contar da data de sua assinatura.
+
+a)
+Segue anexa a Planilha Orçamentária, com quantitativos e preços
+parciais e globais, além da composição do BDI e dos custos unitários
+utilizados para a composição dos preços, bem como o Cronograma Físico-
+Financeiro, devidamente assinada pelo responsável legal da empresa e pelo
+RT indicado.
+b)
+Declaramos que temos pleno conhecimento de todos os aspectos
+relativos a presente licitação e que concordamos plenamente com as
+condições estabelecidas no Edital e seus anexos.
+c)
+O nosso BDI é de ...% (. por cento), conforme composição detalhada
+anexa.
+d)
+Validade da proposta: 60 (sessenta) dias corridos, da data da abertura.
+e)
+Declaramos que nos preços oferecidos estão inclusas todas as despesas
+necessárias à execução total dos serviços, conforme as especificações e
+ANEXOS contidos neste Edital. Os preços unitários e globais contratuais
+incluem entre outros, encargos relacionados com as seguintes despesas:
+
+## Página 47
+- insumos e materiais necessários aos serviços, excluídos aqueles fornecidos
+pela CEASA/GO;
+- mão de obra especializada ou não;
+- transportes e deslocamentos, seguro, carga e descarga;
+- utilização de equipamentos;
+- despesas com alimentação e hospedagem;
+- encargos previdenciários resultantes da execução do contrato, nos termos da
+legislação aplicável;
+- os custos de realização de todo o recrutamento e treinamento da mão-de-
+obra especializada.
+
+- tributos e demais despesas diretas e indiretas, lucro e etc.;
+- dispêndios resultantes de tributos, regulamentos e posturas municipais,
+estaduais e federais, sem que lhe caiba em qualquer caso, direito regressivo
+em relação à CEASA/GO.
+ – Declaramos, ainda, expressamente a responsabilidade civil por quaisquer
+danos, causados a terceiros ou dispêndios resultantes de impostos, taxas,
+regulamentos e posturas municipais, estaduais e federais.
+
+Local, ...... de ................. de ..........
+
+Atenciosamente,
+
+(nome e assinatura do responsável legal)
+(carteira de identidade número e órgão emissor)
+
+(nome e assinatura do RT pela empresa) (Nº Identificação Profissional)
+
+## Página 50
+ANEXO VIII - DECLARAÇÃO DE INEXISTÊNCIA DE FATOS
+SUPERVENIENTES IMPEDITIVOS DA HABILITAÇÃO (MODELO –
+PAPEL TIMBRADO DA LICITANTE)
+
+À
+CENTRAIS DE ABASTECIMENTO DO ESTADO DE GOIÁS - CEASA/GO MODO DE
+DISPUTA ABERTO Nº ___/2025 – CPL/CEASA/GO
+
+OBJETO: Contratação de prestação _________________________
+
+Prezados Senhores,
+A.......(nome da empresa)…......, inscrita no CNPJ sob o nº.................... , por intermédio de
+seu
+representante legal, o(a) Sr. (a)............................, portador(a) da Carteira de Identidade
+nº........., e do CPF nº................... , DECLARA, para todos os fins de direito, a inexistência
+de fatos supervenientes impeditivos da habilitação ou que comprometam a idoneidade da
+proponente nos termos do Regulamento dos Procedimentos de Contratação da CEASA/GO.
+Local, ...... de .................. de ...........
+
+(nome e assinatura do responsável legal)
+(carteira de identidade número e órgão emissor)
+
+## Página 51
+ANEXO IX - DECLARAÇÃO DE QUE NÃO EMPREGA MENORES DE 18
+(DEZOITO) ANOS EM TRABALHO NOTURNO, PERIGOSO OU INSALUBRE,
+SALVO NA CONDIÇÃO DE APRENDIZ
+
+(MODELO – PAPEL TIMBRADO DA LICITANTE)
+
+À
+CENTRAIS DE ABASTECIMENTO DO ESTADO DE GOIÁS - CEASA/GO MODO DE
+DISPUTA ABERTO Nº
+_______/2025
+OBJETO:
+Contratação
+de
+prestação
+de
+__________________________________________________
+
+Prezados Senhores,
+A….....................(nome da empresa)…......................., inscrita no CNPJ sob o nº...................
+, por intermédio
+de seu representante legal o(a) Sr(a) ........................................................., portador da
+Carteira de Identidade n° ................................ e do CPF nº................................................. ,
+DECLARA, para fins do disposto no inciso XXXIII do art. 7°, da Constituição Federal, que
+não emprega menor de dezoito anos em trabalho noturno, perigoso ou insalubre e não
+emprega menor de dezesseis anos.
+
+RESSALVA: emprega menor, a par r de quatorze anos, na condição de aprendiz ( ).
+
+Local, ........ de ................. de ........
+
+(nome e assinatura do responsável legal)
+(carteira de identidade número e órgão emissor)
+
+OBS.: Em caso positivo, assinalar a ressalva acima.
+
+## Página 52
+ANEXO X - DECLARAÇÃO DE CONHECIMENTO/VISITA
+
+À
+CENTRAIS DE ABASTECIMENTO DO ESTADO DE GOIÁS - CEASA/GO MODO
+DE DISPUTA ABERTO Nº _____/2025
+OBJETO:
+_____________________________________________________________ CEASA-GO.
+
+Declaramos, para fins de licitação, que o Sr.(a) ,CREA nº , representante da
+empresa ,CNPJ nº , após
+afirmar estar de posse e ter pleno conhecimento de todas as informações e das condições
+para o cumprimento das obrigações contidas no Edital da Licitação em epígrafe, efetuou
+visita nos locais onde serão executados os aludidos serviços, tendo percorrido todas as áreas,
+para levantamento das condições existentes, visando subsidiar a elaboração da proposta,
+oportunidade em que tomou conhecimento de todos os aspectos que possam influir direta ou
+indiretamente na execução dos serviços.
+
+Goiânia, de de .
+
+Assinatura do representante da empresa
+
+## Página 53
+ANEXO XI – MINUTA CONTRATO
+
+Contratação
+de
+empresa
+para
+_______________da CEASA/GO,
+que
+entre
+si
+celebram
+a
+CENTRAIS
+DE
+ABASTECIMENTO DE GOIÁS
+S/A (CEASA/GO) e a empresa
+________________________, nas
+condições que se seguem.
+
+A CENTRAIS DE ABASTECIMENTO DO ESTADO DE GOIÁS S/A – CEASA/GO,
+Sociedade de Economia Mista, inscrita no CNPJ/MF sob o n° 01.098.797/0001-74, com sede
+na BR 153 KM 5,5 saída para Anápolis, Goiânia/GO, CEP: 74.675-090, neste ato
+representada
+por
+seu
+Diretor
+Presidente,
+Srr___________________,
+_____________________________________, e o Diretor Administrativo e Financeiro o
+Sr. _______________________________, brasileiro, casado, coronel QOC, inscrito no
+CPF/MF sob o nº 532.380.011-91, residente e domiciliado nesta capital, aqui denominada
+CONTRATANTE; e a empresa ____________________________, neste ato representada
+por sua Sócia Proprietária, Sra. ____________________________, residente e domiciliada
+à
+________________________________________,
+denominada
+simplesmente
+CONTRATADA, resolvem celebrar o presente CONTRATO DE PRESTAÇÃO, sujeito
+aos preceitos da Lei Federal nº 13.303/2016, Lei Estadual nº 17.928/2012, pelo Regulamento
+de Compras CEASA/GO e demais normas vigentes à matéria, mediante as cláusulas e
+condições que se seguem:
+
+01. CLÁUSULA PRIMEIRA - DO FUNDAMENTO LEGAL
+01.1. O presente Contrato, celebrado na forma da Lei Federal nº 13.303/2016, devidamente
+requisitada pela Divisão Administrativa com a assinatura do Ordenador de Despesas, através
+do Procedimento Licitatório nº ____________e chancelada pela Presidência da
+CONTRATANTE, ora Ordenador de Despesas, em tramite no Sistema Eletrônico de
+Informações - SEI, que é parte integrante do presente Contrato.
+Parágrafo Primeiro: A execução deste Contrato, regular-se-a pelas Cláusulas Contratuais e
+pelos preceitos de Direito Público, aplicando-se supletivamente os princípios da Teoria Geral
+dos Contratos e as disposições de Direito Privado na forma dada através dos Artigos 68 e 69
+da Lei 13.303/2016.
+Parágrafo Segundo: Os casos omissos serão decididos pela CONTRATANTE, segundo as
+disposições contidas na Lei FederaL n.º 13.303/2016, no que couber, e nas demais normas
+federais aplicáveis, subsidiariamente, segundo as disposições contidas na Lei nº 8.078, de
+1990 (Código de Defesa do Consumidor), e normas e princípios gerais dos Contratos.
+
+02. CLÁUSULA SEGUNDA – DO PROCEDIMENTO LICITARÓTIO
+
+## Página 54
+02.1. A lavratura do presente Termo de Contrato decorre do Procedimento Licitatório nº
+____________, e Processo SEI autuado sob o nº ________________________.
+
+03. CLÁUSULA TERCEIRA – DO OBJETO
+03.1.
+Constitui
+objeto
+deste
+Termo,
+a
+_________________________________________________________, por um período de
+4 (quatro) meses, conforme especificações do Termo de Referência, chancelada pela
+Presidência da CONTRATANTE, ora Ordenador de Despesas, constante do Processo nº
+_____________________, em tramite no Sistema Eletrônico de Informações - SEI, de
+acordo com a demanda e conforme as especificações, quantidade, condições e exigências
+constantes naqueles autos, além de toda a documentação apresentada e relacionada em
+anexo, que integram este Contrato, independente de transcrição.
+03.2. Este Termo de Contrato vincula-se ao Procedimento Licitatório nº _____________ e à
+Proposta vencedora, independentemente de transcrição para todos os fins de direito.
+03.3. Em caso de divergência entre as condições mencionadas na Proposta da
+CONTRATADA e as expressas neste Contrato, prevalecerão as da Proposta.
+03.4. A discriminação completa do serviço, encontra-se inserida no quadro abaixo:
+
+04. CLÁUSULA QUARTA – DO LOCAL E RECEBIMENTO DOS PRESTAÇÃOS
+04.1. O objeto deste Contrato e da Proposta da CONTRATADA deverão ser prestados no
+Prédio da Administração da CEASA/GO, localizado às margens da Rodovia BR 153, km
+5,5 - Saída para Anápolis – Goiânia/GO, CEP: 74.675-090.
+04.2. A prestação deverá ser iniciada no prazo máximo de 10 (dez) dias úteis, a contar da
+assinatura do Contrato, dentro do qual a CONTRATADA deverá realizar todos os
+procedimentos necessários.
+04.2.1. Caso a empresa verifique a impossibilidade de cumprir com o prazo de prestação
+estabelecido, deverá encaminhar à CEASA/GO uma solicitação de prorrogação de prazo de
+prestação, da qual deverão constar: motivo do não cumprimento do prazo, devidamente
+comprovado, e o novo prazo previsto para prestação.
+04.2.2. A comprovação de que trata o item 04.2.1., deverá ser promovida não apenas pela
+argumentação da empresa contratada, mas por meio de documento que relate e justifique a
+ocorrência que ensejará o descumprimento de prazo.
+04.2.3. A solicitação de prorrogação de prazo será analisada pela CEASA/GO na forma da
+lei e de acordo com os princípios de razoabilidade e proporcionalidade, informando-se à
+empresa da decisão proferida.
+04.2.4. Em caso de denegação da prorrogação do prazo de prestação, e caso não cumpra o
+prazo inicial, o fornecedor ficará sujeito às penalidades previstas legislação quanto o atraso
+na prestação.
+
+## Página 55
+04.3. O recebimento e aceitação do objeto dessa contratação obedecerão ao disposto na Lei
+n.º 13.303/2016, bem como no Regulamento Interno de Licitações e Contratos da Centrais
+de Abastecimento de Goiás S.A, e também ao disposto neste Contrato.
+04.4. Os produtos parte do objeto poderão ser rejeitados, no todo ou em parte, quando em
+desacordo com as especificações constantes na proposta vencedora, ou se estiverem
+vencidos e/ou violados, devendo ser substituídos e/ou providenciada a sua adequação, no
+prazo de 05 (cinco) dias corridos, a contar da notificação da CONTRATADA, às suas
+custas, sem prejuízo da aplicação das penalidades previstas neste Contrato.
+04.4.1. Tomadas as medidas acima, a CONTRATANTE realizará novamente as verificações
+necessárias para atestar a qualidade dos serviços, e a perfeita execução da prestação.
+04.4.2. Caso a substituição não ocorra em 05 (cinco) dias corridos contados a partir da data
+do recebimento da notificação, ou caso o(s) novo(s) serviço(s) também seja(m) rejeitado(s),
+estará a CONTRATADA incorrendo em atraso na prestação, sujeita à aplicação das sanções
+legais, sem prejuízo das previstas na Cláusula Vigésima deste Contrato.
+04.5. O recebimento definitivo do objeto não exclui a responsabilidade da CONTRATADA
+pelos prejuízos resultantes da incorreta execução do Contrato, cabendo-lhe sanar quaisquer
+irregularidades detectadas.
+
+05 CLÁUSULA QUINTA – DA VIGÊNCIA E PRORROGAÇÃO DOS PRESTAÇÃOS
+05.1. O prazo de vigência será de 4 (quatro) meses, contados a partir da assinatura deste
+Contrato.
+05.2. O presente Contrato poderá ser prorrogado por interesse das PARTES, por igual
+período, mediante Termo Aditivo, obedecido aos prazos e condições da Lei Federal nº
+13.303/2016, e desde que haja autorização formal da autoridade competente e observado os
+seguintes requisitos:
+a) As prestações tenham sido prestadas regularmente;
+b) Esteja formalmente demonstrado que a forma de prestação tem natureza continuada;
+c) Seja juntado relatório que discorra sobre a execução do contrato, com informações de que
+as prestações tenham sido prestadas regularmente;
+d) Seja juntada justificativa e motivo, por escrito, de que a Administração mantém interesse
+na prestação;
+e) Seja comprovado que o valor do contrato permanece economicamente vantajoso para a
+Administração;
+f) Haja manifestação expressa da contratada informando o interesse na prorrogação; e
+g) Seja comprovado que o contratado mantém as condições iniciais de habilitação.
+05.3. A CONTRATADA não tem direito subjetivo à prorrogação contratual, ou seja, caberá
+à CONTRATANTE deliberar sobre este assunto.
+05.4. O prazo de que trata a Cláusula Quinta poderá ser suspenso, caso ocorra:
+a) Paralisação da prestação determinada pela CONTRATANTE, por motivo não imputável
+à CONTRATADA;
+b) Por motivo de força maior e caso fortuito.
+
+## Página 56
+06 CLÁUSULA SEXTA – DO PREÇO E DAS CONDIÇÕES DE PAGAMENTO
+06.1. A CONTRATANTE pagará à CONTRATADA pelo objeto, mencionado na cláusula
+primeira deste Contrato, o valor total de R$ .................................................
+06.2. No valor estão incluídas todas as despesas ordinárias diretas e indiretas decorrentes da
+execução do objeto, inclusive tributos e/ou impostos, encargos sociais, trabalhistas,
+previdenciários, fiscais e comerciais incidentes sobre o serviço executado, bem como taxas
+de licenciamento, administração, frete, carga e descarga, seguro e outros necessários ao
+cumprimento integral do objeto da contratação.
+06.3. A emissão da Nota Fiscal/Fatura será precedida do recebimento definitivo da prestação,
+nos seguintes termos:
+a) No prazo de até 5 (cinco) dias corridos do adimplemento da parcela, a CONTRATADA
+deverá entregar toda a documentação comprobatória do cumprimento da obrigação
+contratual;
+b) No prazo de até 10 (dez) dias corridos a partir do recebimento dos documentos da
+CONTRATADA, o Gestor deverá elaborar Relatório Circunstanciado em consonância com
+suas atribuições, e encaminhá-lo ao gestor do contrato.
+06.3.1. O CNPJ constante na Nota Fiscal/Fatura deverá ser o mesmo indicado na Proposta e
+vinculado à conta corrente da CONTRATADA.
+06.4. A apuração dos valores a serem pagos será feita mediante a apresentação da
+competente Nota Fiscal/Fatura, depois de conferida e atestada pelo Gestor do Contrato.
+06.5. As Notas Fiscais deverão ser entregues até o dia 25 (vinte e cinco) de cada mês em
+relação ao serviço realizado, devendo a CONTRATADA apresentar:
+a) Carta de encaminhamento solicitando o pagamento;
+b) Nota Fiscal contendo as especificações corretas e devidamente em ordem;
+c) Guia de recolhimento atual das contribuições com o INSS e FGTS, de acordo com a
+Instrução Normativa n.º 100/2003 do INSS;
+d) Certidão Regularidade Fiscal Federal, Estadual, Municipal;
+e) Certidão Negativa do INSS e do FGTS da Empresa;
+f) Certidão Negativa de Débitos Trabalhista;
+g) Declaração do Fiscal do Contrato atestando o seu cumprimento.
+06.6. Os documentos fiscais deverão obrigatoriamente discriminar a especificação da
+prestação.
+06.7. Haverá, se for o caso, a retenção de tributos na forma da legislação em vigor, devendo
+a Fatura/Nota Fiscal destacar os valores correspondentes.
+06.7.1. A retenção e o recolhimento do ISS para o município de Goiânia, caso haja, serão
+realizados pela CONTRATANTE.
+06.8. No caso da sede da CONTRATADA não estar situada no Estado de Goiás, deverá a
+mesma apresentar Certidão Negativa de Débito em Relação a Tributos Estaduais, expedida
+pela Fazenda Pública Estadual, de sua sede ou domicílio, bem como do Estado de Goiás,
+
+## Página 57
+conforme entendimento da Procuradoria Geral do Estado por meio do Parecer nº
+007399/2009-NNP e Despacho “AG” nº 010525/2009.
+06.9. Para fins de aferição da qualidade da prestação executados pela CONTRATADA, o
+Gestor do Contrato atestará os mesmos, nas condições exigidas no presente Contrato,
+constituindo tal atestado requisito para a liberação dos pagamentos.
+06.10. A CEASA/GO reserva-se o direito de recusar o pagamento se, no ato da atestação, for
+verificado que os serviços não foram prestados em perfeitas condições, ou de acordo com as
+especificações apresentadas e aceitas.
+06.10.1. Na ocorrência da rejeição da Nota Fiscal/Fatura motivada por erro ou incorreções na
+mesma, o prazo fixado para pagamento passará a ser contado a partir de sua reapresentação,
+examinadas as causas da recusa.
+06.11. Pelo serviço contratado, o valor a ser pago será o da proposta de preços, sendo de
+responsabilidade da empresa CONTRATADA emitir a Nota Fiscal no valor condizente de
+cada parcela mensal, sob pena de proceder sua substituição.
+06.11.1. Havendo recusa da CONTRATADA em substituir a Nota Fiscal, a mesma arcará
+com todos os tributos e encargos decorrentes da não substituição.
+06.12. Fica estabelecido que todos os pagamentos a serem realizados pela
+CONTRATANTE aos seus fornecedores e prestadores de serviços em geral, deverão ser
+efetivados por meio de crédito em conta corrente do favorecido em Instituição Bancária
+contratada para centralizar a sua movimentação financeira.
+06.13. Nenhum pagamento será efetuado à CONTRATADA, enquanto pendente de
+liquidação qualquer obrigação financeira, sem que isso gere direito à alteração dos preços,
+ou de compensação financeira por atraso de pagamento.
+06.14. É vedado à CONTRATADA interromper a execução dos serviços sob alegação de
+inadimplemento por parte da CONTRATANTE, salvo nos casos previstos em lei.
+06.15. Os pagamentos serão efetuados até o 30º (trigésimo) dia após a data de apresentação
+da Nota Fiscal/Fatura, considerando-se esta data como limite de vencimento da obrigação.
+06.15.1. A contagem do prazo para pagamento considerará dias corridos e terá início e
+encerramento em dias de expediente da CONTRATANTE.
+06.15.2. Caso o término da contagem aconteça em dias sem expediente bancário, o
+pagamento ocorrerá no primeiro dia útil imediatamente subsequente.
+06.16. Nos casos de eventuais atrasos de pagamento, desde que a CONTRATADA não
+tenha concorrido de alguma forma para tanto, fica convencionado que a taxa de
+compensação financeira devida pela CEASA/GO, entre a data limite para pagamento e a
+correspondente ao efetivo adimplemento da parcela será correspondente à multa de 2% (dois
+por cento) e juros legais de 1% (um por cento) ao mês.
+06.17. A CEASA/GO poderá deduzir do montante a pagar os valores correspondentes a
+multas ou indenizações devidas pela CONTRATADA, nos termos deste Contrato.
+
+07. CLÁUSULA SÉTIMA – DA ALTERAÇÃO CONTRATUAL
+07.1. O presente Contrato poderá ser alterado por acordo entre as partes, e nos casos
+previstos na Lei nº. 13.303/2016 e Regulamento Interno de Licitações e Contratos da
+
+## Página 58
+Centrais de Abastecimento de Goiás S.A (CEASA) e alterações posteriores, com a
+apresentação das devidas justificativas legalmente admitidas e suas comprovações.
+07.2. Toda e qualquer alteração deverá ser processada mediante a celebração de Termo
+Aditivo.
+08.
+CLÁUSULA
+OITAVA
+–
+DO
+REAJUSTAMENTO,
+DA
+REPACTUAÇÃO,
+ACRÉSCIMO OU SUPRESSÃO DOS PRESTAÇÃOS
+08.1. Dentro do prazo de validade do Contrato é vedado qualquer reajustamento de preços,
+ressalvados os casos excepcionais de revisão legalmente admitidos, conforme Lei Federal
+13.303/16 e demais legislações, mediante requerimento devidamente acompanhado dos
+documentos comprobatórios da alteração de preços pleiteada.
+08.1.1. Nos reajustes subsequentes ao primeiro, o intervalo mínimo de 01 (um) ano será
+contado a partir dos efeitos financeiros do último reajuste.
+08.1.2. No caso de atraso ou não divulgação do índice de reajustamento, o
+CONTRATANTE pagará à CONTRATADA a importância calculada pela última variação
+conhecida, liquidando a diferença correspondente tão logo seja divulgado o índice definitivo.
+Fica a CONTRATADA obrigada a apresentar memória de cálculo referente ao
+reajustamento de preços do valor remanescente, sempre que este ocorrer.
+08.2. É vedado à CONTRATADA interromper a prestação, sendo esta, obrigada a continuar
+a sua execução enquanto aguarda o trâmite do processo de revisão de preços, ficando sujeita
+às penalidades previstas na Cláusula Vigésima e nos termos da Lei n.º 13.303/16.
+08.3. No interesse da CEASA/GO, o valor inicial poderá ser aumentado ou suprimido até o
+limite de 25% (vinte e cinco por cento), conforme disposto no art. 81, §1º da Lei nº.
+13.303/2016.
+08.4. Se ocorrerem acréscimos referentes a serviços não constantes das Especificações
+Técnicas, para os quais não tiveram sido estabelecidos preços unitários, serão ajustados
+novos valores mediante composição de preços, elaborados pela CONTRATADA e
+aprovados pela CEASA/GO, obedecendo às condições previamente contratadas.
+08.5. A criação, a alteração ou a extinção de quaisquer tributos ou encargos legais, bem como
+a superveniência de disposições legais, quando ocorridas após a data da apresentação da
+proposta, desde que comprovada repercussão nos preços contratados, implicarão a revisão
+destes para mais ou para menos, conforme o caso.
+08.6. Caso haja correção nos valores contratados, em casos excepcionais, para essa correção
+será utilizado o Índice Geral de Preços do Mercado - IGP-M, ou outro índice que vier a
+substituí-lo.
+08.7. O reajustamento será formalizado por meio de Apostilamento, nos moldes do Artigo
+81, §7º, da Lei Federal nº 13.303/2016, exceto quando coincidir com a prorrogação
+contratual, caso em que deverá ser formalizado por aditamento ao contrato.
+
+09. CLÁUSULA NONA – DO EQUILÍBRIO ECONÔMICO-FINANCEIRO
+09.1. Em havendo alteração do Contrato que aumente os encargos da CONTRATADA, a
+CEASA/GO deverá restabelecer, por aditamento, o equilíbrio econômico-financeiro inicial.
+
+## Página 59
+09.2. A variação do valor contratual para fazer face ao reajuste de preços previsto no próprio
+Contrato e as atualizações, compensações ou penalizações financeiras decorrentes das
+condições de pagamento nele previstas não caracterizam alteração do Contrato e podem ser
+registrados por simples apostila, dispensada a celebração de aditamento.
+09.3. Em consonância com a Lei nº. 13.303/2016 e Regulamento Interno de Licitações e
+Contratos da Centrais de Abastecimento de Goiás S.A (CEASA), o Contrato poderá ser
+alterado, com as devidas justificativas, nos seguintes casos:
+09.3.1. Unilateralmente pela Administração:
+a) Quando necessária a modificação do valor contratual em decorrência de acréscimo ou
+diminuição quantitativa de seu objeto, nos limites permitidos pela Lei Federal nº 13.303/16;
+09.3.2. Por acordo das PARTES:
+a) Quando conveniente a substituição da garantia de execução;
+b) Quando necessária a modificação da prestação, em face de verificação técnica da
+inaplicabilidade dos termos contratuais originários;
+c) Quando necessária a modificação da forma de pagamento, por imposição de
+circunstâncias superveniente mantido o valor inicial atualizado, vedada a antecipação do
+pagamento, com relação ao cronograma financeiro fixado, sem a correspondente
+contraprestação;
+d) Para restabelecer a relação que as partes pactuaram inicialmente entre os encargos do
+contratado e a retribuição da administração para a justa remuneração do prestação,
+objetivando a manutenção do equilíbrio econômico-financeiro inicial do Contrato, na
+hipótese de sobrevirem fatos imprevisíveis, ou previsíveis, porém de consequências
+incalculáveis, retardadores ou impeditivos da execução do ajustado, ou, ainda, em caso de
+força maior, caso fortuito ou fato do príncipe, configurando álea econômica extraordinária e
+extracontratual.
+09.4. Nos casos previstos no item 09.3.2., a CONTRATADA deverá demonstrar
+analiticamente a variação dos custos do contrato, devidamente justificada, sendo tal
+demonstração analisada pela CONTRATANTE para verificação de sua viabilidade e/ou
+necessidade.
+
+10. CLÁUSULA DÉCIMA – DAS OBRIGAÇÕES DA CONTRATADA
+Sem prejuízo das disposições previstas em Lei, constituem-se obrigações da
+CONTRATADA:
+10.1. Iniciar a prestação somente após a determinação formal da CONTRATANTE.
+10.2. Cumprir todas as obrigações e requisitos técnicos, bem como todas as condições,
+obrigações e prescrições contidas neste Contrato, assumindo como exclusivamente seus os
+riscos e as despesas decorrentes da boa e perfeita execução do objeto e, ainda:
+a) Manter, durante toda a execução do Contrato, em compatibilidade com as obrigações
+assumidas, todas as condições de habilitação e qualificação exigidas para a contratação;
+b) Submeter-se às normas administrativas/de segurança da CONTRATANTE, bem como as
+contidas na legislação vigente.
+
+## Página 60
+10.3. Atender prontamente a quaisquer exigências do representante da CEASA/GO quando
+da fiscalização do Contrato.
+10.4. Fornecer todos os produtos essenciais à realização da prestação objeto desde Contrato,
+devidamente acompanhados de Nota Fiscal/Fatura;
+10.5. Comunicar à CEASA/GO, por escrito, acerca de qualquer anormalidade de caráter
+urgente e prestar os esclarecimentos que se fizerem necessários, bem como qualquer motivo
+que impossibilite o cumprimento das condições pactuadas;
+10.6. Respeitar as normas e procedimentos de controle e acesso às dependências da
+CEASA/GO.
+10.7. Além das responsabilidades resultantes da Lei 13.303/16, constitui, ainda, obrigações e
+responsabilidades da CONTRATADA:
+a) Executar fielmente o Contrato, de acordo com as Cláusulas avençadas e, na omissão de
+alguma delas, submeter-se à Proposta da CONTRATADA e demais disposições legais;
+b) Reparar, corrigir, remover, reconstruir ou substituir, às suas expensas, no todo ou em
+parte, o objeto do Contrato, em que se verificarem vícios, defeitos ou incorreções resultantes
+da execução ou dos materiais empregados, nos moldes da Lei Federal nº 13.303/16, e
+manual de compras da CEASA-GO;
+10.7.1. Indicar o nome, telefone, e-mail e qualificação do preposto para representá-las na
+execução do Contrato;
+10.7.2. Comparecer, sempre que solicitada, à sede da CONTRANTE, em horário por esta
+estabelecida, a fim de receber instruções e acertar providências;
+10.7.3. Prestar os serviços rigorosamente dentro do prazo proposto e aceito pela
+CONTRATANTE, devendo oferecer serviços com a qualidade e a tempestividade
+prometidas, sob pena de multa e rescisão contratual;
+10.7.4. Comunicar à CONTRATANTE, no prazo máximo de 01 (um) mês que antecede a
+data de prestação, os motivos que impossibilitem o cumprimento do prazo previsto, com a
+devida comprovação.
+10.7.5. Fornecer toda mão de obra e material necessários à realização do objeto deste
+Contrato;
+10.7.5.1. Todos os materiais a serem empregados serão obrigatoriamente de primeira
+qualidade, com segurança alimentar.
+10.7.6. Reparar, corrigir, remover, reconstruir ou substituir os eventuais vícios, defeitos ou
+incorreções constatadas pela Fiscalização, além de efetuar o refazimento dos serviços que
+não atenderem às especificações do objeto, no prazo máximo de 05 (cinco) dias corridos,
+contado do recebimento da comunicação oficial;
+10.7.7. Assumir os valores existentes na Proposta e assumir total responsabilidade para
+eventuais erros e omissões que nela venha ser encontrada;
+10.7.8. Arcar com o ônus decorrente de eventual equívoco no dimensionamento dos
+quantitativos de sua proposta, devendo complementá-los, caso o previsto inicialmente em
+sua proposta não seja satisfatório para o atendimento ao objeto da contratação, exceto
+quando ocorrer algum dos eventos arrolados na legislação pertinente.
+
+## Página 61
+10.7.9. Executar eventuais serviços não constantes do objeto, mas inerentes à natureza dos
+serviços contratados, quando previamente aprovados pela CONTRATANTE;
+10.7.10. É obrigação da CONTRATADA acompanhar o andamento do processo, a emissão
+da Ordem de Serviço e ainda, a retirada das respectivas vias das mesmas no setor
+competente desta empresa, independente de notificação;
+10.8. Responder, em relação aos seus empregados, por todas as despesas decorrentes do
+vínculo empregatício, tais como salários; seguros de acidentes; taxas, impostos e
+contribuições; indenizações; vales-transporte; vales-refeição; outras que porventura venham
+a ser criadas e exigidas pelo Governo.
+10.9. Caberá a CONTRATADA, a indenização pecuniária dos danos morais ou materiais
+causados aos bens patrimoniais da CONTRATANTE, dos Usuários e terceiros
+frequentadores deste Entreposto, desde que comprovado dolo ou culpa, da CONTRATADA;
+10.9.1. Desde que apurado o dano, o valor da indenização será descontado no ato do
+pagamento de qualquer fatura, permitida a compensação inclusive em faturas vincendas, o
+que fica desde já pactuado;
+10.9.2. Responder por todos os danos e prejuízos que, a qualquer título, causar a terceiros,
+em especial as concessionárias de serviços públicos em virtude da execução dos serviços a
+seu encargo, respondendo por si por seus sucessores.
+
+11. CLÁUSULA DÉCIMA PRIMEIRA – DA INEXISTÊNCIA DO VÍNCULO
+EMPREGATÍCIO
+11.1. A presente contratação não gera para a CEASA/GO, qualquer vínculo de natureza
+trabalhista e/ou previdenciária em relação aos empregados e prepostos da CONTRATADA,
+respondendo exclusivamente a empresa CONTRATADA por toda e qualquer ação
+trabalhista e/ou indenizatória por eles propostas, bem como pelo resultado delas.
+11.2. É de inteira responsabilidade da CONTRATADA as obrigações sociais,
+previdenciárias e trabalhistas relativas aos empregados ou contratados, inclusive no que
+tange ao seguro de acidente de trabalho, não cabendo à CONTRATANTE qualquer tipo de
+responsabilidade nem encargos de qualquer natureza.
+11.3. É da inteira responsabilidade da CONTRATADA os ônus trabalhistas, previdenciários,
+fiscais e comerciais decorrentes deste Contrato.
+
+12. CLÁUSULA DÉCIMA SEGUNDA – DAS OBRIGAÇÕES DA CONTRATANTE
+12 É obrigação da CONTRATANTE observar para que, durante a vigência do presente
+Contrato, sejam mantidas todas as condições de habilitação e qualificação exigidas na
+contratação, bem como a compatibilidade com as obrigações assumidas, e ainda:
+12.1. Verificar e fiscalizar as condições e requisitos da CONTRATADA, bem como todas as
+obrigações e prescrições contidas neste Contrato, visando estabelecer controle de qualidade
+dos serviços a serem fornecidos.
+12.3. Nomear o Gestor do Contrato, o qual ficará responsável por receber, fiscalizar e
+acompanhar a execução do Contrato, que deverá observar as disposições da Lei nº 13.303/16
+e manual de compras da CEASA-GO;
+
+## Página 62
+12.3.1. Acompanhar a execução do Contrato nos termos da Lei nº 13.303/2016, por meio do
+Gestor do Contrato que exercerá ampla e irrestrita fiscalização do objeto, a qualquer hora,
+determinando o que for necessário para a regularização das faltas ou defeitos observados,
+inclusive quanto as obrigações da CONTRATADA.
+12.4. Fiscalizar, gerenciar e monitorar todas as atividades decorrentes dos serviços a serem
+efetuadas pela CONTRATADA, por meio do Gestor de Contrato;
+12.4.1. Não permitir que a CONTRATADA execute tarefas em desacordo com as normas
+preestabelecidas no Contrato.
+12.5. Proporcionar os dados e elementos técnicos, bem como todas as facilidades para que a
+CONTRATADA possa executar os serviços dentro das normas da Proposta, dos documentos
+que o acompanham e da legislação pertinente e em vigor.
+12.5.1. Fornecer todos os documentos e informações necessárias ao desenvolvimento dos
+serviços.
+12.6. Comunicar à CONTRATADA, por escrito, formal e tempestivamente, sobre
+imperfeições, falhas, ou irregularidades verificadas no objeto e/ou serviço fornecido, para
+que seja substituído, reparado ou corrigido, fixando prazo para sua correção;
+12.6.1. Constatado vícios ou defeitos deverá a CONTRATANTE, dentro do prazo máximo
+de 30 (trinta) dias corridos contados a partir do conhecimento destes, acionar a
+CONTRATADA sob pena de decair dos seus direitos.
+12.6.2. Efetuar a juntada aos autos do processo, das irregularidades observadas durante a
+execução da relação contratual.
+12.7. Prestar quaisquer informações e esclarecimentos que venham a ser formalmente
+solicitados pela CONTRATADA, pertinentes ao objeto do presente Contrato.
+12.8. Efetuar o pagamento à CONTRATADA no valor correspondente a prestação do
+objeto, conforme proposta comercial e medições no prazo e formas estabelecidas neste
+Instrumento.
+12.9.  Poderá a CEASA/GO, suspender o pagamento de qualquer Nota Fiscal nos seguintes
+casos:
+a) Inadimplência de obrigações da CONTRATADA para com a CONTRATANTE, que
+provenha de execução do Contrato;
+b) Erros, omissões ou vícios nas Notas Fiscais.
+c) Não cumprimento do disposto nas especificações da Proposta e deste Contrato.
+12.10. Notificar, por escrito, a CONTRATADA da aplicação de eventuais penalidades,
+garantindo-lhe o direito ao contraditório e ampla defesa.
+
+13.
+CLAÚSULA
+DÉCIMA
+TERCEIRA
+–
+DAS
+OBRIGAÇÕES
+SOCIAIS,
+COMERCIAIS, FISCAIS E DOS ENCARGOS
+13.1. Caberá também à CONTRATADA assumir todas as despesas com tributos, fretes e
+demais encargos relativos à prestação, objetos do presente Instrumento, e ainda:
+13.1.1. Assumir a responsabilidade por todos os encargos previdenciários e obrigações
+sociais previstos na legislação social e trabalhista em vigor, obrigando-se a saldá-los na
+
+## Página 63
+época própria, vez que os seus empregados não manterão nenhum vínculo empregatício com
+a CEASA/GO;
+13.1.2. Assumir todos os encargos de possível demanda trabalhista, civil ou penal,
+relacionadas a prestação, originalmente ou vinculada por prevenção, conexão ou
+continência;
+13.1.3. Manter, atualizadas as seguintes documentações:
+a) Prova de regularidade relativa à Seguridade Social (INSS) e ao Fundo de Garantia por
+Tempo de Serviço (FGTS);
+b) Prova de regularidade com a Fazenda Federal (Dívida Ativa da União e Receita Federal),
+Estadual e Municipal do domicílio da CONTRATADA;
+c) Certidão de regularidade com a Fazenda Pública Municipal (referente ao ISS) do(s)
+município(s) onde os serviços venham a ser prestados ou executados;
+d) Guia de recolhimento do ISS quitada relativa à fatura, devidamente homologada pela
+Secretaria de Finanças do(s) município(s) onde se realizará o serviço.
+13.1.4. As empresas sediadas fora do Território Goiano deverão apresentar, com a certidão de
+regularidade do seu Estado de origem, a certidão de regularidade para com a Fazenda
+Pública do Estado de Goiás;
+13.1.5. Caberá ainda a CONTRATADA a emissão da nota fiscal de faturamento dos
+serviços, bem como assumir encargos e impostos.
+13.1.6. A inadimplência da CONTRATADA, com referência aos encargos estabelecidos
+nesta Cláusula, não transfere a responsabilidade por seu pagamento a CEASA/GO, nem
+poderá onerar o objeto desta contratação, nos termos do art. 77, §1º da Lei nº. 13.303/2016,
+razão pela qual a CONTRATADA renuncia expressamente a qualquer vínculo de
+solidariedade, ativa ou passiva, ou mesmo de subsidiariedade, com a CEASA/GO.
+
+14. CLÁUSULA DÉCIMA QUARTA – DA RESPONSABILIDADE
+14.1. A responsabilidade da CONTRATADA é integral para o objeto do presente Contrato,
+nos termos do Código Civil Brasileiro.
+14.2. Também é responsabilidade da CONTRATADA seguir integralmente normas,
+procedimentos e regulamentações internas da CONTRATANTE, além das legislações
+municipal, estadual, federal e trabalhista aplicadas para a execução dos serviços.
+14.3. A CONTRATADA deverá assumir inteira responsabilidade pela qualidade dos
+serviços a serem prestados.
+14.3.1. O transporte para mobilização dos funcionários e de materiais é de total
+responsabilidade da CONTRATADA.
+14.4. A CONTRATADA deverá responsabilizar-se pelos vícios e danos decorrentes do
+objeto, de acordo com os artigos 12, 13 e 17 a 27, do Código de Defesa do Consumidor (Lei
+n.º 8.078/1990).
+14.5.
+A
+CONTRATADA
+deverá
+responsabilizar-se
+pelos
+encargos trabalhistas,
+previdenciários, securitários, fiscais e comerciais resultantes da execução deste Contrato,
+inclusive no tocante aos seus empregados, dirigentes e prepostos.
+
+## Página 64
+14.6. A CONTRATADA deverá assumir a responsabilidade por todas as providências e
+obrigações estabelecidas na legislação específica de acidentes de trabalho, quando, em
+ocorrência da espécie, forem vítimas os seus empregados quando da prestação ou em
+conexão com ele, ainda que acontecido em dependência da CEASA/GO.
+14.7. A CONTRATADA é responsável pelos danos causados diretamente à Administração
+ou a terceiros, decorrentes de sua culpa ou dolo na execução do Contrato, não excluindo ou
+reduzindo essa responsabilidade em decorrência da fiscalização ou acompanhamento pelo
+órgão interessado.
+14.8. A CONTRATANTE exime-se da responsabilidade Civil por danos pessoais ou
+materiais porventura causados em decorrência da execução da prestação, objeto deste
+instrumento, ficando esta como obrigação exclusiva da CONTRATADA.
+
+15. CLÁUSULA DÉCIMA QUINTA – DA GARANTIA
+15.1. Não haverá exigência de garantia de execução para a presente contratação.
+
+16. CLÁUSULA DÉCIMA SEXTA – DO SIGILO
+16.1.  A CONTRATADA deverá manter sigilo absoluto das informações e documentos
+recebidos durante a realização dos trabalhos, bem como não veicular publicidade acerca
+desta
+contratação,
+salvo
+se
+houver
+prévia
+autorização
+da
+Administração
+da
+CONTRATANTE.
+16.2. A CONTRATADA não poderá divulgar, mesmo em caráter estatístico, qualquer
+informação originada na CONTRATANTE.
+
+17. CLÁUSULA DÉCIMA SÉTIMA – DA SUBCONTRATAÇÃO
+17.1. Será permitida a subcontratação total ou parcial dos itens 1 ao 09, do lote único, objeto
+desta licitação, desde que previamente autorizado.
+
+18. CLÁUSULA DÉCIMA OITAVA – DO GESTOR E FISCAL DO CONTRATO
+18.1.  Nos termos do art. 51 da Lei n.º 17.928/2012, e Manual de Compras da Ceasa-GO,
+será designado(a) Gestor(a) do Contrato, para acompanhar e fiscalizar a prestação dos
+serviços, anotando no Processo SEI nº _______________________todas as ocorrências
+relacionadas com a execução e determinando o que for necessário à regularização de falhas
+ou defeitos observados.
+18.1.1. O Gestor do Contrato poderá exigir que seja refeito o que estiver em desacordo com
+o Processo nº ___________________________________, sob total responsabilidade da
+CONTRATADA.
+18.2. Cabe ao Gestor do Contrato fiscalizar, acompanhar e verificar sua perfeita execução,
+em todas as fases, até a execução do objeto, competindo-lhe, primordialmente, sob pena de
+responsabilidade:
+a) Anotar no respectivo processo, as ocorrências relativas à execução do Contrato, inclusive
+com a juntada de documentos, em ordem cronológica (indicando dia, mês e ano, bem como
+
+## Página 65
+o nome dos funcionários eventualmente envolvidos), necessários ao bom acompanhamento
+do Contrato, notificando a CONTRATADA, para promover a correção das falhas, defeitos
+ou descumprimento das obrigações contratuais observadas, com estabelecimento de prazo
+para solução;
+b) Transmitir à CONTRATADA instruções e comunicar alterações de prazos, cronogramas
+de execução e especificações do projeto/demanda, quando for o caso, e após autorização
+expressa da Diretoria Executiva;
+c) Dar imediata ciência formal a seus superiores hierárquicos dos incidentes e das
+ocorrências da execução que possam acarretar a imposição de sanções ou rescisão contratual,
+solicitando a adoção das medidas convenientes que ultrapassarem a sua competência;
+d) Adotar as providências necessárias para regular execução do Contrato;
+e) Promover, com a presença de representante da CONTRATADA, a medição e verificação
+dos serviços já efetuados, atestando as notas fiscais/faturas ou outros documentos hábeis e
+emitindo a competente habilitação para o recebimento de pagamentos;
+f) Poderá realizar avaliação diária, semanal ou mensal, desde que o período escolhido seja
+suficiente para aferir o desempenho e qualidade da prestação.
+g) Verificar se o prazo de prestação, as quantidades e a qualidade dos serviços prestados
+encontram-se de acordo com o estabelecido no Instrumento Contratual, podendo exigir sua
+substituição ou refazimento, quando não atenderem aos termos do que foi contratado;
+h) Receber o objeto contratado e atestar a respectiva Nota Fiscal ou Fatura;
+i) Receber e conferir a regularidade da documentação apresentada pela CONTRATADA
+para fins de liquidação e pagamento (data de validade das certidões, inexistência de débitos
+fiscais junto aos órgãos federais e municipais);
+j) Consultar a Diretoria Administrativa e Financeira sobre a necessidade de acréscimos ou
+supressões no objeto do Contrato, se detectar algo que possa sugerir a adoção de tais
+medidas;
+k) Manter controle dos pagamentos efetuados e dos saldos orçamentário, físico e financeiro
+do Contrato;
+l) Esclarecer prontamente as dúvidas do contratado, solicitando ao setor competente da
+Administração, se necessário, manifestação técnica;
+m) Acompanhar e controlar os prazos constantes do ajuste, mantendo interlocução com o
+fornecedor e/ou prestador de serviços quanto aos limites temporais do Contrato;
+n) Manifestar-se, por escrito às unidades responsáveis, a respeito da necessidade de adoção
+de providências, visando à prorrogação do prazo contratual, antecipadamente ao término de
+sua vigência, observados os prazos exigíveis para cada situação, nunca inferiores a 60
+(sessenta) dias corridos;
+o) Quando for solicitada a renovação do contrato, o Gestor fica obrigado a fazer declaração
+que contenha as justificativas para a renovação do Termo identificando se a vantagem na
+renovação advém da qualidade ou do valor das prestações.
+p) Observar se as exigências do Contrato foram atendidas em sua integridade;
+q) Propor medidas que visem melhoria contínua da execução do Contrato;
+
+## Página 66
+r) Manter registro e controle de todos os prazos e condições de execução dos termos de
+Contrato.
+s) Fiscalizar a obrigação da CONTRATADA e do subcontratado, se houver, de manter,
+durante toda a execução do Contrato, em compatibilidade com as obrigações assumidas, as
+condições de habilitação e qualificação exigidas na contratação, bem como o regular
+cumprimento das obrigações trabalhistas e previdenciárias.
+18.3. O Gestor, ao verificar que houve subdimensionamento da produtividade pactuada, sem
+perda da qualidade na execução da prestação, deverá comunicar à autoridade responsável
+para que esta promova a adequação contratual à produtividade efetivamente realizada,
+respeitando-se os limites de alteração dos valores contratuais previstos na Lei nº.
+13.303/2016, bem como Regulamento Interno de Licitações e Contratos da Centrais de
+Abastecimento de Goiás S.A (CEASA).
+18.4. O recebimento definitivo ficará a cargo do Gestor do Contrato.
+18.5. A inspeção dos serviços não isentará a CONTRATADA de quaisquer das suas
+obrigações contratuais.
+18.6. Cabe ao Fiscal do Contrato acompanhar e fiscalizar toda a execução do contrato,
+competindo-lhe, primordialmente:
+a) Verificar se o objeto do contrato cumpre ou está sendo cumprido de acordo com os
+detalhes estabelecidos no Contrato;
+b) Verificar quais medidas que deverão ser adotadas pelo contratado para regularizar as
+faltas eventualmente constatadas na execução do contrato de modo assegurar a sua perfeita
+execução nos moldes ajustados, sendo que as decisões e providências que ultrapassem sua
+competência deverão ser solicitadas aos seus superiores em tempo hábil para a adoção das
+medidas convenientes;
+c) Contatar o Gestor para sugerir a imposição de penalidades ou a determinação de rescisão
+contratual, mas sua imposição cabe à autoridade competente;
+d) Deverá anotar no registro próprio referente àquele contrato todas as ocorrências
+observadas durante a sua execução e fiscalização, como falhas, atrasos, inadimplemento ou
+descumprimento, assim como as orientações repassadas ao particular para que este se
+adequasse aos termos do contrato;
+e) Se constatar quaisquer ocorrências que descumprem o Contrato diante da execução e
+fiscalização do contrato, deverá notificar à autoridade competente, informando de todas as
+atitudes já tomadas anteriormente, para que esta, dentro de suas competências funcionais,
+decida, motivadamente, sobre a atitude a ser tomada pela Administração;
+18.7. O Fiscal do Contrato possuirá como instrumento básicos do seu trabalho:
+a) O Termo de Referência ou Projeto Básico;
+b) A Proposta de preço, ou planilha orçamentária e cronograma físico-financeiro ou Planilha
+de Custos e Formação de Preços;
+c) Livro de Ocorrências;
+18.8. O Fiscal do Contrato possuirá as seguintes atribuições:
+a) Participar da reunião inicial para ajuste de procedimentos de execução com a contratada;
+
+## Página 67
+b) Manter-se informado sobre as condições de execução contratual de modo a fomentar o
+cumprimento do contrato;
+c) Avaliar os resultados/objetos prestados atestando o recebimento ou informando ao gestor
+do contrato sobre infrações ou discrepâncias que necessitem de ajustes no pacto para tomada
+de providências (quando o objeto não for cumprido ou não suprir a necessidade tendo como
+diapasão o Termo de Referência ou Projeto Básico);
+d) Acompanhar a execução e registrar todas as ocorrências.
+
+19. CLÁUSULA DÉCIMA NONA – DA FISCALIZAÇÃO
+O acompanhamento, o gerenciamento físico e financeiro e a fiscalização da execução do
+contrato consistem na verificação da conformidade da prestação e da alocação dos recursos
+necessários, de forma a assegurar o perfeito cumprimento do ajuste, devendo ser exercidos
+por um ou mais representantes da CONTRATANTE, especialmente designados por meio de
+portaria ou ato equivalente da autoridade superior, na forma da Lei nº 14133/21.
+19.1. Caberá à CONTRATANTE, a coordenação, supervisão e fiscalização de todas as fases
+da prestação dos serviços, de acordo com a Lei Estadual nº 17.928/2012.
+19.2. Em hipótese alguma, será admitido que a própria CONTRATADA materialize a
+avaliação de desempenho e qualidade da prestação realizada.
+19.3. Na hipótese de comportamento contínuo de desconformidade da prestação do serviço
+em relação à qualidade exigida, bem como quando esta ultrapassar os níveis mínimos
+toleráveis previstos nos indicadores, além dos fatores redutores, devem ser aplicadas as
+sanções à CONTRATADA de acordo com as regras previstas na legislação.
+19.4. A conformidade do material a ser utilizado na execução dos serviços deverá ser
+verificada juntamente com o documento da CONTRATADA que contenha sua relação
+detalhada, de acordo com o estabelecido na proposta, informando as respectivas quantidades
+e especificações técnicas, tais como: marca, qualidade e forma de uso.
+19.2. A fiscalização de que trata este item não exclui nem reduz a responsabilidade da
+CONTRATADA, inclusive perante terceiros, por qualquer irregularidade, ainda que
+resultante de imperfeições técnicas ou vícios redibitórios, e, na ocorrência desta, não implica
+em corresponsabilidade da Administração ou de seus agentes e prepostos, de conformidade
+com a legislação pertinente.
+
+20. CLÁUSULA VIGÉSIMA – DAS INFRAÇÕES, MULTAS E SANÇÕES
+Pelo descumprimento das obrigações assumidas, a CEASA/GO poderá aplicar à
+CONTRATADA as sanções previstas no Manual de Compras da CEASA-GO, e demais
+legislações cabíveis.
+20.1. Constituem ilícitos administrativos, sem prejuízo das sanções penais cabíveis a prática
+dos atos previstos no Manual de Compras e Lei nº 13.303/16, ou dispositivos e normas que
+vierem a substituí-los;
+20.1.1. À CONTRATADA, que incorram nas faltas referidas no item anterior aplicam-se,
+segundo a natureza e a gravidade da falta, assegurados a ampla defesa e o contraditório, as
+
+## Página 68
+sanções previstas nos arts. 82 e 83 da Lei Federal nº 13.303, de 30 de julho de 2016, aplicada
+as sociedades de economia mista;
+20.1.2. Nas hipóteses previstas nos itens anteriores, a CONTRATADA poderá apresentar
+sua defesa no prazo de 10 (dez) dias úteis, contado da notificação do ato, sendo facultada a
+produção de todas as provas admitidas em direito, por iniciativa própria e às suas expensas.
+20.2. A CONTRATADA cometerá infração administrativa e sujeitar-se-á à aplicação de
+sanções caso pratique, dentre outras, as seguintes condutas:
+a) Apresentar documentação falsa, fizer declaração falsa ou cometer fraude fiscal;
+b) Falhar ou fraudar na execução do Contrato, ensejar o retardamento da execução do objeto
+do Contrato e causar prejuízos processuais ou financeiros à CEASA/GO;
+c) Der causa à inexecução total ou parcial do Contrato;
+d) Incorrer na prática das condutas descritas na Lei nº. 13.303/2016 e Regulamento Interno
+de Licitações e Contratos da Centrais de Abastecimento de Goiás S.A (CEASA);
+e) Desídia da CONTRATADA na sua atuação que provoque a perda de prazo ou a revelia da
+CONTRATANTE;
+f) Não assinar o Contrato, quando convocada dentro do prazo de validade da proposta;
+g) Não mantiver a sua proposta dentro de prazo de validade;
+h) Comportar-se de modo inidônea.
+20.3. Caso a CONTRATADA incorra nas condutas descritas nos itens acima, estará sujeita
+às penalidades abaixo discriminadas, bem como àquelas previstas na Lei nº. 13.303/2016 e
+demais legislações aplicáveis, sem prejuízo da responsabilidade civil e criminal, salvo por
+motivo justo decorrente de fato superveniente e aceito pelo Diretor Presidente da
+CEASA/GO, garantido o direito prévio ao contraditório e à ampla defesa:
+20.3.1 Advertência escrita, nos termos do art. 83, I, da Lei nº. 13.303/2016;
+20.3.2. Multa no valor de 0,34% (trinta e quatro centésimos por cento) ao dia sobre o valor
+da proposta comercial apresentada pela CONTRATADA enquanto perdurar o ato passível
+de punição, com limite de 10% (dez por cento), nos termos do art. 83, II, da Lei nº.
+13.303/2016;
+20.3.3. Suspensão temporária de participação em licitação e impedimento de contratar com a
+Administração, por prazo não superior a 2 (dois) anos, nos termos do art. 83, III, da Lei nº.
+13.303/2016;
+20.3.4. Impedimento de licitar e contratar com o Estado e descredenciamento no Sistema de
+Cadastramento Unificado de Prestadores - SICAF, pelo prazo de até 05 (cinco) anos, sem
+prejuízo das multas previstas no Contrato e das demais cominações legais, aplicadas e
+dosadas segunda a natureza e a gravidade da falta cometida;
+20.3.5. A reincidência da falta contemplada nesta Cláusula ensejará a aplicação da multa em
+dobro.
+20.4. As penalidades são independentes entre si, podendo, inclusive, serem aplicadas
+cumulativamente, de acordo com a gravidade do fato e o juízo de conveniência da
+CEASA/GO, não tendo caráter compensatório e não eximindo a CONTRATADA da
+reparação de eventuais danos, perdas ou prejuízos que vierem a acarretar.
+
+## Página 69
+20.5. A inexecução contratual, inclusive por atraso injustificado na execução do Contrato,
+sujeitará a CONTRATADA, além das sanções referidas no Item 20.1.1, à multa de mora,
+graduada de acordo com a gravidade da infração, caso a CONTRATADA não cumpra os
+prazos de execução dos serviços declarados na sua proposta e no cronograma físico-
+financeiro aprovado pela CONTRATANTE, ficará sujeita à multa, obedecidos os seguintes
+limites máximos:
+20.5.1. 10% (dez por cento) sobre o valor da nota de empenho ou do Contrato, em caso de
+descumprimento total da obrigação, inclusive no de recusa do adjudicatário em firmar o
+Contrato, ou ainda na hipótese de negar-se a efetuar o reforço da caução, dentro de 10 (dez)
+dias corridos contados da data de sua convocação;
+20.5.2. 0,3% (três décimos por cento) ao dia, até o trigésimo dia de atraso, sobre o valor da
+parte do serviço não realizado;
+20.5.3. 0,7% (sete décimos por cento) sobre o valor da parte da prestação ou serviço não
+realizado, por dia subseqüente ao trigésimo.
+20.6. A multa aplicada será descontada da garantia da CONTRATADA, ou da Fatura, se for
+o caso.
+20.6.1. Se o valor da multa exceder ao da garantia prestada, além da perda desta, a
+CONTRATADA responderá pela sua diferença, que será descontada dos pagamentos
+eventualmente devidos pela Administração ou, ainda, se for o caso, cobrada judicialmente.
+20.7. Em caso de inexecução parcial do objeto, a CONTRATADA fica sujeito à multa
+compensatória, conforme art. 83, II, da Lei nº 13.303/2016 equivalente a 1% (um por cento)
+do valor unitário do bem em atraso, pro dia, por unidade, até o limite de 20% (vinte por
+cento) do valor empenhado.
+20.7.1. Considera-se inexecução parcial o atraso injustificado no prazo de prestação até o
+limite de 20 (vinte) dias corridos.
+20.7.2. Considera-se inexecução total o atraso injustificado no prazo de prestação, superior a
+20 (vinte) dias corridos.
+20.8. A suspensão de participação em licitação e o impedimento de contratar com a
+Administração serão graduados pelos seguintes prazos:
+20.8.1. 06 (seis) meses, nos casos de:
+a) Aplicação de duas penas de advertência, no prazo de 12 (doze) meses, sem que a
+CONTRATADA tenha adotado as medidas corretivas no prazo determinado pela
+Administração;
+b) Alteração da quantidade ou qualidade da prestação;
+c) 12 (doze) meses, no caso de retardamento imotivado da execução do serviço, de suas
+parcelas.
+20.8.2. 24 (vinte e quatro) meses, nos casos de:
+a) Prestar o serviço em desacordo com as especificações do Contrato;
+b) Paralisação de serviço sem justa fundamentação e prévia comunicação à Administração;
+c) Sofrer condenação definitiva por praticar, por meio doloso, fraude fiscal no recolhimento
+de qualquer tributo.
+
+## Página 70
+20.9. A prática de qualquer das infrações previstas no item 20.8.2. sujeita a CONTRATADA
+à declaração de inidoneidade, ficando impedido de licitar e contratar com a administração
+estadual, enquanto perdurarem os motivos determinantes da punição ou até que seja
+promovida a sua reabilitação perante a própria autoridade que aplicou a penalidade, que será
+concedida quando ressarcida a Administração dos prejuízos resultantes e após decorrido o
+prazo da respectiva sanção.
+20.10. A aplicação de quaisquer das penalidades previstas, realizar-se-á em processo
+administrativo que assegurará o contraditório e a ampla defesa observando-se o
+procedimento previsto na Lei nº. 13.303/2016 e Regulamento Interno de Licitações e
+Contratos da Centrais de Abastecimento de Goiás S.A (CEASA).
+20.10.1.  Concluída a instrução processual, a comissão designada ou, quando for o caso, o
+serviço de registro cadastral, dentro de 15 (quinze) dias, elaborará o relatório final e remeterá
+aos autos para deliberação da autoridade competente para aplicar com a gravidade da
+infração.
+20.10.2. A autoridade competente, na aplicação das sanções, levará em consideração a
+gravidade da conduta do infrator, o caráter educativo da pena, bem como o dano causado à
+Administração, observado o princípio da proporcionalidade.
+20.11. Qualquer penalidade aplicada à CONTRATADA deverá ser informada,
+imediatamente, à unidade gestora de serviço ou registro cadastral, e serão obrigatoriamente
+registradas no SICAF.
+20.12. A aplicação das sanções a que se sujeita a CONTRATADA, inclusive a de multa, não
+impede que a CONTRATANTE rescinda unilateralmente o Contrato e aplique as demais
+sanções previstas na legislação de regência.
+20.13. As multas aplicadas e não recolhidas no prazo de seu vencimento, bem como
+eventuais prejuízos causados à CONTRATANTE, serão recolhidos em favor da
+CEASA/GO, ou quando for o caso, cobrados judicialmente.
+20.14. O desempenho insatisfatório da CONTRATADA será anotado em sua ficha cadastral
+junto a CEASA/GO.
+20.15. O presente contrato no ato da assinatura se tornará TÍTULO EXECUTIVO sendo o
+referido título líquido, certo e exigível nos termos do Art. 784 e seguintes do CPC/2015, bem
+como no aceite de ambas as partes de forma irretratável, irrecorrível e irrevogável (Art. 389
+e seguintes do CPC/2015).
+20.16. A penalidade será aplicada de oficio pela CEASA-GO à CONTRATADA.
+
+21. CLÁUSULA VIGÉSIMA PRIMEIRA – DA RESCISÃO CONTRATUAL
+21.1. O presente Termo de Contrato poderá ser rescindido:
+21.1.1. Por ato unilateral e escrito da Administração, nas situações previstas no Manual de
+Compras da CEASA-GO, e demais legislações aplicáveis, e com as consequências indicadas
+no art. 80 da mesma Lei, notificando-se a CONTRATADA com antecedência mínima de 30
+(trinta) dias;
+
+## Página 71
+21.1.2. Amigável, por acordo entre as partes com fulcro no Manual de Compras da Ceasa-
+GO e reduzida a termo no processo da contratação, desde que haja conveniência para
+Administração;
+21.1.3. Judicialmente, nos termos da lei, sem prejuízo das sanções previstas neste Termo e na
+Legislação vigente.
+21.2. A rescisão administrativa ou amigável será precedida de autorização escrita e
+fundamentada da autoridade competente.
+21.3. Quando a rescisão ocorrer sem que haja culpa da CONTRATADA, será estar
+ressarcido dos prejuízos regularmente comprovados que houver sofrido, tendo ainda direito
+a:
+a) Pagamento devido pela execução do Contrato até a data da rescisão;
+21.4. A inexecução total ou parcial do Contrato ensejará a sua rescisão, e serão assegurados à
+CONTRATADA o contraditório e a ampla defesa
+21.5. O termo de rescisão será precedido de relatório indicativo dos seguintes aspectos,
+conforme o caso:
+a) Balanço dos eventos contratuais já cumpridos ou parcialmente cumpridos;
+b) Relação dos pagamentos já efetuados e ainda devidos;
+c) Indenizações e multas.
+21.6. Não haverá rescisão contratual em razão de fusão, cisão ou incorporação da
+CONTRATADA, ou de substituição de consorciado, desde que mantidas as condições de
+habilitação previamente atestadas.
+21.7. Os casos de rescisão contratual serão formalmente motivados nos autos do processo,
+assegurado o contraditório e a ampla defesa.
+21.8. Será considerada falta grave e motivo suficiente para rescisão unilateral do Contrato,
+sem qualquer ônus para a CONTRATANTE e sem prejuízo de outras sanções que sejam
+impostas à CONTRATADA, o não cumprimento pela CONTRATADA de suas obrigações
+sociais instituídas por lei.
+21.8.1. O não pagamento dos salários e das verbas trabalhistas, e o não recolhimento das
+contribuições sociais, previdenciárias e para com o FGTS em relação aos empregados da
+CONTRATADA que efetivamente participarem da execução do Contrato poderá dar ensejo à
+rescisão contratual, por ato unilateral e escrito, por parte da CONTRATANTE e à aplicação
+das penalidades cabíveis.
+
+22. CLÁUSULA VIGÉSIMA SEGUNDA – DO SALDO REMANESCENTE
+22.1. Caso o objeto do Contrato não seja fornecido na sua totalidade, ficará a
+CONTRATANTE desobrigada de efetuar qualquer pagamento sobre o saldo remanescente
+até o limite de 25% (vinte e cinco por cento) e nos casos que ultrapassar esse limite, a
+supressão será por acordo entre as partes.
+
+23. CLÁUSULA VIGÉSIMA TERCEIRA – DA POLÍTICA ANTICORRUPÇÃO /
+COMPLIANCE
+
+## Página 72
+23.1. A CONTRATADA se compromete a adotar os mais altos padrões éticos de conduta na
+condução dos seus negócios, especialmente os relacionados ao objeto deste instrumento,
+assim como em qualquer outra iniciativa envolvendo a CONTRATANTE.
+23.2. A CONTRATADA compromete-se por si e por seus sócios, administradores, gestores,
+representantes legais, empregados, prepostos e subcontratados (“colaboradores”), a não
+pagar, prometer ou autorizar o pagamento de qualquer valor ou oferecer qualquer tipo de
+vantagem (Pagamento Indevido), direta ou indiretamente, a qualquer Servidor Público ou a
+terceira pessoa a ele relacionada, com o objetivo de influenciá-lo inapropriadamente ou
+recompensá-lo de alguma forma, em troca de algum benefício indevido ou favorecimento de
+qualquer tipo para a CONTRATADA e/ou para a CONTRANTE, para fins deste
+instrumento.
+23.3. A CONTRATADA garante que não emprega e não empregará, direta ou mediante
+Contrato de serviços ou qualquer outro Instrumento, trabalho escravo e/ou trabalho infantil.
+23.4. A CONTRATADA compromete-se a praticar os atos necessários de boa-fé, cumprir de
+modo regular e pontual todas as obrigações que lhe incumbem para a cabal realização do
+objeto do presente Contrato, bem como atuar de acordo com as normas internas da
+CONTRATANTE.
+23.4.1. Obriga-se, ainda, a CONTRATADA, por si, seus colaboradores ou terceiros por esta
+contratados, a obedecer e garantir que a prestação de serviços ora contratados se dará de
+acordo com todas as normas internas da CONTRATANTE.
+23.5. A CONTRATADA garante à CONTRATANTE que, durante a prestação ora
+avençada, cumprirá com todas as leis aplicáveis à natureza dos prestaçãos contratados; e,
+ainda, que respeitará durante sua atuação empresarial a Lei de Improbidade Administrativa
+(Lei nº. 8.429/1992); o Código Penal; a Lei Brasileira Anticorrupção (Lei nº. 12.846/2013), o
+Decreto Federal nº. 8.420, de 18 de março de 2015, e a Lei Estadual nº 18.672/2014, que
+regulamenta a Lei Federal Anticorrupção no âmbito do Estado de Goiás.
+23.5.1. Garante, ainda, à CONTRATANTE sempre que tiver contato com as autoridades
+governamentais brasileiras, respeitará as disposições do Código de Ética e ou Estatutos
+aplicáveis ao órgão/entidade e esfera de Poder ao qual esteja sujeita a autoridade.
+23.6. A CONTRATADA obriga-se a zelar pelo bom nome comercial da CONTRATANTE
+e a abster-se ou omitir-se da prática de atos que possam prejudicar a reputação da
+CONTRATANTE.
+23.6.1. Em caso de uso indevido do nome da CONTRATANTE, ou de qualquer outro nome,
+marca, termo ou expressão vinculadas direta ou indiretamente à mesma, responderá a
+CONTRATADA pelas perdas e danos daí decorrentes.
+23.7. Para a execução deste Contrato, nenhuma das partes poderá oferecer, dar ou se
+comprometer a dar a quem quer que seja, ou aceitar ou se comprometer a aceitar de quem
+quer que seja, tanto por conta própria quanto por intermédio de outrem, qualquer pagamento,
+doação, compensação, vantagens financeiras ou não financeiras ou benefícios de qualquer
+espécie que constituam prática ilegal ou de corrupção, seja de forma direta ou indireta
+quanto ao objeto deste Contrato, ou de outra forma a ele não relacionada, devendo garantir,
+ainda, que seus prepostos e colaboradores ajam da mesma forma.
+
+## Página 73
+24. CLÁUSULA  VIGÉSIMA QUARTA – DA MATRIZ DE RISCO
+24.1 - A CONTRATANTE e a CONTRATADA, tendo como premissa a obtenção do
+melhor custo contratual mediante a alocação do risco à parte com maior capacidade para
+geri-lo e absorvê-lo, identificam os riscos decorrentes da relação contratual e, sem prejuízo
+de outras previsões contratuais, estabelecem os respectivos responsáveis na Matriz de
+Riscos.
+
+25. CLÁUSULA VIGÉSIMA QUINTA – DAS DISPOSIÇÕES FINAIS
+25.1. A CEASA-GO reserva-se o direito de cancelar o Contrato de acordo com a legislação
+vigente se os serviços estiverem em desacordo com a proposta apresentada pela empresa e o
+presente Contrato.
+25.2. A CEASA/GO não se responsabilizará por prejuízos de qualquer natureza, proveniente
+de ação dos prepostos da CONTRATADA, e será de inteira responsabilidade da
+CONTRATADA, qualquer dano causado pela atuação dos serviços desta empresa, bem
+como prejuízos causados a terceiros;
+25.2.1. A CEASA/GO não responderá por quaisquer compromissos assumidos pela
+CONTRATADA perante terceiros, ainda que vinculados à execução do presente Contrato,
+bem como por qualquer dano causado a terceiros em decorrência de ato da CONTRATADA,
+de seus empregados, prepostos ou subordinados.
+25.3. À CONTRATADA é vedado transferir total ou parcialmente o objeto do Contrato.
+25.4. É vedado à CONTRATADA caucionar ou utilizar o Contrato objeto da presente
+contratação, para qualquer operação financeira;
+
+26. CLÁUSULA VIGÉSIMA SEXTA – DA PUBLICAÇÃO
+26.1. Incumbirá à CONTRATANTE providenciar a publicação deste Instrumento, por
+extrato, no Diário Oficial do Estado, bem como no site no prazo previsto na Lei nº
+13.303/16, correndo as despesas para tanto, por conta da Administração.
+
+27. CLÁUSULA VIGÉSIMA SÉTIMA – DO REGISTRO E FORO
+27.1. O Foro para solucionar os litígios que decorrerem da execução deste Termo de
+Contrato será o da Comarca de Goiânia-GO.
+
+E, por estarem justos e acordados, assinam este Instrumento os representantes das partes, o
+responsável da CONTRATADA e as testemunhas, em 02 (duas) vias de igual teor e
+devidamente rubricadas, para todo os fins de direito.
+________________________________, em Goiânia, no dia ___ do mês de __________ do
+ano de 2025.
+
+## Página 74
+__________________________
+Diretor Presidente
+
+________________________________
+Diretor Financeiro
+
+__________________________________________________
+Representante Legal da Contratada
+
+Testemunhas:
+
+01) _________________________       02) ___________________________
+
+CPF:_________________________     CPF:__________________________

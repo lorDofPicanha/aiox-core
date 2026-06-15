@@ -563,3 +563,5 @@
 .victory-due{font-family:var(--mono);font-size:10.5px;font-weight:800;color:var(--ink-2)}
 .victory-due.atrasado{color:#a33}
 .victory-due.urgente{color:#8a6516}
+.package-bar{background:#f7f4ed;border-color:#1a1a1a22}
+.package-actions{display:flex;gap:8px}
