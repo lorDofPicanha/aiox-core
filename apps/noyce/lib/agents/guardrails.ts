@@ -32,6 +32,50 @@ export function validateTriage(
   return { ok: v.length === 0, violations: v };
 }
 
+// Validate a Forja habilitation output: decisão coerente, matching de atestados e lacunas com
+// fonte, consórcio justificado, e nenhum ato vinculante executado.
+const DECISOES = ["GO", "NO_GO", "CONSORCIO", "INDETERMINADO"] as const;
+
+export function validateHabilitation(result: unknown): GuardrailResult {
+  const v: GuardrailViolation[] = [];
+  const r = (result ?? {}) as Record<string, unknown>;
+
+  if (typeof r.decisao !== "string" || !DECISOES.includes(r.decisao as (typeof DECISOES)[number])) {
+    v.push({ rule: "schema", field: "decisao", detail: `decisão inválida: ${String(r.decisao)}` });
+  }
+  if (typeof r.resumo !== "string" || r.resumo.trim().length < 5) {
+    v.push({ rule: "provenance", field: "resumo", detail: "resumo ausente/curto" });
+  }
+  if (!Array.isArray(r.fonte) || r.fonte.length === 0) {
+    v.push({ rule: "provenance", field: "fonte", detail: "sem fontes (proveniência)" });
+  }
+
+  const matching = Array.isArray(r.matchingAtestados) ? (r.matchingAtestados as Array<Record<string, unknown>>) : [];
+  matching.forEach((m, i) => {
+    if (typeof m.fonte !== "string" || m.fonte.trim().length === 0) {
+      v.push({ rule: "provenance", field: `matchingAtestados[${i}].fonte`, detail: "matching sem fonte" });
+    }
+  });
+
+  const lacunas = Array.isArray(r.lacunas) ? (r.lacunas as Array<Record<string, unknown>>) : [];
+  lacunas.forEach((l, i) => {
+    if (typeof l.fonte !== "string" || l.fonte.trim().length === 0) {
+      v.push({ rule: "provenance", field: `lacunas[${i}].fonte`, detail: "lacuna sem fonte" });
+    }
+  });
+
+  // Coerência: decisão CONSORCIO exige consorcio.necessario = true.
+  const cons = (r.consorcio ?? {}) as Record<string, unknown>;
+  if (r.decisao === "CONSORCIO" && cons.necessario !== true) {
+    v.push({ rule: "schema", field: "consorcio.necessario", detail: "decisão CONSORCIO sem consorcio.necessario=true" });
+  }
+
+  const human = enforceHumanActs(String(r.resumo ?? ""));
+  if (!human.ok) v.push(...human.violations);
+
+  return { ok: v.length === 0, violations: v };
+}
+
 // Generic: reject any factual claim object missing its `fonte`/source field.
 export function requireProvenance(obj: Record<string, unknown>, field = "fonte"): GuardrailResult {
   const val = obj[field];
