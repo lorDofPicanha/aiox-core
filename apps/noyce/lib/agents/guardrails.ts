@@ -76,6 +76,55 @@ export function validateHabilitation(result: unknown): GuardrailResult {
   return { ok: v.length === 0, violations: v };
 }
 
+// Validate a Prisma opportunity analysis: sourced scores, sourced market/price blocks,
+// sourced risks/challenges, and no binding act executed by the agent.
+export function validateAnalysis(result: unknown): GuardrailResult {
+  const v: GuardrailViolation[] = [];
+  const r = (result ?? {}) as Record<string, unknown>;
+
+  if (typeof r.opportunityScore !== "number" || r.opportunityScore < 0 || r.opportunityScore > 100) {
+    v.push({ rule: "schema", field: "opportunityScore", detail: "opportunityScore fora de 0..100" });
+  }
+  if (typeof r.confidenceScore !== "number" || r.confidenceScore < 0 || r.confidenceScore > 100) {
+    v.push({ rule: "schema", field: "confidenceScore", detail: "confidenceScore fora de 0..100" });
+  }
+  if (typeof r.resumo !== "string" || r.resumo.trim().length < 5) {
+    v.push({ rule: "provenance", field: "resumo", detail: "resumo ausente/curto" });
+  }
+  if (!Array.isArray(r.fonte) || r.fonte.length === 0) {
+    v.push({ rule: "provenance", field: "fonte", detail: "sem fontes (proveniência)" });
+  }
+
+  const faixaPreco = (r.faixaPreco ?? {}) as Record<string, unknown>;
+  if (typeof faixaPreco.fonte !== "string" || faixaPreco.fonte.trim().length === 0) {
+    v.push({ rule: "provenance", field: "faixaPreco.fonte", detail: "faixa de preço sem fonte" });
+  }
+
+  const concorrencia = (r.concorrencia ?? {}) as Record<string, unknown>;
+  if (typeof concorrencia.fonte !== "string" || concorrencia.fonte.trim().length === 0) {
+    v.push({ rule: "provenance", field: "concorrencia.fonte", detail: "concorrência sem fonte" });
+  }
+
+  const riscos = Array.isArray(r.riscos) ? (r.riscos as Array<Record<string, unknown>>) : [];
+  riscos.forEach((risco, i) => {
+    if (typeof risco.fonte !== "string" || risco.fonte.trim().length === 0) {
+      v.push({ rule: "provenance", field: `riscos[${i}].fonte`, detail: "risco sem fonte" });
+    }
+  });
+
+  const pontosImpugnacao = Array.isArray(r.pontosImpugnacao) ? (r.pontosImpugnacao as Array<Record<string, unknown>>) : [];
+  pontosImpugnacao.forEach((ponto, i) => {
+    if (typeof ponto.fonte !== "string" || ponto.fonte.trim().length === 0) {
+      v.push({ rule: "provenance", field: `pontosImpugnacao[${i}].fonte`, detail: "ponto de impugnação sem fonte" });
+    }
+  });
+
+  const human = enforceHumanActs(String(r.resumo ?? ""));
+  if (!human.ok) v.push(...human.violations);
+
+  return { ok: v.length === 0, violations: v };
+}
+
 // Generic: reject any factual claim object missing its `fonte`/source field.
 export function requireProvenance(obj: Record<string, unknown>, field = "fonte"): GuardrailResult {
   const val = obj[field];
