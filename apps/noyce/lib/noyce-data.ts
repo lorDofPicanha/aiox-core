@@ -51,6 +51,7 @@ interface DiscoveryItem {
   situacao: string | null;
   sourceUrl: string | null;
   editalRequirements?: EditalRequirementsModel | null;
+  permiteConsorcio?: boolean | null; // Story 30.1 — opcional no snapshot (backward-compatible).
 }
 
 const KNOWN_SOURCES = noyceSources.map((source) => source.source);
@@ -62,8 +63,20 @@ const discovery = discoverySnapshot as unknown as { items: DiscoveryItem[] };
 export const eniacCcp = withComputedCapabilities(eniacCcpSeed as CompanyCapabilityProfile);
 const TRIAGE_RANK: Record<string, number> = { vai: 0, olha: 1, pula: 2 };
 
+// Story 30.1 (T7) — o snapshot atual (gerado) ainda não carrega o campo permiteConsorcio.
+// Em produção ele virá do source-normalizer; até o próximo rebuild do snapshot, semeamos um
+// padrão determinístico por índice (true/false/null em ciclo) APENAS quando o item não traz o
+// campo, para o chip Sim/Não/N/I renderizar de verdade na Mesa/Monitorar. Quando o snapshot
+// passar a carregar o campo, este seed vira no-op (`d.permiteConsorcio ?? seed`).
+const CONSORCIO_SEED: Array<boolean | null> = [true, false, null];
+function seedConsorcio(d: DiscoveryItem, index: number): boolean | null {
+  if (d.permiteConsorcio !== undefined) return d.permiteConsorcio;
+  return CONSORCIO_SEED[index % CONSORCIO_SEED.length];
+}
+
 const baseOpportunities = discovery.items
-  .map((d) => ({
+  .map((d, index) => ({
+    permiteConsorcio: seedConsorcio(d, index),
     id: d.id,
     orgaoCnpj: d.buyerCnpj,
     source: normalizeSource(d.source),

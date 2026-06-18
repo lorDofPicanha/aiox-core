@@ -1,15 +1,18 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { opportunities } from "@/lib/noyce-data";
 import { formatCurrency, formatDateTime } from "@/lib/noyce-model";
 import type { Opportunity, SuspicionSignal } from "@/lib/noyce-model";
 import { deadlineTime, operationalState, sourceClass, sourceLabel } from "@/lib/noyce-operational";
 import { MAX_DISCOVERY_RADIUS_KM } from "@/lib/noyce-source-registry";
 import { ScorePill } from "@/components/shell/bits";
+import { ConsorcioChip } from "@/components/shell/ConsorcioChip";
+import { needsConsorcioPartner } from "@/lib/noyce-operational";
 
 type SortMode = "triagem" | "best" | "worst" | "deadline";
 type VerdictFilter = "all" | "vai" | "olha" | "pula";
+type ConsorcioFilter = "qualquer" | "sim" | "nao";
 const RANK: Record<string, number> = { vai: 0, olha: 1, pula: 2 };
 const VERDICT_LABEL: Record<string, string> = { vai: "Vai", olha: "Olha", pula: "Pula" };
 type OpportunityWithSuspicion = Opportunity & { suspicionSignals?: SuspicionSignal[] };
@@ -28,6 +31,23 @@ export function MonitorarTab({
   const [sortMode, setSortMode] = useState<SortMode>("triagem");
   const [cityFilter, setCityFilter] = useState("all");
   const [verdict, setVerdict] = useState<VerdictFilter>("all");
+  // Story 30.1 AC3 — filtro de consórcio, hidratado do query param `consorcio=sim|nao|qualquer`.
+  const [consorcio, setConsorcio] = useState<ConsorcioFilter>("qualquer");
+
+  // Hidrata o filtro a partir da URL na montagem (consistente com o padrão localStorage do app).
+  useEffect(() => {
+    const param = new URLSearchParams(globalThis.location?.search ?? "").get("consorcio");
+    if (param === "sim" || param === "nao" || param === "qualquer") setConsorcio(param);
+  }, []);
+
+  // Persiste o filtro na URL sem recarregar (history.replaceState — não há router de query no app).
+  useEffect(() => {
+    if (!globalThis.location || !globalThis.history) return;
+    const url = new URL(globalThis.location.href);
+    if (consorcio === "qualquer") url.searchParams.delete("consorcio");
+    else url.searchParams.set("consorcio", consorcio);
+    globalThis.history.replaceState(null, "", url.toString());
+  }, [consorcio]);
 
   const cities = useMemo(
     () => Array.from(new Set(opportunities.map((o) => o.city))).sort((a, b) => a.localeCompare(b, "pt-BR")),
@@ -46,6 +66,9 @@ export function MonitorarTab({
   const filtered = useMemo(() => {
     let scoped = cityFilter === "all" ? opportunities : opportunities.filter((o) => o.city === cityFilter);
     if (verdict !== "all") scoped = scoped.filter((o) => o.triage.verdict === verdict);
+    // Story 30.1 AC3 — "Sim" só os que permitem; "Não" só os que vedam. N/I (null) cai fora de ambos.
+    if (consorcio === "sim") scoped = scoped.filter((o) => o.permiteConsorcio === true);
+    else if (consorcio === "nao") scoped = scoped.filter((o) => o.permiteConsorcio === false);
     return [...scoped].sort((a, b) => {
       if (sortMode === "triagem") {
         if (RANK[a.triage.verdict] !== RANK[b.triage.verdict]) return RANK[a.triage.verdict] - RANK[b.triage.verdict];
@@ -55,7 +78,7 @@ export function MonitorarTab({
       if (sortMode === "deadline") return deadlineTime(a.proposalDeadline) - deadlineTime(b.proposalDeadline);
       return b.opportunityScore - a.opportunityScore;
     });
-  }, [cityFilter, sortMode, verdict]);
+  }, [cityFilter, sortMode, verdict, consorcio]);
 
   return (
     <section className="area area-monitorar">
@@ -85,6 +108,14 @@ export function MonitorarTab({
               <option value="vai">Vai ({counts.vai})</option>
               <option value="olha">Olha ({counts.olha})</option>
               <option value="pula">Pula ({counts.pula})</option>
+            </select>
+          </label>
+          <label>
+            <span>Permite Consórcio</span>
+            <select value={consorcio} onChange={(event) => setConsorcio(event.target.value as ConsorcioFilter)}>
+              <option value="qualquer">Qualquer</option>
+              <option value="sim">Sim</option>
+              <option value="nao">Não</option>
             </select>
           </label>
           <label>
@@ -128,6 +159,7 @@ export function MonitorarTab({
                 </span>
                 <span className={`source source-${sourceClass(opportunity.source)}`}>{sourceLabel(opportunity.source)}</span>
                 <span className={`state-badge ${operationalState(opportunity).tone}`}>{operationalState(opportunity).label}</span>
+                <ConsorcioChip value={opportunity.permiteConsorcio} />
                 {((opportunity as OpportunityWithSuspicion).suspicionSignals?.length ?? 0) > 0 ? (
                   <span className="state-badge review">⚠️ exigência atípica</span>
                 ) : null}
@@ -136,6 +168,11 @@ export function MonitorarTab({
               <p>
                 {opportunity.buyer} · {opportunity.city}/{opportunity.uf} · {opportunity.distanceKm} km
               </p>
+              {needsConsorcioPartner(opportunity) ? (
+                <p className="consorcio-alert" role="note">
+                  Consórcio pode ser necessário — cadastre empresa parceira no Vault para análise completa.
+                </p>
+              ) : null}
             </div>
             <div className="card-scores">
               <ScorePill label="Score" value={opportunity.opportunityScore} />

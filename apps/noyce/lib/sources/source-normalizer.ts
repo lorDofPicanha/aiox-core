@@ -30,6 +30,7 @@ interface CanonicalCore {
   publicationDate: string | null;
   proposalDeadline: string | null;
   sourceUrl: string | null;
+  permiteConsorcio: boolean | null;
 }
 
 function emptyCore(): CanonicalCore {
@@ -47,7 +48,59 @@ function emptyCore(): CanonicalCore {
     publicationDate: null,
     sourceUrl: null,
     proposalDeadline: null,
+    permiteConsorcio: null,
   };
+}
+
+// Story 30.1 — extrai a flag de consórcio do payload PNCP. Regra de prioridade (Dev Notes):
+//   1. campo booleano dedicado de consórcio (permiteConsorcio/admiteConsorcio), se existir → usa direto;
+//   2. indicadorSubcontratacao === true E texto livre menciona "consórcio" → true;
+//   3. texto livre veda consórcio ("não admite/vedada/proibida ... consórcio") → false;
+//   4. nenhum sinal → null (NUNCA false por ausência — AC5).
+// Casa em texto SEM acentos (ver foldDiacritics) para não depender de á/ã/ç/etc.
+const CONSORCIO_VEDADO = /(?:nao\s+(?:admit\w*|sera\s+admit\w*|aceit\w*|sera\s+permit\w*)|vedad[ao]|proibid[ao]|veda-se)[^.]{0,40}consorcio/i;
+const CONSORCIO_VEDADO_INV = /consorcio[^.]{0,40}(?:nao\s+(?:sera\s+)?(?:admit\w*|permit\w*)|vedad[ao]|proibid[ao]|inadmiss\w*|e\s+vedad[ao])/i;
+const CONSORCIO_MENCAO = /consorcio/i;
+
+function foldDiacritics(text: string): string {
+  return text.normalize("NFKD").replace(/[̀-ͯ]/g, "");
+}
+
+function asBoolFlag(value: unknown): boolean | null {
+  if (typeof value === "boolean") return value;
+  if (typeof value === "string") {
+    const v = value.trim().toLowerCase();
+    if (["true", "sim", "s", "1"].includes(v)) return true;
+    if (["false", "nao", "não", "n", "0"].includes(v)) return false;
+  }
+  return null;
+}
+
+export function normalizeConsorcio(raw: Record<string, unknown>): boolean | null {
+  // 1) campo booleano dedicado (alguns payloads/feeds expõem permiteConsorcio/admiteConsorcio).
+  const dedicated = asBoolFlag(raw.permiteConsorcio ?? raw.admiteConsorcio ?? raw.consorcioPermitido);
+  if (dedicated !== null) return dedicated;
+
+  const texto = foldDiacritics(
+    [
+      raw.informacaoComplementar,
+      raw.informacoesComplementares,
+      raw.objetoCompra,
+      raw.objeto,
+    ]
+      .map((t) => (typeof t === "string" ? t : ""))
+      .join(" "),
+  );
+
+  // 3) texto veda consórcio → false (checado antes de 2 para não cair em "menção" positiva).
+  if (CONSORCIO_VEDADO.test(texto) || CONSORCIO_VEDADO_INV.test(texto)) return false;
+
+  // 2) subcontratação permitida + menção a consórcio → true.
+  const subcontratacao = asBoolFlag(raw.indicadorSubcontratacao);
+  if (subcontratacao === true && CONSORCIO_MENCAO.test(texto)) return true;
+
+  // 4) sem sinal.
+  return null;
 }
 
 function digitsOnly(value: unknown): string | null {
@@ -161,6 +214,12 @@ export function normalizePncpRaw(raw: Record<string, unknown>, snapshot: RawSnap
 
   core.sourceUrl = asText(raw.linkSistemaOrigem ?? raw.linkProcessoEletronico);
   if (core.sourceUrl !== null) evidence.push(ev("sourceUrl", core.sourceUrl, "jsonPointer", "/linkSistemaOrigem"));
+
+  // Story 30.1 — flag de consórcio (true|false|null). Só registra evidência quando há sinal.
+  core.permiteConsorcio = normalizeConsorcio(raw);
+  if (core.permiteConsorcio !== null) {
+    evidence.push(ev("permiteConsorcio", String(core.permiteConsorcio), "derived", "consorcio:indicadorSubcontratacao+informacaoComplementar"));
+  }
 
   const candidateId = asText(raw.numeroControlePNCP ?? raw.numeroControlePncp) ?? `${snapshot.source}:${snapshot.snapshotId}`;
   return finalize(core, evidence, snapshot, candidateId);

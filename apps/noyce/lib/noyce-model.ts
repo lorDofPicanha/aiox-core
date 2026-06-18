@@ -81,6 +81,11 @@ export interface Opportunity {
   stage3?: Stage3Synthesis | null; // prescriptive 5-frases (gated by kill-gate)
   triage: DiscoveryTriage; // Monitorar verdict (Vai/Olha/Pula)
   habilitationResult?: HabilitationResult | null;
+  // Story 30.1: o edital permite participação em consórcio?
+  //   true  = permite · false = proíbe · null = edital silente (NÃO assumir false).
+  // Origem: source-normalizer extrai do payload PNCP (indicadorSubcontratacao + texto);
+  // ausência de sinal ⇒ null. Renderizado como chip Sim/Não/N/I na Mesa/Monitorar.
+  permiteConsorcio?: boolean | null;
 }
 
 export type HabilitationRequirementCategory =

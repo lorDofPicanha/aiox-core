@@ -268,6 +268,18 @@ export function buildTriage(
   return { verdict, score, reason, daysToDeadline: days, obrasRelevant };
 }
 
+// Story 30.1 (AC4) — sugestão de parceiro de consórcio. Retorna true quando o edital PERMITE
+// consórcio (permiteConsorcio === true) E a habilitação SOLO tem um bloco TÉCNICO com status
+// NAO_ATENDE (lacuna técnica que a empresa não fecha sozinha). Não-bloqueante: apenas sinaliza
+// que cadastrar uma empresa parceira no Vault destravaria a análise. null/false ⇒ false.
+export function needsConsorcioPartner(opportunity: Opportunity): boolean {
+  if (opportunity.permiteConsorcio !== true) return false;
+  const porBloco = opportunity.habilitationResult?.porBloco;
+  if (!porBloco) return false;
+  const tecnico = [porBloco.tecnico_profissional, porBloco.tecnico_operacional];
+  return tecnico.some((bloco) => bloco?.status === "NAO_ATENDE");
+}
+
 // Renders the real recommended action (not the legalReviewLabel tag) with owner + consequence.
 export function legalDecisionAction(decision: DecisionPoint): DecisionAction {
   return {

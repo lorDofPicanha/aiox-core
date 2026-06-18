@@ -1,7 +1,8 @@
 import { opportunities, portalAccess } from "@/lib/noyce-data";
 import { formatDateTime } from "@/lib/noyce-model";
-import { buildNextStep, daysUntil, operationalState } from "@/lib/noyce-operational";
+import { buildNextStep, daysUntil, needsConsorcioPartner, operationalState } from "@/lib/noyce-operational";
 import { Metric } from "@/components/shell/bits";
+import { ConsorcioChip } from "@/components/shell/ConsorcioChip";
 import type { TabId } from "@/components/shell/tabs";
 
 // Mesa = the router. It does not execute a stage; it shows the day's prioritized work
@@ -50,12 +51,18 @@ export function MesaTab({ onOpen }: { onOpen: (id: string, tab: TabId) => void }
                   <span className={`triage-badge triage-${opportunity.triage.verdict}`}>
                     {opportunity.triage.verdict === "vai" ? "Vai" : "Olha"}
                   </span>{" "}
-                  {opportunity.title}
+                  {opportunity.title}{" "}
+                  <ConsorcioChip value={opportunity.permiteConsorcio} />
                 </strong>
                 <p>
                   {action.headline} · <strong>{action.owner}</strong>
                   {action.deadline ? ` · prazo ${formatDateTime(action.deadline)}` : ""}
                 </p>
+                {needsConsorcioPartner(opportunity) ? (
+                  <p className="consorcio-alert" role="note">
+                    Consórcio pode ser necessário — cadastre empresa parceira no Vault para análise completa.
+                  </p>
+                ) : null}
               </div>
               <button type="button" onClick={() => onOpen(opportunity.id, "analisar")}>
                 Abrir análise

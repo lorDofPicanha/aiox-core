@@ -74,6 +74,8 @@ export interface CanonicalOpportunity {
   publicationDate: string | null;
   proposalDeadline: string | null;
   sourceUrl: string | null;
+  // Story 30.1: permite consórcio? true|false|null (null = sem sinal no payload).
+  permiteConsorcio: boolean | null;
   contentHash: string;
   normalizedHash: string;
   dedupeKey: string;
