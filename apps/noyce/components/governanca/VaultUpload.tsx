@@ -6,8 +6,8 @@ import { useState } from "react";
 import {
   addVaultDoc,
   DOC_TYPES,
+  downloadVaultDoc,
   removeVaultDoc,
-  vaultGet,
   type VaultDocType,
 } from "@/lib/noyce-vault";
 import { useVaultMeta, VAULT_CHANGED_EVENT } from "@/components/shell/useLiveChecklist";
@@ -42,14 +42,7 @@ export function VaultUpload() {
   }
 
   async function download(id: string, fileName: string) {
-    const blob = await vaultGet(id);
-    if (!blob) return;
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = fileName;
-    a.click();
-    URL.revokeObjectURL(url);
+    await downloadVaultDoc(id, fileName);
   }
 
   async function remove(id: string) {

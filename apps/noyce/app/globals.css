@@ -572,3 +572,14 @@
 .victory-due.urgente{color:#8a6516}
 .package-bar{background:#f7f4ed;border-color:#1a1a1a22}
 .package-actions{display:flex;gap:8px}
+.export-mode-switch{display:flex;gap:6px;margin:4px 0}
+.export-mode-switch button{font-family:var(--mono);font-size:10.5px;font-weight:800;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--muted);padding:6px 12px;cursor:pointer}
+.export-mode-switch button.active{border-color:#2d5aa0;color:#2d5aa0;background:#f4f8fd}
+.individual-docs{border:1px solid var(--line);border-radius:14px;background:#fff;padding:16px;display:flex;flex-direction:column;gap:8px}
+.review-row.pendente{border-color:#88888855;background:#fafafa}
+.review-row.expirado{border-color:#a3333366;background:#fdf0ef}
+.doc-status{font-family:var(--mono);font-size:10px;font-weight:800}
+.doc-status.ok{color:#1c6c44}
+.doc-status.pendente{color:var(--muted)}
+.doc-status.expirado{color:#a33}
+.review-actions .docgen:disabled{opacity:.5;cursor:not-allowed}

@@ -125,6 +125,24 @@ export async function removeVaultDoc(id: string): Promise<void> {
   saveVaultMeta(loadVaultMeta().filter((m) => m.id !== id));
 }
 
+/**
+ * Download individual de um documento do vault (Story 30.4, AC5): lê o blob do IndexedDB
+ * pelo id e dispara o download local via URL de objeto temporária — NUNCA via rede
+ * (invariante de segurança do vault, doc 26 §9). Retorna false se o blob não existe.
+ * Centraliza o padrão já usado em VaultUpload.tsx para reuso no IndividualDocsPanel.
+ */
+export async function downloadVaultDoc(id: string, fileName: string): Promise<boolean> {
+  const blob = await vaultGet(id);
+  if (!blob) return false;
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = fileName;
+  a.click();
+  URL.revokeObjectURL(url);
+  return true;
+}
+
 /** Converte os docs do vault em RegularityDoc[] para o motor (pura — testável em node). */
 export function vaultToRegularity(meta: readonly VaultDocMeta[], asOf: string): RegularityDoc[] {
   return meta

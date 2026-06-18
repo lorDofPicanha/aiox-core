@@ -15,6 +15,7 @@ import {
 } from "@/lib/noyce-review";
 import { canGenerate, declarationFileName, generateDeclarationBlob } from "@/lib/noyce-docgen";
 import { buildDossierHtml, buildProposalCsv, isPackageFinal } from "@/lib/noyce-package";
+import { IndividualDocsPanel } from "@/components/analisar/IndividualDocsPanel";
 import { buildVictoryPlan } from "@/lib/noyce-victory-plan";
 import { SCORE_AS_OF } from "@/lib/noyce-data";
 import { loadVaultMeta } from "@/lib/noyce-vault";
@@ -37,6 +38,8 @@ export function ReviewDossier({ opportunity }: { opportunity: Opportunity }) {
   const [state, setState] = useState<ReviewState>({});
   const [editing, setEditing] = useState<string | null>(null);
   const [draft, setDraft] = useState("");
+  // Story 30.4: alterna entre o dossiê consolidado (default) e os documentos individuais.
+  const [exportMode, setExportMode] = useState<"dossier" | "individual">("dossier");
 
   useEffect(() => {
     setState(loadState(opportunity.id));
@@ -222,23 +225,48 @@ export function ReviewDossier({ opportunity }: { opportunity: Opportunity }) {
             ))}
         </div>
       ))}
-      <div className="docgen-bar package-bar">
-        <span>
-          <strong>Pacote do certame:</strong> dossiê completo (HTML → imprimir como PDF) + planilha de proposta na faixa
-          legal.{" "}
-          {isPackageFinal(reviewed)
-            ? "Revisão 100% — sai como PACOTE FINAL."
-            : `Revisão ${progress.done}/${progress.total} — sai com marca d'água RASCUNHO até concluir.`}
-        </span>
-        <span className="package-actions">
-          <button type="button" className="docgen" onClick={gerarPacote}>
-            ⬇ Dossiê (HTML/PDF)
-          </button>
-          <button type="button" className="docgen" onClick={gerarPlanilha}>
-            ⬇ Planilha (CSV)
-          </button>
-        </span>
+      <div className="export-mode-switch" role="tablist" aria-label="Modo de exportação">
+        <button
+          type="button"
+          role="tab"
+          aria-selected={exportMode === "dossier"}
+          className={exportMode === "dossier" ? "active" : ""}
+          onClick={() => setExportMode("dossier")}
+        >
+          📦 Dossiê Completo
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={exportMode === "individual"}
+          className={exportMode === "individual" ? "active" : ""}
+          onClick={() => setExportMode("individual")}
+        >
+          📄 Documentos Individuais
+        </button>
       </div>
+
+      {exportMode === "dossier" ? (
+        <div className="docgen-bar package-bar">
+          <span>
+            <strong>Pacote do certame:</strong> dossiê completo (HTML → imprimir como PDF) + planilha de proposta na faixa
+            legal.{" "}
+            {isPackageFinal(reviewed)
+              ? "Revisão 100% — sai como PACOTE FINAL."
+              : `Revisão ${progress.done}/${progress.total} — sai com marca d'água RASCUNHO até concluir.`}
+          </span>
+          <span className="package-actions">
+            <button type="button" className="docgen" onClick={gerarPacote}>
+              ⬇ Dossiê (HTML/PDF)
+            </button>
+            <button type="button" className="docgen" onClick={gerarPlanilha}>
+              ⬇ Planilha (CSV)
+            </button>
+          </span>
+        </div>
+      ) : (
+        <IndividualDocsPanel opportunity={opportunity} reviewed={reviewed} />
+      )}
 
       {declaracoesProntas.length > 0 ? (
         <div className="docgen-bar">
