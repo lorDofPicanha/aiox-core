@@ -458,4 +458,123 @@ I9 (preclusão nunca de sinal único — alerta proativo pela `dataSessao`) · I
 Re-validar a v2 com pedro-valerio (gate "zero caminhos errados"). Aprovada → **Fase A** começa por F0 (tipos canônicos + testes de transição incluindo os caminhos PROIBIDOS do §10.7), tudo determinístico/LLM-ready, sem ligar o cérebro.
 
 ---
-*Doc 32 — mantido por Orion (aios-master). Fundamentado na auditoria real-vs-mock de 18/Jun (2 agentes Explore sobre habilitar/entregar e acompanhar/recorrer/maestro). §10 = validação pedro-valerio; §11 = máquina de estados v2 corrigida (Orion).*
+
+## 12. Re-validação da v2 (pedro-valerio)
+
+> **Data:** 2026-06-18 · **Auditor:** pedro-valerio (Process Absolutist)
+> **Veredito:** 🟡 **APROVADO PARA FASE A COM 4 CORREÇÕES OBRIGATÓRIAS DE DESENHO (C1–C4) ANTES DE CODAR O `orchestrator.ts`.** A v2 resolve a maioria dos achados §10 de forma real (não cosmética) — em particular F0, B1, B2, B3, B4, B5, B6, B7 estão estruturalmente cobertos. Porém a própria v2 **introduziu arestas novas com caminhos errados** que a v1 não tinha: um ramo de transição (`CONSORCIO`) que não existe no motor real, uma transição não-determinística ("volta ao estado anterior") sem campo que a torne determinística, dois pseudo-terminais sem saída nomeada (`congelado-edital-mudou`, `prazo-perdido`), e uma colisão de origem entre `aguardando-dado`(A2) e `aguardando-dado(parceiro)`(A5). Tabela §11.7 contestada item a item abaixo.
+> **Princípio:** _se o executor CONSEGUE codar errado, o desenho está errado._ As C1–C4 são baratas (todas resolvíveis no papel/tipo) e não reabrem nenhum BLOQUEANTE da v1.
+
+### 12.1 Rastreabilidade contestada — cada achado §10 vs. v2
+
+| Achado | v2 afirma resolver por | Verificado contra código/desenho | Status |
+|---|---|---|---|
+| **F0** | §11.0 tipos canônicos `MaestroStage`/`MaestroState`/`SessionResult` | Grep confirma: zero ocorrências em código → continuam sendo só proposta no doc (correto: é o 1º item da Fase A). Tipos são string-literal union + interface com `editalVersionHash`, `humanLayer[]`, `history[]`, `clocks[]`. Mapeamento `MaestroStage→WorkflowStage` declarado. | ✅ RESOLVIDO (no desenho; codar é a Fase A) |
+| **B1** | aresta `pronto-protocolo →(confirma protocolo)→ protocolada` arma Sentinela | Aresta existe no §11.1 com payload nomeado (data/hora + nº processo). Sentinela arma relógio. Fecha o estado órfão. | ✅ RESOLVIDO |
+| **B2** | `avaliar-recurso-inabilitacao` vs `-julgamento`, relógios próprios | Dois estados separados + `eniacOutcome` com `inabilitada`/`derrotada_julgamento` distintos + `PreclusiveClock` por tipo. | ✅ RESOLVIDO |
+| **B3** | `vencedora-provisoria`/`defendendo-vitoria` + relógio contrarrazões; `vencido` só pós-homologação (I10) | `vencido` deixou de ser terminal-feliz imediato; passa por `vencedora-provisoria`→vigia janela de terceiros. `thirdPartyAppealWindow` no `SessionResult`. **Ver C-NOVO-3 (saída do mérito perdido).** | 🟡 PARCIAL |
+| **B4** | `em-diligencia` + relógio + gate | Estado e relógio existem. **Mas a transição de SAÍDA "volta ao estado anterior" não é determinística — ver C2.** | 🟡 PARCIAL |
+| **B5** | `congelado-edital-mudou` + `editalVersionHash` (I11) | Evento `[qualquer estado]→congelado-edital-mudou` existe; hash de versão modelado. **Mas `congelado-edital-mudou` não tem aresta de SAÍDA — ver C1.** | 🟡 PARCIAL |
+| **B6** | `impugnacao-edital` ligado a `SuspicionSignal`, gate advogado | `SuspicionSignal` é real no código (`noyce-suspicion.ts`, `dataLimiteImpugnacao` já calcula a janela art.164 com dias úteis+feriados). Estado novo se liga a ele. Forte. | ✅ RESOLVIDO |
+| **B7** | alerta proativo pela `dataSessao` (I9); ata só p/ razões/contrarrazões | `PreclusiveClock.armedBy: "dataSessao"` + alerta proativo pré-sessão no diagrama. Separação proativo/reativo explícita. I9 adotado e declarado testável. | ✅ RESOLVIDO |
+| **A1** | guarda de tarefas sanáveis abertas em `GO_COM_TAREFAS` antes de `entregar` | Guarda nomeada no diagrama (tarefas sanáveis viram alertas Sentinela c/ dono+prazo). `HabilitationGap.sanabilidade` é real. **Mas a guarda diz "viram alertas" e mesmo assim avança para `entregando` — o veto real de protocolo (gap sanável bloqueante não-resolvido) precisa estar no gate `pronto-protocolo`, não só virar alerta. Ver C4.** | 🟡 PARCIAL |
+| **A2** | estado `aguardando-dado` (não-descarte) | Estado existe, Sentinela vigia prazo, não conta como descarte. | ✅ RESOLVIDO |
+| **A3** | sub-resultado `empate_ficto_meepp` + janela imediata | `eniacOutcome: "empate_ficto_meepp"` + `PreclusiveClock kind:"empate_ficto"`. **Mas no diagrama o ramo empate-ficto é um beco: `--> [janela imediata: humano cobre lance]` não nomeia o estado-destino após cobrir/não cobrir. Ver C-NOVO-4.** | 🟡 PARCIAL |
+| **A4** | `prazo-perdido` + I12 (re-avalia relógio em toda transição) | I12 declarado; `[qualquer transição que custa tempo]→prazo-perdido`. **`prazo-perdido` não tem saída — é terminal? registrado e encerra? Ver C1.** | 🟡 PARCIAL |
+| **A5** | evento `parceiro-cadastrado` → re-entra em `habilitado` | Evento e retorno existem. **Mas colide com A2: o mesmo estado `aguardando-dado` é usado para "falta dado de análise" (A2) E "falta parceiro de consórcio" (A5), com eventos de saída diferentes (`dado-recebido` vs `parceiro-cadastrado`). Sem discriminador, o executor não sabe qual evento aplica. Ver C3.** | 🟡 PARCIAL |
+| **A6/A7** | §11.4 idempotência append-only + chave por versão | `humanLayer` append-only + scheduler read-only sobre estado com decisão humana + chave `(opportunityId, editalVersionHash)`. Regra de exclusão declarada testável. | ✅ RESOLVIDO (ver 12.3 sobre testabilidade) |
+| **I4** | §11.3 motor dias úteis hora-cheia | `businessDaysBetween` JÁ existe no código (com feriados nacionais) mas é **dateOnly, sem hora-cheia** (verificado: usa `parseDateOnly`/`setUTCDate`). v2 reconhece e especifica `businessDaysDeadline(...)` + corte hora-cheia + `basis: "uteis_horacheia"`. Fuso corrigido (GO=SP=UTC-3, ressalva v1 retirada — correto). | ✅ RESOLVIDO (no desenho; é código crítico da Fase A) |
+| **I6** | §11.4 | idem A6/A7. | ✅ RESOLVIDO |
+| **I9** | alerta proativo pela `dataSessao` | `armedBy: "dataSessao"`; teste prescrito. | ✅ RESOLVIDO |
+| **I10** | `vencido` só pós janela de terceiros + homologação | Declarado e refletido no diagrama. | ✅ RESOLVIDO |
+| **I11** | mudança de edital invalida derivados + congela | `editalVersionHash` + `congelado-edital-mudou` + marcar ERM/HabilitationResult `stale`. **Falta: o diagrama não mostra a aresta que TIRA do congelamento (re-triagem). Ver C1.** | 🟡 PARCIAL |
+| **I12** | toda transição re-avalia o relógio | Declarado `[I12: re-checa prazo em TODA transição]`. | ✅ RESOLVIDO (vira guarda compartilhada testável) |
+| **M1** | §11.4 `step_failed`, estado permanece | Regra explícita: falha de agente → estado permanece, marca `step_failed`, nunca avança ato vinculante com fallback. | ✅ RESOLVIDO |
+| **M2** | §11.6 data inferida só "CONFIRMAR DATA" | `SessionResult.confidence: observed\|inferred` + regra "inferred não arma gate duro". `PreclusiveClock` precisa carregar esse `confidence` também — ver nota C-NOVO-5 (menor). | 🟡 PARCIAL |
+| **M3** | §11.5 fechamento de gate | aprovar/corrigir/rejeitar com destino de cada um. "corrigir → volta ao agente que produziu". Resolve o padrão recorrente. | ✅ RESOLVIDO |
+
+**Placar:** ✅ 14 · 🟡 8 · ❌ 0. Nenhum achado da v1 ficou NÃO RESOLVIDO. Os 8 PARCIAIS concentram-se em arestas novas, condensados em C1–C4 + notas.
+
+### 12.2 BLOQUEANTES NOVOS introduzidos pela v2 (arestas que a v1 não tinha)
+
+**C1 — BLOQUEANTE — três estados novos são becos sem saída nomeada: `congelado-edital-mudou`, `prazo-perdido` e (parcialmente) o pseudo-terminal.**
+O §11.0 classifica `congelado-edital-mudou` como "pseudo-terminal: exige re-triagem humana", mas **nenhuma aresta no §11.1 sai dele**. A v1 exigia (regra de auditoria): _todo estado tem entrada E saída nomeadas._ Como o operador tira um edital do congelamento? Por re-triagem — mas isso não está desenhado. Idem `prazo-perdido`: o §11.1 só tem a entrada (`[qualquer transição]→prazo-perdido`); não diz se é terminal absoluto (registrado e encerra) ou se admite retorno quando o prazo perdido era de uma etapa não-fatal (ex.: perdeu janela de uma diligência mas o certame segue). **Sem isso, o executor codará `prazo-perdido` como terminal de tudo, matando editais que ainda eram salváveis — ou como não-terminal, deixando o edital vagar.**
+**Correção C1:** (a) `congelado-edital-mudou --(humano re-tria a versão nova do edital)--> triado` (re-entra no início, com `editalVersionHash` novo; o `humanLayer` antigo é preservado mas marcado como referente à versão anterior). (b) Decidir e desenhar: `prazo-perdido` é **terminal por prazo** (registrado, com `clock.kind` que venceu anotado) — e prazos NÃO-fatais (diligência respondível ainda, etapa interna) NÃO devem cair em `prazo-perdido`, mas gerar `step_failed` + alerta (M1) mantendo o estado. Listar explicitamente QUAIS `PreclusiveClock.kind` levam a `prazo-perdido` (proposta, intencao_recurso, razoes_recurso, contrarrazoes, impugnacao_edital — os preclusivos de verdade) e quais não (diligencia interna → alerta, não morte).
+
+**C2 — BLOQUEANTE — `em-diligencia --responde--> volta ao estado anterior` NÃO é determinístico: `MaestroState` não tem `previousStage`.**
+O founder apontou exatamente isto. A interface `MaestroState` (§11.0) tem `stage`, `editalVersionHash`, `humanLayer`, `history[]`, `clocks[]` — **nenhum campo guarda de qual estado a diligência foi aberta.** "Volta ao estado anterior" obriga o executor a inferir o anterior lendo `history[]`, e o último item do history pode não ser o estado de origem (pode ter havido um alerta, um re-check de relógio I12, um `step_failed`). Inferência de destino a partir de histórico = caminho errado garantido (volta para o estado errado). Além disso, diligência pode abrir de DOIS pontos diferentes: na **habilitação da sessão** (origem `em-sessao`) e o art. 64 também admite diligência na fase de habilitação **antes** do julgamento — origens distintas com retornos distintos.
+**Correção C2:** adicionar `returnTo: MaestroStage` ao `MaestroState` (ou um campo `diligence: { openedFrom: MaestroStage; clock: PreclusiveClock }`). A aresta vira `em-diligencia --responde--> {returnTo}` determinística. Teste obrigatório: abrir diligência de `em-sessao` retorna a `em-sessao`; abrir de `habilitado` retorna a `habilitado`. Sem campo de retorno explícito, REPROVA.
+
+**C3 — BLOQUEANTE — `aguardando-dado` é sobrecarregado por DUAS origens com eventos de saída diferentes (A2 vs A5) sem discriminador.**
+O §11.1 usa `aguardando-dado` para: (i) `confiança < piso` (A2, sai por dado recebido) e (ii) `CONSORCIO --> aguardando-dado (parceiro)` (A5, sai por `parceiro-cadastrado`). São duas espera-de-coisa-diferente no MESMO estado. O executor que receber um evento `dado-recebido` num edital que na verdade esperava `parceiro` vai roteá-lo errado (re-roda Prisma quando devia re-rodar Forja com consórcio). Sobrecarga de estado sem discriminador = ambiguidade de transição = caminho errado.
+**Correção C3:** ou (a) `aguardando-dado` carrega um campo `waitingFor: "analise" | "parceiro_consorcio" | "certidao" | ...` que seleciona deterministicamente o evento de saída e o agente a re-rodar; ou (b) separar em dois estados (`aguardando-dado` e `aguardando-parceiro`). Preferência: (a) com enum fechado, porque o conjunto de "dados que faltam" vai crescer (certidão, balanço, atestado) e cada um re-entra num ponto diferente. Teste: edital em `aguardando-dado(parceiro)` que recebe evento `dado-recebido` (não-parceiro) → REJEITADO/no-op, não avança.
+
+**C4 — BLOQUEANTE — `CONSORCIO` é um ramo de transição que NÃO existe no motor real; `GO_COM_TAREFAS` avança para `entregando` apesar de A1.**
+Dois defeitos na transição `habilitado --Forja-->`:
+- (i) O diagrama §11.1 ramifica em `NO_GO insanável / GO_COM_TAREFAS / CONSORCIO / GO`. Mas `HabilitationVerdict` real (verificado em `noyce-model.ts`) é **exatamente `{ GO, GO_COM_TAREFAS, PENDENTE_DADO, NO_GO }` — `CONSORCIO` NÃO é um verdict.** Consórcio é uma `ConsortiumEvaluation`/recomendação dentro de `tarefas` ("avaliar modo consorcio"), e o verdict solo nesses casos é `NO_GO`/`PENDENTE_DADO`. Se o executor implementar um ramo `case "CONSORCIO"` no switch do verdict, ele nunca dispara (dead branch) e o caminho real (NO_GO solo + recomendação de consórcio) cai no ramo `arquivado-motivo`, **matando o edital que era ganhável via consórcio**. Este é um caminho errado NOVO, criado pela v2.
+- (ii) `GO_COM_TAREFAS` avança para `entregando` e a v2 (A1) diz que tarefas viram alertas. Mas o veto preclusivo real precisa estar no **gate de saída `pronto-protocolo`**: se uma tarefa de habilitação SANÁVEL e BLOQUEANTE (ex.: CND vencida) ainda estiver aberta quando o humano for confirmar protocolo, o gate tem de BLOQUEAR. "Virar alerta do Sentinela" não impede o avanço; impede o esquecimento. São coisas diferentes.
+**Correção C4:** (i) a transição `habilitado→` deve ramificar pelos 4 verdicts REAIS. O destino de consórcio é derivado de `NO_GO/PENDENTE_DADO solo + ConsortiumEvaluation.aceitaPeloEdital + needsConsorcioPartner`, levando a `aguardando-dado(waitingFor: parceiro_consorcio)` (C3), NÃO de um verdict `CONSORCIO` inexistente. `PENDENTE_DADO` → `aguardando-dado` (já é o A2). (ii) o gate `pronto-protocolo` recebe veto explícito: "nenhuma `HabilitationGap` `sanabilidade=SANAVEL` marcada bloqueante pode estar não-resolvida". Teste do caminho proibido: `entregando` com gap sanável bloqueante aberto → confirmar protocolo é REJEITADO.
+
+### 12.3 Arestas novas menores (ALTA/MÉDIA — não bloqueiam Fase A, mas entram nos testes)
+
+- **C-NOVO-3 (ALTA) — `defendendo-vitoria`: para onde vai se a ENIAC PERDE o mérito do recurso de terceiro?** (Pergunta do founder.) O §11.1 leva `terceiro recorre → defendendo-vitoria (contrarrazões)`, mas não nomeia a saída. Dois desfechos: (a) recurso de terceiro NEGADO → segue para `vencido` (homologação); (b) recurso de terceiro PROVIDO → a ENIAC **deixou de ser vencedora**: pode ter sido desclassificada/inabilitada por decisão superior, abrindo p/ ELA uma nova janela (recurso hierárquico / pedido de reconsideração, conforme o caso). Não pode cair em `vencido` nem sumir. **Correção:** `defendendo-vitoria --recurso de 3º negado + homologação--> vencido`; `--recurso de 3º provido (ENIAC perde a posição)--> avaliar-recurso-julgamento` (reusa o estado de avaliação de fundamento, com relógio próprio do novo ato). Sem isso, ganhar-e-depois-perder-no-recurso-de-terceiro vira beco.
+- **C-NOVO-4 (ALTA) — `empate-ficto ME/EPP` não nomeia estado-destino.** §11.1: `empate-ficto --> [janela imediata: humano cobre lance]` — colchete é ação, não estado. Após cobrir o lance, o resultado da sessão ainda é `vencedora`/`derrotada`; após NÃO cobrir, é `derrotada`. **Correção:** empate-ficto é um sub-evento DENTRO de `em-sessao` (clock `empate_ficto`), não um estado paralelo; resolvido o lance, permanece em `em-sessao` aguardando o `SessionResult` final. Deixar isso explícito evita que o executor crie um estado `empate-ficto` órfão.
+- **C-NOVO-5 (MÉDIA) — `PreclusiveClock` precisa carregar `confidence` (M2).** A regra M2 (data `inferred` não arma gate duro) vive no `SessionResult.confidence`, mas o `PreclusiveClock` (que é quem efetivamente ARMA o alerta/gate) não tem campo de confiança. Um clock armado a partir de data inferida precisa carregar isso para o gate decidir entre "CONFIRMAR DATA" e gate duro. **Correção:** adicionar `dateConfidence: "observed" | "inferred"` ao `PreclusiveClock`; gate duro só sobre `observed`.
+- **C-NOVO-6 (MÉDIA) — `HUMAN_REQUIRED_ACTS` ainda não foi ampliado no código.** §11.5 diz "+contrarrazoes, impugnacao_edital, resposta_diligencia", mas a constante real em `noyce-source-registry.ts` segue `["lance","declaracao","proposta","recurso"]`. É trabalho da Fase A — apenas registrar que a ampliação é parte do gate de saída (I1), com teste que prova que os 3 novos atos são bloqueados como `externalActBlocked`.
+
+### 12.4 Cobertura final (checklist absolutista)
+
+- **Todo estado tem entrada E saída nomeadas?** ❌ ainda não: `congelado-edital-mudou` e `prazo-perdido` sem saída (C1); diligência com saída não-determinística (C2). Após C1+C2 → ✅.
+- **Todo prazo preclusivo continua coberto?** ✅ — proposta, impugnação(art.164), intenção de recurso (proativo, B7/I9), razões, contrarrazões (B3), diligência (B4), empate ME/EPP (A3). O conjunto de `PreclusiveClock.kind` cobre todos. Reforço: amarrar quais levam a `prazo-perdido` (C1).
+- **A regra de idempotência §11.4 é testável?** ✅ — sim, e melhor que a v1: "humanLayer não-vazio ⇒ scheduler read-only para aquele edital" é uma asserção binária verificável (teste: scheduler tenta mudar `stage` de edital com `intend_to_appeal` → REJEITADO; só adiciona alerta → PASSA). Chave `(opportunityId, editalVersionHash)` testável por hash. A única peça a não deixar implícita: "adicionar alerta" deve ser a ÚNICA mutação permitida ao scheduler em estado human-locked — enumerar a allowlist no teste.
+- **Executor consegue pular etapas?** Não em saltos da v1 (B-series fechados). Os riscos remanescentes são de roteamento ambíguo (C3) e ramo morto/morte indevida (C4), não de salto — e C3/C4 os fecham.
+
+### 12.5 Veredito
+
+🟡 **APROVADO PARA FASE A condicionado a C1–C4 corrigidos no DESENHO (§11) antes da 1ª linha de `orchestrator.ts`.** São correções de tipo/aresta, baratas, sem reabrir nenhum BLOQUEANTE v1. C-NOVO-3 e C-NOVO-4 (ALTA) devem entrar como casos de teste de transição da Fase A (incluindo os caminhos PROIBIDOS); C-NOVO-5/6 (MÉDIA) são itens de implementação da Fase A. Recomendação: Orion aplica C1–C4 num patch §11 (ou §11.9 "ajustes pós-re-validação") e os 4 testes negativos correspondentes entram no gate de saída da Fase A junto aos do §10.7.
+
+---
+
+## 13. Patch de desenho pós-re-validação — C1–C4 + C-NOVO (Orion, 18/Jun)
+
+> Aplica as correções condicionantes da §12. Emenda a §11. Depois disto o desenho está **travado para a Fase A**.
+
+**C1 — becos sem saída.**
+- `congelado-edital-mudou --(humano re-tria a versão nova; `humanLayer` antigo preservado e marcado como da versão anterior)--> triado`, com **novo `editalVersionHash`** (I11). Único caminho de volta; nada sai automático.
+- `prazo-perdido` = **terminal com `missedClock`** (anota qual venceu). Discriminação no clock: **`PreclusiveClock.fatalOnMiss: boolean`**. Fatais (`proposta`, `impugnacao_edital`, `intencao_recurso`, `razoes_recurso`, `contrarrazoes`, `empate_ficto`) → miss = `prazo-perdido` (ou o terminal do ramo, p.ex. recurso = `encerrado-sem-recurso`). Não-fatais (ex.: diligência interna ainda respondível) → **`step_failed` + alerta CRÍTICO** (M1/I5), estado **permanece**. Nunca matar edital salvável.
+
+**C2 — retorno determinístico da diligência.** `MaestroState` ganha **`returnTo: MaestroStage | null`** (ou `diligence:{ openedFrom, clock }`), setado na ENTRADA. `em-diligencia --responde--> {returnTo}`. Nunca inferir de `history[]`. Teste: abriu de `em-sessao`→volta a `em-sessao`; abriu de `habilitado`→volta a `habilitado`.
+
+**C3 — `aguardando-dado` desambiguado.** Ganha **`waitingFor: "analise" | "parceiro_consorcio" | "certidao" | "balanco" | "atestado"`** (enum fechado, extensível). Seleciona deterministicamente o evento de saída e o agente a re-rodar + usa `returnTo`. Teste: edital em `aguardando-dado(parceiro_consorcio)` que recebe `dado-recebido` (não-parceiro) → no-op, não avança.
+
+**C4 — `CONSORCIO` é dead branch; ramificar pelos 4 verdicts reais.** `HabilitationVerdict = {GO, GO_COM_TAREFAS, PENDENTE_DADO, NO_GO}` (`noyce-model.ts:477` — sem `CONSORCIO`). Fluxo correto de `habilitado`:
+```
+GO              --> entregando
+GO_COM_TAREFAS  --> entregando
+PENDENTE_DADO   --> aguardando-dado(waitingFor="analise")
+NO_GO + ConsortiumEvaluation.aceitaPeloEdital + needsConsorcioPartner --> aguardando-dado(waitingFor="parceiro_consorcio")   ← NÃO arquiva
+NO_GO (sem rota de consórcio) --> arquivado-motivo
+```
+E o gate **`pronto-protocolo` ganha veto explícito**: nenhuma `HabilitationGap` `sanabilidade=SANAVEL` **bloqueante** pode estar não-resolvida ao confirmar protocolo (A1). Alerta ≠ veto: alerta impede esquecer, veto impede avançar.
+
+**C-NOVO-3 (ALTA) — saída de `defendendo-vitoria`.** recurso de 3º **negado** + homologação → `vencido`; recurso de 3º **provido** (ENIAC perde a posição) → **`avaliar-recurso-julgamento`** (relógio próprio do novo ato). Nunca `vencido` nem limbo.
+
+**C-NOVO-4 (ALTA) — empate-ficto é sub-evento, não estado.** Vive DENTRO de `em-sessao` (clock `empate_ficto`, `fatalOnMiss=true`). Coberto o lance ou não, permanece em `em-sessao` aguardando o `SessionResult` final. Não criar nó `empate-ficto` órfão.
+
+**C-NOVO-5 (MÉDIA) — `PreclusiveClock.dateConfidence: "observed" | "inferred"`.** O clock arma o gate, então carrega a confiança (M2): gate duro só sobre `observed`; `inferred` → "CONFIRMAR DATA" com dono.
+
+**C-NOVO-6 (MÉDIA) — `HUMAN_REQUIRED_ACTS`** ampliar p/ `+contrarrazoes, impugnacao_edital, resposta_diligencia` é tarefa da Fase A (hoje `[lance,declaracao,proposta,recurso]` em `noyce-source-registry.ts`); teste prova que os 3 novos saem como `externalActBlocked` (I1).
+
+### 13.1 Gate de saída da Fase A — testes negativos obrigatórios (somam aos do §10.7)
+1. `em-diligencia` sem `returnTo` → REJEITADO (C2).
+2. `aguardando-dado` sem `waitingFor` → REJEITADO (C3); `parceiro_consorcio` recebendo `dado-recebido` → no-op.
+3. `NO_GO + needsConsorcioPartner` indo a `arquivado-motivo` → REJEITADO; deve ir a `aguardando-dado(parceiro_consorcio)` (C4).
+4. `pronto-protocolo` com gap SANÁVEL bloqueante aberto → REJEITADO (C4).
+5. `defendendo-vitoria` com recurso de 3º provido indo a `vencido` → REJEITADO; deve ir a `avaliar-recurso-julgamento` (C-NOVO-3).
+6. `congelado-edital-mudou` avançando sem re-triagem humana → REJEITADO (C1).
+7. clock `fatalOnMiss=false` vencido levando a `prazo-perdido` → REJEITADO; deve gerar alerta e manter estado (C1).
+
+**Estado do desenho:** ✅ **TRAVADO PARA A FASE A.** Tipos canônicos (F0) + §11 + este patch definem o contrato; nenhum BLOQUEANTE v1 reaberto; arestas novas da v2 fechadas. Próximo: codar F0 (tipos + testes de transição com os caminhos PROIBIDOS) → `orchestrator.ts` determinístico/LLM-ready.
+
+---
+*Doc 32 — mantido por Orion (aios-master). Fundamentado na auditoria real-vs-mock de 18/Jun (2 agentes Explore). §10 = validação pedro-valerio (v1); §11 = máquina de estados v2 (Orion); §12 = re-validação pedro-valerio (v2); §13 = patch C1–C4 + C-NOVO (Orion). **Desenho travado para Fase A.***
