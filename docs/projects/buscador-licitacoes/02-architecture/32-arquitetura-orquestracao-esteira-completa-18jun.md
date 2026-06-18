@@ -576,5 +576,11 @@ E o gate **`pronto-protocolo` ganha veto explícito**: nenhuma `HabilitationGap`
 
 **Estado do desenho:** ✅ **TRAVADO PARA A FASE A.** Tipos canônicos (F0) + §11 + este patch definem o contrato; nenhum BLOQUEANTE v1 reaberto; arestas novas da v2 fechadas. Próximo: codar F0 (tipos + testes de transição com os caminhos PROIBIDOS) → `orchestrator.ts` determinístico/LLM-ready.
 
+> **Fase A — F0 + engine: INICIADA/ENTREGUE (Dex, 18/Jun).** Implementação determinística pura (sem LLM, sem I/O), seguindo este desenho à risca:
+> - `apps/noyce/lib/agents/maestro-types.ts` — `MaestroStage` (23 estados), `MaestroState{stage, editalVersionHash, humanLayer[], returnTo, history[], clocks[], waitingFor?, stepFailed?}`, `PreclusiveClock{...,fatalOnMiss,dateConfidence}` (C1+C-NOVO-5), `SessionResult`, união `MaestroEvent`, `maestroToWorkflowStage()`, `MAESTRO_BINDING_ACTS` (7 atos, I1/C-NOVO-6).
+> - `apps/noyce/lib/agents/orchestrator.ts` — `transition(state, event, ctx): TransitionResult` puro/determinístico; caminho proibido → `{ok:false, reason}`. Codifica B1–B7, A1–A7, I6/I9/I10/I11/I12, C1–C4, C-NOVO-3/4/5.
+> - `tests/noyce-maestro.test.mjs` — 31 testes (7 negativos §13.1 + negativos §10.7 + caminhos felizes). Verificação: `tsc --noEmit` limpo · 224/224 testes pass (baseline 193 + 31) · `next build` compila.
+> - **TODOs Fase A:** (1) motor `businessDaysDeadline` hora-cheia NÃO construído — `PreclusiveClock.basis="uteis_horacheia"`/`dueAt` tipados e usados pelas guardas, mas a aritmética de dias úteis+hora-cheia ficou como stub tipado (founder autorizou). (2) `HUMAN_REQUIRED_ACTS` real em `noyce-source-registry.ts` ainda `[lance,declaracao,proposta,recurso]`; o superset de engine é `MAESTRO_BINDING_ACTS`. (3) Engine NÃO ligado ao app/UI/dados (Fase A isolada). **Desenho NÃO alterado.**
+
 ---
 *Doc 32 — mantido por Orion (aios-master). Fundamentado na auditoria real-vs-mock de 18/Jun (2 agentes Explore). §10 = validação pedro-valerio (v1); §11 = máquina de estados v2 (Orion); §12 = re-validação pedro-valerio (v2); §13 = patch C1–C4 + C-NOVO (Orion). **Desenho travado para Fase A.***
