@@ -5,6 +5,7 @@ import { opportunities } from "@/lib/noyce-data";
 import { formatCurrency, formatDateTime } from "@/lib/noyce-model";
 import type { Opportunity, SuspicionSignal } from "@/lib/noyce-model";
 import { deadlineTime, operationalState, sourceClass, sourceLabel } from "@/lib/noyce-operational";
+import { MAX_DISCOVERY_RADIUS_KM } from "@/lib/noyce-source-registry";
 import { ScorePill } from "@/components/shell/bits";
 
 type SortMode = "triagem" | "best" | "worst" | "deadline";
@@ -101,7 +102,7 @@ export function MonitorarTab({
 
         <div className="filter-summary" aria-live="polite">
           {filtered.length} editais · <strong className="triage-vai">{counts.vai} Vai</strong> ·{" "}
-          {counts.olha} Olha · {counts.pula} Pula <span className="filter-src">(PNCP, raio GO ≤170km)</span>
+          {counts.olha} Olha · {counts.pula} Pula <span className="filter-src">(PNCP, raio GO ≤{MAX_DISCOVERY_RADIUS_KM}km)</span>
         </div>
 
         {filtered.map((opportunity) => (

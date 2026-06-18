@@ -1,4 +1,5 @@
 import type { DecisionPoint, DiscoveryTriage, Opportunity, TriageVerdict } from "@/lib/noyce-model";
+import { MAX_DISCOVERY_RADIUS_KM, NEAR_RADIUS_KM } from "./noyce-source-registry.ts";
 
 // Operational logic moved out of the page (god-component) so it is pure + testable,
 // and the actionability layer (buildNextStep / describeLacuna / legalDecisionAction) that
@@ -213,7 +214,13 @@ export interface TriageInput {
 }
 
 // Turns a raw contratação into a Vai/Olha/Pula verdict with a human reason — the Monitorar product.
-export function buildTriage(input: TriageInput): DiscoveryTriage {
+// maxRadiusKm defaults to the operational radius (MAX_DISCOVERY_RADIUS_KM); overridable so the
+// raio is reescopável sem nova story e testável (Story 30.5 AC4).
+export function buildTriage(
+  input: TriageInput,
+  opts: { maxRadiusKm?: number } = {},
+): DiscoveryTriage {
+  const maxRadiusKm = opts.maxRadiusKm ?? MAX_DISCOVERY_RADIUS_KM;
   const obrasRelevant = OBRAS_RE.test(input.title || "");
   const days =
     input.proposalDeadline !== null
@@ -221,8 +228,8 @@ export function buildTriage(input: TriageInput): DiscoveryTriage {
       : null;
   const closed = days !== null && days < 0;
   const valueOk = input.estimatedValue === null || (input.estimatedValue >= 80_000 && input.estimatedValue <= 8_000_000);
-  const near = input.distanceKm <= 170;
-  const within = input.distanceKm <= 500;
+  const near = input.distanceKm <= NEAR_RADIUS_KM;
+  const within = input.distanceKm <= maxRadiusKm;
 
   let score = 0;
   if (obrasRelevant) score += 45;
@@ -245,17 +252,18 @@ export function buildTriage(input: TriageInput): DiscoveryTriage {
     score = Math.min(score, 25);
   } else if (!within) {
     verdict = "pula";
-    reason = `Fora do raio operacional (${input.distanceKm} km).`;
+    reason = `Fora do raio operacional (${input.distanceKm} km — acima de ${maxRadiusKm} km).`;
   } else if (near && valueOk && (days === null || days >= 3)) {
     verdict = "vai";
     reason = `Obra a ${input.distanceKm} km${days !== null ? `, ${days} dia(s) p/ proposta` : ", prazo a confirmar"}${input.estimatedValue ? ", valor na faixa" : ""}.`;
   } else {
     verdict = "olha";
     const why: string[] = [];
-    if (!near) why.push(`distância ${input.distanceKm} km`);
+    // 171..maxRadiusKm: longe mas dentro do raio → revisão humana (Story 30.5 AC2).
+    if (!near) why.push(`distância ${input.distanceKm} km — verificar viabilidade operacional antes de prosseguir`);
     if (!valueOk) why.push("valor fora da faixa típica");
     if (days !== null && days < 3) why.push(`prazo curto (${days}d)`);
-    reason = `Obra, mas checar: ${why.join(", ") || "detalhes do edital"}.`;
+    reason = `Obra, mas checar: ${why.join("; ") || "detalhes do edital"}.`;
   }
   return { verdict, score, reason, daysToDeadline: days, obrasRelevant };
 }

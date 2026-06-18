@@ -164,7 +164,7 @@ export function loadKnowledgeDocs(dir: string = DEFAULT_KB_DIR): KnowledgeDoc[] 
   for (const file of files) {
     // Normalize CRLF/BOM — Windows-authored docs (e.g. Python write_text) use \r\n, which
     // otherwise breaks the frontmatter match and drops title/tags/sourceRefs.
-    const raw = fs.readFileSync(file, "utf8").replace(/^﻿/, "").replace(/\r\n/g, "\n");
+    const raw = fs.readFileSync(file, "utf8").replace(/^\uFEFF/, "").replace(/\r\n/g, "\n");
     const { meta, body } = parseFrontmatter(raw);
     const docId = String(meta.docId ?? path.basename(file).replace(/\.md$/, ""));
     const title = String(meta.title ?? docId);

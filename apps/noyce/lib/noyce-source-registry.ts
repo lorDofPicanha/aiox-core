@@ -30,6 +30,13 @@ export type DiscoveryRoute = "self" | "pncp";
 export const HUMAN_REQUIRED_ACTS = ["lance", "declaracao", "proposta", "recurso"] as const;
 export type BindingAct = (typeof HUMAN_REQUIRED_ACTS)[number];
 
+// Discovery operational radius (Story 30.5 — reunião ENIAC 15/Jun).
+// NEAR = "muito perto", elegível a veredicto "Vai" automático.
+// MAX  = raio operacional total; 171..MAX → "Olha" (revisão humana); acima → "Pula".
+// Configurável: alterar MAX_DISCOVERY_RADIUS_KM reescopa a triagem sem nova story.
+export const NEAR_RADIUS_KM = 170;
+export const MAX_DISCOVERY_RADIUS_KM = 500;
+
 export interface NoyceSourceDefinition {
   source: SourceCode;
   label: string;
