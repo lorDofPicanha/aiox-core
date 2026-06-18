@@ -306,4 +306,156 @@ Nenhuma linha de `orchestrator.ts` deve ser escrita antes de F0 (tipos de estado
 **Cada teste de transição da Fase A deve incluir o caso negativo correspondente** (ex.: "tentar ir de `entregar` a `acompanhar` sem confirmação de protocolo → REJEITADO"; "scheduler tenta mover edital com `intend_to_appeal` → REJEITADO"; "alerta de intenção de recurso dispara sem ata ingerida → PASSA").
 
 ---
-*Doc 32 — mantido por Orion (aios-master). Fundamentado na auditoria real-vs-mock de 18/Jun (2 agentes Explore sobre habilitar/entregar e acompanhar/recorrer/maestro). §10 adicionado por pedro-valerio (validação de processo, 18/Jun).*
+
+## 11. Máquina de estados v2 — corrigida pós-validação (Orion, 18/Jun)
+
+> Resolve F0 + B1–B7 + ALTA (A1–A7) + invariantes (I4/I6 + novos I9–I12) + médias baratas (M1–M3). Mantém a **IA integrada**: cada estado mostra qual agente LLM atua, sempre **LLM-ready** (núcleo determinístico decide o número/prazo/transição; LLM agrega raciocínio textual; fallback determinístico se LLM off/falha — nunca avança ato vinculante com saída de fallback, M1).
+
+### 11.0 Fundação (resolve F0) — tipos canônicos ANTES de qualquer código
+
+```ts
+// MaestroStage: estado canônico ÚNICO. Substitui o uso ambíguo de WorkflowStage como estado.
+export type MaestroStage =
+  | "descoberto" | "triado" | "analisado" | "impugnacao-edital"   // pré-proposta
+  | "aguardando-dado" | "habilitado" | "entregando" | "pronto-protocolo"
+  | "protocolada" | "em-sessao" | "em-diligencia" | "aguardando-resultado"  // sessão
+  | "vencedora-provisoria" | "defendendo-vitoria"                 // ganhou (não-terminal!)
+  | "avaliar-recurso-inabilitacao" | "avaliar-recurso-julgamento" // perdeu
+  | "recurso-protocolado"
+  // terminais:
+  | "vencido" | "arquivado" | "arquivado-motivo" | "prazo-perdido" | "encerrado-sem-recurso"
+  | "congelado-edital-mudou";   // pseudo-terminal: exige re-triagem humana
+
+export interface MaestroState {
+  stage: MaestroStage;
+  editalVersionHash: string;          // I11/A7 — idempotência por VERSÃO do edital
+  humanLayer: HumanDecision[];        // I6 — APPEND-ONLY, imutável pelo pipeline
+  history: StageTransition[];         // auditoria (Lastro)
+  clocks: PreclusiveClock[];          // I4/I9 — relógios preclusivos ativos
+}
+```
+Mapeamento explícito `MaestroStage → WorkflowStage` (o enum grosso de 6 fases continua para a UI/abas; o Maestro opera no fino). `SessionResult` (abaixo) também passa a existir no modelo. **Sem estes tipos, nada da Fase A é testável.**
+
+### 11.1 Máquina de estados v2 (diagrama)
+
+```
+descoberto --Faro--> triado
+  triado --Pula--> arquivado
+  triado --Vai/Olha--> analisado            [I12: re-checa prazo em TODA transição abaixo]
+analisado --Prisma-->
+  suspeição alta --> impugnacao-edital  (B6, janela art.164, GATE ADVOGADO; reusa Tribuno)
+  confiança < piso --> aguardando-dado  (A2; Sentinela vigia prazo; NÃO é descarte)
+  ok --> habilitado
+habilitado --Forja-->
+  NO_GO insanável --> arquivado-motivo
+  GO_COM_TAREFAS --> entregando  [A1: tarefas sanáveis viram alertas Sentinela c/ dono+prazo; não somem]
+  CONSORCIO --> aguardando-dado (parceiro)  --parceiro-cadastrado--> habilitado (re-roda Forja, A5)
+  GO --> entregando
+entregando --Escriba--> dossiê+planilha+declarações
+  ⛔GATE HUMANO (revisão item-a-item + tarefas de habilitação abertas, A1)⛔
+  aprova --> pronto-protocolo
+pronto-protocolo --(humano confirma protocolo: data/hora + nº processo)--> protocolada   [B1: ARMA Sentinela]
+protocolada --Sentinela arma relógio pela dataSessao--> em-sessao
+  [B7/I9: ALERTA PROATIVO pré-sessão "se perder, intenção de recurso é IMEDIATA, esteja logado"]
+em-sessao --eventos da sessão (SessionResult)-->
+  empate-ficto ME/EPP (A3) --> [janela imediata: humano cobre lance]
+  inabilitada --> avaliar-recurso-inabilitacao   (B2, relógio próprio art.165 I-a)
+  derrotada-julgamento --> avaliar-recurso-julgamento  (B2, relógio próprio)
+  vencedora --> vencedora-provisoria              (B3/I10 — NÃO é terminal)
+  pregoeiro abre diligência --> em-diligencia     (B4, relógio próprio, GATE HUMANO)
+em-diligencia --responde (ato humano)--> volta ao estado anterior
+vencedora-provisoria --vigia janela de recurso de TERCEIROS-->
+  ninguém recorre + homologação --> vencido 🎉 (TERMINAL — I10)
+  terceiro recorre --> defendendo-vitoria  (contrarrazões art.165§3, GATE ADVOGADO, relógio próprio)
+avaliar-recurso-* --Tribuno-->
+  sem fundamento --> encerrado-sem-recurso (honesto, registrado)
+  com fundamento --> minuta --> ⛔GATE ADVOGADO⛔ --> recurso-protocolado (humano protocola)
+[qualquer estado] --evento republicacao|suspensao|revogacao|remarcacao (B5/I11)--> congelado-edital-mudou
+[qualquer transição que custa tempo] --prazo vence (A4/I12)--> prazo-perdido (registrado, não silencioso)
+```
+
+### 11.2 Agentes LLM por estado (IA integrada, LLM-ready)
+
+| Estado | Agente | Núcleo determinístico (decide) | Camada LLM (agrega, opcional) | Gate |
+|---|---|---|---|---|
+| triado | Faro | `buildTriage` (Vai/Olha/Pula, prazo, raio) | triage-agent: nuance de objeto/consórcio | — |
+| analisado | Prisma | `buildAnalysisRun` (score/confiança) | analysis-agent: leitura competitiva, pontos de impugnação | gate se score<piso |
+| impugnacao-edital | Tribuno | detecção `SuspicionSignal` + relógio art.164 | minuta de impugnação | **advogado** |
+| habilitado | Forja | `buildHabilitationResult` (CCP×ERM, números) | habilitation-agent: matching semântico de atestados | gate se lacuna sanável |
+| entregando | Escriba | `computePlanilha` (todos os números) | document-agent: texto de proposta/declarações | **humano duro** |
+| em-sessao / aguardando-resultado | Sentinela | relógios preclusivos (dias úteis) | — (vigilância é determinística) | alerta proativo |
+| avaliar-recurso-* / defendendo-vitoria | Tribuno | relógio + detecção de motivo (do SessionResult) | parecer de fundamento + minuta (Fable 5 + RAG jurisprudência) | **advogado** |
+| (todos) | Lastro | registro append-only de proveniência | — | — |
+
+### 11.3 `SessionResult` + os relógios preclusivos (resolve B2/B3/B7/I4/I9)
+
+```ts
+export interface SessionResult {
+  editalId: string; editalVersionHash: string;
+  sessionAt: string;                          // ISO datetime hora-cheia (I4)
+  eniacOutcome: "vencedora" | "inabilitada" | "derrotada_julgamento"
+              | "empate_ficto_meepp" | "desclassificada" | "indefinido";
+  motivo?: string;                            // por que (com fonte — I3)
+  winner?: { cnpj: string; nome: string; preco: number } | null;
+  thirdPartyAppealWindow?: PreclusiveClock;   // B3 — janela de terceiros
+  source: "ata_upload" | "portal" | "manual"; confidence: "observed" | "inferred";  // M2
+}
+
+export interface PreclusiveClock {
+  kind: "impugnacao_edital" | "intencao_recurso" | "razoes_recurso"
+      | "contrarrazoes" | "diligencia" | "empate_ficto" | "proposta";
+  basis: "corridos" | "uteis_horacheia";      // I4 — recurso = dias úteis + hora-cheia
+  dueAt: string;                              // ISO datetime
+  armedBy: "dataSessao" | "ata" | "evento_portal";  // I9 — proativo, não só reativo
+  status: "armado" | "alertado" | "vencido" | "cumprido";
+}
+```
+**Motor de prazo (I4):** função `businessDaysDeadline(from, dias, { feriadosNacionais, feriadosMunicipais })` + corte hora-cheia. `daysUntil` corrido **não** serve para recurso. Testes de fronteira obrigatórios (sexta+feriado; sessão 9h vs alerta T-0). Fuso: **America/Sao_Paulo** (GO=UTC-3=SP; a ressalva do §4 estava errada — corrigida).
+
+### 11.4 Idempotência (resolve I6/A6/A7)
+
+- `MaestroState.humanLayer` = **append-only, imutável pelo pipeline determinístico**.
+- **Regra de exclusão testável:** se o `humanLayer` do edital tem qualquer decisão (aprovação de dossiê, `intend_to_appeal`, etc.), o scheduler horário entra em **read-only** para aquele edital — só pode **adicionar alerta**, nunca mudar `stage` nem sobrescrever artefato.
+- Chave de idempotência = `(opportunityId, editalVersionHash)`. Hash mudou = evento `republicacao` (B5/I11), **não** merge.
+- Falha de agente no meio (M1): estado **permanece**, marca `step_failed`, Sentinela alerta; nunca avança ato vinculante com fallback.
+
+### 11.5 Gates — regra de fechamento (resolve M3)
+
+Todo gate define: **aprovador** (papel), e o destino de cada ação:
+- `aprovar` → libera a transição/ato humano;
+- `corrigir` → volta ao agente que produziu (re-roda preservando humanLayer);
+- `rejeitar` → encerra com motivo registrado.
+
+`HUMAN_REQUIRED_ACTS` ampliado (I1): + `contrarrazoes`, `impugnacao_edital`, `resposta_diligencia` (além de lance/declaração/proposta/recurso).
+
+### 11.6 Invariantes adotados (I9–I12) + reforços
+
+I9 (preclusão nunca de sinal único — alerta proativo pela `dataSessao`) · I10 (terminal só após janela de terceiros + homologação) · I11 (mudança de edital invalida derivados e congela) · I12 (toda transição re-avalia o relógio). Reforços: I3 estende a datas (data preclusiva precisa de `source`+`confidence`; `inferred` só gera "CONFIRMAR DATA", nunca gate duro — M2); I5 vira "ausência de dado dentro de janela preclusiva = alerta CRÍTICO".
+
+### 11.7 Mapa de resolução (rastreabilidade)
+
+| Achado §10 | Resolvido em v2 por |
+|---|---|
+| F0 | §11.0 `MaestroStage`/`MaestroState`/`SessionResult` canônicos |
+| B1 | aresta `pronto-protocolo →(confirma protocolo)→ protocolada` que arma Sentinela |
+| B2 | estados separados `avaliar-recurso-inabilitacao` vs `-julgamento`, relógios próprios |
+| B3 | `vencedora-provisoria`/`defendendo-vitoria` + relógio de contrarrazões; `vencido` só terminal pós-homologação (I10) |
+| B4 | estado `em-diligencia` + relógio + gate |
+| B5 | `congelado-edital-mudou` + `editalVersionHash` (I11) |
+| B6 | estado `impugnacao-edital` ligado aos `SuspicionSignal`, gate advogado |
+| B7 | alerta proativo pela `dataSessao` (I9); ata só para razões/contrarrazões |
+| A1 | guarda de tarefas sanáveis abertas em `GO_COM_TAREFAS` antes de `entregar` |
+| A2 | estado `aguardando-dado` (não-descarte) |
+| A3 | sub-resultado `empate_ficto_meepp` + janela imediata |
+| A4 | `prazo-perdido` + I12 (re-avalia relógio em toda transição) |
+| A5 | evento `parceiro-cadastrado` → re-entra em `habilitado` |
+| A6/A7 | §11.4 idempotência append-only + chave por versão |
+| I4 | §11.3 motor de dias úteis hora-cheia |
+| M1/M2/M3 | §11.4 step_failed · §11.6 data inferida · §11.5 fechamento de gate |
+
+### 11.8 Próximo passo
+
+Re-validar a v2 com pedro-valerio (gate "zero caminhos errados"). Aprovada → **Fase A** começa por F0 (tipos canônicos + testes de transição incluindo os caminhos PROIBIDOS do §10.7), tudo determinístico/LLM-ready, sem ligar o cérebro.
+
+---
+*Doc 32 — mantido por Orion (aios-master). Fundamentado na auditoria real-vs-mock de 18/Jun (2 agentes Explore sobre habilitar/entregar e acompanhar/recorrer/maestro). §10 = validação pedro-valerio; §11 = máquina de estados v2 corrigida (Orion).*
