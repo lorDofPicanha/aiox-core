@@ -1,0 +1,26 @@
+{
+  "item": {
+    "id": "item-cli-001",
+    "descricao": "Medicamento sintetico via CLI",
+    "ncm": "30049099",
+    "cclasstribInformado": "CBS-IBS-GEN-999",
+    "valor": 150
+  },
+  "base": {
+    "baseVersaoId": "base-cli-sintetica",
+    "regras": [
+      {
+        "id": "regra-cli-001",
+        "ncmExato": "30049099",
+        "cclasstribEsperado": "CBS-IBS-MONO-001",
+        "descricao": "Fixture sintetica CLI",
+        "tipoDivergencia": "monofasico_tributado",
+        "materialidadeMinima": 50,
+        "fundamento": ["fixture sintetica CLI"]
+      }
+    ]
+  },
+  "contexto": {
+    "motorVersaoId": "motor-cli-sintetico"
+  }
+}

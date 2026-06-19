@@ -1,0 +1,21 @@
+{
+  "name": "@synkra/contador-trilha-verifier",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Standalone hash-chain verifier for Contador good-faith ledger.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "contador-trilha-verify": "dist/cli.js",
+    "contador-closeout-manifest": "dist/closeout-cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node scripts/run-verifier-tests.mjs",
+    "test:closeout-contract": "npm run build && node scripts/run-verifier-tests.mjs"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

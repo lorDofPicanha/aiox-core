@@ -1,0 +1,15 @@
+{
+  "name": "@synkra/contador-fitness",
+  "version": "0.1.0",
+  "private": true,
+  "description": "D0 fitness functions for Contador F1 foundation boundaries.",
+  "type": "module",
+  "scripts": {
+    "test": "node scripts/ff1-import-boundary.mjs && node scripts/ff-summary.mjs",
+    "ff:1": "node scripts/ff1-import-boundary.mjs",
+    "ff:summary": "node scripts/ff-summary.mjs"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

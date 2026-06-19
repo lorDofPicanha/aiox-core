@@ -1,0 +1,16 @@
+{
+  "name": "@synkra/contador-db",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Contador F1 foundation database contracts, migrations, rollback, and SQL fitness checks.",
+  "type": "module",
+  "scripts": {
+    "test": "node scripts/validate-sql.mjs",
+    "validate:static": "node scripts/validate-sql.mjs",
+    "smoke:preflight": "node scripts/preflight-smoke.mjs",
+    "smoke:psql": "node scripts/smoke-psql.mjs"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -3,10 +3,12 @@
 **Projeto:** Contador / Radar Fiscal + Operação do Escritório Contábil
 **Story:** 0.1 — Discovery (Fase 1)
 **Orquestrador:** @aios-master (Orion) · **Squad ativo:** Lean Execution (A1 Discovery + A2 Oferta + Trust mínimo)
-**Criada:** 2026-06-09 · **Status:** EM ANDAMENTO
+**Criada:** 2026-06-09 · **Status:** PAUSADA — entrevistas ficam para depois do corte de produto
 **Base:** `03-status-e-proximos-passos.md`, `04-arquitetura-squads.md` (§6.2 Lean), `01-conclave-agentes-mvp.md`
 
 > **Por que existe:** o conclave decidiu *concierge antes de automação* — a incerteza é de **mercado**, não de engenharia. Esta story fecha a base comercial e de evidência **antes** de qualquer código. Nenhum `@dev`/`@architect` pesado nesta fase.
+
+> **Decisão founder 2026-06-18:** pausar entrevistas/discovery de campo até o produto ter um corte técnico mais finalizado. Risco aceito: isso inverte a sequência concierge-first originalmente recomendada em `00-context/CONTEXT.md` D4. Enquanto essa pausa estiver ativa, não usar AC-4/AC-5 como bloqueio para o próximo corte técnico; manter bloqueios de LGPD, segurança, fiscal/jurídico e golden-set real para qualquer dado real ou promessa fiscal.
 
 ---
 
@@ -23,11 +25,11 @@ O sócio do founder tem **900+ contatos de escritórios contábeis** (rede quent
 | **AC-1** | ICP final documentado + filtro de seleção | `AC1-icp-final.md` | ✅ FEITO (v1, ratificar) |
 | **AC-2** | Oferta piloto concierge documentada | `AC2-oferta-piloto.md` | ✅ FEITO (v1, ratificar pricing) |
 | **AC-3** | Roteiro de entrevista (10 perguntas) | `roteiro-entrevista-10q.md` | ✅ FEITO (validado no E-00-MOCK) |
-| **AC-4** | Matriz de dores priorizadas | `AC4-matriz-dores-v0.md` | 🟡 v0 HIPÓTESES — **fecha só com 10 entrevistas reais** |
-| **AC-5** | Lista de 3 escritórios-alvo p/ piloto | `AC5-selecao-abordagem-rede.md` | 🟡 RUBRICA + SCRIPT prontos — **fecha quando sócio rankear os 900 + 3 aceitarem** |
+| **AC-4** | Matriz de dores priorizadas | `AC4-matriz-dores-v0.md` | 🟡 v0 OPERACIONAL — **fecha só com 8-10 entrevistas reais** |
+| **AC-5** | Lista de 3 escritórios-alvo p/ piloto | `AC5-selecao-abordagem-rede.md` | 🟡 RUBRICA + SCRIPT prontos — **fecha quando sócio rankear a rede + 3 aceitarem** |
 | **AC-6** | Escopo MVP / fora de escopo | `03-status-e-proximos-passos.md` §Dentro/Fora | ✅ FEITO |
 
-**Definition of Done da Story 0.1:** AC-1, 2, 3, 6 fechados (✅) **E** AC-4 com ≥10 entrevistas reais codificadas **E** AC-5 com 3 escritórios confirmados no piloto. Hoje: bloqueada em campo (AC-4/AC-5 dependem de execução do founder+sócio).
+**Definition of Done da Story 0.1:** AC-1, 2, 3, 6 fechados (✅) **E** AC-4 com ≥8 entrevistas reais codificadas (meta 10) **E** AC-5 com 3 escritórios confirmados no piloto. Hoje: bloqueada em campo (AC-4/AC-5 dependem de execução do founder+sócio).
 
 ---
 

@@ -1,0 +1,19 @@
+{
+  "name": "@synkra/contador-motor-fiscal",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Pure deterministic fiscal classifier for Contador F1 foundation.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "contador-motor-classificar": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node scripts/run-golden-set.mjs && node scripts/run-cli-test.mjs"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

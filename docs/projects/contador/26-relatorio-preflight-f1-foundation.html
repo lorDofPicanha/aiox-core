@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Relatorio Preflight F1 Foundation - Projeto Contador</title>
+  <style>
+    :root {
+      --bg: #f6f7f2;
+      --paper: #ffffff;
+      --ink: #17211c;
+      --muted: #637069;
+      --line: #dbe1d8;
+      --green: #1d6f50;
+      --green-soft: #e8f3ed;
+      --amber: #9a6200;
+      --amber-soft: #fff1d6;
+      --red: #9d2f2f;
+      --red-soft: #f8e3e3;
+      --blue: #245e91;
+      --blue-soft: #e7f0f7;
+      --code: #eef1eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.55;
+    }
+
+    .shell {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 32px 20px 56px;
+    }
+
+    header {
+      padding: 36px 0 24px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 24px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 750;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 900px;
+      font-size: 42px;
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 850px;
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 5px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .badge.green { background: var(--green-soft); color: var(--green); border-color: #bdd9ca; }
+    .badge.amber { background: var(--amber-soft); color: var(--amber); border-color: #e2c78f; }
+    .badge.blue { background: var(--blue-soft); color: var(--blue); border-color: #bad0e0; }
+    .badge.red { background: var(--red-soft); color: var(--red); border-color: #e1b7b7; }
+
+    main {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    nav {
+      position: sticky;
+      top: 18px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,.78);
+    }
+
+    nav h2 {
+      margin: 0 0 10px;
+      font-size: 13px;
+      text-transform: uppercase;
+      color: var(--muted);
+      letter-spacing: .06em;
+    }
+
+    nav a {
+      display: block;
+      padding: 7px 0;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 14px;
+      border-top: 1px solid transparent;
+    }
+
+    nav a:hover { color: var(--green); }
+
+    section {
+      margin-bottom: 20px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 24px;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 22px 0 10px;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    p { margin: 0 0 12px; }
+    ul, ol { margin: 8px 0 0 20px; padding: 0; }
+    li { margin: 6px 0; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .metric {
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #fbfcfa;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 28px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 14px;
+    }
+
+    th, td {
+      padding: 11px 10px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+    }
+
+    th {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      background: #fbfcfa;
+    }
+
+    code {
+      padding: 2px 5px;
+      border-radius: 4px;
+      background: var(--code);
+      font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+      font-size: .92em;
+    }
+
+    .callout {
+      padding: 14px 16px;
+      border-radius: 8px;
+      border: 1px solid;
+      margin: 14px 0;
+    }
+
+    .callout.green { background: var(--green-soft); border-color: #bdd9ca; }
+    .callout.amber { background: var(--amber-soft); border-color: #e2c78f; }
+    .callout.red { background: var(--red-soft); border-color: #e1b7b7; }
+    .callout.blue { background: var(--blue-soft); border-color: #bad0e0; }
+
+    .status-list {
+      list-style: none;
+      margin-left: 0;
+    }
+
+    .status-list li {
+      display: flex;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .mark {
+      flex: 0 0 auto;
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .mark.done { color: var(--green); background: var(--green-soft); }
+    .mark.wait { color: var(--amber); background: var(--amber-soft); }
+
+    a { color: var(--blue); }
+
+    footer {
+      margin-top: 26px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 860px) {
+      h1 { font-size: 32px; }
+      main { grid-template-columns: 1fr; }
+      nav { position: static; }
+      .grid { grid-template-columns: 1fr; }
+      section { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <p class="eyebrow">Projeto Contador &middot; Build F1 Foundation</p>
+      <h1>Relatorio de Preflight: Fundacao F1 pronta para validacao, ainda nao para build</h1>
+      <p class="subtitle">
+        Sintese executiva das decisoes tomadas apos o handoff Codex F1, com SOLID incorporado como criterio de construcao e revisao.
+      </p>
+      <div class="meta">
+        <span class="badge green">Preflight tecnico resolvido</span>
+        <span class="badge green">Build local executado apos aprovacao</span>
+        <span class="badge blue">Data: 2026-06-15</span>
+        <span class="badge red">Sem codigo iniciado</span>
+      </div>
+    </header>
+
+    <main>
+      <nav aria-label="Indice">
+        <h2>Indice</h2>
+        <a href="#resumo">Resumo Executivo</a>
+        <a href="#decisoes">Decisoes Fechadas</a>
+        <a href="#solid">SOLID no Build</a>
+        <a href="#status">Status dos Gates</a>
+        <a href="#riscos">Riscos e Alertas</a>
+        <a href="#sequencia">Proxima Sequencia</a>
+        <a href="#referencias">Referencias</a>
+      </nav>
+
+      <div>
+        <section id="resumo">
+          <h2>Resumo Executivo</h2>
+          <p>
+            O handoff <code>21-handoff-codex-build-f1.md</code> foi analisado e saneado. A direcao tecnica esta correta:
+            construir apenas a Fundacao F1-D0, sem UI, captura, RAG, Gestorize ou add-ons.
+          </p>
+          <p>
+            Os cinco bloqueios de preflight foram resolvidos documentalmente: P10, numeracao da migration, story-driven gate,
+            contrato concreto da API de RPC e layout de pacotes. O build ainda deve aguardar validacao PO/Founder e checkpoint
+            do estado documental.
+          </p>
+
+          <div class="grid">
+            <div class="metric">
+              <strong>5/5</strong>
+              <span>bloqueios tecnicos resolvidos no preflight</span>
+            </div>
+            <div class="metric">
+              <strong>14</strong>
+              <span>acceptance criteria definidos para a story F1</span>
+            </div>
+            <div class="metric">
+              <strong>0</strong>
+              <span>linhas de codigo de produto iniciadas</span>
+            </div>
+          </div>
+
+          <div class="callout amber">
+            <strong>Atualizacao pos-aprovacao:</strong> o build local F1 foi iniciado apos aprovacao do founder. Ver checkpoint versionavel em <code>27-story-f1-foundation.md</code>.
+          </div>
+        </section>
+
+        <section id="decisoes">
+          <h2>Decisoes Fechadas</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Tema</th>
+                <th>Decisao</th>
+                <th>Racional</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>P10 / <code>nota_item</code></td>
+                <td><code>nota</code> particionada; <code>nota_item</code> nao particionada fisicamente no D0.</td>
+                <td>Segue schema v1.1 canonico e evita complexidade operacional prematura.</td>
+              </tr>
+              <tr>
+                <td>Migration</td>
+                <td>Usar <code>001_foundation.sql</code>.</td>
+                <td>Alinha com o handoff e deixa <code>000</code> reservado para bootstrap eventual.</td>
+              </tr>
+              <tr>
+                <td>RPC publicada</td>
+                <td>Criar schema <code>core_api_v1</code>.</td>
+                <td>Postgres nao suporta <code>core.api_v1.funcao</code>; schema dedicado facilita contract tests.</td>
+              </tr>
+              <tr>
+                <td>Pacotes</td>
+                <td>Usar <code>packages/contador-*</code>; nao acoplar <code>apps/radar-fiscal</code>.</td>
+                <td>Mantem o core greenfield e separa responsabilidades.</td>
+              </tr>
+              <tr>
+                <td>Story</td>
+                <td>Criar <code>STORY-CONTADOR-F1-FOUNDATION.md</code>.</td>
+                <td>Transforma o handoff em acceptance criteria verificavel.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="solid">
+          <h2>SOLID no Build</h2>
+          <p>
+            SOLID foi incorporado como gate de construcao, nao como licenca para abstracao generica. Cada decisao deve proteger uma fronteira real.
+          </p>
+          <table>
+            <thead>
+              <tr>
+                <th>Principio</th>
+                <th>Aplicacao em F1-D0</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Single Responsibility</td>
+                <td>DB, motor, verifier e fitness ficam em pacotes separados, cada um com uma razao clara para mudar.</td>
+              </tr>
+              <tr>
+                <td>Open/Closed</td>
+                <td>Regras e versoes evoluem por dados: <code>base_versao</code>, <code>motor_versao</code>, <code>golden_set_versao</code>.</td>
+              </tr>
+              <tr>
+                <td>Liskov</td>
+                <td>Adapters futuros preservam fila in, candidatos out e RPC materializadora.</td>
+              </tr>
+              <tr>
+                <td>Interface Segregation</td>
+                <td><code>core_api_v1</code> expoe uma API pequena; consumidores nao acessam tabelas internas.</td>
+              </tr>
+              <tr>
+                <td>Dependency Inversion</td>
+                <td>UI, provider, RAG e Gestorize dependem do core publicado; o core nao depende deles.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="status">
+          <h2>Status dos Gates</h2>
+          <ul class="status-list">
+            <li><span class="mark done">✓</span><span>P10 resolvido contra o schema v1.1.</span></li>
+            <li><span class="mark done">✓</span><span>Nome e ordem da migration definidos.</span></li>
+            <li><span class="mark done">✓</span><span>Story F1 criada no workspace.</span></li>
+            <li><span class="mark done">✓</span><span>Convencao concreta de RPC definida como <code>core_api_v1</code>.</span></li>
+            <li><span class="mark done">✓</span><span>Layout de pacotes definido em <code>packages/contador-*</code>.</span></li>
+            <li><span class="mark done">✓</span><span>Decisoes revisadas contra SOLID e corte de Kent Beck.</span></li>
+            <li><span class="mark done">✓</span><span>Checkpoint versionavel criado em <code>27-story-f1-foundation.md</code>.</span></li>
+            <li><span class="mark done">✓</span><span>Story F1 aprovada pelo founder e build local iniciado.</span></li>
+          </ul>
+        </section>
+
+        <section id="riscos">
+          <h2>Riscos e Alertas</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Risco</th>
+                <th>Impacto</th>
+                <th>Mitigacao</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>docs/stories/</code> ignorado no Git</td>
+                <td>A story existe localmente, mas nao entra em commit por padrao.</td>
+                <td>Decidir entre <code>git add -f</code>, mover/copy para docs do projeto, ou manter local.</td>
+              </tr>
+              <tr>
+                <td>Worktree sujo</td>
+                <td>Build pode misturar mudancas nao relacionadas.</td>
+                <td>Checkpointar docs do Contador ou isolar explicitamente o escopo antes de codar.</td>
+              </tr>
+              <tr>
+                <td>Golden-set sintetico</td>
+                <td>Pode ser confundido com acuracia fiscal real.</td>
+                <td>Marcar como teste sintetico; ground-truth real depende de tributarista rotulador.</td>
+              </tr>
+              <tr>
+                <td><code>security definer</code> em RPC</td>
+                <td>Pode abrir bypass se grants/RLS forem mal desenhados.</td>
+                <td>Testes negativos obrigatorios de grants, RLS e escrita direta.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="sequencia">
+          <h2>Proxima Sequencia Recomendada</h2>
+          <ol>
+            <li>Rodar smoke real em Postgres 15+ descartavel com <code>npm run smoke:psql --workspace @synkra/contador-db</code>.</li>
+            <li>Submeter DB/RPC a revisao @qa, com foco em <code>security definer</code>, grants e RLS.</li>
+            <li>Consultar Heleno/Roberto antes de promover as RPCs de decisao individualizada para uso produtivo.</li>
+            <li>Depois do smoke DB, ampliar testes SQL com casos transacionais reais.</li>
+          </ol>
+
+          <div class="callout green">
+            <strong>Recomendacao pragmatica:</strong> copiar/versionar a story dentro de <code>docs/projects/contador/</code> ou aprovar <code>git add -f</code> para a story ativa antes de iniciar codigo.
+          </div>
+        </section>
+
+        <section id="referencias">
+          <h2>Referencias</h2>
+          <ul>
+            <li><a href="21-handoff-codex-build-f1.md">21-handoff-codex-build-f1.md</a></li>
+            <li><a href="25-preflight-codex-build-f1.md">25-preflight-codex-build-f1.md</a></li>
+            <li><a href="27-story-f1-foundation.md">27-story-f1-foundation.md</a></li>
+            <li><a href="../../stories/active/STORY-CONTADOR-F1-FOUNDATION.md">STORY-CONTADOR-F1-FOUNDATION.md</a></li>
+            <li><a href="20-arquitetura-core-v1.1.md">20-arquitetura-core-v1.1.md</a></li>
+            <li><a href="16-conclave-arquitetura/02-data-engineer-schema-v1.1.md">02-data-engineer-schema-v1.1.md</a></li>
+            <li><a href="24-golden-set-protocolo-rotulagem.md">24-golden-set-protocolo-rotulagem.md</a></li>
+          </ul>
+        </section>
+
+        <footer>
+          Relatorio produzido por Codex em 2026-06-15 e atualizado apos aprovacao do founder. O build local F1 foi executado em packages/contador-*; smoke Postgres segue pendente.
+        </footer>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

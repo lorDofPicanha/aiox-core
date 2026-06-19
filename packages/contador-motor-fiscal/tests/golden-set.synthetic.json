@@ -1,0 +1,85 @@
+{
+  "notice": "Synthetic fixture only. It validates contract behavior, not real fiscal accuracy.",
+  "base": {
+    "baseVersaoId": "base-sintetica-2026-06",
+    "regras": [
+      {
+        "id": "regra-sintetica-ncm-30049099",
+        "ncmExato": "30049099",
+        "cclasstribEsperado": "CBS-IBS-MONO-001",
+        "descricao": "Produto farmaceutico sintetico monofasico",
+        "tipoDivergencia": "monofasico_tributado",
+        "materialidadeMinima": 50,
+        "fundamento": ["fixture sintetica para validar contrato do motor"]
+      },
+      {
+        "id": "regra-sintetica-prefixo-2203",
+        "ncmPrefixo": "2203",
+        "cclasstribEsperado": "CBS-IBS-BEB-010",
+        "descricao": "Bebida sintetica com regra por prefixo",
+        "tipoDivergencia": "cclasstrib_divergente",
+        "materialidadeMinima": 100,
+        "fundamento": ["fixture sintetica para validar desempate por prefixo"]
+      }
+    ]
+  },
+  "contexto": {
+    "motorVersaoId": "motor-sintetico-001"
+  },
+  "cases": [
+    {
+      "name": "gera apontamento quando cClassTrib diverge em NCM exato",
+      "item": {
+        "id": "item-001",
+        "descricao": "Medicamento sintetico",
+        "ncm": "30049099",
+        "cclasstribInformado": "CBS-IBS-GEN-999",
+        "valor": 320.15
+      },
+      "expectedCount": 1,
+      "expectedFirst": {
+        "tipoDivergencia": "monofasico_tributado",
+        "cclasstribReferencia": "CBS-IBS-MONO-001",
+        "criterio": "ncm_exato"
+      }
+    },
+    {
+      "name": "nao gera apontamento quando cClassTrib ja confere",
+      "item": {
+        "id": "item-002",
+        "descricao": "Medicamento sintetico correto",
+        "ncm": "30049099",
+        "cclasstribInformado": "CBS-IBS-MONO-001",
+        "valor": 320.15
+      },
+      "expectedCount": 0
+    },
+    {
+      "name": "respeita materialidade minima",
+      "item": {
+        "id": "item-003",
+        "descricao": "Bebida abaixo da materialidade",
+        "ncm": "22030000",
+        "cclasstribInformado": "CBS-IBS-GEN-999",
+        "valor": 40
+      },
+      "expectedCount": 0
+    },
+    {
+      "name": "usa regra por prefixo quando nao ha NCM exato",
+      "item": {
+        "id": "item-004",
+        "descricao": "Bebida sintetica",
+        "ncm": "22030000",
+        "cclasstribInformado": "CBS-IBS-GEN-999",
+        "valor": 140
+      },
+      "expectedCount": 1,
+      "expectedFirst": {
+        "tipoDivergencia": "cclasstrib_divergente",
+        "cclasstribReferencia": "CBS-IBS-BEB-010",
+        "criterio": "ncm_prefixo"
+      }
+    }
+  ]
+}
