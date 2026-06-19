@@ -6,6 +6,10 @@ import type {
   SuspicionSeverity,
   SuspicionType,
 } from "./noyce-model";
+import { isBusinessDay, parseDateOnly, holidaySet, toDateOnly } from "./noyce-dates.ts";
+import type { HolidayCalendar } from "./noyce-dates.ts";
+
+export type { HolidayCalendar };
 
 export interface PublicationMinimumRule {
   id: string;
@@ -31,14 +35,6 @@ export interface LegalConstants {
     value: number;
     legalHook: LegalHook;
   };
-}
-
-export interface HolidayCalendar {
-  holidays: Array<{
-    date: string;
-    name: string;
-    kind: string;
-  }>;
 }
 
 interface MinimumPublicationMatch {
@@ -323,31 +319,6 @@ function isPositiveNumber(value: number | null | undefined): value is number {
 function normalizePercentPoints(value: number | null): number | null {
   if (value === null || !Number.isFinite(value)) return null;
   return value <= 0.2 ? value * 100 : value;
-}
-
-function parseDateOnly(value: string | null): Date | null {
-  if (!value) return null;
-  const match = /^(\d{4})-(\d{2})-(\d{2})/.exec(value);
-  if (!match) return null;
-  const year = Number(match[1]);
-  const month = Number(match[2]);
-  const day = Number(match[3]);
-  const date = new Date(Date.UTC(year, month - 1, day));
-  if (date.getUTCFullYear() !== year || date.getUTCMonth() !== month - 1 || date.getUTCDate() !== day) return null;
-  return date;
-}
-
-function isBusinessDay(date: Date, holidays: ReadonlySet<string>): boolean {
-  const day = date.getUTCDay();
-  return day !== 0 && day !== 6 && !holidays.has(toDateOnly(date));
-}
-
-function holidaySet(calendar: HolidayCalendar): ReadonlySet<string> {
-  return new Set(calendar.holidays.map((holiday) => holiday.date));
-}
-
-function toDateOnly(date: Date): string {
-  return date.toISOString().slice(0, 10);
 }
 
 function normalizeText(value: string | null): string {
