@@ -1,0 +1,248 @@
+// Maestro runtime — read-only Sentinela deadline derivation (Fase B.1).
+//
+// PURE / DETERMINISTIC: no I/O, no LLM, no Date.now() — `now` is injected. This
+// layer ADAPTS the durable model (`Opportunity` + `LegalProcess`) into the
+// canonical `MaestroState` (maestro-types.ts) and reads the armed preclusive
+// clocks into a Sentinela watchlist. It is the bridge the orchestrator header
+// calls "the future Maestro runtime": it ARMS clocks from real data; the pure
+// `transition()` engine drives state changes. Nothing here mutates the data
+// fixture or the deterministic pipeline.
+//
+// IMPORTS GOTCHA: value imports inside lib/ MUST be relative WITH `.ts` so the
+// raw-`.ts` test runner (`node --experimental-strip-types`) resolves them. The
+// `@/` alias does NOT resolve at runtime — only `import type` may use it. We
+// keep model imports as `import type` (erased at build) and relative; the value
+// imports (deadline engine, FATAL_CLOCK_KINDS, holiday calendar) are relative+`.ts`.
+
+import type {
+  Opportunity,
+  LegalProcessEvent,
+  LegalEventType,
+  WorkflowStage,
+} from "../noyce-model.ts";
+import type { MaestroState, MaestroStage, PreclusiveClock, ClockKind } from "./maestro-types.ts";
+import { FATAL_CLOCK_KINDS } from "./maestro-types.ts";
+import { businessDaysDeadline, deadlineAlertLevel, timeUntil } from "../noyce-deadline.ts";
+import type { DeadlineAlertLevel } from "../noyce-deadline.ts";
+import type { HolidayCalendar } from "../noyce-dates.ts";
+import feriadosNacionais from "../data/feriados-nacionais.json" with { type: "json" };
+
+const HOLIDAYS = feriadosNacionais as HolidayCalendar;
+
+// ───────────────────────────────────────────────────────────────────────────
+// WorkflowStage → MaestroStage. This is the conceptual INVERSE of
+// maestroToWorkflowStage (maestro-types.ts), which is many-to-one. We pick ONE
+// canonical fine-grained stage per coarse UI phase — the most representative
+// "resting" stage of that phase — so deriveMaestroState yields a deterministic,
+// stable MaestroState from the only durable enum the data carries today.
+//
+//   monitorar  → descoberto   (the entry resting state of the pré-proposta phase)
+//   analisar   → analisado    (Prisma done; analysis is the substance of the phase)
+//   habilitar  → habilitado   (Forja-ready resting state)
+//   indicar    → entregando   (Escriba assembling the dossiê)
+//   acompanhar → protocolada  (protocol confirmed; Sentinela watching the session)
+//   recorrer   → avaliar-recurso-julgamento (the appeal-evaluation resting state)
+// ───────────────────────────────────────────────────────────────────────────
+const WORKFLOW_TO_MAESTRO: Record<WorkflowStage, MaestroStage> = {
+  monitorar: "descoberto",
+  analisar: "analisado",
+  habilitar: "habilitado",
+  indicar: "entregando",
+  acompanhar: "protocolada",
+  recorrer: "avaliar-recurso-julgamento",
+};
+
+export function workflowToMaestroStage(stage: WorkflowStage): MaestroStage {
+  return WORKFLOW_TO_MAESTRO[stage];
+}
+
+// ───────────────────────────────────────────────────────────────────────────
+// LegalEventType → ClockKind. Only PRECLUSIVE event types map to a clock; every
+// other event type (publication, session_open, adjudication, …) is non-preclusive
+// and produces NO clock (returns null → ignored by the arming loop).
+//
+//   impugnação ao edital     → impugnacao_edital
+//   janela de intenção rec.  → intencao_recurso
+//   prazo de razões de rec.  → razoes_recurso
+//   contrarrazões            → contrarrazoes
+//   diligência               → diligencia
+//   prazo de proposta        → proposta
+// ───────────────────────────────────────────────────────────────────────────
+const PRECLUSIVE_EVENT_TO_CLOCK: Partial<Record<LegalEventType, ClockKind>> = {
+  proposal_deadline: "proposta",
+  appeal_intent_window: "intencao_recurso",
+  appeal_reasons_deadline: "razoes_recurso",
+  counterarguments_deadline: "contrarrazoes",
+  diligence: "diligencia",
+};
+
+// Some editais carry an impugnação event under "clarification" (pedido de
+// esclarecimento/impugnação ao edital). Kept separate so the mapping above stays
+// a clean 1:1 with the unambiguous preclusive types; clarification is treated as
+// impugnação ONLY when its label/eventType is explicitly the edital-impugnation.
+function clockKindForEvent(event: LegalProcessEvent): ClockKind | null {
+  const mapped = PRECLUSIVE_EVENT_TO_CLOCK[event.eventType];
+  return mapped ?? null;
+}
+
+// M2 / C-NOVO-5: observed stays observed; everything inferred/expected/missed/
+// cancelled is treated as a NON-binding "inferred" date for gate purposes — the
+// UI must show "CONFIRMAR DATA", never a hard confirmed deadline.
+function mapDateConfidence(status: LegalProcessEvent["status"]): PreclusiveClock["dateConfidence"] {
+  return status === "observed" ? "observed" : "inferred";
+}
+
+// Resolve the dueAt instant for a clock from an event. Priority:
+//   1. event.eventTime present → that IS the due instant (observed/inferred).
+//   2. no eventTime, but a calculable base date + a dias-úteis rule → compute
+//      with businessDaysDeadline. Today's fixture carries no such base on the
+//      preclusive events without eventTime, so we conservatively return null
+//      (no clock armed) rather than invent a date (I2/I5 — never chute).
+// `armedBy` follows the source of the date: proposta deadline comes from the
+// edital portal/publication; recurso/diligência windows are armed off the ata
+// (session record). Defaults are deliberate and documented.
+function resolveDueAt(event: LegalProcessEvent): string | null {
+  if (event.eventTime) return event.eventTime;
+  return null;
+}
+
+function armedByForKind(kind: ClockKind): PreclusiveClock["armedBy"] {
+  if (kind === "proposta" || kind === "impugnacao_edital") return "evento_portal";
+  // recurso/contrarrazões/diligência windows are armed off the session ata.
+  return "ata";
+}
+
+// ───────────────────────────────────────────────────────────────────────────
+// deriveMaestroState — ADAPT an Opportunity into a canonical MaestroState with
+// its preclusive clocks ARMED from real data. Read-only: never mutates `opp`.
+//   • stage:        workflowToMaestroStage(opp.stage)
+//   • editalVersionHash: opp.id (stable, deterministic per-edital identity — I11)
+//   • humanLayer / history: [] (this derivation is the pipeline's read of state,
+//     not a record of human decisions or an audit replay)
+//   • clocks:       proposta (from opp.proposalDeadline) + every PRECLUSIVE
+//                   legalProcess event that resolves to a dueAt.
+// ───────────────────────────────────────────────────────────────────────────
+export function deriveMaestroState(opp: Opportunity): MaestroState {
+  const clocks: PreclusiveClock[] = [];
+
+  // Proposta clock from the durable proposalDeadline (observed when present).
+  if (opp.proposalDeadline) {
+    clocks.push({
+      kind: "proposta",
+      basis: "uteis_horacheia",
+      dueAt: opp.proposalDeadline,
+      armedBy: "evento_portal",
+      status: "armado",
+      fatalOnMiss: FATAL_CLOCK_KINDS.has("proposta"),
+      dateConfidence: "observed",
+    });
+  }
+
+  // Preclusive legalProcess events → clocks. Non-preclusive events are ignored.
+  for (const event of opp.legalProcess.events) {
+    const kind = clockKindForEvent(event);
+    if (kind === null) continue; // non-preclusive → no clock
+
+    // Skip the proposta event if we already armed the proposta clock from the
+    // durable field (avoid a duplicate); the durable field is authoritative.
+    if (kind === "proposta" && opp.proposalDeadline) continue;
+
+    const dueAt = resolveDueAt(event);
+    if (dueAt === null) continue; // no calculable instant → never invent (I2/I5)
+
+    clocks.push({
+      kind,
+      basis: "uteis_horacheia",
+      dueAt,
+      armedBy: armedByForKind(kind),
+      status: "armado",
+      fatalOnMiss: FATAL_CLOCK_KINDS.has(kind),
+      dateConfidence: mapDateConfidence(event.status),
+    });
+  }
+
+  return {
+    stage: workflowToMaestroStage(opp.stage),
+    editalVersionHash: opp.id,
+    humanLayer: [],
+    returnTo: null,
+    history: [],
+    clocks,
+    waitingFor: null,
+    stepFailed: null,
+  };
+}
+
+// ───────────────────────────────────────────────────────────────────────────
+// SentinelaAlert — the read-only output of the Sentinela for ONE armed clock.
+// ───────────────────────────────────────────────────────────────────────────
+export interface SentinelaAlert {
+  kind: ClockKind;
+  dueAt: string;
+  level: DeadlineAlertLevel;
+  msUntil: number; // > 0 falta tempo; <= 0 vencido (ms negativos = quanto passou)
+  fatalOnMiss: boolean;
+  dateConfidence: PreclusiveClock["dateConfidence"];
+}
+
+// Urgency rank: vencido (most urgent) → t-0 → t-1 → t-3 → ok (least urgent).
+const LEVEL_RANK: Record<DeadlineAlertLevel, number> = {
+  vencido: 0,
+  "t-0": 1,
+  "t-1": 2,
+  "t-3": 3,
+  ok: 4,
+};
+
+// ───────────────────────────────────────────────────────────────────────────
+// sentinelaWatch — READ-ONLY: for every armed clock, compute its alert level and
+// time remaining relative to the injected `now`. Sorted by urgency (vencido
+// first); within the same level, the nearer dueAt comes first. Never mutates.
+//
+// Invariante M2/I3: a clock with dateConfidence:"inferred" travels through this
+// output UNCHANGED — the UI is responsible for rendering "CONFIRMAR DATA" and
+// must never treat it as a hard confirmed deadline.
+// ───────────────────────────────────────────────────────────────────────────
+export function sentinelaWatch(opp: Opportunity, nowIso: string): SentinelaAlert[] {
+  const state = deriveMaestroState(opp);
+
+  const alerts: SentinelaAlert[] = state.clocks.map((clock) => ({
+    kind: clock.kind,
+    dueAt: clock.dueAt,
+    level: deadlineAlertLevel(clock.dueAt, nowIso, { holidays: HOLIDAYS }),
+    msUntil: timeUntil(clock.dueAt, nowIso).ms,
+    fatalOnMiss: clock.fatalOnMiss,
+    dateConfidence: clock.dateConfidence,
+  }));
+
+  return alerts.sort((a, b) => {
+    const rankDelta = LEVEL_RANK[a.level] - LEVEL_RANK[b.level];
+    if (rankDelta !== 0) return rankDelta;
+    // Same level → earlier dueAt first.
+    return new Date(a.dueAt).getTime() - new Date(b.dueAt).getTime();
+  });
+}
+
+// Human-readable PT-BR label per clock kind, for the UI panel.
+export function clockKindLabel(kind: ClockKind): string {
+  switch (kind) {
+    case "proposta":
+      return "Prazo de proposta";
+    case "impugnacao_edital":
+      return "Impugnação ao edital";
+    case "intencao_recurso":
+      return "Intenção de recurso";
+    case "razoes_recurso":
+      return "Razões de recurso";
+    case "contrarrazoes":
+      return "Contrarrazões";
+    case "diligencia":
+      return "Diligência";
+    case "empate_ficto":
+      return "Empate ficto ME/EPP";
+    default: {
+      const _never: never = kind;
+      return String(_never);
+    }
+  }
+}
