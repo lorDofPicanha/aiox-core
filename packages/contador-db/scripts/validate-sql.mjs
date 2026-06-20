@@ -16,6 +16,7 @@ const contract002Path = resolve(root, "tests/sql/002_decision_evidence_contract.
 const contract003Path = resolve(root, "tests/sql/003_secure_decision_rpc_contract.sql");
 const contract004Path = resolve(root, "tests/sql/004_closeout_lote_contract.sql");
 const contract005Path = resolve(root, "tests/sql/005_rls_export_runtime_contract.sql");
+const contract006Path = resolve(root, "tests/sql/006_incident_expurgo_runtime_contract.sql");
 const closeoutExportQueryPath = resolve(root, "queries/export-closeout-events.sql");
 
 const migration = readFileSync(migrationPath, "utf8");
@@ -30,6 +31,7 @@ const contract002 = readFileSync(contract002Path, "utf8");
 const contract003 = readFileSync(contract003Path, "utf8");
 const contract004 = readFileSync(contract004Path, "utf8");
 const contract005 = readFileSync(contract005Path, "utf8");
+const contract006 = readFileSync(contract006Path, "utf8");
 const closeoutExportQuery = readFileSync(closeoutExportQueryPath, "utf8");
 
 const checks = [
@@ -88,7 +90,12 @@ const checks = [
   ["005 RLS export runtime contract exists", /runtime RLS and export boundaries/i.test(contract005)],
   ["005 checks authenticated tenant event isolation", /must not see tenant B events/i.test(contract005) && /set local role authenticated/i.test(contract005)],
   ["005 checks authenticated closeout isolation", /must not see tenant B closeouts/i.test(contract005)],
-  ["005 checks missing tenant claim closed", /without tenant claim must not see events/i.test(contract005) && /without tenant claim must not see closeouts/i.test(contract005)]
+  ["005 checks missing tenant claim closed", /without tenant claim must not see events/i.test(contract005) && /without tenant claim must not see closeouts/i.test(contract005)],
+  ["006 incident expurgo runtime contract exists", /incident\/expurgo runbook/i.test(contract006) && /set local role authenticated/i.test(contract006)],
+  ["006 checks tenant mismatch on export", /tenant A must not see tenant B events/i.test(contract006) && /tenant A must not see tenant B closeouts/i.test(contract006)],
+  ["006 checks ledger immutability", /direct UPDATE on core\.evento_boa_fe must be blocked/i.test(contract006) && /direct DELETE on core\.evento_boa_fe must be blocked/i.test(contract006)],
+  ["006 checks closeout manifest immutability", /direct UPDATE on core\.closeout_lote manifest must be blocked/i.test(contract006) && /direct DELETE on core\.closeout_lote manifest must be blocked/i.test(contract006)],
+  ["006 checks no direct closeout write", /authenticated must not INSERT into core\.closeout_lote directly/i.test(contract006)]
 ];
 
 const failures = checks.filter(([, pass]) => !pass);

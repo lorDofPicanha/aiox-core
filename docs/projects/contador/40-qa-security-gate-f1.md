@@ -81,7 +81,8 @@ Resultado 2026-06-18: PASS. O contrato usa `SET ROLE authenticated` e `request.j
 | G9 | QA | Export de eventos inclui `id`, hashes em hex e timestamp UTC canonico | PASS static |
 | G10 | QA | `--format sql` recusa export sem `id` de evento | PASS local |
 | G11 | DevOps | Diagnostico nao-interativo de smoke (`DATABASE_URL`, `PSQL_PATH`, arquivos, conexao) | PASS |
+| G12 | Security/QA | Runbook de incidente/expurgo testavel (`49-incident-expurgo-runbook-f1.md`) + contrato 006 (tenant mismatch no export, imutabilidade da trilha e do manifesto, sem INSERT direto em closeout) | PASS tecnico/static; smoke runtime e sign-off juridico pendentes |
 
 ## 5. Proxima acao
 
-Proximo corte: runbook de incidente/expurgo testavel. XML real e claims de acuracia continuam bloqueados ate revisao juridica/fiscal dos artefatos G4/G5/G6 + execucao real do G8.
+Runbook de incidente/expurgo testavel entregue (G12: doc `49` + contrato 006), fechando o ciclo tecnico do F1 Foundation. Falta: rodar `npm run smoke:psql` com o contrato 006 em Postgres descartavel (runtime gate do founder) e o sign-off juridico/security do runbook. XML real e claims de acuracia continuam bloqueados ate revisao juridica/fiscal dos artefatos G4/G5/G6 + execucao real do G8.

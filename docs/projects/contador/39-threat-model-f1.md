@@ -38,7 +38,7 @@
 | Tampering | Evento alterado apos gravacao | Trigger append-only; verifier detecta hash mismatch; smoke F1.3 PASS | Storage imutavel de exports reais |
 | Repudiation | Contador nega decisao | `revisor_snapshot`, `evidencia_ref`, `evidencia_hash` | Sign-off juridico sobre suficiencia probatoria |
 | Information disclosure | Export de eventos vaza dados fiscais | Sem dados reais; minimizacao em payload; politica `41` criada | Storage/logs reais pendentes |
-| Denial of service | Closeout falha por cadeia quebrada ou janela grande | CLI local falha fechado | Runbook de incidente + limites de lote |
+| Denial of service | Closeout falha por cadeia quebrada ou janela grande | CLI local falha fechado; runbook de incidente em `49-incident-expurgo-runbook-f1.md` | Limites de lote |
 | Elevation of privilege | Role app escreve direto em tabelas core/closeout | Grants/revokes, RLS e RPC publicada para closeout; contrato 005 PASS | Validar novamente no ambiente real antes de XML |
 
 ## 4. Abusos especificos
@@ -65,7 +65,7 @@
 - Provar que `authenticated` nao tem INSERT direto em `core.closeout_lote` e que grava apenas por `core_api_v1.registrar_closeout`.
 - [x] Politica tecnica de export: localizacao, criptografia, acesso, retencao e exclusao (`41-export-retention-policy-f1.md`).
 - DPA/suboperadores definidos.
-- Runbook de incidente para tenant mismatch, vazamento e cadeia quebrada.
+- [x] Runbook de incidente para tenant mismatch, vazamento e cadeia quebrada (`49-incident-expurgo-runbook-f1.md`; controles DB cobertos pelo contrato 006). Requer sign-off juridico/security antes de XML real.
 - Proibicao formal de envio a LLM/RAG.
 - Revisao legal/fiscal do uso de manifesto como evidencia tecnica, nao prova plena.
 

@@ -18,7 +18,8 @@ const files = [
   "tests/sql/002_decision_evidence_contract.sql",
   "tests/sql/003_secure_decision_rpc_contract.sql",
   "tests/sql/004_closeout_lote_contract.sql",
-  "tests/sql/005_rls_export_runtime_contract.sql"
+  "tests/sql/005_rls_export_runtime_contract.sql",
+  "tests/sql/006_incident_expurgo_runtime_contract.sql"
 ];
 
 for (const file of files) {
