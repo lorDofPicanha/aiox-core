@@ -1,0 +1,135 @@
+/* ============================================================================
+   e-CAC ("a mina", D9) — CSS Module local. NÃO edita app/globals.css (módulos
+   rodam em paralelo). Reusa as classes globais (card, badge, kpi, table.tbl,
+   disclaimer, notice, grid). Adiciona só o que é específico do e-CAC: o selo de
+   honestidade reforçado e a seção "quem tem pendência". Tokens via var(--*).
+   ============================================================================ */
+
+/* ---------- Selo de honestidade (demo · base sintética · Fase 7) ---------- */
+.selo {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  font-size: 12px;
+  color: var(--text-dim);
+  background: var(--surface-2);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+}
+.seloGlyph {
+  font-size: 16px;
+  color: var(--primary);
+  line-height: 1.3;
+  flex-shrink: 0;
+}
+.seloBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.seloTitulo {
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* ---------- Célula de cliente (nome + documento) ---------- */
+.cli {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1.35;
+}
+.cliNome {
+  font-weight: 600;
+}
+.cliDoc {
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+/* ---------- Seção "quem tem pendência" ---------- */
+.pendList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.pendRow {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--border);
+}
+.pendRow:last-child {
+  border-bottom: none;
+}
+.pendDot {
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+  margin-top: 4px;
+  box-shadow: 0 0 0 3px rgba(16, 24, 40, 0.04);
+}
+.pendDot_vencida { background: var(--danger); }
+.pendDot_pendente { background: var(--warning); }
+.pendDot_regular { background: var(--success); }
+
+.pendMain {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.pendHead {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+.pendMotivos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+.pendMotivos li {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.pendMotivos li::before {
+  content: "•";
+  color: var(--text-faint);
+}
+
+/* ---------- Barra de ação (gerar CND em lote — demo, sem ação real) ---------- */
+.acaoBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.btnLote {
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--primary-border);
+  background: var(--primary);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: not-allowed;
+  opacity: 0.75;
+}
+.acaoNota {
+  font-size: 11px;
+  color: var(--text-faint);
+}

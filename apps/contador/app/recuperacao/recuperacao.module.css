@@ -1,0 +1,264 @@
+/* ============================================================================
+   Overlay RECUPERAÇÃO / RESTITUIÇÃO (módulo #4) — CSS Module local.
+   NÃO edita app/globals.css (auto-contido + roda em paralelo com outros módulos).
+   Reusa as classes globais (card, badge, disclaimer, notice, tbl, num, muted) e
+   adiciona só o layout específico do overlay. Tokens via var(--*) globais.
+   ============================================================================ */
+
+/* ---------- Subtítulo simples ---------- */
+.lead {
+  margin: 0 0 var(--space-4);
+  font-size: 13.5px;
+  color: var(--text-dim);
+  max-width: 72ch;
+}
+.lead strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ---------- Banner do relógio (sunset 2027) ---------- */
+.relogio {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-lg);
+  border: 1px solid #f3dcb0;
+  background: var(--warning-soft);
+  margin-bottom: var(--space-4);
+}
+.relogioGlyph {
+  font-size: 22px;
+  color: var(--warning);
+  flex-shrink: 0;
+}
+.relogioTexto {
+  flex: 1;
+  min-width: 0;
+  font-size: 13px;
+  color: var(--warning);
+}
+.relogioTexto strong {
+  color: var(--warning);
+  font-weight: 700;
+}
+.relogioContador {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+  line-height: 1.1;
+}
+.relogioContador .num {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--warning);
+}
+.relogioContadorLabel {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--warning);
+}
+@media (max-width: 720px) {
+  .relogio {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .relogioContador {
+    align-items: flex-start;
+  }
+}
+
+/* ---------- Cabeçalho do caso por cliente ---------- */
+.casoHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-1);
+}
+.casoIdent {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.casoNome {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.casoBadges {
+  display: inline-flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+.casoHint {
+  margin: 0 0 var(--space-4);
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+/* ---------- Célula de item da tabela ---------- */
+.itemCell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-width: 340px;
+}
+
+/* ---------- Rodapé do caso: estimativa + split ---------- */
+.casoRodape {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+@media (max-width: 760px) {
+  .casoRodape {
+    grid-template-columns: 1fr;
+  }
+}
+
+.estimativaBox {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+}
+.estimativaLabel {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-faint);
+}
+.estimativaValor {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.splitBox {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  border: 1px dashed var(--border-strong);
+}
+.splitTitulo {
+  font-size: 12px;
+  font-weight: 600;
+}
+.splitTabela {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.splitTabela td {
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+}
+.splitTabela tr:last-child td {
+  border-bottom: none;
+}
+.splitTabela td.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums slashed-zero;
+}
+.splitTabela td:last-child {
+  font-weight: 600;
+}
+
+/* ---------- Via de recebimento ---------- */
+.vias {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-4);
+}
+.via {
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+}
+.viaDefault {
+  border-color: #bfe3cd;
+  background: var(--success-soft);
+}
+.viaHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-2);
+}
+.viaRotulo {
+  font-size: 13.5px;
+  font-weight: 600;
+}
+.viaDesc {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+/* ---------- Botão de dossiê (demo) ---------- */
+.casoAcao {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border);
+}
+.dossie {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.dossieBtn {
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--primary-border);
+  background: var(--primary);
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+}
+.dossieBtn:hover {
+  background: var(--primary-hover);
+}
+.dossieBtn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.dossiePronto {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-dim);
+  background: var(--success-soft);
+  border: 1px solid #bfe3cd;
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  max-width: 64ch;
+}
+.dossiePronto strong {
+  color: var(--text);
+}

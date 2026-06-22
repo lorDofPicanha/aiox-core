@@ -5,10 +5,14 @@ import { usePathname } from "next/navigation";
 
 const ITEMS = [
   { href: "/", label: "Carteira", icon: "▦" },
+  { href: "/captura", label: "Captura", icon: "⤓" },
   { href: "/fila", label: "Fila do dia", icon: "≣" },
-  { href: "/laudos", label: "Laudos", icon: "▤" },
-  { href: "/trilha", label: "Trilha", icon: "⧉" },
   { href: "/aprovacao", label: "Aprovação", icon: "✓" },
+  { href: "/trilha", label: "Trilha", icon: "⧉" },
+  { href: "/laudos", label: "Laudos", icon: "▤" },
+  { href: "/recuperacao", label: "Recuperação", icon: "↩" },
+  { href: "/ecac", label: "e-CAC", icon: "⊞" },
+  { href: "/emissor", label: "Emissor", icon: "✎" },
   { href: "/configuracoes", label: "Configurações", icon: "⚙" },
 ];
 

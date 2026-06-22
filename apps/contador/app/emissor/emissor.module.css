@@ -1,0 +1,384 @@
+/* ============================================================================
+   EMISSOR de NFS-e (módulo #4) — CSS Module local.
+   NÃO toca app/globals.css. Reusa os tokens canônicos (--primary, --space-*,
+   --success-soft, etc.) e as classes globais (badge, card, disclaimer, num, mono,
+   muted). Aqui só o layout específico do emissor: fluxo guiado + revenda + DANFSe.
+   Estética sóbria (a tributação é um indício a confirmar, não um veredito).
+   ============================================================================ */
+
+.intro {
+  font-size: 14px;
+  color: var(--text-dim);
+  max-width: 760px;
+  margin: 0 0 var(--space-3);
+}
+
+.selos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+/* Layout: fluxo (principal) + revenda (lateral sticky). */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: var(--space-4);
+  align-items: start;
+}
+.main {
+  min-width: 0;
+}
+.side {
+  position: sticky;
+  top: var(--space-4);
+}
+@media (max-width: 960px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .side {
+    position: static;
+  }
+}
+
+/* ============================================================================
+   Fluxo de emissão (form client)
+   ============================================================================ */
+.fluxo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.campo {
+  display: flex;
+  flex-direction: column;
+}
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.labelHint {
+  font-weight: 400;
+  color: var(--text-faint);
+}
+.label code {
+  font-family: var(--font-mono);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0 4px;
+  font-size: 11px;
+}
+
+.select,
+.textarea,
+.input,
+.confirmInput {
+  font: inherit;
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--text);
+}
+.textarea {
+  resize: vertical;
+}
+.confirmInput {
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+}
+.select:focus-visible,
+.textarea:focus-visible,
+.input:focus-visible,
+.confirmInput:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
+}
+
+.clienteInfo {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin: 6px 0 0;
+}
+
+/* Botões */
+.btnPrimario {
+  font: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--primary);
+  background: var(--primary);
+  color: #fff;
+  cursor: pointer;
+  align-self: flex-start;
+}
+.btnPrimario:not(:disabled):hover {
+  background: var(--primary-hover);
+}
+.btnPrimario:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+.btnSecundario {
+  font: inherit;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 9px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text-dim);
+  cursor: pointer;
+}
+.btnSecundario:hover {
+  border-color: var(--primary-border);
+  color: var(--text);
+}
+.acoes {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-top: var(--space-2);
+}
+
+/* ---- Caixa da sugestão + auto-auditoria ---- */
+.sugestaoBox {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface-2);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.sugestaoHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+.sugestaoTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+.sugestaoDl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3) var(--space-4);
+  margin: 0;
+}
+@media (max-width: 520px) {
+  .sugestaoDl {
+    grid-template-columns: 1fr;
+  }
+}
+.sugestaoDl > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.sugestaoDl dt {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-faint);
+  margin: 0;
+}
+.sugestaoDl dd {
+  margin: 0;
+  font-size: 13px;
+}
+
+.auditConfere,
+.auditRevisar {
+  font-size: 12px;
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  margin: 0;
+}
+.auditConfere {
+  color: var(--success);
+  background: var(--success-soft);
+  border: 1px solid #bfe3cd;
+}
+.auditRevisar {
+  color: var(--warning);
+  background: var(--warning-soft);
+  border: 1px solid #f3dcb0;
+}
+
+.fundamentoList {
+  margin: 0;
+  padding-left: 16px;
+  font-size: 11px;
+  color: var(--text-dim);
+}
+.fundamentoList li {
+  margin: 2px 0;
+}
+
+/* ---- Caixa de confirmação humana (espelha a cerimônia) ---- */
+.confirmacaoBox {
+  border: 1px solid var(--primary-border);
+  border-radius: var(--radius-lg);
+  background: var(--primary-soft);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.confirmacaoTitulo {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+.confirmacaoSub {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin: 0 0 var(--space-1);
+}
+.revisaoCheck {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-size: 13px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  cursor: pointer;
+}
+.revisaoCheck input {
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+.assinaturaLinha {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin: 4px 0 0;
+}
+
+/* ============================================================================
+   Rascunho de DANFSe sintético (preview honesto)
+   ============================================================================ */
+.danfse {
+  border: 1px solid #bfe3cd;
+  background: var(--success-soft);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+}
+.danfseHead {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+.danfseGlyph {
+  font-size: 22px;
+  line-height: 1;
+  color: var(--success);
+  flex-shrink: 0;
+}
+.danfseSub {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin: 4px 0 0;
+}
+.danfseDl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3) var(--space-4);
+  margin: 0 0 var(--space-3);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+}
+@media (max-width: 520px) {
+  .danfseDl {
+    grid-template-columns: 1fr;
+  }
+}
+.danfseDl > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.danfseDl dt {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-faint);
+  margin: 0;
+}
+.danfseDl dd {
+  margin: 0;
+  font-size: 13px;
+}
+.danfseNota {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin: 0 0 var(--space-3);
+}
+
+/* ============================================================================
+   Painel de revenda
+   ============================================================================ */
+.revendaTexto {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin: 0 0 var(--space-3);
+}
+.revendaQuadro {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.revendaLinha {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  font-size: 13px;
+}
+.revendaLinha + .revendaLinha {
+  border-top: 1px solid var(--border);
+}
+.revendaLinha > span:first-child {
+  color: var(--text-dim);
+}
+.revendaMargem {
+  background: var(--primary-soft);
+  font-weight: 700;
+  color: var(--primary);
+}
+.revendaNota {
+  font-size: 11px;
+  color: var(--text-faint);
+  margin: var(--space-3) 0 0;
+}
+
+/* ============================================================================
+   Lista de notas
+   ============================================================================ */
+.notaCliente {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.notaCliente .muted {
+  font-size: 11px;
+}
