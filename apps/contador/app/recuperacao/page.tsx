@@ -20,17 +20,11 @@
  */
 import { Card } from "@/components/Card";
 import { StatusBadge } from "@/components/StatusBadge";
-import { Table, type Column } from "@/components/Table";
 import { TopBar } from "@/components/TopBar";
 import { brl } from "@/lib/format";
-import { CASOS_RECUPERACAO } from "./recuperacao-data";
-import {
-  VIA_RECEBIMENTO,
-  diasAteSunset,
-  type CasoRecuperacao,
-  type IndicioRecuperacao,
-} from "./recuperacao-model";
-import { DossieButton } from "./DossieButton";
+import { CASOS_RECUPERACAO, ANO_BASE } from "./recuperacao-data";
+import { VIA_RECEBIMENTO, diasAteSunset } from "./recuperacao-model";
+import { RecuperacaoExplorer } from "./RecuperacaoExplorer";
 import styles from "./recuperacao.module.css";
 
 /** Render sob demanda: a contagem regressiva ao sunset depende da data atual. */
@@ -43,53 +37,6 @@ export default function RecuperacaoPage() {
   const casos = CASOS_RECUPERACAO;
   const totalIndicios = casos.reduce((acc, c) => acc + c.indicios.length, 0);
   const estimativaTotal = casos.reduce((acc, c) => acc + c.estimativaTotal, 0);
-
-  const colunas: Column<IndicioRecuperacao>[] = [
-    {
-      key: "produto",
-      header: "Item (ligado à auditoria)",
-      render: (i) => (
-        <span className={styles.itemCell}>
-          <span style={{ fontWeight: 600 }}>{i.produto}</span>
-          <span className="muted" style={{ fontSize: 11 }}>
-            {i.natureza}
-          </span>
-        </span>
-      ),
-    },
-    {
-      key: "ncm",
-      header: "NCM",
-      render: (i) => <span className="mono num">{i.ncm}</span>,
-    },
-    {
-      key: "banda",
-      header: "Confiança",
-      render: (i) => {
-        const view = bandaView(i);
-        return <StatusBadge view={view} />;
-      },
-    },
-    {
-      key: "fundamento",
-      header: "Base normativa",
-      render: (i) => (
-        <span className="muted" style={{ fontSize: 11 }}>
-          {i.fundamento}
-        </span>
-      ),
-    },
-    {
-      key: "estimativa",
-      header: "Estimativa retroativa (5 anos)",
-      align: "num",
-      render: (i) => (
-        <span className="num" title="Estimativa ilustrativa — sujeita a análise do tributarista">
-          {brl(i.estimativaRetroativo)}
-        </span>
-      ),
-    },
-  ];
 
   return (
     <>
@@ -156,10 +103,8 @@ export default function RecuperacaoPage() {
           </Card>
         </div>
 
-        {/* Um bloco por cliente. */}
-        {casos.map((caso) => (
-          <CasoCard key={caso.clienteId} caso={caso} colunas={colunas} />
-        ))}
+        {/* Um bloco por cliente — corpo interativo (drill-down + dossiê + calculadora). */}
+        <RecuperacaoExplorer casos={casos} anoBase={ANO_BASE} />
 
         {/* Via de recebimento — RT default (D5). */}
         <Card
@@ -196,106 +141,4 @@ export default function RecuperacaoPage() {
       </div>
     </>
   );
-}
-
-/** Bloco de um cliente: cabeçalho, tabela de indícios, split e botão de dossiê. */
-function CasoCard({
-  caso,
-  colunas,
-}: {
-  caso: CasoRecuperacao;
-  colunas: Column<IndicioRecuperacao>[];
-}) {
-  const { split } = caso;
-  return (
-    <Card>
-      <div className={styles.casoHead}>
-        <div className={styles.casoIdent}>
-          <h2 className={styles.casoNome}>{caso.clienteNome}</h2>
-          <span className="muted" style={{ fontSize: 12 }}>
-            {caso.segmento}
-          </span>
-        </div>
-        <div className={styles.casoBadges}>
-          <StatusBadge view={caso.estagio} />
-          <StatusBadge view={caso.bandaCaso} />
-        </div>
-      </div>
-      <p className={styles.casoHint}>{caso.estagio.hint}</p>
-
-      <Table<IndicioRecuperacao>
-        columns={colunas}
-        rows={caso.indicios}
-        rowKey={(i) => `${caso.clienteId}-${i.ncm}-${i.produto}`}
-        rowClassName={(i) => (i.banda === "baixa" ? "risco" : undefined)}
-        empty="Sem indícios ligados à auditoria neste cliente."
-      />
-
-      <div className={styles.casoRodape}>
-        <div className={styles.estimativaBox}>
-          <span className={styles.estimativaLabel}>
-            Estimativa retroativa do caso (5 anos, ilustrativa)
-          </span>
-          <span className={`num ${styles.estimativaValor}`}>{brl(caso.estimativaTotal)}</span>
-          <span className="muted" style={{ fontSize: 11 }}>
-            Via sugerida: {caso.viaSugerida.rotulo}
-          </span>
-        </div>
-
-        {/* Split ILUSTRATIVO do success-fee — linha separada, NÃO no recorrente (D6). */}
-        <div className={styles.splitBox}>
-          <span className={styles.splitTitulo}>
-            Split ilustrativo do success-fee{" "}
-            <span className="muted" style={{ fontWeight: 400 }}>
-              (exemplo, não promessa de valor)
-            </span>
-          </span>
-          <table className={styles.splitTabela}>
-            <tbody>
-              <tr>
-                <td>Empresa cliente</td>
-                <td className="num muted">{split.empresaPct}%</td>
-                <td className="num">{brl(split.empresaValor)}</td>
-              </tr>
-              <tr>
-                <td>Plataforma</td>
-                <td className="num muted">{split.plataformaPct}%</td>
-                <td className="num">{brl(split.plataformaValor)}</td>
-              </tr>
-              <tr>
-                <td>Contador parceiro</td>
-                <td className="num muted">{split.contadorPct}%</td>
-                <td className="num">{brl(split.contadorValor)}</td>
-              </tr>
-            </tbody>
-          </table>
-          <span className="muted" style={{ fontSize: 11 }}>
-            Sobre base hipotética de {brl(split.baseHipotetica)}. Success-fee cobrado à parte,
-            fora da mensalidade recorrente.
-          </span>
-        </div>
-      </div>
-
-      <div className={styles.casoAcao}>
-        <DossieButton clienteNome={caso.clienteNome} indicios={caso.indicios.length} />
-        <span className="muted" style={{ fontSize: 11 }}>
-          O software entrega o dossiê de evidências; quem assina a PER/DCOMP é o tributarista
-          habilitado (Fase 7).
-        </span>
-      </div>
-    </Card>
-  );
-}
-
-/** Banda calibrada do indício (mapa local — não importa de lib/status para auto-contenção). */
-function bandaView(i: IndicioRecuperacao) {
-  switch (i.banda) {
-    case "alta":
-      return { variant: "success" as const, glyph: "▲", label: "Confiança alta" };
-    case "media":
-      return { variant: "warning" as const, glyph: "◆", label: "Confiança média" };
-    case "baixa":
-    default:
-      return { variant: "danger" as const, glyph: "▼", label: "Confiança baixa" };
-  }
 }

@@ -133,3 +133,347 @@
   font-size: 11px;
   color: var(--text-faint);
 }
+
+/* ---------- Selo discreto de honestidade (rodapé sutil) ---------- */
+.rodapeSelo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-faint);
+  margin: var(--space-3) 0 0;
+}
+.rodapeGlyph {
+  color: var(--primary);
+  font-size: 13px;
+}
+
+/* ---------- Toolbar + filtro "só pendências" ---------- */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+.filtro {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 13px;
+  color: var(--text);
+  cursor: pointer;
+  user-select: none;
+}
+.filtro input {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--primary);
+}
+
+/* ---------- Botão "Abrir" da linha + botões mini ---------- */
+.btnAbrir {
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text-dim);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btnAbrir:hover {
+  border-color: var(--primary-border);
+  color: var(--text);
+}
+.btnMini {
+  font: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 9px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text-dim);
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.btnMini:not(:disabled):hover {
+  border-color: var(--primary-border);
+  color: var(--text);
+}
+.btnMini:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+/* ============================================================================
+   Drill-down do cliente
+   ============================================================================ */
+.detalhe {
+  margin-top: var(--space-4);
+  border: 1px solid var(--primary-border);
+  border-radius: var(--radius-lg);
+  background: var(--surface-2);
+  padding: var(--space-4);
+}
+.detalheHead {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+.detalheTitulo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1.3;
+  flex: 1;
+  min-width: 0;
+}
+.detalheConsulta {
+  font-size: 11px;
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+.detalheGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  margin-top: var(--space-3);
+}
+
+.bloco {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  padding: var(--space-3) var(--space-4);
+}
+.blocoHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+  flex-wrap: wrap;
+}
+.blocoTitulo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+/* ---- Caixa postal (mensagens) ---- */
+.msgList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.msgRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--border);
+}
+.msgRow:last-child {
+  border-bottom: none;
+}
+.msgLida {
+  opacity: 0.6;
+}
+.msgDot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--warning);
+  flex-shrink: 0;
+}
+.msgDotLida {
+  background: var(--border-strong);
+}
+.msgMain {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.msgAssunto {
+  font-size: 13px;
+  color: var(--text);
+}
+.msgLida .msgAssunto {
+  font-weight: 400;
+}
+.msgMeta {
+  font-size: 11px;
+  color: var(--text-faint);
+}
+.msgEstado {
+  font-size: 11px;
+  color: var(--text-faint);
+  flex-shrink: 0;
+}
+
+/* ---- Certidões (CND) ---- */
+.cndList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.cndRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--border);
+}
+.cndRow:last-child {
+  border-bottom: none;
+}
+.cndNome {
+  flex: 1;
+  min-width: 0;
+  font-size: 13px;
+  color: var(--text);
+}
+
+/* ---- Preview sintético da certidão "baixada" ---- */
+.cndPreview {
+  margin-top: var(--space-3);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--surface-2);
+  padding: var(--space-3) var(--space-4);
+}
+.cndPreviewHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+  font-size: 13px;
+}
+.cndPreviewDl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-2) var(--space-4);
+  margin: 0 0 var(--space-3);
+}
+@media (max-width: 520px) {
+  .cndPreviewDl {
+    grid-template-columns: 1fr;
+  }
+}
+.cndPreviewDl > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.cndPreviewDl dt {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-faint);
+  margin: 0;
+}
+.cndPreviewDl dd {
+  margin: 0;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+.cndPreviewObs {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin: 0 0 var(--space-2);
+}
+.cndPreviewNota {
+  font-size: 11px;
+  color: var(--text-faint);
+  margin: 0;
+}
+
+/* ---- Declarações ---- */
+.declList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.declRow {
+  display: grid;
+  grid-template-columns: minmax(140px, 1fr) auto;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--border);
+}
+.declRow:last-child {
+  border-bottom: none;
+}
+.declNome {
+  font-size: 13px;
+  color: var(--text);
+}
+.declNota {
+  grid-column: 1 / -1;
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+/* ============================================================================
+   Resultado da geração em lote
+   ============================================================================ */
+.loteResultado {
+  margin-top: var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-2);
+  padding: var(--space-3) var(--space-4);
+}
+.loteHead {
+  font-size: 13px;
+  margin: 0 0 var(--space-3);
+}
+.loteList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.loteRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--border);
+}
+.loteRow:last-child {
+  border-bottom: none;
+}
+.loteCli {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1;
+  min-width: 160px;
+}
+.loteTipo {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+.loteNota {
+  font-size: 11px;
+  color: var(--text-faint);
+  margin: var(--space-3) 0 0;
+}

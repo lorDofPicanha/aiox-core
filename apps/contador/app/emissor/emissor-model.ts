@@ -58,6 +58,117 @@ export function clienteEmissorById(id: string): ClienteEmissor | undefined {
 }
 
 /**
+ * Prestador (emitente) demo — o escritório/empresa que emite a NFS-e pelo emissor.
+ * SINTÉTICO; em produção viria do tenant credenciado (Fase 7).
+ */
+export const PRESTADOR_DEMO = {
+  nome: "Synkra Serviços Contábeis Ltda (demo)",
+  documento: "44555666000154",
+  municipio: "Lages / SC",
+  inscricaoMunicipal: "DEMO-IM-90211",
+  regime: "Lucro Presumido",
+} as const;
+
+/**
+ * Catálogo de serviços demo (lista LC 116 + cClassTrib sugerido por item). Cada
+ * entrada ancora a SUGESTÃO do motor: ao escolher um serviço do catálogo, o fluxo
+ * pré-preenche descrição/valor e a heurística usa o item como dica. É SINTÉTICO —
+ * a régua real virá do motor fiscal com golden-set (Fase 2+).
+ */
+export interface ServicoCatalogo {
+  id: string;
+  /** Rótulo curto exibido no seletor de catálogo. */
+  rotulo: string;
+  /** Descrição que preenche o campo do fluxo. */
+  descricao: string;
+  /** Item LC 116 sugerido para o serviço. */
+  itemServico: string;
+  /** Valor de referência (apenas pré-preenche; o contador ajusta). */
+  valorReferencia: number;
+  /** Dica de família (alimenta a heurística de sugestão). */
+  familia:
+    | "manutencao"
+    | "consultoria"
+    | "treinamento"
+    | "limpeza"
+    | "transporte"
+    | "tecnologia"
+    | "saude"
+    | "obra";
+}
+
+export const CATALOGO_SERVICOS: ReadonlyArray<ServicoCatalogo> = [
+  {
+    id: "svc-manutencao",
+    rotulo: "Manutenção e conservação de equipamento",
+    descricao: "Manutenção de equipamento de refrigeração",
+    itemServico: "14.01 — manutenção e conservação",
+    valorReferencia: 1240,
+    familia: "manutencao",
+  },
+  {
+    id: "svc-consultoria",
+    rotulo: "Consultoria / assessoria empresarial",
+    descricao: "Consultoria de layout e exposição de produtos",
+    itemServico: "17.01 — assessoria ou consultoria",
+    valorReferencia: 3500,
+    familia: "consultoria",
+  },
+  {
+    id: "svc-treinamento",
+    rotulo: "Treinamento e capacitação de equipe",
+    descricao: "Treinamento de equipe sobre dispensação",
+    itemServico: "08.02 — instrução e treinamento",
+    valorReferencia: 950,
+    familia: "treinamento",
+  },
+  {
+    id: "svc-limpeza",
+    rotulo: "Limpeza, higienização e conservação",
+    descricao: "Lavagem e higienização de frota",
+    itemServico: "07.10 — limpeza e conservação",
+    valorReferencia: 680.5,
+    familia: "limpeza",
+  },
+  {
+    id: "svc-transporte",
+    rotulo: "Transporte de bens / logística municipal",
+    descricao: "Transporte e entrega de mercadorias no município",
+    itemServico: "16.01 — transporte municipal",
+    valorReferencia: 1480,
+    familia: "transporte",
+  },
+  {
+    id: "svc-tecnologia",
+    rotulo: "Licenciamento de software (SaaS / PDV)",
+    descricao: "Licenciamento de software de PDV (serviço misto)",
+    itemServico: "01.05 — licenciamento de programa de computador",
+    valorReferencia: 2200,
+    familia: "tecnologia",
+  },
+  {
+    id: "svc-saude",
+    rotulo: "Serviço de saúde / aplicação farmacêutica",
+    descricao: "Aplicação de medicamento injetável e aferição de pressão",
+    itemServico: "04.07 — serviços farmacêuticos",
+    valorReferencia: 320,
+    familia: "saude",
+  },
+  {
+    id: "svc-obra",
+    rotulo: "Execução de obra / instalação predial",
+    descricao: "Instalação de bancada e adequação predial do estabelecimento",
+    itemServico: "07.02 — execução de obras de construção civil",
+    valorReferencia: 5400,
+    familia: "obra",
+  },
+];
+
+export function servicoCatalogoById(id: string): ServicoCatalogo | undefined {
+  return CATALOGO_SERVICOS.find((s) => s.id === id);
+}
+
+/**
  * Sugestão de tributação para um serviço (saída do motor, SINTÉTICA).
  *
  * É o que o sistema PROPÕE — não um veredito. `confere` indica se a sugestão bate
@@ -73,12 +184,41 @@ export interface SugestaoTributaria {
   itemServico: string;
   /** Alíquota efetiva estimada sobre o valor do serviço [0..1]. */
   aliquotaEstimada: number;
+  /** Quebra dos tributos sugeridos por componente (apresentação no rascunho). */
+  tributos: TributoComponente[];
   /** Base normativa citada (fundamento da régua sintética). */
   fundamento: string[];
   /** Resultado da auto-auditoria contra a base de referência. */
   autoAuditoria: "confere" | "revisar";
   /** Frase G6-safe explicando o resultado da auto-auditoria. */
   autoAuditoriaNota: string;
+  /** Checagens individuais da auto-auditoria (✓ confere / ⚠ revisar + porquê). */
+  checks: AuditoriaCheck[];
+}
+
+/** Componente de tributo sugerido (CBS/IBS/ISS de transição) — apresentação. */
+export interface TributoComponente {
+  /** Sigla do tributo (CBS, IBS, ISS). */
+  sigla: string;
+  /** Nome legível do tributo. */
+  nome: string;
+  /** Alíquota do componente sobre o valor do serviço [0..1]. */
+  aliquota: number;
+}
+
+/** Resultado de uma checagem individual da auto-auditoria (item a item). */
+export interface AuditoriaCheck {
+  /** Rótulo do que foi checado (ex.: "cClassTrib bate com o ramo"). */
+  rotulo: string;
+  /** ✓ confere = ok; ⚠ revisar = divergência que o contador precisa olhar. */
+  resultado: "confere" | "revisar";
+  /** Explicação curta e G6-safe do porquê do resultado. */
+  detalhe: string;
+}
+
+/** Soma das alíquotas dos componentes (alíquota efetiva estimada). */
+export function aliquotaTotal(tributos: TributoComponente[]): number {
+  return tributos.reduce((acc, t) => acc + t.aliquota, 0);
 }
 
 /**
@@ -89,19 +229,23 @@ export interface SugestaoTributaria {
 export function sugerirTributacao(
   cliente: ClienteEmissor,
   descricao: string,
-  _valor: number,
+  valor: number,
 ): SugestaoTributaria {
   const desc = descricao.toLowerCase();
 
   // Sinais que levantam a flag de "revisar" na auto-auditoria (divergência potencial).
+  const indicioImportacao = desc.includes("import") || desc.includes("exterior");
+  const indicioLicenca =
+    desc.includes("software") || desc.includes("licen") || desc.includes("saas");
+  const indicioMisto = desc.includes("misto") || desc.includes("locac");
+  const descricaoMagra = descricao.trim().length < 8;
   const indicioDivergencia =
-    desc.includes("import") ||
-    desc.includes("exterior") ||
-    desc.includes("software") ||
-    desc.includes("licen") ||
-    desc.includes("misto") ||
-    desc.length < 8;
+    indicioImportacao || indicioLicenca || indicioMisto || descricaoMagra;
 
+  // Valor fora de faixa típica do ramo também merece um olhar humano (≥ R$ 25 mil).
+  const valorAtipico = valor >= 25000;
+
+  // ---- Régua base por regime (heurística determinística, SINTÉTICA) ----
   const base: SugestaoTributaria =
     cliente.regime === "Simples Nacional"
       ? {
@@ -109,13 +253,18 @@ export function sugerirTributacao(
           enquadramento: "Operação tributável integralmente (regra geral · Simples)",
           itemServico: "14.01 — manutenção e conservação",
           aliquotaEstimada: 0.06,
+          tributos: [
+            { sigla: "DAS", nome: "Simples Nacional (guia única)", aliquota: 0.06 },
+          ],
           fundamento: [
             "LC 214/2025 — cClassTrib base da Reforma (CBS/IBS)",
             "LC 116/2003 — lista de serviços (ISS de transição)",
+            "LC 123/2006 — Simples Nacional (recolhimento unificado)",
           ],
           autoAuditoria: "confere",
           autoAuditoriaNota:
             "Sugestão bate com a base de referência sintética do ramo. Sujeito à confirmação do contador.",
+          checks: [],
         }
       : cliente.regime === "Lucro Real"
         ? {
@@ -123,6 +272,10 @@ export function sugerirTributacao(
             enquadramento: "Operação tributável com crédito (regra geral · não-cumulativo)",
             itemServico: "17.01 — assessoria / consultoria",
             aliquotaEstimada: 0.0925,
+            tributos: [
+              { sigla: "CBS", nome: "Contribuição sobre Bens e Serviços", aliquota: 0.0265 },
+              { sigla: "IBS", nome: "Imposto sobre Bens e Serviços", aliquota: 0.066 },
+            ],
             fundamento: [
               "LC 214/2025 — cClassTrib base da Reforma (CBS/IBS)",
               "Regime não-cumulativo — apropriação de crédito na entrada",
@@ -130,12 +283,17 @@ export function sugerirTributacao(
             autoAuditoria: "confere",
             autoAuditoriaNota:
               "Sugestão bate com a base de referência sintética do ramo. Sujeito à confirmação do contador.",
+            checks: [],
           }
         : {
             cclasstrib: "000002",
             enquadramento: "Operação tributável integralmente (regra geral · Presumido)",
             itemServico: "07.02 — execução de serviços",
             aliquotaEstimada: 0.0779,
+            tributos: [
+              { sigla: "CBS", nome: "Contribuição sobre Bens e Serviços", aliquota: 0.0265 },
+              { sigla: "IBS", nome: "Imposto sobre Bens e Serviços", aliquota: 0.0514 },
+            ],
             fundamento: [
               "LC 214/2025 — cClassTrib base da Reforma (CBS/IBS)",
               "LC 116/2003 — lista de serviços (ISS de transição)",
@@ -143,13 +301,73 @@ export function sugerirTributacao(
             autoAuditoria: "confere",
             autoAuditoriaNota:
               "Sugestão bate com a base de referência sintética do ramo. Sujeito à confirmação do contador.",
+            checks: [],
           };
 
+  // ---- Auto-auditoria item a item (✓ confere / ⚠ revisar + porquê) ----
+  const checks: AuditoriaCheck[] = [];
+
+  checks.push(
+    descricaoMagra
+      ? {
+          rotulo: "Descrição do serviço",
+          resultado: "revisar",
+          detalhe:
+            "Descrição muito curta para ancorar o item de serviço com segurança — detalhe o serviço antes de confirmar.",
+        }
+      : {
+          rotulo: "Descrição do serviço",
+          resultado: "confere",
+          detalhe: "Descrição suficiente para ancorar o item LC 116 sugerido.",
+        },
+  );
+
+  checks.push(
+    indicioImportacao || indicioLicenca || indicioMisto
+      ? {
+          rotulo: "cClassTrib vs. base do ramo",
+          resultado: "revisar",
+          detalhe: indicioImportacao
+            ? "Indício de operação com o exterior — pode haver regra específica de importação de serviço fora da régua geral."
+            : indicioLicenca
+              ? "Indício de licenciamento de software — enquadramento pode mudar (bem digital vs. serviço); sem referência fixa na base sintética."
+              : "Indício de serviço misto/locação — pode exigir desmembramento da base de cálculo.",
+        }
+      : {
+          rotulo: "cClassTrib vs. base do ramo",
+          resultado: "confere",
+          detalhe: `Compatível com a régua geral do ramo "${cliente.ramo}" no regime ${cliente.regime}.`,
+        },
+  );
+
+  checks.push(
+    valorAtipico
+      ? {
+          rotulo: "Materialidade do valor",
+          resultado: "revisar",
+          detalhe:
+            "Valor acima da faixa típica da base sintética do ramo — confira se não há item agregado ou retenção aplicável.",
+        }
+      : {
+          rotulo: "Materialidade do valor",
+          resultado: "confere",
+          detalhe: "Valor dentro da faixa típica da base de referência do ramo.",
+        },
+  );
+
+  checks.push({
+    rotulo: "Município de competência",
+    resultado: "confere",
+    detalhe: `Competência ${cliente.municipio} compatível com o estabelecimento do tomador.`,
+  });
+
+  // ---- Divergência → reescreve a sugestão para "revisar" (régua em controvérsia) ----
   if (indicioDivergencia) {
     return {
       ...base,
       cclasstrib: "999999",
-      enquadramento: "Enquadramento indefinido — possível regra específica (importação/licença/misto)",
+      enquadramento:
+        "Enquadramento indefinido — possível regra específica (importação / licença / misto)",
       autoAuditoria: "revisar",
       autoAuditoriaNota:
         "A descrição sugere uma regra específica que a base sintética não fixa (importação, licenciamento ou serviço misto). Régua em controvérsia — revisão humana antes de confirmar.",
@@ -157,10 +375,22 @@ export function sugerirTributacao(
         ...base.fundamento,
         "Indício de regra específica — sem referência fixa na base sintética (G6)",
       ],
+      checks,
     };
   }
 
-  return base;
+  // Sem divergência de régua, mas valor atípico ainda pede um olhar humano.
+  if (valorAtipico) {
+    return {
+      ...base,
+      autoAuditoria: "revisar",
+      autoAuditoriaNota:
+        "A régua do ramo confere, mas o valor está acima da faixa típica da base sintética — revisão humana antes de confirmar.",
+      checks,
+    };
+  }
+
+  return { ...base, checks };
 }
 
 /** Estado de uma nota no emissor (demo: rascunho ou emitida-demo). */
@@ -240,6 +470,32 @@ export const NOTAS_EMITIDAS: ReadonlyArray<NotaEmitida> = [
   },
 ];
 
+/**
+ * Cria uma NotaEmitida a partir do que o fluxo confirmou (estado client da sessão).
+ * Determinístico nos campos vindos do fluxo; `geradoEm` usa o instante da confirmação.
+ */
+export function criarNotaEmitida(args: {
+  id: string;
+  numero: string;
+  clienteNome: string;
+  servico: string;
+  valor: number;
+  cclasstrib: string;
+  confirmadoPor: string;
+}): NotaEmitida {
+  return {
+    id: args.id,
+    numero: args.numero,
+    clienteNome: args.clienteNome,
+    servico: args.servico,
+    valor: args.valor,
+    cclasstrib: args.cclasstrib,
+    status: "emitida_demo",
+    confirmadoPor: args.confirmadoPor,
+    geradoEm: new Date().toISOString(),
+  };
+}
+
 /** Apresentação do status da nota (cor + glyph + label) — espelha lib/status.ts. */
 export const STATUS_NOTA: Record<
   StatusNota,
@@ -283,4 +539,53 @@ export function margemRevenda(p: PacoteRevenda): {
 } {
   const receitaRevenda = p.emissores * p.precoSugeridoRevendaMes;
   return { receitaRevenda, custo: p.custoPacoteMes, margem: receitaRevenda - p.custoPacoteMes };
+}
+
+/** Faixas e limites da calculadora de revenda (ilustrativos — não preço fechado). */
+export const REVENDA_LIMITES = {
+  emissores: { min: 1, max: 50, passo: 1 },
+  precoRevenda: { min: 0, max: 300, passo: 5 },
+} as const;
+
+/**
+ * Resultado completo da calculadora de revenda interativa: receita, custo, margem,
+ * margem por emissor e margem percentual. Tudo ILUSTRATIVO (CONTEXT §3 / G6).
+ */
+export interface ResultadoRevenda {
+  receitaRevenda: number;
+  custo: number;
+  margem: number;
+  margemPorEmissor: number;
+  margemPercentual: number;
+}
+
+/**
+ * Calcula a economia ilustrativa de um cenário de revenda arbitrário (calculadora
+ * interativa). Números são exemplo comercial, não um preço fechado.
+ */
+export function calcularRevenda(
+  emissores: number,
+  precoRevendaMes: number,
+  custoPacoteMes: number,
+): ResultadoRevenda {
+  const n = Math.max(0, Math.round(emissores));
+  const receitaRevenda = n * Math.max(0, precoRevendaMes);
+  const margem = receitaRevenda - custoPacoteMes;
+  return {
+    receitaRevenda,
+    custo: custoPacoteMes,
+    margem,
+    margemPorEmissor: n > 0 ? margem / n : 0,
+    margemPercentual: receitaRevenda > 0 ? margem / receitaRevenda : 0,
+  };
+}
+
+/**
+ * Custo do pacote escalonado por nº de emissores (degrau ilustrativo): mais emissores
+ * = custo unitário menor. SINTÉTICO — preço real é definido na contratação.
+ */
+export function custoPacotePorEmissores(emissores: number): number {
+  const n = Math.max(1, Math.round(emissores));
+  const unitario = n <= 5 ? 50 : n <= 15 ? 42 : n <= 30 ? 36 : 30;
+  return n * unitario;
 }

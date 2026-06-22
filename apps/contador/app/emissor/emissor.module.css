@@ -227,6 +227,50 @@
   margin: 2px 0;
 }
 
+/* ---- Auto-auditoria item a item (✓ confere / ⚠ revisar + porquê) ---- */
+.auditChecks {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.auditCheckOk,
+.auditCheckWarn {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-size: 12px;
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+.auditCheckWarn {
+  border-color: #f3dcb0;
+  background: var(--warning-soft);
+}
+.auditCheckGlyph {
+  flex-shrink: 0;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.auditCheckOk .auditCheckGlyph {
+  color: var(--success);
+}
+.auditCheckWarn .auditCheckGlyph {
+  color: var(--warning);
+}
+.auditCheckTexto {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.auditCheckTexto strong {
+  color: var(--text);
+}
+.auditCheckTexto > span:last-child {
+  color: var(--text-dim);
+}
+
 /* ---- Caixa de confirmação humana (espelha a cerimônia) ---- */
 .confirmacaoBox {
   border: 1px solid var(--primary-border);
@@ -274,27 +318,131 @@
    Rascunho de DANFSe sintético (preview honesto)
    ============================================================================ */
 .danfse {
-  border: 1px solid #bfe3cd;
-  background: var(--success-soft);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
   border-radius: var(--radius-lg);
   padding: var(--space-4);
 }
-.danfseHead {
+
+/* Cabeçalho da "nota" — título + selo discreto + número. */
+.danfseTopo {
   display: flex;
   align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+.danfseTitulo {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+.danfseSelo {
+  display: inline-block;
+  margin-top: 2px;
+  font-size: 11px;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.danfseNumeroBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+.danfseNumeroLabel {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-faint);
+}
+.danfseAviso {
+  font-size: 12px;
+  color: var(--warning);
+  background: var(--warning-soft);
+  border: 1px solid #f3dcb0;
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  margin: 0 0 var(--space-3);
+}
+
+/* Prestador × Tomador (como numa nota de verdade). */
+.danfsePartes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-3);
   margin-bottom: var(--space-3);
 }
-.danfseGlyph {
-  font-size: 22px;
-  line-height: 1;
-  color: var(--success);
-  flex-shrink: 0;
+@media (max-width: 520px) {
+  .danfsePartes {
+    grid-template-columns: 1fr;
+  }
 }
-.danfseSub {
-  font-size: 12px;
-  color: var(--text-dim);
-  margin: 4px 0 0;
+.danfseParte {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 13px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  background: var(--surface-2);
+}
+.danfseParteRotulo {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-faint);
+  margin-bottom: 2px;
+}
+.danfseParte .muted {
+  font-size: 11px;
+}
+
+.danfseFull {
+  grid-column: 1 / -1;
+}
+
+/* Tributos sugeridos (quebra por componente). */
+.danfseTributos {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  margin: 0 0 var(--space-3);
+  background: var(--surface-2);
+}
+.danfseTributosTitulo {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-faint);
+  margin-bottom: var(--space-2);
+}
+.danfseTributosList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+}
+.danfseTributosList li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: 4px 0;
+}
+.danfseTributosList li + li {
+  border-top: 1px solid var(--border);
+}
+.danfseTributosTotal {
+  font-weight: 700;
+  color: var(--text);
 }
 .danfseDl {
   display: grid;
@@ -371,6 +519,45 @@
   margin: var(--space-3) 0 0;
 }
 
+/* ---- Calculadora de revenda interativa ---- */
+.calc {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.calcCampo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.calcLabel {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+}
+.calcRange {
+  width: 100%;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+.calcRange:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+.calcAlerta {
+  font-size: 12px;
+  color: var(--warning);
+  background: var(--warning-soft);
+  border: 1px solid #f3dcb0;
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  margin: 0;
+}
+
 /* ============================================================================
    Lista de notas
    ============================================================================ */
@@ -381,4 +568,12 @@
 }
 .notaCliente .muted {
   font-size: 11px;
+}
+
+/* Nota recém-emitida nesta sessão — realce sutil (entra no topo da lista). */
+.notaNova td {
+  background: var(--primary-soft);
+}
+.notaNova td:first-child {
+  box-shadow: inset 3px 0 0 var(--primary);
 }

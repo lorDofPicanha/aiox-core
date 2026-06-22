@@ -1,9 +1,20 @@
 /* ============================================================================
    Captura (#1) — CSS Module local. NÃO edita app/globals.css. Reusa as classes
    globais (card, badge, tbl, disclaimer, insumo, num, muted) e adiciona só o que é
-   específico desta tela: toggle visual de captura, célula de cliente e barra de ações.
+   específico desta tela: toggle interativo de captura, célula de cliente clicável,
+   form de lançamento manual, barra de filtros e resumo de drill-down.
    Tokens do DESIGN via var(--*) globais.
    ============================================================================ */
+
+/* ---------- Rótulo discreto de demonstração (uma linha sutil) ---------- */
+.demoTag {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-dim);
+  margin: 0 0 var(--space-2);
+}
 
 /* ---------- Célula de cliente (nome + documento mascarado) ---------- */
 .cliente {
@@ -11,6 +22,7 @@
   flex-direction: column;
   gap: 2px;
   line-height: 1.35;
+  text-align: left;
 }
 .clienteNome {
   font-weight: 600;
@@ -19,16 +31,62 @@
   font-size: 11px;
 }
 
-/* ---------- Toggle VISUAL de captura automática (não-interativo na Fase 1) ----------
-   Pílula honesta: comunica o estado (ON/OFF) sem fingir um controle ativo. O default
-   OFF (D2) é a posição "recolhida". A captura automática real chega na Fase 5. */
+/* ---------- Botão de cliente (drill-down ao clicar) ---------- */
+.clienteBtn {
+  font: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  padding: 4px 6px;
+  margin: -4px -6px;
+  cursor: pointer;
+  color: inherit;
+}
+.clienteBtn:hover {
+  background: var(--surface-2);
+  border-color: var(--border);
+}
+.clienteBtnAtivo {
+  background: var(--primary-soft);
+  border-color: var(--primary-border);
+}
+.clienteChevron {
+  margin-left: auto;
+  color: var(--text-faint);
+  font-size: 14px;
+}
+.clienteBtnAtivo .clienteChevron {
+  color: var(--primary);
+}
+
+/* ---------- Toggle INTERATIVO de captura automática ----------
+   Botão real (aria-pressed) que liga/desliga a captura da carteira. O default OFF (D2)
+   é a posição "recolhida". A varredura automática real (provider) chega na Fase 5. */
 .toggle {
+  font: inherit;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   font-size: 12px;
   font-weight: 600;
   white-space: nowrap;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius-full);
+  padding: 3px 6px;
+  cursor: pointer;
+  color: inherit;
+}
+.toggle:hover {
+  border-color: var(--border-strong);
+}
+.toggle:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
 }
 .track {
   position: relative;
@@ -88,6 +146,7 @@
   align-items: center;
   gap: var(--space-3);
   flex-wrap: wrap;
+  margin-bottom: var(--space-4);
 }
 .btnSubir {
   font: inherit;
@@ -109,6 +168,171 @@
 .acoesHint {
   font-size: 12px;
   color: var(--text-dim);
+}
+.acoesOk {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--success);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ---------- Form de lançamento manual (subir nota) ---------- */
+.formNota {
+  border: 1px solid var(--primary-border);
+  background: var(--primary-soft);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  margin-bottom: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-3);
+}
+.campo {
+  display: flex;
+  flex-direction: column;
+}
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.select,
+.input {
+  font: inherit;
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--text);
+}
+.select:focus-visible,
+.input:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
+}
+.formErro {
+  font-size: 12px;
+  color: var(--danger);
+  background: var(--danger-soft);
+  border: 1px solid #f3c6c2;
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  margin: 0;
+}
+.formAcoes {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.formHint {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+.btnPrimario {
+  font: inherit;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 9px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--primary);
+  background: var(--primary);
+  color: #fff;
+  cursor: pointer;
+  align-self: flex-start;
+}
+.btnPrimario:hover {
+  background: var(--primary-hover);
+}
+
+/* ---------- Barra de filtros / busca ---------- */
+.filtros {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  padding: var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-2);
+  margin-bottom: var(--space-4);
+}
+.filtroCampo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.filtroLabel {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-faint);
+}
+.filtroSelect {
+  font: inherit;
+  font-size: 13px;
+  padding: 6px 8px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--text);
+}
+.filtroSelect:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
+}
+.filtroContagem {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-left: auto;
+}
+.btnLink {
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 2px;
+  margin-left: auto;
+}
+.btnLink:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Resumo do drill-down do cliente ---------- */
+.resumoDrill {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-3) var(--space-4);
+  margin: 0 0 var(--space-3);
+}
+.resumoDrill > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.resumoDrill dt {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-faint);
+  margin: 0;
+}
+.resumoDrill dd {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 /* ---------- Caixa Armazenamento XML 15 anos (módulo #2) ---------- */

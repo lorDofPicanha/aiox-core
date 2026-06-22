@@ -96,6 +96,33 @@ export const VIA_RECEBIMENTO: Record<ViaRecebimento, ViaView> = {
   },
 };
 
+/**
+ * Quebra ANO A ANO da estimativa retroativa de um indício (últimos 5 anos).
+ * Cada ano carrega o número de notas/itens que sustentam a estimativa daquele
+ * período e uma confiança própria — anos mais antigos tendem a ter menos
+ * evidência disponível (e por isso confiança menor). Tudo ILUSTRATIVO.
+ */
+export interface AnoEstimativa {
+  /** Ano-calendário do período retroativo. */
+  ano: number;
+  /** Estimativa ILUSTRATIVA do crédito potencialmente recuperável no ano (R$). */
+  estimativa: number;
+  /** Quantidade de notas/itens que sustentam a estimativa do ano (sintético). */
+  notas: number;
+  /** Confiança calibrada do período (anos antigos = menos evidência). */
+  banda: BandaRecuperacao;
+}
+
+/** Item de evidência ligado a um indício (o que o dossiê reúne para revisão). */
+export interface EvidenciaItem {
+  /** Rótulo curto do tipo de evidência (ex.: "Notas de entrada (XML)"). */
+  rotulo: string;
+  /** Descrição honesta do que a evidência cobre e seu limite. */
+  detalhe: string;
+  /** Confiança calibrada da evidência (nunca "prova plena"). */
+  banda: BandaRecuperacao;
+}
+
 /** Indício de crédito potencialmente recuperável, ligado a um item da auditoria. */
 export interface IndicioRecuperacao {
   /** Produto/insumo de alto SKU monofásico (ligado à auditoria). */
@@ -109,6 +136,10 @@ export interface IndicioRecuperacao {
   estimativaRetroativo: number;
   /** Base normativa citada (fundamento — sujeito a revisão do tributarista). */
   fundamento: string;
+  /** Quebra ano a ano (5 anos) da estimativa deste indício. ILUSTRATIVA. */
+  porAno: AnoEstimativa[];
+  /** Evidências técnicas que o dossiê reúne para sustentar o indício. */
+  evidencias: EvidenciaItem[];
 }
 
 /** Split ILUSTRATIVO do success-fee (linha separada — NÃO empacotado no recorrente, D6). */
@@ -185,13 +216,93 @@ export function calcularSplit(baseHipotetica: number): SplitSuccessFee {
   const empresaPct = 70;
   const plataformaPct = 15;
   const contadorPct = 15;
+  // Clamp: a base não pode ser negativa (calculadora interativa do success-fee).
+  const base = Math.max(0, Math.round(baseHipotetica));
   return {
-    baseHipotetica,
+    baseHipotetica: base,
     empresaPct,
     plataformaPct,
     contadorPct,
-    empresaValor: Math.round((baseHipotetica * empresaPct) / 100),
-    plataformaValor: Math.round((baseHipotetica * plataformaPct) / 100),
-    contadorValor: Math.round((baseHipotetica * contadorPct) / 100),
+    empresaValor: Math.round((base * empresaPct) / 100),
+    plataformaValor: Math.round((base * plataformaPct) / 100),
+    contadorValor: Math.round((base * contadorPct) / 100),
+  };
+}
+
+/** Janela de anos retroativos exibida no drill-down (últimos 5 anos). */
+export const ANOS_RETROATIVOS = 5;
+
+/**
+ * Cabeçalho estruturado do dossiê de evidências (preview). NÃO é a PER/DCOMP —
+ * é a organização das evidências técnicas que o tributarista habilitado revisa
+ * e assina na Fase 7. Texto sempre G6-safe (indício/estimativa/sujeito a revisão).
+ */
+export interface DossieCabecalho {
+  clienteNome: string;
+  segmento: string;
+  /** Período retroativo coberto (ex.: "2021–2025 · 5 anos"). */
+  periodo: string;
+  /** Via de recebimento sugerida (RT default — D5). */
+  viaSugerida: string;
+  /** Estágio atual do caso no fluxo de revisão. */
+  estagioLabel: string;
+}
+
+/** Linha de item do dossiê (um indício resumido para o preview estruturado). */
+export interface DossieItem {
+  produto: string;
+  ncm: string;
+  natureza: string;
+  bandaLabel: string;
+  estimativa: number;
+  fundamento: string;
+  /** Nº de evidências técnicas reunidas para o item (sintético). */
+  evidencias: number;
+}
+
+/** Preview ESTRUTURADO do dossiê de evidências (demo). */
+export interface DossiePreview {
+  cabecalho: DossieCabecalho;
+  itens: DossieItem[];
+  /** Estimativa retroativa total do caso (ILUSTRATIVA). */
+  estimativaTotal: number;
+  /** Bases normativas distintas citadas no caso (sujeitas a revisão). */
+  basesNormativas: string[];
+  /** Ressalva fixa: quem assina a PER/DCOMP é o tributarista habilitado (Fase 7). */
+  ressalva: string;
+}
+
+/**
+ * Monta o preview estruturado do dossiê a partir de um caso. Determinístico e puro
+ * (sem efeitos colaterais): o componente client chama isto para renderizar o preview.
+ * O período é derivado do `ano` corrente passado pela page (Server) para reproduzir.
+ */
+export function montarDossie(caso: CasoRecuperacao, anoBase: number): DossiePreview {
+  const anoInicio = anoBase - ANOS_RETROATIVOS + 1;
+  const itens: DossieItem[] = caso.indicios.map((i) => ({
+    produto: i.produto,
+    ncm: i.ncm,
+    natureza: i.natureza,
+    bandaLabel: BANDA_RECUPERACAO[i.banda].label,
+    estimativa: i.estimativaRetroativo,
+    fundamento: i.fundamento,
+    evidencias: i.evidencias.length,
+  }));
+  const basesNormativas = Array.from(new Set(caso.indicios.map((i) => i.fundamento)));
+  return {
+    cabecalho: {
+      clienteNome: caso.clienteNome,
+      segmento: caso.segmento,
+      periodo: `${anoInicio}–${anoBase} · ${ANOS_RETROATIVOS} anos`,
+      viaSugerida: caso.viaSugerida.rotulo,
+      estagioLabel: caso.estagio.label,
+    },
+    itens,
+    estimativaTotal: caso.estimativaTotal,
+    basesNormativas,
+    ressalva:
+      "Este dossiê reúne indícios e evidências técnicas para revisão profissional. " +
+      "Os valores são estimativas ilustrativas, sujeitas a análise e revisão do " +
+      "tributarista habilitado — que é quem analisa e assina a PER/DCOMP (Fase 7).",
   };
 }
