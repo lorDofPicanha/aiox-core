@@ -1,0 +1,214 @@
+/* ============================================================================
+   F1.6 — LAUDO defensável (DESIGN §6.1) — CSS Module local.
+   NÃO edita app/globals.css (rodando em paralelo com Aprovação). Reusa as classes
+   globais (badge, card, disclaimer, table.tbl, trilha, verif-dl) e adiciona só o
+   layout específico do laudo + índice. Tokens do DESIGN via var(--*) globais.
+   ============================================================================ */
+
+/* ---------- Índice de laudos (/laudos) ---------- */
+.indice {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.indiceRow + .indiceRow {
+  border-top: 1px solid var(--border);
+}
+.indiceLink {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-1);
+}
+.indiceLink:hover .indiceNome {
+  color: var(--primary);
+}
+.faixaDot {
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 3px rgba(16, 24, 40, 0.04);
+}
+.dot_defensavel { background: var(--success); }
+.dot_requer_revisao { background: var(--warning); }
+.dot_risco { background: var(--danger); }
+
+.indiceMain {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.indiceHead {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+.indiceNome {
+  font-size: 14px;
+}
+.indiceRight {
+  text-align: right;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.indiceValor {
+  font-size: 15px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums slashed-zero;
+}
+.indiceArrow {
+  color: var(--text-faint);
+  flex-shrink: 0;
+}
+
+/* ---------- Faixa de status do laudo (DESIGN §6.1) ---------- */
+.faixa {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  margin-bottom: var(--space-4);
+}
+.faixa_defensavel {
+  background: var(--success-soft);
+  border-color: #bfe3cd;
+}
+.faixa_requer_revisao {
+  background: var(--warning-soft);
+  border-color: #f3dcb0;
+}
+.faixa_risco {
+  background: var(--danger-soft);
+  border-color: #f3c6c2;
+}
+.faixaHint {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+/* ---------- Cabeçalho trust center (DESIGN §6.1) ---------- */
+.trust {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-4);
+  margin: 0;
+}
+.trust > div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.trust dt {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-faint);
+  margin: 0;
+}
+.trust dd {
+  margin: 0;
+  font-size: 13px;
+}
+
+/* ---------- Tabela de divergências (corpo do laudo) ---------- */
+.itemProduto {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.cclass {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.arrow {
+  color: var(--text-faint);
+}
+.confCell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-start;
+}
+.fundamentoList {
+  margin: 0;
+  padding-left: 16px;
+  font-size: 11px;
+  color: var(--text-dim);
+  max-width: 320px;
+}
+.fundamentoList li {
+  margin: 2px 0;
+}
+
+/* ---------- Trilha resumo + verificador (layout 2 colunas) ---------- */
+.trilhaLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: var(--space-4);
+  align-items: start;
+  margin-top: var(--space-4);
+}
+.verifSide {
+  position: sticky;
+  top: var(--space-4);
+}
+@media (max-width: 960px) {
+  .trilhaLayout {
+    grid-template-columns: 1fr;
+  }
+  .verifSide {
+    position: static;
+  }
+}
+
+/* ---------- Verificador (botão + resultado) ---------- */
+.verificador {
+  margin-top: var(--space-2);
+}
+.verificadorActions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.btnVerificar {
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--primary-border);
+  background: var(--primary);
+  color: #fff;
+  cursor: pointer;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btnVerificar:hover {
+  background: var(--primary-hover);
+}
+.btnVerificar:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.verificadorResult {
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px dashed var(--border);
+}
+.carimbo {
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border);
+}

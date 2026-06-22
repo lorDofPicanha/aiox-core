@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Defensible Audit Platform - LAUDO Defensável</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-bright": "#effcff",
+                      "surface-container-highest": "#d1e6eb",
+                      "primary-fixed": "#adeeed",
+                      "secondary-container": "#b0f1c7",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-container": "#744200",
+                      "outline-variant": "#bfc8c8",
+                      "on-error-container": "#93000a",
+                      "on-background": "#0b1e22",
+                      "inverse-on-surface": "#e0f4fa",
+                      "on-primary-fixed-variant": "#004f50",
+                      "on-secondary-fixed-variant": "#0f5132",
+                      "on-error": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container": "#ddf2f7",
+                      "error": "#ba1a1a",
+                      "secondary-fixed-dim": "#95d4ac",
+                      "on-tertiary-fixed": "#2d1600",
+                      "on-tertiary-container": "#fdaf60",
+                      "danger-red": "#b42318",
+                      "tertiary": "#542e00",
+                      "outline": "#6f7978",
+                      "on-primary-fixed": "#002020",
+                      "on-primary-container": "#8bcbca",
+                      "border-muted": "#dde7e6",
+                      "tertiary-fixed": "#ffdcbe",
+                      "background": "#effcff",
+                      "forest-green": "#0f5132",
+                      "on-tertiary-fixed-variant": "#6a3c00",
+                      "surface-container-low": "#e2f7fd",
+                      "secondary-fixed": "#b0f1c7",
+                      "defensible-teal": "#0b5757",
+                      "secondary": "#2d6a48",
+                      "on-primary": "#ffffff",
+                      "inverse-primary": "#92d2d1",
+                      "primary": "#003e3e",
+                      "primary-fixed-dim": "#92d2d1",
+                      "warning-amber": "#92560a",
+                      "surface-dim": "#c9dee3",
+                      "surface": "#effcff",
+                      "surface-bg": "#f4f7f7",
+                      "on-surface": "#0b1e22",
+                      "on-secondary": "#ffffff",
+                      "surface-tint": "#256868",
+                      "surface-variant": "#d1e6eb",
+                      "tertiary-fixed-dim": "#ffb872",
+                      "on-surface-variant": "#3f4948",
+                      "graphite-blueish": "#13262a",
+                      "inverse-surface": "#213337",
+                      "primary-container": "#0b5757",
+                      "on-secondary-fixed": "#002111",
+                      "error-container": "#ffdad6",
+                      "surface-container-high": "#d7ecf1",
+                      "on-secondary-container": "#33704e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-desktop": "32px",
+                      "1": "4px",
+                      "gutter": "16px",
+                      "6": "24px",
+                      "4": "16px",
+                      "8": "32px",
+                      "2": "8px",
+                      "3": "12px",
+                      "margin-mobile": "16px",
+                      "0.5": "2px"
+              },
+              "fontFamily": {
+                      "headline-3xl": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-2xl": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "fiscal-data-sm": ["IBM Plex Mono"],
+                      "fiscal-data": ["IBM Plex Mono"],
+                      "headline-lg": ["Inter"],
+                      "label-xs": ["Inter"],
+                      "body-base": ["Inter"],
+                      "headline-xl": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-3xl": ["34px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "headline-2xl": ["28px", {"lineHeight": "1.25", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "1.45", "fontWeight": "500"}],
+                      "fiscal-data-sm": ["12px", {"lineHeight": "1.45", "fontWeight": "400"}],
+                      "fiscal-data": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "headline-lg": ["18px", {"lineHeight": "1.4", "letterSpacing": "-0.005em", "fontWeight": "600"}],
+                      "label-xs": ["11px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "body-base": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "headline-xl": ["22px", {"lineHeight": "1.3", "letterSpacing": "-0.005em", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Focus ring for accessibility */
+        *:focus-visible {
+            outline: 2px solid theme('colors.primary');
+            outline-offset: 2px;
+        }
+        
+        /* Minimal Scrollbar for tables */
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 6px;
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: theme('colors.outline-variant');
+            border-radius: theme('borderRadius.full');
+        }
+    </style>
+</head>
+<body class="bg-surface-bg text-on-surface font-body-base antialiased min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-screen w-64 bg-surface-container-low border-r border-border-muted flex flex-col py-6 px-4 z-50">
+<div class="mb-8 px-2 flex items-center space-x-3">
+<div class="h-10 w-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-lg overflow-hidden flex-shrink-0">
+<img alt="Accountant CRC Profile" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnIlaBwjyrkFFzvAnfOM60npjwRRwCGf3K-XWJhkhazZ64YM-sVBWOkFawiPLA_mUHTrEHzHODCQqMbYgaLleelWJOp8XXzjoBOWHLFhO39cU12c_vy1h4IhipuJtrC91TxzlkQi0LdR8CCfOVVAK7e7jRhY7DkQIKs3QsdFaJuuvLept-f7Ky1WVnGzh-bXRt1hIdSaS-yYsi72q0gRQDWNCfbiQcjM3BMfue_RWaV6zreFxuBLWceZkmCDoKR7wVQakZv-n22jA"/>
+</div>
+<div>
+<div class="font-headline-lg text-headline-lg font-bold text-primary truncate" title="Verifiable Authority">Verifiable Authority</div>
+<div class="font-label-xs text-label-xs text-on-surface-variant truncate">CRC Habilitation Active</div>
+</div>
+</div>
+<ul class="flex flex-col space-y-1 flex-grow">
+<li>
+<a class="flex items-center space-x-3 px-3 py-2.5 rounded-md hover:bg-surface-container-high transition-colors scale-95 duration-150 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-xl">folder_shared</span>
+<span class="font-body-base text-body-base">Portfolio</span>
+</a>
+</li>
+<li>
+<a class="flex items-center space-x-3 px-3 py-2.5 rounded-md hover:bg-surface-container-high transition-colors scale-95 duration-150 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-xl">calculate</span>
+<span class="font-body-base text-body-base">Calculation</span>
+</a>
+</li>
+<li>
+<!-- Active State matching Intent (Reports -> Laudos) -->
+<a class="flex items-center space-x-3 px-3 py-2.5 rounded-md hover:bg-surface-container-high transition-colors scale-95 duration-150 text-primary font-bold border-r-4 border-primary bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined text-xl fill">description</span>
+<span class="font-body-base text-body-base">Reports / Laudos</span>
+</a>
+</li>
+<li>
+<a class="flex items-center space-x-3 px-3 py-2.5 rounded-md hover:bg-surface-container-high transition-colors scale-95 duration-150 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-xl">history_edu</span>
+<span class="font-body-base text-body-base">Audit Trail</span>
+</a>
+</li>
+<li>
+<a class="flex items-center space-x-3 px-3 py-2.5 rounded-md hover:bg-surface-container-high transition-colors scale-95 duration-150 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-xl">settings</span>
+<span class="font-body-base text-body-base">Settings</span>
+</a>
+</li>
+</ul>
+<div class="mt-auto pt-6 border-t border-border-muted">
+<ul class="flex flex-col space-y-1">
+<li>
+<a class="flex items-center space-x-3 px-3 py-2 rounded-md hover:bg-surface-container-high transition-colors scale-95 duration-150 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-[20px]">help_outline</span>
+<span class="font-label-sm text-label-sm">Support</span>
+</a>
+</li>
+<li>
+<a class="flex items-center space-x-3 px-3 py-2 rounded-md hover:bg-surface-container-high transition-colors scale-95 duration-150 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-[20px]">menu_book</span>
+<span class="font-label-sm text-label-sm">Documentation</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<div class="flex-1 ml-64 flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="docked full-width top-0 sticky z-40 bg-surface border-b border-border-muted flex justify-between items-center w-full px-8 h-16">
+<div class="flex items-center space-x-6">
+<div class="font-headline-lg text-headline-lg font-black text-defensible-teal">Defensible Audit Platform</div>
+<nav class="hidden md:flex space-x-1">
+<a class="px-3 py-2 rounded-md text-primary font-semibold border-b-2 border-primary active:opacity-80 transition-opacity hover:bg-surface-container-highest" href="#">Client Context: Alpha Corp</a>
+<a class="px-3 py-2 rounded-md text-on-surface-variant active:opacity-80 transition-opacity hover:bg-surface-container-highest" href="#">FY 2024</a>
+</nav>
+</div>
+<div class="flex items-center space-x-4">
+<button aria-label="Notifications" class="p-2 rounded-full text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button aria-label="Wallet" class="p-2 rounded-full text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</button>
+<button class="h-8 w-8 rounded-full bg-surface-container-high overflow-hidden border border-border-muted ml-2">
+<img alt="User profile" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKtJBhsBn7Mh5VaQklNYsLR9sDwMxIRaHDjmjiUinYhx8qKaW-jr58X--8HXSu9nS3GTIasbqUY_U4lKq4m48orxjfpiPEV3Sw2W2fmTpCHdghdP39-hqUa54kgaFU0gL5k5d4CFoM0gGo-R_u-2kYzWuoDUfYxZ6bNW3ihpXTDXGi4zSC3MVoFCIYkhvN3STIFGIalwGt4ggnZqZEE79kW2oqxTNqVA9G8YGLe3gdnM7EUjTjpEYJQfy7eUYntcHfycbHbpDn9Hw"/>
+</button>
+</div>
+</header>
+<!-- The Defensible Report (Hero Artifact) -->
+<main class="flex-1 p-margin-desktop overflow-y-auto w-full max-w-[1440px] mx-auto">
+<!-- Document Header / Trust Center -->
+<div class="bg-surface border border-border-muted rounded-lg shadow-sm mb-6 overflow-hidden flex flex-col">
+<!-- Status Banner -->
+<div class="w-full bg-secondary-container text-on-secondary-container py-2 px-6 flex items-center space-x-2 font-label-sm text-label-sm font-semibold tracking-wide uppercase border-b border-secondary-fixed-dim">
+<span class="material-symbols-outlined text-[16px] fill">check_circle</span>
+<span>DEFENSÁVEL</span>
+</div>
+<div class="p-6 md:p-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div>
+<h1 class="font-headline-2xl text-headline-2xl text-primary font-bold mb-1">LAUDO Defensável</h1>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Drogaria São Lucas LTDA</h2>
+<div class="flex flex-wrap items-center gap-3 font-fiscal-data-sm text-fiscal-data-sm text-on-surface-variant">
+<span class="bg-surface-container-high px-2 py-1 rounded">CNPJ: 12.345.678/0001-90</span>
+<span class="bg-surface-container-high px-2 py-1 rounded">Simples Nacional</span>
+</div>
+</div>
+<div class="flex flex-col items-end text-right">
+<!-- Metadata Line -->
+<div class="font-label-xs text-label-xs text-on-surface-variant mb-2 bg-surface-bg p-2 rounded border border-border-muted inline-flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">policy</span>
+                            Verificado contra cClassTrib v2026.06 · insumo XML (◆) · 142 notas · gerado em 18/06/2026
+                        </div>
+<div class="flex gap-3 mt-2">
+<button class="bg-surface text-primary border border-primary px-4 py-2 rounded-md font-label-sm text-label-sm font-medium hover:bg-surface-container transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">history</span>
+                                Abrir trilha completa
+                            </button>
+<button class="bg-defensible-teal text-on-primary px-4 py-2 rounded-md font-label-sm text-label-sm font-medium hover:opacity-90 transition-opacity shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">picture_as_pdf</span>
+                                Exportar laudo (PDF)
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- KPI Cards (Bento Grid Style) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+<!-- KPI 1 -->
+<div class="bg-surface border border-border-muted rounded-lg p-5 shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Notas analisadas</span>
+<span class="material-symbols-outlined text-outline text-[20px]">receipt_long</span>
+</div>
+<div class="font-fiscal-data text-headline-xl tabular-nums text-on-surface font-semibold">142</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface border border-border-muted rounded-lg p-5 shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Apontamentos</span>
+<span class="material-symbols-outlined text-outline text-[20px]">flag</span>
+</div>
+<div class="font-fiscal-data text-headline-xl tabular-nums text-on-surface font-semibold">7</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface border border-border-muted rounded-lg p-5 shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Oportunidade de revisão</span>
+<span class="material-symbols-outlined text-outline text-[20px]">savings</span>
+</div>
+<div class="font-fiscal-data text-headline-xl tabular-nums text-primary font-semibold">R$ 23.480,00</div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-surface border border-border-muted rounded-lg p-5 shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Confiança média</span>
+<span class="material-symbols-outlined text-secondary text-[20px] fill">verified</span>
+</div>
+<div class="font-headline-xl text-headline-xl text-secondary font-semibold">Alta</div>
+</div>
+</div>
+<!-- Main Area Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-8 items-start">
+<!-- Data Table (8 cols) -->
+<div class="lg:col-span-8 bg-surface border border-border-muted rounded-lg shadow-sm overflow-hidden flex flex-col">
+<div class="px-5 py-4 border-b border-border-muted bg-surface-bg flex justify-between items-center">
+<h3 class="font-headline-lg text-headline-lg text-on-surface font-semibold">Divergências por item</h3>
+<div class="flex space-x-2">
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container-high rounded transition-colors" title="Filter">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container-high rounded transition-colors" title="Search">
+<span class="material-symbols-outlined text-[18px]">search</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-border-muted font-label-sm text-label-sm text-on-surface-variant">
+<th class="py-3 px-4 font-medium whitespace-nowrap sticky top-0 bg-surface-container-low">Produto</th>
+<th class="py-3 px-4 font-medium whitespace-nowrap sticky top-0 bg-surface-container-low">NCM</th>
+<th class="py-3 px-4 font-medium whitespace-nowrap sticky top-0 bg-surface-container-low">cClassTrib Aplicado <span class="material-symbols-outlined text-[14px] align-middle ml-1">arrow_forward</span> Referência</th>
+<th class="py-3 px-4 font-medium whitespace-nowrap sticky top-0 bg-surface-container-low">Natureza da divergência</th>
+<th class="py-3 px-4 font-medium whitespace-nowrap sticky top-0 bg-surface-container-low">Confiança</th>
+<th class="py-3 px-4 font-medium whitespace-nowrap sticky top-0 bg-surface-container-low">Base normativa</th>
+</tr>
+</thead>
+<tbody class="font-body-base text-body-base">
+<!-- Row 1 -->
+<tr class="border-b border-border-muted hover:bg-surface-container-lowest transition-colors group">
+<td class="py-3 px-4 text-on-surface font-medium">Dipirona 500mg</td>
+<td class="py-3 px-4 font-fiscal-data text-fiscal-data text-on-surface-variant tabular-nums">3004.90.69</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="line-through text-on-surface-variant text-sm">tributação normal</span>
+<span class="material-symbols-outlined text-[14px] text-outline">arrow_forward</span>
+<span class="font-medium text-on-surface">monofásico</span>
+</div>
+</td>
+<td class="py-3 px-4 text-on-surface-variant text-sm">PIS/COFINS pago indevidamente</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-xs text-label-xs font-semibold">
+<span class="material-symbols-outlined text-[12px] fill">check_circle</span> Alta
+                                        </span>
+</td>
+<td class="py-3 px-4 text-on-surface-variant text-sm whitespace-nowrap">LC 147/2003</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-border-muted hover:bg-surface-container-lowest transition-colors">
+<td class="py-3 px-4 text-on-surface font-medium">Protetor solar FPS50</td>
+<td class="py-3 px-4 font-fiscal-data text-fiscal-data text-on-surface-variant tabular-nums">3304.99.90</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span>monofásico</span>
+<span class="material-symbols-outlined text-[14px] text-outline">arrow_forward</span>
+<span>monofásico</span>
+</div>
+</td>
+<td class="py-3 px-4 text-on-surface-variant text-sm">conforme</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-xs text-label-xs font-semibold">
+<span class="material-symbols-outlined text-[12px] fill">check_circle</span> Alta
+                                        </span>
+</td>
+<td class="py-3 px-4 text-outline text-center">—</td>
+</tr>
+<!-- Row 3: Risk/Disputed -->
+<tr class="border-b border-border-muted hover:bg-surface-container-lowest transition-colors relative bg-surface-bright" style="box-shadow: inset 3px 0 0 theme('colors.warning-amber');">
+<td class="py-3 px-4 text-on-surface font-medium">Fralda geriátrica</td>
+<td class="py-3 px-4 font-fiscal-data text-fiscal-data text-on-surface-variant tabular-nums">9619.00.00</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="text-on-surface-variant text-sm">normal</span>
+<span class="material-symbols-outlined text-[14px] text-outline">arrow_forward</span>
+<span class="font-medium text-warning-amber">disputado</span>
+</div>
+</td>
+<td class="py-3 px-4 text-warning-amber text-sm font-medium">regime em disputa (RE 1.xxx)</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-xs text-label-xs font-semibold" title="Revisar antes de aprovar">
+<span class="material-symbols-outlined text-[12px] fill">warning</span> Âmbar
+                                        </span>
+</td>
+<td class="py-3 px-4 text-on-surface-variant text-sm whitespace-nowrap">STF RE 1...</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-3 px-4 text-on-surface font-medium">Soro fisiológico</td>
+<td class="py-3 px-4 font-fiscal-data text-fiscal-data text-on-surface-variant tabular-nums">3004.90.99</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="line-through text-on-surface-variant text-sm">normal</span>
+<span class="material-symbols-outlined text-[14px] text-outline">arrow_forward</span>
+<span class="font-medium text-on-surface">monofásico</span>
+</div>
+</td>
+<td class="py-3 px-4 text-on-surface-variant text-sm">divergência potencial</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-xs text-label-xs font-semibold">
+<span class="material-symbols-outlined text-[12px]">info</span> Média
+                                        </span>
+</td>
+<td class="py-3 px-4 text-on-surface-variant text-sm whitespace-nowrap">IN RFB 2.121/2022</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Good-Faith Timeline (4 cols) -->
+<div class="lg:col-span-4 bg-surface border border-border-muted rounded-lg shadow-sm p-5 h-full">
+<h3 class="font-headline-lg text-headline-lg text-on-surface font-semibold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">history_toggle_off</span>
+                        Trilha de boa-fé (resumo)
+                    </h3>
+<div class="relative border-l-2 border-border-muted ml-3 space-y-8 pb-4">
+<!-- Node 1 -->
+<div class="relative pl-6">
+<div class="absolute -left-[7px] top-1 h-3 w-3 bg-surface border-2 border-primary rotate-45" title="XML-backed proof (Class 1)"></div>
+<div class="flex flex-col gap-1">
+<div class="font-label-sm text-label-sm text-on-surface font-semibold uppercase tracking-wider">Captura ◆ XML</div>
+<div class="font-fiscal-data-sm text-fiscal-data-sm text-on-surface-variant">18/06/2026 09:12</div>
+<div class="font-fiscal-data-sm text-fiscal-data-sm text-outline bg-surface-container-low px-2 py-0.5 rounded self-start mt-1 select-all">
+                                    hash: a7b8c9d0...
+                                </div>
+</div>
+</div>
+<!-- Node 2 -->
+<div class="relative pl-6">
+<div class="absolute -left-[7px] top-1 h-3 w-3 bg-surface border-2 border-primary rotate-45" title="XML-backed proof (Class 1)"></div>
+<div class="flex flex-col gap-1">
+<div class="font-label-sm text-label-sm text-on-surface font-semibold uppercase tracking-wider">Apontamento</div>
+<div class="font-fiscal-data-sm text-fiscal-data-sm text-on-surface-variant">18/06/2026 10:45</div>
+<div class="font-fiscal-data-sm text-fiscal-data-sm text-outline bg-surface-container-low px-2 py-0.5 rounded self-start mt-1 select-all">
+                                    hash: c9d2e4f1...
+                                </div>
+</div>
+</div>
+<!-- Node 3 (Pending) -->
+<div class="relative pl-6">
+<div class="absolute -left-[7px] top-1 h-3 w-3 bg-surface border-2 border-outline-variant rotate-45 border-dashed"></div>
+<div class="flex flex-col gap-1">
+<div class="font-label-sm text-label-sm text-on-surface-variant font-semibold uppercase tracking-wider">Aguardando aprovação</div>
+<div class="font-fiscal-data-sm text-fiscal-data-sm text-outline italic">Agora</div>
+<div class="font-fiscal-data-sm text-fiscal-data-sm text-outline-variant bg-surface-bg border border-border-muted px-2 py-0.5 rounded self-start mt-1 border-dashed">
+                                    hash: ---
+                                </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer & Disclaimers -->
+<footer class="mt-auto border-t border-border-muted pt-6 pb-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+<div class="max-w-3xl">
+<p class="font-label-xs text-label-xs text-on-surface-variant leading-relaxed text-justify md:text-left">
+<strong class="text-on-surface">Aviso de Responsabilidade:</strong> Demonstração com dados sintéticos. O Contador aponta indícios e organiza evidências técnicas para revisão profissional. Não substitui contador/tributarista, não garante crédito, economia, ausência de multa, apuração correta ou prova jurídica plena. 
+                        <span class="inline-block mt-1 italic">Indício · Base {Norma v1.2} · Insumo {XML} · Verificado {18/06/2026}</span>
+</p>
+</div>
+<div class="flex-shrink-0 flex items-center gap-2 px-3 py-1.5 border border-border-muted bg-surface-container-low rounded-md">
+<span class="material-symbols-outlined text-[16px] text-outline">fingerprint</span>
+<span class="font-fiscal-data-sm text-fiscal-data-sm text-on-surface-variant uppercase tracking-wide text-[10px]">carimbo de tempo: pendente (ACT ICP-Brasil)</span>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

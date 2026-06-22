@@ -1,0 +1,283 @@
+{
+  "notice": "Restricted data format (vazio de dado real). Golden-set CANDIDATO DRAFT - itens ILUSTRATIVOS autorados pelos clones heleno-taveira-torres + roberto-dias-duarte, NAO sao notas fiscais reais de cliente. Pendente de rotulagem por tributarista humano habilitado (gate Fase 3). Clone e um LLM: rotulos abaixo sao indicio, nao ground-truth de producao. Segue o contrato doc 47 (golden-set-real-fixture-contract-v1) com dataClass de fixture sintetica.",
+  "goldenSetVersion": "gs-candidato-2026-06-20-v0-draft",
+  "dataClass": "synthetic-illustrative",
+  "status": "draft",
+  "source": {
+    "tenantPseudonym": "N/A-synthetic",
+    "collectionBatch": "clone-authored-2026-06-20",
+    "dpaApproved": false,
+    "dpaObs": "dpaApproved=false porque NAO ha dado real. Para virar gs-real-* exige dpaApproved=true + autorizacao founder (G4/G5).",
+    "retentionPolicy": "N/A-synthetic"
+  },
+  "labelingProtocol": {
+    "blindToMotor": true,
+    "doubleLabelRateTarget": 0.2,
+    "baseVersaoId": "ruleset-cclasstrib-v0-draft-2026-06-20",
+    "labelers": [
+      { "rotuladorId": "clone:heleno-taveira-torres", "tipo": "llm-clone-draft", "crcHash": null },
+      { "rotuladorId": "clone:roberto-dias-duarte", "tipo": "llm-clone-draft", "crcHash": null }
+    ],
+    "obs": "labelers sao clones LLM = draft. Para o gate de qualidade real, substituir por tributarista com CRC ativo (rotuladorCrcHash preenchido)."
+  },
+  "motorHarness": {
+    "obs": "Bloco para consumo direto pelo harness do motor (run-golden-set style). base.regras segue o shape RegraClassificacao de src/index.ts. Itens de confianca baixa-disputado tem expectedCount=0 INTENCIONALMENTE: o motor NAO deve auto-apontar onde a regra esta marcada DISPUTADO (sem cclasstribEsperado fixo) - exercita a abstencao.",
+    "base": {
+      "baseVersaoId": "ruleset-cclasstrib-v0-draft-2026-06-20",
+      "regras": [
+        {
+          "id": "farm-3004-medicamento-doses",
+          "ncmPrefixo": "3004",
+          "cclasstribEsperado": "200001",
+          "descricao": "Medicamento posicao 3004 - regime monofasico (DRAFT)",
+          "tipoDivergencia": "monofasico_tributado",
+          "materialidadeMinima": 30,
+          "fundamento": ["Lei 10.147/2000", "LC 214/2025 regime de medicamentos - DRAFT pendente validacao humana"]
+        },
+        {
+          "id": "beb-2201-agua-mineral",
+          "ncmPrefixo": "2201",
+          "cclasstribEsperado": "200200",
+          "descricao": "Agua mineral sem acucar - regime distinto de refrigerante (DRAFT)",
+          "tipoDivergencia": "cclasstrib_divergente",
+          "materialidadeMinima": 30,
+          "fundamento": ["Lei 13.097/2015 - DRAFT pendente validacao humana"]
+        },
+        {
+          "id": "posto-2710-gasolina",
+          "ncmPrefixo": "27101259",
+          "cclasstribEsperado": "200900",
+          "descricao": "Gasolina automotiva - monofasia combustivel (DRAFT, cClassTrib placeholder)",
+          "tipoDivergencia": "monofasico_tributado",
+          "materialidadeMinima": 100,
+          "fundamento": ["LC 192/2022", "LC 214/2025 regime combustiveis - DRAFT pendente validacao humana"]
+        }
+      ]
+    },
+    "contexto": {
+      "motorVersaoId": "motor-c0-concierge-humano"
+    }
+  },
+  "cases": [
+    {
+      "caseId": "case-farm-001-monofasico-claro",
+      "item": {
+        "itemIdPseudonym": "synthetic-farm-001",
+        "descricao": "DIPIRONA SODICA 500MG 10 COMPRIMIDOS",
+        "ncm": "30049069",
+        "cfop": "5405",
+        "cst": "01",
+        "cclasstribInformado": "200999",
+        "valor": 38.90,
+        "fatoGeradorEm": "2026-03-15",
+        "segmento": "farmacia",
+        "obsHarness": "valor > materialidadeMinima(30) e cclasstribInformado(200999) != esperado(200001) para o motor deterministico gerar o apontamento"
+      },
+      "expected": {
+        "decision": "apontar",
+        "cclasstribCorreto": "200001",
+        "apontamentosEsperados": [
+          { "tipoDivergencia": "monofasico_tributado", "materialidade": "baixa", "motivoCodigo": "revenda_monofasica_lancada_normal" }
+        ]
+      },
+      "label": {
+        "confianca": "media",
+        "ambiguidade": false,
+        "fundamentacao": "Medicamento posicao 3004 em revenda de farmacia: CST 01 (tributado normal) diverge do regime monofasico (CST 04/05). Indicio de classificacao incorreta - revisar lista de medicamentos.",
+        "referencias": ["ruleset-cclasstrib-v0-draft-2026-06-20", "Lei 10.147/2000", "LC 214/2025"],
+        "rotuladorId": "clone:roberto-dias-duarte",
+        "rotuladorCrcHash": null,
+        "rotuladoEm": "2026-06-20T00:00:00Z"
+      },
+      "secondLabel": null
+    },
+    {
+      "caseId": "case-farm-002-ja-correto",
+      "item": {
+        "itemIdPseudonym": "synthetic-farm-002",
+        "descricao": "AMOXICILINA 500MG 21 CAPSULAS",
+        "ncm": "30042029",
+        "cfop": "5405",
+        "cst": "04",
+        "cclasstribInformado": "200001",
+        "valor": 42.50,
+        "fatoGeradorEm": "2026-03-15",
+        "segmento": "farmacia"
+      },
+      "expected": {
+        "decision": "nao_apontar",
+        "cclasstribCorreto": "200001",
+        "apontamentosEsperados": []
+      },
+      "label": {
+        "confianca": "media",
+        "ambiguidade": false,
+        "fundamentacao": "cClassTrib informado ja confere com a referencia monofasica. Sem divergencia - motor nao deve apontar (controle de falso-positivo).",
+        "referencias": ["ruleset-cclasstrib-v0-draft-2026-06-20"],
+        "rotuladorId": "clone:roberto-dias-duarte",
+        "rotuladorCrcHash": null,
+        "rotuladoEm": "2026-06-20T00:00:00Z"
+      },
+      "secondLabel": null
+    },
+    {
+      "caseId": "case-farm-003-ncm-residual-abster",
+      "item": {
+        "itemIdPseudonym": "synthetic-farm-003",
+        "descricao": "PRODUTO SAUDE LINHA XYZ (descricao generica)",
+        "ncm": "30049099",
+        "cfop": "5405",
+        "cst": "01",
+        "cclasstribInformado": "200001",
+        "valor": 89.00,
+        "fatoGeradorEm": "2026-03-15",
+        "segmento": "farmacia",
+        "obsHarness": "NCM residual capturado pelo prefixo '3004'. Como o motor deterministico NAO sabe abster por baixa confianca, o caso e modelado com cclasstribInformado == esperado para o motor ficar silencioso. A ABSTENCAO real (baixa confianca em NCM residual) e responsabilidade da banda_confianca/UI, nao deste motor v0 - ver limitacaoConhecida no README."
+      },
+      "expected": {
+        "decision": "abster",
+        "cclasstribCorreto": null,
+        "apontamentosEsperados": []
+      },
+      "label": {
+        "confianca": "baixa",
+        "ambiguidade": true,
+        "fundamentacao": "NCM 3004.90.99 residual + descricao generica: nao da para fixar cClassTrib sem o produto concreto. O motor deterministico v0 nao tem como abster por baixa confianca (so casa NCM); a abstencao precisa ser tratada pela camada de banda_confianca/UI. Caso documenta essa LIMITACAO de proposito.",
+        "referencias": ["ruleset-cclasstrib-v0-draft-2026-06-20", "regra farm-3004-90-90-aliquota-zero-lista"],
+        "rotuladorId": "clone:heleno-taveira-torres",
+        "rotuladorCrcHash": null,
+        "rotuladoEm": "2026-06-20T00:00:00Z"
+      },
+      "secondLabel": null
+    },
+    {
+      "caseId": "case-posto-001-gasolina-monofasico",
+      "item": {
+        "itemIdPseudonym": "synthetic-posto-001",
+        "descricao": "GASOLINA COMUM",
+        "ncm": "27101259",
+        "cfop": "5656",
+        "cst": "01",
+        "cclasstribInformado": "000000",
+        "valor": 4500.00,
+        "fatoGeradorEm": "2026-04-01",
+        "segmento": "posto_combustivel"
+      },
+      "expected": {
+        "decision": "apontar",
+        "cclasstribCorreto": "200900",
+        "apontamentosEsperados": [
+          { "tipoDivergencia": "monofasico_tributado", "materialidade": "alta", "motivoCodigo": "combustivel_lancado_fora_monofasia" }
+        ]
+      },
+      "label": {
+        "confianca": "media",
+        "ambiguidade": false,
+        "fundamentacao": "Gasolina e regime monofasico de combustivel (LC 192/2022). Lancamento como tributado normal (CST 01) na revenda diverge. cClassTrib placeholder 200900 - conferir NT vigente.",
+        "referencias": ["ruleset-cclasstrib-v0-draft-2026-06-20", "LC 192/2022", "LC 214/2025"],
+        "rotuladorId": "clone:heleno-taveira-torres",
+        "rotuladorCrcHash": null,
+        "rotuladoEm": "2026-06-20T00:00:00Z"
+      },
+      "secondLabel": null
+    },
+    {
+      "caseId": "case-posto-002-etanol-disputado",
+      "item": {
+        "itemIdPseudonym": "synthetic-posto-002",
+        "descricao": "ETANOL HIDRATADO COMBUSTIVEL",
+        "ncm": "22072011",
+        "cfop": "5656",
+        "cst": "01",
+        "cclasstribInformado": "000000",
+        "valor": 3200.00,
+        "fatoGeradorEm": "2026-04-01",
+        "segmento": "posto_combustivel"
+      },
+      "expected": {
+        "decision": "abster",
+        "cclasstribCorreto": null,
+        "apontamentosEsperados": []
+      },
+      "label": {
+        "confianca": "baixa",
+        "ambiguidade": true,
+        "fundamentacao": "Etanol e zona cinzenta: tributacao se deslocou entre elos da cadeia ao longo do tempo. Sem o elo (produtor/distribuidor/revenda) e a data exata do regime, nao afirmar. Motor abster.",
+        "referencias": ["ruleset-cclasstrib-v0-draft-2026-06-20", "regra posto-2207-etanol", "LC 192/2022"],
+        "rotuladorId": "clone:heleno-taveira-torres",
+        "rotuladorCrcHash": null,
+        "rotuladoEm": "2026-06-20T00:00:00Z"
+      },
+      "secondLabel": null
+    },
+    {
+      "caseId": "case-beb-001-agua-vs-refri",
+      "item": {
+        "itemIdPseudonym": "synthetic-beb-001",
+        "descricao": "AGUA MINERAL NATURAL SEM GAS 500ML",
+        "ncm": "22011000",
+        "cfop": "5405",
+        "cst": "01",
+        "cclasstribInformado": "200100",
+        "valor": 34.00,
+        "fatoGeradorEm": "2026-05-10",
+        "segmento": "bebidas",
+        "obsHarness": "valor (caixa de agua) > materialidadeMinima(30) e cclasstribInformado(200100=refrigerante) != esperado(200200=agua) para o motor gerar o apontamento de cclasstrib_divergente"
+      },
+      "expected": {
+        "decision": "apontar",
+        "cclasstribCorreto": "200200",
+        "apontamentosEsperados": [
+          { "tipoDivergencia": "cclasstrib_divergente", "materialidade": "baixa", "motivoCodigo": "agua_classificada_como_refrigerante" }
+        ]
+      },
+      "label": {
+        "confianca": "media",
+        "ambiguidade": false,
+        "fundamentacao": "Agua mineral sem acucar (2201) classificada com cClassTrib de bebida acucarada/refrigerante (2202). Regimes distintos - indicio de divergencia. cClassTrib placeholders - conferir NT.",
+        "referencias": ["ruleset-cclasstrib-v0-draft-2026-06-20", "regra beb-2201-agua-mineral", "Lei 13.097/2015"],
+        "rotuladorId": "clone:roberto-dias-duarte",
+        "rotuladorCrcHash": null,
+        "rotuladoEm": "2026-05-10T00:00:00Z"
+      },
+      "secondLabel": {
+        "confianca": "media",
+        "ambiguidade": false,
+        "fundamentacao": "Concordo: 2201 (sem acucar) tem tratamento distinto de 2202 (com acucar/refrigerante). Item bom para double-label (>=20% requisito doc 47).",
+        "rotuladorId": "clone:heleno-taveira-torres",
+        "rotuladorCrcHash": null,
+        "rotuladoEm": "2026-05-10T00:00:00Z"
+      }
+    },
+    {
+      "caseId": "case-beb-002-cerveja-imposto-seletivo-disputado",
+      "item": {
+        "itemIdPseudonym": "synthetic-beb-002",
+        "descricao": "CERVEJA PILSEN LATA 350ML",
+        "ncm": "22030000",
+        "cfop": "5405",
+        "cst": "01",
+        "cclasstribInformado": "000000",
+        "valor": 3.80,
+        "fatoGeradorEm": "2026-05-10",
+        "segmento": "bebidas"
+      },
+      "expected": {
+        "decision": "abster",
+        "cclasstribCorreto": null,
+        "apontamentosEsperados": []
+      },
+      "label": {
+        "confianca": "baixa",
+        "ambiguidade": true,
+        "fundamentacao": "Cerveja: candidata ao Imposto Seletivo (alcool) cuja aliquota/incidencia depende de regulamentacao ainda em disputa, alem de ST ICMS variavel por UF. Nao afirmar regime/valor - abster e marcar para humano.",
+        "referencias": ["ruleset-cclasstrib-v0-draft-2026-06-20", "regra beb-2203-cerveja", "EC 132/2023", "LC 214/2025"],
+        "rotuladorId": "clone:heleno-taveira-torres",
+        "rotuladorCrcHash": null,
+        "rotuladoEm": "2026-05-10T00:00:00Z"
+      },
+      "secondLabel": null
+    }
+  ],
+  "metricasObs": "Calcular acuracia/hit-rate SOMENTE sobre casos confianca alta|media (doc 47 sec 5). Casos confianca baixa (decision=abster) sao excluidos do gate de acuracia e reportados separadamente - eles testam a ABSTENCAO, nao a classificacao. Double-label presente em case-beb-001 (1/7 = 14%; subir para >=20% quando o tributarista real rotular)."
+}

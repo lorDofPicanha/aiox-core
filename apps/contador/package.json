@@ -1,0 +1,26 @@
+{
+  "name": "contador",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3008",
+    "prebuild": "npm run banlist:g6",
+    "build": "next build",
+    "start": "next start -p 3008",
+    "typecheck": "tsc --noEmit",
+    "banlist:g6": "node scripts/banlist-g6.mjs",
+    "banlist:g6:self-test": "node scripts/banlist-g6.mjs --self-test"
+  },
+  "dependencies": {
+    "@synkra/contador-api-client": "file:../../packages/contador-api-client",
+    "next": "^15.3.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "typescript": "^5.8.0"
+  }
+}

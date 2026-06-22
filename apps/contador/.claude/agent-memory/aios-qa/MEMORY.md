@@ -1,0 +1,1 @@
+- [Contador F1 verifier slicing rule](project_contador_verifier_slicing.md) — verificarCadeia exige cadeia contígua desde genesis; fatiar por cliente quebra (SEQ_GAP).

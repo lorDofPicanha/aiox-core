@@ -1,0 +1,242 @@
+{
+  "notice": "DRAFT pendente de validacao por tributarista humano habilitado (gate da Fase 3). Conteudo autorado pelos clones de dominio heleno-taveira-torres + roberto-dias-duarte via self-consultation.js. Clone e um LLM: isto e indicio/trilha verificavel, NAO parecer fiscal. Nenhuma regra aqui afirma credito garantido, apuracao correta ou eliminacao de multa. Cada apontamento gerado a partir destas regras exige revisao humana por contador com CRC ativo antes de qualquer acao.",
+  "rulesetVersao": "ruleset-cclasstrib-v0-draft-2026-06-20",
+  "status": "draft",
+  "geradoEm": "2026-06-20",
+  "autoria": {
+    "modo": "self-consultation (DNA dos clones reais; agente data-engineer redige na persona)",
+    "comando": "node .aios-core/core/jarvis/self-consultation.js batch --experts \"heleno-taveira-torres,roberto-dias-duarte\" --question \"...\" --project contador --agent data-engineer",
+    "clones": [
+      {
+        "id": "heleno-taveira-torres",
+        "papel": "Reforma Tributaria (EC 132/2023, LC 214/2025), cClassTrib, monofasico, defesa de boa-fe, fronteira informacao vs consultoria",
+        "consultationId": "c70982da-ae92-4798-9d49-e015f7d4dc4a"
+      },
+      {
+        "id": "roberto-dias-duarte",
+        "papel": "SPED / Fisco digital, mecanica EFD-Contribuicoes, CST/CSOSN/CFOP, cruzamento de obrigacoes"
+      }
+    ],
+    "fallback": false
+  },
+  "avisoMetodologico": {
+    "cClassTrib": "Os codigos cClassTrib abaixo seguem a Tabela cClassTrib do layout da Reforma (LC 214/2025 + NTs do Ambiente Nacional NF-e/NFC-e). A tabela e versionada e ainda em estabilizacao no periodo de transicao 2026-2033; tratar como ALVO, nao como verdade congelada. Os valores literais de cClassTrib precisam ser conferidos contra a versao da NT vigente no fato gerador (bitemporalidade P22) pelo tributarista. Marcamos os codigos com placeholder explicito quando a base normativa nao fixa o literal com seguranca.",
+    "regime": "monofasico = concentracao tributaria em um elo (regime PIS/COFINS pre-Reforma e tratamento concentrado na CBS); ST = substituicao tributaria de ICMS; normal = regime padrao; disputado = ha controversia interpretativa real (nao vender como certeza).",
+    "transicao": "Em 2026 PIS/COFINS coexistem com CBS-teste; penalidades da Reforma comecam 2026-08-01 (periodo educativo ate la, fonte HYDRA feed 2026-06-10). A coexistencia 2026-2033 e zona cinzenta: a regra deve carimbar a base_versao vigente no fato gerador.",
+    "limiteProduto": "Heleno: o produto INFORMA o direito posto (o que diz a EC 132 / LC 214 / a tabela cClassTrib) e levanta INDICIO de divergencia; NAO emite parecer nem orienta apuracao do contribuinte concreto. Roberto: o motor entrega INTELIGENCIA (reconhecimento de padrao NCM->classificacao); o JULGAMENTO fica com o contador humano."
+  },
+  "schemaCampos": {
+    "id": "id estavel da regra",
+    "segmento": "farmacia | posto_combustivel | bebidas",
+    "ncmPrefixo": "prefixo NCM (desempate por especificidade; usado pelo motor selecionarRegra)",
+    "ncmExato": "NCM 8 digitos exato quando aplicavel",
+    "descricaoTipo": "tipo de produto que a regra captura",
+    "cclasstribEsperado": "codigo cClassTrib de referencia (ver avisoMetodologico)",
+    "cstAtualPisCofins": "CST PIS/COFINS no regime atual (EFD-Contribuicoes)",
+    "cstIcms": "CST/CSOSN ICMS quando relevante (ST etc.)",
+    "regime": "monofasico | normal | st_icms | disputado",
+    "tipoDivergencia": "mapeia para TipoDivergencia do motor (src/index.ts)",
+    "materialidadeMinima": "valor minimo do item para gerar apontamento (evita ruido de baixo valor)",
+    "confianca": "alta | media | baixa-disputado",
+    "fundamento": "base normativa real (lei/IN/NT + data) - alimenta a trilha de boa-fe",
+    "notaClone": "raciocinio do clone / ressalva"
+  },
+  "regras": [
+    {
+      "id": "farm-3003-medicamento-generico",
+      "segmento": "farmacia",
+      "ncmPrefixo": "3003",
+      "descricaoTipo": "Medicamento (nao acondicionado em doses) - posicao 3003 da NCM",
+      "cclasstribEsperado": "200001",
+      "cclasstribObs": "Tabela cClassTrib LC 214/2025 preve tratamento de medicamentos com aliquota reduzida/zero conforme Anexos (lista de medicamentos). O literal '200001' e placeholder de referencia a familia 'reducao para medicamento'; CONFERIR codigo exato na NT vigente.",
+      "cstAtualPisCofins": "04",
+      "cstIcms": "depende_uf",
+      "regime": "monofasico",
+      "tipoDivergencia": "monofasico_tributado",
+      "materialidadeMinima": 30,
+      "confianca": "media",
+      "fundamento": [
+        "Lei 10.147/2000 art. 1 e 2 (regime monofasico PIS/COFINS para produtos farmaceuticos das posicoes 30.01, 30.03, 30.04 e outras) - vigente no regime atual",
+        "LC 214/2025 (regime de medicamentos na CBS/IBS, aliquota reduzida/zero conforme lista de medicamentos - Anexos)",
+        "CST 04 = 'Operacao tributavel monofasica - revenda a aliquota zero' (Tabela 4.3.x EFD-Contribuicoes)"
+      ],
+      "notaClone": "Heleno: a reducao para medicamentos e materia de lista (anexo) - o que esta na lista e assegurado; fora da lista e disputado. Roberto: o indicio classico no varejo de farmacia e a revenda monofasica lancada como tributada normal (CST 01) quando deveria ser CST 04/05 - isso o cruzamento EFD pega."
+    },
+    {
+      "id": "farm-3004-medicamento-doses",
+      "segmento": "farmacia",
+      "ncmPrefixo": "3004",
+      "descricaoTipo": "Medicamento acondicionado em doses ou para venda a retalho - posicao 3004",
+      "cclasstribEsperado": "200001",
+      "cclasstribObs": "Mesma familia de medicamentos; conferir literal e Anexo de medicamento na NT vigente.",
+      "cstAtualPisCofins": "04",
+      "cstIcms": "depende_uf",
+      "regime": "monofasico",
+      "tipoDivergencia": "monofasico_tributado",
+      "materialidadeMinima": 30,
+      "confianca": "media",
+      "fundamento": [
+        "Lei 10.147/2000 (monofasico PIS/COFINS - posicao 30.04)",
+        "Lei 10.833/2003 e Lei 10.637/2002 (regime PIS/COFINS)",
+        "LC 214/2025 - regime de medicamentos CBS/IBS por lista"
+      ],
+      "notaClone": "Posicao 3004 e a de maior volume de SKU em farmacia. Revisar contra a lista de medicamentos com aliquota zero (decreto que lista NCMs especificos) - aliquota zero != monofasico, sao tratamentos distintos. Marcar duvida para o tributarista."
+    },
+    {
+      "id": "farm-3004-90-90-aliquota-zero-lista",
+      "segmento": "farmacia",
+      "ncmExato": "30049099",
+      "descricaoTipo": "Outros medicamentos - NCM residual mais usado, alta incidencia de erro de classificacao",
+      "cclasstribEsperado": "DISPUTADO",
+      "cclasstribObs": "NCM residual '99' concentra erro: pode ser medicamento de lista (aliquota zero), medicamento monofasico, ou produto que nem e medicamento. cClassTrib NAO pode ser fixado sem o produto concreto.",
+      "cstAtualPisCofins": "incerto",
+      "cstIcms": "depende_uf",
+      "regime": "disputado",
+      "tipoDivergencia": "ncm_suspeito",
+      "materialidadeMinima": 50,
+      "confianca": "baixa-disputado",
+      "fundamento": [
+        "NCM 3004.90.99 e codigo residual ('outros') - exige verificacao do produto fisico",
+        "Lei 10.147/2000 (depende se o produto integra a lista monofasica)"
+      ],
+      "notaClone": "Roberto: este e o caso onde o motor DEVE abster ou marcar baixa confianca, nunca auto-aprovar. NCM residual e o maior gerador de falso-positivo. Heleno: classificar isto como certeza seria vender 'apuracao correta' - proibido."
+    },
+    {
+      "id": "posto-2710-gasolina",
+      "segmento": "posto_combustivel",
+      "ncmPrefixo": "27101259",
+      "descricaoTipo": "Gasolina automotiva",
+      "cclasstribEsperado": "DISPUTADO",
+      "cclasstribObs": "Combustiveis tem regime PROPRIO na Reforma: monofasia obrigatoria com aliquota uniforme ad rem por unidade de medida (LC 192/2022 ja antecipou; LC 214/2025 mantem regime especifico). cClassTrib do combustivel e categoria propria - conferir NT.",
+      "cstAtualPisCofins": "04",
+      "cstIcms": "monofasico_icms",
+      "regime": "monofasico",
+      "tipoDivergencia": "monofasico_tributado",
+      "materialidadeMinima": 100,
+      "confianca": "media",
+      "fundamento": [
+        "LC 192/2022 (monofasia de ICMS sobre combustiveis, aliquota ad rem uniforme nacional)",
+        "Lei 9.718/1998 art. 4-6 (monofasico PIS/COFINS combustiveis)",
+        "LC 214/2025 (regime especifico de combustiveis no IBS/CBS - monofasia, aliquota uniforme ad rem)"
+      ],
+      "notaClone": "Heleno: combustivel e o caso mais consolidado de monofasia (ICMS monofasico ja vigente desde 2023 via LC 192). O regime e assegurado; a aliquota especifica varia por deliberacao CONFAZ/lei - conferir vigencia no fato gerador. No posto (revenda), a venda ao consumidor ja vem tributada no elo anterior (refinaria/distribuidor)."
+    },
+    {
+      "id": "posto-2710-diesel",
+      "segmento": "posto_combustivel",
+      "ncmPrefixo": "27101921",
+      "descricaoTipo": "Oleo diesel",
+      "cclasstribEsperado": "DISPUTADO",
+      "cclasstribObs": "Diesel - regime monofasico de combustiveis; cClassTrib categoria propria de combustivel.",
+      "cstAtualPisCofins": "04",
+      "cstIcms": "monofasico_icms",
+      "regime": "monofasico",
+      "tipoDivergencia": "monofasico_tributado",
+      "materialidadeMinima": 100,
+      "confianca": "media",
+      "fundamento": [
+        "LC 192/2022 (monofasia ICMS diesel)",
+        "Lei 9.718/1998 (monofasico PIS/COFINS)",
+        "LC 214/2025 (regime especifico de combustiveis)"
+      ],
+      "notaClone": "Roberto: no posto a divergencia tipica e creditar/debitar combustivel como mercadoria normal. O cruzamento NF-e de entrada (distribuidor) x saida (consumidor) revela quando o CST nao bate com o regime monofasico."
+    },
+    {
+      "id": "posto-2207-etanol",
+      "segmento": "posto_combustivel",
+      "ncmPrefixo": "2207",
+      "descricaoTipo": "Etanol (alcool etilico) carburante",
+      "cclasstribEsperado": "DISPUTADO",
+      "cclasstribObs": "Etanol tem regime PROPRIO e historicamente mais litigioso que gasolina/diesel (cadeia produtor->distribuidor->posto com regimes que variaram). cClassTrib a confirmar.",
+      "cstAtualPisCofins": "incerto",
+      "cstIcms": "monofasico_icms",
+      "regime": "disputado",
+      "tipoDivergencia": "monofasico_tributado",
+      "materialidadeMinima": 100,
+      "confianca": "baixa-disputado",
+      "fundamento": [
+        "LC 192/2022 (etanol anidro e hidratado - regime monofasico ICMS com regras de transicao)",
+        "Lei 9.718/1998 e legislacao especifica do etanol PIS/COFINS (regime variou - produtor x distribuidor)"
+      ],
+      "notaClone": "Heleno: o etanol e zona cinzenta classica - a tributacao se deslocou entre elos da cadeia ao longo do tempo. NAO afirmar regime sem a data do fato gerador e o elo (produtor/distribuidor/revenda). Marcar disputado."
+    },
+    {
+      "id": "posto-2711-glp",
+      "segmento": "posto_combustivel",
+      "ncmPrefixo": "271112",
+      "descricaoTipo": "GLP - gas liquefeito de petroleo (botijao / a granel)",
+      "cclasstribEsperado": "DISPUTADO",
+      "cclasstribObs": "GLP tem monofasia e, no uso residencial (botijao 13kg), tratamento social (possivel reducao). cClassTrib a confirmar; pode haver split entre uso residencial e industrial.",
+      "cstAtualPisCofins": "04",
+      "cstIcms": "monofasico_icms",
+      "regime": "monofasico",
+      "tipoDivergencia": "monofasico_tributado",
+      "materialidadeMinima": 50,
+      "confianca": "baixa-disputado",
+      "fundamento": [
+        "LC 192/2022 (GLP no regime monofasico de combustiveis)",
+        "Tratamento diferenciado do GLP residencial (botijao) - politicas de reducao variaram por norma especifica"
+      ],
+      "notaClone": "GLP residencial vs GLP/GN industrial podem ter tratamento distinto. Materialidade menor (botijao tem ticket baixo) mas volume alto. Disputado por causa do split de uso."
+    },
+    {
+      "id": "beb-2202-refrigerante",
+      "segmento": "bebidas",
+      "ncmPrefixo": "2202",
+      "descricaoTipo": "Aguas com adicao de acucar/aromatizadas, refrigerantes, refrescos",
+      "cclasstribEsperado": "DISPUTADO",
+      "cclasstribObs": "Bebidas acucaradas/refrigerantes: dupla camada - (a) PIS/COFINS historicamente monofasico (Lei 13.097/2015 regime de bebidas frias) e (b) candidatas ao Imposto Seletivo na Reforma (bebidas acucaradas estao no escopo discutido do IS). cClassTrib + IS a confirmar.",
+      "cstAtualPisCofins": "04",
+      "cstIcms": "st_icms",
+      "regime": "disputado",
+      "tipoDivergencia": "monofasico_tributado",
+      "materialidadeMinima": 50,
+      "confianca": "baixa-disputado",
+      "fundamento": [
+        "Lei 13.097/2015 (regime tributario das bebidas frias - PIS/COFINS/IPI sobre aguas, refrigerantes, cervejas)",
+        "EC 132/2023 e LC 214/2025 (Imposto Seletivo - bebidas acucaradas no escopo de discussao do 'imposto do pecado')",
+        "Convenios/Protocolos ICMS de ST por UF para bebidas"
+      ],
+      "notaClone": "Heleno: refrigerante e o cruzamento de tres regimes (monofasico PIS/COFINS + ST ICMS + possivel Imposto Seletivo). O IS sobre bebida acucarada e politicamente/juridicamente disputado - NAO afirmar. Roberto: a ST de ICMS de bebida varia muito por UF - o motor precisa da UF para nao gerar falso-positivo."
+    },
+    {
+      "id": "beb-2203-cerveja",
+      "segmento": "bebidas",
+      "ncmPrefixo": "2203",
+      "descricaoTipo": "Cerveja de malte",
+      "cclasstribEsperado": "DISPUTADO",
+      "cclasstribObs": "Cerveja: regime de bebidas frias (PIS/COFINS) + ST ICMS + forte candidata ao Imposto Seletivo (alcool). cClassTrib + IS a confirmar.",
+      "cstAtualPisCofins": "04",
+      "cstIcms": "st_icms",
+      "regime": "disputado",
+      "tipoDivergencia": "monofasico_tributado",
+      "materialidadeMinima": 50,
+      "confianca": "baixa-disputado",
+      "fundamento": [
+        "Lei 13.097/2015 (regime de bebidas frias - cerveja)",
+        "EC 132/2023 / LC 214/2025 (Imposto Seletivo sobre bebidas alcoolicas - escopo previsto)",
+        "ST ICMS de cerveja por Convenio/Protocolo CONFAZ"
+      ],
+      "notaClone": "Bebida alcoolica e dos casos mais provaveis de Imposto Seletivo (saude/externalidade). Mesmo assim: aliquota e incidencia do IS dependem de regulamentacao - marcar disputado, nao afirmar valor."
+    },
+    {
+      "id": "beb-2201-agua-mineral",
+      "segmento": "bebidas",
+      "ncmPrefixo": "2201",
+      "descricaoTipo": "Agua mineral natural / agua sem adicao de acucar",
+      "cclasstribEsperado": "200200",
+      "cclasstribObs": "Agua mineral SEM adicao de acucar tende a regime normal ou tratamento favorecido (alimentacao basica?) - distinto de refrigerante. Placeholder '200200' = familia 'tributacao normal/reduzida de agua'; CONFERIR.",
+      "cstAtualPisCofins": "01",
+      "cstIcms": "st_icms",
+      "regime": "normal",
+      "tipoDivergencia": "cclasstrib_divergente",
+      "materialidadeMinima": 30,
+      "confianca": "media",
+      "fundamento": [
+        "Lei 13.097/2015 (agua mineral integra o regime de bebidas frias - mas tratamento distinto do refrigerante)",
+        "ST ICMS de agua por Convenio/Protocolo CONFAZ (varia por UF)"
+      ],
+      "notaClone": "Roberto: o erro tipico no mercado e classificar agua mineral igual a refrigerante (ou vice-versa) - sao NCMs e regimes distintos (2201 sem acucar vs 2202 com acucar). Esse e um apontamento de cclasstrib_divergente de confianca media - bom candidato para o motor levantar e o humano confirmar."
+    }
+  ]
+}

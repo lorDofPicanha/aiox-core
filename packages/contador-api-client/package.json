@@ -1,0 +1,27 @@
+{
+  "name": "@synkra/contador-api-client",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Typed client over Contador core.api_v1 (core_api_v1) RPCs, with an in-memory mock implementation for Fase 1 (synthetic, G6-safe) and an extension point for the Fase 2 Supabase implementation.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node scripts/run-mock-smoke.mjs && node scripts/seed-from-motor.mjs",
+    "seed": "npm run build && node scripts/seed-from-motor.mjs"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@synkra/contador-motor-fiscal": "^0.1.0",
+    "@synkra/contador-trilha-verifier": "^0.1.0"
+  }
+}

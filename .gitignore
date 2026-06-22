@@ -162,6 +162,11 @@ apps/tocks-store/node_modules/
 apps/radar-fiscal/.next/
 apps/radar-fiscal/node_modules/
 apps/radar-fiscal/tsconfig.tsbuildinfo
+!apps/contador/
+!apps/contador/**
+apps/contador/.next/
+apps/contador/node_modules/
+apps/contador/tsconfig.tsbuildinfo
 apps/tocks-store/public/mockups/shots/
 
 # External projects (separate repositories)

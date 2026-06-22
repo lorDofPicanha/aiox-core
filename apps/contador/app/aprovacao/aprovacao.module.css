@@ -1,0 +1,402 @@
+/* ============================================================================
+   F1.4 — Aprovação CRC (cerimônia graduada · DESIGN §6.4 + §6.3).
+   CSS Module escopado: NÃO toca em globals.css (paralelo com o agente do Laudo).
+   Reusa os tokens canônicos (--primary, --success, --danger, --space-*, etc.).
+   Estética da PROVA: elevação contida, sem hype; o ato é pesado, a UI é sóbria.
+   ============================================================================ */
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-bottom: var(--space-3);
+}
+.breadcrumb a:hover {
+  color: var(--primary);
+}
+
+/* Layout: fatos (principal) + cerimônia (lateral sticky). */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: var(--space-4);
+  align-items: start;
+  margin-top: var(--space-4);
+}
+.main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.side {
+  position: sticky;
+  top: var(--space-4);
+}
+@media (max-width: 960px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .side {
+    position: static;
+  }
+}
+
+/* ---- Cabeçalho do detalhe ---- */
+.detHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+/* ---- Grade de fatos (produto/NCM/cClassTrib/...) ---- */
+.factGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3) var(--space-4);
+  margin: 0 0 var(--space-3);
+}
+@media (max-width: 520px) {
+  .factGrid {
+    grid-template-columns: 1fr;
+  }
+}
+.factGrid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.factGrid dt {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-faint);
+  margin: 0;
+}
+.factGrid dd {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.cclass {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.arrow {
+  color: var(--text-faint);
+}
+
+.descricao {
+  font-size: 13px;
+  color: var(--text-dim);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--primary-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  margin: 0;
+}
+
+/* ---- Bloqueio de auto-aprovação (DESIGN §6.3) ---- */
+.bloqueio {
+  font-size: 12px;
+  color: var(--warning);
+  background: var(--warning-soft);
+  border: 1px solid #f3dcb0;
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  margin: 0 0 var(--space-3);
+}
+.bloqueio strong {
+  color: var(--warning);
+}
+
+/* ---- Confiança calibrada ---- */
+.confLinha {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-2);
+}
+.confPct {
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+/* ---- Proveniência (base normativa) ---- */
+.provDl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3) var(--space-4);
+  margin: var(--space-3) 0 0;
+}
+@media (max-width: 520px) {
+  .provDl {
+    grid-template-columns: 1fr;
+  }
+}
+.provDl > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.provDl dt {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-faint);
+  margin: 0;
+}
+.provDl dd {
+  margin: 0;
+  font-size: 13px;
+}
+
+/* ============================================================================
+   Cerimônia graduada (o ato pesado)
+   ============================================================================ */
+.cerimonia {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.cerimoniaLocked {
+  font-size: 13px;
+  color: var(--danger);
+  background: var(--danger-soft);
+  border: 1px solid #f3c6c2;
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+}
+
+/* Toggle aprovar/rejeitar */
+.cerimoniaToggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+.toggleBtn {
+  font: inherit;
+  font-weight: 600;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text-dim);
+  cursor: pointer;
+}
+.toggleBtn:hover {
+  border-color: var(--primary-border);
+  color: var(--text);
+}
+.toggleActive {
+  background: var(--primary-soft);
+  border-color: var(--primary-border);
+  color: var(--primary);
+}
+
+/* Revisão item-a-item (passo 1) */
+.revisaoCheck {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-size: 13px;
+  color: var(--text);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  cursor: pointer;
+}
+.revisaoCheck input {
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+/* Campos (motivo / texto / confirmação) */
+.campo {
+  display: flex;
+  flex-direction: column;
+}
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.labelHint {
+  font-weight: 400;
+  color: var(--text-faint);
+}
+.label code {
+  font-family: var(--font-mono);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0 4px;
+  font-size: 11px;
+}
+
+.select,
+.textarea,
+.confirmInput {
+  font: inherit;
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--text);
+}
+.textarea {
+  resize: vertical;
+}
+.confirmInput {
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+}
+.select:focus-visible,
+.textarea:focus-visible,
+.confirmInput:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
+}
+
+.assinaturaLinha {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin: 8px 0 0;
+}
+
+.erro {
+  font-size: 12px;
+  color: var(--danger);
+  background: var(--danger-soft);
+  border: 1px solid #f3c6c2;
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  margin: 0;
+}
+
+.acoes {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.btnAct {
+  font: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  color: #fff;
+}
+.btnAct:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+.btnAprovar {
+  background: var(--success);
+  border-color: var(--success);
+}
+.btnAprovar:not(:disabled):hover {
+  filter: brightness(0.94);
+}
+.btnRejeitar {
+  background: var(--danger);
+  border-color: var(--danger);
+}
+.btnRejeitar:not(:disabled):hover {
+  filter: brightness(0.94);
+}
+.acoesNota {
+  font-size: 11px;
+  color: var(--text-faint);
+  text-align: center;
+}
+
+/* ============================================================================
+   Carimbo do ato (quem · CRC · habilitação · quando) — DESIGN §6.4
+   ============================================================================ */
+.carimbo {
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  border: 1px solid var(--border);
+}
+.carimboAprovado {
+  background: var(--success-soft);
+  border-color: #bfe3cd;
+}
+.carimboRejeitado {
+  background: var(--danger-soft);
+  border-color: #f3c6c2;
+}
+.carimboHead {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: var(--space-3);
+}
+.carimboGlyph {
+  font-size: 16px;
+  line-height: 1.2;
+  flex-shrink: 0;
+}
+.carimboAprovado .carimboGlyph {
+  color: var(--success);
+}
+.carimboRejeitado .carimboGlyph {
+  color: var(--danger);
+}
+.carimboDl {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-3);
+}
+.carimboDl > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+.carimboDl dt {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-faint);
+  margin: 0;
+}
+.carimboDl dd {
+  margin: 0;
+  text-align: right;
+  font-weight: 600;
+  font-size: 13px;
+}
+.carimboNota {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin: 0;
+}
+.carimboNota a {
+  color: var(--primary);
+  text-decoration: underline;
+}
