@@ -22,7 +22,8 @@ import { Card } from "@/components/Card";
 import { StatusBadge } from "@/components/StatusBadge";
 import { TopBar } from "@/components/TopBar";
 import { brl } from "@/lib/format";
-import { CASOS_RECUPERACAO, ANO_BASE } from "./recuperacao-data";
+import { ANO_BASE } from "./recuperacao-data";
+import { computarCasosRecuperacao } from "./recuperacao-engine";
 import { VIA_RECEBIMENTO, diasAteSunset } from "./recuperacao-model";
 import { RecuperacaoExplorer } from "./RecuperacaoExplorer";
 import styles from "./recuperacao.module.css";
@@ -34,8 +35,14 @@ export default function RecuperacaoPage() {
   const agoraIso = new Date().toISOString();
   const dias = diasAteSunset(agoraIso);
 
-  const casos = CASOS_RECUPERACAO;
-  const totalIndicios = casos.reduce((acc, c) => acc + c.indicios.length, 0);
+  // MOTOR REAL: o indício de crédito monofásico é COMPUTADO pelo engine (server-side)
+  // — parseNFe → paraItensFiscais → detectarMonofasicoLote sobre notas-amostra (seeds/).
+  // O parse + motor rodam só no servidor (LGPD); a page recebe o view-model serializável.
+  const casos = computarCasosRecuperacao(ANO_BASE);
+  const totalIndicios = casos.reduce(
+    (acc, c) => acc + c.indicios.filter((i) => i.temIndicioMotor).length,
+    0,
+  );
   const estimativaTotal = casos.reduce((acc, c) => acc + c.estimativaTotal, 0);
 
   return (
@@ -49,8 +56,10 @@ export default function RecuperacaoPage() {
         <p className={styles.lead}>
           Onde a auditoria aponta imposto monofásico pago a mais hoje, os últimos cinco anos
           provavelmente também — abrindo uma janela para tentar recuperar valor retroativo.
-          Cada linha é um <strong>indício</strong>, e os valores são <strong>estimativas
-          ilustrativas</strong>. Quem analisa e assina o pedido é o tributarista habilitado.
+          Cada linha é um <strong>indício computado pelo motor fiscal</strong> sobre uma
+          nota-amostra (parse do XML + detecção monofásica), com confiança calibrada. A
+          projeção retroativa de 5 anos é <strong>estimativa ilustrativa</strong>. Quem analisa
+          e assina o pedido é o tributarista habilitado.
         </p>
 
         {/* Banner do relógio (urgência real, sem exagero) — sunset 1º/jan/2027. */}
@@ -69,15 +78,17 @@ export default function RecuperacaoPage() {
           </span>
         </div>
 
-        {/* Selo de honestidade (demo / base sintética / execução real na Fase 7). */}
+        {/* Selo de honestidade (motor real sobre notas-amostra / ingestão real na Fase C). */}
         <div className="notice" role="status">
           <span aria-hidden="true">◇</span>
           <span>
-            <strong>Demo — base sintética / estimativas ilustrativas.</strong> Nada aqui é
-            crédito garantido, recuperação garantida nem dinheiro certo — são{" "}
-            <strong>indícios de crédito potencialmente recuperável</strong> sujeitos a análise.
-            A execução real chega na <strong>Fase 7</strong> (precisa de estrutura jurídica e de
-            tributarista habilitado, que é quem assina a PER/DCOMP).
+            <strong>Motor real sobre notas-amostra.</strong> O indício de crédito monofásico é{" "}
+            <strong>computado pelo motor fiscal</strong> sobre notas-amostra sintéticas (parse do
+            XML + detecção monofásica). A ingestão real de documentos do cliente é a{" "}
+            <strong>Fase C</strong>. Nada aqui é crédito garantido, recuperação garantida nem
+            dinheiro certo — são <strong>indícios de crédito potencialmente recuperável</strong>{" "}
+            sujeitos a análise. A execução real (PER/DCOMP) chega na <strong>Fase 7</strong> e quem
+            assina é o tributarista habilitado.
           </span>
         </div>
 
@@ -92,13 +103,15 @@ export default function RecuperacaoPage() {
           <Card>
             <div className="kpi">
               <span className="kpi-value num">{totalIndicios}</span>
-              <span className="kpi-label">Indícios potencialmente recuperáveis</span>
+              <span className="kpi-label">Indícios computados pelo motor</span>
             </div>
           </Card>
           <Card>
             <div className="kpi">
-              <span className="kpi-value num">{brl(estimativaTotal)}</span>
-              <span className="kpi-label">Estimativa retroativa (ilustrativa)</span>
+              <span className="kpi-value num">~{brl(estimativaTotal)}</span>
+              <span className="kpi-label">
+                Faixa retroativa em 5 anos (ilustrativa, se o volume se mantiver · exclui Simples)
+              </span>
             </div>
           </Card>
         </div>
@@ -130,10 +143,11 @@ export default function RecuperacaoPage() {
         {/* Disclaimer-credencial G6. */}
         <Card title="Linguagem segura (G6)">
           <p className="disclaimer">
-            <strong>indício</strong> · estimativa ilustrativa · base sintética (Fase 1) ·
-            sujeito a <strong>análise e revisão do tributarista habilitado</strong>. Esta tela
-            não promete crédito garantido, recuperação garantida, dinheiro certo, apuração
-            correta, eliminação de multa nem prova jurídica plena. O software organiza o{" "}
+            <strong>indício computado pelo motor</strong> · projeção retroativa ilustrativa ·
+            motor real sobre notas-amostra (ingestão real = Fase C) · sujeito a{" "}
+            <strong>análise e revisão do tributarista habilitado</strong>. Esta tela não promete
+            crédito garantido, recuperação garantida, dinheiro certo, apuração correta,
+            eliminação de multa nem prova jurídica plena. O software organiza o{" "}
             <strong>dossiê de evidências</strong>; quem analisa e assina a PER/DCOMP é o
             tributarista habilitado (execução real na Fase 7).
           </p>

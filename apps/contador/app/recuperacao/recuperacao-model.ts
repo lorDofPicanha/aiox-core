@@ -123,6 +123,42 @@ export interface EvidenciaItem {
   banda: BandaRecuperacao;
 }
 
+/**
+ * Proveniência do indício — de ONDE veio o número exibido (trilha de boa-fé).
+ * No motor real (Fase atual) o indício é COMPUTADO sobre uma nota-amostra parseada;
+ * na ingestão real (Fase C) vem do documento capturado do cliente.
+ */
+export interface ProvenienciaIndicio {
+  /**
+   * "motor" = o indício (valor envolvido + confiança + banda) foi COMPUTADO pelo
+   * motor real (detectarMonofasicoLote) sobre uma nota-amostra XML parseada.
+   * "ilustrativo" = derivação sintética rotulada (nunca o crédito em si).
+   */
+  fonte: "motor" | "ilustrativo";
+  /** Classe do insumo de origem (xml estruturado/assinado = mais forte que OCR). */
+  classeInsumo: "xml" | "documento_extraido";
+  /** Rótulo da nota-amostra que originou o indício (ex.: nome do arquivo seed). */
+  amostra: string;
+  /** O XML traz bloco de assinatura (presença, NÃO validação ICP-Brasil). */
+  assinado: boolean;
+  /**
+   * Confiança calibrada COMPUTADA pelo motor (0..1). Número não-mágico: deriva dos
+   * fatores explícitos do apontamento. Sujeito a revisão do tributarista habilitado.
+   */
+  confianca: number;
+  /**
+   * true quando a confiança ficou abaixo do threshold do motor: BLOQUEIA
+   * auto-aprovação e empurra para revisão humana (CRC). Honestidade da banda.
+   */
+  bloqueiaAutoAprovacao: boolean;
+  /**
+   * Valor envolvido na nota-amostra (R$) que serviu de BASE ao indício — o número
+   * que o motor de fato leu do XML (não a projeção retroativa). Quando o item NÃO
+   * gera indício monofásico (motor abstém), fica como a base lida sem crédito.
+   */
+  valorEnvolvidoBase: number;
+}
+
 /** Indício de crédito potencialmente recuperável, ligado a um item da auditoria. */
 export interface IndicioRecuperacao {
   /** Produto/insumo de alto SKU monofásico (ligado à auditoria). */
@@ -140,6 +176,23 @@ export interface IndicioRecuperacao {
   porAno: AnoEstimativa[];
   /** Evidências técnicas que o dossiê reúne para sustentar o indício. */
   evidencias: EvidenciaItem[];
+  /**
+   * Proveniência do indício (fonte/confiança/banda do MOTOR REAL). Opcional para
+   * retrocompatibilidade: indícios sem proveniência são tratados como ilustrativos.
+   */
+  proveniencia?: ProvenienciaIndicio;
+  /**
+   * true quando o MOTOR REAL gerou apontamento monofásico para este item. false =
+   * o motor abstém (item fora de família monofásica) → exibido como "motor não
+   * identificou indício" (honestidade: não há crédito a projetar).
+   */
+  temIndicioMotor?: boolean;
+  /**
+   * Projeção retroativa REGIME-AWARE (alíquota por regime; Simples = requer apuração).
+   * Auditável: carrega regime + alíquota + estimativa/ano + 5 anos. Opcional para
+   * retrocompatibilidade. `estimativaRetroativo` espelha `projecao.estimativa5Anos`.
+   */
+  projecao?: ProjecaoRetroativa;
 }
 
 /** Split ILUSTRATIVO do success-fee (linha separada — NÃO empacotado no recorrente, D6). */
@@ -161,6 +214,8 @@ export interface CasoRecuperacao {
   clienteNome: string;
   /** Segmento alto-SKU/monofásico (farmácia, posto, mercado — doc 05 §4). */
   segmento: string;
+  /** Regime tributário do cliente — define a alíquota da projeção (ou Simples = apuração). */
+  regime: RegimeTributario;
   estagio: EstagioView;
   /** Banda do caso = pior indício (mais conservadora). */
   bandaCaso: StatusView;
@@ -231,6 +286,131 @@ export function calcularSplit(baseHipotetica: number): SplitSuccessFee {
 
 /** Janela de anos retroativos exibida no drill-down (últimos 5 anos). */
 export const ANOS_RETROATIVOS = 5;
+
+/**
+ * Regime tributário do cliente — determina COMO (e se) projetamos a estimativa.
+ *  - "real"      = Lucro Real / PIS-COFINS NÃO-cumulativo (1,65% + 7,6% = 9,25%).
+ *  - "presumido" = Lucro Presumido / PIS-COFINS CUMULATIVO (0,65% + 3,0% = 3,65%).
+ *  - "simples"   = Simples Nacional → o crédito monofásico NÃO é por alíquota federal,
+ *                  e sim por SEGREGAÇÃO DE RECEITA (conceito distinto). Não projetamos
+ *                  número: marcamos "requer apuração" e o item contribui R$0 ao total.
+ */
+export type RegimeTributario = "real" | "presumido" | "simples";
+
+/**
+ * Alíquota nominal combinada de PIS/COFINS por regime (apenas para a projeção
+ * ILUSTRATIVA de ordem-de-grandeza). NÃO é a apuração do cliente concreto.
+ *  - não-cumulativo (real): 1,65% + 7,60% = 9,25%
+ *  - cumulativo (presumido): 0,65% + 3,00% = 3,65%
+ */
+export const ALIQUOTA_PIS_COFINS_NAO_CUMULATIVO = 0.0925;
+export const ALIQUOTA_PIS_COFINS_CUMULATIVO = 0.0365;
+
+/** Alíquota federal aplicável por regime (Simples = null: não se projeta por alíquota). */
+export function aliquotaPorRegime(regime: RegimeTributario): number | null {
+  if (regime === "real") return ALIQUOTA_PIS_COFINS_NAO_CUMULATIVO;
+  if (regime === "presumido") return ALIQUOTA_PIS_COFINS_CUMULATIVO;
+  return null; // simples: segregação de receita, não alíquota → não projeta número
+}
+
+/** Rótulo legível do regime (para a UI / proveniência). */
+export function rotuloRegime(regime: RegimeTributario): string {
+  if (regime === "real") return "Lucro Real (não-cumulativo · 9,25%)";
+  if (regime === "presumido") return "Lucro Presumido (cumulativo · 3,65%)";
+  return "Simples Nacional (segregação de receita)";
+}
+
+/**
+ * Projeção ILUSTRATIVA do crédito retroativo, REGIME-AWARE. Resultado estruturado e
+ * AUDITÁVEL: expõe o regime e a alíquota usados, a estimativa por ano e em 5 anos, e
+ * se o caso REQUER APURAÇÃO (Simples) em vez de número projetado.
+ */
+export interface ProjecaoRetroativa {
+  regime: RegimeTributario;
+  /** Alíquota federal usada na projeção (null no Simples — não se projeta por alíquota). */
+  aliquota: number | null;
+  /** Estimativa ILUSTRATIVA por ano-tipo (R$). 0 quando requer apuração ou sem base. */
+  estimativaAno: number;
+  /** Estimativa ILUSTRATIVA em 5 anos (R$). 0 quando requer apuração ou sem base. */
+  estimativa5Anos: number;
+  /**
+   * true no Simples: NÃO há número projetado (crédito é por segregação de receita).
+   * A UI deve exibir "requer apuração" e o item contribui R$0 ao KPI (como abstenção).
+   */
+  requerApuracao: boolean;
+}
+
+/**
+ * Projeta a ESTIMATIVA ILUSTRATIVA do crédito retroativo a partir do VALOR ENVOLVIDO
+ * que o MOTOR REAL leu da nota-amostra (R$ da linha do XML), de acordo com o REGIME.
+ *
+ * Ordem-de-grandeza didática, NÃO a apuração real: aplica a alíquota do regime sobre o
+ * valor da nota-amostra como o "pago a mais" de um período-tipo e extrapola pelos 5 anos
+ * retroativos (`ANOS_RETROATIVOS`) *se o volume se mantiver*. No Simples não há projeção
+ * por alíquota (segregação de receita) → `requerApuracao = true`, número zerado.
+ *
+ * Função PURA e determinística (sem Date/rede/fs).
+ *
+ * @param valorEnvolvidoMotor  R$ da linha que o motor leu (apontamento.valorEnvolvido).
+ * @param regime               regime tributário do cliente (seed).
+ */
+export function projetarRetroativoIlustrativo(
+  valorEnvolvidoMotor: number,
+  regime: RegimeTributario,
+): ProjecaoRetroativa {
+  const aliquota = aliquotaPorRegime(regime);
+  const base = Math.max(0, valorEnvolvidoMotor);
+
+  // Simples: não se projeta por alíquota federal (segregação de receita).
+  if (aliquota === null) {
+    return { regime, aliquota: null, estimativaAno: 0, estimativa5Anos: 0, requerApuracao: true };
+  }
+
+  const estimativaAno = Math.round(base * aliquota);
+  const estimativa5Anos = Math.round(estimativaAno * ANOS_RETROATIVOS);
+  return { regime, aliquota, estimativaAno, estimativa5Anos, requerApuracao: false };
+}
+
+/** Mapeia a banda calibrada do motor (alta/media/baixa) para a banda do overlay. */
+export function bandaDoMotor(banda: BandaRecuperacao): BandaRecuperacao {
+  // Mesma escala (alta/media/baixa) — o motor e o overlay compartilham o vocabulário.
+  return banda;
+}
+
+/** Abrevia R$ em ordem-de-grandeza ("~R$11k", "~R$1,2k", "~R$55k") para FAIXA, não número-herói. */
+function abreviarBrl(valor: number): string {
+  const v = Math.max(0, Math.round(valor));
+  if (v >= 1000) {
+    const milhares = v / 1000;
+    // 1 casa quando < 10k (ex.: ~R$1,2k); inteiro acima (ex.: ~R$55k).
+    const casas = milhares < 10 ? 1 : 0;
+    const txt = milhares.toLocaleString("pt-BR", {
+      minimumFractionDigits: casas,
+      maximumFractionDigits: casas,
+    });
+    return `~R$${txt}k`;
+  }
+  return `~R$${v.toLocaleString("pt-BR")}`;
+}
+
+/**
+ * Formata a projeção como FAIXA com a PREMISSA EXPLÍCITA (🟡-1): o número grande não
+ * deve ancorar como valor recuperável cravado. Ex.:
+ *   "~R$11k/ano · ~R$55k em 5 anos *se o volume se mantiver*" (ilustrativa)
+ *   Simples → "— requer apuração (Simples: segregação de receita)".
+ */
+export function formatarFaixaProjecao(projecao: ProjecaoRetroativa): string {
+  if (projecao.requerApuracao) {
+    return "— requer apuração (Simples: segregação de receita)";
+  }
+  if (projecao.estimativa5Anos <= 0) {
+    return "— sem indício";
+  }
+  return (
+    `${abreviarBrl(projecao.estimativaAno)}/ano · ${abreviarBrl(projecao.estimativa5Anos)} em 5 anos ` +
+    `(ilustrativa, se o volume se mantiver)`
+  );
+}
 
 /**
  * Cabeçalho estruturado do dossiê de evidências (preview). NÃO é a PER/DCOMP —

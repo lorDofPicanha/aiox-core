@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SINTÉTICO (seed de Recuperação — Mercado Cedro / cli-cedro-a3).
+     Mercearia seca (NCM 1905 — produtos de padaria/biscoitos), FORA de família
+     monofásica conhecida. O MOTOR REAL deliberadamente NÃO gera indício aqui
+     (abstenção "onde NÃO sei" — §5.3): provável tributação normal, não monofásico.
+     Prova de honestidade — o motor não fabrica crédito. Revisão de produto fica com CRC. -->
+<nfeProc versao="4.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <NFe>
+    <infNFe Id="NFe35240677888999000133550010000006031000006030" versao="4.00">
+      <ide>
+        <cUF>35</cUF>
+        <natOp>REVENDA</natOp>
+        <mod>55</mod>
+        <serie>1</serie>
+        <nNF>603</nNF>
+        <dhEmi>2024-03-10T08:15:00-03:00</dhEmi>
+        <tpNF>1</tpNF>
+      </ide>
+      <emit>
+        <CNPJ>77888999000133</CNPJ>
+        <xNome>DISTRIBUIDORA MERCEARIA SINTETICA SA</xNome>
+      </emit>
+      <dest>
+        <CNPJ>33224455000188</CNPJ>
+        <xNome>MERCADO CEDRO SINTETICO LTDA</xNome>
+      </dest>
+      <det nItem="1">
+        <prod>
+          <cProd>MERC-001</cProd>
+          <xProd>MERCEARIA SECA (ALIQUOTA A VERIFICAR)</xProd>
+          <NCM>19059090</NCM>
+          <CFOP>5405</CFOP>
+          <vProd>4100.00</vProd>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS60>
+              <orig>0</orig>
+              <CST>60</CST>
+            </ICMS60>
+          </ICMS>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>4100.00</vBC>
+              <pPIS>1.65</pPIS>
+              <vPIS>67.65</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>4100.00</vBC>
+              <pCOFINS>7.60</pCOFINS>
+              <vCOFINS>311.60</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <total>
+        <ICMSTot>
+          <vProd>4100.00</vProd>
+          <vNF>4100.00</vNF>
+        </ICMSTot>
+      </total>
+    </infNFe>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo>
+        <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+        <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+      </SignedInfo>
+      <SignatureValue>U0lOVEVUSUNPLUNFRFJPLU1FUkM=</SignatureValue>
+    </Signature>
+  </NFe>
+</nfeProc>

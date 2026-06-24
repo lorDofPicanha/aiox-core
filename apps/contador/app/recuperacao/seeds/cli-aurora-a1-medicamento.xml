@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SINTÉTICO (seed de Recuperação — Farmácia Aurora / cli-aurora-a1).
+     Medicamento de referência (NCM 3004, família monofásica farmacêutica) lançado na
+     REVENDA com CST PIS/COFINS 01 (regime normal) em vez de 04/06 (monofásico).
+     É o caso-alvo do indício: o MOTOR REAL (detectarMonofasicoLote) computa o
+     crédito potencial a partir DESTA nota. DRAFT — indício, não certeza; revisão CRC. -->
+<nfeProc versao="4.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <NFe>
+    <infNFe Id="NFe35240611222333000144550010000004011000004010" versao="4.00">
+      <ide>
+        <cUF>35</cUF>
+        <natOp>REVENDA</natOp>
+        <mod>55</mod>
+        <serie>1</serie>
+        <nNF>401</nNF>
+        <dhEmi>2024-05-14T10:15:00-03:00</dhEmi>
+        <tpNF>1</tpNF>
+      </ide>
+      <emit>
+        <CNPJ>11222333000144</CNPJ>
+        <xNome>DISTRIBUIDORA FARMA SINTETICA SA</xNome>
+      </emit>
+      <dest>
+        <CNPJ>99887766000155</CNPJ>
+        <xNome>FARMACIA AURORA SINTETICA LTDA</xNome>
+      </dest>
+      <det nItem="1">
+        <prod>
+          <cProd>MED-REF-001</cProd>
+          <xProd>MEDICAMENTO DE REFERENCIA (LISTA POSITIVA)</xProd>
+          <NCM>30049069</NCM>
+          <CFOP>5405</CFOP>
+          <vProd>84500.00</vProd>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS60>
+              <orig>0</orig>
+              <CST>60</CST>
+            </ICMS60>
+          </ICMS>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>84500.00</vBC>
+              <pPIS>1.65</pPIS>
+              <vPIS>1394.25</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>84500.00</vBC>
+              <pCOFINS>7.60</pCOFINS>
+              <vCOFINS>6422.00</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <total>
+        <ICMSTot>
+          <vProd>84500.00</vProd>
+          <vNF>84500.00</vNF>
+        </ICMSTot>
+      </total>
+    </infNFe>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo>
+        <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+        <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+      </SignedInfo>
+      <SignatureValue>U0lOVEVUSUNPLUFVUk9SQS1NRUQ=</SignatureValue>
+    </Signature>
+  </NFe>
+</nfeProc>

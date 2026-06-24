@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SINTÉTICO (seed de Recuperação — Posto Brasa / cli-brasa-a2).
+     Lubrificantes (NCM 2710.19, família monofásica combustíveis/lubrificantes) lançado
+     na REVENDA com CST PIS/COFINS 01 (regime normal). Crédito potencial computado pelo
+     MOTOR REAL. Revisão CRC. -->
+<nfeProc versao="4.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <NFe>
+    <infNFe Id="NFe35240644555666000177550010000005021000005020" versao="4.00">
+      <ide>
+        <cUF>35</cUF>
+        <natOp>REVENDA</natOp>
+        <mod>55</mod>
+        <serie>1</serie>
+        <nNF>502</nNF>
+        <dhEmi>2024-04-11T14:05:00-03:00</dhEmi>
+        <tpNF>1</tpNF>
+      </ide>
+      <emit>
+        <CNPJ>44555666000177</CNPJ>
+        <xNome>DISTRIBUIDORA LUBRIFICANTE SINTETICA SA</xNome>
+      </emit>
+      <dest>
+        <CNPJ>22113344000166</CNPJ>
+        <xNome>POSTO BRASA SINTETICO LTDA</xNome>
+      </dest>
+      <det nItem="1">
+        <prod>
+          <cProd>LUB-001</cProd>
+          <xProd>LUBRIFICANTES (REVENDA)</xProd>
+          <NCM>27101932</NCM>
+          <CFOP>5405</CFOP>
+          <vProd>22400.00</vProd>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS60>
+              <orig>0</orig>
+              <CST>60</CST>
+            </ICMS60>
+          </ICMS>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>22400.00</vBC>
+              <pPIS>1.65</pPIS>
+              <vPIS>369.60</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>22400.00</vBC>
+              <pCOFINS>7.60</pCOFINS>
+              <vCOFINS>1702.40</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <total>
+        <ICMSTot>
+          <vProd>22400.00</vProd>
+          <vNF>22400.00</vNF>
+        </ICMSTot>
+      </total>
+    </infNFe>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo>
+        <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+        <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+      </SignedInfo>
+      <SignatureValue>U0lOVEVUSUNPLUJSQVNBLUxVQg==</SignatureValue>
+    </Signature>
+  </NFe>
+</nfeProc>

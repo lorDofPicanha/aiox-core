@@ -28,7 +28,9 @@ import { Table, type Column } from "@/components/Table";
 import { brl } from "@/lib/format";
 import {
   BANDA_RECUPERACAO,
+  formatarFaixaProjecao,
   montarDossie,
+  rotuloRegime,
   type AnoEstimativa,
   type CasoRecuperacao,
   type IndicioRecuperacao,
@@ -39,6 +41,64 @@ import styles from "./recuperacao.module.css";
 /** Banda calibrada do indício (mapa local — auto-contido, espelha BANDA_RECUPERACAO). */
 function bandaView(banda: IndicioRecuperacao["banda"]) {
   return BANDA_RECUPERACAO[banda];
+}
+
+/** Formata a confiança calibrada do motor (0..1) como percentual pt-BR (ex.: "82%"). */
+function pctConfianca(confianca: number): string {
+  return `${Math.round(confianca * 100)}%`;
+}
+
+/**
+ * Faixa retroativa ILUSTRATIVA (🟡-1): em vez de um número-herói cravado, exibe a FAIXA
+ * com a PREMISSA explícita ("~R$11k/ano · ~R$55k em 5 anos, se o volume se mantiver").
+ * Regime-aware (🟡-2): no Simples mostra "requer apuração (segregação de receita)";
+ * onde o motor abstém, "— sem indício". Nunca ancora valor recuperável garantido (G6).
+ */
+function FaixaEstimativa({ indicio }: { indicio: IndicioRecuperacao }) {
+  const proj = indicio.proveniencia;
+  // Sem projeção (retrocompat) → cai no comportamento de abstenção.
+  if (!indicio.projecao) {
+    return (
+      <span className="muted" style={{ fontSize: 11 }} title="Sem projeção disponível">
+        — sem indício
+      </span>
+    );
+  }
+
+  // Motor abstém (sem indício monofásico) → sem crédito a projetar.
+  if (!indicio.temIndicioMotor) {
+    return (
+      <span
+        className="muted"
+        style={{ fontSize: 11 }}
+        title="Motor não identificou indício monofásico — sem crédito a projetar"
+      >
+        — sem indício
+      </span>
+    );
+  }
+
+  // Simples Nacional → crédito por segregação de receita: requer apuração, sem número.
+  if (indicio.projecao.requerApuracao) {
+    return (
+      <span
+        className={styles.requerApuracao}
+        title="Simples Nacional: o crédito monofásico é por segregação de receita, não por alíquota federal — requer apuração do tributarista"
+      >
+        — requer apuração (Simples: segregação de receita)
+      </span>
+    );
+  }
+
+  // Faixa com premissa explícita (não número-herói cravado).
+  return (
+    <span
+      className={styles.faixaEstimativa}
+      title={`Projeção ilustrativa (${rotuloRegime(indicio.projecao.regime)}) sobre o valor que o motor leu da nota-amostra — sujeita a análise do tributarista`}
+    >
+      {formatarFaixaProjecao(indicio.projecao)}
+    </span>
+  );
 }
 
 export function RecuperacaoExplorer({
@@ -114,8 +174,26 @@ function CasoCard({ caso, anoBase }: { caso: CasoRecuperacao; anoBase: number })
     },
     {
       key: "banda",
-      header: "Confiança",
-      render: (i) => <StatusBadge view={bandaView(i.banda)} />,
+      header: "Confiança (motor)",
+      render: (i) => (
+        <div className={styles.confCell}>
+          <StatusBadge view={bandaView(i.banda)} />
+          {i.proveniencia?.fonte === "motor" && i.temIndicioMotor ? (
+            <span
+              className="muted mono num"
+              style={{ fontSize: 11 }}
+              title="Confiança calibrada computada pelo motor (0–1), sujeita a revisão"
+            >
+              {pctConfianca(i.proveniencia.confianca)}
+            </span>
+          ) : null}
+          {i.proveniencia?.bloqueiaAutoAprovacao ? (
+            <span className={styles.revisarTag} title="Confiança abaixo do limiar — bloqueia auto-aprovação">
+              revisar (CRC)
+            </span>
+          ) : null}
+        </div>
+      ),
     },
     {
       key: "fundamento",
@@ -128,16 +206,9 @@ function CasoCard({ caso, anoBase }: { caso: CasoRecuperacao; anoBase: number })
     },
     {
       key: "estimativa",
-      header: "Estimativa retroativa (5 anos)",
+      header: "Faixa retroativa (ilustrativa)",
       align: "num",
-      render: (i) => (
-        <span
-          className="num"
-          title="Estimativa ilustrativa — sujeita a análise do tributarista"
-        >
-          {brl(i.estimativaRetroativo)}
-        </span>
-      ),
+      render: (i) => <FaixaEstimativa indicio={i} />,
     },
   ];
 
@@ -184,15 +255,31 @@ function CasoCard({ caso, anoBase }: { caso: CasoRecuperacao; anoBase: number })
       <div className={styles.casoRodape}>
         <div className={styles.estimativaBox}>
           <span className={styles.estimativaLabel}>
-            Estimativa retroativa do caso (5 anos, ilustrativa)
+            Faixa retroativa do caso (5 anos, ilustrativa)
           </span>
-          <span className={`num ${styles.estimativaValor}`}>{brl(caso.estimativaTotal)}</span>
+          {caso.regime === "simples" ? (
+            <span
+              className={styles.requerApuracao}
+              title="Simples Nacional: crédito por segregação de receita — requer apuração do tributarista"
+            >
+              — requer apuração (Simples: segregação de receita)
+            </span>
+          ) : (
+            <span
+              className={`num ${styles.estimativaValor}`}
+              title="Projeção ilustrativa — não é valor recuperável garantido"
+            >
+              ~{brl(caso.estimativaTotal)} em 5 anos
+            </span>
+          )}
           <span className="muted" style={{ fontSize: 11 }}>
-            Via sugerida: {caso.viaSugerida.rotulo}
+            {rotuloRegime(caso.regime)} · ilustrativa, se o volume se mantiver · via sugerida:{" "}
+            {caso.viaSugerida.rotulo}
           </span>
         </div>
 
-        {/* Distribuição do êxito em valores absolutos (split multi-parte). */}
+        {/* Distribuição do êxito em valores absolutos (split multi-parte).
+            No Simples a base é R$0 (sem projeção) — o split fica zerado coerentemente. */}
         <RepasseSplit baseInicial={caso.estimativaTotal} />
       </div>
 
@@ -294,6 +381,37 @@ function DrillDown({ indicio }: { indicio: IndicioRecuperacao }) {
           <p className={styles.drillFundamento}>
             <strong>Base normativa:</strong> {indicio.fundamento}
           </p>
+          {indicio.proveniencia ? (
+            <p className={styles.drillProveniencia}>
+              <strong>Proveniência (motor real):</strong>{" "}
+              {indicio.proveniencia.fonte === "motor"
+                ? `indício ${indicio.temIndicioMotor ? "computado" : "avaliado (sem crédito)"} pelo motor fiscal sobre a nota-amostra `
+                : "derivação ilustrativa "}
+              <span className="mono" style={{ fontSize: 11 }}>
+                {indicio.proveniencia.amostra}
+              </span>{" "}
+              · classe do insumo:{" "}
+              {indicio.proveniencia.classeInsumo === "xml"
+                ? "XML estruturado"
+                : "documento extraído (OCR)"}
+              {indicio.proveniencia.assinado ? " (com assinatura presente)" : " (sem assinatura)"}
+              {indicio.temIndicioMotor
+                ? ` · confiança calibrada ${pctConfianca(indicio.proveniencia.confianca)} · valor lido na nota ${brl(indicio.proveniencia.valorEnvolvidoBase)}`
+                : ""}
+              {indicio.proveniencia.bloqueiaAutoAprovacao
+                ? " · baixa confiança bloqueia auto-aprovação → revisão humana (CRC)"
+                : ""}
+              . Sujeito a análise e revisão do tributarista habilitado.
+            </p>
+          ) : null}
+          {indicio.projecao ? (
+            <p className={styles.drillProveniencia}>
+              <strong>Projeção (regime-aware):</strong> {rotuloRegime(indicio.projecao.regime)}
+              {indicio.projecao.requerApuracao
+                ? " — no Simples o crédito monofásico é por SEGREGAÇÃO DE RECEITA, não por alíquota federal; requer apuração do tributarista (não projetamos número)."
+                : ` — projeção ${formatarFaixaProjecao(indicio.projecao)}. A premissa é a recorrência do volume; a janela e a apuração reais só o tributarista habilitado afere.`}
+            </p>
+          ) : null}
         </div>
       </div>
     </div>
