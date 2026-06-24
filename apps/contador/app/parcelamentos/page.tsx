@@ -19,10 +19,9 @@
  * globals.css, lib/api.ts nem outros módulos — só lê os componentes e tokens globais.
  */
 import { Card } from "@/components/Card";
-import { StatusBadge } from "@/components/StatusBadge";
 import { TopBar } from "@/components/TopBar";
 import { brl } from "@/lib/format";
-import { getParcelamentosSinteticos } from "./parcelamentos-data";
+import { AlertasRescisao, type AlertaRescisao } from "./AlertasRescisao";
 import {
   JANELA_SALVAMENTO_DIAS,
   LIMITE_RESCISAO_SN,
@@ -30,17 +29,40 @@ import {
   ehRisco,
   resumirCarteira,
 } from "./parcelamentos-model";
+import { detectarTransicoes, idsNovosEmRisco } from "./parcelamentos-monitor";
+import { ESCRITORIO_DEMO, parcelamentoProvider } from "./parcelamentos-provider";
 import { ParcelamentosExplorer } from "./ParcelamentosExplorer";
 import styles from "./parcelamentos.module.css";
 
 /** Render sob demanda: o spread de risco é derivado da data atual (vencimentos relativos). */
 export const dynamic = "force-dynamic";
 
-export default function ParcelamentosPage() {
+export default async function ParcelamentosPage() {
   const refIso = new Date().toISOString();
-  const carteira = classificarCarteira(getParcelamentosSinteticos(refIso), refIso);
+
+  // PAR-1: o dado vem do CONTRATO (provider), não do seed direto. Hoje é o mock; amanhã o
+  // adapter real do Integra Contador preenche o mesmo contrato sem mexer aqui.
+  const leituraAtual = await parcelamentoProvider.listarParcelamentos(ESCRITORIO_DEMO, refIso);
+  const leituraAnterior = await parcelamentoProvider.listarSnapshotAnterior(ESCRITORIO_DEMO, refIso);
+
+  const carteira = classificarCarteira(leituraAtual.parcelamentos, leituraAtual.refIso);
   const resumo = resumirCarteira(carteira);
   const emRisco = carteira.filter((p) => ehRisco(p.risco.nivel.nivel));
+
+  // PAR-3: monitor de transições — quem entrou/avançou em risco desde a última leitura.
+  const transicoes = detectarTransicoes(
+    leituraAnterior?.parcelamentos ?? null,
+    leituraAtual.parcelamentos,
+    leituraAnterior?.refIso ?? leituraAtual.refIso,
+    leituraAtual.refIso,
+  );
+  const novosEmRisco = idsNovosEmRisco(transicoes);
+
+  // PAR-4: feed de alertas (em risco, com selo "NOVO hoje" para os do monitor).
+  const alertas: AlertaRescisao[] = emRisco.map((parc) => ({
+    parc,
+    novoHoje: novosEmRisco.has(parc.id),
+  }));
 
   return (
     <>
@@ -67,6 +89,12 @@ export default function ParcelamentosPage() {
             aqui é consulta real ao Fisco; os valores e situações são ilustrativos. A plataforma
             sinaliza o indício de risco — não regulariza nem promete evitar o cancelamento.
           </span>
+        </div>
+
+        {/* PAR-4 — Feed de alertas proativos de rescisão, no TOPO ("revisar primeiro").
+            Os que viraram risco desde a última leitura (monitor PAR-3) vêm com "NOVO hoje". */}
+        <div style={{ marginTop: 16 }}>
+          <AlertasRescisao alertas={alertas} />
         </div>
 
         {/* KPIs. */}
@@ -98,50 +126,6 @@ export default function ParcelamentosPage() {
             </div>
           </Card>
         </div>
-
-        {/* Faixa-destaque do whitespace: os em risco de rescisão, no topo. */}
-        {emRisco.length > 0 ? (
-          <Card
-            title="Risco de rescisão — revisar primeiro"
-            sub="Parcelamentos cujo indício de atraso se aproxima ou atingiu o limite de rescisão do Simples Nacional. Sugerimos priorizar a revisão com o cliente."
-          >
-            <ul className={styles.riscoList} aria-label="Parcelamentos em risco de rescisão">
-              {emRisco.map((p) => (
-                <li key={p.id} className={styles.riscoRow}>
-                  <span className="semaforo-dot dot-risco" aria-hidden="true" />
-                  <div className={styles.riscoMain}>
-                    <div className={styles.riscoHead}>
-                      <strong>{p.clienteNome}</strong>
-                      <StatusBadge view={p.risco.nivel} />
-                    </div>
-                    <span className="muted" style={{ fontSize: 11.5 }}>
-                      {p.programa} ·{" "}
-                      {p.risco.parcelasAteRescisao != null
-                        ? `faltam ${p.risco.parcelasAteRescisao} parcela(s) em atraso para o limite`
-                        : "limite de parcelas em atraso atingido — conferir no Fisco"}
-                      {p.risco.parcelasNaJanela > 0
-                        ? ` · ${p.risco.parcelasNaJanela} na janela de ${JANELA_SALVAMENTO_DIAS} dias`
-                        : ""}
-                    </span>
-                  </div>
-                  <div className={styles.riscoRight}>
-                    {p.descontoEmRisco > 0 ? (
-                      <>
-                        <span className="num">{brl(p.descontoEmRisco)}</span>
-                        <span className="kpi-label">desconto sob risco</span>
-                      </>
-                    ) : (
-                      <>
-                        <span className="num">{p.risco.parcelasEmAtraso}</span>
-                        <span className="kpi-label">parcela(s) em atraso</span>
-                      </>
-                    )}
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </Card>
-        ) : null}
 
         {/* Carteira completa — corpo interativo (drill-down + ação human-in-loop). */}
         <Card

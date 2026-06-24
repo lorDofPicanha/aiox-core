@@ -156,7 +156,15 @@ export interface Parcela {
   pagaEmIso?: string | null;
 }
 
-/** Parcelamento de um cliente (entrada do seed — antes de classificar o risco). */
+/**
+ * Parcelamento de um cliente — a ENTRADA da regra pura, antes de classificar o risco.
+ *
+ * Este é o CONTRATO ESTÁVEL de domínio (PAR-1): a forma que QUALQUER origem de dado precisa
+ * entregar para alimentar `classificarCarteira`. Hoje vem do mock; amanhã do adapter real do
+ * Integra Contador. O contrato vive aqui (no model puro) para não criar dependência circular;
+ * `parcelamentos-provider.ts` o re-exporta como `ParcelamentoBruto` e o aplica na interface
+ * `ParcelamentoProvider`. A regra pura consome ESTE tipo, nunca o seed/payload concreto.
+ */
 export interface ParcelamentoSeed {
   /** ID estável do parcelamento (sintético). */
   id: string;

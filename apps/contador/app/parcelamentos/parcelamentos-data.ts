@@ -104,6 +104,13 @@ interface SeedSpec {
   atrasos: number;
   janela: number;
   descontoEmRisco: number;
+  /**
+   * (PAR-3) Estado "de ontem" deste parcelamento, quando DIFERE do estado de hoje — para
+   * o monitor de transições demonstrar uma piora de banda de risco. Quando ausente, o
+   * snapshot de ontem reusa o mesmo estado de hoje (nada mudou). Só precisamos sobrescrever
+   * os campos que mudaram (a base do cliente é a mesma).
+   */
+  ontem?: Pick<SeedSpec, "pagas" | "atrasos" | "janela">;
 }
 
 /**
@@ -125,6 +132,9 @@ const SPECS: SeedSpec[] = [
     atrasos: 3,
     janela: 1, // 1 das 3 ainda na janela
     descontoEmRisco: 38_700,
+    // (PAR-3) Ontem tinha 2 em atraso (IMINENTE); hoje atingiu o limite de 3 (RESCINDIDO).
+    // Piora para a pior banda — o monitor marca como NOVA e o feed prioriza no topo.
+    ontem: { pagas: 15, atrasos: 2, janela: 1 },
   },
   // IMINENTE (2 em atraso → falta 1) — Simples Nacional ordinário.
   {
@@ -140,6 +150,9 @@ const SPECS: SeedSpec[] = [
     atrasos: 2,
     janela: 1, // 1 das 2 ainda na janela de salvamento
     descontoEmRisco: 0, // ordinário não tem desconto
+    // (PAR-3) Ontem tinha só 1 parcela em atraso (ATENÇÃO); hoje tem 2 (IMINENTE).
+    // É a transição de banda de risco que o monitor destaca como NOVA no feed.
+    ontem: { pagas: 23, atrasos: 1, janela: 1 },
   },
   // IMINENTE com programa especial (RELP) — 2 em atraso, MEI. Desconto significativo a perder.
   {
@@ -218,12 +231,13 @@ const SPECS: SeedSpec[] = [
   },
 ];
 
-/**
- * Monta a lista de parcelamentos SINTÉTICOS a partir de uma data de referência. Chamada
- * pela page (Server Component) com a data atual — o spread de risco fica estável no tempo.
- */
-export function getParcelamentosSinteticos(refIso: string): ParcelamentoSeed[] {
-  return SPECS.map((s) => ({
+/** Converte um SeedSpec (com pagas/atrasos/janela já resolvidos) num ParcelamentoSeed. */
+function specParaSeed(
+  s: SeedSpec,
+  refIso: string,
+  estado: Pick<SeedSpec, "pagas" | "atrasos" | "janela">,
+): ParcelamentoSeed {
+  return {
     id: s.id,
     clienteId: s.clienteId,
     clienteNome: s.clienteNome,
@@ -239,9 +253,44 @@ export function getParcelamentosSinteticos(refIso: string): ParcelamentoSeed[] {
       refIso,
       total: s.total,
       valor: s.valor,
-      pagas: s.pagas,
-      atrasos: s.atrasos,
-      janela: s.janela,
+      pagas: estado.pagas,
+      atrasos: estado.atrasos,
+      janela: estado.janela,
     }),
-  }));
+  };
+}
+
+/**
+ * Monta a lista de parcelamentos SINTÉTICOS a partir de uma data de referência. Chamada
+ * pela page (Server Component) com a data atual — o spread de risco fica estável no tempo.
+ */
+export function getParcelamentosSinteticos(refIso: string): ParcelamentoSeed[] {
+  return SPECS.map((s) =>
+    specParaSeed(s, refIso, { pagas: s.pagas, atrasos: s.atrasos, janela: s.janela }),
+  );
+}
+
+/** Resultado de uma leitura sintética "de ontem" (estado + a data de ontem). */
+export interface SnapshotAnterior {
+  refIso: string;
+  parcelamentos: ParcelamentoSeed[];
+}
+
+/**
+ * (PAR-3) Snapshot SINTÉTICO "de ontem": a carteira como estava 1 dia antes de `refIso`.
+ * Aplica o estado `ontem` de cada spec quando presente; senão reusa o estado de hoje
+ * (parcelamento que não mudou de banda). Ancorado em (refIso - 1 dia) para que os
+ * vencimentos relativos do snapshot anterior fiquem corretos. Determinístico.
+ *
+ * No mundo real isto viria da PERSISTÊNCIA (Fase 2 / core_api_v1 — a última leitura
+ * gravada); aqui é só um seed datado para demonstrar transições de risco no monitor.
+ */
+export function getSnapshotAnteriorSintetico(refIso: string): SnapshotAnterior {
+  const ontemIso = menosDias(refIso, 1);
+  return {
+    refIso: ontemIso,
+    parcelamentos: SPECS.map((s) =>
+      specParaSeed(s, ontemIso, s.ontem ?? { pagas: s.pagas, atrasos: s.atrasos, janela: s.janela }),
+    ),
+  };
 }
