@@ -1,0 +1,193 @@
+{
+  "notice": "Synthetic fixture only. It validates A2 (ICMS-ST aliquota/CST divergente detection) + A3 (calibrated confidence) contract behavior, not real fiscal accuracy. DRAFT — pendente de validacao por tributarista.",
+  "refST": {
+    "listaVersao": "st-sintetico-2026-06",
+    "familias": [
+      {
+        "id": "st-bebidas-frias",
+        "familia": "Bebidas frias (aguas, refrigerantes, cervejas)",
+        "cestPrefixos": ["03"],
+        "ncmPrefixos": ["2202", "2203"],
+        "confiancaBase": "media",
+        "materialidadeMinima": 50,
+        "fundamento": ["Convenio ICMS 142/2018 (segmento 03 - bebidas)"]
+      },
+      {
+        "id": "st-medicamentos",
+        "familia": "Medicamentos e produtos farmaceuticos",
+        "cestPrefixos": ["13"],
+        "ncmPrefixos": ["3004"],
+        "confiancaBase": "baixa-disputado",
+        "materialidadeMinima": 30,
+        "fundamento": ["Convenio ICMS 142/2018 (segmento 13 - medicamentos)"]
+      }
+    ]
+  },
+  "contexto": {
+    "motorVersaoId": "motor-sintetico-st-001",
+    "thresholdAutoAprovacao": 0.7,
+    "materialidadeReferencia": 1000
+  },
+  "cases": [
+    {
+      "name": "aliquota divergente: item ST (CEST presente) tributado com CST ICMS normal (00)",
+      "item": {
+        "id": "item-st-001",
+        "descricao": "Refrigerante cola 2L revenda",
+        "ncm": "22021000",
+        "cest": "0300100",
+        "cfop": "5405",
+        "cst": "00",
+        "valor": 5000
+      },
+      "expectedCount": 1,
+      "expectedFirst": {
+        "tipoDivergencia": "aliquota_divergente",
+        "cclasstribReferencia": "st-bebidas-frias"
+      }
+    },
+    {
+      "name": "sem apontamento: item ST CORRETAMENTE tributado por ST (CST 60)",
+      "item": {
+        "id": "item-st-002",
+        "descricao": "Refrigerante cola 2L revenda correta ST",
+        "ncm": "22021000",
+        "cest": "0300100",
+        "cfop": "5405",
+        "cst": "60",
+        "valor": 5000
+      },
+      "expectedCount": 0
+    },
+    {
+      "name": "sem apontamento (anti-falso-positivo): substituto na origem retem ST (CST 10 + CFOP 5401)",
+      "item": {
+        "id": "item-st-003",
+        "descricao": "Refrigerante producao da fabrica (substituto)",
+        "ncm": "22021000",
+        "cest": "0300100",
+        "cfop": "5401",
+        "cst": "10",
+        "valor": 500000
+      },
+      "expectedCount": 0
+    },
+    {
+      "name": "sem apontamento: item NAO ST (sem CEST e NCM fora de segmento)",
+      "item": {
+        "id": "item-st-004",
+        "descricao": "Parafuso de aco (regime normal)",
+        "ncm": "73181500",
+        "cfop": "5102",
+        "cst": "00",
+        "valor": 5000
+      },
+      "expectedCount": 0
+    },
+    {
+      "name": "respeita materialidade minima do segmento ST",
+      "item": {
+        "id": "item-st-005",
+        "descricao": "Refrigerante lata (valor abaixo da materialidade)",
+        "ncm": "22021000",
+        "cest": "0300100",
+        "cfop": "5405",
+        "cst": "00",
+        "valor": 30
+      },
+      "expectedCount": 0
+    },
+    {
+      "name": "baixa confianca bloqueia auto-aprovacao: segmento disputado (medicamento) + valor baixo",
+      "item": {
+        "id": "item-st-006",
+        "descricao": "Medicamento generico revenda (CST 00, valor baixo)",
+        "ncm": "30049099",
+        "cest": "1300100",
+        "cfop": "5405",
+        "cst": "00",
+        "valor": 35
+      },
+      "expectedCount": 1,
+      "expectedFirst": {
+        "tipoDivergencia": "aliquota_divergente",
+        "cclasstribReferencia": "st-medicamentos"
+      },
+      "expectBloqueiaAutoAprovacao": true,
+      "expectBandaConfianca": "baixa"
+    },
+    {
+      "name": "sem apontamento: CSOSN com ST (201) no Simples Nacional",
+      "item": {
+        "id": "item-st-007",
+        "descricao": "Refrigerante revenda Simples com ST (CSOSN 201)",
+        "ncm": "22021000",
+        "cest": "0300100",
+        "cfop": "5405",
+        "cst": "201",
+        "valor": 5000
+      },
+      "expectedCount": 0
+    },
+    {
+      "name": "aliquota divergente: CSOSN sem ST (102) no Simples para item ST",
+      "item": {
+        "id": "item-st-008",
+        "descricao": "Refrigerante revenda Simples sem ST (CSOSN 102)",
+        "ncm": "22021000",
+        "cest": "0300100",
+        "cfop": "5405",
+        "cst": "102",
+        "valor": 5000
+      },
+      "expectedCount": 1,
+      "expectedFirst": {
+        "tipoDivergencia": "aliquota_divergente",
+        "cclasstribReferencia": "st-bebidas-frias"
+      }
+    },
+    {
+      "name": "match por NCM sem CEST e sinal fraco: rebaixa banda (bloqueia auto-aprovacao)",
+      "item": {
+        "id": "item-st-009",
+        "descricao": "Cerveja revenda sem CEST informado, CST 00",
+        "ncm": "22030000",
+        "cfop": "5405",
+        "cst": "00",
+        "valor": 5000
+      },
+      "expectedCount": 1,
+      "expectedFirst": {
+        "tipoDivergencia": "aliquota_divergente",
+        "cclasstribReferencia": "st-bebidas-frias"
+      },
+      "expectBloqueiaAutoAprovacao": true,
+      "expectBandaConfianca": "baixa"
+    },
+    {
+      "name": "abster (onde NAO sei): item ST com CST 51 (diferimento) NAO gera apontamento",
+      "item": {
+        "id": "item-st-010",
+        "descricao": "Item ST com ICMS diferido (CST 51)",
+        "ncm": "22021000",
+        "cest": "0300100",
+        "cfop": "5405",
+        "cst": "51",
+        "valor": 5000
+      },
+      "expectedCount": 0
+    },
+    {
+      "name": "abster (onde NAO sei): item ST sem CST de ICMS informado NAO gera apontamento",
+      "item": {
+        "id": "item-st-011",
+        "descricao": "Item ST sem CST de ICMS",
+        "ncm": "22021000",
+        "cest": "0300100",
+        "cfop": "5405",
+        "valor": 5000
+      },
+      "expectedCount": 0
+    }
+  ]
+}

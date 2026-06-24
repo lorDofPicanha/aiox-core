@@ -1,0 +1,105 @@
+{
+  "notice": "DRAFT pendente de validacao por tributarista humano habilitado (gate da Fase A/A5). Lista de SEGMENTOS de Substituicao Tributaria de ICMS por prefixo de CEST e/ou NCM, autorada a partir do DNA dos clones de dominio (heleno-taveira-torres + roberto-dias-duarte) e do Convenio ICMS 142/2018 (que uniformiza os CEST por segmento). Clone e um LLM: isto e INDICIO/trilha verificavel, NAO parecer fiscal. NENHUMA entrada aqui afirma ICMS pago a maior garantido, apuracao correta ou eliminacao de multa. A ST de ICMS e ESTADUAL (a obrigatoriedade e os MVAs variam por UF e por protocolo/convenio); esta lista levanta INDICIO de divergencia de CST/aliquota, NAO confirma a ST devida no estado concreto. Todo apontamento gerado a partir desta lista exige revisao humana por contador com CRC ativo antes de qualquer acao. A lista NAO e exaustiva.",
+  "listaVersao": "st-cest-v0-draft-2026-06-24",
+  "status": "draft",
+  "geradoEm": "2026-06-24",
+  "autoria": {
+    "modo": "espelha o padrao de monofasico-ncm-v0-draft.json; DNA de heleno-taveira-torres (segmentos ST, fronteira informacao vs consultoria) + roberto-dias-duarte (CST/CSOSN de ICMS, CEST, Convenio ICMS 142/2018, cruzamento EFD-ICMS/IPI)",
+    "fallback": false
+  },
+  "avisoMetodologico": {
+    "regime": "Substituicao Tributaria (ST) de ICMS = um contribuinte (substituto: industria/importador/distribuidor) recolhe ANTECIPADAMENTE o ICMS de toda a cadeia ate o varejo. Na REVENDA, o ICMS ja foi pago anteriormente -> o documento deve sair com CST 60 (ICMS cobrado anteriormente por ST) ou CSOSN 500. O INDICIO de divergencia surge quando um item de segmento ST (sinalizado pelo CEST) foi tributado com CST/CSOSN de REGIME NORMAL (sem ST) na revenda — sinal de ICMS possivelmente recolhido em duplicidade (proprio + ST ja retida).",
+    "cest": "O CEST (Codigo Especificador da Substituicao Tributaria, Convenio ICMS 142/2018) so existe em produto SUJEITO a ST. Por isso a PRESENCA do CEST e o sinal FORTE de elegibilidade a ST usado por esta lista. O NCM e sinal mais fraco (rebaixa a confianca) — usado so quando o CEST falta.",
+    "cstNormal": "CSTs de ICMS de REGIME NORMAL (sem ST): 00 (tributada integral), 20 (reducao de base), 40/41/50 (isenta/nao-tributada/suspensao), 90 (outras). CSOSN sem ST: 101/102/103 (Simples com/sem credito/isencao), 400 (nao tributada). Quando aparecem num item de segmento ST de REVENDA, configuram o indicio. CST 51 (diferimento) NAO entra (tratamento proprio, disputado).",
+    "cstST": "CSTs/CSOSN que JA indicam ST resolvida (NAO geram apontamento): CST 10 (tributada + ST), 30 (isenta + ST), 60 (ICMS cobrado anteriormente por ST), 70 (reducao + ST); CSOSN 201/202/203 (Simples com ST), 500 (ICMS cobrado anteriormente por ST/antecipacao), 900 (outros — conservador). Item ST CORRETAMENTE tributado NAO gera apontamento.",
+    "substitutoOrigem": "O SUBSTITUTO na ORIGEM (industria/importador que RETEM a ST na saida, ou producao propria) e o ELO CONCENTRADOR: usa CST 10/30/70 + CFOP de ST/producao (5401/6401/5403/6403/5101/6101...) LEGITIMAMENTE. Esses CFOPs sao EXCLUIDOS para nao gerar falso-positivo (analogo ao elo concentrador do monofasico, finding F1).",
+    "estadual": "A ST de ICMS e ESTADUAL: a obrigatoriedade, o MVA e o protocolo/convenio variam por UF e por operacao (interna vs interestadual). Sem a UF e o protocolo do fato gerador ha risco de falso-positivo -> segmentos com forte variacao por UF entram com confianca menor (disputado).",
+    "naoExaustiva": "Lista DRAFT de SEGMENTOS conhecidos (bebidas frias, autopecas, combustiveis, medicamentos, materiais de construcao, etc.). Os 28 segmentos do Convenio 142/2018 nao estao todos cobertos; itens fora da lista exigem verificacao do produto fisico e do protocolo da UF."
+  },
+  "schemaCampos": {
+    "id": "id estavel do segmento ST",
+    "familia": "rotulo do segmento ST",
+    "cestPrefixos": "lista de prefixos CEST (apenas digitos) cobertos pelo segmento — sinal FORTE de elegibilidade a ST",
+    "ncmPrefixos": "lista de prefixos NCM (apenas digitos) — sinal mais fraco, usado quando o CEST falta (rebaixa a confianca)",
+    "confiancaBase": "alta | media | baixa-disputado (entra como fator na confianca calibrada)",
+    "materialidadeMinima": "valor minimo do item para gerar apontamento (corta ruido de baixo valor)",
+    "fundamento": "base normativa real (convenio/lei/protocolo) - alimenta a trilha de boa-fe",
+    "notaClone": "raciocinio do clone / ressalva"
+  },
+  "familias": [
+    {
+      "id": "st-combustiveis",
+      "familia": "Combustiveis e lubrificantes",
+      "cestPrefixos": ["06"],
+      "ncmPrefixos": ["2710", "2711"],
+      "confiancaBase": "baixa-disputado",
+      "materialidadeMinima": 100,
+      "fundamento": [
+        "Convenio ICMS 142/2018 (segmento 06 - combustiveis e lubrificantes, CEST)",
+        "LC 192/2022 (monofasia de ICMS sobre combustiveis - aliquota ad rem uniforme; convive com a ST historica)"
+      ],
+      "notaClone": "Roberto: combustivel e o caso mais consolidado de ST/monofasia de ICMS no varejo. Na revenda do posto o CST correto e 60 (ICMS ja cobrado por ST). Lancar CST 00 num combustivel de revenda e indicio classico. Heleno: pos LC 192/2022 boa parte das UFs migrou para MONOFASIA ad rem (nao mais a ST classica por MVA) - o regime mudou e varia por UF/fato gerador. REBAIXADO para baixa-disputado (QA 24/Jun): alta materialidade x alta confianca = maior dano se errar; forcar revisao humana ate o tributarista confirmar o regime vigente por UF (gate Fase A/A5)."
+    },
+    {
+      "id": "st-bebidas-frias",
+      "familia": "Bebidas frias (aguas, refrigerantes, cervejas)",
+      "cestPrefixos": ["03"],
+      "ncmPrefixos": ["2201", "2202", "2203"],
+      "confiancaBase": "media",
+      "materialidadeMinima": 50,
+      "fundamento": [
+        "Convenio ICMS 142/2018 (segmento 03 - bebidas alcoolicas e nao alcoolicas; refrigerantes/cervejas/aguas em ST de ICMS na maioria das UF)"
+      ],
+      "notaClone": "Roberto: bebida fria e dos campeoes de ST no varejo (bar/mercado/distribuidora). MVA e protocolo variam por UF -> confianca media, nunca auto-aprovar sem a UF. Heleno: cruza ST de ICMS + monofasico PIS/COFINS + possivel Imposto Seletivo - nao afirmar."
+    },
+    {
+      "id": "st-autopecas",
+      "familia": "Autopecas",
+      "cestPrefixos": ["01"],
+      "ncmPrefixos": ["8708", "4011", "4013", "8511", "8512"],
+      "confiancaBase": "media",
+      "materialidadeMinima": 30,
+      "fundamento": [
+        "Convenio ICMS 142/2018 (segmento 01 - autopecas)",
+        "Protocolos ICMS de autopecas entre UF (MVA por protocolo)"
+      ],
+      "notaClone": "Roberto: revenda de autopeca lancada como CST 00 e indicio tipico no varejo de autopecas. CEST do segmento 01 e sinal forte. Atencao ao protocolo interestadual (MVA ajustado) - varia por UF de origem/destino."
+    },
+    {
+      "id": "st-medicamentos",
+      "familia": "Medicamentos e produtos farmaceuticos",
+      "cestPrefixos": ["13"],
+      "ncmPrefixos": ["3003", "3004"],
+      "confiancaBase": "baixa-disputado",
+      "materialidadeMinima": 30,
+      "fundamento": [
+        "Convenio ICMS 142/2018 (segmento 13 - medicamentos e outros produtos farmaceuticos)"
+      ],
+      "notaClone": "Heleno: medicamento cruza ST de ICMS + monofasico PIS/COFINS + lista de aliquota reduzida na Reforma - tratamentos distintos. A ST de medicamento varia muito por UF e por lista (positiva/negativa/neutra). Disputado de proposito - abster/baixa confianca, conferir a UF e a lista."
+    },
+    {
+      "id": "st-materiais-construcao",
+      "familia": "Materiais de construcao e congeneres",
+      "cestPrefixos": ["10"],
+      "ncmPrefixos": ["6810", "7308", "7610", "3917", "3925"],
+      "confiancaBase": "media",
+      "materialidadeMinima": 50,
+      "fundamento": [
+        "Convenio ICMS 142/2018 (segmento 10 - materiais de construcao e congeneres)"
+      ],
+      "notaClone": "Roberto: material de construcao tem ST em muitas UF, mas a lista do segmento 10 e extensa e nem todo NCM 39xx/76xx esta dentro. CEST do segmento 10 e o sinal forte; por NCM rebaixar. Confirmar o item e a UF."
+    },
+    {
+      "id": "st-cosmeticos-higiene",
+      "familia": "Produtos de perfumaria, higiene pessoal e cosmeticos",
+      "cestPrefixos": ["20"],
+      "ncmPrefixos": ["3303", "3304", "3305", "3307", "3401"],
+      "confiancaBase": "media",
+      "materialidadeMinima": 30,
+      "fundamento": [
+        "Convenio ICMS 142/2018 (segmento 20 - produtos de perfumaria e de higiene pessoal e cosmeticos)"
+      ],
+      "notaClone": "Roberto: perfumaria/higiene/cosmetico e classico de ST no varejo (perfumaria/farmacia). Cruza com monofasico de PIS/COFINS (cuidado para nao confundir as duas analises). CEST do segmento 20 e o sinal forte."
+    }
+  ]
+}

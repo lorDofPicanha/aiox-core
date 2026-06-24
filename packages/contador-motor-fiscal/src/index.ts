@@ -314,12 +314,277 @@ function normalizarCst(cst: string | undefined): string {
   return (cst ?? "").trim();
 }
 
+/** Confianca base declarada numa familia DRAFT (monofasico/ST). */
+type ConfiancaBaseDraft = "alta" | "media" | "baixa-disputado";
+
 function mapearConfiancaBaseParaStatus(
-  base: FamiliaMonofasica["confiancaBase"]
+  base: ConfiancaBaseDraft
 ): RegraClassificacao["statusRegra"] {
   if (base === "alta") return "validada";
   if (base === "media") return "draft";
   return "disputado";
+}
+
+// ---------------------------------------------------------------------------
+// A2 — Deteccao de ICMS-ST com aliquota/CST divergente
+// ---------------------------------------------------------------------------
+
+/**
+ * Item com bloco de ICMS — subtipagem estrutural do que o parser ja entrega em
+ * `ItemFiscalRecuperacao` (`cst` mapeado de `item.icms.cst` = CST OU CSOSN, e
+ * `cest` top-level). A deteccao de ST CONSOME esses campos (CEST + CST/CSOSN de
+ * ICMS + CFOP), nao inventa entrada nova nem exige tocar o parser.
+ *
+ * Por isso A2 herda de `ItemFiscal` (que ja tem `cst` e `cfop`) e so adiciona
+ * `cest?` opcional — o item do parser e atribuivel a este tipo sem adaptacao.
+ */
+export interface ItemComIcms extends ItemFiscal {
+  /** CEST (prod/CEST) — so existe em produto sujeito a ST; sinal forte. */
+  cest?: string;
+}
+
+/** Familia/segmento ST por prefixo de CEST e/ou NCM (espelha st-cest-v0-draft.json). */
+export interface FamiliaST {
+  id: string;
+  familia: string;
+  /** Prefixos de CEST (apenas digitos) cobertos pelo segmento ST. */
+  cestPrefixos: string[];
+  /** Prefixos de NCM (apenas digitos) — reforco quando o CEST falta. */
+  ncmPrefixos?: string[];
+  confiancaBase: "alta" | "media" | "baixa-disputado";
+  materialidadeMinima?: number;
+  fundamento?: string[];
+}
+
+export interface ReferenciaST {
+  listaVersao: string;
+  familias: FamiliaST[];
+}
+
+/**
+ * CSTs de ICMS de REGIME NORMAL (sem ST) — o indicio quando o item e de
+ * segmento ST: 00 (tributada integral), 20 (reducao de base), 40/41/50
+ * (isenta/nao-tributada/suspensao, sem retencao de ST), 90 (outras).
+ * 51 (diferimento) fica de fora: nao e ST mas tem tratamento proprio (disputado).
+ */
+const CST_ICMS_REGIME_NORMAL = new Set(["00", "20", "40", "41", "50", "90"]);
+
+/**
+ * CSTs de ICMS que JA indicam ST resolvida -> NENHUM apontamento:
+ * 10 (tributada + ST), 30 (isenta + ST), 60 (ICMS cobrado anteriormente por ST),
+ * 70 (reducao + ST).
+ */
+const CST_ICMS_ST = new Set(["10", "30", "60", "70"]);
+
+/**
+ * CSOSN (Simples Nacional) SEM ST/antecipacao no item -> indicio quando e ST:
+ * 101/102/103 (com/sem credito, isencao) e 400 (nao tributada). Estes NAO
+ * carregam retencao de ST.
+ */
+const CSOSN_SEM_ST = new Set(["101", "102", "103", "400"]);
+
+/**
+ * CSOSN que JA contemplam ST/antecipacao -> NENHUM apontamento:
+ * 201/202/203 (com ST), 500 (ICMS cobrado anteriormente por ST/antecipacao),
+ * 900 (outros — conservador: pode conter ST, nao apontamos).
+ */
+const CSOSN_COM_ST = new Set(["201", "202", "203", "500", "900"]);
+
+/**
+ * CFOPs do SUBSTITUTO TRIBUTARIO na ORIGEM (industrial/importador que RETEM a ST
+ * na saida) + producao propria. Nesses casos o item e o ELO CONCENTRADOR: usa
+ * CST 10/30/70 (tributada propria + ST retida) LEGITIMAMENTE. Mesmo que o CST
+ * caia (por erro) num codigo de regime normal, a operacao do substituto NAO e
+ * "ICMS pago em duplicidade na revenda" — e o inicio da cadeia. Excluir evita o
+ * falso-positivo analogo ao F1 do monofasico (elo concentrador).
+ * CFOP ausente NAO exclui (o indicio segue, com revisao humana).
+ */
+const CFOP_SUBSTITUTO_ORIGEM = new Set([
+  "5401", "6401", // venda de producao do estabelecimento em ST (substituto)
+  "5402", "6402", // venda de producao em ST entre substitutos
+  "5403", "6403", // venda de mercadoria adquirida/recebida de terceiros em ST (substituto)
+  "5409", "6409", // transferencia de mercadoria em ST
+  "5101", "6101", "7101", // venda de PRODUCAO do estabelecimento (industria — elo concentrador)
+  "5109", "6109" // venda de producao do estabelecimento (ZFM/ALC)
+]);
+
+/**
+ * A2 — Detecta ICMS-ST com aliquota/CST divergente: um item cujo CEST/NCM e de
+ * segmento de SUBSTITUICAO TRIBUTARIA (o CEST so existe em produto sujeito a ST,
+ * logo e sinal FORTE de elegibilidade) mas cujo CST/CSOSN de ICMS indica regime
+ * NORMAL (sem ST) em vez de ST -> indicio de `aliquota_divergente` (ICMS
+ * possivelmente recolhido em duplicidade, alem da ST ja retida no elo anterior).
+ *
+ * O caso ST CORRETAMENTE tributado (CST 10/30/60/70 ou CSOSN 201/202/203/500/900)
+ * NAO gera apontamento. O substituto na origem (CFOP de retencao/producao) e
+ * excluido (anti-falso-positivo, analogo ao F1 do monofasico).
+ *
+ * Funcao PURA: consome o item tipado + a referencia DRAFT; sem rede/fs/Date.
+ */
+export function detectarSubstituicaoTributaria(
+  item: ItemComIcms,
+  refST: ReferenciaST,
+  contexto: ContextoMotor
+): ApontamentoCandidato[] {
+  const selecao = selecionarFamiliaST(item, refST.familias);
+
+  if (!selecao) {
+    return [];
+  }
+
+  const { familia, sinalForte, especificidade } = selecao;
+
+  if (familia.materialidadeMinima !== undefined && item.valor < familia.materialidadeMinima) {
+    return [];
+  }
+
+  // Anti-falso-positivo: o substituto na origem (industrial/importador que retem
+  // a ST, ou producao propria) NAO e "ICMS pago em duplicidade na revenda".
+  const cfop = normalizarCodigo(item.cfop);
+  if (CFOP_SUBSTITUTO_ORIGEM.has(cfop)) {
+    return [];
+  }
+
+  const cstIcms = normalizarCst(item.cst);
+
+  // Item com ST JA resolvida (CST de ST ou CSOSN com ST) -> sem apontamento.
+  const tributadoComST = CST_ICMS_ST.has(cstIcms) || CSOSN_COM_ST.has(cstIcms);
+  if (tributadoComST) {
+    return [];
+  }
+
+  // So apontamos quando o CST/CSOSN e de regime NORMAL (sem ST). Qualquer outro
+  // codigo (51 diferimento, vazio, fora de tabela) NAO gera apontamento:
+  // conservador, "onde NAO sei abstem" (§5.3) -> nao vira falso-positivo.
+  const tributadoNormal =
+    CST_ICMS_REGIME_NORMAL.has(cstIcms) || CSOSN_SEM_ST.has(cstIcms);
+  if (!tributadoNormal) {
+    return [];
+  }
+
+  const fatores = calcularConfiancaCalibrada({
+    especificidade,
+    // CST de regime normal num item ST e justamente o indicio -> reforca a
+    // certeza de que ha divergencia de CST/aliquota (nao de cClassTrib).
+    cstCoerenteComRegra: false,
+    statusRegra: mapearConfiancaBaseParaStatus(familia.confiancaBase),
+    valor: item.valor,
+    materialidadeReferencia: contexto.materialidadeReferencia ?? MATERIALIDADE_REFERENCIA_PADRAO
+  });
+
+  // Match so por NCM (sem CEST) e sinal mais fraco: rebaixa a banda empurrando
+  // para revisao humana (CEST e o sinal forte de elegibilidade a ST).
+  const score = sinalForte ? fatores.score : round(Math.min(fatores.score, 0.62));
+  const fatoresAjustados: FatoresConfianca = sinalForte
+    ? fatores
+    : { ...fatores, score };
+
+  const threshold = contexto.thresholdAutoAprovacao ?? THRESHOLD_AUTO_APROVACAO_PADRAO;
+  const criterio: "ncm_exato" | "ncm_prefixo" = "ncm_prefixo";
+
+  return [
+    {
+      itemId: item.id,
+      baseVersaoId: refST.listaVersao,
+      motorVersaoId: contexto.motorVersaoId,
+      tipoInferencia: "regra_deterministica",
+      tipoDivergencia: "aliquota_divergente",
+      cclasstribReferencia: familia.id,
+      descricao: montarDescricaoST(item, familia, cstIcms, sinalForte),
+      valorEnvolvido: item.valor,
+      confianca: score,
+      fatoresConfianca: fatoresAjustados,
+      bandaConfianca: derivarBanda(score, threshold),
+      bloqueiaAutoAprovacao: score < threshold,
+      fundamento: familia.fundamento ?? [],
+      criteriosDesempate: {
+        regraId: familia.id,
+        criterio
+      }
+    }
+  ];
+}
+
+export function detectarSubstituicaoTributariaLote(
+  itens: ItemComIcms[],
+  refST: ReferenciaST,
+  contexto: ContextoMotor
+): ApontamentoCandidato[] {
+  return itens.flatMap((item) => detectarSubstituicaoTributaria(item, refST, contexto));
+}
+
+interface SelecaoST {
+  familia: FamiliaST;
+  /** true quando o match veio do CEST (sinal forte de elegibilidade a ST). */
+  sinalForte: boolean;
+  especificidade: "ncm_prefixo" | "sem_ncm";
+}
+
+/**
+ * Seleciona o segmento ST: PRIORIZA o CEST (sinal forte — so existe em produto
+ * sujeito a ST). So cai no NCM (sinal mais fraco) quando nao ha CEST. Match por
+ * prefixo mais longo (mais especifico).
+ */
+function selecionarFamiliaST(
+  item: ItemComIcms,
+  familias: FamiliaST[]
+): SelecaoST | undefined {
+  const cest = normalizarCodigo(item.cest);
+
+  if (cest !== "") {
+    const porCest = matchPorPrefixo(cest, familias, (f) => f.cestPrefixos);
+    if (porCest) {
+      return { familia: porCest, sinalForte: true, especificidade: "ncm_prefixo" };
+    }
+  }
+
+  const ncm = normalizarCodigo(item.ncm);
+  if (ncm !== "") {
+    const porNcm = matchPorPrefixo(ncm, familias, (f) => f.ncmPrefixos ?? []);
+    if (porNcm) {
+      return { familia: porNcm, sinalForte: false, especificidade: "ncm_prefixo" };
+    }
+  }
+
+  return undefined;
+}
+
+function matchPorPrefixo(
+  codigo: string,
+  familias: FamiliaST[],
+  extrair: (f: FamiliaST) => string[]
+): FamiliaST | undefined {
+  let melhor: FamiliaST | undefined;
+  let melhorPrefixo = -1;
+  for (const familia of familias) {
+    for (const prefixo of extrair(familia)) {
+      const pfx = normalizarCodigo(prefixo);
+      if (pfx !== "" && codigo.startsWith(pfx) && pfx.length > melhorPrefixo) {
+        melhor = familia;
+        melhorPrefixo = pfx.length;
+      }
+    }
+  }
+  return melhor;
+}
+
+function montarDescricaoST(
+  item: ItemComIcms,
+  familia: FamiliaST,
+  cstObservado: string,
+  sinalForte: boolean
+): string {
+  const viaCest = sinalForte
+    ? `CEST ${item.cest ?? "?"}`
+    : `NCM ${item.ncm ?? "?"} (sem CEST — sinal mais fraco)`;
+  return (
+    `Item "${item.descricao}" (${viaCest}) e do segmento de Substituicao ` +
+    `Tributaria "${familia.familia}" mas foi tributado com CST/CSOSN de ICMS ` +
+    `${cstObservado || "(vazio)"} (regime normal, sem ST). Indicio de ICMS ` +
+    `potencialmente recolhido em divergencia (possivel duplicidade com a ST ja ` +
+    `retida no elo anterior) — sugerimos revisao por contador habilitado (CRC). ` +
+    `Nao e imposto pago a maior garantido.`
+  );
 }
 
 // ---------------------------------------------------------------------------

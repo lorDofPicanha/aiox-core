@@ -9,6 +9,7 @@
 |---------|----------|
 | `ruleset-cclasstrib-v0-draft.json` | Regua de classificacao cClassTrib/NCM/CST — 10 regras nos segmentos de alto SKU (farmacia, posto de combustivel, mercado/distribuidora de bebidas). |
 | `monofasico-ncm-v0-draft.json` | **(A1)** Lista de referencia das FAMILIAS NCM de regime monofasico de PIS/COFINS (combustiveis, bebidas frias, farmaceuticos, cosmeticos/higiene, autopecas, pneus). Alimenta `detectarMonofasico` do motor. Mesmo padrao de gate DRAFT da ruleset: indicio, nao certeza. |
+| `st-cest-v0-draft.json` | **(A2)** Lista de referencia dos SEGMENTOS de Substituicao Tributaria de ICMS por prefixo de CEST e/ou NCM (combustiveis, bebidas frias, autopecas, medicamentos, materiais de construcao, cosmeticos/higiene). Alimenta `detectarSubstituicaoTributaria` do motor. Mesmo padrao de gate DRAFT: indicio, nao certeza. Convenio ICMS 142/2018. |
 | `golden-set-candidato-v0-draft.json` | Golden-set candidato — 7 fixtures rotulados (item de entrada -> classificacao esperada), seguindo o contrato `docs/projects/contador/47-golden-set-real-fixture-contract-v1.md`. Inclui casos `apontar`, `nao_apontar` e `abster` (disputado/baixa confianca). |
 
 ## Origem (quem autorou)
@@ -50,6 +51,31 @@ O motor agora detecta o caso monofasico item-a-item: um item cujo NCM e de **fam
 - `detectarMonofasico(item, refMonofasico, contexto)` consome os campos de tributo que o parser ja produz (`recuperacao.pis.cst` / `recuperacao.cofins.cst` + NCM em `ItemFiscalRecuperacao`) — nao inventa entrada nova; aceita o item do parser por subtipagem estrutural.
 - A lista monofasico e **DRAFT** (indicio, nao verdade fiscal): familias por prefixo NCM, nao exaustiva, sem fixar cClassTrib literal. NCM residual / familia disputada -> `confiancaBase` baixa -> a confianca calibrada bloqueia auto-aprovacao.
 
+## A2 — Deteccao de ICMS-ST com aliquota/CST divergente (`detectarSubstituicaoTributaria`)
+
+O motor detecta o caso de **Substituicao Tributaria (ST) de ICMS** item-a-item: um item de **segmento ST** (sinalizado pelo **CEST** — `st-cest-v0-draft.json`) mas tributado com **CST/CSOSN de ICMS de regime NORMAL (sem ST)** em vez de ST -> indicio de **`aliquota_divergente`** (ICMS possivelmente recolhido em duplicidade, alem da ST ja retida no elo anterior). O inverso (ST CORRETAMENTE tributada) **NAO gera apontamento**.
+
+- `detectarSubstituicaoTributaria(item, refST, contexto)` consome os campos que o parser **ja produz** — `cst` (mapeado de `item.icms.cst` = **CST OU CSOSN de ICMS**) e `cest` (top-level) em `ItemFiscalRecuperacao`. **Nao foi preciso tocar o parser**: o tipo `ItemComIcms` do motor herda de `ItemFiscal` (que ja tem `cst`/`cfop`) e so adiciona `cest?` opcional (subtipagem estrutural) — o item do parser e atribuivel sem adaptacao.
+- **CEST = sinal FORTE de elegibilidade a ST** (o CEST so existe em produto sujeito a ST, Convenio 142/2018). O match por **NCM** e sinal mais fraco (so quando o CEST falta) e **rebaixa a confianca** (`bandaConfianca="baixa"`, `bloqueiaAutoAprovacao=true`) -> empurra para revisao humana.
+
+### Mapa de CST/CSOSN de ICMS usado pela A2
+
+| Codigo | Significado | Efeito na A2 |
+|--------|-------------|--------------|
+| CST 00/20/40/41/50/90 | Regime NORMAL (sem ST) | **indicio** quando o item e ST |
+| CSOSN 101/102/103/400 | Simples sem ST | **indicio** quando o item e ST |
+| CST 10/30/60/70 | ST presente / ICMS cobrado por ST | **sem apontamento** (ST resolvida) |
+| CSOSN 201/202/203/500/900 | Simples com ST / antecipacao / outros | **sem apontamento** (conservador) |
+| CST 51 (diferimento), vazio, fora de tabela | tratamento proprio / desconhecido | **sem apontamento** ("onde NAO sei abstem", §5.3) |
+
+### Guard anti-falso-positivo (substituto na origem — analogo ao F1 do monofasico)
+
+O **substituto tributario na ORIGEM** (industria/importador que **retem** a ST na saida, ou producao propria) e o **ELO CONCENTRADOR**: usa CST 10/30/70 + **CFOP de ST/producao** (`5401/6401`, `5402/6402`, `5403/6403`, `5409/6409`, `5101/6101/7101`, `5109/6109`) **legitimamente**. Esses CFOPs sao **excluidos** (`CFOP_SUBSTITUTO_ORIGEM`) para nao gerar falso-positivo — mesmo que o CST caia por erro num codigo de regime normal, a operacao do substituto **nao** e "ICMS pago em duplicidade na revenda" (e o inicio da cadeia). **CFOP ausente NAO exclui** (o indicio segue, com revisao humana).
+
+### Premissa documentada (limite estadual da ST)
+
+A ST de ICMS e **estadual**: a obrigatoriedade, o MVA e o protocolo/convenio variam por **UF** e por **operacao** (interna vs interestadual). O motor v0 levanta o **indicio** a partir do CEST/NCM + CST, mas **nao confirma** a ST devida no estado concreto (nao temos a UF nem o protocolo do fato gerador no item). Por isso segmentos com forte variacao por UF (ex.: medicamentos) entram como `baixa-disputado` -> a confianca calibrada **bloqueia auto-aprovacao**. O JULGAMENTO fica com o contador humano (CRC).
+
 ## A3 — Confianca calibrada (`calcularConfiancaCalibrada`)
 
 A heuristica fixa antiga (0.95/0.82/0.6 por tipo de match) foi substituida por **fatores explicitos combinados**, expostos em `apontamento.fatoresConfianca` (explicabilidade — o numero deriva e fica auditavel na trilha de boa-fe):
@@ -74,6 +100,7 @@ O motor v0 casa por NCM (cClassTrib) e por familia monofasica (A1). A confianca 
 3. **Rotular itens reais** (substituir as fixtures ilustrativas por notas reais pseudonimizadas; `dpaApproved=true`; `rotuladorCrcHash` preenchido com CRC ativo) — gate G4/G5 + autorizacao founder.
 4. **Double-label >=20%** (hoje 14%, 1/7) com 2 tributaristas independentes (protocolo doc 24).
 5. **Calibrar thresholds** do gate de qualidade (cobertura/acuracia/falso-positivo) com o founder antes do 1o cliente pago.
+6. **Validar os segmentos ST (A2) por UF**: confirmar o CEST/segmento contra o Convenio ICMS 142/2018 vigente e os **protocolos/MVAs por UF** do fato gerador (a lista DRAFT levanta indicio nacional; a ST e estadual). Resolver os `disputado` (medicamentos).
 
 Ate la: estes arquivos sao **DRAFT** e a acuracia e **sintetica** — nao vender como acuracia de producao.
 

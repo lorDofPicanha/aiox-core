@@ -10,8 +10,9 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
+    "prepare": "npm run build",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "npm run build && node scripts/run-golden-set.mjs && node scripts/run-monofasico-test.mjs && node scripts/run-cli-test.mjs"
+    "test": "npm run build && node scripts/run-golden-set.mjs && node scripts/run-monofasico-test.mjs && node scripts/run-st-test.mjs && node scripts/run-cli-test.mjs"
   },
   "engines": {
     "node": ">=18.0.0"
