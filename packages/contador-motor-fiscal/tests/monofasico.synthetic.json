@@ -1,0 +1,154 @@
+{
+  "notice": "Synthetic fixture only. It validates A1 (monofasico detection) + A3 (calibrated confidence) contract behavior, not real fiscal accuracy. DRAFT — pendente de validacao por tributarista.",
+  "refMonofasico": {
+    "listaVersao": "monofasico-sintetico-2026-06",
+    "familias": [
+      {
+        "id": "mono-combustiveis",
+        "familia": "Combustiveis e lubrificantes",
+        "ncmPrefixos": ["2710", "2711"],
+        "cstEsperadoRevenda": ["04", "05", "06"],
+        "confiancaBase": "alta",
+        "materialidadeMinima": 100,
+        "fundamento": ["Lei 9.718/1998 (monofasico PIS/COFINS combustiveis)"]
+      },
+      {
+        "id": "mono-farmaceuticos",
+        "familia": "Produtos farmaceuticos",
+        "ncmPrefixos": ["3003", "3004"],
+        "cstEsperadoRevenda": ["04", "06"],
+        "confiancaBase": "media",
+        "materialidadeMinima": 30,
+        "fundamento": ["Lei 10.147/2000 (monofasico farmaceuticos)"]
+      }
+    ]
+  },
+  "contexto": {
+    "motorVersaoId": "motor-sintetico-mono-001",
+    "thresholdAutoAprovacao": 0.7,
+    "materialidadeReferencia": 1000
+  },
+  "cases": [
+    {
+      "name": "credito potencial: NCM combustivel monofasico tributado como normal (CST 01)",
+      "item": {
+        "id": "item-mono-001",
+        "descricao": "Gasolina C revenda",
+        "ncm": "27101259",
+        "valor": 5000,
+        "recuperacao": {
+          "pis": { "cst": "01" },
+          "cofins": { "cst": "01" },
+          "ehMonofasico": false
+        }
+      },
+      "expectedCount": 1,
+      "expectedFirst": {
+        "tipoDivergencia": "credito_potencial",
+        "cclasstribReferencia": "mono-combustiveis"
+      }
+    },
+    {
+      "name": "sem apontamento: NCM combustivel monofasico CORRETAMENTE tributado (CST 04)",
+      "item": {
+        "id": "item-mono-002",
+        "descricao": "Gasolina C revenda correta",
+        "ncm": "27101259",
+        "valor": 5000,
+        "recuperacao": {
+          "pis": { "cst": "04" },
+          "cofins": { "cst": "04" },
+          "ehMonofasico": true
+        }
+      },
+      "expectedCount": 0
+    },
+    {
+      "name": "sem apontamento: NCM nao monofasico tributado como normal",
+      "item": {
+        "id": "item-mono-003",
+        "descricao": "Parafuso de aco (regime normal)",
+        "ncm": "73181500",
+        "valor": 5000,
+        "recuperacao": {
+          "pis": { "cst": "01" },
+          "cofins": { "cst": "01" },
+          "ehMonofasico": false
+        }
+      },
+      "expectedCount": 0
+    },
+    {
+      "name": "respeita materialidade minima do monofasico",
+      "item": {
+        "id": "item-mono-004",
+        "descricao": "Combustivel abaixo da materialidade",
+        "ncm": "27101259",
+        "valor": 80,
+        "recuperacao": {
+          "pis": { "cst": "01" },
+          "cofins": { "cst": "01" },
+          "ehMonofasico": false
+        }
+      },
+      "expectedCount": 0
+    },
+    {
+      "name": "baixa confianca bloqueia auto-aprovacao: familia disputada + valor baixo",
+      "item": {
+        "id": "item-mono-005",
+        "descricao": "Medicamento generico revenda (valor baixo)",
+        "ncm": "30049099",
+        "valor": 35,
+        "recuperacao": {
+          "pis": { "cst": "01" },
+          "cofins": { "cst": "01" },
+          "ehMonofasico": false
+        }
+      },
+      "expectedCount": 1,
+      "expectedFirst": {
+        "tipoDivergencia": "credito_potencial",
+        "cclasstribReferencia": "mono-farmaceuticos"
+      },
+      "expectBloqueiaAutoAprovacao": true,
+      "expectBandaConfianca": "baixa"
+    },
+    {
+      "name": "F1 sem apontamento: elo concentrador (producao propria CFOP 5651) tributa CST 01 corretamente",
+      "item": {
+        "id": "item-mono-006",
+        "descricao": "Gasolina producao da refinaria",
+        "ncm": "27101259",
+        "cfop": "5651",
+        "valor": 500000,
+        "recuperacao": {
+          "pis": { "cst": "01" },
+          "cofins": { "cst": "01" },
+          "ehMonofasico": false
+        }
+      },
+      "expectedCount": 0
+    },
+    {
+      "name": "F1 aponta: REVENDA de combustivel adquirido de terceiros (CFOP 5656) com CST 01",
+      "item": {
+        "id": "item-mono-007",
+        "descricao": "Gasolina C revenda posto",
+        "ncm": "27101259",
+        "cfop": "5656",
+        "valor": 5000,
+        "recuperacao": {
+          "pis": { "cst": "01" },
+          "cofins": { "cst": "01" },
+          "ehMonofasico": false
+        }
+      },
+      "expectedCount": 1,
+      "expectedFirst": {
+        "tipoDivergencia": "credito_potencial",
+        "cclasstribReferencia": "mono-combustiveis"
+      }
+    }
+  ]
+}

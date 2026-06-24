@@ -8,6 +8,7 @@
 | Arquivo | Conteudo |
 |---------|----------|
 | `ruleset-cclasstrib-v0-draft.json` | Regua de classificacao cClassTrib/NCM/CST — 10 regras nos segmentos de alto SKU (farmacia, posto de combustivel, mercado/distribuidora de bebidas). |
+| `monofasico-ncm-v0-draft.json` | **(A1)** Lista de referencia das FAMILIAS NCM de regime monofasico de PIS/COFINS (combustiveis, bebidas frias, farmaceuticos, cosmeticos/higiene, autopecas, pneus). Alimenta `detectarMonofasico` do motor. Mesmo padrao de gate DRAFT da ruleset: indicio, nao certeza. |
 | `golden-set-candidato-v0-draft.json` | Golden-set candidato — 7 fixtures rotulados (item de entrada -> classificacao esperada), seguindo o contrato `docs/projects/contador/47-golden-set-real-fixture-contract-v1.md`. Inclui casos `apontar`, `nao_apontar` e `abster` (disputado/baixa confianca). |
 
 ## Origem (quem autorou)
@@ -42,9 +43,29 @@ Sem fallback — os dois clones resolveram e carregaram DNA + feed HYDRA ao vivo
 - EFD-Contribuicoes: atualizada a Tabela 4.3.10 (codigos 150-153) para o setor quimico/petroquimico — reforca que as tabelas de CST/codigo sao versionadas e mudam (cuidado com literais).
 - Reforma Tributaria: penalidades comecam **2026-08-01** (periodo educativo ate la) — reforca a bitemporalidade do regime na transicao.
 
+## A1 — Deteccao de monofasico (`detectarMonofasico`)
+
+O motor agora detecta o caso monofasico item-a-item: um item cujo NCM e de **familia monofasica** (`monofasico-ncm-v0-draft.json`) mas que foi tributado com **CST PIS/COFINS de regime NORMAL (01/02)** em vez de monofasico (04/05/06) -> indicio de **`credito_potencial`** (PIS/COFINS pago indevidamente na revenda). O inverso (monofasico CORRETAMENTE tributado com CST 04/05/06) **NAO gera apontamento** (sem falso-positivo).
+
+- `detectarMonofasico(item, refMonofasico, contexto)` consome os campos de tributo que o parser ja produz (`recuperacao.pis.cst` / `recuperacao.cofins.cst` + NCM em `ItemFiscalRecuperacao`) — nao inventa entrada nova; aceita o item do parser por subtipagem estrutural.
+- A lista monofasico e **DRAFT** (indicio, nao verdade fiscal): familias por prefixo NCM, nao exaustiva, sem fixar cClassTrib literal. NCM residual / familia disputada -> `confiancaBase` baixa -> a confianca calibrada bloqueia auto-aprovacao.
+
+## A3 — Confianca calibrada (`calcularConfiancaCalibrada`)
+
+A heuristica fixa antiga (0.95/0.82/0.6 por tipo de match) foi substituida por **fatores explicitos combinados**, expostos em `apontamento.fatoresConfianca` (explicabilidade — o numero deriva e fica auditavel na trilha de boa-fe):
+
+| Fator | Efeito |
+|-------|--------|
+| **especificidade do match** | base maior para `ncm_exato`, menor para `ncm_prefixo`, minima `sem_ncm` |
+| **coerencia do CST** | CST incoerente com o regime (= o indicio) reforca a certeza da divergencia |
+| **status da regra/lista** | `draft`/`disputado` **penaliza** (sustenta o "onde NAO sei") |
+| **materialidade** | item materialmente relevante reforca; irrisorio nao |
+
+**Abstencao "onde NAO sei" (human-in-loop, §5.1/§5.3):** abaixo do `thresholdAutoAprovacao` (default 0.7), o apontamento recebe `bloqueiaAutoAprovacao=true` e `bandaConfianca="baixa"` — ele **NAO some**: vira fila de revisao humana (CRC). A IA nunca decide materia fiscal; sinaliza e o contador assina.
+
 ## Limitacao conhecida do motor v0 (deterministico)
 
-O motor v0 so casa por NCM e compara `cClassTrib`. Ele **nao sabe abster por baixa confianca** — a abstencao (NCM residual, regime disputado) precisa ser tratada pela camada de `banda_confianca`/UI (campo `banda_confianca` em `core.apontamento_auditoria`). O caso `case-farm-003-ncm-residual-abster` documenta essa limitacao de proposito.
+O motor v0 casa por NCM (cClassTrib) e por familia monofasica (A1). A confianca calibrada (A3) ja sabe **abster por baixa confianca** (bloqueia auto-aprovacao), mas os literais de cClassTrib e a lista monofasico seguem **DRAFT** — pendem de validacao do tributarista (gate Fase A/A5). O caso `case-farm-003-ncm-residual-abster` (NCM residual) e o caso sintetico `item-mono-005` (familia disputada + valor baixo) documentam a abstencao de proposito.
 
 ## O que precisa do tributarista humano para virar "real" (gate Fase 3)
 
@@ -55,3 +76,10 @@ O motor v0 so casa por NCM e compara `cClassTrib`. Ele **nao sabe abster por bai
 5. **Calibrar thresholds** do gate de qualidade (cobertura/acuracia/falso-positivo) com o founder antes do 1o cliente pago.
 
 Ate la: estes arquivos sao **DRAFT** e a acuracia e **sintetica** — nao vender como acuracia de producao.
+
+## Follow-ups do gate QA (24/Jun) — A1/A3
+
+- **F1 (CORRIGIDO):** a deteccao monofasico agora exclui CFOP de **producao propria/industrializacao** (`CFOP_PRODUCAO_PROPRIA` no `index.ts`) — so a **revenda** gera credito; o elo concentrador (industrial/importador) com CST 01 nao e mais falso-positivo. CFOP ausente nao exclui (indicio segue, com revisao humana). Testes `item-mono-006` (producao, 0 apontamentos) e `item-mono-007` (revenda, aponta).
+- **F2 (follow-up tributarista):** prefixos largos da lista DRAFT com risco de over-match — `2207` (etanol: combustivel vs farma/nao-combustivel; herda confianca alta indevida), `3401` (sabao industrial nem sempre monofasico), `8482`/`8483` (rolamentos so sao autopeca quando destinados a autopropulsado), e duplicata `4011`/`4013` entre autopecas e pneus. Rebaixar/separar na validacao do tributarista (gate Fase 3).
+- **F3 (follow-up arquitetura):** a banda de confianca e derivada em 2 lugares com cortes diferentes (motor `derivarBanda` <0.7/≥0.85 vs `contador-api-client/mock-client` <0.75/≥0.9). Propagar `bandaConfianca`/`bloqueiaAutoAprovacao` do motor em vez de recomputar no consumidor.
+- **Lacunas de teste (follow-up):** PIS≠COFINS (erro parcial de CST), CSTs 73/98/99 (comportamento conservador).

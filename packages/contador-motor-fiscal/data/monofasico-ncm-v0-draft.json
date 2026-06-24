@@ -1,0 +1,106 @@
+{
+  "notice": "DRAFT pendente de validacao por tributarista humano habilitado (gate da Fase A/A5). Lista de FAMILIAS NCM de regime monofasico de PIS/COFINS, autorada a partir do DNA dos clones de dominio (heleno-taveira-torres + roberto-dias-duarte) e da legislacao citada. Clone e um LLM: isto e INDICIO/trilha verificavel, NAO parecer fiscal. NENHUMA entrada aqui afirma credito garantido, apuracao correta ou eliminacao de multa. Todo apontamento gerado a partir desta lista exige revisao humana por contador com CRC ativo antes de qualquer acao. A lista NAO e exaustiva e nao fixa o cClassTrib literal (categoria propria, conferir NT vigente no fato gerador).",
+  "listaVersao": "monofasico-ncm-v0-draft-2026-06-24",
+  "status": "draft",
+  "geradoEm": "2026-06-24",
+  "autoria": {
+    "modo": "espelha o padrao de ruleset-cclasstrib-v0-draft.json; DNA de heleno-taveira-torres (Lei 10.147/2000, Lei 9.718/1998, Lei 13.097/2015, LC 192/2022, LC 214/2025) + roberto-dias-duarte (CST PIS/COFINS, cruzamento EFD-Contribuicoes)",
+    "fallback": false
+  },
+  "avisoMetodologico": {
+    "regime": "monofasico = concentracao tributaria de PIS/COFINS em um elo (industria/importador), com revenda a aliquota zero (CST 04) ou correlatos (05 ST, 06 aliquota zero). O INDICIO de credito potencial surge quando um item cujo NCM e de FAMILIA monofasica foi lancado com CST de regime NORMAL (ex.: 01/02) na revenda — sinal de PIS/COFINS pago indevidamente sobre receita ja tributada no elo anterior.",
+    "cstNormal": "CSTs de regime NORMAL (apuracao/cumulativo): 01 (operacao tributavel aliquota normal), 02 (aliquota diferenciada). Quando aparecem num NCM monofasico de REVENDA, configuram o indicio.",
+    "cstMonofasico": "CSTs que sinalizam tratamento monofasico/concentrado/aliquota zero na revenda: 04 (monofasica revenda aliquota zero), 05 (ST), 06 (aliquota zero). Item monofasico CORRETAMENTE tributado (CST 04/05/06) NAO gera apontamento.",
+    "limiteProduto": "A lista INFORMA o direito posto (familias monofasicas conhecidas na legislacao) e levanta INDICIO de divergencia de CST; NAO emite parecer nem orienta apuracao do contribuinte concreto. O JULGAMENTO fica com o contador humano (CRC).",
+    "naoExaustiva": "Esta e uma lista DRAFT de FAMILIAS conhecidas (combustiveis, bebidas frias, autopecas, farmaceuticos, pneus, cosmeticos/higiene). NCMs residuais ('99') e itens fora de lista exigem verificacao do produto fisico — disputado, baixa confianca."
+  },
+  "schemaCampos": {
+    "id": "id estavel da familia monofasica",
+    "familia": "rotulo do setor monofasico",
+    "ncmPrefixos": "lista de prefixos NCM (apenas digitos) cobertos pela familia",
+    "cstEsperadoRevenda": "CSTs PIS/COFINS coerentes com o regime monofasico na revenda (04/05/06)",
+    "confiancaBase": "alta | media | baixa-disputado (entra como fator na confianca calibrada)",
+    "materialidadeMinima": "valor minimo do item para gerar apontamento (corta ruido de baixo valor)",
+    "fundamento": "base normativa real (lei/IN/NT) - alimenta a trilha de boa-fe",
+    "notaClone": "raciocinio do clone / ressalva"
+  },
+  "familias": [
+    {
+      "id": "mono-combustiveis",
+      "familia": "Combustiveis e lubrificantes",
+      "ncmPrefixos": ["2710", "2711", "2207", "3826"],
+      "cstEsperadoRevenda": ["04", "05", "06"],
+      "confiancaBase": "alta",
+      "materialidadeMinima": 100,
+      "fundamento": [
+        "Lei 9.718/1998 art. 4 a 6 (monofasico PIS/COFINS combustiveis)",
+        "LC 192/2022 (monofasia de ICMS sobre combustiveis - aliquota ad rem uniforme)",
+        "LC 214/2025 (regime especifico de combustiveis no IBS/CBS - monofasia)"
+      ],
+      "notaClone": "Heleno: combustivel e o caso mais consolidado de monofasia. Roberto: no posto a divergencia tipica e lancar combustivel de revenda como mercadoria normal (CST 01) - o cruzamento NF-e entrada x saida revela. Etanol (2207) e elo-dependente: confianca cai (ver disputado na ruleset)."
+    },
+    {
+      "id": "mono-bebidas-frias",
+      "familia": "Bebidas frias (aguas, refrigerantes, cervejas)",
+      "ncmPrefixos": ["2201", "2202", "2203"],
+      "cstEsperadoRevenda": ["04", "05", "06"],
+      "confiancaBase": "baixa-disputado",
+      "materialidadeMinima": 50,
+      "fundamento": [
+        "Lei 13.097/2015 (regime tributario das bebidas frias - PIS/COFINS sobre aguas, refrigerantes, cervejas)",
+        "EC 132/2023 e LC 214/2025 (Imposto Seletivo - bebidas acucaradas/alcoolicas no escopo discutido)"
+      ],
+      "notaClone": "Heleno: bebida fria cruza monofasico PIS/COFINS + ST ICMS + possivel Imposto Seletivo. NAO afirmar - disputado. A ST de ICMS varia por UF; sem a UF ha risco de falso-positivo. Confianca base baixa de proposito."
+    },
+    {
+      "id": "mono-farmaceuticos",
+      "familia": "Produtos farmaceuticos (medicamentos)",
+      "ncmPrefixos": ["3001", "3003", "3004", "3006"],
+      "cstEsperadoRevenda": ["04", "06"],
+      "confiancaBase": "media",
+      "materialidadeMinima": 30,
+      "fundamento": [
+        "Lei 10.147/2000 art. 1 e 2 (regime monofasico PIS/COFINS produtos farmaceuticos - posicoes 30.01, 30.03, 30.04 e outras)",
+        "LC 214/2025 (regime de medicamentos na CBS/IBS - aliquota reduzida/zero por lista de medicamentos - Anexos)"
+      ],
+      "notaClone": "Heleno: medicamento de lista (anexo) tem tratamento assegurado; fora da lista e disputado. Aliquota zero (lista) != monofasico - sao tratamentos distintos. NCM residual 3004.90.99 concentra erro: deve abster/baixa confianca, nunca auto-aprovar."
+    },
+    {
+      "id": "mono-perfumaria-higiene",
+      "familia": "Cosmeticos, perfumaria e higiene pessoal",
+      "ncmPrefixos": ["3303", "3304", "3305", "3307", "3401"],
+      "cstEsperadoRevenda": ["04", "06"],
+      "confiancaBase": "media",
+      "materialidadeMinima": 30,
+      "fundamento": [
+        "Lei 10.147/2000 art. 1 (regime monofasico PIS/COFINS - produtos de perfumaria, toucador e higiene pessoal listados)"
+      ],
+      "notaClone": "Roberto: perfumaria/higiene e dos casos classicos de monofasia no varejo (farmacia/perfumaria). Atencao: a lista da Lei 10.147 e por NCM especifico - nem todo 33xx/3401 esta dentro. Confirmar o item concreto com o tributarista."
+    },
+    {
+      "id": "mono-autopecas",
+      "familia": "Autopecas",
+      "ncmPrefixos": ["8708", "4011", "4013", "8511", "8512", "8483", "8482"],
+      "cstEsperadoRevenda": ["04", "05", "06"],
+      "confiancaBase": "media",
+      "materialidadeMinima": 30,
+      "fundamento": [
+        "Lei 10.485/2002 (regime monofasico/concentrado PIS/COFINS para autopecas - Anexos I e II)",
+        "Pneus novos (4011) e camaras de ar (4013) integram o regime concentrado de autopecas/pneus"
+      ],
+      "notaClone": "Heleno: autopecas tem regime concentrado por lista (Anexos da Lei 10.485) - prefixo NCM e indicio, nao certeza; o item precisa estar no Anexo. Roberto: revenda de autopeca lancada como normal (CST 01) e indicio tipico no varejo de autopecas/pneus."
+    },
+    {
+      "id": "mono-pneus",
+      "familia": "Pneus novos e camaras de ar",
+      "ncmPrefixos": ["4011", "4013"],
+      "cstEsperadoRevenda": ["04", "05", "06"],
+      "confiancaBase": "media",
+      "materialidadeMinima": 30,
+      "fundamento": [
+        "Lei 10.485/2002 art. 5 (regime monofasico/concentrado PIS/COFINS sobre pneus novos de borracha e camaras de ar)"
+      ],
+      "notaClone": "Pneus tem regime concentrado proprio dentro da cadeia automotiva (Lei 10.485). Mantida como familia separada porque o varejo de pneus nem sempre e autopecas. Indicio, nao certeza."
+    }
+  ]
+}

@@ -345,7 +345,7 @@ export async function seedFromMotor(
         baseVersaoId: baseVersaoIdSeed,
         tipoDivergencia: cand.tipoDivergencia as TipoDivergencia,
         descricao: cand.descricao,
-        confianca: cand.confianca, // 0.95/0.82/0.6 → banda alta/media/baixa
+        confianca: cand.confianca, // score calibrado (A3: fatores explicitos), nao mais heuristica fixa
         fundamento: cand.fundamento,
         cclasstribReferencia: cand.cclasstribReferencia,
         valorEnvolvido: cand.valorEnvolvido,
