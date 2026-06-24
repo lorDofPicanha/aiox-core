@@ -35,7 +35,7 @@ SaaS vendido **PARA o escritório contábil** (o canal), que o usa/revende **nos
 | **Emissor (#4)** | NFS-e Nacional já com tributação correta. Modelo de revenda (contador compra pacote, revende). |
 | **Recuperação / Restituição (overlay)** | Monofásico PIS/COFINS retroativo 5 anos. Success-fee. **Gancho, não fundação.** Time-boxed (sunset 2027). |
 | **cClassTrib** | Código de Classificação Tributária da Reforma (CBS/IBS). Base de referência da Auditoria. Mesmo NCM pode ter cClassTrib diferente. |
-| **Integra Contador** | API oficial SERPRO (homologada, paga por consulta) para acesso e-CAC programático. |
+| **Integra Contador** | API oficial SERPRO (homologada, paga por consulta) para acesso e-CAC programático. **NÃO expõe CND** (federal-conjunta/estadual/municipal/trabalhista/FGTS) → o e-CAC exige **2 provedores**: SERPRO (caixa postal, SITFIS, DAS/DARF/DCTFWeb, parcelamentos) **+ Infosimples** (CNDs). Dívida ativa via PGFN/Regularize (o FGTS migrou p/ PGFN em 01/06/2026). Ver `55-feature-research/08`. |
 | **Agente local** | `[OBSOLETO — D2 revertida 10/Jun; captura comprada de provider]` Daemon na máquina do escritório que custodiaria o A1. NÃO será construído. |
 | **radar-fiscal** | App Next.js em `apps/radar-fiscal` — o módulo OPERACIONAL que construí em 09/Jun. É periferia (camada Gestor), NÃO o core. Ver §6. |
 
@@ -93,6 +93,8 @@ SaaS vendido **PARA o escritório contábil** (o canal), que o usa/revende **nos
 3. **Dependência do Renan** — transformar o comercial em processo replicável (SDR, script, playbook). Ponto único de falha.
 4. **Custo Integra Contador no volume real** — validar unit economics da "mina" e-CAC.
 5. **Estado deployável do Gestorize** — temos os fluxos e a matriz de features; falta confirmar acesso ao código-fonte deployável (vs só artefatos/specs).
+6. **Nomenclatura a confirmar com o Renan** — nomes não achados na web (heurística): **GOB** (captura), **C-TAX/CITAX** e **Loara** (recuperação). Soletrar/confirmar antes de usar em material.
+7. **Base do fee da plataforma (repasse)** — os 5–7% incidem sobre o **success-fee** (Interpretação B, adotada) ou sobre o valor recuperado? Cravar com Renan/Breno antes de cobrar (ver `55-feature-research/10`).
 
 ## 9. Janela temporal (a Reforma é o relógio) — RECALIBRADA 22/Jun (pesquisa doc 55)
 

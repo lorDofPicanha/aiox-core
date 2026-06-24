@@ -7,7 +7,7 @@
  * cliente e fazer drill-down — tudo em estado de sessão, base sintética em memória.
  *
  * Em volta do módulo, a casca server mantém o que é estático: a caixa do módulo #2
- * (Armazenamento XML 15 anos), o disclaimer G6 e um rótulo DISCRETO de demonstração.
+ * (retenção de XML — mínimo legal 5 anos, CTN), o disclaimer G6 e um rótulo DISCRETO de demonstração.
  *
  * G6 (doc 45 §5): a Captura só COLETA e ARMAZENA o insumo fiscal — nenhum juízo de
  * mérito aqui. Nada promete crédito garantido, apuração correta, eliminação de multa

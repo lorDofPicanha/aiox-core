@@ -167,7 +167,7 @@ export function planosTiers(): PlanoTier[] {
       faixaNotas: "2.001–10.000 notas auditadas / mês",
       inclui: [
         "Tudo do Entrada",
-        "Armazenamento XML 15 anos (obrigação legal)",
+        "Armazenamento XML estendido (mínimo legal 5 anos — CTN; retenção longa como serviço)",
         "Laudos white-label para o cliente final",
       ],
       atual: false,
