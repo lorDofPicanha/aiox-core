@@ -11,8 +11,9 @@
  *   2. DOSSIÊ de evidências: "gerar dossiê" produz um PREVIEW ESTRUTURADO (cabeçalho
  *      do cliente, período, itens, estimativa, base normativa e a ressalva de que o
  *      tributarista habilitado é quem assina a PER/DCOMP — Fase 7).
- *   3. CALCULADORA do success-fee interativa: ajustar o valor recuperado recalcula o
- *      split empresa/plataforma/contador (rotulado "estimativa ilustrativa").
+ *   3. DISTRIBUIÇÃO DO ÊXITO (RepasseSplit): split multi-parte em VALORES ABSOLUTOS
+ *      (empresa→contador→indicador→plataforma) com % como legenda — ajustar o valor
+ *      recuperado recalcula tudo (rotulado "estimativa ilustrativa"). Ver repasse-model.ts.
  *
  * 100% client-side, sem persistência: é demonstração com base sintética. Reusa apenas
  * componentes/tokens globais (Card/StatusBadge/Table) + o CSS module local. Não toca
@@ -20,19 +21,19 @@
  * promessa de resultado — só indícios/estimativas sujeitos a análise do tributarista.
  */
 
-import { useId, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { Card } from "@/components/Card";
 import { StatusBadge } from "@/components/StatusBadge";
 import { Table, type Column } from "@/components/Table";
 import { brl } from "@/lib/format";
 import {
   BANDA_RECUPERACAO,
-  calcularSplit,
   montarDossie,
   type AnoEstimativa,
   type CasoRecuperacao,
   type IndicioRecuperacao,
 } from "./recuperacao-model";
+import { RepasseSplit } from "./RepasseSplit";
 import styles from "./recuperacao.module.css";
 
 /** Banda calibrada do indício (mapa local — auto-contido, espelha BANDA_RECUPERACAO). */
@@ -191,8 +192,8 @@ function CasoCard({ caso, anoBase }: { caso: CasoRecuperacao; anoBase: number })
           </span>
         </div>
 
-        {/* Calculadora interativa do success-fee. */}
-        <SplitCalculadora baseInicial={caso.estimativaTotal} />
+        {/* Distribuição do êxito em valores absolutos (split multi-parte). */}
+        <RepasseSplit baseInicial={caso.estimativaTotal} />
       </div>
 
       <div className={styles.casoAcao}>
@@ -295,83 +296,6 @@ function DrillDown({ indicio }: { indicio: IndicioRecuperacao }) {
           </p>
         </div>
       </div>
-    </div>
-  );
-}
-
-/** Calculadora interativa do success-fee — ajusta a base e recalcula o split (D6). */
-function SplitCalculadora({ baseInicial }: { baseInicial: number }) {
-  const [base, setBase] = useState(baseInicial);
-  const inputId = useId();
-  const rangeId = useId();
-
-  // Limites do slider em torno da estimativa do caso (faixa ilustrativa).
-  const min = 0;
-  const max = Math.max(10_000, Math.ceil((baseInicial * 1.5) / 1000) * 1000);
-
-  const split = useMemo(() => calcularSplit(base), [base]);
-
-  return (
-    <div className={styles.splitBox}>
-      <span className={styles.splitTitulo}>
-        Calculadora do success-fee{" "}
-        <span className="muted" style={{ fontWeight: 400 }}>
-          (estimativa ilustrativa, não promessa de valor)
-        </span>
-      </span>
-
-      <div className={styles.calcCampo}>
-        <label htmlFor={inputId} className={styles.calcLabel}>
-          Valor recuperado hipotético (R$, sem centavos)
-        </label>
-        <input
-          id={inputId}
-          type="text"
-          inputMode="numeric"
-          className={styles.calcInput}
-          value={split.baseHipotetica.toLocaleString("pt-BR")}
-          onChange={(e) => {
-            const n = Number(e.target.value.replace(/\D/g, ""));
-            setBase(Number.isFinite(n) ? n : 0);
-          }}
-          aria-describedby={rangeId}
-        />
-        <input
-          id={rangeId}
-          type="range"
-          className={styles.calcRange}
-          min={min}
-          max={max}
-          step={500}
-          value={Math.min(split.baseHipotetica, max)}
-          onChange={(e) => setBase(Number(e.target.value))}
-          aria-label="Ajustar valor recuperado hipotético"
-        />
-      </div>
-
-      <table className={styles.splitTabela}>
-        <tbody>
-          <tr>
-            <td>Empresa cliente</td>
-            <td className="num muted">{split.empresaPct}%</td>
-            <td className="num">{brl(split.empresaValor)}</td>
-          </tr>
-          <tr>
-            <td>Plataforma</td>
-            <td className="num muted">{split.plataformaPct}%</td>
-            <td className="num">{brl(split.plataformaValor)}</td>
-          </tr>
-          <tr>
-            <td>Contador parceiro</td>
-            <td className="num muted">{split.contadorPct}%</td>
-            <td className="num">{brl(split.contadorValor)}</td>
-          </tr>
-        </tbody>
-      </table>
-      <span className="muted" style={{ fontSize: 11 }}>
-        Sobre base hipotética de {brl(split.baseHipotetica)}. Success-fee cobrado à parte, fora da
-        mensalidade recorrente. Os valores são ilustrativos e dependem da análise do tributarista.
-      </span>
     </div>
   );
 }

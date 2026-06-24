@@ -41,14 +41,14 @@ export default function CapturaPage() {
         <CapturaModulo />
 
         <Card
-          title="Armazenamento XML — 15 anos (módulo #2)"
-          sub="Guardar o XML da nota é obrigação legal (prazo ampliado para 15 anos) e quase ninguém faz. O XML é leve e o storage é barato — vira um plus do ciclo, cobrado por pacote de notas."
+          title="Armazenamento XML — guarda fundamentada (módulo #2)"
+          sub="Guardar o XML da nota é obrigação legal — regra geral 5 anos (CTN), com extensões seletivas fundamentadas por documento. Quase ninguém faz. O XML é leve e o storage é barato — vira um plus do ciclo (retenção estendida como serviço), cobrado por pacote de notas."
         >
           <dl className={styles.armazenamento}>
             <div>
               <dt>Prazo de guarda</dt>
               <dd className="num">
-                15 <span className="unidade">anos (obrigação legal)</span>
+                5 <span className="unidade">anos (regra CTN) + extensões fundamentadas</span>
               </dd>
             </div>
             <div>
@@ -71,9 +71,11 @@ export default function CapturaPage() {
             </div>
           </dl>
           <p className="disclaimer">
-            O armazenamento de 15 anos é um <strong>plus</strong> do ciclo — guarda o insumo
-            (◆ XML 1ª classe). Não constitui, por si, crédito garantido, apuração correta nem
-            prova jurídica plena: é o documento fiscal preservado para revisão humana.
+            O armazenamento fundamentado (mínimo legal de 5 anos pelo CTN, com extensões
+            seletivas e retenção estendida como serviço) é um <strong>plus</strong> do ciclo —
+            guarda o insumo (◆ XML 1ª classe). Não constitui, por si, crédito garantido,
+            apuração correta nem prova jurídica plena: é o documento fiscal preservado para
+            revisão humana.
           </p>
         </Card>
 

@@ -335,7 +335,7 @@
   font-weight: 600;
 }
 
-/* ---------- Caixa Armazenamento XML 15 anos (módulo #2) ---------- */
+/* ---------- Caixa Armazenamento XML — guarda fundamentada (módulo #2) ---------- */
 .armazenamento {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
