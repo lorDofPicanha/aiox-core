@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SINTÉTICO — NF-e de revenda de combustível: item com CST PIS/COFINS 04 (monofásico).
+     Alvo da Recuperação: revendedor com alíquota zero na saída → crédito a apurar. -->
+<nfeProc versao="4.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <NFe>
+    <infNFe Id="NFe35240612345678000199550010000007891000007890" versao="4.00">
+      <ide>
+        <cUF>35</cUF>
+        <natOp>REVENDA</natOp>
+        <mod>55</mod>
+        <serie>1</serie>
+        <nNF>789</nNF>
+        <dhEmi>2024-06-20T08:00:00-03:00</dhEmi>
+        <tpNF>1</tpNF>
+      </ide>
+      <emit>
+        <CNPJ>12345678000199</CNPJ>
+        <xNome>DISTRIBUIDORA SINTETICA SA</xNome>
+      </emit>
+      <dest>
+        <CNPJ>55667788000122</CNPJ>
+        <xNome>POSTO REVENDEDOR SINTETICO LTDA</xNome>
+      </dest>
+      <det nItem="1">
+        <prod>
+          <cProd>GAS-001</cProd>
+          <xProd>GASOLINA COMUM</xProd>
+          <NCM>27101259</NCM>
+          <CEST>0600100</CEST>
+          <CFOP>5656</CFOP>
+          <vProd>50000.00</vProd>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS60>
+              <orig>0</orig>
+              <CST>60</CST>
+            </ICMS60>
+          </ICMS>
+          <PIS>
+            <PISAliq>
+              <CST>04</CST>
+              <vBC>0.00</vBC>
+              <pPIS>0.00</pPIS>
+              <vPIS>0.00</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>04</CST>
+              <vBC>0.00</vBC>
+              <pCOFINS>0.00</pCOFINS>
+              <vCOFINS>0.00</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <total>
+        <ICMSTot>
+          <vProd>50000.00</vProd>
+          <vNF>50000.00</vNF>
+        </ICMSTot>
+      </total>
+    </infNFe>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo>
+        <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+        <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+      </SignedInfo>
+      <SignatureValue>U0lOVEVUSUNPLU1PTk8=</SignatureValue>
+    </Signature>
+  </NFe>
+</nfeProc>

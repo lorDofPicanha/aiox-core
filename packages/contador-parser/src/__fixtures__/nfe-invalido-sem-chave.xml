@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SINTÉTICO INVÁLIDO — infNFe sem atributo Id (chave de acesso ausente).
+     Deve ser rejeitado com ParseError(codigo=CAMPO_OBRIGATORIO_AUSENTE). -->
+<NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe versao="4.00">
+    <ide>
+      <mod>55</mod>
+      <serie>1</serie>
+      <nNF>999</nNF>
+      <dhEmi>2024-06-20T08:00:00-03:00</dhEmi>
+    </ide>
+    <emit>
+      <CNPJ>12345678000199</CNPJ>
+      <xNome>EMITENTE SINTETICO LTDA</xNome>
+    </emit>
+    <det nItem="1">
+      <prod>
+        <cProd>X</cProd>
+        <xProd>ITEM</xProd>
+        <NCM>00000000</NCM>
+        <vProd>10.00</vProd>
+      </prod>
+      <imposto/>
+    </det>
+    <total>
+      <ICMSTot>
+        <vNF>10.00</vNF>
+      </ICMSTot>
+    </total>
+  </infNFe>
+</NFe>

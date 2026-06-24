@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nfe:nfeProc xmlns:nfe="http://www.portalfiscal.inf.br/nfe" versao="4.00">
+  <nfe:NFe>
+    <nfe:infNFe Id="NFe35240612345678000199550010000001231000001230" versao="4.00">
+      <nfe:ide>
+        <nfe:mod>55</nfe:mod>
+        <nfe:serie>1</nfe:serie>
+        <nfe:nNF>123</nfe:nNF>
+        <nfe:dhEmi>2024-06-12T10:30:00-03:00</nfe:dhEmi>
+      </nfe:ide>
+      <nfe:emit>
+        <nfe:CNPJ>12345678000199</nfe:CNPJ>
+        <nfe:xNome>EMPRESA EMITENTE LTDA</nfe:xNome>
+      </nfe:emit>
+      <nfe:dest>
+        <nfe:CNPJ>98765432000155</nfe:CNPJ>
+        <nfe:xNome>EMPRESA DESTINATARIO LTDA</nfe:xNome>
+      </nfe:dest>
+      <nfe:det nItem="1">
+        <nfe:prod>
+          <nfe:cProd>SKU-001</nfe:cProd>
+          <nfe:xProd>PARAFUSO SEXTAVADO ACO INOX M8</nfe:xProd>
+          <nfe:NCM>73181500</nfe:NCM>
+          <nfe:CFOP>5102</nfe:CFOP>
+          <nfe:vProd>1500.00</nfe:vProd>
+        </nfe:prod>
+        <nfe:imposto>
+          <nfe:ICMS>
+            <nfe:ICMS00>
+              <nfe:CST>00</nfe:CST>
+              <nfe:vBC>1500.00</nfe:vBC>
+            </nfe:ICMS00>
+          </nfe:ICMS>
+          <nfe:PIS>
+            <nfe:PISAliq>
+              <nfe:CST>01</nfe:CST>
+              <nfe:pPIS>1.65</nfe:pPIS>
+              <nfe:vPIS>24.75</nfe:vPIS>
+            </nfe:PISAliq>
+          </nfe:PIS>
+          <nfe:COFINS>
+            <nfe:COFINSAliq>
+              <nfe:CST>01</nfe:CST>
+              <nfe:pCOFINS>7.60</nfe:pCOFINS>
+              <nfe:vCOFINS>114.00</nfe:vCOFINS>
+            </nfe:COFINSAliq>
+          </nfe:COFINS>
+        </nfe:imposto>
+      </nfe:det>
+      <nfe:total>
+        <nfe:ICMSTot>
+          <nfe:vNF>1500.00</nfe:vNF>
+        </nfe:ICMSTot>
+      </nfe:total>
+    </nfe:infNFe>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo></SignedInfo>
+    </Signature>
+  </nfe:NFe>
+</nfe:nfeProc>

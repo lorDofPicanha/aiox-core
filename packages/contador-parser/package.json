@@ -1,0 +1,19 @@
+{
+  "name": "@synkra/contador-parser",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Motor A — deterministic fiscal XML parser (NF-e / NFC-e) for Contador recognition (R1/R2/R3).",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node scripts/run-parser-tests.mjs && node scripts/run-integration.mjs"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

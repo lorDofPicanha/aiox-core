@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SINTÉTICO — NFC-e modelo 65, emitente Simples Nacional (CSOSN). Sem nfeProc, sem assinatura. -->
+<NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe Id="NFe35240698765432000155650010000004561000004560" versao="4.00">
+    <ide>
+      <cUF>35</cUF>
+      <natOp>VENDA AO CONSUMIDOR</natOp>
+      <mod>65</mod>
+      <serie>1</serie>
+      <nNF>456</nNF>
+      <dhEmi>2024-06-15T18:05:00-03:00</dhEmi>
+      <tpNF>1</tpNF>
+    </ide>
+    <emit>
+      <CNPJ>11222333000181</CNPJ>
+      <xNome>MERCEARIA SINTETICA SIMPLES ME</xNome>
+    </emit>
+    <dest>
+      <CPF>00011122233</CPF>
+      <xNome>CONSUMIDOR SINTETICO</xNome>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>PAO-001</cProd>
+        <xProd>PAO FRANCES KG</xProd>
+        <NCM>19059090</NCM>
+        <CFOP>5102</CFOP>
+        <vProd>12.50</vProd>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vProd>12.50</vProd>
+        <vNF>12.50</vNF>
+      </ICMSTot>
+    </total>
+  </infNFe>
+</NFe>
