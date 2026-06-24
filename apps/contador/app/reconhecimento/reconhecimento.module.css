@@ -1,0 +1,464 @@
+/* ============================================================================
+   Módulo #5 RECONHECIMENTO — CSS Module local (auto-contido).
+   NÃO edita app/globals.css. Reusa classes globais (card, badge, disclaimer,
+   notice, tbl, num, mono, muted) e adiciona só o layout específico do módulo.
+   Tokens via var(--*) globais (Verde-Petróleo, IBM Plex Mono, tabular-nums).
+   ============================================================================ */
+
+/* ---------- Subtítulo / lead ---------- */
+.lead {
+  margin: 0 0 var(--space-4);
+  font-size: 13.5px;
+  color: var(--text-dim);
+  max-width: 76ch;
+}
+.lead strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ---------- Pipeline (como funciona) ---------- */
+.pipeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-4);
+}
+.pipeline > li {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+.pipeNum {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius-full);
+  background: var(--primary-soft);
+  color: var(--primary);
+  border: 1px solid var(--primary-border);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+.pipeline strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.pipeDesc {
+  display: block;
+  font-size: 11.5px;
+  color: var(--text-dim);
+  line-height: 1.45;
+}
+
+/* ---------- Corpo interativo ---------- */
+.explorer {
+  display: contents;
+}
+
+/* ---------- Formulário de entrada ---------- */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.modoToggle {
+  display: inline-flex;
+  gap: 4px;
+  padding: 3px;
+  border-radius: var(--radius-md);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  align-self: flex-start;
+}
+.modoBtn {
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  background: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.modoBtn:hover {
+  color: var(--text);
+}
+.modoActive {
+  background: var(--surface);
+  color: var(--primary);
+  border-color: var(--primary-border);
+  box-shadow: var(--shadow-xs);
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-faint);
+}
+.select {
+  font: inherit;
+  font-size: 13.5px;
+  padding: 8px 10px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--text);
+  max-width: 640px;
+}
+.textarea {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 10px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--text);
+  resize: vertical;
+  min-height: 140px;
+}
+.select:focus-visible,
+.textarea:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
+}
+.amostraDesc {
+  margin: 0;
+  font-size: 11.5px;
+  color: var(--text-dim);
+  max-width: 72ch;
+  line-height: 1.45;
+}
+
+.acoes {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.btnReconhecer {
+  font: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 9px 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--primary-border);
+  background: var(--primary);
+  color: #fff;
+  cursor: pointer;
+}
+.btnReconhecer:hover {
+  background: var(--primary-hover);
+}
+.btnReconhecer:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.acoesNota {
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+/* ---------- Erro tipado (G1) ---------- */
+.erroBox {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  padding: var(--space-2);
+}
+.erroGlyph {
+  font-size: 20px;
+  color: var(--danger);
+  flex-shrink: 0;
+}
+.erroTitulo {
+  font-size: 14px;
+  color: var(--danger);
+}
+.erroMsg {
+  margin: 4px 0 6px;
+  font-size: 13px;
+  color: var(--text);
+}
+.erroMeta {
+  margin: 0;
+  font-size: 11.5px;
+  color: var(--text-dim);
+}
+
+/* ---------- Proveniência (classe de insumo) ---------- */
+.provHead {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.provSelo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  color: var(--text-dim);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+}
+.provSelo[data-forte="1"] {
+  color: var(--success);
+  background: var(--success-soft);
+  border-color: #bfe3cd;
+}
+.provNota {
+  font-size: 11.5px;
+  color: var(--text-dim);
+}
+
+/* ---------- Cabeçalho do documento ---------- */
+.docDl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-3) var(--space-5);
+  margin: 0;
+}
+.docDl > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.docDl dt {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-faint);
+  margin: 0;
+}
+.docDl dd {
+  margin: 0;
+  font-size: 13px;
+  word-break: break-word;
+}
+.docDoc {
+  color: var(--text-dim);
+}
+
+/* ---------- Apontamentos ---------- */
+.apResumo {
+  margin: 0 0 var(--space-3);
+  font-size: 13px;
+  color: var(--text-dim);
+}
+.apResumo strong {
+  color: var(--text);
+}
+.semApontamento {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-dim);
+  background: var(--success-soft);
+  border: 1px solid #bfe3cd;
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+}
+.semApontamento span[aria-hidden] {
+  color: var(--success);
+  font-weight: 700;
+}
+
+.apLista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.ap {
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+}
+/* Indício de baixa confiança que bloqueia auto-aprovação (DESIGN §6.5). */
+.apRevisar {
+  background: var(--warning-soft);
+  border-color: #f3dcb0;
+  box-shadow: inset 3px 0 0 var(--warning);
+}
+.apHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-2);
+}
+.apIdent {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.apTipo {
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.apItem {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+.apConf {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+.apConfPct {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.apDescricao {
+  margin: 0 0 var(--space-2);
+  font-size: 12.5px;
+  color: var(--text);
+  line-height: 1.5;
+  max-width: 80ch;
+}
+.apBloqueio {
+  margin: 0 0 var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  border: 1px solid #f3dcb0;
+  font-size: 11.5px;
+  color: var(--warning);
+  line-height: 1.45;
+}
+.apBloqueio strong {
+  color: var(--warning);
+}
+
+.apGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+.apGrid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.apMetaLabel {
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-faint);
+}
+.apMetaValor {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ---------- Fatores / fundamento (details) ---------- */
+.apFatores {
+  margin-top: var(--space-2);
+  border-top: 1px solid var(--border);
+  padding-top: var(--space-2);
+}
+.apFatores summary {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--primary);
+  cursor: pointer;
+  list-style: revert;
+}
+.apFatores summary:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+.fatorLista {
+  list-style: none;
+  margin: var(--space-2) 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+.fator {
+  display: grid;
+  grid-template-columns: minmax(140px, 1fr) 64px minmax(0, 2fr);
+  gap: var(--space-2);
+  align-items: baseline;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--border);
+}
+.fator:last-child {
+  border-bottom: none;
+}
+.fatorRotulo {
+  font-size: 11.5px;
+  font-weight: 600;
+}
+.fatorValor {
+  font-size: 12.5px;
+  font-weight: 700;
+  text-align: right;
+}
+.fatorValor[data-sinal="pos"] {
+  color: var(--success);
+}
+.fatorValor[data-sinal="neg"] {
+  color: var(--danger);
+}
+.fatorExplica {
+  font-size: 11px;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+@media (max-width: 640px) {
+  .fator {
+    grid-template-columns: 1fr 64px;
+  }
+  .fatorExplica {
+    grid-column: 1 / -1;
+  }
+}
+
+.fundamentoLista {
+  margin: var(--space-2) 0 0;
+  padding-left: 18px;
+  font-size: 11.5px;
+  color: var(--text-dim);
+}
+.fundamentoLista li {
+  margin: 3px 0;
+  line-height: 1.45;
+}
