@@ -94,10 +94,16 @@ SaaS vendido **PARA o escritório contábil** (o canal), que o usa/revende **nos
 4. **Custo Integra Contador no volume real** — validar unit economics da "mina" e-CAC.
 5. **Estado deployável do Gestorize** — temos os fluxos e a matriz de features; falta confirmar acesso ao código-fonte deployável (vs só artefatos/specs).
 
-## 9. Janela temporal (a Reforma é o relógio)
+## 9. Janela temporal (a Reforma é o relógio) — RECALIBRADA 22/Jun (pesquisa doc 55)
 
-- **2026** — CBS 0,9% / IBS 0,1% destacados; NFS-e Nacional obrigatória (LC 214/2025); Real/Presumido informam cClassTrib.
-- **2027** — 🔴 sunset PIS/COFINS. Fim de geração nova de crédito monofásico; só janela retroativa.
+> ⚠️ O "relógio de agosto/2026" é mais FRACO do que assumíamos para o nicho Simples: cClassTrib/CST do Simples foi **adiado para jan/2027** e a **multa por ausência de IBS/CBS está suspensa no início de 2026**. Os gatilhos REAIS de 2026 são o Emissor (set/2026) e a recuperação monofásico (isca).
+
+- **2026** — CBS 0,9% / IBS 0,1% destacados; **multa IBS/CBS suspensa no início do ano**; Real/Presumido informam cClassTrib (Simples adiado → 2027). NFS-e Nacional obrigatória (LC 214/2025).
+- **01/07/2026** — 🪦 API gov de geração de DANFSe descontinuada (NT 008/2026) → DANFSe via gateway.
+- **31/07/2026** — 🪦 Nuvem Fiscal desativada (comunicado oficial) → provider = PlugNotas/Focus.
+- **01/09/2026** — 🎯 **Simples obrigado a emitir pela NFS-e Nacional** (Res. CGSN 189/2026) = **gatilho de venda do Emissor** (o wedge tempestivo de 2026).
+- **jan/2027** — cClassTrib/CST entra para o Simples → a **auto-auditoria cClassTrib ganha urgência** (após Real/Presumido).
+- **2027** — 🔴 sunset PIS/COFINS. Fim de geração nova de crédito monofásico; só janela retroativa (a isca).
 - **2029–2032** — transição ICMS/ISS → IBS (reclassificação contínua = trabalho recorrente).
 - **2033** — IBS pleno, fim da transição.
 

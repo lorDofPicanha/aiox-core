@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contador · Lastro — Como cada aba funciona</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --primary:#0b5757; --primary-hover:#094545; --primary-soft:#e3f4f3; --primary-border:#a9dedc;
+    --bg:#f4f7f7; --surface:#fff; --surface-2:#eef3f3; --border:#dde7e6; --border-strong:#c6d4d3;
+    --text:#13262a; --text-dim:#4c5d61; --text-faint:#86979a;
+    --success:#0f5132; --success-soft:#e7f4ec; --warning:#92560a; --warning-soft:#fdf3e3;
+    --danger:#b42318; --danger-soft:#fef2f1; --info:#0b5757;
+    --font-ui:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+    --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+    --shadow-sm:0 1px 2px rgba(16,24,40,.04),0 1px 3px rgba(16,24,40,.06);
+    --shadow-md:0 2px 4px rgba(16,24,40,.05),0 4px 8px rgba(16,24,40,.06);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--font-ui);background:var(--bg);color:var(--text);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .num,.mono{font-variant-numeric:tabular-nums slashed-zero}
+  .mono{font-family:var(--font-mono)}
+  a{color:var(--primary);text-decoration:none}
+
+  /* layout */
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  header.hero{background:linear-gradient(160deg,#0b5757,#073a3a);color:#eafaf9;padding:64px 0 56px}
+  .hero .wrap{display:flex;gap:24px;align-items:flex-start}
+  .mark{width:54px;height:54px;border-radius:13px;background:rgba(255,255,255,.10);display:flex;align-items:center;justify-content:center;flex:none;border:1px solid rgba(255,255,255,.18)}
+  .mark svg{width:34px;height:34px}
+  .hero h1{font-size:34px;line-height:1.15;margin:0 0 6px;font-weight:700;letter-spacing:-.01em}
+  .hero .tag{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:#a9dedc;font-weight:600;margin-bottom:10px}
+  .hero p{margin:8px 0 0;color:#cfeae8;max-width:62ch;font-size:16px}
+  .hero .thesis{margin-top:18px;padding:14px 16px;background:rgba(255,255,255,.07);border-left:3px solid #a9dedc;border-radius:6px;font-size:15px;color:#eafaf9}
+
+  /* sticky nav */
+  nav.tabs{position:sticky;top:0;z-index:10;background:rgba(244,247,247,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+  nav.tabs .wrap{display:flex;gap:4px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+  nav.tabs a{font-size:12.5px;color:var(--text-dim);padding:6px 10px;border-radius:999px;font-weight:500}
+  nav.tabs a:hover{background:var(--surface-2);color:var(--text)}
+
+  section{padding:40px 0 8px}
+  .lead{margin:36px 0 8px}
+  h2.sec{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--text-faint);font-weight:600;margin:0 0 14px}
+
+  /* ciclo stepper */
+  .ciclo{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 4px}
+  .step{flex:1;min-width:150px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;box-shadow:var(--shadow-sm);position:relative}
+  .step .n{font-size:11px;color:var(--text-faint);font-weight:600}
+  .step .t{font-weight:600;margin-top:2px}
+  .step .d{font-size:12.5px;color:var(--text-dim);margin-top:4px}
+
+  /* legenda */
+  .legend{display:flex;gap:18px;flex-wrap:wrap;margin:18px 0;font-size:13px;color:var(--text-dim)}
+  .chip{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:12px;padding:3px 9px;border-radius:999px;border:1px solid}
+  .chip.real{background:var(--success-soft);color:var(--success);border-color:#bfe0cc}
+  .chip.demo{background:var(--warning-soft);color:var(--warning);border-color:#f0dcb5}
+
+  /* concepts */
+  .concepts{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:8px}
+  .concept{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;box-shadow:var(--shadow-sm)}
+  .concept h3{margin:0 0 4px;font-size:15px}
+  .concept p{margin:0;font-size:13.5px;color:var(--text-dim)}
+
+  /* tab cards */
+  .tab{background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-sm);margin:16px 0;overflow:hidden;border-left:4px solid var(--primary)}
+  .tab .head{display:flex;align-items:center;gap:14px;padding:18px 22px;background:linear-gradient(180deg,#fff,#fbfdfd);border-bottom:1px solid var(--border)}
+  .tab .ico{width:40px;height:40px;border-radius:9px;background:var(--primary-soft);color:var(--primary);display:flex;align-items:center;justify-content:center;font-size:20px;flex:none;border:1px solid var(--primary-border)}
+  .tab .ttl{flex:1}
+  .tab .ttl h3{margin:0;font-size:19px;font-weight:700;letter-spacing:-.01em}
+  .tab .ttl .route{font-family:var(--font-mono);font-size:12.5px;color:var(--text-faint)}
+  .tab .body{padding:18px 22px 22px}
+  .row{margin:0 0 14px}
+  .row:last-child{margin-bottom:0}
+  .row .k{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-faint);font-weight:600;margin-bottom:3px}
+  .row .v{font-size:14.5px;color:var(--text)}
+  .row .v strong{color:var(--text)}
+  .row .v code{font-family:var(--font-mono);font-size:12.5px;background:var(--surface-2);padding:1px 5px;border-radius:4px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:720px){.grid2,.concepts{grid-template-columns:1fr}.hero .wrap{flex-direction:column}}
+
+  /* proof footer */
+  .proof{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px;box-shadow:var(--shadow-sm);margin:16px 0}
+  .proof .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:10px 0 0}
+  @media(max-width:720px){.proof .kpis{grid-template-columns:repeat(2,1fr)}}
+  .kpi{background:var(--surface-2);border-radius:10px;padding:14px;text-align:center}
+  .kpi .big{font-size:26px;font-weight:700;color:var(--primary)}
+  .kpi .lbl{font-size:12px;color:var(--text-dim);margin-top:2px}
+  .gates{margin:14px 0 0;padding:14px 16px;background:var(--warning-soft);border:1px solid #f0dcb5;border-radius:10px;font-size:13.5px;color:#5e3c0a}
+  .gates b{color:#5e3c0a}
+
+  footer{padding:40px 0 64px;color:var(--text-faint);font-size:12.5px}
+  .disc{background:var(--surface);border:1px dashed var(--border-strong);border-radius:10px;padding:14px 16px;font-size:13px;color:var(--text-dim);margin-top:10px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="mark">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="rgba(255,255,255,.06)"/><path d="M16 4l9 3.6v6.2c0 5.6-3.7 9.9-9 11.8-5.3-1.9-9-6.2-9-11.8V7.6L16 4z" fill="rgba(169,222,220,.25)"/><path d="M11 16.2l3.4 3.4L21.5 12" fill="none" stroke="#eafaf9" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div>
+      <div class="tag">Contador · codinome Lastro</div>
+      <h1>Como cada aba funciona</h1>
+      <p>Plataforma de <strong>apuração defensável da Reforma</strong>, vendida para o escritório contábil. Apresentação das 10 telas: o que cada uma faz, como funciona por baixo, e o que já roda de verdade vs. o que depende dos contratos externos.</p>
+      <div class="thesis"><strong>Princípio-mãe:</strong> a prova é a interface. O sistema prova que a apuração do cliente está certa <em>antes</em> da multa de ago/2026, deixando uma <strong>trilha de boa-fé</strong> — registro lacrado, à prova de adulteração — de cada decisão. O software sugere; o contador (com CRC) decide.</div>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs"><div class="wrap">
+  <a href="#carteira">Carteira</a>
+  <a href="#captura">Captura</a>
+  <a href="#fila">Fila</a>
+  <a href="#aprovacao">Aprovação</a>
+  <a href="#trilha">Trilha</a>
+  <a href="#laudo">Laudo</a>
+  <a href="#recuperacao">Recuperação</a>
+  <a href="#ecac">e-CAC</a>
+  <a href="#emissor">Emissor</a>
+  <a href="#config">Configurações</a>
+</div></nav>
+
+<div class="wrap">
+
+  <section class="lead">
+    <h2 class="sec">O ciclo da nota fiscal — a espinha do produto</h2>
+    <div class="ciclo">
+      <div class="step"><div class="n">1 · entrada</div><div class="t">Captura</div><div class="d">As notas do cliente entram no sistema.</div></div>
+      <div class="step"><div class="n">2 · núcleo ⭐</div><div class="t">Auditoria</div><div class="d">O motor compara o imposto aplicado com o correto e levanta indícios.</div></div>
+      <div class="step"><div class="n">3 · prova</div><div class="t">Trilha + Laudo</div><div class="d">Contador decide; tudo vira prova lacrada.</div></div>
+      <div class="step"><div class="n">4 · bônus</div><div class="t">Recuperação</div><div class="d">Créditos a recuperar (monofásico).</div></div>
+      <div class="step"><div class="n">5 · add-ons</div><div class="t">e-CAC · Emissor</div><div class="d">Situação fiscal da carteira + emissão de NFS-e.</div></div>
+    </div>
+
+    <div class="legend">
+      <span><span class="chip real">● funciona agora</span> ligado ao core real (motor + trilha)</span>
+      <span><span class="chip demo">● demo sintética</span> integração real depende de contrato externo</span>
+    </div>
+
+    <h2 class="sec" style="margin-top:26px">4 conceitos que atravessam todas as telas</h2>
+    <div class="concepts">
+      <div class="concept"><h3>Trilha de boa-fé</h3><p>Cada decisão vira um nó encadeado por hash. Mexer em um quebra a cadeia — é o que prova boa-fé contra o Fisco. É o moat.</p></div>
+      <div class="concept"><h3>Humano no loop</h3><p>A IA sugere; quem decide é o contador com CRC ativo. O sistema carimba quem/quando/qual habilitação — exigência jurídica, não enfeite.</p></div>
+      <div class="concept"><h3>Linguagem segura (G6)</h3><p>Nunca "crédito garantido" ou "apuração correta". Sempre "indício", "estimativa", "sujeito a revisão". Um teste automático barra o build se escapar.</p></div>
+      <div class="concept"><h3>Dados de demonstração</h3><p>As telas rodam com dados de exemplo. A lógica é real; os plugues externos (provider, SERPRO, ADN, jurídico) ligam nas fases deles.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec">As 10 abas, em detalhe</h2>
+
+    <!-- 1 Carteira -->
+    <article class="tab" id="carteira">
+      <div class="head"><div class="ico">▦</div><div class="ttl"><h3>1 · Carteira</h3><div class="route">/</div></div><span class="chip real">funciona agora</span></div>
+      <div class="body">
+        <div class="row"><div class="k">O que é</div><div class="v">A tela de abertura: a visão de risco de toda a carteira de clientes num relance.</div></div>
+        <div class="grid2">
+          <div class="row"><div class="k">Você vê</div><div class="v">3 indicadores (clientes, indícios pendentes, valor em revisão), o <strong>semáforo por cliente</strong> (cada cliente recebe a cor do seu pior indício) e a verificação da trilha (✓ Cadeia íntegra + hash).</div></div>
+          <div class="row"><div class="k">Por baixo</div><div class="v">Lê do core real: clientes, apontamentos e eventos. O verificador recomputa o hash-chain ao vivo — o mesmo da Trilha. Status sempre cor + ícone + texto.</div></div>
+        </div>
+        <div class="row"><div class="k">Liga de verdade</div><div class="v">Já funciona. Dados do seed sintético; vira dado real na Fase 2 (Supabase).</div></div>
+      </div>
+    </article>
+
+    <!-- 2 Captura -->
+    <article class="tab" id="captura">
+      <div class="head"><div class="ico">⤓</div><div class="ttl"><h3>2 · Captura</h3><div class="route">/captura</div></div><span class="chip demo">demo</span></div>
+      <div class="body">
+        <div class="row"><div class="k">O que é</div><div class="v">A porta de entrada — onde as notas fiscais (NF-e, CT-e) do cliente entram no sistema.</div></div>
+        <div class="grid2">
+          <div class="row"><div class="k">Você faz</div><div class="v">Vê o status de captura por cliente (com toggle de "captura ativa", que nasce <strong>desligado</strong> — captura seletiva, pra controlar custo); filtra notas por cliente/tipo/período; clica <strong>"Subir nota"</strong> e ela entra na lista na hora.</div></div>
+          <div class="row"><div class="k">Por baixo</div><div class="v">Estado de sessão; cada nota recebe um id único; mostra a guarda do XML (regra legal 5 anos pelo CTN, retenção estendida como serviço).</div></div>
+        </div>
+        <div class="row"><div class="k">Liga de verdade</div><div class="v"><strong>Fase 5</strong> — a varredura automática via certificado/provider precisa de conta no provider + DPA (LGPD). Hoje é entrada manual demonstrável.</div></div>
+      </div>
+    </article>
+
+    <!-- 3 Fila -->
+    <article class="tab" id="fila">
+      <div class="head"><div class="ico">≣</div><div class="ttl"><h3>3 · Fila do dia</h3><div class="route">/fila</div></div><span class="chip real">funciona agora</span></div>
+      <div class="body">
+        <div class="row"><div class="k">O que é</div><div class="v">A lista de trabalho do dia — os indícios que a auditoria levantou, esperando revisão.</div></div>
+        <div class="grid2">
+          <div class="row"><div class="k">Você vê</div><div class="v">Tabela densa de apontamentos pendentes, <strong>ordenada por materialidade</strong> (quanto dinheiro está em jogo), com faixa de risco e a marca "revisar antes de aprovar" nos casos duvidosos.</div></div>
+          <div class="row"><div class="k">Por baixo</div><div class="v">Os indícios são <strong>produzidos pelo motor fiscal real</strong>: ele roda sobre as notas, compara o cClassTrib aplicado com a régua de referência e gera um apontamento onde diverge. Não é lista escrita à mão.</div></div>
+        </div>
+        <div class="row"><div class="k">Liga de verdade</div><div class="v">O motor é real; a <strong>régua</strong> de referência é rascunho até o tributarista validar o golden-set (Fase 3).</div></div>
+      </div>
+    </article>
+
+    <!-- 4 Aprovação -->
+    <article class="tab" id="aprovacao">
+      <div class="head"><div class="ico">✓</div><div class="ttl"><h3>4 · Aprovação</h3><div class="route">/aprovacao</div></div><span class="chip real">funciona agora</span></div>
+      <div class="body">
+        <div class="row"><div class="k">O que é</div><div class="v">Onde o contador decide cada indício — o ato com valor jurídico.</div></div>
+        <div class="grid2">
+          <div class="row"><div class="k">Você faz</div><div class="v">Abre um indício, revisa e <strong>confirma item a item</strong> (cerimônia: marcar revisão + digitar confirmação). <strong>Aprovação em lote silenciosa é bloqueada</strong> — exigência jurídica (parecer Heleno).</div></div>
+          <div class="row"><div class="k">Por baixo</div><div class="v">Chama a função real do core, que <strong>exige um contador com CRC ativo</strong> e grava um evento na trilha. Sem CRC, o sistema recusa.</div></div>
+        </div>
+        <div class="row"><div class="k">Liga de verdade</div><div class="v">O fluxo de decisão + registro são reais.</div></div>
+      </div>
+    </article>
+
+    <!-- 5 Trilha -->
+    <article class="tab" id="trilha">
+      <div class="head"><div class="ico">⧉</div><div class="ttl"><h3>5 · Trilha de boa-fé</h3><div class="route">/trilha</div></div><span class="chip real">funciona agora</span></div>
+      <div class="body">
+        <div class="row"><div class="k">O que é</div><div class="v">O moat — o histórico lacrado que prova que o escritório agiu de boa-fé.</div></div>
+        <div class="grid2">
+          <div class="row"><div class="k">Você vê</div><div class="v">Uma linha do tempo vertical, um nó por evento (quem/CRC, ação, hora, hash copiável), <strong>selada</strong> — sem botão de editar ou excluir. Um botão recomputa a cadeia e mostra verde.</div></div>
+          <div class="row"><div class="k">Por baixo</div><div class="v">Cada evento é encadeado por hash ao anterior (hash-chain). Mexer em qualquer um quebra a cadeia — o verificador detecta adulteração (há teste automático de "tamper detection").</div></div>
+        </div>
+        <div class="row"><div class="k">Liga de verdade</div><div class="v">100% real (é o coração da Fase 1). Falta só o <strong>carimbo de tempo oficial</strong> ICP-Brasil (Fase 4).</div></div>
+      </div>
+    </article>
+
+    <!-- 6 Laudo -->
+    <article class="tab" id="laudo">
+      <div class="head"><div class="ico">▤</div><div class="ttl"><h3>6 · Laudo</h3><div class="route">/laudos</div></div><span class="chip real">funciona agora</span></div>
+      <div class="body">
+        <div class="row"><div class="k">O que é</div><div class="v">O documento-prova defensável, por cliente — o produto que o contador entrega.</div></div>
+        <div class="grid2">
+          <div class="row"><div class="k">Você vê</div><div class="v">Um "documento de fé pública": cabeçalho (verificado contra régua vX, por quem/CRC), faixa de status (defensável / revisar / risco), tabela de divergências por item, a trilha-resumo e o botão <strong>"verificar cadeia"</strong> (verde).</div></div>
+          <div class="row"><div class="k">Por baixo</div><div class="v">Junta apontamentos + notas + trilha num read-model; o verificador roda sobre a cadeia completa do escritório.</div></div>
+        </div>
+        <div class="row"><div class="k">Liga de verdade</div><div class="v">Real; o carimbo aparece honestamente como "pendente (Fase 4)".</div></div>
+      </div>
+    </article>
+
+    <!-- 7 Recuperação -->
+    <article class="tab" id="recuperacao">
+      <div class="head"><div class="ico">↩</div><div class="ttl"><h3>7 · Recuperação</h3><div class="route">/recuperacao</div></div><span class="chip demo">demo</span></div>
+      <div class="body">
+        <div class="row"><div class="k">O que é</div><div class="v">A isca de aquisição — crédito monofásico de PIS/COFINS a recuperar (janela que fecha com a Reforma).</div></div>
+        <div class="grid2">
+          <div class="row"><div class="k">Você faz</div><div class="v">Vê o <strong>relógio</strong> do prazo (sunset 1º/jan/2027); abre um cliente e vê a quebra <strong>ano a ano</strong> (5 anos); usa a <strong>calculadora de success-fee</strong> (muda o valor → o split empresa/plataforma/contador 70/15/15 recalcula); gera um <strong>dossiê</strong> estruturado.</div></div>
+          <div class="row"><div class="k">Por baixo</div><div class="v">O split fecha exato em 100%; a quebra ano a ano soma exatamente o total de cada indício. Linguagem G6 reforçada: "indícios <strong>potencialmente</strong> recuperáveis", nunca "garantido".</div></div>
+        </div>
+        <div class="row"><div class="k">Liga de verdade</div><div class="v"><strong>Fase 7</strong> — quem assina a PER/DCOMP é o tributarista habilitado; precisa de estrutura jurídica.</div></div>
+      </div>
+    </article>
+
+    <!-- 8 e-CAC -->
+    <article class="tab" id="ecac">
+      <div class="head"><div class="ico">⊞</div><div class="ttl"><h3>8 · e-CAC</h3><div class="route">/ecac</div></div><span class="chip demo">demo</span></div>
+      <div class="body">
+        <div class="row"><div class="k">O que é</div><div class="v">A "mina": a situação fiscal de <strong>toda a carteira numa tela só</strong> — em vez de entrar no e-CAC cliente por cliente.</div></div>
+        <div class="grid2">
+          <div class="row"><div class="k">Você faz</div><div class="v">Vê indicadores (quem tem caixa postal não lida, CND vencida, ausência de declaração); abre um cliente (caixa postal com "marcar como lida", CNDs com preview de download); filtra só pendências; "gera CND em lote".</div></div>
+          <div class="row"><div class="k">Por baixo</div><div class="v">Calcula os indicadores reais sobre a carteira; gera certidões com código de controle. É read-only: só mostra a situação, não regulariza.</div></div>
+        </div>
+        <div class="row"><div class="k">Liga de verdade</div><div class="v"><strong>Fase 7</strong> — a consulta real (Integra Contador / SERPRO) precisa de contrato + procurações homologadas.</div></div>
+      </div>
+    </article>
+
+    <!-- 9 Emissor -->
+    <article class="tab" id="emissor">
+      <div class="head"><div class="ico">✎</div><div class="ttl"><h3>9 · Emissor</h3><div class="route">/emissor</div></div><span class="chip demo">demo</span></div>
+      <div class="body">
+        <div class="row"><div class="k">O que é</div><div class="v">Emitir NFS-e já com a tributação certa + o modelo de revenda (contador compra pacote e revende aos clientes).</div></div>
+        <div class="grid2">
+          <div class="row"><div class="k">Você faz</div><div class="v">Escolhe cliente e serviço → o motor <strong>sugere</strong> o cClassTrib e roda <strong>auto-auditoria item a item</strong> (✓ confere / ⚠ revisar, com o porquê) → o contador <strong>confirma</strong> (digita CONFIRMO) → gera o rascunho de DANFSe com os tributos por componente. Tem calculadora de revenda.</div></div>
+          <div class="row"><div class="k">Por baixo</div><div class="v">O motor de sugestão detecta divergência sozinho (ex.: "licença de software" cai pra revisar; valor atípico idem). A confirmação humana é obrigatória — sem ela, nada é emitido.</div></div>
+        </div>
+        <div class="row"><div class="k">Liga de verdade</div><div class="v"><strong>Fase 7</strong> — a transmissão real ao fisco precisa de credenciamento no ADN (NFS-e Nacional).</div></div>
+      </div>
+    </article>
+
+    <!-- 10 Configurações -->
+    <article class="tab" id="config">
+      <div class="head"><div class="ico">⚙</div><div class="ttl"><h3>10 · Configurações</h3><div class="route">/configuracoes</div></div><span class="chip demo">demo</span></div>
+      <div class="body">
+        <div class="row"><div class="k">O que é</div><div class="v">A administração do escritório.</div></div>
+        <div class="grid2">
+          <div class="row"><div class="k">Você vê</div><div class="v">Perfil do escritório; equipe (quem tem CRC pode aprovar apuração, analista/admin não); a régua cClassTrib (marcada como rascunho); captura por cliente; e os planos (<span class="num">R$ 249 / 399 / 690</span>, por volume de nota).</div></div>
+          <div class="row"><div class="k">Por baixo</div><div class="v">Estrutura pronta pra virar configuração real na Fase 2.</div></div>
+        </div>
+        <div class="row"><div class="k">Liga de verdade</div><div class="v">Dados de demonstração; o painel funcional vem com o Supabase (Fase 2).</div></div>
+      </div>
+    </article>
+  </section>
+
+  <section>
+    <h2 class="sec">Por que confiar que funciona — a verificação</h2>
+    <div class="proof">
+      <p style="margin:0;color:var(--text-dim)">Toda a bateria de testes passou — lógica, build, navegador real:</p>
+      <div class="kpis">
+        <div class="kpi"><div class="big num">5/5</div><div class="lbl">suítes do core (motor, trilha, db, fitness, api)</div></div>
+        <div class="kpi"><div class="big num">68.916</div><div class="lbl">invariantes de lógica · 0 violação</div></div>
+        <div class="kpi"><div class="big num">17/17</div><div class="lbl">testes no Chrome real · 0 erro de console</div></div>
+        <div class="kpi"><div class="big num">10/10</div><div class="lbl">telas renderizam e respondem ao clique</div></div>
+      </div>
+      <div class="gates">
+        <b>O que ainda depende de você e do Renan (nenhum código resolve):</b> contrato com provider de captura + DPA (Fase 5) · contrato SERPRO/Integra Contador + procurações para o e-CAC (Fase 7) · credenciamento ADN para o Emissor (Fase 7) · estrutura jurídica + tributarista que assina a PER/DCOMP para a Recuperação (Fase 7) · keys do Supabase para o deploy real (Fase 2) · tributarista para validar o golden-set do motor (Fase 3).
+      </div>
+    </div>
+
+    <div class="disc">
+      <strong>indício</strong> · base de demonstração · insumo XML/OCR · sujeito a <strong>revisão humana</strong> · trilha <strong>verificável</strong>. Esta plataforma não promete crédito garantido, apuração correta nem eliminação de multa. Codinome "Lastro" provisório — a validar com os sócios.
+    </div>
+  </section>
+
+  <footer>
+    Contador (codinome Lastro) · apresentação gerada do código real e do DESIGN.md (Verde-Petróleo Defensável) · App em <span class="mono">localhost:3008</span> · 2026-06-22
+  </footer>
+</div>
+</body>
+</html>

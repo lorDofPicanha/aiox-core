@@ -46,7 +46,7 @@ Ninguém no mercado junta **inteligência fiscal + gestão + comercial agressivo
 - **Captura COMPRADA de provider** (PlugNotas/Focus) com **DPA + cláusula de operador (Art. 39 LGPD)** — não construir agente local nem custodiar A1 (conclave reverteu; ~500 SPOFs não-observáveis).
 - O provider já resolve **NFeDistribuicaoDFe/SEFAZ (modelo NSU, bloqueio 1h), backoff, idempotência, manifestação 4 eventos, renovação de certificado, fallback municipal**. Puxa NF-e/NFC-e/NFS-e/CT-e/MDF-e; classifica compra vs venda por emitente/destinatário.
 - **Observabilidade como feature** (heartbeat por CNPJ, saúde do certificado, fila de retry visível) — "suporte ruim" é a queixa nº1 do mercado.
-- **Armazenamento XML** — obrigatório por lei (15 anos), quase ninguém faz. XML leve (~7KB).
+- **Armazenamento XML** — obrigatório por lei: regra geral **5 anos (CTN)** com extensões seletivas fundamentadas por documento (matriz de retenção, doc 17 §10/M-6); retenção estendida como serviço. Quase ninguém faz. XML leve (~7KB).
 - **Reaproveita o Documentize** (Gestorize) para o caminho de **upload manual** (Concierge/dia 0): extração, hash perceptual, dedup, identificação de tipo, `DocumentFeedback`.
 
 **Critérios de aceite (Fase 0):**
