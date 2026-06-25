@@ -8,8 +8,12 @@
     "build": "next build",
     "start": "next start -p 3008",
     "typecheck": "tsc --noEmit",
+    "test:ecac": "node app/ecac/saude-fiscal-model.test.mjs",
     "banlist:g6": "node scripts/banlist-g6.mjs",
     "banlist:g6:self-test": "node scripts/banlist-g6.mjs --self-test"
+  },
+  "engines": {
+    "node": ">=24"
   },
   "dependencies": {
     "@synkra/contador-api-client": "file:../../packages/contador-api-client",

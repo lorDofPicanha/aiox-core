@@ -134,6 +134,217 @@
   color: var(--text-faint);
 }
 
+/* ============================================================================
+   S3 + S5 — Feed proativo de saúde fiscal (AlertasSaudeFiscal). Reusa a linguagem
+   visual do feed de parcelamentos (alerta em cartão soft + selo "NOVO/urgente").
+   ============================================================================ */
+
+/* Grid de 4 KPIs (globals.css só tem grid-2/grid-3). */
+.kpiGrid {
+  grid-template-columns: repeat(4, 1fr);
+}
+@media (max-width: 880px) {
+  .kpiGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .kpiGrid {
+    grid-template-columns: 1fr;
+  }
+}
+.kpiAlerta {
+  color: var(--danger);
+}
+
+.feedResumo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-3);
+  font-size: 12.5px;
+  color: var(--text-dim);
+}
+.feedResumo strong {
+  color: var(--danger);
+}
+.feedSelo {
+  flex-shrink: 0;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--danger);
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+.feedSeloAtencao {
+  background: var(--warning);
+}
+
+.feedSecao {
+  margin-bottom: var(--space-4);
+}
+.feedSecao:last-child {
+  margin-bottom: 0;
+}
+.feedSecaoTitulo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 var(--space-3);
+}
+.feedSecaoTitulo .feedConta {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-faint);
+}
+
+.feedList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.feedItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-2);
+}
+.feedItemCritico {
+  border-color: #f3c6c2;
+  background: var(--danger-soft);
+}
+.feedItemAtencao {
+  border-color: #f3dcb0;
+  background: var(--warning-soft);
+}
+.feedDot {
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+  margin-top: 4px;
+  box-shadow: 0 0 0 3px rgba(16, 24, 40, 0.04);
+}
+.feedDotCritico {
+  background: var(--danger);
+}
+.feedDotAtencao {
+  background: var(--warning);
+}
+.feedCorpo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.feedHead {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+.feedHead strong {
+  font-size: 14px;
+  letter-spacing: -0.01em;
+}
+.feedCliente {
+  font-size: 11px;
+  color: var(--text-faint);
+}
+.feedMsg {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--text-dim);
+}
+.feedPrazo {
+  margin: 0;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+}
+.feedPrazoExpirado,
+.feedPrazoLimite {
+  color: var(--danger);
+  background: var(--danger-soft);
+  border: 1px solid #f3c6c2;
+}
+.feedPrazoUrgente {
+  color: var(--warning);
+  background: var(--warning-soft);
+  border: 1px solid #f3dcb0;
+}
+.feedPrazoFolgado {
+  color: var(--text-dim);
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+.feedAcao {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-top: 2px;
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--border);
+}
+.feedBtn {
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--primary-border);
+  background: var(--primary);
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.feedBtn:hover {
+  background: var(--primary-hover);
+}
+.feedBtn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+.feedNota {
+  font-size: 11px;
+  color: var(--text-faint);
+}
+.feedSinalizado {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-dim);
+  background: var(--success-soft);
+  border: 1px solid #bfe3cd;
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  max-width: 72ch;
+}
+.feedVazio {
+  font-size: 12.5px;
+  color: var(--text-dim);
+  margin: 0;
+}
+
 /* ---------- Selo discreto de honestidade (rodapé sutil) ---------- */
 .rodapeSelo {
   display: flex;

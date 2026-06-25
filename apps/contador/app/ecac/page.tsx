@@ -19,10 +19,37 @@
  */
 import { Card } from "@/components/Card";
 import { TopBar } from "@/components/TopBar";
+import { AlertasSaudeFiscal } from "./AlertasSaudeFiscal";
 import { EcacCockpit } from "./EcacCockpit";
+import {
+  detectarCndsAVencer,
+  ehRelevante,
+  resumirRenovacao,
+  resumirTriagem,
+  triarMensagens,
+} from "./saude-fiscal-model";
+import { ESCRITORIO_SAUDE_DEMO, saudeFiscalProvider } from "./saude-fiscal-provider";
 import styles from "./ecac.module.css";
 
-export default function EcacPage() {
+/** Render sob demanda: triagem/renovação derivam da data atual (prazos e validades relativos). */
+export const dynamic = "force-dynamic";
+
+export default async function EcacPage() {
+  const refIso = new Date().toISOString();
+
+  // S3/S5: o dado vem do CONTRATO (provider), não do seed direto. Hoje é o mock; amanhã os
+  // adapters reais (Integra Contador / Infosimples) preenchem o mesmo contrato — gate do founder.
+  const leitura = await saudeFiscalProvider.listarSaudeFiscal(ESCRITORIO_SAUDE_DEMO, refIso);
+
+  // S3: triagem da caixa postal — só as relevantes (crítico/atenção) vão para o feed.
+  const triadas = triarMensagens(leitura.mensagens, leitura.refIso);
+  const triadasRelevantes = triadas.filter((m) => ehRelevante(m.nivel.nivel));
+  const resumoTriagem = resumirTriagem(triadas);
+
+  // S5: fila de renovação de CND (vencidas + a vencer), priorizada.
+  const filaRenovacao = detectarCndsAVencer(leitura.cnds, leitura.refIso);
+  const resumoRenovacao = resumirRenovacao(filaRenovacao);
+
   return (
     <>
       <TopBar
@@ -43,6 +70,18 @@ export default function EcacPage() {
             contador.
           </p>
         </Card>
+
+        {/* S3 + S5 — Feed proativo no TOPO ("revisar primeiro"): caixa postal triada por
+            relevância (intimações com prazo + comunicados da Receita) e fila de renovação de
+            CND (vencidas + a vencer). A plataforma sinaliza o indício; a ação é do contador. */}
+        <div style={{ marginTop: 16 }}>
+          <AlertasSaudeFiscal
+            mensagens={triadasRelevantes}
+            renovacoes={filaRenovacao}
+            prazosNoLimite={resumoTriagem.prazosNoLimite}
+            cndsVencidas={resumoRenovacao.vencidas}
+          />
+        </div>
 
         {/* Cockpit interativo (KPIs · tabela com drill-down · filtro · lote). */}
         <EcacCockpit />

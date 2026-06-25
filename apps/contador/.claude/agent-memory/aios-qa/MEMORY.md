@@ -1,1 +1,2 @@
 - [Contador F1 verifier slicing rule](project_contador_verifier_slicing.md) — verificarCadeia exige cadeia contígua desde genesis; fatiar por cliente quebra (SEQ_GAP).
+- [Contador e-CAC date boundary bug](project_contador_ecac_date_boundary.md) — situacaoPrazo/prioridadeRenovacao usam diff de timestamp (não dia-calendário); off-by-one mascarado pelo seed, ativa no adapter real.

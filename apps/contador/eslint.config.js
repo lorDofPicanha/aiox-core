@@ -24,4 +24,15 @@ module.exports = [
       'no-unused-vars': 'off', // idem (noUnusedLocals do tsc quando ligado)
     },
   },
+  {
+    // Scripts/testes Node em ESM (.mjs): runners de engine puro (ex.: app/ecac/
+    // *.test.mjs) usam globals do Node (console, process). Declaramos o ambiente Node
+    // aqui para o no-undef do recommended não acusar esses globals no build/lint.
+    files: ['**/*.mjs'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: { console: 'readonly', process: 'readonly' },
+    },
+  },
 ];
