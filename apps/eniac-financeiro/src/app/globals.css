@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+/* Tema fintech claro — clareza e velocidade acima de tudo. */
+@theme {
+  --color-background: #f4f5f7;
+  --color-surface: #ffffff;
+  --color-foreground: #0f172a;
+  --color-muted: #f1f5f9;
+  --color-muted-foreground: #64748b;
+  --color-border: #e5e8ed;
+  --color-primary: #0f172a;
+  --color-primary-foreground: #ffffff;
+
+  /* Semânticas: entrada (verde) / saída (vermelho) */
+  --color-income: #15a34a;
+  --color-income-soft: #e9f7ef;
+  --color-expense: #e11d48;
+  --color-expense-soft: #fdecef;
+  --color-accent: #2563eb;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+html,
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Tabular numbers para valores não "dançarem" */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* esconde scrollbar em chips horizontais */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

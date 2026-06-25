@@ -152,6 +152,13 @@ apps/noyce/node_modules/
 apps/noyce/.env
 apps/noyce/.env.local
 apps/noyce/.env.*.local
+!apps/eniac-financeiro/
+!apps/eniac-financeiro/**
+apps/eniac-financeiro/.next/
+apps/eniac-financeiro/node_modules/
+apps/eniac-financeiro/.env
+apps/eniac-financeiro/.env.local
+apps/eniac-financeiro/.env.*.local
 !apps/polymarket-trader/
 !apps/tocks-lp/
 !apps/tocks-website/
