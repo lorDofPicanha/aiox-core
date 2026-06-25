@@ -11,7 +11,14 @@
  * `ItemFiscal` por subtipagem estrutural — pode ser passado direto a
  * `classificarLote` sem adaptação.
  */
-import { DocumentoFiscal, ItemDocumento, TributoPisCofins } from "./types";
+import {
+  DocumentoFiscal,
+  DocumentoServico,
+  DocumentoTransporte,
+  ItemDocumento,
+  ItemServico,
+  TributoPisCofins
+} from "./types";
 
 /**
  * Contrato base aceito pelo motor de classificação.
@@ -90,6 +97,85 @@ function mapearItem(doc: DocumentoFiscal, item: ItemDocumento): ItemFiscalRecupe
       pis: item.pis,
       cofins: item.cofins,
       ehMonofasico
+    },
+    proveniencia: {
+      classeInsumo: "xml",
+      chaveAcesso: doc.chaveAcesso,
+      assinado: doc.temAssinatura
+    }
+  };
+}
+
+// ---------------------------------------------------------------------------
+// R4 — Mappers de CT-e e NFS-e Nacional para o contrato do motor.
+//
+// Onde a semântica casa (valor + tributos + proveniência) mapeamos; onde NÃO
+// casa, deixamos EXPLÍCITO e não forçamos (FF-1):
+//  - CT-e (frete) e NFS-e (serviço) NÃO têm NCM -> campo `ncm` fica ausente.
+//  - o monofásico (NCM + CST PIS/COFINS) é conceito de MERCADORIA; para serviço
+//    `recuperacao.ehMonofasico` é sempre false (não se aplica), mas PIS/COFINS
+//    retido é preservado para a apuração.
+// ---------------------------------------------------------------------------
+
+/**
+ * Mapeia um CT-e (frete) para UM `ItemFiscalRecuperacao`.
+ * Sem NCM (transporte não tem); o CST relevante é o do ICMS do documento.
+ * Não há tributação monofásica de PIS/COFINS por item -> ehMonofasico=false.
+ */
+export function paraItensFiscaisCTe(doc: DocumentoTransporte): ItemFiscalRecuperacao[] {
+  const pisVazio: TributoPisCofins = {};
+  const cofinsVazio: TributoPisCofins = {};
+  return [
+    {
+      id: `${doc.chaveAcesso}-1`,
+      descricao: "SERVICO DE TRANSPORTE (CT-e)",
+      // ncm ausente: frete não tem NCM (semântica não casa — não forçar).
+      ...(doc.icms.cst ? { cst: doc.icms.cst } : {}),
+      valor: doc.valorTotalPrestacao,
+      recuperacao: {
+        pis: pisVazio,
+        cofins: cofinsVazio,
+        ehMonofasico: false
+      },
+      proveniencia: {
+        classeInsumo: "xml",
+        chaveAcesso: doc.chaveAcesso,
+        assinado: doc.temAssinatura
+      }
+    }
+  ];
+}
+
+/**
+ * Mapeia os itens de serviço de uma NFS-e Nacional para `ItemFiscalRecuperacao[]`.
+ * Sem NCM (serviço não tem); o `cClassTrib` do grupo IBS/CBS vira
+ * `cclasstribInformado` (base da Auditoria da Reforma). PIS/COFINS RETIDO é
+ * preservado em `recuperacao` para a apuração; monofásico não se aplica a serviço
+ * -> ehMonofasico=false.
+ */
+export function paraItensFiscaisNFSe(doc: DocumentoServico): ItemFiscalRecuperacao[] {
+  return doc.itens.map((item, indice) => mapearItemServico(doc, item, indice));
+}
+
+function mapearItemServico(
+  doc: DocumentoServico,
+  item: ItemServico,
+  indice: number
+): ItemFiscalRecuperacao {
+  const cclasstrib = item.ibsCbs?.cClassTrib;
+  // CST aqui é o da Reforma (IBS/CBS), quando informado.
+  const cst = item.ibsCbs?.cst;
+  return {
+    id: `${doc.chaveAcesso}-${indice + 1}`,
+    descricao: item.descricao,
+    // ncm ausente: serviço usa código de tributação nacional/municipal, não NCM.
+    ...(cst ? { cst } : {}),
+    ...(cclasstrib ? { cclasstribInformado: cclasstrib } : {}),
+    valor: item.valorServico,
+    recuperacao: {
+      pis: item.pis,
+      cofins: item.cofins,
+      ehMonofasico: false
     },
     proveniencia: {
       classeInsumo: "xml",

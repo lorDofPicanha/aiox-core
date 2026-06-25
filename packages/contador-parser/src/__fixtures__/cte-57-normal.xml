@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SINTÉTICO — CT-e modelo 57 (frete). Dados fictícios para teste, não é doc real.
+     Tomador = remetente (ide/toma3/toma=0). ICMS no nível do documento. Assinado. -->
+<cteProc versao="4.00" xmlns="http://www.portalfiscal.inf.br/cte">
+  <CTe>
+    <infCte Id="CTe35240612345678000199570010000004561000004560" versao="4.00">
+      <ide>
+        <cUF>35</cUF>
+        <mod>57</mod>
+        <serie>1</serie>
+        <nCT>456</nCT>
+        <dhEmi>2024-06-18T09:15:00-03:00</dhEmi>
+        <tpCTe>0</tpCTe>
+        <natOp>PRESTACAO DE SERVICO DE TRANSPORTE</natOp>
+        <toma3>
+          <toma>0</toma>
+        </toma3>
+      </ide>
+      <emit>
+        <CNPJ>22333444000155</CNPJ>
+        <xNome>TRANSPORTADORA SINTETICA LTDA</xNome>
+      </emit>
+      <rem>
+        <CNPJ>12345678000199</CNPJ>
+        <xNome>REMETENTE SINTETICO LTDA</xNome>
+      </rem>
+      <dest>
+        <CNPJ>98765432000155</CNPJ>
+        <xNome>DESTINATARIO SINTETICO ME</xNome>
+      </dest>
+      <vPrest>
+        <vTPrest>1200.00</vTPrest>
+        <vRec>1200.00</vRec>
+      </vPrest>
+      <imp>
+        <ICMS>
+          <ICMS00>
+            <CST>00</CST>
+            <vBC>1200.00</vBC>
+            <pICMS>12.00</pICMS>
+            <vICMS>144.00</vICMS>
+          </ICMS00>
+        </ICMS>
+      </imp>
+    </infCte>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo>
+        <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+        <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+      </SignedInfo>
+      <SignatureValue>U0lOVEVUSUNP</SignatureValue>
+    </Signature>
+  </CTe>
+</cteProc>

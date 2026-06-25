@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SINTÉTICO INVÁLIDO — NFS-e Nacional com chave (chNFSe) de comprimento errado
+     (44 díg em vez de 50). Deve ser rejeitada com ParseError(CHAVE_ACESSO_INVALIDA). -->
+<NFSe xmlns="http://www.sped.fazenda.gov.br/nfse">
+  <infNFSe Id="NFSe35240612345678000199000000000456000000">
+    <nNFSe>789</nNFSe>
+    <dhProc>2026-09-11T10:00:00-03:00</dhProc>
+    <emit>
+      <CNPJ>12345678000199</CNPJ>
+      <xNome>PRESTADORA SINTETICA LTDA</xNome>
+    </emit>
+    <serv>
+      <cServ>
+        <cTribNac>010701</cTribNac>
+        <xDescServ>SERVICO SINTETICO</xDescServ>
+      </cServ>
+    </serv>
+    <valores>
+      <vServPrest>
+        <vServ>100.00</vServ>
+      </vServPrest>
+    </valores>
+  </infNFSe>
+</NFSe>

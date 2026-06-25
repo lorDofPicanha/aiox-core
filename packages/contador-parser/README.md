@@ -1,8 +1,9 @@
 # Contador Parser — Motor A (XML fiscal determinístico)
 
-Parser determinístico de NF-e (mod. 55) e NFC-e (mod. 65), layout 4.00.
-Camada de ingestão do reconhecimento (doc 59). Destrava Auditoria e Recuperação
-com dado REAL (sai do seed sintético).
+Parser determinístico de **NF-e** (mod. 55), **NFC-e** (mod. 65), **CT-e** (mod. 57)
+e **NFS-e Nacional** (leiaute CGNFS-e, NT 007/2026). Camada de ingestão do
+reconhecimento (doc 59). Destrava Auditoria e Recuperação com dado REAL (sai do
+seed sintético).
 
 Cobre as stories:
 
@@ -16,8 +17,38 @@ Cobre as stories:
   contrato do motor (`@synkra/contador-motor-fiscal` `ItemFiscal`) por subtipagem
   estrutural, preservando PIS/COFINS e marcando `recuperacao.ehMonofasico`
   (CST PIS/COFINS 04/05/06) para a Recuperação.
-- **G1** — validação de schema: XML malformado ou sem campo obrigatório é
-  rejeitado com `ParseError` tipado (`codigo` + `campo`), nunca silenciosamente.
+- **R4** — extensão do Motor A para os demais DF-e que nascem em XML:
+  - `parseCTe(xml)` → `DocumentoTransporte` (CT-e mod. 57): chave (44 díg), série/
+    número, dhEmi, emitente/tomador/remetente/destinatário, `vTPrest` (valor da
+    prestação) e o **ICMS do documento** (CST/CSOSN, vBC, pICMS, vICMS). CT-e é
+    frete → relevante para crédito.
+  - `parseNFSeNacional(xml)` → `DocumentoServico` (CGNFS-e, NT 007/2026): chave
+    (50 díg), prestador/tomador, valor do serviço, código de tributação
+    nacional/municipal e os **grupos IBS/CBS** (`cClassTrib`, CST, base, CBS,
+    IBS UF+Município) + **PIS/COFINS retido** (grupo `gPISCOFINS`, corrigido pela
+    NT 007). É o diferencial tempestivo da Reforma (NFS-e Nacional obrigatória
+    para o Simples em 01/09/2026).
+  - `parseDocumentoFiscal(xml)` → roteador que detecta o tipo pela raiz do XML e
+    despacha para o parser certo (NF-e/NFC-e · CT-e · NFS-e). Tipo não suportado →
+    `ParseError("TIPO_NAO_SUPORTADO")`.
+  - `paraItensFiscaisCTe(doc)` / `paraItensFiscaisNFSe(doc)` → mapeiam para o
+    contrato do motor (`ItemFiscalRecuperacao`). Serviço/frete **não têm NCM**
+    (campo ausente, não forçado); a NFS-e leva o `cClassTrib` do IBS/CBS para
+    `cclasstribInformado` (base da Auditoria da Reforma).
+- **G1** — validação de schema: XML malformado, sem campo obrigatório, ou de tipo/
+  modelo não suportado é rejeitado com `ParseError` tipado (`codigo` + `campo`),
+  nunca silenciosamente.
+
+## Por que CT-e e NFS-e usam tipos próprios (não `DocumentoFiscal`)
+
+Bounded context (FF-1): o parser entrega entidades tipadas fiéis à semântica de
+cada documento — não força tudo num molde de NF-e.
+
+- **CT-e** (`DocumentoTransporte`): não tem itens com NCM/CFOP por produto; tem UM
+  serviço de transporte (`vTPrest`) e o ICMS no nível do documento. Forçá-lo em
+  `DocumentoFiscal.itens[]` com NCM vazaria semântica falsa.
+- **NFS-e** (`DocumentoServico`): serviço não tem NCM (usa código de tributação
+  nacional/municipal); o tributo relevante é IBS/CBS + PIS/COFINS retido, não ICMS.
 
 ## Regras (constraints)
 
@@ -26,7 +57,7 @@ Cobre as stories:
 - XML parseado com `fast-xml-parser` (não regex).
 - Bounded context (FF-1): entrega entidades tipadas; não vaza dialeto de
   fornecedor nem o XML cru; não exporta dado para fora.
-- Fora de escopo (follow-up): CT-e/MDF-e/NFS-e (R4), Document AI/OCR (R5+),
+- Fora de escopo (follow-up): MDF-e (mod. 58), Document AI/OCR (R5+),
   validação da cadeia ICP da assinatura.
 
 ## Comandos
@@ -47,8 +78,20 @@ const itens = paraItensFiscais(doc);      // R3 → ItemFiscal compatível
 const apontamentos = classificarLote(itens, base, contexto); // alimenta Auditoria
 ```
 
+Roteador (qualquer DF-e suportado):
+
+```ts
+import { parseDocumentoFiscal } from "@synkra/contador-parser";
+
+const doc = parseDocumentoFiscal(xmlString); // NF-e/NFC-e | CT-e | NFS-e
+// doc.tipo === "transporte" -> DocumentoTransporte (CT-e)
+// doc.tipo === "servico"    -> DocumentoServico (NFS-e, grupos IBS/CBS)
+// caso contrário            -> DocumentoFiscal (NF-e/NFC-e, doc.modelo "55"/"65")
+```
+
 Fixtures sintéticos em `src/__fixtures__/` (NF-e 55, NFC-e 65, item monofásico,
-NF-e com namespace prefixado, inválido sem chave, malformado).
+NF-e com namespace prefixado, inválido sem chave, malformado, **CT-e 57 normal**,
+**CT-e modelo inválido**, **NFS-e Nacional com IBS/CBS**, **NFS-e chave inválida**).
 
 ## Limitações conhecidas / follow-ups (gate QA 24/Jun — doc 59)
 

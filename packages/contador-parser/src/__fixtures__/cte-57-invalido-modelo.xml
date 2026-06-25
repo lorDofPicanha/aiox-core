@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SINTÉTICO INVÁLIDO — CTe com mod=58 (MDF-e, fora do escopo de parseCTe).
+     Deve ser rejeitado com ParseError(codigo=MODELO_NAO_SUPORTADO). -->
+<CTe xmlns="http://www.portalfiscal.inf.br/cte">
+  <infCte Id="CTe35240612345678000199580010000007891000007890" versao="4.00">
+    <ide>
+      <cUF>35</cUF>
+      <mod>58</mod>
+      <serie>1</serie>
+      <nCT>789</nCT>
+      <dhEmi>2024-06-18T10:00:00-03:00</dhEmi>
+    </ide>
+    <emit>
+      <CNPJ>22333444000155</CNPJ>
+      <xNome>TRANSPORTADORA SINTETICA LTDA</xNome>
+    </emit>
+    <vPrest>
+      <vTPrest>500.00</vTPrest>
+    </vPrest>
+  </infCte>
+</CTe>

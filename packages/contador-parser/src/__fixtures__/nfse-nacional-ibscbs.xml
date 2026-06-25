@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SINTÉTICO — NFS-e Nacional (leiaute CGNFS-e, NT 007/2026). Dados fictícios.
+     Chave de acesso (chNFSe) = 50 dígitos. Inclui grupo IBSCBS (Reforma) e
+     PIS/COFINS retido em gPISCOFINS (correção da NT 007). Assinada. -->
+<NFSe xmlns="http://www.sped.fazenda.gov.br/nfse">
+  <infNFSe Id="NFSe35240612345678000199000000000456000000045600000050">
+    <nNFSe>456</nNFSe>
+    <dhProc>2026-09-10T14:22:00-03:00</dhProc>
+    <emit>
+      <CNPJ>12345678000199</CNPJ>
+      <xNome>PRESTADORA DE SERVICOS SINTETICA LTDA</xNome>
+    </emit>
+    <DPS>
+      <infDPS Id="DPS3512345678000199000000456">
+        <dhEmi>2026-09-10T14:20:00-03:00</dhEmi>
+        <nDPS>456</nDPS>
+        <prest>
+          <CNPJ>12345678000199</CNPJ>
+          <xNome>PRESTADORA DE SERVICOS SINTETICA LTDA</xNome>
+        </prest>
+        <toma>
+          <CNPJ>98765432000155</CNPJ>
+          <xNome>TOMADOR SINTETICO ME</xNome>
+        </toma>
+        <serv>
+          <cServ>
+            <cTribNac>010701</cTribNac>
+            <cTribMun>010701</cTribMun>
+            <xDescServ>DESENVOLVIMENTO DE SOFTWARE SOB ENCOMENDA</xDescServ>
+          </cServ>
+        </serv>
+        <valores>
+          <vServPrest>
+            <vServ>10000.00</vServ>
+          </vServPrest>
+          <trib>
+            <gPISCOFINS>
+              <CSTPIS>01</CSTPIS>
+              <vBCPIS>10000.00</vBCPIS>
+              <pPIS>0.65</pPIS>
+              <vPIS>65.00</vPIS>
+              <CSTCOFINS>01</CSTCOFINS>
+              <vBCCOFINS>10000.00</vBCCOFINS>
+              <pCOFINS>3.00</pCOFINS>
+              <vCOFINS>300.00</vCOFINS>
+            </gPISCOFINS>
+            <IBSCBS>
+              <CST>000</CST>
+              <cClassTrib>000001</cClassTrib>
+              <gIBSCBS>
+                <vBC>10000.00</vBC>
+                <gCBS>
+                  <pCBS>0.90</pCBS>
+                  <vCBS>90.00</vCBS>
+                </gCBS>
+                <gIBSUF>
+                  <pIBSUF>0.10</pIBSUF>
+                  <vIBSUF>10.00</vIBSUF>
+                </gIBSUF>
+                <gIBSMun>
+                  <pIBSMun>0.05</pIBSMun>
+                  <vIBSMun>5.00</vIBSMun>
+                </gIBSMun>
+              </gIBSCBS>
+            </IBSCBS>
+          </trib>
+        </valores>
+      </infDPS>
+    </DPS>
+  </infNFSe>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+      <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256"/>
+    </SignedInfo>
+    <SignatureValue>U0lOVEVUSUNP</SignatureValue>
+  </Signature>
+</NFSe>

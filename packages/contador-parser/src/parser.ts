@@ -7,31 +7,33 @@
  *
  * Constraints: pacote PURO — sem rede, sem efeitos colaterais, sem Date.now()
  * embutido em lógica. NÃO parsear XML com regex: usa fast-xml-parser.
+ *
+ * Helpers de coerção/validação são compartilhados em `./helpers` (reusados por
+ * CT-e e NFS-e no R4).
  */
-import { XMLParser } from "fast-xml-parser";
+import {
+  asString,
+  asStringObrigatorio,
+  criarXmlParser,
+  detectarAssinatura,
+  extrairParte,
+  obj,
+  parseXmlBruto,
+  paraNumero,
+  paraNumeroOpcional,
+  somenteDigitos
+} from "./helpers";
 import {
   DocumentoFiscal,
   ItemDocumento,
   ModeloDocumento,
   ParseError,
-  ParteDocumento,
   TributoIcms,
   TributoPisCofins
 } from "./types";
 
-const parser = new XMLParser({
-  ignoreAttributes: false,
-  attributeNamePrefix: "@_",
-  parseTagValue: false, // mantém valores como string; conversão numérica controlada por nós.
-  parseAttributeValue: false,
-  trimValues: true,
-  // Remove prefixo de namespace (ex.: <nfe:NFe> -> NFe). NF-e/NFC-e válidas que passam
-  // por ERPs/assinadores frequentemente chegam prefixadas; sem isto o XML válido seria
-  // rejeitado, violando o gate G1 (QA 24/Jun, finding 🔴-1).
-  removeNSPrefix: true,
-  // Garante que o grupo de itens (det) seja SEMPRE array, mesmo com 1 item.
-  isArray: (name) => name === "det"
-});
+// Garante que o grupo de itens (det) seja SEMPRE array, mesmo com 1 item.
+const parser = criarXmlParser(new Set(["det"]));
 
 /**
  * Parseia uma NF-e ou NFC-e (layout 4.00) e retorna o documento normalizado.
@@ -39,17 +41,7 @@ const parser = new XMLParser({
  *         ausente, modelo não suportado ou chave de acesso inválida.
  */
 export function parseNFe(xml: string): DocumentoFiscal {
-  if (typeof xml !== "string" || xml.trim().length === 0) {
-    throw new ParseError("XML_MALFORMADO", "XML vazio ou nao textual.");
-  }
-
-  let raiz: Record<string, unknown>;
-  try {
-    raiz = parser.parse(xml) as Record<string, unknown>;
-  } catch (erro) {
-    const detalhe = erro instanceof Error ? erro.message : String(erro);
-    throw new ParseError("XML_MALFORMADO", `Falha ao ler o XML: ${detalhe}`);
-  }
+  const raiz = parseXmlBruto(parser, xml);
 
   const infNFe = localizarInfNFe(raiz);
 
@@ -69,7 +61,7 @@ export function parseNFe(xml: string): DocumentoFiscal {
 
   const itens = extrairItens(infNFe);
 
-  const temAssinatura = detectarAssinatura(raiz, infNFe);
+  const temAssinatura = detectarAssinaturaNFe(raiz, infNFe);
 
   return {
     chaveAcesso,
@@ -132,41 +124,6 @@ function extrairChaveAcesso(infNFe: Record<string, unknown>): string {
     );
   }
   return chave;
-}
-
-function extrairParte(
-  no: unknown,
-  caminho: string,
-  obrigatorio: boolean
-): ParteDocumento {
-  if (no === undefined || no === null) {
-    if (obrigatorio) {
-      throw new ParseError(
-        "CAMPO_OBRIGATORIO_AUSENTE",
-        `Bloco ${caminho} ausente.`,
-        caminho
-      );
-    }
-    return {};
-  }
-  const parte = obj(no, caminho);
-  const cnpj = somenteDigitos(asString(parte.CNPJ));
-  const cpf = somenteDigitos(asString(parte.CPF));
-  const nome = asString(parte.xNome);
-
-  if (obrigatorio && !cnpj && !cpf) {
-    throw new ParseError(
-      "CAMPO_OBRIGATORIO_AUSENTE",
-      `${caminho} sem CNPJ nem CPF.`,
-      `${caminho}/CNPJ`
-    );
-  }
-
-  return {
-    ...(cnpj ? { cnpj } : {}),
-    ...(cpf ? { cpf } : {}),
-    ...(nome ? { nome } : {})
-  };
 }
 
 function extrairValorTotal(infNFe: Record<string, unknown>): number {
@@ -285,84 +242,13 @@ function extrairPisCofins(node: unknown): TributoPisCofins {
  * Procura Signature/SignedInfo sob NFe ou na raiz (com ou sem prefixo de namespace).
  * NÃO valida a cadeia ICP — apenas presença.
  */
-function detectarAssinatura(
+function detectarAssinaturaNFe(
   raiz: Record<string, unknown>,
   infNFe: Record<string, unknown>
 ): boolean {
   const proc = raiz.nfeProc as Record<string, unknown> | undefined;
   const nfeContainer = (proc?.NFe ?? raiz.NFe) as Record<string, unknown> | undefined;
-  const candidatos: Array<Record<string, unknown> | undefined> = [
-    nfeContainer,
-    proc,
-    raiz,
-    infNFe
-  ];
-  for (const candidato of candidatos) {
-    if (candidato && contemAssinatura(candidato)) {
-      return true;
-    }
-  }
-  return false;
-}
-
-function contemAssinatura(no: Record<string, unknown>): boolean {
-  for (const chave of Object.keys(no)) {
-    const local = chave.includes(":") ? chave.split(":").pop() : chave;
-    if (local === "Signature") {
-      const sig = no[chave];
-      if (sig && typeof sig === "object") {
-        // Confirma SignedInfo dentro para reduzir falso-positivo.
-        const sigObj = sig as Record<string, unknown>;
-        const temSignedInfo = Object.keys(sigObj).some((k) => {
-          const ln = k.includes(":") ? k.split(":").pop() : k;
-          return ln === "SignedInfo";
-        });
-        return temSignedInfo;
-      }
-    }
-  }
-  return false;
-}
-
-// ---------------------------------------------------------------------------
-// Helpers de coerção/validação (puros)
-// ---------------------------------------------------------------------------
-
-function obj(valor: unknown, caminho: string): Record<string, unknown> {
-  if (!valor || typeof valor !== "object" || Array.isArray(valor)) {
-    throw new ParseError("ESTRUTURA_INVALIDA", `Bloco ${caminho} ausente ou invalido.`, caminho);
-  }
-  return valor as Record<string, unknown>;
-}
-
-function asString(valor: unknown): string | undefined {
-  if (valor === undefined || valor === null) {
-    return undefined;
-  }
-  if (typeof valor === "string") {
-    const t = valor.trim();
-    return t.length > 0 ? t : undefined;
-  }
-  if (typeof valor === "number" || typeof valor === "boolean") {
-    return String(valor);
-  }
-  return undefined;
-}
-
-function asStringObrigatorio(valor: unknown, caminho: string): string {
-  const s = asString(valor);
-  if (s === undefined) {
-    throw new ParseError("CAMPO_OBRIGATORIO_AUSENTE", `Campo ${caminho} ausente.`, caminho);
-  }
-  return s;
-}
-
-function somenteDigitos(valor: string | undefined): string | undefined {
-  if (valor === undefined) {
-    return undefined;
-  }
-  const d = valor.replace(/\D/g, "");
-  return d.length > 0 ? d : undefined;
+  return detectarAssinatura([nfeContainer, proc, raiz, infNFe]);
 }
 
 function normalizarModelo(valor: string | undefined, caminho: string): ModeloDocumento {
@@ -374,23 +260,7 @@ function normalizarModelo(valor: string | undefined, caminho: string): ModeloDoc
   }
   throw new ParseError(
     "MODELO_NAO_SUPORTADO",
-    `Modelo ${valor} nao suportado (apenas 55 NF-e e 65 NFC-e).`,
+    `Modelo ${valor} nao suportado por parseNFe (apenas 55 NF-e e 65 NFC-e).`,
     caminho
   );
-}
-
-function paraNumero(valor: string, caminho: string): number {
-  const n = Number(valor);
-  if (!Number.isFinite(n)) {
-    throw new ParseError("ESTRUTURA_INVALIDA", `Campo ${caminho} nao numerico: "${valor}".`, caminho);
-  }
-  return n;
-}
-
-function paraNumeroOpcional(valor: string | undefined): number | undefined {
-  if (valor === undefined) {
-    return undefined;
-  }
-  const n = Number(valor);
-  return Number.isFinite(n) ? n : undefined;
 }
