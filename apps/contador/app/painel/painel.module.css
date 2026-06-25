@@ -1,0 +1,161 @@
+/* ============================================================================
+   Painel do Escritório — cockpit unificado (porta de entrada).
+   CSS Module LOCAL: NÃO edita app/globals.css. Reusa as classes globais
+   (card, grid, kpi, badge, notice, disclaimer, num, muted) e adiciona só o
+   específico do painel: a faixa de KPIs deep-linkáveis, a lista "revisar
+   primeiro" e o selo de trilha. Tokens via var(--*).
+   ============================================================================ */
+
+/* ---------- Faixa de KPIs-manchete (6 frentes, deep-linkáveis) ---------- */
+.kpiFaixa {
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 1080px) {
+  .kpiFaixa {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .kpiFaixa {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Cada KPI é um link inteiro (a porta para o módulo). Mantém a aparência de
+   Card mas vira alvo clicável com affordance de hover. */
+.kpiLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-radius: var(--radius-lg);
+  transition: border-color 120ms ease, transform 120ms ease;
+}
+.kpiLink:hover {
+  transform: translateY(-1px);
+}
+.kpiLink:hover .kpiCard {
+  border-color: var(--primary-border);
+}
+.kpiLink:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+.kpiCard {
+  height: 100%;
+}
+/* Cabeçalho do KPI: frente + glyph de "abrir". */
+.kpiTopo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-1);
+}
+.kpiFrente {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-faint);
+  font-weight: 600;
+}
+.kpiSeta {
+  color: var(--text-faint);
+  font-size: 13px;
+}
+.kpiLink:hover .kpiSeta {
+  color: var(--primary);
+}
+/* Cor da manchete por severidade (sempre acompanhada de label, nunca só matiz). */
+.vCritico {
+  color: var(--danger);
+}
+.vAtencao {
+  color: var(--warning);
+}
+.vNeutro {
+  color: var(--text);
+}
+.kpiManchete {
+  font-size: 12.5px;
+  color: var(--text-dim);
+  line-height: 1.35;
+  margin-top: 2px;
+}
+
+/* ---------- "O que revisar primeiro" — lista cross-frente ---------- */
+.revisarLista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.revisarItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--border);
+}
+.revisarItem:last-child {
+  border-bottom: none;
+}
+.revisarBadge {
+  flex: 0 0 auto;
+  margin-top: 1px;
+}
+.revisarCorpo {
+  flex: 1;
+  min-width: 0;
+  line-height: 1.4;
+}
+.revisarFrente {
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-faint);
+  font-weight: 600;
+}
+.revisarTexto {
+  font-size: 13px;
+  color: var(--text);
+  margin: 1px 0 2px;
+}
+.revisarLink {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+}
+.revisarLink:hover {
+  text-decoration: underline;
+}
+.revisarVazio {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+/* ---------- Selo de trilha ---------- */
+.selo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.seloMeta {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+/* ---------- Rodapé honesto ---------- */
+.rodapeSelo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-faint);
+  margin: var(--space-3) 0 0;
+}
+.rodapeGlyph {
+  color: var(--primary);
+  font-size: 13px;
+}
