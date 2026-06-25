@@ -106,6 +106,32 @@ function parseInstant(iso: string): Date {
   return date;
 }
 
+// M1 — o calendário de feriados (feriados-nacionais.json) cobre um intervalo
+// FINITO de anos. Contar um prazo que ultrapassa o último ano coberto trataria
+// dias úteis APÓS a tabela como se não houvesse feriado naquele ano → contagem
+// errada SILENCIOSA (um feriado não-listado vira dia útil). FALHAR ALTO: se o
+// vencimento cair além do último ano coberto, lança erro claro em vez de chutar.
+function maxCoveredYear(holidays: ReadonlySet<string>): number {
+  let max = -Infinity;
+  for (const d of holidays) {
+    const y = Number(d.slice(0, 4));
+    if (Number.isFinite(y) && y > max) max = y;
+  }
+  return max;
+}
+
+function assertWithinCoverage(dueDay: Date, holidays: ReadonlySet<string>): void {
+  if (holidays.size === 0) return; // sem tabela → nada a garantir aqui
+  const max = maxCoveredYear(holidays);
+  if (dueDay.getUTCFullYear() > max) {
+    throw new RangeError(
+      `noyce-deadline: contagem ultrapassa o último ano coberto pela tabela de feriados (${max}); ` +
+        `vencimento cairia em ${toDateOnly(dueDay)}. Atualize feriados-nacionais.json antes de contar prazos além de ${max} ` +
+        `(contar feriado como dia útil seria preclusão por erro silencioso).`,
+    );
+  }
+}
+
 function resolveCutoff(cutoffHour: number | undefined): { hour: number; minute: number; second: number } {
   if (cutoffHour === undefined) {
     return { hour: DEFAULT_CUTOFF_HOUR, minute: DEFAULT_CUTOFF_MINUTE, second: DEFAULT_CUTOFF_SECOND };
@@ -153,6 +179,9 @@ export function businessDaysDeadline(fromIso: string, businessDays: number, opts
   let remaining = businessDays;
   while (remaining > 0) {
     cursor.setUTCDate(cursor.getUTCDate() + 1);
+    // M1 — se a contagem caminhou para um ano além da cobertura da tabela, os
+    // feriados desse ano são desconhecidos → falhar alto, nunca contar às cegas.
+    assertWithinCoverage(cursor, holidays);
     if (isBusinessDay(cursor, holidays)) remaining -= 1;
   }
 
@@ -165,9 +194,12 @@ export function businessDaysDeadline(fromIso: string, businessDays: number, opts
 // Não pula fim de semana/feriado. Soma N dias civis ao dia de início e ancora
 // no instante de corte. Mantém a mesma hora-cheia (cutoffHour) que os úteis,
 // para que timeUntil/alertas tratem ambos os tipos de relógio uniformemente.
-// (Premissa: dias corridos NÃO prorrogam o vencimento que cai em dia não-útil —
-//  é a regra geral de prazo material/corrido; quem precisa de prorrogação usa
-//  dias úteis. Assumido — sinalizado p/ validação do founder.)
+// FOUNDER-DECISION (M2 — prorrogação de prazo corrido): assume-se que dias
+//  corridos NÃO prorrogam o vencimento que cai em dia não-útil (regra geral de
+//  prazo material/corrido; quem precisa de prorrogação usa dias úteis). Esta é
+//  uma DECISÃO JURÍDICA pendente do founder — NÃO alterar sem validação dele.
+//  Se a regra for "prorroga p/ o próximo dia útil também no corrido", a mudança
+//  é aqui (mover o cursor enquanto !isBusinessDay antes de ancorar o cutoff).
 // ─────────────────────────────────────────────────────────────────────────────
 export function calendarDaysDeadline(fromIso: string, days: number, opts?: CalendarDeadlineOptions): string {
   if (!Number.isInteger(days) || days < 1) {

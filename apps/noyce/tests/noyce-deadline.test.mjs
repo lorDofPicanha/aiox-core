@@ -158,3 +158,20 @@ test("businessDaysDeadline rejeita dias < 1 e ISO inválido", () => {
 test("cutoffHour fora de 0..23 é rejeitado", () => {
   assert.throws(() => businessDaysDeadline("2026-01-30T09:00:00-03:00", 3, { ...EMPTY, cutoffHour: 24 }), RangeError);
 });
+
+// ── M1 — falhar alto se a contagem ultrapassa o último ano da tabela de feriados ──
+// Calendário sintético que cobre só 2026; contar muito além de 2026-12 cairia em
+// 2027 (feriados desconhecidos) → deve LANÇAR, nunca contar feriado como dia útil.
+const CAL_2026_ONLY = { holidays: [{ date: "2026-12-25", name: "Natal", kind: "fixed" }] };
+
+test("M1: prazo que cruza para 2027 (além da tabela) → LANÇA RangeError", () => {
+  assert.throws(
+    // De fim de dezembro/2026 + muitos dias úteis → vence em 2027.
+    () => businessDaysDeadline("2026-12-20T09:00:00-03:00", 30, { holidays: CAL_2026_ONLY }),
+    /ultrapassa o último ano coberto|2026/,
+  );
+});
+
+test("M1: prazo que fica DENTRO de 2026 (tabela cobre) → NÃO lança", () => {
+  assert.doesNotThrow(() => businessDaysDeadline("2026-12-01T09:00:00-03:00", 3, { holidays: CAL_2026_ONLY }));
+});

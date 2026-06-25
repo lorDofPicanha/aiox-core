@@ -195,7 +195,16 @@ export interface MaestroState {
   // Discriminator for aguardando-dado (C3); null when not in that state.
   waitingFor?: WaitingFor | null;
   // Set when a non-fatal clock missed (M1/I5): estado permanece, alerta CRÍTICO.
+  // Slot COMPARTILHADO de alerta (prazo não-fatal, downgrade do scheduler, empate
+  // ficto, tribuno) — sobrescrito a cada novo alerta. NÃO usar para vetos de
+  // segurança duradouros (ver openBlockingGap).
   stepFailed?: { reason: string; at: string } | null;
+  // A3/C4-ii — VETO de protocolo TIPADO e dedicado. Setado quando o edital entra
+  // em `entregando` via GO_COM_TAREFAS com uma HabilitationGap sanável bloqueante
+  // aberta; bloqueia `pronto-protocolo→protocolada` até o humano resolver. Vive
+  // num campo PRÓPRIO (não no slot volátil `stepFailed`) para que um prazo
+  // não-fatal vencendo NÃO apague o veto de segurança.
+  openBlockingGap?: boolean;
 }
 
 // ───────────────────────────────────────────────────────────────────────────
@@ -355,5 +364,6 @@ export function initialMaestroState(editalVersionHash: string): MaestroState {
     clocks: [],
     waitingFor: null,
     stepFailed: null,
+    openBlockingGap: false,
   };
 }

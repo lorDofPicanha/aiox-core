@@ -149,6 +149,9 @@ apps/*
 !apps/noyce/**
 apps/noyce/.next/
 apps/noyce/node_modules/
+apps/noyce/.env
+apps/noyce/.env.local
+apps/noyce/.env.*.local
 !apps/polymarket-trader/
 !apps/tocks-lp/
 !apps/tocks-website/

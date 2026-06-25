@@ -1,0 +1,175 @@
+<!-- @dsCard group="Bretda · Pages" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bretda — Collection</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{--charcoal:#23241f;--void:#131410;--champagne:#C9A961;--champ2:#e6d2a0;--off:#EDE9E0;--muted:rgba(237,233,224,.5);--hair:rgba(201,169,97,.22);--ease:cubic-bezier(.22,.61,.36,1)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--void);color:var(--off);font-family:'Raleway',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body::after{content:"";position:fixed;inset:-50%;z-index:61;pointer-events:none;opacity:.045;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain 7s steps(6) infinite}
+  @keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-4%,3%)}50%{transform:translate(3%,-3%)}75%{transform:translate(-2%,2%)}100%{transform:translate(0,0)}}
+  .wrap{max-width:1340px;margin:0 auto;padding:0 56px 100px;position:relative;z-index:5}
+  header{display:flex;align-items:center;justify-content:space-between;padding:28px 0;border-bottom:1px solid var(--hair)}
+  .logo{font-family:'Bodoni Moda',serif;font-size:21px;letter-spacing:.34em;font-weight:500;padding-left:.34em}
+  nav{display:flex;gap:38px}nav a{color:var(--off);opacity:.74;text-decoration:none;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;transition:.3s}nav a:hover{opacity:1;color:var(--champagne)}
+  .mark-wrap{position:relative}
+  .mark{background:none;border:none;cursor:pointer;color:var(--off);font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;display:inline-flex;align-items:center;gap:8px;font-family:'Raleway'}
+  .mark .chev{width:6px;height:6px;border-right:1px solid var(--champagne);border-bottom:1px solid var(--champagne);transform:rotate(45deg);transition:.35s;opacity:.8}.mark.open .chev{transform:rotate(225deg)}.mark .sep{color:var(--hair)}
+  .panel{position:absolute;top:calc(100% + 14px);right:0;min-width:280px;background:rgba(25,26,22,.92);backdrop-filter:blur(14px);border:1px solid var(--hair);padding:22px 24px;display:grid;grid-template-columns:1fr 1fr;gap:26px;opacity:0;transform:translateY(-8px);pointer-events:none;transition:.32s var(--ease);box-shadow:0 30px 60px -20px rgba(0,0,0,.7);z-index:40}
+  .panel.open{opacity:1;transform:translateY(0);pointer-events:auto}
+  .panel h4{font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:13px}
+  .opt{background:none;border:none;cursor:pointer;color:var(--muted);font-size:13px;display:flex;align-items:center;gap:9px;padding:7px 0;width:100%;text-align:left;font-family:'Raleway';transition:.25s}.opt:hover{color:var(--off)}.opt.active{color:var(--champagne)}.opt .dot{width:5px;height:5px;border-radius:50%}.opt.active .dot{background:var(--champagne)}
+
+  .head{padding:74px 0 26px}
+  .eyebrow{font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--champagne);font-weight:600;margin-bottom:18px}
+  .head h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:68px;line-height:.98;letter-spacing:-.015em}
+  .head h1 em{font-style:italic;color:var(--champagne)}
+  .chips{display:flex;gap:10px;flex-wrap:wrap;margin:36px 0 8px}
+  .chip{background:none;border:1px solid var(--hair);color:var(--muted);font-family:'Raleway';font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;padding:9px 18px;cursor:pointer;transition:.3s}
+  .chip:hover{color:var(--off);border-color:rgba(201,169,97,.5)}.chip.active{background:var(--champagne);color:#191a16;border-color:var(--champagne)}
+
+  .section-label{display:flex;align-items:center;gap:18px;margin:58px 0 4px}
+  .section-label .t{font-family:'Bodoni Moda',serif;font-size:14px;letter-spacing:.22em;text-transform:uppercase;color:var(--champagne);white-space:nowrap}
+  .section-label .ln{flex:1;height:1px;background:var(--hair)}
+  .section-label .c{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+
+  .feature{position:relative;display:grid;grid-template-columns:1.4fr 1fr;gap:44px;align-items:center;margin:22px 0 18px;border:1px solid var(--hair);overflow:hidden}
+  .feature .gn{position:absolute;right:2%;top:-6%;font-family:'Bodoni Moda',serif;font-size:13vw;color:rgba(201,169,97,.05);z-index:0;pointer-events:none;line-height:.8}
+  .feature .ph{background:radial-gradient(120% 90% at 50% 45%,#1b1c17,#0b0c09);overflow:hidden;position:relative;z-index:1}
+  .feature .ph img{width:100%;display:block;transition:transform 1s var(--ease)}
+  .feature:hover .ph img{transform:scale(1.045)}
+  .feature .meta{padding:48px 48px 48px 8px;position:relative;z-index:2}
+  .flag{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--champagne);font-weight:600;margin-bottom:16px}
+  .feature .name{font-family:'Bodoni Moda',serif;font-size:60px;line-height:.96;margin-bottom:12px}
+  .cat{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:22px}
+  .price{font-family:'Bodoni Moda',serif;font-size:25px;font-variant-numeric:tabular-nums}
+  .price .from{font-family:'Raleway';font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-right:6px;vertical-align:middle}
+  .link{display:inline-flex;align-items:center;gap:10px;margin-top:28px;color:var(--off);font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;cursor:pointer;border-bottom:1px solid var(--hair);padding-bottom:5px;transition:.3s}
+  .link .ar{transition:transform .3s var(--ease)}.link:hover{color:var(--champagne);border-color:var(--champagne)}.link:hover .ar{transform:translateX(5px)}
+
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--hair);border:1px solid var(--hair);margin-top:14px}
+  .grid.three{grid-template-columns:repeat(3,1fr)}
+  .card{background:var(--void);cursor:pointer;display:flex;flex-direction:column;position:relative;opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+  .card.in{opacity:1;transform:translateY(0)}
+  .card .num{position:absolute;top:16px;left:18px;z-index:3;font-size:10px;letter-spacing:.16em;color:var(--muted);font-weight:500}
+  .card .ph{background:radial-gradient(120% 95% at 50% 48%,#191a15,#0a0b08);aspect-ratio:4/3;overflow:hidden;display:flex;align-items:center;justify-content:center}
+  .card .ph img{width:100%;display:block;transition:transform .8s var(--ease),filter .6s;filter:brightness(.94)}
+  .card.float .ph{padding:14px 22px}
+  .card.float .ph img{width:100%;max-height:100%;object-fit:contain;filter:brightness(.98) drop-shadow(0 22px 26px rgba(0,0,0,.55))}
+  .card:hover .ph img{transform:scale(1.06);filter:brightness(1.06)}
+  .card .body{padding:22px 24px 26px;display:flex;flex-direction:column;gap:6px;position:relative}
+  .card .body::before{content:"";position:absolute;top:0;left:24px;right:24px;height:1px;background:var(--champagne);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+  .card:hover .body::before{transform:scaleX(1)}
+  .card .name{font-family:'Bodoni Moda',serif;font-size:24px;line-height:1}
+  .card .cat{margin:2px 0 6px;font-size:10px}
+  .card .price{font-size:16px}
+  .note{margin-top:46px;font-size:11px;color:var(--muted);letter-spacing:.04em;line-height:1.6;border-left:1px solid var(--hair);padding-left:16px;max-width:70ch}
+  .swap{transition:opacity .28s var(--ease)}.swap.out{opacity:0}
+  @media(max-width:900px){.wrap{padding:0 24px 60px}nav{display:none}.head h1{font-size:44px}.feature{grid-template-columns:1fr}.feature .meta{padding:30px}.grid,.grid.three{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">BRETDA</div>
+      <nav><a>Collection</a><a class="swap" data-i="n2">The Atelier</a><a class="swap" data-i="n3">Contact</a></nav>
+      <div class="mark-wrap">
+        <button class="mark" id="mark"><span id="ml">EN</span><span class="sep">·</span><span id="mc">$</span><span class="chev"></span></button>
+        <div class="panel" id="panel">
+          <div><h4 class="swap" data-i="lblLang">Language</h4>
+            <button class="opt active" data-lang="en"><span class="dot"></span>English</button>
+            <button class="opt" data-lang="es"><span class="dot"></span>Español</button>
+            <button class="opt" data-lang="de"><span class="dot"></span>Deutsch</button>
+            <button class="opt" data-lang="fr"><span class="dot"></span>Français</button></div>
+          <div><h4 class="swap" data-i="lblCur">Currency</h4>
+            <button class="opt cur active" data-cur="usd"><span class="dot"></span>$ USD</button>
+            <button class="opt cur" data-cur="eur"><span class="dot"></span>€ EUR</button></div>
+        </div>
+      </div>
+    </header>
+
+    <div class="head">
+      <div class="eyebrow swap" data-i="eyebrow">The Collection · Made to Order</div>
+      <h1 class="swap" data-i="title">Two lines.<br><em>One atelier.</em></h1>
+      <div class="chips">
+        <button class="chip active swap" data-i="c_all">All</button>
+        <button class="chip swap" data-i="c_bil">Billiards</button>
+        <button class="chip swap" data-i="c_con">Convertible</button>
+        <button class="chip">Ping-Pong</button>
+        <button class="chip swap" data-i="c_foo">Foosball</button>
+        <button class="chip">Shuffleboard</button>
+      </div>
+    </div>
+
+    <div class="section-label"><span class="t swap" data-i="atelier">Atelier</span><span class="ln"></span><span class="c swap" data-i="atelier_c">The signature pieces</span></div>
+
+    <article class="feature">
+      <div class="gn">01</div>
+      <div class="ph"><img src="assets/aurora-1.jpg" alt="Aurora"></div>
+      <div class="meta">
+        <div class="flag swap" data-i="flagship">The Flagship</div>
+        <div class="name">Aurora</div>
+        <div class="cat swap" data-i="cat_bil">Billiards · Solid hardwood</div>
+        <div class="price"><span class="from swap" data-i="from">From</span><span class="amt" data-usd="23800" data-eur="22200">$23,800</span></div>
+        <div class="link swap" data-i="discover">Discover Aurora <span class="ar">→</span></div>
+      </div>
+    </article>
+
+    <div class="grid">
+      <article class="card"><div class="num">N° 02</div><div class="ph"><img src="assets/espinela-1.jpg" alt="Espinela"></div>
+        <div class="body"><div class="name">Espinela</div><div class="cat swap" data-i="c_bil">Billiards</div><div class="price"><span class="from swap" data-i="from">From</span><span class="amt" data-usd="18500" data-eur="17300">$18,500</span></div></div></article>
+      <article class="card"><div class="num">N° 03</div><div class="ph"><img src="assets/opal-1.jpg" alt="Opal"></div>
+        <div class="body"><div class="name">Opal</div><div class="cat swap" data-i="c_bil">Billiards</div><div class="price"><span class="from swap" data-i="from">From</span><span class="amt" data-usd="12900" data-eur="12050">$12,900</span></div></div></article>
+      <article class="card"><div class="num">N° 04</div><div class="ph"><img src="assets/citrino-1.jpg" alt="Citrino"></div>
+        <div class="body"><div class="name">Citrino</div><div class="cat swap" data-i="c_bil">Billiards</div><div class="price"><span class="from swap" data-i="from">From</span><span class="amt" data-usd="9800" data-eur="9150">$9,800</span></div></div></article>
+      <article class="card"><div class="num">N° 05</div><div class="ph"><img src="assets/ambar-1.jpg" alt="Âmbar"></div>
+        <div class="body"><div class="name">Âmbar</div><div class="cat swap" data-i="c_bil">Billiards</div><div class="price"><span class="from swap" data-i="from">From</span><span class="amt" data-usd="8200" data-eur="7650">$8,200</span></div></div></article>
+    </div>
+
+    <div class="section-label"><span class="t swap" data-i="signature">Signature</span><span class="ln"></span><span class="c swap" data-i="signature_c">The complete line · 18 models</span></div>
+    <div class="grid three" id="sig-grid"></div>
+
+    <p class="note swap" data-i="note">Indicative prices — final commission confirmed at order. Signature tables shown as real product cut-outs (background removed; tables unaltered). Re-shot studio renders on black to follow.</p>
+  </div>
+
+<script>
+  const TOCKS=[
+    {s:"master",n:"Master",c:"con",u:16500,e:15400},{s:"monaco",n:"Mônaco",c:"con",u:15800,e:14700},
+    {s:"dubai",n:"Dubai",c:"con",u:14200,e:13250},{s:"tenro",n:"Tenro",c:"bil",u:13600,e:12700},
+    {s:"rustic",n:"Rustic",c:"bil",u:12400,e:11600},{s:"berlin",n:"Berlin",c:"bil",u:11900,e:11100},
+    {s:"contemporanea",n:"Contemporânea",c:"bil",u:11200,e:10450},{s:"vertice",n:"Vértice",c:"bil",u:11500,e:10750},
+    {s:"elipse",n:"Elipse",c:"bil",u:10900,e:10200},{s:"nobus",n:"Nobus",c:"bil",u:10600,e:9900},
+    {s:"elemento",n:"Elemento",c:"bil",u:9900,e:9250},{s:"gabe",n:"Gabe",c:"bil",u:9400,e:8800},
+    {s:"aparato",n:"Aparato",c:"bil",u:14900,e:13900},{s:"harley",n:"Harley",c:"bil",u:15400,e:14400},
+    {s:"modern-inox",n:"Modern Inox",c:"bil",u:17800,e:16600},{s:"modern-premium",n:"Modern Premium",c:"bil",u:16200,e:15100},
+    {s:"design",n:"Design",c:"bil",u:12800,e:11950},{s:"curve",n:"Curve",c:"bil",u:13200,e:12300}
+  ];
+  const T={
+    en:{n2:"The Atelier",n3:"Contact",lblLang:"Language",lblCur:"Currency",eyebrow:"The Collection · Made to Order",title:"Two lines.<br><em>One atelier.</em>",c_all:"All",c_bil:"Billiards",c_con:"Convertible",c_foo:"Foosball",atelier:"Atelier",atelier_c:"The signature pieces",signature:"Signature",signature_c:"The complete line · 18 models",flagship:"The Flagship",cat_bil:"Billiards · Solid hardwood",from:"From",discover:'Discover Aurora <span class="ar">→</span>',note:"Indicative prices — final commission confirmed at order. Signature tables shown as real product cut-outs (background removed; tables unaltered). Re-shot studio renders on black to follow."},
+    es:{n2:"El Atelier",n3:"Contacto",lblLang:"Idioma",lblCur:"Moneda",eyebrow:"La Colección · Hecha a medida",title:"Dos líneas.<br><em>Un atelier.</em>",c_all:"Todas",c_bil:"Billar",c_con:"Convertible",c_foo:"Futbolín",atelier:"Atelier",atelier_c:"Las piezas insignia",signature:"Signature",signature_c:"La línea completa · 18 modelos",flagship:"La pieza insignia",cat_bil:"Billar · Madera maciza",from:"Desde",discover:'Descubrir Aurora <span class="ar">→</span>',note:"Precios indicativos — encargo final confirmado al pedido. Mesas Signature mostradas como recortes reales (fondo eliminado; mesas sin alterar). Renders de estudio en negro a continuación."},
+    de:{n2:"Das Atelier",n3:"Kontakt",lblLang:"Sprache",lblCur:"Währung",eyebrow:"Die Kollektion · Auf Bestellung",title:"Zwei Linien.<br><em>Ein Atelier.</em>",c_all:"Alle",c_bil:"Billard",c_con:"Verwandelbar",c_foo:"Tischfußball",atelier:"Atelier",atelier_c:"Die Signature-Stücke",signature:"Signature",signature_c:"Die komplette Linie · 18 Modelle",flagship:"Das Flaggschiff",cat_bil:"Billard · Massivholz",from:"Ab",discover:'Aurora entdecken <span class="ar">→</span>',note:"Richtpreise — finale Anfertigung bei Bestellung bestätigt. Signature-Tische als echte Freisteller gezeigt (Hintergrund entfernt; Tische unverändert). Studio-Renders auf Schwarz folgen."},
+    fr:{n2:"L'Atelier",n3:"Contact",lblLang:"Langue",lblCur:"Devise",eyebrow:"La Collection · Sur commande",title:"Deux lignes.<br><em>Un atelier.</em>",c_all:"Toutes",c_bil:"Billard",c_con:"Convertible",c_foo:"Baby-foot",atelier:"Atelier",atelier_c:"Les pièces maîtresses",signature:"Signature",signature_c:"La ligne complète · 18 modèles",flagship:"La pièce maîtresse",cat_bil:"Billard · Bois massif",from:"À partir de",discover:'Découvrir Aurora <span class="ar">→</span>',note:"Prix indicatifs — commande finale confirmée à l'achat. Tables Signature présentées en découpes réelles (fond retiré ; tables non modifiées). Rendus studio sur noir à suivre."}
+  };
+  const SYM={usd:"$",eur:"€"},LANGCUR={en:"usd",es:"eur",de:"eur",fr:"eur"};let curLang="en",curCur="usd";
+  function fmt(v,cur,lang){if(cur==="usd")return "$"+(+v).toLocaleString("en-US");const loc=lang==="de"?"de-DE":lang==="fr"?"fr-FR":"es-ES";return (+v).toLocaleString(loc)+" €"}
+  // render Signature grid
+  document.getElementById("sig-grid").innerHTML=TOCKS.map((t,i)=>`<article class="card float"><div class="num">N° ${String(i+6).padStart(2,"0")}</div><div class="ph"><img src="assets/tocks/${t.s}.png" alt="${t.n}"></div><div class="body"><div class="name">${t.n}</div><div class="cat swap" data-i="${t.c==='con'?'c_con':'c_bil'}">Billiards</div><div class="price"><span class="from swap" data-i="from">From</span><span class="amt" data-usd="${t.u}" data-eur="${t.e}">$${t.u.toLocaleString("en-US")}</span></div></div></article>`).join("");
+  function prices(){document.querySelectorAll(".amt").forEach(el=>{el.textContent=fmt(el.dataset[curCur],curCur,curLang)})}
+  function applyLang(l){const d=T[l];document.querySelectorAll(".swap[data-i]").forEach(el=>{el.classList.add("out");setTimeout(()=>{el.innerHTML=d[el.dataset.i];el.classList.remove("out")},190)});document.documentElement.lang=l;document.getElementById("ml").textContent=l.toUpperCase()}
+  function setA(s,a,v){document.querySelectorAll(s).forEach(b=>b.classList.toggle("active",b.dataset[a]===v))}
+  document.querySelectorAll(".opt[data-lang]").forEach(b=>b.addEventListener("click",()=>{curLang=b.dataset.lang;setA(".opt[data-lang]","lang",curLang);applyLang(curLang);const w=LANGCUR[curLang];if(w!==curCur){curCur=w;setA(".opt.cur","cur",curCur);document.getElementById("mc").textContent=SYM[curCur]}setTimeout(prices,200)}));
+  document.querySelectorAll(".opt.cur").forEach(b=>b.addEventListener("click",()=>{curCur=b.dataset.cur;setA(".opt.cur","cur",curCur);document.getElementById("mc").textContent=SYM[curCur];prices()}));
+  document.querySelectorAll(".chip").forEach(c=>c.addEventListener("click",()=>{document.querySelectorAll(".chip").forEach(x=>x.classList.remove("active"));c.classList.add("active")}));
+  const cards=[...document.querySelectorAll(".card")];
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const i=cards.indexOf(e.target);setTimeout(()=>e.target.classList.add("in"),(i%4)*90);io.unobserve(e.target)}}),{threshold:.12});
+  cards.forEach(c=>io.observe(c));
+  const mark=document.getElementById("mark"),panel=document.getElementById("panel");
+  mark.addEventListener("click",e=>{e.stopPropagation();const o=panel.classList.toggle("open");mark.classList.toggle("open",o)});
+  document.addEventListener("click",e=>{if(!panel.contains(e.target)&&e.target!==mark){panel.classList.remove("open");mark.classList.remove("open")}});
+</script>
+</body>
+</html>

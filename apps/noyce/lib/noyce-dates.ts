@@ -59,3 +59,32 @@ export function holidaySet(calendar: HolidayCalendar): ReadonlySet<string> {
 export function toDateOnly(date: Date): string {
   return date.toISOString().slice(0, 10);
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ensureBrOffset (C1) — NORMALIZAÇÃO DE FUSO NA FRONTEIRA.
+//
+// Datas de portal/fixture chegam NAIVE: "2026-06-25T10:00:00" — sem Z, sem
+// offset. `new Date()` parseia naive como hora LOCAL do servidor; em produção
+// (Vercel/Railway = UTC) isso adianta o prazo em 3h e, após a meia-noite, desloca
+// o DIA CIVIL inteiro → preclusão silenciosa (a classe de bug Fortaleza×SP).
+//
+// Este helper carimba o offset BR (−03:00) numa string naive ANTES de virar
+// instante, garantindo que o engine puro (noyce-deadline.ts) sempre receba um
+// instante absoluto inequívoco — independente do TZ do servidor. NÃO altera a
+// lógica pura: roda na fronteira (maestro-runtime arming, triage), não no motor.
+//
+//   • string naive (data+hora, sem Z/offset) → anexa "-03:00".
+//   • já tem Z ou ±offset                     → retorna inalterada.
+//   • null / vazia / formato não reconhecido  → retorna null (conservador: nunca
+//     inventa fuso sobre algo que não é um datetime naive bem-formado; o caller
+//     decide se isso vira "sem clock" — I2/I5, nunca chuta).
+// ─────────────────────────────────────────────────────────────────────────────
+const NAIVE_DATETIME_RE = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2})?$/;
+const HAS_TZ_RE = /(Z|[+-]\d{2}:?\d{2})$/;
+
+export function ensureBrOffset(iso: string | null | undefined): string | null {
+  if (typeof iso !== "string" || iso.length === 0) return null;
+  if (HAS_TZ_RE.test(iso)) return iso; // já tem Z ou offset → absoluto, não toca
+  if (NAIVE_DATETIME_RE.test(iso)) return `${iso}${BR_UTC_OFFSET}`; // naive → carimba −03:00
+  return null; // formato não reconhecido → conservador (sem clock)
+}

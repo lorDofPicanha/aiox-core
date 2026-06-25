@@ -25,6 +25,7 @@ import { FATAL_CLOCK_KINDS } from "./maestro-types.ts";
 import { businessDaysDeadline, deadlineAlertLevel, timeUntil } from "../noyce-deadline.ts";
 import type { DeadlineAlertLevel } from "../noyce-deadline.ts";
 import type { HolidayCalendar } from "../noyce-dates.ts";
+import { ensureBrOffset } from "../noyce-dates.ts";
 import feriadosNacionais from "../data/feriados-nacionais.json" with { type: "json" };
 
 const HOLIDAYS = feriadosNacionais as HolidayCalendar;
@@ -102,7 +103,7 @@ function mapDateConfidence(status: LegalProcessEvent["status"]): PreclusiveClock
 // edital portal/publication; recurso/diligência windows are armed off the ata
 // (session record). Defaults are deliberate and documented.
 function resolveDueAt(event: LegalProcessEvent): string | null {
-  if (event.eventTime) return event.eventTime;
+  if (event.eventTime) return ensureBrOffset(event.eventTime); // C1 — normaliza fuso na fronteira
   return null;
 }
 
@@ -126,11 +127,16 @@ export function deriveMaestroState(opp: Opportunity): MaestroState {
   const clocks: PreclusiveClock[] = [];
 
   // Proposta clock from the durable proposalDeadline (observed when present).
-  if (opp.proposalDeadline) {
+  // C1 — normaliza o fuso na fronteira: proposalDeadline chega NAIVE do portal
+  // ("2026-06-25T10:00:00"); sem o carimbo −03:00 o instante deslizaria com o TZ
+  // do servidor (preclusão silenciosa). ensureBrOffset=null ⇒ formato inválido ⇒
+  // sem clock (nunca inventa fuso — I2/I5).
+  const propostaDueAt = opp.proposalDeadline ? ensureBrOffset(opp.proposalDeadline) : null;
+  if (propostaDueAt) {
     clocks.push({
       kind: "proposta",
       basis: "uteis_horacheia",
-      dueAt: opp.proposalDeadline,
+      dueAt: propostaDueAt,
       armedBy: "evento_portal",
       status: "armado",
       fatalOnMiss: FATAL_CLOCK_KINDS.has("proposta"),
@@ -140,12 +146,20 @@ export function deriveMaestroState(opp: Opportunity): MaestroState {
 
   // Preclusive legalProcess events → clocks. Non-preclusive events are ignored.
   for (const event of opp.legalProcess.events) {
+    // A2 — não armar clock fatal sobre evento que não vai mais ocorrer:
+    //   "cancelled" → sessão/edital remarcado/revogado → sem clock.
+    //   "missed"    → evento já passou (informativo) → sem clock fatal novo;
+    //                 o miss real é tratado pelo engine via prazo_venceu, não
+    //                 re-armando um alarme de algo já vencido.
+    // Postura conservadora consistente com resolveDueAt/eventTime=null.
+    if (event.status === "cancelled" || event.status === "missed") continue;
+
     const kind = clockKindForEvent(event);
     if (kind === null) continue; // non-preclusive → no clock
 
     // Skip the proposta event if we already armed the proposta clock from the
     // durable field (avoid a duplicate); the durable field is authoritative.
-    if (kind === "proposta" && opp.proposalDeadline) continue;
+    if (kind === "proposta" && propostaDueAt) continue;
 
     const dueAt = resolveDueAt(event);
     if (dueAt === null) continue; // no calculable instant → never invent (I2/I5)
@@ -170,6 +184,7 @@ export function deriveMaestroState(opp: Opportunity): MaestroState {
     clocks,
     waitingFor: null,
     stepFailed: null,
+    openBlockingGap: false,
   };
 }
 

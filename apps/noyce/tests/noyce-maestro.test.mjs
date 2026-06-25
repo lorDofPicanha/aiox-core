@@ -379,3 +379,33 @@ test("history registra cada transição com actor e evento (auditoria Lastro)", 
   assert.equal(s.history[0].to, "triado");
   assert.equal(s.history[1].actor, "pipeline");
 });
+
+// ════════════════════════════════════════════════════════════════════════════
+// A3 — veto de protocolo TIPADO não é apagado por prazo não-fatal no slot stepFailed
+// ════════════════════════════════════════════════════════════════════════════
+
+test("A3: prazo não-fatal vencendo NÃO apaga o veto de protocolo (gap bloqueante segue vetando)", () => {
+  // Arma o veto de gap sanável bloqueante em pronto-protocolo.
+  let s = flagOpenSanavelBlockingGap(at("pronto-protocolo", { clocks: [clock("diligencia", false)] }), NOW);
+  assert.equal(s.openBlockingGap, true);
+
+  // Um prazo NÃO-fatal vence → o engine grava stepFailed (slot volátil/alerta).
+  // ANTES do A3 isso apagava o veto (que morava em stepFailed por prefixo de string).
+  s = ok(transition(s, { type: "prazo_venceu", clockKind: "diligencia" }, scheduler));
+  assert.match(s.stepFailed.reason, /não-fatal|nao-fatal|alerta/i);
+  assert.equal(s.openBlockingGap, true, "veto TIPADO sobrevive ao overwrite do stepFailed");
+
+  // Confirmar protocolo continua REJEITADO pelo veto de gap.
+  const reason = rejected(
+    transition(s, { type: "humano_confirmou_protocolo", numeroProcesso: "P", protocolAt: NOW }, human),
+  );
+  assert.match(reason, /sanável bloqueante|SANAVEL|sanavel/i);
+
+  // Resolvido o gap → typed flag limpa → protocolo passa.
+  const cleared = clearSanavelBlockingGap(s);
+  assert.equal(cleared.openBlockingGap, false);
+  const after = ok(
+    transition(cleared, { type: "humano_confirmou_protocolo", numeroProcesso: "P", protocolAt: NOW }, human),
+  );
+  assert.equal(after.stage, "protocolada");
+});

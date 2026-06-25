@@ -1,0 +1,153 @@
+<!-- @dsCard group="Bretda · Pages" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bretda — 3D Configurator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<style>
+  :root{--charcoal:#23241f;--void:#131410;--champagne:#C9A961;--champ2:#e6d2a0;--off:#EDE9E0;--muted:rgba(237,233,224,.5);--hair:rgba(201,169,97,.24);--ease:cubic-bezier(.22,.61,.36,1)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--void);color:var(--off);font-family:'Raleway',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body::after{content:"";position:fixed;inset:-50%;z-index:1;pointer-events:none;opacity:.04;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .wrap{max-width:1340px;margin:0 auto;padding:0 56px 70px;position:relative;z-index:5}
+  header{display:flex;align-items:center;justify-content:space-between;padding:28px 0;border-bottom:1px solid var(--hair)}
+  .logo{font-family:'Bodoni Moda',serif;font-size:21px;letter-spacing:.34em;font-weight:500;padding-left:.34em}
+  nav{display:flex;gap:38px}nav a{color:var(--off);opacity:.74;text-decoration:none;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;transition:.3s}nav a:hover{opacity:1;color:var(--champagne)}
+  .mark-wrap{position:relative}
+  .mark{background:none;border:none;cursor:pointer;color:var(--off);font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;display:inline-flex;align-items:center;gap:8px;font-family:'Raleway'}
+  .mark .chev{width:6px;height:6px;border-right:1px solid var(--champagne);border-bottom:1px solid var(--champagne);transform:rotate(45deg);transition:.35s;opacity:.8}.mark.open .chev{transform:rotate(225deg)}.mark .sep{color:var(--hair)}
+  .panel{position:absolute;top:calc(100% + 14px);right:0;min-width:280px;background:rgba(25,26,22,.94);backdrop-filter:blur(14px);border:1px solid var(--hair);padding:22px 24px;display:grid;grid-template-columns:1fr 1fr;gap:26px;opacity:0;transform:translateY(-8px);pointer-events:none;transition:.32s var(--ease);box-shadow:0 30px 60px -20px rgba(0,0,0,.7);z-index:60}
+  .panel.open{opacity:1;transform:translateY(0);pointer-events:auto}
+  .panel h4{font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:13px}
+  .opt{background:none;border:none;cursor:pointer;color:var(--muted);font-size:13px;display:flex;align-items:center;gap:9px;padding:7px 0;width:100%;text-align:left;font-family:'Raleway';transition:.25s}.opt:hover{color:var(--off)}.opt.active{color:var(--champagne)}.opt .dot{width:5px;height:5px;border-radius:50%}.opt.active .dot{background:var(--champagne)}
+
+  .config{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;padding-top:30px;align-items:start}
+  .stage{position:sticky;top:24px;border:1px solid var(--hair);background:radial-gradient(120% 90% at 50% 42%,#1c1d18,#0a0b08);overflow:hidden}
+  model-viewer{width:100%;height:64vh;min-height:440px;--poster-color:transparent;background:transparent}
+  .stage .bar{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-top:1px solid var(--hair)}
+  .stage .hint{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .arbtn{background:none;border:1px solid var(--hair);color:var(--champagne);font-family:'Raleway';font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;padding:9px 16px;cursor:pointer;transition:.3s}
+  .arbtn:hover{background:var(--champagne);color:#191a16}
+  .prog{position:absolute;left:0;top:0;height:2px;width:0;background:var(--champagne);transition:width .2s;z-index:5}
+
+  .ctrl{min-width:0}
+  .eyebrow{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--champagne);font-weight:600;margin-bottom:14px}
+  .ctrl h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:52px;line-height:.96;margin-bottom:6px}
+  .ctrl .sub{font-style:italic;font-family:'Bodoni Moda',serif;font-size:15px;color:rgba(237,233,224,.6);margin-bottom:30px}
+
+  .step{border-top:1px solid var(--hair);padding:22px 0}
+  .step .top{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:16px}
+  .step .lbl{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .step .lbl .n{color:var(--champagne);margin-right:8px}
+  .step .sel{font-size:12.5px;color:var(--off);letter-spacing:.02em}
+  .sw-grid{display:flex;flex-wrap:wrap;gap:11px}
+  .sw{width:42px;height:42px;border-radius:50%;border:1px solid var(--hair);cursor:pointer;overflow:hidden;position:relative;transition:transform .25s var(--ease)}
+  .sw img{width:100%;height:100%;object-fit:cover}
+  .sw::after{content:"";position:absolute;inset:-4px;border:1px solid transparent;border-radius:50%;transition:.25s}
+  .sw:hover{transform:scale(1.08)}.sw.active::after{border-color:var(--champagne)}
+
+  .summary{border-top:1px solid var(--hair);margin-top:6px;padding-top:24px}
+  .price-row{display:flex;align-items:baseline;gap:12px}
+  .price{font-family:'Bodoni Moda',serif;font-size:32px;font-weight:500;font-variant-numeric:tabular-nums}
+  .price .from{font-family:'Raleway';font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-right:8px;vertical-align:middle}
+  .ddp{font-size:12px;color:var(--muted);margin:6px 0 22px}
+  .cta{background:linear-gradient(135deg,var(--champ2),var(--champagne));color:#191a16;border:none;cursor:pointer;font-family:'Raleway';font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:16px 32px;width:100%;transition:transform .35s var(--ease),box-shadow .35s;box-shadow:0 14px 34px -16px rgba(201,169,97,.7)}
+  .cta:hover{transform:translateY(-2px);box-shadow:0 22px 44px -16px rgba(201,169,97,.9)}
+  .swap{transition:opacity .28s var(--ease)}.swap.out{opacity:0}
+  @media(max-width:900px){.wrap{padding:0 24px 50px}nav{display:none}.config{grid-template-columns:1fr;gap:30px}.stage{position:static}.ctrl h1{font-size:42px}}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">BRETDA</div>
+      <nav><a class="swap" data-i="n1">Collection</a><a class="swap" data-i="n2">The Atelier</a><a class="swap" data-i="n3">Contact</a></nav>
+      <div class="mark-wrap">
+        <button class="mark" id="mark"><span id="ml">EN</span><span class="sep">·</span><span id="mc">$</span><span class="chev"></span></button>
+        <div class="panel" id="panel">
+          <div><h4 class="swap" data-i="lblLang">Language</h4>
+            <button class="opt active" data-lang="en"><span class="dot"></span>English</button>
+            <button class="opt" data-lang="es"><span class="dot"></span>Español</button>
+            <button class="opt" data-lang="de"><span class="dot"></span>Deutsch</button>
+            <button class="opt" data-lang="fr"><span class="dot"></span>Français</button></div>
+          <div><h4 class="swap" data-i="lblCur">Currency</h4>
+            <button class="opt cur active" data-cur="usd"><span class="dot"></span>$ USD</button>
+            <button class="opt cur" data-cur="eur"><span class="dot"></span>€ EUR</button></div>
+        </div>
+      </div>
+    </header>
+
+    <div class="config">
+      <div class="stage">
+        <div class="prog" id="prog"></div>
+        <model-viewer id="mv" src="assets/models/aurora.glb" poster="assets/aurora-1.jpg" alt="Aurora 3D"
+          camera-controls auto-rotate auto-rotate-delay="0" rotation-per-second="18deg"
+          shadow-intensity="1.1" shadow-softness="1" exposure="1.05" environment-image="neutral"
+          camera-orbit="35deg 75deg 105%" min-camera-orbit="auto 55deg auto" interaction-prompt="none" ar ar-modes="webxr scene-viewer quick-look"></model-viewer>
+        <div class="bar">
+          <span class="hint swap" data-i="hint">Drag to rotate · scroll to zoom</span>
+          <button class="arbtn swap" data-i="ar" onclick="document.getElementById('mv').activateAR()">View in your room (AR)</button>
+        </div>
+      </div>
+
+      <div class="ctrl">
+        <div class="eyebrow swap" data-i="eyebrow">Configure · Made to Order</div>
+        <h1>Aurora</h1>
+        <div class="sub swap" data-i="sub">Build the table that exists once.</div>
+
+        <div class="step">
+          <div class="top"><div class="lbl"><span class="n">01</span><span class="swap" data-i="s1">Frame — hardwood</span></div><div class="sel" id="wsel">Angelim</div></div>
+          <div class="sw-grid" id="wood"></div>
+        </div>
+        <div class="step">
+          <div class="top"><div class="lbl"><span class="n">02</span><span class="swap" data-i="s2">Felt — cloth</span></div><div class="sel" id="fsel">Bordeaux</div></div>
+          <div class="sw-grid" id="fabric"></div>
+        </div>
+
+        <div class="summary">
+          <div class="price-row"><div class="price"><span class="from swap" data-i="from">From</span><span id="price-num" data-usd="23800" data-eur="22200">$23,800</span></div></div>
+          <div class="ddp swap" data-i="ddp">Delivered to your door — duties included.</div>
+          <button class="cta swap" data-i="cta">Reserve your configuration</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  const WOOD=[["angelim","Angelim","#b98a5a"],["canelao","Canelão","#6e4a2f"],["carvalho","Carvalho","#d9c6a5"],["cerejeira","Cerejeira","#8a4f33"],["ebano","Ébano","#2c241f"],["freijo","Freijó","#8c6a45"],["goiabao","Goiabão","#5a3a28"],["itauba","Itaúba","#7a5638"],["marupa","Marupá","#c9b48a"],["wengue","Wengué","#3a2c24"]];
+  const FAB=[["fabric-1","Bordeaux"],["fabric-2","Forest"],["fabric-3","Charcoal"],["fabric-4","Camel"],["fabric-5","Slate"],["fabric-6","Navy"],["fabric-7","Olive"],["fabric-8","Sand"],["fabric-9","Wine"],["fabric-10","Stone"],["fabric-11","Moss"],["fabric-12","Ivory"]];
+  const T={
+    en:{n1:"Collection",n2:"The Atelier",n3:"Contact",lblLang:"Language",lblCur:"Currency",hint:"Drag to rotate · scroll to zoom",ar:"View in your room (AR)",eyebrow:"Configure · Made to Order",sub:"Build the table that exists once.",s1:"Frame — hardwood",s2:"Felt — cloth",from:"From",ddp:"Delivered to your door — duties included.",cta:"Reserve your configuration"},
+    es:{n1:"Colección",n2:"El Atelier",n3:"Contacto",lblLang:"Idioma",lblCur:"Moneda",hint:"Arrastra para rotar · scroll para zoom",ar:"Verla en tu sala (AR)",eyebrow:"Configurar · Hecha a medida",sub:"Crea la mesa que existe una vez.",s1:"Estructura — madera",s2:"Paño — tela",from:"Desde",ddp:"Entregada en su puerta — aranceles incluidos.",cta:"Reservar tu configuración"},
+    de:{n1:"Kollektion",n2:"Das Atelier",n3:"Kontakt",lblLang:"Sprache",lblCur:"Währung",hint:"Ziehen zum Drehen · Scrollen zum Zoomen",ar:"In Ihrem Raum ansehen (AR)",eyebrow:"Konfigurieren · Auf Bestellung",sub:"Bauen Sie den Tisch, den es nur einmal gibt.",s1:"Rahmen — Massivholz",s2:"Tuch — Stoff",from:"Ab",ddp:"Frei Haus geliefert — inklusive Zoll.",cta:"Konfiguration reservieren"},
+    fr:{n1:"Collection",n2:"L'Atelier",n3:"Contact",lblLang:"Langue",lblCur:"Devise",hint:"Glisser pour pivoter · molette pour zoomer",ar:"Voir dans votre pièce (AR)",eyebrow:"Configurer · Sur commande",sub:"Composez la table qui n'existe qu'une fois.",s1:"Châssis — bois massif",s2:"Tapis — tissu",from:"À partir de",ddp:"Livrée à votre porte — droits de douane inclus.",cta:"Réserver votre configuration"}
+  };
+  const PRICE={usd:23800,eur:22200},SYM={usd:"$",eur:"€"},LANGCUR={en:"usd",es:"eur",de:"eur",fr:"eur"};let curLang="en",curCur="usd";
+  const mv=document.getElementById("mv");
+  // build swatches
+  document.getElementById("wood").innerHTML=WOOD.map((w,i)=>`<div class="sw${i===0?' active':''}" data-kind="wood" data-name="${w[1]}" data-hex="${w[2]}"><img src="assets/wood/${w[0]}.png" alt="${w[1]}"></div>`).join("");
+  document.getElementById("fabric").innerHTML=FAB.map((f,i)=>`<div class="sw${i===0?' active':''}" data-kind="fabric" data-name="${f[1]}"><img src="assets/fabric/${f[0]}.png" alt="${f[1]}"></div>`).join("");
+  // material tinting (best-effort; final glbMaterialId binding = production step)
+  function hexToFactor(h){const n=parseInt(h.slice(1),16);return [(n>>16&255)/255,(n>>8&255)/255,(n&255)/255,1]}
+  function tintFrame(hex){try{const mats=mv.model&&mv.model.materials;if(!mats)return;const m=mats.find(x=>/wood|frame|body|madeira|base|corpo/i.test(x.name))||mats[0];m.pbrMetallicRoughness.setBaseColorFactor(hexToFactor(hex))}catch(e){}}
+  document.querySelectorAll('.sw[data-kind="wood"]').forEach(s=>s.addEventListener("click",()=>{document.querySelectorAll('.sw[data-kind="wood"]').forEach(x=>x.classList.remove("active"));s.classList.add("active");document.getElementById("wsel").textContent=s.dataset.name;tintFrame(s.dataset.hex)}));
+  document.querySelectorAll('.sw[data-kind="fabric"]').forEach(s=>s.addEventListener("click",()=>{document.querySelectorAll('.sw[data-kind="fabric"]').forEach(x=>x.classList.remove("active"));s.classList.add("active");document.getElementById("fsel").textContent=s.dataset.name}));
+  // progress bar
+  const prog=document.getElementById("prog");
+  mv.addEventListener("progress",e=>{prog.style.width=(e.detail.totalProgress*100)+"%";if(e.detail.totalProgress===1)setTimeout(()=>prog.style.opacity=0,400)});
+  // i18n + currency
+  function fmt(n,cur,lang){if(cur==="usd")return "$"+n.toLocaleString("en-US");const loc=lang==="de"?"de-DE":lang==="fr"?"fr-FR":"es-ES";return n.toLocaleString(loc)+" €"}
+  function roll(to){const el=document.getElementById("price-num"),fromN=PRICE[curCur],toN=PRICE[to],st=performance.now(),dur=520;const tick=t=>{const p=Math.min(1,(t-st)/dur),e=1-Math.pow(1-p,3),v=Math.round(fromN+(toN-fromN)*e);el.textContent=fmt(v,to,curLang);if(p<1)requestAnimationFrame(tick);else el.textContent=fmt(toN,to,curLang)};requestAnimationFrame(tick)}
+  function applyLang(l){const d=T[l];document.querySelectorAll(".swap[data-i]").forEach(el=>{el.classList.add("out");setTimeout(()=>{el.textContent=d[el.dataset.i];el.classList.remove("out")},190)});document.documentElement.lang=l;document.getElementById("ml").textContent=l.toUpperCase();setTimeout(()=>{document.getElementById("price-num").textContent=fmt(PRICE[curCur],curCur,l)},200)}
+  function setA(s,a,v){document.querySelectorAll(s).forEach(b=>b.classList.toggle("active",b.dataset[a]===v))}
+  document.querySelectorAll(".opt[data-lang]").forEach(b=>b.addEventListener("click",()=>{curLang=b.dataset.lang;setA(".opt[data-lang]","lang",curLang);applyLang(curLang);const w=LANGCUR[curLang];if(w!==curCur){roll(w);curCur=w;setA(".opt.cur","cur",curCur);document.getElementById("mc").textContent=SYM[curCur]}}));
+  document.querySelectorAll(".opt.cur").forEach(b=>b.addEventListener("click",()=>{const c=b.dataset.cur;if(c===curCur)return;roll(c);curCur=c;setA(".opt.cur","cur",curCur);document.getElementById("mc").textContent=SYM[curCur]}));
+  const mark=document.getElementById("mark"),panel=document.getElementById("panel");
+  mark.addEventListener("click",e=>{e.stopPropagation();const o=panel.classList.toggle("open");mark.classList.toggle("open",o)});
+  document.addEventListener("click",e=>{if(!panel.contains(e.target)&&e.target!==mark){panel.classList.remove("open");mark.classList.remove("open")}});
+</script>
+</body>
+</html>

@@ -138,8 +138,10 @@ Produza no schema: decisao, resumo, matchingAtestados (cada um com fonte), lacun
   let resp;
   try {
     resp = await runAgent(FORJA_DEFINITION, { context, task }, client);
-  } catch {
-    return pendingResult("guardrail_fallback", ["Habilitação indisponível (erro do modelo) — revisão humana."]);
+  } catch (err) {
+    return pendingResult("guardrail_fallback", [
+      `Habilitação indisponível (erro do modelo) — revisão humana. Detalhe: ${(err as Error)?.message ?? String(err)}`,
+    ]);
   }
   if (resp.refusal || resp.json === null || typeof resp.json !== "object") {
     return pendingResult("guardrail_fallback", ["Habilitação indisponível (recusa/saída inválida) — revisão humana."]);

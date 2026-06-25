@@ -110,8 +110,10 @@ Produza no schema: proposta (validade/prazo/fonte), planilhaItens (cada um com f
   let resp;
   try {
     resp = await runAgent(ESCRIBA_DEFINITION, { context, task }, client);
-  } catch {
-    return pendingPackage("guardrail_fallback", ["Geração indisponível (erro do modelo) — montar manualmente."]);
+  } catch (err) {
+    return pendingPackage("guardrail_fallback", [
+      `Geração indisponível (erro do modelo) — montar manualmente. Detalhe: ${(err as Error)?.message ?? String(err)}`,
+    ]);
   }
   if (resp.refusal || resp.json === null || typeof resp.json !== "object") {
     return pendingPackage("guardrail_fallback", ["Geração indisponível (recusa/saída inválida) — montar manualmente."]);

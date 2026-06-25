@@ -206,6 +206,13 @@ const TRIAGE_TODAY = "2026-05-29T00:00:00Z";
 const OBRAS_RE =
   /\b(obra|engenharia|constru|reforma|pavimenta|drenagem|edifica|recupera|amplia|infraestrutura|calcada|calçada|ponte|terraplan|saneamento|esgoto|asfalt|recapeament|revitaliz|urbaniza|cobertura|quadra|praca|praça|reservatóri|reservatori|galeria|meio[- ]fio|escola|creche|ubs)/i;
 
+// Gate NEGATIVO: aquisição de BENS/insumos não é obra, mesmo que cite escola/quadra/etc.
+// Corrige falso-positivo exposto pelo eval (ex.: "Aquisição de calçados ESCOLAres" casava
+// `escola`). NÃO inclui "registro de preços" (método neutro, usado p/ obras também) — o sinal
+// real é "aquisição" + o bem. Termos de obra com verbo (constru/reforma/...) passam normal.
+const ACQUISITION_RE =
+  /\b(aquisi[çc][ãa]o|merenda|g[êe]nero[s]?\s+aliment|uniforme|cal[çc]ado|mobili[áa]ri|combust[íi]vel|medicament|material\s+(escolar|de\s+(expediente|limpeza|consumo))|insumo)/i;
+
 export interface TriageInput {
   title: string;
   distanceKm: number;
@@ -221,7 +228,9 @@ export function buildTriage(
   opts: { maxRadiusKm?: number } = {},
 ): DiscoveryTriage {
   const maxRadiusKm = opts.maxRadiusKm ?? MAX_DISCOVERY_RADIUS_KM;
-  const obrasRelevant = OBRAS_RE.test(input.title || "");
+  const title = input.title || "";
+  // Obra = termo de obra presente E não ser uma aquisição de bens (gate negativo).
+  const obrasRelevant = OBRAS_RE.test(title) && !ACQUISITION_RE.test(title);
   const days =
     input.proposalDeadline !== null
       ? Math.ceil((new Date(input.proposalDeadline).getTime() - new Date(TRIAGE_TODAY).getTime()) / 86_400_000)

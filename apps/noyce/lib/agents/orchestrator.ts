@@ -106,6 +106,52 @@ function markClock(
 }
 
 // ───────────────────────────────────────────────────────────────────────────
+// C2 / A4 / I12 — RE-AVALIAÇÃO DO RELÓGIO EM TODA TRANSIÇÃO QUE CUSTA TEMPO.
+//
+// O engine, antes, só reagia ao evento explícito `prazo_venceu`. Mas o relógio
+// corre sozinho: um edital entra com 20 dias e o operador demora. Sem re-checar,
+// `entregando→pronto→protocolada` avança com uma proposta JÁ vencida → protocolo
+// fora do prazo (preclusão silenciosa). A4/I12: `isDeadlinePassed` é guarda
+// RE-AVALIADA em TODA transição que custa tempo, não só na triagem de entrada.
+//
+// Implementação determinística (usa o `ctx.now` injetado, nunca Date.now()):
+//   • ADVANCING_EVENTS = os eventos que MOVEM a esteira para frente rumo ao ato
+//     (análise → habilitação → entrega → protocolo). Eventos de alerta/registro
+//     (prazo_venceu, edital_mudou, sessão, recurso…) NÃO entram aqui — têm
+//     tratamento próprio nos global guards.
+//   • Se ALGUM clock fatal estiver vencido relativo ao `now`, a transição de
+//     avanço é BLOQUEADA e leva a `prazo-perdido` (REGISTRADO, não silencioso;
+//     nunca arquiva em silêncio — A4/§10.2).
+// Clocks com dateConfidence:"inferred" NÃO disparam o veto duro (M2/I3 — data
+// inferida vira "CONFIRMAR DATA", nunca gate fatal automático).
+// ───────────────────────────────────────────────────────────────────────────
+const ADVANCING_EVENTS: ReadonlySet<MaestroEvent["type"]> = new Set<MaestroEvent["type"]>([
+  // descoberto/triado → análise
+  "faro_triou",
+  // análise (Prisma)
+  "prisma_analisou",
+  // habilitação (Forja) + re-entrada com dado/parceiro
+  "forja_veredito",
+  "dado_recebido",
+  "parceiro_cadastrado",
+  // entrega (Escriba) → pronto → protocolo
+  "humano_aprovou_dossie",
+  "humano_confirmou_protocolo",
+]);
+
+// Acha o primeiro clock FATAL + observado já vencido relativo ao `now`. Pure read.
+function findExpiredFatalClock(state: MaestroState, nowIso: string): PreclusiveClock | undefined {
+  const now = new Date(nowIso).getTime();
+  return state.clocks.find(
+    (c) =>
+      c.fatalOnMiss &&
+      c.dateConfidence === "observed" &&
+      c.status !== "cumprido" &&
+      new Date(c.dueAt).getTime() <= now,
+  );
+}
+
+// ───────────────────────────────────────────────────────────────────────────
 // transition — the single entry point.
 // ───────────────────────────────────────────────────────────────────────────
 export function transition(
@@ -218,6 +264,24 @@ export function transition(
       : "prazo-perdido";
     return advance({ ...state, clocks }, dest, event, ctx, undefined,
       `clock fatal "${event.clockKind}" venceu`);
+  }
+
+  // ── Global guard 5: C2/A4/I12 — re-avaliação do relógio em transição que custa
+  // tempo. Se um avanço da esteira é pedido enquanto um clock fatal já venceu vs
+  // `now`, BLOQUEIA e registra prazo-perdido (nunca avança/arquiva em silêncio). ─
+  if (ADVANCING_EVENTS.has(event.type)) {
+    const expired = findExpiredFatalClock(state, ctx.now);
+    if (expired) {
+      const clocks = markClock(state.clocks, expired.kind, "vencido");
+      return advance(
+        { ...state, clocks },
+        "prazo-perdido",
+        event,
+        ctx,
+        undefined,
+        `avanço "${event.type}" BLOQUEADO: clock fatal "${expired.kind}" venceu em ${expired.dueAt} (now=${ctx.now}) — prazo perdido registrado (A4/I12)`,
+      );
+    }
   }
 
   // ── Per-stage transition table (§11.1 + §13). ────────────────────────────────
@@ -379,13 +443,12 @@ export function transition(
           return fail("confirmação de protocolo exige actor=human");
         }
         // C4(ii) / §13.1 teste 4 — veto de gap sanável bloqueante aberto.
-        // O flag é setado por flagOpenSanavelBlockingGap (chamado pelo futuro runtime
-        // ao entrar em `entregando` via GO_COM_TAREFAS com gap aberto) e limpo por
-        // clearSanavelBlockingGap quando o humano resolve a tarefa.
-        // TODO Fase B: trocar este match-de-prefixo em stepFailed por um campo tipado
-        // dedicado (ex.: state.openBlockingGap: boolean) — um veto de SEGURANÇA não
-        // deve depender de convenção de string. Isolado e coberto por teste por ora.
-        if (state.stepFailed?.reason.startsWith("GAP_SANAVEL_BLOQUEANTE")) {
+        // A3 — agora num campo TIPADO dedicado (state.openBlockingGap), setado por
+        // flagOpenSanavelBlockingGap (runtime, ao entrar em `entregando` via
+        // GO_COM_TAREFAS com gap aberto) e limpo por clearSanavelBlockingGap quando
+        // o humano resolve a tarefa. Um veto de SEGURANÇA não pode morar no slot
+        // volátil `stepFailed` (que um prazo não-fatal/scheduler sobrescreve).
+        if (state.openBlockingGap === true) {
           return fail(
             "confirmar protocolo REJEITADO: HabilitationGap sanável bloqueante não-resolvida (C4-ii/A1)",
           );
@@ -584,8 +647,12 @@ export function transition(
 // flag deterministically from the HabilitationResult.
 // ───────────────────────────────────────────────────────────────────────────
 export function flagOpenSanavelBlockingGap(state: MaestroState, at: string): MaestroState {
+  // A3 — o veto vive no campo TIPADO openBlockingGap (autoritativo); o stepFailed
+  // acompanha só como alerta legível p/ o painel. O gate de pronto-protocolo lê o
+  // campo tipado, então um prazo não-fatal sobrescrevendo stepFailed não apaga o veto.
   return {
     ...state,
+    openBlockingGap: true,
     stepFailed: {
       reason: "GAP_SANAVEL_BLOQUEANTE: tarefa de habilitação sanável bloqueante aberta (A1/C4-ii)",
       at,
@@ -595,8 +662,13 @@ export function flagOpenSanavelBlockingGap(state: MaestroState, at: string): Mae
 
 // Helper (pure): clear the gap flag once the human resolves the blocking task.
 export function clearSanavelBlockingGap(state: MaestroState): MaestroState {
-  if (state.stepFailed?.reason.startsWith("GAP_SANAVEL_BLOQUEANTE")) {
-    return { ...state, stepFailed: null };
+  if (state.openBlockingGap === true) {
+    const cleared: MaestroState = { ...state, openBlockingGap: false };
+    // Limpa também o alerta legível, se ainda for o do gap (não pisa outro alerta).
+    if (state.stepFailed?.reason.startsWith("GAP_SANAVEL_BLOQUEANTE")) {
+      cleared.stepFailed = null;
+    }
+    return cleared;
   }
   return state;
 }

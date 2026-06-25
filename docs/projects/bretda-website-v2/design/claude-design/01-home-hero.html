@@ -1,0 +1,177 @@
+<!-- @dsCard group="Bretda · Pages" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bretda — Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{--charcoal:#23241f;--void:#131410;--champagne:#C9A961;--champ2:#e6d2a0;--off:#EDE9E0;--muted:rgba(237,233,224,.5);--hair:rgba(201,169,97,.24);--ease:cubic-bezier(.22,.61,.36,1)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--void);color:var(--off);font-family:'Raleway',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body::after{content:"";position:fixed;inset:-50%;z-index:61;pointer-events:none;opacity:.045;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain 7s steps(6) infinite}
+  @keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-4%,3%)}50%{transform:translate(3%,-3%)}75%{transform:translate(-2%,2%)}100%{transform:translate(0,0)}}
+
+  /* header */
+  .hdr{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .5s var(--ease),padding .5s var(--ease),border-color .5s;border-bottom:1px solid transparent}
+  .hdr.solid{background:rgba(19,20,16,.82);backdrop-filter:blur(16px);border-color:var(--hair)}
+  .hdr .in{max-width:1340px;margin:0 auto;padding:24px 56px;display:flex;align-items:center;justify-content:space-between;transition:padding .5s var(--ease)}
+  .hdr.solid .in{padding:16px 56px}
+  .logo{font-family:'Bodoni Moda',serif;font-size:22px;letter-spacing:.34em;font-weight:500;padding-left:.34em}
+  nav{display:flex;gap:42px}nav a{color:var(--off);opacity:.82;text-decoration:none;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;transition:.3s}nav a:hover{opacity:1;color:var(--champagne)}
+  .mark-wrap{position:relative}
+  .mark{background:none;border:none;cursor:pointer;color:var(--off);font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;display:inline-flex;align-items:center;gap:8px;font-family:'Raleway'}
+  .mark .chev{width:6px;height:6px;border-right:1px solid var(--champagne);border-bottom:1px solid var(--champagne);transform:rotate(45deg);transition:.35s;opacity:.8}.mark.open .chev{transform:rotate(225deg)}.mark .sep{color:var(--hair)}
+  .panel{position:absolute;top:calc(100% + 14px);right:0;min-width:280px;background:rgba(25,26,22,.94);backdrop-filter:blur(14px);border:1px solid var(--hair);padding:22px 24px;display:grid;grid-template-columns:1fr 1fr;gap:26px;opacity:0;transform:translateY(-8px);pointer-events:none;transition:.32s var(--ease);box-shadow:0 30px 60px -20px rgba(0,0,0,.7);z-index:60}
+  .panel.open{opacity:1;transform:translateY(0);pointer-events:auto}
+  .panel h4{font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:13px}
+  .opt{background:none;border:none;cursor:pointer;color:var(--muted);font-size:13px;display:flex;align-items:center;gap:9px;padding:7px 0;width:100%;text-align:left;font-family:'Raleway';transition:.25s}.opt:hover{color:var(--off)}.opt.active{color:var(--champagne)}.opt .dot{width:5px;height:5px;border-radius:50%}.opt.active .dot{background:var(--champagne)}
+
+  /* HERO — full-bleed video */
+  .hero{position:relative;height:100vh;min-height:680px;overflow:hidden;display:flex;align-items:flex-end}
+  .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .hero .scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(19,20,16,.45) 0%,rgba(19,20,16,.15) 35%,rgba(19,20,16,.55) 78%,var(--void) 100%)}
+  .hero .vig{position:absolute;inset:0;z-index:1;background:radial-gradient(120% 90% at 50% 40%,transparent 50%,rgba(0,0,0,.5))}
+  .hero .in{position:relative;z-index:3;max-width:1340px;margin:0 auto;padding:0 56px 9vh;width:100%}
+  .eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--champagne);font-weight:600;margin-bottom:26px;opacity:0;transform:translateY(16px)}
+  h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(48px,7vw,104px);line-height:.95;letter-spacing:-.02em;margin-bottom:30px;max-width:16ch}
+  h1 .l{display:block;overflow:hidden}h1 .l span{display:block;transform:translateY(110%);transition:transform 1.1s var(--ease)}
+  h1.in .l span{transform:translateY(0)}
+  h1 em{font-style:italic;font-weight:500;color:var(--champagne)}
+  .sub{font-size:15.5px;line-height:1.6;color:rgba(237,233,224,.82);font-weight:300;max-width:46ch;margin-bottom:40px;opacity:0;transform:translateY(16px)}
+  .cta-row{display:flex;align-items:center;gap:34px;flex-wrap:wrap;opacity:0;transform:translateY(16px)}
+  .cta{background:linear-gradient(135deg,var(--champ2),var(--champagne));color:#191a16;border:none;cursor:pointer;font-family:'Raleway';font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:17px 36px;transition:transform .35s var(--ease),box-shadow .35s;box-shadow:0 14px 34px -16px rgba(201,169,97,.7)}
+  .cta:hover{transform:translateY(-2px);box-shadow:0 22px 44px -16px rgba(201,169,97,.9)}
+  .ghostlink{color:var(--off);font-size:11px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;border-bottom:1px solid var(--hair);padding-bottom:4px;transition:.3s}.ghostlink:hover{color:var(--champagne);border-color:var(--champagne)}
+  .scrollcue{position:absolute;right:56px;bottom:9vh;z-index:3;font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:11px}
+  .scrollcue .line{width:54px;height:1px;background:var(--hair);position:relative;overflow:hidden}
+  .scrollcue .line::after{content:"";position:absolute;inset:0;background:var(--champagne);animation:sweep 2.4s var(--ease) infinite}
+  @keyframes sweep{0%{transform:translateX(-100%)}60%,100%{transform:translateX(100%)}}
+
+  /* sections */
+  .sec{max-width:1340px;margin:0 auto;padding:140px 56px}
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease),transform 1s var(--ease)}.reveal.in{opacity:1;transform:translateY(0)}
+  .chapter{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+  .chapter .ph{position:relative;background:radial-gradient(120% 90% at 50% 45%,#1b1c17,#0b0c09);border:1px solid var(--hair);overflow:hidden}
+  .chapter .ph img{width:100%;display:block;transition:transform 1.2s var(--ease)}
+  .chapter:hover .ph img{transform:scale(1.05)}
+  .k{font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--champagne);font-weight:600;margin-bottom:22px}
+  .chapter h2{font-family:'Bodoni Moda',serif;font-weight:400;font-size:46px;line-height:1.04;margin-bottom:24px;letter-spacing:-.01em}
+  .chapter p{font-size:15px;line-height:1.7;color:rgba(237,233,224,.74);font-weight:300;max-width:40ch}
+  .chapter .more{display:inline-flex;gap:10px;margin-top:30px;color:var(--off);font-size:11px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;border-bottom:1px solid var(--hair);padding-bottom:5px;transition:.3s}.chapter .more:hover{color:var(--champagne);border-color:var(--champagne)}
+
+  .lines{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--hair);border:1px solid var(--hair)}
+  .line{position:relative;aspect-ratio:5/4;overflow:hidden;cursor:pointer;background:#0b0c09}
+  .line img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.62;transition:transform 1.2s var(--ease),opacity .6s}
+  .line:hover img{transform:scale(1.06);opacity:.78}
+  .line .ov{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding:42px;background:linear-gradient(0deg,rgba(11,12,9,.85),transparent 65%)}
+  .line .ov .t{font-family:'Bodoni Moda',serif;font-size:40px;line-height:1;margin-bottom:8px}
+  .line .ov .d{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+
+  .craft{text-align:center;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+  .craft .q{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:400;font-size:clamp(28px,3.4vw,46px);line-height:1.22;max-width:20ch;margin:0 auto 28px;letter-spacing:-.01em}
+  .craft .stats{display:flex;justify-content:center;gap:80px;margin-top:48px;flex-wrap:wrap}
+  .stat .n{font-family:'Bodoni Moda',serif;font-size:46px;color:var(--champagne)}
+  .stat .l{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+
+  .ctaband{text-align:center;padding:130px 56px}
+  .ctaband .eb{font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--champagne);font-weight:600;margin-bottom:24px}
+  .ctaband h2{font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.04;margin-bottom:38px}
+  .swap{transition:opacity .28s var(--ease)}.swap.out{opacity:0}
+  @media(max-width:900px){.hdr .in,.sec,.ctaband{padding-left:24px;padding-right:24px}nav{display:none}.chapter,.lines{grid-template-columns:1fr;gap:34px}.craft .stats{gap:42px}.scrollcue{right:24px}}
+</style>
+</head>
+<body>
+  <div class="hdr" id="hdr"><div class="in">
+    <div class="logo">BRETDA</div>
+    <nav><a class="swap" data-i="n1">Collection</a><a class="swap" data-i="n2">The Atelier</a><a class="swap" data-i="n4">Configurator</a><a class="swap" data-i="n3">Contact</a></nav>
+    <div class="mark-wrap">
+      <button class="mark" id="mark"><span id="ml">EN</span><span class="sep">·</span><span id="mc">$</span><span class="chev"></span></button>
+      <div class="panel" id="panel">
+        <div><h4 class="swap" data-i="lblLang">Language</h4>
+          <button class="opt active" data-lang="en"><span class="dot"></span>English</button>
+          <button class="opt" data-lang="es"><span class="dot"></span>Español</button>
+          <button class="opt" data-lang="de"><span class="dot"></span>Deutsch</button>
+          <button class="opt" data-lang="fr"><span class="dot"></span>Français</button></div>
+        <div><h4 class="swap" data-i="lblCur">Currency</h4>
+          <button class="opt cur active" data-cur="usd"><span class="dot"></span>$ USD</button>
+          <button class="opt cur" data-cur="eur"><span class="dot"></span>€ EUR</button></div>
+      </div>
+    </div>
+  </div></div>
+
+  <section class="hero">
+    <video autoplay muted loop playsinline poster="assets/aurora-1.jpg"><source src="assets/video/aurora.mp4" type="video/mp4"></video>
+    <div class="scrim"></div><div class="vig"></div>
+    <div class="in">
+      <div class="eyebrow" id="eb">Atelier · Brazil · Shipped Worldwide</div>
+      <h1 id="h1"><span class="l swap" data-i="h1a"><span>Brazil’s gemstones,</span></span><span class="l swap" data-i="h1b"><span><em>made to play.</em></span></span></h1>
+      <p class="sub" id="sub">Hand-crafted luxury billiards tables — made to order in Brazil, delivered white-glove to the US &amp; Europe.</p>
+      <div class="cta-row" id="ctar"><button class="cta swap" data-i="cta">Explore the Collection</button><span class="ghostlink swap" data-i="link">Book a private viewing</span></div>
+    </div>
+    <div class="scrollcue"><span class="line"></span><span class="swap" data-i="scroll">Scroll</span></div>
+  </section>
+
+  <section class="sec">
+    <div class="chapter">
+      <div class="ph reveal"><img src="assets/espinela-1.jpg" alt="Craft"></div>
+      <div class="txt reveal">
+        <div class="k swap" data-i="c1k">Why this object</div>
+        <h2 class="swap" data-i="c1h">A single block of wood, six hundred hours by hand.</h2>
+        <p class="swap" data-i="c1p">No two are alike. Each table is cut from one piece of Brazilian hardwood, joined without compromise, and signed by the hands that built it.</p>
+        <span class="more swap" data-i="c1m">The atelier →</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="k reveal swap" data-i="linesk" style="margin-bottom:28px">Two lines, one house</div>
+    <div class="lines reveal">
+      <div class="line"><img src="assets/aurora-1.jpg" alt="Atelier"><div class="ov"><div class="t">Atelier</div><div class="d swap" data-i="atd">The signature pieces</div></div></div>
+      <div class="line"><img src="assets/citrino-1.jpg" alt="Signature"><div class="ov"><div class="t">Signature</div><div class="d swap" data-i="sgd">The complete line · 18 models</div></div></div>
+    </div>
+  </section>
+
+  <section class="sec craft">
+    <div class="q reveal swap" data-i="quote">“We do not make many. We make one, completely, and then begin again.”</div>
+    <div class="stats reveal">
+      <div class="stat"><div class="n">600+</div><div class="l swap" data-i="s1">Hours per table</div></div>
+      <div class="stat"><div class="n">2009</div><div class="l swap" data-i="s2">Atelier since</div></div>
+      <div class="stat"><div class="n">23</div><div class="l swap" data-i="s3">Made-to-order models</div></div>
+    </div>
+  </section>
+
+  <section class="ctaband">
+    <div class="eb swap" data-i="cbeb">Private Commission</div>
+    <h2 class="reveal swap" data-i="cbh">A table that exists only once.</h2>
+    <button class="cta reveal swap" data-i="cbc">Book a private viewing</button>
+  </section>
+
+<script>
+  const T={
+    en:{n1:"Collection",n2:"The Atelier",n3:"Contact",n4:"Configurator",lblLang:"Language",lblCur:"Currency",h1a:"Brazil’s gemstones,",h1b:"<em>made to play.</em>",cta:"Explore the Collection",link:"Book a private viewing",scroll:"Scroll",c1k:"Why this object",c1h:"A single block of wood, six hundred hours by hand.",c1p:"No two are alike. Each table is cut from one piece of Brazilian hardwood, joined without compromise, and signed by the hands that built it.",c1m:"The atelier →",linesk:"Two lines, one house",atd:"The signature pieces",sgd:"The complete line · 18 models",quote:"“We do not make many. We make one, completely, and then begin again.”",s1:"Hours per table",s2:"Atelier since",s3:"Made-to-order models",cbeb:"Private Commission",cbh:"A table that exists only once.",cbc:"Book a private viewing"},
+    es:{n1:"Colección",n2:"El Atelier",n3:"Contacto",n4:"Configurador",lblLang:"Idioma",lblCur:"Moneda",h1a:"Las gemas de Brasil,",h1b:"<em>hechas para jugar.</em>",cta:"Explorar la colección",link:"Reservar una cita privada",scroll:"Desliza",c1k:"Por qué este objeto",c1h:"Un solo bloque de madera, seiscientas horas a mano.",c1p:"No hay dos iguales. Cada mesa se talla de una sola pieza de madera noble brasileña, ensamblada sin concesiones y firmada por las manos que la crearon.",c1m:"El atelier →",linesk:"Dos líneas, una casa",atd:"Las piezas insignia",sgd:"La línea completa · 18 modelos",quote:"“No hacemos muchas. Hacemos una, por completo, y empezamos de nuevo.”",s1:"Horas por mesa",s2:"Atelier desde",s3:"Modelos a medida",cbeb:"Encargo privado",cbh:"Una mesa que existe una sola vez.",cbc:"Reservar una cita privada"},
+    de:{n1:"Kollektion",n2:"Das Atelier",n3:"Kontakt",n4:"Konfigurator",lblLang:"Sprache",lblCur:"Währung",h1a:"Brasiliens Edelsteine,",h1b:"<em>gemacht zum Spielen.</em>",cta:"Die Kollektion entdecken",link:"Private Besichtigung buchen",scroll:"Scrollen",c1k:"Warum dieses Objekt",c1h:"Ein einziger Holzblock, sechshundert Stunden von Hand.",c1p:"Keiner gleicht dem anderen. Jeder Tisch wird aus einem Stück brasilianischen Edelholzes gefertigt, kompromisslos gefügt und von den Händen signiert, die ihn gebaut haben.",c1m:"Das Atelier →",linesk:"Zwei Linien, ein Haus",atd:"Die Signature-Stücke",sgd:"Die komplette Linie · 18 Modelle",quote:"„Wir machen nicht viele. Wir machen einen, vollständig, und beginnen von vorn.“",s1:"Stunden pro Tisch",s2:"Atelier seit",s3:"Modelle auf Bestellung",cbeb:"Private Anfertigung",cbh:"Ein Tisch, den es nur einmal gibt.",cbc:"Private Besichtigung buchen"},
+    fr:{n1:"Collection",n2:"L'Atelier",n3:"Contact",n4:"Configurateur",lblLang:"Langue",lblCur:"Devise",h1a:"Les gemmes du Brésil,",h1b:"<em>faites pour jouer.</em>",cta:"Découvrir la collection",link:"Réserver une visite privée",scroll:"Défiler",c1k:"Pourquoi cet objet",c1h:"Un seul bloc de bois, six cents heures à la main.",c1p:"Aucune n'est identique. Chaque table est taillée dans une seule pièce de bois précieux brésilien, assemblée sans compromis et signée par les mains qui l'ont créée.",c1m:"L'atelier →",linesk:"Deux lignes, une maison",atd:"Les pièces maîtresses",sgd:"La ligne complète · 18 modèles",quote:"« Nous n'en faisons pas beaucoup. Nous en faisons une, entièrement, puis recommençons. »",s1:"Heures par table",s2:"Atelier depuis",s3:"Modèles sur commande",cbeb:"Commande privée",cbh:"Une table qui n'existe qu'une fois.",cbc:"Réserver une visite privée"}
+  };
+  const SYM={usd:"$",eur:"€"},LANGCUR={en:"usd",es:"eur",de:"eur",fr:"eur"};let curLang="en",curCur="usd";
+  function applyLang(l){const d=T[l];document.querySelectorAll(".swap[data-i]").forEach(el=>{el.classList.add("out");setTimeout(()=>{el.innerHTML=d[el.dataset.i];el.classList.remove("out")},190)});document.documentElement.lang=l;document.getElementById("ml").textContent=l.toUpperCase()}
+  function setA(s,a,v){document.querySelectorAll(s).forEach(b=>b.classList.toggle("active",b.dataset[a]===v))}
+  document.querySelectorAll(".opt[data-lang]").forEach(b=>b.addEventListener("click",()=>{curLang=b.dataset.lang;setA(".opt[data-lang]","lang",curLang);applyLang(curLang);const w=LANGCUR[curLang];if(w!==curCur){curCur=w;setA(".opt.cur","cur",curCur);document.getElementById("mc").textContent=SYM[curCur]}}));
+  document.querySelectorAll(".opt.cur").forEach(b=>b.addEventListener("click",()=>{curCur=b.dataset.cur;setA(".opt.cur","cur",curCur);document.getElementById("mc").textContent=SYM[curCur]}));
+  const mark=document.getElementById("mark"),panel=document.getElementById("panel");
+  mark.addEventListener("click",e=>{e.stopPropagation();const o=panel.classList.toggle("open");mark.classList.toggle("open",o)});
+  document.addEventListener("click",e=>{if(!panel.contains(e.target)&&e.target!==mark){panel.classList.remove("open");mark.classList.remove("open")}});
+  // header scroll state
+  const hdr=document.getElementById("hdr");addEventListener("scroll",()=>hdr.classList.toggle("solid",scrollY>60),{passive:true});
+  // hero entrance
+  setTimeout(()=>document.getElementById("h1").classList.add("in"),350);
+  ["eb","sub","ctar"].forEach((id,i)=>setTimeout(()=>{const el=document.getElementById(id);el.style.opacity=1;el.style.transform="translateY(0)"},480+i*150));
+  // section reveals
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.18});
+  document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
