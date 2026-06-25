@@ -93,6 +93,30 @@ Fixtures sintéticos em `src/__fixtures__/` (NF-e 55, NFC-e 65, item monofásico
 NF-e com namespace prefixado, inválido sem chave, malformado, **CT-e 57 normal**,
 **CT-e modelo inválido**, **NFS-e Nacional com IBS/CBS**, **NFS-e chave inválida**).
 
+## Gate QA do R4 (25/Jun) — CONCERNS, 🔴 aplicados
+
+Revisão formal do parser R4 (CT-e + NFS-e IBS/CBS). Focos máximos APROVADOS:
+extração IBS/CBS correta campo-a-campo no happy-path; refatoração de `helpers.ts`
+sem regressão na NF-e/NFC-e. Os 2 🔴 foram **corrigidos** antes do commit:
+
+- **🔴-1 (resolvido) — perda silenciosa de tributo:** valor de tributo *presente
+  porém ilegível* (ex.: `<vCBS>ABC</vCBS>`, `<vICMS>--</vICMS>`) virava `undefined`
+  e desaparecia, lido a jusante como "tributo zero". Novo helper
+  `paraNumeroOpcionalEstrito` lança `ParseError` nesses casos; usado em todos os
+  campos monetários/alíquota de NFS-e e CT-e. Guardas em testes.
+- **🔴-2 (resolvido em código; gate externo pendente) — layout do IBS:** a extração
+  lia IBS só do split `gIBSUF`/`gIBSMun`; um layout `gIBS` único (ou `vBC` deslocado)
+  fazia o IBS evaporar. Agora há **fallback** para `gIBS` único e para `vBC` em
+  `gCBS`/`gIBSUF`; e quando há CBS ativa mas nenhum IBS foi extraído de nenhum layout,
+  o parser marca `ibsCbs.ibsIndeterminado = true` (revisão humana, não IBS-zero mudo).
+  ⏳ **Gate externo:** validar os layouts aceitos contra o **XSD oficial da NFS-e
+  Nacional (publicado 12/02/2026)** + fixtures por variante — depende do tributarista/founder.
+
+Follow-ups 🟡 abertos do gate (backlog priorizado): tomador CT-e expedidor/recebedor
+(`toma=1/2`) retorna `{}` silencioso (perde crédito de frete); chave provisória DPS sem
+validação de formato; cobertura de fixtures (CT-e `toma4`/`ICMSSN`, NFS-e sem IBSCBS — esta
+já coberta). Memória de QA: `.claude/agent-memory/aios-qa/project_contador_parser_review.md`.
+
 ## Limitações conhecidas / follow-ups (gate QA 24/Jun — doc 59)
 
 - **🔴 Precisão monetária:** valores monetários são `number`. Para um campo isolado é

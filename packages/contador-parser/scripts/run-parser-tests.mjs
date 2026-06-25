@@ -376,6 +376,66 @@ teste("R4 regressao: parseNFe ainda rejeita modelo 57 (nao e parseNFe)", () => {
   );
 });
 
+// ===========================================================================
+// R4 — QA fixes: 🔴-1 (perda silenciosa de tributo) + 🔴-2 (layout IBS)
+// ===========================================================================
+
+// 🔴-1: valor de tributo PRESENTE mas ilegível é corrupção, não ausência — deve
+// lançar ParseError em vez de desaparecer (viraria "tributo zero" na auditoria).
+teste("🔴-1 NFS-e: vCBS presente mas nao-numerico => ParseError (nao some)", () => {
+  const corrompido = ler("nfse-nacional-ibscbs.xml").replace(
+    "<vCBS>90.00</vCBS>",
+    "<vCBS>ABC</vCBS>"
+  );
+  assert.throws(
+    () => parseNFSeNacional(corrompido),
+    (erro) => erro instanceof ParseError && erro.codigo === "ESTRUTURA_INVALIDA"
+  );
+});
+
+teste("🔴-1 CT-e: vICMS presente mas nao-numerico => ParseError (nao some)", () => {
+  const corrompido = ler("cte-57-normal.xml").replace(
+    "<vICMS>144.00</vICMS>",
+    "<vICMS>--</vICMS>"
+  );
+  assert.throws(
+    () => parseCTe(corrompido),
+    (erro) => erro instanceof ParseError && erro.codigo === "ESTRUTURA_INVALIDA"
+  );
+});
+
+// 🔴-2: layout alternativo (grupo gIBS único, sem split UF/Município) deve ser
+// lido — o IBS não pode evaporar do documento.
+teste("🔴-2 NFS-e: IBS em grupo gIBS unico (sem split UF/Mun) e extraido", () => {
+  const single = ler("nfse-nacional-ibscbs.xml").replace(
+    /<gIBSUF>[\s\S]*?<\/gIBSMun>/,
+    "<gIBS><pIBS>0.15</pIBS><vIBS>15.00</vIBS></gIBS>"
+  );
+  const ibsCbs = parseNFSeNacional(single).itens[0].ibsCbs;
+  assert.ok(ibsCbs, "deve ter grupo IBS/CBS");
+  assert.equal(ibsCbs.valorIbs, 15);
+  assert.ok(Math.abs(ibsCbs.aliquotaIbs - 0.15) < 1e-9, "aliquotaIbs ~ 0.15");
+  assert.notEqual(ibsCbs.ibsIndeterminado, true); // IBS foi resolvido
+});
+
+// 🔴-2: CBS presente mas IBS ausente de qualquer layout => NÃO reportar IBS-zero
+// silencioso; flagar ibsIndeterminado para revisão humana (trilha de boa-fé).
+teste("🔴-2 NFS-e: CBS presente sem IBS => ibsIndeterminado (nao IBS-zero mudo)", () => {
+  const semIbs = ler("nfse-nacional-ibscbs.xml").replace(/<gIBSUF>[\s\S]*?<\/gIBSMun>/, "");
+  const ibsCbs = parseNFSeNacional(semIbs).itens[0].ibsCbs;
+  assert.ok(ibsCbs, "grupo IBSCBS ainda presente (tem CBS)");
+  assert.equal(ibsCbs.valorCbs, 90); // CBS intacto
+  assert.equal(ibsCbs.valorIbs, undefined); // IBS não foi inventado como zero
+  assert.equal(ibsCbs.ibsIndeterminado, true); // sinalizado p/ revisão
+});
+
+// 🟡-7 (guarda barata): NFS-e sem grupo IBSCBS (Simples pré-reforma) — ibsCbs
+// ausente; ausência legítima do grupo ≠ falha de extração (sem flag).
+teste("R4 NFS-e sem grupo IBSCBS => ibsCbs undefined", () => {
+  const semGrupo = ler("nfse-nacional-ibscbs.xml").replace(/<IBSCBS>[\s\S]*?<\/IBSCBS>/, "");
+  assert.equal(parseNFSeNacional(semGrupo).itens[0].ibsCbs, undefined);
+});
+
 // ---------------------------------------------------------------------------
 console.log(`\n${passed} passed, ${failed} failed.`);
 if (failed > 0) {

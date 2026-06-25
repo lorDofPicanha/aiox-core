@@ -100,6 +100,37 @@ export function paraNumeroOpcional(valor: string | undefined): number | undefine
 }
 
 /**
+ * Variante ESTRITA de `paraNumeroOpcional` para campos monetários/alíquota.
+ *
+ * "Tag ausente" (`undefined`) → `undefined` (legítimo: o tributo não veio).
+ * "Tag presente mas ilegível" (ex.: `<vCBS>ABC</vCBS>`) → `ParseError`.
+ *
+ * Motivo (QA 🔴-1): num DF-e, um valor de tributo presente porém não-numérico é
+ * CORRUPÇÃO, não ausência. Deixá-lo virar `undefined` o faz desaparecer e a
+ * auditoria o lê como "tributo zero / não informado" — exatamente o erro que um
+ * laudo de boa-fé não pode ter. Use isto para vBC/vCBS/vIBS/pICMS/vICMS etc.;
+ * reserve `paraNumeroOpcional` para campos onde "ausente" e "vazio" são
+ * genuinamente equivalentes.
+ */
+export function paraNumeroOpcionalEstrito(
+  valor: string | undefined,
+  caminho: string
+): number | undefined {
+  if (valor === undefined) {
+    return undefined;
+  }
+  const n = Number(valor);
+  if (!Number.isFinite(n)) {
+    throw new ParseError(
+      "ESTRUTURA_INVALIDA",
+      `Campo ${caminho} presente mas nao numerico: "${valor}".`,
+      caminho
+    );
+  }
+  return n;
+}
+
+/**
  * Extrai uma parte (emitente/destinatário/tomador/remetente/prestador).
  * Aceita CNPJ ou CPF; quando `obrigatorio`, exige bloco presente com ao menos
  * um identificador. Reusado por todos os DF-e.

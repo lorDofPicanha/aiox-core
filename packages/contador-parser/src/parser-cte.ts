@@ -19,7 +19,7 @@ import {
   obj,
   parseXmlBruto,
   paraNumero,
-  paraNumeroOpcional
+  paraNumeroOpcionalEstrito
 } from "./helpers";
 import {
   DocumentoTransporte,
@@ -204,9 +204,9 @@ function extrairIcmsCte(infCte: Record<string, unknown>): TributoIcmsTransporte 
   const origem = asString(grupo.orig);
   const csosn = asString(grupo.CSOSN);
   const cst = asString(grupo.CST);
-  const baseCalculo = paraNumeroOpcional(asString(grupo.vBC));
-  const aliquota = paraNumeroOpcional(asString(grupo.pICMS));
-  const valor = paraNumeroOpcional(asString(grupo.vICMS));
+  const baseCalculo = paraNumeroOpcionalEstrito(asString(grupo.vBC), "ICMS/vBC");
+  const aliquota = paraNumeroOpcionalEstrito(asString(grupo.pICMS), "ICMS/pICMS");
+  const valor = paraNumeroOpcionalEstrito(asString(grupo.vICMS), "ICMS/vICMS");
   return {
     ...(origem ? { origem } : {}),
     ...(csosn ?? cst ? { cst: csosn ?? cst } : {}),

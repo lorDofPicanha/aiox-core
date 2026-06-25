@@ -22,7 +22,8 @@ import {
   obj,
   parseXmlBruto,
   paraNumero,
-  paraNumeroOpcional
+  paraNumeroOpcional,
+  paraNumeroOpcionalEstrito
 } from "./helpers";
 import {
   DocumentoServico,
@@ -307,9 +308,12 @@ function extrairRetencao(
     return {};
   }
   const cst = asString(grupo[`CST${qual}`]) ?? asString(grupo.CST);
-  const baseCalculo = paraNumeroOpcional(asString(grupo[`vBC${qual}`]) ?? asString(grupo.vBC));
-  const aliquota = paraNumeroOpcional(asString(grupo[`p${qual}`]));
-  const valor = paraNumeroOpcional(asString(grupo[`v${qual}`]));
+  const baseCalculo = paraNumeroOpcionalEstrito(
+    asString(grupo[`vBC${qual}`]) ?? asString(grupo.vBC),
+    `${qual}/vBC${qual}`
+  );
+  const aliquota = paraNumeroOpcionalEstrito(asString(grupo[`p${qual}`]), `${qual}/p${qual}`);
+  const valor = paraNumeroOpcionalEstrito(asString(grupo[`v${qual}`]), `${qual}/v${qual}`);
   return {
     ...(cst ? { cst } : {}),
     ...(baseCalculo !== undefined ? { baseCalculo } : {}),
@@ -332,16 +336,38 @@ function extrairIbsCbs(trib: Record<string, unknown> | undefined): TributoIbsCbs
   const gCbs = (gIbsCbs?.gCBS ?? grupo.gCBS) as Record<string, unknown> | undefined;
   const gIbsUf = (gIbsCbs?.gIBSUF ?? grupo.gIBSUF) as Record<string, unknown> | undefined;
   const gIbsMun = (gIbsCbs?.gIBSMun ?? grupo.gIBSMun) as Record<string, unknown> | undefined;
+  // Layout alternativo (QA 🔴-2): IBS como grupo único, sem split UF/Município.
+  const gIbs = (gIbsCbs?.gIBS ?? grupo.gIBS) as Record<string, unknown> | undefined;
 
   const cClassTrib = asString(grupo.cClassTrib) ?? asString(gIbsCbs?.cClassTrib);
   const cst = asString(grupo.CST) ?? asString(gIbsCbs?.CST);
-  const baseCalculo = paraNumeroOpcional(asString(gIbsCbs?.vBC) ?? asString(grupo.vBC));
+  // Base: gIBSCBS/vBC é o canônico; aceita vBC em gCBS/gIBSUF como fallback (🔴-2).
+  const baseCalculo = paraNumeroOpcionalEstrito(
+    asString(gIbsCbs?.vBC) ?? asString(grupo.vBC) ?? asString(gCbs?.vBC) ?? asString(gIbsUf?.vBC),
+    "IBSCBS/vBC"
+  );
 
-  const aliquotaCbs = paraNumeroOpcional(asString(gCbs?.pCBS));
-  const valorCbs = paraNumeroOpcional(asString(gCbs?.vCBS));
+  const aliquotaCbs = paraNumeroOpcionalEstrito(asString(gCbs?.pCBS), "gCBS/pCBS");
+  const valorCbs = paraNumeroOpcionalEstrito(asString(gCbs?.vCBS), "gCBS/vCBS");
 
-  const aliquotaIbs = somarOpcional(asString(gIbsUf?.pIBSUF), asString(gIbsMun?.pIBSMun));
-  const valorIbs = somarOpcional(asString(gIbsUf?.vIBSUF), asString(gIbsMun?.vIBSMun));
+  // IBS: soma UF+Município (split canônico) OU lê o grupo gIBS único (fallback 🔴-2).
+  const aliquotaIbsSplit = somarOpcional(
+    asString(gIbsUf?.pIBSUF), asString(gIbsMun?.pIBSMun), "gIBSUF/pIBSUF", "gIBSMun/pIBSMun"
+  );
+  const valorIbsSplit = somarOpcional(
+    asString(gIbsUf?.vIBSUF), asString(gIbsMun?.vIBSMun), "gIBSUF/vIBSUF", "gIBSMun/vIBSMun"
+  );
+  const aliquotaIbs = aliquotaIbsSplit ?? paraNumeroOpcionalEstrito(asString(gIbs?.pIBS), "gIBS/pIBS");
+  const valorIbs = valorIbsSplit ?? paraNumeroOpcionalEstrito(asString(gIbs?.vIBS), "gIBS/vIBS");
+
+  // QA 🔴-2: se há tributação CBS ativa mas NENHUM IBS foi extraído de nenhum
+  // layout, NÃO reportar IBS-zero silencioso — flagar para revisão humana
+  // (coerente com a trilha de boa-fé). No regime integral CBS e IBS são
+  // co-presentes; CBS-presente-IBS-ausente é forte sinal de layout não
+  // reconhecido. Validar layouts aceitos contra o XSD oficial (12/02/2026) =
+  // gate do tributarista/founder.
+  const temCbs = valorCbs !== undefined || aliquotaCbs !== undefined;
+  const ibsIndeterminado = temCbs && aliquotaIbs === undefined && valorIbs === undefined;
 
   const resultado: TributoIbsCbs = {
     ...(cClassTrib ? { cClassTrib } : {}),
@@ -350,16 +376,25 @@ function extrairIbsCbs(trib: Record<string, unknown> | undefined): TributoIbsCbs
     ...(aliquotaCbs !== undefined ? { aliquotaCbs } : {}),
     ...(valorCbs !== undefined ? { valorCbs } : {}),
     ...(aliquotaIbs !== undefined ? { aliquotaIbs } : {}),
-    ...(valorIbs !== undefined ? { valorIbs } : {})
+    ...(valorIbs !== undefined ? { valorIbs } : {}),
+    ...(ibsIndeterminado ? { ibsIndeterminado: true } : {})
   };
   // Só retorna se houver ao menos um campo extraído.
   return Object.keys(resultado).length > 0 ? resultado : undefined;
 }
 
-/** Soma dois valores opcionais; retorna undefined se ambos ausentes. */
-function somarOpcional(a: string | undefined, b: string | undefined): number | undefined {
-  const na = paraNumeroOpcional(a);
-  const nb = paraNumeroOpcional(b);
+/**
+ * Soma dois valores opcionais (split UF+Município); `undefined` se ambos ausentes.
+ * Estrito: um subvalor presente porém ilegível lança `ParseError` (🔴-1).
+ */
+function somarOpcional(
+  a: string | undefined,
+  b: string | undefined,
+  caminhoA: string,
+  caminhoB: string
+): number | undefined {
+  const na = paraNumeroOpcionalEstrito(a, caminhoA);
+  const nb = paraNumeroOpcionalEstrito(b, caminhoB);
   if (na === undefined && nb === undefined) {
     return undefined;
   }

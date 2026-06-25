@@ -133,8 +133,15 @@ export interface TributoIbsCbs {
   valorCbs?: number;
   /** Alíquota do IBS (UF + Município somadas, quando informado). */
   aliquotaIbs?: number;
-  /** Valor do IBS (gIBSUF/vIBSUF + gIBSMun/vIBSMun). */
+  /** Valor do IBS (gIBSUF/vIBSUF + gIBSMun/vIBSMun, ou gIBS único). */
   valorIbs?: number;
+  /**
+   * Sinaliza que o grupo IBSCBS tem tributação CBS mas o IBS não pôde ser
+   * extraído de nenhum layout conhecido (split UF/Mun nem gIBS único). NÃO é
+   * "IBS zero" — é "IBS indeterminado", e a auditoria deve mandar para revisão
+   * humana em vez de tratar como ausência (trilha de boa-fé). Ver QA 🔴-2.
+   */
+  ibsIndeterminado?: boolean;
 }
 
 /**
