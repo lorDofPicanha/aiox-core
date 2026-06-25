@@ -58,6 +58,17 @@ const PROIBIDOS = [
   { id: "ia-decide-2", re: /motor\s+decide\s+(a\s+)?(classificacao|apuracao)/gi, motivo: "Decisão é humana; motor apoia triagem (doc 45 §5)." },
   { id: "substitui-contador", re: /substitui\s+(o\s+)?(contador|tributarista|advogado|profissional)/gi, motivo: "Produto é suporte à decisão profissional (doc 45 §5)." },
   { id: "acuracia-pct", re: /acuracia\s+(fiscal\s+)?de\s+\d/gi, motivo: "Bloqueado até golden-set real (doc 45 §5)." },
+  // --- Frente Transação Tributária (PAR-7, doc 57 §5) — adesão é ato de tributarista, sem API,
+  //     sem promessa de resultado. O mecanismo de NEGACOES libera os disclaimers que negam. (QA H2)
+  { id: "desconto-garantido", re: /desconto\s+garantido/gi, motivo: "Transação não garante desconto; teto é em tese pelo edital (doc 57 §5)." },
+  { id: "garante-desconto", re: /garante\s+(o\s+)?desconto/gi, motivo: "Não prometer desconto de transação (doc 57 §5)." },
+  { id: "divida-reduzida", re: /divida\s+(sera\s+|vai\s+ser\s+)?reduzid[ao]/gi, motivo: "Redução depende de análise/edital; não prometer (doc 57 §5)." },
+  { id: "reduz-divida", re: /reduz\s+(a\s+)?divida/gi, motivo: "Não prometer redução da dívida (doc 57 §5)." },
+  { id: "divida-quitada", re: /divida\s+(sera\s+)?quitad[ao]/gi, motivo: "Quitação não é resultado prometido (doc 57 §5)." },
+  { id: "elimina-divida", re: /elimina(r)?\s+(a\s+)?divida/gi, motivo: "Ferramenta não elimina dívida (doc 57 §5)." },
+  { id: "adesao-garantida", re: /adesao\s+garantida/gi, motivo: "Adesão depende de análise/edital; não há API (doc 57 §5)." },
+  { id: "transacao-aprovada", re: /transacao\s+(aprovada|garantida)/gi, motivo: "Aprovação da transação não é prometida (doc 57 §5)." },
+  { id: "economia-garantida", re: /economia\s+garantida/gi, motivo: "Gancho é honorário do profissional, não economia garantida do cliente (doc 57 §5 / D6)." },
 ];
 
 /**

@@ -1,0 +1,1 @@
+- [Contador G6/D6 — linguagem de boa-fé](project_contador_g6_d6_linguagem.md) — regras fixas de copy que toda frente jurídica do Contador deve respeitar (transação/recuperação/parcelamento)

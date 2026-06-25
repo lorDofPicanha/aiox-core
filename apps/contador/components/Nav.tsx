@@ -15,6 +15,7 @@ const ITEMS = [
   { href: "/ecac", label: "e-CAC", icon: "⊞" },
   { href: "/saude-carteira", label: "Saúde da carteira", icon: "◉" },
   { href: "/parcelamentos", label: "Parcelamentos", icon: "₪" },
+  { href: "/transacao", label: "Transação tributária", icon: "◈" },
   { href: "/emissor", label: "Emissor", icon: "✎" },
   { href: "/configuracoes", label: "Configurações", icon: "⚙" },
 ];

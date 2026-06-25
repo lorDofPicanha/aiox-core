@@ -10,6 +10,7 @@
     "typecheck": "tsc --noEmit",
     "test:ecac": "node app/ecac/saude-fiscal-model.test.mjs",
     "test:health": "node app/saude-carteira/health-score-model.test.mjs && node app/saude-carteira/health-score-reconcile.test.mjs",
+    "test:transacao": "node app/transacao/transacao-model.test.mjs",
     "banlist:g6": "node scripts/banlist-g6.mjs",
     "banlist:g6:self-test": "node scripts/banlist-g6.mjs --self-test"
   },
