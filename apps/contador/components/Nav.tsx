@@ -13,6 +13,7 @@ const ITEMS = [
   { href: "/laudos", label: "Laudos", icon: "▤" },
   { href: "/recuperacao", label: "Recuperação", icon: "↩" },
   { href: "/ecac", label: "e-CAC", icon: "⊞" },
+  { href: "/saude-carteira", label: "Saúde da carteira", icon: "◉" },
   { href: "/parcelamentos", label: "Parcelamentos", icon: "₪" },
   { href: "/emissor", label: "Emissor", icon: "✎" },
   { href: "/configuracoes", label: "Configurações", icon: "⚙" },

@@ -1,2 +1,3 @@
 - [Contador F1 verifier slicing rule](project_contador_verifier_slicing.md) — verificarCadeia exige cadeia contígua desde genesis; fatiar por cliente quebra (SEQ_GAP).
 - [Contador e-CAC date boundary bug](project_contador_ecac_date_boundary.md) — situacaoPrazo/prioridadeRenovacao usam diff de timestamp (não dia-calendário); off-by-one mascarado pelo seed, ativa no adapter real.
+- [Contador S12 Health Score](project_contador_s12_health_score.md) — reconciliação cross-módulo: CNPJ divergente entre os 2 seeds quebra o join-por-documento de produção; tetos achatam exposição; banda verde com 1 lado só engana.

@@ -185,7 +185,8 @@ export const CARTEIRA_ECAC: EcacLinha[] = [
   {
     clienteId: "a2",
     clienteNome: "Posto Brasa Combustíveis ME",
-    documento: "44555666000172",
+    // CNPJ alinhado ao seed do core (Brasa) p/ o join por documento da reconciliação S12 (🔴-1).
+    documento: "22333444000172",
     mensagensNovas: 5,
     cndFederal: "vencida",
     cndEstadual: "pendente",
@@ -279,7 +280,8 @@ export const CARTEIRA_ECAC: EcacLinha[] = [
   {
     clienteId: "a3",
     clienteNome: "Mercado Cedro Bebidas SA",
-    documento: "77888999000163",
+    // CNPJ alinhado ao seed do core (Cedro) p/ o join por documento da reconciliação S12 (🔴-1).
+    documento: "33444555000163",
     mensagensNovas: 0,
     cndFederal: "regular",
     cndEstadual: "vencida",

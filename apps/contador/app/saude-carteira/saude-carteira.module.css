@@ -1,0 +1,231 @@
+/* ============================================================================
+   S12 — Health Score cross-módulo. CSS Module local (NÃO edita app/globals.css).
+   Reusa classes globais (card, grid, kpi, badge, table.tbl, disclaimer, num) e
+   adiciona só o específico do score: barra de score, breakdown por lado, tags de
+   "lado ausente". Tokens via var(--*).
+   ============================================================================ */
+
+/* ---------- KPIs (4 colunas; globals só tem grid-2/grid-3) ---------- */
+.kpiGrid {
+  grid-template-columns: repeat(4, 1fr);
+}
+@media (max-width: 880px) {
+  .kpiGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .kpiGrid {
+    grid-template-columns: 1fr;
+  }
+}
+.kpiCritico {
+  color: var(--danger);
+}
+.kpiAtencao {
+  color: var(--warning);
+}
+
+/* ---------- Célula de cliente (nome + documento + tag de lado) ---------- */
+.cli {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1.35;
+}
+.cliNome {
+  font-weight: 600;
+}
+.cliDoc {
+  font-size: 11px;
+  color: var(--text-faint);
+}
+.tagSemLado {
+  color: var(--text-faint);
+  font-style: italic;
+}
+
+/* ---------- Célula do score (número + barra) ---------- */
+.scoreCell {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 140px;
+}
+.scoreNum {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  min-width: 34px;
+  text-align: right;
+}
+.score_saudavel {
+  color: var(--success);
+}
+.score_atencao {
+  color: var(--warning);
+}
+.score_critico {
+  color: var(--danger);
+}
+/* Leitura parcial (só 1 lado reconciliado): score alto NÃO é pintado de verde-confiança. */
+.score_parcial {
+  color: var(--text-muted, #64748b);
+}
+.scoreBarTrack {
+  flex: 1;
+  height: 8px;
+  min-width: 64px;
+  border-radius: var(--radius-full);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.scoreBarFill {
+  display: block;
+  height: 100%;
+  border-radius: var(--radius-full);
+}
+.fill_saudavel {
+  background: var(--success);
+}
+.fill_atencao {
+  background: var(--warning);
+}
+.fill_critico {
+  background: var(--danger);
+}
+.fill_parcial {
+  background: var(--text-muted, #64748b);
+}
+
+/* ---------- Botão "ver breakdown" ---------- */
+.btnAbrir {
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text-dim);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btnAbrir:hover {
+  border-color: var(--primary-border);
+  color: var(--text);
+}
+
+/* ---------- Linha de detalhe (breakdown) ---------- */
+.detalheRow td {
+  background: var(--surface-2);
+}
+.detalhe {
+  border: 1px solid var(--primary-border);
+  border-radius: var(--radius-lg);
+  background: var(--surface-2);
+  padding: var(--space-4);
+  margin: var(--space-2) 0;
+}
+.detalheHead {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-3);
+}
+.detalheHint {
+  font-size: 12.5px;
+  color: var(--text-dim);
+}
+
+/* ---------- Breakdown por lado (auditoria × e-CAC) ---------- */
+.breakdownGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+@media (max-width: 720px) {
+  .breakdownGrid {
+    grid-template-columns: 1fr;
+  }
+}
+.breakdownLado {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  padding: var(--space-3) var(--space-4);
+}
+.breakdownLadoTitulo {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-faint);
+  margin: 0 0 var(--space-3);
+}
+.fatorList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.fatorRow {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--border);
+}
+.fatorRow:last-child {
+  border-bottom: none;
+}
+.fatorRotulo {
+  font-size: 12.5px;
+  color: var(--text);
+  line-height: 1.35;
+}
+.fatorFonte {
+  font-size: 11px;
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+.fatorPontos {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--danger);
+  white-space: nowrap;
+}
+.semFatores {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--text-dim);
+  background: var(--success-soft);
+  border: 1px solid #bfe3cd;
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  max-width: 80ch;
+}
+
+/* ---------- Nota de reconciliação + selo de rodapé ---------- */
+.notaReconciliacao {
+  margin: var(--space-3) 0 0;
+  font-size: 12px;
+  color: var(--text-dim);
+  background: var(--surface-2);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+}
+.rodapeSelo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-faint);
+  margin: var(--space-3) 0 0;
+}
+.rodapeGlyph {
+  color: var(--primary);
+  font-size: 13px;
+}
