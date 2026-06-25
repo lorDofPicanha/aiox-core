@@ -7,7 +7,9 @@ const {
   buildEditalExcerpt,
   extractEdital,
   extractEditalText,
+  mergeEditalSources,
 } = await import("../lib/edital/extract-edital.ts");
+const { parsePncpId } = await import("../lib/edital/pncp-source.ts");
 
 // Edital sintético com a estrutura típica de um edital de obra BR.
 const EDITAL = `
@@ -81,4 +83,25 @@ test("seções ausentes ficam vazias (nunca inventa)", () => {
   const s = extractEditalSections("Texto qualquer sem cabeçalhos de edital.");
   assert.equal(s.orcamento, "");
   assert.equal(s.habilitacaoTecnica, "");
+});
+
+test("mergeEditalSources: por seção, a fonte mais rica vence", () => {
+  const edital = `1. DO OBJETO\nReforma de escola.\n9. DO ORÇAMENTO\nValor estimado: R$ 500.000,00.`;
+  const planilha = `PLANILHA ORÇAMENTÁRIA\nItem 1 Demolição m³ 60 R$95,00; Item 2 Alvenaria m² 420 R$88,00; Item 3 Pintura m² 1500 R$28,00; Item 4 Cobertura m² 400 R$240,00 (detalhamento completo da planilha do edital).`;
+  const merged = mergeEditalSources([
+    { label: "Edital", text: edital },
+    { label: "Planilha Orçamentária", text: planilha },
+  ]);
+  // objeto vem do Edital
+  assert.match(merged.sections.objeto, /reforma de escola/i);
+  // orçamento: o da Planilha (mais longo/rico) deve vencer o do Edital
+  assert.match(merged.sections.orcamento, /Item 4 Cobertura/i);
+  assert.ok(merged.encontradas.includes("orcamento"));
+});
+
+test("parsePncpId decompõe cnpj/ano/sequencial (sem zeros à esquerda)", () => {
+  const r = parsePncpId("01409580000138-1-000954/2026");
+  assert.equal(r.cnpj, "01409580000138");
+  assert.equal(r.ano, "2026");
+  assert.equal(r.sequencial, "954");
 });

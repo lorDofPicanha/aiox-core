@@ -59,7 +59,7 @@ const ANCHORS: { name: keyof EditalSections; re: RegExp }[] = [
   { name: "consorcio", re: hdr("cons[oó]rcio") },
 ];
 
-const MAX_SECTION_CHARS = 2500;
+const MAX_SECTION_CHARS = 4000;
 
 /** PDF→texto (lazy pdf-parse) ou texto direto. Sem dep instalada, falha com instrução clara. */
 export async function extractEditalText(input: { pdfBuffer?: Uint8Array; text?: string }): Promise<string> {
@@ -151,5 +151,40 @@ export async function extractEdital(input: { pdfBuffer?: Uint8Array; text?: stri
     valorEstimadoHint: extractValorEstimadoHint(sections, text),
     excerpt: buildEditalExcerpt(sections),
     encontradas,
+  };
+}
+
+// ── Multi-documento ──────────────────────────────────────────────────────────
+// Um edital PNCP é multi-doc: Edital + Projeto Básico + Planilha Orçamentária + ETP.
+// A habilitação técnica detalhada e o orçamento analítico costumam ficar nos ANEXOS,
+// não no Edital. Aqui extraímos as seções de CADA fonte e MESCLAMOS: por seção, vence
+// o conteúdo mais rico (mais longo) — assim o orçamento da Planilha supera a menção
+// breve no Edital, e a habilitação do PB supera a referência no Edital.
+
+export interface EditalSource {
+  label: string; // ex.: "Edital", "Projeto Básico", "Planilha Orçamentária"
+  text: string;
+}
+
+/** Mescla seções de várias fontes (a mais rica por seção vence). */
+export function mergeEditalSources(sources: EditalSource[]): EditalExtract {
+  const merged = SECTION_KEYS.reduce((acc, k) => {
+    acc[k] = "";
+    return acc;
+  }, {} as EditalSections);
+
+  for (const src of sources) {
+    const s = extractEditalSections(src.text);
+    for (const k of SECTION_KEYS) {
+      if (s[k] && s[k].length > merged[k].length) merged[k] = s[k];
+    }
+  }
+
+  const fullText = sources.map((s) => s.text).join("\n");
+  return {
+    sections: merged,
+    valorEstimadoHint: extractValorEstimadoHint(merged, fullText),
+    excerpt: buildEditalExcerpt(merged),
+    encontradas: SECTION_KEYS.filter((k) => merged[k]),
   };
 }

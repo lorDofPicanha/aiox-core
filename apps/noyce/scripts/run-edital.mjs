@@ -11,6 +11,7 @@ import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { extractEdital } from "../lib/edital/extract-edital.ts";
+import { fetchAndExtractEdital } from "../lib/edital/pncp-source.ts";
 import { createLlmClient } from "../lib/agents/clients/client-factory.ts";
 import { runTriage } from "../lib/agents/triage-agent.ts";
 import { runAnalysis } from "../lib/agents/analysis-agent.ts";
@@ -18,10 +19,14 @@ import { runHabilitation } from "../lib/agents/habilitation-agent.ts";
 import { runDocumentDraft } from "../lib/agents/document-agent.ts";
 import { validateAnalysis, validateHabilitation } from "../lib/agents/guardrails.ts";
 
-const pdfPath = process.argv[2];
-const pncpId = process.argv[3];
-if (!pdfPath) {
-  console.error("uso: node scripts/run-edital.mjs <pdf> [pncpId]");
+// Modos:
+//   node run-edital.mjs --pncp <pncpId>   → baixa Edital + anexos da API (multi-doc)
+//   node run-edital.mjs <pdf> [pncpId]    → um PDF local
+const multiPncp = process.argv[2] === "--pncp" ? process.argv[3] : null;
+const pdfPath = multiPncp ? null : process.argv[2];
+const pncpId = multiPncp ?? process.argv[3];
+if (!multiPncp && !pdfPath) {
+  console.error("uso: node scripts/run-edital.mjs (--pncp <pncpId> | <pdf> [pncpId])");
   process.exit(1);
 }
 if (!process.env.OPENAI_API_KEY && !process.env.ANTHROPIC_API_KEY) {
@@ -36,10 +41,16 @@ const item = (snap.items ?? []).find((x) => x.pncpId === pncpId);
 const box = (t) => console.log(`\n${"═".repeat(66)}\n${t}\n${"═".repeat(66)}`);
 const ms = (t0) => `${((Date.now() - t0) / 1000).toFixed(0)}s`;
 
-// 0) PARSER — PDF real → seções + excerpt
-box("0/4 · PARSER — PDF do edital → seções estruturadas");
-const buf = readFileSync(pdfPath);
-const ed = await extractEdital({ pdfBuffer: new Uint8Array(buf) });
+// 0) PARSER — PDF(s) real(is) → seções + excerpt
+box("0/4 · PARSER — edital → seções estruturadas");
+let ed;
+if (multiPncp) {
+  ed = await fetchAndExtractEdital(multiPncp);
+  console.log(`documentos ingeridos: ${ed.docs.join(" · ")}`);
+} else {
+  const buf = readFileSync(pdfPath);
+  ed = await extractEdital({ pdfBuffer: new Uint8Array(buf) });
+}
 const objeto = (ed.sections.objeto || item?.title || "").replace(/\s+/g, " ").slice(0, 220);
 console.log(`seções: ${ed.encontradas.join(", ")}`);
 console.log(`valor estimado (parser): ${ed.valorEstimadoHint ? "R$ " + ed.valorEstimadoHint.toLocaleString("pt-BR") : "n/i"}`);
