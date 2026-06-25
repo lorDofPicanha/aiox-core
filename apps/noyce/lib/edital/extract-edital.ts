@@ -66,13 +66,27 @@ export async function extractEditalText(input: { pdfBuffer?: Uint8Array; text?: 
   if (input.text && input.text.trim()) return input.text;
   if (!input.pdfBuffer) throw new Error("extractEditalText: forneça `text` ou `pdfBuffer`.");
 
-  const pkg = "pdf-parse";
-  const mod = await import(pkg).catch(() => {
+  // pdf-parse v2 expõe a classe PDFParse (não mais uma função). Lazy import p/ não
+  // exigir a dep quando a entrada já é texto.
+  const mod = await import("pdf-parse").catch(() => {
     throw new Error("extractEditalText: instale pdf-parse (npm i pdf-parse) para ler PDF, ou passe `text`.");
   });
-  const pdfParse = ((mod as { default?: unknown }).default ?? mod) as (b: Uint8Array) => Promise<{ text: string }>;
-  const out = await pdfParse(input.pdfBuffer);
-  return out.text ?? "";
+  const PDFParse = (mod as {
+    PDFParse?: new (opts: { data: Uint8Array }) => {
+      getText: () => Promise<{ text: string }>;
+      destroy?: () => Promise<void> | void;
+    };
+  }).PDFParse;
+  if (!PDFParse) {
+    throw new Error("extractEditalText: API do pdf-parse não reconhecida (esperava export PDFParse).");
+  }
+  const parser = new PDFParse({ data: input.pdfBuffer });
+  try {
+    const out = await parser.getText();
+    return out.text ?? "";
+  } finally {
+    await parser.destroy?.();
+  }
 }
 
 /** Acha a 1ª ocorrência de cada âncora e fatia o texto entre âncoras consecutivas. */
