@@ -1,0 +1,45 @@
+{
+  "nav": { "collection": "Kollektion", "atelier": "Das Atelier", "configurator": "Konfigurator", "contact": "Kontakt" },
+  "sw": { "language": "Sprache", "currency": "Währung" },
+  "home": {
+    "origin": "Atelier · Brasilien · Weltweiter Versand",
+    "h1a": "Brasiliens Edelsteine,", "h1b": "gemacht zum Spielen.",
+    "sub": "Handgefertigte Luxus-Billardtische — auf Bestellung in Brasilien gefertigt, mit White-Glove-Service in die USA und nach Europa geliefert.",
+    "cta": "Die Kollektion entdecken", "book": "Private Besichtigung buchen", "scroll": "Scrollen",
+    "c1k": "Warum dieses Objekt", "c1h": "Ein einziger Holzblock, sechshundert Stunden von Hand.",
+    "c1p": "Keiner gleicht dem anderen. Jeder Tisch wird aus einem Stück brasilianischen Edelholzes gefertigt, kompromisslos gefügt und von den Händen signiert, die ihn gebaut haben.",
+    "c1m": "Das Atelier →", "linesk": "Zwei Linien, ein Haus", "atelierD": "Die Signature-Stücke", "signatureD": "Die komplette Linie · 18 Modelle",
+    "quote": "„Wir machen nicht viele. Wir machen einen, vollständig, und beginnen von vorn.“",
+    "s1": "Stunden pro Tisch", "s2": "Atelier seit", "s3": "Modelle auf Bestellung",
+    "ctaEb": "Private Anfertigung", "ctaH": "Ein Tisch, den es nur einmal gibt.", "ctaBtn": "Private Besichtigung buchen"
+  },
+  "col": {
+    "eyebrow": "Die Kollektion · Auf Bestellung", "titleA": "Zwei Linien.", "titleB": "Ein Atelier.",
+    "all": "Alle", "billiards": "Billard", "convertible": "Verwandelbar", "pingpong": "Tischtennis", "foosball": "Tischfußball", "shuffleboard": "Shuffleboard",
+    "atelier": "Atelier", "atelierC": "Die Signature-Stücke", "signature": "Signature", "signatureC": "Die komplette Linie · 18 Modelle",
+    "flagship": "Das Flaggschiff", "from": "Ab", "discover": "Entdecken",
+    "note": "Richtpreise — Ihre finale Anfertigung wird bei Bestellung bestätigt."
+  },
+  "pdp": {
+    "flagship": "Auf Bestellung", "object": "Das Objekt", "objectV": "Ein einziger Block brasilianischen Edelholzes, in über sechshundert Stunden von Hand vollendet.",
+    "house": "Das Haus", "houseV": "Ein Atelier in Brasilien. Jeder Tisch signiert, nummeriert und für einen einzigen Raum gefertigt.",
+    "now": "Jetzt", "nowV": "Jedes Stück wird auf Bestellung gefertigt — pro Saison nur eine begrenzte Zahl an Aufträgen.",
+    "frame": "Massivholz-Rahmen", "cloth": "Filztuch", "from": "Ab", "ddp": "Frei Haus geliefert — inklusive Zoll.",
+    "t1": "Versicherter White-Glove-Transport", "t2": "8–10 Wochen · auf Bestellung", "t3": "Zoll & Abgaben übernommen", "t4": "Garantie einwandfreier Anlieferung",
+    "reserve": "Diesen Tisch reservieren", "talk": "Mit einem Spezialisten sprechen", "open3d": "3D-Konfigurator öffnen →", "crumb": "Kollektion"
+  },
+  "cfg": {
+    "eyebrow": "Konfigurieren · Auf Bestellung", "sub": "Bauen Sie den Tisch, den es nur einmal gibt.",
+    "hint": "Ziehen zum Drehen · Scrollen zum Zoomen", "ar": "In Ihrem Raum ansehen (AR)",
+    "frame": "Rahmen — Massivholz", "metal": "Sockel — Metall", "cloth": "Tuch — Stoff", "from": "Ab",
+    "ddp": "Frei Haus geliefert — inklusive Zoll.", "reserve": "Konfiguration reservieren"
+  },
+  "wa": {
+    "viewing": "Hallo Bretda, ich möchte eine private Besichtigung buchen.",
+    "reserve": "Hallo Bretda, ich interessiere mich für den {name} ({price}). Ich möchte ihn reservieren.",
+    "talk": "Hallo Bretda, ich möchte mit einem Spezialisten über den {name} sprechen.",
+    "config": "Hallo Bretda, ich habe den {name} konfiguriert — Rahmen in {wood}, Sockel in {metal}, Filz in {cloth} ({price}). Ich möchte fortfahren.",
+    "contact": "Hallo Bretda, ich hätte gerne mehr Informationen zu Ihren Tischen."
+  },
+  "footer": { "tagline": "Skulpturale Billardtische, in Brasilien von Hand gefertigt und mit White-Glove-Service an Häuser in den USA und Europa geliefert.", "since": "Atelier seit 2009 · Brasilien", "rights": "Bretda Atelier · Itajaí, Brasilien", "contact": "Sprechen Sie uns an", "shipping": "Versand & Zoll" }
+}

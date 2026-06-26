@@ -171,6 +171,13 @@ apps/tocks-store/node_modules/
 !apps/radar-fiscal/**
 apps/radar-fiscal/.next/
 apps/radar-fiscal/node_modules/
+!apps/bretda-export/
+!apps/bretda-export/**
+apps/bretda-export/.next/
+apps/bretda-export/node_modules/
+apps/bretda-export/.env
+apps/bretda-export/.env.local
+apps/bretda-export/.env.*.local
 apps/radar-fiscal/tsconfig.tsbuildinfo
 !apps/contador/
 !apps/contador/**

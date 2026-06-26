@@ -1,0 +1,45 @@
+{
+  "nav": { "collection": "Collection", "atelier": "L'Atelier", "configurator": "Configurateur", "contact": "Contact" },
+  "sw": { "language": "Langue", "currency": "Devise" },
+  "home": {
+    "origin": "Atelier · Brésil · Expédié dans le monde entier",
+    "h1a": "Les gemmes du Brésil,", "h1b": "faites pour jouer.",
+    "sub": "Tables de billard de luxe fabriquées à la main — sur commande au Brésil, livrées en gants blancs aux États-Unis et en Europe.",
+    "cta": "Découvrir la collection", "book": "Réserver une visite privée", "scroll": "Défiler",
+    "c1k": "Pourquoi cet objet", "c1h": "Un seul bloc de bois, six cents heures à la main.",
+    "c1p": "Aucune n'est identique. Chaque table est taillée dans une seule pièce de bois précieux brésilien, assemblée sans compromis et signée par les mains qui l'ont créée.",
+    "c1m": "L'atelier →", "linesk": "Deux lignes, une maison", "atelierD": "Les pièces maîtresses", "signatureD": "La ligne complète · 18 modèles",
+    "quote": "« Nous n'en faisons pas beaucoup. Nous en faisons une, entièrement, puis recommençons. »",
+    "s1": "Heures par table", "s2": "Atelier depuis", "s3": "Modèles sur commande",
+    "ctaEb": "Commande privée", "ctaH": "Une table qui n'existe qu'une fois.", "ctaBtn": "Réserver une visite privée"
+  },
+  "col": {
+    "eyebrow": "La Collection · Sur commande", "titleA": "Deux lignes.", "titleB": "Un atelier.",
+    "all": "Toutes", "billiards": "Billard", "convertible": "Convertible", "pingpong": "Ping-Pong", "foosball": "Baby-foot", "shuffleboard": "Shuffleboard",
+    "atelier": "Atelier", "atelierC": "Les pièces maîtresses", "signature": "Signature", "signatureC": "La ligne complète · 18 modèles",
+    "flagship": "La pièce maîtresse", "from": "À partir de", "discover": "Découvrir",
+    "note": "Prix indicatifs — votre commande finale est confirmée à l'achat."
+  },
+  "pdp": {
+    "flagship": "Sur commande", "object": "L'objet", "objectV": "Un seul bloc de bois précieux brésilien, fini à la main en plus de six cents heures.",
+    "house": "La maison", "houseV": "Un atelier au Brésil. Chaque table signée, numérotée et conçue pour une seule pièce.",
+    "now": "Maintenant", "nowV": "Chaque pièce est fabriquée sur commande — un nombre limité de commandes par saison.",
+    "frame": "Châssis en bois", "cloth": "Tapis feutre", "from": "À partir de", "ddp": "Livrée à votre porte — droits de douane inclus.",
+    "t1": "Transport assuré gants blancs", "t2": "8–10 semaines · sur commande", "t3": "Douanes & taxes prises en charge", "t4": "Garantie d'arrivée en parfait état",
+    "reserve": "Réserver cette table", "talk": "Parler à un spécialiste", "open3d": "Ouvrir le configurateur 3D →", "crumb": "Collection"
+  },
+  "cfg": {
+    "eyebrow": "Configurer · Sur commande", "sub": "Composez la table qui n'existe qu'une fois.",
+    "hint": "Glisser pour pivoter · molette pour zoomer", "ar": "Voir dans votre pièce (AR)",
+    "frame": "Châssis — bois massif", "metal": "Socle — métal", "cloth": "Tapis — tissu", "from": "À partir de",
+    "ddp": "Livrée à votre porte — droits de douane inclus.", "reserve": "Réserver votre configuration"
+  },
+  "wa": {
+    "viewing": "Bonjour Bretda, je souhaiterais réserver une visite privée.",
+    "reserve": "Bonjour Bretda, je suis intéressé(e) par la {name} ({price}). Je souhaiterais la réserver.",
+    "talk": "Bonjour Bretda, je souhaiterais parler à un spécialiste de la {name}.",
+    "config": "Bonjour Bretda, j'ai configuré la {name} — châssis en {wood}, socle en {metal}, feutre en {cloth} ({price}). Je souhaiterais continuer.",
+    "contact": "Bonjour Bretda, je souhaiterais plus d'informations sur vos tables."
+  },
+  "footer": { "tagline": "Tables de billard sculpturales, fabriquées à la main au Brésil et livrées en gants blancs dans les foyers des États-Unis et d'Europe.", "since": "Atelier depuis 2009 · Brésil", "rights": "Bretda Atelier · Itajaí, Brésil", "contact": "Parlez-nous", "shipping": "Livraison & douanes" }
+}

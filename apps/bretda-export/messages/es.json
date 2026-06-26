@@ -1,0 +1,45 @@
+{
+  "nav": { "collection": "Colección", "atelier": "El Atelier", "configurator": "Configurador", "contact": "Contacto" },
+  "sw": { "language": "Idioma", "currency": "Moneda" },
+  "home": {
+    "origin": "Atelier · Brasil · Envío a todo el mundo",
+    "h1a": "Las gemas de Brasil,", "h1b": "hechas para jugar.",
+    "sub": "Mesas de billar de lujo hechas a mano — fabricadas a medida en Brasil, entregadas con guante blanco en EE. UU. y Europa.",
+    "cta": "Explorar la colección", "book": "Reservar una cita privada", "scroll": "Desliza",
+    "c1k": "Por qué este objeto", "c1h": "Un solo bloque de madera, seiscientas horas a mano.",
+    "c1p": "No hay dos iguales. Cada mesa se talla de una sola pieza de madera noble brasileña, ensamblada sin concesiones y firmada por las manos que la crearon.",
+    "c1m": "El atelier →", "linesk": "Dos líneas, una casa", "atelierD": "Las piezas insignia", "signatureD": "La línea completa · 18 modelos",
+    "quote": "“No hacemos muchas. Hacemos una, por completo, y empezamos de nuevo.”",
+    "s1": "Horas por mesa", "s2": "Atelier desde", "s3": "Modelos a medida",
+    "ctaEb": "Encargo privado", "ctaH": "Una mesa que existe una sola vez.", "ctaBtn": "Reservar una cita privada"
+  },
+  "col": {
+    "eyebrow": "La Colección · Hecha a medida", "titleA": "Dos líneas.", "titleB": "Un atelier.",
+    "all": "Todas", "billiards": "Billar", "convertible": "Convertible", "pingpong": "Ping-Pong", "foosball": "Futbolín", "shuffleboard": "Shuffleboard",
+    "atelier": "Atelier", "atelierC": "Las piezas insignia", "signature": "Signature", "signatureC": "La línea completa · 18 modelos",
+    "flagship": "La pieza insignia", "from": "Desde", "discover": "Descubrir",
+    "note": "Precios indicativos — tu encargo final se confirma al realizar el pedido."
+  },
+  "pdp": {
+    "flagship": "Hecha a medida", "object": "El objeto", "objectV": "Un único bloque de madera noble brasileña, acabado a mano durante seiscientas horas.",
+    "house": "La casa", "houseV": "Un atelier en Brasil. Cada mesa firmada, numerada y creada para una sola sala.",
+    "now": "Ahora", "nowV": "Cada pieza se hace a medida — un número limitado de encargos por temporada.",
+    "frame": "Estructura en madera", "cloth": "Paño de fieltro", "from": "Desde", "ddp": "Entregada en su puerta — aranceles incluidos.",
+    "t1": "Transporte asegurado guante blanco", "t2": "8–10 semanas · hecha a medida", "t3": "Aduanas y aranceles gestionados", "t4": "Garantía de llegada en perfecto estado",
+    "reserve": "Reservar esta mesa", "talk": "Hablar con un especialista", "open3d": "Abrir el configurador 3D →", "crumb": "Colección"
+  },
+  "cfg": {
+    "eyebrow": "Configurar · Hecha a medida", "sub": "Crea la mesa que existe una vez.",
+    "hint": "Arrastra para rotar · scroll para zoom", "ar": "Verla en tu sala (AR)",
+    "frame": "Estructura — madera", "metal": "Base — metal", "cloth": "Paño — tela", "from": "Desde",
+    "ddp": "Entregada en su puerta — aranceles incluidos.", "reserve": "Reservar tu configuración"
+  },
+  "wa": {
+    "viewing": "Hola Bretda, me gustaría reservar una cita privada.",
+    "reserve": "Hola Bretda, me interesa la {name} ({price}). Me gustaría reservarla.",
+    "talk": "Hola Bretda, me gustaría hablar con un especialista sobre la {name}.",
+    "config": "Hola Bretda, configuré la {name} — estructura en {wood}, base en {metal}, paño en {cloth} ({price}). Me gustaría continuar.",
+    "contact": "Hola Bretda, me gustaría más información sobre sus mesas."
+  },
+  "footer": { "tagline": "Mesas de billar escultóricas, hechas a mano en Brasil y entregadas con guante blanco en hogares de EE. UU. y Europa.", "since": "Atelier desde 2009 · Brasil", "rights": "Bretda Atelier · Itajaí, Brasil", "contact": "Hablar con nosotros", "shipping": "Envío y aduanas" }
+}

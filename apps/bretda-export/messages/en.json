@@ -1,0 +1,92 @@
+{
+  "nav": { "collection": "Collection", "atelier": "The Atelier", "configurator": "Configurator", "contact": "Contact" },
+  "sw": { "language": "Language", "currency": "Currency" },
+  "home": {
+    "origin": "Atelier · Brazil · Shipped Worldwide",
+    "h1a": "Brazil’s gemstones,",
+    "h1b": "made to play.",
+    "sub": "Hand-crafted luxury billiards tables — made to order in Brazil, delivered white-glove to the US & Europe.",
+    "cta": "Explore the Collection",
+    "book": "Book a private viewing",
+    "scroll": "Scroll",
+    "c1k": "Why this object",
+    "c1h": "A single block of wood, six hundred hours by hand.",
+    "c1p": "No two are alike. Each table is cut from one piece of Brazilian hardwood, joined without compromise, and signed by the hands that built it.",
+    "c1m": "The atelier →",
+    "linesk": "Two lines, one house",
+    "atelierD": "The signature pieces",
+    "signatureD": "The complete line · 18 models",
+    "quote": "“We do not make many. We make one, completely, and then begin again.”",
+    "s1": "Hours per table", "s2": "Atelier since", "s3": "Made-to-order models",
+    "ctaEb": "Private Commission", "ctaH": "A table that exists only once.", "ctaBtn": "Book a private viewing"
+  },
+  "col": {
+    "eyebrow": "The Collection · Made to Order", "titleA": "Two lines.", "titleB": "One atelier.",
+    "all": "All", "billiards": "Billiards", "convertible": "Convertible", "pingpong": "Ping-Pong", "foosball": "Foosball", "shuffleboard": "Shuffleboard",
+    "atelier": "Atelier", "atelierC": "The signature pieces", "signature": "Signature", "signatureC": "The complete line · 18 models",
+    "flagship": "The Flagship", "from": "From", "discover": "Discover",
+    "note": "Indicative prices — your final commission is confirmed at order."
+  },
+  "pdp": {
+    "flagship": "Made to Order", "flag": "The Flagship", "object": "The object", "objectV": "A single block of Brazilian hardwood, hand-finished over six hundred hours.",
+    "house": "The house", "houseV": "One atelier in Brazil. Every table signed, numbered, and built for a single room.",
+    "now": "Now", "nowV": "Each piece is made to order — a limited number of commissions open per season.",
+    "frame": "Hardwood frame", "cloth": "Felt cloth", "from": "From", "ddp": "Delivered to your door — duties included.",
+    "t1": "Insured white-glove freight", "t2": "8–10 weeks · made to order", "t3": "Customs & duties handled", "t4": "Arrival-condition guarantee",
+    "reserve": "Reserve this table", "talk": "Talk to a specialist", "open3d": "Open the 3D configurator →", "crumb": "Collection"
+  },
+  "cfg": {
+    "eyebrow": "Configure · Made to Order", "sub": "Build the table that exists once.",
+    "hint": "Drag to rotate · scroll to zoom", "ar": "View in your room (AR)",
+    "frame": "Frame — hardwood", "metal": "Base — metal", "cloth": "Felt — cloth", "from": "From",
+    "ddp": "Delivered to your door — duties included.", "reserve": "Reserve your configuration"
+  },
+  "footer": { "tagline": "Sculptural billiards tables, hand-built in Brazil and delivered white-glove to homes across the United States and Europe.", "since": "Crafting since 2009 · Brazil", "rights": "Bretda Atelier · Itajaí, Brazil", "contact": "Talk to us", "shipping": "Shipping & customs" },
+  "wa": {
+    "viewing": "Hello Bretda, I would like to book a private viewing.",
+    "reserve": "Hello Bretda, I'm interested in the {name} ({price}). I'd like to reserve it.",
+    "talk": "Hello Bretda, I'd like to speak with a specialist about the {name}.",
+    "config": "Hello Bretda, I configured the {name} — frame in {wood}, base in {metal}, felt in {cloth} ({price}). I'd like to proceed.",
+    "contact": "Hello Bretda, I'd like more information about your tables."
+  },
+  "atelier": {
+    "eyebrow": "The House · Itajaí, Brazil",
+    "h1a": "An atelier,",
+    "h1b": "not a factory.",
+    "lead": "Bretda is a small house on the southern coast of Brazil. We build a limited number of tables each year — each one by hand, each one signed.",
+    "c1k": "Origin",
+    "c1h": "A workshop in Itajaí, since 2009.",
+    "c1p": "It began with two cabinetmakers, one bench, and a refusal to make anything ordinary. The bench is larger now — the refusal is the same.",
+    "c2k": "The craft",
+    "c2h": "One block of wood. Six hundred hours.",
+    "c2p": "Each table is cut from a single piece of Brazilian hardwood, joined without compromise where the eye can reach, and finished by hand until the grain reads like silk.",
+    "procK": "How a table is made",
+    "p1n": "01", "p1h": "Design", "p1p": "Proportions drawn for your room, your ceiling, your light.",
+    "p2n": "02", "p2h": "Wood", "p2p": "A single hardwood block, selected, rested, and cut to the grain.",
+    "p3n": "03", "p3h": "Joinery", "p3p": "Assembled by hand over weeks — no shortcut where it counts.",
+    "p4n": "04", "p4h": "Signature", "p4p": "Numbered, signed, and prepared for insured white-glove delivery.",
+    "quote": "“We do not make many. We make one, completely, and then begin again.”",
+    "s1": "Hours per table", "s2": "Atelier since", "s3": "Tables a year",
+    "ctaEb": "Private Commission", "ctaH": "Begin your table.", "ctaBtn": "Book a private viewing"
+  },
+  "contact": {
+    "eyebrow": "Contact · Private Commission",
+    "h1a": "Begin a",
+    "h1b": "conversation.",
+    "lead": "Every Bretda is made to order. Tell us the room, and a specialist will guide the commission from first sketch to white-glove delivery.",
+    "waK": "WhatsApp", "waH": "Speak with a specialist", "waP": "The fastest way to begin — direct, in your language, no obligation.", "waL": "Open WhatsApp →",
+    "emK": "Email", "emH": "Write to the atelier", "emP": "For detailed enquiries, drawings, and trade requests.", "emL": "atelier@bretda.com",
+    "viK": "Private viewing", "viH": "See a table in person", "viP": "Arrange a private viewing or a video walkthrough of the atelier.", "viL": "Request a viewing →",
+    "stepsK": "How a commission works",
+    "f1n": "01", "f1h": "Conversation", "f1p": "We learn the room, the play, and the finish you want.",
+    "f2n": "02", "f2h": "Proposal", "f2p": "A drawing, materials, and a fixed price — duties included.",
+    "f3n": "03", "f3h": "Build", "f3p": "Eight to ten weeks in the atelier, made only for you.",
+    "f4n": "04", "f4h": "Delivery", "f4p": "Insured white-glove freight, installed in your home.",
+    "servedK": "Delivered to",
+    "r1n": "United States", "r1d": "DDP · duties included",
+    "r2n": "Europe", "r2d": "DDP · duties included",
+    "r3n": "Worldwide", "r3d": "By arrangement",
+    "respK": "Response", "respV": "We reply within one business day.",
+    "ctaEb": "Private Commission", "ctaH": "A table that exists only once.", "ctaBtn": "Book a private viewing"
+  }
+}
