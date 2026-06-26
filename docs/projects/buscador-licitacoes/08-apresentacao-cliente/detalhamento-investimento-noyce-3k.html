@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Detalhamento de Investimento — Noyce</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --amber:#E8932E; --blue:#2F6BF5; --ink:#1A1D24; --soft:#5C6270;
+    --line:#E7E3DC; --bg:#FBFAF7; --chip:#FBF1E2;
+    --sans:"Inter",sans-serif; --serif:"Newsreader",Georgia,serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  @page{ size:210mm 297mm; margin:0; }
+  html,body{background:#fff;font-family:var(--sans);color:var(--ink);}
+  .page{width:210mm;min-height:297mm;position:relative;padding:20mm 18mm 24mm;background:#fff;
+    page-break-after:always;}
+  .page:last-child{page-break-after:auto;}
+
+  /* header */
+  .top{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2px solid var(--ink);padding-bottom:12px;}
+  .brand{display:flex;align-items:center;gap:11px;}
+  .mark{width:34px;height:34px;border-radius:9px;background:var(--ink);position:relative;flex:0 0 auto;}
+  .mark::before{content:"";position:absolute;inset:9px;border-radius:50%;border:2.4px solid var(--amber);}
+  .mark::after{content:"";position:absolute;left:50%;top:50%;width:2.4px;height:9px;background:var(--blue);transform:translate(-50%,-50%) rotate(38deg);border-radius:2px;}
+  .brand .n{font-family:var(--serif);font-weight:600;font-size:20pt;line-height:1;}
+  .brand .s{font-size:7.5pt;letter-spacing:.22em;text-transform:uppercase;color:var(--soft);margin-top:3px;}
+  .top .meta{text-align:right;font-size:8pt;color:var(--soft);line-height:1.7;}
+  .top .meta b{color:var(--ink);font-weight:600;}
+
+  h1{font-family:var(--serif);font-weight:600;font-size:23pt;line-height:1.15;margin:22px 0 4px;}
+  .sub{font-size:10pt;color:var(--soft);margin-bottom:4px;}
+  .valuechip{display:inline-block;margin-top:10px;background:var(--ink);color:#fff;
+    font-weight:600;font-size:11pt;padding:8px 16px;border-radius:8px;letter-spacing:.02em;}
+  .valuechip b{color:var(--amber);}
+
+  .obj{font-size:9.5pt;color:var(--soft);line-height:1.6;margin-top:14px;max-width:165mm;}
+  .obj b{color:var(--ink);font-weight:600;}
+
+  h2{font-family:var(--sans);font-weight:700;font-size:9pt;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--amber);margin:24px 0 10px;display:flex;align-items:center;gap:9px;}
+  h2::before{content:"";width:18px;height:2px;background:var(--amber);}
+
+  p.body{font-size:10pt;line-height:1.65;color:#33373F;}
+  p.body b{font-weight:600;color:var(--ink);}
+  .note{background:var(--chip);border-left:3px solid var(--amber);padding:11px 14px;border-radius:0 8px 8px 0;
+    font-size:9pt;line-height:1.55;color:#6A5320;margin-top:12px;}
+
+  table{width:100%;border-collapse:collapse;margin-top:6px;font-size:9.5pt;}
+  th{text-align:left;font-weight:600;font-size:7.5pt;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);
+    padding:0 10px 8px;border-bottom:1.5px solid var(--ink);}
+  th.r,td.r{text-align:right;}
+  td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.45;}
+  td .it{font-weight:600;color:var(--ink);}
+  td .de{font-size:8.5pt;color:var(--soft);margin-top:2px;}
+  td.num{font-weight:600;white-space:nowrap;}
+  td.ref{color:var(--soft);font-size:8.5pt;white-space:nowrap;}
+  tr.total td{border-top:2px solid var(--ink);border-bottom:none;padding-top:11px;font-weight:700;font-size:10.5pt;}
+  tr.total .val{color:var(--amber);}
+  .idx{display:inline-block;width:18px;color:var(--blue);font-weight:700;}
+
+  ul.deliver{list-style:none;margin-top:4px;columns:2;column-gap:14mm;}
+  ul.deliver li{font-size:9.5pt;line-height:1.5;padding:4px 0 4px 20px;position:relative;break-inside:avoid;}
+  ul.deliver li::before{content:"✓";position:absolute;left:0;color:var(--amber);font-weight:700;}
+
+  .summary{margin-top:8px;border:1.5px solid var(--ink);border-radius:10px;overflow:hidden;}
+  .summary .row{display:flex;justify-content:space-between;padding:13px 16px;font-size:10pt;}
+  .summary .row+.row{border-top:1px solid var(--line);}
+  .summary .row.head{background:var(--ink);color:#fff;font-weight:600;}
+  .summary .row.head .v{color:var(--amber);font-size:13pt;font-weight:700;}
+  .summary .row .lab b{font-weight:600;}
+  .summary .row .v{font-weight:600;}
+
+  .foot{position:absolute;left:18mm;right:18mm;bottom:13mm;border-top:1px solid var(--line);
+    padding-top:8px;font-size:7.5pt;color:var(--soft);display:flex;justify-content:space-between;}
+</style>
+</head>
+<body>
+<section class="page">
+
+  <div class="top">
+    <div class="brand">
+      <div class="mark"></div>
+      <div><div class="n">Noyce</div><div class="s">Inteligência de Licitações</div></div>
+    </div>
+    <div class="meta">
+      <b>Cliente:</b> ENIAC<br>
+      <b>Fornecedor:</b> ____________________<br>
+      <b>Data:</b> 16/06/2026
+    </div>
+  </div>
+
+  <h1>Detalhamento de Investimento</h1>
+  <div class="sub">Memória de cálculo para liberação do valor</div>
+  <div class="valuechip">Valor de custo: <b>R$ 3.000,00</b></div>
+
+  <p class="obj"><b>Objeto:</b> desenvolvimento e implantação do <b>Noyce</b> — plataforma de inteligência de licitações (busca → análise → habilitação → documentos), sob medida para o perfil ENIAC.</p>
+
+  <h2>1 · Natureza do valor</h2>
+  <p class="body">Os <b>R$ 3.000,00</b> correspondem ao <b>valor de custo</b> do projeto: a soma dos <b>custos diretos que paguei</b> para construir e colocar o Noyce no ar — assinaturas das ferramentas de IA, processamento de IA (tokens) e a infraestrutura de implantação (go-live). <b>Não cobro minhas horas de trabalho</b> — o valor recompõe apenas o que efetivamente saiu para entregar o sistema funcionando, sem mão de obra nem margem de mercado embutidas.</p>
+  <div class="note">Não inclui a operação mensal recorrente (processamento de IA + hospedagem), cobrada à parte por <b>repasse de custo</b> — ver seção 4.</div>
+
+  <h2>2 · Para onde vão os R$ 3.000</h2>
+  <table>
+    <thead><tr><th>Item</th><th class="r">Valor de custo</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span class="idx">1</span><span class="it">Assinaturas de ferramentas de IA (rateio do build)</span>
+          <div class="de">Licenças das CLIs de IA e ferramentas usadas durante todo o desenvolvimento — pagas pelo fornecedor, não gratuitas.</div></td>
+        <td class="num r">R$ 1.400,00</td>
+      </tr>
+      <tr>
+        <td><span class="idx">2</span><span class="it">Processamento de IA / tokens (dev + testes)</span>
+          <div class="de">Geração e validação de código, conteúdo e dados durante a construção e os testes — o item que mais pesa num build assistido por IA.</div></td>
+        <td class="num r">R$ 900,00</td>
+      </tr>
+      <tr>
+        <td><span class="idx">3</span><span class="it">Implantação, infraestrutura &amp; go-live</span>
+          <div class="de">Deploy em produção, banco de dados, domínio, 4 logins (Aline / Alice / Giovanna + admin), integração da chave de IA, conexão à base PNCP.</div></td>
+        <td class="num r">R$ 700,00</td>
+      </tr>
+      <tr class="total">
+        <td>Total — valor de custo (sem mão de obra)</td>
+        <td class="r val">R$ 3.000,00</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>3 · Entregáveis</h2>
+  <ul class="deliver">
+    <li>Plataforma Noyce <b>no ar</b>, 4 logins com perfis</li>
+    <li>Busca/monitoramento de editais via <b>PNCP</b> (dados oficiais)</li>
+    <li><b>Triagem automática</b> (Vai / Olha / Pula) por perfil ENIAC</li>
+    <li><b>Análise de oportunidade</b> (preço, concorrência, riscos)</li>
+    <li>Módulo de <b>habilitação e consórcio</b> (CATs, balanços, matching)</li>
+    <li>Geração de <b>documentos</b> (proposta, planilha, declarações)</li>
+    <li>Base de dados de habilitação ENIAC configurada</li>
+  </ul>
+
+  <h2>4 · Operação mensal — valor fixo inicial</h2>
+  <p class="body">A operação contínua <b>não está nos R$ 3.000</b>. É um <b>valor fixo mensal de R$ 550</b>, que cobre a hospedagem + banco + domínio e o processamento de IA da operação. <b>Valor inicial</b> — revisável após os primeiros meses, conforme o volume real de editais analisados/disputados:</p>
+  <table>
+    <tbody>
+      <tr><td>Hospedagem + banco + domínio + integração de dados</td><td class="num r">incluído</td></tr>
+      <tr><td>Processamento de IA (triagem + análise/documentos sob demanda)</td><td class="num r">incluído</td></tr>
+      <tr class="total"><td>Valor mensal fixo (inicial)</td><td class="r val">R$ 550 / mês</td></tr>
+    </tbody>
+  </table>
+
+  <h2>5 · Resumo para aprovação</h2>
+  <div class="summary">
+    <div class="row head"><div class="lab">Pagamento único — go-live + recuperação de custo</div><div class="v">R$ 3.000,00</div></div>
+    <div class="row"><div class="lab">Operação mensal (valor fixo inicial, inicia após go-live)</div><div class="v">R$ 550/mês</div></div>
+  </div>
+  <div class="note" style="margin-top:14px;">Todos os itens (1 a 3) são custos diretos do período de desenvolvimento e podem ser ajustados aos valores reais lançados pelo fornecedor. <b>Nenhuma hora de trabalho do fornecedor está incluída no valor.</b></div>
+
+  <h2>6 · Aprovação</h2>
+  <p class="body">Declaro ciência do detalhamento acima e autorizo a liberação do pagamento único de <b>R$ 3.000,00</b>, referente ao go-live e à recuperação de custos do desenvolvimento do Noyce.</p>
+  <div style="display:flex;gap:18mm;margin-top:26px;">
+    <div style="flex:1;"><div style="border-top:1px solid var(--ink);padding-top:7px;font-size:8.5pt;color:var(--soft);">Cliente — ENIAC<br><span style="color:var(--ink);">Nome / cargo / data</span></div></div>
+    <div style="flex:1;"><div style="border-top:1px solid var(--ink);padding-top:7px;font-size:8.5pt;color:var(--soft);">Fornecedor<br><span style="color:var(--ink);">Nome / data</span></div></div>
+  </div>
+  <div style="margin-top:24px;font-size:8.5pt;color:var(--soft);line-height:1.7;">
+    <b style="color:var(--ink);">Dados para pagamento</b><br>
+    Favorecido: ____________________  ·  CNPJ/CPF: ____________________<br>
+    PIX: ____________________
+  </div>
+
+  <div class="foot"><span>Noyce · Inteligência de Licitações para ENIAC</span><span>Detalhamento de investimento · 16/06/2026</span></div>
+</section>
+</body>
+</html>
