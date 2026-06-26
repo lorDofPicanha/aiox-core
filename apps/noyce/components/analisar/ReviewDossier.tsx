@@ -4,7 +4,7 @@
 // Cada item pré-preenchido pelo motor tem [Aprovar] e [Corrigir]; correção humana
 // TRAVA o item (motor nunca sobrescreve) e exibe o valor original como histórico.
 import { useEffect, useMemo, useState } from "react";
-import type { Opportunity } from "@/lib/noyce-model";
+import type { EditalRequirementsModel, Opportunity } from "@/lib/noyce-model";
 import { eniacCcp } from "@/lib/noyce-data";
 import { useLiveChecklist } from "@/components/shell/useLiveChecklist";
 import {
@@ -22,6 +22,7 @@ import { SCORE_AS_OF } from "@/lib/noyce-data";
 import { loadVaultMeta } from "@/lib/noyce-vault";
 
 const STORAGE_PREFIX = "noyce.review.v1.";
+const ERM_CACHE_PREFIX = "noyce.erm.extracted.v1.";
 
 function loadState(opportunityId: string): ReviewState {
   try {
@@ -48,16 +49,58 @@ export function ReviewDossier({ opportunity }: { opportunity: Opportunity }) {
   }, [opportunity.id]);
 
   const liveChecklist = useLiveChecklist(opportunity);
-  // ERM curado do edital (quando houver) → dossiê dirigido pelo que ESTE edital exige
-  // (declarações + certidões), não um conjunto fixo. Sem ERM, cai no conjunto-praxe.
-  const erm = useMemo(
-    () =>
-      getCuratedErmForEdital({
-        id: opportunity.id,
-        pncpId: (opportunity as { pncpId?: string }).pncpId ?? null,
-      }) ?? undefined,
-    [opportunity],
+  // ERM CURADO (hand-verified) tem prioridade. Sem curado, o usuário pode PUXAR do PNCP:
+  // a rota /api/edital-erm baixa o edital + extrai declarações/CNDs (contorna o vault).
+  const curatedErm = useMemo(
+    () => getCuratedErmForEdital({ id: opportunity.id, pncpId: opportunity.id }) ?? undefined,
+    [opportunity.id],
   );
+  const [extractedErm, setExtractedErm] = useState<EditalRequirementsModel | undefined>(undefined);
+  const [ermStatus, setErmStatus] = useState<"idle" | "loading" | "done" | "error">("idle");
+  const [ermConfidence, setErmConfidence] = useState<{ declaracoes: string; cnds: string } | null>(null);
+
+  // Restaura ERM extraído do cache (evita re-baixar do PNCP a cada abertura).
+  useEffect(() => {
+    setExtractedErm(undefined);
+    setErmConfidence(null);
+    setErmStatus("idle");
+    if (curatedErm) return;
+    const cached = globalThis.localStorage?.getItem(ERM_CACHE_PREFIX + opportunity.id);
+    if (cached) {
+      try {
+        const parsed = JSON.parse(cached);
+        setExtractedErm(parsed.erm);
+        setErmConfidence(parsed.confidence ?? null);
+        setErmStatus("done");
+      } catch {
+        /* cache corrompido — ignora */
+      }
+    }
+  }, [opportunity.id, curatedErm]);
+
+  async function puxarErmDoEdital() {
+    setErmStatus("loading");
+    try {
+      const res = await fetch("/api/edital-erm", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ pncpId: opportunity.id }),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      const data = await res.json();
+      setExtractedErm(data.erm);
+      setErmConfidence(data.confidence ? { declaracoes: data.confidence.declaracoes, cnds: data.confidence.cnds } : null);
+      setErmStatus("done");
+      globalThis.localStorage?.setItem(
+        ERM_CACHE_PREFIX + opportunity.id,
+        JSON.stringify({ erm: data.erm, confidence: data.confidence }),
+      );
+    } catch {
+      setErmStatus("error");
+    }
+  }
+
+  const erm = curatedErm ?? extractedErm;
   const dossier = useMemo(
     () => buildReviewDossier({ ...opportunity, habilitationChecklist: liveChecklist }, eniacCcp, erm),
     [opportunity, liveChecklist, erm],
@@ -148,6 +191,32 @@ export function ReviewDossier({ opportunity }: { opportunity: Opportunity }) {
         <span className={progress.ready ? "review-ready" : "review-pending"}>
           {progress.ready ? "✓ Revisado — pronto p/ habilitar" : "Revisão pendente"}
         </span>
+      </div>
+
+      {/* Origem das EXIGÊNCIAS do edital (o que dirige a completude do dossiê). */}
+      <div className="review-erm-source" style={{ margin: "8px 0", padding: "8px 12px", borderRadius: 8, background: "#f6f5f0", fontSize: 13 }}>
+        {curatedErm ? (
+          <span>📋 Exigências do <strong>edital curado</strong> (verificado à mão) — dossiê dirigido pelo edital.</span>
+        ) : extractedErm ? (
+          <span>
+            📋 Exigências <strong>extraídas do edital (PNCP)</strong>
+            {ermConfidence ? ` — confiança declarações: ${ermConfidence.declaracoes} · certidões: ${ermConfidence.cnds}` : ""}.{" "}
+            <button type="button" onClick={puxarErmDoEdital} disabled={ermStatus === "loading"} style={{ marginLeft: 6 }}>
+              {ermStatus === "loading" ? "puxando…" : "reextrair"}
+            </button>
+            {(ermConfidence?.declaracoes === "baixa" || ermConfidence?.cnds === "baixa") && (
+              <small style={{ display: "block", color: "#8a6516" }}>⚠️ confiança baixa — conferir manualmente contra o edital.</small>
+            )}
+          </span>
+        ) : (
+          <span>
+            📋 Sem edital estruturado — dossiê no conjunto-<strong>praxe</strong> (pode faltar exigência específica deste edital).{" "}
+            <button type="button" onClick={puxarErmDoEdital} disabled={ermStatus === "loading"}>
+              {ermStatus === "loading" ? "puxando do PNCP… (até ~2 min)" : "Puxar exigências do edital (PNCP)"}
+            </button>
+            {ermStatus === "error" && <small style={{ display: "block", color: "#a33" }}>Não consegui puxar do PNCP (id inválido, sem anexo textual ou indisponível). Conferir manualmente.</small>}
+          </span>
+        )}
       </div>
 
       {sections.map((secao) => (
