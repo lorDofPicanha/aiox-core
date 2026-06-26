@@ -218,7 +218,7 @@ const LEVEL_RANK: Record<DeadlineAlertLevel, number> = {
 // output UNCHANGED — the UI is responsible for rendering "CONFIRMAR DATA" and
 // must never treat it as a hard confirmed deadline.
 // ───────────────────────────────────────────────────────────────────────────
-export function sentinelaWatch(opp: Opportunity, nowIso: string): SentinelaAlert[] {
+export function sentinelaWatch(opp: Opportunity, nowIso: string, sessionResult?: SessionResult | null): SentinelaAlert[] {
   const state = deriveMaestroState(opp);
 
   const alerts: SentinelaAlert[] = state.clocks.map((clock) => ({
@@ -229,6 +229,22 @@ export function sentinelaWatch(opp: Opportunity, nowIso: string): SentinelaAlert
     fatalOnMiss: clock.fatalOnMiss,
     dateConfidence: clock.dateConfidence,
   }));
+
+  // Cross-feed: o relógio PRECLUSIVO de recurso (razões/contrarrazões) derivado do resultado
+  // da sessão também entra na vigilância única do Sentinela (não só na aba Recorrer).
+  if (sessionResult) {
+    const fc = buildRecursoPlan(sessionResult).fatalClock;
+    if (fc) {
+      alerts.push({
+        kind: fc.kind,
+        dueAt: fc.dueAt,
+        level: deadlineAlertLevel(fc.dueAt, nowIso, { holidays: HOLIDAYS }),
+        msUntil: timeUntil(fc.dueAt, nowIso).ms,
+        fatalOnMiss: true,
+        dateConfidence: sessionResult.confidence,
+      });
+    }
+  }
 
   return alerts.sort((a, b) => {
     const rankDelta = LEVEL_RANK[a.level] - LEVEL_RANK[b.level];

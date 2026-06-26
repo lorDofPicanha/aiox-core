@@ -7,7 +7,11 @@
 // (atualiza sozinho) — é vigilância de verdade, não um snapshot. Nada é mutado aqui.
 import { useEffect, useState } from "react";
 import type { Opportunity } from "@/lib/noyce-model";
+import type { SessionResult } from "@/lib/agents/maestro-types";
 import { sentinelaWatch, clockKindLabel, type SentinelaAlert } from "@/lib/agents/maestro-runtime";
+
+// Mesma chave usada pela RecorrerTab — o relógio de recurso registrado lá entra na vigilância aqui.
+const SESSION_RESULT_PREFIX = "noyce.session-result.v1.";
 
 const LEVEL_LABEL: Record<SentinelaAlert["level"], string> = {
   vencido: "VENCIDO",
@@ -35,14 +39,23 @@ function humanRemaining(msUntil: number): string {
 export function AcompanharTab({ opportunity }: { opportunity: Opportunity }) {
   // `now` só no cliente (evita mismatch de hydration); atualiza a cada minuto p/ o countdown viver.
   const [now, setNow] = useState<string | null>(null);
+  const [sessionResult, setSessionResult] = useState<SessionResult | null>(null);
   useEffect(() => {
     const tick = () => setNow(new Date().toISOString());
     tick();
     const id = setInterval(tick, 60_000);
     return () => clearInterval(id);
   }, []);
+  useEffect(() => {
+    try {
+      const raw = globalThis.localStorage?.getItem(SESSION_RESULT_PREFIX + opportunity.id);
+      setSessionResult(raw ? (JSON.parse(raw) as SessionResult) : null);
+    } catch {
+      setSessionResult(null);
+    }
+  }, [opportunity.id]);
 
-  const alerts = now ? sentinelaWatch(opportunity, now) : [];
+  const alerts = now ? sentinelaWatch(opportunity, now, sessionResult) : [];
   const algumVencidoFatal = alerts.some((a) => a.level === "vencido" && a.fatalOnMiss);
 
   return (

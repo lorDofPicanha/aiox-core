@@ -10,6 +10,10 @@ import type { EniacOutcome, SessionResult } from "@/lib/agents/maestro-types";
 import { buildRecursoPlan } from "@/lib/agents/maestro-runtime";
 import { deadlineAlertLevel } from "@/lib/noyce-deadline";
 import { legalDecisionAction } from "@/lib/noyce-operational";
+import { buildRecursoMinuta, type RecursoMinuta } from "@/lib/noyce-recurso-minuta";
+import { parseAtaResult } from "@/lib/noyce-ata";
+import { eniacCcp } from "@/lib/noyce-data";
+import { generateDeclarationBlob, declarationFileName } from "@/lib/noyce-docgen";
 
 const RESULT_PREFIX = "noyce.session-result.v1.";
 const OUTCOMES: { v: EniacOutcome; label: string }[] = [
@@ -39,6 +43,9 @@ export function RecorrerTab({ opportunity }: { opportunity: Opportunity }) {
   const [sessionAt, setSessionAt] = useState("");
   const [motivo, setMotivo] = useState("");
   const [now, setNow] = useState<string | null>(null);
+  const [ataText, setAtaText] = useState("");
+  const [fundamentos, setFundamentos] = useState("");
+  const [minuta, setMinuta] = useState<RecursoMinuta | null>(null);
 
   useEffect(() => {
     setResult(loadResult(opportunity.id));
@@ -69,7 +76,53 @@ export function RecorrerTab({ opportunity }: { opportunity: Opportunity }) {
 
   function limpar() {
     setResult(null);
+    setMinuta(null);
     globalThis.localStorage?.removeItem(RESULT_PREFIX + opportunity.id);
+  }
+
+  // Cola a ata → pré-preenche o formulário (heurística; humano confere).
+  function preencherDaAta() {
+    const a = parseAtaResult(ataText);
+    setOutcome(a.eniacOutcome);
+    if (a.sessionAt) setSessionAt(a.sessionAt.slice(0, 16)); // ISO → datetime-local
+    if (a.motivo) setMotivo(a.motivo);
+  }
+
+  function gerarMinuta() {
+    if (!result) return;
+    setMinuta(
+      buildRecursoMinuta({
+        result,
+        plan: buildRecursoPlan(result),
+        ccp: eniacCcp,
+        certame: { titulo: opportunity.title, orgao: `${opportunity.buyer} · ${opportunity.city}/${opportunity.uf}` },
+        fundamentos,
+      }),
+    );
+  }
+
+  async function baixarMinuta() {
+    if (!minuta) return;
+    const item = {
+      id: `recurso-${opportunity.id}`,
+      secao: "Recurso",
+      label: minuta.titulo,
+      valorMotor: minuta.texto,
+      proveniencia: "Tribuno (minuta) — revisar/assinar (advogado)",
+      status: "aprovado" as const,
+      valorFinal: minuta.texto,
+    };
+    const blob = await generateDeclarationBlob({
+      item,
+      ccp: eniacCcp,
+      certame: { titulo: opportunity.title, orgao: opportunity.buyer },
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = declarationFileName(item, eniacCcp.identity.cnpj);
+    link.click();
+    URL.revokeObjectURL(url);
   }
 
   const plan = result ? buildRecursoPlan(result) : null;
@@ -91,6 +144,12 @@ export function RecorrerTab({ opportunity }: { opportunity: Opportunity }) {
         {!result ? (
           <div className="appeal-box" style={{ display: "block" }}>
             <p className="meta">Registre o resultado da sessão para o Noyce armar o relógio de recurso:</p>
+            <details style={{ margin: "6px 0" }}>
+              <summary style={{ cursor: "pointer", fontSize: 13 }}>📄 Colar ata/resultado p/ pré-preencher (opcional)</summary>
+              <textarea value={ataText} onChange={(e) => setAtaText(e.target.value)} rows={4} placeholder="Cole aqui o texto da ata da sessão…" style={{ width: "100%", marginTop: 6 }} />
+              <button type="button" onClick={preencherDaAta} disabled={!ataText.trim()}>Pré-preencher da ata</button>
+              <small className="meta" style={{ display: "block" }}>Heurística — confira os campos antes de registrar.</small>
+            </details>
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center", marginTop: 8 }}>
               <select value={outcome} onChange={(e) => setOutcome(e.target.value as EniacOutcome)}>
                 {OUTCOMES.map((o) => (
@@ -129,6 +188,27 @@ export function RecorrerTab({ opportunity }: { opportunity: Opportunity }) {
                 </li>
               ))}
             </ol>
+
+            {/* Minuta do Tribuno (recurso/contrarrazões) — preparada pelo Noyce, advogado assina. */}
+            {plan?.path !== "indefinido" && plan?.path !== "cobrir_lance_meepp" && (
+              <div style={{ marginTop: 12, borderTop: "1px solid #ccc", paddingTop: 10 }}>
+                <strong>✍️ Minuta da peça (Tribuno)</strong>
+                <p className="meta">Cole os FUNDAMENTOS jurídicos (o cerne da peça). Sem eles, a minuta sai bloqueada p/ assinatura.</p>
+                <textarea value={fundamentos} onChange={(e) => setFundamentos(e.target.value)} rows={4} placeholder="Fundamentação: o vício da decisão, base legal (Lei 14.133/TCU), provas…" style={{ width: "100%" }} />
+                <div style={{ display: "flex", gap: 8, marginTop: 6 }}>
+                  <button type="button" onClick={gerarMinuta}>Gerar minuta</button>
+                  {minuta && <button type="button" onClick={baixarMinuta}>Baixar .docx</button>}
+                </div>
+                {minuta && (
+                  <div style={{ marginTop: 8 }}>
+                    <div className="meta" style={{ color: "#8a6516" }}>
+                      {minuta.avisos.map((a, i) => (<div key={i}>⚠️ {a}</div>))}
+                    </div>
+                    <pre style={{ whiteSpace: "pre-wrap", fontSize: 12, background: "#f6f5f0", padding: 10, borderRadius: 8, marginTop: 6 }}>{minuta.texto}</pre>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         )}
 
