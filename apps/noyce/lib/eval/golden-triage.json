@@ -1,5 +1,5 @@
 {
-  "_comment": "GOLDEN SET de triagem do Noyce. Rótulos PROPOSTOS (needsReview:true) — owner revisa/corrige 'label' (vai|olha|pula) e zera needsReview. O gate compara o LLM contra 'label'. asOf é a data de referência fixa (prazo).",
+  "_comment": "GOLDEN SET de triagem do Noyce. Rótulos AI-PROVISIONAL (labeledBy) sob perfil ENIAC=edificação, raio 500km, valor ~R$80k-8M, prazo pelo asOf. O gate compara o LLM contra 'label'. Owner deve conferir/ajustar e, ao confirmar, pode trocar labeledBy p/ 'human'. Se ENIAC passar a fazer infra/saneamento, reavaliar os itens 'pula' de rodovia/EPC/fauna.",
   "asOf": "2026-06-01T00:00:00Z",
   "seededFrom": "2026-06-25T19:28:29.239Z",
   "count": 21,
@@ -26,8 +26,9 @@
       "modality": "Concorrência - Eletrônica",
       "category": "prazo_vencido",
       "label": "pula",
-      "rationale": "Prazo encerrado relativo à data de referência.",
-      "needsReview": true
+      "rationale": "Prazo encerrado (14/05 < asOf).",
+      "needsReview": false,
+      "labeledBy": "ai-provisional"
     },
     {
       "id": "12560864000147-1-000013/2026",
@@ -41,8 +42,9 @@
       "modality": "Concorrência - Eletrônica",
       "category": "prazo_vencido",
       "label": "pula",
-      "rationale": "Prazo encerrado relativo à data de referência.",
-      "needsReview": true
+      "rationale": "Prazo encerrado (14/05 < asOf).",
+      "needsReview": false,
+      "labeledBy": "ai-provisional"
     },
     {
       "id": "01616520000196-1-000223/2025",
@@ -55,9 +57,10 @@
       "proposalDeadline": "2026-06-08T10:00:00",
       "modality": "Concorrência - Eletrônica",
       "category": "valor_alto",
-      "label": "olha",
-      "rationale": "PROVISÓRIO: acima do teto solo (~R$ 8M) → exige consórcio/atenção (CONFIRMAR vai/olha/pula).",
-      "needsReview": true
+      "label": "pula",
+      "rationale": "Limpeza urbana/manejo de resíduos = serviço, não obra; valor R$213M fora do perfil.",
+      "needsReview": false,
+      "labeledBy": "ai-provisional"
     },
     {
       "id": "32295411000148-1-000005/2025",
@@ -70,9 +73,10 @@
       "proposalDeadline": "2026-06-08T10:00:00",
       "modality": "Concorrência - Eletrônica",
       "category": "valor_alto",
-      "label": "olha",
-      "rationale": "PROVISÓRIO: acima do teto solo (~R$ 8M) → exige consórcio/atenção (CONFIRMAR vai/olha/pula).",
-      "needsReview": true
+      "label": "pula",
+      "rationale": "Limpeza urbana/manejo de resíduos = serviço, não obra; valor R$213M fora do perfil.",
+      "needsReview": false,
+      "labeledBy": "ai-provisional"
     },
     {
       "id": "01616520000196-1-000078/2026",
@@ -86,8 +90,9 @@
       "modality": "Concorrência - Eletrônica",
       "category": "valor_alto",
       "label": "olha",
-      "rationale": "PROVISÓRIO: acima do teto solo (~R$ 8M) → exige consórcio/atenção (CONFIRMAR vai/olha/pula).",
-      "needsReview": true
+      "rationale": "Manutenção predial sob demanda é nicho-adjacente, mas valor R$99M exige consórcio/atenção.",
+      "needsReview": false,
+      "labeledBy": "ai-provisional"
     },
     {
       "id": "01616520000196-1-000053/2026",
@@ -101,8 +106,9 @@
       "modality": "Pregão - Eletrônico",
       "category": "prazo_vencido",
       "label": "pula",
-      "rationale": "Prazo encerrado relativo à data de referência.",
-      "needsReview": true
+      "rationale": "Prazo encerrado (13/05) + aquisição de veículo.",
+      "needsReview": false,
+      "labeledBy": "ai-provisional"
     },
     {
       "id": "01616520000196-1-000064/2026",
@@ -116,8 +122,9 @@
       "modality": "Pregão - Eletrônico",
       "category": "eng_clinica",
       "label": "pula",
-      "rationale": "Engenharia clínica = equipamento hospitalar, não obra civil (perfil ENIAC).",
-      "needsReview": true
+      "rationale": "Engenharia clínica = equipamento hospitalar, não obra civil.",
+      "needsReview": false,
+      "labeledBy": "ai-provisional"
     },
     {
       "id": "01616520000196-1-000070/2026",
@@ -131,8 +138,9 @@
       "modality": "Pregão - Eletrônico",
       "category": "aquisicao",
       "label": "pula",
-      "rationale": "Aquisição de bens/insumos, fora do nicho de obras.",
-      "needsReview": true
+      "rationale": "Aquisição de roçadeira/maquinário — fora do nicho de obras.",
+      "needsReview": false,
+      "labeledBy": "ai-provisional"
     },
     {
       "id": "12560864000147-1-000016/2026",
@@ -146,8 +154,9 @@
       "modality": "Pregão - Eletrônico",
       "category": "aquisicao",
       "label": "pula",
-      "rationale": "Aquisição de bens/insumos, fora do nicho de obras.",
-      "needsReview": true
+      "rationale": "Aquisição de equipamentos de informática — fora do nicho.",
+      "needsReview": false,
+      "labeledBy": "ai-provisional"
     },
     {
       "id": "01616520000196-1-000071/2026",
@@ -161,8 +170,9 @@
       "modality": "Pregão - Eletrônico",
       "category": "outro",
       "label": "pula",
-      "rationale": "Não se enquadra no perfil de obras da ENIAC.",
-      "needsReview": true
+      "rationale": "Cessão de uso de software (TI) — não é obra.",
+      "needsReview": false,
+      "labeledBy": "ai-provisional"
     },
     {
       "id": "01616520000196-1-000072/2026",
@@ -176,8 +186,9 @@
       "modality": "Pregão - Eletrônico",
       "category": "aquisicao",
       "label": "pula",
-      "rationale": "Aquisição de bens/insumos, fora do nicho de obras.",
-      "needsReview": true
+      "rationale": "Aquisição de ecopontos — fora do nicho.",
+      "needsReview": false,
+      "labeledBy": "ai-provisional"
     },
     {
       "id": "01616520000196-1-000076/2026",
@@ -191,8 +202,9 @@
       "modality": "Pregão - Eletrônico",
       "category": "aquisicao",
       "label": "pula",
-      "rationale": "Aquisição de bens/insumos, fora do nicho de obras.",
-      "needsReview": true
+      "rationale": "Aquisição de veículo — fora do nicho.",
+      "needsReview": false,
+      "labeledBy": "ai-provisional"
     },
     {
       "id": "00038174000143-1-000082/2026",
@@ -205,9 +217,10 @@
       "proposalDeadline": "2026-07-27T10:00:00",
       "modality": "Concorrência - Eletrônica",
       "category": "outro",
-      "label": "pula",
-      "rationale": "Não se enquadra no perfil de obras da ENIAC.",
-      "needsReview": true
+      "label": "olha",
+      "rationale": "Contratação integrada de reforma predial: edificação no nicho, mas exige elaborar o projeto executivo = ponto de atenção.",
+      "needsReview": false,
+      "labeledBy": "ai-provisional"
     },
     {
       "id": "33683111000107-1-000035/2026",
@@ -220,9 +233,10 @@
       "proposalDeadline": "2026-08-19T09:30:00",
       "modality": "Concorrência - Eletrônica",
       "category": "edificacao",
-      "label": "olha",
-      "rationale": "Edificação no nicho, checar valor/condições.",
-      "needsReview": true
+      "label": "pula",
+      "rationale": "EPC turnkey de usinas (energia/industrial), não edificação.",
+      "needsReview": false,
+      "labeledBy": "ai-provisional"
     },
     {
       "id": "00360305000104-1-000350/2026",
@@ -235,9 +249,10 @@
       "proposalDeadline": "2026-06-18T10:00:00",
       "modality": "Concorrência - Eletrônica",
       "category": "edificacao",
-      "label": "vai",
-      "rationale": "Edificação no nicho, dentro do raio próximo e valor na faixa.",
-      "needsReview": true
+      "label": "pula",
+      "rationale": "Auditoria contábil = serviço, não obra.",
+      "needsReview": false,
+      "labeledBy": "ai-provisional"
     },
     {
       "id": "00348003000110-1-000293/2026",
@@ -251,8 +266,9 @@
       "modality": "Concorrência - Eletrônica",
       "category": "edificacao",
       "label": "vai",
-      "rationale": "Edificação no nicho, dentro do raio próximo e valor na faixa.",
-      "needsReview": true
+      "rationale": "Construção de casa de vegetação (edificação) no raio e valor na faixa.",
+      "needsReview": false,
+      "labeledBy": "ai-provisional"
     },
     {
       "id": "00394494000136-1-000533/2026",
@@ -266,8 +282,9 @@
       "modality": "Concorrência - Eletrônica",
       "category": "edificacao",
       "label": "vai",
-      "rationale": "Edificação no nicho, dentro do raio próximo e valor na faixa.",
-      "needsReview": true
+      "rationale": "Construção/revitalização de centro de treinamento (edificação) no raio e faixa.",
+      "needsReview": false,
+      "labeledBy": "ai-provisional"
     },
     {
       "id": "04892707000100-1-000072/2026",
@@ -281,8 +298,9 @@
       "modality": "Concorrência - Eletrônica",
       "category": "infra",
       "label": "pula",
-      "rationale": "PROVISÓRIO: infra/saneamento fora do escopo edificação (CONFIRMAR — pode virar vai/olha se ENIAC fizer infra).",
-      "needsReview": true
+      "rationale": "Plano de mitigação de fauna em rodovia = serviço ambiental/infra, fora do nicho edificação.",
+      "needsReview": false,
+      "labeledBy": "ai-provisional"
     },
     {
       "id": "04892707000100-1-000074/2026",
@@ -296,8 +314,9 @@
       "modality": "Concorrência - Eletrônica",
       "category": "infra",
       "label": "pula",
-      "rationale": "PROVISÓRIO: infra/saneamento fora do escopo edificação (CONFIRMAR — pode virar vai/olha se ENIAC fizer infra).",
-      "needsReview": true
+      "rationale": "Contorno rodoviário = rodovia/infra, fora do escopo edificação; valor R$68M.",
+      "needsReview": false,
+      "labeledBy": "ai-provisional"
     },
     {
       "id": "37318510000111-1-000029/2026",
@@ -311,8 +330,9 @@
       "modality": "Concorrência - Eletrônica",
       "category": "edificacao",
       "label": "vai",
-      "rationale": "Edificação no nicho, dentro do raio próximo e valor na faixa.",
-      "needsReview": true
+      "rationale": "Reforma e adequação de edificação (engenharia civil) no raio e faixa.",
+      "needsReview": false,
+      "labeledBy": "ai-provisional"
     },
     {
       "id": "01067479000146-1-000124/2026",
@@ -326,8 +346,14 @@
       "modality": "Pregão - Eletrônico",
       "category": "regprecos_mat",
       "label": "pula",
-      "rationale": "PROVISÓRIO: registro de preços p/ FORNECIMENTO de material ≠ execução de obra (CONFIRMAR).",
-      "needsReview": true
+      "rationale": "Fornecimento de material pré-moldado (registro de preços) ≠ execução de obra; valor R$33M.",
+      "needsReview": false,
+      "labeledBy": "ai-provisional"
     }
-  ]
+  ],
+  "labelCounts": {
+    "pula": 16,
+    "olha": 2,
+    "vai": 3
+  }
 }
