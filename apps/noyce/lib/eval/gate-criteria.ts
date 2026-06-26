@@ -84,6 +84,56 @@ export function evaluateTriage(m: TriageMetrics): DimensionResult {
   return { dimension: "triagem (Faro)", pass: checks.every((x) => x.pass), checks };
 }
 
+// Juiz GOLDEN: compara o LLM contra rótulos HUMANOS (golden-triage.json), não contra o
+// regex-baseline. É o juiz correto p/ acurácia de triagem — o baseline é cru, não é verdade.
+export const GOLDEN_CRITERIA = {
+  minReviewed: 15, // golden precisa de rótulos confirmados suficientes p/ certificar
+  minAccuracyPct: 85, // LLM == rótulo humano
+  maxHardWrong: 1, // LLM oposto ao humano (vai↔pula)
+  maxFallbackPct: 10,
+};
+
+export type GoldenMetrics = {
+  total: number; // itens golden revisados avaliados
+  correct: number; // LLM == label humano
+  hardWrong: number; // LLM oposto ao label (vai↔pula)
+  fallback: number; // não veio do LLM
+  reviewedAvailable: number; // quantos golden têm needsReview:false
+};
+
+export function evaluateTriageGolden(m: GoldenMetrics): DimensionResult {
+  const c = GOLDEN_CRITERIA;
+  const accuracyPct = pct(m.correct, m.total);
+  const fallbackPct = pct(m.fallback, m.total);
+  const checks: Check[] = [
+    {
+      name: "rótulos humanos confirmados disponíveis",
+      pass: m.reviewedAvailable >= c.minReviewed,
+      actual: String(m.reviewedAvailable),
+      limit: `≥ ${c.minReviewed}`,
+    },
+    {
+      name: "acurácia vs rótulo humano",
+      pass: accuracyPct >= c.minAccuracyPct,
+      actual: `${fmtPct(accuracyPct)} (${m.correct}/${m.total})`,
+      limit: `≥ ${c.minAccuracyPct}%`,
+    },
+    {
+      name: "erros duros (LLM oposto ao humano: vai↔pula)",
+      pass: m.hardWrong <= c.maxHardWrong,
+      actual: String(m.hardWrong),
+      limit: `≤ ${c.maxHardWrong}`,
+    },
+    {
+      name: "taxa de fallback",
+      pass: fallbackPct <= c.maxFallbackPct,
+      actual: `${fmtPct(fallbackPct)} (${m.fallback}/${m.total})`,
+      limit: `≤ ${c.maxFallbackPct}%`,
+    },
+  ];
+  return { dimension: "triagem vs golden (juiz humano)", pass: checks.every((x) => x.pass), checks };
+}
+
 export type AnalysisMetrics = {
   n: number;
   prismaPass: number;
@@ -147,7 +197,8 @@ export function evaluateWorkflow(m: WorkflowMetrics): DimensionResult {
 }
 
 export type GateInput = {
-  triage?: TriageMetrics;
+  triage?: TriageMetrics; // juiz = baseline regex (cru)
+  goldenTriage?: GoldenMetrics; // juiz = rótulo humano (preferido); substitui `triage`
   analysis?: AnalysisMetrics;
   workflow?: WorkflowMetrics;
 };
@@ -168,7 +219,9 @@ export function evaluateGate(input: GateInput): GateResult {
   const dimensions: DimensionResult[] = [];
   const skipped: string[] = [];
 
-  if (input.triage) dimensions.push(evaluateTriage(input.triage));
+  // Golden (juiz humano) tem prioridade sobre o baseline regex p/ a triagem.
+  if (input.goldenTriage) dimensions.push(evaluateTriageGolden(input.goldenTriage));
+  else if (input.triage) dimensions.push(evaluateTriage(input.triage));
   else skipped.push("triagem (Faro)");
 
   if (input.analysis) dimensions.push(evaluateAnalysis(input.analysis));

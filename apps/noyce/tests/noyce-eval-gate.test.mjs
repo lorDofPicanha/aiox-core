@@ -6,6 +6,7 @@ import { test } from "node:test";
 const {
   evaluateGate,
   evaluateTriage,
+  evaluateTriageGolden,
   evaluateAnalysis,
   evaluateWorkflow,
   isHardDivergence,
@@ -47,6 +48,40 @@ test("triagem FAIL: qualquer erro de execução reprova", () => {
 test("triagem: divergência dura > limite reprova; 1 dura ainda passa", () => {
   assert.equal(evaluateTriage({ total: 12, agree: 11, llmCount: 12, errors: 0, hardDivergences: 1 }).pass, true);
   assert.equal(evaluateTriage({ total: 12, agree: 10, llmCount: 12, errors: 0, hardDivergences: 2 }).pass, false);
+});
+
+// ── triagem vs golden (juiz humano) ──────────────────────────────────────────
+test("golden PASS: acurácia alta, 0 duro, rótulos confirmados suficientes", () => {
+  const r = evaluateTriageGolden({ total: 20, correct: 18, hardWrong: 0, fallback: 0, reviewedAvailable: 20 });
+  assert.equal(r.pass, true);
+});
+
+test("golden FAIL: poucos rótulos confirmados não certifica", () => {
+  const r = evaluateTriageGolden({ total: 10, correct: 10, hardWrong: 0, fallback: 0, reviewedAvailable: 10 });
+  assert.equal(r.pass, false); // 10 < minReviewed (15)
+  assert.equal(r.checks.find((c) => c.name.includes("confirmados")).pass, false);
+});
+
+test("golden FAIL: acurácia abaixo do limiar humano", () => {
+  const r = evaluateTriageGolden({ total: 20, correct: 15, hardWrong: 0, fallback: 0, reviewedAvailable: 20 });
+  assert.equal(r.pass, false); // 75% < 85%
+});
+
+test("golden FAIL: erro duro vs humano (LLM oposto) reprova", () => {
+  const r = evaluateTriageGolden({ total: 20, correct: 18, hardWrong: 2, fallback: 0, reviewedAvailable: 20 });
+  assert.equal(r.pass, false);
+});
+
+test("gate usa golden no lugar do baseline quando presente", () => {
+  const r = evaluateGate({
+    triage: { total: 12, agree: 4, llmCount: 12, errors: 0, hardDivergences: 0 }, // baseline reprovaria
+    goldenTriage: { total: 20, correct: 19, hardWrong: 0, fallback: 0, reviewedAvailable: 20 }, // golden passa
+    analysis: { n: 2, prismaPass: 2, forjaPass: 2, prismaLlm: 2, forjaLlm: 2, inventedNumbers: 0 },
+    workflow: { stagesLlm: { faro: true, prisma: true, forja: true, escriba: true }, packageComplete: true },
+  });
+  assert.equal(r.pass, true); // golden tem prioridade; baseline ignorado
+  assert.ok(r.dimensions.some((d) => d.dimension.includes("golden")));
+  assert.ok(!r.dimensions.some((d) => d.dimension === "triagem (Faro)"));
 });
 
 // ── análise ──────────────────────────────────────────────────────────────────

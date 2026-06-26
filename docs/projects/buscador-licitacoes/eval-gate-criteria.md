@@ -51,6 +51,17 @@ Saída: relatório no terminal (✓/✗ por check) + JSON em `apps/noyce/lib/dat
 
 `tests/noyce-eval-gate.test.mjs` (15 testes, na suíte) valida os limiares, a classificação dura×suave e o veredito consolidado **sem fazer chamadas de API** — então o contrato do gate não regride silenciosamente. O runner (`eval-gate.mjs`) é o único que toca a rede e fica fora da suíte (consome crédito).
 
+## Juiz da triagem: GOLDEN SET (humano), não o regex-baseline
+
+> Atualização 26/Jun: rodar o gate ao vivo mostrou que comparar a triagem do LLM contra o **regex-baseline** é um juiz fraco — o regex é cru, o LLM é mais nuançado, e eles divergem ~20-25% em casos genuinamente ambíguos ("registro de preços / fornecimento de material para obra"). A concordância balançava 80/85/75% conforme a amostra. Aplicando o princípio *"suspeite do juiz, não do alvo"*, o juiz da triagem passou a ser um **golden set rotulado à mão**.
+
+- **Arquivo:** `apps/noyce/lib/eval/golden-triage.json` — ~21 editais reais **congelados** (campos copiados, independem do snapshot vivo) + `asOf` fixo (rótulos de prazo determinísticos) + `label` humano (vai/olha/pula) + `rationale` + `needsReview`.
+- **Seed:** `scripts/build-golden-triage.mjs` (one-shot) propõe rótulos provisórios com `needsReview:true`. O **owner revisa**: corrige `label` e zera `needsReview`. Só itens com `needsReview:false` contam.
+- **Rodar:** `node --env-file=.env.local --experimental-strip-types scripts/eval-gate.mjs --dim=triage --judge=golden` (default já é `--judge=golden`; `--judge=baseline` = modo regex legado/diagnóstico).
+- **Critérios golden** (`GOLDEN_CRITERIA`): ≥15 rótulos confirmados · acurácia vs humano ≥85% · erros duros (LLM oposto ao humano) ≤1 · fallback ≤10%.
+
+Enquanto o golden não for revisado, o gate **FAIL** honestamente em "rótulos confirmados disponíveis" — não há como certificar acurácia sem verdade humana.
+
 ## Calibração
 
 Os limiares são `const` em `GATE_CRITERIA` (`lib/eval/gate-criteria.ts`) — ponto único de ajuste. Reapertar conforme acumular casos de fronteira (contratação integrada, manutenção predial, recall de "manutenção" fora do regex de obras). Quando trocar de modelo/provider, rode o gate ANTES de promover.

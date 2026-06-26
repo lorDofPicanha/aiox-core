@@ -40,6 +40,7 @@ const getArg = (k, def) => {
   return hit ? hit.split("=")[1] : def;
 };
 const dim = getArg("dim", "all");
+const judge = getArg("judge", "golden"); // golden (juiz humano) | baseline (regex cru)
 const triageN = Math.max(1, Number(getArg("triage-n", 12)));
 const analysisN = Math.max(1, Math.min(Number(getArg("analysis-n", 2)), 6));
 const noWrite = args.includes("--no-write");
@@ -69,8 +70,51 @@ console.log(`snapshot: ${all.length} editais · ref triagem: ${TRIAGE_TODAY.slic
 const gateInput = {};
 
 // ── 1) TRIAGEM ──────────────────────────────────────────────────────────────
-if (runTri) {
-  box(`TRIAGEM (Faro) — amostra ${triageN}`);
+// Juiz GOLDEN (rótulo humano) — o juiz correto. Compara o LLM contra golden-triage.json.
+if (runTri && judge === "golden") {
+  box(`TRIAGEM vs GOLDEN (juiz humano)`);
+  let golden;
+  try {
+    golden = JSON.parse(readFileSync(join(here, "../lib/eval/golden-triage.json"), "utf8"));
+  } catch {
+    console.log("✗ golden-triage.json ausente — rode scripts/build-golden-triage.mjs e revise os rótulos.");
+    golden = { items: [], asOf: TRIAGE_TODAY };
+  }
+  const reviewed = (golden.items ?? []).filter((g) => g.needsReview === false);
+  console.log(`golden: ${golden.items?.length ?? 0} editais · revisados (needsReview:false): ${reviewed.length} · asOf ${String(golden.asOf).slice(0, 10)}`);
+  if (reviewed.length === 0) console.log("⚠️  nenhum rótulo confirmado ainda — revise golden-triage.json (label + needsReview:false).");
+
+  let correct = 0, hardWrong = 0, fallback = 0;
+  const misses = [];
+  for (const g of reviewed) {
+    let llm;
+    try {
+      llm = await runTriage(g, client, golden.asOf);
+    } catch (e) {
+      llm = { verdict: "ERRO", source: "erro" };
+    }
+    if (llm.source !== "llm") fallback++;
+    const ok = llm.verdict === g.label;
+    if (ok) correct++;
+    else {
+      const hard = llm.verdict !== "ERRO" && isHardDivergence(g.label, llm.verdict);
+      if (hard) hardWrong++;
+      misses.push({ label: g.label, llm: llm.verdict, hard, title: String(g.title).slice(0, 50) });
+    }
+    process.stdout.write(ok ? "·" : "✗");
+  }
+  console.log("");
+  gateInput.goldenTriage = { total: reviewed.length, correct, hardWrong, fallback, reviewedAvailable: reviewed.length };
+  console.log(`acurácia ${correct}/${reviewed.length} · duros ${hardWrong} · fallback ${fallback}`);
+  if (misses.length) {
+    console.log("erros (LLM ✗ humano):");
+    for (const m of misses) console.log(`  [humano:${m.label} ✗ llm:${m.llm}]${m.hard ? " 🔴DURO" : ""} ${m.title}`);
+  }
+}
+
+// Juiz BASELINE (regex cru) — modo legado/diagnóstico. NÃO é ground-truth.
+if (runTri && judge === "baseline") {
+  box(`TRIAGEM (Faro) vs baseline regex — amostra ${triageN} [juiz CRU, não-verdade]`);
   const step = Math.max(1, Math.floor(all.length / triageN));
   const sample = [];
   for (let i = 0; i < all.length && sample.length < triageN; i += step) sample.push(all[i]);
