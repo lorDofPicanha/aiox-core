@@ -11,7 +11,7 @@ process.env.TZ = "UTC";
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-const { deriveMaestroState, sentinelaWatch } = await import("../lib/agents/maestro-runtime.ts");
+const { deriveMaestroState, sentinelaWatch, buildRecursoPlan } = await import("../lib/agents/maestro-runtime.ts");
 const { ensureBrOffset } = await import("../lib/noyce-dates.ts");
 const { transition } = await import("../lib/agents/orchestrator.ts");
 const { initialMaestroState } = await import("../lib/agents/maestro-types.ts");
@@ -199,4 +199,56 @@ test("C2: clock vencido mas dateConfidence='inferred' NÃO dispara veto duro (M2
   const state = { ...initialMaestroState("hash-v1"), stage: "entregando", clocks: [inferred] };
   const res = transition(state, { type: "humano_aprovou_dossie" }, human);
   assert.equal(res.next.stage, "pronto-protocolo", "data inferida não vira gate fatal automático");
+});
+
+// ── Recorrer (estágio 6): buildRecursoPlan a partir do SessionResult ──────────
+const sessionAt = "2026-06-10T14:00:00-03:00";
+const baseResult = (outcome, extra = {}) => ({
+  editalId: "e1", editalVersionHash: "h1", sessionAt, eniacOutcome: outcome,
+  source: "manual", confidence: "observed", ...extra,
+});
+
+test("recorrer: inabilitada → caminho de recurso + relógio de razões (3 d.u. da sessão)", () => {
+  const plan = buildRecursoPlan(baseResult("inabilitada", { motivo: "atestado recusado" }));
+  assert.equal(plan.path, "recorrer_inabilitacao");
+  assert.ok(plan.fatalClock && plan.fatalClock.kind === "razoes_recurso");
+  // 3 dias úteis após 10/06 (qua) → 16/06 (ter); o importante: dueAt > sessão e é dia útil.
+  assert.ok(new Date(plan.fatalClock.dueAt).getTime() > new Date(sessionAt).getTime());
+  // intenção é NA SESSÃO e é ato humano (preclusivo)
+  const intencao = plan.steps.find((s) => /INTEN[ÇC][ÃA]O/i.test(s.label));
+  assert.ok(intencao && intencao.humanAct === true);
+});
+
+test("recorrer: derrotada no julgamento também arma razões de recurso", () => {
+  const plan = buildRecursoPlan(baseResult("derrotada_julgamento"));
+  assert.equal(plan.path, "recorrer_julgamento");
+  assert.ok(plan.fatalClock?.kind === "razoes_recurso");
+});
+
+test("recorrer: vencedora → defender (contrarrazões só se houver janela de terceiros)", () => {
+  const semJanela = buildRecursoPlan(baseResult("vencedora"));
+  assert.equal(semJanela.path, "defender_vitoria");
+  assert.equal(semJanela.fatalClock, null);
+  const comJanela = buildRecursoPlan(
+    baseResult("vencedora", { thirdPartyAppealWindow: { kind: "contrarrazoes", basis: "uteis_horacheia", dueAt: "2026-06-16T18:00:00-03:00", armedBy: "evento_portal", status: "armado", fatalOnMiss: true, dateConfidence: "observed" } }),
+  );
+  assert.equal(comJanela.fatalClock?.kind, "contrarrazoes");
+});
+
+test("recorrer: empate ficto ME/EPP → cobrir lance na sessão, sem relógio de razões", () => {
+  const plan = buildRecursoPlan(baseResult("empate_ficto_meepp"));
+  assert.equal(plan.path, "cobrir_lance_meepp");
+  assert.equal(plan.fatalClock, null);
+});
+
+test("recorrer: indefinido → sem caminho/relógio até obter a ata", () => {
+  const plan = buildRecursoPlan(baseResult("indefinido"));
+  assert.equal(plan.path, "indefinido");
+  assert.equal(plan.fatalClock, null);
+});
+
+test("recorrer: prazo de razões é configurável (modalidade/edital prevalece)", () => {
+  const p3 = buildRecursoPlan(baseResult("inabilitada"));
+  const p5 = buildRecursoPlan(baseResult("inabilitada"), { recursoBusinessDays: 5 });
+  assert.ok(new Date(p5.fatalClock.dueAt).getTime() > new Date(p3.fatalClock.dueAt).getTime());
 });

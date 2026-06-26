@@ -20,7 +20,7 @@ import type {
   LegalEventType,
   WorkflowStage,
 } from "../noyce-model.ts";
-import type { MaestroState, MaestroStage, PreclusiveClock, ClockKind } from "./maestro-types.ts";
+import type { MaestroState, MaestroStage, PreclusiveClock, ClockKind, SessionResult, EniacOutcome } from "./maestro-types.ts";
 import { FATAL_CLOCK_KINDS } from "./maestro-types.ts";
 import { businessDaysDeadline, deadlineAlertLevel, timeUntil } from "../noyce-deadline.ts";
 import type { DeadlineAlertLevel } from "../noyce-deadline.ts";
@@ -259,5 +259,95 @@ export function clockKindLabel(kind: ClockKind): string {
       const _never: never = kind;
       return String(_never);
     }
+  }
+}
+
+// ───────────────────────────────────────────────────────────────────────────
+// RECORRER (estágio 6) — a dor #1 do cliente: perder, e o sistema NÃO deixar
+// recorrer a tempo. A partir do RESULTADO da sessão (SessionResult), deriva o
+// CAMINHO + arma o relógio PRECLUSIVO de razões/contrarrazões (3 dias úteis,
+// art. 165 Lei 14.133 — conferir modalidade/edital). PURO/determinístico.
+// Invariante: todo ato vinculante (intenção, protocolo, assinatura) é HUMANO.
+// ───────────────────────────────────────────────────────────────────────────
+export interface RecursoStep {
+  label: string;
+  dueAt: string | null; // ISO quando há prazo preclusivo; null = sem data calculável
+  basis: string;
+  humanAct: boolean; // ato vinculante → sempre humano (nunca automatizado)
+  note: string;
+}
+export interface RecursoPlan {
+  outcome: EniacOutcome;
+  path:
+    | "recorrer_inabilitacao"
+    | "recorrer_julgamento"
+    | "recorrer_desclassificacao"
+    | "defender_vitoria"
+    | "cobrir_lance_meepp"
+    | "indefinido";
+  title: string;
+  resumo: string;
+  steps: RecursoStep[];
+  fatalClock: { kind: "razoes_recurso" | "contrarrazoes"; dueAt: string; label: string } | null;
+}
+
+const RECURSO_DIAS_UTEIS = 3; // art. 165, Lei 14.133/2021 (conferir modalidade/edital)
+
+export function buildRecursoPlan(r: SessionResult, opts: { recursoBusinessDays?: number } = {}): RecursoPlan {
+  const dias = opts.recursoBusinessDays ?? RECURSO_DIAS_UTEIS;
+  const razoesDueAt = businessDaysDeadline(r.sessionAt, dias, { holidays: HOLIDAYS });
+
+  const recorrer = (path: RecursoPlan["path"], title: string): RecursoPlan => ({
+    outcome: r.eniacOutcome,
+    path,
+    title,
+    resumo: `${r.motivo ? r.motivo + ". " : ""}Razões de recurso: ${dias} dias úteis da sessão (art. 165, Lei 14.133/2021 — conferir modalidade/edital).`,
+    steps: [
+      { label: "Manifestar INTENÇÃO de recorrer", dueAt: r.sessionAt, basis: "na sessão / imediata", humanAct: true, note: "Ato preclusivo NA SESSÃO — sem intenção tempestiva, perde o direito de recorrer." },
+      { label: "Protocolar RAZÕES de recurso", dueAt: razoesDueAt, basis: `${dias} dias úteis (hora-cheia)`, humanAct: true, note: "Noyce prepara a minuta (Tribuno); advogado/representante revisa, assina e protocola." },
+    ],
+    fatalClock: { kind: "razoes_recurso", dueAt: razoesDueAt, label: "Razões de recurso" },
+  });
+
+  switch (r.eniacOutcome) {
+    case "vencedora": {
+      const tpw = r.thirdPartyAppealWindow ?? null;
+      return {
+        outcome: r.eniacOutcome,
+        path: "defender_vitoria",
+        title: "Vencedora — defender a posição",
+        resumo: "Acompanhar recurso de terceiros; havendo, apresentar CONTRARRAZÕES no prazo. Sem recurso → homologação.",
+        steps: [
+          { label: "Monitorar recurso de terceiros", dueAt: tpw?.dueAt ?? null, basis: tpw ? "janela de terceiros" : "aguardar intimação", humanAct: false, note: "Sentinela vigia a janela; se um terceiro recorrer, arma as contrarrazões." },
+          { label: "Apresentar CONTRARRAZÕES (se houver recurso)", dueAt: tpw?.dueAt ?? null, basis: `${dias} dias úteis da intimação`, humanAct: true, note: "Noyce prepara; advogado revisa, assina e protocola." },
+        ],
+        fatalClock: tpw ? { kind: "contrarrazoes", dueAt: tpw.dueAt, label: "Contrarrazões" } : null,
+      };
+    }
+    case "inabilitada":
+      return recorrer("recorrer_inabilitacao", "Inabilitada — recorrer da habilitação");
+    case "derrotada_julgamento":
+      return recorrer("recorrer_julgamento", "Derrotada no julgamento — recorrer");
+    case "desclassificada":
+      return recorrer("recorrer_desclassificacao", "Desclassificada — recorrer");
+    case "empate_ficto_meepp":
+      return {
+        outcome: r.eniacOutcome,
+        path: "cobrir_lance_meepp",
+        title: "Empate ficto ME/EPP — cobrir o lance",
+        resumo: "Direito de preferência ME/EPP (LC 123/2006): cobrir a melhor proposta NA SESSÃO.",
+        steps: [{ label: "Cobrir o lance (preferência ME/EPP)", dueAt: r.sessionAt, basis: "na sessão / imediata", humanAct: true, note: "Ato na sessão — preclusivo." }],
+        fatalClock: null,
+      };
+    case "indefinido":
+    default:
+      return {
+        outcome: r.eniacOutcome,
+        path: "indefinido",
+        title: "Resultado indefinido",
+        resumo: "Aguardando ata/resultado da sessão. Sem desfecho, não há caminho de recurso definido.",
+        steps: [{ label: "Obter ata/resultado da sessão", dueAt: null, basis: "—", humanAct: true, note: "Sem o resultado, o Noyce não arma o relógio de recurso." }],
+        fatalClock: null,
+      };
   }
 }
