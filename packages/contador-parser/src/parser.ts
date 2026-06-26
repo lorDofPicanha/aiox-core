@@ -20,7 +20,7 @@ import {
   obj,
   parseXmlBruto,
   paraNumero,
-  paraNumeroOpcional,
+  paraNumeroOpcionalEstrito,
   somenteDigitos
 } from "./helpers";
 import {
@@ -225,10 +225,19 @@ function extrairPisCofins(node: unknown): TributoPisCofins {
     return {};
   }
   const cst = asString(grupo.CST);
-  const baseCalculo = paraNumeroOpcional(asString(grupo.vBC));
+  // QA 🔴-A: estrito — tributo presente porém ilegível é CORRUPÇÃO, não ausência.
+  // Deixá-lo virar undefined faz o crédito (vPIS+vCOFINS) evaporar silenciosamente
+  // no caminho da Recuperação monofásica. Mesma guarda já aplicada em NFS-e/CT-e.
+  const baseCalculo = paraNumeroOpcionalEstrito(asString(grupo.vBC), "PISCOFINS/vBC");
   // pPIS/pCOFINS quando aliquota; qPIS/vAliqProd em casos de aliquota por quantidade.
-  const aliquota = paraNumeroOpcional(asString(grupo.pPIS) ?? asString(grupo.pCOFINS));
-  const valor = paraNumeroOpcional(asString(grupo.vPIS) ?? asString(grupo.vCOFINS));
+  const aliquota = paraNumeroOpcionalEstrito(
+    asString(grupo.pPIS) ?? asString(grupo.pCOFINS),
+    "PISCOFINS/pPIS_pCOFINS"
+  );
+  const valor = paraNumeroOpcionalEstrito(
+    asString(grupo.vPIS) ?? asString(grupo.vCOFINS),
+    "PISCOFINS/vPIS_vCOFINS"
+  );
   return {
     ...(cst ? { cst } : {}),
     ...(baseCalculo !== undefined ? { baseCalculo } : {}),

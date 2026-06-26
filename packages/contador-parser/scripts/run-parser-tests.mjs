@@ -404,6 +404,30 @@ teste("🔴-1 CT-e: vICMS presente mas nao-numerico => ParseError (nao some)", (
   );
 });
 
+// 🔴-A (QA 26/Jun): a guarda estrita do 🔴-1 cobria NFS-e e CT-e mas NÃO o parser
+// de maior volume (NF-e/NFC-e). vPIS/vCOFINS presentes porém ilegíveis viravam
+// undefined e o crédito (vPIS+vCOFINS) evaporava silenciosamente no caminho da
+// Recuperação monofásica. Estes dois testes travam a regressão.
+teste("🔴-A NF-e: vPIS presente mas nao-numerico => ParseError (nao some)", () => {
+  const corrompido = ler("nfe-55-normal.xml").replace("<vPIS>24.75</vPIS>", "<vPIS>--</vPIS>");
+  assert.throws(
+    () => parseNFe(corrompido),
+    (erro) => erro instanceof ParseError && erro.codigo === "ESTRUTURA_INVALIDA"
+  );
+});
+
+teste("🔴-A NF-e: vCOFINS com formatacao de ERP (R$/virgula) => ParseError", () => {
+  // contra-exemplo real do QA: ERP exporta "R$ 3.800,00" em vez de número cru.
+  const corrompido = ler("nfe-55-normal.xml").replace(
+    "<vCOFINS>114.00</vCOFINS>",
+    "<vCOFINS>R$ 3.800,00</vCOFINS>"
+  );
+  assert.throws(
+    () => parseNFe(corrompido),
+    (erro) => erro instanceof ParseError && erro.codigo === "ESTRUTURA_INVALIDA"
+  );
+});
+
 // 🔴-2: layout alternativo (grupo gIBS único, sem split UF/Município) deve ser
 // lido — o IBS não pode evaporar do documento.
 teste("🔴-2 NFS-e: IBS em grupo gIBS unico (sem split UF/Mun) e extraido", () => {
