@@ -45,6 +45,9 @@ export interface TriageResult extends DiscoveryTriage {
   pontosAtencao: string[];
   permiteConsorcio: boolean | null;
   source: ResultSource;
+  // Diagnóstico (só quando caiu em fallback): por que não veio do LLM. Opcional —
+  // não afeta o resultado, ajuda o eval-gate a distinguir blip de API × título problemático.
+  fallbackCause?: "api_exception" | "refusal_or_nonobject" | "guardrail_violation";
 }
 
 export const TRIAGE_SCHEMA: Record<string, unknown> = {
@@ -88,7 +91,11 @@ function toTriageInput(item: TriageItem) {
   };
 }
 
-function deterministicResult(item: TriageItem, source: ResultSource): TriageResult {
+function deterministicResult(
+  item: TriageItem,
+  source: ResultSource,
+  fallbackCause?: TriageResult["fallbackCause"],
+): TriageResult {
   const base = buildTriage(toTriageInput(item));
   return {
     ...base,
@@ -96,6 +103,7 @@ function deterministicResult(item: TriageItem, source: ResultSource): TriageResu
     pontosAtencao: [],
     permiteConsorcio: null,
     source,
+    ...(fallbackCause ? { fallbackCause } : {}),
   };
 }
 
@@ -120,15 +128,15 @@ Responda no schema (verdict, score 0..100, reason, daysToDeadline, obrasRelevant
   try {
     resp = await runAgent(FARO_DEFINITION, { context, task }, client);
   } catch {
-    return deterministicResult(item, "guardrail_fallback");
+    return deterministicResult(item, "guardrail_fallback", "api_exception");
   }
   if (resp.refusal || resp.json === null || typeof resp.json !== "object") {
-    return deterministicResult(item, "guardrail_fallback");
+    return deterministicResult(item, "guardrail_fallback", "refusal_or_nonobject");
   }
 
-  const guard = validateTriage(resp.json, item);
+  const guard = validateTriage(resp.json, item, asOf);
   if (!guard.ok) {
-    return deterministicResult(item, "guardrail_fallback");
+    return deterministicResult(item, "guardrail_fallback", "guardrail_violation");
   }
 
   const j = resp.json as Record<string, unknown>;

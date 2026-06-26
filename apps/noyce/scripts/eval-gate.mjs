@@ -77,6 +77,7 @@ if (runTri) {
 
   let agree = 0, llmCount = 0, errors = 0, hard = 0;
   const diverge = [];
+  const fallbacks = [];
   for (const it of sample) {
     const det = buildTriage(triKey(it));
     let llm;
@@ -87,6 +88,7 @@ if (runTri) {
       errors++;
     }
     if (llm.source === "llm") llmCount++;
+    else if (llm.source !== "erro") fallbacks.push({ cause: llm.fallbackCause ?? "?", title: String(it.title).slice(0, 50) });
     const ok = det.verdict === llm.verdict;
     if (ok) agree++;
     else {
@@ -102,6 +104,10 @@ if (runTri) {
   if (diverge.length) {
     console.log("divergências:");
     for (const d of diverge) console.log(`  [${d.det} ✗ ${d.llm}]${d.hard ? " 🔴DURA" : " (suave)"} ${d.title}`);
+  }
+  if (fallbacks.length) {
+    console.log("fallbacks (não vieram do LLM — causa):");
+    for (const f of fallbacks) console.log(`  [${f.cause}] ${f.title}`);
   }
 }
 

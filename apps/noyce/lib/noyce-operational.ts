@@ -213,6 +213,11 @@ const OBRAS_RE =
 const ACQUISITION_RE =
   /\b(aquisi[çc][ãa]o|merenda|g[êe]nero[s]?\s+aliment|uniforme|cal[çc]ado|mobili[áa]ri|combust[íi]vel|medicament|material\s+(escolar|de\s+(expediente|limpeza|consumo))|insumo)/i;
 
+// Gate NEGATIVO de "engenharia" não-civil: a palavra "engenharia" sozinha em OBRAS_RE casava
+// objetos que NÃO são obra do perfil ENIAC — ex.: "engenharia CLÍNICA" (equipamento hospitalar)
+// exposto pelo eval-gate 26/Jun (divergência dura: baseline VAI × LLM PULA, LLM correto).
+const NON_CIVIL_ENG_RE = /\bengenharia\s+(cl[íi]nic|de\s+software|social|de\s+tr[áa]fego|consultiv)/i;
+
 export interface TriageInput {
   title: string;
   distanceKm: number;
@@ -230,7 +235,7 @@ export function buildTriage(
   const maxRadiusKm = opts.maxRadiusKm ?? MAX_DISCOVERY_RADIUS_KM;
   const title = input.title || "";
   // Obra = termo de obra presente E não ser uma aquisição de bens (gate negativo).
-  const obrasRelevant = OBRAS_RE.test(title) && !ACQUISITION_RE.test(title);
+  const obrasRelevant = OBRAS_RE.test(title) && !ACQUISITION_RE.test(title) && !NON_CIVIL_ENG_RE.test(title);
   const days =
     input.proposalDeadline !== null
       ? Math.ceil((new Date(input.proposalDeadline).getTime() - new Date(TRIAGE_TODAY).getTime()) / 86_400_000)

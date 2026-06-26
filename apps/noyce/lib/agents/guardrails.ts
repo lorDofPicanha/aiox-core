@@ -2,7 +2,7 @@
 // it reaches the app — this is what makes a cheaper model safe: provenance, deadline, schema and
 // human-act invariants are enforced in code, not trusted to the LLM.
 
-import { isDeadlinePassed } from "../noyce-operational.ts";
+import { isDeadlinePassed, nowIso } from "../noyce-operational.ts";
 import { HUMAN_REQUIRED_ACTS } from "../noyce-source-registry.ts";
 import type { GuardrailResult, GuardrailViolation } from "./agent-types.ts";
 
@@ -12,6 +12,10 @@ const VERDICTS = ["vai", "olha", "pula"] as const;
 export function validateTriage(
   result: unknown,
   item: { proposalDeadline: string | null },
+  // Data de referência da triagem. DEVE ser a mesma usada por buildTriage/runTriage —
+  // senão o invariante de prazo é avaliado num relógio diferente do veredito (quebra
+  // back-test/eval com data histórica: o modelo julga "aberto" e o guardrail "vencido").
+  asOf: string = nowIso(),
 ): GuardrailResult {
   const v: GuardrailViolation[] = [];
   const r = (result ?? {}) as Record<string, unknown>;
@@ -26,7 +30,7 @@ export function validateTriage(
     v.push({ rule: "schema", field: "score", detail: "score fora de 0..100" });
   }
   // Edital com prazo vencido NÃO pode ser oportunidade aberta — força 'pula'.
-  if (isDeadlinePassed(item.proposalDeadline) && r.verdict !== "pula") {
+  if (isDeadlinePassed(item.proposalDeadline, asOf) && r.verdict !== "pula") {
     v.push({ rule: "deadline", field: "verdict", detail: "prazo vencido deve resultar em 'pula'" });
   }
   return { ok: v.length === 0, violations: v };

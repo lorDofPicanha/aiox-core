@@ -448,3 +448,6 @@ docs/projects/tocks/assets/**
 # Noyce discovery runtime log (gerado pelo scheduler horário)
 apps/noyce/lib/data/discovery-snapshot.candidate-*.json
 scripts/noyce/discovery-runs.log
+
+# Noyce eval-gate report (gerado a cada execução do scripts/eval-gate.mjs)
+apps/noyce/lib/data/eval-gate-report.json
