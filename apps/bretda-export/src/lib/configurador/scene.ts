@@ -8,10 +8,12 @@ import { TransformControls } from "three/examples/jsm/controls/TransformControls
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
+import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
 
 import { TABLE_MODELS, type TableModel } from "@/lib/configurador/tables";
 
 type MaterialClass = "tecido" | "madeira" | "metal" | "outro";
+
 
 export interface SceneCallbacks {
   onModelChange?: (label: string, category: TableModel["category"]) => void;
@@ -45,6 +47,7 @@ export class ConfiguradorScene {
   private gridVisible = true;
 
   private envTexture: THREE.Texture | null = null;
+  private studioEnv: THREE.Texture | null = null;
   private testEnvActive = false;
   private envLoading = false;
 
@@ -91,8 +94,8 @@ export class ConfiguradorScene {
   // ---------- INIT ----------
   private initScene(): void {
     this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color(0x3e3f38);
-    this.scene.fog = new THREE.Fog(0x3e3f38, 15, 30);
+    this.scene.background = new THREE.Color(0x26271f);
+    this.scene.fog = new THREE.Fog(0x26271f, 24, 48);
 
     const w = this.container.clientWidth || 800;
     const h = this.container.clientHeight || 600;
@@ -109,16 +112,24 @@ export class ConfiguradorScene {
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    this.renderer.toneMappingExposure = 1.0;
+    this.renderer.toneMappingExposure = 0.9;
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
 
-    const ambient = new THREE.AmbientLight(0xffffff, 0.3);
+    // Image-based lighting: a neutral studio environment gives PBR materials
+    // realistic soft ambient + reflections — no external HDRI download needed.
+    const pmrem = new THREE.PMREMGenerator(this.renderer);
+    this.studioEnv = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+    this.scene.environment = this.studioEnv;
+    pmrem.dispose();
+
+    // IBL carries the ambient, so keep direct lights low + crisp.
+    const ambient = new THREE.AmbientLight(0xffffff, 0.06);
     this.scene.add(ambient);
 
-    const hemi = new THREE.HemisphereLight(0x404040, 0x111111, 0.4);
+    const hemi = new THREE.HemisphereLight(0xffffff, 0x1a1a14, 0.14);
     this.scene.add(hemi);
 
-    const dir = new THREE.DirectionalLight(0xffffff, 1.5);
+    const dir = new THREE.DirectionalLight(0xffffff, 1.35);
     dir.position.set(5, 8, 5);
     dir.castShadow = true;
     dir.shadow.mapSize.width = 2048;
@@ -130,11 +141,17 @@ export class ConfiguradorScene {
     dir.shadow.camera.top = 5;
     dir.shadow.camera.bottom = -5;
     dir.shadow.bias = -0.0001;
+    dir.shadow.radius = 4;
     this.scene.add(dir);
 
-    const fill = new THREE.DirectionalLight(0x8888aa, 0.3);
-    fill.position.set(-3, 4, -3);
+    const fill = new THREE.DirectionalLight(0xbfc6e0, 0.18);
+    fill.position.set(-4, 4, -3);
     this.scene.add(fill);
+
+    // Champagne rim light to catch edges — the luxury sheen.
+    const rim = new THREE.DirectionalLight(0xc9a961, 0.3);
+    rim.position.set(-3, 3.5, -6);
+    this.scene.add(rim);
 
     const groundGeo = new THREE.PlaneGeometry(30, 30);
     const groundMat = new THREE.ShadowMaterial({ opacity: 0.3 });
@@ -235,6 +252,12 @@ export class ConfiguradorScene {
         if (mesh.isMesh) {
           mesh.castShadow = true;
           mesh.receiveShadow = true;
+          const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
+          mats.forEach((mm) => {
+            const m = mm as THREE.MeshStandardMaterial;
+            // subtle environment reflection — enough for realism, not a clarão
+            if (m && "envMapIntensity" in m) { m.envMapIntensity = 0.55; m.needsUpdate = true; }
+          });
         }
       });
       this.tableGroup.updateMatrixWorld(true);
@@ -273,6 +296,9 @@ export class ConfiguradorScene {
 
       this.callbacks.onLoadingChange?.(false);
       this.callbacks.onModelChange?.(model.label, model.category);
+      // No auto-classification — the GLBs carry no part-type info, so guessing
+      // scrambles the table. Finishes apply via "Personalizar" (click a part →
+      // classify → pick a swatch), matching the proven bretda-lp configurator.
     };
 
     const cached = this.modelCache.get(modelKey);
@@ -338,12 +364,18 @@ export class ConfiguradorScene {
     const mats: THREE.MeshStandardMaterial[] = [];
     if (!this.tableGroup) return mats;
     const modelCls = this.materialClassifications[this.currentModel] ?? {};
+    const seen = new Set<string>();
     this.tableGroup.traverse((child) => {
       const mesh = child as THREE.Mesh;
-      if (mesh.isMesh && mesh.material) {
-        const m = mesh.material as THREE.MeshStandardMaterial;
-        if (modelCls[m.uuid] === cls) mats.push(m);
-      }
+      if (!mesh.isMesh || !mesh.material) return;
+      const arr = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
+      arr.forEach((m0) => {
+        const m = m0 as THREE.MeshStandardMaterial;
+        if (seen.has(m.uuid)) return;
+        // uuid override (manual customize) wins; otherwise the auto-classified tag.
+        const tag = modelCls[m.uuid] ?? (m.userData?.bretdaClass as MaterialClass | undefined);
+        if (tag === cls) { mats.push(m); seen.add(m.uuid); }
+      });
     });
     return mats;
   }
@@ -566,9 +598,9 @@ export class ConfiguradorScene {
     if (this.envLoading) return;
 
     if (this.testEnvActive) {
-      this.scene.background = new THREE.Color(0x3e3f38);
-      this.scene.environment = null;
-      this.scene.fog = new THREE.Fog(0x3e3f38, 15, 30);
+      this.scene.background = new THREE.Color(0x26271f);
+      this.scene.environment = this.studioEnv;
+      this.scene.fog = new THREE.Fog(0x26271f, 24, 48);
       this.envTexture?.dispose();
       this.envTexture = null;
       const floor = this.scene.getObjectByName("visibleFloor");
@@ -645,6 +677,7 @@ export class ConfiguradorScene {
     this.modelCache.clear();
     if (this.tableGroup) this.disposeGroup(this.tableGroup);
     this.envTexture?.dispose();
+    this.studioEnv?.dispose();
     this.renderer.dispose();
   }
 }

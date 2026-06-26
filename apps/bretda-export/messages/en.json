@@ -33,13 +33,16 @@
     "now": "Now", "nowV": "Each piece is made to order — a limited number of commissions open per season.",
     "frame": "Hardwood frame", "cloth": "Felt cloth", "from": "From", "ddp": "Delivered to your door — duties included.",
     "t1": "Insured white-glove freight", "t2": "8–10 weeks · made to order", "t3": "Customs & duties handled", "t4": "Arrival-condition guarantee",
-    "reserve": "Reserve this table", "talk": "Talk to a specialist", "open3d": "Open the 3D configurator →", "crumb": "Collection"
+    "reserve": "Reserve this table", "talk": "Talk to a specialist", "open3d": "Open the 3D configurator →", "crumb": "Collection",
+    "about": "About this piece", "specs": "Specifications", "sDim": "Dimensions", "sBase": "Base", "sStructure": "Structure", "sCloth": "Cloth", "sSlate": "Slate bed", "sLegs": "Legs", "sTop": "Dining top", "sTopV": "Optional, on request", "sWeight": "Weight", "onRequest": "On request", "sLead": "Lead time", "sLeadV": "60 days after order confirmation"
   },
   "cfg": {
     "eyebrow": "Configure · Made to Order", "sub": "Build the table that exists once.",
     "hint": "Drag to rotate · scroll to zoom", "ar": "View in your room (AR)",
     "frame": "Frame — hardwood", "metal": "Base — metal", "cloth": "Felt — cloth", "from": "From",
-    "ddp": "Delivered to your door — duties included.", "reserve": "Reserve your configuration"
+    "ddp": "Delivered to your door — duties included.", "reserve": "Reserve your configuration",
+    "customize": "Customize", "customizeOn": "Click a part of the table to select it", "pickFinish": "now pick a finish",
+    "ccClick": "Click a part of the table", "ccSelected": "Selected part — what is it?", "ccWood": "Wood", "ccMetal": "Metal", "ccCloth": "Cloth", "ccThen": "Now pick a finish on the right →"
   },
   "footer": { "tagline": "Sculptural billiards tables, hand-built in Brazil and delivered white-glove to homes across the United States and Europe.", "since": "Crafting since 2009 · Brazil", "rights": "Bretda Atelier · Itajaí, Brazil", "contact": "Talk to us", "shipping": "Shipping & customs" },
   "wa": {

@@ -226,6 +226,17 @@ button.thumb, button.sw { padding: 0; font: inherit; color: inherit; -webkit-app
 .cta-row2 { display: flex; align-items: center; gap: 26px; }
 .breadcrumb { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); padding: 120px 0 20px; }
 
+/* ---- PDP details (real description + specs) ---- */
+.pdp-details { display: grid; grid-template-columns: 1.3fr 1fr; gap: 64px; padding: 80px 0 10px; margin-top: 64px; border-top: 1px solid var(--hair); }
+.pd-desc p { font-size: 15px; line-height: 1.78; color: rgba(237,233,224,.78); font-weight: 300; margin: 0 0 18px; max-width: 58ch; }
+.pd-specs dl { margin: 0; }
+.pd-specs .row { display: grid; grid-template-columns: 132px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(201,169,97,.12); }
+.pd-specs dt { font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--champagne); font-weight: 600; padding-top: 4px; }
+.pd-specs dd { margin: 0; font-size: 14px; line-height: 1.55; color: rgba(237,233,224,.82); font-weight: 300; }
+.pd-specs .sizes { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 7px; }
+.pd-specs .sizes li { display: flex; justify-content: space-between; gap: 18px; font-variant-numeric: tabular-nums; }
+.pd-specs .sizes li span { color: var(--muted); }
+
 /* ============================================================ CONFIGURATOR */
 .cfg-models { display: flex; gap: 12px; overflow-x: auto; padding: 108px 0 6px; }
 .cfg-model { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: .5; transition: opacity .3s; }
@@ -249,6 +260,15 @@ model-viewer { width: 100%; height: 60vh; min-height: 420px; background: transpa
 .stage .hint { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
 .arbtn { background: none; border: 1px solid var(--hair); color: var(--champagne); font-family: var(--font-body); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; padding: 9px 16px; cursor: pointer; transition: .3s; }
 .arbtn:hover { background: var(--champagne); color: #191a16; }
+.arbtn.on { background: var(--champagne); color: #191a16; }
+.cfg-toast { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); z-index: 8; background: rgba(11,12,9,.86); border: 1px solid var(--hair); color: var(--off); font-size: 11px; letter-spacing: .08em; padding: 9px 16px; border-radius: 2px; backdrop-filter: blur(8px); pointer-events: none; white-space: nowrap; }
+.cfg-customize { position: absolute; top: 14px; left: 14px; z-index: 9; background: rgba(11,12,9,.92); border: 1px solid var(--hair); padding: 14px 16px; border-radius: 2px; backdrop-filter: blur(10px); max-width: 260px; }
+.cfg-customize .cc-lbl { font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--champagne); font-weight: 600; }
+.cfg-customize .cc-row { display: flex; gap: 7px; margin-top: 11px; }
+.cfg-customize .cc-row button { background: none; border: 1px solid var(--hair); color: var(--muted); font-family: var(--font-body); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; padding: 8px 12px; cursor: pointer; transition: .25s; }
+.cfg-customize .cc-row button:hover { color: var(--off); border-color: rgba(201,169,97,.5); }
+.cfg-customize .cc-row button.on { background: var(--champagne); color: #191a16; border-color: var(--champagne); }
+.cfg-customize .cc-hint { font-size: 10.5px; line-height: 1.5; color: var(--muted); margin-top: 11px; font-weight: 300; }
 .cfg-ctrl h1 { font-family: var(--font-display); font-weight: 400; font-size: 52px; line-height: .96; margin-bottom: 6px; }
 .cfg-ctrl .sub { font-style: italic; font-family: var(--font-display); font-size: 15px; color: rgba(237,233,224,.6); margin-bottom: 30px; }
 .step { border-top: 1px solid var(--hair); padding: 22px 0; }
@@ -282,7 +302,7 @@ model-viewer { width: 100%; height: 60vh; min-height: 420px; background: transpa
   .col-head h1 { font-size: 44px; }
   .feature { grid-template-columns: 1fr; }
   .grid, .grid.three { grid-template-columns: 1fr 1fr; }
-  .pdp, .config { grid-template-columns: 1fr; gap: 34px; }
+  .pdp, .config, .pdp-details { grid-template-columns: 1fr; gap: 34px; }
   .gallery, .stage { position: static; }
   .info .name2 { font-size: 50px; }
   .trust { grid-template-columns: 1fr; }

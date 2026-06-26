@@ -49,6 +49,16 @@ export default function Configurator({ initialSlug }: { initialSlug?: string }) 
   const [wood, setWood] = useState(WOODS[1].name);
   const [metal, setMetal] = useState<string | null>(null);
   const [fab, setFab] = useState(FABRICS[7].name);
+  const [customize, setCustomize] = useState(false);
+  const [selectedPart, setSelectedPart] = useState<string | null>(null);
+  const [selectedCls, setSelectedCls] = useState<string | null>(null);
+  const [toast, setToast] = useState("");
+  const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const showToast = useCallback((msg: string) => {
+    setToast(msg);
+    if (toastTimer.current) clearTimeout(toastTimer.current);
+    toastTimer.current = setTimeout(() => setToast(""), 2600);
+  }, []);
 
   // scene lifecycle — epoch-driven remount (mirrors the original engine usage)
   useEffect(() => {
@@ -62,7 +72,7 @@ export default function Configurator({ initialSlug }: { initialSlug?: string }) 
       if (disposed || !canvasRef.current) return;
       scene = new ConfiguradorScene(canvasRef.current, {
         onLoadingChange: (on: boolean, text?: string) => setLoading({ on, text: text ?? "" }),
-        onToast: () => {},
+        onToast: (msg: string) => showToast(msg),
         onModelChange: (label: string, cat: TableCategory) => {
           setActiveLabel(label);
           setActiveCategory(cat);
@@ -73,7 +83,10 @@ export default function Configurator({ initialSlug }: { initialSlug?: string }) 
             scene.buildTable(target);
           }
         },
-        onMaterialSelected: () => {},
+        onMaterialSelected: (name: string | null, cls: string | null) => {
+          setSelectedPart(name);
+          setSelectedCls(cls);
+        },
       });
       sceneRef.current = scene;
     });
@@ -88,8 +101,22 @@ export default function Configurator({ initialSlug }: { initialSlug?: string }) 
 
   const selectModel = useCallback((key: string) => {
     setActiveKey(key);
+    setCustomize(false);
+    setSelectedPart(null);
+    setSelectedCls(null);
     setEpoch((e) => e + 1);
   }, []);
+
+  const toggleCustomize = () => {
+    const on = sceneRef.current?.toggleCustomizeMode() ?? false;
+    setCustomize(on);
+    if (!on) { setSelectedPart(null); setSelectedCls(null); }
+  };
+
+  const classifyPart = (c: "madeira" | "metal" | "tecido") => {
+    sceneRef.current?.classifySelection(c);
+    setSelectedCls(c);
+  };
 
   const onWood = (s: (typeof WOODS)[number]) => { setWood(s.name); sceneRef.current?.applyWood(s.texture, s.fallbackColor, s.name); };
   const onMetal = (s: (typeof METALS)[number]) => { setMetal(s.name); sceneRef.current?.applyMetal(s.texture, s.name); };
@@ -122,9 +149,28 @@ export default function Configurator({ initialSlug }: { initialSlug?: string }) 
             {loading.on && (
               <div className="cfg-loading"><span className="spin" /><span className="lt">{loading.text || t("hint")}</span></div>
             )}
+            {toast && <div className="cfg-toast">{toast}</div>}
+            {customize && (
+              <div className="cfg-customize">
+                {selectedPart ? (
+                  <>
+                    <div className="cc-lbl">{t("ccSelected")}</div>
+                    <div className="cc-row">
+                      <button type="button" className={selectedCls === "madeira" ? "on" : ""} onClick={() => classifyPart("madeira")}>{t("ccWood")}</button>
+                      <button type="button" className={selectedCls === "metal" ? "on" : ""} onClick={() => classifyPart("metal")}>{t("ccMetal")}</button>
+                      <button type="button" className={selectedCls === "tecido" ? "on" : ""} onClick={() => classifyPart("tecido")}>{t("ccCloth")}</button>
+                    </div>
+                    <div className="cc-hint">{t("ccThen")}</div>
+                  </>
+                ) : (
+                  <div className="cc-lbl">{t("ccClick")}</div>
+                )}
+              </div>
+            )}
             <div className="bar">
-              <span className="hint">{t("hint")}</span>
+              <span className="hint">{customize ? (selectedPart ? `${selectedPart} — ${t("pickFinish")}` : t("customizeOn")) : t("hint")}</span>
               <div className="cfg-tools">
+                <button className={`arbtn${customize ? " on" : ""}`} onClick={toggleCustomize}>{t("customize")}</button>
                 <button className="arbtn" onClick={() => sceneRef.current?.resetCamera()}>Reset</button>
                 <button className="arbtn" onClick={() => sceneRef.current?.toggleGrid()}>Grid</button>
                 <button className="arbtn" onClick={() => sceneRef.current?.exportScreenshot(`bretda-${activeKey}.png`)}>Photo</button>

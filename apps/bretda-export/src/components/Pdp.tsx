@@ -5,6 +5,8 @@ import { useLocale, useTranslations } from "next-intl";
 import Header from "./Header";
 import Footer from "./Footer";
 import { woods, fabrics, formatPrice, type Product } from "@/data/catalog";
+import { getSpec } from "@/data/specs";
+import { dim2, dim3, weight } from "@/lib/units";
 import { useCurrency } from "@/lib/currency";
 import { waUrl } from "@/lib/inquiry";
 
@@ -21,6 +23,7 @@ export default function Pdp({ product }: { product: Product }) {
   const [fab, setFab] = useState(fabrics[0].name);
 
   const price = formatPrice(product.priceUSD, product.priceEUR, cur, locale);
+  const spec = getSpec(product.slug);
 
   return (
     <>
@@ -103,6 +106,46 @@ export default function Pdp({ product }: { product: Product }) {
             </div>
           </div>
         </div>
+
+        {spec && (
+          <section className="pdp-details">
+            <div className="pd-desc">
+              <div className="k">{t("about")}</div>
+              {spec.description.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </div>
+            <div className="pd-specs">
+              <div className="k">{t("specs")}</div>
+              <dl>
+                <div className="row">
+                  <dt>{t("sDim")}</dt>
+                  <dd>
+                    {spec.sizes ? (
+                      <ul className="sizes">
+                        {spec.sizes.map((s) => (
+                          <li key={s.label}><span>{s.label}</span>{dim2(s.l, s.w, locale)}</li>
+                        ))}
+                      </ul>
+                    ) : spec.dim ? (
+                      spec.dim.h != null
+                        ? dim3(spec.dim.l, spec.dim.w, spec.dim.h, locale)
+                        : dim2(spec.dim.l, spec.dim.w, locale)
+                    ) : "—"}
+                  </dd>
+                </div>
+                {spec.base && <div className="row"><dt>{t("sBase")}</dt><dd>{spec.base}</dd></div>}
+                {spec.structure && <div className="row"><dt>{t("sStructure")}</dt><dd>{spec.structure}</dd></div>}
+                {spec.cloth && <div className="row"><dt>{t("sCloth")}</dt><dd>{spec.cloth}</dd></div>}
+                {spec.slate && <div className="row"><dt>{t("sSlate")}</dt><dd>{spec.slate}</dd></div>}
+                {spec.legs && <div className="row"><dt>{t("sLegs")}</dt><dd>{spec.legs}</dd></div>}
+                {spec.top && <div className="row"><dt>{t("sTop")}</dt><dd>{t("sTopV")}</dd></div>}
+                <div className="row"><dt>{t("sWeight")}</dt><dd>{weight(spec.weightKg, locale) ?? t("onRequest")}</dd></div>
+                <div className="row"><dt>{t("sLead")}</dt><dd>{t("sLeadV")}</dd></div>
+              </dl>
+            </div>
+          </section>
+        )}
       </div>
       <Footer />
     </>

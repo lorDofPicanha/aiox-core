@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import Header from "./Header";
 import Footer from "./Footer";
-import { atelier, signature, catalog, formatPrice, type Product, type Category } from "@/data/catalog";
+import { atelier, signature, formatPrice, type Product, type Category } from "@/data/catalog";
 import { useCurrency } from "@/lib/currency";
 
 const lp = (p: string, l: string) => (l === "en" ? p : `/${l}${p}`);
@@ -28,7 +28,9 @@ export default function Collection() {
     t.has(c) ? t(c) : c;
   const price = (p: Product) => formatPrice(p.priceUSD, p.priceEUR, cur, locale);
   const show = (p: Product) => filter === "all" || p.category === filter;
-  const num = (p: Product) => String(catalog.indexOf(p) + 1).padStart(2, "0");
+  // Number within each line (Atelier 01.., Signature 01..) rather than across the whole catalog.
+  const anum = (p: Product) => String(atelier.indexOf(p) + 1).padStart(2, "0");
+  const snum = (p: Product) => String(signature.indexOf(p) + 1).padStart(2, "0");
   const atelierShown = atelier.filter(show);
   const signatureShown = signature.filter(show);
   const flag = atelier.find((p) => p.flagship)!;
@@ -72,7 +74,7 @@ export default function Collection() {
               <div className="grid">
                 {atelierShown.filter((p) => !p.flagship).map((p) => (
                   <a key={p.slug} className="card" href={lp(`/mesa/${p.slug}`, locale)}>
-                    <div className="num">N° {num(p)}</div>
+                    <div className="num">N° {anum(p)}</div>
                     <div className="ph"><Image src={p.img} alt={p.name} width={1200} height={900} sizes="(max-width: 900px) 50vw, 25vw" /></div>
                     <div className="body">
                       <div className="name">{p.name}</div>
@@ -93,8 +95,8 @@ export default function Collection() {
             <div className="grid three light-grid">
               {signatureShown.map((p) => (
                 <a key={p.slug} className="card light" href={lp(`/mesa/${p.slug}`, locale)}>
-                  <div className="num">N° {num(p)}</div>
-                  <div className="ph"><img src={p.img} alt={p.name} /></div>
+                  <div className="num">N° {snum(p)}</div>
+                  <div className="ph"><Image src={p.img} alt={p.name} width={1200} height={900} sizes="(max-width: 900px) 50vw, 33vw" /></div>
                   <div className="body">
                     <div className="name">{p.name}</div>
                     <div className="cat">{catLabel(p.category)}</div>
