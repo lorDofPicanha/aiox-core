@@ -218,6 +218,12 @@ const ACQUISITION_RE =
 // exposto pelo eval-gate 26/Jun (divergência dura: baseline VAI × LLM PULA, LLM correto).
 const NON_CIVIL_ENG_RE = /\bengenharia\s+(cl[íi]nic|de\s+software|social|de\s+tr[áa]fego|consultiv)/i;
 
+// Infraestrutura pesada / saneamento / pavimentação. Escopo confirmado pelo owner (26/Jun):
+// ENIAC faz SÓ EDIFICAÇÃO → infra fica fora. Flip ENIAC_DOES_INFRA p/ true se a ENIAC passar a
+// disputar infra (1 linha; os testes de infra=pula devem ser revistos junto).
+const INFRA_RE = /\b(pavimenta|asfalt|recapeament|terraplan|drenagem|esgoto|saneament|esta[çc][ãa]o de tratamento|\bete\b|rodovi|ponte|galeria pluvial|meio[- ]fio|reservat[óo]ri)/i;
+const ENIAC_DOES_INFRA = false;
+
 export interface TriageInput {
   title: string;
   distanceKm: number;
@@ -235,7 +241,11 @@ export function buildTriage(
   const maxRadiusKm = opts.maxRadiusKm ?? MAX_DISCOVERY_RADIUS_KM;
   const title = input.title || "";
   // Obra = termo de obra presente E não ser uma aquisição de bens (gate negativo).
-  const obrasRelevant = OBRAS_RE.test(title) && !ACQUISITION_RE.test(title) && !NON_CIVIL_ENG_RE.test(title);
+  const obrasRelevant =
+    OBRAS_RE.test(title) &&
+    !ACQUISITION_RE.test(title) &&
+    !NON_CIVIL_ENG_RE.test(title) &&
+    (ENIAC_DOES_INFRA || !INFRA_RE.test(title));
   const days =
     input.proposalDeadline !== null
       ? Math.ceil((new Date(input.proposalDeadline).getTime() - new Date(TRIAGE_TODAY).getTime()) / 86_400_000)

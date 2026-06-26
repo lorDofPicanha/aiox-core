@@ -21,19 +21,19 @@ test("objeto fora de obras = Pula (perfil ENIAC é obras)", () => {
 });
 
 test("obra fora do raio = Pula", () => {
-  const t = buildTriage({ title: "Construção de ponte rodoviária", distanceKm: 900, estimatedValue: 5000000, proposalDeadline: future(20) });
+  const t = buildTriage({ title: "Construção de escola municipal", distanceKm: 900, estimatedValue: 5000000, proposalDeadline: future(20) });
   assert.equal(t.verdict, "pula");
   assert.match(t.reason, /raio/);
 });
 
 test("prazo encerrado = Pula", () => {
-  const t = buildTriage({ title: "Pavimentação asfáltica de vias urbanas", distanceKm: 40, estimatedValue: 600000, proposalDeadline: future(-3) });
+  const t = buildTriage({ title: "Reforma de edifício escolar", distanceKm: 40, estimatedValue: 600000, proposalDeadline: future(-3) });
   assert.equal(t.verdict, "pula");
   assert.match(t.reason, /encerrado/);
 });
 
 test("obra mas longe (≤500) ou prazo curto = Olha", () => {
-  const t = buildTriage({ title: "Drenagem urbana e meio-fio", distanceKm: 300, estimatedValue: 700000, proposalDeadline: future(8) });
+  const t = buildTriage({ title: "Ampliação de creche municipal", distanceKm: 300, estimatedValue: 700000, proposalDeadline: future(8) });
   assert.equal(t.verdict, "olha");
 });
 
@@ -46,9 +46,9 @@ test("faixa 171–500 km com tudo OK = Olha com nota de viabilidade operacional 
 });
 
 test("fronteira: 500 km = dentro do raio (Olha); 501 km = fora (Pula) (AC1/AC3)", () => {
-  const dentro = buildTriage({ title: "Pavimentação urbana", distanceKm: 500, estimatedValue: 700000, proposalDeadline: future(10) });
+  const dentro = buildTriage({ title: "Construção de creche", distanceKm: 500, estimatedValue: 700000, proposalDeadline: future(10) });
   assert.equal(dentro.verdict, "olha");
-  const fora = buildTriage({ title: "Pavimentação urbana", distanceKm: 501, estimatedValue: 700000, proposalDeadline: future(10) });
+  const fora = buildTriage({ title: "Construção de creche", distanceKm: 501, estimatedValue: 700000, proposalDeadline: future(10) });
   assert.equal(fora.verdict, "pula");
   assert.match(fora.reason, /acima de 500 km/);
 });
@@ -86,6 +86,21 @@ test("engenharia CIVIL/de obras segue obra-alvo (sem regressão)", () => {
   const t = buildTriage({ title: "Serviços de engenharia para reforma de escola", distanceKm: 30, estimatedValue: 800000, proposalDeadline: future(10) });
   assert.equal(t.obrasRelevant, true);
   assert.equal(t.verdict, "vai");
+});
+
+// Escopo confirmado pelo owner (26/Jun): ENIAC = só edificação → infra/saneamento/pavimentação
+// NÃO são obra-alvo (mesmo com prazo/raio ok). Flip ENIAC_DOES_INFRA p/ reverter.
+test("infra/pavimentação/saneamento fora do escopo edificação = Pula", () => {
+  for (const title of [
+    "Pavimentação asfáltica de vias urbanas",
+    "Execução de obras do contorno rodoviário",
+    "Construção de estação de tratamento de esgoto (ETE)",
+    "Drenagem pluvial e meio-fio",
+  ]) {
+    const t = buildTriage({ title, distanceKm: 30, estimatedValue: 700000, proposalDeadline: future(15) });
+    assert.equal(t.obrasRelevant, false, title);
+    assert.equal(t.verdict, "pula", title);
+  }
 });
 
 // eval-gate 26/Jun: o invariante de prazo do guardrail DEVE usar a mesma data de
