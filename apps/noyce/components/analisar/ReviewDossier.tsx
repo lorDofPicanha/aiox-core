@@ -13,6 +13,7 @@ import {
   reviewProgress,
   type ReviewState,
 } from "@/lib/noyce-review";
+import { getCuratedErmForEdital } from "@/lib/noyce-erm";
 import { canGenerate, declarationFileName, generateDeclarationBlob } from "@/lib/noyce-docgen";
 import { buildDossierHtml, buildProposalCsv, isPackageFinal } from "@/lib/noyce-package";
 import { IndividualDocsPanel } from "@/components/analisar/IndividualDocsPanel";
@@ -47,9 +48,19 @@ export function ReviewDossier({ opportunity }: { opportunity: Opportunity }) {
   }, [opportunity.id]);
 
   const liveChecklist = useLiveChecklist(opportunity);
+  // ERM curado do edital (quando houver) → dossiê dirigido pelo que ESTE edital exige
+  // (declarações + certidões), não um conjunto fixo. Sem ERM, cai no conjunto-praxe.
+  const erm = useMemo(
+    () =>
+      getCuratedErmForEdital({
+        id: opportunity.id,
+        pncpId: (opportunity as { pncpId?: string }).pncpId ?? null,
+      }) ?? undefined,
+    [opportunity],
+  );
   const dossier = useMemo(
-    () => buildReviewDossier({ ...opportunity, habilitationChecklist: liveChecklist }, eniacCcp),
-    [opportunity, liveChecklist],
+    () => buildReviewDossier({ ...opportunity, habilitationChecklist: liveChecklist }, eniacCcp, erm),
+    [opportunity, liveChecklist, erm],
   );
   const reviewed = useMemo(() => mergeReview(dossier, state), [dossier, state]);
   const progress = reviewProgress(reviewed);

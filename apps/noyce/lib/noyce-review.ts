@@ -2,8 +2,9 @@
 // ao marcar interesse no Monitorar, o motor pré-preenche TUDO que a licitação vai precisar;
 // o humano revisa item a item; o que o humano CORRIGIR fica travado — o motor nunca
 // sobrescreve um valor humano (proveniência vira "humano", com registro do valor original).
-import type { CompanyCapabilityProfile, Opportunity } from "./noyce-model";
+import type { CompanyCapabilityProfile, EditalRequirementsModel, Opportunity } from "./noyce-model";
 import { derivePorte } from "./noyce-porte.ts";
+import { getTemplate, mapDeclaracaoLabel, type DeclaracaoTipo } from "./noyce-declaracoes.ts";
 
 export interface ReviewItem {
   id: string;
@@ -17,6 +18,9 @@ export interface ReviewItem {
   requerCorrecao?: boolean;
   /** Aviso exibido junto ao item (ex.: desenquadramento iminente) — não bloqueia, exige atenção. */
   aviso?: string;
+  /** Quando o item nasce de uma exigência do edital (ERM), o rótulo ORIGINAL do edital —
+   *  usado pelo gate de completude p/ casar exigência ↔ item gerado (1:1). */
+  editalLabel?: string;
 }
 
 export type ReviewDecision =
@@ -49,10 +53,122 @@ function fmtBRL(value: number | null): string {
   return value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
 
+// Declarações praxe que QUASE todo edital de obra 14.133 exige — rede de segurança quando o
+// ERM vem incompleto (parser pode não listar todas). Incluir extra não inabilita; FALTAR sim.
+const DECLARACOES_PRAXE: DeclaracaoTipo[] = ["menor", "elaboracao_independente", "cumprimento_requisitos_habilitacao"];
+
+function slug(s: string): string {
+  return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40);
+}
+
+/** Item ME/EPP — porte DERIVADO do balanço, nunca do cadastro (A2 — conclave 12/Jun, Justen). */
+function buildMeEppItem(oid: string, ccp: CompanyCapabilityProfile, empresa: string, editalLabel?: string): ReviewItem {
+  const porteInfo = derivePorte(ccp);
+  const desenquadrado = porteInfo.alerta === "desenquadrado_do_declarado";
+  return {
+    id: `${oid}-decl-meepp`,
+    secao: "Declarações (pré-redigidas)",
+    label: "Enquadramento ME/EPP",
+    valorMotor: desenquadrado
+      ? `⛔ NÃO PRÉ-REDIGIDA. ${porteInfo.nota}`
+      : `${empresa} declara que cumpre os requisitos legais para qualificação como ${porteInfo.porte ?? "ME/EPP"}, nos termos da LC 123/2006, estando apta a usufruir do tratamento favorecido.`,
+    proveniencia: desenquadrado
+      ? "Motor RECUSOU redigir — porte calculado diverge do cadastro"
+      : `Porte ${porteInfo.porte} derivado da receita ${porteInfo.exercicio ?? "?"} (não do cadastro)`,
+    requerCorrecao: desenquadrado || porteInfo.alerta === "sem_receita",
+    aviso: porteInfo.alerta ? porteInfo.nota : undefined,
+    editalLabel,
+  };
+}
+
+/** Item de declaração a partir de um template canônico. */
+function buildTemplateItem(oid: string, tipo: DeclaracaoTipo, empresa: string, editalLabel?: string, praxe = false): ReviewItem {
+  const tpl = getTemplate(tipo)!;
+  return {
+    id: `${oid}-decl-${tipo}`,
+    secao: "Declarações (pré-redigidas)",
+    label: tpl.label,
+    valorMotor: tpl.texto(empresa),
+    proveniencia: `Template (${tpl.citacao}) + identidade do CCP — o modelo anexo do edital prevalece`,
+    aviso: praxe
+      ? "Declaração de praxe (não confirmada no ERM deste edital) — conferir o edital; o modelo anexo prevalece."
+      : "O modelo anexo do edital prevalece sobre este template — conferir antes de assinar.",
+    editalLabel,
+  };
+}
+
+/**
+ * Declarações do dossiê. Com ERM: dirigidas pelo que o edital EXIGE (juridica.declaracoes),
+ * + rede de segurança praxe, + slot p/ declaração específica sem template (decisão owner: usar
+ * modelo anexo do edital via IA + revisão humana → aqui entra como pendência bloqueada, nunca
+ * silenciosamente ausente). Sem ERM: conjunto fixo (compatibilidade).
+ */
+function buildDeclaracoes(
+  oid: string,
+  ccp: CompanyCapabilityProfile,
+  empresa: string,
+  erm?: EditalRequirementsModel,
+): ReviewItem[] {
+  if (!erm || erm.juridica.declaracoes.length === 0) {
+    // Compatibilidade: conjunto fixo praxe (impeditivo, ME/EPP, menor, elaboração independente).
+    return [
+      buildTemplateItem(oid, "fato_impeditivo", empresa),
+      buildMeEppItem(oid, ccp, empresa),
+      buildTemplateItem(oid, "menor", empresa),
+      buildTemplateItem(oid, "elaboracao_independente", empresa),
+    ];
+  }
+
+  const out: ReviewItem[] = [];
+  const cobertos = new Set<DeclaracaoTipo>();
+  for (const editalLabel of erm.juridica.declaracoes) {
+    const tipo = mapDeclaracaoLabel(editalLabel);
+    if (tipo === "me_epp") {
+      out.push(buildMeEppItem(oid, ccp, empresa, editalLabel));
+      cobertos.add("me_epp");
+    } else if (tipo) {
+      out.push(buildTemplateItem(oid, tipo, empresa, editalLabel));
+      cobertos.add(tipo);
+    } else {
+      // Exigida pelo edital, sem template → NÃO some; vira pendência bloqueada p/ o modelo do edital.
+      out.push({
+        id: `${oid}-decl-edital-${slug(editalLabel)}`,
+        secao: "Declarações (pré-redigidas)",
+        label: editalLabel.slice(0, 90),
+        valorMotor: `⛔ Declaração exigida por ESTE edital, sem template no Noyce. Usar o MODELO ANEXO do edital (adaptação assistida + revisão humana). Não assinar sem o texto do edital.`,
+        proveniencia: "Exigida pelo ERM do edital — sem template canônico",
+        requerCorrecao: true,
+        aviso: "Declaração específica deste edital — preencher com o modelo anexo do edital.",
+        editalLabel,
+      });
+    }
+  }
+  // Rede de segurança: declarações praxe não cobertas pelo ERM entram como praxe (extra ≠ fatal).
+  for (const tipo of DECLARACOES_PRAXE) {
+    if (!cobertos.has(tipo)) out.push(buildTemplateItem(oid, tipo, empresa, undefined, true));
+  }
+  return out;
+}
+
+/** Certidões fiscais/trabalhistas EXIGIDAS pelo edital (anexar do vault). Visibilidade de completude. */
+function buildCertidoesExigidas(oid: string, erm: EditalRequirementsModel): ReviewItem[] {
+  return erm.fiscalTrabalhista.CNDs.map((label) => ({
+    id: `${oid}-cnd-${slug(label)}`,
+    secao: "Certidões exigidas (anexar do vault)",
+    label: label.slice(0, 90),
+    valorMotor: "Exigida pelo edital — anexar a certidão VÁLIDA na data da sessão (aba Governança/vault).",
+    proveniencia: "ERM do edital (regularidade fiscal/trabalhista)",
+    requerCorrecao: true, // não é assinável pelo motor: depende do documento real no vault
+    aviso: "Conferir validade da certidão na data da sessão — vencida = inabilitação.",
+    editalLabel: label,
+  }));
+}
+
 /** Monta o dossiê pré-preenchido de uma oportunidade marcada como interesse. */
 export function buildReviewDossier(
   opportunity: Opportunity,
   ccp: CompanyCapabilityProfile,
+  erm?: EditalRequirementsModel,
 ): ReviewItem[] {
   const items: ReviewItem[] = [];
   const oid = opportunity.id;
@@ -93,57 +209,12 @@ export function buildReviewDossier(
     });
   }
 
-  // 3. Declarações padrão da Lei 14.133 — pré-redigidas com os dados da ENIAC
+  // 3. Declarações — dirigidas pelo edital (ERM) quando disponível; senão o conjunto-praxe fixo.
   const empresa = `${ccp.identity.razaoSocial} (CNPJ ${ccp.identity.cnpj})`;
-  items.push(
-    {
-      id: `${oid}-decl-impeditivo`,
-      secao: "Declarações (pré-redigidas)",
-      label: "Inexistência de fato impeditivo",
-      // Citação corrigida (conclave 12/Jun, Justen): art. 63, I da 14.133 é a declaração SUBSTITUTIVA;
-      // a de fato impeditivo é praxe editalícia herdada do art. 32, §2º, da Lei 8.666/93.
-      valorMotor: `${empresa} declara, sob as penas da lei, que não há fato impeditivo à sua habilitação, ciente da obrigação de declarar ocorrências posteriores (praxe editalícia herdada do art. 32, §2º, Lei 8.666/93 — o modelo anexo do edital prevalece).`,
-      proveniencia: "Template praxe editalícia + identidade do CCP — conferir modelo do edital",
-      aviso: "O modelo anexo do edital prevalece sobre este template — conferir antes de assinar.",
-    },
-    // Porte DERIVADO do balanço, nunca do cadastro (A2 — conclave 12/Jun, Justen).
-    ...(() => {
-      const porteInfo = derivePorte(ccp);
-      const desenquadrado = porteInfo.alerta === "desenquadrado_do_declarado";
-      return [
-        {
-          id: `${oid}-decl-meepp`,
-          secao: "Declarações (pré-redigidas)",
-          label: "Enquadramento ME/EPP",
-          valorMotor: desenquadrado
-            ? `⛔ NÃO PRÉ-REDIGIDA. ${porteInfo.nota}`
-            : `${empresa} declara que cumpre os requisitos legais para qualificação como ${porteInfo.porte ?? "ME/EPP"}, nos termos da LC 123/2006, estando apta a usufruir do tratamento favorecido.`,
-          proveniencia: desenquadrado
-            ? "Motor RECUSOU redigir — porte calculado diverge do cadastro"
-            : `Porte ${porteInfo.porte} derivado da receita ${porteInfo.exercicio ?? "?"} (não do cadastro)`,
-          requerCorrecao: desenquadrado || porteInfo.alerta === "sem_receita",
-          aviso: porteInfo.alerta ? porteInfo.nota : undefined,
-        },
-      ];
-    })(),
-    {
-      id: `${oid}-decl-menor`,
-      secao: "Declarações (pré-redigidas)",
-      label: "Art. 7º, XXXIII, CF (menor)",
-      valorMotor: `${empresa} declara que não emprega menor de 18 anos em trabalho noturno, perigoso ou insalubre, nem menor de 16 anos, salvo na condição de aprendiz a partir de 14 anos (art. 68, VI, Lei 14.133/2021).`,
-      proveniencia: "Template 14.133",
-    },
-    {
-      id: `${oid}-decl-proposta`,
-      secao: "Declarações (pré-redigidas)",
-      label: "Elaboração independente de proposta",
-      // Placeholder com reticências MORTO (conclave 12/Jun, Niebuhr: "texto-placeholder dentro de
-      // documento que será assinado é bomba armada"). Texto completo; modelo do edital prevalece.
-      valorMotor: `${empresa} declara, sob as penas da lei, que a proposta apresentada foi elaborada de maneira independente, que seu conteúdo não foi, no todo ou em parte, direta ou indiretamente, informado, discutido ou recebido de qualquer outro participante potencial ou de fato deste certame, e que não tentou influenciar a decisão de qualquer outro participante quanto a participar ou não da licitação.`,
-      proveniencia: "Template praxe consolidada (declaração de elaboração independente) — o modelo anexo do edital prevalece",
-      aviso: "Conferir o modelo anexo do edital — a redação do edital prevalece sobre este template.",
-    },
-  );
+  items.push(...buildDeclaracoes(oid, ccp, empresa, erm));
+
+  // 3b. Certidões fiscais/trabalhistas EXIGIDAS pelo edital (anexar do vault) — só com ERM.
+  if (erm) items.push(...buildCertidoesExigidas(oid, erm));
 
   // 4. Proposta — valor de abertura sugerido com CLAMP de exequibilidade (A4 — conclave 12/Jun, Justen).
   // Art. 59, §4º: em obras/engenharia, proposta < 75% do orçado é PRESUMIDAMENTE INEXEQUÍVEL (desclassificável).

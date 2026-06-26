@@ -1,5 +1,9 @@
-import { createRequire } from "node:module";
 import type { EditalRequirementsModel } from "./noyce-model";
+// Imports ESM estáticos (browser/Next-safe) — substituem createRequire (node-only), pois este
+// módulo agora é consumido por um client component (ReviewDossier). Mesmo padrão do noyce-data.
+import curatedIndexJson from "./data/erms/index.json" with { type: "json" };
+import novoGamaEdital7 from "./data/erms/novo-gama-edital-7.json" with { type: "json" };
+import novoGamaEdital8 from "./data/erms/novo-gama-edital-8.json" with { type: "json" };
 
 export type CuratedErmStatus = "curado_parcial";
 
@@ -32,12 +36,10 @@ interface CuratedErmIndex {
   editais: CuratedErmIndexEntry[];
 }
 
-const requireJson: (id: string) => unknown = createRequire(import.meta.url);
-
-const curatedIndex = requireJson("./data/erms/index.json") as CuratedErmIndex;
+const curatedIndex = curatedIndexJson as unknown as CuratedErmIndex;
 const ermsByFile: Record<string, EditalRequirementsModel> = {
-  "novo-gama-edital-7.json": requireJson("./data/erms/novo-gama-edital-7.json") as EditalRequirementsModel,
-  "novo-gama-edital-8.json": requireJson("./data/erms/novo-gama-edital-8.json") as EditalRequirementsModel,
+  "novo-gama-edital-7.json": novoGamaEdital7 as unknown as EditalRequirementsModel,
+  "novo-gama-edital-8.json": novoGamaEdital8 as unknown as EditalRequirementsModel,
 };
 
 export const curatedErmRegistry: CuratedErmRegistryEntry[] = curatedIndex.editais.map((entry) => ({
