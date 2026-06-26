@@ -26,6 +26,7 @@ export interface EditalExtract {
   valorEstimadoHint: number | null; // 1º "R$ x" perto de valor estimado/máximo — só dica
   excerpt: string; // trecho focado p/ os agentes
   encontradas: string[]; // seções efetivamente achadas (telemetria/qualidade)
+  fullText: string; // texto integral extraído — usado p/ extração do ERM (declarações/CNDs)
 }
 
 const SECTION_KEYS: (keyof EditalSections)[] = [
@@ -151,6 +152,7 @@ export async function extractEdital(input: { pdfBuffer?: Uint8Array; text?: stri
     valorEstimadoHint: extractValorEstimadoHint(sections, text),
     excerpt: buildEditalExcerpt(sections),
     encontradas,
+    fullText: text,
   };
 }
 
@@ -186,5 +188,6 @@ export function mergeEditalSources(sources: EditalSource[]): EditalExtract {
     valorEstimadoHint: extractValorEstimadoHint(merged, fullText),
     excerpt: buildEditalExcerpt(merged),
     encontradas: SECTION_KEYS.filter((k) => merged[k]),
+    fullText,
   };
 }

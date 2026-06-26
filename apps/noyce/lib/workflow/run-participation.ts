@@ -6,6 +6,7 @@
 // o dossiê — assinar/submeter é ato humano (nunca automatizado aqui).
 
 import { extractEdital, type EditalExtract } from "../edital/extract-edital.ts";
+import { extractErm, type ErmExtraction } from "../edital/extract-erm.ts";
 import { fetchAndExtractEdital } from "../edital/pncp-source.ts";
 import { createLlmClient } from "../agents/clients/client-factory.ts";
 import { runTriage, type TriageResult } from "../agents/triage-agent.ts";
@@ -41,6 +42,9 @@ export type WorkflowSource =
 export interface ParticipationResult {
   objeto: string;
   parser: { sections: string[]; valorEstimadoHint: number | null; excerptChars: number; docs?: string[] } | null;
+  /** Exigências documentais extraídas do edital (declarações + CNDs) p/ dirigir a completude
+   *  do dossiê. null no modo excerpt (sem seções parseadas). */
+  erm: ErmExtraction | null;
   triage: TriageResult;
   analysis: AnalysisResult & { guardrailOk: boolean };
   habilitation: ForjaResult & { guardrailOk: boolean };
@@ -105,11 +109,16 @@ export async function runParticipationWorkflow(
     escriba: pkg.source === "llm" && Boolean(pkg.planilha),
   };
 
+  // Exigências documentais (declarações + CNDs) extraídas do edital parseado — dirige a
+  // completude do dossiê. Só quando há seções (modos pncp/pdf); excerpt puro não tem.
+  const erm = extract ? extractErm(extract.sections, extract.fullText) : null;
+
   return {
     objeto,
     parser: extract
       ? { sections: extract.encontradas, valorEstimadoHint: extract.valorEstimadoHint ?? null, excerptChars: excerpt.length, docs: extract.docs }
       : null,
+    erm,
     triage,
     analysis: { ...analysis, guardrailOk: aG.ok },
     habilitation: { ...habilitation, guardrailOk: hG.ok },

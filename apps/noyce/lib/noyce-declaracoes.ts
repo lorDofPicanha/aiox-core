@@ -27,6 +27,9 @@ export interface DeclaracaoTemplate {
   texto: (empresa: string) => string;
   /** Casa o rótulo livre do edital com este tipo. Ordem de avaliação importa (específico→genérico). */
   match: RegExp;
+  /** Detecção sobre o TEXTO CHEIO do edital (mais estrito que `match` p/ evitar falso-positivo,
+   *  ex.: "menor de 18 anos" e não "menor preço"). Default = `match`. */
+  detectRe?: RegExp;
   /** ME/EPP não é gerado por aqui (porte derivado do balanço) — fica fora do texto padrão. */
   especial?: boolean;
 }
@@ -46,6 +49,8 @@ export const DECLARACAO_TEMPLATES: DeclaracaoTemplate[] = [
     label: "Não emprega menor (art. 7º, XXXIII, CF)",
     citacao: "Art. 7º, XXXIII, CF c/c art. 68, VI, Lei 14.133/2021",
     match: /menor|art\.?\s*7[ºo]?\b|XXXIII|trabalho\s+(noturno|insalubre|perigoso)/i,
+    // estrito p/ texto cheio: "menor de 18/16 anos" ou o inciso — nunca "menor preço".
+    detectRe: /menor\s+de\s+(?:18|dezoito|16|dezesseis)\b|art\.?\s*7[ºo]?[\s,]+XXXIII|inciso\s+XXXIII|n[ãa]o\s+emprega.*menor/i,
     texto: (e) =>
       `${e} declara, para os fins do disposto no art. 7º, XXXIII, da Constituição Federal e no art. 68, VI, da Lei nº 14.133/2021, que não emprega menor de 18 anos em trabalho noturno, perigoso ou insalubre, nem menor de 16 anos em qualquer trabalho, salvo na condição de aprendiz a partir de 14 anos.`,
   },
@@ -86,6 +91,7 @@ export const DECLARACAO_TEMPLATES: DeclaracaoTemplate[] = [
     label: "Cumprimento dos requisitos de habilitação",
     citacao: "Art. 63, I, Lei 14.133/2021",
     match: /cumpr.*(requisitos|habilita)|pleno.*habilita|atende.*habilita|art\.?\s*63\b/i,
+    detectRe: /cumpr\w*\s+(?:os\s+|com\s+os\s+|plenamente\s+)?requisitos\s+de\s+habilita|pleno\s+atendimento.*habilita|art\.?\s*63,?\s*I\b/i,
     texto: (e) =>
       `${e} declara, sob as penas da lei e nos termos do art. 63, I, da Lei nº 14.133/2021, que cumpre plenamente os requisitos de habilitação exigidos no edital e que sua proposta está em conformidade com as exigências do instrumento convocatório.`,
   },
@@ -118,6 +124,8 @@ export const DECLARACAO_TEMPLATES: DeclaracaoTemplate[] = [
     label: "Enquadramento ME/EPP",
     citacao: "LC 123/2006",
     match: /me\/epp|microempresa|pequeno\s+porte|LC\s*123|123\/2006|tratamento\s+favorecido/i,
+    // estrito: evita casar "ME" solto; exige o termo por extenso ou a LC.
+    detectRe: /microempresa|empresa\s+de\s+pequeno\s+porte|\bME\/EPP\b|LC\s*123|lei\s+complementar\s+(?:n[ºo.]*\s*)?123/i,
     especial: true,
     texto: () => "", // texto vem da derivação de porte no noyce-review (não usar aqui)
   },
