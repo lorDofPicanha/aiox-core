@@ -1,10 +1,9 @@
 import { stageToTab, type TabId } from "@/components/shell/tabs";
 
 const STEPS: Array<{ tab: TabId; label: string }> = [
-  { tab: "monitorar", label: "Monitorar" },
+  { tab: "monitorar", label: "Monitorar" }, // descoberta + processo + vigilância de prazo (Acompanhar fundido)
   { tab: "analisar", label: "Analisar" },
   { tab: "habilitar", label: "Habilitar" },
-  { tab: "acompanhar", label: "Acompanhar" },
   { tab: "recorrer", label: "Recorrer" },
 ];
 
