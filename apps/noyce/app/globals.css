@@ -596,6 +596,18 @@
 .win-chip.grounding-inferred{background:#f4f8fd;border-color:#2d5aa055;color:#2d5aa0}
 .win-chip.grounding-gap{background:#fdf0ef;border-color:#a3333355;color:#a33}
 .win-intel-actions{margin-top:12px}
+
+/* Em andamento — pipeline das licitações seguidas (Monitorar) */
+.em-andamento{margin-bottom:20px}
+.andamento-row{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;border:1px solid var(--line);border-radius:12px;background:#fff;padding:11px 14px;margin-bottom:8px;cursor:pointer}
+.andamento-row:hover{border-color:#b58a2a66;box-shadow:var(--shadow-sm)}
+.andamento-row.selected{border-color:#111721;box-shadow:0 0 0 2px rgba(17,23,33,.08),var(--shadow-sm)}
+.andamento-main strong{font-size:13px}
+.andamento-main p{font-size:11px;color:var(--muted);margin-top:2px}
+.andamento-next{color:#1c6c44!important;margin-top:4px!important}
+.andamento-side{display:flex;flex-direction:column;align-items:flex-end;gap:5px;white-space:nowrap}
+.andamento-prazo{font-family:var(--mono);font-size:10px;font-weight:700;color:var(--ink-2)}
+
 /* Piso de preço (SINAPI/BDI) */
 .price-floor{margin-top:18px}
 .pf-bands{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:8px 0}

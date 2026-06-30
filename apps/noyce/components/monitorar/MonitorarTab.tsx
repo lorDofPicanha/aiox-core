@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { opportunities } from "@/lib/noyce-data";
 import { formatCurrency, formatDateTime } from "@/lib/noyce-model";
 import type { Opportunity, SuspicionSignal } from "@/lib/noyce-model";
-import { deadlineTime, operationalState, sourceClass, sourceLabel } from "@/lib/noyce-operational";
+import { buildNextStep, deadlineTime, operationalState, sourceClass, sourceLabel } from "@/lib/noyce-operational";
 import { MAX_DISCOVERY_RADIUS_KM } from "@/lib/noyce-source-registry";
 import { ScorePill } from "@/components/shell/bits";
 import { ConsorcioChip } from "@/components/shell/ConsorcioChip";
@@ -49,6 +49,9 @@ export function MonitorarTab({
     globalThis.history.replaceState(null, "", url.toString());
   }, [consorcio]);
 
+  // Licitações que você SEGUE (marcou interesse) — pra gerenciar várias em paralelo num lugar só.
+  const followed = useMemo(() => opportunities.filter((o) => interested.has(o.id)), [interested]);
+
   const cities = useMemo(
     () => Array.from(new Set(opportunities.map((o) => o.city))).sort((a, b) => a.localeCompare(b, "pt-BR")),
     [],
@@ -82,10 +85,56 @@ export function MonitorarTab({
 
   return (
     <section className="area area-monitorar">
+      {/* EM ANDAMENTO — as licitações que você segue, pra tocar várias ao mesmo tempo. */}
+      {followed.length > 0 ? (
+        <section className="em-andamento">
+          <div className="section-heading compact">
+            <div>
+              <p className="eyebrow">Em andamento</p>
+              <h2>Licitações que você segue ({followed.length})</h2>
+            </div>
+            <span>clique p/ abrir</span>
+          </div>
+          {followed.map((o) => {
+            const next = buildNextStep(o);
+            const st = operationalState(o);
+            return (
+              <div
+                key={o.id}
+                className={`andamento-row ${selectedId === o.id ? "selected" : ""}`}
+                role="button"
+                tabIndex={0}
+                onClick={() => onSelect(o.id)}
+                onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onSelect(o.id); } }}
+              >
+                <div className="andamento-main">
+                  <strong>{o.title}</strong>
+                  <p>{o.buyer} · {o.city}/{o.uf} · {o.distanceKm} km</p>
+                  <p className="andamento-next">▸ {next.headline} — <strong>{next.owner}</strong>{next.why ? ` · ${next.why}` : ""}</p>
+                </div>
+                <div className="andamento-side">
+                  <span className={`state-badge ${st.tone}`}>{st.label}</span>
+                  <span className="andamento-prazo">prazo {formatDateTime(o.proposalDeadline)}</span>
+                  <button
+                    type="button"
+                    className="interest-btn active"
+                    onClick={(e) => { e.stopPropagation(); onToggleInterest(o.id); }}
+                    aria-label="Parar de seguir"
+                    title="Parar de seguir"
+                  >
+                    ⭐ seguindo
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </section>
+      ) : null}
+
       <div className="opportunity-list">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">Inbox priorizado</p>
+            <p className="eyebrow">{followed.length > 0 ? "Radar — descobrir mais" : "Inbox priorizado"}</p>
             <h2>O que olhar agora</h2>
           </div>
           <button type="button">Dry-run</button>
