@@ -2,11 +2,11 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { Plus, X, Check, Trash2, AlertCircle } from "lucide-react";
+import { Plus, X, Check, Ban, AlertCircle } from "lucide-react";
 import {
   createScheduled,
   markScheduledPaid,
-  deleteScheduled,
+  voidScheduled,
 } from "@/app/(app)/vencimentos/actions";
 import type { Scheduled, Direction, ScheduledTotals } from "@/lib/scheduled";
 import { categoriesFor } from "@/lib/categories";
@@ -134,8 +134,10 @@ function Row({ item, isLast }: { item: Scheduled; isLast: boolean }) {
     });
   }
   function remove() {
+    const reason = window.prompt("Informe o motivo da anulação:");
+    if (!reason?.trim()) return;
     startTransition(async () => {
-      const res = await deleteScheduled(item.id);
+      const res = await voidScheduled(item.id, reason);
       if (res.status === "ok") router.refresh();
     });
   }
@@ -170,7 +172,7 @@ function Row({ item, isLast }: { item: Scheduled; isLast: boolean }) {
           disabled={pending}
           className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium text-muted-foreground hover:bg-muted disabled:opacity-50"
         >
-          <Trash2 className="h-3.5 w-3.5" /> Excluir
+          <Ban className="h-3.5 w-3.5" /> Anular
         </button>
       </div>
     </div>

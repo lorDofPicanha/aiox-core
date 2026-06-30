@@ -21,14 +21,15 @@ export async function getConnectToken(): Promise<{
   token?: string;
   message?: string;
 }> {
+  await requireUser();
   if (!pluggyConfigured()) {
     return { status: "error", message: "not_configured" };
   }
   try {
     const token = await createConnectToken();
     return { status: "ok", token };
-  } catch (e) {
-    return { status: "error", message: e instanceof Error ? e.message : "Falha ao obter token" };
+  } catch {
+    return { status: "error", message: "Falha ao obter token" };
   }
 }
 
@@ -63,7 +64,7 @@ export async function saveConnection(input: {
     { onConflict: "company_id,item_id" },
   );
 
-  if (error) return { status: "error", message: error.message };
+  if (error) return { status: "error", message: "Não foi possível salvar a conexão" };
   revalidatePath("/conexoes");
   return { status: "ok" };
 }
@@ -85,7 +86,7 @@ export async function syncConnection(connectionId: string): Promise<{
     .select("id, company_id, item_id, last_synced_at")
     .eq("id", parsed.data)
     .single();
-  if (readErr || !conn) return { status: "error", message: readErr?.message ?? "Não encontrado" };
+  if (readErr || !conn) return { status: "error", message: "Conexão não encontrada" };
 
   // Desde a última sync, ou últimos 90 dias.
   const since = conn.last_synced_at ? new Date(conn.last_synced_at) : new Date(Date.now() - 90 * 86_400_000);
@@ -94,8 +95,8 @@ export async function syncConnection(connectionId: string): Promise<{
   let txns;
   try {
     txns = await fetchItemTransactions(conn.item_id, fromISO);
-  } catch (e) {
-    return { status: "error", message: e instanceof Error ? e.message : "Falha ao buscar transações" };
+  } catch {
+    return { status: "error", message: "Falha ao buscar transações" };
   }
 
   const refs = txns.map((t) => t.externalRef).filter((r): r is string => Boolean(r));
@@ -125,7 +126,7 @@ export async function syncConnection(connectionId: string): Promise<{
 
   if (toInsert.length > 0) {
     const { error } = await supabase.from("entries").insert(toInsert);
-    if (error) return { status: "error", message: error.message };
+    if (error) return { status: "error", message: "Não foi possível importar as transações" };
   }
 
   await supabase
@@ -145,9 +146,10 @@ export async function removeConnection(connectionId: string): Promise<{
   const parsed = z.string().uuid().safeParse(connectionId);
   if (!parsed.success) return { status: "error", message: "ID inválido" };
 
+  await requireUser();
   const supabase = await getSupabaseServer();
   const { error } = await supabase.from("bank_connections").delete().eq("id", parsed.data);
-  if (error) return { status: "error", message: error.message };
+  if (error) return { status: "error", message: "Não foi possível remover a conexão" };
   revalidatePath("/conexoes");
   return { status: "ok" };
 }

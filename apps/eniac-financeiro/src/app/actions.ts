@@ -1,7 +1,7 @@
 "use server";
 
 /**
- * Server actions do livro-caixa: selecionar empresa (cookie), criar e excluir
+ * Server actions do livro-caixa: selecionar empresa (cookie), criar e anular
  * lançamento. Toda escrita passa por RLS (o usuário precisa ser membro da
  * empresa). Validação de entrada com zod.
  */
@@ -65,24 +65,33 @@ export async function createEntry(input: {
   });
 
   if (error) {
-    return { status: "error", message: error.message };
+    return { status: "error", message: "Não foi possível salvar o lançamento" };
   }
 
   revalidatePath("/");
   return { status: "ok" };
 }
 
-export async function deleteEntry(entryId: string): Promise<ActionResult> {
-  const parsed = z.string().uuid().safeParse(entryId);
+const VoidEntrySchema = z.object({
+  entryId: z.string().uuid(),
+  reason: z.string().trim().min(3, "Informe o motivo da anulação").max(500),
+});
+
+export async function voidEntry(entryId: string, reason: string): Promise<ActionResult> {
+  const parsed = VoidEntrySchema.safeParse({ entryId, reason });
   if (!parsed.success) {
-    return { status: "error", message: "ID inválido" };
+    return { status: "error", message: parsed.error.issues[0]?.message ?? "Dados inválidos" };
   }
 
+  await requireUser();
   const supabase = await getSupabaseServer();
-  const { error } = await supabase.from("entries").delete().eq("id", parsed.data);
+  const { data, error } = await supabase.rpc("void_entry", {
+    p_entry_id: parsed.data.entryId,
+    p_reason: parsed.data.reason,
+  });
 
-  if (error) {
-    return { status: "error", message: error.message };
+  if (error || data !== true) {
+    return { status: "error", message: "Não foi possível anular o lançamento" };
   }
 
   revalidatePath("/");

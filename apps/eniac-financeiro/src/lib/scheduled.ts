@@ -12,7 +12,7 @@ export interface Scheduled {
   category: string | null;
   amount: number;
   due_date: string; // YYYY-MM-DD
-  status: "open" | "paid";
+  status: "open" | "paid" | "void";
   paid_at: string | null;
 }
 

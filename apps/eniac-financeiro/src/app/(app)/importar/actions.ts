@@ -46,7 +46,7 @@ export async function importEntries(input: {
       .select("external_ref")
       .eq("company_id", companyId)
       .in("external_ref", refs);
-    if (error) return { status: "error", message: error.message };
+    if (error) return { status: "error", message: "Não foi possível verificar duplicidades" };
     for (const row of data ?? []) if (row.external_ref) existing.add(row.external_ref);
   }
 
@@ -77,7 +77,7 @@ export async function importEntries(input: {
   }
 
   const { error } = await supabase.from("entries").insert(toInsert);
-  if (error) return { status: "error", message: error.message };
+  if (error) return { status: "error", message: "Não foi possível importar os lançamentos" };
 
   revalidatePath("/");
   revalidatePath("/relatorios");

@@ -2,8 +2,8 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowDownLeft, ArrowUpRight, Trash2 } from "lucide-react";
-import { deleteEntry } from "@/app/actions";
+import { ArrowDownLeft, ArrowUpRight, Ban } from "lucide-react";
+import { voidEntry } from "@/app/actions";
 import { formatBRL } from "@/lib/money";
 import { dayLabel } from "@/lib/dates";
 import type { Entry } from "@/lib/data";
@@ -56,8 +56,10 @@ function EntryRow({ entry, isLast }: { entry: Entry; isLast: boolean }) {
   const isIn = entry.type === "in";
 
   function remove() {
+    const reason = window.prompt("Informe o motivo da anulação:");
+    if (!reason?.trim()) return;
     startTransition(async () => {
-      const res = await deleteEntry(entry.id);
+      const res = await voidEntry(entry.id, reason);
       if (res.status === "ok") {
         setOpen(false);
         router.refresh();
@@ -106,8 +108,8 @@ function EntryRow({ entry, isLast }: { entry: Entry; isLast: boolean }) {
             disabled={pending}
             className="inline-flex items-center gap-1.5 rounded-lg bg-expense-soft px-3 py-1.5 text-xs font-semibold text-expense disabled:opacity-50"
           >
-            <Trash2 className="h-3.5 w-3.5" />
-            {pending ? "Excluindo..." : "Excluir"}
+            <Ban className="h-3.5 w-3.5" />
+            {pending ? "Anulando..." : "Anular"}
           </button>
         </div>
       )}

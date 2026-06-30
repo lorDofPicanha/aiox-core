@@ -87,6 +87,7 @@ export async function listEntries(
     .from("entries")
     .select("id, company_id, entry_date, type, amount, category, description, created_at")
     .eq("company_id", companyId)
+    .is("voided_at", null)
     .gte("entry_date", start)
     .lt("entry_date", end)
     .order("entry_date", { ascending: false })

@@ -47,67 +47,54 @@ export async function createScheduled(input: {
     created_by: user.id,
   });
 
-  if (error) return { status: "error", message: error.message };
+  if (error) return { status: "error", message: "Não foi possível salvar o vencimento" };
   revalidatePath("/vencimentos");
   return { status: "ok" };
 }
 
-/** Baixa: cria o lançamento correspondente e marca o vencimento como pago. */
+/** Baixa atômica/idempotente no Postgres. */
 export async function markScheduledPaid(scheduledId: string): Promise<ActionResult> {
   const parsed = z.string().uuid().safeParse(scheduledId);
   if (!parsed.success) return { status: "error", message: "ID inválido" };
 
-  const user = await requireUser();
+  await requireUser();
   const supabase = await getSupabaseServer();
+  const { error } = await supabase.rpc("post_scheduled_payment", {
+    p_scheduled_id: parsed.data,
+    p_paid_at: todayISO(),
+  });
 
-  const { data: sched, error: readErr } = await supabase
-    .from("scheduled")
-    .select("id, company_id, direction, amount, category, description, status")
-    .eq("id", parsed.data)
-    .single();
-
-  if (readErr || !sched) return { status: "error", message: readErr?.message ?? "Não encontrado" };
-  if (sched.status === "paid") return { status: "ok" };
-
-  const today = todayISO();
-
-  const { data: entry, error: entryErr } = await supabase
-    .from("entries")
-    .insert({
-      company_id: sched.company_id,
-      type: sched.direction === "receivable" ? "in" : "out",
-      amount: Number(sched.amount),
-      category: sched.category,
-      description: sched.description,
-      entry_date: today,
-      source: "scheduled",
-      created_by: user.id,
-    })
-    .select("id")
-    .single();
-
-  if (entryErr || !entry) return { status: "error", message: entryErr?.message ?? "Falha ao lançar" };
-
-  const { error: updErr } = await supabase
-    .from("scheduled")
-    .update({ status: "paid", paid_at: today, entry_id: entry.id })
-    .eq("id", sched.id);
-
-  if (updErr) return { status: "error", message: updErr.message };
+  if (error) return { status: "error", message: "Não foi possível concluir a baixa" };
 
   revalidatePath("/vencimentos");
   revalidatePath("/");
   return { status: "ok" };
 }
 
-export async function deleteScheduled(scheduledId: string): Promise<ActionResult> {
-  const parsed = z.string().uuid().safeParse(scheduledId);
-  if (!parsed.success) return { status: "error", message: "ID inválido" };
+const VoidScheduledSchema = z.object({
+  scheduledId: z.string().uuid(),
+  reason: z.string().trim().min(3, "Informe o motivo da anulação").max(500),
+});
 
+export async function voidScheduled(
+  scheduledId: string,
+  reason: string,
+): Promise<ActionResult> {
+  const parsed = VoidScheduledSchema.safeParse({ scheduledId, reason });
+  if (!parsed.success) {
+    return { status: "error", message: parsed.error.issues[0]?.message ?? "Dados inválidos" };
+  }
+
+  await requireUser();
   const supabase = await getSupabaseServer();
-  const { error } = await supabase.from("scheduled").delete().eq("id", parsed.data);
+  const { data, error } = await supabase.rpc("void_scheduled", {
+    p_scheduled_id: parsed.data.scheduledId,
+    p_reason: parsed.data.reason,
+  });
 
-  if (error) return { status: "error", message: error.message };
+  if (error || data !== true) {
+    return { status: "error", message: "Não foi possível anular o vencimento" };
+  }
   revalidatePath("/vencimentos");
   return { status: "ok" };
 }

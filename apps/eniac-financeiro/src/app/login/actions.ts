@@ -31,13 +31,13 @@ export async function sendMagicLink(
     email: parsed.data,
     options: {
       emailRedirectTo: getCallbackUrl(),
-      shouldCreateUser: true,
+      shouldCreateUser: false,
     },
   });
 
-  if (error) {
-    return { status: "error", message: error.message };
-  }
+  // Preserve the same response for unknown accounts and provider errors. This
+  // prevents account enumeration; operational details belong in server logs.
+  if (error) console.warn("[auth] Magic-link request was not accepted by the provider");
 
   redirect(`/login/check-email?email=${encodeURIComponent(parsed.data)}`);
 }
