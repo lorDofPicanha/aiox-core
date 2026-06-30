@@ -50,11 +50,12 @@ const PROF_PATTERNS: { servico: string; re: RegExp }[] = [
   { servico: "Responsável técnico", re: /respons[áa]vel\s+t[ée]cnic[oa]/i },
 ];
 
-function extractProfissional(tecnicaText: string): Array<{ servico: string; qtdMin: number | null; un: string | null }> {
-  const out: Array<{ servico: string; qtdMin: number | null; un: string | null }> = [];
+// Quadro técnico = TÍTULOS exigidos (casa contra RTs da empresa, não contra acervo).
+function extractQuadroTecnico(tecnicaText: string): string[] {
+  const out: string[] = [];
   if (!tecnicaText) return out;
   for (const p of PROF_PATTERNS) {
-    if (p.re.test(tecnicaText)) out.push({ servico: p.servico, qtdMin: 1, un: "profissional" });
+    if (p.re.test(tecnicaText)) out.push(p.servico);
   }
   return out;
 }
@@ -191,7 +192,7 @@ export function extractErm(sections: EditalSections, fullText = ""): ErmExtracti
   // ── Extração de técnica / econômica / meta (escopo: seção certa quando há, senão texto cheio) ──
   const tecnicaScope = sections.habilitacaoTecnica || scan;
   const econScope = sections.habilitacaoEconomica || scan;
-  const profissional = extractProfissional(tecnicaScope);
+  const quadroTecnico = extractQuadroTecnico(tecnicaScope);
   const operacional = extractOperacional(tecnicaScope, sections.objeto || "", scan);
 
   const exigePL = /patrim[ôo]nio\s+l[íi]quido|capital\s+social\s+m[íi]nimo/i.test(scan);
@@ -225,7 +226,8 @@ export function extractErm(sections: EditalSections, fullText = ""): ErmExtracti
       clausula: null,
     },
     tecnica: {
-      profissional,
+      quadroTecnico,
+      profissional: [],
       operacional,
       parcelasMaiorRelevancia: null,
       tetoQuantitativo: null,

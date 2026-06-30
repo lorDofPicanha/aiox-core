@@ -415,6 +415,9 @@ export interface EditalRequirementsModel {
     clausula: ClauseReference | null;
   };
   tecnica: {
+    /** Títulos/profissionais exigidos no QUADRO da empresa (Eng. Civil, Arquiteto, Téc. Segurança…).
+     *  Casa contra ccp.rts (responsáveis técnicos), não contra o acervo. Opcional p/ retrocompat. */
+    quadroTecnico?: string[];
     profissional: Array<{
       servico: string;
       qtdMin?: number | null;

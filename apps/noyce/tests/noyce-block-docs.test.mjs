@@ -45,20 +45,25 @@ test("ERM completo: cada bloco de habilitação vira uma seção-documento", () 
   assert.ok(secoes.has("Garantia de Proposta (documento)"), "falta documento de Garantia (ERM exige 1%)");
 });
 
-test("documento técnico traz o requisito do edital cruzado com o acervo", () => {
+test("documento técnico PREENCHIDO: relação de RTs/acervo + matriz de atendimento ao edital", () => {
   const items = buildReviewDossier(OPP, CCP, FULL_ERM);
-  const tec = items.filter((i) => i.secao === "Qualificação Técnica (documento)");
-  assert.ok(tec.length >= 1, "deveria haver ao menos 1 item técnico");
-  assert.ok(tec.some((i) => /Status:/.test(i.valorMotor)), "item técnico deve reportar status do motor");
+  const tec = items.find((i) => i.secao === "Qualificação Técnica (documento)");
+  assert.ok(tec, "deveria haver o documento técnico");
+  assert.match(tec.valorMotor, /RELAÇÃO DE QUALIFICAÇÃO TÉCNICA/);
+  assert.match(tec.valorMotor, /ATENDIMENTO ÀS EXIGÊNCIAS/);
+  // requisito de serviço (REFORMA_PREDIAL) sem acervo → matriz mostra NÃO ATENDE (honesto)
+  assert.match(tec.valorMotor, /REFORMA|NÃO ATENDE/i);
 });
 
-test("documento econômico-financeiro referencia o balanço real (anexar)", () => {
+test("documento econômico-financeiro PREENCHIDO: índices computados do balanço real", () => {
   const items = buildReviewDossier(OPP, CCP, FULL_ERM);
-  const ef = items.filter((i) => i.secao === "Qualificação Econômico-Financeira (documento)");
-  const balanco = ef.find((i) => /Balanço/i.test(i.label));
-  assert.ok(balanco, "deve haver item de balanço");
-  assert.equal(balanco.requerCorrecao, true, "balanço assinado é documento real — exige anexar");
-  assert.ok(/2025/.test(balanco.label), "referencia o exercício mais recente");
+  const ef = items.find((i) => i.secao === "Qualificação Econômico-Financeira (documento)");
+  assert.ok(ef, "deve haver o documento econômico");
+  assert.match(ef.valorMotor, /2025/, "referencia o exercício mais recente");
+  assert.match(ef.valorMotor, /Liquidez Corrente \(LC = AC\/PC\)/, "traz LC computado");
+  assert.match(ef.valorMotor, /919\.170,54|Patrim[ôo]nio L[íi]quido/, "traz o PL real");
+  // ENIAC LC=105,77 ≥ 1 exigido → atende; aviso lembra de anexar o balanço assinado
+  assert.match(ef.aviso ?? "", /anexar o balanço/i);
 });
 
 test("garantia condicional: calcula o valor ≈ % do estimado e cita art. 96", () => {

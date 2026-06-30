@@ -93,13 +93,15 @@ f) Garantia de proposta de 1% do valor estimado, nos termos do art. 58.`;
 const META_TXT = `1.3 O critério de julgamento adotado será o menor preço global, nos termos do art. 33.
 Modalidade: Concorrência eletrônica. Valor total estimado de R$ 1.000.000,00.`;
 
-test("extractErm: extrai PROFISSIONAIS exigidos da seção técnica (resp. técnico/eng/arquiteto)", () => {
+test("extractErm: extrai QUADRO TÉCNICO exigido (resp. técnico/eng/arquiteto) — casa com RTs, não acervo", () => {
   const { erm } = extractErm({ ...EMPTY_SECTIONS, habilitacaoTecnica: TECNICA });
-  const servicos = erm.tecnica.profissional.map((p) => p.servico);
-  assert.ok(servicos.some((s) => /Engenheiro Civil/i.test(s)), "Engenheiro Civil");
-  assert.ok(servicos.some((s) => /Arquiteto/i.test(s)), "Arquiteto");
-  assert.ok(servicos.some((s) => /Seguran[çc]a do Trabalho/i.test(s)), "Téc. Segurança");
-  assert.ok(servicos.some((s) => /Respons[áa]vel t[ée]cnico/i.test(s)), "Responsável técnico");
+  const q = erm.tecnica.quadroTecnico ?? [];
+  assert.ok(q.some((s) => /Engenheiro Civil/i.test(s)), "Engenheiro Civil");
+  assert.ok(q.some((s) => /Arquiteto/i.test(s)), "Arquiteto");
+  assert.ok(q.some((s) => /Seguran[çc]a do Trabalho/i.test(s)), "Téc. Segurança");
+  assert.ok(q.some((s) => /Respons[áa]vel t[ée]cnico/i.test(s)), "Responsável técnico");
+  // profissional (serviços/acervo) fica vazio — quadro não polui o matching do motor
+  assert.deepEqual(erm.tecnica.profissional, []);
   // somatório de atestados captado
   assert.equal(erm.tecnica.somatorio.permitido, true);
 });
@@ -134,13 +136,19 @@ test("end-to-end: dossiê PRÉ-PREENCHE Qualificação Técnica/Econômica quand
   const text = `1. DO OBJETO\nReforma de escola de 1.500 m².\n\n${TECNICA}\n\n${ECONOMICA}\n\n${FISCAL}\n\n${DECLS}\n\n${META_TXT}`;
   const sections = extractEditalSections(text);
   const { erm } = extractErm(sections, text);
-  assert.ok(erm.tecnica.profissional.length >= 2, "técnica deve ter profissionais");
+  assert.ok((erm.tecnica.quadroTecnico ?? []).length >= 2, "técnica deve listar quadro exigido");
 
+  // CCP com 1 Eng. Civil real → a matriz de atendimento deve marcar ATENDE (casa título × RT)
   const OPP = { id: "e2e-tec", source: "pncp", title: "Reforma de escola", buyer: "Município", city: "X", uf: "GO", estimatedValue: 1000000, proposalDeadline: "2026-07-10T12:00:00Z", market: null, habilitationChecklist: [] };
-  const CCP = { identity: { razaoSocial: "ENIAC LTDA", cnpj: "36.819.268/0001-05", porte: "ME", sedeMunicipioIbge: "5200258" }, rts: [], acervo: [], financials: [], regularity: [], derived: { capabilityByService: {} } };
+  const CCP = { identity: { razaoSocial: "ENIAC LTDA", cnpj: "36.819.268/0001-05", creaEmpresa: "CREA-GO 39711", porte: "ME", sedeMunicipioIbge: "5200258" }, rts: [{ id: "a", nome: "Alice Ramos", titulo: "Eng. Civil", crea: "CREA-GO 123", rnp: null, vinculo: { tipo: "responsavel_tecnico", desde: "2025-01-01" } }], acervo: [], financials: [{ exercicio: 2025, patrimonioLiquido: 900000, capitalSocial: null, ativoCirc: 920000, passivoCirc: 8000, ativoTotal: 920000, realizavelLongoPrazo: 0, exigivelLongoPrazo: 0, receitaBruta: 0, resultado: null, fonte: "BP 2025" }], regularity: [], derived: { capabilityByService: {} } };
   const items = buildReviewDossier(OPP, CCP, erm);
-  const secoes = new Set(items.map((i) => i.secao));
-  assert.ok([...secoes].some((s) => /Qualifica[çc][ãa]o T[ée]cnica/i.test(s)), `esperava seção técnica; veio: ${[...secoes].join(" | ")}`);
+  const tec = items.find((i) => /Qualifica[çc][ãa]o T[ée]cnica/i.test(i.secao));
+  assert.ok(tec, `esperava seção técnica; veio: ${[...new Set(items.map((i) => i.secao))].join(" | ")}`);
+  assert.match(tec.valorMotor, /Alice Ramos/, "documento deve listar o RT real");
+  assert.match(tec.valorMotor, /Engenheiro Civil: ATENDE/, "Eng. Civil deve ATENDER (Alice é Eng. Civil)");
+  // documento econômico preenchido com índice computado
+  const econ = items.find((i) => /Econ[ôóo]mico-Financeira/i.test(i.secao));
+  assert.ok(econ && /Liquidez Corrente/.test(econ.valorMotor), "doc econômico deve trazer índice computado");
 });
 
 test("end-to-end: texto do edital → sections → ERM → dossiê → gate de completude PASS", () => {

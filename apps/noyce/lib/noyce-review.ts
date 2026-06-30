@@ -222,35 +222,151 @@ function blockToDocs(oid: string, secao: string, block: HabilitationBlockResult)
   });
 }
 
-/** Qualificação Técnica = atestados/CAT casados (técnico-profissional + técnico-operacional). */
-function buildQualificacaoTecnica(oid: string, result: HabilitationResult): ReviewItem[] {
-  const docs = [
-    ...blockToDocs(oid, "Qualificação Técnica (documento)", result.porBloco.tecnico_profissional),
-    ...blockToDocs(oid, "Qualificação Técnica (documento)", result.porBloco.tecnico_operacional),
-  ];
-  return docs;
+function fmtIdx(n: number | null): string {
+  return n === null ? "—" : n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 
-/** Qualificação Econômico-Financeira = índices LC/LG/SG + PL/teto, com referência ao balanço real. */
+/**
+ * Qualificação Técnica = DOCUMENTO PREENCHIDO com os RTs e o acervo REAL da ENIAC, mais a matriz de
+ * atendimento exigência-a-exigência. Pronto para conferência humana e uso — não uma lista do que falta.
+ */
+// Casa um título exigido no quadro (ex.: "Engenheiro Civil") contra os RTs reais da empresa.
+const QUADRO_KEY: { re: RegExp; titulo: RegExp }[] = [
+  { re: /civil/i, titulo: /civil/i },
+  { re: /arquitet/i, titulo: /arquitet/i },
+  { re: /seguran/i, titulo: /seguran/i },
+  { re: /eletric/i, titulo: /eletric/i },
+  { re: /mec[âa]nic/i, titulo: /mec[âa]nic/i },
+];
+function quadroAtende(titulo: string, ccp: CompanyCapabilityProfile): { ok: boolean; quem: string | null } {
+  if (/respons[áa]vel\s+t[ée]cnic/i.test(titulo)) {
+    const rt = ccp.rts.find((r) => r.vinculo?.tipo === "responsavel_tecnico") ?? ccp.rts[0];
+    return { ok: Boolean(rt), quem: rt ? rt.nome : null };
+  }
+  const key = QUADRO_KEY.find((k) => k.re.test(titulo));
+  const rt = key ? ccp.rts.find((r) => key.titulo.test(r.titulo)) : ccp.rts.find((r) => r.titulo && titulo.toLowerCase().includes(r.titulo.toLowerCase().replace(/eng\.?\s*/i, "")));
+  return { ok: Boolean(rt), quem: rt ? `${rt.nome} (${rt.titulo}${rt.crea ? `, ${rt.crea}` : ""})` : null };
+}
+
+function buildQualificacaoTecnica(
+  oid: string,
+  ccp: CompanyCapabilityProfile,
+  erm: EditalRequirementsModel | undefined,
+  result: HabilitationResult,
+): ReviewItem[] {
+  const rtNome = new Map(ccp.rts.map((r) => [r.id, r.nome]));
+  // Quadro técnico (títulos) casa contra os RTs; atestados operacionais, contra o acervo (motor).
+  const quadro = erm?.tecnica.quadroTecnico ?? [];
+  const quadroAval = quadro.map((t) => ({ titulo: t, ...quadroAtende(t, ccp) }));
+  const evals: RequirementEvaluation[] = [
+    ...result.porBloco.tecnico_profissional.evaluations,
+    ...result.porBloco.tecnico_operacional.evaluations,
+  ];
+  const naoAtende = [...quadroAval.filter((q) => !q.ok), ...evals.filter((e) => STATUS_FRACO.has(e.status))];
+
+  const L: string[] = [];
+  L.push(`RELAÇÃO DE QUALIFICAÇÃO TÉCNICA — ${ccp.identity.razaoSocial}, CNPJ ${ccp.identity.cnpj}${ccp.identity.creaEmpresa ? `, registrada no ${ccp.identity.creaEmpresa}` : ""}.`);
+  L.push("");
+  L.push("1. RESPONSÁVEIS TÉCNICOS:");
+  if (ccp.rts.length === 0) L.push("   • (nenhum responsável técnico cadastrado)");
+  for (const rt of ccp.rts) {
+    const v = rt.vinculo ? ` — ${rt.vinculo.tipo.replace(/_/g, " ")}${rt.vinculo.desde ? ` desde ${rt.vinculo.desde}` : ""}` : "";
+    L.push(`   • ${rt.nome} — ${rt.titulo}${rt.crea ? ` — ${rt.crea}` : ""}${v}`);
+  }
+  L.push("");
+  L.push("2. ACERVO TÉCNICO (atestados/CAT registrados):");
+  if (ccp.acervo.length === 0) L.push("   • (nenhum atestado no acervo)");
+  for (const a of ccp.acervo) {
+    const itens = a.itens.map((i) => `${i.servicoCanonico.replace(/_/g, " ").toLowerCase()} ${i.qtd}${i.unidade}`).join("; ");
+    const val = a.valor != null ? ` — ${fmtBRL(a.valor)}` : "";
+    L.push(`   • ${a.tipo.replace(/_/g, " ")} ${a.numero ?? "(s/nº)"} — RT ${rtNome.get(a.rtId) ?? "—"} — ${a.contratante}${a.tipoContratante ? ` (${a.tipoContratante})` : ""}${val} — ${itens}`);
+  }
+  L.push("");
+  L.push("3. ATENDIMENTO ÀS EXIGÊNCIAS DO EDITAL:");
+  if (quadroAval.length === 0 && evals.length === 0)
+    L.push("   • (edital sem exigência técnica extraída — conferir Termo de Referência)");
+  for (const q of quadroAval) {
+    L.push(`   • ${q.titulo}: ${q.ok ? "ATENDE" : "NÃO ATENDE"}${q.ok && q.quem ? ` (${q.quem})` : q.ok ? "" : " — sem profissional no quadro"}`);
+  }
+  for (const ev of evals) {
+    const un = ev.unidade ? ` ${ev.unidade}` : "";
+    const detalhe = [
+      ev.qtdMin != null ? `exigido ${ev.qtdMin}${un}` : null,
+      ev.disponivel != null ? `ENIAC dispõe ${ev.disponivel}${un}` : null,
+    ].filter(Boolean).join(", ");
+    L.push(`   • ${ev.requisito}: ${HAB_STATUS_PT[ev.status].toUpperCase()}${detalhe ? ` (${detalhe})` : ""}`);
+  }
+
+  return [
+    {
+      id: `${oid}-qualtecnica-doc`,
+      secao: "Qualificação Técnica (documento)",
+      label: "Relação de qualificação técnica (RTs + acervo)",
+      valorMotor: L.join("\n"),
+      proveniencia: "Motor Noyce — RTs e acervo reais da ENIAC × exigências do edital (ERM)",
+      requerCorrecao: naoAtende.length > 0 || undefined,
+      aviso: naoAtende.length > 0
+        ? `${naoAtende.length} exigência(s) não plenamente coberta(s) pelo acervo — ver lacuna/consórcio na aba Habilitar.`
+        : undefined,
+    },
+  ];
+}
+
+/**
+ * Qualificação Econômico-Financeira = DOCUMENTO PREENCHIDO com os índices REAIS calculados do balanço
+ * da ENIAC (LC/LG/SG, PL), comparados ao exigido no edital. O balanço assinado é anexo do vault.
+ */
 function buildEconomicoFinanceira(
   oid: string,
   ccp: CompanyCapabilityProfile,
+  erm: EditalRequirementsModel | undefined,
   result: HabilitationResult,
 ): ReviewItem[] {
-  const docs = blockToDocs(oid, "Qualificação Econômico-Financeira (documento)", result.porBloco.economico_financeira);
   const fin = [...ccp.financials].sort((a, b) => b.exercicio - a.exercicio)[0];
-  if (fin) {
-    docs.unshift({
-      id: `${oid}-econfin-balanco`,
-      secao: "Qualificação Econômico-Financeira (documento)",
-      label: `Balanço patrimonial — exercício ${fin.exercicio}`,
-      valorMotor: `PL ${fmtBRL(fin.patrimonioLiquido)} (exercício ${fin.exercicio}). Anexar o Balanço Patrimonial e a DRE assinados pelo contador (CRC) e registrados, com os índices contábeis (LC/LG/SG) calculados.`,
-      proveniencia: fin.fonte || "CCP da ENIAC (balanço)",
-      requerCorrecao: true, // o balanço assinado/registrado é documento real — anexar do vault
-      aviso: "Anexar o balanço assinado pelo contador no vault (aba Governança).",
-    });
+  if (!fin) return blockToDocs(oid, "Qualificação Econômico-Financeira (documento)", result.porBloco.economico_financeira);
+
+  const ac = fin.ativoCirc, pc = fin.passivoCirc, at = fin.ativoTotal;
+  const rlp = fin.realizavelLongoPrazo ?? 0, elp = fin.exigivelLongoPrazo ?? 0;
+  const lc = ac != null && pc != null && pc !== 0 ? ac / pc : null;
+  const lg = ac != null && pc != null && pc + elp !== 0 ? (ac + rlp) / (pc + elp) : null;
+  const sg = at != null && pc != null && pc + elp !== 0 ? at / (pc + elp) : null;
+  const exig = erm?.economicoFinanceira.indices ?? {};
+  const cmp = (val: number | null, min: number | null | undefined) =>
+    min == null ? "" : val == null ? " (exigido ≥ " + fmtIdx(min) + ": pendente de dado)" : ` (exigido ≥ ${fmtIdx(min)}: ${val >= min ? "ATENDE" : "NÃO ATENDE"})`;
+
+  const falhas: string[] = [];
+  for (const [k, val] of [["LC", lc], ["LG", lg], ["SG", sg]] as const) {
+    const min = (exig as Record<string, number | null | undefined>)[k];
+    if (min != null && val != null && val < min) falhas.push(k);
   }
-  return docs;
+
+  const L: string[] = [];
+  L.push(`QUALIFICAÇÃO ECONÔMICO-FINANCEIRA — ${ccp.identity.razaoSocial}, CNPJ ${ccp.identity.cnpj}.`);
+  L.push(`Base: Balanço Patrimonial do exercício ${fin.exercicio}.`);
+  L.push("");
+  L.push(`   • Patrimônio Líquido: ${fmtBRL(fin.patrimonioLiquido)}`);
+  if (ac != null && pc != null) L.push(`   • Ativo Circulante: ${fmtBRL(ac)} | Passivo Circulante: ${fmtBRL(pc)}`);
+  L.push(`   • Liquidez Corrente (LC = AC/PC): ${fmtIdx(lc)}${cmp(lc, exig.LC)}`);
+  L.push(`   • Liquidez Geral (LG = (AC+RLP)/(PC+ELP)): ${fmtIdx(lg)}${cmp(lg, exig.LG)}`);
+  L.push(`   • Solvência Geral (SG = AT/(PC+ELP)): ${fmtIdx(sg)}${cmp(sg, exig.SG)}`);
+  const plPct = erm?.economicoFinanceira.percentualPL ?? null;
+  if (plPct != null) L.push(`   • Patrimônio líquido mínimo exigido: ${plPct}% do valor estimado.`);
+  L.push("");
+  L.push("Observação: anexar o Balanço Patrimonial e a DRE assinados pelo contador (CRC) e registrados na Junta Comercial.");
+
+  return [
+    {
+      id: `${oid}-econfin-doc`,
+      secao: "Qualificação Econômico-Financeira (documento)",
+      label: `Qualificação econômico-financeira — índices do balanço ${fin.exercicio}`,
+      valorMotor: L.join("\n"),
+      proveniencia: fin.fonte || "CCP da ENIAC (balanço real)",
+      requerCorrecao: falhas.length > 0 || undefined,
+      aviso: falhas.length > 0
+        ? `Índice(s) abaixo do exigido: ${falhas.join(", ")} — risco de inabilitação; revisar.`
+        : "Índices atendem; anexar o balanço assinado pelo contador no vault (aba Governança).",
+    },
+  ];
 }
 
 /** Garantia de proposta — só quando o ERM marca o percentual (condicional ao edital). */
@@ -337,8 +453,8 @@ export function buildReviewDossier(
   if (erm && Array.isArray(erm.tecnica?.profissional) && Array.isArray(erm.tecnica?.operacional)) {
     try {
       const result = buildHabilitationResult(ccp, erm);
-      items.push(...buildQualificacaoTecnica(oid, result));
-      items.push(...buildEconomicoFinanceira(oid, ccp, result));
+      items.push(...buildQualificacaoTecnica(oid, ccp, erm, result));
+      items.push(...buildEconomicoFinanceira(oid, ccp, erm, result));
       items.push(...buildGarantiaProposta(oid, erm, opportunity));
     } catch {
       /* ERM incompleto p/ o motor — documentos por bloco ficam de fora; declarações/certidões já cobertas acima */
