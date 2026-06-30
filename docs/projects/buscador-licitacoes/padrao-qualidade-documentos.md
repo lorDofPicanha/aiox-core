@@ -55,27 +55,27 @@ Legenda: ✅ atende · 🟡 parcial · 🔴 falta
 | Corpo das declarações (G, H, I, conflito, PCD, nepotismo, escravo) | ✅ pré-redigido c/ citação legal | — (já forte) |
 | Base legal citada | ✅ por declaração | — |
 | "sob as penas" | 🟡 em algumas | padronizar em todas |
-| **Cabeçalho "Prezados Senhores" + órgão** | 🔴 ausente | **envelope formal** |
-| **Referência ao certame (nº/modalidade)** no corpo | 🔴 ausente | injetar `meta` do ERM/oportunidade |
-| **[LOCAL], [DATA]** | 🔴 ausente | derivar sede (CCP) + data |
-| **Bloco assinatura: representante + RG + CPF + cargo** | 🔴 só razão social + CNPJ | **capturar representante legal (dado novo)** |
-| Proposta comercial (Modelo F: considerandos I–VII, vinculante, validade, extenso) | 🟡 só "valor de abertura" | **redigir Proposta Comercial completa** |
-| Carta de credenciamento (Modelo E) | 🔴 não gerada | gerar a partir do representante |
-| Termo de aceitação às condições (Modelo A) | 🔴 não gerado | template novo |
+| **Cabeçalho "Prezados Senhores" + órgão** | ✅ fechado (30/Jun) | envelope formal aplicado |
+| **Referência ao certame** no corpo | ✅ fechado | "Ref.: [título] ([órgão])" nas peças |
+| **[LOCAL], [DATA]** | ✅ fechado | derivado da sede (CCP) + data |
+| **Bloco assinatura: representante + CPF + cargo** | ✅ fechado | Lucas Cardoso Fernandes / CPF / Administrador (RG opcional) |
+| Proposta comercial (Modelo F: considerandos, vinculante, validade, extenso) | ✅ fechado (P1) | Proposta Comercial completa + valor por extenso |
+| Carta de credenciamento (Modelo E) | ✅ fechado | gerada do representante real |
+| Termo de aceitação às condições (Modelo A) | ✅ fechado | gerado do representante real |
 | Declaração de capacidade financeira (Modelo J) | 🟡 índices computados, sem a peça-declaração | envelopar como declaração |
 | Qualificação técnica (RTs + CATs + matriz) | ✅ preenchida c/ dado real | — (entregue 30/Jun) |
 | Qualificação econômico-financeira (índices do balanço) | ✅ computada do balanço real | — (entregue 30/Jun) |
 | Habilitação jurídica (contrato social) | 🔴 não listada | anexo vault + item no dossiê |
 | Regularidade fiscal (CNDs/FGTS/CNDT) | ✅ listada (anexar vault) | — |
 
-## Prioridade de ataque (ordem recomendada)
+## Prioridade de ataque — situação 30/Jun
 
-1. **P0 — Envelope formal assinável** (marcadores 1,2,8,9). Transforma todo documento gerado num documento que parece (e é) peça de licitação. Bloqueador: **capturar o representante legal** (nome, RG, CPF, cargo) no perfil da empresa — hoje inexistente no CCP.
-2. **P1 — Proposta Comercial completa** (Modelo F): considerandos, valor por extenso, validade, vinculante. Hoje só há "valor de abertura sugerido".
-3. **P1 — Carta de credenciamento (Modelo E)** + **Termo de aceitação (Modelo A)**: peças que todo vencedor anexa, geráveis a partir do representante.
-4. **P2 — Declaração de capacidade financeira (Modelo J)** como peça (envelopando os índices já computados) + item de **habilitação jurídica** (contrato social) no dossiê.
-5. **P2 — Padronizar "sob as penas"** e o fecho em todas as declarações.
+1. ✅ **P0 — Envelope formal assinável** (marcadores 1,2,8,9). FEITO: representante legal capturado no perfil (`eniac-ccp.json`) + `signatureBlockHtml` aplicado a todas as peças.
+2. ✅ **P1 — Proposta Comercial completa (Modelo F)**. FEITO: considerandos, valor por extenso, validade 60d, piso art. 59.
+3. ✅ **P1 — Carta de credenciamento (Modelo E) + Termo de aceitação (Modelo A)**. FEITO: geradas do representante real.
+4. 🟡 **P2 — Declaração de capacidade financeira (Modelo J)** como peça (envelopar os índices já computados) + item de **habilitação jurídica** (contrato social/NIRE) no dossiê. PENDENTE.
+5. 🟡 **P2 — Padronizar "sob as penas"** em todas as declarações + **RG** do representante (opcional hoje). PENDENTE.
 
-## Dado faltante que bloqueia o P0
+## Dado ainda faltante (menor)
 
-O CCP da ENIAC (`lib/data/eniac-ccp.json`) tem `identity` (razão social, CNPJ, CREA, porte) mas **não tem o representante legal** (nome, RG, CPF, cargo) nem **endereço da sede** (só código IBGE). Sem isso, o bloco de assinatura e o LOCAL/DATA ficam com lacuna — e o padrão exige texto sem lacuna. **Capturar esses campos é o primeiro passo.**
+Falta o **RG** do representante (hoje só CPF — suficiente para as declarações da 14.133; o bloco mostra CPF e omite RG). O contrato social / ato constitutivo (habilitação jurídica) é anexo do vault. Os demais campos (representante, sede, NIRE, contador) já estão no perfil.

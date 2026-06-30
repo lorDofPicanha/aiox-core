@@ -464,6 +464,7 @@ export interface IndividualDoc {
 /** Mapeia a SEÇÃO do dossiê (item gerado) → categoria de habilitação, ou null se não vira documento. */
 function reviewSecaoToCategory(secao: string): HabilitationRequirementCategory | null {
   if (secao.startsWith("Declarações")) return "outro";
+  if (secao.startsWith("Credenciamento")) return "juridica";
   if (secao.startsWith("Proposta")) return "proposta";
   if (secao.startsWith("Qualificação Técnica")) return "tecnica";
   if (secao.startsWith("Qualificação Econômico-Financeira")) return "economico_financeira";

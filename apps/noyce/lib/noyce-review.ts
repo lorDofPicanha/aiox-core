@@ -451,6 +451,51 @@ function buildPropostaComercial(
   ];
 }
 
+/**
+ * Carta de Credenciamento (Modelo E) + Termo de Aceitação (Modelo A) — peças que todo vencedor
+ * anexa. Geradas a partir do representante legal real. Sem representante → rascunho.
+ */
+function buildCredenciamentoEAceitacao(oid: string, ccp: CompanyCapabilityProfile, opportunity: Opportunity): ReviewItem[] {
+  const rep = ccp.identity.representanteLegal;
+  const empresa = `${ccp.identity.razaoSocial}, CNPJ ${ccp.identity.cnpj}`;
+  const sede = ccp.identity.sedeMunicipio ? `, com sede em ${ccp.identity.sedeMunicipio}` : "";
+  const certame = `${opportunity.title} (${opportunity.buyer})`;
+  const semRep = !rep?.nome;
+  const repDesc = rep ? `${rep.nome}, ${rep.cargo}, CPF ${rep.cpf}${rep.rg ? `, RG ${rep.rg}` : ""}` : "[representante legal — completar no perfil]";
+  const aviso = semRep ? "Defina o representante legal no perfil da empresa antes de assinar." : undefined;
+
+  const credenciamento =
+    `CARTA DE CREDENCIAMENTO — Ref.: ${certame}.\n\n` +
+    `Prezados Senhores,\n` +
+    `${empresa}${sede}, por seu administrador legalmente investido nos termos do contrato social${ccp.identity.nire ? ` (NIRE ${ccp.identity.nire})` : ""}, CREDENCIA o(a) Sr(a). ${repDesc}, conferindo-lhe poderes para representar a empresa em todos os atos da presente licitação, podendo, em especial: apresentar e assinar a proposta, formular lances e propostas verbais, negociar preços, prestar esclarecimentos, manifestar intenção de recurso, interpor e desistir de recursos, assinar atas e demais documentos, e praticar todos os atos necessários ao fiel cumprimento do Edital e seus Anexos.`;
+
+  const aceitacao =
+    `TERMO DE ACEITAÇÃO ÀS CONDIÇÕES DO EDITAL — Ref.: ${certame}.\n\n` +
+    `Prezados Senhores,\n` +
+    `${empresa}, por seu representante legal ${repDesc}, DECLARA, sob as penas da legislação aplicável, que aceita integralmente as condições estabelecidas no Edital e seus Anexos, que tem pleno conhecimento do objeto e das condições locais para a execução, que recebeu todos os elementos e informações necessários à elaboração de sua proposta, e que a ela adere sem qualquer ressalva, reserva ou condição.`;
+
+  return [
+    {
+      id: `${oid}-credenciamento`,
+      secao: "Credenciamento e aceitação (documento)",
+      label: "Carta de credenciamento",
+      valorMotor: credenciamento,
+      proveniencia: "Modelo E (padrão vencedor Lei 14.133) + representante do perfil",
+      requerCorrecao: semRep || undefined,
+      aviso,
+    },
+    {
+      id: `${oid}-termo-aceitacao`,
+      secao: "Credenciamento e aceitação (documento)",
+      label: "Termo de aceitação às condições do edital",
+      valorMotor: aceitacao,
+      proveniencia: "Modelo A (padrão vencedor Lei 14.133) + representante do perfil",
+      requerCorrecao: semRep || undefined,
+      aviso,
+    },
+  ];
+}
+
 /** Garantia de proposta — só quando o ERM marca o percentual (condicional ao edital). */
 function buildGarantiaProposta(oid: string, erm: EditalRequirementsModel, opportunity: Opportunity): ReviewItem[] {
   const raw = erm.economicoFinanceira.garantiaPropostaPct;
@@ -523,6 +568,9 @@ export function buildReviewDossier(
   // 3. Declarações — dirigidas pelo edital (ERM) quando disponível; senão o conjunto-praxe fixo.
   const empresa = `${ccp.identity.razaoSocial} (CNPJ ${ccp.identity.cnpj})`;
   items.push(...buildDeclaracoes(oid, ccp, empresa, erm));
+
+  // 3a. Credenciamento + termo de aceitação (Modelos E/A do padrão vencedor) — sempre presentes.
+  items.push(...buildCredenciamentoEAceitacao(oid, ccp, opportunity));
 
   // 3b. Certidões fiscais/trabalhistas EXIGIDAS pelo edital (anexar do vault) — só com ERM.
   if (erm) items.push(...buildCertidoesExigidas(oid, erm));
