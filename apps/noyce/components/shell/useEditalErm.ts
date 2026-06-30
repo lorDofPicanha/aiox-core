@@ -8,7 +8,7 @@
 // Antes este fluxo vivia inline só no ReviewDossier (aba Analisar); agora a HabilitarTab também
 // consome, então o motor de habilitação (buildHabilitationResult) roda contra o acervo real da
 // ENIAC em qualquer edital — o "destrave" que ligou os 5 CATs + 2 balanços de verdade.
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { EditalRequirementsModel, HabilitationResult, Opportunity } from "@/lib/noyce-model";
 import { getCuratedErmForEdital } from "@/lib/noyce-erm";
 import { buildHabilitationResult } from "@/lib/noyce-habilitation";
@@ -121,6 +121,22 @@ export function useEditalErm(opportunity: Pick<Opportunity, "id" | "source">): U
     errorMsg,
     pull,
   };
+}
+
+/**
+ * Auto-pull do edital (30/Jun): puxa as exigências do PNCP SOZINHO quando a licitação é seguida,
+ * uma vez por edital, sem clique. Compartilhado por Analisar e Habilitar — a mesma verdade do ERM
+ * flui pras duas abas (cache do hook evita re-baixar). `enabled` gateia (ex.: só quando há interesse).
+ */
+export function useAutoPullErm(erm: UseEditalErm, opportunityId: string, enabled: boolean): void {
+  const ranFor = useRef<string | null>(null);
+  useEffect(() => {
+    if (!enabled) return;
+    if (erm.curated || erm.status !== "idle") return; // já curado, carregando, pronto ou em erro
+    if (ranFor.current === opportunityId) return;
+    ranFor.current = opportunityId;
+    void erm.pull();
+  }, [enabled, opportunityId, erm.curated, erm.status, erm.pull]);
 }
 
 /**

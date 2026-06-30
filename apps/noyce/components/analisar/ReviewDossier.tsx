@@ -3,7 +3,7 @@
 // UI do fluxo "Interesse → Dossiê → Revisão humana" (owner 12/Jun).
 // Cada item pré-preenchido pelo motor tem [Aprovar] e [Corrigir]; correção humana
 // TRAVA o item (motor nunca sobrescreve) e exibe o valor original como histórico.
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { EditalRequirementsModel, Opportunity } from "@/lib/noyce-model";
 import { eniacCcp } from "@/lib/noyce-data";
 import { useLiveChecklist } from "@/components/shell/useLiveChecklist";
@@ -40,10 +40,13 @@ function saveState(opportunityId: string, state: ReviewState) {
 export function ReviewDossier({
   opportunity,
   winByTab,
+  erm: ermProp,
 }: {
   opportunity: Opportunity;
-  /** Sugestões competitivas por aba (do useWinIntel no AnalisarTab) — alimentam o doc por aba. */
+  /** Sugestões competitivas por aba (do useWinIntel) — alimentam o doc por aba. */
   winByTab?: import("@/lib/noyce-win-intel").WinByTab;
+  /** ERM controlado pelo dono (HabilitarTab) — UMA fonte de verdade. Se ausente, cria o seu (fallback). */
+  erm?: import("@/components/shell/useEditalErm").UseEditalErm;
 }) {
   const [state, setState] = useState<ReviewState>({});
   const [editing, setEditing] = useState<string | null>(null);
@@ -64,20 +67,10 @@ export function ReviewDossier({
   }, [opportunity.id]);
 
   const liveChecklist = useLiveChecklist(opportunity);
-  // ERM CURADO (hand-verified) tem prioridade; senão o usuário PUXA do PNCP. Hook compartilhado
-  // com a HabilitarTab — mesma origem, mesma extração, mesma mensagem de erro (sem duplicar lógica).
-  const erm = useEditalErm(opportunity);
-  // AUTO-PULL (30/Jun): ao abrir o dossiê, o motor puxa as exigências do edital SOZINHO — sem
-  // exigir clique. Só dispara quando não há ERM curado nem extração em cache (status "idle"), uma
-  // vez por edital. O resultado é cacheado no hook (não re-baixa). Botão "reextrair" segue manual.
-  const autoPulled = useRef<string | null>(null);
-  useEffect(() => {
-    if (erm.curated) return;
-    if (erm.status !== "idle") return; // já carregando, pronto (cache) ou em erro
-    if (autoPulled.current === opportunity.id) return;
-    autoPulled.current = opportunity.id;
-    void erm.pull();
-  }, [opportunity.id, erm.curated, erm.status, erm.pull]);
+  // UMA fonte de verdade do ERM: usa o do dono (Habilitar) quando passado; senão cria o próprio.
+  // O auto-pull e a habilitação ao vivo ficam no dono — aqui só consumimos.
+  const ermLocal = useEditalErm(opportunity);
+  const erm = ermProp ?? ermLocal;
 
   const dossier = useMemo(
     () => buildReviewDossier({ ...opportunity, habilitationChecklist: liveChecklist }, eniacCcp, erm.erm),

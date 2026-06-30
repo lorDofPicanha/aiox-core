@@ -7,7 +7,6 @@ import { useLiveChecklist } from "@/components/shell/useLiveChecklist";
 import type { Opportunity, SuspicionSignal } from "@/lib/noyce-model";
 import { buildNextStep, lacunaTasks, operationalBlockers, operationalState } from "@/lib/noyce-operational";
 import { MarketSection, ScoreBreakdownList } from "@/components/shell/bits";
-import { ReviewDossier } from "@/components/analisar/ReviewDossier";
 import { WinIntelPanel } from "@/components/analisar/WinIntelPanel";
 import { MeAdvantagesPanel } from "@/components/analisar/MeAdvantagesPanel";
 import { TecnicoStrategyPanel } from "@/components/analisar/TecnicoStrategyPanel";
@@ -15,7 +14,7 @@ import { PriceFloorPanel } from "@/components/analisar/PriceFloorPanel";
 import { buildImpugnacaoMinuta } from "@/lib/noyce-impugnacao-minuta";
 import { eniacCcp } from "@/lib/noyce-data";
 import { useWinIntel } from "@/components/analisar/useWinIntel";
-import { useEditalErm } from "@/components/shell/useEditalErm";
+import { useAutoPullErm, useLiveHabilitationResult } from "@/components/shell/useEditalErm";
 
 const SUSPICION_DISCLAIMER =
   "Sinal baseado em dados públicos e na Lei 14.133 — indício para avaliação, não afirmação de irregularidade. Não substitui análise jurídica.";
@@ -55,8 +54,11 @@ export function AnalisarTab({
   const lacunas = lacunaTasks(opportunity);
   const blockers = operationalBlockers(opportunity);
   const suspicionSignals = (opportunity as OpportunityWithSuspicion).suspicionSignals ?? [];
-  const habilitationResult = opportunity.habilitationResult ?? null;
-  const { erm } = useEditalErm(opportunity);
+  // Veredito de habilitação AO VIVO — a MESMA verdade que a Habilitar usa (não o estático do snapshot).
+  const { result: liveResult, erm: ermHook } = useLiveHabilitationResult(opportunity);
+  useAutoPullErm(ermHook, opportunity.id, interested);
+  const erm = ermHook.erm;
+  const habilitationResult = liveResult ?? opportunity.habilitationResult ?? null;
   const winIntel = useWinIntel(opportunity, erm, interested);
 
   // Tier 3: gera e baixa a minuta de impugnação fundamentada a partir de um sinal de risco.
@@ -102,16 +104,21 @@ export function AnalisarTab({
       </div>
 
       {interested ? (
-        <ReviewDossier opportunity={opportunity} winByTab={winIntel.byTab} />
+        <section className="review-invite handoff" role="note">
+          <p>
+            ⭐ <strong>Em análise.</strong> A decisão e a estratégia estão aqui; a montagem dos documentos (declarações,
+            qualificação, proposta, certidões) é na aba <strong>Habilitar</strong> — é a bancada da Operação/Engenharia.
+          </p>
+        </section>
       ) : (
         <section className="review-invite" role="note">
           <p>
-            Sem dossiê de revisão: esta licitação ainda não foi marcada como interesse.
-            {onToggleInterest ? " Marque para o motor pré-preencher tudo que o certame vai precisar." : ""}
+            Decida e <strong>comprometa</strong> esta licitação: ao marcar interesse, a equipe monta o dossiê na aba
+            Habilitar.
           </p>
           {onToggleInterest ? (
             <button type="button" className="interest-btn" onClick={onToggleInterest}>
-              ☆ Tenho interesse — gerar dossiê
+              ☆ Tenho interesse — seguir e preparar
             </button>
           ) : null}
         </section>

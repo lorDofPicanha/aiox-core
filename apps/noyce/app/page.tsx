@@ -110,7 +110,13 @@ export default function Home() {
                 onToggleInterest={() => toggleInterest(selectedOpportunity.id)}
               />
             ) : null}
-            {activeTab === "habilitar" && selectedOpportunity ? <HabilitarTab opportunity={selectedOpportunity} /> : null}
+            {activeTab === "habilitar" && selectedOpportunity ? (
+              <HabilitarTab
+                opportunity={selectedOpportunity}
+                interested={interested.has(selectedOpportunity.id)}
+                onToggleInterest={() => toggleInterest(selectedOpportunity.id)}
+              />
+            ) : null}
             {activeTab === "acompanhar" && selectedOpportunity ? <AcompanharTab opportunity={selectedOpportunity} /> : null}
             {activeTab === "recorrer" && selectedOpportunity ? <RecorrerTab opportunity={selectedOpportunity} /> : null}
             {activeTab === "governanca" ? <GovernancaTab /> : null}

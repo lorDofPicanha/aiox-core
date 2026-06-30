@@ -2,7 +2,9 @@
 
 import type { Opportunity } from "@/lib/noyce-model";
 import { useLiveChecklist } from "@/components/shell/useLiveChecklist";
-import { useLiveHabilitationResult } from "@/components/shell/useEditalErm";
+import { useAutoPullErm, useLiveHabilitationResult } from "@/components/shell/useEditalErm";
+import { ReviewDossier } from "@/components/analisar/ReviewDossier";
+import { useWinIntel } from "@/components/analisar/useWinIntel";
 
 const VERDICT_LABEL: Record<string, string> = {
   GO: "GO",
@@ -11,11 +13,23 @@ const VERDICT_LABEL: Record<string, string> = {
   NO_GO: "NO-GO",
 };
 
-export function HabilitarTab({ opportunity }: { opportunity: Opportunity }) {
+export function HabilitarTab({
+  opportunity,
+  interested = false,
+  onToggleInterest,
+}: {
+  opportunity: Opportunity;
+  /** Licitação seguida (decidida na Analisar) → habilita a montagem do dossiê. */
+  interested?: boolean;
+  onToggleInterest?: () => void;
+}) {
   const liveChecklist = useLiveChecklist(opportunity);
   // Destrave: o dossiê roda AO VIVO contra o acervo real da ENIAC para QUALQUER edital — usa o ERM
   // curado/extraído (não só o seed dos 2 editais). Fallback no seed quando ainda não há ERM.
+  // ESTA aba é a DONA do ERM: auto-pulla e passa o mesmo erm pro dossiê (uma fonte de verdade).
   const { result: liveResult, erm } = useLiveHabilitationResult(opportunity);
+  useAutoPullErm(erm, opportunity.id, interested);
+  const winIntel = useWinIntel(opportunity, erm.erm, interested);
   const result = liveResult ?? opportunity.habilitationResult ?? null;
   const blocks = result ? Object.values(result.porBloco) : [];
   const sanaveis = result?.lacunas.filter((gap) => gap.sanabilidade === "SANAVEL") ?? [];
@@ -23,31 +37,23 @@ export function HabilitarTab({ opportunity }: { opportunity: Opportunity }) {
 
   return (
     <section className="area area-habilitar">
-      {/* Origem das EXIGÊNCIAS que dirigem o dossiê — curado, extraído do PNCP, ou ainda por puxar. */}
-      <div className="review-erm-source" style={{ margin: "0 0 12px", padding: "8px 12px", borderRadius: 8, background: "#f6f5f0", fontSize: 13 }}>
-        {erm.curated ? (
-          <span>📋 Exigências do <strong>edital curado</strong> (verificado à mão) — dossiê dirigido pelo edital.</span>
-        ) : erm.erm ? (
-          <span>
-            📋 Exigências <strong>extraídas do edital (PNCP)</strong>
-            {erm.confidence ? ` — confiança declarações: ${erm.confidence.declaracoes} · certidões: ${erm.confidence.cnds}` : ""}.{" "}
-            <button type="button" onClick={erm.pull} disabled={erm.status === "loading"} style={{ marginLeft: 6 }}>
-              {erm.status === "loading" ? "puxando…" : "reextrair"}
+      {/* DOSSIÊ — a bancada de documentos (Operação + Engenharia). Só quando a licitação é seguida. */}
+      {interested ? (
+        <ReviewDossier opportunity={opportunity} erm={erm} winByTab={winIntel.byTab} />
+      ) : (
+        <section className="review-invite" role="note" style={{ marginBottom: 14 }}>
+          <p>
+            Esta licitação ainda não foi marcada como interesse na <strong>Analisar</strong>. A análise de
+            elegibilidade abaixo já roda; para o motor <strong>montar o dossiê completo</strong> (declarações,
+            qualificação, proposta, certidões), marque interesse.
+          </p>
+          {onToggleInterest ? (
+            <button type="button" className="interest-btn" onClick={onToggleInterest}>
+              ☆ Tenho interesse — montar dossiê
             </button>
-            {(erm.confidence?.declaracoes === "baixa" || erm.confidence?.cnds === "baixa") && (
-              <small style={{ display: "block", color: "#8a6516" }}>⚠️ confiança baixa — conferir manualmente contra o edital.</small>
-            )}
-          </span>
-        ) : (
-          <span>
-            📋 Sem exigências estruturadas — o motor está rodando no conjunto-<strong>praxe</strong>. Puxe o edital pra cruzar o acervo da ENIAC com o que ESTE edital exige.{" "}
-            <button type="button" onClick={erm.pull} disabled={erm.status === "loading"}>
-              {erm.status === "loading" ? "puxando do PNCP… (até ~2 min)" : "Puxar exigências do edital (PNCP)"}
-            </button>
-            {erm.status === "error" && erm.errorMsg && <small style={{ display: "block", color: "#a33", marginTop: 4 }}>⚠️ {erm.errorMsg}</small>}
-          </span>
-        )}
-      </div>
+          ) : null}
+        </section>
+      )}
 
       {result ? (
         <section className="legal-process" aria-labelledby="habilitation-dossier-title">

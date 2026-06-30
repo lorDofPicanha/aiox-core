@@ -62,7 +62,8 @@ export function useWinIntel(
     setLlm(false);
     setError(null);
     ranFor.current = null;
-  }, [opportunity.id]); // eslint-disable-line react-hooks/exhaustive-deps
+    // Reset depende só da troca de oportunidade (deterministic recompute via mergeWinIntel).
+  }, [opportunity.id]);
 
   const run = useCallback(async () => {
     setStatus("loading");
