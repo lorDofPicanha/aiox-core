@@ -3,7 +3,7 @@
 // UI do fluxo "Interesse → Dossiê → Revisão humana" (owner 12/Jun).
 // Cada item pré-preenchido pelo motor tem [Aprovar] e [Corrigir]; correção humana
 // TRAVA o item (motor nunca sobrescreve) e exibe o valor original como histórico.
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { EditalRequirementsModel, Opportunity } from "@/lib/noyce-model";
 import { eniacCcp } from "@/lib/noyce-data";
 import { useLiveChecklist } from "@/components/shell/useLiveChecklist";
@@ -58,6 +58,18 @@ export function ReviewDossier({
   // ERM CURADO (hand-verified) tem prioridade; senão o usuário PUXA do PNCP. Hook compartilhado
   // com a HabilitarTab — mesma origem, mesma extração, mesma mensagem de erro (sem duplicar lógica).
   const erm = useEditalErm(opportunity);
+  // AUTO-PULL (30/Jun): ao abrir o dossiê, o motor puxa as exigências do edital SOZINHO — sem
+  // exigir clique. Só dispara quando não há ERM curado nem extração em cache (status "idle"), uma
+  // vez por edital. O resultado é cacheado no hook (não re-baixa). Botão "reextrair" segue manual.
+  const autoPulled = useRef<string | null>(null);
+  useEffect(() => {
+    if (erm.curated) return;
+    if (erm.status !== "idle") return; // já carregando, pronto (cache) ou em erro
+    if (autoPulled.current === opportunity.id) return;
+    autoPulled.current = opportunity.id;
+    void erm.pull();
+  }, [opportunity.id, erm.curated, erm.status, erm.pull]);
+
   const dossier = useMemo(
     () => buildReviewDossier({ ...opportunity, habilitationChecklist: liveChecklist }, eniacCcp, erm.erm),
     [opportunity, liveChecklist, erm.erm],
