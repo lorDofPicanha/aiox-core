@@ -39,6 +39,100 @@ function clean(s: string): string {
   return s.replace(/\s+/g, " ").trim();
 }
 
+// ── Qualificação TÉCNICA — profissionais exigidos (responsável técnico/acervo) ──
+// Tipos canônicos de profissional que o edital costuma exigir no quadro da empresa.
+const PROF_PATTERNS: { servico: string; re: RegExp }[] = [
+  { servico: "Engenheiro Civil", re: /engenheir[oa]\s+civil/i },
+  { servico: "Arquiteto e Urbanista", re: /arquitet[oa]/i },
+  { servico: "Engenheiro Eletricista", re: /engenheir[oa]\s+eletricista/i },
+  { servico: "Engenheiro Mecânico", re: /engenheir[oa]\s+mec[âa]nic/i },
+  { servico: "Engenheiro/Técnico em Segurança do Trabalho", re: /(engenheir[oa]|t[ée]cnic[oa])\s+(?:de|em)\s+seguran[çc]a\s+do\s+trabalho/i },
+  { servico: "Responsável técnico", re: /respons[áa]vel\s+t[ée]cnic[oa]/i },
+];
+
+function extractProfissional(tecnicaText: string): Array<{ servico: string; qtdMin: number | null; un: string | null }> {
+  const out: Array<{ servico: string; qtdMin: number | null; un: string | null }> = [];
+  if (!tecnicaText) return out;
+  for (const p of PROF_PATTERNS) {
+    if (p.re.test(tecnicaText)) out.push({ servico: p.servico, qtdMin: 1, un: "profissional" });
+  }
+  return out;
+}
+
+// ── Qualificação TÉCNICA — atestados técnico-operacionais com quantitativo ──
+// Capacidade operacional: "atestado(s)" + quantitativo (número + unidade de obra). O edital às vezes
+// remete os quantitativos ao Termo de Referência (anexo) — quando não vêm no texto, fica vazio (honesto).
+const QTD_UN_RE = /([\d][\d.]*(?:,\d+)?)\s*(m²|m2|metros\s+quadrados|m³|m3|metros\s+c[úu]bicos|km|quil[ôo]metros|metros\s+lineares|\bml\b|unidades?|vagas?|le?itos?)/gi;
+
+function extractOperacional(
+  tecnicaText: string,
+  objetoText: string,
+  broadScan: string,
+): Array<{ servico: string; qtdMin: number | null; qtdObjeto: number | null; un: string | null }> {
+  const out: Array<{ servico: string; qtdMin: number | null; qtdObjeto: number | null; un: string | null }> = [];
+  const exigeOperacional = /capacidade\s+t[ée]cnico-?operacional|atestado[s]?\s+t[ée]cnico-?operacional|acervo\s+t[ée]cnico/i.test(tecnicaText);
+  const exigeAtestado = exigeOperacional || /atestado[s]?\s+(?:de\s+)?(?:capacidade\s+)?t[ée]cnic/i.test(tecnicaText);
+  if (!exigeAtestado) return out;
+  // Remete ao Termo de Referência? Então amplia a busca de quantitativo p/ o texto cheio.
+  const remeteTR = /termo\s+de\s+refer|item\s+11|anexo/i.test(tecnicaText);
+  const scope = `${tecnicaText}\n${objetoText}` + (remeteTR ? `\n${broadScan}` : "");
+  const seen = new Set<string>();
+  let m: RegExpExecArray | null;
+  QTD_UN_RE.lastIndex = 0;
+  while ((m = QTD_UN_RE.exec(scope)) !== null && out.length < 6) {
+    const n = Number.parseFloat(m[1].replace(/\./g, "").replace(",", "."));
+    const un = clean(m[2]).toLowerCase();
+    if (!Number.isFinite(n) || n < 10) continue; // descarta números soltos (datas/itens) — quantitativo de obra é >= 10
+    const ctx = clean(scope.slice(Math.max(0, m.index - 60), m.index)).slice(-50);
+    if (!/atestado|comprova|execu[çc]|servi[çc]o|obra|[áa]rea|constru/i.test(ctx)) continue; // só perto de contexto de capacidade
+    const key = `${un}-${n}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push({ servico: ctx ? `Atestado: …${ctx}` : "Atestado de capacidade técnico-operacional", qtdMin: n, qtdObjeto: null, un });
+  }
+  // Atestado exigido mas sem quantitativo legível (geralmente está no TR/anexo não-textual): registra honesto.
+  if (out.length === 0) {
+    out.push({
+      servico: exigeOperacional
+        ? "Atestado de capacidade técnico-operacional (quantitativo no Termo de Referência)"
+        : "Atestado(s) técnico-profissional(is) exigido(s) — ver Termo de Referência",
+      qtdMin: null,
+      qtdObjeto: null,
+      un: null,
+    });
+  }
+  return out;
+}
+
+// ── Qualificação ECONÔMICO-FINANCEIRA — PL, índices, garantia ──
+function num(s: string | undefined): number | null {
+  if (!s) return null;
+  const n = Number.parseFloat(s.replace(/\./g, "").replace(",", "."));
+  return Number.isFinite(n) ? n : null;
+}
+
+function extractIndice(scan: string, nome: RegExp): number | null {
+  const re = new RegExp(`(?:${nome.source})[^\\n]{0,60}?(?:[≥>=]|maior\\s+ou\\s+igual\\s+a|igual\\s+ou\\s+superior\\s+a|superior\\s+a|de)\\s*(\\d+(?:[.,]\\d+)?)`, "i");
+  const m = scan.match(re);
+  return m ? num(m[1]) : null;
+}
+
+// ── meta — critério de julgamento, modalidade, valor, órgão ──
+function extractCriterio(scan: string): string | null {
+  const m = scan.match(/menor\s+pre[çc]o(?:\s+(?:global|por\s+lote|por\s+item|unit[áa]rio))?|t[ée]cnica\s+e\s+pre[çc]o|maior\s+desconto|maior\s+lance|maior\s+retorno\s+econ[ôo]mico/i);
+  return m ? clean(m[0]).toLowerCase().replace(/^./, (c) => c.toUpperCase()) : null;
+}
+
+function extractModalidade(scan: string): string | null {
+  const m = scan.match(/preg[ãa]o\s+eletr[ôo]nico|preg[ãa]o\s+presencial|concorr[êe]ncia(?:\s+eletr[ôo]nica)?|concurso|leil[ãa]o|di[áa]logo\s+competitivo/i);
+  return m ? clean(m[0]) : null;
+}
+
+function extractValorEstimado(scan: string): number | null {
+  const m = scan.match(/valor\s+(?:total\s+)?(?:global\s+)?estimad[oa][^\n]{0,60}?R\$\s*([\d.]+,\d{2})/i);
+  return m ? num(m[1]) : null;
+}
+
 /**
  * Extrai declarações + CNDs exigidas das seções parseadas do edital.
  * Escopo de busca = seções de habilitação/declarações (contexto certo); cai p/ texto cheio
@@ -94,34 +188,49 @@ export function extractErm(sections: EditalSections, fullText = ""): ErmExtracti
   const declConf: Confianca = declaracoes.length >= 4 && temSecaoDecl ? "alta" : declaracoes.length >= 2 ? "media" : "baixa";
   const cndConf: Confianca = CNDs.length >= 4 && temSecaoFiscal ? "alta" : CNDs.length >= 2 ? "media" : "baixa";
 
+  // ── Extração de técnica / econômica / meta (escopo: seção certa quando há, senão texto cheio) ──
+  const tecnicaScope = sections.habilitacaoTecnica || scan;
+  const econScope = sections.habilitacaoEconomica || scan;
+  const profissional = extractProfissional(tecnicaScope);
+  const operacional = extractOperacional(tecnicaScope, sections.objeto || "", scan);
+
+  const exigePL = /patrim[ôo]nio\s+l[íi]quido|capital\s+social\s+m[íi]nimo/i.test(scan);
+  const plMatch = scan.match(/patrim[ôo]nio\s+l[íi]quido[^\n]{0,80}?(\d{1,2}(?:[.,]\d+)?)\s*%/i) || scan.match(/(\d{1,2})\s*%\s+do\s+valor\s+(?:total\s+)?(?:estimad|contrat)/i);
+  const garMatch = scan.match(/garantia\s+(?:da\s+)?(?:de\s+)?proposta[^\n]{0,90}?(\d+(?:[.,]\d+)?)\s*%/i);
+  const indices = {
+    LC: extractIndice(econScope, /liquidez\s+corrente|[íi]ndice\s+de\s+liquidez\s+corrente|\bILC\b/),
+    LG: extractIndice(econScope, /liquidez\s+geral|[íi]ndice\s+de\s+liquidez\s+geral|\bILG\b/),
+    SG: extractIndice(econScope, /solv[êe]ncia\s+geral|[íi]ndice\s+de\s+solv[êe]ncia|\bISG\b/),
+  };
+
   const erm: EditalRequirementsModel = {
     meta: {
       orgao: "",
       cnpjOrgao: null,
       municipioIbge: null,
-      modalidade: null,
-      valorEstimado: null,
+      modalidade: extractModalidade(scan),
+      valorEstimado: extractValorEstimado(scan),
       dataPublicacao: null,
       dataSessao: null,
-      criterioJulgamento: null,
+      criterioJulgamento: extractCriterio(scan),
       regimeExecucao: null,
       objetoComum: null,
     },
     economicoFinanceira: {
-      exigePL: /patrim[ôo]nio\s+l[íi]quido|capital\s+social/i.test(scan) ? true : null,
-      percentualPL: null,
-      indices: {},
+      exigePL: exigePL ? true : null,
+      percentualPL: num(plMatch?.[1]),
+      indices,
       justificativaPresente: null,
-      garantiaPropostaPct: null,
+      garantiaPropostaPct: num(garMatch?.[1]),
       clausula: null,
     },
     tecnica: {
-      profissional: [],
-      operacional: [],
+      profissional,
+      operacional,
       parcelasMaiorRelevancia: null,
       tetoQuantitativo: null,
-      somatorio: { permitido: null },
-      aceitaAcervoConsorcio: null,
+      somatorio: { permitido: /somat[óo]rio\s+de\s+atestados|permitid[ao]\s+(?:o\s+)?somat/i.test(scan) ? true : null },
+      aceitaAcervoConsorcio: /acervo[^\n]{0,40}cons[óo]rcio|cons[óo]rcio[^\n]{0,40}acervo/i.test(scan) ? true : null,
       restricaoTempoLocal: null,
       marcaSemSimilar: null,
       clausula: null,

@@ -74,6 +74,75 @@ test("extractErm: 'menor preço' NÃO dispara a declaração de menor (detectRe 
   assert.ok(!erm.juridica.declaracoes.some((d) => /menor/i.test(d)), "menor preço não é declaração de menor");
 });
 
+const TECNICA = `9.5 QUALIFICAÇÃO TÉCNICA
+a) Registro da empresa na entidade profissional competente (CREA/CAU);
+b) Comprovação de possuir no quadro permanente Engenheiro Civil ou Arquiteto;
+c) Comprovação de Engenheiro ou Técnico em Segurança do Trabalho;
+d) Atestado de capacidade técnico-operacional comprovando execução de 1.500 m² de área construída;
+e) Carta de apresentação do responsável técnico.
+É permitido o somatório de atestados para comprovação do quantitativo.`;
+
+const ECONOMICA = `9.4 QUALIFICAÇÃO ECONÔMICO-FINANCEIRA
+a) Balanço patrimonial do último exercício social;
+b) Índice de Liquidez Corrente (LC) maior ou igual a 1,0;
+c) Índice de Liquidez Geral (LG) ≥ 1,2;
+d) Índice de Solvência Geral (SG) superior a 1,0;
+e) Patrimônio líquido mínimo de 10% do valor estimado da contratação;
+f) Garantia de proposta de 1% do valor estimado, nos termos do art. 58.`;
+
+const META_TXT = `1.3 O critério de julgamento adotado será o menor preço global, nos termos do art. 33.
+Modalidade: Concorrência eletrônica. Valor total estimado de R$ 1.000.000,00.`;
+
+test("extractErm: extrai PROFISSIONAIS exigidos da seção técnica (resp. técnico/eng/arquiteto)", () => {
+  const { erm } = extractErm({ ...EMPTY_SECTIONS, habilitacaoTecnica: TECNICA });
+  const servicos = erm.tecnica.profissional.map((p) => p.servico);
+  assert.ok(servicos.some((s) => /Engenheiro Civil/i.test(s)), "Engenheiro Civil");
+  assert.ok(servicos.some((s) => /Arquiteto/i.test(s)), "Arquiteto");
+  assert.ok(servicos.some((s) => /Seguran[çc]a do Trabalho/i.test(s)), "Téc. Segurança");
+  assert.ok(servicos.some((s) => /Respons[áa]vel t[ée]cnico/i.test(s)), "Responsável técnico");
+  // somatório de atestados captado
+  assert.equal(erm.tecnica.somatorio.permitido, true);
+});
+
+test("extractErm: extrai ATESTADO operacional com quantitativo (m²) da seção técnica", () => {
+  const { erm } = extractErm({ ...EMPTY_SECTIONS, habilitacaoTecnica: TECNICA, objeto: "Reforma de 1.500 m²." });
+  assert.ok(erm.tecnica.operacional.length >= 1);
+  const comQtd = erm.tecnica.operacional.find((o) => o.qtdMin && o.qtdMin >= 1000);
+  assert.ok(comQtd, "esperava atestado com quantitativo >= 1000");
+  assert.match(comQtd.un, /m²|m2/);
+});
+
+test("extractErm: extrai ÍNDICES econômicos (LC/LG/SG), PL% e garantia% quando presentes", () => {
+  const { erm } = extractErm({ ...EMPTY_SECTIONS, habilitacaoEconomica: ECONOMICA }, ECONOMICA);
+  const ef = erm.economicoFinanceira;
+  assert.equal(ef.indices.LC, 1);
+  assert.equal(ef.indices.LG, 1.2);
+  assert.equal(ef.indices.SG, 1);
+  assert.equal(ef.exigePL, true);
+  assert.equal(ef.percentualPL, 10);
+  assert.equal(ef.garantiaPropostaPct, 1);
+});
+
+test("extractErm: extrai META (critério de julgamento, modalidade, valor estimado)", () => {
+  const { erm } = extractErm({ ...EMPTY_SECTIONS }, META_TXT);
+  assert.match(erm.meta.criterioJulgamento, /menor pre[çc]o/i);
+  assert.match(erm.meta.modalidade, /concorr[êe]ncia/i);
+  assert.equal(erm.meta.valorEstimado, 1000000);
+});
+
+test("end-to-end: dossiê PRÉ-PREENCHE Qualificação Técnica/Econômica quando o edital exige", () => {
+  const text = `1. DO OBJETO\nReforma de escola de 1.500 m².\n\n${TECNICA}\n\n${ECONOMICA}\n\n${FISCAL}\n\n${DECLS}\n\n${META_TXT}`;
+  const sections = extractEditalSections(text);
+  const { erm } = extractErm(sections, text);
+  assert.ok(erm.tecnica.profissional.length >= 2, "técnica deve ter profissionais");
+
+  const OPP = { id: "e2e-tec", source: "pncp", title: "Reforma de escola", buyer: "Município", city: "X", uf: "GO", estimatedValue: 1000000, proposalDeadline: "2026-07-10T12:00:00Z", market: null, habilitationChecklist: [] };
+  const CCP = { identity: { razaoSocial: "ENIAC LTDA", cnpj: "36.819.268/0001-05", porte: "ME", sedeMunicipioIbge: "5200258" }, rts: [], acervo: [], financials: [], regularity: [], derived: { capabilityByService: {} } };
+  const items = buildReviewDossier(OPP, CCP, erm);
+  const secoes = new Set(items.map((i) => i.secao));
+  assert.ok([...secoes].some((s) => /Qualifica[çc][ãa]o T[ée]cnica/i.test(s)), `esperava seção técnica; veio: ${[...secoes].join(" | ")}`);
+});
+
 test("end-to-end: texto do edital → sections → ERM → dossiê → gate de completude PASS", () => {
   const text = `1. DO OBJETO\nReforma de escola municipal.\n\n${FISCAL}\n\n${DECLS}`;
   const sections = extractEditalSections(text);
