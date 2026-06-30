@@ -8,6 +8,8 @@ import type { Opportunity, SuspicionSignal } from "@/lib/noyce-model";
 import { buildNextStep, lacunaTasks, operationalBlockers, operationalState } from "@/lib/noyce-operational";
 import { MarketSection, ScoreBreakdownList } from "@/components/shell/bits";
 import { ReviewDossier } from "@/components/analisar/ReviewDossier";
+import { WinIntelPanel } from "@/components/analisar/WinIntelPanel";
+import { useEditalErm } from "@/components/shell/useEditalErm";
 
 const SUSPICION_DISCLAIMER =
   "Sinal baseado em dados públicos e na Lei 14.133 — indício para avaliação, não afirmação de irregularidade. Não substitui análise jurídica.";
@@ -48,6 +50,7 @@ export function AnalisarTab({
   const blockers = operationalBlockers(opportunity);
   const suspicionSignals = (opportunity as OpportunityWithSuspicion).suspicionSignals ?? [];
   const habilitationResult = opportunity.habilitationResult ?? null;
+  const { erm } = useEditalErm(opportunity);
 
   return (
     <section className="area area-analisar">
@@ -208,6 +211,8 @@ export function AnalisarTab({
       </section>
 
       <MarketSection market={opportunity.market} />
+
+      {interested ? <WinIntelPanel opportunity={opportunity} erm={erm} enabled={interested} /> : null}
 
       <section className="score-breakdown" aria-labelledby="score-breakdown-title">
         <div className="section-heading compact">
