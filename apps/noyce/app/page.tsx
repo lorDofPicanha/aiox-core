@@ -9,11 +9,12 @@ import { MesaTab } from "@/components/mesa/MesaTab";
 import { MonitorarTab } from "@/components/monitorar/MonitorarTab";
 import { AnalisarTab } from "@/components/analisar/AnalisarTab";
 import { HabilitarTab } from "@/components/habilitar/HabilitarTab";
+import { AcompanharTab } from "@/components/acompanhar/AcompanharTab";
 import { RecorrerTab } from "@/components/recorrer/RecorrerTab";
 import { GovernancaTab } from "@/components/governanca/GovernancaTab";
 
 // Detail tabs work on the selected opportunity; Mesa/Monitorar/Governança are list/overview.
-const DETAIL_TABS: TabId[] = ["analisar", "habilitar", "recorrer"];
+const DETAIL_TABS: TabId[] = ["analisar", "habilitar", "acompanhar", "recorrer"];
 
 const INTEREST_KEY = "noyce.interesse.v1";
 
@@ -110,6 +111,7 @@ export default function Home() {
               />
             ) : null}
             {activeTab === "habilitar" && selectedOpportunity ? <HabilitarTab opportunity={selectedOpportunity} /> : null}
+            {activeTab === "acompanhar" && selectedOpportunity ? <AcompanharTab opportunity={selectedOpportunity} /> : null}
             {activeTab === "recorrer" && selectedOpportunity ? <RecorrerTab opportunity={selectedOpportunity} /> : null}
             {activeTab === "governanca" ? <GovernancaTab /> : null}
           </>

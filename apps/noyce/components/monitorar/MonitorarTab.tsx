@@ -4,22 +4,11 @@ import { useEffect, useMemo, useState } from "react";
 import { opportunities } from "@/lib/noyce-data";
 import { formatCurrency, formatDateTime } from "@/lib/noyce-model";
 import type { Opportunity, SuspicionSignal } from "@/lib/noyce-model";
-import { buildNextStep, deadlineTime, operationalState, sourceClass, sourceLabel } from "@/lib/noyce-operational";
+import { deadlineTime, operationalState, sourceClass, sourceLabel } from "@/lib/noyce-operational";
 import { MAX_DISCOVERY_RADIUS_KM } from "@/lib/noyce-source-registry";
 import { ScorePill } from "@/components/shell/bits";
 import { ConsorcioChip } from "@/components/shell/ConsorcioChip";
 import { needsConsorcioPartner } from "@/lib/noyce-operational";
-import { sentinelaWatch, clockKindLabel, type SentinelaAlert } from "@/lib/agents/maestro-runtime";
-import type { SessionResult } from "@/lib/agents/maestro-types";
-
-const SESSION_RESULT_PREFIX = "noyce.session-result.v1.";
-const ALERT_RANK: Record<SentinelaAlert["level"], number> = { vencido: 0, "t-0": 1, "t-1": 2, "t-3": 3, ok: 4 };
-const ALERT_LABEL: Record<SentinelaAlert["level"], string> = { vencido: "VENCIDO", "t-0": "VENCE HOJE", "t-1": "vence amanhã", "t-3": "≤ 3 dias", ok: "no prazo" };
-function remaining(ms: number): string {
-  const abs = Math.abs(ms), d = Math.floor(abs / 86_400_000), h = Math.floor((abs % 86_400_000) / 3_600_000);
-  const c = d > 0 ? `${d}d ${h}h` : `${h}h`;
-  return ms <= 0 ? `há ${c}` : `faltam ${c}`;
-}
 
 type SortMode = "triagem" | "best" | "worst" | "deadline";
 type VerdictFilter = "all" | "vai" | "olha" | "pula";
@@ -42,34 +31,6 @@ export function MonitorarTab({
   const [sortMode, setSortMode] = useState<SortMode>("triagem");
   const [cityFilter, setCityFilter] = useState("all");
   const [verdict, setVerdict] = useState<VerdictFilter>("all");
-  // Relógio real (cliente) p/ a vigilância de prazo viver; atualiza a cada minuto.
-  const [now, setNow] = useState<string | null>(null);
-  useEffect(() => {
-    const tick = () => setNow(new Date().toISOString());
-    tick();
-    const id = setInterval(tick, 60_000);
-    return () => clearInterval(id);
-  }, []);
-
-  // Licitações que o operador SEGUE (marcou interesse) — o pipeline do processo.
-  const followed = useMemo(() => opportunities.filter((o) => interested.has(o.id)), [interested]);
-
-  // Vigilância de prazo AGREGADA: relógios preclusivos de todas as seguidas, por urgência.
-  const aggregatedAlerts = useMemo(() => {
-    if (!now) return [] as Array<{ opp: Opportunity; alert: SentinelaAlert }>;
-    const rows: Array<{ opp: Opportunity; alert: SentinelaAlert }> = [];
-    for (const o of followed) {
-      let sr: SessionResult | null = null;
-      try {
-        const raw = globalThis.localStorage?.getItem(SESSION_RESULT_PREFIX + o.id);
-        sr = raw ? (JSON.parse(raw) as SessionResult) : null;
-      } catch {
-        sr = null;
-      }
-      for (const a of sentinelaWatch(o, now, sr)) rows.push({ opp: o, alert: a });
-    }
-    return rows.sort((a, b) => ALERT_RANK[a.alert.level] - ALERT_RANK[b.alert.level] || a.alert.msUntil - b.alert.msUntil);
-  }, [followed, now]);
   // Story 30.1 AC3 — filtro de consórcio, hidratado do query param `consorcio=sim|nao|qualquer`.
   const [consorcio, setConsorcio] = useState<ConsorcioFilter>("qualquer");
 
@@ -121,82 +82,11 @@ export function MonitorarTab({
 
   return (
     <section className="area area-monitorar">
-      {/* PROCESSO — pipeline das licitações que você segue (info da análise puxada pra cá). */}
-      {followed.length > 0 ? (
-        <section className="processo-pipeline">
-          <div className="section-heading compact">
-            <div>
-              <p className="eyebrow">Em andamento — processo</p>
-              <h2>Licitações que você segue</h2>
-            </div>
-            <span>{followed.length} em andamento</span>
-          </div>
-          {followed.map((o) => {
-            const next = buildNextStep(o);
-            const st = operationalState(o);
-            const top = aggregatedAlerts.find((r) => r.opp.id === o.id)?.alert ?? null;
-            return (
-              <div
-                key={o.id}
-                className="processo-row"
-                role="button"
-                tabIndex={0}
-                onClick={() => onSelect(o.id)}
-                onKeyDown={(e) => { if (e.key === "Enter") onSelect(o.id); }}
-              >
-                <div className="proc-main">
-                  <strong>{o.title}</strong>
-                  <p>{o.buyer} · {o.city}/{o.uf}</p>
-                  <p className="proc-next">▸ {next.headline} — <strong>{next.owner}</strong>{next.why ? ` · ${next.why}` : ""}</p>
-                </div>
-                <div className="proc-side">
-                  <span className={`state-badge ${st.tone}`}>{st.label}</span>
-                  {top ? (
-                    <span className={`proc-prazo lvl-${top.level}`}>⏱ {clockKindLabel(top.kind)}: {ALERT_LABEL[top.level]} ({remaining(top.msUntil)})</span>
-                  ) : (
-                    <span className="proc-prazo">sem prazo armado</span>
-                  )}
-                </div>
-              </div>
-            );
-          })}
-        </section>
-      ) : null}
-
-      {/* VIGILÂNCIA DE PRAZO — Sentinela agregado de todas as seguidas (dor #1). */}
-      {aggregatedAlerts.length > 0 ? (
-        <section className="vigilancia-agregada">
-          <div className="section-heading compact">
-            <div>
-              <p className="eyebrow">🛡️ Vigilância de prazo — Sentinela</p>
-              <h3>Relógios preclusivos armados</h3>
-            </div>
-            <span>{aggregatedAlerts.filter((r) => r.alert.level === "vencido" || r.alert.level === "t-0").length} crítico(s)</span>
-          </div>
-          {aggregatedAlerts.slice(0, 10).map((r, i) => (
-            <div
-              key={`${r.opp.id}-${r.alert.kind}-${i}`}
-              className={`vig-row lvl-${r.alert.level}`}
-              role="button"
-              tabIndex={0}
-              onClick={() => onSelect(r.opp.id)}
-              onKeyDown={(e) => { if (e.key === "Enter") onSelect(r.opp.id); }}
-            >
-              <div>
-                <strong>{clockKindLabel(r.alert.kind)}</strong>
-                <p>{r.opp.title}</p>
-              </div>
-              <span>{ALERT_LABEL[r.alert.level]} · {remaining(r.alert.msUntil)}{r.alert.fatalOnMiss ? " · FATAL" : ""}</span>
-            </div>
-          ))}
-        </section>
-      ) : null}
-
       <div className="opportunity-list">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">Radar — descobrir &amp; triar</p>
-            <h2>Novos editais no raio</h2>
+            <p className="eyebrow">Inbox priorizado</p>
+            <h2>O que olhar agora</h2>
           </div>
           <button type="button">Dry-run</button>
         </div>
