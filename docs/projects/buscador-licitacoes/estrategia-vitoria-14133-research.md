@@ -43,4 +43,17 @@ Ganhar obra sob a 14.133 = **(1) SOBREVIVER à habilitação técnica → (2) pr
 **Tier 3 — defesa/impugnação (não perder por exigência ilegal):**
 - **E. Gatilhos de impugnação**: gate dos 4% (#1) + disponibilidade≠propriedade (#10) como novos suspicion signals, com minuta de impugnação fundamentada.
 
-**Já feito:** exequibilidade 75/85% (#9 ✅).
+**Já feito:** exequibilidade 75/85% (#9 ✅) · **validação do piso com SINAPI/BDI** (TCU Acórdão 2622/2013 — open question #4 fechada ✅): `lib/noyce-bdi.ts` classifica o tipo de obra, traz a faixa de BDI de referência, estima o custo direto, valida o BDI implícito do edital (flag de orçamento gordo > 3º quartil) e calcula o **lance seguro** = max(break-even ENIAC, piso 75%) — nunca abaixo do custo direto. Painel "Piso de preço (SINAPI/BDI)" no Analisar.
+
+### Tabela BDI de referência (TCU Acórdão 2622/2013, % sobre custo direto)
+
+| Tipo de obra | 1º quartil | Médio | 3º quartil (teto) |
+|---|---|---|---|
+| Edifícios | 20,34 | 22,12 | 25,00 |
+| Rodovias/ferrovias | 19,60 | 20,97 | 24,23 |
+| Água/esgoto | 20,76 | 24,18 | 26,44 |
+| Energia elétrica | 24,00 | 25,84 | 27,86 |
+| Portuárias | 22,80 | 27,48 | 30,95 |
+| Fornecimento mat/equip | 11,10 | 14,02 | 16,80 |
+
+Fontes: TCU Acórdão 2622/2013-Plenário; Lei 14.133 art. 23 (SINAPI/SICRO) e art. 59 §§4-5. Caveat: faixas de BDI são presunções relativas (Súmula TCU 258 — orçamento gordo é gatilho de impugnação, não nulidade). Para precisão, anexar o orçamento analítico do edital (custo direto real) — sem ele o custo é estimado pelo BDI mediano.

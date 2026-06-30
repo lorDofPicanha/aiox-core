@@ -11,6 +11,7 @@ import { ReviewDossier } from "@/components/analisar/ReviewDossier";
 import { WinIntelPanel } from "@/components/analisar/WinIntelPanel";
 import { MeAdvantagesPanel } from "@/components/analisar/MeAdvantagesPanel";
 import { TecnicoStrategyPanel } from "@/components/analisar/TecnicoStrategyPanel";
+import { PriceFloorPanel } from "@/components/analisar/PriceFloorPanel";
 import { buildImpugnacaoMinuta } from "@/lib/noyce-impugnacao-minuta";
 import { eniacCcp } from "@/lib/noyce-data";
 import { useWinIntel } from "@/components/analisar/useWinIntel";
@@ -250,6 +251,8 @@ export function AnalisarTab({
       {interested ? <WinIntelPanel opportunity={opportunity} intel={winIntel} /> : null}
 
       <TecnicoStrategyPanel erm={erm} />
+
+      <PriceFloorPanel opportunity={opportunity} />
 
       <MeAdvantagesPanel opportunity={opportunity} erm={erm} />
 
