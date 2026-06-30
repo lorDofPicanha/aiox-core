@@ -73,57 +73,52 @@ export function DocChat({
   }
 
   return (
-    <div className="doc-chat" style={{ marginTop: 8, borderTop: "1px solid #ccc", paddingTop: 8 }}>
-      <div
-        className="doc-chat-log"
-        style={{ display: "flex", flexDirection: "column", gap: 8, margin: "8px 0", maxHeight: 320, overflowY: "auto" }}
-      >
+    <div className="doc-chat">
+      <div className="doc-chat-log">
         {/* Versão atual do documento, como ponto de partida da conversa. */}
-        <div style={{ background: "#f6f5f0", borderRadius: 8, padding: "6px 10px", fontSize: 12 }}>
-          <strong style={{ fontSize: 11, color: "#666" }}>DOCUMENTO ATUAL</strong>
-          <div style={{ whiteSpace: "pre-wrap", marginTop: 2 }}>{item.valorFinal}</div>
+        <div className="doc-chat-current">
+          <strong>DOCUMENTO ATUAL</strong>
+          <div className="body">{item.valorFinal}</div>
         </div>
 
         {bubbles.map((b, i) =>
           b.role === "user" ? (
-            <div key={i} style={{ alignSelf: "flex-end", background: "#e7eefc", borderRadius: 8, padding: "6px 10px", fontSize: 13, maxWidth: "85%" }}>
+            <div key={i} className="doc-chat-bubble user">
               {b.text}
             </div>
           ) : (
-            <div key={i} style={{ alignSelf: "flex-start", background: "#eef7f0", borderRadius: 8, padding: "6px 10px", fontSize: 13, maxWidth: "92%" }}>
-              <em style={{ color: "#1c6c44" }}>{b.text}</em>
-              {b.doc && (
-                <div style={{ whiteSpace: "pre-wrap", marginTop: 6, paddingTop: 6, borderTop: "1px dashed #b6d4c2", fontSize: 12 }}>
-                  {b.doc}
-                </div>
-              )}
+            <div key={i} className="doc-chat-bubble assistant">
+              <em>{b.text}</em>
+              {b.doc && <div className="doc-rewrite">{b.doc}</div>}
             </div>
           ),
         )}
-        {loading && <div style={{ alignSelf: "flex-start", fontSize: 12, color: "#666" }}>IA reescrevendo…</div>}
+        {loading && <div className="doc-chat-typing">IA reescrevendo…</div>}
       </div>
 
-      {error && <small style={{ display: "block", color: "#a33", marginBottom: 4 }}>⚠️ {error}</small>}
+      {error && <small className="doc-chat-error">⚠️ {error}</small>}
 
-      <div style={{ display: "flex", gap: 6 }}>
-        <input
-          type="text"
-          aria-label="Instrução de correção"
-          placeholder='ex.: "esse atestado é só corresponsável, ajuste o texto"'
-          value={instruction}
-          onChange={(e) => setInstruction(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") send();
-          }}
-          disabled={loading}
-          style={{ flex: 1 }}
-        />
-        <button type="button" onClick={send} disabled={loading || !instruction.trim()}>
-          {loading ? "…" : "Enviar"}
+      <textarea
+        className="doc-chat-input"
+        aria-label="Instrução de correção"
+        placeholder={'Descreva o que ajustar — ex.: "esse atestado é só corresponsável, ajuste o texto"  (Enter envia · Shift+Enter quebra linha)'}
+        value={instruction}
+        onChange={(e) => setInstruction(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault();
+            send();
+          }
+        }}
+        disabled={loading}
+        rows={3}
+      />
+
+      <div className="doc-chat-actions">
+        <button type="button" className="doc-chat-send" onClick={send} disabled={loading || !instruction.trim()}>
+          {loading ? "Enviando…" : "Enviar"}
         </button>
-      </div>
-
-      <div style={{ display: "flex", gap: 6, marginTop: 8 }}>
+        <span className="spacer" />
         <button
           type="button"
           className="approve"
