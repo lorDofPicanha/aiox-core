@@ -596,6 +596,15 @@
 .win-chip.grounding-inferred{background:#f4f8fd;border-color:#2d5aa055;color:#2d5aa0}
 .win-chip.grounding-gap{background:#fdf0ef;border-color:#a3333355;color:#a33}
 .win-intel-actions{margin-top:12px}
+/* Trunfos de ME/EPP (Tier 1) */
+.me-adv{margin-top:18px}
+.me-adv-row{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:8px;background:#fff}
+.me-adv-row.alto{border-color:#3a7a3a55;background:#f4faf4}
+.me-adv-row strong{font-size:12.5px}
+.me-adv-row p{font-size:11.5px;color:var(--ink-2);margin-top:3px;line-height:1.5}
+.me-adv-acao{color:#1c6c44!important;font-weight:600}
+.me-adv-row small{display:block;margin-top:5px;font-family:var(--mono);font-size:9.5px;color:var(--muted)}
+
 .tab-docs{margin-top:18px}
 .tab-docs-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
 .tab-docs-grid .docgen{flex:0 0 auto}

@@ -9,6 +9,7 @@ import { buildNextStep, lacunaTasks, operationalBlockers, operationalState } fro
 import { MarketSection, ScoreBreakdownList } from "@/components/shell/bits";
 import { ReviewDossier } from "@/components/analisar/ReviewDossier";
 import { WinIntelPanel } from "@/components/analisar/WinIntelPanel";
+import { MeAdvantagesPanel } from "@/components/analisar/MeAdvantagesPanel";
 import { useWinIntel } from "@/components/analisar/useWinIntel";
 import { useEditalErm } from "@/components/shell/useEditalErm";
 
@@ -215,6 +216,8 @@ export function AnalisarTab({
       <MarketSection market={opportunity.market} />
 
       {interested ? <WinIntelPanel opportunity={opportunity} intel={winIntel} /> : null}
+
+      <MeAdvantagesPanel opportunity={opportunity} erm={erm} />
 
       <section className="score-breakdown" aria-labelledby="score-breakdown-title">
         <div className="section-heading compact">
