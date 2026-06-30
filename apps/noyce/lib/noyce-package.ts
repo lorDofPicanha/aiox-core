@@ -65,13 +65,37 @@ th{background:#f0ede6}
 .decl{border:1px solid #999;padding:12pt;margin:10pt 0;page-break-inside:avoid}
 .decl h3{margin:0 0 8pt;font-size:12pt}
 .decl .texto{text-align:justify;white-space:pre-wrap}
-.assinatura{margin-top:28pt;text-align:center}
+.local-data{margin-top:20pt;text-align:right;font-size:11pt}
+.assinatura{margin-top:18pt;text-align:center}
 .assinatura .linha{border-top:1px solid #1a1a1a;width:70%;margin:0 auto 4pt}
 .chip{font-size:9pt;color:#555;border:1px solid #aaa;border-radius:4px;padding:1pt 5pt}
 .foot{font-size:9pt;color:#777;margin-top:14pt;border-top:1px solid #ccc;padding-top:6pt}`;
 
 const DISCLAIMER_FOOT =
   "Noyce organiza evidências e lacunas para revisão humana; não substitui análise jurídica nem decisão da ENIAC. Todo ato vinculante (assinatura, envio, lance) é humano.";
+
+/**
+ * Bloco de assinatura formal (padrão vencedor Lei 14.133): LOCAL/DATA + razão social/CNPJ +
+ * representante legal (nome/cargo/CPF/RG). Sem representante no perfil → placeholder marcado.
+ */
+function signatureBlockHtml(ccp: CompanyCapabilityProfile, generatedAtLabel: string): string {
+  const rep = ccp.identity.representanteLegal;
+  const local = ccp.identity.sedeMunicipio || "____________________";
+  const repLine = rep
+    ? `${esc(rep.nome)} — ${esc(rep.cargo)} — CPF ${esc(rep.cpf)}${rep.rg ? ` — RG ${esc(rep.rg)}` : ""}`
+    : "[representante legal — completar no perfil da empresa]";
+  return `<p class="local-data">${esc(local)}, ${esc(generatedAtLabel)}.</p>
+    <div class="assinatura">
+      <div class="linha"></div>
+      <strong>${esc(ccp.identity.razaoSocial)}</strong> — CNPJ ${esc(ccp.identity.cnpj)}<br>
+      ${repLine}
+    </div>`;
+}
+
+/** true quando o perfil ainda não tem o representante legal — documento sai como rascunho. */
+function semRepresentante(ccp: CompanyCapabilityProfile): boolean {
+  return !ccp.identity.representanteLegal?.nome;
+}
 
 export function isPackageFinal(reviewed: readonly ReviewedItem[]): boolean {
   return reviewed.length > 0 && reviewed.every((item) => item.status !== "pendente");
@@ -126,10 +150,7 @@ export function buildIndividualDocHtml(args: {
     <h3>${esc(titulo.toUpperCase())} <span class="chip">${item!.status === "corrigido" ? "texto do revisor humano" : "aprovado em revisão humana"}</span></h3>
     <p class="meta">Ref.: ${esc(opportunity.title)} — ${esc(opportunity.buyer)}</p>
     <p class="texto">${esc(item!.valorFinal)}</p>
-    <div class="assinatura">
-      <div class="linha"></div>
-      <strong>${esc(ccp.identity.razaoSocial)}</strong><br>CNPJ ${esc(ccp.identity.cnpj)}
-    </div>
+    ${signatureBlockHtml(ccp, generatedAtLabel)}
   </div>`;
 
   return `<!doctype html>
@@ -230,7 +251,7 @@ export function buildTabDossierHtml(args: {
   const pendentes = pecas.filter((i) => i.status === "pendente");
   const ermRows = ermRowsForTab(tab, erm);
   // Portão humano: tarja de rascunho se há peça pendente OU exigência sem nenhuma peça preparada.
-  const incompleto = pendentes.length > 0 || (ermRows.length > 0 && pecas.filter((p) => p.status !== "pendente").length === 0);
+  const incompleto = pendentes.length > 0 || semRepresentante(ccp) || (ermRows.length > 0 && pecas.filter((p) => p.status !== "pendente").length === 0);
   const watermark = incompleto ? `<div class="watermark">RASCUNHO — REVISAR ANTES DE USAR</div>` : "";
 
   const exigenciasHtml = ermRows.length
@@ -249,7 +270,7 @@ export function buildTabDossierHtml(args: {
         const corpo = pend
           ? `<p class="texto">Documento ainda não revisado/aprovado. O texto assinável só é emitido após revisão humana.</p>`
           : `<p class="texto">${esc(i.valorFinal)}</p>
-        <div class="assinatura"><div class="linha"></div><strong>${esc(ccp.identity.razaoSocial)}</strong><br>CNPJ ${esc(ccp.identity.cnpj)}</div>`;
+        ${signatureBlockHtml(ccp, generatedAtLabel)}`;
         return `<div class="decl"><h3>${esc(i.label.toUpperCase())} <span class="chip">${chip}</span></h3>
       <p class="meta">${esc(i.proveniencia)}</p>${corpo}</div>`;
       })

@@ -79,10 +79,11 @@ test("carries grounded 2025 patrimonioLiquido extracted from the real balance (D
   assert.match(String(financial2025.fonte).toLowerCase(), /balan|pymupdf/);
 });
 
-test("seed does not carry CPF, admin, or credential fields", () => {
+test("seed traz representante legal (exigido p/ documento assinável) mas NUNCA senha/token/credencial", () => {
+  // O representante legal (nome/CPF/cargo) é dado de NEGÓCIO necessário ao bloco de assinatura do
+  // padrão vencedor (Lei 14.133) — deve estar presente. O que NÃO pode vazar é segredo de acesso.
+  assert.ok(seed.identity.representanteLegal?.nome, "seed deve ter o representante legal");
+  assert.ok(seed.identity.representanteLegal?.cpf, "representante deve ter CPF p/ assinatura");
   const serialized = JSON.stringify(seed).toLowerCase();
-
-  assert.doesNotMatch(serialized, /cpf/);
-  assert.doesNotMatch(serialized, /admin/);
-  assert.doesNotMatch(serialized, /credencial|credential/);
+  assert.doesNotMatch(serialized, /senha|password|token|secret|api[_-]?key|credencial|credential/);
 });

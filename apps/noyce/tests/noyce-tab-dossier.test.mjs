@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { buildTabDossierHtml } from "../lib/noyce-package.ts";
 
-const CCP = { identity: { razaoSocial: "ENIAC ENGENHARIA LTDA", cnpj: "12.345.678/0001-90" } };
+const CCP = { identity: { razaoSocial: "ENIAC ENGENHARIA LTDA", cnpj: "12.345.678/0001-90", sedeMunicipio: "Águas Lindas de Goiás-GO", representanteLegal: { nome: "Lucas Cardoso Fernandes", cpf: "028.045.341-89", cargo: "Administrador", rg: null } } };
 const OPP = { title: "Reforma de escola municipal", buyer: "Município X" };
 
 const ERM = {

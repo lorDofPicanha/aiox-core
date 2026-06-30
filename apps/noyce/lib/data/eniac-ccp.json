@@ -5,7 +5,11 @@
     "creaEmpresa": "CREA-GO 39711",
     "porte": "ME",
     "regime": "Simples",
-    "sedeMunicipioIbge": "5200258"
+    "sedeMunicipioIbge": "5200258",
+    "sedeMunicipio": "Águas Lindas de Goiás-GO",
+    "nire": "52600939599",
+    "representanteLegal": { "nome": "Lucas Cardoso Fernandes", "cpf": "028.045.341-89", "cargo": "Administrador", "rg": null },
+    "contador": { "nome": "Arisneto Ribeiro Gonçalves", "crc": "CRC-GO 024935" }
   },
   "rts": [
     {

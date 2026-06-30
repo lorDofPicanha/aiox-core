@@ -305,6 +305,13 @@ export interface CompanyIdentity {
   porte: "ME" | "EPP" | "DEMAIS" | null;
   regime: "Simples" | "Lucro Presumido" | "Lucro Real" | null;
   sedeMunicipioIbge: string;
+  /** Município/UF da sede por extenso, p/ o LOCAL do fecho ("Águas Lindas de Goiás-GO"). Opcional. */
+  sedeMunicipio?: string;
+  nire?: string;
+  /** Representante legal que assina pela empresa — bloco de assinatura sem lacuna (padrão vencedor). */
+  representanteLegal?: { nome: string; cpf: string; cargo: string; rg?: string | null };
+  /** Contador responsável (CRC) — usado na declaração econômico-financeira/balanço. */
+  contador?: { nome: string; crc: string };
 }
 
 export interface TechnicalProfessional {
