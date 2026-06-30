@@ -10,6 +10,7 @@ import { MarketSection, ScoreBreakdownList } from "@/components/shell/bits";
 import { ReviewDossier } from "@/components/analisar/ReviewDossier";
 import { WinIntelPanel } from "@/components/analisar/WinIntelPanel";
 import { MeAdvantagesPanel } from "@/components/analisar/MeAdvantagesPanel";
+import { TecnicoStrategyPanel } from "@/components/analisar/TecnicoStrategyPanel";
 import { useWinIntel } from "@/components/analisar/useWinIntel";
 import { useEditalErm } from "@/components/shell/useEditalErm";
 
@@ -216,6 +217,8 @@ export function AnalisarTab({
       <MarketSection market={opportunity.market} />
 
       {interested ? <WinIntelPanel opportunity={opportunity} intel={winIntel} /> : null}
+
+      <TecnicoStrategyPanel erm={erm} />
 
       <MeAdvantagesPanel opportunity={opportunity} erm={erm} />
 
