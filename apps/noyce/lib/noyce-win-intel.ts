@@ -38,6 +38,9 @@ export const WIN_TAB_LABEL: Record<WinTab, string> = {
   proposta: "Proposta e planilha",
 };
 
+/** Sugestões agrupadas por aba (saída de mergeWinIntel). */
+export type WinByTab = Record<WinTab, WinSuggestion[]>;
+
 export interface WinSuggestion {
   tab: WinTab;
   /** Ação curta — o "o que adicionar". */

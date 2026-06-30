@@ -2,9 +2,18 @@
 // ao marcar interesse no Monitorar, o motor pré-preenche TUDO que a licitação vai precisar;
 // o humano revisa item a item; o que o humano CORRIGIR fica travado — o motor nunca
 // sobrescreve um valor humano (proveniência vira "humano", com registro do valor original).
-import type { CompanyCapabilityProfile, EditalRequirementsModel, Opportunity } from "./noyce-model";
+import type {
+  CompanyCapabilityProfile,
+  EditalRequirementsModel,
+  HabilitationBlockResult,
+  HabilitationResult,
+  HabilitationStatus,
+  Opportunity,
+  RequirementEvaluation,
+} from "./noyce-model";
 import { derivePorte } from "./noyce-porte.ts";
 import { getTemplate, mapDeclaracaoLabel, type DeclaracaoTipo } from "./noyce-declaracoes.ts";
+import { buildHabilitationResult } from "./noyce-habilitation.ts";
 
 export interface ReviewItem {
   id: string;
@@ -164,6 +173,110 @@ function buildCertidoesExigidas(oid: string, erm: EditalRequirementsModel): Revi
   }));
 }
 
+// ───────────────────────── Documentos por bloco de habilitação (Fase 2) ─────────────────────────
+// Cada bloco do HabilitationResult (cruzamento ACERVO REAL × ERM do edital) vira um DOCUMENTO no
+// dossiê — não mais uma simples nota. Conteúdo 100% grounded no motor; requer correção humana quando
+// o requisito não é plenamente coberto (não se assina capacidade que não se tem — Justen/Niebuhr).
+
+const HAB_STATUS_PT: Record<HabilitationStatus, string> = {
+  ATENDE: "atende",
+  ATENDE_COM_RESSALVA: "atende com ressalva",
+  PARCIAL: "parcial",
+  NAO_ATENDE: "não atende",
+  INDETERMINADO: "indeterminado",
+};
+
+const STATUS_FRACO = new Set<HabilitationStatus>(["NAO_ATENDE", "INDETERMINADO", "PARCIAL"]);
+
+function evalLinha(ev: RequirementEvaluation): string {
+  const un = ev.unidade ? ` ${ev.unidade}` : "";
+  const partes: string[] = [`Status: ${HAB_STATUS_PT[ev.status]}.`];
+  if (ev.qtdMin !== undefined && ev.qtdMin !== null) partes.push(`Exigido: ${ev.qtdMin}${un}.`);
+  if (ev.disponivel !== undefined && ev.disponivel !== null) {
+    const cons =
+      ev.disponivelConservador !== undefined &&
+      ev.disponivelConservador !== null &&
+      ev.disponivelConservador !== ev.disponivel
+        ? ` (conservador: ${ev.disponivelConservador}${un})`
+        : "";
+    partes.push(`ENIAC dispõe: ${ev.disponivel}${un}${cons}.`);
+  }
+  if (ev.evidencia.length) partes.push(`Evidência: ${ev.evidencia.join(" ")}`);
+  return partes.join(" ");
+}
+
+/** Converte um bloco do motor numa lista de itens-documento (1 por requisito avaliado). */
+function blockToDocs(oid: string, secao: string, block: HabilitationBlockResult): ReviewItem[] {
+  return block.evaluations.map((ev) => {
+    const fraco = STATUS_FRACO.has(ev.status);
+    return {
+      id: `${oid}-${slug(secao)}-${slug(ev.requisito)}`,
+      secao,
+      label: ev.requisito.slice(0, 90),
+      valorMotor: evalLinha(ev),
+      proveniencia: "Motor Noyce — acervo real da ENIAC × exigência do edital (ERM)",
+      requerCorrecao: fraco || undefined,
+      aviso: fraco ? "Requisito não plenamente coberto pelo acervo — ver lacuna/consórcio na aba Habilitar." : undefined,
+      editalLabel: ev.requisito,
+    };
+  });
+}
+
+/** Qualificação Técnica = atestados/CAT casados (técnico-profissional + técnico-operacional). */
+function buildQualificacaoTecnica(oid: string, result: HabilitationResult): ReviewItem[] {
+  const docs = [
+    ...blockToDocs(oid, "Qualificação Técnica (documento)", result.porBloco.tecnico_profissional),
+    ...blockToDocs(oid, "Qualificação Técnica (documento)", result.porBloco.tecnico_operacional),
+  ];
+  return docs;
+}
+
+/** Qualificação Econômico-Financeira = índices LC/LG/SG + PL/teto, com referência ao balanço real. */
+function buildEconomicoFinanceira(
+  oid: string,
+  ccp: CompanyCapabilityProfile,
+  result: HabilitationResult,
+): ReviewItem[] {
+  const docs = blockToDocs(oid, "Qualificação Econômico-Financeira (documento)", result.porBloco.economico_financeira);
+  const fin = [...ccp.financials].sort((a, b) => b.exercicio - a.exercicio)[0];
+  if (fin) {
+    docs.unshift({
+      id: `${oid}-econfin-balanco`,
+      secao: "Qualificação Econômico-Financeira (documento)",
+      label: `Balanço patrimonial — exercício ${fin.exercicio}`,
+      valorMotor: `PL ${fmtBRL(fin.patrimonioLiquido)} (exercício ${fin.exercicio}). Anexar o Balanço Patrimonial e a DRE assinados pelo contador (CRC) e registrados, com os índices contábeis (LC/LG/SG) calculados.`,
+      proveniencia: fin.fonte || "CCP da ENIAC (balanço)",
+      requerCorrecao: true, // o balanço assinado/registrado é documento real — anexar do vault
+      aviso: "Anexar o balanço assinado pelo contador no vault (aba Governança).",
+    });
+  }
+  return docs;
+}
+
+/** Garantia de proposta — só quando o ERM marca o percentual (condicional ao edital). */
+function buildGarantiaProposta(oid: string, erm: EditalRequirementsModel, opportunity: Opportunity): ReviewItem[] {
+  const raw = erm.economicoFinanceira.garantiaPropostaPct;
+  if (raw === null || !Number.isFinite(raw)) return [];
+  const pct = raw <= 0.2 ? raw * 100 : raw; // normaliza fração→pontos percentuais
+  const est = opportunity.estimatedValue;
+  const valor = est !== null ? (est * pct) / 100 : null;
+  const acimaLimite = pct > 1; // art. 58, §1º: garantia de PROPOSTA limitada a 1% do valor estimado
+  return [
+    {
+      id: `${oid}-garantia-proposta`,
+      secao: "Garantia de Proposta (documento)",
+      label: `Garantia de proposta — ${pct}% do valor estimado`,
+      valorMotor: `Edital exige garantia de proposta de ${pct}%${valor !== null ? ` ≈ ${fmtBRL(valor)}` : ""}. Modalidades (art. 96, Lei 14.133): caução em dinheiro/títulos, seguro-garantia ou fiança bancária. Providenciar e anexar o comprovante válido na data da sessão.`,
+      proveniencia: "ERM do edital (econômico-financeira) + art. 96, Lei 14.133/2021",
+      requerCorrecao: true,
+      aviso: acimaLimite
+        ? "⚠️ Garantia acima de 1% do estimado — excede o limite do art. 58, §1º; avaliar impugnação."
+        : "Anexar o comprovante da garantia no vault (aba Governança).",
+      editalLabel: `Garantia de proposta ${pct}%`,
+    },
+  ];
+}
+
 /** Monta o dossiê pré-preenchido de uma oportunidade marcada como interesse. */
 export function buildReviewDossier(
   opportunity: Opportunity,
@@ -215,6 +328,22 @@ export function buildReviewDossier(
 
   // 3b. Certidões fiscais/trabalhistas EXIGIDAS pelo edital (anexar do vault) — só com ERM.
   if (erm) items.push(...buildCertidoesExigidas(oid, erm));
+
+  // 3c. DOCUMENTOS por bloco de habilitação (Fase 2) — cruzamento ACERVO REAL × ERM ao vivo.
+  // Cada bloco vira um documento, não uma nota: qualificação técnica (CATs casados), econômico-
+  // financeira (índices + balanço) e garantia de proposta (condicional ao edital).
+  // Guarda: só roda o motor com um ERM de forma completa (extractErm/curado sempre traz os arrays
+  // técnicos); um ERM mínimo/parcial não dispara o motor (evita quebra com dado ausente).
+  if (erm && Array.isArray(erm.tecnica?.profissional) && Array.isArray(erm.tecnica?.operacional)) {
+    try {
+      const result = buildHabilitationResult(ccp, erm);
+      items.push(...buildQualificacaoTecnica(oid, result));
+      items.push(...buildEconomicoFinanceira(oid, ccp, result));
+      items.push(...buildGarantiaProposta(oid, erm, opportunity));
+    } catch {
+      /* ERM incompleto p/ o motor — documentos por bloco ficam de fora; declarações/certidões já cobertas acima */
+    }
+  }
 
   // 4. Proposta — valor de abertura sugerido com CLAMP de exequibilidade (A4 — conclave 12/Jun, Justen).
   // Art. 59, §4º: em obras/engenharia, proposta < 75% do orçado é PRESUMIDAMENTE INEXEQUÍVEL (desclassificável).

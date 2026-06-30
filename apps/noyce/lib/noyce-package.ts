@@ -3,11 +3,17 @@
 // declarações revisadas e a lista de anexos do vault; + planilha CSV de proposta na faixa legal.
 // PORTÃO HUMANO: revisão incompleta → marca d'água "RASCUNHO — NÃO REVISADO" em todas as páginas;
 // declarações pendentes entram SÓ como pendência listada, nunca com texto pronto pra assinar.
-import type { CompanyCapabilityProfile, HabilitationRequirementCategory, Opportunity } from "./noyce-model";
+import type {
+  CompanyCapabilityProfile,
+  EditalRequirementsModel,
+  HabilitationRequirementCategory,
+  Opportunity,
+} from "./noyce-model";
 import type { ChecklistItem } from "./noyce-checklist.ts";
 import type { ReviewedItem } from "./noyce-review.ts";
 import type { VictoryAction } from "./noyce-victory-plan.ts";
 import type { VaultDocMeta } from "./noyce-vault.ts";
+import { WIN_TAB_LABEL, type WinSuggestion, type WinTab } from "./noyce-win-intel.ts";
 
 /**
  * Seção de consórcio no dossiê (Story 30.2 — ADIADA nesta story 30.4).
@@ -144,6 +150,151 @@ ${watermark}
 </body></html>`;
 }
 
+// ── Documento COMPLETO por aba (30/Jun) ───────────────────────────────────────
+// "Cada aba (fiscal, técnica, econômico-financeira, jurídica, proposta) gera UM documento com tudo
+// que o edital pede": junta (A) todas as EXIGÊNCIAS do edital para a aba [ERM], (B) as PEÇAS
+// preparadas (declarações/proposta revisadas — texto assinável quando aprovado, RASCUNHO quando
+// pendente), e (C) as SUGESTÕES p/ vencer do histórico do órgão. Entrega pronta p/ revisão humana;
+// se tudo certo, é o material usado direto pra dar os lances. Mesma disciplina de marca d'água.
+
+/** A aba do dossiê (WinTab) ↦ categorias de habilitação que alimentam as PEÇAS preparadas. */
+const TAB_TO_CATEGORIES: Record<WinTab, HabilitationRequirementCategory[]> = {
+  fiscal: ["fiscal", "trabalhista"],
+  tecnica: ["tecnica"],
+  economico_financeira: ["economico_financeira"],
+  juridica: ["juridica", "outro"],
+  proposta: ["proposta"],
+};
+
+interface ErmRow {
+  label: string;
+  detalhe: string;
+}
+
+/** Enumera TODAS as exigências do edital para a aba (a partir do ERM). Vazio = ERM não traz a seção. */
+function ermRowsForTab(tab: WinTab, erm: EditalRequirementsModel | null): ErmRow[] {
+  if (!erm) return [];
+  const rows: ErmRow[] = [];
+  if (tab === "fiscal") {
+    for (const cnd of erm.fiscalTrabalhista.CNDs ?? [])
+      rows.push({ label: `Certidão exigida: ${cnd}`, detalhe: "Certidão negativa/positiva-com-efeitos vigente na data da sessão." });
+    if (erm.fiscalTrabalhista.SICAF) rows.push({ label: "Cadastro SICAF", detalhe: "Regularidade comprovada via SICAF." });
+  } else if (tab === "tecnica") {
+    for (const p of erm.tecnica.profissional ?? [])
+      rows.push({ label: `Profissional: ${p.servico}`, detalhe: p.qtdMin ? `Mínimo ${p.qtdMin}${p.un ? " " + p.un : ""}.` : "Comprovação de vínculo/responsável técnico." });
+    for (const o of erm.tecnica.operacional ?? [])
+      rows.push({ label: `Capacidade operacional: ${o.servico}`, detalhe: o.qtdMin ? `Atestado cobrindo ≥ ${o.qtdMin}${o.un ? " " + o.un : ""}${o.qtdObjeto ? ` (objeto ${o.qtdObjeto}${o.un ? " " + o.un : ""})` : ""}.` : "Atestado de capacidade técnica em nome da empresa." });
+    for (const parc of erm.tecnica.parcelasMaiorRelevancia ?? [])
+      rows.push({ label: `Parcela de maior relevância: ${parc}`, detalhe: "Acervo deve comprovar esta parcela específica." });
+  } else if (tab === "economico_financeira") {
+    const ef = erm.economicoFinanceira;
+    if (ef.exigePL) rows.push({ label: "Patrimônio líquido mínimo", detalhe: ef.percentualPL != null ? `${ef.percentualPL}% do valor estimado.` : "Percentual conforme edital." });
+    for (const [k, v] of Object.entries(ef.indices ?? {})) if (v != null) rows.push({ label: `Índice contábil ${k}`, detalhe: `Mínimo ${v} (do balanço).` });
+    if (ef.garantiaPropostaPct != null) rows.push({ label: "Garantia de proposta", detalhe: `${ef.garantiaPropostaPct}% (art. 58).` });
+    rows.push({ label: "Balanço patrimonial / certidão de falência", detalhe: "Qualificação econômico-financeira (art. 69)." });
+  } else if (tab === "juridica") {
+    for (const d of erm.juridica.declaracoes ?? []) rows.push({ label: `Declaração: ${d}`, detalhe: "Texto assinável exigido pelo edital." });
+    rows.push({ label: "Habilitação jurídica (ato constitutivo)", detalhe: "Contrato/estatuto social e representação (art. 66)." });
+  } else if (tab === "proposta") {
+    rows.push({ label: "Proposta de preços", detalhe: "Dentro da faixa legal (piso 75%, art. 59 §4º), critério de julgamento do edital." });
+    rows.push({ label: "Planilha de composição de custo + BDI", detalhe: "Detalhada por item, total recomputado." });
+    if (erm.meta.criterioJulgamento) rows.push({ label: "Critério de julgamento", detalhe: esc(erm.meta.criterioJulgamento) });
+  }
+  return rows;
+}
+
+const WIN_IMPACT_TAG: Record<WinSuggestion["impacto"], string> = { alto: "ALTO", medio: "médio", baixo: "baixo" };
+
+/**
+ * HTML autocontido (A4) de UM documento por aba — pronto p/ revisão humana e uso direto.
+ * `winSuggestions` deve já vir filtrado para a aba (mergeWinIntel(...)[tab]).
+ */
+export function buildTabDossierHtml(args: {
+  tab: WinTab;
+  opportunity: Opportunity;
+  ccp: CompanyCapabilityProfile;
+  erm: EditalRequirementsModel | null;
+  reviewed: readonly ReviewedItem[];
+  winSuggestions: readonly WinSuggestion[];
+  generatedAtLabel: string;
+}): string {
+  const { tab, opportunity, ccp, erm, reviewed, winSuggestions, generatedAtLabel } = args;
+  const abaLabel = WIN_TAB_LABEL[tab];
+  const cats = TAB_TO_CATEGORIES[tab];
+
+  // PEÇAS preparadas: reviewed cuja seção mapeia numa categoria da aba.
+  const pecas = reviewed.filter((i) => {
+    const c = reviewSecaoToCategory(i.secao);
+    return c !== null && cats.includes(c);
+  });
+  const pendentes = pecas.filter((i) => i.status === "pendente");
+  const ermRows = ermRowsForTab(tab, erm);
+  // Portão humano: tarja de rascunho se há peça pendente OU exigência sem nenhuma peça preparada.
+  const incompleto = pendentes.length > 0 || (ermRows.length > 0 && pecas.filter((p) => p.status !== "pendente").length === 0);
+  const watermark = incompleto ? `<div class="watermark">RASCUNHO — REVISAR ANTES DE USAR</div>` : "";
+
+  const exigenciasHtml = ermRows.length
+    ? `<h2>Exigências do edital — ${esc(abaLabel)}</h2>
+    <table><tr><th>Exigência</th><th>O que o edital pede</th></tr>
+    ${ermRows.map((r) => `<tr><td>${esc(r.label)}</td><td>${r.detalhe}</td></tr>`).join("\n    ")}
+    </table>`
+    : `<h2>Exigências do edital — ${esc(abaLabel)}</h2><p class="meta">ERM ainda não extraído para esta aba — extraia o edital (PNCP) para listar as exigências.</p>`;
+
+  const pecasHtml = pecas.length
+    ? `<h2>Documentos preparados</h2>
+    ${pecas
+      .map((i) => {
+        const pend = i.status === "pendente";
+        const chip = pend ? "pendente de revisão humana" : i.status === "corrigido" ? "texto do revisor humano" : "aprovado em revisão humana";
+        const corpo = pend
+          ? `<p class="texto">Documento ainda não revisado/aprovado. O texto assinável só é emitido após revisão humana.</p>`
+          : `<p class="texto">${esc(i.valorFinal)}</p>
+        <div class="assinatura"><div class="linha"></div><strong>${esc(ccp.identity.razaoSocial)}</strong><br>CNPJ ${esc(ccp.identity.cnpj)}</div>`;
+        return `<div class="decl"><h3>${esc(i.label.toUpperCase())} <span class="chip">${chip}</span></h3>
+      <p class="meta">${esc(i.proveniencia)}</p>${corpo}</div>`;
+      })
+      .join("\n    ")}`
+    : `<h2>Documentos preparados</h2><p class="meta">Nenhuma peça gerada para esta aba ainda — as certidões/atestados vêm como anexos do vault (Governança).</p>`;
+
+  const winHtml = winSuggestions.length
+    ? `<h2>Sugestões para vencer — histórico do órgão</h2>
+    <table><tr><th>Impacto</th><th>O que adicionar</th><th>Por quê / fonte</th></tr>
+    ${winSuggestions
+      .map(
+        (s) =>
+          `<tr><td>${WIN_IMPACT_TAG[s.impacto]}</td><td><strong>${esc(s.titulo)}</strong><br>${esc(s.detalhe)}</td><td>${esc(s.porque)}<br><span class="chip">${esc(s.fonte)}</span></td></tr>`,
+      )
+      .join("\n    ")}
+    </table>`
+    : "";
+
+  const resumo = `${pecas.length - pendentes.length}/${pecas.length || 0} peça(s) revisada(s)` + (ermRows.length ? ` · ${ermRows.length} exigência(s)` : "");
+
+  return `<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<title>${esc(abaLabel)} — ${esc(opportunity.title)}</title>
+<style>
+${DOSSIER_STYLE}
+</style></head><body>
+${watermark}
+
+<div class="page">
+  <h1>${esc(abaLabel)}</h1>
+  <p class="meta">Dossiê da aba gerado pelo Noyce em ${esc(generatedAtLabel)} · ${esc(opportunity.title)} — ${esc(opportunity.buyer)} · ${esc(ccp.identity.razaoSocial)} (CNPJ ${esc(ccp.identity.cnpj)})${incompleto ? " · RASCUNHO" : " · pronto para revisão"}</p>
+  <p class="meta">${esc(resumo)}</p>
+
+  ${exigenciasHtml}
+
+  ${pecasHtml}
+
+  ${winHtml}
+
+  <p class="foot">${DISCLAIMER_FOOT}</p>
+</div>
+
+</body></html>`;
+}
+
 export function buildDossierHtml(input: PackageInput): string {
   const { opportunity, ccp, checklist, victoryPlan, reviewed, vaultMeta } = input;
   // AC2 (seção de consórcio) ADIADA — depende da Story 30.2. `input.consortiumDocs` é aceito
@@ -155,6 +306,25 @@ export function buildDossierHtml(input: PackageInput): string {
   const declaracoesRevisadas = declaracoes.filter((i) => i.status !== "pendente");
   const pendentes = reviewed.filter((i) => i.status === "pendente");
   const progress = `${reviewed.length - pendentes.length}/${reviewed.length}`;
+
+  // Visão COMPLETA por bloco — todo documento/exigência do dossiê e seu estado, p/ participar.
+  // Fora as seções já resumidas em tabela própria (certame + frentes do motor).
+  const SECOES_JA_RESUMIDAS = new Set(["Dados do certame", "Habilitação — 4 frentes"]);
+  const secoesDoc = [...new Set(reviewed.map((i) => i.secao))].filter((s) => !SECOES_JA_RESUMIDAS.has(s));
+  const STATUS_DOC: Record<string, string> = { aprovado: "aprovado", corrigido: "corrigido (humano)", pendente: "pendente" };
+  const blocoDocsHtml = secoesDoc
+    .map((secao) => {
+      const linhas = reviewed
+        .filter((i) => i.secao === secao)
+        .map((i) => {
+          // Item PENDENTE não revela conteúdo assinável (invariante: nada assinável antes da revisão).
+          const conteudo = i.status === "pendente" ? "— pendente de revisão humana —" : i.valorFinal;
+          return `<tr><td>${esc(i.label)}</td><td class="${i.status}">${esc(STATUS_DOC[i.status] ?? i.status)}</td><td>${esc(conteudo)}</td></tr>`;
+        })
+        .join("\n      ");
+      return `<h3>${esc(secao)}</h3><table><tr><th>Documento</th><th>Estado</th><th>Conteúdo / situação</th></tr>\n      ${linhas}\n    </table>`;
+    })
+    .join("\n  ");
 
   const watermark = final
     ? ""
@@ -218,6 +388,10 @@ ${watermark}
           .join("")}</table>`
       : `<p class="meta">Nenhum documento no vault — subir certidões/balanço na aba Governança.</p>`
   }
+
+  <h2>Documentos do dossiê (por bloco)</h2>
+  ${blocoDocsHtml || `<p class="meta">Nenhum documento gerado ainda — puxe as exigências do edital.</p>`}
+
   <p class="foot">${DISCLAIMER_FOOT}</p>
 </div>
 
@@ -266,6 +440,16 @@ export interface IndividualDoc {
   fileName?: string;
 }
 
+/** Mapeia a SEÇÃO do dossiê (item gerado) → categoria de habilitação, ou null se não vira documento. */
+function reviewSecaoToCategory(secao: string): HabilitationRequirementCategory | null {
+  if (secao.startsWith("Declarações")) return "outro";
+  if (secao.startsWith("Proposta")) return "proposta";
+  if (secao.startsWith("Qualificação Técnica")) return "tecnica";
+  if (secao.startsWith("Qualificação Econômico-Financeira")) return "economico_financeira";
+  if (secao.startsWith("Garantia de Proposta")) return "outro";
+  return null; // Dados do certame, 4 frentes, Certidões exigidas (= anexo do vault) não são docs gerados
+}
+
 /** Mapeia o tipo do vault → categoria de habilitação para o agrupamento individual. */
 function vaultTypeToCategory(tipo: string): HabilitationRequirementCategory {
   switch (tipo) {
@@ -306,12 +490,11 @@ export function buildIndividualDocList(args: {
   const { reviewed, vaultMeta, asOf } = args;
   const docs: IndividualDoc[] = [];
 
-  // Gerados pela IA: declarações (secao "Declarações…") + proposta (secao "Proposta").
+  // Gerados pelo Noyce: declarações, proposta E os documentos por bloco de habilitação
+  // (qualificação técnica, econômico-financeira, garantia). Cada um vira um documento individual.
   for (const item of reviewed) {
-    const isDecl = item.secao.startsWith("Declarações");
-    const isProposta = item.secao.startsWith("Proposta");
-    if (!isDecl && !isProposta) continue;
-    const categoria: HabilitationRequirementCategory = isProposta ? "proposta" : "outro";
+    const categoria = reviewSecaoToCategory(item.secao);
+    if (categoria === null) continue; // "Dados do certame"/"4 frentes"/"Certidões exigidas" não são docs gerados
     const pendente = item.status === "pendente";
     docs.push({
       id: item.id,

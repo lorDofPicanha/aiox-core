@@ -593,6 +593,9 @@
 .win-chip.grounding-inferred{background:#f4f8fd;border-color:#2d5aa055;color:#2d5aa0}
 .win-chip.grounding-gap{background:#fdf0ef;border-color:#a3333355;color:#a33}
 .win-intel-actions{margin-top:12px}
+.tab-docs{margin-top:18px}
+.tab-docs-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.tab-docs-grid .docgen{flex:0 0 auto}
 .individual-docs{border:1px solid var(--line);border-radius:14px;background:#fff;padding:16px;display:flex;flex-direction:column;gap:8px}
 .review-row.pendente{border-color:#88888855;background:#fafafa}
 .review-row.expirado{border-color:#a3333366;background:#fdf0ef}

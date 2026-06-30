@@ -3,9 +3,9 @@
 // Painel "Sugestões p/ vencer (histórico do órgão)" (30/Jun): mostra, agrupado por aba, o que a
 // licitante pode ADICIONAR para aumentar a chance de vencer — derivado dos últimos meses de
 // contratações parecidas do mesmo órgão. Cada item traz impacto, proveniência (grounding) e fonte.
-import type { EditalRequirementsModel, Opportunity } from "@/lib/noyce-model";
+import type { Opportunity } from "@/lib/noyce-model";
 import { WIN_TABS, WIN_TAB_LABEL, type WinSuggestion } from "@/lib/noyce-win-intel";
-import { useWinIntel } from "@/components/analisar/useWinIntel";
+import type { UseWinIntel } from "@/components/analisar/useWinIntel";
 
 const IMPACT_CHIP: Record<WinSuggestion["impacto"], string> = {
   alto: "⬆ alto",
@@ -21,14 +21,13 @@ const GROUNDING_CHIP: Record<WinSuggestion["grounding"], string> = {
 
 export function WinIntelPanel({
   opportunity,
-  erm,
-  enabled = true,
+  intel,
 }: {
-  opportunity: Pick<Opportunity, "id" | "title" | "buyer" | "estimatedValue" | "market">;
-  erm: EditalRequirementsModel | undefined;
-  enabled?: boolean;
+  opportunity: Pick<Opportunity, "market">;
+  /** Resultado do hook useWinIntel, içado para o AnalisarTab (uma chamada de IA só). */
+  intel: UseWinIntel;
 }) {
-  const { byTab, status, llm, error, total, run } = useWinIntel(opportunity, erm, enabled);
+  const { byTab, status, llm, error, total, run } = intel;
   const market = opportunity.market ?? null;
   const tabsComItens = WIN_TABS.filter((t) => byTab[t].length > 0);
 

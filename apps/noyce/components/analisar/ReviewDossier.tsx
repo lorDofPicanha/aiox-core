@@ -13,16 +13,16 @@ import {
   reviewProgress,
   type ReviewState,
 } from "@/lib/noyce-review";
-import { getCuratedErmForEdital } from "@/lib/noyce-erm";
+import { useEditalErm } from "@/components/shell/useEditalErm";
 import { canGenerate, declarationFileName, generateDeclarationBlob } from "@/lib/noyce-docgen";
 import { buildDossierHtml, buildProposalCsv, isPackageFinal } from "@/lib/noyce-package";
 import { IndividualDocsPanel } from "@/components/analisar/IndividualDocsPanel";
+import { DocChat } from "@/components/analisar/DocChat";
 import { buildVictoryPlan } from "@/lib/noyce-victory-plan";
 import { SCORE_AS_OF } from "@/lib/noyce-data";
 import { loadVaultMeta } from "@/lib/noyce-vault";
 
 const STORAGE_PREFIX = "noyce.review.v1.";
-const ERM_CACHE_PREFIX = "noyce.erm.extracted.v1.";
 
 function loadState(opportunityId: string): ReviewState {
   try {
@@ -36,10 +36,16 @@ function saveState(opportunityId: string, state: ReviewState) {
   globalThis.localStorage?.setItem(STORAGE_PREFIX + opportunityId, JSON.stringify(state));
 }
 
-export function ReviewDossier({ opportunity }: { opportunity: Opportunity }) {
+export function ReviewDossier({
+  opportunity,
+  winByTab,
+}: {
+  opportunity: Opportunity;
+  /** Sugestões competitivas por aba (do useWinIntel no AnalisarTab) — alimentam o doc por aba. */
+  winByTab?: import("@/lib/noyce-win-intel").WinByTab;
+}) {
   const [state, setState] = useState<ReviewState>({});
   const [editing, setEditing] = useState<string | null>(null);
-  const [draft, setDraft] = useState("");
   // Story 30.4: alterna entre o dossiê consolidado (default) e os documentos individuais.
   const [exportMode, setExportMode] = useState<"dossier" | "individual">("dossier");
 
@@ -49,61 +55,12 @@ export function ReviewDossier({ opportunity }: { opportunity: Opportunity }) {
   }, [opportunity.id]);
 
   const liveChecklist = useLiveChecklist(opportunity);
-  // ERM CURADO (hand-verified) tem prioridade. Sem curado, o usuário pode PUXAR do PNCP:
-  // a rota /api/edital-erm baixa o edital + extrai declarações/CNDs (contorna o vault).
-  const curatedErm = useMemo(
-    () => getCuratedErmForEdital({ id: opportunity.id, pncpId: opportunity.id }) ?? undefined,
-    [opportunity.id],
-  );
-  const [extractedErm, setExtractedErm] = useState<EditalRequirementsModel | undefined>(undefined);
-  const [ermStatus, setErmStatus] = useState<"idle" | "loading" | "done" | "error">("idle");
-  const [ermConfidence, setErmConfidence] = useState<{ declaracoes: string; cnds: string } | null>(null);
-
-  // Restaura ERM extraído do cache (evita re-baixar do PNCP a cada abertura).
-  useEffect(() => {
-    setExtractedErm(undefined);
-    setErmConfidence(null);
-    setErmStatus("idle");
-    if (curatedErm) return;
-    const cached = globalThis.localStorage?.getItem(ERM_CACHE_PREFIX + opportunity.id);
-    if (cached) {
-      try {
-        const parsed = JSON.parse(cached);
-        setExtractedErm(parsed.erm);
-        setErmConfidence(parsed.confidence ?? null);
-        setErmStatus("done");
-      } catch {
-        /* cache corrompido — ignora */
-      }
-    }
-  }, [opportunity.id, curatedErm]);
-
-  async function puxarErmDoEdital() {
-    setErmStatus("loading");
-    try {
-      const res = await fetch("/api/edital-erm", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ pncpId: opportunity.id }),
-      });
-      if (!res.ok) throw new Error(String(res.status));
-      const data = await res.json();
-      setExtractedErm(data.erm);
-      setErmConfidence(data.confidence ? { declaracoes: data.confidence.declaracoes, cnds: data.confidence.cnds } : null);
-      setErmStatus("done");
-      globalThis.localStorage?.setItem(
-        ERM_CACHE_PREFIX + opportunity.id,
-        JSON.stringify({ erm: data.erm, confidence: data.confidence }),
-      );
-    } catch {
-      setErmStatus("error");
-    }
-  }
-
-  const erm = curatedErm ?? extractedErm;
+  // ERM CURADO (hand-verified) tem prioridade; senão o usuário PUXA do PNCP. Hook compartilhado
+  // com a HabilitarTab — mesma origem, mesma extração, mesma mensagem de erro (sem duplicar lógica).
+  const erm = useEditalErm(opportunity);
   const dossier = useMemo(
-    () => buildReviewDossier({ ...opportunity, habilitationChecklist: liveChecklist }, eniacCcp, erm),
-    [opportunity, liveChecklist, erm],
+    () => buildReviewDossier({ ...opportunity, habilitationChecklist: liveChecklist }, eniacCcp, erm.erm),
+    [opportunity, liveChecklist, erm.erm],
   );
   const reviewed = useMemo(() => mergeReview(dossier, state), [dossier, state]);
   const progress = reviewProgress(reviewed);
@@ -195,26 +152,26 @@ export function ReviewDossier({ opportunity }: { opportunity: Opportunity }) {
 
       {/* Origem das EXIGÊNCIAS do edital (o que dirige a completude do dossiê). */}
       <div className="review-erm-source" style={{ margin: "8px 0", padding: "8px 12px", borderRadius: 8, background: "#f6f5f0", fontSize: 13 }}>
-        {curatedErm ? (
+        {erm.curated ? (
           <span>📋 Exigências do <strong>edital curado</strong> (verificado à mão) — dossiê dirigido pelo edital.</span>
-        ) : extractedErm ? (
+        ) : erm.erm ? (
           <span>
             📋 Exigências <strong>extraídas do edital (PNCP)</strong>
-            {ermConfidence ? ` — confiança declarações: ${ermConfidence.declaracoes} · certidões: ${ermConfidence.cnds}` : ""}.{" "}
-            <button type="button" onClick={puxarErmDoEdital} disabled={ermStatus === "loading"} style={{ marginLeft: 6 }}>
-              {ermStatus === "loading" ? "puxando…" : "reextrair"}
+            {erm.confidence ? ` — confiança declarações: ${erm.confidence.declaracoes} · certidões: ${erm.confidence.cnds}` : ""}.{" "}
+            <button type="button" onClick={erm.pull} disabled={erm.status === "loading"} style={{ marginLeft: 6 }}>
+              {erm.status === "loading" ? "puxando…" : "reextrair"}
             </button>
-            {(ermConfidence?.declaracoes === "baixa" || ermConfidence?.cnds === "baixa") && (
+            {(erm.confidence?.declaracoes === "baixa" || erm.confidence?.cnds === "baixa") && (
               <small style={{ display: "block", color: "#8a6516" }}>⚠️ confiança baixa — conferir manualmente contra o edital.</small>
             )}
           </span>
         ) : (
           <span>
             📋 Sem edital estruturado — dossiê no conjunto-<strong>praxe</strong> (pode faltar exigência específica deste edital).{" "}
-            <button type="button" onClick={puxarErmDoEdital} disabled={ermStatus === "loading"}>
-              {ermStatus === "loading" ? "puxando do PNCP… (até ~2 min)" : "Puxar exigências do edital (PNCP)"}
+            <button type="button" onClick={erm.pull} disabled={erm.status === "loading"}>
+              {erm.status === "loading" ? "puxando do PNCP… (até ~2 min)" : "Puxar exigências do edital (PNCP)"}
             </button>
-            {ermStatus === "error" && <small style={{ display: "block", color: "#a33" }}>Não consegui puxar do PNCP (id inválido, sem anexo textual ou indisponível). Conferir manualmente.</small>}
+            {erm.status === "error" && erm.errorMsg && <small style={{ display: "block", color: "#a33" }}>⚠️ {erm.errorMsg}</small>}
           </span>
         )}
       </div>
@@ -255,12 +212,9 @@ export function ReviewDossier({ opportunity }: { opportunity: Opportunity }) {
                       <button
                         type="button"
                         className="correct"
-                        onClick={() => {
-                          setEditing(item.id);
-                          setDraft(item.valorMotor);
-                        }}
+                        onClick={() => setEditing(item.id)}
                       >
-                        ✎ Corrigir
+                        💬 Corrigir com IA
                       </button>
                     </>
                   ) : (
@@ -278,27 +232,24 @@ export function ReviewDossier({ opportunity }: { opportunity: Opportunity }) {
                 </div>
                 {editing === item.id ? (
                   <div className="review-edit">
-                    <textarea
-                      aria-label={`Corrigir ${item.label}`}
-                      value={draft}
-                      onChange={(event) => setDraft(event.target.value)}
-                      rows={3}
+                    <DocChat
+                      item={{
+                        id: item.id,
+                        label: item.label,
+                        secao: item.secao,
+                        valorFinal: item.valorFinal,
+                        proveniencia: item.proveniencia,
+                      }}
+                      certame={{
+                        titulo: opportunity.title,
+                        orgao: opportunity.buyer,
+                        empresa: `${eniacCcp.identity.razaoSocial} (CNPJ ${eniacCcp.identity.cnpj})`,
+                      }}
+                      onSave={(correctedText) =>
+                        decide(item.id, { status: "corrigido", valorHumano: correctedText, em: new Date().toISOString() })
+                      }
+                      onCancel={() => setEditing(null)}
                     />
-                    <div>
-                      <button
-                        type="button"
-                        className="approve"
-                        onClick={() =>
-                          decide(item.id, { status: "corrigido", valorHumano: draft.trim(), em: new Date().toISOString() })
-                        }
-                        disabled={!draft.trim()}
-                      >
-                        Salvar correção
-                      </button>
-                      <button type="button" onClick={() => setEditing(null)}>
-                        Cancelar
-                      </button>
-                    </div>
                   </div>
                 ) : null}
               </div>
@@ -345,7 +296,7 @@ export function ReviewDossier({ opportunity }: { opportunity: Opportunity }) {
           </span>
         </div>
       ) : (
-        <IndividualDocsPanel opportunity={opportunity} reviewed={reviewed} />
+        <IndividualDocsPanel opportunity={opportunity} reviewed={reviewed} erm={erm.erm} winByTab={winByTab} />
       )}
 
       {declaracoesProntas.length > 0 ? (
