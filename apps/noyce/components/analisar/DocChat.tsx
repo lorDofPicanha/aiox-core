@@ -74,10 +74,6 @@ export function DocChat({
 
   return (
     <div className="doc-chat" style={{ marginTop: 8, borderTop: "1px solid #ccc", paddingTop: 8 }}>
-      <p className="meta" style={{ marginTop: 0 }}>
-        💬 Corrigir conversando — descreva o que está errado; a IA reescreve o documento citando a fonte e sem inventar número.
-      </p>
-
       <div
         className="doc-chat-log"
         style={{ display: "flex", flexDirection: "column", gap: 8, margin: "8px 0", maxHeight: 320, overflowY: "auto" }}
