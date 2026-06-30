@@ -369,6 +369,88 @@ function buildEconomicoFinanceira(
   ];
 }
 
+// ── Valor por extenso (pt-BR, reais/centavos) — exigência do Modelo F (proposta vencedora) ──
+const UNI = ["", "um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez", "onze", "doze", "treze", "quatorze", "quinze", "dezesseis", "dezessete", "dezoito", "dezenove"];
+const DEZ = ["", "", "vinte", "trinta", "quarenta", "cinquenta", "sessenta", "setenta", "oitenta", "noventa"];
+const CEM = ["", "cento", "duzentos", "trezentos", "quatrocentos", "quinhentos", "seiscentos", "setecentos", "oitocentos", "novecentos"];
+function trio(n: number): string {
+  if (n === 0) return "";
+  if (n === 100) return "cem";
+  const c = Math.floor(n / 100), d = Math.floor((n % 100) / 10), u = n % 10;
+  const parts: string[] = [];
+  if (c) parts.push(CEM[c]);
+  if (d === 1) parts.push(UNI[10 + u]);
+  else {
+    if (d) parts.push(DEZ[d]);
+    if (u) parts.push(UNI[u]);
+  }
+  return parts.join(" e ");
+}
+function inteiroExtenso(n: number): string {
+  if (n === 0) return "zero";
+  const mi = Math.floor(n / 1_000_000), mil = Math.floor((n % 1_000_000) / 1000), r = n % 1000;
+  const p: string[] = [];
+  if (mi) p.push(`${mi === 1 ? "um milhão" : trio(mi) + " milhões"}`);
+  if (mil) p.push(`${mil === 1 ? "mil" : trio(mil) + " mil"}`);
+  if (r) p.push(trio(r));
+  return p.join(" e ");
+}
+export function valorPorExtenso(valor: number): string {
+  const reais = Math.floor(valor);
+  const centavos = Math.round((valor - reais) * 100);
+  // "de reais" quando o valor termina em milhão/milhões exatos (um milhão DE reais).
+  const moeda = reais === 1 ? "real" : reais >= 1_000_000 && reais % 1_000_000 === 0 ? "de reais" : "reais";
+  const ri = `${inteiroExtenso(reais)} ${moeda}`;
+  if (centavos === 0) return ri;
+  return `${ri} e ${inteiroExtenso(centavos)} ${centavos === 1 ? "centavo" : "centavos"}`;
+}
+
+/**
+ * Proposta Comercial (Modelo F do padrão vencedor): documento formal com considerandos, valor por
+ * extenso, validade e cláusula de vinculação — não só o número. `valorProposta` é o valor sugerido.
+ */
+function buildPropostaComercial(
+  oid: string,
+  ccp: CompanyCapabilityProfile,
+  opportunity: Opportunity,
+  valorProposta: number | null,
+): ReviewItem[] {
+  const empresa = `${ccp.identity.razaoSocial}, CNPJ ${ccp.identity.cnpj}`;
+  const semValor = valorProposta === null;
+  const L: string[] = [];
+  L.push(`PROPOSTA COMERCIAL — ${opportunity.title} (${opportunity.buyer}).`);
+  L.push("");
+  L.push("Prezados Senhores,");
+  L.push(`Nos termos do Edital e seus Anexos, ${empresa}, por seu representante legal, apresenta sua PROPOSTA COMERCIAL para o objeto licitado, declarando que:`);
+  L.push("I. esta proposta é firme, vinculante, irrevogável e incondicional, observado o prazo de validade abaixo;");
+  L.push("II. considerou todos os custos diretos e indiretos, tributos, encargos e o BDI necessários à integral execução do objeto, conforme projeto básico e planilhas do Edital;");
+  L.push("III. concorda integralmente com as condições do Edital e seus Anexos e tem pleno conhecimento do objeto e do local de execução;");
+  L.push("IV. o preço proposto observa o piso de exequibilidade do art. 59, §4º, da Lei 14.133/2021.");
+  L.push("");
+  if (semValor) {
+    L.push("PREÇO GLOBAL OFERTADO: a definir pela ENIAC (valor estimado do edital não recuperado) — preencher antes de submeter.");
+  } else {
+    L.push(`PREÇO GLOBAL OFERTADO: ${fmtBRL(valorProposta)} (${valorPorExtenso(valorProposta)}).`);
+  }
+  L.push("VALIDADE DA PROPOSTA: 60 (sessenta) dias contados da data de abertura (art. 90, §4º — conferir prazo do Edital).");
+  L.push("");
+  L.push("O preço será sustentado pela planilha de composição de custo unitário e BDI anexa.");
+
+  return [
+    {
+      id: `${oid}-proposta-comercial`,
+      secao: "Proposta",
+      label: "Proposta Comercial (peça formal)",
+      valorMotor: L.join("\n"),
+      proveniencia: "Modelo F (padrão vencedor Lei 14.133) + valor sugerido do motor",
+      requerCorrecao: semValor || undefined,
+      aviso: semValor
+        ? "Valor estimado não recuperado — definir o preço global antes de submeter."
+        : "Confira o preço final (decisão humana) e anexe a planilha de custo/BDI; valor por extenso gerado automaticamente.",
+    },
+  ];
+}
+
 /** Garantia de proposta — só quando o ERM marca o percentual (condicional ao edital). */
 function buildGarantiaProposta(oid: string, erm: EditalRequirementsModel, opportunity: Opportunity): ReviewItem[] {
   const raw = erm.economicoFinanceira.garantiaPropostaPct;
@@ -470,8 +552,10 @@ export function buildReviewDossier(
   const faixaGarantiaAdicional = est !== null ? est * 0.85 : null;
   let propostaTexto: string;
   let propostaAviso: string | undefined;
+  let valorProposta: number | null = null;
   if (median !== null && est !== null && pisoLegal !== null) {
     const sugerido = Math.min(Math.max(median, pisoLegal), est);
+    valorProposta = sugerido;
     const clampado = sugerido !== median;
     propostaTexto = clampado
       ? `${fmtBRL(sugerido)} — mediana histórica deste órgão (${fmtBRL(median)}) está ${median < pisoLegal ? "ABAIXO do piso legal de exequibilidade" : "acima do estimado"}; sugerido o limite legal. Piso art. 59 §4º: ${fmtBRL(pisoLegal)} (75% do estimado).`
@@ -492,6 +576,9 @@ export function buildReviewDossier(
     proveniencia: median !== null ? "Vencedores reais PNCP + clamp art. 59 §§4º-5º" : "Faixa legal art. 59 — sem histórico recuperável",
     aviso: propostaAviso,
   });
+
+  // 4b. Proposta Comercial formal (Modelo F do padrão vencedor) — peça pronta, não só o número.
+  items.push(...buildPropostaComercial(oid, ccp, opportunity, valorProposta ?? (est !== null ? est : null)));
 
   // Guarda anti-placeholder (A3): nenhum texto com reticências/colchetes-de-preenchimento em
   // DECLARAÇÃO pode ser aprovável como está — placeholder assinado é bomba armada (Niebuhr).
