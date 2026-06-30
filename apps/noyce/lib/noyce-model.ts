@@ -445,6 +445,8 @@ export interface EditalRequirementsModel {
     aceitaAcervoConsorcio: boolean | null;
     restricaoTempoLocal: boolean | null;
     marcaSemSimilar: boolean | null;
+    /** Edital exige PROPRIEDADE de equipamento/instalação (art. 67 III só admite disponibilidade). */
+    exigePropriedade?: boolean | null;
     clausula: ClauseReference | null;
   };
   juridica: {
@@ -465,7 +467,9 @@ export type SuspicionType =
   | "QUANTITATIVO_ACIMA_TETO"
   | "RESTRICAO_TEMPO_LOCAL"
   | "MARCA_SEM_SIMILAR"
-  | "INDICE_ECON_FIN_SEM_JUSTIFICATIVA";
+  | "INDICE_ECON_FIN_SEM_JUSTIFICATIVA"
+  | "VEDACAO_SOMATORIO_SEM_MOTIVO"
+  | "EXIGE_PROPRIEDADE_EQUIP";
 
 export type SuspicionSeverity = "alta" | "media" | "revisao";
 

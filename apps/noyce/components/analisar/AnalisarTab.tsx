@@ -11,6 +11,8 @@ import { ReviewDossier } from "@/components/analisar/ReviewDossier";
 import { WinIntelPanel } from "@/components/analisar/WinIntelPanel";
 import { MeAdvantagesPanel } from "@/components/analisar/MeAdvantagesPanel";
 import { TecnicoStrategyPanel } from "@/components/analisar/TecnicoStrategyPanel";
+import { buildImpugnacaoMinuta } from "@/lib/noyce-impugnacao-minuta";
+import { eniacCcp } from "@/lib/noyce-data";
 import { useWinIntel } from "@/components/analisar/useWinIntel";
 import { useEditalErm } from "@/components/shell/useEditalErm";
 
@@ -55,6 +57,32 @@ export function AnalisarTab({
   const habilitationResult = opportunity.habilitationResult ?? null;
   const { erm } = useEditalErm(opportunity);
   const winIntel = useWinIntel(opportunity, erm, interested);
+
+  // Tier 3: gera e baixa a minuta de impugnação fundamentada a partir de um sinal de risco.
+  function baixarImpugnacao(signal: SuspicionSignal) {
+    const m = buildImpugnacaoMinuta({
+      signal,
+      ccp: eniacCcp,
+      certame: { titulo: opportunity.title, orgao: opportunity.buyer },
+      dataLimite: impugnationWindowLabel(signal.acao),
+    });
+    const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    const html = `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>${esc(m.titulo)}</title>
+<style>@page{size:A4;margin:20mm}body{font-family:Georgia,'Times New Roman',serif;font-size:12pt;line-height:1.6;color:#1a1a1a}
+.wm{position:fixed;top:44%;left:0;right:0;text-align:center;font-size:28pt;color:rgba(180,40,40,.14);transform:rotate(-20deg);font-weight:bold}
+.texto{white-space:pre-wrap}.foot{font-size:9pt;color:#777;margin-top:18pt;border-top:1px solid #ccc;padding-top:6pt}</style></head><body>
+<div class="wm">MINUTA — REVISAR/ASSINAR</div>
+<div class="texto">${esc(m.texto)}</div>
+<p class="foot">${m.avisos.map(esc).join(" · ")}</p>
+</body></html>`;
+    const blob = new Blob([html], { type: "text/html;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `impugnacao-${signal.tipo.toLowerCase()}-${opportunity.id}.html`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
 
   return (
     <section className="area area-analisar">
@@ -185,6 +213,9 @@ export function AnalisarTab({
                   impugnação: {impugnationWindowLabel(signal.acao)}.
                 </p>
                 <p>{SUSPICION_DISCLAIMER}</p>
+                <button type="button" className="docgen" onClick={() => baixarImpugnacao(signal)}>
+                  ⬇ gerar minuta de impugnação
+                </button>
               </div>
               <span>{signal.severidade}</span>
             </div>

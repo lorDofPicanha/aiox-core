@@ -57,6 +57,16 @@ const HOOK_INDICES = {
   descricao: "Indices economico-financeiros exigem justificativa e leitura humana do edital.",
 } satisfies LegalHook;
 
+const HOOK_SOMATORIO = {
+  artigo: "Lei 14.133/2021, art. 67 §2º; TCU Acordao 1153/2024-Plenario",
+  descricao: "Vedacao ao somatorio de atestados e medida excepcional que exige motivacao tecnica de maior complexidade.",
+} satisfies LegalHook;
+
+const HOOK_PROPRIEDADE = {
+  artigo: "Lei 14.133/2021, art. 67 III; Sumula TCU 272",
+  descricao: "O edital so pode exigir INDICACAO de equipamento/instalacao disponivel, nao comprovacao de propriedade.",
+} satisfies LegalHook;
+
 export function buildSuspicionSignals(
   erm: EditalRequirementsModel,
   constants: LegalConstants,
@@ -155,6 +165,16 @@ export function buildSuspicionSignals(
 
   if (technicalClause && erm.tecnica.marcaSemSimilar === true) {
     signals.push(signal("MARCA_SEM_SIMILAR", technicalClause, HOOK_MARCA, "media", impugnationAction));
+  }
+
+  // Vedação ao somatório de atestados SEM motivação (TCU Ac. 1153/2024 — exceção que exige justificar).
+  if (technicalClause && erm.tecnica.somatorio.permitido === false) {
+    signals.push(signal("VEDACAO_SOMATORIO_SEM_MOTIVO", technicalClause, HOOK_SOMATORIO, "alta", impugnationAction));
+  }
+
+  // Exigência de PROPRIEDADE de equipamento/instalação (art. 67 III só admite disponibilidade — Súmula TCU 272).
+  if (technicalClause && erm.tecnica.exigePropriedade === true) {
+    signals.push(signal("EXIGE_PROPRIEDADE_EQUIP", technicalClause, HOOK_PROPRIEDADE, "alta", impugnationAction));
   }
 
   const requiresEconomicIndex = erm.economicoFinanceira.exigePL === true || hasRequiredIndex(erm.economicoFinanceira.indices);

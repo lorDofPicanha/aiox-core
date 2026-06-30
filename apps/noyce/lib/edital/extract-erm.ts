@@ -231,10 +231,17 @@ export function extractErm(sections: EditalSections, fullText = ""): ErmExtracti
       operacional,
       parcelasMaiorRelevancia: null,
       tetoQuantitativo: null,
-      somatorio: { permitido: /somat[óo]rio\s+de\s+atestados|permitid[ao]\s+(?:o\s+)?somat/i.test(scan) ? true : null },
+      somatorio: {
+        permitido: /(?:vedad[ao]|n[ãa]o\s+(?:ser[áa]\s+)?(?:admitid[ao]|aceito|permitid[ao]))[^\n]{0,40}somat[óo]rio|somat[óo]rio[^\n]{0,30}(?:vedad|n[ãa]o\s+ser[áa]\s+admit)/i.test(scan)
+          ? false
+          : /somat[óo]rio\s+de\s+atestados|permitid[ao]\s+(?:o\s+)?somat/i.test(scan)
+            ? true
+            : null,
+      },
       aceitaAcervoConsorcio: /acervo[^\n]{0,40}cons[óo]rcio|cons[óo]rcio[^\n]{0,40}acervo/i.test(scan) ? true : null,
       restricaoTempoLocal: null,
       marcaSemSimilar: null,
+      exigePropriedade: /comprova[çc][ãa]o\s+de\s+propriedade|ser\s+propriet[áa]ri[oa]|frota\s+pr[óo]pria|propriedade\s+d[oe]s?\s+(?:equipamento|ve[íi]culo|m[áa]quina|instala)/i.test(scan) ? true : null,
       clausula: null,
     },
     juridica: { declaracoes, clausula: null },
