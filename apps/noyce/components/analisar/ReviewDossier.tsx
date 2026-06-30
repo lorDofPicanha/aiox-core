@@ -15,7 +15,8 @@ import {
 } from "@/lib/noyce-review";
 import { useEditalErm } from "@/components/shell/useEditalErm";
 import { canGenerate, declarationFileName, generateDeclarationBlob } from "@/lib/noyce-docgen";
-import { buildDossierHtml, buildProposalCsv, isPackageFinal } from "@/lib/noyce-package";
+import { buildDossierHtml, buildIndividualDocHtml, buildProposalCsv, isPackageFinal } from "@/lib/noyce-package";
+import type { HabilitationRequirementCategory } from "@/lib/noyce-model";
 import { IndividualDocsPanel } from "@/components/analisar/IndividualDocsPanel";
 import { DocChat } from "@/components/analisar/DocChat";
 import { buildVictoryPlan } from "@/lib/noyce-victory-plan";
@@ -46,6 +47,14 @@ export function ReviewDossier({
 }) {
   const [state, setState] = useState<ReviewState>({});
   const [editing, setEditing] = useState<string | null>(null);
+  const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  function toggleExpand(id: string) {
+    setExpanded((prev) => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
+  }
   // Story 30.4: alterna entre o dossiê consolidado (default) e os documentos individuais.
   const [exportMode, setExportMode] = useState<"dossier" | "individual">("dossier");
 
@@ -105,6 +114,49 @@ export function ReviewDossier({
     a.download = declarationFileName(item, eniacCcp.identity.cnpj);
     a.click();
     URL.revokeObjectURL(url);
+  }
+
+  // Quais seções são DOCUMENTOS (têm download próprio) vs. info (dados do certame / 4 frentes).
+  function secaoToDocType(secao: string): HabilitationRequirementCategory {
+    if (secao.startsWith("Qualificação Técnica")) return "tecnica";
+    if (secao.startsWith("Qualificação Econômico")) return "economico_financeira";
+    if (secao.startsWith("Proposta")) return "proposta";
+    if (secao.startsWith("Credenciamento")) return "juridica";
+    if (secao.startsWith("Declarações")) return "outro";
+    return "outro";
+  }
+  function isDocumento(secao: string): boolean {
+    return secao.startsWith("Declarações") || secao.includes("(documento)") || secao === "Proposta";
+  }
+
+  // Baixa UM documento (HTML autocontido, imprime → PDF). Resolve "baixar individualmente".
+  // Aprovado/corrigido → peça formal com assinatura. Pendente → rascunho LEGÍVEL (conteúdo +
+  // tarja RASCUNHO), para o usuário ler o documento inteiro antes de aprovar.
+  function baixarDocumento(item: (typeof reviewed)[number]) {
+    let html: string;
+    if (item.status !== "pendente") {
+      html = buildIndividualDocHtml({
+        docType: secaoToDocType(item.secao),
+        opportunity,
+        ccp: eniacCcp,
+        item,
+        generatedAtLabel: new Date().toLocaleString("pt-BR"),
+      });
+    } else {
+      const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      html = `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>${esc(item.label)} — RASCUNHO</title>
+<style>@page{size:A4;margin:18mm}body{font-family:Georgia,'Times New Roman',serif;color:#1a1a1a;font-size:12pt;line-height:1.55}
+.wm{position:fixed;top:42%;left:0;right:0;text-align:center;font-size:32pt;color:rgba(180,40,40,.16);transform:rotate(-22deg);font-weight:bold}
+h1{font-size:18pt;margin:0 0 4pt}.meta{color:#555;font-size:10.5pt}.texto{white-space:pre-wrap;margin-top:12pt}
+.foot{font-size:9pt;color:#777;margin-top:18pt;border-top:1px solid #ccc;padding-top:6pt}</style></head><body>
+<div class="wm">RASCUNHO — NÃO REVISADO</div>
+<h1>${esc(item.label)}</h1>
+<p class="meta">Ref.: ${esc(opportunity.title)} — ${esc(opportunity.buyer)} · ${esc(eniacCcp.identity.razaoSocial)} (CNPJ ${esc(eniacCcp.identity.cnpj)}) · RASCUNHO (não aprovado em revisão)</p>
+<div class="texto">${esc(item.valorFinal)}</div>
+<p class="foot">Rascunho gerado pelo Noyce para leitura. O documento assinável só é emitido após a aprovação humana na revisão.</p>
+</body></html>`;
+    }
+    downloadBlobAs(html, "text/html;charset=utf-8", `documento-${item.id}.html`);
   }
 
   const declaracoesProntas = reviewed.filter((i) => i.secao.startsWith("Declarações") && canGenerate(i));
@@ -197,7 +249,16 @@ export function ReviewDossier({
               <div className={`review-row ${item.status}`} key={item.id}>
                 <div className="review-main">
                   <strong>{item.label}</strong>
-                  <p>{item.valorFinal}</p>
+                  {isDocumento(item.secao) && item.valorFinal.length > 280 ? (
+                    <>
+                      <p className={`review-text ${expanded.has(item.id) ? "" : "clamped"}`}>{item.valorFinal}</p>
+                      <button type="button" className="ver-mais" onClick={() => toggleExpand(item.id)}>
+                        {expanded.has(item.id) ? "▴ ver menos" : "▾ ver documento completo"}
+                      </button>
+                    </>
+                  ) : (
+                    <p>{item.valorFinal}</p>
+                  )}
                   {item.aviso && item.status !== "corrigido" ? (
                     <small className="review-warning">⚠️ {item.aviso}</small>
                   ) : null}
@@ -230,17 +291,20 @@ export function ReviewDossier({
                       </button>
                     </>
                   ) : (
-                    <>
-                      <button type="button" className="reopen" onClick={() => reopen(item.id)}>
-                        {item.status === "aprovado" ? "✓ aprovado" : "🔒 corrigido"} · reabrir
-                      </button>
-                      {item.secao.startsWith("Declarações") ? (
-                        <button type="button" className="docgen" onClick={() => downloadDocx(item)}>
-                          ⬇ gerar .docx
-                        </button>
-                      ) : null}
-                    </>
+                    <button type="button" className="reopen" onClick={() => reopen(item.id)}>
+                      {item.status === "aprovado" ? "✓ aprovado" : "🔒 corrigido"} · reabrir
+                    </button>
                   )}
+                  {isDocumento(item.secao) ? (
+                    <button type="button" className="docgen" onClick={() => baixarDocumento(item)} title="Baixar este documento (HTML — imprimir como PDF)">
+                      ⬇ baixar
+                    </button>
+                  ) : null}
+                  {item.status !== "pendente" && item.secao.startsWith("Declarações") ? (
+                    <button type="button" className="docgen" onClick={() => downloadDocx(item)}>
+                      .docx
+                    </button>
+                  ) : null}
                 </div>
                 {editing === item.id ? (
                   <div className="review-edit">
