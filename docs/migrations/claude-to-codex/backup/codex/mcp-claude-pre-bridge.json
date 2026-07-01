@@ -28,8 +28,8 @@
       "command": "node",
       "args": ["D:/jarvis/mcp-design-studio/dist/index.js"],
       "env": {
-        "FIGMA_TOKEN": "figd_S4pou3jhYpF-u9MDQlvigQF64RrZhTDb8syIkHu-",
-        "UNSPLASH_ACCESS_KEY": "LVbpcmiopk6pt5qVBTFwkhf9Bfp7nTN2a-3DvODVus4"
+        "FIGMA_TOKEN": "",
+        "UNSPLASH_ACCESS_KEY": ""
       }
     },
     "gdrive": {
