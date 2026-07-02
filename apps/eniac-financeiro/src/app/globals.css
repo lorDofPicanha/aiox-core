@@ -2,20 +2,22 @@
 
 /* Tema fintech claro — clareza e velocidade acima de tudo. */
 @theme {
-  --color-background: #f4f5f7;
+  --color-background: #f5f6f8;
   --color-surface: #ffffff;
-  --color-foreground: #0f172a;
-  --color-muted: #f1f5f9;
+  --color-foreground: #0f1c2e;
+  --color-muted: #eef1f5;
   --color-muted-foreground: #64748b;
   --color-border: #e5e8ed;
-  --color-primary: #0f172a;
+  --color-primary: #0e1826;
   --color-primary-foreground: #ffffff;
+  /* Gradiente do cartão-herói (saldo) */
+  --color-ink-soft: #16233a;
 
   /* Semânticas: entrada (verde) / saída (vermelho) */
-  --color-income: #15a34a;
-  --color-income-soft: #e9f7ef;
+  --color-income: #12a150;
+  --color-income-soft: #e7f6ee;
   --color-expense: #e11d48;
-  --color-expense-soft: #fdecef;
+  --color-expense-soft: #fdebef;
   --color-accent: #2563eb;
 
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -27,6 +29,11 @@ body {
   color: var(--color-foreground);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+}
+
+/* Cartão-herói: gradiente ink reusável (saldo, previsão, consolidado) */
+.hero-ink {
+  background: linear-gradient(160deg, var(--color-ink-soft) 0%, var(--color-primary) 70%);
 }
 
 /* Tabular numbers para valores não "dançarem" */

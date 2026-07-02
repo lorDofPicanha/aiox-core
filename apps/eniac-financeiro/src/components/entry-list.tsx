@@ -35,12 +35,12 @@ export function EntryList({ entries }: { entries: Entry[] }) {
     <div className="space-y-4">
       {groups.map((group) => (
         <div key={group.date}>
-          <p className="mb-1.5 px-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <p className="mb-2 px-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
             {dayLabel(group.date)}
           </p>
-          <div className="overflow-hidden rounded-2xl border border-border bg-surface">
-            {group.items.map((e, i) => (
-              <EntryRow key={e.id} entry={e} isLast={i === group.items.length - 1} />
+          <div className="space-y-2">
+            {group.items.map((e) => (
+              <EntryRow key={e.id} entry={e} />
             ))}
           </div>
         </div>
@@ -49,7 +49,7 @@ export function EntryList({ entries }: { entries: Entry[] }) {
   );
 }
 
-function EntryRow({ entry, isLast }: { entry: Entry; isLast: boolean }) {
+function EntryRow({ entry }: { entry: Entry }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [pending, startTransition] = useTransition();
@@ -68,14 +68,14 @@ function EntryRow({ entry, isLast }: { entry: Entry; isLast: boolean }) {
   }
 
   return (
-    <div className={cn(!isLast && "border-b border-border")}>
+    <div className="overflow-hidden rounded-2xl border border-border bg-surface">
       <button
         onClick={() => setOpen((v) => !v)}
-        className="flex w-full items-center gap-3 px-3.5 py-3 text-left active:bg-muted"
+        className="flex w-full items-center gap-3 px-3 py-3 text-left active:bg-muted"
       >
         <span
           className={cn(
-            "flex h-9 w-9 shrink-0 items-center justify-center rounded-full",
+            "flex h-9.5 w-9.5 shrink-0 items-center justify-center rounded-xl",
             isIn ? "bg-income-soft text-income" : "bg-expense-soft text-expense",
           )}
         >
@@ -83,7 +83,7 @@ function EntryRow({ entry, isLast }: { entry: Entry; isLast: boolean }) {
         </span>
 
         <span className="min-w-0 flex-1">
-          <span className="block truncate text-sm font-medium text-foreground">
+          <span className="block truncate text-sm font-semibold text-foreground">
             {entry.description?.trim() || entry.category || (isIn ? "Entrada" : "Saída")}
           </span>
           {entry.category && (
@@ -93,7 +93,7 @@ function EntryRow({ entry, isLast }: { entry: Entry; isLast: boolean }) {
 
         <span
           className={cn(
-            "tnum shrink-0 text-sm font-semibold",
+            "tnum shrink-0 text-sm font-bold",
             isIn ? "text-income" : "text-expense",
           )}
         >
@@ -102,7 +102,7 @@ function EntryRow({ entry, isLast }: { entry: Entry; isLast: boolean }) {
       </button>
 
       {open && (
-        <div className="flex items-center justify-end gap-2 border-t border-border bg-muted/60 px-3.5 py-2">
+        <div className="flex items-center justify-end gap-2 border-t border-border bg-muted/60 px-3 py-2">
           <button
             onClick={remove}
             disabled={pending}

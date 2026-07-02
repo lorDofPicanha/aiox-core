@@ -93,10 +93,10 @@ export function QuickAddSheet({ companyId }: { companyId: string }) {
       <button
         onClick={() => setOpen(true)}
         aria-label="Novo lançamento"
-        className="fixed bottom-20 right-5 z-30 flex items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg shadow-black/20 active:scale-95"
-        style={{ height: 60, width: 60 }}
+        className="fixed bottom-20 right-5 z-30 flex items-center justify-center rounded-[20px] bg-accent text-white shadow-lg shadow-accent/40 transition-transform active:scale-95"
+        style={{ height: 58, width: 58 }}
       >
-        <Plus className="h-7 w-7" />
+        <Plus className="h-7 w-7" strokeWidth={2.25} />
       </button>
 
       {!open ? null : (
@@ -171,10 +171,12 @@ export function QuickAddSheet({ companyId }: { companyId: string }) {
                   key={c}
                   onClick={() => setCategory((cur) => (cur === c ? null : c))}
                   className={cn(
-                    "whitespace-nowrap rounded-full border px-3.5 py-2 text-sm font-medium transition-colors",
+                    "whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-semibold ring-1 transition-colors",
                     category === c
-                      ? "border-primary bg-primary text-primary-foreground"
-                      : "border-border bg-surface text-muted-foreground",
+                      ? type === "in"
+                        ? "bg-income-soft text-income ring-income"
+                        : "bg-expense-soft text-expense ring-expense"
+                      : "bg-muted text-muted-foreground ring-transparent",
                   )}
                 >
                   {c}

@@ -14,23 +14,27 @@ export function BalanceCard({
   monthName: string;
 }) {
   return (
-    <section className="rounded-2xl bg-primary p-5 text-primary-foreground shadow-sm">
+    <section className="hero-ink rounded-[22px] p-5 text-primary-foreground shadow-lg shadow-primary/25">
       <p className="text-sm font-medium text-white/60">Saldo atual</p>
       <p className="tnum mt-1 text-4xl font-bold tracking-tight">
         {formatBRL(summary.balance)}
       </p>
 
-      <div className="mt-5 grid grid-cols-2 gap-3">
-        <div className="rounded-xl bg-white/10 p-3">
-          <div className="flex items-center gap-1.5 text-xs font-medium text-white/70">
-            <ArrowUpRight className="h-3.5 w-3.5 text-income" />
+      <div className="mt-5 grid grid-cols-2 gap-2.5">
+        <div className="rounded-2xl bg-white/[0.08] p-3">
+          <div className="flex items-center gap-1.5 text-xs font-medium text-white/72">
+            <span className="flex h-4 w-4 items-center justify-center rounded-md bg-income/20 text-income">
+              <ArrowUpRight className="h-3 w-3" strokeWidth={2.5} />
+            </span>
             Entradas
           </div>
           <p className="tnum mt-1 text-lg font-semibold">{formatBRL(summary.totalIn)}</p>
         </div>
-        <div className="rounded-xl bg-white/10 p-3">
-          <div className="flex items-center gap-1.5 text-xs font-medium text-white/70">
-            <ArrowDownLeft className="h-3.5 w-3.5 text-expense" />
+        <div className="rounded-2xl bg-white/[0.08] p-3">
+          <div className="flex items-center gap-1.5 text-xs font-medium text-white/72">
+            <span className="flex h-4 w-4 items-center justify-center rounded-md bg-expense/25 text-expense">
+              <ArrowDownLeft className="h-3 w-3" strokeWidth={2.5} />
+            </span>
             Saídas
           </div>
           <p className="tnum mt-1 text-lg font-semibold">{formatBRL(summary.totalOut)}</p>
