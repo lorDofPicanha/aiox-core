@@ -27,7 +27,18 @@ export type PublicReadMode = "open_api" | "public_html" | "none";
 export type DiscoveryRoute = "self" | "pncp";
 
 // Binding acts that always require a human click (never autonomous).
-export const HUMAN_REQUIRED_ACTS = ["lance", "declaracao", "proposta", "recurso"] as const;
+// AMPLIADO (I1 / C-NOVO-6, doc 32 §12.1): os 4 originais + os 3 atos do design v2
+// (contrarrazões, impugnação de edital, resposta a diligência). Esta é a FONTE DE
+// VERDADE única — MAESTRO_BINDING_ACTS (maestro-types.ts) deriva daqui.
+export const HUMAN_REQUIRED_ACTS = [
+  "lance",
+  "declaracao",
+  "proposta",
+  "recurso",
+  "contrarrazoes",
+  "impugnacao_edital",
+  "resposta_diligencia",
+] as const;
 export type BindingAct = (typeof HUMAN_REQUIRED_ACTS)[number];
 
 // Discovery operational radius (Story 30.5 — reunião ENIAC 15/Jun).

@@ -33,11 +33,18 @@ export interface ReviewItem {
 }
 
 export type ReviewDecision =
-  | { status: "aprovado"; em: string }
+  | {
+      status: "aprovado";
+      em: string;
+      /** E4 (Norman): QUEM revisou — nome do revisor deste navegador. Opcional p/ retrocompatibilidade. */
+      por?: string;
+    }
   | {
       status: "corrigido";
       valorHumano: string;
       em: string;
+      /** E4 (Norman): QUEM revisou — nome do revisor deste navegador. Opcional p/ retrocompatibilidade. */
+      por?: string;
       /** E2: correção pode ser um ARQUIVO subido pelo humano (blob no vault) — ele vira o documento oficial do item. */
       arquivoId?: string;
       arquivoNome?: string;
@@ -52,6 +59,8 @@ export interface ReviewedItem extends ReviewItem {
   valorFinal: string;
   valorHumano?: string;
   revisadoEm?: string;
+  /** E4: quem revisou (quando o revisor se identificou). */
+  revisadoPor?: string;
   /** E2: arquivo do revisor humano (substitui a geração .docx deste item). */
   arquivoId?: string;
   arquivoNome?: string;
@@ -354,6 +363,27 @@ function buildEconomicoFinanceira(
   L.push("");
   L.push("Observação: anexar o Balanço Patrimonial e a DRE assinados pelo contador (CRC) e registrados na Junta Comercial.");
 
+  // Modelo J (padrão-ouro AGU/Anexo II Barueri): os índices computados ENVELOPADOS como
+  // DECLARAÇÃO assinável de capacidade financeira — peça do pacote vencedor, não só o quadro.
+  const empresa = `${ccp.identity.razaoSocial} (CNPJ ${ccp.identity.cnpj})`;
+  const idx = [
+    lc !== null ? `Liquidez Corrente (LC) de ${fmtIdx(lc)}` : null,
+    lg !== null ? `Liquidez Geral (LG) de ${fmtIdx(lg)}` : null,
+    sg !== null ? `Solvência Geral (SG) de ${fmtIdx(sg)}` : null,
+  ].filter(Boolean).join(", ");
+  const modeloJ: ReviewItem = {
+    id: `${oid}-decl-capacidade-financeira`,
+    secao: "Declarações (pré-redigidas)",
+    label: "Declaração de capacidade financeira (Modelo J)",
+    valorMotor:
+      `${empresa} declara, sob as penas da lei, que dispõe de capacidade econômico-financeira para arcar integralmente com os encargos decorrentes da execução do objeto licitado, conforme demonstra o Balanço Patrimonial do exercício ${fin.exercicio}, registrado na forma da lei, com Patrimônio Líquido de ${fmtBRL(fin.patrimonioLiquido)}${idx ? ` e índices contábeis dele extraídos: ${idx}` : ""}, comprometendo-se a manter tal condição durante toda a vigência contratual.`,
+    proveniencia: `Modelo J (padrão vencedor Lei 14.133) + balanço real ${fin.exercicio} (${fin.fonte || "CCP da ENIAC"})`,
+    requerCorrecao: falhas.length > 0 || fin.patrimonioLiquido == null || undefined,
+    aviso: falhas.length > 0
+      ? `Índice(s) abaixo do exigido: ${falhas.join(", ")} — NÃO assinar capacidade que o balanço não sustenta; revisar.`
+      : "Conferir se o edital traz modelo próprio de declaração de capacidade financeira — o anexo do edital prevalece.",
+  };
+
   return [
     {
       id: `${oid}-econfin-doc`,
@@ -366,6 +396,7 @@ function buildEconomicoFinanceira(
         ? `Índice(s) abaixo do exigido: ${falhas.join(", ")} — risco de inabilitação; revisar.`
         : "Índices atendem; anexar o balanço assinado pelo contador no vault (aba Governança).",
     },
+    modeloJ,
   ];
 }
 
@@ -572,6 +603,18 @@ export function buildReviewDossier(
   // 3a. Credenciamento + termo de aceitação (Modelos E/A do padrão vencedor) — sempre presentes.
   items.push(...buildCredenciamentoEAceitacao(oid, ccp, opportunity));
 
+  // 3a-bis. Habilitação jurídica (P2 padrão-ouro): o contrato social/ato constitutivo era a única
+  // peça do pacote vencedor que não aparecia no dossiê — entra como anexo do vault, sempre visível.
+  items.push({
+    id: `${oid}-habjuridica-contrato-social`,
+    secao: "Habilitação Jurídica (anexar do vault)",
+    label: "Ato constitutivo / contrato social consolidado",
+    valorMotor: `Anexar o contrato social consolidado (ou ato constitutivo) registrado na Junta Comercial${ccp.identity.nire ? ` — NIRE ${ccp.identity.nire}` : ""}, com as alterações vigentes e os documentos de identificação do administrador. Peça obrigatória da habilitação jurídica (art. 66, Lei 14.133/2021).`,
+    proveniencia: "Padrão-ouro do pacote vencedor (AGU/Anexo II) + art. 66, Lei 14.133/2021",
+    requerCorrecao: true, // depende do documento real no vault — não é assinável pelo motor
+    aviso: "Conferir se a consolidação anexada é a ÚLTIMA arquivada na Junta — versão desatualizada inabilita.",
+  });
+
   // 3b. Certidões fiscais/trabalhistas EXIGIDAS pelo edital (anexar do vault) — só com ERM.
   if (erm) items.push(...buildCertidoesExigidas(oid, erm));
 
@@ -653,9 +696,10 @@ export function mergeReview(items: ReviewItem[], state: ReviewState): ReviewedIt
         valorFinal: decision.valorHumano,
         valorHumano: decision.valorHumano,
         revisadoEm: decision.em,
+        revisadoPor: decision.por,
       };
     }
-    return { ...item, status: "aprovado", valorFinal: item.valorMotor, revisadoEm: decision.em };
+    return { ...item, status: "aprovado", valorFinal: item.valorMotor, revisadoEm: decision.em, revisadoPor: decision.por };
   });
 }
 

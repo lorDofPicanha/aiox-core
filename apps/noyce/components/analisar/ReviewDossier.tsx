@@ -24,6 +24,12 @@ import { SCORE_AS_OF } from "@/lib/noyce-data";
 import { loadVaultMeta } from "@/lib/noyce-vault";
 
 const STORAGE_PREFIX = "noyce.review.v1.";
+// E2 (Norman, conclave 12/Jun): reabrir um item CORRIGIDO não pode destruir a correção
+// humana sem volta. A última decisão descartada por item fica aqui, restaurável com 1 clique.
+const TRASH_PREFIX = "noyce.review.trash.v1.";
+// E4 (Norman): QUEM revisou — identidade leve por navegador (4 usuárias compartilham o app).
+// Vira coluna real quando a Story 30.6 (Supabase/auth) entrar; até lá, carimbo por decisão.
+const REVIEWER_KEY = "noyce.reviewer.v1";
 
 function loadState(opportunityId: string): ReviewState {
   try {
@@ -35,6 +41,18 @@ function loadState(opportunityId: string): ReviewState {
 
 function saveState(opportunityId: string, state: ReviewState) {
   globalThis.localStorage?.setItem(STORAGE_PREFIX + opportunityId, JSON.stringify(state));
+}
+
+function loadTrash(opportunityId: string): ReviewState {
+  try {
+    return JSON.parse(globalThis.localStorage?.getItem(TRASH_PREFIX + opportunityId) ?? "{}");
+  } catch {
+    return {};
+  }
+}
+
+function saveTrash(opportunityId: string, trash: ReviewState) {
+  globalThis.localStorage?.setItem(TRASH_PREFIX + opportunityId, JSON.stringify(trash));
 }
 
 export function ReviewDossier({
@@ -49,6 +67,8 @@ export function ReviewDossier({
   erm?: import("@/components/shell/useEditalErm").UseEditalErm;
 }) {
   const [state, setState] = useState<ReviewState>({});
+  const [trash, setTrash] = useState<ReviewState>({});
+  const [reviewer, setReviewer] = useState("");
   const [editing, setEditing] = useState<string | null>(null);
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   function toggleExpand(id: string) {
@@ -63,8 +83,18 @@ export function ReviewDossier({
 
   useEffect(() => {
     setState(loadState(opportunity.id));
+    setTrash(loadTrash(opportunity.id));
     setEditing(null);
   }, [opportunity.id]);
+
+  useEffect(() => {
+    setReviewer(globalThis.localStorage?.getItem(REVIEWER_KEY) ?? "");
+  }, []);
+
+  function updateReviewer(nome: string) {
+    setReviewer(nome);
+    globalThis.localStorage?.setItem(REVIEWER_KEY, nome);
+  }
 
   const liveChecklist = useLiveChecklist(opportunity);
   // UMA fonte de verdade do ERM: usa o do dono (Habilitar) quando passado; senão cria o próprio.
@@ -80,17 +110,36 @@ export function ReviewDossier({
   const progress = reviewProgress(reviewed);
 
   function decide(itemId: string, decision: ReviewState[string]) {
-    const next = { ...state, [itemId]: decision };
+    // E4: carimba QUEM decidiu (quando o revisor se identificou) sem sobrescrever autor restaurado.
+    const stamped = decision.por || !reviewer.trim() ? decision : { ...decision, por: reviewer.trim() };
+    const next = { ...state, [itemId]: stamped };
     setState(next);
     saveState(opportunity.id, next);
     setEditing(null);
   }
 
   function reopen(itemId: string) {
+    const discarded = state[itemId];
+    // E2: correção humana descartada vai para a lixeira restaurável — nunca some sem volta.
+    if (discarded?.status === "corrigido") {
+      const nextTrash = { ...trash, [itemId]: discarded };
+      setTrash(nextTrash);
+      saveTrash(opportunity.id, nextTrash);
+    }
     const next = { ...state };
     delete next[itemId];
     setState(next);
     saveState(opportunity.id, next);
+  }
+
+  function restaurarCorrecao(itemId: string) {
+    const kept = trash[itemId];
+    if (!kept) return;
+    decide(itemId, kept);
+    const nextTrash = { ...trash };
+    delete nextTrash[itemId];
+    setTrash(nextTrash);
+    saveTrash(opportunity.id, nextTrash);
   }
 
   // D2: gerar .docx — SÓ de item revisado (portão humano do conclave).
@@ -207,6 +256,20 @@ h1{font-size:18pt;margin:0 0 4pt}.meta{color:#555;font-size:10.5pt}.texto{white-
         </span>
       </div>
 
+      {/* E4: identidade do revisor — carimba QUEM aprovou/corrigiu cada item (trilha de auditoria). */}
+      <div className="review-reviewer" style={{ margin: "6px 0", fontSize: 13, display: "flex", alignItems: "center", gap: 8 }}>
+        <label htmlFor="review-reviewer-input">👤 Revisando como:</label>
+        <input
+          id="review-reviewer-input"
+          type="text"
+          value={reviewer}
+          placeholder="seu nome (fica gravado em cada decisão)"
+          onChange={(e) => updateReviewer(e.target.value)}
+          style={{ padding: "3px 8px", borderRadius: 6, border: "1px solid #ccc", minWidth: 220 }}
+        />
+        {!reviewer.trim() && <small style={{ color: "#8a6516" }}>⚠️ sem nome, a decisão sai anônima na trilha.</small>}
+      </div>
+
       {/* Origem das EXIGÊNCIAS do edital (o que dirige a completude do dossiê). */}
       <div className="review-erm-source" style={{ margin: "8px 0", padding: "8px 12px", borderRadius: 8, background: "#f6f5f0", fontSize: 13 }}>
         {erm.curated ? (
@@ -257,8 +320,10 @@ h1{font-size:18pt;margin:0 0 4pt}.meta{color:#555;font-size:10.5pt}.texto{white-
                   ) : null}
                   {item.status === "corrigido" ? (
                     <small className="review-history">
-                      🔒 corrigido por humano — motor dizia: “{item.valorMotor}”. O motor não sobrescreve este item.
+                      🔒 corrigido por {item.revisadoPor ?? "humano (não identificado)"} — motor dizia: “{item.valorMotor}”. O motor não sobrescreve este item.
                     </small>
+                  ) : item.status === "aprovado" && item.revisadoPor ? (
+                    <small className="review-history">✓ aprovado por {item.revisadoPor} · {item.proveniencia}</small>
                   ) : (
                     <small>{item.proveniencia}</small>
                   )}
@@ -282,6 +347,16 @@ h1{font-size:18pt;margin:0 0 4pt}.meta{color:#555;font-size:10.5pt}.texto{white-
                       >
                         💬 Corrigir com IA
                       </button>
+                      {trash[item.id] ? (
+                        <button
+                          type="button"
+                          className="restore"
+                          title="Restaurar a última correção humana descartada ao reabrir"
+                          onClick={() => restaurarCorrecao(item.id)}
+                        >
+                          ↩ restaurar correção
+                        </button>
+                      ) : null}
                     </>
                   ) : (
                     <button type="button" className="reopen" onClick={() => reopen(item.id)}>

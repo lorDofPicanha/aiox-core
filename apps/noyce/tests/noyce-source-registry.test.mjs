@@ -60,9 +60,19 @@ test("PCP scraping is hard-blocked by ToS; it never crawls", () => {
   }
 });
 
-test("binding acts are human-only across every source", () => {
+test("binding acts are human-only across every source (lista AMPLIADA — I1/C-NOVO-6)", () => {
+  // 02/Jul: HUMAN_REQUIRED_ACTS unificado com MAESTRO_BINDING_ACTS — 4 originais + 3 do design v2.
+  const AMPLIADA = [
+    "lance",
+    "declaracao",
+    "proposta",
+    "recurso",
+    "contrarrazoes",
+    "impugnacao_edital",
+    "resposta_diligencia",
+  ];
   for (const def of noyceSources) {
-    assert.deepEqual([...def.humanRequiredActs], ["lance", "declaracao", "proposta", "recurso"]);
+    assert.deepEqual([...def.humanRequiredActs], AMPLIADA);
   }
 });
 

@@ -34,7 +34,7 @@ Detalhes que os agentes devem respeitar:
 
 ## Atos vinculantes — sempre humano, em qualquer fonte
 
-O registry define `HUMAN_REQUIRED_ACTS = ["lance", "declaracao", "proposta", "recurso"]`. Estes atos **nunca** são executados pelo Noyce em nenhuma fonte — exigem clique humano. A responsabilidade jurídica é irretratável e pode ser criminal (BLL Art. 13§3/27/32; Lei 14.133 art. 155). O Noyce **só puxa** informação; não atua dentro do portal.
+O registry define `HUMAN_REQUIRED_ACTS = ["lance", "declaracao", "proposta", "recurso", "contrarrazoes", "impugnacao_edital", "resposta_diligencia"]` (lista ampliada — I1/C-NOVO-6, unificada com `MAESTRO_BINDING_ACTS` em 02/Jul). Estes atos **nunca** são executados pelo Noyce em nenhuma fonte — exigem clique humano. A responsabilidade jurídica é irretratável e pode ser criminal (BLL Art. 13§3/27/32; Lei 14.133 art. 155). O Noyce **só puxa** informação; não atua dentro do portal.
 
 Helpers de referência no registry:
 - `canRunSourceNow(source)` — pode operar a fonte autonomamente agora (descoberta/leitura pública).

@@ -13,6 +13,7 @@
 // project convention — see triage-agent.ts).
 
 import type { WorkflowStage } from "../noyce-model.ts";
+import { HUMAN_REQUIRED_ACTS, type BindingAct } from "../noyce-source-registry.ts";
 
 // ───────────────────────────────────────────────────────────────────────────
 // MaestroStage — the canonical, fine-grained per-edital state (§11.0 + §13).
@@ -287,22 +288,13 @@ export interface TransitionCtx {
 }
 
 // ───────────────────────────────────────────────────────────────────────────
-// HUMAN_REQUIRED_ACTS ampliado (I1 / C-NOVO-6). The runtime constant lives in
-// noyce-source-registry.ts (today: lance/declaracao/proposta/recurso). The
-// orchestrator-level binding acts add the three acts the v2 design introduced.
-// Exposed here so the gate logic + tests reference a single list. Ampliar a
-// constante real do registry é tarefa separada da Fase A (documentado no TODO).
+// HUMAN_REQUIRED_ACTS ampliado (I1 / C-NOVO-6) — UNIFICADO 02/Jul: a fonte de
+// verdade única é HUMAN_REQUIRED_ACTS em noyce-source-registry.ts (agora já
+// ampliado com os 3 atos do design v2). MAESTRO_BINDING_ACTS é alias derivado —
+// os dois registros não podem voltar a divergir (era o furo parcial do I1).
 // ───────────────────────────────────────────────────────────────────────────
-export const MAESTRO_BINDING_ACTS = [
-  "lance",
-  "declaracao",
-  "proposta",
-  "recurso",
-  "contrarrazoes",
-  "impugnacao_edital",
-  "resposta_diligencia",
-] as const;
-export type MaestroBindingAct = (typeof MAESTRO_BINDING_ACTS)[number];
+export const MAESTRO_BINDING_ACTS = HUMAN_REQUIRED_ACTS;
+export type MaestroBindingAct = BindingAct;
 
 // ───────────────────────────────────────────────────────────────────────────
 // maestroToWorkflowStage — explicit mapping to the coarse 6-phase UI enum
