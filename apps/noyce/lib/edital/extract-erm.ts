@@ -195,6 +195,12 @@ export function extractErm(sections: EditalSections, fullText = ""): ErmExtracti
   const quadroTecnico = extractQuadroTecnico(tecnicaScope);
   const operacional = extractOperacional(tecnicaScope, sections.objeto || "", scan);
 
+  // Gate dos 4% (art. 67 §1º): % que o EDITAL declara como corte de "parcela de maior
+  // relevância" (ex.: "itens cujo valor seja igual ou superior a 2% do valor estimado").
+  const relevMatch =
+    tecnicaScope.match(/parcelas?\s+de\s+maior\s+relev[âa]ncia[^.\n]{0,160}?(\d{1,2}(?:[.,]\d+)?)\s*%/i) ||
+    tecnicaScope.match(/relev[âa]ncia(?:\s+t[ée]cnica)?[^.\n]{0,120}?(?:igual\s+ou\s+superior|superior|m[íi]nimo)\s+a\s+(\d{1,2}(?:[.,]\d+)?)\s*%/i);
+
   const exigePL = /patrim[ôo]nio\s+l[íi]quido|capital\s+social\s+m[íi]nimo/i.test(scan);
   const plMatch = scan.match(/patrim[ôo]nio\s+l[íi]quido[^\n]{0,80}?(\d{1,2}(?:[.,]\d+)?)\s*%/i) || scan.match(/(\d{1,2})\s*%\s+do\s+valor\s+(?:total\s+)?(?:estimad|contrat)/i);
   const garMatch = scan.match(/garantia\s+(?:da\s+)?(?:de\s+)?proposta[^\n]{0,90}?(\d+(?:[.,]\d+)?)\s*%/i);
@@ -230,6 +236,7 @@ export function extractErm(sections: EditalSections, fullText = ""): ErmExtracti
       profissional: [],
       operacional,
       parcelasMaiorRelevancia: null,
+      relevanciaPctMin: num(relevMatch?.[1]),
       tetoQuantitativo: null,
       somatorio: {
         permitido: /(?:vedad[ao]|n[ãa]o\s+(?:ser[áa]\s+)?(?:admitid[ao]|aceito|permitid[ao]))[^\n]{0,40}somat[óo]rio|somat[óo]rio[^\n]{0,30}(?:vedad|n[ãa]o\s+ser[áa]\s+admit)/i.test(scan)
@@ -238,6 +245,17 @@ export function extractErm(sections: EditalSections, fullText = ""): ErmExtracti
             ? true
             : null,
       },
+      // Art. 67 §9º — subcontratação como caminho de qualificação técnica: vedada, permitida
+      // (com eventual limite %) ou não mencionada (null → confirmar via esclarecimento).
+      subcontratacao: (() => {
+        const vedada = /(?:vedad[ao]|n[ãa]o\s+(?:ser[áa]\s+)?(?:admitid[ao]|permitid[ao]))[^\n.]{0,50}subcontrata|subcontrata[çc][ãa]o[^\n.]{0,40}(?:vedad|n[ãa]o\s+(?:ser[áa]\s+)?(?:admitid|permitid))/i.test(scan);
+        const permitida = /(?:permitid[ao]|admitid[ao]|poder[áa])[^\n.]{0,60}subcontrata|subcontrata[çc][ãa]o[^\n.]{0,60}(?:permitid|admitid|at[ée]\s+o?\s*limite)/i.test(scan);
+        const limMatch = scan.match(/subcontrata[çc][ãa]o[^\n.]{0,80}?(\d{1,2})\s*%|(\d{1,2})\s*%[^\n.]{0,60}subcontrata/i);
+        return {
+          permitida: vedada ? false : permitida ? true : null,
+          limitePct: num(limMatch?.slice(1).find(Boolean)),
+        };
+      })(),
       aceitaAcervoConsorcio: /acervo[^\n]{0,40}cons[óo]rcio|cons[óo]rcio[^\n]{0,40}acervo/i.test(scan) ? true : null,
       restricaoTempoLocal: null,
       marcaSemSimilar: null,

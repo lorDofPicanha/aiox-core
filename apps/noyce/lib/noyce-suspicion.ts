@@ -67,6 +67,12 @@ const HOOK_PROPRIEDADE = {
   descricao: "O edital so pode exigir INDICACAO de equipamento/instalacao disponivel, nao comprovacao de propriedade.",
 } satisfies LegalHook;
 
+const HOOK_PARCELA_4PCT = {
+  artigo: "Lei 14.133/2021, art. 67 §1º",
+  descricao:
+    "Parcela de maior relevancia exige valor individual igual ou superior a 4% do valor total estimado — corte inferior permite exigir atestado de parcela irrelevante.",
+} satisfies LegalHook;
+
 export function buildSuspicionSignals(
   erm: EditalRequirementsModel,
   constants: LegalConstants,
@@ -175,6 +181,22 @@ export function buildSuspicionSignals(
   // Exigência de PROPRIEDADE de equipamento/instalação (art. 67 III só admite disponibilidade — Súmula TCU 272).
   if (technicalClause && erm.tecnica.exigePropriedade === true) {
     signals.push(signal("EXIGE_PROPRIEDADE_EQUIP", technicalClause, HOOK_PROPRIEDADE, "alta", impugnationAction));
+  }
+
+  // Gate dos 4% (art. 67 §1º): o edital declarou um corte de relevância ABAIXO do piso legal —
+  // permite exigir atestado de parcela que não é "de maior relevância". Só dispara com o dado
+  // extraído; sem o percentual no edital, silêncio (nunca chuta).
+  const relevPct = erm.tecnica.relevanciaPctMin;
+  if (technicalClause && typeof relevPct === "number" && Number.isFinite(relevPct) && relevPct < 4) {
+    signals.push(
+      signal(
+        "PARCELA_RELEVANCIA_ABAIXO_4PCT",
+        withTrecho(technicalClause, `Edital define parcela de maior relevância a partir de ${relevPct}% do valor — piso legal é 4%.`),
+        HOOK_PARCELA_4PCT,
+        "alta",
+        impugnationAction,
+      ),
+    );
   }
 
   const requiresEconomicIndex = erm.economicoFinanceira.exigePL === true || hasRequiredIndex(erm.economicoFinanceira.indices);

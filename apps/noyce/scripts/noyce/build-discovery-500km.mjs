@@ -103,20 +103,43 @@ async function buildOnce() {
   }
 
   const items = [...seen.values()].sort((a, b) => a.distanceKm - b.distanceKm);
+
+  // ── DIFF vs run anterior (embrião do Radar): quem é NOVO desde a última varredura? ──
+  // firstSeenAt é carregado adiante entre runs (o item mantém a data em que apareceu pela
+  // primeira vez); item ausente do run anterior = novo. Removidos = saíram da janela/fecharam.
+  const prevItems = new Map();
+  let prevGeneratedAt = null;
+  try {
+    const prev = JSON.parse(readFileSync(OUT, "utf8"));
+    prevGeneratedAt = prev.generatedAt ?? null;
+    for (const it of prev.items ?? []) prevItems.set(it.id, it);
+  } catch { /* primeiro run — sem base de comparação */ }
+  const nowIso = new Date().toISOString();
+  for (const it of items) it.firstSeenAt = prevItems.get(it.id)?.firstSeenAt ?? nowIso;
+  const novosIds = items.filter((i) => !prevItems.has(i.id)).map((i) => i.id);
+  const removidos = [...prevItems.keys()].filter((id) => !seen.has(id)).length;
+
   const byUf = {};
   for (const i of items) byUf[i.uf] = (byUf[i.uf] || 0) + 1;
   const snapshot = {
-    generatedAt: new Date().toISOString(),
+    generatedAt: nowIso,
     source: "PNCP /contratacoes/publicacao (público, read-only)",
     pipeline: "build-discovery-500km.mjs → IBGE haversine 500km → filtro obras → dedupe id",
     windowDays: days, windowStart: dataInicial, windowEnd: dataFinal, raioKm: 500,
     origem: geo.origem, municipiosNoRaio: geo.municipios.length, ufs: UFS,
     itensPorUf: byUf, queryStats: stats,
+    diff: {
+      previousRunAt: prevGeneratedAt,
+      novos: novosIds.length,
+      removidos,
+      novosIds: novosIds.slice(0, 300), // teto p/ não inflar o snapshot
+    },
     note: `Raio 500km REAL (${geo.municipios.length} municípios, ${UFS.length} UFs).`,
     items,
   };
   writeFileSync(OUT, JSON.stringify(snapshot));
-  console.log(`✅ ${items.length} editais de obra no raio (por UF: ${JSON.stringify(byUf)}). stats ${JSON.stringify(stats)} → lib/data/discovery-snapshot.json`);
+  console.log(`✅ ${items.length} editais de obra no raio (por UF: ${JSON.stringify(byUf)}). stats ${JSON.stringify(stats)}`);
+  console.log(`   Δ desde ${prevGeneratedAt ?? "—"}: ${novosIds.length} novo(s), ${removidos} removido(s) → lib/data/discovery-snapshot.json`);
   return items.length;
 }
 

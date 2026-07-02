@@ -52,6 +52,8 @@ interface DiscoveryItem {
   sourceUrl: string | null;
   editalRequirements?: EditalRequirementsModel | null;
   permiteConsorcio?: boolean | null; // Story 30.1 — opcional no snapshot (backward-compatible).
+  /** Diff do --watch: quando o item apareceu pela 1ª vez numa varredura (opcional, retrocompat). */
+  firstSeenAt?: string | null;
 }
 
 const KNOWN_SOURCES = noyceSources.map((source) => source.source);
@@ -59,7 +61,16 @@ function normalizeSource(value: string): SourceCode {
   return (KNOWN_SOURCES as readonly string[]).includes(value) ? (value as SourceCode) : 'pncp';
 }
 
-const discovery = discoverySnapshot as unknown as { items: DiscoveryItem[] };
+const discovery = discoverySnapshot as unknown as {
+  items: DiscoveryItem[];
+  generatedAt?: string;
+  diff?: { previousRunAt: string | null; novos: number; removidos: number; novosIds: string[] };
+};
+
+/** Momento da última varredura de discovery (p/ o chip "novo" da Monitorar). */
+export const discoveryGeneratedAt: string | null = discovery.generatedAt ?? null;
+/** Diff da última varredura (--watch): quantos editais novos/removidos vs run anterior. */
+export const discoveryDiff = discovery.diff ?? null;
 export const eniacCcp = withComputedCapabilities(eniacCcpSeed as CompanyCapabilityProfile);
 const TRIAGE_RANK: Record<string, number> = { vai: 0, olha: 1, pula: 2 };
 
@@ -77,6 +88,7 @@ function seedConsorcio(d: DiscoveryItem, index: number): boolean | null {
 const baseOpportunities = discovery.items
   .map((d, index) => ({
     permiteConsorcio: seedConsorcio(d, index),
+    firstSeenAt: d.firstSeenAt ?? null,
     id: d.id,
     orgaoCnpj: d.buyerCnpj,
     source: normalizeSource(d.source),

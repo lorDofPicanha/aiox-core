@@ -41,6 +41,8 @@ const FUNDAMENTO: Record<SuspicionType, string> = {
     "A exigência de índices econômico-financeiros sem justificativa nos autos contraria o art. 69 da Lei nº 14.133/2021, que condiciona tais índices à demonstração de pertinência.",
   PRAZO_EXIGUO:
     "O prazo de publicação inferior ao mínimo legal afronta o art. 55 da Lei nº 14.133/2021, comprometendo a elaboração adequada das propostas.",
+  PARCELA_RELEVANCIA_ABAIXO_4PCT:
+    "A definição de parcela de maior relevância com corte inferior a 4% do valor total estimado viola o art. 67, §1º, da Lei nº 14.133/2021, permitindo a exigência de atestados sobre parcelas sem relevância técnica ou valor significativo — restrição indevida à competitividade.",
 };
 
 export function buildImpugnacaoMinuta(input: ImpugnacaoMinutaInput): ImpugnacaoMinuta {

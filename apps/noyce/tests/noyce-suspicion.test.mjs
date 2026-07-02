@@ -210,3 +210,30 @@ test("A3: obra comum 10 d.u. × especial 25 d.u. × não-extraído = silêncio (
   const indeterminado = signalsFor(baseErm({ meta: { objetoComum: null } }));
   assert.ok(!indeterminado.find((s) => s.tipo === "PRAZO_EXIGUO"), "objetoComum null: sem sinal — não chuta");
 });
+
+// ── Gate dos 4% (art. 67 §1º) — estratégia-vitória Tier 3, fechado 02/Jul ──
+
+test("gate 4%: corte de relevância declarado ABAIXO de 4% dispara sinal alta", () => {
+  const erm = baseErm({ tecnica: { relevanciaPctMin: 2, clausula: technicalClause } });
+  const signals = buildSuspicionSignals(erm, legalConstants, feriadosNacionais);
+  const hit = signals.find((s) => s.tipo === "PARCELA_RELEVANCIA_ABAIXO_4PCT");
+  assert.ok(hit, "sinal presente");
+  assert.equal(hit.severidade, "alta");
+  assert.match(hit.hookLegal.artigo, /67 §1º/);
+  assert.match(hit.evidenciaEdital.trecho ?? "", /2%/);
+});
+
+test("gate 4%: corte ≥ 4% ou ausente = silêncio (nunca chuta)", () => {
+  const ok = buildSuspicionSignals(
+    baseErm({ tecnica: { relevanciaPctMin: 4, clausula: technicalClause } }),
+    legalConstants,
+    feriadosNacionais,
+  );
+  assert.equal(ok.find((s) => s.tipo === "PARCELA_RELEVANCIA_ABAIXO_4PCT"), undefined);
+  const ausente = buildSuspicionSignals(
+    baseErm({ tecnica: { relevanciaPctMin: null, clausula: technicalClause } }),
+    legalConstants,
+    feriadosNacionais,
+  );
+  assert.equal(ausente.find((s) => s.tipo === "PARCELA_RELEVANCIA_ABAIXO_4PCT"), undefined);
+});

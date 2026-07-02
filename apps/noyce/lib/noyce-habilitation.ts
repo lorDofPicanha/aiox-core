@@ -182,6 +182,18 @@ function evaluateTechnicalOperational(
     const proxyProveniencia: Grounding = hasCao ? "grounded" : "inferred";
     const somatorioTasks =
       erm.tecnica.somatorio.permitido === null ? ["confirmar somatorio via esclarecimento"] : [];
+    // Art. 67 §9º — caminho alternativo p/ lacuna: atestado de POTENCIAL SUBCONTRATADO (até 25%
+    // do objeto, ou o limite do edital). Só sugerido quando o edital PERMITE; se silente, a
+    // tarefa é confirmar via esclarecimento (nunca assumir).
+    const subc = erm.tecnica.subcontratacao;
+    const subcTask =
+      subc?.permitida === true
+        ? [
+            `avaliar cobrir a lacuna via SUBCONTRATACAO (art. 67 §9º): atestado de potencial subcontratado, limitado a ${subc.limitePct ?? 25}% do objeto`,
+          ]
+        : subc?.permitida === null
+          ? ["confirmar via esclarecimento se o edital admite qualificacao por potencial subcontratado (art. 67 §9º)"]
+          : [];
     const somatorioEvidence =
       erm.tecnica.somatorio.permitido === false
         ? "Somatorio vedado: usado maior atestado individual."
@@ -203,7 +215,7 @@ function evaluateTechnicalOperational(
         requisito: requirement.servico,
         status: "NAO_ATENDE",
         gaps: [gap],
-        tarefas: hasCao ? [] : [atestadoTask],
+        tarefas: [...(hasCao ? [] : [atestadoTask]), ...subcTask],
         evidencia: [
           `Disponivel ${round(available)} ${requirement.un ?? capability?.unidade ?? ""}; exigido ${requirement.qtdMin}.`,
           cenarioEvidence,
@@ -233,7 +245,7 @@ function evaluateTechnicalOperational(
         requisito: requirement.servico,
         status: "ATENDE_COM_RESSALVA",
         gaps: [gap],
-        tarefas: [atestadoTask, ...somatorioTasks],
+        tarefas: [atestadoTask, ...somatorioTasks, ...subcTask],
         evidencia: [
           `Disponivel ${round(available)} ${requirement.un ?? capability?.unidade ?? ""}; exigido ${requirement.qtdMin}.`,
           cenarioEvidence,

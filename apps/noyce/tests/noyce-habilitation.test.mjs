@@ -261,3 +261,53 @@ test("consorcio ENIAC ME + parceira ME dispensa acrescimo de 30% e sinaliza vant
   assert.equal(result.consorcio?.acrescimo30Dispensado, true);
   assert.equal(result.consorcio?.vantagemMeEpp, true);
 });
+
+// ── Subcontratação 25% (art. 67 §9º) como caminho de lacuna — fechado 02/Jul ──
+
+test("lacuna operacional + subcontratação PERMITIDA → tarefa de potencial subcontratado (art. 67 §9º)", () => {
+  const result = buildHabilitationResult(
+    seed,
+    baseErm({
+      tecnica: {
+        operacional: [{ servico: "DRENAGEM", qtdMin: 800, qtdObjeto: 1600, un: "m2" }],
+        somatorio: { permitido: true },
+        subcontratacao: { permitida: true, limitePct: 25 },
+      },
+    }),
+  );
+  const ev = result.porBloco.tecnico_operacional.evaluations[0];
+  assert.ok(
+    ev.tarefas.some((t) => /SUBCONTRATACAO.*67 §9º.*25%/i.test(t)),
+    `tarefa de subcontratação presente: ${JSON.stringify(ev.tarefas)}`,
+  );
+});
+
+test("subcontratação VEDADA ou ERM antigo (sem o campo) → nenhuma tarefa de subcontratado", () => {
+  const vedada = buildHabilitationResult(
+    seed,
+    baseErm({
+      tecnica: {
+        operacional: [{ servico: "DRENAGEM", qtdMin: 800, qtdObjeto: 1600, un: "m2" }],
+        somatorio: { permitido: true },
+        subcontratacao: { permitida: false, limitePct: null },
+      },
+    }),
+  );
+  assert.ok(
+    !vedada.porBloco.tecnico_operacional.evaluations[0].tarefas.some((t) => /SUBCONTRATACAO/i.test(t)),
+    "vedada → sem tarefa",
+  );
+  const antigo = buildHabilitationResult(
+    seed,
+    baseErm({
+      tecnica: {
+        operacional: [{ servico: "DRENAGEM", qtdMin: 800, qtdObjeto: 1600, un: "m2" }],
+        somatorio: { permitido: true },
+      },
+    }),
+  );
+  assert.ok(
+    !antigo.porBloco.tecnico_operacional.evaluations[0].tarefas.some((t) => /SUBCONTRATACAO/i.test(t)),
+    "ERM sem o campo (retrocompat) → sem tarefa",
+  );
+});

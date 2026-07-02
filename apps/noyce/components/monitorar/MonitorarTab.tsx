@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { opportunities } from "@/lib/noyce-data";
+import { opportunities, discoveryDiff, discoveryGeneratedAt } from "@/lib/noyce-data";
 import { formatCurrency, formatDateTime } from "@/lib/noyce-model";
 import type { Opportunity, SuspicionSignal } from "@/lib/noyce-model";
 import { buildNextStep, deadlineTime, operationalState, sourceClass, sourceLabel } from "@/lib/noyce-operational";
@@ -16,6 +16,16 @@ type ConsorcioFilter = "qualquer" | "sim" | "nao";
 const RANK: Record<string, number> = { vai: 0, olha: 1, pula: 2 };
 const VERDICT_LABEL: Record<string, string> = { vai: "Vai", olha: "Olha", pula: "Pula" };
 type OpportunityWithSuspicion = Opportunity & { suspicionSignals?: SuspicionSignal[] };
+
+// "Novo" = apareceu pela 1ª vez há menos de 48h da última varredura (determinístico:
+// compara firstSeenAt com o generatedAt do snapshot — não com o relógio do cliente).
+const NOVO_JANELA_MS = 48 * 3_600_000;
+function isNovo(o: Opportunity): boolean {
+  if (!o.firstSeenAt || !discoveryGeneratedAt) return false;
+  const seen = Date.parse(o.firstSeenAt);
+  const run = Date.parse(discoveryGeneratedAt);
+  return Number.isFinite(seen) && Number.isFinite(run) && run - seen < NOVO_JANELA_MS;
+}
 
 export function MonitorarTab({
   selectedId,
@@ -183,6 +193,11 @@ export function MonitorarTab({
         <div className="filter-summary" aria-live="polite">
           {filtered.length} editais · <strong className="triage-vai">{counts.vai} Vai</strong> ·{" "}
           {counts.olha} Olha · {counts.pula} Pula <span className="filter-src">(PNCP, raio GO ≤{MAX_DISCOVERY_RADIUS_KM}km)</span>
+          {discoveryDiff && discoveryDiff.previousRunAt ? (
+            <span className="filter-src">
+              {" "}· Δ última varredura: <strong>{discoveryDiff.novos} novo(s)</strong>, {discoveryDiff.removidos} saíram
+            </span>
+          ) : null}
         </div>
 
         {filtered.map((opportunity) => (
@@ -209,6 +224,7 @@ export function MonitorarTab({
                 <span className={`source source-${sourceClass(opportunity.source)}`}>{sourceLabel(opportunity.source)}</span>
                 <span className={`state-badge ${operationalState(opportunity).tone}`}>{operationalState(opportunity).label}</span>
                 <ConsorcioChip value={opportunity.permiteConsorcio} />
+                {isNovo(opportunity) ? <span className="state-badge new" title={`Apareceu na varredura de ${opportunity.firstSeenAt}`}>🆕 novo</span> : null}
                 {((opportunity as OpportunityWithSuspicion).suspicionSignals?.length ?? 0) > 0 ? (
                   <span className="state-badge review">⚠️ exigência atípica</span>
                 ) : null}

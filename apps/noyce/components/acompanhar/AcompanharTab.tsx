@@ -9,6 +9,8 @@ import { useEffect, useState } from "react";
 import type { Opportunity } from "@/lib/noyce-model";
 import type { SessionResult } from "@/lib/agents/maestro-types";
 import { sentinelaWatch, clockKindLabel, type SentinelaAlert } from "@/lib/agents/maestro-runtime";
+import { eniacCcp } from "@/lib/noyce-data";
+import { isMeEpp } from "@/lib/noyce-me-advantages";
 
 // Mesma chave usada pela RecorrerTab — o relógio de recurso registrado lá entra na vigilância aqui.
 const SESSION_RESULT_PREFIX = "noyce.session-result.v1.";
@@ -34,6 +36,59 @@ function humanRemaining(msUntil: number): string {
   const h = Math.floor((abs % 86_400_000) / 3_600_000);
   const corpo = d > 0 ? `${d}d ${h}h` : `${h}h`;
   return msUntil <= 0 ? `há ${corpo}` : `faltam ${corpo}`;
+}
+
+function fmtBRL(v: number): string {
+  return v.toLocaleString("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
+}
+
+// Cartão da sessão (D-0) — empate ficto NA HORA DO LANCE, não só na análise.
+// O snapshot de discovery não carrega a modalidade → mostramos as DUAS janelas
+// (5% pregão · 10% demais) em vez de chutar; o direito precisa ser exercido no prazo.
+function SessionPrepCard({ opportunity }: { opportunity: Opportunity }) {
+  if (!isMeEpp(eniacCcp)) return null;
+  const ref = opportunity.market?.priceBand?.medianBRL ?? null;
+  return (
+    <section className="legal-process" aria-labelledby="d0-title">
+      <div className="section-heading compact">
+        <div>
+          <p className="eyebrow">🎯 Cartão da sessão — trunfo ME/EPP no lance</p>
+          <h3 id="d0-title">Empate ficto: direito de cobrir e vencer</h3>
+        </div>
+        <span>LC 123 arts. 44-45</span>
+      </div>
+      <div className="legal-panel">
+        <div className="legal-event" style={{ borderLeft: "4px solid #E8932E" }}>
+          <div>
+            <strong>Na sessão, ao ver o menor lance (L):</strong>
+            <p className="meta">
+              Se sua proposta ficar até <strong>5%</strong> (pregão) ou <strong>10%</strong> (demais modalidades)
+              acima de L, você tem o DIREITO de apresentar proposta inferior e ser adjudicada — antes dos demais
+              critérios de desempate. Exercer no prazo ({"pregão eletrônico: 5 min"}); não exercer PRECLUI.
+              {ref !== null ? (
+                <>
+                  {" "}Referência deste órgão (mediana dos vencedores): <strong>{fmtBRL(ref)}</strong> — janela até{" "}
+                  <strong>{fmtBRL(ref * 1.05)}</strong> no pregão · <strong>{fmtBRL(ref * 1.1)}</strong> nas demais.
+                </>
+              ) : (
+                <> Sem histórico de preço deste órgão — a janela vale sobre o menor lance da sessão.</>
+              )}
+              {" "}Confirme a modalidade no edital antes da sessão.
+            </p>
+          </div>
+        </div>
+        <div className="legal-event" style={{ borderLeft: "4px solid #1c6c44" }}>
+          <div>
+            <strong>Certidão vencida não te derruba na hora</strong>
+            <p className="meta">
+              Como ME/EPP, restrição fiscal/trabalhista só precisa ser sanada em 5 dias úteis APÓS ser declarada
+              vencedora (LC 123 art. 43 §1º) — não desista da sessão por CND vencível.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export function AcompanharTab({ opportunity }: { opportunity: Opportunity }) {
@@ -93,6 +148,8 @@ export function AcompanharTab({ opportunity }: { opportunity: Opportunity }) {
           )}
         </div>
       </section>
+
+      <SessionPrepCard opportunity={opportunity} />
 
       <section className="legal-process" aria-labelledby="windows-title">
         <div className="section-heading compact">

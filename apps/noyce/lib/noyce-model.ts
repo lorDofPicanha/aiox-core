@@ -51,6 +51,8 @@ export interface PortalAccess {
 export interface Opportunity {
   id: string;
   source: SourceCode;
+  /** Diff do discovery --watch: quando o edital apareceu pela 1ª vez numa varredura. */
+  firstSeenAt?: string | null;
   title: string;
   buyer: string;
   city: string;
@@ -437,10 +439,20 @@ export interface EditalRequirementsModel {
       un: string | null;
     }>;
     parcelasMaiorRelevancia: string[] | null;
+    /** Gate dos 4% (art. 67 §1º): percentual mínimo que o EDITAL declara para "parcela de
+     *  maior relevância". A lei fixa o piso em 4% do valor estimado — edital abaixo disso
+     *  exige atestado de parcela irrelevante (impugnável). Opcional p/ retrocompat. */
+    relevanciaPctMin?: number | null;
     tetoQuantitativo: number | null;
     somatorio: {
       permitido: boolean | null;
       maxAtestados?: number;
+    };
+    /** Art. 67 §9º: qualificação técnica via atestado de POTENCIAL SUBCONTRATADO, limitada a
+     *  25% do objeto — caminho alternativo quando o acervo próprio não cobre. Opcional p/ retrocompat. */
+    subcontratacao?: {
+      permitida: boolean | null;
+      limitePct: number | null;
     };
     aceitaAcervoConsorcio: boolean | null;
     restricaoTempoLocal: boolean | null;
@@ -469,7 +481,8 @@ export type SuspicionType =
   | "MARCA_SEM_SIMILAR"
   | "INDICE_ECON_FIN_SEM_JUSTIFICATIVA"
   | "VEDACAO_SOMATORIO_SEM_MOTIVO"
-  | "EXIGE_PROPRIEDADE_EQUIP";
+  | "EXIGE_PROPRIEDADE_EQUIP"
+  | "PARCELA_RELEVANCIA_ABAIXO_4PCT";
 
 export type SuspicionSeverity = "alta" | "media" | "revisao";
 

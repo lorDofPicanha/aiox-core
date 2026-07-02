@@ -168,3 +168,29 @@ test("end-to-end: texto do edital → sections → ERM → dossiê → gate de c
   assert.equal(r.certidoes.missing.length, 0, `faltaram: ${r.certidoes.missing}`);
   assert.equal(r.coveragePass, true);
 });
+
+// ── Gate 4% + subcontratação (art. 67 §1º e §9º) — fechados 02/Jul ──
+
+test("extrai relevanciaPctMin quando o edital declara o corte de parcela de maior relevância", () => {
+  const tecnica = `9.4 QUALIFICAÇÃO TÉCNICA
+Serão consideradas parcelas de maior relevância técnica e valor significativo aquelas cujo valor individual seja igual ou superior a 2% do valor total estimado da contratação.`;
+  const { erm } = extractErm({ ...EMPTY_SECTIONS, habilitacaoTecnica: tecnica });
+  assert.equal(erm.tecnica.relevanciaPctMin, 2);
+});
+
+test("relevanciaPctMin = null quando o edital não declara percentual (silêncio honesto)", () => {
+  const { erm } = extractErm({ ...EMPTY_SECTIONS, habilitacaoTecnica: "9.4 Atestados de capacidade técnica operacional." });
+  assert.equal(erm.tecnica.relevanciaPctMin, null);
+});
+
+test("subcontratação: vedada → false; permitida com limite → true + limitePct; silente → null", () => {
+  const vedada = extractErm({ ...EMPTY_SECTIONS }, "15.2 É vedada a subcontratação total ou parcial do objeto.").erm;
+  assert.equal(vedada.tecnica.subcontratacao.permitida, false);
+
+  const permitida = extractErm({ ...EMPTY_SECTIONS }, "15.2 Será permitida a subcontratação até o limite de 25% do valor do contrato.").erm;
+  assert.equal(permitida.tecnica.subcontratacao.permitida, true);
+  assert.equal(permitida.tecnica.subcontratacao.limitePct, 25);
+
+  const silente = extractErm({ ...EMPTY_SECTIONS }, "15.2 Da execução do contrato e fiscalização.").erm;
+  assert.equal(silente.tecnica.subcontratacao.permitida, null);
+});
