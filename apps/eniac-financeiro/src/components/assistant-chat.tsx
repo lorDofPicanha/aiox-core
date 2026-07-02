@@ -125,7 +125,7 @@ export function AssistantChat({ companyId }: { companyId: string }) {
         <button
           type="submit"
           disabled={pending || !input.trim()}
-          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground disabled:opacity-40"
+          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent text-white disabled:opacity-40"
           aria-label="Enviar"
         >
           <Send className="h-5 w-5" />

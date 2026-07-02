@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { Plus, X, Check, Ban, AlertCircle } from "lucide-react";
+import { Plus, X, Check, Ban, AlertCircle, ArrowUpRight, ArrowDownLeft } from "lucide-react";
 import {
   createScheduled,
   markScheduledPaid,
@@ -113,16 +113,16 @@ function Group({ label, items, highlight }: { label: string; items: Scheduled[];
         {highlight && <AlertCircle className="h-3.5 w-3.5" />}
         {label}
       </p>
-      <div className="overflow-hidden rounded-2xl border border-border bg-surface">
-        {items.map((it, i) => (
-          <Row key={it.id} item={it} isLast={i === items.length - 1} />
+      <div className="space-y-2">
+        {items.map((it) => (
+          <Row key={it.id} item={it} />
         ))}
       </div>
     </div>
   );
 }
 
-function Row({ item, isLast }: { item: Scheduled; isLast: boolean }) {
+function Row({ item }: { item: Scheduled }) {
   const router = useRouter();
   const [pending, startTransition] = useTransition();
   const isReceivable = item.direction === "receivable";
@@ -143,10 +143,18 @@ function Row({ item, isLast }: { item: Scheduled; isLast: boolean }) {
   }
 
   return (
-    <div className={cn("px-3.5 py-3", !isLast && "border-b border-border", pending && "opacity-50")}>
+    <div className={cn("rounded-2xl border border-border bg-surface px-3.5 py-3", pending && "opacity-50")}>
       <div className="flex items-center gap-3">
+        <span
+          className={cn(
+            "flex h-9.5 w-9.5 shrink-0 items-center justify-center rounded-xl",
+            isReceivable ? "bg-income-soft text-income" : "bg-expense-soft text-expense",
+          )}
+        >
+          {isReceivable ? <ArrowUpRight className="h-5 w-5" /> : <ArrowDownLeft className="h-5 w-5" />}
+        </span>
         <div className="min-w-0 flex-1">
-          <p className="truncate text-sm font-medium">
+          <p className="truncate text-sm font-semibold">
             {item.description?.trim() || item.category || (isReceivable ? "A receber" : "A pagar")}
           </p>
           <p className={cn("text-xs", daysUntil(item.due_date) < 0 ? "text-expense" : "text-muted-foreground")}>
@@ -154,7 +162,7 @@ function Row({ item, isLast }: { item: Scheduled; isLast: boolean }) {
             {item.category ? ` · ${item.category}` : ""}
           </p>
         </div>
-        <span className={cn("tnum shrink-0 text-sm font-semibold", isReceivable ? "text-income" : "text-expense")}>
+        <span className={cn("tnum shrink-0 text-sm font-bold", isReceivable ? "text-income" : "text-expense")}>
           {formatBRL(item.amount)}
         </span>
       </div>
@@ -251,8 +259,12 @@ function AddSheet({
               key={c}
               onClick={() => setCategory((cur) => (cur === c ? null : c))}
               className={cn(
-                "whitespace-nowrap rounded-full border px-3.5 py-2 text-sm font-medium transition-colors",
-                category === c ? "border-primary bg-primary text-primary-foreground" : "border-border bg-surface text-muted-foreground",
+                "whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-semibold ring-1 transition-colors",
+                category === c
+                  ? isReceivable
+                    ? "bg-income-soft text-income ring-income"
+                    : "bg-expense-soft text-expense ring-expense"
+                  : "bg-muted text-muted-foreground ring-transparent",
               )}
             >
               {c}

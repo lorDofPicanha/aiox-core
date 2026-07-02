@@ -10,7 +10,7 @@ export function ForecastView({ forecast }: { forecast: Forecast }) {
 
   return (
     <div className="space-y-5">
-      <section className="rounded-2xl bg-primary p-5 text-primary-foreground">
+      <section className="hero-ink rounded-[22px] p-5 text-primary-foreground shadow-lg shadow-primary/25">
         <p className="text-sm font-medium text-white/60">Saldo hoje</p>
         <p className="tnum mt-1 text-3xl font-bold tracking-tight">{formatBRL(startBalance)}</p>
 
@@ -37,14 +37,11 @@ export function ForecastView({ forecast }: { forecast: Forecast }) {
             Nenhum vencimento em aberto nos próximos 90 dias.
           </div>
         ) : (
-          <div className="overflow-hidden rounded-2xl border border-border bg-surface">
-            {points.map((p, i) => (
+          <div className="space-y-2">
+            {points.map((p) => (
               <div
                 key={p.date}
-                className={cn(
-                  "flex items-center gap-3 px-3.5 py-3",
-                  i !== points.length - 1 && "border-b border-border",
-                )}
+                className="flex items-center gap-3 rounded-2xl border border-border bg-surface px-3.5 py-3"
               >
                 <span className="min-w-0 flex-1">
                   <span className="block text-sm font-medium">{dayLabel(p.date)}</span>
@@ -78,7 +75,7 @@ export function ForecastView({ forecast }: { forecast: Forecast }) {
 function Snapshot({ label, value }: { label: string; value: number }) {
   const negative = value < 0;
   return (
-    <div className="rounded-xl bg-white/10 p-2.5">
+    <div className="rounded-2xl bg-white/[0.08] p-2.5">
       <div className="flex items-center gap-1 text-[11px] text-white/60">
         {negative ? <TrendingDown className="h-3 w-3" /> : <TrendingUp className="h-3 w-3" />}
         {label}

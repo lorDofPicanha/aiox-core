@@ -50,7 +50,7 @@ export default function MaisPage() {
             href={href}
             className={cnRow(i !== LINKS.length - 1)}
           >
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-muted">
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10 text-accent">
               <Icon className="h-5 w-5" />
             </span>
             <span className="min-w-0 flex-1">

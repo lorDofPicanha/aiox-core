@@ -66,15 +66,21 @@ export default async function ConsolidadoPage({ searchParams }: { searchParams: 
       </div>
 
       {/* Total do grupo */}
-      <section className="mb-5 rounded-2xl bg-primary p-5 text-primary-foreground">
+      <section className="hero-ink mb-5 rounded-[22px] p-5 text-primary-foreground shadow-lg shadow-primary/25">
         <p className="text-sm font-medium text-white/60">Saldo somado ({companies.length} empresas)</p>
         <p className="tnum mt-1 text-3xl font-bold tracking-tight">{formatBRL(total.balance)}</p>
         <div className="mt-4 flex gap-4 text-sm">
-          <span className="flex items-center gap-1 text-white/70">
-            <ArrowUpRight className="h-3.5 w-3.5 text-income" /> {formatBRL(total.totalIn)}
+          <span className="flex items-center gap-1.5 text-white/72">
+            <span className="flex h-4 w-4 items-center justify-center rounded-md bg-income/20 text-income">
+              <ArrowUpRight className="h-3 w-3" strokeWidth={2.5} />
+            </span>
+            <span className="tnum">{formatBRL(total.totalIn)}</span>
           </span>
-          <span className="flex items-center gap-1 text-white/70">
-            <ArrowDownLeft className="h-3.5 w-3.5 text-expense" /> {formatBRL(total.totalOut)}
+          <span className="flex items-center gap-1.5 text-white/72">
+            <span className="flex h-4 w-4 items-center justify-center rounded-md bg-expense/25 text-expense">
+              <ArrowDownLeft className="h-3 w-3" strokeWidth={2.5} />
+            </span>
+            <span className="tnum">{formatBRL(total.totalOut)}</span>
           </span>
         </div>
         <p className="mt-2 text-xs capitalize text-white/50">{monthLabel(year, month)}</p>
@@ -86,14 +92,19 @@ export default async function ConsolidadoPage({ searchParams }: { searchParams: 
       </h2>
       <div className="space-y-2">
         {summaries.map(({ company, summary }) => (
-          <div key={company.id} className="rounded-2xl border border-border bg-surface p-4">
-            <div className="flex items-center justify-between">
-              <span className="text-sm font-semibold">{company.name}</span>
-              <span className="tnum text-sm font-bold">{formatBRL(summary.balance)}</span>
-            </div>
-            <div className="mt-1 flex gap-3 text-xs text-muted-foreground">
-              <span className="text-income">+{formatBRL(summary.totalIn)}</span>
-              <span className="text-expense">−{formatBRL(summary.totalOut)}</span>
+          <div key={company.id} className="flex items-center gap-3 rounded-2xl border border-border bg-surface p-4">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-muted text-xs font-bold text-foreground">
+              {initials(company.name)}
+            </span>
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center justify-between gap-2">
+                <span className="truncate text-sm font-semibold">{company.name}</span>
+                <span className="tnum shrink-0 text-sm font-bold">{formatBRL(summary.balance)}</span>
+              </div>
+              <div className="mt-1 flex gap-3 text-xs">
+                <span className="tnum text-income">+{formatBRL(summary.totalIn)}</span>
+                <span className="tnum text-expense">−{formatBRL(summary.totalOut)}</span>
+              </div>
             </div>
           </div>
         ))}
@@ -105,4 +116,12 @@ export default async function ConsolidadoPage({ searchParams }: { searchParams: 
       </p>
     </main>
   );
+}
+
+/** Iniciais da empresa para o tile de identidade (2 letras). */
+function initials(name: string): string {
+  const parts = name.trim().split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return "–";
+  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
 }
