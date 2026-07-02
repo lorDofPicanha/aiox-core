@@ -84,7 +84,7 @@ export default function Home() {
             <h2>Nenhuma oportunidade carregada</h2>
             <p>
               O snapshot de discovery está vazio. Rode{" "}
-              <code>node --experimental-strip-types scripts/noyce/build-discovery-snapshot.mjs</code> de um IP com
+              <code>node --experimental-strip-types scripts/noyce/build-discovery-500km.mjs</code> de um IP com
               acesso ao PNCP (ou restaure o snapshot anterior) e recarregue.
             </p>
           </div>

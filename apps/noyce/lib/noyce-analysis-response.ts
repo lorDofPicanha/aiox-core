@@ -12,13 +12,19 @@ import { opportunities } from "@/lib/noyce-data";
 
 export function buildAnalysisRunsResponse(projectRoot: string) {
   const appAnalysisRuns = exportAnalysisRuns(opportunities);
-  const sprint0AnalysisRuns = exportSprint0AnalysisRuns(
-    readJson<Sprint0AnalysisRun[]>(projectRoot, "outputs/sprint0-dry-run/analysis-runs.v0.json"),
-    readJson<Sprint0Candidate[]>(projectRoot, "fixtures/canonical-candidates.v0.json"),
-  );
+  // Sprint 0 dry-run fixtures live in the monorepo docs tree (../../docs/...). If the app is
+  // deployed/relocated without them, degrade honestly instead of 500ing the whole route.
+  const sprint0Runs = readJson<Sprint0AnalysisRun[]>(projectRoot, "outputs/sprint0-dry-run/analysis-runs.v0.json");
+  const sprint0Candidates = readJson<Sprint0Candidate[]>(projectRoot, "fixtures/canonical-candidates.v0.json");
+  const sprint0Available = sprint0Runs !== null && sprint0Candidates !== null;
+  const sprint0AnalysisRuns = sprint0Available
+    ? exportSprint0AnalysisRuns(sprint0Runs, sprint0Candidates)
+    : [];
   const validationErrors = [
     ...validateAnalysisRunExport(appAnalysisRuns),
-    ...validateAnalysisRunExport(sprint0AnalysisRuns, 7).map((error) => `sprint0: ${error}`),
+    ...(sprint0Available
+      ? validateAnalysisRunExport(sprint0AnalysisRuns, 7).map((error) => `sprint0: ${error}`)
+      : ["sprint0: fixtures indisponíveis (docs/projects/buscador-licitacoes fora do deploy) — export omitido"]),
   ];
 
   return {
@@ -32,7 +38,7 @@ export function buildAnalysisRunsResponse(projectRoot: string) {
   };
 }
 
-function readJson<T>(projectRoot: string, relativePath: string): T {
+function readJson<T>(projectRoot: string, relativePath: string): T | null {
   const filePath = path.join(
     projectRoot,
     "..",
@@ -44,5 +50,9 @@ function readJson<T>(projectRoot: string, relativePath: string): T {
     relativePath,
   );
 
-  return JSON.parse(fs.readFileSync(filePath, "utf8")) as T;
+  try {
+    return JSON.parse(fs.readFileSync(filePath, "utf8")) as T;
+  } catch {
+    return null;
+  }
 }

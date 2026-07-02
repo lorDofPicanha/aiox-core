@@ -30,7 +30,7 @@ function hasMissingData(item: { missingData: readonly string[] }, field: string)
 
 export const SCORE_AS_OF = '2026-05-23T00:00:00Z';
 
-// Real opportunities sourced from the PNCP discovery snapshot (scripts/noyce/build-discovery-snapshot.mjs,
+// Real opportunities sourced from the PNCP discovery snapshot (scripts/noyce/build-discovery-500km.mjs,
 // wired through the lib/sources legal-calibrated pipeline: pncp-public-adapter → normalizer → dedupe).
 // Each is triaged (Vai/Olha/Pula) and enriched below; market comes from the competitor snapshot
 // when the órgão CNPJ matches, else null (honest "dados insuficientes").
