@@ -123,3 +123,87 @@ test("A4: sem histórico, a faixa legal aparece (piso 75% + teto estimado)", () 
   assert.match(item.valorMotor, /750\.000/);
   assert.match(item.valorMotor, /art\. 59/);
 });
+
+// ── E4 (Norman, conclave 12/Jun): trilha de auditoria registra QUEM revisou ──
+
+test("E4: decisão com `por` propaga revisadoPor; sem `por` fica anônima (retrocompatível)", () => {
+  const items = buildReviewDossier(OPPORTUNITY, CCP);
+  const [a, b, c] = items;
+  const reviewed = mergeReview(items, {
+    [a.id]: { status: "aprovado", em: "2026-07-02T12:00:00Z", por: "Alice" },
+    [b.id]: { status: "corrigido", valorHumano: "Texto da Aline", em: "2026-07-02T12:05:00Z", por: "Aline" },
+    [c.id]: { status: "aprovado", em: "2026-07-02T12:10:00Z" }, // decisão antiga, sem identidade
+  });
+  assert.equal(reviewed.find((i) => i.id === a.id).revisadoPor, "Alice");
+  const corrigido = reviewed.find((i) => i.id === b.id);
+  assert.equal(corrigido.revisadoPor, "Aline");
+  assert.equal(corrigido.valorFinal, "Texto da Aline");
+  assert.equal(reviewed.find((i) => i.id === c.id).revisadoPor, undefined, "estado antigo continua válido");
+});
+
+// ── Padrão-ouro do pacote vencedor (padrao-qualidade-documentos.md, P2 fechado 02/Jul) ──
+
+const FIN_2025 = {
+  exercicio: 2025,
+  patrimonioLiquido: 500_000,
+  capitalSocial: 100_000,
+  ativoCirc: 400_000,
+  passivoCirc: 100_000,
+  ativoTotal: 900_000,
+  realizavelLongoPrazo: 0,
+  exigivelLongoPrazo: 100_000,
+  receitaBruta: 314_963,
+  resultado: 50_000,
+  fonte: "Balanço 2025 (teste)",
+};
+
+test("padrão-ouro: TODAS as declarações template carregam 'sob as penas' (marcador 4)", async () => {
+  const { DECLARACAO_TEMPLATES } = await import("../lib/noyce-declaracoes.ts");
+  for (const tpl of DECLARACAO_TEMPLATES) {
+    if (tpl.especial) continue; // ME/EPP vem da derivação de porte
+    assert.match(tpl.texto("EMPRESA X (CNPJ 00.000.000/0001-00)"), /sob as penas/i, `"${tpl.label}" sem fórmula de responsabilidade`);
+  }
+});
+
+test("padrão-ouro: habilitação jurídica (contrato social) SEMPRE presente no dossiê, travada p/ vault", () => {
+  const items = buildReviewDossier(OPPORTUNITY, CCP);
+  const juridica = items.find((i) => i.secao === "Habilitação Jurídica (anexar do vault)");
+  assert.ok(juridica, "peça de habilitação jurídica presente");
+  assert.match(juridica.valorMotor, /contrato social|ato constitutivo/i);
+  assert.match(juridica.valorMotor, /art\. 66/);
+  assert.equal(juridica.requerCorrecao, true, "não é assinável pelo motor — depende do vault");
+});
+
+/** ERM completo (formato do extractErm) — o motor de habilitação exige a forma cheia. */
+function ermCompleto(indices) {
+  return {
+    meta: { orgao: "Município X", cnpjOrgao: null, municipioIbge: null, modalidade: 6, valorEstimado: 1_000_000, dataPublicacao: null, dataSessao: null, criterioJulgamento: "menor preço", regimeExecucao: null },
+    economicoFinanceira: { exigePL: false, percentualPL: null, indices, justificativaPresente: null, garantiaPropostaPct: null, clausula: null },
+    tecnica: { profissional: [], operacional: [], quadroTecnico: [], parcelasMaiorRelevancia: [], tetoQuantitativo: null, somatorio: { permitido: true }, aceitaAcervoConsorcio: null, restricaoTempoLocal: false, marcaSemSimilar: false, clausula: null },
+    juridica: { declaracoes: [], clausula: null },
+    fiscalTrabalhista: { CNDs: [], SICAF: null, clausula: null },
+  };
+}
+
+test("padrão-ouro: Modelo J (capacidade financeira) sai como DECLARAÇÃO com PL + índices do balanço real", () => {
+  const ccpComBalanco = { ...CCP, financials: [FIN_2025] };
+  const items = buildReviewDossier(OPPORTUNITY, ccpComBalanco, ermCompleto({ LC: 1.0 }));
+  const modeloJ = items.find((i) => i.id.endsWith("decl-capacidade-financeira"));
+  assert.ok(modeloJ, "Modelo J presente quando há balanço");
+  assert.equal(modeloJ.secao, "Declarações (pré-redigidas)", "envelopada como declaração (gera .docx)");
+  assert.match(modeloJ.valorMotor, /sob as penas/i);
+  assert.match(modeloJ.valorMotor, /2025/);
+  assert.match(modeloJ.valorMotor, /Liquidez Corrente/);
+  // LC real = 400k/100k = 4,00 ≥ exigido 1,0 → assinável (sem requerCorrecao)
+  assert.notEqual(modeloJ.requerCorrecao, true, "índices atendem → declaração assinável");
+});
+
+test("padrão-ouro: Modelo J TRAVA quando índice do balanço fica abaixo do exigido (não assinar capacidade que não tem)", () => {
+  const ccpComBalanco = { ...CCP, financials: [FIN_2025] };
+  // exige LC ≥ 5; real = 400k/100k = 4 → reprova
+  const items = buildReviewDossier(OPPORTUNITY, ccpComBalanco, ermCompleto({ LC: 5.0 }));
+  const modeloJ = items.find((i) => i.id.endsWith("decl-capacidade-financeira"));
+  assert.ok(modeloJ);
+  assert.equal(modeloJ.requerCorrecao, true, "índice reprovado → aprovação bloqueada");
+  assert.match(modeloJ.aviso, /NÃO assinar/i);
+});

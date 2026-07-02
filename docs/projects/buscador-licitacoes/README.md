@@ -83,7 +83,7 @@
 6. Protótipo operacional atual: `apps/noyce` (Next.js) com inbox ENIAC, detalhe de oportunidade, evidências, referências de preço, concorrência, checklist de habilitação, timeline e matriz de portais aguardando vault.
 7. Validação local: `npm test`, `npm run typecheck`, `npm run build` e browser QA em `http://localhost:3100` passaram em 2026-05-23.
 8. Fase 4 iniciada: score `deterministic-v0` calcula `opportunity_score` e `confidence_score` separadamente a partir das fixtures, com componentes e razões visíveis na tela de análise.
-9. Export local de dados: `http://localhost:3100/analysis-runs.json` expõe `analysis_runs` fixture-based com validação `noyce.analysis_run.v0`.
+9. Export local de dados: `http://localhost:3100/api/analysis-runs` expõe `analysis_runs` fixture-based com validação `noyce.analysis_run.v0` (a rota duplicada `/analysis-runs.json` foi removida — dívida do doc 23).
 10. Paridade Sprint 0: `http://localhost:3103/api/analysis-runs` expõe os 7 `analysis_runs` do dry-run em `sprint0AnalysisRuns`, incluindo fonte candidata, com `validation.ok=true`.
 11. Fase 5 jurídico/processo: `apps/noyce` agora modela habilitação, documentos, janelas processuais, decision points, intenção de recurso e razões recursais com dados fixture-only e atos externos bloqueados por padrão.
 12. Fases 6-11 offline: `http://localhost:3100/api/readiness` expõe readiness do onboarding, segurança/vault/ToS, adapters dry-run/manual import, jobs dry-run, piloto e gate de produção controlada; itens humanos ficam separados para resolver de manhã.

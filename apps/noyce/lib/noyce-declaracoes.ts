@@ -52,7 +52,7 @@ export const DECLARACAO_TEMPLATES: DeclaracaoTemplate[] = [
     // estrito p/ texto cheio: "menor de 18/16 anos" ou o inciso — nunca "menor preço".
     detectRe: /menor\s+de\s+(?:18|dezoito|16|dezesseis)\b|art\.?\s*7[ºo]?[\s,]+XXXIII|inciso\s+XXXIII|n[ãa]o\s+emprega.*menor/i,
     texto: (e) =>
-      `${e} declara, para os fins do disposto no art. 7º, XXXIII, da Constituição Federal e no art. 68, VI, da Lei nº 14.133/2021, que não emprega menor de 18 anos em trabalho noturno, perigoso ou insalubre, nem menor de 16 anos em qualquer trabalho, salvo na condição de aprendiz a partir de 14 anos.`,
+      `${e} declara, sob as penas da lei, para os fins do disposto no art. 7º, XXXIII, da Constituição Federal e no art. 68, VI, da Lei nº 14.133/2021, que não emprega menor de 18 anos em trabalho noturno, perigoso ou insalubre, nem menor de 16 anos em qualquer trabalho, salvo na condição de aprendiz a partir de 14 anos.`,
   },
   {
     tipo: "nepotismo",
@@ -60,7 +60,7 @@ export const DECLARACAO_TEMPLATES: DeclaracaoTemplate[] = [
     citacao: "Súmula Vinculante 13/STF c/c Decreto nº 7.203/2010",
     match: /nepotismo|parentesco|s[úu]mula\s*vinculante\s*13|7\.?203/i,
     texto: (e) =>
-      `${e} declara que não possui em seu quadro societário, de direção ou de empregados cônjuge, companheiro(a) ou parente em linha reta, colateral ou por afinidade, até o terceiro grau, de agente público investido em cargo de direção, chefia ou assessoramento no órgão ou entidade contratante, em observância à Súmula Vinculante nº 13 do STF e ao Decreto nº 7.203/2010.`,
+      `${e} declara, sob as penas da lei, que não possui em seu quadro societário, de direção ou de empregados cônjuge, companheiro(a) ou parente em linha reta, colateral ou por afinidade, até o terceiro grau, de agente público investido em cargo de direção, chefia ou assessoramento no órgão ou entidade contratante, em observância à Súmula Vinculante nº 13 do STF e ao Decreto nº 7.203/2010.`,
   },
   {
     tipo: "reserva_pcd",
@@ -68,7 +68,7 @@ export const DECLARACAO_TEMPLATES: DeclaracaoTemplate[] = [
     citacao: "Art. 63, IV, Lei 14.133/2021 c/c art. 93, Lei 8.213/1991",
     match: /(pessoa.*defici|\bPCD\b|reabilitad|reserva.*cargo|art\.?\s*93|8\.?213)/i,
     texto: (e) =>
-      `${e} declara, nos termos do art. 63, IV, da Lei nº 14.133/2021, que cumpre as exigências de reserva de cargos previstas em lei para pessoa com deficiência e para reabilitado da Previdência Social, na forma do art. 93 da Lei nº 8.213/1991.`,
+      `${e} declara, sob as penas da lei e nos termos do art. 63, IV, da Lei nº 14.133/2021, que cumpre as exigências de reserva de cargos previstas em lei para pessoa com deficiência e para reabilitado da Previdência Social, na forma do art. 93 da Lei nº 8.213/1991.`,
   },
   {
     tipo: "nao_servidor_publico",
@@ -76,7 +76,7 @@ export const DECLARACAO_TEMPLATES: DeclaracaoTemplate[] = [
     citacao: "Arts. 9º e 14, Lei 14.133/2021",
     match: /servidor\s+p[úu]blico|agente\s+p[úu]blico.*quadro|impedimento.*art\.?\s*9|art\.?\s*14\b/i,
     texto: (e) =>
-      `${e} declara que não possui em seu quadro societário ou funcional servidor público ou dirigente do órgão ou entidade contratante, tampouco incide em qualquer das hipóteses de impedimento de contratar previstas nos arts. 9º e 14 da Lei nº 14.133/2021.`,
+      `${e} declara, sob as penas da lei, que não possui em seu quadro societário ou funcional servidor público ou dirigente do órgão ou entidade contratante, tampouco incide em qualquer das hipóteses de impedimento de contratar previstas nos arts. 9º e 14 da Lei nº 14.133/2021.`,
   },
   {
     tipo: "trabalho_degradante",
@@ -84,7 +84,7 @@ export const DECLARACAO_TEMPLATES: DeclaracaoTemplate[] = [
     citacao: "Praxe editalícia (combate ao trabalho forçado/infantil)",
     match: /(trabalho|m[ãa]o\s+de\s+obra).*(escrav|degradante|for[çc]ad|infantil|an[áa]loga)/i,
     texto: (e) =>
-      `${e} declara que não se utiliza, direta ou indiretamente, de mão de obra constituída por trabalho infantil, forçado ou em condições análogas à de escravo ou degradantes, na forma da legislação vigente.`,
+      `${e} declara, sob as penas da lei, que não se utiliza, direta ou indiretamente, de mão de obra constituída por trabalho infantil, forçado ou em condições análogas à de escravo ou degradantes, na forma da legislação vigente.`,
   },
   {
     tipo: "cumprimento_requisitos_habilitacao",
@@ -101,7 +101,7 @@ export const DECLARACAO_TEMPLATES: DeclaracaoTemplate[] = [
     citacao: "Praxe editalícia (fato superveniente)",
     match: /fato\s+superveniente/i,
     texto: (e) =>
-      `${e} declara a inexistência de fato superveniente impeditivo de sua habilitação, estando ciente da obrigatoriedade de declarar ocorrências posteriores que venham a comprometê-la.`,
+      `${e} declara, sob as penas da lei, a inexistência de fato superveniente impeditivo de sua habilitação, estando ciente da obrigatoriedade de declarar ocorrências posteriores que venham a comprometê-la.`,
   },
   {
     tipo: "fato_impeditivo",
@@ -117,7 +117,7 @@ export const DECLARACAO_TEMPLATES: DeclaracaoTemplate[] = [
     citacao: "Praxe editalícia (pleno conhecimento das condições)",
     match: /pleno\s+conhecimento|concord[âa]ncia.*edital|conhecimento.*(edital|condi[çc][õo]es)/i,
     texto: (e) =>
-      `${e} declara pleno conhecimento e concordância com os termos e condições do edital e de seus anexos, bem como das condições locais e técnicas para o cumprimento das obrigações objeto desta licitação.`,
+      `${e} declara, sob as penas da lei, pleno conhecimento e concordância com os termos e condições do edital e de seus anexos, bem como das condições locais e técnicas para o cumprimento das obrigações objeto desta licitação.`,
   },
   {
     tipo: "me_epp",

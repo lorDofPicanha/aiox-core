@@ -54,7 +54,7 @@ Legenda: ✅ atende · 🟡 parcial · 🔴 falta
 |---|---|---|
 | Corpo das declarações (G, H, I, conflito, PCD, nepotismo, escravo) | ✅ pré-redigido c/ citação legal | — (já forte) |
 | Base legal citada | ✅ por declaração | — |
-| "sob as penas" | 🟡 em algumas | padronizar em todas |
+| "sob as penas" | ✅ fechado (02/Jul) | padronizada em TODAS as declarações template (teste trava regressão) |
 | **Cabeçalho "Prezados Senhores" + órgão** | ✅ fechado (30/Jun) | envelope formal aplicado |
 | **Referência ao certame** no corpo | ✅ fechado | "Ref.: [título] ([órgão])" nas peças |
 | **[LOCAL], [DATA]** | ✅ fechado | derivado da sede (CCP) + data |
@@ -62,10 +62,10 @@ Legenda: ✅ atende · 🟡 parcial · 🔴 falta
 | Proposta comercial (Modelo F: considerandos, vinculante, validade, extenso) | ✅ fechado (P1) | Proposta Comercial completa + valor por extenso |
 | Carta de credenciamento (Modelo E) | ✅ fechado | gerada do representante real |
 | Termo de aceitação às condições (Modelo A) | ✅ fechado | gerado do representante real |
-| Declaração de capacidade financeira (Modelo J) | 🟡 índices computados, sem a peça-declaração | envelopar como declaração |
+| Declaração de capacidade financeira (Modelo J) | ✅ fechado (02/Jul) | peça-declaração assinável com PL + LC/LG/SG do balanço real; trava se índice reprova |
 | Qualificação técnica (RTs + CATs + matriz) | ✅ preenchida c/ dado real | — (entregue 30/Jun) |
 | Qualificação econômico-financeira (índices do balanço) | ✅ computada do balanço real | — (entregue 30/Jun) |
-| Habilitação jurídica (contrato social) | 🔴 não listada | anexo vault + item no dossiê |
+| Habilitação jurídica (contrato social) | ✅ fechado (02/Jul) | item sempre presente no dossiê (seção própria, NIRE do CCP, art. 66), travado p/ vault |
 | Regularidade fiscal (CNDs/FGTS/CNDT) | ✅ listada (anexar vault) | — |
 
 ## Prioridade de ataque — situação 30/Jun
@@ -73,8 +73,8 @@ Legenda: ✅ atende · 🟡 parcial · 🔴 falta
 1. ✅ **P0 — Envelope formal assinável** (marcadores 1,2,8,9). FEITO: representante legal capturado no perfil (`eniac-ccp.json`) + `signatureBlockHtml` aplicado a todas as peças.
 2. ✅ **P1 — Proposta Comercial completa (Modelo F)**. FEITO: considerandos, valor por extenso, validade 60d, piso art. 59.
 3. ✅ **P1 — Carta de credenciamento (Modelo E) + Termo de aceitação (Modelo A)**. FEITO: geradas do representante real.
-4. 🟡 **P2 — Declaração de capacidade financeira (Modelo J)** como peça (envelopar os índices já computados) + item de **habilitação jurídica** (contrato social/NIRE) no dossiê. PENDENTE.
-5. 🟡 **P2 — Padronizar "sob as penas"** em todas as declarações + **RG** do representante (opcional hoje). PENDENTE.
+4. ✅ **P2 — Declaração de capacidade financeira (Modelo J)** como peça + item de **habilitação jurídica** (contrato social/NIRE) no dossiê. FEITO 02/Jul (testes padrão-ouro em `tests/noyce-review.test.mjs`).
+5. ✅ **P2 — Padronizar "sob as penas"** em todas as declarações. FEITO 02/Jul (teste varre todos os templates). **RG** do representante segue pendente de dado do founder (opcional — CPF basta p/ 14.133).
 
 ## Dado ainda faltante (menor)
 
