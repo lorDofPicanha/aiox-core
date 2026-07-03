@@ -4,6 +4,11 @@
 // Aprendizado de campo: o download exige User-Agent de browser (senão volta 0 bytes); a
 // `url` devolvida pela API às vezes vem com porta estranha (:58631) → montamos a URL
 // canônica nós mesmos a partir de cnpj/ano/sequencial/sequencialDocumento.
+//
+// Aprendizado de campo (2): MUITOS órgãos publicam um único arquivo "Edital e Anexos.zip"
+// (magic PK) em vez de PDFs soltos. Sem descompactar, o parser via 0 documento e o pipeline
+// inteiro abortava. Agora expandimos ZIP → PDFs de dentro (jszip, import lazy), aplicando o
+// filtro de ruído (SKIP) nos nomes internos.
 
 import { extractEditalText, mergeEditalSources, type EditalExtract, type EditalSource } from "./extract-edital.ts";
 
@@ -60,22 +65,61 @@ export async function listEditalDocs(ref: PncpRef): Promise<EditalDocMeta[]> {
   }));
 }
 
-/** Baixa um documento (PDF). Retorna null se não for PDF (imagem/CAD/zip etc.). */
-export async function downloadEditalDoc(ref: PncpRef, sequencialDocumento: number): Promise<Uint8Array | null> {
+function isPdf(buf: Uint8Array): boolean {
+  // magic %PDF (0x25 50 44 46)
+  return buf.length >= 4 && buf[0] === 0x25 && buf[1] === 0x50 && buf[2] === 0x44 && buf[3] === 0x46;
+}
+
+function isZip(buf: Uint8Array): boolean {
+  // magic PK\x03\x04 (arquivo local) ou PK\x05\x06 (zip vazio)
+  return buf.length >= 4 && buf[0] === 0x50 && buf[1] === 0x4b && (buf[2] === 0x03 || buf[2] === 0x05);
+}
+
+/** Baixa os bytes crus de um documento do PNCP (qualquer tipo). Null se não-OK.
+ *  Exportado p/ o colhedor de anexos pós-sessão (proposta vencedora/ata podem vir em ZIP). */
+export async function fetchDocBytes(ref: PncpRef, sequencialDocumento: number): Promise<Uint8Array | null> {
   const url = `${BASE}/orgaos/${ref.cnpj}/compras/${ref.ano}/${ref.sequencial}/arquivos/${sequencialDocumento}`;
   const ctrl = new AbortController();
   const t = setTimeout(() => ctrl.abort(), TIMEOUT_MS);
   try {
     const res = await fetch(url, { headers: { "User-Agent": UA, Accept: "*/*" }, signal: ctrl.signal });
     if (!res.ok) return null;
-    const buf = new Uint8Array(await res.arrayBuffer());
-    // magic %PDF (0x25 50 44 46)
-    if (buf.length < 4 || buf[0] !== 0x25 || buf[1] !== 0x50 || buf[2] !== 0x44 || buf[3] !== 0x46) return null;
-    return buf;
+    return new Uint8Array(await res.arrayBuffer());
   } catch {
     return null;
   } finally {
     clearTimeout(t);
+  }
+}
+
+/** Baixa um documento (PDF). Retorna null se não for PDF (imagem/CAD/zip etc.). */
+export async function downloadEditalDoc(ref: PncpRef, sequencialDocumento: number): Promise<Uint8Array | null> {
+  const buf = await fetchDocBytes(ref, sequencialDocumento);
+  if (!buf || !isPdf(buf)) return null;
+  return buf;
+}
+
+/** Expande bytes de um documento em PDFs prontos p/ extração: passthrough se já é PDF,
+ *  descompacta se for ZIP (pega os .pdf de dentro, pula ruído via SKIP). */
+export async function expandToPdfs(buf: Uint8Array, label: string): Promise<{ label: string; buf: Uint8Array }[]> {
+  if (isPdf(buf)) return [{ label, buf }];
+  if (!isZip(buf)) return [];
+  try {
+    const JSZip = (await import("jszip")).default;
+    const zip = await JSZip.loadAsync(buf);
+    const out: { label: string; buf: Uint8Array }[] = [];
+    const names = Object.keys(zip.files).sort();
+    for (const name of names) {
+      const entry = zip.files[name];
+      if (entry.dir) continue;
+      if (!/\.pdf$/i.test(name)) continue; // só PDFs (ignora .dwg/.jpg/.docx internos)
+      if (SKIP.test(name)) continue; // pula projeto executivo/plantas/imagens
+      const inner = await entry.async("uint8array");
+      if (isPdf(inner)) out.push({ label: `${label} › ${name.split("/").pop()}`, buf: inner });
+    }
+    return out;
+  } catch {
+    return []; // ZIP corrompido/protegido — não trava o pipeline
   }
 }
 
@@ -95,14 +139,19 @@ export async function fetchEditalSources(pncpId: string, maxDocs = 6): Promise<E
 
   const sources: EditalSource[] = [];
   for (const d of picked) {
-    const buf = await downloadEditalDoc(ref, d.sequencialDocumento);
-    if (!buf) continue;
-    try {
-      const text = await extractEditalText({ pdfBuffer: buf });
-      if (text && text.trim().length > 100) sources.push({ label: d.tipo || d.titulo, text });
-    } catch {
-      // PDF ilegível (escaneado/protegido) — pula, não trava o pipeline.
+    const bytes = await fetchDocBytes(ref, d.sequencialDocumento);
+    if (!bytes) continue;
+    const pdfs = await expandToPdfs(bytes, d.tipo || d.titulo); // 1 PDF, ou N de dentro de um ZIP
+    for (const pdf of pdfs) {
+      try {
+        const text = await extractEditalText({ pdfBuffer: pdf.buf });
+        if (text && text.trim().length > 100) sources.push({ label: pdf.label, text });
+      } catch {
+        // PDF ilegível (escaneado/protegido) — pula, não trava o pipeline.
+      }
+      if (sources.length >= maxDocs) break; // cap: evita estourar tokens com ZIP gigante
     }
+    if (sources.length >= maxDocs) break;
   }
   return sources;
 }
