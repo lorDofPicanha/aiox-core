@@ -15,7 +15,7 @@
     "build": "tsc -p tsconfig.json",
     "prepare": "npm run build",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "npm run build && node scripts/run-mock-smoke.mjs && node scripts/seed-from-motor.mjs",
+    "test": "npm run build && node scripts/run-mock-smoke.mjs && node scripts/seed-from-motor.mjs && node scripts/run-supabase-contract.mjs",
     "seed": "npm run build && node scripts/seed-from-motor.mjs"
   },
   "engines": {

@@ -9,6 +9,17 @@
 export * from "./types";
 export type { ContadorApiClient, CreateApiClientOptions } from "./client";
 export { MockApiClient } from "./mock-client";
+export {
+  SupabaseApiClient,
+  createFetchTransport,
+  type SupabaseTransportLike,
+  type SupabaseSchemaLike,
+  type SupabaseQueryBuilderLike,
+  type SupabaseReadBuilderLike,
+  type SupabaseTransportResult,
+  type SupabaseTransportError,
+  type FetchTransportOptions,
+} from "./supabase-client";
 export { buildDefaultSeed, type SeedDataset } from "./mock-data";
 export {
   carregarRuleset,
@@ -30,25 +41,44 @@ import { MockApiClient } from "./mock-client";
 import { buildDefaultSeed } from "./mock-data";
 import { seedFromMotor } from "./seed-from-motor";
 import type { RulesetDocumento } from "./ruleset";
+import { SupabaseApiClient, type SupabaseTransportLike } from "./supabase-client";
+
+/**
+ * Opções da factory. Estende {@link CreateApiClientOptions} (sem alterá-la) com o
+ * `transport` do modo supabase — mantido aqui para não tocar em `client.ts`.
+ */
+export type CreateApiClientInput = CreateApiClientOptions & {
+  /**
+   * Transport para `mode: "supabase"`: um client do `@supabase/supabase-js`
+   * (`createClient(url, anonKey)`) OU o retorno de `createFetchTransport({url, apiKey})`.
+   */
+  transport?: SupabaseTransportLike;
+};
 
 /**
  * Factory canônica do cliente.
  *
- *   const api = createApiClient({ mode: "mock" }); // Fase 1
+ *   const api = createApiClient({ mode: "mock" });                       // Fase 1
+ *   const api = createApiClient({ mode: "supabase", transport });        // Fase 2
  *
- * O modo "supabase" será implementado na Fase 2 (S-F2.4) por trás desta MESMA
- * interface — o app não muda quando trocar o backend.
+ * O modo "supabase" fala com o Postgres real por trás desta MESMA interface —
+ * o app não muda quando trocar o backend (só a factory `lib/api.ts:getApi()`).
  */
-export function createApiClient(options: CreateApiClientOptions = {}): ContadorApiClient {
+export function createApiClient(options: CreateApiClientInput = {}): ContadorApiClient {
   const mode = options.mode ?? "mock";
   if (mode === "mock") {
     return new MockApiClient(options.seed ?? buildDefaultSeed());
   }
-  // Ponto de extensão Fase 2 (Supabase). Mantido honesto: não finge existir.
-  throw new Error(
-    "[Fase 2] createApiClient({ mode: 'supabase' }) ainda não implementado. " +
-      "Use mode: 'mock' na Fase 1.",
-  );
+  // Fase 2 (Supabase). Honesto: sem transport, diz exatamente o que falta.
+  if (!options.transport) {
+    throw new Error(
+      "[Fase 2] createApiClient({ mode: 'supabase' }) requer um `transport`. " +
+        "Passe um client @supabase/supabase-js (createClient(url, anonKey)) ou " +
+        "createFetchTransport({ url, apiKey }). As chaves do Supabase " +
+        "(SUPABASE_URL/SUPABASE_ANON_KEY) ainda não foram provisionadas (F2.1/F2.2).",
+    );
+  }
+  return new SupabaseApiClient(options.transport);
 }
 
 /**
