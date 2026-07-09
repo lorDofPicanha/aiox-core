@@ -360,14 +360,20 @@ function extrairIbsCbs(trib: Record<string, unknown> | undefined): TributoIbsCbs
   const aliquotaIbs = aliquotaIbsSplit ?? paraNumeroOpcionalEstrito(asString(gIbs?.pIBS), "gIBS/pIBS");
   const valorIbs = valorIbsSplit ?? paraNumeroOpcionalEstrito(asString(gIbs?.vIBS), "gIBS/vIBS");
 
-  // QA 🔴-2: se há tributação CBS ativa mas NENHUM IBS foi extraído de nenhum
-  // layout, NÃO reportar IBS-zero silencioso — flagar para revisão humana
-  // (coerente com a trilha de boa-fé). No regime integral CBS e IBS são
-  // co-presentes; CBS-presente-IBS-ausente é forte sinal de layout não
-  // reconhecido. Validar layouts aceitos contra o XSD oficial (12/02/2026) =
-  // gate do tributarista/founder.
+  // QA 🔴-2 + 🟡-B: guarda de CO-PRESENÇA CBS/IBS, simétrica e coerente com o
+  // CST. No regime integral CBS e IBS são co-presentes; "um lado presente sem o
+  // outro" é forte sinal de layout não reconhecido — flagar o lado AUSENTE para
+  // revisão humana (trilha de boa-fé), nunca reportar zero mudo nem inventar
+  // valor. Complemento pelo CST (🟡-B caso B): sob CST de tributação integral,
+  // um lado ausente/zerado também vai para revisão. Validar layouts aceitos
+  // contra o XSD oficial (12/02/2026) = gate do tributarista/founder.
   const temCbs = valorCbs !== undefined || aliquotaCbs !== undefined;
-  const ibsIndeterminado = temCbs && aliquotaIbs === undefined && valorIbs === undefined;
+  const temIbs = valorIbs !== undefined || aliquotaIbs !== undefined;
+  const tributacaoEsperada = cstIndicaTributacao(cst);
+  const cbsZerado = (valorCbs ?? 0) === 0 && (aliquotaCbs ?? 0) === 0;
+  const ibsZerado = (valorIbs ?? 0) === 0 && (aliquotaIbs ?? 0) === 0;
+  const ibsIndeterminado = (temCbs && !temIbs) || (tributacaoEsperada && ibsZerado);
+  const cbsIndeterminado = (temIbs && !temCbs) || (tributacaoEsperada && cbsZerado);
 
   const resultado: TributoIbsCbs = {
     ...(cClassTrib ? { cClassTrib } : {}),
@@ -377,10 +383,25 @@ function extrairIbsCbs(trib: Record<string, unknown> | undefined): TributoIbsCbs
     ...(valorCbs !== undefined ? { valorCbs } : {}),
     ...(aliquotaIbs !== undefined ? { aliquotaIbs } : {}),
     ...(valorIbs !== undefined ? { valorIbs } : {}),
-    ...(ibsIndeterminado ? { ibsIndeterminado: true } : {})
+    ...(ibsIndeterminado ? { ibsIndeterminado: true } : {}),
+    ...(cbsIndeterminado ? { cbsIndeterminado: true } : {})
   };
   // Só retorna se houver ao menos um campo extraído.
   return Object.keys(resultado).length > 0 ? resultado : undefined;
+}
+
+/**
+ * CSTs do IBS/CBS sob os quais se ESPERA tributo destacado (micro-tabela
+ * mínima do 🟡-B): "000" = tributação integral. A tabela completa
+ * CST→expectativa (reduções, isenções, imunidade, diferimento, monofasia…) é
+ * gate do tributarista — NÃO inventar regra sem rótulo (doc 46). CSTs fora
+ * desta lista não geram flag pelo caminho do CST; a guarda de co-presença
+ * (um lado presente sem o outro) vale para QUALQUER CST.
+ */
+const CST_IBSCBS_TRIBUTACAO_INTEGRAL = new Set(["000"]);
+
+function cstIndicaTributacao(cst: string | undefined): boolean {
+  return cst !== undefined && CST_IBSCBS_TRIBUTACAO_INTEGRAL.has(cst);
 }
 
 /**

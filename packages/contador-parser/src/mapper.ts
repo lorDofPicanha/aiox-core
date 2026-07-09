@@ -17,6 +17,7 @@ import {
   DocumentoTransporte,
   ItemDocumento,
   ItemServico,
+  TributoIcms,
   TributoPisCofins
 } from "./types";
 
@@ -68,6 +69,12 @@ export interface ItemFiscalRecuperacao extends ItemFiscal {
   recuperacao: TributoMonofasico;
   proveniencia: Proveniencia;
   cest?: string;
+  /**
+   * ICMS extraído do documento (🟡-D): na NF-e é o do item; no CT-e é o do
+   * documento (frete). Portador do crédito de ICMS-frete e da conferência
+   * valor-declarado × valor-esperado. Ausente em serviço (NFS-e não tem ICMS).
+   */
+  icms?: TributoIcms;
 }
 
 /**
@@ -93,6 +100,8 @@ function mapearItem(doc: DocumentoFiscal, item: ItemDocumento): ItemFiscalRecupe
     ...(item.cClassTrib ? { cclasstribInformado: item.cClassTrib } : {}),
     valor: item.valorProduto,
     ...(item.cest ? { cest: item.cest } : {}),
+    // 🟡-D: ICMS do item preservado (base/alíquota/valor quando destacados).
+    icms: item.icms,
     recuperacao: {
       pis: item.pis,
       cofins: item.cofins,
@@ -121,6 +130,8 @@ function mapearItem(doc: DocumentoFiscal, item: ItemDocumento): ItemFiscalRecupe
  * Mapeia um CT-e (frete) para UM `ItemFiscalRecuperacao`.
  * Sem NCM (transporte não tem); o CST relevante é o do ICMS do documento.
  * Não há tributação monofásica de PIS/COFINS por item -> ehMonofasico=false.
+ * 🟡-D: o ICMS do frete (base/alíquota/valor) sobrevive ao mapper — é o
+ * portador do crédito de ICMS-frete na trilha.
  */
 export function paraItensFiscaisCTe(doc: DocumentoTransporte): ItemFiscalRecuperacao[] {
   const pisVazio: TributoPisCofins = {};
@@ -132,6 +143,7 @@ export function paraItensFiscaisCTe(doc: DocumentoTransporte): ItemFiscalRecuper
       // ncm ausente: frete não tem NCM (semântica não casa — não forçar).
       ...(doc.icms.cst ? { cst: doc.icms.cst } : {}),
       valor: doc.valorTotalPrestacao,
+      icms: doc.icms,
       recuperacao: {
         pis: pisVazio,
         cofins: cofinsVazio,

@@ -38,7 +38,7 @@ export interface TributoPisCofins {
   valor?: number;
 }
 
-/** Tributo ICMS (subconjunto relevante para classificação). */
+/** Tributo ICMS (subconjunto relevante para classificação + valores destacados). */
 export interface TributoIcms {
   /** Origem da mercadoria (orig). */
   origem?: string;
@@ -46,6 +46,12 @@ export interface TributoIcms {
   cst?: string;
   /** true quando o código veio de CSOSN (Simples), não de CST. */
   simplesNacional: boolean;
+  /** Base de cálculo do ICMS (vBC), quando destacada (🟡-C). */
+  baseCalculo?: number;
+  /** Alíquota do ICMS (pICMS), quando destacada (🟡-C). */
+  aliquota?: number;
+  /** Valor do ICMS (vICMS), quando destacado (🟡-C). */
+  valor?: number;
 }
 
 /** Item (det) do documento fiscal já normalizado. */
@@ -136,12 +142,19 @@ export interface TributoIbsCbs {
   /** Valor do IBS (gIBSUF/vIBSUF + gIBSMun/vIBSMun, ou gIBS único). */
   valorIbs?: number;
   /**
-   * Sinaliza que o grupo IBSCBS tem tributação CBS mas o IBS não pôde ser
-   * extraído de nenhum layout conhecido (split UF/Mun nem gIBS único). NÃO é
-   * "IBS zero" — é "IBS indeterminado", e a auditoria deve mandar para revisão
-   * humana em vez de tratar como ausência (trilha de boa-fé). Ver QA 🔴-2.
+   * Sinaliza que o IBS não pôde ser determinado: há tributação CBS mas nenhum
+   * layout conhecido de IBS foi lido (split UF/Mun nem gIBS único), OU o CST
+   * indica tributação integral e o IBS veio ausente/zerado. NÃO é "IBS zero" —
+   * é "IBS indeterminado", e a auditoria deve mandar para revisão humana em vez
+   * de tratar como ausência (trilha de boa-fé). Ver QA 🔴-2 / 🟡-B.
    */
   ibsIndeterminado?: boolean;
+  /**
+   * Simétrico do `ibsIndeterminado` para a CBS federal (🟡-B): há IBS mas a CBS
+   * não foi lida de nenhum layout conhecido, OU o CST indica tributação integral
+   * e a CBS veio ausente/zerada. Nunca reportar CBS-zero mudo sob CST tributado.
+   */
+  cbsIndeterminado?: boolean;
 }
 
 /**
@@ -182,17 +195,11 @@ export interface DocumentoTransporte {
 }
 
 /**
- * ICMS do CT-e — espelha `TributoIcms` (origem/CST/simplesNacional) acrescido
- * de base/alíquota/valor, que no CT-e são relevantes ao crédito de frete.
+ * ICMS do CT-e. Desde o 🟡-C, `TributoIcms` já carrega base/alíquota/valor
+ * (a NF-e de mercadoria também os extrai) — o alias permanece pela semântica
+ * do CT-e (ICMS no nível do documento, não por item) e por compatibilidade.
  */
-export interface TributoIcmsTransporte extends TributoIcms {
-  /** Base de cálculo do ICMS (vBC). */
-  baseCalculo?: number;
-  /** Alíquota do ICMS (pICMS). */
-  aliquota?: number;
-  /** Valor do ICMS (vICMS). */
-  valor?: number;
-}
+export type TributoIcmsTransporte = TributoIcms;
 
 /**
  * Item de serviço de uma NFS-e Nacional já normalizado.

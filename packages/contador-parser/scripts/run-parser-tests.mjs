@@ -62,6 +62,12 @@ teste("R1 NF-e 55 parseia e extrai campos-chave (§2.2)", () => {
   assert.equal(i1.valorProduto, 1500);
   assert.equal(i1.icms.cst, "00");
   assert.equal(i1.icms.simplesNacional, false);
+  // 🟡-C: ICMS destacado (base/alíquota/valor) extraído do ICMS00.
+  assert.equal(i1.icms.baseCalculo, 1500);
+  assert.equal(i1.icms.aliquota, 18);
+  assert.equal(i1.icms.valor, 270);
+  // item 2 sem destaque de valores → ausência legítima, sem invenção de zero.
+  assert.equal(doc.itens[1].icms.valor, undefined);
   assert.equal(i1.pis.cst, "01");
   assert.equal(i1.pis.aliquota, 1.65);
   assert.equal(i1.pis.valor, 24.75);
@@ -130,6 +136,9 @@ teste("R3 item nao-monofasico => ehMonofasico false", () => {
   const doc = parseNFe(ler("nfe-55-normal.xml"));
   const itens = paraItensFiscais(doc);
   assert.equal(itens[0].recuperacao.ehMonofasico, false);
+  // 🟡-D: ICMS do item sobrevive ao mapper (portador p/ Auditoria futura).
+  assert.equal(itens[0].icms.cst, "00");
+  assert.equal(itens[0].icms.valor, 270);
 });
 
 // --- R1/G1: XML válido com namespace prefixado (QA 🔴-1) -------------------
@@ -221,6 +230,10 @@ teste("R4 CT-e mapper produz ItemFiscal compativel (sem NCM)", () => {
   assert.equal(item.valor, 1200);
   assert.equal(item.cst, "00"); // CST do ICMS do frete
   assert.equal(item.ncm, undefined); // frete não tem NCM (semântica não forçada)
+  // 🟡-D: ICMS do frete sobrevive ao mapper (crédito de ICMS-frete na trilha).
+  assert.equal(item.icms.baseCalculo, 1200);
+  assert.equal(item.icms.aliquota, 12);
+  assert.equal(item.icms.valor, 144);
   assert.equal(item.recuperacao.ehMonofasico, false);
   assert.equal(item.proveniencia.classeInsumo, "xml");
   assert.equal(item.proveniencia.assinado, true);
@@ -458,6 +471,81 @@ teste("🔴-2 NFS-e: CBS presente sem IBS => ibsIndeterminado (nao IBS-zero mudo
 teste("R4 NFS-e sem grupo IBSCBS => ibsCbs undefined", () => {
   const semGrupo = ler("nfse-nacional-ibscbs.xml").replace(/<IBSCBS>[\s\S]*?<\/IBSCBS>/, "");
   assert.equal(parseNFSeNacional(semGrupo).itens[0].ibsCbs, undefined);
+});
+
+// ===========================================================================
+// QA 26/Jun (handoff 61) — 🟡-B guarda simétrica CBS/IBS + 🟡-C ICMS NF-e
+// ===========================================================================
+
+// 🟡-B caso A (espelho do 🔴-2): IBS presente mas CBS federal ausente => a CBS
+// não pode evaporar silenciosa — flagar cbsIndeterminado, sem inventar zero.
+teste("🟡-B NFS-e: IBS presente sem CBS => cbsIndeterminado (nao CBS-zero mudo)", () => {
+  const semCbs = ler("nfse-nacional-ibscbs.xml").replace(/<gCBS>[\s\S]*?<\/gCBS>/, "");
+  const ibsCbs = parseNFSeNacional(semCbs).itens[0].ibsCbs;
+  assert.ok(ibsCbs, "grupo IBSCBS ainda presente (tem IBS)");
+  assert.equal(ibsCbs.valorIbs, 15); // IBS intacto
+  assert.equal(ibsCbs.valorCbs, undefined); // CBS não foi inventada como zero
+  assert.equal(ibsCbs.cbsIndeterminado, true); // sinalizada p/ revisão
+  assert.notEqual(ibsCbs.ibsIndeterminado, true); // IBS foi resolvido
+});
+
+// 🟡-B caso B: CST 000 (tributação integral) mas CBS e IBS ambos AUSENTES =>
+// item "tributado" sem tributo nunca sai como zero mudo — ambos os lados flagados.
+teste("🟡-B NFS-e: CST tributado com CBS e IBS ausentes => ambos indeterminados", () => {
+  const semTributos = ler("nfse-nacional-ibscbs.xml")
+    .replace(/<gCBS>[\s\S]*?<\/gCBS>/, "")
+    .replace(/<gIBSUF>[\s\S]*?<\/gIBSMun>/, "");
+  const ibsCbs = parseNFSeNacional(semTributos).itens[0].ibsCbs;
+  assert.ok(ibsCbs, "grupo IBSCBS ainda presente (CST + cClassTrib + vBC)");
+  assert.equal(ibsCbs.cst, "000");
+  assert.equal(ibsCbs.valorCbs, undefined);
+  assert.equal(ibsCbs.valorIbs, undefined);
+  assert.equal(ibsCbs.cbsIndeterminado, true);
+  assert.equal(ibsCbs.ibsIndeterminado, true);
+});
+
+// 🟡-B caso B (variante): CST 000 mas CBS e IBS explicitamente ZERADOS =>
+// valores extraídos como 0 (preserva o bruto) porém flagados p/ revisão.
+teste("🟡-B NFS-e: CST tributado com CBS e IBS zerados => ambos indeterminados", () => {
+  const zerado = ler("nfse-nacional-ibscbs.xml")
+    .replace("<pCBS>0.90</pCBS>", "<pCBS>0</pCBS>")
+    .replace("<vCBS>90.00</vCBS>", "<vCBS>0.00</vCBS>")
+    .replace("<pIBSUF>0.10</pIBSUF>", "<pIBSUF>0</pIBSUF>")
+    .replace("<vIBSUF>10.00</vIBSUF>", "<vIBSUF>0.00</vIBSUF>")
+    .replace("<pIBSMun>0.05</pIBSMun>", "<pIBSMun>0</pIBSMun>")
+    .replace("<vIBSMun>5.00</vIBSMun>", "<vIBSMun>0.00</vIBSMun>");
+  const ibsCbs = parseNFSeNacional(zerado).itens[0].ibsCbs;
+  assert.equal(ibsCbs.valorCbs, 0); // bruto preservado (não é undefined)
+  assert.equal(ibsCbs.valorIbs, 0);
+  assert.equal(ibsCbs.cbsIndeterminado, true); // mas nunca zero MUDO sob CST 000
+  assert.equal(ibsCbs.ibsIndeterminado, true);
+});
+
+// 🟡-B fronteira: CST FORA da micro-tabela de tributação integral (ex.: 200) com
+// tributos ausentes => SEM flag pelo caminho do CST (não inventar regra sem
+// rótulo — tabela completa é gate do tributarista, doc 46).
+teste("🟡-B NFS-e: CST fora da micro-tabela sem tributos => sem flag (gate tributarista)", () => {
+  const cstReduzido = ler("nfse-nacional-ibscbs.xml")
+    .replace("<CST>000</CST>", "<CST>200</CST>")
+    .replace(/<gCBS>[\s\S]*?<\/gCBS>/, "")
+    .replace(/<gIBSUF>[\s\S]*?<\/gIBSMun>/, "");
+  const ibsCbs = parseNFSeNacional(cstReduzido).itens[0].ibsCbs;
+  assert.equal(ibsCbs.cst, "200");
+  assert.notEqual(ibsCbs.cbsIndeterminado, true);
+  assert.notEqual(ibsCbs.ibsIndeterminado, true);
+});
+
+// 🟡-C guarda estrita: vICMS presente porém ilegível na NF-e é corrupção (🔴-1),
+// não ausência — mesmo padrão do CT-e.
+teste("🟡-C NF-e: vICMS presente mas nao-numerico => ParseError (nao some)", () => {
+  const corrompido = ler("nfe-55-normal.xml").replace(
+    "<vICMS>270.00</vICMS>",
+    "<vICMS>R$ 270,00</vICMS>"
+  );
+  assert.throws(
+    () => parseNFe(corrompido),
+    (erro) => erro instanceof ParseError && erro.codigo === "ESTRUTURA_INVALIDA"
+  );
 });
 
 // ---------------------------------------------------------------------------

@@ -117,6 +117,26 @@ Follow-ups 🟡 abertos do gate (backlog priorizado): tomador CT-e expedidor/rec
 validação de formato; cobertura de fixtures (CT-e `toma4`/`ICMSSN`, NFS-e sem IBSCBS — esta
 já coberta). Memória de QA: `.claude/agent-memory/aios-qa/project_contador_parser_review.md`.
 
+## Gate QA de 26/Jun (doc 60 / handoff 61) — 🔴-A + 🟡-B/C/D aplicados
+
+- **🔴-A (resolvido):** `extrairPisCofins` da NF-e/NFC-e ainda usava a variante
+  não-estrita — `<vPIS>--</vPIS>` evaporava no caminho da Recuperação. Trocado por
+  `paraNumeroOpcionalEstrito` + 2 guardas.
+- **🟡-B (resolvido):** a guarda `ibsIndeterminado` era assimétrica (só CBS→IBS).
+  Agora é **simétrica e coerente com o CST**: um lado presente sem o outro flaga o
+  lado ausente (`cbsIndeterminado` novo); sob CST de tributação integral (`000`),
+  lado ausente/zerado também vai para revisão — nunca zero mudo. A micro-tabela
+  CST→expectativa cobre só `000`; a tabela completa é **gate do tributarista**
+  (não inventar regra sem rótulo, doc 46).
+- **🟡-C (resolvido):** `extrairIcms` da NF-e agora extrai `vBC`/`pICMS`/`vICMS`
+  (estritos), espelhando o CT-e. Ausência de destaque segue legítima (`undefined`).
+- **🟡-D (resolvido):** `ItemFiscalRecuperacao` ganhou o portador `icms?` — o ICMS
+  do frete (CT-e) e do item (NF-e) sobrevivem ao mapper (crédito de ICMS-frete
+  com trilha).
+- **🟢-E (agendado):** precisão monetária float — decidir política de arredondamento
+  a jusante quando a agregação financeira da Recuperação (C2, doc 56) for construída.
+  O parser preserva o bruto (ver "Precisão monetária" acima).
+
 ## Limitações conhecidas / follow-ups (gate QA 24/Jun — doc 59)
 
 - **🔴 Precisão monetária:** valores monetários são `number`. Para um campo isolado é

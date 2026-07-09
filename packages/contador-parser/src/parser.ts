@@ -192,6 +192,10 @@ function extrairItem(det: unknown, indice: number): ItemDocumento {
 /**
  * ICMS vem encapsulado em um subgrupo variável (ICMS00, ICMS40, ICMSSN102...).
  * Pegamos o primeiro subgrupo presente. CSOSN sinaliza Simples Nacional.
+ *
+ * QA 🟡-C: base/alíquota/valor destacados agora são extraídos — estritos
+ * (presente porém ilegível é corrupção, 🔴-1), espelhando o CT-e. Ausência
+ * segue legítima (ICMS40/CSOSN sem destaque) → campos ficam undefined, sem flag.
  */
 function extrairIcms(icmsNode: unknown): TributoIcms {
   if (!icmsNode || typeof icmsNode !== "object") {
@@ -206,10 +210,16 @@ function extrairIcms(icmsNode: unknown): TributoIcms {
   const origem = asString(grupo.orig);
   const csosn = asString(grupo.CSOSN);
   const cst = asString(grupo.CST);
+  const baseCalculo = paraNumeroOpcionalEstrito(asString(grupo.vBC), "ICMS/vBC");
+  const aliquota = paraNumeroOpcionalEstrito(asString(grupo.pICMS), "ICMS/pICMS");
+  const valor = paraNumeroOpcionalEstrito(asString(grupo.vICMS), "ICMS/vICMS");
   return {
     ...(origem ? { origem } : {}),
     ...(csosn ?? cst ? { cst: csosn ?? cst } : {}),
-    simplesNacional: csosn !== undefined
+    simplesNacional: csosn !== undefined,
+    ...(baseCalculo !== undefined ? { baseCalculo } : {}),
+    ...(aliquota !== undefined ? { aliquota } : {}),
+    ...(valor !== undefined ? { valor } : {})
   };
 }
 
