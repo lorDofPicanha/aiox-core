@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!--
+    Ícone do Livro Caixa ENIAC.
+    Glifo = entrada (seta verde subindo) + saída (seta vermelha descendo).
+    Toda a marca cabe no círculo de raio 205px a partir do centro, o que satisfaz
+    a safe zone de ícones "maskable" (80%) sem precisar de um arquivo separado.
+  -->
+  <defs>
+    <linearGradient id="ink" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#16233a" />
+      <stop offset="0.7" stop-color="#0e1826" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" fill="url(#ink)" />
+  <path d="M198 150 L246 214 H214 V360 H182 V214 H150 Z" fill="#12a150" />
+  <path d="M314 362 L362 298 H330 V152 H298 V298 H266 Z" fill="#e11d48" />
+</svg>

@@ -41,6 +41,31 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
+/* Safe areas do iPhone (home indicator). Só valem com viewportFit: "cover". */
+:root {
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Barra inferior encosta na borda física, não no home indicator. */
+.pb-safe {
+  padding-bottom: var(--safe-bottom);
+}
+
+/* Folga do conteúdo para não sumir atrás da barra inferior. */
+.pb-nav {
+  padding-bottom: calc(7rem + var(--safe-bottom));
+}
+
+/* FAB flutua acima da barra, respeitando o home indicator. */
+.fab-offset {
+  bottom: calc(5rem + var(--safe-bottom));
+}
+
+/* Bottom sheet: último campo não fica sob o home indicator. */
+.pb-sheet {
+  padding-bottom: calc(1.75rem + var(--safe-bottom));
+}
+
 /* esconde scrollbar em chips horizontais */
 .no-scrollbar::-webkit-scrollbar {
   display: none;

@@ -22,7 +22,7 @@ export default async function VencimentosPage() {
   ]);
 
   return (
-    <main className="px-4 pb-28 pt-4">
+    <main className="pb-nav px-4 pt-4">
       <header className="mb-4">
         <h1 className="text-lg font-bold">Vencimentos</h1>
       </header>

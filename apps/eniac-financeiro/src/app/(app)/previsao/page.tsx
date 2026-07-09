@@ -29,7 +29,7 @@ export default async function PrevisaoPage() {
   const forecast = computeForecast(summary.balance, scheduled);
 
   return (
-    <main className="px-4 pb-28 pt-4">
+    <main className="pb-nav px-4 pt-4">
       <header className="mb-4 flex items-center gap-2">
         <Link
           href="/mais"

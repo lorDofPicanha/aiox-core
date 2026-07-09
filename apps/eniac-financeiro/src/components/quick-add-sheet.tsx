@@ -93,7 +93,7 @@ export function QuickAddSheet({ companyId }: { companyId: string }) {
       <button
         onClick={() => setOpen(true)}
         aria-label="Novo lançamento"
-        className="fixed bottom-20 right-5 z-30 flex items-center justify-center rounded-[20px] bg-accent text-white shadow-lg shadow-accent/40 transition-transform active:scale-95"
+        className="fab-offset fixed right-5 z-30 flex items-center justify-center rounded-[20px] bg-accent text-white shadow-lg shadow-accent/40 transition-transform active:scale-95"
         style={{ height: 58, width: 58 }}
       >
         <Plus className="h-7 w-7" strokeWidth={2.25} />
@@ -109,7 +109,7 @@ export function QuickAddSheet({ companyId }: { companyId: string }) {
           />
 
           {/* Sheet */}
-          <div className="relative w-full rounded-t-3xl bg-surface p-5 pb-7 shadow-2xl">
+          <div className="pb-sheet relative w-full rounded-t-3xl bg-surface p-5 shadow-2xl">
             <div className="mx-auto mb-4 h-1.5 w-10 rounded-full bg-border" />
 
             <div className="mb-4 flex items-center justify-between">

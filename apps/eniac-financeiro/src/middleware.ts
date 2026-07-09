@@ -7,7 +7,16 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 
-const PUBLIC_PATHS = new Set(["/login", "/login/check-email", "/api/health"]);
+const PUBLIC_PATHS = new Set([
+  "/login",
+  "/login/check-email",
+  "/api/health",
+  // PWA: o navegador busca estes sem sessão. Um redirect para /login aqui
+  // faria o registro do service worker falhar e o manifest ser ignorado.
+  "/manifest.webmanifest",
+  "/sw.js",
+  "/offline.html",
+]);
 
 function isPublicPath(pathname: string): boolean {
   if (PUBLIC_PATHS.has(pathname)) return true;

@@ -46,7 +46,7 @@ export default async function HomePage({ searchParams }: { searchParams: SearchP
   const alerts = computeAlerts(summary.balance, scheduled);
 
   return (
-    <main className="px-4 pb-28 pt-4">
+    <main className="pb-nav px-4 pt-4">
       <header className="mb-4 flex items-center justify-between">
         <div>
           <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
