@@ -43,6 +43,53 @@ export type MensagemBruta = MensagemCaixaBruta;
 export type CertidaoBruta = CndBruta;
 
 /**
+ * Uma pendência extraída do relatório de SITUAÇÃO FISCAL (SITFIS · Integra Contador). Modela
+ * SÓ o que o relatório realmente traz por seção — sem inventar semântica fiscal (handoff 58 §5).
+ *
+ * G6: descreve um INDÍCIO de pendência conforme consta no relatório; nunca afirma "regularizado".
+ */
+export interface PendenciaFiscalBruta {
+  /** Código/seção da pendência no relatório SITFIS (ex.: "SIEF", "DCTF", "GFIP"). */
+  codigo: string;
+  /** Rubrica/tipo da pendência (ex.: "Débito (SIEF)", "Omissão de declaração"). */
+  tipo: string;
+  /** Descrição textual (G6-safe) da pendência, como consta no relatório. */
+  descricao: string;
+}
+
+/**
+ * Forma BRUTA da SITUAÇÃO FISCAL de um cliente (SITFIS), do ponto de vista do provider — o que
+ * o adapter do Integra Contador (SITFIS, idServiço `SOLICITARPROTOCOLO91` → `RELATORIOSITUACAOFISCAL92`,
+ * assíncrono — handoff 58 §3) precisa devolver. Novo contrato mínimo criado para S1: o model
+ * S3/S5 não tinha forma para a situação fiscal (só caixa postal e CND).
+ */
+export interface SituacaoFiscalBruta {
+  clienteId: string;
+  clienteNome: string;
+  documento: string;
+  /** Quando o relatório de situação fiscal foi lido (ISO). */
+  consultadoEmIso: string;
+  /** Protocolo do relatório assíncrono SITFIS (opaco — o adapter guarda para auditoria). */
+  protocolo: string;
+  /** Pendências extraídas do relatório (lista vazia = sem indício de pendência no relatório). */
+  pendencias: PendenciaFiscalBruta[];
+}
+
+/**
+ * Forma BRUTA de um EVENTO DE ATUALIZAÇÃO (EVENTOSATUALIZACAO, idServiço `OBTEREVENTOSPJ134`) —
+ * o sinal de que a situação de um contribuinte MUDOU desde a última varredura (nova mensagem na
+ * caixa postal, alteração de situação fiscal, etc.). Dispara reconsulta incremental sem varrer tudo.
+ */
+export interface EventoAtualizacaoBruto {
+  clienteId: string;
+  documento: string;
+  /** Tipo do evento conforme o catálogo (ex.: "CAIXAPOSTAL", "SITFIS", "PARCELAMENTO"). */
+  tipo: string;
+  /** Momento do evento (ISO). */
+  ocorridoEmIso: string;
+}
+
+/**
  * Uma LEITURA datada da saúde fiscal da carteira (um "snapshot"). Carrega a sua própria data
  * de referência (`refIso`) — as regras puras consomem essa data, mantendo tudo determinístico
  * e sem Date.now() embutido (espelha LeituraParcelamentos do módulo de parcelamentos).
@@ -54,6 +101,16 @@ export interface LeituraSaudeFiscal {
   mensagens: MensagemBruta[];
   /** CNDs brutas (por cliente/esfera) da carteira nessa data. */
   cnds: CertidaoBruta[];
+  /**
+   * Situações fiscais (SITFIS) da carteira nessa data — OPCIONAL. O mock não preenche (só os
+   * adapters reais do Integra Contador o fazem — S1). Campo aditivo: não muda S3/S5 nem a page.
+   */
+  situacoesFiscais?: SituacaoFiscalBruta[];
+  /**
+   * Eventos de atualização (EVENTOSATUALIZACAO) desde a última varredura — OPCIONAL. Idem: só
+   * os adapters reais preenchem. Aditivo e retrocompatível.
+   */
+  eventos?: EventoAtualizacaoBruto[];
 }
 
 /**

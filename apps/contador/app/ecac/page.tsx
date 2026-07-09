@@ -20,6 +20,7 @@
 import { Card } from "@/components/Card";
 import { TopBar } from "@/components/TopBar";
 import { AlertasSaudeFiscal } from "./AlertasSaudeFiscal";
+import { AlertasDividaAtiva } from "./AlertasDividaAtiva";
 import { EcacCockpit } from "./EcacCockpit";
 import {
   detectarCndsAVencer,
@@ -28,7 +29,17 @@ import {
   resumirTriagem,
   triarMensagens,
 } from "./saude-fiscal-model";
+import {
+  analisarDividasAtivas,
+  filtrarComAlertaExclusao,
+  resumirDividaAtiva,
+} from "./divida-ativa-model";
+import { getDividasAtivasSinteticas } from "./divida-ativa-data";
 import { ESCRITORIO_SAUDE_DEMO, saudeFiscalProvider } from "./saude-fiscal-provider";
+import {
+  criarSaudeFiscalProviderComposto,
+  temCredenciaisSaudeFiscal,
+} from "./adapters/composed-saude-fiscal-provider";
 import styles from "./ecac.module.css";
 
 /** Render sob demanda: triagem/renovação derivam da data atual (prazos e validades relativos). */
@@ -37,9 +48,14 @@ export const dynamic = "force-dynamic";
 export default async function EcacPage() {
   const refIso = new Date().toISOString();
 
-  // S3/S5: o dado vem do CONTRATO (provider), não do seed direto. Hoje é o mock; amanhã os
-  // adapters reais (Integra Contador / Infosimples) preenchem o mesmo contrato — gate do founder.
-  const leitura = await saudeFiscalProvider.listarSaudeFiscal(ESCRITORIO_SAUDE_DEMO, refIso);
+  // S3/S5: o dado vem do CONTRATO (provider), não do seed direto. DEFAULT = Mock (comportamento
+  // atual do app). Quando há credencial SERPRO/Infosimples (gate do founder — handoff 58 §2), usa
+  // a composição REAL dos adapters S1+S4 — SEM mudar nada quando não há env (o app se comporta
+  // exatamente como hoje).
+  const provider = temCredenciaisSaudeFiscal()
+    ? criarSaudeFiscalProviderComposto()
+    : saudeFiscalProvider;
+  const leitura = await provider.listarSaudeFiscal(ESCRITORIO_SAUDE_DEMO, refIso);
 
   // S3: triagem da caixa postal — só as relevantes (crítico/atenção) vão para o feed.
   const triadas = triarMensagens(leitura.mensagens, leitura.refIso);
@@ -49,6 +65,13 @@ export default async function EcacPage() {
   // S5: fila de renovação de CND (vencidas + a vencer), priorizada.
   const filaRenovacao = detectarCndsAVencer(leitura.cnds, leitura.refIso);
   const resumoRenovacao = resumirRenovacao(filaRenovacao);
+
+  // S6: dívida ativa (PGFN/Regularize) — inscrições com indício de exclusão automática de
+  // parcelamento por inadimplência. Fonte sintética (o adapter real Regularize é gate do
+  // founder). Só as inscrições com alerta ativo (crítico/aviso/excluído) vão para o feed.
+  const dividas = getDividasAtivasSinteticas(refIso);
+  const dividasComAlerta = filtrarComAlertaExclusao(analisarDividasAtivas(dividas, refIso));
+  const resumoDivida = resumirDividaAtiva(dividas, refIso);
 
   return (
     <>
@@ -81,6 +104,13 @@ export default async function EcacPage() {
             prazosNoLimite={resumoTriagem.prazosNoLimite}
             cndsVencidas={resumoRenovacao.vencidas}
           />
+        </div>
+
+        {/* S6 — Dívida ativa (PGFN/Regularize): inscrições com indício de exclusão automática de
+            parcelamento por inadimplência (≤7d crítico · ≤75d aviso). A plataforma sinaliza; a
+            negociação/pagamento é decisão do contador, no Regularize. */}
+        <div style={{ marginTop: 16 }}>
+          <AlertasDividaAtiva itens={dividasComAlerta} resumo={resumoDivida} />
         </div>
 
         {/* Cockpit interativo (KPIs · tabela com drill-down · filtro · lote). */}
