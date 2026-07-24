@@ -1,0 +1,57 @@
+# reference-layout-contract.yaml — ADR-0004 immutable structural blueprint
+# BRAND-AGNOSTIC: geometry, section sequence, responsive, motion ONLY.
+
+meta:
+  slug: toak
+  archetype: food-cpg (ultra-luxe)
+  role: "MASTER for Brandt build B"
+  source_url: https://toakchocolate.com/
+  award: "Awwwards Honorable Mention (chocolate)"
+  captured_by: Orion (aios-master)
+  captured_at: 2026-07-24
+  capture_method: "live browser — hero + top ticker + editorial tail + newsletter confirmed; product/story mid-sequence PARTIAL"
+  fidelity_confidence: medium
+  pixel_baseline_pending: true
+  verify_at_build: "mid-page product/story sequence needs a clean full-page capture before build B"
+
+art_direction:
+  mood: ultra-luxe, cinematic, editorial, reverent ("makes it feel expensive")
+  background: dark chocolate / near-black + warm cream editorial blocks
+  type: large elegant serif display ("Redefining Fine Chocolate") + refined sans body
+  imagery: cinematic aerial/nature video, moody product macro, editorial lifestyle
+
+section_sequence:                  # confirmed vs to-verify flagged
+  - id: announcement_ticker
+    confidence: confirmed
+    desc: slim top bar — Worldwide Shipping / VIP & Rewards / Subscribe for a Gift
+  - id: hero
+    confidence: confirmed
+    desc: full-viewport aerial rainforest VIDEO; huge serif headline; short subline; single CTA ("Shop Chocolate Now"); vertical "SCROLL" indicator
+  - id: product_collection_showcase
+    confidence: to-verify
+    desc: feature blocks for editions (Masters / Reserve / Signature / Alchemy) — likely large image + name + price-tier
+  - id: origin_story_block
+    confidence: to-verify
+    desc: heritage / "Our Cacao" editorial (terroir, rarity narrative)
+  - id: editorial_grid
+    confidence: confirmed
+    desc: "Chocolate 101" — 4-card blog grid (Store Chocolate / Pairings / Aphrodisiac / Best Gifts) each w/ READ MORE
+  - id: newsletter_footer
+    confidence: confirmed
+    desc: "Enter the world of <brand>" email + JOIN; floating Rewards tab
+
+hero_mechanic:
+  type: fullscreen background video (muted autoplay loop) + static overlaid serif headline + scroll cue
+
+motion_inventory:
+  - hero background video autoplay/loop
+  - scroll reveals (fade/slide) on editorial + product blocks  # exact easing to verify
+  - prefers-reduced-motion: static poster fallback REQUIRED
+
+responsive:
+  desktop: multi-column editorial grids; wide cinematic hero
+  mobile: stacked; video hero retained (poster fallback on data-save)
+
+build_notes:
+  primary_conversion_goal: shop / gift
+  independent_impl: rebuild independently; ZERO source reuse

@@ -1,0 +1,25 @@
+{
+  "value": "800px",
+  "all": [
+    {
+      "value": "800px",
+      "count": 3
+    },
+    {
+      "value": "var(--container-width)",
+      "count": 1
+    },
+    {
+      "value": "81rem",
+      "count": 1
+    },
+    {
+      "value": "910px",
+      "count": 1
+    },
+    {
+      "value": "900px",
+      "count": 1
+    }
+  ]
+}

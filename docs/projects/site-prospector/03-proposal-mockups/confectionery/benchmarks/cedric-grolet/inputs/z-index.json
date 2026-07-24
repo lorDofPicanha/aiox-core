@@ -1,0 +1,81 @@
+{
+  "all": [
+    {
+      "value": 0,
+      "count": 2
+    },
+    {
+      "value": 1,
+      "count": 17
+    },
+    {
+      "value": 2,
+      "count": 17
+    },
+    {
+      "value": 3,
+      "count": 3
+    },
+    {
+      "value": 4,
+      "count": 1
+    },
+    {
+      "value": 10,
+      "count": 3
+    },
+    {
+      "value": 11,
+      "count": 5
+    },
+    {
+      "value": 12,
+      "count": 2
+    },
+    {
+      "value": 99,
+      "count": 1
+    },
+    {
+      "value": 999,
+      "count": 3
+    },
+    {
+      "value": 1060,
+      "count": 1
+    },
+    {
+      "value": 9999,
+      "count": 2
+    },
+    {
+      "value": 10042,
+      "count": 2
+    },
+    {
+      "value": 10043,
+      "count": 1
+    },
+    {
+      "value": 10044,
+      "count": 1
+    },
+    {
+      "value": 10045,
+      "count": 1
+    },
+    {
+      "value": 10046,
+      "count": 1
+    },
+    {
+      "value": 99999,
+      "count": 2
+    }
+  ],
+  "base": 0,
+  "dropdown": 12,
+  "modal": 10042,
+  "toast": 10045,
+  "tooltip": 99999
+}

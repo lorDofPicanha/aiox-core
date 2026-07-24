@@ -1,0 +1,959 @@
+url: https://www.magnoliabakery.com/pages/order-now
+extracted_at: 2026-07-12T23:44:06.185Z
+sources:
+  external_css_files: 3
+  preload_css_files: 0
+  imports_resolved: 2
+  inline_style_blocks: 22
+  inline_style_attrs: 0
+  failed_fetches: 0
+detection:
+  css_vars_total: 695
+  css_vars_primitive: 440
+  css_vars_alias: 255
+  font_faces: 26
+  unique_tokens_in_graph: 407
+tokens:
+  colors:
+    primary:
+      value: "#bae8d4"
+      source: css_var
+      confidence: high
+      origin: --radio-background
+    secondary:
+      value: "#00211a"
+      source: css_var
+      confidence: high
+      origin: --color-green
+    tertiary:
+      value: "#b32e4e"
+      source: css_var
+      confidence: high
+      origin: --primary-button-background
+    neutral:
+      value: "#451f13"
+      source: css_var
+      confidence: high
+      origin: --color-yellow
+    surface:
+      value: "#ffffff"
+      source: css_var
+      confidence: high
+      origin: --body-background
+    text:
+      value: "#00211a"
+      source: css_var
+      confidence: high
+      origin: --text-color
+    text-muted:
+      value: "#4d2a05"
+      source: css_var
+      confidence: high
+      origin: --secondary-button-color
+    border:
+      value: "#cccccc"
+      source: css_var
+      confidence: high
+      origin: --border-color
+    error:
+      value: "#581b28"
+      source: css_var
+      confidence: high
+      origin: --error-color
+    success:
+      value: "#000000"
+      source: css_var
+      confidence: high
+      origin: --success-color
+    green:
+      value: "#00211a"
+      source: css_var
+      confidence: high
+      origin: --color-green
+    mint:
+      value: "#bae8d4"
+      source: css_var
+      confidence: high
+      origin: --radio-background
+    light-mint:
+      value: "#c4dad1"
+      source: css_var
+      confidence: high
+      origin: --secondary-button-background
+    mint-hover:
+      value: "#dbeae9"
+      source: css_var
+      confidence: high
+      origin: --secondary-button-background-hover
+    blue:
+      value: "#050e3c"
+      source: css_var
+      confidence: high
+      origin: --color-blue
+    sky:
+      value: "#afd9e9"
+      source: css_declaration
+      confidence: medium
+      origin: .Shape--blue
+    yellow:
+      value: "#451f13"
+      source: css_var
+      confidence: high
+      origin: --color-yellow
+    butter:
+      value: "#ffe5a3"
+      source: css_declaration
+      confidence: medium
+      origin: .Shape--yellow
+    red:
+      value: "#581b28"
+      source: css_var
+      confidence: high
+      origin: --color-red
+    pink:
+      value: "#f7c0c3"
+      source: css_declaration
+      confidence: medium
+      origin: .Shape--red
+    purple:
+      value: "#43234c"
+      source: css_var
+      confidence: high
+      origin: --color-purple
+    lavender:
+      value: "#e7cbef"
+      source: css_declaration
+      confidence: medium
+      origin: .Shape--purple
+  typography:
+    display-hero:
+      properties:
+        fontFamily:
+          value: Gatefold Demi, serif
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h1-font-family
+        fontSize:
+          value: 65px
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h1-font-size
+        fontWeight:
+          value: "600"
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h1-font-weight
+        lineHeight:
+          value: "1.05"
+          source: inferred
+          confidence: low
+          origin: inferred from large display heading scale
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no display tracking token detected
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations detected
+    display-large:
+      properties:
+        fontFamily:
+          value: Gatefold Demi, serif
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h2-font-family
+        fontSize:
+          value: 54px
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h2-font-size
+        fontWeight:
+          value: "600"
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h2-font-weight
+        lineHeight:
+          value: "1.08"
+          source: inferred
+          confidence: low
+          origin: inferred from headline scale
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no tracking token detected
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations detected
+    section-heading:
+      properties:
+        fontFamily:
+          value: Gatefold Demi, serif
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h3-font-family
+        fontSize:
+          value: 42px
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h3-font-size
+        fontWeight:
+          value: "600"
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h3-font-weight
+        lineHeight:
+          value: "1.12"
+          source: inferred
+          confidence: low
+          origin: inferred from heading hierarchy
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no tracking token detected
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations detected
+    subheading-large:
+      properties:
+        fontFamily:
+          value: Gt Alpina, serif
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h4-font-family
+        fontSize:
+          value: 24px
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h4-font-size
+        fontWeight:
+          value: "400"
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h4-font-weight
+        lineHeight:
+          value: "1.25"
+          source: inferred
+          confidence: low
+          origin: inferred from editorial subheading usage
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no tracking token detected
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations detected
+    subheading:
+      properties:
+        fontFamily:
+          value: Ambit, serif
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h5-font-family
+        fontSize:
+          value: 24px
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h5-font-size
+        fontWeight:
+          value: "600"
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h5-font-weight
+        lineHeight:
+          value: "1.25"
+          source: inferred
+          confidence: low
+          origin: inferred from compact section title usage
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no tracking token detected
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations detected
+    body-large:
+      properties:
+        fontFamily:
+          value: Ambit, serif
+          source: css_declaration
+          confidence: medium
+          origin: body/html --p-font-family
+        fontSize:
+          value: 18px
+          source: css_declaration
+          confidence: medium
+          origin: body/html --p-font-size
+        fontWeight:
+          value: "400"
+          source: css_declaration
+          confidence: medium
+          origin: body/html --p-font-weight
+        lineHeight:
+          value: "1.5"
+          source: inferred
+          confidence: low
+          origin: inferred from marketing paragraph rhythm
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no tracking token detected
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations detected
+    body:
+      properties:
+        fontFamily:
+          value: Ambit, serif
+          source: css_declaration
+          confidence: medium
+          origin: body/html --p-font-family
+        fontSize:
+          value: 16px
+          source: css_declaration
+          confidence: medium
+          origin: body/html --p-font-size--mobile
+        fontWeight:
+          value: "400"
+          source: css_declaration
+          confidence: medium
+          origin: body/html --p-font-weight
+        lineHeight:
+          value: "1.5"
+          source: inferred
+          confidence: low
+          origin: inferred from paragraph rhythm
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no tracking token detected
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations detected
+    body-small:
+      properties:
+        fontFamily:
+          value: Ambit, serif
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h7-font-family
+        fontSize:
+          value: 14px
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h7-font-size--mobile
+        fontWeight:
+          value: "400"
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h7-font-weight
+        lineHeight:
+          value: "1.45"
+          source: inferred
+          confidence: low
+          origin: inferred from small text usage
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no tracking token detected
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations detected
+    button:
+      properties:
+        fontFamily:
+          value: Ambit, serif
+          source: css_declaration
+          confidence: medium
+          origin: inline :root --buttons-font-family override
+        fontSize:
+          value: 18px
+          source: css_var
+          confidence: high
+          origin: --buttons-font-size
+        fontWeight:
+          value: "400"
+          source: css_var
+          confidence: high
+          origin: --buttons-font-weight
+        lineHeight:
+          value: "1"
+          source: css_declaration
+          confidence: medium
+          origin: button height/pill layout
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no tracking token detected
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations detected
+    button-small:
+      properties:
+        fontFamily:
+          value: Ambit, serif
+          source: css_declaration
+          confidence: medium
+          origin: inline :root --buttons-font-family override
+        fontSize:
+          value: 16px
+          source: css_var
+          confidence: high
+          origin: --buttons-font-size--mobile
+        fontWeight:
+          value: "400"
+          source: css_var
+          confidence: high
+          origin: --buttons-font-weight
+        lineHeight:
+          value: "1"
+          source: css_declaration
+          confidence: medium
+          origin: button height/pill layout
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no tracking token detected
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations detected
+    link:
+      properties:
+        fontFamily:
+          value: Ambit, serif
+          source: css_declaration
+          confidence: medium
+          origin: body/html --p-font-family
+        fontSize:
+          value: 18px
+          source: css_var
+          confidence: high
+          origin: --p-font-size
+        fontWeight:
+          value: "400"
+          source: css_var
+          confidence: high
+          origin: --p-font-weight
+        lineHeight:
+          value: "1.4"
+          source: inferred
+          confidence: low
+          origin: inferred from anchor copy usage
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no tracking token detected
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations detected
+    caption:
+      properties:
+        fontFamily:
+          value: Ambit, serif
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h8-font-family
+        fontSize:
+          value: 14px
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h8-font-size
+        fontWeight:
+          value: "400"
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h8-font-weight
+        lineHeight:
+          value: "1.35"
+          source: inferred
+          confidence: low
+          origin: inferred from caption role
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no tracking token detected
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations detected
+    caption-small:
+      properties:
+        fontFamily:
+          value: Ambit, serif
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h8-font-family
+        fontSize:
+          value: 12px
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h8-font-size--mobile
+        fontWeight:
+          value: "400"
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h8-font-weight
+        lineHeight:
+          value: "1.3"
+          source: inferred
+          confidence: low
+          origin: inferred from mobile caption role
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no tracking token detected
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations detected
+    caption-tabular:
+      properties:
+        fontFamily:
+          value: Libre Franklin, sans-serif
+          source: css_var
+          confidence: high
+          origin: --label-font-family
+        fontSize:
+          value: 12px
+          source: css_declaration
+          confidence: medium
+          origin: component-properties label font-size most_common
+        fontWeight:
+          value: "400"
+          source: css_var
+          confidence: high
+          origin: --label-font-weight
+        lineHeight:
+          value: "1.3"
+          source: inferred
+          confidence: low
+          origin: inferred from label/counter usage
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no tracking token detected
+        features:
+          value: '["tnum"]'
+          source: inferred
+          confidence: low
+          origin: inferred for tabular counters/prices
+    micro:
+      properties:
+        fontFamily:
+          value: Libre Franklin, sans-serif
+          source: css_var
+          confidence: high
+          origin: --label-font-family
+        fontSize:
+          value: 10px
+          source: css_declaration
+          confidence: medium
+          origin: component-properties badge font-size most_common
+        fontWeight:
+          value: "700"
+          source: css_declaration
+          confidence: medium
+          origin: component-properties badge font-weight most_common
+        lineHeight:
+          value: "1.1"
+          source: css_declaration
+          confidence: medium
+          origin: badge
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no tracking token detected
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations detected
+    h1:
+      properties:
+        fontFamily:
+          value: Gatefold Demi, serif
+          source: other
+          confidence: medium
+          origin: alias from display-hero
+        fontSize:
+          value: 65px
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h1-font-size
+        fontWeight:
+          value: "600"
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h1-font-weight
+        lineHeight:
+          value: "1.05"
+          source: inferred
+          confidence: low
+          origin: inferred from display-hero
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no tracking token detected
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations detected
+    h2:
+      properties:
+        fontFamily:
+          value: Gatefold Demi, serif
+          source: other
+          confidence: medium
+          origin: alias from display-large
+        fontSize:
+          value: 54px
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h2-font-size
+        fontWeight:
+          value: "600"
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h2-font-weight
+        lineHeight:
+          value: "1.08"
+          source: inferred
+          confidence: low
+          origin: inferred from display-large
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no tracking token detected
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations detected
+    h3:
+      properties:
+        fontFamily:
+          value: Gatefold Demi, serif
+          source: other
+          confidence: medium
+          origin: alias from section-heading
+        fontSize:
+          value: 42px
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h3-font-size
+        fontWeight:
+          value: "600"
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h3-font-weight
+        lineHeight:
+          value: "1.12"
+          source: inferred
+          confidence: low
+          origin: inferred from section-heading
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no tracking token detected
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations detected
+    h4:
+      properties:
+        fontFamily:
+          value: Gt Alpina, serif
+          source: other
+          confidence: medium
+          origin: alias from subheading-large
+        fontSize:
+          value: 24px
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h4-font-size
+        fontWeight:
+          value: "400"
+          source: css_declaration
+          confidence: medium
+          origin: body/html --h4-font-weight
+        lineHeight:
+          value: "1.25"
+          source: inferred
+          confidence: low
+          origin: inferred from subheading-large
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no tracking token detected
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations detected
+    body-lg:
+      properties:
+        fontFamily:
+          value: Ambit, serif
+          source: other
+          confidence: medium
+          origin: alias from body-large
+        fontSize:
+          value: 18px
+          source: css_var
+          confidence: high
+          origin: --p-font-size
+        fontWeight:
+          value: "400"
+          source: css_var
+          confidence: high
+          origin: --p-font-weight
+        lineHeight:
+          value: "1.5"
+          source: inferred
+          confidence: low
+          origin: inferred from body-large
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no tracking token detected
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations detected
+    body-md:
+      properties:
+        fontFamily:
+          value: Ambit, serif
+          source: other
+          confidence: medium
+          origin: alias from body
+        fontSize:
+          value: 16px
+          source: css_var
+          confidence: high
+          origin: --p-font-size--mobile
+        fontWeight:
+          value: "400"
+          source: css_var
+          confidence: high
+          origin: --p-font-weight
+        lineHeight:
+          value: "1.5"
+          source: inferred
+          confidence: low
+          origin: inferred from body
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no tracking token detected
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations detected
+    body-sm:
+      properties:
+        fontFamily:
+          value: Ambit, serif
+          source: other
+          confidence: medium
+          origin: alias from body-small
+        fontSize:
+          value: 14px
+          source: css_var
+          confidence: high
+          origin: --h7-font-size--mobile
+        fontWeight:
+          value: "400"
+          source: css_var
+          confidence: high
+          origin: --h7-font-weight
+        lineHeight:
+          value: "1.45"
+          source: inferred
+          confidence: low
+          origin: inferred from body-small
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no tracking token detected
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations detected
+    label:
+      properties:
+        fontFamily:
+          value: Libre Franklin, sans-serif
+          source: css_var
+          confidence: high
+          origin: --label-font-family
+        fontSize:
+          value: 16px
+          source: css_var
+          confidence: high
+          origin: --label-font-size
+        fontWeight:
+          value: "400"
+          source: css_var
+          confidence: high
+          origin: --label-font-weight
+        lineHeight:
+          value: "1"
+          source: css_declaration
+          confidence: medium
+          origin: .Input--material-filled label
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no tracking token detected
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations detected
+    mono:
+      properties:
+        fontFamily:
+          value: Libre Franklin, sans-serif
+          source: inferred
+          confidence: low
+          origin: inferred from no monospace @font-face; use UI sans fallback
+        fontSize:
+          value: 12px
+          source: inferred
+          confidence: low
+          origin: inferred from caption-tabular
+        fontWeight:
+          value: "400"
+          source: inferred
+          confidence: low
+          origin: inferred from caption-tabular
+        lineHeight:
+          value: "1.3"
+          source: inferred
+          confidence: low
+          origin: inferred from caption-tabular
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no tracking token detected
+        features:
+          value: '["tnum"]'
+          source: inferred
+          confidence: low
+          origin: inferred for numeric alignment
+  rounded:
+    none:
+      value: 0px
+      source: inferred
+      confidence: low
+      origin: inferred from reset and zero-padding controls
+    sm:
+      value: 2px
+      source: css_var
+      confidence: high
+      origin: --input-border-radius
+    md:
+      value: 20px
+      source: css_var
+      confidence: high
+      origin: --button-border-radius
+    lg:
+      value: 25px
+      source: css_declaration
+      confidence: medium
+      origin: component-properties nav border-radius most_common
+    full:
+      value: 9999px
+      source: inferred
+      confidence: low
+      origin: inferred from 50% carousel controls converted for spec
+  spacing:
+    xs:
+      value: 6px
+      source: css_declaration
+      confidence: medium
+      origin: .ArticleTile__badge padding
+    sm:
+      value: 12px
+      source: css_var
+      confidence: high
+      origin: --input-horizontal-padding
+    md:
+      value: 20px
+      source: css_declaration
+      confidence: medium
+      origin: button/card margin declarations
+    lg:
+      value: 30px
+      source: css_var
+      confidence: high
+      origin: --button-horizontal-padding--mobile
+    xl:
+      value: 55px
+      source: css_var
+      confidence: high
+      origin: --button-horizontal-padding
+confidence_summary:
+  high: 41
+  medium: 62
+  low: 73
+lint:
+  ran: true
+  exit_code: null
+  errors_count: -1
+  warnings_count: 0
+  stdout_excerpt: ""
+  stderr_excerpt: ""

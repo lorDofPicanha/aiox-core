@@ -1,0 +1,64 @@
+# reference-layout-contract.yaml — ADR-0004 immutable structural blueprint
+# BRAND-AGNOSTIC: geometry, section sequence, responsive behavior, motion ONLY.
+# Target brand tokens/photos/copy live in the prospect's target/DESIGN.md + slot-map — NOT here.
+# Layout constants here cannot be changed to make a target easier (ADR-0004 token boundary).
+
+meta:
+  slug: buckssauce
+  archetype: food-cpg
+  role: "MASTER for Brandt build A (founder-selected 2026-07-24)"
+  source_url: https://buckssauce.com/
+  award: "DTC benchmark (no known Awwwards); chosen for motion + product-hero art direction"
+  captured_by: Orion (aios-master)
+  captured_at: 2026-07-24
+  capture_method: "live browser — full DOM section read + deep hero scroll observation"
+  fidelity_confidence: high        # full section sequence confirmed via DOM
+  pixel_baseline_pending: true     # exact 1440/375 full-page capture taken at build/gate time
+
+art_direction:
+  mood: dark cinematic, playful-premium, opinionated
+  background: near-black warm (~#0F0A08)
+  type: oversized display (condensed/characterful) + clean sans body; stacked words; tight leading
+  imagery: real ingredient cut-outs on black + studio product (bottle front/back)
+  identity_slot: hand-drawn engraved mascot lockup  # target swaps its OWN logo here
+
+section_sequence:                  # ORDER IS IMMUTABLE — 100% fidelity gate
+  - id: preloader
+    desc: full-screen circle-expand reveal (orange -> red -> black), centered logo mark
+  - id: hero
+    desc: pinned full-viewport; logo centered; 4-5 real ingredient photos orbiting; scroll-scrubbed scatter
+    slots: [headline (bold one-liner), product-number label, flavor list x3, primary CTA "shop"]
+  - id: manifesto_strip
+    desc: short full-bleed statement line
+  - id: trust_badges_row
+    desc: 4 icon + microcopy cells (claims)
+  - id: product_selector           # "Choose your weapon"
+    desc: 3 product cards; each front+back image (hover flip); price; add-to-cart state machine; view-product link
+  - id: brand_story                # "Why <brand>"
+    desc: 3 pillars (batch / ingredients / award) + narrative copy + supporting photo
+  - id: bundle_offer               # "Buy a pack / Save"
+    desc: 3-pack / 6-pack toggle; lifestyle photo; per-product add-to-cart + buy-now
+  - id: reviews
+    desc: horizontal marquee of named reviews w/ social handles (real, specific voice)
+  - id: footer
+    desc: nav list + email capture ("Join the Club") + social links
+
+hero_mechanic:
+  type: pinned scroll-scrub (GSAP ScrollTrigger)
+  behavior: logo fixed center; ingredient images animate position/scale on scroll progress; long pin before release
+
+motion_inventory:
+  - preloader circle-expand reveal (page entry)
+  - hero pinned scroll-scrub ingredient scatter
+  - product card hover flip (front <-> back)
+  - add-to-cart state transition (Add / Adding / Added)
+  - reviews marquee auto-scroll
+  - prefers-reduced-motion: static fallback REQUIRED
+
+responsive:
+  desktop_1440: multi-column product/trust grids; wide hero ingredient orbit
+  mobile_375: single column; trust badges stack; fewer/tighter hero ingredients; sticky CTA advisable
+
+build_notes:
+  primary_conversion_goal: single (buy product) — one dominant CTA, repeated
+  independent_impl: rebuild in Next.js + GSAP/Framer; ZERO source code/asset/copy reuse (ADR-0004)

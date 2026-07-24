@@ -1,0 +1,615 @@
+---
+name: "Maria Mole Doces"
+colors:
+  primary: "#7B9A6D"
+  secondary: "#F5B8A3"
+  tertiary: "#D89B6A"
+  neutral: "#9B8B7E"
+  surface: "#F5F0E1"
+  text: "#9B8B7E"
+  text-muted: "#6C757D"
+  border: "#E8DFD0"
+  error: "#F1556C"
+  success: "#1ABC9C"
+  cream: "#F5F0E1"
+  ivory: "#FAF8F3"
+  sage: "#7B9A6D"
+  sage-light: "#C9D8B6"
+  sage-hover: "#B8C9A3"
+  peach: "#F5B8A3"
+  caramel: "#D89B6A"
+  olive-text: "#2D3B24"
+typography:
+  display-hero:
+    fontFamily: "Poppins, sans-serif"
+    fontSize: "50px"
+    fontWeight: "400"
+    lineHeight: "1.15"
+    letterSpacing: "0em"
+    features: []
+  display-large:
+    fontFamily: "Poppins, sans-serif"
+    fontSize: "30px"
+    fontWeight: "400"
+    lineHeight: "1.2"
+    letterSpacing: "0em"
+    features: []
+  section-heading:
+    fontFamily: "Poppins, sans-serif"
+    fontSize: "24px"
+    fontWeight: "600"
+    lineHeight: "1.3"
+    letterSpacing: "0em"
+    features: []
+  subheading-large:
+    fontFamily: "Poppins, sans-serif"
+    fontSize: "22px"
+    fontWeight: "500"
+    lineHeight: "1.3"
+    letterSpacing: "0em"
+    features: []
+  subheading:
+    fontFamily: "Poppins, sans-serif"
+    fontSize: "20px"
+    fontWeight: "500"
+    lineHeight: "1.4"
+    letterSpacing: "0em"
+    features: []
+  body-large:
+    fontFamily: "Poppins, sans-serif"
+    fontSize: "18px"
+    fontWeight: "400"
+    lineHeight: "1.5"
+    letterSpacing: "0em"
+    features: []
+  body:
+    fontFamily: "Poppins, sans-serif"
+    fontSize: "16px"
+    fontWeight: "400"
+    lineHeight: "1.5"
+    letterSpacing: "0em"
+    features: []
+  body-small:
+    fontFamily: "Poppins, sans-serif"
+    fontSize: "14px"
+    fontWeight: "400"
+    lineHeight: "1.5"
+    letterSpacing: "0em"
+    features: []
+  button:
+    fontFamily: "Poppins, sans-serif"
+    fontSize: "16px"
+    fontWeight: "400"
+    lineHeight: "1.5"
+    letterSpacing: "0em"
+    features: []
+  button-small:
+    fontFamily: "Poppins, sans-serif"
+    fontSize: "14px"
+    fontWeight: "400"
+    lineHeight: "1.5"
+    letterSpacing: "0em"
+    features: []
+  link:
+    fontFamily: "Poppins, sans-serif"
+    fontSize: "16px"
+    fontWeight: "500"
+    lineHeight: "1.5"
+    letterSpacing: "0em"
+    features: []
+  caption:
+    fontFamily: "Poppins, sans-serif"
+    fontSize: "13px"
+    fontWeight: "400"
+    lineHeight: "1.5"
+    letterSpacing: "0em"
+    features: []
+  caption-small:
+    fontFamily: "Poppins, sans-serif"
+    fontSize: "12px"
+    fontWeight: "400"
+    lineHeight: "1.5"
+    letterSpacing: "0em"
+    features: []
+  caption-tabular:
+    fontFamily: "Poppins, sans-serif"
+    fontSize: "12px"
+    fontWeight: "400"
+    lineHeight: "1.5"
+    letterSpacing: "0em"
+    features: ["tnum"]
+  micro:
+    fontFamily: "Poppins, sans-serif"
+    fontSize: "11px"
+    fontWeight: "400"
+    lineHeight: "1.4"
+    letterSpacing: "0em"
+    features: []
+  code-body:
+    fontFamily: "SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace"
+    fontSize: "13px"
+    fontWeight: "400"
+    lineHeight: "1.5"
+    letterSpacing: "0em"
+    features: []
+  h1:
+    fontFamily: "Poppins, sans-serif"
+    fontSize: "50px"
+    fontWeight: "400"
+    lineHeight: "1.15"
+    letterSpacing: "0em"
+    features: []
+  h2:
+    fontFamily: "Poppins, sans-serif"
+    fontSize: "24px"
+    fontWeight: "600"
+    lineHeight: "1.3"
+    letterSpacing: "0em"
+    features: []
+  h3:
+    fontFamily: "Poppins, sans-serif"
+    fontSize: "22px"
+    fontWeight: "500"
+    lineHeight: "1.3"
+    letterSpacing: "0em"
+    features: []
+  h4:
+    fontFamily: "Poppins, sans-serif"
+    fontSize: "20px"
+    fontWeight: "500"
+    lineHeight: "1.4"
+    letterSpacing: "0em"
+    features: []
+  body-lg:
+    fontFamily: "Poppins, sans-serif"
+    fontSize: "18px"
+    fontWeight: "400"
+    lineHeight: "1.5"
+    letterSpacing: "0em"
+    features: []
+  body-md:
+    fontFamily: "Poppins, sans-serif"
+    fontSize: "16px"
+    fontWeight: "400"
+    lineHeight: "1.5"
+    letterSpacing: "0em"
+    features: []
+  body-sm:
+    fontFamily: "Poppins, sans-serif"
+    fontSize: "14px"
+    fontWeight: "400"
+    lineHeight: "1.5"
+    letterSpacing: "0em"
+    features: []
+  label:
+    fontFamily: "Poppins, sans-serif"
+    fontSize: "13px"
+    fontWeight: "400"
+    lineHeight: "1.5"
+    letterSpacing: "0em"
+    features: []
+  mono:
+    fontFamily: "SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace"
+    fontSize: "13px"
+    fontWeight: "400"
+    lineHeight: "1.5"
+    letterSpacing: "0em"
+    features: []
+rounded:
+  none: "0px"
+  sm: ".2rem"
+  md: "4px"
+  lg: "8px"
+  full: "9999px"
+spacing:
+  xs: "4px"
+  sm: "8px"
+  md: "15px"
+  lg: "16px"
+  xl: "24px"
+preview_tokens:
+  button_primary_bg: "#C9D8B6"
+  button_primary_text: "#2D3B24"
+  button_primary_border: "#C9D8B6"
+  button_secondary_bg: "transparent"
+  button_secondary_text: "#7B9A6D"
+  button_secondary_border: "#C9D8B6"
+  button_tertiary_text: "#F5B8A3"
+  surface_bg: "#F5F0E1"
+  card_bg: "#FAF8F3"
+  text: "#9B8B7E"
+  text_muted: "#6C757D"
+  border: "#E8DFD0"
+  accent: "#7B9A6D"
+  button_radius: "0px"
+  card_radius: "0px"
+  input_radius: ".2rem"
+components:
+  button-primary:
+    bg: "#C9D8B6"
+    text: "#2D3B24"
+    border: "#C9D8B6"
+    radius: "0px"
+    padding: "0px"
+    font: "16px Poppins weight 400"
+    hover_bg: "#B8C9A3"
+  button-primary-hover:
+    bg: "#B8C9A3"
+    text: "#2D3B24"
+    border: "#B8C9A3"
+    radius: "0px"
+    padding: "0px"
+    font: "16px Poppins weight 400"
+  button-secondary:
+    bg: "transparent"
+    text: "#7B9A6D"
+    border: "#C9D8B6"
+    radius: "0px"
+    padding: "0px"
+    font: "16px Poppins weight 400"
+    hover_bg: "#F5F0E1"
+  button-ghost:
+    bg: "transparent"
+    text: "#F5B8A3"
+    border: "transparent"
+    radius: "0px"
+    padding: "0px"
+    font: "16px Poppins weight 400"
+  card:
+    bg: "#FAF8F3"
+    border: "#E8DFD0"
+    radius: "0px"
+    shadow: "none"
+    padding: "16px"
+  product-card:
+    bg: "#FAF8F3"
+    border: "transparent"
+    radius: "8px"
+    shadow: "none"
+    padding: "16px"
+  input-text:
+    bg: "#FAF8F3"
+    text: "#D89B6A"
+    border: "#E8DFD0"
+    radius: ".2rem"
+    padding: "4px 8px"
+    focus_border: "#F5B8A3"
+  badge-default:
+    bg: "#F5B8A3"
+    text: "#FFFFFF"
+    border: "#F5B8A3"
+    radius: "4px"
+    padding: "4px"
+    font: "14px Poppins weight 500"
+  nav-header:
+    bg: "#F5F0E1"
+    text: "#7B9A6D"
+    border_bottom: "#E8DFD0"
+    backdrop_filter: "none"
+    height: "auto"
+---
+
+## 1. Visual Theme & Atmosphere
+
+Maria Mole Doces uses a soft confectionery palette: cream as the page field, ivory for product surfaces, sage green for brand anchoring, peach for highlights, and caramel for warm headings. The identity reads as handmade and gentle rather than high-contrast retail.
+
+Typography is Poppins throughout, with regular weights doing most of the work. The tone is rounded and readable, with no tracked-out luxury type and no alternate OpenType styling. Hierarchy comes from size and color shifts, not from dramatic font changes.
+
+Surfaces are mostly flat. Product cards and form fields sit on ivory against a cream page, using border color and spacing for separation. Shadows are intentionally restrained; where depth exists, it is functional for modals or side drawers rather than decorative elevation.
+
+The distinctive visual choice is the pastel commerce system: sage buttons, peach active states, and warm caramel labels over a bakery-like cream background.
+
+**Key Characteristics:**
+
+- Cream page background `#F5F0E1` with ivory components `#FAF8F3`
+- Sage green `#7B9A6D` anchors header, footer, price, and brand moments
+- Peach `#F5B8A3` marks highlights, active category chips, and cart accents
+- Caramel `#D89B6A` gives headings and footer CTAs a warm dessert tone
+- Poppins regular is the main voice; heavier weights are sparse
+- Component corners are mixed: generic buttons are square, product cards use 8px
+- Surface contrast matters more than shadow
+- Bootstrap/Kendo tokens are present but not brand identity
+
+## 2. Color Palette & Roles
+
+### Primary
+
+- **Sage Brand** (`#7B9A6D`): `--cor-texto-topo`, `--cor-preco`, `--cor-fundo-rodape`. Brand anchor for top text, prices, and footer blocks.
+- **Sage Button** (`#C9D8B6`): `--cor-botao`. Main action fill for ordering and cart controls.
+- **Olive Button Text** (`#2D3B24`): `--cor-texto-botao`. Dark readable text over sage buttons.
+
+### Brand & Dark
+
+- **Footer Sage** (`#7B9A6D`): `--cor-fundo-rodape`. Immersive brand band for checkout/footer areas.
+- **Footer Cream Text** (`#F5F0E1`): `--cor-texto-rodape`. Light text on the sage footer.
+- **Cart Peach** (`#F5B8A3`): `--cor-fundo-carrinho`. Cart highlight surface.
+
+### Accent Colors
+
+- **Peach Highlight** (`#F5B8A3`): `--cor-destaque`. Active category, selected item, and decorative highlight.
+- **Caramel Text** (`#D89B6A`): `--cor-texto-primaria`. Warm primary display text and footer button fill.
+- **Additional Price Peach** (`#F5B8A3`): `--cor-preco-adicional`. Add-on price and cart accents.
+
+### Interactive
+
+- **Hover Sage** (`#B8C9A3`): `--cor-hover`. Button and category hover.
+- **Radio Sage** (`#C9D8B6`): `--cor-radio`. Checked controls.
+- **Active Footer Peach** (`#F5B8A3`): `--cor-item-ativo-rodape`. Active state in footer/cart navigation.
+
+### Neutral Scale
+
+- **Cream Background** (`#F5F0E1`): `--cor-fundo-site`. Page background.
+- **Ivory Surface** (`#FAF8F3`): `--cor-fundo-elementos`. Cards, form controls, modals, dropdowns.
+- **Taupe Text** (`#9B8B7E`): `--cor-texto`, `--cor-texto-secundaria`. Body and secondary copy.
+- **Muted Gray** (`#6C757D`): `--cor-texto-muted`. Low-emphasis labels and secondary metadata.
+
+### Surface & Borders
+
+- **Soft Sand Border** (`#E8DFD0`): `--cor-borda`. Form, divider, and component border.
+- **Footer Border Sage** (`#C9D8B6`): `--cor-borda-rodape`. Border inside the footer/cart area.
+- **Ivory Component Fill** (`#FAF8F3`): `--cor-fundo-elementos`. Main card and modal fill.
+
+### Shadow Colors
+
+- **Modal Shadow Black** (`#000000`): `--cor-sombra` as `rgba(0, 0, 0, .2)`. Alpha is used only in CSS shadows, not the color token map.
+- **Drawer Overlay Black** (`#000000`): `.produto-menu-lateral-overlay` uses `#00000080`. The alpha overlay is part of depth behavior.
+
+### Color Philosophy
+
+The palette is edible and quiet: cream and ivory create a bakery counter, sage gives brand freshness, and peach/caramel add dessert warmth. Avoid treating the Bootstrap purple or Kendo red as brand colors; they are framework residue and should stay out of Maria Mole surfaces.
+
+## 3. Typography Rules
+
+### Font Family
+
+Primary text uses `Poppins` from Google Fonts with weight 400 loaded explicitly. The CSS also references a wider Poppins range, but the detected self-hosted/font-face evidence confirms normal 400 as the dependable face. Icons come from Font Awesome, Feather, Icomoon, and WebComponentsIcons; they are not text fonts.
+
+### Hierarchy
+
+| Role | Font | Size | Weight | Line Height | Letter Spacing | Features | Notes |
+|---|---|---:|---:|---:|---:|---|---|
+| display-hero | Poppins | 50px | 400 | 1.15 | 0em | none | Largest marketing or brand heading |
+| display-large | Poppins | 30px | 400 | 1.2 | 0em | none | Page title / category introduction |
+| section-heading | Poppins | 24px | 600 | 1.3 | 0em | none | Section names and stronger product groups |
+| subheading-large | Poppins | 22px | 500 | 1.3 | 0em | none | Product modal title |
+| subheading | Poppins | 20px | 500 | 1.4 | 0em | none | Card title scale |
+| body-large | Poppins | 18px | 400 | 1.5 | 0em | none | Introductory copy |
+| body | Poppins | 16px | 400 | 1.5 | 0em | none | Default reading text |
+| body-small | Poppins | 14px | 400 | 1.5 | 0em | none | Secondary UI copy |
+| button | Poppins | 16px | 400 | 1.5 | 0em | none | Primary actions |
+| button-small | Poppins | 14px | 400 | 1.5 | 0em | none | Compact cart controls |
+| link | Poppins | 16px | 500 | 1.5 | 0em | none | Navigation links |
+| caption | Poppins | 13px | 400 | 1.5 | 0em | none | Labels and helper text |
+| caption-small | Poppins | 12px | 400 | 1.5 | 0em | none | Fine print |
+| caption-tabular | Poppins | 12px | 400 | 1.5 | 0em | tnum | Prices and counters |
+| micro | Poppins | 11px | 400 | 1.4 | 0em | none | Very small UI metadata |
+| code-body | SFMono-Regular | 13px | 400 | 1.5 | 0em | none | Technical fallback only |
+
+### Principles
+
+- Use Poppins for every visible text surface; changing to serif would break the cardapio tone.
+- Keep most Maria Mole text at weight 400; use 500/600 only for category or product hierarchy.
+- Preserve `0em` letter spacing. The brand is soft and simple, not tracked or editorial.
+- Use sage `#7B9A6D` and caramel `#D89B6A` to create hierarchy before reaching for bold text.
+- Prices should use the sage price color `#7B9A6D`, with tabular alignment when counters or totals line up.
+
+## 4. Components
+
+### Buttons
+
+**Primary Sage** (`button-primary`)
+- Background: `#C9D8B6`
+- Text: `#2D3B24`
+- Border: `#C9D8B6`
+- Padding: 0px
+- Radius: 0px
+- Font: 16px Poppins weight 400
+- Hover: `#B8C9A3` background
+- Use: Main order, add-to-cart, and checkout actions.
+
+**Primary Sage Hover** (`button-primary-hover`)
+- Background: `#B8C9A3`
+- Text: `#2D3B24`
+- Border: `#B8C9A3`
+- Padding: 0px
+- Radius: 0px
+- Font: 16px Poppins weight 400
+- Use: Explicit hover state for primary order controls.
+
+**Secondary Sage Outline** (`button-secondary`)
+- Background: `transparent`
+- Text: `#7B9A6D`
+- Border: `#C9D8B6`
+- Padding: 0px
+- Radius: 0px
+- Font: 16px Poppins weight 400
+- Hover: `#F5F0E1` background
+- Use: Lower-emphasis category or cart actions.
+
+**Peach Ghost** (`button-ghost`)
+- Background: `transparent`
+- Text: `#F5B8A3`
+- Border: `transparent`
+- Padding: 0px
+- Radius: 0px
+- Font: 16px Poppins weight 400
+- Use: Text-like action where peach is needed as a highlight.
+
+The generic button extraction resolves to square buttons with zero padding because Bootstrap/Kendo reset selectors dominate the component summary. When building actual commerce actions, keep the square radius but supply layout padding at the wrapper or utility level.
+
+### Cards & Containers
+
+**Card** (`card`)
+- Background: `#FAF8F3`
+- Border: `#E8DFD0`
+- Padding: 16px
+- Radius: 0px
+- Shadow: none
+- Use: Neutral content container when the framework card baseline is required.
+
+**Product Card** (`product-card`)
+- Background: `#FAF8F3`
+- Border: transparent
+- Padding: 16px
+- Radius: 8px
+- Shadow: none
+- Use: Product listing cards in the Maria Mole cardapio.
+
+### Inputs & Forms
+
+**Text Input** (`input-text`)
+- Background: `#FAF8F3`
+- Text: `#D89B6A`
+- Border: `#E8DFD0`
+- Padding: 4px 8px
+- Radius: .2rem
+- Focus: `#F5B8A3` border
+- Use: Quantity, address, contact, and order-form fields.
+
+### Badges / Tags / Pills
+
+**Default Badge** (`badge-default`)
+- Background: `#F5B8A3`
+- Text: `#FFFFFF`
+- Border: `#F5B8A3`
+- Padding: 4px
+- Radius: 4px
+- Font: 14px Poppins weight 500
+- Use: Active category, cart count, add-on highlight, and selected item marker.
+
+### Navigation
+
+**Header Navigation** (`nav-header`)
+- Background: `#F5F0E1`
+- Text: `#7B9A6D`
+- Border bottom: `#E8DFD0`
+- Backdrop filter: none
+- Height: auto
+- Use: Top navigation and brand/category wayfinding.
+
+### Decorative Elements
+
+Category chips use 20px rounding with taupe inactive text and peach active fill. Product cards use 8px radius even though the framework baseline card radius resolves to 0px. The source does not define a dedicated tooltip or avatar design language for the public cardapio; if needed, derive them from Poppins, ivory surfaces, sand borders, and sage/peach states.
+
+## 5. Layout Principles
+
+### Spacing System
+
+The practical scale is compact and Bootstrap-like: 4px, 8px, 15px, 16px, and 24px. Category headers use 15px padding, cards use 16px, inputs use 4px 8px, and badges use 4px.
+
+### Grid & Container
+
+The page is a cardapio surface: product cards, category strips, modal dialogs, and a cart/side drawer. Containers should stay straightforward, with product grids collapsing to stacked cards on small screens and fixed cart panels becoming full-height drawers when active.
+
+### Whitespace Philosophy
+
+Whitespace is modest and operational. Maria Mole does not use oversized editorial spacing; the UI needs to show product choices, prices, add-ons, and cart state efficiently while keeping enough cream background around ivory cards to feel soft.
+
+### Border Radius Scale
+
+- `0px`: generic buttons, tabs, and baseline card framework resets
+- `.2rem`: form controls and compact inputs
+- `4px`: badges and small interactive elements
+- `8px`: branded product cards and scrollbars
+- `20px`: category chips and pill-like selectors
+- `9999px`: only for true circular/pill controls, not the default button shape
+
+## 6. Depth & Elevation
+
+| Level | Treatment | Use |
+|---|---|---|
+| Flat | `box-shadow: none` on cards and product cards | Product grids and everyday containers |
+| Ambient | Border `#E8DFD0` against `#FAF8F3` | Inputs, dropdown boundaries, section separation |
+| Standard | `0 4px 8px rgba(0, 0, 0, .2)` | Dropdown menus when floating |
+| Elevated | `0 8px 16px rgba(0, 0, 0, .2)` | Modal content |
+| Deep | `-5px 0 15px #0000004d` | Product side drawer |
+| Ring | Focus border `#F5B8A3`, no heavy glow | Form and category focus states |
+
+### Shadow Philosophy
+
+The system is intentionally low-elevation. Depth is communicated via cream/ivory contrast and sand borders first; shadows are reserved for modal, dropdown, and drawer mechanics. Do not add layered card shadows to the product grid, because the source explicitly keeps `.card` and `.card-produto` at `box-shadow: none`.
+
+## 7. Do's and Don'ts
+
+**Do:**
+
+- Use sage `#7B9A6D` as the brand anchor for price, footer, and navigation emphasis.
+- Use sage-light `#C9D8B6` with olive text `#2D3B24` for main order buttons.
+- Use peach `#F5B8A3` for active category states, selected items, and cart highlights.
+- Keep Poppins at weight 400 for most copy; reserve 500/600 for product/category hierarchy.
+- Put product cards on ivory `#FAF8F3` over cream `#F5F0E1`.
+- Keep product cards flat; use borders and background contrast instead of elevation.
+
+**Don't:**
+
+- Don't use Bootstrap purple `#7E57C2` as Maria Mole primary; it is framework residue, not brand identity.
+- Don't use Kendo red `#FF6358` for CTAs; Maria Mole actions are sage and peach.
+- Don't make Poppins headlines weight 700/800; the site voice is soft and regular.
+- Don't add backdrop blur; the source sets `backdrop-filter: none` on branded floating surfaces.
+- Don't add layered card shadows to products; `.card-produto` explicitly stays shadowless.
+- Don't replace the cream background `#F5F0E1` with pure white; the warm base is part of the confectionery feel.
+
+## 8. Responsive Behavior
+
+### Breakpoints
+
+| Name | Width | Key Changes |
+|---|---:|---|
+| xs | 0px | Single-column product flow, full-width cart/drawer interactions |
+| sm | 576px | Inline form patterns can appear; category chips still wrap |
+| md | 768px | Product grid gains more columns; navigation can spread horizontally |
+| lg | 992px | Desktop cart/sidebar patterns become viable |
+| xl | 1200px | Wider product grid and denser menu browsing |
+
+### Touch Targets
+
+Use at least 44px height for order, quantity, and cart controls even though the extracted generic button padding is 0px. Category chips should keep 8px 15px padding and 20px radius for tappability.
+
+### Collapsing Strategy
+
+Desktop can show product grids and cart context side by side. Mobile should prioritize a single product column, sticky cart affordances, and full-height product or cart drawers. Typography should step down from 50px/30px display sizes toward 24px/20px headings on compact screens.
+
+### Image Behavior
+
+Product imagery should remain rounded with the product-card radius and crop consistently inside ivory cards. Avoid dark overlays on food imagery; the palette already supplies enough soft contrast through cream and sage UI.
+
+## 9. Agent Prompt Guide
+
+### Quick Color Reference
+
+- Primary brand: Maria Mole Sage (`#7B9A6D`)
+- Primary CTA: Sage Light (`#C9D8B6`)
+- CTA Hover: Sage Hover (`#B8C9A3`)
+- CTA Text: Olive (`#2D3B24`)
+- Accent / selected: Peach (`#F5B8A3`)
+- Warm heading: Caramel (`#D89B6A`)
+- Background: Cream (`#F5F0E1`)
+- Card surface: Ivory (`#FAF8F3`)
+- Body text: Taupe (`#9B8B7E`)
+- Muted text: Bootstrap Muted Gray (`#6C757D`)
+- Border: Soft Sand (`#E8DFD0`)
+
+### Example Component Prompts
+
+> Create a Maria Mole hero/cardapio header on `#F5F0E1`. Use Poppins 30px weight 400 line-height 1.2 in sage `#7B9A6D` for the title, body copy at 16px weight 400 line-height 1.5 in taupe `#9B8B7E`, and a primary CTA with `#C9D8B6` background, `#2D3B24` text, square 0px radius, and hover `#B8C9A3`.
+
+> Create a product card on ivory `#FAF8F3` over cream `#F5F0E1`. Use 8px radius, no shadow, transparent border, 16px padding, Poppins 20px weight 500 for the product name in caramel `#D89B6A`, and price text in sage `#7B9A6D` with tabular number alignment.
+
+> Create a category badge/chip row with inactive text `#9B8B7E`, active chip background `#F5B8A3`, active text `#FFFFFF`, 20px pill radius for chips, 8px 15px padding, Poppins 14px weight 500, and no shadow.
+
+> Create a navigation header on cream `#F5F0E1` with text `#7B9A6D`, bottom border `#E8DFD0`, Poppins 16px weight 500 links, hover text `#F5B8A3`, and no backdrop blur.
+
+> Create an order form panel on ivory `#FAF8F3` with inputs using border `#E8DFD0`, radius `.2rem`, padding `4px 8px`, focus border `#F5B8A3`, text `#D89B6A`, and muted placeholders `#9B8B7E`.
+
+> Create a footer/cart section with background `#7B9A6D`, text `#F5F0E1`, border `#C9D8B6`, primary checkout button `#D89B6A` with white text, and peach `#F5B8A3` for the active cart item marker.
+
+### Iteration Guide
+
+1. Start every screen with cream `#F5F0E1`; use pure white only when a third-party widget forces it.
+2. Use sage `#7B9A6D` for brand presence and price, not Bootstrap purple `#7E57C2`.
+3. Primary order controls are sage-light `#C9D8B6` with olive `#2D3B24` text; hover them to `#B8C9A3`.
+4. Product cards should be ivory `#FAF8F3`, 8px radius, and shadowless.
+5. Keep Poppins regular as the default. If a product title feels weak, move to weight 500 before changing color or size.
+6. Use peach `#F5B8A3` only for selected, active, cart, or additive highlights.
+7. Use sand borders `#E8DFD0` to separate form and card surfaces instead of gray outlines from Bootstrap.
+8. Reserve shadows for modals, dropdowns, and side drawers; never use decorative multi-layer shadows on product cards.

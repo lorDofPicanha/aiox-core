@@ -1,0 +1,47 @@
+{
+  "primary": "linear-gradient(left, #fff 95%, #ddd 100%)",
+  "secondary": "linear-gradient(right, #fff 95%, #ddd 100%)",
+  "total_unique": 10,
+  "top": [
+    {
+      "value": "linear-gradient(left, #fff 95%, #ddd 100%)",
+      "count": 4
+    },
+    {
+      "value": "linear-gradient(right, #fff 95%, #ddd 100%)",
+      "count": 4
+    },
+    {
+      "value": "radial-gradient(91.53% 91.53% at 47.64% 31.27%,transparent 0,rgba(0,0,0,.4) 100%)",
+      "count": 2
+    },
+    {
+      "value": "linear-gradient(160deg, #f1f4ff, #f9faff)",
+      "count": 2
+    },
+    {
+      "value": "linear-gradient(180deg,rgba(0,0,0,.08),transparent 40%)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(180deg,rgba(0,0,0,.1),transparent 40%)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(180deg,rgba(0,0,0,.3),transparent 40%)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(0deg,rgba(0,0,0,.65),rgba(0,0,0,.65))",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(180deg,rgba(0,0,0,.5),transparent 40%)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(90deg, #4f97ff, #275efe)",
+      "count": 1
+    }
+  ]
+}

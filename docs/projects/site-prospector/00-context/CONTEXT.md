@@ -2,7 +2,18 @@
 
 > **Read this FIRST** when working on site-prospector. Per `.aios-core` project-context-loading rule.
 
-**Last updated:** 2026-05-12 (post 4 conclaves + Architecture B locked)
+**Last updated:** 2026-07-22 (visual pipeline reset; ADR-0004)
+
+## Update 2026-07-22 — visual pipeline reset
+
+- Founder rejected all 25 generated explorations and the Maria Mole prototype.
+- SP-001 and the 13/Jul + 19/Jul multi-reference specifications are superseded.
+- New rule: one award-winning live page is selected as the complete structural
+  blueprint; the target brand's `DESIGN.md`, real content, and first-party media
+  replace the source identity without changing the approved composition.
+- No new batch generation. Build and approve one golden prototype before any
+  second prospect.
+- Canonical decision: [ADR-0004](../99-decisions/0004-award-reference-faithful-recomposition.md).
 
 ---
 

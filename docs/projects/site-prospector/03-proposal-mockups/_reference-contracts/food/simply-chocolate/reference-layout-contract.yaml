@@ -1,0 +1,49 @@
+# reference-layout-contract.yaml — ADR-0004 immutable structural blueprint
+# BRAND-AGNOSTIC: geometry, section sequence, responsive, motion ONLY.
+
+meta:
+  slug: simply-chocolate
+  archetype: food-cpg (playful-premium)
+  role: "MASTER for Brandt build C"
+  source_url: https://www.simplychocolate.dk/
+  award: "Awwwards Site of the Year 2017"
+  captured_by: Orion (aios-master)
+  captured_at: 2026-07-24
+  capture_method: "live browser — hero confirmed; full sequence PARTIAL (cookie overlay blocked DOM read)"
+  fidelity_confidence: low-medium
+  pixel_baseline_pending: true
+  DECISION_REQUIRED: >
+    The AWARDED build (SOTY 2017) was a colorful scroll-narrative experience. The CURRENT
+    live 2026 site is a calmer commerce redesign (split product-hero, cream). Pick which is
+    master for build C BEFORE coding:
+      (a) SOTY-2017 scroll version -> capture via Wayback Machine 2017 snapshot
+      (b) current-live 2026 commerce version -> capture live
+    If neither fits cleanly, swap reference to Mode Chocolate (HM 2023).
+
+art_direction:
+  mood: playful, warm, product-hero, editorial-commercial
+  background: cream / off-white (colorful accents in SOTY version)
+  type: bold condensed caps display + clean body
+  imagery: product-hero (wrapped bars/bites) on clean bg; split layouts
+
+section_sequence_current_live:     # 2026 commerce site (partial — verify at build)
+  - id: hero_split
+    confidence: confirmed
+    desc: "left = product-hero photo (wrappers + bites); right = eyebrow + bold-caps occasion headline + body + dark CTA"
+  - id: product_range_grid
+    confidence: to-verify
+  - id: occasion_gifting_blocks
+    confidence: to-verify
+  - id: story_values
+    confidence: to-verify
+  - id: footer
+    confidence: to-verify
+
+motion_inventory:
+  - scroll reveals (to verify)
+  - SOTY-2017 version: signature colorful scroll-narrative (only if version (a) chosen)
+  - prefers-reduced-motion honored
+
+build_notes:
+  blocker: "resolve DECISION_REQUIRED (SOTY-2017 vs live) before build C"
+  independent_impl: rebuild independently; ZERO source reuse

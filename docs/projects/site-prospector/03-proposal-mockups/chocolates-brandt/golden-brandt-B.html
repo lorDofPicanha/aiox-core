@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Chocolates Brandt — Amor em forma de Chocolate</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;family=Source+Sans+3:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: { extend: {
+      colors: {
+        "background": "#181210", "surface": "#181210", "surface-container": "#241e1c",
+        "surface-container-high": "#2f2926", "surface-container-highest": "#3a3331",
+        "cream-text": "#F7F1E8", "cream-panel": "#EFE7DA", "on-surface-variant": "#e7bdb8",
+        "secondary": "#f5bd50", "gold": "#C9962B", "primary-container": "#e11b22",
+        "on-primary-container": "#fff7f6", "deep-red-hover": "#B0141A",
+        "outline-variant": "#5d3f3c", "foliage": "#2F5D3A"
+      },
+      fontFamily: { "display": ["Playfair Display","serif"], "body": ["Source Sans 3","sans-serif"] },
+      spacing: { "page-margin": "4rem", "section-gap": "8rem", "stack-sm": "0.5rem", "stack-md": "1.5rem", "stack-lg": "3rem" }
+    } }
+  }
+</script>
+<style>
+  body { font-family: "Source Sans 3", sans-serif; }
+  .font-display { font-family: "Playfair Display", serif; }
+  .glow-effect { box-shadow: 0 0 60px rgba(201,150,43,0.18); }
+  .text-glow { text-shadow: 0 0 24px rgba(245,189,80,0.30); }
+  .divider-gold { background: linear-gradient(to right, transparent, rgba(245,189,80,0.5), transparent); }
+  .nav-scrolled { background-color: rgba(24,18,16,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(93,63,60,0.3); }
+  /* real photos are shot on light backgrounds — present them as illuminated product panels on the dark page */
+  .product-panel { background: radial-gradient(120% 120% at 50% 35%, #FFFFFF 0%, #F7F1E8 55%, #EADFCB 100%); }
+  .material-symbols-outlined { font-family: "Material Symbols Outlined"; }
+</style>
+</head>
+<body class="bg-background text-cream-text antialiased overflow-x-hidden">
+<!-- images served relative to this file: assets/instagram/ -->
+
+<!-- NAV -->
+<nav class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent py-4 px-6 md:px-page-margin" id="topNav">
+  <div class="max-w-[1440px] mx-auto flex justify-between items-center h-14">
+    <a class="flex items-center gap-3" href="#top">
+      <span class="font-display italic text-3xl text-primary-container bg-cream-text rounded-full w-11 h-11 flex items-center justify-center shadow-lg">B</span>
+      <span class="hidden sm:block font-display text-xl tracking-wide text-cream-text">Chocolates Brandt</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-[15px] font-semibold tracking-wide">
+      <a class="text-cream-text/90 hover:text-secondary transition-colors" href="#colecao">Coleção</a>
+      <a class="text-cream-text/90 hover:text-secondary transition-colors" href="#historia">Nossa História</a>
+      <a class="text-cream-text/90 hover:text-secondary transition-colors" href="#encomendas">Encomendas</a>
+      <a class="text-cream-text/90 hover:text-secondary transition-colors" href="#contato">Contato</a>
+    </div>
+    <a class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary-container text-white font-semibold rounded-full hover:bg-deep-red-hover transition-all shadow-[0_4px_20px_rgba(225,27,34,0.35)]" href="https://wa.me/5547997656867" target="_blank" rel="noopener">
+      <span class="material-symbols-outlined text-lg" style="font-variation-settings:'FILL' 1;">chat</span>
+      Pedir no WhatsApp
+    </a>
+  </div>
+</nav>
+
+<main id="top">
+<!-- HERO -->
+<section class="relative min-h-screen flex items-center pt-28 pb-16 px-6 md:px-page-margin overflow-hidden">
+  <div class="absolute inset-0 z-0">
+    <div class="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[120px]"></div>
+    <div class="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-primary-container/10 rounded-full blur-[100px]"></div>
+  </div>
+  <div class="max-w-[1440px] mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
+    <div class="flex flex-col space-y-8">
+      <div class="inline-flex items-center gap-2 text-secondary text-sm font-bold uppercase tracking-[0.2em]">
+        <span class="w-8 h-px bg-secondary"></span><span>Joinville · desde a fábrica</span>
+      </div>
+      <h1 class="font-display text-5xl md:text-7xl leading-[1.05] text-glow">
+        Amor em forma <br/>de <span class="italic text-secondary">Chocolate</span>
+      </h1>
+      <p class="text-xl text-on-surface-variant max-w-xl">
+        Chocolate e doces artesanais feitos à mão em Joinville há 25 anos. Da nossa fábrica para os seus momentos mais doces.
+      </p>
+      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+        <a class="inline-flex items-center justify-center px-8 py-4 bg-primary-container text-white font-semibold rounded-full hover:bg-deep-red-hover transition-all shadow-[0_4px_20px_rgba(225,27,34,0.35)]" href="#colecao">
+          Descobrir a coleção
+        </a>
+        <div class="flex items-center gap-2 text-sm">
+          <span class="text-secondary">★★★★★</span>
+          <span class="text-on-surface-variant">4,7 · 115 avaliações · Retirada e Entrega</span>
+        </div>
+      </div>
+    </div>
+    <!-- Hero product (real photo, presented as illuminated panel) -->
+    <div class="relative h-[560px] w-full flex justify-center items-center">
+      <div class="product-panel rounded-[28px] w-full h-full overflow-hidden glow-effect flex items-center justify-center">
+        <img alt="Ovo de colher artesanal Chocolates Brandt" class="w-full h-full object-cover" src="assets/instagram/post03-img2.jpg"/>
+      </div>
+      <div class="absolute -bottom-5 left-1/2 -translate-x-1/2 bg-surface-container-high/90 backdrop-blur px-6 py-3 rounded-full border border-outline-variant/40 text-sm">
+        <span class="text-secondary font-semibold">Ovos de colher</span> <span class="text-on-surface-variant">· recheios cremosos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="w-full h-px divider-gold max-w-5xl mx-auto my-24"></div>
+
+<!-- FEATURE -->
+<section class="px-6 md:px-page-margin mb-28" id="colecao">
+  <div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+    <div class="order-2 md:order-1 product-panel relative rounded-[28px] overflow-hidden glow-effect">
+      <img alt="Ovo de Pistache Chocolates Brandt" class="w-full aspect-[4/5] object-cover" src="assets/instagram/post03-img1.jpg"/>
+    </div>
+    <div class="order-1 md:order-2 space-y-6">
+      <span class="px-4 py-1.5 border border-secondary text-secondary rounded-full text-xs font-bold uppercase tracking-wider inline-block">Destaque da temporada</span>
+      <h2 class="font-display text-4xl md:text-5xl">Ovo de Pistache</h2>
+      <p class="text-lg text-on-surface-variant leading-relaxed">
+        Uma obra da chocolataria artesanal: casca de chocolate nobre envolvendo um recheio generoso e cremoso de pistache. Feito à mão, unidade por unidade, como só a Brandt faz há 25 anos.
+      </p>
+      <div class="flex items-center gap-6 pt-4 border-t border-outline-variant/30">
+        <div class="text-secondary font-display text-2xl">Sob encomenda</div>
+        <a href="https://wa.me/5547997656867" target="_blank" rel="noopener" class="px-8 py-3 bg-transparent border-2 border-secondary text-secondary font-semibold rounded-full hover:bg-secondary hover:text-background transition-colors">
+          Encomendar
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLLECTION -->
+<section class="px-6 md:px-page-margin mb-28">
+  <div class="max-w-[1440px] mx-auto bg-surface-container py-16 px-6 md:px-12 rounded-[40px]">
+    <div class="text-center mb-14 space-y-3">
+      <h2 class="font-display text-4xl md:text-5xl">A Coleção Brandt</h2>
+      <p class="text-lg text-on-surface-variant max-w-2xl mx-auto">Clássicos de família e criações autorais que celebram o cacau em cada detalhe.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- card 1 -->
+      <div class="bg-surface rounded-2xl overflow-hidden group hover:-translate-y-1 transition-transform border border-outline-variant/20">
+        <div class="product-panel h-60 overflow-hidden"><img alt="Bolo de pote Brandt" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="assets/instagram/post10-img4.jpg"/></div>
+        <div class="p-6 space-y-3">
+          <h3 class="font-display text-2xl">Bolo de Pote</h3>
+          <p class="text-sm text-on-surface-variant h-12">Camadas do melhor bolo de pote em vários sabores — pistache, maracujá, dois amores, nutella.</p>
+          <div class="flex justify-between items-center pt-4 border-t border-outline-variant/20">
+            <span class="text-secondary font-semibold">Sob encomenda</span>
+            <a href="https://wa.me/5547997656867" target="_blank" rel="noopener" aria-label="Pedir Bolo de Pote" class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-secondary hover:bg-secondary hover:text-background transition-colors"><span class="material-symbols-outlined">add</span></a>
+          </div>
+        </div>
+      </div>
+      <!-- card 2 -->
+      <div class="bg-surface rounded-2xl overflow-hidden group hover:-translate-y-1 transition-transform border border-outline-variant/20">
+        <div class="product-panel h-60 overflow-hidden"><img alt="Cookie recheado Brandt" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="assets/instagram/post08-img1.jpg"/></div>
+        <div class="p-6 space-y-3">
+          <h3 class="font-display text-2xl">Cookies Artesanais</h3>
+          <p class="text-sm text-on-surface-variant h-12">Massa amanteigada com pedaços generosos e recheios que derretem — assados na hora.</p>
+          <div class="flex justify-between items-center pt-4 border-t border-outline-variant/20">
+            <span class="text-secondary font-semibold">Sob encomenda</span>
+            <a href="https://wa.me/5547997656867" target="_blank" rel="noopener" aria-label="Pedir Cookies" class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-secondary hover:bg-secondary hover:text-background transition-colors"><span class="material-symbols-outlined">add</span></a>
+          </div>
+        </div>
+      </div>
+      <!-- card 3 -->
+      <div class="bg-surface rounded-2xl overflow-hidden group hover:-translate-y-1 transition-transform border border-outline-variant/20">
+        <div class="h-60 overflow-hidden bg-black"><img alt="Ovo de maracujá Brandt" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="assets/instagram/post10-img1.jpg"/></div>
+        <div class="p-6 space-y-3">
+          <h3 class="font-display text-2xl">Ovo de Maracujá</h3>
+          <p class="text-sm text-on-surface-variant h-12">Ovo de colher com recheio de maracujá e brigadeiro — feito à mão na nossa fábrica.</p>
+          <div class="flex justify-between items-center pt-4 border-t border-outline-variant/20">
+            <span class="text-secondary font-semibold">Sob encomenda</span>
+            <a href="https://wa.me/5547997656867" target="_blank" rel="noopener" aria-label="Pedir Ovo de Maracujá" class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-secondary hover:bg-secondary hover:text-background transition-colors"><span class="material-symbols-outlined">add</span></a>
+          </div>
+        </div>
+      </div>
+      <!-- card 4 -->
+      <div class="bg-surface rounded-2xl overflow-hidden group hover:-translate-y-1 transition-transform border border-outline-variant/20">
+        <div class="h-60 overflow-hidden bg-black"><img alt="Cesta de presente Brandt" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="assets/instagram/post05-img1.jpg"/></div>
+        <div class="p-6 space-y-3">
+          <h3 class="font-display text-2xl">Cestas de Presente</h3>
+          <p class="text-sm text-on-surface-variant h-12">Uma seleção dos nossos melhores chocolates, montada com carinho para momentos especiais.</p>
+          <div class="flex justify-between items-center pt-4 border-t border-outline-variant/20">
+            <span class="text-secondary font-semibold">Monte a sua</span>
+            <a href="https://wa.me/5547997656867" target="_blank" rel="noopener" aria-label="Montar cesta" class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-secondary hover:bg-secondary hover:text-background transition-colors"><span class="material-symbols-outlined">arrow_forward</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HISTÓRIA (real neon wall photo) -->
+<section class="px-6 md:px-page-margin mb-28" id="historia">
+  <div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+    <div class="rounded-[28px] overflow-hidden glow-effect">
+      <img alt="Loja Chocolates Brandt — parede neon Amor em forma de Chocolate" class="w-full h-[520px] object-cover" src="assets/instagram/post03-img2.jpg"/>
+    </div>
+    <div class="space-y-6">
+      <span class="text-secondary text-sm font-bold uppercase tracking-[0.2em]">Nossa história</span>
+      <h2 class="font-display text-4xl md:text-5xl leading-tight">25 anos fazendo <span class="italic text-secondary">chocolate de verdade</span> em Joinville</h2>
+      <p class="text-lg text-on-surface-variant leading-relaxed">
+        A Brandt é uma fábrica e empório de família. Aqui o chocolate é feito à mão, do jeito artesanal — e você pode visitar a loja, provar na degustação e sentir, ao vivo, o que significa “Amor em forma de Chocolate”.
+      </p>
+      <div class="flex flex-wrap gap-8 pt-4 border-t border-outline-variant/30">
+        <div><div class="font-display text-3xl text-secondary">25</div><div class="text-sm text-on-surface-variant">anos de fábrica</div></div>
+        <div><div class="font-display text-3xl text-secondary">4,7★</div><div class="text-sm text-on-surface-variant">115 avaliações</div></div>
+        <div><div class="font-display text-3xl text-secondary">Joinville</div><div class="text-sm text-on-surface-variant">loja + degustação</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENCOMENDAS / CTA -->
+<section class="px-6 md:px-page-margin mb-28" id="encomendas">
+  <div class="max-w-[1440px] mx-auto rounded-[40px] bg-gradient-to-br from-surface-container to-background border border-outline-variant/30 py-16 px-8 md:px-16 text-center space-y-6">
+    <h2 class="font-display text-4xl md:text-5xl">Encomendas &amp; Presentes</h2>
+    <p class="text-lg text-on-surface-variant max-w-2xl mx-auto">Ovos, cestas, bolos de pote e cookies feitos sob encomenda. Fale com a gente no WhatsApp e monte o seu pedido.</p>
+    <a class="inline-flex items-center gap-2 px-8 py-4 bg-primary-container text-white font-semibold rounded-full hover:bg-deep-red-hover transition-all shadow-[0_4px_24px_rgba(225,27,34,0.4)]" href="https://wa.me/5547997656867" target="_blank" rel="noopener">
+      <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">chat</span> Encomendar no WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-outline-variant/20 px-6 md:px-page-margin py-16" id="contato">
+  <div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+    <div class="space-y-4">
+      <div class="flex items-center gap-3">
+        <span class="font-display italic text-3xl text-primary-container bg-cream-text rounded-full w-11 h-11 flex items-center justify-center">B</span>
+        <span class="font-display text-xl">Chocolates Brandt</span>
+      </div>
+      <p class="text-sm text-on-surface-variant">Amor em forma de Chocolate.<br/>Fábrica e empório artesanal em Joinville.</p>
+    </div>
+    <div class="space-y-2 text-sm">
+      <h4 class="font-semibold text-secondary uppercase tracking-wider text-xs mb-3">Loja</h4>
+      <p class="text-on-surface-variant">R. Padre Kolb, 1419</p>
+      <p class="text-on-surface-variant">Anita Garibaldi · Joinville-SC</p>
+      <p class="text-on-surface-variant">Retirada e Entrega</p>
+    </div>
+    <div class="space-y-2 text-sm">
+      <h4 class="font-semibold text-secondary uppercase tracking-wider text-xs mb-3">Horário</h4>
+      <p class="text-on-surface-variant">Seg a Sex · 9h às 19h</p>
+      <p class="text-on-surface-variant">Sábado · 9h às 15h</p>
+    </div>
+    <div class="space-y-3 text-sm">
+      <h4 class="font-semibold text-secondary uppercase tracking-wider text-xs mb-3">Contato</h4>
+      <a class="flex items-center gap-2 text-on-surface-variant hover:text-secondary" href="https://wa.me/5547997656867" target="_blank" rel="noopener"><span class="material-symbols-outlined text-base">chat</span> (47) 99765-6867</a>
+      <a class="flex items-center gap-2 text-on-surface-variant hover:text-secondary" href="https://instagram.com/chocolatesbrandt" target="_blank" rel="noopener"><span class="material-symbols-outlined text-base">photo_camera</span> @chocolatesbrandt</a>
+    </div>
+  </div>
+  <div class="max-w-[1440px] mx-auto mt-12 pt-6 border-t border-outline-variant/20 text-xs text-on-surface-variant/60 flex flex-col md:flex-row justify-between gap-2">
+    <span>© Chocolates Brandt · Joinville-SC</span>
+    <span>Mockup de proposta — Site-Prospector (privado)</span>
+  </div>
+</footer>
+</main>
+
+<script>
+  const topNav = document.getElementById('topNav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) topNav.classList.add('nav-scrolled'); else topNav.classList.remove('nav-scrolled');
+  });
+</script>
+</body></html>

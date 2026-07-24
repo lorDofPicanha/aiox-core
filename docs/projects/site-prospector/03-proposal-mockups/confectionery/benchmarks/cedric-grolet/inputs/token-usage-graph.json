@@ -1,0 +1,257 @@
+[
+  {
+    "name": "--color-white",
+    "declarations": 1,
+    "references": 66
+  },
+  {
+    "name": "--color-primary",
+    "declarations": 1,
+    "references": 52
+  },
+  {
+    "name": "--color-secondary",
+    "declarations": 1,
+    "references": 38
+  },
+  {
+    "name": "--color-black",
+    "declarations": 1,
+    "references": 30
+  },
+  {
+    "name": "--font-body",
+    "declarations": 1,
+    "references": 22
+  },
+  {
+    "name": "--container-padding-inline",
+    "declarations": 2,
+    "references": 20
+  },
+  {
+    "name": "--font-heading",
+    "declarations": 1,
+    "references": 10
+  },
+  {
+    "name": "--font-special",
+    "declarations": 1,
+    "references": 9
+  },
+  {
+    "name": "--columns",
+    "declarations": 3,
+    "references": 8
+  },
+  {
+    "name": "--color-grey",
+    "declarations": 1,
+    "references": 7
+  },
+  {
+    "name": "--color-error",
+    "declarations": 1,
+    "references": 5
+  },
+  {
+    "name": "--container-width",
+    "declarations": 6,
+    "references": 5
+  },
+  {
+    "name": "--button-color",
+    "declarations": 7,
+    "references": 5
+  },
+  {
+    "name": "--font-fallback",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--button-bg",
+    "declarations": 6,
+    "references": 4
+  },
+  {
+    "name": "--addresses-v-gap",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--color",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--banner-height",
+    "declarations": 0,
+    "references": 3
+  },
+  {
+    "name": "--header-height",
+    "declarations": 0,
+    "references": 3
+  },
+  {
+    "name": "--container-small-width",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--animation-order",
+    "declarations": 7,
+    "references": 2
+  },
+  {
+    "name": "--animation-fade-in",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--animation-slide-in",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--duration-extra-long",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--addresses-h-gap",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--button-height",
+    "declarations": 4,
+    "references": 2
+  },
+  {
+    "name": "--button-border-color",
+    "declarations": 7,
+    "references": 2
+  },
+  {
+    "name": "--h-gap",
+    "declarations": 3,
+    "references": 2
+  },
+  {
+    "name": "--v-gap",
+    "declarations": 3,
+    "references": 2
+  },
+  {
+    "name": "--custom-color",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--hover-color",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--font-meurice",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--color-background",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--overlay-opacity",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--container-tiny-width",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--addresses-column",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--button-min-width",
+    "declarations": 3,
+    "references": 1
+  },
+  {
+    "name": "--button-font-size",
+    "declarations": 3,
+    "references": 1
+  },
+  {
+    "name": "--button-font-weight",
+    "declarations": 4,
+    "references": 1
+  },
+  {
+    "name": "--button-border-radius",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--button-width",
+    "declarations": 4,
+    "references": 1
+  },
+  {
+    "name": "--button-padding",
+    "declarations": 3,
+    "references": 1
+  },
+  {
+    "name": "--button-color-hover",
+    "declarations": 6,
+    "references": 1
+  },
+  {
+    "name": "--button-bg-hover",
+    "declarations": 5,
+    "references": 1
+  },
+  {
+    "name": "--button-border-color-hover",
+    "declarations": 6,
+    "references": 1
+  },
+  {
+    "name": "--ratio",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--color-alert",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--color-gold",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--arrow",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--item-height",
+    "declarations": 3,
+    "references": 0
+  },
+  {
+    "name": "--active",
+    "declarations": 1,
+    "references": 0
+  }
+]

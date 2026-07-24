@@ -1,0 +1,974 @@
+url: https://mariamoledoces.com.br
+extracted_at: 2026-07-12T23:32:29.735Z
+sources:
+  external_css_files: 2
+  preload_css_files: 0
+  imports_resolved: 0
+  inline_style_blocks: 2
+  inline_style_attrs: 0
+  failed_fetches: 0
+detection:
+  css_vars_total: 93
+  css_vars_primitive: 74
+  css_vars_alias: 19
+  font_faces: 7
+  unique_tokens_in_graph: 97
+tokens:
+  colors:
+    primary:
+      value: "#7B9A6D"
+      source: css_var
+      confidence: high
+      origin: --cor-texto-topo
+    secondary:
+      value: "#F5B8A3"
+      source: css_var
+      confidence: high
+      origin: --cor-destaque
+    tertiary:
+      value: "#D89B6A"
+      source: css_var
+      confidence: high
+      origin: --cor-texto-primaria
+    neutral:
+      value: "#9B8B7E"
+      source: css_var
+      confidence: high
+      origin: --cor-texto
+    surface:
+      value: "#F5F0E1"
+      source: css_var
+      confidence: high
+      origin: --cor-fundo-site
+    text:
+      value: "#9B8B7E"
+      source: css_var
+      confidence: high
+      origin: --cor-texto
+    text-muted:
+      value: "#6C757D"
+      source: css_var
+      confidence: high
+      origin: --cor-texto-muted
+    border:
+      value: "#E8DFD0"
+      source: css_var
+      confidence: high
+      origin: --cor-borda
+    error:
+      value: "#F1556C"
+      source: css_var
+      confidence: high
+      origin: --danger
+    success:
+      value: "#1ABC9C"
+      source: css_var
+      confidence: high
+      origin: --success
+    cream:
+      value: "#F5F0E1"
+      source: css_var
+      confidence: high
+      origin: --cor-fundo
+    ivory:
+      value: "#FAF8F3"
+      source: css_var
+      confidence: high
+      origin: --cor-fundo-elementos
+    sage:
+      value: "#7B9A6D"
+      source: css_var
+      confidence: high
+      origin: --cor-fundo-rodape
+    sage-light:
+      value: "#C9D8B6"
+      source: css_var
+      confidence: high
+      origin: --cor-botao
+    sage-hover:
+      value: "#B8C9A3"
+      source: css_var
+      confidence: high
+      origin: --cor-hover
+    peach:
+      value: "#F5B8A3"
+      source: css_var
+      confidence: high
+      origin: --cor-destaque
+    caramel:
+      value: "#D89B6A"
+      source: css_var
+      confidence: high
+      origin: --cor-texto-primaria
+    olive-text:
+      value: "#2D3B24"
+      source: css_var
+      confidence: high
+      origin: --cor-texto-botao
+  typography:
+    display-hero:
+      properties:
+        fontFamily:
+          value: Poppins, sans-serif
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        fontSize:
+          value: 50px
+          source: css_declaration
+          confidence: medium
+          origin: tokens-detected typography.size
+        fontWeight:
+          value: "400"
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        lineHeight:
+          value: "1.15"
+          source: css_declaration
+          confidence: medium
+          origin: tokens-detected typography.line_height
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no letter-spacing declarations in source
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations
+    display-large:
+      properties:
+        fontFamily:
+          value: Poppins, sans-serif
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        fontSize:
+          value: 30px
+          source: css_declaration
+          confidence: medium
+          origin: tokens-detected typography.size
+        fontWeight:
+          value: "400"
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        lineHeight:
+          value: "1.2"
+          source: css_declaration
+          confidence: medium
+          origin: tokens-detected typography.line_height
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no letter-spacing declarations in source
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations
+    section-heading:
+      properties:
+        fontFamily:
+          value: Poppins, sans-serif
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        fontSize:
+          value: 24px
+          source: css_declaration
+          confidence: medium
+          origin: tokens-detected typography.size
+        fontWeight:
+          value: "600"
+          source: css_declaration
+          confidence: medium
+          origin: tokens-detected typography.weight
+        lineHeight:
+          value: "1.3"
+          source: css_declaration
+          confidence: medium
+          origin: tokens-detected typography.line_height
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no letter-spacing declarations in source
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations
+    subheading-large:
+      properties:
+        fontFamily:
+          value: Poppins, sans-serif
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        fontSize:
+          value: 22px
+          source: css_declaration
+          confidence: medium
+          origin: tokens-detected typography.size
+        fontWeight:
+          value: "500"
+          source: css_declaration
+          confidence: medium
+          origin: tokens-detected typography.weight
+        lineHeight:
+          value: "1.3"
+          source: css_declaration
+          confidence: medium
+          origin: tokens-detected typography.line_height
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no letter-spacing declarations in source
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations
+    subheading:
+      properties:
+        fontFamily:
+          value: Poppins, sans-serif
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        fontSize:
+          value: 20px
+          source: css_declaration
+          confidence: medium
+          origin: component-properties card.font-size most_common
+        fontWeight:
+          value: "500"
+          source: css_declaration
+          confidence: medium
+          origin: tokens-detected typography.weight
+        lineHeight:
+          value: "1.4"
+          source: css_declaration
+          confidence: medium
+          origin: tokens-detected typography.line_height
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no letter-spacing declarations in source
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations
+    body-large:
+      properties:
+        fontFamily:
+          value: Poppins, sans-serif
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        fontSize:
+          value: 18px
+          source: css_declaration
+          confidence: medium
+          origin: tokens-detected typography.size
+        fontWeight:
+          value: "400"
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        lineHeight:
+          value: "1.5"
+          source: css_declaration
+          confidence: medium
+          origin: body/form declarations
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no letter-spacing declarations in source
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations
+    body:
+      properties:
+        fontFamily:
+          value: Poppins, sans-serif
+          source: css_var
+          confidence: high
+          origin: --font-family-sans-serif
+        fontSize:
+          value: 16px
+          source: css_declaration
+          confidence: medium
+          origin: tokens-detected typography.size
+        fontWeight:
+          value: "400"
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        lineHeight:
+          value: "1.5"
+          source: css_declaration
+          confidence: medium
+          origin: body/form declarations
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no letter-spacing declarations in source
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations
+    body-small:
+      properties:
+        fontFamily:
+          value: Poppins, sans-serif
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        fontSize:
+          value: 14px
+          source: css_declaration
+          confidence: medium
+          origin: component-properties badge.font-size most_common
+        fontWeight:
+          value: "400"
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        lineHeight:
+          value: "1.5"
+          source: css_declaration
+          confidence: medium
+          origin: body/form declarations
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no letter-spacing declarations in source
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations
+    button:
+      properties:
+        fontFamily:
+          value: Poppins, sans-serif
+          source: css_declaration
+          confidence: medium
+          origin: input/button inherit and --font-family-sans-serif
+        fontSize:
+          value: 16px
+          source: css_declaration
+          confidence: medium
+          origin: component-properties button.font-size most_common 1em resolved against
+            body
+        fontWeight:
+          value: "400"
+          source: css_declaration
+          confidence: medium
+          origin: component-properties button.font-weight most_common
+        lineHeight:
+          value: "1.5"
+          source: css_declaration
+          confidence: medium
+          origin: button/input inherited line-height
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no letter-spacing declarations in source
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations
+    button-small:
+      properties:
+        fontFamily:
+          value: Poppins, sans-serif
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        fontSize:
+          value: 14px
+          source: css_declaration
+          confidence: medium
+          origin: tokens-detected typography.size
+        fontWeight:
+          value: "400"
+          source: css_declaration
+          confidence: medium
+          origin: component-properties button.font-weight most_common
+        lineHeight:
+          value: "1.5"
+          source: css_declaration
+          confidence: medium
+          origin: button/input inherited line-height
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no letter-spacing declarations in source
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations
+    link:
+      properties:
+        fontFamily:
+          value: Poppins, sans-serif
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        fontSize:
+          value: 16px
+          source: css_declaration
+          confidence: medium
+          origin: tokens-detected typography.size
+        fontWeight:
+          value: "500"
+          source: css_declaration
+          confidence: medium
+          origin: component-properties link.font-weight most_common
+        lineHeight:
+          value: "1.5"
+          source: css_declaration
+          confidence: medium
+          origin: body/form declarations
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no letter-spacing declarations in source
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations
+    caption:
+      properties:
+        fontFamily:
+          value: Poppins, sans-serif
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        fontSize:
+          value: 13px
+          source: css_declaration
+          confidence: medium
+          origin: component-properties label.font-size most_common
+        fontWeight:
+          value: "400"
+          source: css_declaration
+          confidence: medium
+          origin: component-properties label.font-weight most_common
+        lineHeight:
+          value: "1.5"
+          source: css_declaration
+          confidence: medium
+          origin: body/form declarations
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no letter-spacing declarations in source
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations
+    caption-small:
+      properties:
+        fontFamily:
+          value: Poppins, sans-serif
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        fontSize:
+          value: 12px
+          source: css_declaration
+          confidence: medium
+          origin: tokens-detected typography.size
+        fontWeight:
+          value: "400"
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        lineHeight:
+          value: "1.5"
+          source: css_declaration
+          confidence: medium
+          origin: body/form declarations
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no letter-spacing declarations in source
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations
+    caption-tabular:
+      properties:
+        fontFamily:
+          value: Poppins, sans-serif
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        fontSize:
+          value: 12px
+          source: css_declaration
+          confidence: medium
+          origin: tokens-detected typography.size
+        fontWeight:
+          value: "400"
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        lineHeight:
+          value: "1.5"
+          source: css_declaration
+          confidence: medium
+          origin: body/form declarations
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no letter-spacing declarations in source
+        features:
+          value: '["tnum"]'
+          source: inferred
+          confidence: low
+          origin: inferred for price/counter alignment
+    micro:
+      properties:
+        fontFamily:
+          value: Poppins, sans-serif
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        fontSize:
+          value: 11px
+          source: inferred
+          confidence: low
+          origin: inferred from caption-small minus 1px
+        fontWeight:
+          value: "400"
+          source: font_face
+          confidence: high
+          origin: "@font-face"
+        lineHeight:
+          value: "1.4"
+          source: css_declaration
+          confidence: medium
+          origin: compact UI declarations
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no letter-spacing declarations in source
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations
+    code-body:
+      properties:
+        fontFamily:
+          value: SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New,
+            monospace
+          source: css_var
+          confidence: high
+          origin: --font-family-monospace
+        fontSize:
+          value: 13px
+          source: inferred
+          confidence: low
+          origin: inferred from monospace utility size
+        fontWeight:
+          value: "400"
+          source: inferred
+          confidence: low
+          origin: inferred from monospace default
+        lineHeight:
+          value: "1.5"
+          source: css_declaration
+          confidence: medium
+          origin: Bootstrap code defaults
+        letterSpacing:
+          value: 0em
+          source: inferred
+          confidence: low
+          origin: inferred from no letter-spacing declarations in source
+        features:
+          value: "[]"
+          source: inferred
+          confidence: low
+          origin: inferred from no OpenType feature declarations
+    h1:
+      properties:
+        fontFamily:
+          value: Poppins, sans-serif
+          source: other
+          confidence: medium
+          origin: alias from display-hero
+        fontSize:
+          value: 50px
+          source: other
+          confidence: medium
+          origin: alias from display-hero
+        fontWeight:
+          value: "400"
+          source: other
+          confidence: medium
+          origin: alias from display-hero
+        lineHeight:
+          value: "1.15"
+          source: other
+          confidence: medium
+          origin: alias from display-hero
+        letterSpacing:
+          value: 0em
+          source: other
+          confidence: medium
+          origin: alias from display-hero
+        features:
+          value: "[]"
+          source: other
+          confidence: medium
+          origin: alias from display-hero
+    h2:
+      properties:
+        fontFamily:
+          value: Poppins, sans-serif
+          source: other
+          confidence: medium
+          origin: alias from section-heading
+        fontSize:
+          value: 24px
+          source: other
+          confidence: medium
+          origin: alias from section-heading
+        fontWeight:
+          value: "600"
+          source: other
+          confidence: medium
+          origin: alias from section-heading
+        lineHeight:
+          value: "1.3"
+          source: other
+          confidence: medium
+          origin: alias from section-heading
+        letterSpacing:
+          value: 0em
+          source: other
+          confidence: medium
+          origin: alias from section-heading
+        features:
+          value: "[]"
+          source: other
+          confidence: medium
+          origin: alias from section-heading
+    h3:
+      properties:
+        fontFamily:
+          value: Poppins, sans-serif
+          source: other
+          confidence: medium
+          origin: alias from subheading-large
+        fontSize:
+          value: 22px
+          source: other
+          confidence: medium
+          origin: alias from subheading-large
+        fontWeight:
+          value: "500"
+          source: other
+          confidence: medium
+          origin: alias from subheading-large
+        lineHeight:
+          value: "1.3"
+          source: other
+          confidence: medium
+          origin: alias from subheading-large
+        letterSpacing:
+          value: 0em
+          source: other
+          confidence: medium
+          origin: alias from subheading-large
+        features:
+          value: "[]"
+          source: other
+          confidence: medium
+          origin: alias from subheading-large
+    h4:
+      properties:
+        fontFamily:
+          value: Poppins, sans-serif
+          source: other
+          confidence: medium
+          origin: alias from subheading
+        fontSize:
+          value: 20px
+          source: other
+          confidence: medium
+          origin: alias from subheading
+        fontWeight:
+          value: "500"
+          source: other
+          confidence: medium
+          origin: alias from subheading
+        lineHeight:
+          value: "1.4"
+          source: other
+          confidence: medium
+          origin: alias from subheading
+        letterSpacing:
+          value: 0em
+          source: other
+          confidence: medium
+          origin: alias from subheading
+        features:
+          value: "[]"
+          source: other
+          confidence: medium
+          origin: alias from subheading
+    body-lg:
+      properties:
+        fontFamily:
+          value: Poppins, sans-serif
+          source: other
+          confidence: medium
+          origin: alias from body-large
+        fontSize:
+          value: 18px
+          source: other
+          confidence: medium
+          origin: alias from body-large
+        fontWeight:
+          value: "400"
+          source: other
+          confidence: medium
+          origin: alias from body-large
+        lineHeight:
+          value: "1.5"
+          source: other
+          confidence: medium
+          origin: alias from body-large
+        letterSpacing:
+          value: 0em
+          source: other
+          confidence: medium
+          origin: alias from body-large
+        features:
+          value: "[]"
+          source: other
+          confidence: medium
+          origin: alias from body-large
+    body-md:
+      properties:
+        fontFamily:
+          value: Poppins, sans-serif
+          source: other
+          confidence: medium
+          origin: alias from body
+        fontSize:
+          value: 16px
+          source: other
+          confidence: medium
+          origin: alias from body
+        fontWeight:
+          value: "400"
+          source: other
+          confidence: medium
+          origin: alias from body
+        lineHeight:
+          value: "1.5"
+          source: other
+          confidence: medium
+          origin: alias from body
+        letterSpacing:
+          value: 0em
+          source: other
+          confidence: medium
+          origin: alias from body
+        features:
+          value: "[]"
+          source: other
+          confidence: medium
+          origin: alias from body
+    body-sm:
+      properties:
+        fontFamily:
+          value: Poppins, sans-serif
+          source: other
+          confidence: medium
+          origin: alias from body-small
+        fontSize:
+          value: 14px
+          source: other
+          confidence: medium
+          origin: alias from body-small
+        fontWeight:
+          value: "400"
+          source: other
+          confidence: medium
+          origin: alias from body-small
+        lineHeight:
+          value: "1.5"
+          source: other
+          confidence: medium
+          origin: alias from body-small
+        letterSpacing:
+          value: 0em
+          source: other
+          confidence: medium
+          origin: alias from body-small
+        features:
+          value: "[]"
+          source: other
+          confidence: medium
+          origin: alias from body-small
+    label:
+      properties:
+        fontFamily:
+          value: Poppins, sans-serif
+          source: other
+          confidence: medium
+          origin: alias from caption
+        fontSize:
+          value: 13px
+          source: other
+          confidence: medium
+          origin: alias from caption
+        fontWeight:
+          value: "400"
+          source: other
+          confidence: medium
+          origin: alias from caption
+        lineHeight:
+          value: "1.5"
+          source: other
+          confidence: medium
+          origin: alias from caption
+        letterSpacing:
+          value: 0em
+          source: other
+          confidence: medium
+          origin: alias from caption
+        features:
+          value: "[]"
+          source: other
+          confidence: medium
+          origin: alias from caption
+    mono:
+      properties:
+        fontFamily:
+          value: SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New,
+            monospace
+          source: other
+          confidence: medium
+          origin: alias from code-body
+        fontSize:
+          value: 13px
+          source: other
+          confidence: medium
+          origin: alias from code-body
+        fontWeight:
+          value: "400"
+          source: other
+          confidence: medium
+          origin: alias from code-body
+        lineHeight:
+          value: "1.5"
+          source: other
+          confidence: medium
+          origin: alias from code-body
+        letterSpacing:
+          value: 0em
+          source: other
+          confidence: medium
+          origin: alias from code-body
+        features:
+          value: "[]"
+          source: other
+          confidence: medium
+          origin: alias from code-body
+  rounded:
+    none:
+      value: 0px
+      source: css_declaration
+      confidence: medium
+      origin: component-properties button.border-radius most_common
+    sm:
+      value: .2rem
+      source: css_declaration
+      confidence: medium
+      origin: component-properties input.border-radius most_common
+    md:
+      value: 4px
+      source: css_declaration
+      confidence: medium
+      origin: component-properties badge.border-radius .25rem normalized to 4px
+    lg:
+      value: 8px
+      source: css_declaration
+      confidence: medium
+      origin: .cacau_show .card
+    full:
+      value: 9999px
+      source: css_declaration
+      confidence: medium
+      origin: tokens-detected radius 9999px
+  spacing:
+    xs:
+      value: 4px
+      source: css_declaration
+      confidence: medium
+      origin: component-properties input padding 4px 8px
+    sm:
+      value: 8px
+      source: css_declaration
+      confidence: medium
+      origin: component-properties badge.padding most_common
+    md:
+      value: 15px
+      source: css_declaration
+      confidence: medium
+      origin: .categorias-header padding
+    lg:
+      value: 16px
+      source: css_declaration
+      confidence: medium
+      origin: component-properties card.padding most_common
+    xl:
+      value: 24px
+      source: css_declaration
+      confidence: medium
+      origin: tokens-detected spacing
+confidence_summary:
+  high: 41
+  medium: 102
+  low: 35
+lint:
+  ran: true
+  exit_code: null
+  errors_count: -1
+  warnings_count: 0
+  stdout_excerpt: ""
+  stderr_excerpt: ""

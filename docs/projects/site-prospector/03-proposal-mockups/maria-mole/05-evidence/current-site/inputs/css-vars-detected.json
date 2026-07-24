@@ -1,0 +1,653 @@
+[
+  {
+    "selector": ".cacau_show",
+    "name": "--cor-fundo-site",
+    "value": "#18181b",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cacau_show",
+    "name": "--cor-fundo-elementos",
+    "value": "#222224",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cacau_show",
+    "name": "--cor-texto",
+    "value": "rgb(250, 250, 250)",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cacau_show",
+    "name": "--cor-texto-primaria",
+    "value": "rgb(250, 250, 250)",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cacau_show",
+    "name": "--cor-texto-secundaria",
+    "value": "rgb(179, 179, 179)",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cacau_show",
+    "name": "--cor-botao",
+    "value": "#694a43",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cacau_show",
+    "name": "--cor-texto-botao",
+    "value": "rgb(250, 250, 250)",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cacau_show",
+    "name": "--cor-borda",
+    "value": "rgb(42, 37, 34)",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cacau_show",
+    "name": "--cor-destaque",
+    "value": "rgb(218, 98, 11)",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cacau_show",
+    "name": "--cor-hover",
+    "value": "#ffb52e",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cacau_show",
+    "name": "--cor-gradiente-1",
+    "value": "#222224",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cacau_show",
+    "name": "--cor-gradiente-2",
+    "value": "#1e1e20",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cacau_show",
+    "name": "--cor-sombra",
+    "value": "rgba(0, 0, 0, .2)",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".cacau_show",
+    "name": "--cor-preco",
+    "value": "#c75a0c",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".tema-personalizado",
+    "name": "--cor-texto-muted",
+    "value": "var(--cor-texto-secundaria, #6c757d)",
+    "is_alias": true,
+    "line": 12
+  },
+  {
+    "selector": "@charset \"UTF-8\";/*! * Bootstrap v4.3.1 (https://getbootstrap.com/) * Copyright 2011-2019 The Bootstrap Authors * Copyright 2011-2019 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootst",
+    "name": "--indigo",
+    "value": "#7e57c2",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "@charset \"UTF-8\";/*! * Bootstrap v4.3.1 (https://getbootstrap.com/) * Copyright 2011-2019 The Bootstrap Authors * Copyright 2011-2019 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootst",
+    "name": "--purple",
+    "value": "#6658dd",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "@charset \"UTF-8\";/*! * Bootstrap v4.3.1 (https://getbootstrap.com/) * Copyright 2011-2019 The Bootstrap Authors * Copyright 2011-2019 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootst",
+    "name": "--red",
+    "value": "#f1556c",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "@charset \"UTF-8\";/*! * Bootstrap v4.3.1 (https://getbootstrap.com/) * Copyright 2011-2019 The Bootstrap Authors * Copyright 2011-2019 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootst",
+    "name": "--orange",
+    "value": "#fd7e14",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "@charset \"UTF-8\";/*! * Bootstrap v4.3.1 (https://getbootstrap.com/) * Copyright 2011-2019 The Bootstrap Authors * Copyright 2011-2019 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootst",
+    "name": "--yellow",
+    "value": "#f7b84b",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "@charset \"UTF-8\";/*! * Bootstrap v4.3.1 (https://getbootstrap.com/) * Copyright 2011-2019 The Bootstrap Authors * Copyright 2011-2019 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootst",
+    "name": "--green",
+    "value": "#1abc9c",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "@charset \"UTF-8\";/*! * Bootstrap v4.3.1 (https://getbootstrap.com/) * Copyright 2011-2019 The Bootstrap Authors * Copyright 2011-2019 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootst",
+    "name": "--teal",
+    "value": "#02a8b5",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "@charset \"UTF-8\";/*! * Bootstrap v4.3.1 (https://getbootstrap.com/) * Copyright 2011-2019 The Bootstrap Authors * Copyright 2011-2019 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootst",
+    "name": "--cyan",
+    "value": "#4fc6e1",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "@charset \"UTF-8\";/*! * Bootstrap v4.3.1 (https://getbootstrap.com/) * Copyright 2011-2019 The Bootstrap Authors * Copyright 2011-2019 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootst",
+    "name": "--white",
+    "value": "#fff",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "@charset \"UTF-8\";/*! * Bootstrap v4.3.1 (https://getbootstrap.com/) * Copyright 2011-2019 The Bootstrap Authors * Copyright 2011-2019 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootst",
+    "name": "--gray",
+    "value": "#98a6ad",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "@charset \"UTF-8\";/*! * Bootstrap v4.3.1 (https://getbootstrap.com/) * Copyright 2011-2019 The Bootstrap Authors * Copyright 2011-2019 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootst",
+    "name": "--gray-dark",
+    "value": "#343a40",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "@charset \"UTF-8\";/*! * Bootstrap v4.3.1 (https://getbootstrap.com/) * Copyright 2011-2019 The Bootstrap Authors * Copyright 2011-2019 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootst",
+    "name": "--primary",
+    "value": "#7e57c2",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "@charset \"UTF-8\";/*! * Bootstrap v4.3.1 (https://getbootstrap.com/) * Copyright 2011-2019 The Bootstrap Authors * Copyright 2011-2019 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootst",
+    "name": "--secondary",
+    "value": "#72747b",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "@charset \"UTF-8\";/*! * Bootstrap v4.3.1 (https://getbootstrap.com/) * Copyright 2011-2019 The Bootstrap Authors * Copyright 2011-2019 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootst",
+    "name": "--success",
+    "value": "#1abc9c",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "@charset \"UTF-8\";/*! * Bootstrap v4.3.1 (https://getbootstrap.com/) * Copyright 2011-2019 The Bootstrap Authors * Copyright 2011-2019 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootst",
+    "name": "--info",
+    "value": "#4fc6e1",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "@charset \"UTF-8\";/*! * Bootstrap v4.3.1 (https://getbootstrap.com/) * Copyright 2011-2019 The Bootstrap Authors * Copyright 2011-2019 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootst",
+    "name": "--warning",
+    "value": "#f7b84b",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "@charset \"UTF-8\";/*! * Bootstrap v4.3.1 (https://getbootstrap.com/) * Copyright 2011-2019 The Bootstrap Authors * Copyright 2011-2019 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootst",
+    "name": "--danger",
+    "value": "#f1556c",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "@charset \"UTF-8\";/*! * Bootstrap v4.3.1 (https://getbootstrap.com/) * Copyright 2011-2019 The Bootstrap Authors * Copyright 2011-2019 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootst",
+    "name": "--light",
+    "value": "#f1f5f7",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "@charset \"UTF-8\";/*! * Bootstrap v4.3.1 (https://getbootstrap.com/) * Copyright 2011-2019 The Bootstrap Authors * Copyright 2011-2019 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootst",
+    "name": "--dark",
+    "value": "#323a46",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "@charset \"UTF-8\";/*! * Bootstrap v4.3.1 (https://getbootstrap.com/) * Copyright 2011-2019 The Bootstrap Authors * Copyright 2011-2019 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootst",
+    "name": "--pink",
+    "value": "#f672a7",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "@charset \"UTF-8\";/*! * Bootstrap v4.3.1 (https://getbootstrap.com/) * Copyright 2011-2019 The Bootstrap Authors * Copyright 2011-2019 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootst",
+    "name": "--blue",
+    "value": "#4a81d4",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "@charset \"UTF-8\";/*! * Bootstrap v4.3.1 (https://getbootstrap.com/) * Copyright 2011-2019 The Bootstrap Authors * Copyright 2011-2019 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootst",
+    "name": "--breakpoint-xs",
+    "value": "0",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "@charset \"UTF-8\";/*! * Bootstrap v4.3.1 (https://getbootstrap.com/) * Copyright 2011-2019 The Bootstrap Authors * Copyright 2011-2019 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootst",
+    "name": "--breakpoint-sm",
+    "value": "576px",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "@charset \"UTF-8\";/*! * Bootstrap v4.3.1 (https://getbootstrap.com/) * Copyright 2011-2019 The Bootstrap Authors * Copyright 2011-2019 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootst",
+    "name": "--breakpoint-md",
+    "value": "768px",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "@charset \"UTF-8\";/*! * Bootstrap v4.3.1 (https://getbootstrap.com/) * Copyright 2011-2019 The Bootstrap Authors * Copyright 2011-2019 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootst",
+    "name": "--breakpoint-lg",
+    "value": "992px",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "@charset \"UTF-8\";/*! * Bootstrap v4.3.1 (https://getbootstrap.com/) * Copyright 2011-2019 The Bootstrap Authors * Copyright 2011-2019 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootst",
+    "name": "--breakpoint-xl",
+    "value": "1200px",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "@charset \"UTF-8\";/*! * Bootstrap v4.3.1 (https://getbootstrap.com/) * Copyright 2011-2019 The Bootstrap Authors * Copyright 2011-2019 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootst",
+    "name": "--font-family-sans-serif",
+    "value": "\"Poppins\", sans-serif",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": "@charset \"UTF-8\";/*! * Bootstrap v4.3.1 (https://getbootstrap.com/) * Copyright 2011-2019 The Bootstrap Authors * Copyright 2011-2019 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootst",
+    "name": "--font-family-monospace",
+    "value": "SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace",
+    "is_alias": false,
+    "line": 12
+  },
+  {
+    "selector": ".k-scroll-snap-mandatory",
+    "name": "--k-scroll-snap-strictness",
+    "value": "mandatory",
+    "is_alias": false,
+    "line": 17
+  },
+  {
+    "selector": ".k-scroll-snap-proximity",
+    "name": "--k-scroll-snap-strictness",
+    "value": "proximity",
+    "is_alias": false,
+    "line": 17
+  },
+  {
+    "selector": ".k-progressbar",
+    "name": "--kendo-progressbar-value",
+    "value": "0",
+    "is_alias": false,
+    "line": 17
+  },
+  {
+    "selector": ".k-calendar-sm",
+    "name": "--INTERNAL--kendo-calendar-view-width",
+    "value": "224px",
+    "is_alias": false,
+    "line": 17
+  },
+  {
+    "selector": ".k-calendar-sm",
+    "name": "--INTERNAL--kendo-calendar-cell-padding-x",
+    "value": "var( --kendo-calendar-sm-cell-padding-x, 2px )",
+    "is_alias": true,
+    "line": 17
+  },
+  {
+    "selector": ".k-calendar-sm",
+    "name": "--INTERNAL--kendo-calendar-cell-padding-y",
+    "value": "var( --kendo-calendar-sm-cell-padding-y, 2px )",
+    "is_alias": true,
+    "line": 17
+  },
+  {
+    "selector": ".k-calendar-sm.k-month-calendar,.k-calendar-sm .k-calendar-monthview",
+    "name": "--INTERNAL--kendo-calendar-cell-size",
+    "value": "var( --kendo-calendar-sm-month-cell-size, 28px )",
+    "is_alias": true,
+    "line": 17
+  },
+  {
+    "selector": ".k-calendar-sm.k-year-calendar,.k-calendar-sm .k-calendar-yearview",
+    "name": "--INTERNAL--kendo-calendar-cell-size",
+    "value": "var( --kendo-calendar-sm-year-cell-size, 56px )",
+    "is_alias": true,
+    "line": 17
+  },
+  {
+    "selector": ".k-calendar-sm.k-decade-calendar,.k-calendar-sm .k-calendar-decadeview",
+    "name": "--INTERNAL--kendo-calendar-cell-size",
+    "value": "var( --kendo-calendar-sm-decade-cell-size, 56px )",
+    "is_alias": true,
+    "line": 17
+  },
+  {
+    "selector": ".k-calendar-sm.k-century-calendar,.k-calendar-sm .k-calendar-centuryview",
+    "name": "--INTERNAL--kendo-calendar-cell-size",
+    "value": "var( --kendo-calendar-sm-century-cell-size, 56px )",
+    "is_alias": true,
+    "line": 17
+  },
+  {
+    "selector": ".k-calendar-md",
+    "name": "--INTERNAL--kendo-calendar-view-width",
+    "value": "256px",
+    "is_alias": false,
+    "line": 17
+  },
+  {
+    "selector": ".k-calendar-md",
+    "name": "--INTERNAL--kendo-calendar-cell-padding-x",
+    "value": "var( --kendo-calendar-md-cell-padding-x, 4px )",
+    "is_alias": true,
+    "line": 17
+  },
+  {
+    "selector": ".k-calendar-md",
+    "name": "--INTERNAL--kendo-calendar-cell-padding-y",
+    "value": "var( --kendo-calendar-md-cell-padding-y, 4px )",
+    "is_alias": true,
+    "line": 17
+  },
+  {
+    "selector": ".k-calendar-md.k-month-calendar,.k-calendar-md .k-calendar-monthview",
+    "name": "--INTERNAL--kendo-calendar-cell-size",
+    "value": "var( --kendo-calendar-md-month-cell-size, 32px )",
+    "is_alias": true,
+    "line": 17
+  },
+  {
+    "selector": ".k-calendar-md.k-year-calendar,.k-calendar-md .k-calendar-yearview",
+    "name": "--INTERNAL--kendo-calendar-cell-size",
+    "value": "var( --kendo-calendar-md-year-cell-size, 64px )",
+    "is_alias": true,
+    "line": 17
+  },
+  {
+    "selector": ".k-calendar-md.k-decade-calendar,.k-calendar-md .k-calendar-decadeview",
+    "name": "--INTERNAL--kendo-calendar-cell-size",
+    "value": "var( --kendo-calendar-md-decade-cell-size, 64px )",
+    "is_alias": true,
+    "line": 17
+  },
+  {
+    "selector": ".k-calendar-md.k-century-calendar,.k-calendar-md .k-calendar-centuryview",
+    "name": "--INTERNAL--kendo-calendar-cell-size",
+    "value": "var( --kendo-calendar-md-century-cell-size, 64px )",
+    "is_alias": true,
+    "line": 17
+  },
+  {
+    "selector": ".k-calendar-lg",
+    "name": "--INTERNAL--kendo-calendar-view-width",
+    "value": "320px",
+    "is_alias": false,
+    "line": 17
+  },
+  {
+    "selector": ".k-calendar-lg",
+    "name": "--INTERNAL--kendo-calendar-cell-padding-x",
+    "value": "var( --kendo-calendar-lg-cell-padding-x, 8px )",
+    "is_alias": true,
+    "line": 17
+  },
+  {
+    "selector": ".k-calendar-lg",
+    "name": "--INTERNAL--kendo-calendar-cell-padding-y",
+    "value": "var( --kendo-calendar-lg-cell-padding-y, 8px )",
+    "is_alias": true,
+    "line": 17
+  },
+  {
+    "selector": ".k-calendar-lg.k-month-calendar,.k-calendar-lg .k-calendar-monthview",
+    "name": "--INTERNAL--kendo-calendar-cell-size",
+    "value": "var( --kendo-calendar-lg-month-cell-size, 40px )",
+    "is_alias": true,
+    "line": 17
+  },
+  {
+    "selector": ".k-calendar-lg.k-year-calendar,.k-calendar-lg .k-calendar-yearview",
+    "name": "--INTERNAL--kendo-calendar-cell-size",
+    "value": "var( --kendo-calendar-lg-year-cell-size, 80px )",
+    "is_alias": true,
+    "line": 17
+  },
+  {
+    "selector": ".k-calendar-lg.k-decade-calendar,.k-calendar-lg .k-calendar-decadeview",
+    "name": "--INTERNAL--kendo-calendar-cell-size",
+    "value": "var( --kendo-calendar-lg-decade-cell-size, 80px )",
+    "is_alias": true,
+    "line": 17
+  },
+  {
+    "selector": ".k-calendar-lg.k-century-calendar,.k-calendar-lg .k-calendar-centuryview",
+    "name": "--INTERNAL--kendo-calendar-cell-size",
+    "value": "var( --kendo-calendar-lg-century-cell-size, 80px )",
+    "is_alias": true,
+    "line": 17
+  },
+  {
+    "selector": ".k-upload .k-progressbar",
+    "name": "--kendo-progressbar-height",
+    "value": "2px",
+    "is_alias": false,
+    "line": 17
+  },
+  {
+    "selector": "/* ── inline <style> #2 ── */ :root",
+    "name": "--cor-fundo",
+    "value": "#F5F0E1",
+    "is_alias": false,
+    "line": 64
+  },
+  {
+    "selector": "/* ── inline <style> #2 ── */ :root",
+    "name": "--cor-texto",
+    "value": "#9B8B7E",
+    "is_alias": false,
+    "line": 64
+  },
+  {
+    "selector": "/* ── inline <style> #2 ── */ :root",
+    "name": "--cor-texto-topo",
+    "value": "#7B9A6D",
+    "is_alias": false,
+    "line": 64
+  },
+  {
+    "selector": "/* ── inline <style> #2 ── */ :root",
+    "name": "--cor-texto-primaria",
+    "value": "#D89B6A",
+    "is_alias": false,
+    "line": 64
+  },
+  {
+    "selector": "/* ── inline <style> #2 ── */ :root",
+    "name": "--cor-texto-secundaria",
+    "value": "#9B8B7E",
+    "is_alias": false,
+    "line": 64
+  },
+  {
+    "selector": "/* ── inline <style> #2 ── */ :root",
+    "name": "--cor-texto-muted",
+    "value": "#6c757d",
+    "is_alias": false,
+    "line": 64
+  },
+  {
+    "selector": "/* ── inline <style> #2 ── */ :root",
+    "name": "--cor-botao",
+    "value": "#C9D8B6",
+    "is_alias": false,
+    "line": 64
+  },
+  {
+    "selector": "/* ── inline <style> #2 ── */ :root",
+    "name": "--cor-texto-botao",
+    "value": "#2D3B24",
+    "is_alias": false,
+    "line": 64
+  },
+  {
+    "selector": "/* ── inline <style> #2 ── */ :root",
+    "name": "--cor-preco-adicional",
+    "value": "#F5B8A3",
+    "is_alias": false,
+    "line": 64
+  },
+  {
+    "selector": "/* ── inline <style> #2 ── */ :root",
+    "name": "--cor-texto-preco-adicional",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 64
+  },
+  {
+    "selector": "/* ── inline <style> #2 ── */ :root",
+    "name": "--cor-fundo-site",
+    "value": "#F5F0E1",
+    "is_alias": false,
+    "line": 64
+  },
+  {
+    "selector": "/* ── inline <style> #2 ── */ :root",
+    "name": "--cor-fundo-elementos",
+    "value": "#FAF8F3",
+    "is_alias": false,
+    "line": 64
+  },
+  {
+    "selector": "/* ── inline <style> #2 ── */ :root",
+    "name": "--cor-borda",
+    "value": "#E8DFD0",
+    "is_alias": false,
+    "line": 64
+  },
+  {
+    "selector": "/* ── inline <style> #2 ── */ :root",
+    "name": "--cor-destaque",
+    "value": "#F5B8A3",
+    "is_alias": false,
+    "line": 64
+  },
+  {
+    "selector": "/* ── inline <style> #2 ── */ :root",
+    "name": "--cor-hover",
+    "value": "#B8C9A3",
+    "is_alias": false,
+    "line": 64
+  },
+  {
+    "selector": "/* ── inline <style> #2 ── */ :root",
+    "name": "--cor-preco",
+    "value": "#7B9A6D",
+    "is_alias": false,
+    "line": 64
+  },
+  {
+    "selector": "/* ── inline <style> #2 ── */ :root",
+    "name": "--cor-radio",
+    "value": "#C9D8B6",
+    "is_alias": false,
+    "line": 64
+  },
+  {
+    "selector": "/* ── inline <style> #2 ── */ :root",
+    "name": "--cor-texto-rodape",
+    "value": "#F5F0E1",
+    "is_alias": false,
+    "line": 64
+  },
+  {
+    "selector": "/* ── inline <style> #2 ── */ :root",
+    "name": "--cor-fundo-rodape",
+    "value": "#7B9A6D",
+    "is_alias": false,
+    "line": 64
+  },
+  {
+    "selector": "/* ── inline <style> #2 ── */ :root",
+    "name": "--cor-borda-rodape",
+    "value": "#C9D8B6",
+    "is_alias": false,
+    "line": 64
+  },
+  {
+    "selector": "/* ── inline <style> #2 ── */ :root",
+    "name": "--cor-item-ativo-rodape",
+    "value": "#F5B8A3",
+    "is_alias": false,
+    "line": 64
+  },
+  {
+    "selector": "/* ── inline <style> #2 ── */ :root",
+    "name": "--cor-botao-mais-menos-rodape",
+    "value": "#C9D8B6",
+    "is_alias": false,
+    "line": 64
+  },
+  {
+    "selector": "/* ── inline <style> #2 ── */ :root",
+    "name": "--cor-botao-rodape",
+    "value": "#D89B6A",
+    "is_alias": false,
+    "line": 64
+  },
+  {
+    "selector": "/* ── inline <style> #2 ── */ :root",
+    "name": "--cor-fundo-carrinho",
+    "value": "#F5B8A3",
+    "is_alias": false,
+    "line": 64
+  },
+  {
+    "selector": "/* ── inline <style> #2 ── */ :root",
+    "name": "--cor-texto-carrinho",
+    "value": "#FFFFFF",
+    "is_alias": false,
+    "line": 64
+  }
+]

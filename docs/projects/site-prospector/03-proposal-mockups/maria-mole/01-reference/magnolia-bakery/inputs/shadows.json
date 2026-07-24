@@ -1,0 +1,66 @@
+[
+  {
+    "value": "var(--box-shadow-elevated)",
+    "count": 4
+  },
+  {
+    "value": "var(--box-shadow)",
+    "count": 2
+  },
+  {
+    "value": "0 1px 5px 0 rgba(0,0,0,.2)",
+    "count": 2
+  },
+  {
+    "value": "0 0 8px rgba(0,0,0,.6)",
+    "count": 2
+  },
+  {
+    "value": "0 0 0 1px transparent",
+    "count": 1
+  },
+  {
+    "value": "0 0 0 15px rgba(0,0,0,.1)",
+    "count": 1
+  },
+  {
+    "value": "0 0 0 15px transparent",
+    "count": 1
+  },
+  {
+    "value": "0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12)",
+    "count": 1
+  },
+  {
+    "value": "0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12)",
+    "count": 1
+  },
+  {
+    "value": "0 0 3px #fff",
+    "count": 1
+  },
+  {
+    "value": "0 4px 4px rgba(0,0,0,.25)",
+    "count": 1
+  },
+  {
+    "value": "0 0 0 5px #19f",
+    "count": 1
+  },
+  {
+    "value": "0 0 10px -6px",
+    "count": 1
+  },
+  {
+    "value": "0 0 12px #999",
+    "count": 1
+  },
+  {
+    "value": "0 0 12px #000",
+    "count": 1
+  },
+  {
+    "value": "0 0 50px 0 rgba(0,0,0,.5)",
+    "count": 1
+  }
+]

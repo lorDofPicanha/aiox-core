@@ -1,0 +1,53 @@
+{
+  "durations": [
+    {
+      "value": "0s",
+      "count": 60
+    },
+    {
+      "value": "3s",
+      "count": 53
+    },
+    {
+      "value": "1s",
+      "count": 39
+    },
+    {
+      "value": "2s",
+      "count": 33
+    },
+    {
+      "value": "4s",
+      "count": 26
+    },
+    {
+      "value": "0.4s",
+      "count": 6
+    },
+    {
+      "value": "0.3s",
+      "count": 2
+    },
+    {
+      "value": "0.2s",
+      "count": 1
+    }
+  ],
+  "easings": [
+    {
+      "value": "cubic-bezier(.23,1,.32,1)",
+      "count": 2
+    },
+    {
+      "value": "cubic-bezier(0,0,0.3,1)",
+      "count": 2
+    }
+  ],
+  "keyframes": [
+    "a",
+    "b",
+    "c",
+    "d",
+    "loading-spin"
+  ]
+}

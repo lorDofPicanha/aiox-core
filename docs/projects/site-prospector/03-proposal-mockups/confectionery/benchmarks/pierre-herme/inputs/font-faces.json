@@ -1,0 +1,282 @@
+[
+  {
+    "family": "Open Sans",
+    "weight": "300",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/opensans/light/opensans-300.woff2",
+      "../fonts/opensans/light/opensans-300.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.pierreherme.com/static/version1783754189/frontend/PierreHerme/PierreHermeTheme/en_US/css/styles-m.css",
+    "raw": "@font-face{font-family:'Open Sans';src:url('../fonts/opensans/light/opensans-300.woff2') format('woff2'),url('../fonts/opensans/light/opensans-300.woff') format('woff');font-weight:300;font-style:normal;font-display:swap}"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "400",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/opensans/regular/opensans-400.woff2",
+      "../fonts/opensans/regular/opensans-400.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.pierreherme.com/static/version1783754189/frontend/PierreHerme/PierreHermeTheme/en_US/css/styles-m.css",
+    "raw": "@font-face{font-family:'Open Sans';src:url('../fonts/opensans/regular/opensans-400.woff2') format('woff2'),url('../fonts/opensans/regular/opensans-400.woff') format('woff');font-weight:400;font-style:normal;font-display:swap}"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "600",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/opensans/semibold/opensans-600.woff2",
+      "../fonts/opensans/semibold/opensans-600.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.pierreherme.com/static/version1783754189/frontend/PierreHerme/PierreHermeTheme/en_US/css/styles-m.css",
+    "raw": "@font-face{font-family:'Open Sans';src:url('../fonts/opensans/semibold/opensans-600.woff2') format('woff2'),url('../fonts/opensans/semibold/opensans-600.woff') format('woff');font-weight:600;font-style:normal;font-display:swap}"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "700",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/opensans/bold/opensans-700.woff2",
+      "../fonts/opensans/bold/opensans-700.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.pierreherme.com/static/version1783754189/frontend/PierreHerme/PierreHermeTheme/en_US/css/styles-m.css",
+    "raw": "@font-face{font-family:'Open Sans';src:url('../fonts/opensans/bold/opensans-700.woff2') format('woff2'),url('../fonts/opensans/bold/opensans-700.woff') format('woff');font-weight:700;font-style:normal;font-display:swap}"
+  },
+  {
+    "family": "luma-icons",
+    "weight": "normal",
+    "style": "normal",
+    "display": "block",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/Luma-Icons.woff2",
+      "../fonts/Luma-Icons.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.pierreherme.com/static/version1783754189/frontend/PierreHerme/PierreHermeTheme/en_US/css/styles-m.css",
+    "raw": "@font-face{font-family:'luma-icons';src:url('../fonts/Luma-Icons.woff2') format('woff2'),url('../fonts/Luma-Icons.woff') format('woff');font-weight:normal;font-style:normal;font-display:block}"
+  },
+  {
+    "family": "pagebuilder-font",
+    "weight": "normal",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../Magento_PageBuilder/fonts/pagebuilder-icons/pagebuilder-icons.eot"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://www.pierreherme.com/static/version1783754189/frontend/PierreHerme/PierreHermeTheme/en_US/css/styles-m.css",
+    "raw": "@font-face{font-family:'pagebuilder-font';font-style:normal;font-weight:normal;src:url('../Magento_PageBuilder/fonts/pagebuilder-icons/pagebuilder-icons.eot');src:url('../Magento_PageBuilder/fonts/pagebuilder-icons/pagebuilder-icons.eot?#iefix') format('embedded-opentype'),url('../Magento_PageBuilder/fonts/pagebuilder-icons/pagebuilder-icons.woff') format('woff'),url('../Magento_PageBuilder/fonts/pagebuilder-icons/pagebuilder-icons.ttf') format('truetype')}"
+  },
+  {
+    "family": "amcform",
+    "weight": "normal",
+    "style": "normal",
+    "display": "block",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../Amasty_Customform/fonts/amcform.eot?hcflpq"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://www.pierreherme.com/static/version1783754189/frontend/PierreHerme/PierreHermeTheme/en_US/css/styles-m.css",
+    "raw": "@font-face{font-weight:normal;font-style:normal;font-family:'amcform';src:url('../Amasty_Customform/fonts/amcform.eot?hcflpq');src:url('../Amasty_Customform/fonts/amcform.eot?hcflpq#iefix') format('embedded-opentype'),url('../Amasty_Customform/fonts/amcform.ttf?hcflpq') format('truetype'),url('../Amasty_Customform/fonts/amcform.woff?hcflpq') format('woff'),url('../Amasty_Customform/fonts/amcform.svg?hcflpq#amcform') format('svg');font-display:block}"
+  },
+  {
+    "family": "form-builder-font",
+    "weight": "normal",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [],
+    "src_formats": [],
+    "source_css_url": "https://www.pierreherme.com/static/version1783754189/frontend/PierreHerme/PierreHermeTheme/en_US/Amasty_Customform/css/form-builder.css",
+    "raw": "@font-face {\n    font-family: 'form-builder-font';\n    src: url(data:application/vnd.ms-fontobject;base64,iDIAALwxAAABAAIAAAAAAAIABQMAAAAAAAABAJABAAAAAExQAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAt7/mHwAAAAAAAAAAAAAAAAAAAAAAACIAZgBvAHIAbQAtAGIAdQBpAGwAZABlAHIALQBmAG8AbgB0AAAADgBSAGUAZwB1AGwAYQByAAAAFgBWAGUAcgBzAGkAbwBuACAAMQAuADAAAAAiAGYAbwByAG0ALQBiAHUAaQBsAGQAZQByAC0AZgBvAG4AdAAAAAAAAAEAAAAPAIAAAwBwR1NVQrD+s+0AAAD8AAAAQk9TLzI+IEk+AAABQAAAAFZjbWFwizvtkQAAAZgAAAJeY3Z0IAbV/wQAACWkAAAAIGZwZ22KkZBZAAAlxAAAC3"
+  },
+  {
+    "family": "form-builder-font",
+    "weight": null,
+    "style": null,
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [],
+    "src_formats": [],
+    "source_css_url": "https://www.pierreherme.com/static/version1783754189/frontend/PierreHerme/PierreHermeTheme/en_US/Amasty_Customform/css/form-builder.css",
+    "raw": "@font-face {\n    font-family: 'form-builder-font';\n    src: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxtZXRhZGF0YT5Db3B5cmlnaHQgKEMpIDIwMTYgYnkgb3JpZ2luYWwgYXV0aG9ycyBAIGZvbnRlbGxvLmNvbTwvbWV0YWRhdGE+CjxkZWZzPgo8Zm9udCBpZD0iZm9ybS1idWlsZGVyLWZvbnQiIGhvcml6LWFkdi14PSIxMDAwIi"
+  },
+  {
+    "family": "FontAwesome",
+    "weight": "normal",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "./fonts/fontawesome-webfont.eot?v=4.6.3"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://www.pierreherme.com/static/version1783754189/frontend/PierreHerme/PierreHermeTheme/en_US/Mageplaza_Core/css/font-awesome.min.css",
+    "raw": "@font-face{font-family:'FontAwesome';src:url('./fonts/fontawesome-webfont.eot?v=4.6.3');src:url('./fonts/fontawesome-webfont.eot?#iefix&v=4.6.3') format('embedded-opentype'),url('./fonts/fontawesome-webfont.woff2?v=4.6.3') format('woff2'),url('./fonts/fontawesome-webfont.woff?v=4.6.3') format('woff'),url('./fonts/fontawesome-webfont.ttf?v=4.6.3') format('truetype'),url('./fonts/fontawesome-webfont.svg?v=4.6.3#fontawesomeregular') format('svg');font-weight:normal;font-style:normal}"
+  },
+  {
+    "family": "amcform",
+    "weight": "normal",
+    "style": "normal",
+    "display": "block",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../Amasty_Customform/fonts/amcform.eot?hcflpq"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://www.pierreherme.com/static/version1783754189/frontend/PierreHerme/PierreHermeTheme/en_US/css/styles-l.css",
+    "raw": "@font-face{font-weight:normal;font-style:normal;font-family:'amcform';src:url('../Amasty_Customform/fonts/amcform.eot?hcflpq');src:url('../Amasty_Customform/fonts/amcform.eot?hcflpq#iefix') format('embedded-opentype'),url('../Amasty_Customform/fonts/amcform.ttf?hcflpq') format('truetype'),url('../Amasty_Customform/fonts/amcform.woff?hcflpq') format('woff'),url('../Amasty_Customform/fonts/amcform.svg?hcflpq#amcform') format('svg');font-display:block}"
+  },
+  {
+    "family": "FuturaBook",
+    "weight": null,
+    "style": null,
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/jost_regular/Jost-Regular.woff2",
+      "../fonts/jost_regular/Jost-Regular.woff",
+      "../fonts/jost_regular/Jost-Regular.eot?",
+      "../fonts/jost_regular/Jost-Regular.ttf",
+      "../fonts/jost_regular/Jost-Regular.svg#FuturaBook"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff",
+      "eot",
+      "truetype",
+      "svg"
+    ],
+    "source_css_url": "https://www.pierreherme.com/static/version1783754189/frontend/PierreHerme/PierreHermeTheme/en_US/css/dist/style.min.css",
+    "raw": "@font-face{font-family:FuturaBook;src:url(../fonts/jost_regular/Jost-Regular.woff2) format(\"woff2\"),url(../fonts/jost_regular/Jost-Regular.woff) format(\"woff\"),url(../fonts/jost_regular/Jost-Regular.eot?) format(\"eot\"),url(../fonts/jost_regular/Jost-Regular.ttf) format(\"truetype\"),url(../fonts/jost_regular/Jost-Regular.svg#FuturaBook) format(\"svg\")}"
+  },
+  {
+    "family": "FuturaHeavy",
+    "weight": "700",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/jost_medium/Jost-Medium.woff2",
+      "../fonts/jost_medium/Jost-Medium.woff",
+      "../fonts/jost_medium/Jost-Medium.eot?",
+      "../fonts/jost_medium/Jost-Medium.ttf",
+      "../fonts/jost_medium/Jost-Medium.svg#FuturaHeavy"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff",
+      "eot",
+      "truetype",
+      "svg"
+    ],
+    "source_css_url": "https://www.pierreherme.com/static/version1783754189/frontend/PierreHerme/PierreHermeTheme/en_US/css/dist/style.min.css",
+    "raw": "@font-face{font-family:FuturaHeavy;font-style:normal;font-weight:700;src:url(../fonts/jost_medium/Jost-Medium.woff2) format(\"woff2\"),url(../fonts/jost_medium/Jost-Medium.woff) format(\"woff\"),url(../fonts/jost_medium/Jost-Medium.eot?) format(\"eot\"),url(../fonts/jost_medium/Jost-Medium.ttf) format(\"truetype\"),url(../fonts/jost_medium/Jost-Medium.svg#FuturaHeavy) format(\"svg\")}"
+  },
+  {
+    "family": "FuturaLight",
+    "weight": null,
+    "style": null,
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/jost_light/Jost-Light.woff2",
+      "../fonts/jost_light/Jost-Light.woff",
+      "../fonts/jost_light/Jost-Light.eot?",
+      "../fonts/jost_light/Jost-Light.ttf",
+      "../fonts/jost_light/Jost-Light.svg#FuturaLight"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff",
+      "eot",
+      "truetype",
+      "svg"
+    ],
+    "source_css_url": "https://www.pierreherme.com/static/version1783754189/frontend/PierreHerme/PierreHermeTheme/en_US/css/dist/style.min.css",
+    "raw": "@font-face{font-family:FuturaLight;src:url(../fonts/jost_light/Jost-Light.woff2) format(\"woff2\"),url(../fonts/jost_light/Jost-Light.woff) format(\"woff\"),url(../fonts/jost_light/Jost-Light.eot?) format(\"eot\"),url(../fonts/jost_light/Jost-Light.ttf) format(\"truetype\"),url(../fonts/jost_light/Jost-Light.svg#FuturaLight) format(\"svg\")}"
+  },
+  {
+    "family": "TradeGothicLight",
+    "weight": "400",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/jost_light/Jost-Light.woff2",
+      "../fonts/jost_light/Jost-Light.woff",
+      "../fonts/jost_light/Jost-Light.eot?",
+      "../fonts/jost_light/Jost-Light.ttf",
+      "../fonts/jost_light/Jost-Light.svg#TradeGothicLight"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff",
+      "eot",
+      "truetype",
+      "svg"
+    ],
+    "source_css_url": "https://www.pierreherme.com/static/version1783754189/frontend/PierreHerme/PierreHermeTheme/en_US/css/dist/style.min.css",
+    "raw": "@font-face{font-family:TradeGothicLight;font-style:normal;font-weight:400;src:url(../fonts/jost_light/Jost-Light.woff2) format(\"woff2\"),url(../fonts/jost_light/Jost-Light.woff) format(\"woff\"),url(../fonts/jost_light/Jost-Light.eot?) format(\"eot\"),url(../fonts/jost_light/Jost-Light.ttf) format(\"truetype\"),url(../fonts/jost_light/Jost-Light.svg#TradeGothicLight) format(\"svg\")}"
+  },
+  {
+    "family": "icomoon",
+    "weight": "400",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/icomoon/icomoon.eot?khgu6m"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://www.pierreherme.com/static/version1783754189/frontend/PierreHerme/PierreHermeTheme/en_US/css/dist/style.min.css",
+    "raw": "@font-face{font-family:icomoon;src:url(../fonts/icomoon/icomoon.eot?khgu6m);src:url(../fonts/icomoon/icomoon.eot?khgu6m#iefix) format(\"embedded-opentype\"),url(../fonts/icomoon/icomoon.ttf?khgu6m) format(\"truetype\"),url(../fonts/icomoon/icomoon.woff?khgu6m) format(\"woff\"),url(../fonts/icomoon/icomoon.svg?khgu6m#icomoon) format(\"svg\");font-weight:400;font-style:normal}"
+  }
+]

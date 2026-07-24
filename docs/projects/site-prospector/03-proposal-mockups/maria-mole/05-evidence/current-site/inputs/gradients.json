@@ -1,0 +1,47 @@
+{
+  "primary": "linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.02))",
+  "secondary": "linear-gradient(45deg,rgba(0,0,0,.09) 25%,transparent 25%,transparent 75%,rgba(0,0,0,.09) 75%,rgba(0,0,0,.09))",
+  "total_unique": 25,
+  "top": [
+    {
+      "value": "linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.02))",
+      "count": 21
+    },
+    {
+      "value": "linear-gradient(45deg,rgba(0,0,0,.09) 25%,transparent 25%,transparent 75%,rgba(0,0,0,.09) 75%,rgba(0,0,0,.09))",
+      "count": 2
+    },
+    {
+      "value": "linear-gradient(135deg,#222,#333)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(90deg,#ff6a00,#ee0979)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(45deg,#ff6a00,#ee0979)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(90deg,rgba(255,106,0,.2),rgba(238,9,121,.2))",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(to right,transparent,rgba(0,0,0,.04),transparent)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(45deg,#d8d8d8 25%,transparent 25%,transparent 50%,#d8d8d8 50%,#d8d8d8 75%,transparent 75%,transparent)",
+      "count": 1
+    },
+    {
+      "value": "linear-gradient(to left,rgba(255,99,88,.25),transparent 100%)",
+      "count": 1
+    }
+  ]
+}

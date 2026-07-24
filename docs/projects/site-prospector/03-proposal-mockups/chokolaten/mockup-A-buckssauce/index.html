@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chokolaten — mockup A (privado)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Faithful to buckssauce REAL code: full-bleed · #100B06 warm near-black · giant display · Inter Tight body · preloader clip-path · pinned-ish hero + floating products · trust badges · choose-your-weapon trio · bundles · reviews marquee */
+:root{
+  --bg:#160e07;            /* warm near-black (buckssauce #100B06 + chocolate) */
+  --bg2:#1e1409;
+  --cream:#f2e7d3;
+  --cream2:#e9dabf;
+  --terra:#c06a30;         /* terracotta accent (Chokolaten packaging) */
+  --gold:#d09a3a;
+  --brown:#7a4f2c;
+  --ink:#231608;
+  --pill:999px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter Tight',system-ui,sans-serif;font-size:18px;line-height:1.55;color:var(--cream);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.anton{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.01em;line-height:.92}
+.full{padding-inline:clamp(20px,4vw,72px)}   /* full-bleed, generous side padding — NOT a 1200 column */
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;background:var(--terra);color:#fff;font-weight:700;
+  text-transform:uppercase;letter-spacing:.05em;font-size:.9rem;padding:1rem 2.1rem;border-radius:var(--pill);border:2px solid var(--terra);cursor:pointer;transition:.2s}
+.pill:hover{background:transparent;color:var(--terra)}
+.pill.ghost{background:transparent;color:var(--cream);border-color:rgba(242,231,211,.4)}
+.pill.ghost:hover{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+
+/* PRELOADER — clip-path circle reveal (buckssauce real: fixed inset-0 h-dvh z-9999 clip-path) */
+#pre{position:fixed;inset:0;z-index:9999;background:var(--terra);display:grid;place-items:center;transition:clip-path .8s cubic-bezier(.7,0,.3,1),visibility .8s;clip-path:circle(150% at 50% 50%)}
+#pre .m{font-family:'Anton',sans-serif;text-transform:uppercase;color:var(--bg);font-size:clamp(2rem,7vw,5rem);letter-spacing:.02em}
+#pre.done{clip-path:circle(0% at 50% 50%);visibility:hidden}
+
+/* NAV */
+header.nav{position:sticky;top:0;z-index:100;background:rgba(22,14,7,.9);backdrop-filter:blur(8px);border-bottom:1px solid rgba(242,231,211,.08)}
+.nav .bar{display:flex;align-items:center;justify-content:space-between;height:74px}
+.nav .brand{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:1.5rem;letter-spacing:.04em;color:var(--cream)}
+.nav .brand b{color:var(--gold);font-weight:400}
+.nav nav{display:flex;gap:1.8rem;align-items:center}
+.nav nav a{color:rgba(242,231,211,.8);font-weight:500;font-size:.95rem}
+.nav nav a:hover{color:var(--cream)}
+@media(max-width:900px){.nav nav a:not(.pill){display:none}}
+
+/* HERO — full-bleed, giant display, product showcase */
+.hero{position:relative;min-height:92vh;display:flex;flex-direction:column;justify-content:center;text-align:center;
+  background:radial-gradient(120% 80% at 50% 8%,#2a1a0d,var(--bg) 62%);padding:96px 0 40px}
+.hero .kick{font-weight:700;text-transform:uppercase;letter-spacing:.28em;font-size:.82rem;color:var(--gold);margin-bottom:1rem}
+.hero h1{font-family:'Anton',sans-serif;text-transform:uppercase;line-height:.9;font-size:clamp(3.2rem,11vw,9rem);color:var(--cream);letter-spacing:.005em}
+.hero h1 span{color:var(--terra)}
+.hero p.sub{font-size:1.2rem;color:rgba(242,231,211,.8);max-width:620px;margin:1.4rem auto 0}
+.hero .cta{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;margin-top:1.8rem}
+.hero .flavors{margin-top:1.4rem;display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;font-family:'Anton',sans-serif;text-transform:uppercase;font-size:.95rem;color:rgba(242,231,211,.55);letter-spacing:.06em}
+.hero .flavors span::after{content:'·';margin-left:.7rem;color:var(--terra)}
+.hero .flavors span:last-child::after{content:''}
+.hero .show{margin-top:2.2rem;position:relative}
+.hero .show img{width:min(1100px,94vw);margin:0 auto;border-radius:18px;box-shadow:0 40px 90px -40px rgba(0,0,0,.8)}
+.hero .tag{position:absolute;top:-14px;right:max(3vw,20px);background:var(--gold);color:var(--ink);font-family:'Anton',sans-serif;text-transform:uppercase;
+  font-size:.9rem;padding:.5rem 1.1rem;border-radius:var(--pill);transform:rotate(-4deg)}
+
+/* MANIFESTO strip */
+.manifesto{background:var(--terra);color:#fff;text-align:center;padding:60px 0}
+.manifesto p{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(1.5rem,4vw,3rem);line-height:1.02;max-width:1100px;margin:0 auto;letter-spacing:.01em}
+
+/* TRUST badges (4) */
+.trust{background:var(--bg2);padding:56px 0}
+.trust .g{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.trust .c .i{font-size:1.9rem}
+.trust .c b{display:block;font-family:'Anton',sans-serif;text-transform:uppercase;font-size:1.1rem;color:var(--cream);margin-top:.3rem;letter-spacing:.02em}
+.trust .c span{font-size:.9rem;color:rgba(242,231,211,.6)}
+@media(max-width:760px){.trust .g{grid-template-columns:repeat(2,1fr)}}
+
+/* CHOOSE YOUR WEAPON — product trio (cream cards on dark, buckssauce-authentic) */
+.prod{background:var(--bg);padding:96px 0}
+.sh{text-align:center;margin-bottom:52px}
+.sh .k{font-weight:700;text-transform:uppercase;letter-spacing:.24em;font-size:.8rem;color:var(--gold)}
+.sh h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(2.4rem,6vw,5rem);color:var(--cream);line-height:.92;margin-top:.4rem}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.card{background:var(--cream);color:var(--ink);border-radius:14px;overflow:hidden;transition:.3s;box-shadow:0 24px 50px -30px rgba(0,0,0,.7)}
+.card:hover{transform:translateY(-8px)}
+.card .ph{aspect-ratio:1/1;overflow:hidden;background:var(--cream)}
+.card .ph img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.card:hover .ph img{transform:scale(1.05)}
+.card .b{padding:22px 24px 26px}
+.card .b h3{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:1.5rem;letter-spacing:.01em}
+.card .b p{font-size:.98rem;color:var(--brown);margin:.35rem 0 1rem}
+.card .b a{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:.9rem;color:var(--terra);border-bottom:3px solid var(--gold);padding-bottom:2px}
+@media(max-width:880px){.grid3{grid-template-columns:1fr;max-width:440px;margin:0 auto}}
+
+/* WHY */
+.why{background:var(--bg2);padding:90px 0}
+.why .g{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.why .p{border-top:3px solid var(--terra);padding-top:1.2rem}
+.why .p b{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:1.5rem;color:var(--cream);display:block}
+.why .p span{color:rgba(242,231,211,.72);font-size:1rem}
+.why .lead{text-align:center;font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(1.6rem,4vw,2.8rem);color:var(--gold);margin-bottom:48px}
+@media(max-width:820px){.why .g{grid-template-columns:1fr;gap:26px}}
+
+/* BUNDLES */
+.bundle{background:var(--bg);padding:90px 0}
+.bundle .row{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+.bundle .copy h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(2.2rem,5vw,4rem);color:var(--cream);line-height:.94}
+.bundle .copy p{color:rgba(242,231,211,.78);margin:1rem 0 1.6rem;max-width:460px}
+.bundle .kits{display:flex;gap:14px;flex-wrap:wrap}
+.bundle .kit{background:var(--bg2);border:1px solid rgba(242,231,211,.12);border-radius:12px;padding:18px 22px}
+.bundle .kit b{font-family:'Anton',sans-serif;text-transform:uppercase;color:var(--gold);font-size:1.2rem}
+.bundle .kit span{display:block;font-size:.88rem;color:rgba(242,231,211,.6)}
+.bundle .media img{width:100%;border-radius:16px;box-shadow:0 30px 70px -36px rgba(0,0,0,.8)}
+@media(max-width:880px){.bundle .row{grid-template-columns:1fr}.bundle .media{order:-1}}
+
+/* REVIEWS marquee */
+.rev{background:var(--bg2);padding:80px 0;overflow:hidden}
+.rev .sh{margin-bottom:36px}
+.marq{display:flex;gap:22px;width:max-content;animation:sc 32s linear infinite}
+.rev:hover .marq{animation-play-state:paused}
+.q{background:var(--bg);border:1px solid rgba(242,231,211,.1);border-radius:14px;padding:26px 28px;width:380px;flex:0 0 auto}
+.q p{font-size:1.08rem;color:var(--cream);line-height:1.4;margin-bottom:.8rem}
+.q span{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:.82rem;color:var(--gold);letter-spacing:.04em}
+@keyframes sc{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* FOOTER */
+footer{background:var(--bg);color:rgba(242,231,211,.75);padding:70px 0 40px;border-top:1px solid rgba(242,231,211,.1)}
+footer .t{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px;margin-bottom:42px}
+footer .bc .anton{font-size:2.6rem;color:var(--cream)}
+footer .bc .de{color:var(--gold);font-weight:600;letter-spacing:.02em;font-size:.9rem;text-transform:uppercase}
+footer h4{color:var(--cream);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.8rem}
+footer a,footer p{font-size:.98rem;line-height:1.9;color:rgba(242,231,211,.72)}
+footer a:hover{color:var(--gold)}
+footer .bot{border-top:1px solid rgba(242,231,211,.12);padding-top:20px;font-size:.82rem;color:rgba(242,231,211,.45);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+@media(max-width:820px){footer .t{grid-template-columns:1fr}}
+.priv{position:fixed;bottom:12px;left:12px;z-index:200;background:rgba(22,14,7,.9);color:var(--cream);font-size:.72rem;padding:.4rem .7rem;border-radius:8px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}#pre{display:none}}
+</style>
+</head>
+<body>
+
+<div id="pre"><div class="m">Chokolaten</div></div>
+
+<header class="nav"><div class="bar full">
+  <a class="brand" href="#top">Choko<b>laten</b></a>
+  <nav>
+    <a href="#barras">Barras</a>
+    <a href="#historia">Nossa história</a>
+    <a href="#kits">Kits</a>
+    <a class="pill" href="https://www.instagram.com/chokolaten/" target="_blank" rel="noopener">Comprar</a>
+  </nav>
+</div></header>
+
+<!-- HERO -->
+<section class="hero full" id="top">
+  <div class="kick">Feito em Pomerode · Hergestellt in Pomerode</div>
+  <h1>Chocolate<br>de <span>verdade</span></h1>
+  <p class="sub">Barras artesanais de 27% a 70% cacau, linha zero açúcar e drágeas — ingredientes selecionados, sem atalho.</p>
+  <div class="cta">
+    <a class="pill" href="https://www.instagram.com/chokolaten/" target="_blank" rel="noopener">Comprar no Instagram</a>
+    <a class="pill ghost" href="#barras">Ver os sabores</a>
+  </div>
+  <div class="flavors"><span>27%</span><span>35%</span><span>45%</span><span>70%</span><span>zero açúcar</span></div>
+  <div class="show">
+    <div class="tag">6 sabores</div>
+    <img src="../assets/instagram/post10-img1.jpg" alt="Linha de barras artesanais Chokolaten, 27% a 70% cacau">
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="manifesto"><div class="full"><p>Chocolate de verdade, ingredientes selecionados e zero atalho.</p></div></section>
+
+<!-- TRUST -->
+<section class="trust"><div class="full"><div class="g">
+  <div class="c"><div class="i">🍫</div><b>Chocolate de verdade</b><span>Ingredientes selecionados</span></div>
+  <div class="c"><div class="i">🇩🇪</div><b>Feito em Pomerode</b><span>Hergestellt in Pomerode</span></div>
+  <div class="c"><div class="i">🌱</div><b>Linha Zero Açúcar</b><span>Opções sem lactose</span></div>
+  <div class="c"><div class="i">🏭</div><b>Loja de fábrica</b><span>Artesanal, feito por nós</span></div>
+</div></div></section>
+
+<!-- CHOOSE YOUR WEAPON -->
+<section class="prod full" id="barras">
+  <div class="sh"><div class="k">Escolha o seu</div><h2>Escolha o seu chocolate</h2></div>
+  <div class="grid3">
+    <article class="card">
+      <div class="ph"><img src="../assets/instagram/post10-img1.jpg" alt="Barras artesanais Chokolaten 25g"></div>
+      <div class="b"><h3>Barras 25g</h3><p>Seis sabores, de 27% branco com cookies ao 70% intenso sem lactose.</p><a href="https://www.instagram.com/chokolaten/" target="_blank" rel="noopener">Comprar →</a></div>
+    </article>
+    <article class="card">
+      <div class="ph"><img src="../assets/instagram/post06-img1.jpg" alt="Linha Zero Açúcar Chokolaten"></div>
+      <div class="b"><h3>Linha Zero Açúcar</h3><p>38%, 55% e 70% cacau — o mesmo chocolate de verdade, sem açúcar adicionado.</p><a href="https://www.instagram.com/chokolaten/" target="_blank" rel="noopener">Comprar →</a></div>
+    </article>
+    <article class="card">
+      <div class="ph"><img src="../assets/instagram/post14-img1.jpg" alt="Drágeas artesanais Chokolaten"></div>
+      <div class="b"><h3>Drágeas</h3><p>Drágeas artesanais de chocolate ao leite e branco — capuccino e outros sabores.</p><a href="https://www.instagram.com/chokolaten/" target="_blank" rel="noopener">Comprar →</a></div>
+    </article>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why full" id="historia">
+  <p class="lead">Chocolate de verdade, do jeito artesanal</p>
+  <div class="g">
+    <div class="p"><b>Feito em Pomerode</b><span>Herança alemã na cidade mais germânica do Brasil — no rótulo e na receita.</span></div>
+    <div class="p"><b>Ingredientes de verdade</b><span>Selecionados, sem atalho. Chocolate que tem gosto de chocolate.</span></div>
+    <div class="p"><b>Sabores artesanais</b><span>De 27% a 70%, linha zero, drágeas e coleções sazonais.</span></div>
+  </div>
+</section>
+
+<!-- BUNDLES -->
+<section class="bundle full" id="kits">
+  <div class="row">
+    <div class="copy">
+      <h2>Monte seu kit</h2>
+      <p>Junte os seus sabores favoritos num kit — pra você ou pra presentear. Coleções sazonais como a de Páscoa saem em edição limitada.</p>
+      <div class="kits">
+        <div class="kit"><b>Kit Degustação</b><span>as barras que você escolher</span></div>
+        <div class="kit"><b>Kit Presente</b><span>caixa montada com laço</span></div>
+      </div>
+      <div style="margin-top:1.6rem"><a class="pill" href="https://www.instagram.com/chokolaten/" target="_blank" rel="noopener">Montar no Instagram</a></div>
+    </div>
+    <div class="media"><img src="../assets/instagram/post03-img1.jpg" alt="Coleção de Páscoa artesanal Chokolaten"></div>
+  </div>
+</section>
+
+<!-- REVIEWS (voz real do IG, não review inventada) -->
+<section class="rev">
+  <div class="sh full"><div class="k">Do nosso Instagram</div><h2 style="font-size:clamp(2rem,5vw,3.4rem)">O que a gente diz</h2></div>
+  <div class="marq">
+    <div class="q"><p>"Chocolate de verdade, ingredientes selecionados e ZERO AÇÚCAR."</p><span>@chokolaten</span></div>
+    <div class="q"><p>"Nossas barras são feitas com chocolate de verdade e ingredientes selecionados."</p><span>@chokolaten</span></div>
+    <div class="q"><p>"A Língua de Gato Chokolaten conquista logo na primeira mordida."</p><span>@chokolaten</span></div>
+    <div class="q"><p>"Chocolate de verdade, ingredientes selecionados e ZERO AÇÚCAR."</p><span>@chokolaten</span></div>
+    <div class="q"><p>"Nossas barras são feitas com chocolate de verdade e ingredientes selecionados."</p><span>@chokolaten</span></div>
+    <div class="q"><p>"A Língua de Gato Chokolaten conquista logo na primeira mordida."</p><span>@chokolaten</span></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="full">
+  <div class="t">
+    <div class="bc"><div class="anton">Chokolaten</div><div class="de">Feito em · Hergestellt in Pomerode</div></div>
+    <div><h4>Visite</h4><p>Loja de fábrica<br>Pomerode/SC</p></div>
+    <div><h4>Comprar</h4>
+      <p><a href="https://www.instagram.com/chokolaten/" target="_blank" rel="noopener">@chokolaten</a></p>
+      <p><a href="https://www.instagram.com/chokolaten/" target="_blank" rel="noopener">Pedidos pelo Instagram →</a></p>
+    </div>
+  </div>
+  <div class="bot"><span>© Chokolaten — Chocolate artesanal, Pomerode/SC</span><span>Chocolate de verdade</span></div>
+</footer>
+
+<div class="priv">MOCKUP PRIVADO · proposta Site-Prospector · não publicado</div>
+
+<script>
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('pre').classList.add('done'),900));
+</script>
+</body>
+</html>

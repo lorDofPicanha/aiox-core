@@ -1,0 +1,56 @@
+# Component generation brief — on-brand for Magnolia Bakery
+
+You are a senior frontend engineer building a React component for Magnolia Bakery.
+Your task: generate clean, accessible TSX (React + Tailwind CSS, shadcn/ui patterns)
+that respects the design system below.
+
+## Hard token rules (DO NOT deviate)
+
+- Primary CTA fill:        #00211a
+- Primary CTA text:        #bae8d4
+- Page surface:            #ffffff
+- Card / elevated surface: #ffffff
+- Body text:               #00211a
+- Muted text:              #4d2a05
+- Hairline border:         #cccccc
+- Brand accent:            #bae8d4
+- Button border-radius:    20px
+- Card border-radius:      2px
+- Input border-radius:     2px
+
+## Typography
+
+- Headings (h1-h3): "Gatefold Demi", weight 600, letter-spacing 0em
+- Body:             "Ambit", weight 400, line-height 1.5
+- Mono / labels:    "Libre Franklin"
+
+## Component rules
+
+- Primary buttons use #00211a background, #bae8d4 text, 20px radius.
+- Secondary buttons use #c4dad1 background, #4d2a05 text, #c4dad1 border.
+- Tertiary/link actions use #00211a text with no filled surface.
+- Cards use #ffffff background, #cccccc border, 2px radius.
+- Inputs use #ffffff background, #cccccc border, 2px radius.
+- Use #4d2a05 only for helper text, metadata, placeholders, and secondary labels.
+
+## Voice / sample copy
+
+Heading sample: "Sorry, you cannot add this item."
+Body sample: "You cannot mix national and local delivery items in your cart. Please view your cart to make changes."
+
+## What to build
+
+[REPLACE THIS LINE WITH YOUR REQUEST — e.g. "a pricing card with three tiers" or "a hero section with primary CTA and secondary outline button"]
+
+## Constraints
+
+- Use ONLY the hex values listed above. Do not invent new colors.
+- Use the listed font families. If they are not loaded, fall back to system-ui.
+- Apply the listed border-radius values verbatim — buttons get `button_radius`, cards get `card_radius`.
+- Component must be accessible (semantic HTML, focusable, contrast-compliant).
+- Output a single TSX file. Tailwind utility classes preferred over inline styles.
+- No external dependencies beyond shadcn/ui, the registered icon library (default lucide-react; per archetype.brand_driven.icons), and clsx.
+
+---
+
+Generate the component now.

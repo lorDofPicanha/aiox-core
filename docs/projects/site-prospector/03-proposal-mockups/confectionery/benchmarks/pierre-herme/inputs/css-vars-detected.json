@@ -1,0 +1,58 @@
+[
+  {
+    "selector": "apple-pay-button",
+    "name": "--apple-pay-button-width",
+    "value": "100%",
+    "is_alias": false,
+    "line": 310
+  },
+  {
+    "selector": "apple-pay-button",
+    "name": "--apple-pay-button-height",
+    "value": "52px",
+    "is_alias": false,
+    "line": 310
+  },
+  {
+    "selector": "apple-pay-button",
+    "name": "--apple-pay-button-border-radius",
+    "value": "3px",
+    "is_alias": false,
+    "line": 310
+  },
+  {
+    "selector": "apple-pay-button",
+    "name": "--apple-pay-button-padding",
+    "value": "8px 0px",
+    "is_alias": false,
+    "line": 310
+  },
+  {
+    "selector": "apple-pay-button",
+    "name": "--apple-pay-button-box-sizing",
+    "value": "border-box",
+    "is_alias": false,
+    "line": 310
+  },
+  {
+    "selector": ":root",
+    "name": "--blockWrapperWidth",
+    "value": "0px",
+    "is_alias": false,
+    "line": 3761
+  },
+  {
+    "selector": ":root",
+    "name": "--videoHeight",
+    "value": "700px",
+    "is_alias": false,
+    "line": 3761
+  },
+  {
+    "selector": ":root",
+    "name": "--videoHeightMobile",
+    "value": "400px",
+    "is_alias": false,
+    "line": 3761
+  }
+]

@@ -1,0 +1,100 @@
+[
+  {
+    "family": "La Grolet",
+    "weight": "400",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/LaGrolet-Regular.52be0cf737686ca3093d6e85d4f9e4aa.eot"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://cedric-grolet.com/opera/themes/symediane/assets/css/theme.css?v=1.82",
+    "raw": "@font-face{font-family:La Grolet;src:url(../fonts/LaGrolet-Regular.52be0cf737686ca3093d6e85d4f9e4aa.eot);src:url(../fonts/LaGrolet-Regular.52be0cf737686ca3093d6e85d4f9e4aa.eot) format(\"embedded-opentype\"),url(../fonts/LaGrolet-Regular.0886ca41d2fe762d92018923ce0e4c67.woff2) format(\"woff2\"),url(../fonts/LaGrolet-Regular.13f8d0770fb1bb45b4cbfc3ac71c51c3.woff) format(\"woff\"),url(../fonts/LaGrolet-Regular.5b860ca29253d5fd604ba7b85308c6b4.ttf) format(\"truetype\"),url(../fonts/LaGrolet-Regular.30a8104c"
+  },
+  {
+    "family": "Akkurat",
+    "weight": "400",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/Akkurat.4f2cc2865a24668ae66cf5ebd2a6e93a.eot"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://cedric-grolet.com/opera/themes/symediane/assets/css/theme.css?v=1.82",
+    "raw": "@font-face{font-family:Akkurat;src:url(../fonts/Akkurat.4f2cc2865a24668ae66cf5ebd2a6e93a.eot);src:url(../fonts/Akkurat.4f2cc2865a24668ae66cf5ebd2a6e93a.eot) format(\"embedded-opentype\"),url(../fonts/Akkurat.b8d09330154c34e40c269ba2dfeca894.woff2) format(\"woff2\"),url(../fonts/Akkurat.81b8bc9f48fd0be834dcbf0268915610.woff) format(\"woff\"),url(../fonts/Akkurat.6f7a8450acc19dbb0ec9e05fea1baca4.ttf) format(\"truetype\"),url(../fonts/Akkurat.62ececb861826d6f1d0a257a379a840f.svg) format(\"svg\");font-weight:"
+  },
+  {
+    "family": "Akkurat",
+    "weight": "400",
+    "style": "italic",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/Akkurat-Italic.1df73a6daa07a11be1fcdf5f36973352.eot"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://cedric-grolet.com/opera/themes/symediane/assets/css/theme.css?v=1.82",
+    "raw": "@font-face{font-family:Akkurat;src:url(../fonts/Akkurat-Italic.1df73a6daa07a11be1fcdf5f36973352.eot);src:url(../fonts/Akkurat-Italic.1df73a6daa07a11be1fcdf5f36973352.eot) format(\"embedded-opentype\"),url(../fonts/Akkurat-Italic.31a7160517366340a84b489b46895364.woff2) format(\"woff2\"),url(../fonts/Akkurat-Italic.51e82577e47dbcda5307a4202dc085ca.woff) format(\"woff\"),url(../fonts/Akkurat-Italic.197f0e8f8ef967e70cba0ee4f161d421.ttf) format(\"truetype\"),url(../fonts/Akkurat-Italic.41829841d61d6bcbcf8ce4"
+  },
+  {
+    "family": "Akkurat",
+    "weight": "300",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/Akkurat-Light.0ec6d2eb56048a009f75f50bbef46c71.eot"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://cedric-grolet.com/opera/themes/symediane/assets/css/theme.css?v=1.82",
+    "raw": "@font-face{font-family:Akkurat;src:url(../fonts/Akkurat-Light.0ec6d2eb56048a009f75f50bbef46c71.eot);src:url(../fonts/Akkurat-Light.0ec6d2eb56048a009f75f50bbef46c71.eot) format(\"embedded-opentype\"),url(../fonts/Akkurat-Light.e07590ed7465a83d3eedeb0168075ff3.woff2) format(\"woff2\"),url(../fonts/Akkurat-Light.531d820cb8c333e1565d4ea147962c5b.woff) format(\"woff\"),url(../fonts/Akkurat-Light.eb74e32f79da784ed200ec8d9b008d30.ttf) format(\"truetype\"),url(../fonts/Akkurat-Light.da0a878715ad03df4d1c73555c47"
+  },
+  {
+    "family": "Akkurat",
+    "weight": "700",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/Akkurat-Bold.5a4fdb8e810e340d602ba799d830a6f5.eot"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://cedric-grolet.com/opera/themes/symediane/assets/css/theme.css?v=1.82",
+    "raw": "@font-face{font-family:Akkurat;src:url(../fonts/Akkurat-Bold.5a4fdb8e810e340d602ba799d830a6f5.eot);src:url(../fonts/Akkurat-Bold.5a4fdb8e810e340d602ba799d830a6f5.eot) format(\"embedded-opentype\"),url(../fonts/Akkurat-Bold.a41054a2c6f6715a96eee03cbffc00ad.woff2) format(\"woff2\"),url(../fonts/Akkurat-Bold.2d01ae749bace2b4a43e2900138f6b51.woff) format(\"woff\"),url(../fonts/Akkurat-Bold.a4e2de8136a4967712811ebc315f688d.ttf) format(\"truetype\"),url(../fonts/Akkurat-Bold.c8dc0c9087cb917ec47b0472a20e5ab9.s"
+  },
+  {
+    "family": "DIN Condensed",
+    "weight": "400",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/DINCondensed-Regular.9f41cbaeb0d4619b70eb70488f9526c0.eot"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://cedric-grolet.com/opera/themes/symediane/assets/css/theme.css?v=1.82",
+    "raw": "@font-face{font-family:DIN Condensed;src:url(../fonts/DINCondensed-Regular.9f41cbaeb0d4619b70eb70488f9526c0.eot);src:url(../fonts/DINCondensed-Regular.9f41cbaeb0d4619b70eb70488f9526c0.eot) format(\"embedded-opentype\"),url(../fonts/DINCondensed-Regular.e01a4924a5783c577b292ec2854a80a6.woff2) format(\"woff2\"),url(../fonts/DINCondensed-Regular.c589152a77857dfe61787182dd908f30.woff) format(\"woff\"),url(../fonts/DINCondensed-Regular.6463498c1afe79541645c08198b47718.ttf) format(\"truetype\"),url(../fonts/D"
+  },
+  {
+    "family": "Industrial736 BT",
+    "weight": "400",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "../fonts/Industrial736BT-Roman.0cd7a902dd43a1d45dd8222ffd84c649.eot"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://cedric-grolet.com/opera/themes/symediane/assets/css/theme.css?v=1.82",
+    "raw": "@font-face{font-family:Industrial736 BT;src:url(../fonts/Industrial736BT-Roman.0cd7a902dd43a1d45dd8222ffd84c649.eot);src:url(../fonts/Industrial736BT-Roman.0cd7a902dd43a1d45dd8222ffd84c649.eot) format(\"embedded-opentype\"),url(../fonts/Industrial736BT-Roman.ef1faa4e96f4f0927d88edd70a688d50.woff2) format(\"woff2\"),url(../fonts/Industrial736BT-Roman.3c2a855e1aba404358708100877b9710.woff) format(\"woff\"),url(../fonts/Industrial736BT-Roman.2519c10c2edb353c3942ab6ac6f83ae8.ttf) format(\"truetype\"),url(.."
+  }
+]

@@ -1,0 +1,2037 @@
+[
+  {
+    "name": "--text-color",
+    "declarations": 22,
+    "references": 226
+  },
+  {
+    "name": "--color-text-dark",
+    "declarations": 5,
+    "references": 43
+  },
+  {
+    "name": "--loader-size",
+    "declarations": 1,
+    "references": 32
+  },
+  {
+    "name": "--border-color",
+    "declarations": 1,
+    "references": 31
+  },
+  {
+    "name": "--error-color",
+    "declarations": 3,
+    "references": 23
+  },
+  {
+    "name": "--shopify-accelerated-checkout-button-block-size",
+    "declarations": 0,
+    "references": 20
+  },
+  {
+    "name": "--button-alternate-color",
+    "declarations": 21,
+    "references": 17
+  },
+  {
+    "name": "--input-horizontal-padding",
+    "declarations": 2,
+    "references": 15
+  },
+  {
+    "name": "--link-color-hover",
+    "declarations": 17,
+    "references": 12
+  },
+  {
+    "name": "--label-font-size",
+    "declarations": 6,
+    "references": 12
+  },
+  {
+    "name": "--button-rich-accent-color",
+    "declarations": 20,
+    "references": 12
+  },
+  {
+    "name": "--primary-button-background",
+    "declarations": 1,
+    "references": 12
+  },
+  {
+    "name": "--input-border-radius",
+    "declarations": 1,
+    "references": 12
+  },
+  {
+    "name": "--link-color",
+    "declarations": 17,
+    "references": 11
+  },
+  {
+    "name": "--input-font-size",
+    "declarations": 5,
+    "references": 11
+  },
+  {
+    "name": "--input-background",
+    "declarations": 3,
+    "references": 11
+  },
+  {
+    "name": "--input-border-width",
+    "declarations": 1,
+    "references": 11
+  },
+  {
+    "name": "--label-color",
+    "declarations": 21,
+    "references": 10
+  },
+  {
+    "name": "--label-color-active",
+    "declarations": 1,
+    "references": 10
+  },
+  {
+    "name": "--checkbox-background",
+    "declarations": 2,
+    "references": 9
+  },
+  {
+    "name": "--loader-color",
+    "declarations": 4,
+    "references": 8
+  },
+  {
+    "name": "--input-color",
+    "declarations": 2,
+    "references": 8
+  },
+  {
+    "name": "--shopify-accelerated-checkout-row-gap",
+    "declarations": 0,
+    "references": 8
+  },
+  {
+    "name": "--sticky-bar-height",
+    "declarations": 4,
+    "references": 7
+  },
+  {
+    "name": "--h4-font-family",
+    "declarations": 2,
+    "references": 7
+  },
+  {
+    "name": "--h4-font-size",
+    "declarations": 2,
+    "references": 7
+  },
+  {
+    "name": "--h4-font-size--tablet",
+    "declarations": 2,
+    "references": 7
+  },
+  {
+    "name": "--h4-font-size--mobile",
+    "declarations": 2,
+    "references": 7
+  },
+  {
+    "name": "--h4-font-weight",
+    "declarations": 2,
+    "references": 7
+  },
+  {
+    "name": "--button-alternate-color-2",
+    "declarations": 12,
+    "references": 7
+  },
+  {
+    "name": "--h4-font-style",
+    "declarations": 1,
+    "references": 7
+  },
+  {
+    "name": "--h4-text-transform",
+    "declarations": 1,
+    "references": 7
+  },
+  {
+    "name": "--label-font-family",
+    "declarations": 1,
+    "references": 7
+  },
+  {
+    "name": "--label-font-weight",
+    "declarations": 1,
+    "references": 7
+  },
+  {
+    "name": "--label-font-style",
+    "declarations": 1,
+    "references": 7
+  },
+  {
+    "name": "--label-text-transform",
+    "declarations": 1,
+    "references": 7
+  },
+  {
+    "name": "--input-border-width-active",
+    "declarations": 1,
+    "references": 7
+  },
+  {
+    "name": "--body-color",
+    "declarations": 17,
+    "references": 6
+  },
+  {
+    "name": "--p-color",
+    "declarations": 18,
+    "references": 6
+  },
+  {
+    "name": "--h1-font-family",
+    "declarations": 2,
+    "references": 6
+  },
+  {
+    "name": "--h5-font-size",
+    "declarations": 2,
+    "references": 6
+  },
+  {
+    "name": "--h6-font-family",
+    "declarations": 2,
+    "references": 6
+  },
+  {
+    "name": "--h6-font-size",
+    "declarations": 2,
+    "references": 6
+  },
+  {
+    "name": "--h6-font-size--tablet",
+    "declarations": 2,
+    "references": 6
+  },
+  {
+    "name": "--h6-font-size--mobile",
+    "declarations": 2,
+    "references": 6
+  },
+  {
+    "name": "--h6-font-weight",
+    "declarations": 2,
+    "references": 6
+  },
+  {
+    "name": "--p-font-family",
+    "declarations": 3,
+    "references": 6
+  },
+  {
+    "name": "--button-accent-color",
+    "declarations": 28,
+    "references": 6
+  },
+  {
+    "name": "--button-alternate-color-3",
+    "declarations": 10,
+    "references": 6
+  },
+  {
+    "name": "--h6-font-style",
+    "declarations": 1,
+    "references": 6
+  },
+  {
+    "name": "--h6-text-transform",
+    "declarations": 1,
+    "references": 6
+  },
+  {
+    "name": "--input-height",
+    "declarations": 1,
+    "references": 6
+  },
+  {
+    "name": "--input-border-color",
+    "declarations": 1,
+    "references": 6
+  },
+  {
+    "name": "--dark-overlay-solid",
+    "declarations": 1,
+    "references": 6
+  },
+  {
+    "name": "--light-overlay-solid",
+    "declarations": 1,
+    "references": 6
+  },
+  {
+    "name": "--tile-width",
+    "declarations": 2,
+    "references": 6
+  },
+  {
+    "name": "--tile-border-radius",
+    "declarations": 1,
+    "references": 6
+  },
+  {
+    "name": "--h2-font-family",
+    "declarations": 2,
+    "references": 5
+  },
+  {
+    "name": "--h2-font-size",
+    "declarations": 2,
+    "references": 5
+  },
+  {
+    "name": "--h2-font-size--tablet",
+    "declarations": 2,
+    "references": 5
+  },
+  {
+    "name": "--h2-font-size--mobile",
+    "declarations": 2,
+    "references": 5
+  },
+  {
+    "name": "--h2-font-weight",
+    "declarations": 2,
+    "references": 5
+  },
+  {
+    "name": "--h3-font-family",
+    "declarations": 2,
+    "references": 5
+  },
+  {
+    "name": "--p-font-size",
+    "declarations": 2,
+    "references": 5
+  },
+  {
+    "name": "--p-font-size--tablet",
+    "declarations": 2,
+    "references": 5
+  },
+  {
+    "name": "--p-font-size--mobile",
+    "declarations": 2,
+    "references": 5
+  },
+  {
+    "name": "--p-font-weight",
+    "declarations": 2,
+    "references": 5
+  },
+  {
+    "name": "--text-color-dark",
+    "declarations": 1,
+    "references": 5
+  },
+  {
+    "name": "--accent-color",
+    "declarations": 1,
+    "references": 5
+  },
+  {
+    "name": "--h2-font-style",
+    "declarations": 1,
+    "references": 5
+  },
+  {
+    "name": "--h2-text-transform",
+    "declarations": 1,
+    "references": 5
+  },
+  {
+    "name": "--p-font-style",
+    "declarations": 1,
+    "references": 5
+  },
+  {
+    "name": "--button-height",
+    "declarations": 1,
+    "references": 5
+  },
+  {
+    "name": "--placeholder-color",
+    "declarations": 1,
+    "references": 5
+  },
+  {
+    "name": "--footer-line-color",
+    "declarations": 0,
+    "references": 5
+  },
+  {
+    "name": "--cart-width-desktop",
+    "declarations": 0,
+    "references": 5
+  },
+  {
+    "name": "--h3-font-size",
+    "declarations": 3,
+    "references": 4
+  },
+  {
+    "name": "--h3-font-size--tablet",
+    "declarations": 2,
+    "references": 4
+  },
+  {
+    "name": "--h3-font-size--mobile",
+    "declarations": 2,
+    "references": 4
+  },
+  {
+    "name": "--h3-font-weight",
+    "declarations": 2,
+    "references": 4
+  },
+  {
+    "name": "--h5-font-family",
+    "declarations": 2,
+    "references": 4
+  },
+  {
+    "name": "--h5-font-size--tablet",
+    "declarations": 2,
+    "references": 4
+  },
+  {
+    "name": "--h5-font-size--mobile",
+    "declarations": 2,
+    "references": 4
+  },
+  {
+    "name": "--h5-font-weight",
+    "declarations": 2,
+    "references": 4
+  },
+  {
+    "name": "--input-font-family",
+    "declarations": 2,
+    "references": 4
+  },
+  {
+    "name": "--input-font-weight",
+    "declarations": 2,
+    "references": 4
+  },
+  {
+    "name": "--text-color-light",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--h3-font-style",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--h3-text-transform",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--h5-font-style",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--h5-text-transform",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--primary-button-color",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--box-shadow-elevated",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--tile-image-height",
+    "declarations": 1,
+    "references": 4
+  },
+  {
+    "name": "--nav-tier1-link-color",
+    "declarations": 0,
+    "references": 4
+  },
+  {
+    "name": "--mobile-menu-tier1-link-color",
+    "declarations": 0,
+    "references": 4
+  },
+  {
+    "name": "--h3-color",
+    "declarations": 18,
+    "references": 3
+  },
+  {
+    "name": "--secondary-button-color",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--h1-font-size",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--h1-font-size--tablet",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--h1-font-size--mobile",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--h1-font-weight",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--h8-font-family",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--h8-font-size",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--h8-font-size--tablet",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--h8-font-size--mobile",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--h8-font-weight",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--carousel-nav-bottom",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--carousel-nav-center",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--input-text-transform",
+    "declarations": 2,
+    "references": 3
+  },
+  {
+    "name": "--body-background",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--h1-font-style",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--h1-text-transform",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--h8-font-style",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--h8-text-transform",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--button-border-radius",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--primary-button-border-color",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--input-border-color-active",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--input-color-disabled",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--branded-overlay-solid",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--site-overlay-background",
+    "declarations": 1,
+    "references": 3
+  },
+  {
+    "name": "--nav-tier1-link-color-hover",
+    "declarations": 0,
+    "references": 3
+  },
+  {
+    "name": "--background-color",
+    "declarations": 0,
+    "references": 3
+  },
+  {
+    "name": "--footer-menu-link-color-hover",
+    "declarations": 0,
+    "references": 3
+  },
+  {
+    "name": "--shopify-accelerated-checkout-button-border-radius",
+    "declarations": 0,
+    "references": 3
+  },
+  {
+    "name": "--h1-color",
+    "declarations": 18,
+    "references": 2
+  },
+  {
+    "name": "--h2-color",
+    "declarations": 18,
+    "references": 2
+  },
+  {
+    "name": "--h4-color",
+    "declarations": 18,
+    "references": 2
+  },
+  {
+    "name": "--h5-color",
+    "declarations": 18,
+    "references": 2
+  },
+  {
+    "name": "--h6-color",
+    "declarations": 18,
+    "references": 2
+  },
+  {
+    "name": "--primary-button-background-hover",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--tile-background",
+    "declarations": 3,
+    "references": 2
+  },
+  {
+    "name": "--badge-size",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--label-font-size--mobile",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--carousel-dots-width",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--pod-image-height",
+    "declarations": 3,
+    "references": 2
+  },
+  {
+    "name": "--pod-image-height-mobile",
+    "declarations": 3,
+    "references": 2
+  },
+  {
+    "name": "--pod-image-border-radius",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--pod-image-width",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--pod-image-width-mobile",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--pod-image-margin-top",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--pod-image-margin-top-mobile",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--pod-image-margin-bottom",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--pod-image-margin-bottom-mobile",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--box-shadow",
+    "declarations": 2,
+    "references": 2
+  },
+  {
+    "name": "--primary-button-color-hover",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--input-font-style",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--input-height--tablet",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--input-height--mobile",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--input-background-disabled",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--error-background",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--color-overlay-text",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--dark-overlay-bottom",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--tile-content-width",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--carousel-arrow-color",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--carousel-arrow-background",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--background-image",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--preheader-link-color",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--nav-tier1-text_transform",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--nav-tier1-font-fallback-families",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--nav-tier1-font-family",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--nav-tier1-font-size",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--nav-tier1-font-weight",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--nav-tier1-font-style",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--announcement-link-color",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--announcement-link-color-hover",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--inner-content-height-desktop",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--inner-content-height-tablet",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--inner-content-height-mobile",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--brand-image-max-width",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--footer-menu-link-color",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--split-content-text-max-width",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--shopify-accelerated-checkout-skeleton-animation-opacity-start",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--shopify-accelerated-checkout-skeleton-animation-duration",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--shopify-accelerated-checkout-skeleton-animation-timing-function",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--shopify-accelerated-checkout-skeleton-background-color",
+    "declarations": 0,
+    "references": 2
+  },
+  {
+    "name": "--h7-color",
+    "declarations": 18,
+    "references": 1
+  },
+  {
+    "name": "--h8-color",
+    "declarations": 18,
+    "references": 1
+  },
+  {
+    "name": "--radio-background",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--primary-button-border-color-hover",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--shape-fill-color",
+    "declarations": 6,
+    "references": 1
+  },
+  {
+    "name": "--badge-rich-color",
+    "declarations": 5,
+    "references": 1
+  },
+  {
+    "name": "--badge-color",
+    "declarations": 5,
+    "references": 1
+  },
+  {
+    "name": "--inner-content-height",
+    "declarations": 6,
+    "references": 1
+  },
+  {
+    "name": "--input-padding-left",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--buttons-font-size",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--sticky-bar-height-desktop",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--sticky-bar-height-mobile",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--h7-font-family",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--h7-font-size",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--h7-font-size--tablet",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--h7-font-size--mobile",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--h7-font-weight",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--input-font-size--tablet",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--input-font-size--mobile",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--buttons-font-family",
+    "declarations": 3,
+    "references": 1
+  },
+  {
+    "name": "--compare-at-price-color",
+    "declarations": 5,
+    "references": 1
+  },
+  {
+    "name": "--cart-header-background",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--cart-header-height",
+    "declarations": 4,
+    "references": 1
+  },
+  {
+    "name": "--before-control-content",
+    "declarations": 2,
+    "references": 1
+  },
+  {
+    "name": "--h7-font-style",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--h7-text-transform",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--buttons-font-size--tablet",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--buttons-font-size--mobile",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--buttons-font-weight",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--buttons-text-transform",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--p-font-bold-weight",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--button-height--tablet",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--button-height--mobile",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--button-horizontal-padding",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--button-horizontal-padding--tablet",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--button-horizontal-padding--mobile",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--primary-button-border-width",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--secondary-button-background",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--secondary-button-border-color",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--secondary-button-background-hover",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--secondary-button-border-color-hover",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--secondary-button-border-width",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--secondary-button-color-hover",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--image-button-background",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--image-button-border-color",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--image-button-background-hover",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--image-button-border-color-hover",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--image-button-border-width",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--image-button-color",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--image-button-color-hover",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--label-font-size--tablet",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--input-horizontal-padding--tablet",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--input-horizontal-padding--mobile",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--checkmark-color",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--option-color-hover",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--option-background-hover",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--option-color-selected",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--option-background-selected",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--success-color",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--success-background",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--dark-overlay-top",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--light-overlay-top",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--light-overlay-bottom",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--branded-overlay-top",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--branded-overlay-bottom",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--modal-close-background",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--modal-close-color",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--modal-close-background-hover",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--modal-close-color-hover",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tile-border-color",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--tile-border-width",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--carousel-margin-bottom",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--carousel-arrow-opacity",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--carousel-dots-bottom",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--carousel-dot-color",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--carousel-dot-opacity",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--carousel-dot-color-active",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--carousel-dot-opacity-active",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--margin-top-desktop",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--padding-top-desktop",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--padding-bottom-desktop",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--margin-top-mobile",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--padding-top-mobile",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--padding-bottom-mobile",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--margin-top-tablet",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--padding-top-tablet",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--padding-bottom-tablet",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--preheader-background-color-desktop",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--preheader-background-color-mobile",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--preheader-text-transform",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--preheader-font-size",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--preheader-link-color-hover",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--announcement-max-width",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--announcement-background-opacity",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--announcement-background-color",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--header-background-color-desktop",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--nav-tier1-link-spacing",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--nav-tier1-content-container-width",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--cart-count-background-color",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--cart-count-color",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--header-icon-color-mobile",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--nav-tier1-line-height",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--nav-tier1-letter-spacing",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--title_color",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--title_color_hover",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--announcement-text-transform",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--announcement-font-fallback-families",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--announcement-font-family",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--announcement-font-size",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--announcement-font-weight",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--announcement-font-style",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--cart-popout-width-desktop",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--header-background-color-mobile",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--header-min-height-mobile",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--mobile_menu-background-color",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--mobile-menu-tier2-bottom-padding",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--mobile-menu-tier2-indent",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--mobile-menu-tier2-text-transform",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--mobile-menu-tier2-link-color",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--mobile-menu-tier2-font-fallback-families",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--mobile-menu-tier2-font-family",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--mobile-menu-tier2-font-size",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--mobile-menu-tier2-font-weight",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--mobile-menu-tier2-font-style",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--mobile-menu-tier3-bottom-padding",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--mobile-menu-tier3-indent",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--mobile-menu-tier3-text-transform",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--mobile-menu-tier3-link-color",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--mobile-menu-tier3-font-fallback-families",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--mobile-menu-tier3-font-family",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--mobile-menu-tier3-font-size",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--mobile-menu-tier3-font-weight",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--mobile-menu-tier3-font-style",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--mobile-menu-tier1-text_transform",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--mobile-menu-tier1-font-fallback-families",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--mobile-menu-tier1-font-family",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--mobile-menu-tier1-font-size",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--mobile-menu-tier1-font-weight",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--mobile-menu-tier1-font-style",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--nav-tier2-bottom-padding",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--nav-tier2-link-color",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--nav-tier2-link-color-hover",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--nav-tier2-text-transform",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--nav-tier2-font-fallback-families",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--nav-tier2-font-family",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--nav-tier2-font-size",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--nav-tier2-font-weight",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--nav-tier2-font-style",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--nav-tier3-bottom-padding",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--nav-tier3-text-transform",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--nav-tier3-link-color",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--nav-tier3-font-fallback-families",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--nav-tier3-font-family",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--nav-tier3-font-size",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--nav-tier3-font-weight",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--nav-tier3-font-style",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--nav-tier3-link-color-hover",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--block_margin_top",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--block_image_max_width",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--block_text_max_width",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--block_text_align",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--block_image_vertical_position",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--block_image_horizontal_position",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--block_text_vertical_position",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--block_text_padding_desktop",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--block_text_horizontal_position",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--block_text_padding_tablet",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--block_text_padding_mobile",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--background-color-form",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--footer-color",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--footer-icon-size",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--footer-icon-color",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--footer-icon-color-hover",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--footer-menu-title-text-capitalization",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--footer-menu-title-color",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--footer-menu-title-font-fallback-family",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--footer-menu-title-font-family",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--footer-menu-title-font-size",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--footer-menu-title-font-weight",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--footer-menu-title-font-style",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--footer-menu-text-capitalization",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--footer-menu-font-fallback-family",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--footer-menu-font-family",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--footer-menu-font-size",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--footer-menu-font-weight",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--footer-menu-font-style",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--footer-copyright-font-size",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--footer-link-color",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--footer-link-color-hover",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--content-padding-top-mobile",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--content-padding-bottom-mobile",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--content-padding-top-desktop",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--content-padding-bottom-desktop",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--text-max-width",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--text-align-desktop",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--text-align-tablet",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--text-align-mobile",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--sticky-checkout-background-image",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--testimonial-text-align",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--dot-opacity-desktop",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--dot-opacity-mobile",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--dot-opacity-active-desktop",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--dot-opacity-active-mobile",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--logo-page-dots-height-desktop",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--logo-page-dots-height-mobile",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--text-alignment",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--p-line-height",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--vertical-offset",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--transform-x",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--transform-y",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--max-width",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--vertical-offset-mobile",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--max-width-mobile",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--transform-x-mobile",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--transform-y-mobile",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--shopify-accelerated-checkout-skeleton-animation-opacity-end",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--shopify-accelerated-checkout-inline-alignment",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--shopify-accelerated-checkout-button-inline-size",
+    "declarations": 0,
+    "references": 1
+  },
+  {
+    "name": "--label-font-size-tablet",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--label-font-size-mobile",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--color-green",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--color-blue",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--color-yellow",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--color-red",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--color-purple",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--header-color",
+    "declarations": 2,
+    "references": 0
+  },
+  {
+    "name": "--buttons-font-style",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--label-font-bold-weight",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--input-font-bold-weight",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--color-overlay-bg",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--body-copy-font-family",
+    "declarations": 1,
+    "references": 0
+  }
+]

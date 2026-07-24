@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "url": "https://mariamoledoces.com.br",
+  "provider": "codex-cli",
+  "phases": {
+    "phase_1_fetch": 306,
+    "phase_2_collect": 279,
+    "phase_3_detect": 587,
+    "phase_4_markdown": 25,
+    "phase_5_prompt": 30,
+    "phase_6_llm": 300948,
+    "phase_7_log": 35,
+    "phase_8_preview": 11
+  },
+  "wall_clock_ms": 302582,
+  "reuse": {
+    "enabled": true,
+    "previous_run": null,
+    "hits": 0,
+    "trace": {
+      "fetch": "MISS",
+      "collect": "MISS",
+      "detect": "MISS",
+      "markdown": "MISS",
+      "llm": "MISS"
+    }
+  },
+  "llm": {
+    "model": "gpt-5.5",
+    "provider": "codex-cli",
+    "reused": false,
+    "input_tokens": null,
+    "output_tokens": null,
+    "cache_read_tokens": null,
+    "cache_creation_tokens": null,
+    "turns_used": null,
+    "retries": 0,
+    "max_turns_hit": false,
+    "cost_estimate": {
+      "usd": 0.5382,
+      "source": "char-fallback",
+      "model": "gpt-5.5",
+      "breakdown": {
+        "input_usd": 0.1157,
+        "output_usd": 0.4225,
+        "cache_read_usd": 0,
+        "cache_write_usd": 0
+      },
+      "fallback_model": true
+    }
+  }
+}

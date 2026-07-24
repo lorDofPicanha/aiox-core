@@ -1,0 +1,66 @@
+[
+  {
+    "value": "inset 0 0 0 2px rgb(var(--color-white))",
+    "count": 4
+  },
+  {
+    "value": "0 0 0 .2rem rgb(var(--color-primary))",
+    "count": 4
+  },
+  {
+    "value": "1px 0 0 #e6e6e6,-1px 0 0 #e6e6e6,0 1px 0 #e6e6e6,0 -1px 0 #e6e6e6,0 3px 13px rgba(0,0,0,.08)",
+    "count": 2
+  },
+  {
+    "value": "none!important",
+    "count": 2
+  },
+  {
+    "value": "-2px 0 0 #e6e6e6,5px 0 0 #e6e6e6",
+    "count": 2
+  },
+  {
+    "value": "-1px 0 0 #e6e6e6",
+    "count": 2
+  },
+  {
+    "value": "-10px 0 0 #569ff7",
+    "count": 2
+  },
+  {
+    "value": "-5px 0 0 #e6e6e6,5px 0 0 #e6e6e6",
+    "count": 2
+  },
+  {
+    "value": "-5px 0 0 #569ff7,5px 0 0 #569ff7",
+    "count": 2
+  },
+  {
+    "value": "1px 0 0 #e6e6e6",
+    "count": 2
+  },
+  {
+    "value": "0 0 0 5px #19f",
+    "count": 2
+  },
+  {
+    "value": "0 3px 6px rgba(0,0,0,.08)",
+    "count": 2
+  },
+  {
+    "value": "0 0 0 .1rem rgb(var(--color-secondary))",
+    "count": 2
+  },
+  {
+    "value": "0 0 0 1px transparent",
+    "count": 2
+  },
+  {
+    "value": "0 0 0 1px var(--color)",
+    "count": 2
+  },
+  {
+    "value": "0 0 6.3rem 0 rgba(0,0,0,.02)",
+    "count": 2
+  }
+]

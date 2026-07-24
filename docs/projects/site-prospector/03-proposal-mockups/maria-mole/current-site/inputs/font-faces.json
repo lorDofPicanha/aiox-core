@@ -1,0 +1,100 @@
+[
+  {
+    "family": "Poppins",
+    "weight": "400",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "https://fonts.gstatic.com/s/poppins/v24/pxiEyp8kv8JHgFVrJJfedw.ttf"
+    ],
+    "src_formats": [
+      "truetype"
+    ],
+    "source_css_url": "https://fonts.googleapis.com/css?family=Poppins&display=swap",
+    "raw": "@font-face {\n  font-family: 'Poppins';\n  font-style: normal;\n  font-weight: 400;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/poppins/v24/pxiEyp8kv8JHgFVrJJfedw.ttf) format('truetype');\n}"
+  },
+  {
+    "family": "Font Awesome 5 Brands",
+    "weight": "400",
+    "style": "normal",
+    "display": "auto",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "/fa-brands-400.eot"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://mariamoledoces.com.br/loja/styles.acfa7f7ad1528f82.css",
+    "raw": "@font-face{font-family:\"Font Awesome 5 Brands\";font-style:normal;font-weight:400;font-display:auto;src:url(/fa-brands-400.eot);src:url(/fa-brands-400.eot?#iefix) format(\"embedded-opentype\"),url(/fa-brands-400.woff2) format(\"woff2\"),url(/fa-brands-400.woff) format(\"woff\"),url(/fa-brands-400.ttf) format(\"truetype\"),url(/fa-brands-400.svg#fontawesome) format(\"svg\")}"
+  },
+  {
+    "family": "Font Awesome 5 Free",
+    "weight": "400",
+    "style": "normal",
+    "display": "auto",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "/fa-regular-400.eot"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://mariamoledoces.com.br/loja/styles.acfa7f7ad1528f82.css",
+    "raw": "@font-face{font-family:\"Font Awesome 5 Free\";font-style:normal;font-weight:400;font-display:auto;src:url(/fa-regular-400.eot);src:url(/fa-regular-400.eot?#iefix) format(\"embedded-opentype\"),url(/fa-regular-400.woff2) format(\"woff2\"),url(/fa-regular-400.woff) format(\"woff\"),url(/fa-regular-400.ttf) format(\"truetype\"),url(/fa-regular-400.svg#fontawesome) format(\"svg\")}"
+  },
+  {
+    "family": "Font Awesome 5 Free",
+    "weight": "900",
+    "style": "normal",
+    "display": "auto",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "/fa-solid-900.eot"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://mariamoledoces.com.br/loja/styles.acfa7f7ad1528f82.css",
+    "raw": "@font-face{font-family:\"Font Awesome 5 Free\";font-style:normal;font-weight:900;font-display:auto;src:url(/fa-solid-900.eot);src:url(/fa-solid-900.eot?#iefix) format(\"embedded-opentype\"),url(/fa-solid-900.woff2) format(\"woff2\"),url(/fa-solid-900.woff) format(\"woff\"),url(/fa-solid-900.ttf) format(\"truetype\"),url(/fa-solid-900.svg#fontawesome) format(\"svg\")}"
+  },
+  {
+    "family": "feather",
+    "weight": null,
+    "style": null,
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "/feather.eot?t=1525787366991"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://mariamoledoces.com.br/loja/styles.acfa7f7ad1528f82.css",
+    "raw": "@font-face{font-family:feather;src:url(/feather.eot?t=1525787366991);src:url(/feather.eot?t=1525787366991#iefix) format(\"embedded-opentype\"),url(/feather.woff?t=1525787366991) format(\"woff\"),url(/feather.ttf?t=1525787366991) format(\"truetype\"),url(/feather.svg?t=1525787366991#feather) format(\"svg\")}"
+  },
+  {
+    "family": "icomoon",
+    "weight": "400",
+    "style": "normal",
+    "display": "block",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "/icomoon.eot?geuwag"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://mariamoledoces.com.br/loja/styles.acfa7f7ad1528f82.css",
+    "raw": "@font-face{font-family:icomoon;src:url(/icomoon.eot?geuwag);src:url(/icomoon.eot?geuwag#iefix) format(\"embedded-opentype\"),url(/icomoon.ttf?geuwag) format(\"truetype\"),url(/icomoon.woff?geuwag) format(\"woff\"),url(/icomoon.svg?geuwag#icomoon) format(\"svg\");font-weight:400;font-style:normal;font-display:block}"
+  },
+  {
+    "family": "WebComponentsIcons",
+    "weight": "400",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [],
+    "src_formats": [],
+    "source_css_url": "https://mariamoledoces.com.br/loja/styles.acfa7f7ad1528f82.css",
+    "raw": "@font-face{font-family:WebComponentsIcons;font-style:normal;font-weight:400;src:url(data:font/ttf;base64,AAEAAAALAIAAAwAwR1NVQiCLJXoAAAE4AAAAVE9TLzJWkk1xAAABjAAAAGBjbWFwbS0TigAADAwAACUcZ2x5ZktjGxwAADY8AAF0+GhlYWQi3hRPAAAA4AAAADZoaGVhB6kGSAAAALwAAAAkaG10eCAI/9oAAAHsAAAKIGxvY2GXSTvMAAAxKAAABRJtYXhwA9ABMAAAARgAAAAgbmFtZYGZmTgAAas0AAACcHBvc3TE+CbyAAGtpAAAJ4wAAQAAA8D/wAAABAD/5f//BAEAAQAAAAAAAAAAAAAAAAAAAogAAQAAAAEAAKZtPW1fDzz1AAsEAAAAAADf7GffAAAAAN/sZ9//5f+/BAED1QAAAAgAAgAAAAAAAAABAAACiAEkAD4AAAAAAAI"
+  }
+]

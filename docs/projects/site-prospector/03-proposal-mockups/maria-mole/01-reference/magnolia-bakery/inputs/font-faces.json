@@ -1,0 +1,466 @@
+[
+  {
+    "family": "kopius",
+    "weight": "300",
+    "style": "normal",
+    "display": "auto",
+    "stretch": "normal",
+    "unicode_range": null,
+    "src_urls": [
+      "https://use.typekit.net/af/16145b/00000000000000003b9b01cf/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3",
+      "https://use.typekit.net/af/16145b/00000000000000003b9b01cf/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3",
+      "https://use.typekit.net/af/16145b/00000000000000003b9b01cf/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff",
+      "opentype"
+    ],
+    "source_css_url": "https://use.typekit.net/hal8wki.css",
+    "raw": "@font-face {\nfont-family:\"kopius\";\nsrc:url(\"https://use.typekit.net/af/16145b/00000000000000003b9b01cf/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3\") format(\"woff2\"),url(\"https://use.typekit.net/af/16145b/00000000000000003b9b01cf/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3\") format(\"woff\"),url(\"https://use.typekit.net/af/16145b/00000000000000003b9b01cf/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831f"
+  },
+  {
+    "family": "kopius",
+    "weight": "500",
+    "style": "normal",
+    "display": "auto",
+    "stretch": "normal",
+    "unicode_range": null,
+    "src_urls": [
+      "https://use.typekit.net/af/e824cd/00000000000000003b9b01d4/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3",
+      "https://use.typekit.net/af/e824cd/00000000000000003b9b01d4/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3",
+      "https://use.typekit.net/af/e824cd/00000000000000003b9b01d4/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff",
+      "opentype"
+    ],
+    "source_css_url": "https://use.typekit.net/hal8wki.css",
+    "raw": "@font-face {\nfont-family:\"kopius\";\nsrc:url(\"https://use.typekit.net/af/e824cd/00000000000000003b9b01d4/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3\") format(\"woff2\"),url(\"https://use.typekit.net/af/e824cd/00000000000000003b9b01d4/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3\") format(\"woff\"),url(\"https://use.typekit.net/af/e824cd/00000000000000003b9b01d4/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831f"
+  },
+  {
+    "family": "Font Awesome 5 Pro",
+    "weight": "400",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "//www.magnoliabakery.com/cdn/shop/t/6/assets/fa-regular-400.eot?v=122208858887156211731626222362"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://www.magnoliabakery.com/cdn/shop/t/6/assets/special-offers.scss.css?v=7251186587062236211639702603",
+    "raw": "@font-face {\n      font-family: 'Font Awesome 5 Pro';\n      font-style: normal;\n      font-weight: 400;\n      src: url('//www.magnoliabakery.com/cdn/shop/t/6/assets/fa-regular-400.eot?v=122208858887156211731626222362');\n      src: url('//www.magnoliabakery.com/cdn/shop/t/6/assets/fa-regular-400.eot?v=122208858887156211731626222362?#iefix') format('embedded-opentype'),\n      url('//www.magnoliabakery.com/cdn/shop/t/6/assets/fa-regular-400.woff2?v=104933535168670321401626222363') format('woff2'),\n"
+  },
+  {
+    "family": "Font Awesome 5 Brands",
+    "weight": "normal",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "//www.magnoliabakery.com/cdn/shop/t/6/assets/fa-brands-400.eot?v=115331300546751708981626222358"
+    ],
+    "src_formats": [],
+    "source_css_url": "https://www.magnoliabakery.com/cdn/shop/t/6/assets/special-offers.scss.css?v=7251186587062236211639702603",
+    "raw": "@font-face {\n    font-family: 'Font Awesome 5 Brands';\n    font-style: normal;\n    font-weight: normal;\n    src: url('//www.magnoliabakery.com/cdn/shop/t/6/assets/fa-brands-400.eot?v=115331300546751708981626222358');\n    src: url('//www.magnoliabakery.com/cdn/shop/t/6/assets/fa-brands-400.eot?v=115331300546751708981626222358?#iefix') format('embedded-opentype'),\n    url('//www.magnoliabakery.com/cdn/shop/t/6/assets/fa-brands-400.woff2?v=142236463632227080571626222359') format('woff2'),\n    url('"
+  },
+  {
+    "family": "Trade Gothic Next SR Pro",
+    "weight": "400",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "//www.magnoliabakery.com/cdn/shop/t/6/assets/Trade-Gothic-Next-SR-Pro.woff?v=3787112410034624861633563092",
+      "//www.magnoliabakery.com/cdn/shop/t/6/assets/Trade-Gothic-Next-SR-Pro.woff2?v=159385375155475999191633563093"
+    ],
+    "src_formats": [
+      "woff",
+      "woff2"
+    ],
+    "source_css_url": "https://www.magnoliabakery.com/cdn/shop/t/6/assets/special-offers.scss.css?v=7251186587062236211639702603",
+    "raw": "@font-face {\n    font-family: 'Trade Gothic Next SR Pro';\n    font-style: normal;\n    font-weight: 400;\n    font-display: swap;\n    src:  url(\"//www.magnoliabakery.com/cdn/shop/t/6/assets/Trade-Gothic-Next-SR-Pro.woff?v=3787112410034624861633563092\") format(\"woff\"),\n          url(\"//www.magnoliabakery.com/cdn/shop/t/6/assets/Trade-Gothic-Next-SR-Pro.woff2?v=159385375155475999191633563093\") format(\"woff2\");\n  }"
+  },
+  {
+    "family": "Gatefold Demi",
+    "weight": "700",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "//www.magnoliabakery.com/cdn/shop/t/6/assets/Gatefold-Demibold.woff?v=71897035920810111591651031720",
+      "//www.magnoliabakery.com/cdn/shop/t/6/assets/Gatefold-Demibold.woff2?v=29434"
+    ],
+    "src_formats": [
+      "woff",
+      "woff2"
+    ],
+    "source_css_url": "https://www.magnoliabakery.com/cdn/shop/t/6/assets/special-offers.scss.css?v=7251186587062236211639702603",
+    "raw": "@font-face {\n    font-family: 'Gatefold Demi';\n    font-style: normal;\n    font-weight: 700;\n    font-display: swap;\n    src:  url(\"//www.magnoliabakery.com/cdn/shop/t/6/assets/Gatefold-Demibold.woff?v=71897035920810111591651031720\") format(\"woff\"),\n          url(\"//www.magnoliabakery.com/cdn/shop/t/6/assets/Gatefold-Demibold.woff2?v=29434\") format(\"woff2\");\n  }"
+  },
+  {
+    "family": "Gt Alpina",
+    "weight": "400",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "//www.magnoliabakery.com/cdn/shop/t/6/assets/GT-Alpina-Standard-Regular.woff?v=150509671153543090461651031720",
+      "//www.magnoliabakery.com/cdn/shop/t/6/assets/GT-Alpina-Standard-Regular.woff2?v=3332075704702378261651031720"
+    ],
+    "src_formats": [
+      "woff",
+      "woff2"
+    ],
+    "source_css_url": "https://www.magnoliabakery.com/cdn/shop/t/6/assets/special-offers.scss.css?v=7251186587062236211639702603",
+    "raw": "@font-face {\n    font-family: 'Gt Alpina';\n    font-style: normal;\n    font-weight: 400;\n    font-display: swap;\n    src:  url(\"//www.magnoliabakery.com/cdn/shop/t/6/assets/GT-Alpina-Standard-Regular.woff?v=150509671153543090461651031720\") format(\"woff\"),\n          url(\"//www.magnoliabakery.com/cdn/shop/t/6/assets/GT-Alpina-Standard-Regular.woff2?v=3332075704702378261651031720\") format(\"woff2\");\n  }"
+  },
+  {
+    "family": "Ambit",
+    "weight": "400",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "//www.magnoliabakery.com/cdn/shop/t/6/assets/Ambit-Light.woff?v=101355573965577996151651031719",
+      "//www.magnoliabakery.com/cdn/shop/t/6/assets/Ambit-Light.woff2?v=161198572754099091211651031719"
+    ],
+    "src_formats": [
+      "woff",
+      "woff2"
+    ],
+    "source_css_url": "https://www.magnoliabakery.com/cdn/shop/t/6/assets/special-offers.scss.css?v=7251186587062236211639702603",
+    "raw": "@font-face {\n    font-family: 'Ambit';\n    font-style: normal;\n    font-weight: 400;\n    font-display: swap;\n    src:  url(\"//www.magnoliabakery.com/cdn/shop/t/6/assets/Ambit-Light.woff?v=101355573965577996151651031719\") format(\"woff\"),\n          url(\"//www.magnoliabakery.com/cdn/shop/t/6/assets/Ambit-Light.woff2?v=161198572754099091211651031719\") format(\"woff2\");\n  }"
+  },
+  {
+    "family": "Ambit",
+    "weight": "400",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "//www.magnoliabakery.com/cdn/shop/t/6/assets/Ambit-Regular.woff?v=142476383572940157821651031719",
+      "//www.magnoliabakery.com/cdn/shop/t/6/assets/Ambit-Regular.woff2?v=80235381164334571171651031719"
+    ],
+    "src_formats": [
+      "woff",
+      "woff2"
+    ],
+    "source_css_url": "https://www.magnoliabakery.com/cdn/shop/t/6/assets/special-offers.scss.css?v=7251186587062236211639702603",
+    "raw": "@font-face {\n    font-family: 'Ambit';\n    font-style: normal;\n    font-weight: 400;\n    font-display: swap;\n    src:  url(\"//www.magnoliabakery.com/cdn/shop/t/6/assets/Ambit-Regular.woff?v=142476383572940157821651031719\") format(\"woff\"),\n          url(\"//www.magnoliabakery.com/cdn/shop/t/6/assets/Ambit-Regular.woff2?v=80235381164334571171651031719\") format(\"woff2\");\n  }"
+  },
+  {
+    "family": "Ambit",
+    "weight": "700",
+    "style": "normal",
+    "display": "swap",
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "//www.magnoliabakery.com/cdn/shop/t/6/assets/Ambit-Bold.woff?v=15751730330618720331651031718",
+      "//www.magnoliabakery.com/cdn/shop/t/6/assets/Ambit-Bold.woff2?v=61217616652594390911651031718"
+    ],
+    "src_formats": [
+      "woff",
+      "woff2"
+    ],
+    "source_css_url": "https://www.magnoliabakery.com/cdn/shop/t/6/assets/special-offers.scss.css?v=7251186587062236211639702603",
+    "raw": "@font-face {\n    font-family: 'Ambit';\n    font-style: normal;\n    font-weight: 700;\n    font-display: swap;\n    src:  url(\"//www.magnoliabakery.com/cdn/shop/t/6/assets/Ambit-Bold.woff?v=15751730330618720331651031718\") format(\"woff\"),\n          url(\"//www.magnoliabakery.com/cdn/shop/t/6/assets/Ambit-Bold.woff2?v=61217616652594390911651031718\") format(\"woff2\");\n  }"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "400",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.c32e4d4eca5273f6d4ee95ddf54b5bbb75fc9b61.woff2",
+      "//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.5f3406f8d94162b37bfa232b486ac93ee892406d.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.magnoliabakery.com/cdn/shop/t/6/assets/special-offers.scss.css?v=7251186587062236211639702603",
+    "raw": "@font-face {\n  font-family: \"Open Sans\";\n  font-weight: 400;\n  font-style: normal;\n  src: url(\"//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.c32e4d4eca5273f6d4ee95ddf54b5bbb75fc9b61.woff2\") format(\"woff2\"),\n       url(\"//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.5f3406f8d94162b37bfa232b486ac93ee892406d.woff\") format(\"woff\");\n}"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "400",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.c32e4d4eca5273f6d4ee95ddf54b5bbb75fc9b61.woff2",
+      "//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.5f3406f8d94162b37bfa232b486ac93ee892406d.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.magnoliabakery.com/cdn/shop/t/6/assets/special-offers.scss.css?v=7251186587062236211639702603",
+    "raw": "@font-face {\n  font-family: \"Open Sans\";\n  font-weight: 400;\n  font-style: normal;\n  src: url(\"//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.c32e4d4eca5273f6d4ee95ddf54b5bbb75fc9b61.woff2\") format(\"woff2\"),\n       url(\"//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.5f3406f8d94162b37bfa232b486ac93ee892406d.woff\") format(\"woff\");\n}"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "400",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.c32e4d4eca5273f6d4ee95ddf54b5bbb75fc9b61.woff2",
+      "//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.5f3406f8d94162b37bfa232b486ac93ee892406d.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.magnoliabakery.com/cdn/shop/t/6/assets/special-offers.scss.css?v=7251186587062236211639702603",
+    "raw": "@font-face {\n  font-family: \"Open Sans\";\n  font-weight: 400;\n  font-style: normal;\n  src: url(\"//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.c32e4d4eca5273f6d4ee95ddf54b5bbb75fc9b61.woff2\") format(\"woff2\"),\n       url(\"//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.5f3406f8d94162b37bfa232b486ac93ee892406d.woff\") format(\"woff\");\n}"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "400",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.c32e4d4eca5273f6d4ee95ddf54b5bbb75fc9b61.woff2",
+      "//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.5f3406f8d94162b37bfa232b486ac93ee892406d.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.magnoliabakery.com/cdn/shop/t/6/assets/special-offers.scss.css?v=7251186587062236211639702603",
+    "raw": "@font-face {\n  font-family: \"Open Sans\";\n  font-weight: 400;\n  font-style: normal;\n  src: url(\"//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.c32e4d4eca5273f6d4ee95ddf54b5bbb75fc9b61.woff2\") format(\"woff2\"),\n       url(\"//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.5f3406f8d94162b37bfa232b486ac93ee892406d.woff\") format(\"woff\");\n}"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "400",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.c32e4d4eca5273f6d4ee95ddf54b5bbb75fc9b61.woff2",
+      "//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.5f3406f8d94162b37bfa232b486ac93ee892406d.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.magnoliabakery.com/cdn/shop/t/6/assets/special-offers.scss.css?v=7251186587062236211639702603",
+    "raw": "@font-face {\n  font-family: \"Open Sans\";\n  font-weight: 400;\n  font-style: normal;\n  src: url(\"//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.c32e4d4eca5273f6d4ee95ddf54b5bbb75fc9b61.woff2\") format(\"woff2\"),\n       url(\"//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.5f3406f8d94162b37bfa232b486ac93ee892406d.woff\") format(\"woff\");\n}"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "400",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.c32e4d4eca5273f6d4ee95ddf54b5bbb75fc9b61.woff2",
+      "//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.5f3406f8d94162b37bfa232b486ac93ee892406d.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.magnoliabakery.com/cdn/shop/t/6/assets/special-offers.scss.css?v=7251186587062236211639702603",
+    "raw": "@font-face {\n  font-family: \"Open Sans\";\n  font-weight: 400;\n  font-style: normal;\n  src: url(\"//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.c32e4d4eca5273f6d4ee95ddf54b5bbb75fc9b61.woff2\") format(\"woff2\"),\n       url(\"//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.5f3406f8d94162b37bfa232b486ac93ee892406d.woff\") format(\"woff\");\n}"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "400",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.c32e4d4eca5273f6d4ee95ddf54b5bbb75fc9b61.woff2",
+      "//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.5f3406f8d94162b37bfa232b486ac93ee892406d.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.magnoliabakery.com/cdn/shop/t/6/assets/special-offers.scss.css?v=7251186587062236211639702603",
+    "raw": "@font-face {\n  font-family: \"Open Sans\";\n  font-weight: 400;\n  font-style: normal;\n  src: url(\"//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.c32e4d4eca5273f6d4ee95ddf54b5bbb75fc9b61.woff2\") format(\"woff2\"),\n       url(\"//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.5f3406f8d94162b37bfa232b486ac93ee892406d.woff\") format(\"woff\");\n}"
+  },
+  {
+    "family": "Open Sans",
+    "weight": "400",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.c32e4d4eca5273f6d4ee95ddf54b5bbb75fc9b61.woff2",
+      "//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.5f3406f8d94162b37bfa232b486ac93ee892406d.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.magnoliabakery.com/cdn/shop/t/6/assets/special-offers.scss.css?v=7251186587062236211639702603",
+    "raw": "@font-face {\n  font-family: \"Open Sans\";\n  font-weight: 400;\n  font-style: normal;\n  src: url(\"//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.c32e4d4eca5273f6d4ee95ddf54b5bbb75fc9b61.woff2\") format(\"woff2\"),\n       url(\"//www.magnoliabakery.com/cdn/fonts/open_sans/opensans_n4.5f3406f8d94162b37bfa232b486ac93ee892406d.woff\") format(\"woff\");\n}"
+  },
+  {
+    "family": "Libre Franklin",
+    "weight": "400",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_n4.a9b0508e1ffb743a0fd6d0614768959c54a27d86.woff2",
+      "//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_n4.948f6f27caf8552b1a9560176e3f14eeb2c6f202.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.magnoliabakery.com/cdn/shop/t/6/assets/special-offers.scss.css?v=7251186587062236211639702603",
+    "raw": "@font-face {\n  font-family: \"Libre Franklin\";\n  font-weight: 400;\n  font-style: normal;\n  src: url(\"//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_n4.a9b0508e1ffb743a0fd6d0614768959c54a27d86.woff2\") format(\"woff2\"),\n       url(\"//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_n4.948f6f27caf8552b1a9560176e3f14eeb2c6f202.woff\") format(\"woff\");\n}"
+  },
+  {
+    "family": "Libre Franklin",
+    "weight": "700",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_n7.6739620624550b8695d0cc23f92ffd46eb51c7a3.woff2",
+      "//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_n7.7cebc205621b23b061b803310af0ad39921ae57d.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.magnoliabakery.com/cdn/shop/t/6/assets/special-offers.scss.css?v=7251186587062236211639702603",
+    "raw": "@font-face {\n  font-family: \"Libre Franklin\";\n  font-weight: 700;\n  font-style: normal;\n  src: url(\"//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_n7.6739620624550b8695d0cc23f92ffd46eb51c7a3.woff2\") format(\"woff2\"),\n       url(\"//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_n7.7cebc205621b23b061b803310af0ad39921ae57d.woff\") format(\"woff\");\n}"
+  },
+  {
+    "family": "Libre Franklin",
+    "weight": "700",
+    "style": "italic",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_i7.5cd0952dea701f27d5d0eb294c01347335232ef2.woff2",
+      "//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_i7.41af936a1cd17668e4e060c6e0ad838ccf133ddd.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.magnoliabakery.com/cdn/shop/t/6/assets/special-offers.scss.css?v=7251186587062236211639702603",
+    "raw": "@font-face {\n  font-family: \"Libre Franklin\";\n  font-weight: 700;\n  font-style: italic;\n  src: url(\"//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_i7.5cd0952dea701f27d5d0eb294c01347335232ef2.woff2\") format(\"woff2\"),\n       url(\"//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_i7.41af936a1cd17668e4e060c6e0ad838ccf133ddd.woff\") format(\"woff\");\n}"
+  },
+  {
+    "family": "Libre Franklin",
+    "weight": "400",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_n4.a9b0508e1ffb743a0fd6d0614768959c54a27d86.woff2",
+      "//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_n4.948f6f27caf8552b1a9560176e3f14eeb2c6f202.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.magnoliabakery.com/cdn/shop/t/6/assets/special-offers.scss.css?v=7251186587062236211639702603",
+    "raw": "@font-face {\n  font-family: \"Libre Franklin\";\n  font-weight: 400;\n  font-style: normal;\n  src: url(\"//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_n4.a9b0508e1ffb743a0fd6d0614768959c54a27d86.woff2\") format(\"woff2\"),\n       url(\"//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_n4.948f6f27caf8552b1a9560176e3f14eeb2c6f202.woff\") format(\"woff\");\n}"
+  },
+  {
+    "family": "Libre Franklin",
+    "weight": "400",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_n4.a9b0508e1ffb743a0fd6d0614768959c54a27d86.woff2",
+      "//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_n4.948f6f27caf8552b1a9560176e3f14eeb2c6f202.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.magnoliabakery.com/cdn/shop/t/6/assets/special-offers.scss.css?v=7251186587062236211639702603",
+    "raw": "@font-face {\n  font-family: \"Libre Franklin\";\n  font-weight: 400;\n  font-style: normal;\n  src: url(\"//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_n4.a9b0508e1ffb743a0fd6d0614768959c54a27d86.woff2\") format(\"woff2\"),\n       url(\"//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_n4.948f6f27caf8552b1a9560176e3f14eeb2c6f202.woff\") format(\"woff\");\n}"
+  },
+  {
+    "family": "Libre Franklin",
+    "weight": "400",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_n4.a9b0508e1ffb743a0fd6d0614768959c54a27d86.woff2",
+      "//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_n4.948f6f27caf8552b1a9560176e3f14eeb2c6f202.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.magnoliabakery.com/cdn/shop/t/6/assets/special-offers.scss.css?v=7251186587062236211639702603",
+    "raw": "@font-face {\n  font-family: \"Libre Franklin\";\n  font-weight: 400;\n  font-style: normal;\n  src: url(\"//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_n4.a9b0508e1ffb743a0fd6d0614768959c54a27d86.woff2\") format(\"woff2\"),\n       url(\"//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_n4.948f6f27caf8552b1a9560176e3f14eeb2c6f202.woff\") format(\"woff\");\n}"
+  },
+  {
+    "family": "Libre Franklin",
+    "weight": "400",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_n4.a9b0508e1ffb743a0fd6d0614768959c54a27d86.woff2",
+      "//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_n4.948f6f27caf8552b1a9560176e3f14eeb2c6f202.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.magnoliabakery.com/cdn/shop/t/6/assets/special-offers.scss.css?v=7251186587062236211639702603",
+    "raw": "@font-face {\n  font-family: \"Libre Franklin\";\n  font-weight: 400;\n  font-style: normal;\n  src: url(\"//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_n4.a9b0508e1ffb743a0fd6d0614768959c54a27d86.woff2\") format(\"woff2\"),\n       url(\"//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_n4.948f6f27caf8552b1a9560176e3f14eeb2c6f202.woff\") format(\"woff\");\n}"
+  },
+  {
+    "family": "Libre Franklin",
+    "weight": "400",
+    "style": "normal",
+    "display": null,
+    "stretch": null,
+    "unicode_range": null,
+    "src_urls": [
+      "//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_n4.a9b0508e1ffb743a0fd6d0614768959c54a27d86.woff2",
+      "//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_n4.948f6f27caf8552b1a9560176e3f14eeb2c6f202.woff"
+    ],
+    "src_formats": [
+      "woff2",
+      "woff"
+    ],
+    "source_css_url": "https://www.magnoliabakery.com/cdn/shop/t/6/assets/special-offers.scss.css?v=7251186587062236211639702603",
+    "raw": "@font-face {\n  font-family: \"Libre Franklin\";\n  font-weight: 400;\n  font-style: normal;\n  src: url(\"//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_n4.a9b0508e1ffb743a0fd6d0614768959c54a27d86.woff2\") format(\"woff2\"),\n       url(\"//www.magnoliabakery.com/cdn/fonts/libre_franklin/librefranklin_n4.948f6f27caf8552b1a9560176e3f14eeb2c6f202.woff\") format(\"woff\");\n}"
+  }
+]

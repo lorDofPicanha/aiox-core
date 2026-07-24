@@ -1,0 +1,42 @@
+[
+  {
+    "name": "--blockWrapperWidth",
+    "declarations": 1,
+    "references": 2
+  },
+  {
+    "name": "--videoHeight",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--videoHeightMobile",
+    "declarations": 1,
+    "references": 1
+  },
+  {
+    "name": "--apple-pay-button-width",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--apple-pay-button-height",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--apple-pay-button-border-radius",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--apple-pay-button-padding",
+    "declarations": 1,
+    "references": 0
+  },
+  {
+    "name": "--apple-pay-button-box-sizing",
+    "declarations": 1,
+    "references": 0
+  }
+]

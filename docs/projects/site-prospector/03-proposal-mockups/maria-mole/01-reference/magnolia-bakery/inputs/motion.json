@@ -1,0 +1,96 @@
+{
+  "durations": [
+    {
+      "value": "25s",
+      "count": 113
+    },
+    {
+      "value": "2s",
+      "count": 18
+    },
+    {
+      "value": "5s",
+      "count": 17
+    },
+    {
+      "value": "0s",
+      "count": 10
+    },
+    {
+      "value": "24s",
+      "count": 7
+    },
+    {
+      "value": "3s",
+      "count": 5
+    },
+    {
+      "value": "1s",
+      "count": 5
+    },
+    {
+      "value": "7s",
+      "count": 3
+    },
+    {
+      "value": "4s",
+      "count": 2
+    },
+    {
+      "value": "8s",
+      "count": 2
+    }
+  ],
+  "easings": [
+    {
+      "value": "cubic-bezier(.25,.46,.45,.94)",
+      "count": 10
+    },
+    {
+      "value": "cubic-bezier(.215,.61,.355,1)",
+      "count": 3
+    },
+    {
+      "value": "cubic-bezier(.5,0,.5,1)",
+      "count": 1
+    },
+    {
+      "value": "cubic-bezier(0,.5,.5,1)",
+      "count": 1
+    },
+    {
+      "value": "cubic-bezier(0,1,1,0)",
+      "count": 1
+    },
+    {
+      "value": "cubic-bezier(0,.2,.8,1)",
+      "count": 1
+    },
+    {
+      "value": "cubic-bezier(.3,0,0,1)",
+      "count": 1
+    }
+  ],
+  "keyframes": [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "shopify-rotator",
+    "shopify-dash",
+    "acceleratedCheckoutLoadingSkeleton"
+  ]
+}

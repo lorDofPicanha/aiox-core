@@ -1,0 +1,842 @@
+[
+  {
+    "selector": ":root",
+    "name": "--font-fallback",
+    "value": "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Oxygen-Sans,Ubuntu,Cantarell,\"Helvetica Neue\",Helvetica,Arial,sans-serif",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": ":root",
+    "name": "--font-body",
+    "value": "\"Akkurat\",var(--font-fallback)",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": ":root",
+    "name": "--font-heading",
+    "value": "\"La Grolet\",var(--font-fallback)",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": ":root",
+    "name": "--font-special",
+    "value": "\"DIN Condensed\",var(--font-fallback)",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": ":root",
+    "name": "--font-meurice",
+    "value": "\"Industrial736 BT\",var(--font-fallback)",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": ":root",
+    "name": "--color-primary",
+    "value": "0,0,0",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": ":root",
+    "name": "--color-black",
+    "value": "0,0,0",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": ":root",
+    "name": "--color-secondary",
+    "value": "143,143,143",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": ":root",
+    "name": "--color-white",
+    "value": "255,255,255",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": ":root",
+    "name": "--color-alert",
+    "value": "254,235,200",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": ":root",
+    "name": "--color-background",
+    "value": "246,246,246",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": ":root",
+    "name": "--color-error",
+    "value": "227,45,45",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": ":root",
+    "name": "--color-gold",
+    "value": "197,169,122",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": ":root",
+    "name": "--color-grey",
+    "value": "73,73,73",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": ":root",
+    "name": "--overlay-opacity",
+    "value": ".8",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": ":root",
+    "name": "--container-width",
+    "value": "1630px",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": ":root",
+    "name": "--container-small-width",
+    "value": "1200px",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": ":root",
+    "name": "--container-tiny-width",
+    "value": "880px",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": ":root",
+    "name": "--container-padding-inline",
+    "value": "15px",
+    "is_alias": false,
+    "line": 5
+  },
+  {
+    "selector": "@media screen and (min-width:1280px)",
+    "name": "--container-padding-inline",
+    "value": "25px",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@media (prefers-reduced-motion:no-preference)",
+    "name": "--animation-order",
+    "value": "1",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@media (prefers-reduced-motion:no-preference)",
+    "name": "--animation-fade-in",
+    "value": "c var(--duration-extra-long) cubic-bezier(0,0,0.3,1)",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@media (prefers-reduced-motion:no-preference)",
+    "name": "--animation-slide-in",
+    "value": "b var(--duration-extra-long) cubic-bezier(0,0,0.3,1) forwards",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@media (prefers-reduced-motion:no-preference)",
+    "name": "--duration-extra-long",
+    "value": "600ms",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".addresses",
+    "name": "--addresses-column",
+    "value": "1",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".addresses",
+    "name": "--addresses-h-gap",
+    "value": "33px",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".addresses",
+    "name": "--addresses-v-gap",
+    "value": "15px",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@media (min-width:992px)",
+    "name": "--addresses-h-gap",
+    "value": "27px",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@media (min-width:992px)",
+    "name": "--addresses-v-gap",
+    "value": "20px",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".addresses--2-col",
+    "name": "--addresses-column",
+    "value": "2",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--button-min-width",
+    "value": "260px",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--button-height",
+    "value": "50px",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--button-font-size",
+    "value": "16px",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--button-font-weight",
+    "value": "700",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--button-border-radius",
+    "value": "10px",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--button-bg",
+    "value": "transparent",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--button-border-color",
+    "value": "transparent",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--button-color",
+    "value": "#000",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--button-width",
+    "value": "auto",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--button-padding",
+    "value": "0 15px",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--button-color-hover",
+    "value": "var(--button-color)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--button-bg-hover",
+    "value": "var(--button-bg)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ":root",
+    "name": "--button-border-color-hover",
+    "value": "var(--button-border-color)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": "@media (min-width:992px)",
+    "name": "--button-height",
+    "value": "55px",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--full",
+    "name": "--button-width",
+    "value": "100%",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--primary",
+    "name": "--button-bg",
+    "value": "#000",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--primary",
+    "name": "--button-border-color",
+    "value": "#000",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--primary",
+    "name": "--button-color",
+    "value": "#fff",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--primary",
+    "name": "--button-color-hover",
+    "value": "var(--button-bg)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ".button--primary",
+    "name": "--button-bg-hover",
+    "value": "var(--button-color)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ".button--primary",
+    "name": "--button-border-color-hover",
+    "value": "#000",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--secondary,.cms__item__text .btn",
+    "name": "--button-bg",
+    "value": "transparent",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--secondary,.cms__item__text .btn",
+    "name": "--button-border-color",
+    "value": "rgb(var(--color-secondary))",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--secondary,.cms__item__text .btn",
+    "name": "--button-color",
+    "value": "rgb(var(--color-primary))",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--secondary,.cms__item__text .btn",
+    "name": "--button-font-weight",
+    "value": "400",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--secondary,.cms__item__text .btn",
+    "name": "--button-width",
+    "value": "fit-content",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--secondary,.cms__item__text .btn",
+    "name": "--button-border-color-hover",
+    "value": "rgb(var(--color-primary))",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--invert",
+    "name": "--button-bg",
+    "value": "#fff",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--invert",
+    "name": "--button-border-color",
+    "value": "#000",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--invert",
+    "name": "--button-color",
+    "value": "#000",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--invert",
+    "name": "--button-color-hover",
+    "value": "var(--button-bg)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ".button--invert",
+    "name": "--button-bg-hover",
+    "value": "var(--button-color)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ".button--invert",
+    "name": "--button-border-color-hover",
+    "value": "#000",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--add",
+    "name": "--button-padding",
+    "value": "0 3rem",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--continue",
+    "name": "--button-bg",
+    "value": "transparent",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--continue",
+    "name": "--button-border-color",
+    "value": "rgb(var(--color-primary))",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--continue",
+    "name": "--button-color",
+    "value": "rgb(var(--color-primary))",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--continue",
+    "name": "--button-font-weight",
+    "value": "300",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--continue",
+    "name": "--button-border-color-hover",
+    "value": "rgb(var(--color-primary))",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--continue",
+    "name": "--button-bg-hover",
+    "value": "rgb(var(--color-primary))",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--continue",
+    "name": "--button-color-hover",
+    "value": "rgb(var(--color-white))",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--rounded",
+    "name": "--button-padding",
+    "value": "0",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--rounded",
+    "name": "--button-border-radius",
+    "value": "50px",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--rounded",
+    "name": "--button-color",
+    "value": "rgb(var(--color-primary))",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--rounded",
+    "name": "--button-border-color",
+    "value": "rgb(var(--color-secondary))",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--rounded",
+    "name": "--button-font-weight",
+    "value": "300",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--rounded",
+    "name": "--button-color-hover",
+    "value": "rgb(var(--color-primary))",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--rounded",
+    "name": "--button-border-color-hover",
+    "value": "rgb(var(--color-primary))",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--rounded",
+    "name": "--button-min-width",
+    "value": "0",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--rounded",
+    "name": "--button-height",
+    "value": "46px",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--rounded",
+    "name": "--button-font-size",
+    "value": "14px",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@media (min-width:992px)",
+    "name": "--button-font-size",
+    "value": "16px",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--rounded[aria-selected=true]",
+    "name": "--button-color",
+    "value": "rgb(var(--color-white))",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--rounded[aria-selected=true]",
+    "name": "--button-bg",
+    "value": "rgb(var(--color-primary))",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--rounded[aria-selected=true]",
+    "name": "--button-border-color",
+    "value": "rgb(var(--color-primary))",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--rounded[aria-selected=true]",
+    "name": "--button-bg-hover",
+    "value": "rgb(var(--color-primary))",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".button--rounded[aria-selected=true]",
+    "name": "--button-color-hover",
+    "value": "rgb(var(--color-white))",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@media (min-width:992px)",
+    "name": "--container-width",
+    "value": "1260px",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@media (min-width:1530px)",
+    "name": "--container-width",
+    "value": "1420px",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@media (min-width:768px)and (max-width:1529px)",
+    "name": "--container-width",
+    "value": "var(--container-small-width)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": "@media (min-width:768px)",
+    "name": "--container-width",
+    "value": "var(--container-small-width)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ".container.\\--tiny",
+    "name": "--container-width",
+    "value": "var(--container-tiny-width)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": ".order-line__button",
+    "name": "--button-min-width",
+    "value": "172px",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".order-line__button",
+    "name": "--button-height",
+    "value": "50px",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".product-row",
+    "name": "--columns",
+    "value": "1",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".product-row",
+    "name": "--h-gap",
+    "value": "20px",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".product-row",
+    "name": "--v-gap",
+    "value": "15px",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".choices__options",
+    "name": "--columns",
+    "value": "2",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".choices__options",
+    "name": "--h-gap",
+    "value": "20px",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@media (min-width:768px)",
+    "name": "--h-gap",
+    "value": "50px",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".choices__options",
+    "name": "--columns",
+    "value": "1",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".choices__options",
+    "name": "--v-gap",
+    "value": "20px",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@media (max-width:767px)and (min-width:768px)",
+    "name": "--v-gap",
+    "value": "68px",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@media (min-width:768px)",
+    "name": "--arrow",
+    "value": "before{content:\"\"",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".contact__button",
+    "name": "--button-width",
+    "value": "100%",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".edito__image__container",
+    "name": "--item-height",
+    "value": ".667",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".edito__image__container.\\--double",
+    "name": "--item-height",
+    "value": "1.5",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".edito__images",
+    "name": "--item-height",
+    "value": "1.211",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".editoMediatext__slider .flickity-page-dots .dot",
+    "name": "--color",
+    "value": "#ddd",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".editoMediatext__slider .flickity-page-dots .dot.is-selected",
+    "name": "--color",
+    "value": "#8f8f8f",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".prehome",
+    "name": "--custom-color",
+    "value": "#f1e4b2",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": "@media (min-width:768px)",
+    "name": "--active",
+    "value": "has(.prehome__title.\\--custom:hover) .prehome__title,.prehome__titles:hover:has(.prehome__title.\\--custom:hover) .prehome__title{color:var(--custom-color)",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".prehome__title",
+    "name": "--hover-color",
+    "value": "#fff",
+    "is_alias": false,
+    "line": 6
+  },
+  {
+    "selector": ".prehome__title.\\--custom",
+    "name": "--hover-color",
+    "value": "var(--custom-color)",
+    "is_alias": true,
+    "line": 6
+  },
+  {
+    "selector": "/* ── https://cedric-grolet.com/opera/themes/symediane/assets/css/custom.css?v=1.82 ── */ /* * Custom style goes here. * A template should always ship with an empty custom.css */ /* ── inline style=\"\"",
+    "name": "--animation-order",
+    "value": "0",
+    "is_alias": false,
+    "line": 977
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline3",
+    "name": "--animation-order",
+    "value": "1",
+    "is_alias": false,
+    "line": 990
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline5",
+    "name": "--animation-order",
+    "value": "2",
+    "is_alias": false,
+    "line": 996
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline7",
+    "name": "--animation-order",
+    "value": "3",
+    "is_alias": false,
+    "line": 1002
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline9",
+    "name": "--animation-order",
+    "value": "5",
+    "is_alias": false,
+    "line": 1008
+  },
+  {
+    "selector": "/* ── inline style=\"\" attr ── */ .__inline11",
+    "name": "--animation-order",
+    "value": "6",
+    "is_alias": false,
+    "line": 1014
+  }
+]
