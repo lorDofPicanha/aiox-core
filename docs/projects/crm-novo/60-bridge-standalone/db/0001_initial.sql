@@ -27,18 +27,21 @@ CREATE INDEX IF NOT EXISTS idx_audit_tenant_created ON bridge_audit_log(tenant_i
 CREATE INDEX IF NOT EXISTS idx_audit_status ON bridge_audit_log(status) WHERE status IN ('pending', 'failed');
 CREATE INDEX IF NOT EXISTS idx_audit_entity ON bridge_audit_log(entity_id, event_type);
 
--- Idempotency keys: hash → primeira chamada (dedup)
--- UNIQUE constraint garante que retry com mesmo event_id retorna a 1ª chamada.
+-- Idempotency keys: event_id + destination → primeira chamada (dedup)
+-- O mesmo event_id dispara Meta e Google; destination precisa fazer parte da chave.
+-- UNIQUE constraint garante que retry com mesmo event_id+destination retorna a 1ª chamada.
 CREATE TABLE IF NOT EXISTS bridge_idempotency (
-  event_id            text PRIMARY KEY,
+  event_id            text NOT NULL,
   tenant_id           text NOT NULL,
   event_type          text NOT NULL,
   destination         text NOT NULL,
   first_audit_id      uuid NOT NULL REFERENCES bridge_audit_log(id),
   created_at          timestamptz NOT NULL DEFAULT now(),
-  expires_at          timestamptz NOT NULL DEFAULT (now() + interval '7 days')
+  expires_at          timestamptz NOT NULL DEFAULT (now() + interval '7 days'),
+  PRIMARY KEY (event_id, destination)
 );
 
+CREATE INDEX IF NOT EXISTS idx_idemp_event_id ON bridge_idempotency(event_id);
 CREATE INDEX IF NOT EXISTS idx_idemp_expires ON bridge_idempotency(expires_at);
 
 -- Dead-letter queue: falhas que esgotaram retry. Manual replay.

@@ -40,7 +40,12 @@ export const dlqReplay = inngest.createFunction(
     });
 
     // 3. Re-dispatch original event
-    const originalEventName = `${dlqRow.tenant_id}/${dlqRow.event_type}`;
+    const originalEventName =
+      `${dlqRow.tenant_id}/${dlqRow.event_type}` as
+        | 'tocks/lead.qualified'
+        | 'bretda/lead.qualified'
+        | 'tocks/deal.won'
+        | 'bretda/deal.won';
     await step.sendEvent('replay-original', {
       name: originalEventName,
       data: dlqRow.original_payload,

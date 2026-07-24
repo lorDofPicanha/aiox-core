@@ -13,7 +13,7 @@ Given a public URL, the pipeline:
 1. Fetches HTML and walks every `<link rel="stylesheet">`, inline `<style>`, and `style=""` attribute
 2. Regex-detects colors, type, spacing, radii, shadows, motion, breakpoints, dark-mode, and stack signals
 3. Classifies the visual archetype (shadcn-neutral, apple-glass, carbon-enterprise, polaris-friendly, ...)
-4. Hands all of the above to `claude -p` (or OpenRouter Haiku) which emits a Google-spec `DESIGN.md`
+4. Hands all of the above to Codex CLI, `claude -p`, or OpenRouter Haiku, which emits a Google-spec `DESIGN.md`
 5. Lints with `@google/design.md@0.1.0`, scores quality A–F, computes drift vs. a local DESIGN.md (optional)
 6. Renders a single-file `preview.html` with swatches, typography, fingerprint, and the raw DESIGN.md
 
@@ -29,13 +29,12 @@ cp -R design-md /path/to/your-project/.claude/skills/
 cd /path/to/your-project/.claude/skills/design-md
 npm install
 
-# 3. Make sure you have either `claude` (Claude Code CLI) on PATH,
-#    or an OpenRouter API key in OPENROUTER_API_KEY.
+# 3. Make sure you have `codex`, `claude`, or an OpenRouter API key available.
 ```
 
 Requirements:
 - Node 18+
-- One LLM provider: [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code) **or** an OpenRouter API key
+- One LLM provider: Codex CLI, [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code), **or** an OpenRouter API key
 
 ## Use
 
@@ -54,7 +53,7 @@ The skill auto-activates.
 ## Examples
 
 ```bash
-# Static extract (default — claude-cli provider)
+# Static extract (default — codex-cli provider)
 node .claude/skills/design-md/run.cjs --url https://stripe.com/
 
 # Cheap CI-friendly extract via OpenRouter Haiku
@@ -106,8 +105,8 @@ outputs/design-md/{slug}/
 | `--no-content-gate` | off | Skip the content-validation gate |
 | `--no-llm-retry` | off | Fail hard on first LLM error (CI mode) |
 | `--no-reuse` | off | Force cold run, no reuse from prior extracts |
-| `--provider <id>` | auto | `claude-cli` or `openrouter` |
-| `--model <id>` | provider default | `claude-cli` → Opus 4.7; `openrouter` → Haiku 4.5 |
+| `--provider <id>` | auto | `codex-cli`, `claude-cli`, or `openrouter` |
+| `--model <id>` | provider default | `codex-cli` → `CODEX_MODEL` or `gpt-5.5`; `claude-cli` → Opus 4.7; `openrouter` → Haiku 4.5 |
 | `--max-tokens <n>` | 8192 | OpenRouter only |
 
 ## Environment
@@ -115,6 +114,7 @@ outputs/design-md/{slug}/
 | Var | Purpose |
 |---|---|
 | `OPENROUTER_API_KEY` | Required for `--provider openrouter` |
+| `CODEX_MODEL` | Optional model override for `--provider codex-cli` |
 | `DESIGN_MD_OUTPUTS_DIR` | Override outputs root for the helper scripts in `scripts/` |
 | `DESIGN_MD_POST_HOOK` | Optional Node script invoked as `node $HOOK $outDir` after each extract. Fire-and-forget. |
 | `DESIGN_MD_SKIP_HOOK` | Set to `1` to bypass the post-hook |

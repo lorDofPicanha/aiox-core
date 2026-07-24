@@ -1,7 +1,7 @@
 metadata:
   version: 1.0.0
-  lastUpdated: '2026-05-28T01:47:32.362Z'
-  entityCount: 1342
+  lastUpdated: '2026-05-29T14:11:59.263Z'
+  entityCount: 1345
   checksumAlgorithm: sha256
   resolutionRate: 100
 entities:
@@ -26930,6 +26930,56 @@ entities:
         extensionPoints: []
       checksum: sha256:bd8e7564886e587e4f88154bf1233e0112a555e574dcc478432e9b87cb43e7e5
       lastVerified: '2026-05-28T01:47:32.355Z'
+    anderson-hernandes:
+      path: .aios-core/development/agents/anderson-hernandes.md
+      type: agent
+      purpose: '"Mostrar comandos disponíveis"'
+      keywords:
+        - anderson
+        - hernandes
+        - anderson-hernandes
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.3
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:696a6010493bdc186be59d009a9550729c9121986e3c936cd06c52c3446f7b9d
+      lastVerified: '2026-05-29T14:11:59.256Z'
+    heleno-taveira-torres:
+      path: .aios-core/development/agents/heleno-taveira-torres.md
+      type: agent
+      purpose: '"Mostrar comandos disponíveis"'
+      keywords:
+        - heleno
+        - taveira
+        - torres
+        - heleno-taveira-torres
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.3
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:7370829926f081f25e9feaee6ee7610b24c7a609c3eeed7ddebdb48cce4539c9
+      lastVerified: '2026-05-29T14:11:59.257Z'
+    roberto-dias-duarte:
+      path: .aios-core/development/agents/roberto-dias-duarte.md
+      type: agent
+      purpose: '"Mostrar comandos disponíveis"'
+      keywords:
+        - roberto
+        - dias
+        - duarte
+        - roberto-dias-duarte
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.3
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:2927e8bd6509b31dc6348b756e3fde3125d9d84c7c02fceb6b70bafeb95525f0
+      lastVerified: '2026-05-29T14:11:59.258Z'
   checklists:
     agent-quality-gate:
       path: .aios-core/development/checklists/agent-quality-gate.md
@@ -27217,8 +27267,8 @@ entities:
         score: 0.5
         constraints: []
         extensionPoints: []
-      checksum: sha256:d404e07f7de09951ca2770cb073e315b3d8f7dd93295c3f21fad04f17ab5e7b0
-      lastVerified: '2026-04-10T23:10:01.153Z'
+      checksum: sha256:b672fbfa59d9a65bef749ec4db84e4b8111e7ba5a6615e05ddb083b95defc311
+      lastVerified: '2026-05-29T14:11:59.236Z'
     learned-patterns:
       path: .aios-core/data/learned-patterns.yaml
       layer: L3

@@ -1,4 +1,5 @@
-import { opportunities, portalAccess } from "@/lib/noyce-data";
+import { portalAccess } from "@/lib/noyce-data";
+import type { Opportunity } from "@/lib/noyce-model";
 import { formatDateTime } from "@/lib/noyce-model";
 import { buildNextStep, daysUntil, needsConsorcioPartner, operationalState } from "@/lib/noyce-operational";
 import { Metric } from "@/components/shell/bits";
@@ -7,7 +8,7 @@ import type { TabId } from "@/components/shell/tabs";
 
 // Mesa = the router. It does not execute a stage; it shows the day's prioritized work
 // and deep-links the operator into the tab that owns the next action.
-export function MesaTab({ onOpen }: { onOpen: (id: string, tab: TabId) => void }) {
+export function MesaTab({ onOpen, opportunities }: { onOpen: (id: string, tab: TabId) => void; opportunities: Opportunity[] }) {
   const readyNow = opportunities.filter((o) => operationalState(o).tone === "ready").length;
   const fastReview = opportunities.filter((o) => operationalState(o).tone === "review").length;
   const blockedByEvidence = opportunities.filter((o) => operationalState(o).tone === "blocked").length;

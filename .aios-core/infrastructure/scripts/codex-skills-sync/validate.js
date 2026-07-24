@@ -17,7 +17,7 @@ function getDefaultOptions() {
     projectRoot,
     sourceDirs: [
       path.join(projectRoot, '.aios-core', 'development', 'agents'),
-      path.join(projectRoot, '.claude', 'commands', 'AIOS', 'agents'),
+      path.join(projectRoot, '.codex', 'agents'),
     ],
     skillsDir: path.join(projectRoot, '.codex', 'skills'),
     strict: false,

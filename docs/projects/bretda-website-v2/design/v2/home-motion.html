@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BRETDA — Handcrafted Luxury Game Tables</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400&family=Raleway:wght@200;300;400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#2A2B26; --bg-2:#1F201C; --velvet:#161712; --void:#0c0d09;
+    --accent:#C9A961; --head:#F2EFE8; --body:#B7B3A8;
+    --hair:rgba(201,169,97,.28); --hair-soft:rgba(242,239,232,.10);
+    --radius:4px; --max:1320px;
+    /* ---- Val Head motion tokens ---- */
+    --ease-luxe:cubic-bezier(0.16,1,0.3,1);
+    --ease-curtain:cubic-bezier(0.77,0,0.175,1);
+    --ease-settle:cubic-bezier(0.22,1,0.36,1);
+    --ease-micro:cubic-bezier(0.4,0,0.2,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{overflow-x:hidden}
+  body{background:var(--void);color:var(--body);
+    font-family:'Raleway',sans-serif;font-weight:300;line-height:1.6;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  ::selection{background:var(--accent);color:var(--bg-2)}
+  a{color:inherit;text-decoration:none}
+  img,video{display:block;max-width:100%}
+
+  /* film grain — makes near-black read as velvet, not flat */
+  #grain{position:fixed;inset:-150%;z-index:3;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation:grain 7s steps(6) infinite}
+  @keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-4%,3%)}40%{transform:translate(3%,-4%)}60%{transform:translate(-3%,2%)}80%{transform:translate(4%,-3%)}100%{transform:translate(0,0)}}
+
+  /* cursor-tracked champagne glow */
+  #spot{position:fixed;inset:0;z-index:2;pointer-events:none;mix-blend-mode:screen;
+    background:radial-gradient(420px 420px at var(--mx,50%) var(--my,40%), rgba(201,169,97,.09), transparent 70%)}
+
+  /* ---------- Sticky bar ---------- */
+  .topbar{position:fixed;top:0;left:0;right:0;z-index:60;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px clamp(20px,5vw,64px);
+    background:rgba(12,13,9,0);border-bottom:1px solid transparent;
+    transition:background .5s var(--ease-micro),border-color .5s var(--ease-micro),backdrop-filter .5s var(--ease-micro)}
+  .topbar.scrolled{background:rgba(12,13,9,.82);backdrop-filter:blur(12px) saturate(120%);border-bottom-color:var(--hair)}
+  .brand{font-family:'Bodoni Moda',serif;font-weight:500;font-size:20px;letter-spacing:.42em;color:var(--head);padding-left:.42em}
+  .top-actions{display:flex;align-items:center;gap:clamp(14px,3vw,34px)}
+  .nav-links{display:flex;gap:30px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--body)}
+  .nav-links a{transition:color .25s var(--ease-micro)}
+  .nav-links a:hover{color:var(--head)}
+  .geo{display:flex;align-items:center;gap:9px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--body)}
+  .geo .cur{color:var(--accent)} .geo .swap{opacity:.4} .geo .cur.alt{color:var(--body);opacity:.55}
+  .inquire-top{display:inline-flex;align-items:center;gap:12px;min-height:44px;padding:0 22px;
+    border:1px solid var(--hair);border-radius:var(--radius);
+    font-size:11.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--head);
+    transition:border-color .22s var(--ease-micro),background .22s var(--ease-micro)}
+  .inquire-top:hover{border-color:var(--accent);background:rgba(201,169,97,.06)}
+  .inquire-top .arrow{color:var(--accent)}
+
+  /* ---------- persistent thumb-reach CTA (BJ Fogg) ---------- */
+  .dock{position:fixed;z-index:55;left:50%;bottom:22px;transform:translateX(-50%) translateY(140%);
+    display:inline-flex;align-items:center;gap:14px;min-height:52px;padding:0 30px;
+    background:var(--accent);color:var(--bg-2);border-radius:40px;
+    font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;
+    box-shadow:0 16px 46px -16px rgba(0,0,0,.7);
+    transition:transform .6s var(--ease-luxe),box-shadow .25s var(--ease-micro)}
+  .dock.show{transform:translateX(-50%) translateY(0)}
+  .dock:hover{box-shadow:0 18px 50px -14px rgba(201,169,97,.6)}
+  .dock .arrow{font-size:14px}
+  @media (max-width:560px){ .dock{left:16px;right:16px;transform:translateX(0) translateY(160%);justify-content:center}
+    .dock.show{transform:translateX(0) translateY(0)} }
+
+  /* ============================================================ HERO — Carved from the Dark (real product film, graded to velvet) ============================================================ */
+  .hero{position:relative;height:100svh;overflow:hidden;display:flex;align-items:flex-end}
+  .hero-media{position:absolute;inset:-7% -4%;z-index:0;will-change:transform}
+  .hero-media video,.hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 42%;
+    /* regrade the bright product film into a near-black velvet jewel */
+    filter:brightness(.6) contrast(1.18) saturate(1.04)}
+  /* velvet bloom + edge crush so the table resolves out of darkness */
+  .hero-grade{position:absolute;inset:0;z-index:1;
+    background:
+      radial-gradient(120% 95% at 52% 44%, rgba(12,13,9,0) 30%, rgba(12,13,9,.62) 78%, rgba(12,13,9,.96) 100%),
+      linear-gradient(180deg, rgba(12,13,9,.5) 0%, rgba(12,13,9,.02) 30%, rgba(12,13,9,.18) 56%, rgba(12,13,9,.97) 100%),
+      linear-gradient(75deg, rgba(12,13,9,.78) 0%, rgba(12,13,9,.24) 42%, rgba(12,13,9,0) 74%)}
+  /* champagne light-sweep that crosses on load */
+  .hero-sweep{position:absolute;inset:0;z-index:2;pointer-events:none;mix-blend-mode:screen;
+    background:linear-gradient(105deg, transparent 38%, rgba(201,169,97,.16) 50%, transparent 62%);
+    background-size:260% 100%;background-position:130% 0}
+  .hero-inner{position:relative;z-index:4;max-width:var(--max);margin:0 auto;width:100%;
+    padding:0 clamp(20px,5vw,64px) clamp(54px,9vh,118px);will-change:transform}
+  .hero-eyebrow{font-size:11px;letter-spacing:.42em;text-transform:uppercase;color:var(--accent);margin-bottom:26px}
+  /* ONE oversized Bodoni word, 14-22vw */
+  .hero h1{font-family:'Bodoni Moda',serif;font-weight:500;color:var(--head);
+    font-size:clamp(64px,15vw,250px);line-height:.82;letter-spacing:-.025em;
+    text-shadow:0 2px 80px rgba(0,0,0,.6)}
+  .hero h1 .ln{display:block;overflow:hidden}
+  .hero h1 .ln > span{display:block;will-change:transform}
+  .hero h1 em{font-style:italic;font-weight:400;color:var(--accent)}
+  .hero h1 .sm{display:block;font-size:clamp(20px,2.4vw,34px);letter-spacing:-.01em;line-height:1;margin-top:.18em;color:var(--head)}
+  .hero .sub{max-width:38ch;margin-top:26px;font-size:clamp(14px,1.4vw,16px);line-height:1.7;color:var(--head);opacity:.86}
+  .hero-cta{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:34px}
+  .btn-primary{position:relative;display:inline-flex;align-items:center;gap:14px;min-height:54px;padding:0 34px;
+    background:var(--accent);color:var(--bg-2);border-radius:var(--radius);
+    font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:500;
+    transition:box-shadow .25s var(--ease-micro);will-change:transform}
+  .btn-primary:hover{box-shadow:0 16px 46px -18px rgba(201,169,97,.65)}
+  .btn-ghost{display:inline-flex;align-items:center;gap:11px;min-height:44px;
+    font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--head);
+    border-bottom:1px solid var(--hair);transition:gap .22s var(--ease-micro),border-color .22s var(--ease-micro)}
+  .btn-ghost:hover{gap:15px;border-bottom-color:var(--accent)}
+  .scrollcue{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:4;
+    font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--body);opacity:.7;
+    display:flex;flex-direction:column;align-items:center;gap:10px}
+  .scrollcue .line{width:1px;height:38px;background:linear-gradient(var(--accent),transparent);animation:cue 2.4s ease-in-out infinite}
+  @keyframes cue{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+
+  /* ============================================================ THE ORBIT — scroll-scrubbed turntable (real video scrubbed by scroll) ============================================================ */
+  .orbit{position:relative;height:280vh;background:var(--void)}
+  .orbit-stage{position:sticky;top:0;height:100svh;overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+    background:radial-gradient(120% 90% at 50% 56%, #16170f 0%, var(--void) 70%)}
+  .orbit-word{position:absolute;z-index:1;font-family:'Bodoni Moda',serif;font-weight:500;
+    color:rgba(242,239,232,.05);font-size:clamp(120px,30vw,460px);line-height:.8;letter-spacing:-.03em;
+    white-space:nowrap;will-change:transform;user-select:none}
+  .orbit-video{position:relative;z-index:2;width:min(86vw,1120px);border-radius:var(--radius);overflow:hidden;
+    box-shadow:0 50px 120px -30px rgba(0,0,0,.8)}
+  .orbit-video video{width:100%;display:block;filter:brightness(.66) contrast(1.16) saturate(1.03)}
+  .orbit-vignette{position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(120% 100% at 50% 50%, transparent 46%, rgba(12,13,9,.85) 100%)}
+  .orbit-cap{position:absolute;z-index:3;bottom:10%;left:50%;transform:translateX(-50%);text-align:center;will-change:transform,opacity}
+  .orbit-cap .k{font-size:11px;letter-spacing:.42em;text-transform:uppercase;color:var(--accent)}
+  .orbit-cap .t{font-family:'Bodoni Moda',serif;font-weight:500;color:var(--head);
+    font-size:clamp(28px,4.2vw,62px);line-height:1;margin-top:12px;letter-spacing:-.01em}
+  .orbit-cap .t em{font-style:italic;font-weight:400;color:var(--accent)}
+
+  /* ============================================================ STATEMENT — one monumental line ============================================================ */
+  .sec{padding:clamp(80px,14vh,170px) 0}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(20px,5vw,64px)}
+  .sec-eyebrow{font-size:11px;letter-spacing:.42em;text-transform:uppercase;color:var(--accent);margin-bottom:24px}
+  .statement{background:var(--bg);position:relative}
+  .statement h2{font-family:'Bodoni Moda',serif;font-weight:500;color:var(--head);
+    font-size:clamp(40px,7.4vw,128px);line-height:.96;letter-spacing:-.018em;max-width:15ch}
+  .statement h2 em{font-style:italic;font-weight:400;color:var(--accent)}
+  .statement .word{display:inline-block;will-change:transform,opacity}
+
+  /* ============================================================ MACRO MATERIAL MOMENT (opal-detail.mp4) ============================================================ */
+  .macro{position:relative;height:100svh;overflow:hidden;display:flex;align-items:center;background:var(--void)}
+  .macro-media{position:absolute;inset:-8% 0;z-index:0;will-change:transform}
+  .macro-media video{width:100%;height:116%;object-fit:cover;filter:brightness(.72) contrast(1.12) saturate(1.02)}
+  .macro-grade{position:absolute;inset:0;z-index:1;
+    background:linear-gradient(90deg, rgba(12,13,9,.92) 0%, rgba(12,13,9,.42) 50%, rgba(12,13,9,.1) 100%)}
+  .macro-inner{position:relative;z-index:2;max-width:var(--max);margin:0 auto;width:100%;padding:0 clamp(20px,5vw,64px)}
+  .macro h3{font-family:'Bodoni Moda',serif;font-weight:500;color:var(--head);
+    font-size:clamp(34px,5.6vw,92px);line-height:1;letter-spacing:-.015em;max-width:13ch}
+  .macro h3 em{font-style:italic;font-weight:400;color:var(--accent)}
+  .macro p{max-width:32ch;margin-top:20px;font-size:15px;line-height:1.7;color:var(--head);opacity:.88}
+
+  /* ============================================================ HORIZONTAL PINNED GALLERY (collection-as-stage, with per-piece spec facts) ============================================================ */
+  .gallery{position:relative;background:var(--void)}
+  .gal-head{max-width:var(--max);margin:0 auto;padding:clamp(70px,11vh,130px) clamp(20px,5vw,64px) 0}
+  .gal-head .sec-eyebrow{margin-bottom:16px}
+  .gal-head h2{font-family:'Bodoni Moda',serif;font-weight:500;color:var(--head);
+    font-size:clamp(32px,5vw,72px);line-height:1;letter-spacing:-.012em;max-width:16ch}
+  .gal-head h2 em{font-style:italic;font-weight:400;color:var(--accent)}
+  .gal-pin{height:100svh;overflow:hidden;display:flex;align-items:center}
+  .gal-track{display:flex;gap:clamp(20px,3vw,46px);padding:0 clamp(20px,8vw,140px);will-change:transform}
+  .jewel{position:relative;flex:0 0 auto;width:clamp(320px,40vw,600px);height:clamp(380px,66vh,680px);
+    border-radius:var(--radius);overflow:hidden;
+    background:
+      radial-gradient(120% 90% at 50% 116%, rgba(201,169,97,.14), rgba(201,169,97,0) 52%),
+      radial-gradient(140% 120% at 50% 40%, #20211c 0%, var(--velvet) 72%, #0c0d09 100%);
+    box-shadow:inset 0 0 100px 10px rgba(0,0,0,.55);
+    display:flex;flex-direction:column;justify-content:space-between;padding:clamp(26px,2.4vw,40px)}
+  .jewel img{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);width:90%;z-index:0;
+    -webkit-mask-image:radial-gradient(118% 120% at 50% 46%,#000 56%,transparent 99%);
+            mask-image:radial-gradient(118% 120% at 50% 46%,#000 56%,transparent 99%)}
+  .jewel .j-top,.jewel .j-bot{position:relative;z-index:2}
+  .jewel .j-k{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--accent)}
+  .jewel .j-name{font-family:'Bodoni Moda',serif;font-weight:500;color:var(--head);
+    font-size:clamp(34px,3.4vw,56px);line-height:.92;margin-top:8px;letter-spacing:-.01em}
+  /* BJ Fogg spec moment — facts are load-bearing */
+  .j-spec{display:grid;grid-template-columns:auto 1fr;gap:5px 16px;font-size:11.5px;letter-spacing:.04em;
+    color:var(--body);margin-bottom:16px;line-height:1.5}
+  .j-spec dt{color:rgba(201,169,97,.85);text-transform:uppercase;letter-spacing:.14em;font-size:9.5px;align-self:center}
+  .j-spec dd{color:var(--head);opacity:.92}
+  .j-price{display:block;color:var(--accent);font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;margin-bottom:14px}
+  .j-cta{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 18px;
+    border:1px solid var(--hair);border-radius:var(--radius);
+    font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--head);
+    transition:border-color .22s var(--ease-micro),background .22s var(--ease-micro)}
+  .j-cta:hover{border-color:var(--accent);background:rgba(201,169,97,.06)}
+  .j-cta .arrow{color:var(--accent)}
+  .jewel.j-end{background:none;box-shadow:none;width:clamp(300px,32vw,460px);justify-content:center}
+  .jewel.j-end .j-name{margin-bottom:20px}
+
+  /* ============================================================ THE MAKING (real reel) ============================================================ */
+  .making{position:relative;height:100svh;overflow:hidden;display:flex;align-items:flex-end;background:var(--void)}
+  .making-media{position:absolute;inset:0;z-index:0}
+  .making-media video{width:100%;height:100%;object-fit:cover;filter:brightness(.66) contrast(1.12) saturate(1.02)}
+  .making-grade{position:absolute;inset:0;z-index:1;
+    background:linear-gradient(180deg, rgba(12,13,9,.5) 0%, rgba(12,13,9,.05) 34%, rgba(12,13,9,.2) 58%, rgba(12,13,9,.96) 100%)}
+  .making-inner{position:relative;z-index:2;max-width:var(--max);margin:0 auto;width:100%;
+    padding:0 clamp(20px,5vw,64px) clamp(70px,11vh,130px)}
+  .making h3{font-family:'Bodoni Moda',serif;font-weight:500;color:var(--head);
+    font-size:clamp(34px,5.6vw,96px);line-height:.98;letter-spacing:-.015em;max-width:14ch}
+  .making h3 em{font-style:italic;font-weight:400;color:var(--accent)}
+  .making p{max-width:38ch;margin-top:18px;font-size:15px;line-height:1.7;color:var(--head);opacity:.88}
+
+  /* ============================================================ NUMBERS ============================================================ */
+  .numbers{background:var(--bg-2)}
+  .num-grid{display:flex;flex-wrap:wrap;border:1px solid var(--hair);border-radius:var(--radius);overflow:hidden}
+  .num{flex:1;min-width:200px;padding:38px 34px;border-left:1px solid var(--hair-soft)}
+  .num:first-child{border-left:0}
+  .num .n{font-family:'Bodoni Moda',serif;color:var(--accent);font-size:clamp(30px,3.4vw,46px);font-weight:500;line-height:1}
+  .num .d{font-size:13px;color:var(--body);margin-top:10px;line-height:1.5}
+
+  /* ============================================================ CLOSING ============================================================ */
+  .closing{position:relative;text-align:center;padding:clamp(110px,20vh,240px) clamp(20px,5vw,64px);
+    background:radial-gradient(120% 90% at 50% 40%, #16170f 0%, var(--void) 72%)}
+  .closing h2{font-family:'Bodoni Moda',serif;font-weight:500;color:var(--head);
+    font-size:clamp(48px,9vw,170px);line-height:.9;letter-spacing:-.022em;max-width:14ch;margin:0 auto}
+  .closing h2 em{font-style:italic;font-weight:400;color:var(--accent)}
+  .closing .cta-wrap{display:inline-flex;flex-direction:column;align-items:center;gap:16px;margin-top:44px}
+  .closing .lower{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--body);opacity:.7}
+  .closing .lower a{color:var(--accent);border-bottom:1px solid var(--hair)}
+
+  /* ---------- Footer ---------- */
+  footer{border-top:1px solid var(--hair-soft);padding:clamp(56px,9vh,100px) clamp(20px,5vw,64px) clamp(40px,6vh,64px);background:var(--bg-2)}
+  .foot-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;gap:50px;flex-wrap:wrap}
+  .foot-brand{font-family:'Bodoni Moda',serif;font-weight:500;font-size:clamp(40px,6vw,84px);color:var(--head);line-height:.9;letter-spacing:-.01em}
+  .foot-brand span{display:block;font-family:'Raleway';font-weight:300;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--accent);margin-top:22px}
+  .foot-meta{text-align:right;font-size:12px;line-height:1.9;color:var(--body);letter-spacing:.04em;max-width:300px}
+  .foot-meta .made{color:var(--accent);letter-spacing:.18em;text-transform:uppercase;font-size:10.5px;display:block;margin-bottom:14px}
+  .foot-legal{max-width:var(--max);margin:clamp(40px,6vh,70px) auto 0;padding-top:26px;border-top:1px solid var(--hair-soft);
+    display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(183,179,168,.5)}
+
+  /* fade base */
+  .fade{opacity:0;transform:translateY(30px)}
+
+  @media (max-width:900px){
+    .nav-links,.geo{display:none}
+    .num{min-width:50%}
+  }
+  @media (max-width:560px){
+    .brand{font-size:16px;letter-spacing:.32em}
+    .inquire-top{display:none}
+  }
+
+  /* ---------- reduced-motion static fallback ---------- */
+  @media (prefers-reduced-motion:reduce){
+    #grain{animation:none}
+    .scrollcue .line{animation:none}
+    .fade{opacity:1!important;transform:none!important}
+    .orbit{height:auto}
+    .orbit-stage{position:relative;height:auto;padding:clamp(80px,14vh,160px) 0}
+    .orbit-word{position:relative;transform:none!important;display:block;text-align:center;opacity:.05}
+    .gal-pin{height:auto;overflow-x:auto;padding-bottom:30px}
+    .gal-track{transform:none!important}
+    .hero-media,.macro-media,.hero-inner{transform:none!important}
+    .hero-sweep{display:none}
+  }
+</style>
+</head>
+<body>
+<div id="grain"></div>
+<div id="spot"></div>
+
+<!-- persistent thumb-reach CTA -->
+<a href="#inquire" class="dock" id="dock" data-magnetic>Request a Commission <span class="arrow">&rarr;</span></a>
+
+<!-- ============ STICKY BAR ============ -->
+<header class="topbar" id="topbar">
+  <a href="home-motion.html" class="brand">BRETDA</a>
+  <nav class="top-actions">
+    <span class="nav-links">
+      <a href="#collection">The Collection</a>
+      <a href="#orbit">Atelier</a>
+      <a href="#making">The Making</a>
+    </span>
+    <span class="geo" title="Pricing shown in your local currency by region">
+      <span class="cur">$&nbsp;USD</span><span class="swap">/</span><span class="cur alt">€&nbsp;EUR</span>
+    </span>
+    <a href="#inquire" class="inquire-top" data-magnetic>Request a Quote <span class="arrow">&rarr;</span></a>
+  </nav>
+</header>
+
+<!-- ============ HERO — Carved from the Dark ============ -->
+<section class="hero" id="hero">
+  <div class="hero-media" id="heroMedia">
+    <video autoplay muted loop playsinline poster="assets-motion/espinela-poster.jpg" preload="auto">
+      <source src="assets-motion/espinela-hero.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <div class="hero-grade"></div>
+  <div class="hero-sweep" id="heroSweep"></div>
+  <div class="hero-inner" id="heroInner">
+    <p class="hero-eyebrow">Handcrafted in Brazil · Made to order · Shipped to the US &amp; Europe</p>
+    <h1>
+      <span class="ln"><span>Carved from</span></span>
+      <span class="ln"><span>the <em>Dark.</em></span></span>
+      <span class="sm">Tournament-grade game tables, built by hand.</span>
+    </h1>
+    <p class="sub">One commission at a time. Each named for a Brazilian gemstone.</p>
+    <div class="hero-cta">
+      <a href="#inquire" class="btn-primary" data-magnetic>Request a Commission <span class="arrow">&rarr;</span></a>
+      <a href="#collection" class="btn-ghost">See the collection <span class="arrow">&rarr;</span></a>
+    </div>
+  </div>
+  <div class="scrollcue"><span>Scroll</span><span class="line"></span></div>
+</section>
+
+<!-- ============ THE ORBIT — scrubbed turntable ============ -->
+<section class="orbit" id="orbit">
+  <div class="orbit-stage">
+    <div class="orbit-word" id="orbitWord">ESPINELA</div>
+    <div class="orbit-video">
+      <video id="orbitVid" muted playsinline preload="auto" poster="assets-motion/espinela-poster.jpg">
+        <source src="assets-motion/espinela-hero.mp4" type="video/mp4" />
+      </video>
+      <div class="orbit-vignette"></div>
+    </div>
+    <div class="orbit-cap" id="orbitCap">
+      <span class="k">The flagship · scroll to orbit</span>
+      <span class="t">Espinela — light, <em>made to float.</em></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATEMENT ============ -->
+<section class="sec statement">
+  <div class="wrap">
+    <p class="sec-eyebrow fade">Why Bretda</p>
+    <h2 id="statementLine">
+      <span class="word">Not</span> <span class="word">bought.</span> <span class="word"><em>Commissioned.</em></span>
+    </h2>
+  </div>
+</section>
+
+<!-- ============ MACRO MATERIAL MOMENT ============ -->
+<section class="macro" id="macro">
+  <div class="macro-media" id="macroMedia">
+    <video autoplay muted loop playsinline preload="auto" poster="assets-motion/opal-detail-poster.jpg">
+      <source src="assets-motion/opal-detail.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <div class="macro-grade"></div>
+  <div class="macro-inner">
+    <h3 class="fade">Hardwood, steel,<br>and <em>a soft 4&nbsp;mm edge.</em></h3>
+    <p class="fade">No visible fasteners. No seams to forgive. Light travels the frame rather than catches it.</p>
+  </div>
+</section>
+
+<!-- ============ HORIZONTAL GALLERY ============ -->
+<section class="gallery" id="collection">
+  <div class="gal-head">
+    <p class="sec-eyebrow fade">The collection</p>
+    <h2 class="fade">Six jewels, cut in <em>hardwood and steel.</em></h2>
+  </div>
+  <div class="gal-pin" id="galPin">
+    <div class="gal-track" id="galTrack">
+
+      <a class="jewel" href="pdp-aurora.html">
+        <img src="assets-home/std-espinela.jpg" alt="Espinela studio shot on black" />
+        <div class="j-top"><span class="j-k">Atelier · Flagship</span><span class="j-name">Espinela</span></div>
+        <div class="j-bot">
+          <dl class="j-spec">
+            <dt>Size</dt><dd>9&nbsp;ft &middot; 284 × 162 cm</dd>
+            <dt>Material</dt><dd>Wengué &amp; brushed steel</dd>
+            <dt>Lead time</dt><dd>12–14 weeks</dd>
+            <dt>Ships</dt><dd>US &amp; EU, white-glove</dd>
+          </dl>
+          <span class="j-price">from $24,000 · €</span>
+          <span class="j-cta">Begin this commission <span class="arrow">&rarr;</span></span>
+        </div>
+      </a>
+
+      <a class="jewel" href="pdp-aurora.html">
+        <img src="assets-home/std-aurora.jpg" alt="Aurora studio shot on black" />
+        <div class="j-top"><span class="j-k">Atelier</span><span class="j-name">Aurora</span></div>
+        <div class="j-bot">
+          <dl class="j-spec">
+            <dt>Size</dt><dd>8&nbsp;ft &middot; 254 × 142 cm</dd>
+            <dt>Material</dt><dd>Cerejeira &amp; polished steel</dd>
+            <dt>Lead time</dt><dd>10–12 weeks</dd>
+            <dt>Ships</dt><dd>US &amp; EU, white-glove</dd>
+          </dl>
+          <span class="j-price">from $18,000 · €</span>
+          <span class="j-cta">Begin this commission <span class="arrow">&rarr;</span></span>
+        </div>
+      </a>
+
+      <a class="jewel" href="collection.html">
+        <img src="assets-home/std-ambar.jpg" alt="Âmbar studio shot on black" />
+        <div class="j-top"><span class="j-k">Signature</span><span class="j-name">Âmbar</span></div>
+        <div class="j-bot">
+          <dl class="j-spec">
+            <dt>Size</dt><dd>8&nbsp;ft &middot; 254 × 142 cm</dd>
+            <dt>Material</dt><dd>Itaúba &amp; bronze inlay</dd>
+            <dt>Lead time</dt><dd>10–12 weeks</dd>
+            <dt>Ships</dt><dd>US &amp; EU, white-glove</dd>
+          </dl>
+          <span class="j-price">from $14,000 · €</span>
+          <span class="j-cta">Begin this commission <span class="arrow">&rarr;</span></span>
+        </div>
+      </a>
+
+      <a class="jewel" href="collection.html">
+        <img src="assets-home/std-citrino.jpg" alt="Citrino studio shot on black" />
+        <div class="j-top"><span class="j-k">Signature</span><span class="j-name">Citrino</span></div>
+        <div class="j-bot">
+          <dl class="j-spec">
+            <dt>Size</dt><dd>8&nbsp;ft &middot; 254 × 142 cm</dd>
+            <dt>Material</dt><dd>Carvalho &amp; glass edge</dd>
+            <dt>Lead time</dt><dd>10–12 weeks</dd>
+            <dt>Ships</dt><dd>US &amp; EU, white-glove</dd>
+          </dl>
+          <span class="j-price">from $12,000 · €</span>
+          <span class="j-cta">Begin this commission <span class="arrow">&rarr;</span></span>
+        </div>
+      </a>
+
+      <a class="jewel" href="collection.html">
+        <img src="assets-home/std-zurita.jpg" alt="Zurita studio shot on black" />
+        <div class="j-top"><span class="j-k">Signature</span><span class="j-name">Zurita</span></div>
+        <div class="j-bot">
+          <dl class="j-spec">
+            <dt>Size</dt><dd>7&nbsp;ft &middot; 224 × 127 cm</dd>
+            <dt>Material</dt><dd>Carvalho &amp; matte steel</dd>
+            <dt>Lead time</dt><dd>8–10 weeks</dd>
+            <dt>Ships</dt><dd>US &amp; EU, white-glove</dd>
+          </dl>
+          <span class="j-price">from $11,000 · €</span>
+          <span class="j-cta">Begin this commission <span class="arrow">&rarr;</span></span>
+        </div>
+      </a>
+
+      <a class="jewel" href="collection.html">
+        <img src="assets-home/std-opal.jpg" alt="Opal studio shot on black" />
+        <div class="j-top"><span class="j-k">Signature</span><span class="j-name">Opal</span></div>
+        <div class="j-bot">
+          <dl class="j-spec">
+            <dt>Size</dt><dd>7&nbsp;ft &middot; 224 × 127 cm</dd>
+            <dt>Material</dt><dd>Cerejeira &amp; brushed steel</dd>
+            <dt>Lead time</dt><dd>8–10 weeks</dd>
+            <dt>Ships</dt><dd>US &amp; EU, white-glove</dd>
+          </dl>
+          <span class="j-price">from $9,000 · €</span>
+          <span class="j-cta">Begin this commission <span class="arrow">&rarr;</span></span>
+        </div>
+      </a>
+
+      <div class="jewel j-end">
+        <div class="j-top"><span class="j-k">All six</span><span class="j-name">See the<br>full collection</span></div>
+        <div class="j-bot"><a href="collection.html" class="btn-ghost">Enter the gallery <span class="arrow">&rarr;</span></a></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE MAKING ============ -->
+<section class="making" id="making">
+  <div class="making-media">
+    <video autoplay muted loop playsinline preload="metadata" poster="assets-motion/making-poster.jpg">
+      <source src="assets-motion/making.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <div class="making-grade"></div>
+  <div class="making-inner">
+    <h3 class="fade">A single maker.<br>One <em>signature</em> underneath.</h3>
+    <p class="fade">Ten to fourteen weeks by hand. Crated, insured, then installed and levelled in your home.</p>
+    <div class="hero-cta fade" style="margin-top:30px">
+      <a href="#inquire" class="btn-primary" data-magnetic>Request a Commission <span class="arrow">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NUMBERS ============ -->
+<section class="sec numbers">
+  <div class="wrap">
+    <div class="num-grid">
+      <div class="num fade"><div class="n">14</div><div class="d">commissions accepted per year</div></div>
+      <div class="num fade"><div class="n">Lifetime</div><div class="d">guarantee on the structure</div></div>
+      <div class="num fade"><div class="n">US&nbsp;&amp;&nbsp;EU</div><div class="d">white-glove delivery &amp; install</div></div>
+      <div class="num fade"><div class="n">$&nbsp;/&nbsp;€</div><div class="d">priced in your local currency</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSING ============ -->
+<section class="closing" id="inquire">
+  <h2 class="fade">Begin <em>your</em><br>commission.</h2>
+  <div class="cta-wrap fade">
+    <a href="#" class="btn-primary" data-magnetic>Request a Commission <span class="arrow">&rarr;</span></a>
+    <span class="lower">Or book a <a href="#">15-minute call</a> · message us on <a href="#">WhatsApp</a></span>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">BRETDA<span>Atelier of game tables</span></div>
+    <div class="foot-meta">
+      <span class="made">Made to order · Shipped worldwide</span>
+      Crated and exported to the United States &amp; Europe.<br>
+      Each commission carries the maker's mark.<br>
+      Prices shown in $ / € by region.
+    </div>
+  </div>
+  <div class="foot-legal">
+    <span>© Bretda — All rights reserved</span>
+    <span>Privacy · Terms · CNPJ on file</span>
+  </div>
+</footer>
+
+<!-- ============ MOTION (Lenis + GSAP + ScrollTrigger) ============ -->
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  var hasGSAP = typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && typeof Lenis !== 'undefined';
+  var topbar = document.getElementById('topbar');
+  var dock   = document.getElementById('dock');
+  function onScroll(y){ topbar.classList.toggle('scrolled', y > 40); dock.classList.toggle('show', y > 520); }
+
+  if(!hasGSAP){
+    document.querySelectorAll('.fade').forEach(function(el){ el.style.opacity=1; el.style.transform='none'; });
+    window.addEventListener('scroll', function(){ onScroll(window.scrollY); }, {passive:true});
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* Val Head tokens as JS easings */
+  var EASE = { luxe:'cubic-bezier(0.16,1,0.3,1)', curtain:'cubic-bezier(0.77,0,0.175,1)',
+               settle:'cubic-bezier(0.22,1,0.36,1)', micro:'cubic-bezier(0.4,0,0.2,1)' };
+
+  /* ---- ONE rAF loop drives both Lenis + ScrollTrigger (anti-jank #1) ---- */
+  var lenis = new Lenis({ duration:1.2, easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));},
+    smoothWheel:true, wheelMultiplier:1, touchMultiplier:1.6 });
+  lenis.on('scroll', function(e){ ScrollTrigger.update(); onScroll(e.scroll); });
+  gsap.ticker.add(function(time){ lenis.raf(time*1000); });
+  gsap.ticker.lagSmoothing(0);
+
+  /* smooth anchor links */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    var href=a.getAttribute('href'); if(href==='#') return;
+    a.addEventListener('click',function(e){ var t=document.querySelector(href);
+      if(t){ e.preventDefault(); lenis.scrollTo(t,{offset:0,duration:1.4}); } });
+  });
+
+  /* cursor glow + magnetic buttons (desktop, fine pointer only) */
+  var finePointer = window.matchMedia('(pointer:fine)').matches;
+  if(finePointer){
+    var spot=document.getElementById('spot');
+    window.addEventListener('pointermove',function(e){
+      spot.style.setProperty('--mx',e.clientX+'px'); spot.style.setProperty('--my',e.clientY+'px'); },{passive:true});
+    document.querySelectorAll('[data-magnetic]').forEach(function(btn){
+      var qx=gsap.quickTo(btn,'x',{duration:.5,ease:'power3'}), qy=gsap.quickTo(btn,'y',{duration:.5,ease:'power3'});
+      btn.addEventListener('pointermove',function(e){ var r=btn.getBoundingClientRect();
+        qx((e.clientX-(r.left+r.width/2))*.3); qy((e.clientY-(r.top+r.height/2))*.4); });
+      btn.addEventListener('pointerleave',function(){ qx(0); qy(0); });
+    });
+  }
+
+  /* =========================================================
+     gsap.matchMedia — full motion vs reduced motion
+     ========================================================= */
+  var mm = gsap.matchMedia();
+
+  /* ---------- FULL MOTION ---------- */
+  mm.add('(prefers-reduced-motion: no-preference)', function(){
+
+    /* MOVE 1 — Hero curtain-lift on load (1200-1400ms, lines masked, italic lands last) */
+    gsap.set('.hero h1 .ln > span',{yPercent:120});
+    var intro = gsap.timeline();
+    intro.fromTo('.hero-media',{scale:1.08},{scale:1.0,duration:1.4,ease:EASE.curtain},0)
+         .to('.hero h1 .ln > span',{yPercent:0,duration:1.3,ease:EASE.curtain,stagger:.14},.2)
+         .fromTo('.hero-sweep',{backgroundPosition:'130% 0'},{backgroundPosition:'-40% 0',duration:1.6,ease:EASE.settle},.3)
+         .from('.hero-eyebrow',{y:18,opacity:0,duration:.9,ease:EASE.luxe},'-=1.0')
+         .from('.hero h1 .sm',{y:18,opacity:0,duration:.9,ease:EASE.luxe},'-=.85')
+         .from('.hero .sub',{y:18,opacity:0,duration:.9,ease:EASE.luxe},'-=.75')
+         .from('.hero-cta',{y:18,opacity:0,duration:.9,ease:EASE.luxe},'-=.7');
+
+    /* MOVE 2 — Hero parallax on scroll (bg ~0.6x, displacement capped) */
+    gsap.timeline({scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:1}})
+      .to('.hero-media',{yPercent:14,scale:1.06,ease:'none'},0)
+      .to('#heroInner',{yPercent:-22,opacity:0,ease:'none'},0)
+      .to('.scrollcue',{opacity:0,ease:'none'},0);
+
+    /* MOVE 5 (emotional peak) — THE ORBIT: scrub a real video by scroll + ghost word drift */
+    var orbitVid = document.getElementById('orbitVid');
+    function buildOrbit(){
+      var dur = (orbitVid.duration && isFinite(orbitVid.duration)) ? orbitVid.duration : 4;
+      gsap.set('#orbitCap',{y:30,opacity:0});
+      var tl = gsap.timeline({scrollTrigger:{trigger:'.orbit',start:'top top',end:'bottom bottom',
+        scrub:1,pin:'.orbit-stage'}});
+      tl.fromTo(orbitVid,{currentTime:0},{currentTime:dur,ease:'none'},0)
+        .fromTo('#orbitWord',{xPercent:16,opacity:.07},{xPercent:-20,opacity:.03,ease:'none'},0)
+        .to('#orbitCap',{y:0,opacity:1,duration:.3,ease:EASE.luxe},.12);
+    }
+    if(orbitVid.readyState>=1){ buildOrbit(); }
+    else { orbitVid.addEventListener('loadedmetadata', function(){ buildOrbit(); ScrollTrigger.refresh(); }); }
+
+    /* STATEMENT — words wipe up, once */
+    gsap.from('#statementLine .word',{yPercent:115,opacity:0,duration:1.0,ease:EASE.curtain,stagger:.13,
+      scrollTrigger:{trigger:'#statementLine',start:'top 78%',toggleActions:'play none none none'}});
+    gsap.from('.statement .sec-eyebrow',{y:18,opacity:0,duration:.8,ease:EASE.luxe,
+      scrollTrigger:{trigger:'.statement',start:'top 80%',toggleActions:'play none none none'}});
+
+    /* MACRO material — parallax video + reveal */
+    gsap.to('#macroMedia',{yPercent:12,ease:'none',
+      scrollTrigger:{trigger:'#macro',start:'top bottom',end:'bottom top',scrub:1}});
+    gsap.from('#macro .fade',{y:34,opacity:0,duration:.9,ease:EASE.luxe,stagger:.12,
+      scrollTrigger:{trigger:'#macro',start:'top 64%',toggleActions:'play none none none'}});
+
+    /* HORIZONTAL GALLERY — pinned, vertical scroll drives x */
+    var track=document.getElementById('galTrack');
+    function galDist(){ return track.scrollWidth - window.innerWidth + (window.innerWidth*0.10); }
+    gsap.to(track,{x:function(){return -galDist();},ease:'none',
+      scrollTrigger:{trigger:'#collection',start:'top top',end:function(){return '+='+galDist();},
+        scrub:1,pin:'#galPin',invalidateOnRefresh:true}});
+    gsap.from('.gal-head .fade',{y:30,opacity:0,duration:.9,ease:EASE.luxe,stagger:.1,
+      scrollTrigger:{trigger:'.gal-head',start:'top 82%',toggleActions:'play none none none'}});
+
+    /* MAKING reveal */
+    gsap.from('#making .fade',{y:34,opacity:0,duration:.9,ease:EASE.luxe,stagger:.12,
+      scrollTrigger:{trigger:'#making',start:'top 60%',toggleActions:'play none none none'}});
+
+    /* NUMBERS + CLOSING reveals (only the in-view band) */
+    gsap.from('.numbers .fade',{y:30,opacity:0,duration:.8,ease:EASE.luxe,stagger:.09,
+      scrollTrigger:{trigger:'.numbers',start:'top 78%',toggleActions:'play none none none'}});
+    gsap.from('.closing .fade',{y:36,opacity:0,duration:1.0,ease:EASE.luxe,stagger:.13,
+      scrollTrigger:{trigger:'.closing',start:'top 74%',toggleActions:'play none none none'}});
+
+    return function(){ /* cleanup handled by matchMedia */ };
+  });
+
+  /* ---------- REDUCED MOTION ---------- */
+  mm.add('(prefers-reduced-motion: reduce)', function(){
+    lenis.destroy();
+    document.querySelectorAll('.fade').forEach(function(el){
+      gsap.to(el,{opacity:1,y:0,duration:.2,ease:'none',
+        scrollTrigger:{trigger:el,start:'top 92%',toggleActions:'play none none none'}});
+    });
+    window.addEventListener('scroll', function(){ onScroll(window.scrollY); }, {passive:true});
+  });
+
+  window.addEventListener('load', function(){ ScrollTrigger.refresh(); });
+})();
+</script>
+</body>
+</html>

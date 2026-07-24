@@ -24,6 +24,11 @@
     "flagship": "Auf Bestellung", "object": "Das Objekt", "objectV": "Ein einziger Block brasilianischen Edelholzes, in über sechshundert Stunden von Hand vollendet.",
     "house": "Das Haus", "houseV": "Ein Atelier in Brasilien. Jeder Tisch signiert, nummeriert und für einen einzigen Raum gefertigt.",
     "now": "Jetzt", "nowV": "Jedes Stück wird auf Bestellung gefertigt — pro Saison nur eine begrenzte Zahl an Aufträgen.",
+    "objectVsig": "Ein Premium-Billardtisch aus unserer Signature-Linie — massives Hartholz, Turnierqualität.",
+    "houseSig": "Die Linie", "houseVsig": "Eines von achtzehn Signature-Modellen — die komplette Kollektion, gefertigt in Brasilien.",
+    "nowVsig": "Auf Bestellung gefertigt und mit White-Glove-Service in die USA und nach Europa geliefert.",
+    "finishes": "Ausführungen", "finishesNote": "Verfügbare Harthölzer und Filze — Ihre Ausführung wird bei der Beauftragung festgelegt.",
+    "email": "Per E-Mail anfragen", "emailSubj": "Anfrage: {name}",
     "frame": "Massivholz-Rahmen", "cloth": "Filztuch", "from": "Ab", "ddp": "Frei Haus geliefert — inklusive Zoll.",
     "t1": "Versicherter White-Glove-Transport", "t2": "8–10 Wochen · auf Bestellung", "t3": "Zoll & Abgaben übernommen", "t4": "Garantie einwandfreier Anlieferung",
     "reserve": "Diesen Tisch reservieren", "talk": "Mit einem Spezialisten sprechen", "open3d": "3D-Konfigurator öffnen →", "crumb": "Kollektion"
@@ -32,7 +37,9 @@
     "eyebrow": "Konfigurieren · Auf Bestellung", "sub": "Bauen Sie den Tisch, den es nur einmal gibt.",
     "hint": "Ziehen zum Drehen · Scrollen zum Zoomen", "ar": "In Ihrem Raum ansehen (AR)",
     "frame": "Rahmen — Massivholz", "metal": "Sockel — Metall", "cloth": "Tuch — Stoff", "from": "Ab",
-    "ddp": "Frei Haus geliefert — inklusive Zoll.", "reserve": "Konfiguration reservieren"
+    "ddp": "Frei Haus geliefert — inklusive Zoll.", "reserve": "Konfiguration reservieren",
+    "applied": "{name} angewendet", "armedTap": "Tippen Sie auf den Teil des Tisches, um {name} anzuwenden",
+    "email": "Lieber per E-Mail? Schreiben Sie dem Atelier →", "emailSubj": "Konfiguration: {name}"
   },
   "wa": {
     "viewing": "Hallo Bretda, ich möchte eine private Besichtigung buchen.",

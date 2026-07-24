@@ -1,0 +1,42 @@
+Registros DNS atuais do dominio bretda.com.br
+
+Dominio: bretda.com.br
+
+1. Registro A
+Tipo: A
+Nome/Host: bretda.com.br
+Valor/Aponta para: 216.198.79.1
+
+2. Registro MX
+Tipo: MX
+Nome/Host: bretda.com.br
+Prioridade: 1
+Valor/Servidor: smtp.google.com.
+
+3. Registro TXT - Vercel dominio raiz
+Tipo: TXT
+Nome/Host: _vercel.bretda.com.br
+Valor:
+"vc-domain-verify=bretda.com.br,3e2b47b46dea5d6fd558"
+
+4. Registro TXT - Vercel www
+Tipo: TXT
+Nome/Host: _vercel.bretda.com.br
+Valor:
+"vc-domain-verify=www.bretda.com.br,7dc35ffd0bec77662ffb"
+
+5. Registro CNAME
+Tipo: CNAME
+Nome/Host: www.bretda.com.br
+Valor/Aponta para: c695de7c095ef5b0.vercel-dns-017.com.
+
+Observacao:
+Estes sao os registros atuais. Para verificacao da Microsoft 365, adicionar apenas o novo registro TXT informado pela Microsoft.
+Nao alterar o registro MX ainda, pois ele controla onde os e-mails sao recebidos. Atualmente o MX aponta para o Google.
+
+Registro TXT da Microsoft a adicionar:
+Tipo: TXT
+Nome/Host: @ ou bretda.com.br
+Valor: MS=msXXXXXXXX
+TTL: automatico ou 3600
+

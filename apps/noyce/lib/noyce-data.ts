@@ -6,7 +6,8 @@ import { withComputedCapabilities } from '@/lib/noyce-capability';
 import { buildHabilitationResult } from '@/lib/noyce-habilitation';
 import { buildHabilitationChecklist } from '@/lib/noyce-checklist';
 import { getMarketForOrgao } from '@/lib/noyce-market';
-import { buildTriage } from '@/lib/noyce-operational';
+import { buildTriage, nowIso } from '@/lib/noyce-operational';
+import { selectDiscoveryInbox } from '@/lib/discovery-inbox';
 import { buildSuspicionSignals, type HolidayCalendar, type LegalConstants } from '@/lib/noyce-suspicion';
 import { noyceSources } from './noyce-source-registry';
 import discoverySnapshot from '@/lib/data/discovery-snapshot.json';
@@ -28,7 +29,8 @@ function hasMissingData(item: { missingData: readonly string[] }, field: string)
   return item.missingData.includes(field);
 }
 
-export const SCORE_AS_OF = '2026-05-23T00:00:00Z';
+/** Referência calculada no carregamento atual; nunca uma data histórica congelada. */
+export const SCORE_AS_OF = nowIso();
 
 // Real opportunities sourced from the PNCP discovery snapshot (scripts/noyce/build-discovery-500km.mjs,
 // wired through the lib/sources legal-calibrated pipeline: pncp-public-adapter → normalizer → dedupe).
@@ -61,18 +63,18 @@ function normalizeSource(value: string): SourceCode {
   return (KNOWN_SOURCES as readonly string[]).includes(value) ? (value as SourceCode) : 'pncp';
 }
 
-const discovery = discoverySnapshot as unknown as {
+export interface DiscoverySnapshot {
   items: DiscoveryItem[];
   generatedAt?: string;
   diff?: { previousRunAt: string | null; novos: number; removidos: number; novosIds: string[] };
-};
+}
+const discovery = discoverySnapshot as unknown as DiscoverySnapshot;
 
 /** Momento da última varredura de discovery (p/ o chip "novo" da Monitorar). */
 export const discoveryGeneratedAt: string | null = discovery.generatedAt ?? null;
 /** Diff da última varredura (--watch): quantos editais novos/removidos vs run anterior. */
 export const discoveryDiff = discovery.diff ?? null;
 export const eniacCcp = withComputedCapabilities(eniacCcpSeed as CompanyCapabilityProfile);
-const TRIAGE_RANK: Record<string, number> = { vai: 0, olha: 1, pula: 2 };
 
 // Story 30.1 (T7) — o snapshot atual (gerado) ainda não carrega o campo permiteConsorcio.
 // Em produção ele virá do source-normalizer; até o próximo rebuild do snapshot, semeamos um
@@ -85,7 +87,31 @@ function seedConsorcio(d: DiscoveryItem, index: number): boolean | null {
   return CONSORCIO_SEED[index % CONSORCIO_SEED.length];
 }
 
-const baseOpportunities = discovery.items
+type BaseOpportunity = {
+  permiteConsorcio: boolean | null;
+  firstSeenAt: string | null;
+  id: string;
+  orgaoCnpj: string | null;
+  source: SourceCode;
+  title: string;
+  buyer: string;
+  city: string;
+  uf: string;
+  distanceKm: number;
+  estimatedValue: number | null;
+  publicationDate: string | null;
+  proposalDeadline: string | null;
+  stage: WorkflowStage;
+  hasConflict: boolean;
+  risks: string[];
+  missingData: string[];
+  editalRequirements: EditalRequirementsModel | null;
+  triage: ReturnType<typeof buildTriage>;
+};
+
+/** Builds the current inbox from an arbitrary snapshot (runtime API or bundled fallback). */
+export function buildOpportunities(snapshot: DiscoverySnapshot, asOf: string = nowIso()): Opportunity[] {
+const baseOpportunities: BaseOpportunity[] = selectDiscoveryInbox(snapshot.items
   .map((d, index) => ({
     permiteConsorcio: seedConsorcio(d, index),
     firstSeenAt: d.firstSeenAt ?? null,
@@ -98,6 +124,7 @@ const baseOpportunities = discovery.items
     uf: d.uf,
     distanceKm: d.distanceKm,
     estimatedValue: d.estimatedValue,
+    publicationDate: d.publicationDate,
     proposalDeadline: d.proposalDeadline,
     stage: 'monitorar' as WorkflowStage,
     hasConflict: false,
@@ -109,16 +136,10 @@ const baseOpportunities = discovery.items
       distanceKm: d.distanceKm,
       estimatedValue: d.estimatedValue,
       proposalDeadline: d.proposalDeadline,
-    }),
-  }))
-  .sort((a, b) => {
-    const rankDelta = TRIAGE_RANK[a.triage.verdict] - TRIAGE_RANK[b.triage.verdict];
-    if (rankDelta !== 0) return rankDelta;
-    return b.triage.score - a.triage.score;
-  })
-  .slice(0, 80);
+    }, { asOf }),
+  })), asOf);
 
-export const opportunities: Opportunity[] = baseOpportunities.map((item) => {
+return baseOpportunities.map((item) => {
   const analysisRun = buildAnalysisRun({
     source: item.source,
     city: item.city,
@@ -128,7 +149,7 @@ export const opportunities: Opportunity[] = baseOpportunities.map((item) => {
     stage: item.stage,
     hasConflict: item.hasConflict,
     missingData: item.missingData,
-    asOf: SCORE_AS_OF,
+    asOf,
   });
   const opportunityScore = analysisRun.opportunity.score;
   const confidenceScore = analysisRun.confidence.score;
@@ -160,7 +181,7 @@ export const opportunities: Opportunity[] = baseOpportunities.map((item) => {
       estimatedValue: item.estimatedValue,
       proposalDeadline: item.proposalDeadline,
       habilitationResult,
-      asOf: SCORE_AS_OF,
+      asOf,
     }),
     timeline: [
       { label: 'Publicação', date: 'Confirmada na fonte', status: 'done' },
@@ -171,9 +192,12 @@ export const opportunities: Opportunity[] = baseOpportunities.map((item) => {
     legalProcess: buildLegalProcess(item, opportunityScore, confidenceScore),
   };
 });
+}
+
+export const opportunities: Opportunity[] = buildOpportunities(discovery, SCORE_AS_OF);
 
 function buildLegalProcess(
-  item: (typeof baseOpportunities)[number],
+  item: BaseOpportunity,
   opportunityScore: number,
   confidenceScore: number,
 ) {

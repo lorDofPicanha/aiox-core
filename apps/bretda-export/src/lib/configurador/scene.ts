@@ -485,6 +485,45 @@ export class ConfiguradorScene {
     }
   }
 
+  // ---------- GUIDED 1-TOUCH APPLICATION ----------
+  // Apply a finish to every material already classified as `cls`. Returns true
+  // if at least one surface was painted; false when the model has no surface of
+  // that class yet (the UI then arms a guided "tap the part" step).
+  applyToClass(cls: MaterialClass, texture: string, fallbackColor?: number): boolean {
+    if (!this.tableGroup) return false;
+    const mats = this.getMaterialsByClass(cls);
+    if (mats.length === 0) return false;
+    const repeat = cls === "tecido" ? 4 : 2;
+    mats.forEach((m) => {
+      this.applyTexture(m, texture, repeat, fallbackColor);
+      if (cls === "metal") { m.metalness = 0.6; m.roughness = 0.3; m.needsUpdate = true; }
+    });
+    return true;
+  }
+
+  // Apply a finish to the currently selected part and remember its class, so the
+  // next click of the same class applies in a single touch (via applyToClass).
+  applyToSelected(cls: MaterialClass, texture: string, fallbackColor?: number): boolean {
+    if (!this.selectedMaterial) return false;
+    const repeat = cls === "tecido" ? 4 : 2;
+    this.applyTexture(this.selectedMaterial, texture, repeat, fallbackColor);
+    if (cls === "metal") { this.selectedMaterial.metalness = 0.6; this.selectedMaterial.roughness = 0.3; this.selectedMaterial.needsUpdate = true; }
+    this.setMatClassification(this.selectedMaterial, cls);
+    this.emitSelection();
+    return true;
+  }
+
+  // Turn on part-picking so the next canvas tap selects a surface.
+  ensureCustomizeOn(): void {
+    if (!this.customizeMode) this.toggleCustomizeMode();
+  }
+
+  // Drop the current part selection without leaving customize mode.
+  clearSelection(): void {
+    this.deselectMaterial();
+    this.emitSelection();
+  }
+
   // ---------- SELECTION (raycast) ----------
   private setupInteraction(): void {
     const dom = this.renderer.domElement;

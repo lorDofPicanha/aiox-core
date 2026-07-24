@@ -1,4 +1,4 @@
-import { Inngest, EventSchemas } from 'inngest';
+import { EventSchemas, Inngest as InngestClient } from 'inngest';
 import { z } from 'zod';
 
 /**
@@ -70,10 +70,10 @@ export const eventSchemas = {
 /**
  * Inngest client. Importado em todos os arquivos de function + api handler.
  */
-export const inngest = new Inngest({
+export const inngest = new InngestClient({
   id: 'crm-bridge-standalone',
   schemas: new EventSchemas().fromZod(eventSchemas),
   // eventKey + signingKey lidos automaticamente das env vars
 });
 
-export type Inngest = typeof inngest;
+export type CrmBridgeInngest = typeof inngest;

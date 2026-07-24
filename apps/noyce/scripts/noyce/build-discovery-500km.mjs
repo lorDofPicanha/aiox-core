@@ -8,7 +8,8 @@
 //   node scripts/noyce/build-discovery-500km.mjs 30         (uma vez, janela 30 dias)
 //   node scripts/noyce/build-discovery-500km.mjs --watch    (refresh automático a cada 1h — daemon)
 
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, renameSync, writeFileSync } from "node:fs";
+import { assertPublishableDiscoverySnapshot } from "./discovery-snapshot-contract.mjs";
 
 const BASE = "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao";
 const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36";
@@ -18,13 +19,15 @@ const PAGE_SIZE = 50;
 const MAX_PAGES = { 4: 200, 5: 200, 6: 40 };
 const DELAY_MS = 1500; // educado: o PNCP rate-limita bursts curtos.
 const RETRIES = 5;
+const REQUEST_TIMEOUT_MS = 13_000;
 const REFRESH_MS = 60 * 60 * 1000; // 1 hora (modo --watch).
 
 const OBRAS_RE = /obra|engenharia|reforma|constru|pavimenta|edifica|amplia|recupera[çc][ãa]o|drenagem|terraplan|saneamento|infraestrutura|quadra|gin[áa]sio|ponte|cal[çc]ament|muro|pra[çc]a|ubs\b|creche|escola/i;
 
 const args = process.argv.slice(2);
 const watch = args.includes("--watch");
-const days = Number.parseInt(args.find((a) => /^\d+$/.test(a)) ?? "60", 10);
+const daysFlag = args.indexOf("--days");
+const days = Number.parseInt(daysFlag >= 0 ? args[daysFlag + 1] : args.find((a) => /^\d+$/.test(a)) ?? "60", 10);
 
 // Base de municípios no raio (estática) + helpers (carregados uma vez).
 const geo = JSON.parse(readFileSync(new URL("../../lib/data/municipios-raio-500km.json", import.meta.url), "utf8"));
@@ -36,8 +39,10 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const BACKOFF = [5000, 12000, 25000, 45000];
 async function fetchJson(url) {
   for (let i = 0; i < RETRIES; i++) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
     try {
-      const res = await fetch(url, { headers: { accept: "application/json", "user-agent": UA } });
+      const res = await fetch(url, { signal: controller.signal, headers: { accept: "application/json", "user-agent": UA } });
       if (res.status === 204) return { data: [], totalPaginas: 0, totalRegistros: 0 };
       if (res.status === 429 || res.status >= 500) throw new Error(`HTTP ${res.status} (rate/again)`);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -45,6 +50,8 @@ async function fetchJson(url) {
     } catch (e) {
       if (i === RETRIES - 1) throw e;
       await sleep(BACKOFF[Math.min(i, BACKOFF.length - 1)]);
+    } finally {
+      clearTimeout(timeout);
     }
   }
 }
@@ -61,6 +68,7 @@ async function buildOnce() {
 
   const seen = new Map();
   const stats = { okQueries: 0, failQueries: 0, brutos: 0, foraRaio: 0, naoObra: 0 };
+  const failures = [];
 
   for (const uf of UFS) {
     for (const mod of MODALIDADES) {
@@ -69,7 +77,11 @@ async function buildOnce() {
         const url = `${BASE}?dataInicial=${dataInicial}&dataFinal=${dataFinal}&codigoModalidadeContratacao=${mod}&uf=${uf}&pagina=${page}&tamanhoPagina=${PAGE_SIZE}`;
         let j;
         try { j = await fetchJson(url); stats.okQueries++; }
-        catch { stats.failQueries++; break; }
+        catch (error) {
+          stats.failQueries++;
+          failures.push({ uf, modalidade: mod, pagina: page, error: error instanceof Error ? error.message : String(error) });
+          break;
+        }
         totalPaginas = j.totalPaginas ?? 0;
         for (const it of j.data ?? []) {
           stats.brutos++;
@@ -87,11 +99,14 @@ async function buildOnce() {
             buyer: it.orgaoEntidade?.razaoSocial ?? it.unidadeOrgao?.nomeUnidade ?? "Órgão",
             city: it.unidadeOrgao?.municipioNome ?? m.nome,
             uf: it.unidadeOrgao?.ufSigla ?? m.uf,
+            ibge: String(it.unidadeOrgao?.codigoIbge ?? m.ibge),
             distanceKm: m.distanceKm,
             estimatedValue: typeof it.valorTotalEstimado === "number" ? it.valorTotalEstimado : null,
+            publicationDate: it.dataPublicacaoPncp ?? it.dataInclusao ?? null,
             proposalDeadline: it.dataEncerramentoProposta ?? null,
             situacao: it.situacaoCompraNome ?? null,
             modality: it.modalidadeNome ?? null,
+            sourceUrl: it.linkSistemaOrigem ?? it.linkProcessoEletronico ?? null,
             editalRequirements: null,
           });
         }
@@ -127,7 +142,7 @@ async function buildOnce() {
     pipeline: "build-discovery-500km.mjs → IBGE haversine 500km → filtro obras → dedupe id",
     windowDays: days, windowStart: dataInicial, windowEnd: dataFinal, raioKm: 500,
     origem: geo.origem, municipiosNoRaio: geo.municipios.length, ufs: UFS,
-    itensPorUf: byUf, queryStats: stats,
+    itensPorUf: byUf, queryStats: stats, failures,
     diff: {
       previousRunAt: prevGeneratedAt,
       novos: novosIds.length,
@@ -137,7 +152,10 @@ async function buildOnce() {
     note: `Raio 500km REAL (${geo.municipios.length} municípios, ${UFS.length} UFs).`,
     items,
   };
-  writeFileSync(OUT, JSON.stringify(snapshot));
+  assertPublishableDiscoverySnapshot(snapshot);
+  const tempOut = new URL(`${OUT.pathname}.tmp`, OUT);
+  writeFileSync(tempOut, JSON.stringify(snapshot, null, 2));
+  renameSync(tempOut, OUT);
   console.log(`✅ ${items.length} editais de obra no raio (por UF: ${JSON.stringify(byUf)}). stats ${JSON.stringify(stats)}`);
   console.log(`   Δ desde ${prevGeneratedAt ?? "—"}: ${novosIds.length} novo(s), ${removidos} removido(s) → lib/data/discovery-snapshot.json`);
   return items.length;

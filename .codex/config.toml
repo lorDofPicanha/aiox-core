@@ -12,6 +12,21 @@ command = "node"
 [mcp_servers.aios-brain-bridge.env]
 AIOS_BRAIN_BRIDGE_DIR = "D:/jarvis/bridge-data"
 
+[mcp_servers.aios-brain-bridge.tools.search_known_fixes]
+approval_mode = "approve"
+
+[mcp_servers.aios-brain-bridge.tools.get_consultation_response]
+approval_mode = "approve"
+
+[mcp_servers.aios-brain-bridge.tools.publish_conclave_report]
+approval_mode = "approve"
+
+[mcp_servers.aios-brain-bridge.tools.log_tool_usage]
+approval_mode = "approve"
+
+[mcp_servers.aios-brain-bridge.tools.request_expert_consultation]
+approval_mode = "approve"
+
 [mcp_servers.mcp-ads-bridge]
 args = ["D:/jarvis/mcp-ads-bridge/dist/index.js"]
 command = "node"
@@ -20,6 +35,129 @@ command = "node"
 ADS_DATA_DIR = "D:/jarvis/ads-data"
 
 [mcp_servers.mcp-ads-bridge.tools.google_ads_overview]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.meta_ads_insights]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.google_ads_campaigns]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.google_ads_metrics]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.google_ads_search_terms]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.google_ads_keywords]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.ads_performance_monitor]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.meta_ads_adsets]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.meta_ads_creatives]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.meta_ads_custom_audiences]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.meta_ads_campaigns]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.google_ads_geo_targeting]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.meta_ads_search_interests]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.meta_ads_set_geo_targeting]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.meta_ads_update_status]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.google_ads_add_negatives]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.meta_ads_create_campaign]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.meta_ads_audience]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.meta_ads_create_ad]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.google_ads_set_geo_targeting]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.meta_ads_update_targeting]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.google_ads_ad_group_performance]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.google_ads_update_ad_group_status]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.google_ads_list_accounts]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.google_ads_change_history]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.google_ads_list_conversion_goals]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.google_ads_recommendations]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.google_ads_campaign_details]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.ads_guardrails]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.google_ads_update_ad_urls]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.google_ads_create_responsive_search_ad]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.google_ads_update_ad_status]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.google_ads_creatives]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.meta_ads_list_accounts]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.meta_ads_overview]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.google_ads_conversion_actions]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.meta_ads_pixel_check]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.google_ads_account_settings]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.ads_connection_test]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.ads_action_log]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.ads_full_audit]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.meta_ads_update_budget]
 approval_mode = "approve"
 
 [mcp_servers.mcp-design-studio]

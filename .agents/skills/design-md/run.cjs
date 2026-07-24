@@ -52,9 +52,9 @@
  *   --compare <file>      Compare extracted tokens against local DESIGN.md
  *   --no-content-gate     Skip content-validation gate
  *   --no-llm-retry        Fail hard on first LLM error (CI mode)
- *   --provider <id>       Force provider: claude-cli | openrouter. Default PREFERS openrouter;
+ *   --provider <id>       Force provider: codex-cli | claude-cli | openrouter. Default prefers openrouter, then codex-cli;
  *                         claude-cli (`claude -p`) is PROGRAMMATIC → metered pool post-2026-06-15.
- *   --model <id>          Model ID for openrouter (e.g. anthropic/claude-haiku-4-5)
+ *   --model <id>          Model ID override for codex-cli or openrouter
  *   --max-tokens <n>      Max tokens for openrouter response (default: 8192)
  */
 
@@ -232,7 +232,7 @@ async function invokeWithHttpRetry(promptText, llmOptions, noRetry) {
 async function main() {
   const args = parseArgs(process.argv);
   if (!args.url) {
-    console.error("usage: extract-from-url.cjs --url <url> [--out <dir>] [--prompt <prompt-file>] [--compare <local-DESIGN.md>] [--no-content-gate] [--no-llm-retry] [--provider <claude-cli|openrouter>] [--model <model-id>] [--max-tokens <n>]");
+    console.error("usage: extract-from-url.cjs --url <url> [--out <dir>] [--prompt <prompt-file>] [--compare <local-DESIGN.md>] [--no-content-gate] [--no-llm-retry] [--provider <codex-cli|claude-cli|openrouter>] [--model <model-id>] [--max-tokens <n>]");
     process.exit(1);
   }
 
@@ -589,19 +589,19 @@ async function main() {
   let maxTurnsHit = false;
   // Provider default avoids claude-cli. `claude -p` is PROGRAMMATIC usage: post-2026-06-15
   // it draws the separate metered Agent SDK pool (full API rates), not the interactive
-  // subscription. Prefer OpenRouter (cheap, API-billed). Fall back to claude-cli only when
-  // no other path exists, and warn loudly so it is never a silent metered spend.
+  // subscription. Prefer OpenRouter when configured; otherwise use Codex CLI locally.
   let resolvedProvider =
     provider ||
     (process.env.VERCEL === "1" ? "openrouter" : null) ||
-    (process.env.OPENROUTER_API_KEY ? "openrouter" : null);
+    (process.env.OPENROUTER_API_KEY ? "openrouter" : null) ||
+    "codex-cli";
 
-  if (!resolvedProvider) {
-    resolvedProvider = "claude-cli";
+  if (resolvedProvider === "claude-cli") {
     console.error("⚠️  design-md defaulting to claude-cli (`claude -p`) — PROGRAMMATIC, draws the");
     console.error("⚠️  separate metered pool post-2026-06-15. Set OPENROUTER_API_KEY or pass");
-    console.error("⚠️  --provider openrouter for the cheaper API-billed path.\n");
+    console.error("⚠️  --provider openrouter or --provider codex-cli for a non-Claude path.\n");
   }
+  llmOptions.provider = resolvedProvider;
   let designMd;
   let rawDesignMdForEvidence = null;
 
@@ -658,6 +658,19 @@ async function main() {
       turns_used: null,
       error_max_turns: false,
     };
+  } else if (resolvedProvider === "codex-cli") {
+    claudeMetadata = {
+      input_tokens: null,
+      output_tokens: null,
+      cache_read_tokens: null,
+      cache_creation_tokens: null,
+      model: model || process.env.CODEX_MODEL || "gpt-5.5",
+      turns_used: null,
+      error_max_turns: false,
+    };
+    if (llmResult.status !== 0) {
+      throw new Error(`codex exec exited with status ${llmResult.status}`);
+    }
   } else {
     claudeMetadata = parseClaudeCliStdout(llmResult.stdout);
 
@@ -665,7 +678,7 @@ async function main() {
     // here — the failSignal check below will route to the retry path with
     // maxTurns 60 + reduced prompt. Hard-fail only on truly unexpected exits.
     if (llmResult.status !== 0 && !claudeMetadata.error_max_turns) {
-      throw new Error(`claude -p exited with status ${llmResult.status}`);
+      throw new Error(`${resolvedProvider} exited with status ${llmResult.status}`);
     }
   }
 
@@ -750,11 +763,20 @@ async function main() {
         input_tokens: openrouterUsage?.prompt_tokens ?? claudeMetadata.input_tokens,
         output_tokens: openrouterUsage?.completion_tokens ?? claudeMetadata.output_tokens,
       };
+    } else if (resolvedProvider === "codex-cli") {
+      claudeMetadata = {
+        ...claudeMetadata,
+        model: model || process.env.CODEX_MODEL || "gpt-5.5",
+        error_max_turns: false,
+      };
+      if (llmResult.status !== 0) {
+        throw new Error(`codex exec retry exited with status ${llmResult.status}`);
+      }
     } else {
       claudeMetadata = parseClaudeCliStdout(llmResult.stdout);
 
       if (llmResult.status !== 0) {
-        throw new Error(`claude -p retry exited with status ${llmResult.status}`);
+        throw new Error(`${resolvedProvider} retry exited with status ${llmResult.status}`);
       }
     }
 

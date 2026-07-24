@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { opportunities, portalAccess } from "@/lib/noyce-data";
+import { opportunities as bundledOpportunities, portalAccess } from "@/lib/noyce-data";
+import type { Opportunity } from "@/lib/noyce-model";
 import { Rail, type RailBadge } from "@/components/shell/Rail";
 import { LifecycleBreadcrumb } from "@/components/shell/LifecycleBreadcrumb";
 import { TABS, type TabId } from "@/components/shell/tabs";
@@ -20,7 +21,9 @@ const INTEREST_KEY = "noyce.interesse.v1";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<TabId>("mesa");
-  const [selectedOpportunityId, setSelectedOpportunityId] = useState(opportunities[0]?.id ?? "");
+  const [opportunities, setOpportunities] = useState<Opportunity[]>(bundledOpportunities);
+  const [discoveryGeneratedAt, setDiscoveryGeneratedAt] = useState<string | null>(null);
+  const [selectedOpportunityId, setSelectedOpportunityId] = useState(bundledOpportunities[0]?.id ?? "");
   // Oportunidades marcadas como "tenho interesse" (Monitorar) → entram no fluxo de revisão (Analisar).
   const [interested, setInterested] = useState<Set<string>>(new Set());
 
@@ -31,6 +34,24 @@ export default function Home() {
     } catch {
       /* estado limpo */
     }
+  }, []);
+
+  useEffect(() => {
+    let active = true;
+    const refresh = async () => {
+      try {
+        const response = await fetch("/api/discovery", { cache: "no-store" });
+        if (!response.ok) return;
+        const payload = await response.json() as { generatedAt: string | null; opportunities: Opportunity[] };
+        if (!active || !Array.isArray(payload.opportunities)) return;
+        setOpportunities(payload.opportunities);
+        setDiscoveryGeneratedAt(payload.generatedAt);
+        setSelectedOpportunityId((current) => payload.opportunities.some((item) => item.id === current) ? current : (payload.opportunities[0]?.id ?? ""));
+      } catch { /* mantém o fallback empacotado */ }
+    };
+    void refresh();
+    const interval = globalThis.setInterval(() => { void refresh(); }, 60_000);
+    return () => { active = false; globalThis.clearInterval(interval); };
   }, []);
 
   function toggleInterest(id: string) {
@@ -94,13 +115,16 @@ export default function Home() {
               <LifecycleBreadcrumb stage={selectedOpportunity.stage} active={activeTab} onJump={setActiveTab} />
             ) : null}
 
-            {activeTab === "mesa" ? <MesaTab onOpen={openInTab} /> : null}
+            {activeTab === "mesa" ? <MesaTab onOpen={openInTab} opportunities={opportunities} /> : null}
             {activeTab === "monitorar" && selectedOpportunity ? (
               <MonitorarTab
                 selectedId={selectedOpportunity.id}
                 onSelect={(id) => openInTab(id, "analisar")}
                 interested={interested}
                 onToggleInterest={toggleInterest}
+                opportunities={opportunities}
+                discoveryGeneratedAt={discoveryGeneratedAt}
+                discoveryDiff={null}
               />
             ) : null}
             {activeTab === "analisar" && selectedOpportunity ? (

@@ -3,6 +3,18 @@
 
 const fs = require('fs');
 const path = require('path');
+const { parseAgentDirs } = require('./ide-sync/agent-parser');
+
+const REDIRECTS = new Set([
+  'aios-developer',
+  'aios-orchestrator',
+  'db-sage',
+  'github-devops',
+]);
+
+const ALLOWED_EXTRA_COMMANDS = new Set([
+  'jarvis.toml',
+]);
 
 function getDefaultOptions() {
   const projectRoot = process.cwd();
@@ -13,6 +25,10 @@ function getDefaultOptions() {
     commandsDir: path.join(projectRoot, '.gemini', 'commands'),
     extensionDir: path.join(projectRoot, 'packages', 'gemini-aios-extension'),
     sourceAgentsDir: path.join(projectRoot, '.aios-core', 'development', 'agents'),
+    sourceAgentDirs: [
+      path.join(projectRoot, '.aios-core', 'development', 'agents'),
+      path.join(projectRoot, '.codex', 'agents'),
+    ],
     quiet: false,
     json: false,
   };
@@ -31,6 +47,18 @@ function countMarkdownFiles(dirPath) {
   return fs.readdirSync(dirPath).filter((f) => f.endsWith('.md')).length;
 }
 
+function isParsableAgent(agent) {
+  return !agent.error || agent.error === 'YAML parse failed, using fallback extraction';
+}
+
+function countExpectedAgents(sourceAgentDirs) {
+  const sourceCount = parseAgentDirs(sourceAgentDirs).filter(isParsableAgent).length;
+  return {
+    sourceCount,
+    agentFileCount: sourceCount + REDIRECTS.size,
+  };
+}
+
 function validateGeminiIntegration(options = {}) {
   const projectRoot = options.projectRoot || process.cwd();
   const resolved = {
@@ -42,6 +70,10 @@ function validateGeminiIntegration(options = {}) {
     commandsDir: options.commandsDir || path.join(projectRoot, '.gemini', 'commands'),
     extensionDir: options.extensionDir || path.join(projectRoot, 'packages', 'gemini-aios-extension'),
     sourceAgentsDir: options.sourceAgentsDir || path.join(projectRoot, '.aios-core', 'development', 'agents'),
+    sourceAgentDirs: options.sourceAgentDirs || [
+      path.join(projectRoot, '.aios-core', 'development', 'agents'),
+      path.join(projectRoot, '.codex', 'agents'),
+    ],
   };
   const errors = [];
   const warnings = [];
@@ -57,12 +89,12 @@ function validateGeminiIntegration(options = {}) {
     errors.push(`Missing Gemini commands dir: ${path.relative(resolved.projectRoot, resolved.commandsDir)}`);
   }
 
-  const sourceCount = countMarkdownFiles(resolved.sourceAgentsDir);
+  const { sourceCount, agentFileCount } = countExpectedAgents(resolved.sourceAgentDirs);
   const geminiCount = countMarkdownFiles(resolved.agentsDir);
   const commandFiles = fs.existsSync(resolved.commandsDir)
     ? fs.readdirSync(resolved.commandsDir).filter((f) => f.endsWith('.toml'))
     : [];
-  const expectedCommandCount = sourceCount > 0 ? sourceCount + 1 : 0;
+  const expectedCommandCount = sourceCount > 0 ? sourceCount + 1 + ALLOWED_EXTRA_COMMANDS.size : 0;
 
   if (sourceCount > 0 && commandFiles.length !== expectedCommandCount) {
     warnings.push(`Gemini command count differs from source (${commandFiles.length}/${expectedCommandCount})`);
@@ -70,8 +102,8 @@ function validateGeminiIntegration(options = {}) {
   if (!commandFiles.includes('aios-menu.toml')) {
     errors.push(`Missing Gemini command file: ${path.relative(resolved.projectRoot, path.join(resolved.commandsDir, 'aios-menu.toml'))}`);
   }
-  if (sourceCount > 0 && geminiCount !== sourceCount) {
-    warnings.push(`Gemini agent count differs from source (${geminiCount}/${sourceCount})`);
+  if (sourceCount > 0 && geminiCount !== agentFileCount) {
+    warnings.push(`Gemini agent count differs from source (${geminiCount}/${agentFileCount})`);
   }
 
   const requiredExtensionFiles = [

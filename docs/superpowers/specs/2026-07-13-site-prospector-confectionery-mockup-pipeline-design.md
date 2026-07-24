@@ -3,8 +3,13 @@
 **Date:** 2026-07-13  
 **Author:** Orion (`aios-master`)  
 **Project:** Site Prospector  
-**Status:** Approved design; pending spec review  
+**Status:** REJECTED / SUPERSEDED — Founder visual review 2026-07-22
 **Decision:** Hybrid pipeline for a first batch of three confectionery businesses
+
+> Superseded by
+> `2026-07-22-site-prospector-award-reference-recomposition-plan.md`. The
+> reference-blending and anti-clone model produced generic template-like outputs
+> and must not be resumed.
 
 ## 1. Executive Summary
 

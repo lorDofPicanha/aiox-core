@@ -1,0 +1,119 @@
+<h2>Design 4/4 — Entregáveis, QA e execução</h2>
+<p class="subtitle">O lote será executado sequencialmente: aprender com o primeiro, corrigir o processo e só então produzir o segundo e o terceiro.</p>
+
+<div class="section">
+  <p class="label">Estrutura de entrega</p>
+  <div class="split">
+    <div class="mockup">
+      <div class="mockup-header">Compartilhado pelo nicho</div>
+      <div class="mockup-body" style="font-family:ui-monospace,monospace;font-size:13px;line-height:1.8">
+        confectionery/<br>
+        ├─ research-plan.md<br>
+        ├─ benchmark-index.md<br>
+        ├─ benchmarks/{brand}/DESIGN.md<br>
+        ├─ conversion-patterns.md<br>
+        └─ anti-clone-matrix.md
+      </div>
+    </div>
+    <div class="mockup">
+      <div class="mockup-header">Exclusivo por empresa</div>
+      <div class="mockup-body" style="font-family:ui-monospace,monospace;font-size:13px;line-height:1.8">
+        prospects/{slug}/<br>
+        ├─ candidate-score.md<br>
+        ├─ evidence/business-facts.json<br>
+        ├─ evidence/media-manifest.json<br>
+        ├─ evidence/review-themes.md<br>
+        ├─ brand/DESIGN.md<br>
+        ├─ strategy/value-thesis.md<br>
+        ├─ mockup/index.html<br>
+        └─ qa/report.md
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <p class="label">Sequência de execução</p>
+  <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:8px;text-align:center;font-size:12px">
+    <div style="padding:14px 7px;background:#2b241f;color:#fff;border-radius:8px"><strong>Story</strong><br>AC + DoD</div>
+    <div style="padding:14px 7px;background:#5b4b40;color:#fff;border-radius:8px"><strong>Nicho</strong><br>benchmarks</div>
+    <div style="padding:14px 7px;background:#806858;color:#fff;border-radius:8px"><strong>Freeze</strong><br>3 candidatos</div>
+    <div style="padding:14px 7px;background:#aa7661;color:#fff;border-radius:8px"><strong>Empresa 1</strong><br>loop + QA</div>
+    <div style="padding:14px 7px;background:#c99870;color:#211a14;border-radius:8px"><strong>Empresa 2</strong><br>loop melhorado</div>
+    <div style="padding:14px 7px;background:#b7d12a;color:#172000;border-radius:8px"><strong>Empresa 3</strong><br>lote final</div>
+  </div>
+  <p class="subtitle">Não gerar os três de uma vez: um defeito de método se multiplicaria pelo lote inteiro.</p>
+</div>
+
+<div class="section">
+  <p class="label">Quality gates do mockup</p>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+    <div style="padding:16px;background:#f4ebe2;border-radius:8px"><strong>1. Evidence Gate</strong><br>100% das mídias manifestadas; fatos rastreáveis; zero mídia de reviewer.</div>
+    <div style="padding:16px;background:#f4ebe2;border-radius:8px"><strong>2. Brand Gate</strong><br>DESIGN.md com proveniência; tokens coerentes; identidade reconhecível.</div>
+    <div style="padding:16px;background:#f4ebe2;border-radius:8px"><strong>3. Anti-AI Gate</strong><br>sem copy genérica, gradiente clichê, layout repetido, foto inventada ou iconografia aleatória.</div>
+    <div style="padding:16px;background:#e8edd9;border-radius:8px"><strong>4. Conversion Gate</strong><br>cada seção ligada a CTA, objeção, ação e métrica comercial.</div>
+    <div style="padding:16px;background:#e8edd9;border-radius:8px"><strong>5. Visual Gate</strong><br>desktop 1440 + mobile 375; hierarquia, contraste, touch targets e ritmo editorial.</div>
+    <div style="padding:16px;background:#e8edd9;border-radius:8px"><strong>6. Technical Gate</strong><br>links válidos, zero erro de console, Lighthouse ≥90 e assets otimizados.</div>
+  </div>
+</div>
+
+<div class="split">
+  <div class="mockup">
+    <div class="mockup-header">Adversarial review</div>
+    <div class="mockup-body">
+      <p>Um revisor separado tenta derrubar:</p>
+      <ul>
+        <li>A escolha do candidato.</li>
+        <li>A independência dos benchmarks.</li>
+        <li>A proveniência das mídias.</li>
+        <li>A tese de retorno e suas premissas.</li>
+        <li>A originalidade visual do mockup.</li>
+      </ul>
+      <p><strong>Resultado:</strong> sobrevive · refinar · cai.</p>
+    </div>
+  </div>
+  <div class="mockup">
+    <div class="mockup-header">Falhas e recuperação</div>
+    <div class="mockup-body">
+      <p><strong>Falta mídia oficial:</strong> HOLD e substituição do candidato.</p>
+      <p><strong>Site moderno encontrado:</strong> REJECT imediato.</p>
+      <p><strong>Claim sem fonte:</strong> remover ou marcar hipótese.</p>
+      <p><strong>Design parecido demais:</strong> recompor a estrutura.</p>
+      <p><strong>Gate técnico falhou:</strong> corrigir antes do próximo prospect.</p>
+    </div>
+  </div>
+</div>
+
+<div class="mockup">
+  <div class="mockup-header">Pacote final para prospecção — privado</div>
+  <div class="mockup-body" style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;text-align:center;font-size:12px">
+    <div>Diagnóstico<br><strong>presença atual</strong></div>
+    <div>Oportunidade<br><strong>não capturada</strong></div>
+    <div>Mockup<br><strong>desktop/mobile</strong></div>
+    <div>Cenário<br><strong>de retorno</strong></div>
+    <div>Próxima ação<br><strong>reunião humana</strong></div>
+  </div>
+  <p class="subtitle">Nenhuma mensagem será enviada automaticamente. Breno aprova o pacote e conduz o contato.</p>
+</div>
+
+<div class="section">
+  <p class="label">Definition of Done do lote</p>
+  <ul>
+    <li>Story criada, acceptance criteria concluídos e file list atualizada.</li>
+    <li>Três candidatos com todos os seis gates em PASS.</li>
+    <li>Três mockups visualmente distintos e fiéis às respectivas marcas.</li>
+    <li>Três pacotes privados de prospecção, sem envio externo.</li>
+    <li>Lint, typecheck e testes relevantes executados antes de concluir.</li>
+  </ul>
+</div>
+
+<div class="options">
+  <div class="option" data-choice="full-design-approved" onclick="toggleSelect(this)">
+    <div class="letter">✓</div>
+    <div class="content"><h3>Aprovar o design completo</h3><p>Registrar a especificação e submetê-la à revisão adversarial.</p></div>
+  </div>
+  <div class="option" data-choice="full-design-change" onclick="toggleSelect(this)">
+    <div class="letter">↺</div>
+    <div class="content"><h3>Pedir ajuste</h3><p>Revisar entregáveis, sequência ou quality gates.</p></div>
+  </div>
+</div>

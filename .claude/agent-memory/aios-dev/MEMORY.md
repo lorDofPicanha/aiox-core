@@ -1,5 +1,12 @@
 # Dex (Builder) Agent Memory
 
+- [Anipis API structure + kill-switch](feedback_anipis_api_structure.md) — serenity-ai nested monorepo, Redis getRedis() singleton, crisis-net-survives gate seam, vi.mock hoisting + ChatService test mocking
+- [bretda-lp is a nested git repo](project_bretda_lp_nested_repo.md) — own .git, invisible to parent AIOS git status; cd in first; eleven design system + COMPANY constants; state-only "Santa Catarina"; Pivot 10 no pricing
+- [Noyce Maestro engine (Fase A)](project_noyce_maestro_engine.md) — pure state machine in apps/noyce/lib/agents (maestro-types.ts + orchestrator.ts); 23-stage licitação lifecycle; lib value imports MUST be relative+.ts (raw-.ts test runner, @/ fails at runtime)
+- [Noyce legal-engine fixes](feedback_noyce_legal_engine_fixes.md) — fuso normaliza na FRONTEIRA (ensureBrOffset) não no engine puro; TZ=UTC no topo do teste; effort/thinking condicionais ao modelo (Haiku 400); veto de segurança = campo tipado não string; enforceHumanActs por radical de verbo
+- [Contador packages wire](project_contador_packages_wire.md) — apps/contador consome @synkra/contador-{parser,motor-fiscal,api-client} via file: deps SEM transpilePackages (pré-buildados em dist/); app NÃO está no root workspace; deep JSON import de data/ funciona (motor sem exports); fast-xml-parser hoisted no root; server-only + Server Action p/ processar XML fiscal (LGPD); régua combustível=DISPUTADO não entra na base do motor (monofásico engine é que dispara)
+- [Contador e-CAC test/import mechanics](project_contador_ecac_test_import_mechanics.md) — raw-.ts test runner (Node24 type-stripping): VALUE import local usa `.ts` explícito; cross-file só TYPE (import de `@/`-alias VALUE quebra runtime); allowImportingTsExtensions reconcilia tsc/Next/Node; sem parameter-props/enum; FF-1 dialeto SERPRO/Infosimples só em adapters/, regras puras recebem refIso
+
 ## Project State
 
 ### Bretda Google Ads ECL Audit (2026-05-05)

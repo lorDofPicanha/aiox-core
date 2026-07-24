@@ -172,7 +172,7 @@ Adotamos medidas técnicas e organizacionais alinhadas a padrões internacionais
 (e) **Rate-limiting** e mecanismos anti-abuso (Upstash Redis + per-route limits);
 (f) **Isolamento de sessões** por session token;
 (g) **Logging auditável** de acessos e operações, com hash chain de `audit_events` preservada por 5 anos;
-(h) **Zero Data Retention enterprise** com OpenAI (vendor LLM ativo);
+(h) **Consentimento (Art. 33, VIII), Termos de API da OpenAI e pseudonimização** (vendor LLM ativo): dados enviados via API **não são utilizados para treinamento** e são retidos por até 30 dias apenas para monitoramento de abuso, com posterior eliminação. No Closed Beta opera-se sem Zero Data Retention (ZDR) e sem DPA formal; ambos no roadmap pós-CNPJ;
 (i) **Pseudonimização irreversível** de marcadores de crise pós-exclusão de conta;
 (j) **Plano de Resposta a Incidentes** com prazo de notificação à ANPD em até 3 dias úteis (Res. 15/2024) e notificação contratual de operadoras em até 24h para dados sensíveis (Cláusula 10.3 SCC).
 

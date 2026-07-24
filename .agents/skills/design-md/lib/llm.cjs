@@ -8,6 +8,7 @@
 "use strict";
 
 const claudeCli = require("./providers/claude-cli.cjs");
+const codexCli = require("./providers/codex-cli.cjs");
 const openrouter = require("./providers/openrouter.cjs");
 
 // ── Per-provider model defaults + allow-list ────────────────────────
@@ -16,6 +17,7 @@ const openrouter = require("./providers/openrouter.cjs");
 //   - openrouter (API):    Haiku-only (cost discipline; 240× cheaper than Opus)
 // Empirical: 1 Haiku run = $0.02 / score 86 vs 7 Opus runs avg $4.00 / score 88.
 const PROVIDER_DEFAULTS = {
+  "codex-cli":   { default_model: process.env.CODEX_MODEL || "gpt-5.5", allowed: null /* any */ },
   "claude-cli":  { default_model: "claude-opus-4-7",          allowed: null /* any */ },
   "openrouter":  { default_model: "anthropic/claude-haiku-4-5", allowed: [/haiku/i] /* haiku family only */ },
 };
@@ -25,7 +27,7 @@ function detectProvider(options) {
   if (options && options.provider) return options.provider; // explicit override
   if (process.env.VERCEL === "1") return "openrouter";     // production
   if (process.env.OPENROUTER_API_KEY) return "openrouter"; // local opt-in
-  return "claude-cli";                                     // local default
+  return "codex-cli";                                      // local default
 }
 
 // ── Provider+Model policy gate (NEW) ────────────────────────────────
@@ -74,6 +76,10 @@ async function invokeLlm(promptText, options = {}) {
       process.exit(6);
     }
     return openrouter.invoke(promptText, effectiveOptions);
+  }
+
+  if (provider === "codex-cli") {
+    return codexCli.invoke(promptText, effectiveOptions);
   }
 
   // claude-cli

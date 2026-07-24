@@ -26,7 +26,7 @@ import { buildTriage } from "../lib/noyce-operational.ts";
 import { validateAnalysis, validateHabilitation } from "../lib/agents/guardrails.ts";
 import { evaluateGate, isHardDivergence, GATE_CRITERIA } from "../lib/eval/gate-criteria.ts";
 
-const TRIAGE_TODAY = "2026-05-29T00:00:00Z"; // mesma ref do baseline (buildTriage)
+const TRIAGE_TODAY = process.env.NOYCE_EVAL_AS_OF ?? new Date().toISOString();
 
 if (!process.env.OPENAI_API_KEY && !process.env.ANTHROPIC_API_KEY) {
   console.error("\n✗ Defina OPENAI_API_KEY (ou ANTHROPIC_API_KEY).\n");

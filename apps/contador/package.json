@@ -25,6 +25,7 @@
     "@synkra/contador-api-client": "file:../../packages/contador-api-client",
     "@synkra/contador-motor-fiscal": "file:../../packages/contador-motor-fiscal",
     "@synkra/contador-parser": "file:../../packages/contador-parser",
+    "@synkra/contador-nfse-client": "file:../../packages/contador-nfse-client",
     "next": "^15.3.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"

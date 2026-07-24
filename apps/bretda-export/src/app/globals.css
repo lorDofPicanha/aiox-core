@@ -217,6 +217,13 @@ a { color: inherit; text-decoration: none; }
 .sw.active::after { border-color: var(--champagne); }
 button.thumb, button.sw { padding: 0; font: inherit; color: inherit; -webkit-appearance: none; appearance: none; }
 .thumb:focus-visible, .sw:focus-visible, .burger:focus-visible { outline: 2px solid var(--champagne); outline-offset: 2px; }
+/* PDP: available finishes — informational display, not a fake selector */
+.finish-display { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 12px; }
+.swd { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--hair); overflow: hidden; display: block; }
+.swd img { width: 100%; height: 100%; object-fit: cover; }
+.finish-note { font-size: 12px; line-height: 1.5; color: var(--muted); font-weight: 300; margin: 0 0 14px; max-width: 38ch; }
+.cfg-email { display: inline-block; margin-top: 10px; font-size: 12px; letter-spacing: .04em; color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--hair); padding-bottom: 2px; transition: .25s; }
+.cfg-email:hover { color: var(--off); border-color: var(--champagne); }
 .price2 { font-family: var(--font-display); font-size: 36px; font-weight: 500; font-variant-numeric: tabular-nums; }
 .ddp { font-size: 12.5px; color: var(--muted); font-weight: 300; margin: 6px 0 26px; }
 .trust { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--hair); border: 1px solid var(--hair); margin-bottom: 32px; }

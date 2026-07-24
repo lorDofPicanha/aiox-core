@@ -126,7 +126,7 @@ A arquitetura técnica da plataforma envolve as seguintes operadoras estrangeira
 | Operadora | Função | Dados transferidos | Jurisdição | Retenção | Status Closed Beta |
 |---|---|---|---|---|---|
 | Supabase | Banco de dados primário | Dados completos: identificação, mensagens, humor, crise, diário | EUA (AWS us-east-1) | Conta ativa + 30d + PITR 7d | **ATIVA** |
-| OpenAI | Inferência LLM principal + embeddings | Texto com PII estruturada filtrada | EUA (Azure) | Zero Retention via API enterprise (ZRT confirmado via env flag `OPENAI_ZDR_CONFIRMED`) | **ATIVA** |
+| OpenAI | Inferência LLM principal + embeddings | Texto com PII estruturada filtrada (sem identificadores diretos) | EUA (Azure) | **Sem ZDR no Closed Beta.** Retenção temporária de até 30 dias para monitoramento de abuso, conforme termos de API da OpenAI, com posterior eliminação; **dados não utilizados para treinamento de modelos**. Base/salvaguardas: **consentimento específico e destacado do titular (Art. 33, VIII)** + Termos de API/Usage Policies da OpenAI (vedação a treinamento, confidencialidade — Art. 39) + pseudonimização na origem. **DPA formal e ZDR adiados para pós-CNPJ** (conta Business da OpenAI ainda indisponível). Renúncia consciente ao ZDR registrada via flag `OPENAI_ZDR_WAIVED_ACK` (enforcement `env-zdr.ts`, fail-closed). | **ATIVA (sem ZDR/DPA)** |
 | Anthropic | Inferência LLM fallback | Mensagens com PII estruturada filtrada (quando ativada) | EUA (AWS multi-região) | Zero Data Retention (ZDR) — **a contratar via DPA enterprise** | **NÃO ATIVA** — `ANTHROPIC_API_KEY` removida de produção; reavaliação documentada em 25/Mai/2026. Reativação condicionada à formalização de cláusula contratual ZDR em DPA, não apenas configuração de dashboard. |
 | Sentry | Monitoramento de erros | Stack traces, UUID hash, metadados técnicos (sem conteúdo) | EUA | 30 dias (configurado; default 90d) | **ATIVA** com 6-layer PII hardening (`sentry-config.ts`, 25 testes) |
 | Upstash Redis | Cache e rate-limiting | Tokens de sessão (hash), UUID interno | EUA (AWS us-east-1) | TTL ≤ 15 min | **ATIVA** — cutover regional (sa-east-1) avaliado e adiado pelo founder em 19/Mai (D16). Reavaliação pós-Beta. |
@@ -195,7 +195,7 @@ Detalhamento da base contratual em Cláusulas-Padrão Contratuais Módulo 2 ANPD
 (d) compromisso contratual de divulgação semestral de transparency report agregado pela Operadora (número de requisições recebidas e atendidas), respaldado por cláusula 12(f) das SCCs;
 (e) consideração de migração progressiva, por etapas tecnicamente viáveis, a vendors em jurisdição com regime equivalente (UE, Brasil). **Roadmap pós-Beta:** reavaliação de migração regional de Upstash para sa-east-1 (São Paulo) — avaliada e adiada pelo founder em 19/Mai/2026 (D16) por pragmatismo operacional.
 
-**Risco residual:** Baixo, condicionado à manutenção de filtragem de PII e ao Zero Data Retention em OpenAI (e Anthropic, quando reativada).
+**Risco residual:** Baixo-moderado. Na ausência de ZDR e de DPA formal durante o Closed Beta, o risco de exposição por requisição governamental estrangeira é mitigado por: (i) base legal de consentimento específico e destacado (Art. 33, VIII), suficiente por si só para a transferência; (ii) pseudonimização e filtragem de PII na origem (sem identificadores diretos transmitidos); (iii) Termos de API/Usage Policies da OpenAI, que vedam uso para finalidade própria e para treinamento de modelos; (iv) retenção temporária limitada (até 30 dias, exclusivamente para monitoramento de abuso) com posterior eliminação. A execução de DPA formal e a contratação de ZDR permanecem no roadmap pós-Beta, condicionadas à abertura do CNPJ/conta Business.
 
 ### R3 — Falha de protocolo de crise (falso negativo)
 
@@ -231,11 +231,11 @@ Detalhamento da base contratual em Cláusulas-Padrão Contratuais Módulo 2 ANPD
 
 **Medidas mitigatórias:**
 (a) cláusula contratual expressa de vedação ao uso para treinamento (cláusula 3.2 das SCCs);
-(b) contratação de Zero Data Retention em tier enterprise com a operadora de IA ativa (OpenAI ZRT confirmado via env flag `OPENAI_ZDR_CONFIRMED` e validado por enforcement code `env-zdr.ts` que falha o boot em produção caso a flag não esteja explicitamente confirmada). Contratação adicional com Anthropic condicionada à formalização de cláusula contratual ZDR em DPA enterprise, não apenas configuração de dashboard;
+(b) Termos e Usage Policies de API da OpenAI que estabelecem expressamente que dados enviados via API **não são utilizados para treinamento de modelos** (vigentes independentemente de DPA formal). No Closed Beta opera-se **sem ZDR e sem DPA formal** (ambos adiados ao pós-CNPJ) (renúncia consciente registrada via flag `OPENAI_ZDR_WAIVED_ACK`; o enforcement `env-zdr.ts` exige decisão explícita do controlador e falha o boot em produção na ausência de qualquer declaração — ZDR confirmado OU renúncia reconhecida). Contratação de ZDR em tier enterprise mantida no roadmap pós-Beta;
 (c) auditoria contratual periódica (relatórios anuais SOC 2 Type II);
 (d) filtragem de PII estruturada antes da transmissão (validada por CI gate `pii-leak-regression.test.ts`, 15 testes), reduzindo valor potencial dos dados para treinamento.
 
-**Risco residual:** Baixo, condicionado à manutenção de ZDR/ZRT e à diligência periódica.
+**Risco residual:** Baixo. O vetor de treinamento é endereçado primariamente pela vedação dos Termos/Usage Policies de API da OpenAI e pela filtragem de PII, independentemente de ZDR ou DPA formal. A retenção temporária (até 30 dias, monitoramento de abuso) não habilita uso para treinamento.
 
 ### R6 — Alucinação da IA
 
@@ -296,7 +296,7 @@ Detalhamento da base contratual em Cláusulas-Padrão Contratuais Módulo 2 ANPD
 
 **Medidas mitigatórias:**
 (a) retenção curta em Langfuse (14 dias);
-(b) Zero Data Retention em OpenAI; Anthropic mantida desativada até formalização contratual ZDR;
+(b) na OpenAI, retenção temporária limitada (até 30 dias, monitoramento de abuso) sob os Termos de API — sem ZDR nem DPA formal no Closed Beta (ambos no roadmap pós-CNPJ; renúncia ao ZDR registrada); Anthropic mantida desativada;
 (c) uso de UUID hash em vez de identificadores claros;
 (d) evolução do controle à medida em que o universo de titulares crescer (a re-identificação por inferência cruzada perde força com escala).
 
@@ -358,7 +358,7 @@ As medidas de proteção adotadas integram-se em quatro camadas complementares:
 
 (a) Cláusulas-Padrão Contratuais Módulo 2 ANPD (Res. 19/2024) com todas as operadoras estrangeiras ativas;
 (b) Data Processing Agreements (DPAs) vendor com todas as operadoras;
-(c) contratação de Zero Data Retention em tier enterprise com a operadora de IA ativa (OpenAI ZRT confirmado); contratação adicional com Anthropic condicionada à formalização de cláusula contratual ZDR em DPA enterprise;
+(c) no Closed Beta, operação **sem ZDR e sem DPA formal** com a operadora de IA ativa (OpenAI), apoiada em **consentimento (Art. 33, VIII)** + Termos de API/Usage Policies + pseudonimização, mediante renúncia consciente ao ZDR do controlador (`OPENAI_ZDR_WAIVED_ACK`, enforcement fail-closed em `env-zdr.ts`); execução de DPA formal e contratação de ZDR mantidas no roadmap pós-CNPJ;
 (d) cláusulas expressas de vedação ao uso para treinamento de modelo;
 (e) cláusulas de notificação rápida de incidente (24h para dados sensíveis);
 (f) cláusulas de auditoria periódica e cooperação com ANPD;

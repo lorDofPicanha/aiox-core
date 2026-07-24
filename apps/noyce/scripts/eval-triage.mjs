@@ -5,7 +5,7 @@
 // NÃO é parte da suíte de testes (faz chamadas reais de API, consome crédito).
 //   cd apps/noyce && OPENAI_API_KEY=sk-... node --experimental-strip-types scripts/eval-triage.mjs [N]
 //
-// Mesma DATA DE REFERÊNCIA do baseline (TRIAGE_TODAY) p/ comparação justa do prazo.
+// Referência injetável mantém a avaliação reproduzível sem divergir do relógio de produção.
 
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
@@ -14,7 +14,7 @@ import { createLlmClient } from "../lib/agents/clients/client-factory.ts";
 import { runTriage } from "../lib/agents/triage-agent.ts";
 import { buildTriage } from "../lib/noyce-operational.ts";
 
-const TRIAGE_TODAY = "2026-05-29T00:00:00Z"; // == const interno do buildTriage
+const TRIAGE_TODAY = process.env.NOYCE_EVAL_AS_OF ?? new Date().toISOString();
 
 if (!process.env.OPENAI_API_KEY && !process.env.ANTHROPIC_API_KEY) {
   console.error("\n✗ Defina OPENAI_API_KEY (ou ANTHROPIC_API_KEY).\n");

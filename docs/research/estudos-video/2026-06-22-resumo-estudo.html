@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resumo de Estudo — 22/Jun/2026 · Marketing (Dener/V4) + Harness Claude Design (Alan)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#faf7f1; --surface:#ffffff; --surface-2:#f4efe6;
+  --ink:#1d2027; --body:#33373f; --muted:#73706a; --border:#e7e0d3;
+  --amber:#b4541e; --amber-soft:#f6e8db; --amber-line:#e9c9ad;
+  --indigo:#4338ca; --indigo-soft:#e8e7fb; --indigo-line:#c9c6f1;
+  --good:#2f7d4f; --shadow:0 1px 2px rgba(40,30,15,.04),0 8px 30px rgba(40,30,15,.06);
+  --maxw:880px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--body);
+  font-family:'Inter',system-ui,sans-serif;font-size:16.5px;line-height:1.66;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+/* Masthead */
+.masthead{border-bottom:1px solid var(--border);padding:64px 24px 40px;text-align:center;background:
+  radial-gradient(120% 100% at 50% -10%, #fff 0%, var(--paper) 60%);}
+.kicker{font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.masthead h1{
+  font-family:'Fraunces',Georgia,serif;font-weight:600;color:var(--ink);
+  font-size:clamp(30px,5vw,46px);line-height:1.08;margin:.5em auto .35em;max-width:760px;letter-spacing:-.01em}
+.masthead .sub{color:var(--muted);font-size:15px;max-width:620px;margin:0 auto}
+.src-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+.src{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);background:#fff;
+  border-radius:999px;padding:8px 15px;font-size:13.5px;color:var(--ink);text-decoration:none;box-shadow:var(--shadow)}
+.src:hover{border-color:#cfc7b6}
+.src .dot{width:8px;height:8px;border-radius:50%}
+.src.m .dot{background:var(--amber)} .src.a .dot{background:var(--indigo)}
+
+/* TOC */
+.toc{max-width:var(--maxw);margin:34px auto 0;padding:22px 26px;background:var(--surface);
+  border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow)}
+.toc h4{margin:0 0 12px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 28px}
+.toc a{color:var(--body);text-decoration:none;font-size:14px;padding:3px 0;display:block;border-bottom:1px dotted transparent}
+.toc a:hover{color:var(--ink);border-bottom-color:var(--border)}
+.toc a span{color:var(--muted);font-variant-numeric:tabular-nums;margin-right:8px}
+@media(max-width:640px){.toc-grid{grid-template-columns:1fr}}
+
+/* Part header */
+.part{padding:60px 0 8px}
+.part-tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  padding:5px 12px;border-radius:7px}
+.part h2{font-family:'Fraunces',serif;font-weight:600;color:var(--ink);font-size:clamp(26px,4vw,36px);
+  line-height:1.12;margin:16px 0 6px;letter-spacing:-.01em}
+.part .who{color:var(--muted);font-size:14.5px;margin:0}
+.m .part-tag{background:var(--amber-soft);color:var(--amber)}
+.a .part-tag{background:var(--indigo-soft);color:var(--indigo)}
+
+/* TL;DR */
+.tldr{border-radius:14px;padding:18px 22px;margin:24px 0 8px;font-size:15.5px;line-height:1.6}
+.m .tldr{background:var(--amber-soft);border:1px solid var(--amber-line)}
+.a .tldr{background:var(--indigo-soft);border:1px solid var(--indigo-line)}
+.tldr b{color:var(--ink)}
+
+/* Sections */
+section.blk{padding:26px 0 6px;border-top:1px solid var(--border);margin-top:18px}
+section.blk:first-of-type{border-top:none}
+h3{font-family:'Fraunces',serif;font-weight:600;color:var(--ink);font-size:21px;margin:8px 0 14px;letter-spacing:-.005em}
+h3 .n{display:inline-block;min-width:1.7em;font-size:14px;font-weight:700;font-family:'Inter',sans-serif;
+  vertical-align:1px}
+.m h3 .n{color:var(--amber)} .a h3 .n{color:var(--indigo)}
+p{margin:0 0 14px}
+ul{margin:0 0 16px;padding-left:0;list-style:none}
+li{position:relative;padding-left:22px;margin-bottom:9px}
+li::before{content:"";position:absolute;left:4px;top:11px;width:6px;height:6px;border-radius:50%}
+.m li::before{background:var(--amber-line)} .a li::before{background:var(--indigo-line)}
+li b,p b{color:var(--ink);font-weight:600}
+.lead{color:var(--ink);font-weight:600}
+
+/* Tables */
+table{width:100%;border-collapse:collapse;margin:8px 0 20px;font-size:14.5px;background:#fff;
+  border:1px solid var(--border);border-radius:12px;overflow:hidden}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--border);vertical-align:top}
+th{background:var(--surface-2);font-weight:600;color:var(--ink);font-size:13px;letter-spacing:.02em}
+tr:last-child td{border-bottom:none}
+td:first-child{font-weight:600;color:var(--ink);white-space:nowrap}
+
+/* Quotes */
+.quotes{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:8px 24px;margin:18px 0}
+.quotes blockquote{margin:0;padding:14px 0;border-bottom:1px solid var(--border);font-family:'Fraunces',serif;
+  font-size:16.5px;font-style:italic;color:var(--ink);line-height:1.5}
+.quotes blockquote:last-child{border-bottom:none}
+.quotes blockquote::before{content:"\201C";font-size:1.1em;margin-right:2px}
+.quotes blockquote::after{content:"\201D"}
+.quotes cite{display:block;font-style:normal;font-family:'Inter';font-size:12.5px;color:var(--muted);margin-top:6px}
+
+/* Bridge / footer */
+.bridge{background:linear-gradient(180deg,#fff, var(--surface-2));border:1px solid var(--border);
+  border-radius:16px;padding:28px 28px;margin:46px 0 0;box-shadow:var(--shadow)}
+.bridge h3{margin-top:0}
+.bridge .two{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:6px}
+@media(max-width:640px){.bridge .two{grid-template-columns:1fr}}
+.bridge .col h5{margin:0 0 8px;font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+.bridge .col.m h5{color:var(--amber)} .bridge .col.a h5{color:var(--indigo)}
+.bridge .col p{font-size:14.5px;color:var(--body);margin:0}
+footer{border-top:1px solid var(--border);margin-top:54px;padding:28px 24px 60px;text-align:center;color:var(--muted);font-size:13px}
+footer code{background:var(--surface-2);padding:2px 6px;border-radius:5px;font-size:12px;color:var(--ink)}
+.note{font-size:13.5px;color:var(--muted);background:var(--surface-2);border-left:3px solid var(--amber-line);
+  padding:12px 16px;border-radius:0 8px 8px 0;margin:14px 0}
+
+@media print{
+  body{background:#fff;font-size:11pt}
+  .toc,.src-row{display:none}
+  .part{padding-top:24px}
+  section.blk{break-inside:avoid}
+  .bridge,.quotes,table,.tldr{break-inside:avoid}
+  a{color:inherit;text-decoration:none}
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="kicker">Resumo de Estudo · 22 Jun 2026</div>
+  <h1>Marketing científico da V4 &amp; o harness que destrava o Claude Design</h1>
+  <p class="sub">Dois conteúdos destilados de transcrição (yt-dlp) e ingeridos no RAG do AIOS. Material para revisão.</p>
+  <div class="src-row">
+    <a class="src m" href="https://www.youtube.com/watch?v=5VHJDpsuCMU" target="_blank"><span class="dot"></span>9h Marketing Digital — Dener Lippert (V4) · 9h24</a>
+    <a class="src a" href="https://www.youtube.com/watch?v=n0Xsy4OzlQU" target="_blank"><span class="dot"></span>Hackeei o Claude no design — Alan Nicolas · 1h20</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="toc">
+    <h4>Índice</h4>
+    <div class="toc-grid">
+      <a href="#p1"><span>P1</span>Marketing — Dener Lippert / V4</a>
+      <a href="#p2"><span>P2</span>Harness Claude Design — Alan</a>
+      <a href="#d1"><span>1.1</span>Fundamentos (mentalidade)</a>
+      <a href="#a1"><span>2.1</span>O hack (passo a passo)</a>
+      <a href="#d2"><span>1.2</span>Estratégia</a>
+      <a href="#a2"><span>2.2</span>As 11 skills</a>
+      <a href="#d3"><span>1.3</span>4 Pilares + maturidade</a>
+      <a href="#a3"><span>2.3</span>Limitações</a>
+      <a href="#d4"><span>1.4</span>Canais &amp; Tráfego</a>
+      <a href="#a4"><span>2.4</span>Economia de token</a>
+      <a href="#d5"><span>1.5</span>Google Ads</a>
+      <a href="#a5"><span>2.5</span>Por que &gt; alternativas</a>
+      <a href="#d6"><span>1.6</span>Otimização &amp; Escala</a>
+      <a href="#a6"><span>2.6</span>Distribuição &amp; filosofia</a>
+      <a href="#d7"><span>1.7</span>Oferta &amp; Copy</a>
+      <a href="#bridge"><span>→</span>Ponte para o AIOS</a>
+      <a href="#d8"><span>1.8</span>UX / CRO / Sales Page</a>
+      <a href="#d9"><span>1.9</span>Vendas (POD) &amp; CRM</a>
+      <a href="#d10"><span>1.10</span>Métricas &amp; Retenção</a>
+    </div>
+  </nav>
+
+  <!-- ============ PART 1 ============ -->
+  <div class="m">
+  <div class="part" id="p1">
+    <span class="part-tag">Parte 1 · Marketing</span>
+    <h2>Curso de Marketing do Dener Lippert</h2>
+    <p class="who">Fundador da V4 Company · canal Staage · curso de 9h já vendido por +R$1.500</p>
+    <div class="tldr"><b>TL;DR.</b> Marketing é ciência, não arte. Só é marketing quando <b>vende</b> (mais gente, mais vezes, maior valor). Valide o produto antes de tudo, decida por teste (1 variável isolada), priorize canais por <b>atenção×intenção</b>, faça <b>loop de growth</b>, construa oferta com <b>mecanismo único + inversão de risco</b>, e ganhe no <b>LTV</b> via atendimento e retenção — não no múltiplo de ROI.</div>
+  </div>
+
+  <section class="blk" id="d1">
+    <h3><span class="n">1.1</span>Fundamentos — a mentalidade</h3>
+    <ul>
+      <li><b>Definição operacional:</b> marketing só conta quando <b>vende</b> — o produto, para mais pessoas, mais vezes, pelo maior valor.</li>
+      <li><b>Cientista, não advogado:</b> decida por dado, refute as próprias hipóteses; toda verdade é transitória. Intuição gera hipótese, nunca decide.</li>
+      <li><b>Método científico (5 passos):</b> Observar → Problematizar (tese/antítese/síntese) → Hipótese → <b>Testar isolando 1 variável</b> (amostra significativa) → Concluir.</li>
+      <li><b>Lei base:</b> nenhum marketing, verba ou time de vendas vende produto ruim → validar <b>PMF antes do planejamento</b>.</li>
+    </ul>
+  </section>
+
+  <section class="blk" id="d2">
+    <h3><span class="n">1.2</span>Estratégia — onde jogar</h3>
+    <ul>
+      <li><b>Os 4 fits:</b> Produto ↔ Mercado ↔ <b>Modelo de monetização</b> ↔ Canal. Mudar um quebra a tração.</li>
+      <li><b>Matriz de Inovação</b> (Indústria/Serviço/Varejo × On/Off): mapeie onde está, expanda pros outros quadrantes pra multiplicar receita.</li>
+      <li><b>5 Níveis de Consciência (Schwartz):</b> inconsciente → problema → solução → produto → vendedor. Baixa consciência ⇒ investir em <b>aquisição/educação</b>; alta ⇒ pode <b>monetizar direto</b>.</li>
+      <li><b>Persona:</b> 2–4 variações (nunca 1, pra testar). Mapear dores (dinheiro/amor/reconhecimento/segurança), transformações (A→B) e objeções (preço/confiança/tempo/"funciona pra mim?").</li>
+    </ul>
+  </section>
+
+  <section class="blk" id="d3">
+    <h3><span class="n">1.3</span>Os 4 Pilares + maturidade</h3>
+    <ul>
+      <li><b>4 Pilares (Método V4):</b> <b>Tráfego → Engajamento → Conversão → Retenção</b>. Conversão é a <b>interseção</b> dos 4 (não-linear). Analogia loja física: ponto / vitrine / pagamento / cartão-fidelidade.</li>
+      <li><b>Steps V1–V4:</b> V1 descobrir indicadores → V2 maturar (concentra budget nas ~3 vencedoras) → V3 escalar → V4 profissionalizar (divisão do trabalho). <b>Não prometa ROI em V1/V2.</b></li>
+      <li><b>Loop de growth:</b> reinvestir receita <b>no próprio canal</b> = crescimento exponencial/previsível, vs. linear (PR/loja) que não reinveste no mesmo ponto.</li>
+    </ul>
+  </section>
+
+  <section class="blk" id="d4">
+    <h3><span class="n">1.4</span>Canais &amp; Tráfego</h3>
+    <ul>
+      <li><b>2 eixos pra escolher canal:</b> Atenção × Intenção (quer alta nos dois) · Necessidade × Desejo (necessidade → Google Search; desejo → descoberta/social).</li>
+      <li><b>Meça ANTES de rodar</b> (6 formas): pixel+UTM · CRM · correlação (TAM por bairro IBGE×ticket) · mecânica (0800/URL exclusiva) · conversão offline (match de base). <i>"Se não souber mensurar, vai dar merda."</i></li>
+      <li><b>Conteúdo define audiência:</b> o criativo filtra quem clica antes do targeting.</li>
+      <li><b>Grid de Públicos</b> (Digital Marketer): públicos × argumentos; veicula tudo, mantém vencedores, gera novos argumentos deles. 3–4 × 3–4 por rodada.</li>
+      <li><b>Aquisição antes de Monetização:</b> amplo (vídeo) → retargeting de quem viu ≥75% → página de venda. <i>"A panela pega no aquário, não no oceano — aumente o aquário."</i></li>
+    </ul>
+    <p class="lead">Checklist de canais — esgotar antes de descer:</p>
+    <table>
+      <tr><th>#</th><th>Canal</th><th>Por quê</th></tr>
+      <tr><td>1</td><td>Google Search</td><td>institucional → core → concorrentes → setor. Não gasta se ninguém busca (risco zero)</td></tr>
+      <tr><td>2</td><td>Marketplace</td><td>cada venda = novo CAC (perde no LTV)</td></tr>
+      <tr><td>3</td><td>Remarketing</td><td>gasto obrigatório; sem audiência não entrega/não cobra</td></tr>
+      <tr><td>4</td><td>Look-alike</td><td>entrada no social; daqui pra baixo o gasto "derrete"</td></tr>
+      <tr><td>5</td><td>Segmentação</td><td>demografia/interesse/cargo/dispositivo</td></tr>
+      <tr><td>6</td><td>Mensagem</td><td>WhatsApp / lead nativo / 0800 — baixa fricção, exige TAM grande</td></tr>
+      <tr><td>7</td><td>Display / True View</td><td>alta atenção, intenção mínima — por último</td></tr>
+    </table>
+  </section>
+
+  <section class="blk" id="d5">
+    <h3><span class="n">1.5</span>Google Ads — específico</h3>
+    <ul>
+      <li><b>Correspondências:</b> Ampla (descobrir termos) · Frase <code>" "</code> · Exata <code>[ ]</code> · Inteligente (só alta intenção). Use <b>termos de pesquisa reais</b> pra negativar e achar contextos novos.</li>
+      <li><b>Branded vs core:</b> separe rigorosamente — misturar infla CTR/conversão e engana a leitura. <i>"Tudo que é marca deixa na marca; tudo que é core no core."</i></li>
+      <li><b>Concorrente:</b> lance na palavra OK; <b>nunca o nome no anúncio/página</b>; crie <b>página comparativa</b> (não na home). Nome no anúncio = risco jurídico no BR.</li>
+    </ul>
+  </section>
+
+  <section class="blk" id="d6">
+    <h3><span class="n">1.6</span>Otimização &amp; Escala</h3>
+    <ul>
+      <li><b>Message Match:</b> clicou em A → cai na página A; quebra = bounce/zero conversão. Variação de LP <b>por anúncio</b>, não banner rotativo.</li>
+      <li><b>3 alavancas (engenharia reversa):</b> Criativos (comece aqui) → Públicos → Estratégia. Janelas: criativo ~7d, público 7–30d, estratégia 15–30d.</li>
+      <li><b>4 passos de escala:</b> 1) <b>mais verba</b> (o passo mais pulado) → 2) mais criativos → 3) mais públicos → 4) mais fontes.</li>
+      <li><b>Diminishing returns:</b> + verba = + custo por resultado. <b>Gargalo é a página</b> se conversão ~0,x–1%.</li>
+      <li><b>Fast traffic</b> (mensagem/search-telefone/lead nativo) pra começar e provar; <b>deep traffic</b> (lead+LP/inbound) em paralelo, pronto <b>antes</b> do cliente reclamar.</li>
+    </ul>
+  </section>
+
+  <section class="blk" id="d7">
+    <h3><span class="n">1.7</span>Oferta &amp; Copy</h3>
+    <ul>
+      <li><b>Framework de Oferta:</b> Oportunidade → Persona → <b>Inimigo comum</b> → Promessas → Objeções → Provas → <b>Mecanismo Único</b> → <b>Big Idea</b>. <i>Para cada promessa, uma prova; para cada aumento de consciência, uma quebra de objeção.</i></li>
+      <li><b>Mecanismo único (USP):</b> sem ele o produto nunca é campeão. Subniche até virar 1º lugar.</li>
+      <li><b>Big Idea / Regra de Um:</b> 1 ideia por copy, <b>específica + mensurável + com prazo</b> (ex.: "100 mil em 7 dias").</li>
+      <li><b>Preço = Oferta − Risco:</b> maximize oferta, minimize risco (garantia/trial/provas/inversão).</li>
+      <li><b>Jornada do Herói</b> na narrativa → +10–20× alcance no teste de LinkedIn. <b>Transferência de autoridade B2B:</b> podcast com executivos → exibe os logos ("carteiraço").</li>
+    </ul>
+  </section>
+
+  <section class="blk" id="d8">
+    <h3><span class="n">1.8</span>UX / CRO / Página de Vendas</h3>
+    <p class="lead">12 passos do wireframe de Sales Page:</p>
+    <ul>
+      <li>Atenção (banner+PUV+message match) → Problema → Agravar → Solução (≠ produto) → Autoridade → Como funciona → Oferta com ganho → Garantia/inversão → Argumentos lógicos → Escassez (stick bar) → Reforço+Medo → <b>Prova social</b> (chave de ouro).</li>
+    </ul>
+    <ul>
+      <li><b>CRO (jornada cerebral):</b> Motivação ("vem a mim", <b>7s</b>) → PUV → Urgência → Mitigar fricção → reduzir incerteza (prova social de gente igual). 1–3 instigam, 4–5 mitigam.</li>
+      <li><b>10 premissas da página:</b> objetivo único · CTA único · <b>mobile first (80% do tráfego)</b> · responsiva · rápida · message match · exit popup não invasivo · tags (GA+Pixel+Ads) · Hotjar · testar caminho do usuário.</li>
+      <li><b>Jobs to be Done:</b> não vende furadeira, vende o furo / o reconhecimento. <i>"Nosso negócio é vender o seu."</i></li>
+      <li><b>Emoção:</b> <b>Medo</b> é o mais forte (depois amor, nojo/revolta). Quebra de padrão prende; rosto exagerado converte mais (provado por A/B).</li>
+    </ul>
+  </section>
+
+  <section class="blk" id="d9">
+    <h3><span class="n">1.9</span>Vendas (POD) &amp; CRM</h3>
+    <table>
+      <tr><th>Papel</th><th>Função</th><th>Volume</th></tr>
+      <tr><td>LDR</td><td>minera/limpa listas, monta cadências</td><td>—</td></tr>
+      <tr><td>SDR</td><td>filtra inbound, qualifica ICP</td><td>5–10 reuniões/dia</td></tr>
+      <tr><td>BDR</td><td>outbound, cold call (vende a atenção)</td><td>1–2 reuniões/dia</td></tr>
+      <tr><td>Closer</td><td>só apresenta a leads prontos</td><td>—</td></tr>
+      <tr><td>Farmer/CS</td><td>cultiva LTV — <i>"atacante não marca"</i></td><td>—</td></tr>
+    </table>
+    <ul>
+      <li><b>Tipos de venda (Winning by Design):</b> Self-service → MLG/inbound (SDR+closer) → SLG/outbound (BDR+closer) → Enterprise. Ciclo: self instantâneo · MLG &lt;10d · SLG 30–60d · Enterprise meses.</li>
+      <li><b>Lead Response Time:</b> atender em <b>&lt;5 min</b>; conversão despenca a cada 5 min. WhatsApp síncrono: se responde, <b>já liga</b>.</li>
+      <li><b>Follow-up é o mais crítico:</b> <i>reunião ruim + follow-up bom = venda; reunião ótima + follow-up ruim = venda perdida.</i> Reserve <b>≥20% do dia (~2h)</b> só pra follow-up; feche toda reunião com próximo passo agendado.</li>
+      <li><b>~70% dos leads inbound são ruins</b> → filtro duplo (formulário + SDR) pra não queimar o closer caro.</li>
+    </ul>
+  </section>
+
+  <section class="blk" id="d10">
+    <h3><span class="n">1.10</span>Métricas, Retenção &amp; Caixa</h3>
+    <ul>
+      <li><b>LTV/CAC ideal = 3×</b> (&gt;1 ok · &lt;1 prejuízo · &gt;5 = fora da curva OU investindo pouco). <b>Importa a margem em R$, não o múltiplo.</b> CAC ≈ 70% da margem.</li>
+      <li><b>Atendimento é lifetime:</b> cai mais por atendimento que por resultado. <b>Evidência de serviço diária</b> (<i>"ligação é prova de amor"</i>) — todo dia o cliente pensa em cancelar.</li>
+      <li><b>RFM</b> (Recência/Frequência/Monetário) → régua por custo: e-mail → remarketing → humano. <b>Cohort</b> por safra e canal (pague mais caro pelo que retém mais).</li>
+      <li><b>Flywheel de caixa V4:</b> recebe do cliente (~dia 15–20) antes de pagar a mídia (~dia 30).</li>
+      <li><b>Boi de piranha (isca):</b> margem ~zero ("só pague o frete") atrai volume → upsell/PDV. Gateway com <b>retry</b> recupera <b>30–40%</b> das recusas.</li>
+      <li><b>HR Checking (weekly):</b> Resultados (vitórias 1º) → Objetivo SMART → Premissas/Riscos → <b>Entregas por último</b>.</li>
+      <li><b>CS:</b> NPS (promotores−detratores) · CSAT · <b>MHS</b> ("quão insatisfeito se eu parasse?") — alto MHS = alto LTV e sinal de PMF.</li>
+    </ul>
+    <div class="quotes">
+      <blockquote>Você precisa ser um cientista, não um advogado. Toda verdade é transitória.<cite>Dener Lippert</cite></blockquote>
+      <blockquote>Conteúdo define audiência — tatua na testa.<cite>Dener Lippert</cite></blockquote>
+      <blockquote>Preço é igual a oferta menos risco.<cite>Dener Lippert</cite></blockquote>
+      <blockquote>O múltiplo não importa; o que importa é a margem que eu tô gerando.<cite>Dener Lippert</cite></blockquote>
+      <blockquote>A sazonalidade é a desculpa dos marqueteiros incompetentes.<cite>Sérgio Ziman (citado no curso)</cite></blockquote>
+    </div>
+  </section>
+  </div><!-- /.m -->
+
+  <!-- ============ PART 2 ============ -->
+  <div class="a">
+  <div class="part" id="p2">
+    <span class="part-tag">Parte 2 · AI Design</span>
+    <h2>O harness que destrava o Claude Design</h2>
+    <p class="who">Alan Nicolas · Academia Lendária · livestream 1h20</p>
+    <div class="tldr"><b>TL;DR.</b> O Claude Design é o melhor motor de design de IA, mas é uma "caixinha fechada" (não instala skills/scripts). Alan descobriu que ele <b>lê obrigatoriamente um <code>CLAUDE.md</code></b> a cada sessão (herança do Claude Code) e usou isso pra injetar um <b>harness</b> de skills + scripts JS — matando AI slop, garantindo consistência entre 100+ telas e cortando gasto de token.</div>
+  </div>
+
+  <section class="blk" id="a1">
+    <h3><span class="n">2.1</span>O hack — passo a passo reproduzível</h3>
+    <ul>
+      <li><b>A brecha:</b> Claude Design não instala skills/pacotes pela UI, <b>mas</b> aceita upload de arquivos e <b>lê o <code>CLAUDE.md</code></b> ao abrir cada sessão.</li>
+      <li><b>1.</b> Baixar o <b>ZIP</b> do harness no GitHub (sem instalador — a plataforma bloquearia).</li>
+      <li><b>2.</b> <b>Arrastar</b> o <code>.zip</code> pra pasta principal — <b>NÃO clicar "enviar"</b> (gastaria token), só soltar; descompacta em <code>uploads/</code>.</li>
+      <li><b>3.</b> <b>Nova conversa:</b> "traga tudo da pasta X pra principal" → usa um <b>move interno</b> (custo mínimo).</li>
+      <li><b>4.</b> <b>Novo chat → digitar <code>go</code></b> → dispara o bootstrap.</li>
+      <li><b>5. Truque do marcador:</b> o <code>CLAUDE.md</code> tem um texto-marcador; se ainda <b>não</b> foi alterado, o sistema infere "projeto novo" e roda o setup completo (detecta design system, tokeniza, reescreve bundles, cria componentes JS, estrutura páginas).</li>
+      <li><b>6.</b> A parte cara do setup é <b>JavaScript</b> (programado), não deixada "rodando" pela IA → muito menos token.</li>
+    </ul>
+  </section>
+
+  <section class="blk" id="a2">
+    <h3><span class="n">2.2</span>As 11 skills do harness</h3>
+    <table>
+      <tr><th>Skill</th><th>Função</th></tr>
+      <tr><td>mobile force audit</td><td>testa Android/iPhone/iPad e ajusta quebras</td></tr>
+      <tr><td>design system guardian</td><td>carrega antes de mexer em elementos; força consistência de tokens (100+ telas)</td></tr>
+      <tr><td>text integrity</td><td>remove AI slop textual (ex.: em-dashes)</td></tr>
+      <tr><td>accessibility</td><td>contraste/visão (substitui a nativa fraca)</td></tr>
+      <tr><td>motion</td><td>paralax, hover estilo Obsidian, scan de fotos, logo animada</td></tr>
+      <tr><td>vídeo animado</td><td>timeline motion (Reels/stories até 90s) + roteiro com timing</td></tr>
+      <tr><td>slides/deck</td><td>decks estruturados</td></tr>
+      <tr><td>orig. visual</td><td>detecta elementos genéricos de AI slop</td></tr>
+      <tr><td>remoção AI slop</td><td>varre e remove botões roxos/gradientes sem sentido</td></tr>
+      <tr><td>modularização</td><td>elemento citado 3+ vezes vira componente JS (propaga em 1 alteração)</td></tr>
+      <tr><td>tokenização</td><td>estrutura componentes pro pipeline</td></tr>
+    </table>
+    <p class="note"><b>Skills minúsculas:</b> sem front-matter; chamam internamente as skills <b>nativas</b> do Claude Code/Design → <b>~600 tokens</b> vs. 2.000–3.000 das originais.</p>
+  </section>
+
+  <section class="blk" id="a3">
+    <h3><span class="n">2.3</span>Limitações do Claude Design</h3>
+    <ul>
+      <li><b>Caixa fechada:</b> não instala skills/scripts pela UI; sem docs oficiais de customização.</li>
+      <li><b>Sem <code>npm install</code>:</b> roda servidor Node (Vite/React) mas não instala pacotes.</li>
+      <li><b>Screenshot = ~20.000 tokens fixos</b> por print (independe da tela); auditorias tiram muitos prints → o harness <b>evita prints, testando via JS</b>.</li>
+      <li>Produz <b>muito AI slop</b> por padrão; <b>não é modular</b> nativamente; acessibilidade nativa fraca.</li>
+    </ul>
+  </section>
+
+  <section class="blk" id="a4">
+    <h3><span class="n">2.4</span>Boas práticas / economia de token</h3>
+    <ul>
+      <li><b>Nova conversa por tarefa.</b></li>
+      <li><b>Não use pra TODAS as telas</b> (caro): só telas-chave de referência (home/produto/carrinho/categoria) → delegar o resto ao Claude Code/Codex modular.</li>
+      <li>Resultado: 1 página completa + design system ≈ <b>7% do limite de 5h</b>.</li>
+    </ul>
+  </section>
+
+  <section class="blk" id="a5">
+    <h3><span class="n">2.5</span>Por que Claude Design &gt; alternativas</h3>
+    <ul>
+      <li>Motor da Anthropic é superior (Lovable/Bolt/Canva usam motor por trás); <b>integração navegador+motor</b> dá mais criatividade.</li>
+      <li>Mesmo prompt no Claude Code "puro", Lovable, v0, Grok ou OpenDesign <b>não chega perto</b>.</li>
+      <li>O que faz o design incrível é o <b>harness fechado da Anthropic</b> — o do Alan apenas <b>expande</b>.</li>
+      <li><b>Enterprise:</b> compartilha design system com o time e <b>replica componentes automaticamente</b> (≠ GitHub). Regra de ouro: <b>nunca duplicar o design system</b> (múltiplas fontes da verdade).</li>
+    </ul>
+  </section>
+
+  <section class="blk" id="a6">
+    <h3><span class="n">2.6</span>Distribuição &amp; filosofia</h3>
+    <ul>
+      <li>Repo <b>GitHub open source</b> (alegado "1º harness do mundo pro Claude Design") com docs (runtime/validações/limitações/changelog/CONTRIBUTING), biblioteca de prompts, starters/templates, scripts de tokens.</li>
+      <li><b>Feedback só via GitHub Issues</b> — loop diário lê issues, corrige e abre PR automático.</li>
+      <li><i>"Hoje não dou mais prompt, escrevo loopings"</i> — fluxos auto-corretivos; Codex 5.5 high orquestrando Claude Code + Grok + GLM (skill "SellOuter"). GLM/DeepSeek em produção por custo, americanas pra criação.</li>
+    </ul>
+    <div class="quotes">
+      <blockquote>Cada print que a IA tira são 20.000 tokens — sempre um número fixo, não importa a informação na tela.<cite>Alan Nicolas</cite></blockquote>
+      <blockquote>Minhas skills não têm front; chamam as skills do próprio Claude Code/Design. As originais tinham 2.000–3.000 tokens; consegui com 600.<cite>Alan Nicolas</cite></blockquote>
+      <blockquote>O que faz o design incrível é o harness da própria Antropic — muito bom, só que muito fechado. O meu permite expandir.<cite>Alan Nicolas</cite></blockquote>
+    </div>
+  </section>
+  </div><!-- /.a -->
+
+  <!-- ============ BRIDGE ============ -->
+  <div class="bridge" id="bridge">
+    <h3>Ponte para o AIOS — como aplicar</h3>
+    <div class="two">
+      <div class="col m">
+        <h5>Dener → tráfego / copy / CRO / CS</h5>
+        <p>Os frameworks alimentam <b>funnel-architect</b>, <b>copy-specialist</b>, <b>landing-page-optimizer</b>, <b>cro</b>, <b>campaign-manager</b>, <b>retention-specialist</b> e o squad <b>traffic-masters-chief</b> (Bretda/Tocks/Anipis). Úteis já: checklist de canais, message match, <code>Preço=Oferta−Risco</code>, LTV/CAC e evidência de serviço.</p>
+      </div>
+      <div class="col a">
+        <h5>Alan → design / IA</h5>
+        <p>O conceito de <b><code>CLAUDE.md</code> como harness + skills enxutas + evitar screenshots caros</b> é aplicável aos squads de design do AIOS e à economia de token das pipelines. Vale avaliar o repo dele como referência pro uso de Claude Design / Stitch.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Ingerido no RAG em 22/Jun/2026 — KB em <code>D:\jarvis\mega brain\knowledge\</code> · feeds por clone em <code>knowledge-feed\</code> · originais em <code>tools/hydra/hydra-data/originals\</code>.<br>
+  Tema <b>Editorial Studio</b> · Fraunces + Inter · transcrições auto-geradas (atenção a citações literais).
+</footer>
+
+</body>
+</html>

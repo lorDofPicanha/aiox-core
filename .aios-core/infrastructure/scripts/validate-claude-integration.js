@@ -3,6 +3,14 @@
 
 const fs = require('fs');
 const path = require('path');
+const { parseAgentDirs } = require('./ide-sync/agent-parser');
+
+const REDIRECTS = new Set([
+  'aios-developer',
+  'aios-orchestrator',
+  'db-sage',
+  'github-devops',
+]);
 
 function parseArgs(argv = process.argv.slice(2)) {
   const args = new Set(argv);
@@ -17,6 +25,14 @@ function countMarkdownFiles(dirPath) {
   return fs.readdirSync(dirPath).filter((f) => f.endsWith('.md')).length;
 }
 
+function isParsableAgent(agent) {
+  return !agent.error || agent.error === 'YAML parse failed, using fallback extraction';
+}
+
+function countExpectedAgents(sourceAgentDirs) {
+  return parseAgentDirs(sourceAgentDirs).filter(isParsableAgent).length + REDIRECTS.size;
+}
+
 function validateClaudeIntegration(options = {}) {
   const projectRoot = options.projectRoot || process.cwd();
   const rulesFile = options.rulesFile || path.join(projectRoot, '.claude', 'CLAUDE.md');
@@ -24,6 +40,10 @@ function validateClaudeIntegration(options = {}) {
   const hooksDir = options.hooksDir || path.join(projectRoot, '.claude', 'hooks');
   const sourceAgentsDir =
     options.sourceAgentsDir || path.join(projectRoot, '.aios-core', 'development', 'agents');
+  const sourceAgentDirs = options.sourceAgentDirs || [
+    sourceAgentsDir,
+    path.join(projectRoot, '.codex', 'agents'),
+  ];
 
   const errors = [];
   const warnings = [];
@@ -38,7 +58,7 @@ function validateClaudeIntegration(options = {}) {
     warnings.push(`Claude hooks dir not found yet: ${path.relative(projectRoot, hooksDir)}`);
   }
 
-  const sourceCount = countMarkdownFiles(sourceAgentsDir);
+  const sourceCount = countExpectedAgents(sourceAgentDirs);
   const claudeCount = countMarkdownFiles(agentsDir);
   if (sourceCount > 0 && claudeCount !== sourceCount) {
     warnings.push(`Claude agent count differs from source (${claudeCount}/${sourceCount})`);

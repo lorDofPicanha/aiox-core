@@ -41,7 +41,7 @@ test("triageMeta alimenta o veredito (obra perto, prazo ok → não é pula por 
     {
       objeto: "Construção de creche",
       editalExcerpt: "Objeto: Construção de creche. Valor: R$ 900.000,00.",
-      triageMeta: { distanceKm: 30, estimatedValue: 900000, proposalDeadline: "2026-05-29T00:00:00Z" },
+      triageMeta: { distanceKm: 30, estimatedValue: 900000, proposalDeadline: new Date(Date.now() + 7 * 86_400_000).toISOString() },
     },
     { client: fakeClient },
   );

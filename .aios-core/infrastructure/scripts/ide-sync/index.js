@@ -57,7 +57,7 @@ function loadConfig(projectRoot) {
     source: '.aios-core/development/agents',
     sources: [
       '.aios-core/development/agents',
-      '.claude/commands/AIOS/agents',
+      '.codex/agents',
     ],
     targets: {
       'claude-code': {

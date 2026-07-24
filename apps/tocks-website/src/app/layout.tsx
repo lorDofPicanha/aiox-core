@@ -4,6 +4,7 @@ import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/constants'
 import { Header } from '@/components/organisms/header'
 import { Footer } from '@/components/organisms/footer'
 import { WhatsAppCTA } from '@/components/molecules/whatsapp-cta'
+import { AnalyticsProvider } from '@/components/providers/analytics-provider'
 import { LenisProvider } from '@/components/providers/lenis-provider'
 import './globals.css'
 
@@ -41,6 +42,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${fontVariables} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--text-primary)]">
+        <AnalyticsProvider />
         <LenisProvider>
           <Header />
           <div className="flex-1">{children}</div>

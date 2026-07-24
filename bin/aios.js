@@ -70,6 +70,16 @@ USAGE:
   npx aios-core@latest --version -d # Show detailed version info
   npx aios-core@latest --help       # Show this help
 
+COCKPIT:
+  aios "task"                         # Route and run through AIOX Cockpit
+  aios run "task"                     # Explicit cockpit run
+  aios route "task"                   # Show Codex/Jarvis/Gemini/Claude route
+  aios status                         # Show recent cockpit tasks
+  aios inbox                          # Show Claude interactive handoffs
+  aios resume <task-id>               # Continue after Claude handoff
+  aios run "task" --write             # Allow Codex workspace-write
+  aios run "task" --allow-paid        # Allow Gemini paid/billing path
+
 UPDATE:
   aios update                    # Update to latest version
   aios update --check            # Check for updates without applying
@@ -1183,6 +1193,24 @@ function runSchedulerStatus() {
 // Command routing (async main function)
 async function main() {
   switch (command) {
+    case 'run':
+    case 'route':
+    case 'status':
+    case 'inbox':
+    case 'resume': {
+      try {
+        const cockpit = require('../.aios-core/infrastructure/scripts/aios-cockpit.js');
+        const exitCode = cockpit.main(args);
+        if (Number.isInteger(exitCode) && exitCode !== 0) {
+          process.exit(exitCode);
+        }
+      } catch (error) {
+        console.error(`Cockpit command error: ${error.message}`);
+        process.exit(1);
+      }
+      break;
+    }
+
     case 'workers':
       // Service Discovery CLI - Story 2.7
       try {
@@ -1356,9 +1384,16 @@ async function main() {
       break;
 
     default:
-      console.error(`❌ Unknown command: ${command}`);
-      console.log('\nRun with --help to see available commands');
-      process.exit(1);
+      try {
+        const cockpit = require('../.aios-core/infrastructure/scripts/aios-cockpit.js');
+        const exitCode = cockpit.main(args);
+        if (Number.isInteger(exitCode) && exitCode !== 0) {
+          process.exit(exitCode);
+        }
+      } catch (error) {
+        console.error(`Cockpit command error: ${error.message}`);
+        process.exit(1);
+      }
   }
 }
 

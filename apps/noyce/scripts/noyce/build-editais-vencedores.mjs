@@ -146,16 +146,20 @@ console.log(`Órgãos do raio: ${orgaos.size} · alvo: ${TARGET} editais vencedo
 // ── Fase 1: contratos de obra homologados (12 meses) por órgão ──
 const hoje = new Date();
 const dataFinal = yyyymmdd(hoje);
-// 24 meses (era 12): o feed /contratos cai p/ a maioria dos órgãos a cada varredura —
-// janela maior extrai mais certames dos órgãos que RESPONDEM, sem depender de sorte.
-const dataInicial = yyyymmdd(new Date(hoje.getTime() - 730 * 86_400_000));
+// 24 meses em DUAS janelas de ≤365 dias: a API rejeita range >365d com 422
+// "Período maior que 365 dias" (bug caçado 03/Jul — 10 rodadas do vigia zeraram por isso).
+const JANELAS = [
+  { ini: yyyymmdd(new Date(hoje.getTime() - 365 * 86_400_000)), fim: yyyymmdd(hoje) },
+  { ini: yyyymmdd(new Date(hoje.getTime() - 730 * 86_400_000)), fim: yyyymmdd(new Date(hoje.getTime() - 366 * 86_400_000)) },
+];
+const dataInicial = JANELAS[1].ini; // só p/ log/sourceRefs (cobertura total)
 const byCompra = new Map(); // numeroControlePncpCompra → contrato mais rico
 let orgaosOk = 0, orgaosFail = 0, brutos = 0;
 
-async function sweepOrgao(cnpj, label) {
+async function sweepOrgaoJanela(cnpj, label, ini, fim) {
   let page = 1, totalPaginas = 1;
   do {
-    const url = `${FEED}?dataInicial=${dataInicial}&dataFinal=${dataFinal}&cnpjOrgao=${cnpj}&pagina=${page}&tamanhoPagina=${PAGE_SIZE}`;
+    const url = `${FEED}?dataInicial=${ini}&dataFinal=${fim}&cnpjOrgao=${cnpj}&pagina=${page}&tamanhoPagina=${PAGE_SIZE}`;
     const j = await fetchJson(url);
     totalPaginas = j.totalPaginas ?? 0;
     for (const c of j.data ?? []) {
@@ -193,7 +197,7 @@ async function worker() {
     const next = fila.shift();
     if (!next) return;
     try {
-      await sweepOrgao(next[0], next[1]);
+      for (const j of JANELAS) await sweepOrgaoJanela(next[0], next[1], j.ini, j.fim);
       orgaosOk++;
     } catch {
       orgaosFail++; // instabilidade conhecida do /contratos — órgão pulado, segue o baile

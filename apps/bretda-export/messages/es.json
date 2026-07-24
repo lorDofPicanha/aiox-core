@@ -24,6 +24,11 @@
     "flagship": "Hecha a medida", "object": "El objeto", "objectV": "Un único bloque de madera noble brasileña, acabado a mano durante seiscientas horas.",
     "house": "La casa", "houseV": "Un atelier en Brasil. Cada mesa firmada, numerada y creada para una sola sala.",
     "now": "Ahora", "nowV": "Cada pieza se hace a medida — un número limitado de encargos por temporada.",
+    "objectVsig": "Una mesa de billar premium de nuestra línea Signature — madera noble maciza, juego de nivel de torneo.",
+    "houseSig": "La línea", "houseVsig": "Uno de dieciocho modelos Signature — la colección completa, hecha en Brasil.",
+    "nowVsig": "Hecha a medida y entregada con guante blanco en EE. UU. y Europa.",
+    "finishes": "Acabados", "finishesNote": "Maderas nobles y fieltros disponibles — tu acabado se confirma durante el encargo.",
+    "email": "Consultar por correo", "emailSubj": "Consulta: {name}",
     "frame": "Estructura en madera", "cloth": "Paño de fieltro", "from": "Desde", "ddp": "Entregada en su puerta — aranceles incluidos.",
     "t1": "Transporte asegurado guante blanco", "t2": "8–10 semanas · hecha a medida", "t3": "Aduanas y aranceles gestionados", "t4": "Garantía de llegada en perfecto estado",
     "reserve": "Reservar esta mesa", "talk": "Hablar con un especialista", "open3d": "Abrir el configurador 3D →", "crumb": "Colección"
@@ -32,7 +37,9 @@
     "eyebrow": "Configurar · Hecha a medida", "sub": "Crea la mesa que existe una vez.",
     "hint": "Arrastra para rotar · scroll para zoom", "ar": "Verla en tu sala (AR)",
     "frame": "Estructura — madera", "metal": "Base — metal", "cloth": "Paño — tela", "from": "Desde",
-    "ddp": "Entregada en su puerta — aranceles incluidos.", "reserve": "Reservar tu configuración"
+    "ddp": "Entregada en su puerta — aranceles incluidos.", "reserve": "Reservar tu configuración",
+    "applied": "{name} aplicado", "armedTap": "Toca la parte de la mesa para aplicar {name}",
+    "email": "¿Prefieres correo? Escribe al atelier →", "emailSubj": "Configuración: {name}"
   },
   "wa": {
     "viewing": "Hola Bretda, me gustaría reservar una cita privada.",

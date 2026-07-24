@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { opportunities, discoveryDiff, discoveryGeneratedAt } from "@/lib/noyce-data";
 import { formatCurrency, formatDateTime } from "@/lib/noyce-model";
 import type { Opportunity, SuspicionSignal } from "@/lib/noyce-model";
 import { buildNextStep, deadlineTime, operationalState, sourceClass, sourceLabel } from "@/lib/noyce-operational";
@@ -20,7 +19,7 @@ type OpportunityWithSuspicion = Opportunity & { suspicionSignals?: SuspicionSign
 // "Novo" = apareceu pela 1ª vez há menos de 48h da última varredura (determinístico:
 // compara firstSeenAt com o generatedAt do snapshot — não com o relógio do cliente).
 const NOVO_JANELA_MS = 48 * 3_600_000;
-function isNovo(o: Opportunity): boolean {
+function isNovo(o: Opportunity, discoveryGeneratedAt: string | null): boolean {
   if (!o.firstSeenAt || !discoveryGeneratedAt) return false;
   const seen = Date.parse(o.firstSeenAt);
   const run = Date.parse(discoveryGeneratedAt);
@@ -32,11 +31,17 @@ export function MonitorarTab({
   onSelect,
   interested,
   onToggleInterest,
+  opportunities,
+  discoveryGeneratedAt,
+  discoveryDiff,
 }: {
   selectedId: string;
   onSelect: (id: string) => void;
   interested: Set<string>;
   onToggleInterest: (id: string) => void;
+  opportunities: Opportunity[];
+  discoveryGeneratedAt: string | null;
+  discoveryDiff: { previousRunAt: string | null; novos: number; removidos: number } | null;
 }) {
   const [sortMode, setSortMode] = useState<SortMode>("triagem");
   const [cityFilter, setCityFilter] = useState("all");
@@ -192,7 +197,7 @@ export function MonitorarTab({
 
         <div className="filter-summary" aria-live="polite">
           {filtered.length} editais · <strong className="triage-vai">{counts.vai} Vai</strong> ·{" "}
-          {counts.olha} Olha · {counts.pula} Pula <span className="filter-src">(PNCP, raio GO ≤{MAX_DISCOVERY_RADIUS_KM}km)</span>
+          {counts.olha} Olha · {counts.pula} Pula <span className="filter-src">(PNCP, raio ≤{MAX_DISCOVERY_RADIUS_KM} km)</span>
           {discoveryDiff && discoveryDiff.previousRunAt ? (
             <span className="filter-src">
               {" "}· Δ última varredura: <strong>{discoveryDiff.novos} novo(s)</strong>, {discoveryDiff.removidos} saíram
@@ -224,7 +229,7 @@ export function MonitorarTab({
                 <span className={`source source-${sourceClass(opportunity.source)}`}>{sourceLabel(opportunity.source)}</span>
                 <span className={`state-badge ${operationalState(opportunity).tone}`}>{operationalState(opportunity).label}</span>
                 <ConsorcioChip value={opportunity.permiteConsorcio} />
-                {isNovo(opportunity) ? <span className="state-badge new" title={`Apareceu na varredura de ${opportunity.firstSeenAt}`}>🆕 novo</span> : null}
+                {isNovo(opportunity, discoveryGeneratedAt) ? <span className="state-badge new" title={`Apareceu na varredura de ${opportunity.firstSeenAt}`}>🆕 novo</span> : null}
                 {((opportunity as OpportunityWithSuspicion).suspicionSignals?.length ?? 0) > 0 ? (
                   <span className="state-badge review">⚠️ exigência atípica</span>
                 ) : null}

@@ -201,7 +201,6 @@ const DECISION_OWNER: Record<string, string> = {
 };
 
 // ── Discovery triage (Monitorar) ──────────────────────────────────────────
-const TRIAGE_TODAY = "2026-05-29T00:00:00Z";
 // ENIAC disputes obras/engenharia (CNAE 41/42/43) — relevance gate for the inbox.
 const OBRAS_RE =
   /\b(obra|engenharia|constru|reforma|pavimenta|drenagem|edifica|recupera|amplia|infraestrutura|calcada|calçada|ponte|terraplan|saneamento|esgoto|asfalt|recapeament|revitaliz|urbaniza|cobertura|quadra|praca|praça|reservatóri|reservatori|galeria|meio[- ]fio|escola|creche|ubs)/i;
@@ -236,7 +235,7 @@ export interface TriageInput {
 // raio is reescopável sem nova story e testável (Story 30.5 AC4).
 export function buildTriage(
   input: TriageInput,
-  opts: { maxRadiusKm?: number } = {},
+  opts: { maxRadiusKm?: number; asOf?: string } = {},
 ): DiscoveryTriage {
   const maxRadiusKm = opts.maxRadiusKm ?? MAX_DISCOVERY_RADIUS_KM;
   const title = input.title || "";
@@ -246,9 +245,10 @@ export function buildTriage(
     !ACQUISITION_RE.test(title) &&
     !NON_CIVIL_ENG_RE.test(title) &&
     (ENIAC_DOES_INFRA || !INFRA_RE.test(title));
+  const asOf = opts.asOf ?? nowIso();
   const days =
     input.proposalDeadline !== null
-      ? Math.ceil((new Date(input.proposalDeadline).getTime() - new Date(TRIAGE_TODAY).getTime()) / 86_400_000)
+      ? Math.ceil((new Date(input.proposalDeadline).getTime() - new Date(asOf).getTime()) / 86_400_000)
       : null;
   const closed = days !== null && days < 0;
   const valueOk = input.estimatedValue === null || (input.estimatedValue >= 80_000 && input.estimatedValue <= 8_000_000);

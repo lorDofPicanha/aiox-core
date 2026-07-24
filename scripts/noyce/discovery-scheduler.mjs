@@ -7,7 +7,7 @@
 /**
  * Hourly DISCOVERY scheduler for Noyce.
  *
- * Wraps scripts/noyce/build-discovery-snapshot.mjs — which ALREADY has retry (5x),
+ * Wraps the canonical 500 km discovery builder, which has retry (5x),
  * per-request timeout, and an anti-empty guard (won't overwrite a good snapshot with a
  * 0-item run unless --allow-empty). This scheduler adds only:
  *   - timed repetition (--loop) so the snapshot stays fresh on its own, and
@@ -26,7 +26,7 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..', '..');
-const BUILD = path.join(__dirname, 'build-discovery-snapshot.mjs');
+const BUILD = path.join(ROOT, 'apps', 'noyce', 'scripts', 'noyce', 'build-discovery-500km.mjs');
 const LOG = path.join(__dirname, 'discovery-runs.log');
 
 function parseArgs(argv) {
@@ -60,11 +60,11 @@ function logLine(obj) {
 // Parse the build's own summary so each run logs items/queries even on success.
 function parseSummary(stdout) {
   const out = {};
-  const itens = stdout.match(/itens únicos:\s*(\d+)/);
+  const itens = stdout.match(/(?:itens únicos:|✅\s+)(\d+)/);
   if (itens) out.items = Number(itens[1]);
-  const q = stdout.match(/queries ok=(\d+)\s+fail=(\d+)/);
+  const q = stdout.match(/(?:queries ok=|"okQueries":)(\d+)(?:\s+fail=|[^\d]+"failQueries":)(\d+)/);
   if (q) { out.okQueries = Number(q[1]); out.failQueries = Number(q[2]); }
-  const aborted = /ABORTADO sem escrever/.test(stdout);
+  const aborted = /ABORTADO sem escrever|snapshot 500 km não publicado/.test(stdout);
   if (aborted) out.aborted = true;
   return out;
 }

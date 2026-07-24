@@ -67,10 +67,18 @@ export async function uploadClickConversion(args: {
     login_customer_id: args.loginCustomerId,
   });
 
-  const result = await customer.conversionUploads.uploadClickConversions(
-    [validated as unknown as Record<string, unknown>],
-    { partial_failure: true, validate_only: false }
-  );
+  type UploadClickConversionsRequest = Parameters<
+    typeof customer.conversionUploads.uploadClickConversions
+  >[0];
+
+  const request = {
+    customer_id: args.customerId,
+    conversions: [validated as unknown as never],
+    partial_failure: true,
+    validate_only: false,
+  } as unknown as UploadClickConversionsRequest;
+
+  const result = await customer.conversionUploads.uploadClickConversions(request);
 
   return {
     results_count: (result.results?.length as number) ?? 0,

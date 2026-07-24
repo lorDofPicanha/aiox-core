@@ -100,12 +100,12 @@ test("invokeLlm is exported and is async", () => {
   const savedKey = process.env.OPENROUTER_API_KEY;
   delete process.env.OPENROUTER_API_KEY;
   delete process.env.VERCEL;
-  // Should attempt claude-cli — result will fail since no binary, but it's a function
+  // The default is a local CLI provider; no subprocess is invoked in this test.
   assert.equal(typeof invokeLlm, "function");
   if (savedKey !== undefined) process.env.OPENROUTER_API_KEY = savedKey;
 });
 
-test("detectProvider returns claude-cli by default (no env vars)", () => {
+test("detectProvider returns codex-cli by default (no env vars)", () => {
   const { detectProvider } = require("./llm.cjs");
   const savedKey = process.env.OPENROUTER_API_KEY;
   const savedVercel = process.env.VERCEL;
@@ -113,7 +113,7 @@ test("detectProvider returns claude-cli by default (no env vars)", () => {
   delete process.env.VERCEL;
 
   const result = detectProvider({});
-  assert.equal(result, "claude-cli");
+  assert.equal(result, "codex-cli");
 
   if (savedKey !== undefined) process.env.OPENROUTER_API_KEY = savedKey;
   if (savedVercel !== undefined) process.env.VERCEL = savedVercel;
@@ -160,4 +160,12 @@ test("detectProvider honors explicit provider override", () => {
 
   if (savedVercel !== undefined) process.env.VERCEL = savedVercel;
   else delete process.env.VERCEL;
+});
+
+test("validateProviderModel supports the codex-cli default", () => {
+  const { validateProviderModel } = require("./llm.cjs");
+  const result = validateProviderModel("codex-cli");
+  assert.equal(result.ok, true);
+  assert.equal(result.model, process.env.CODEX_MODEL || "gpt-5.5");
+  assert.equal(result.source, "provider-default");
 });

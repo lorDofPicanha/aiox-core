@@ -8,7 +8,7 @@ import { woods, fabrics, formatPrice, type Product } from "@/data/catalog";
 import { getSpec } from "@/data/specs";
 import { dim2, dim3, weight } from "@/lib/units";
 import { useCurrency } from "@/lib/currency";
-import { waUrl } from "@/lib/inquiry";
+import { waUrl, mailUrl } from "@/lib/inquiry";
 
 const lp = (p: string, l: string) => (l === "en" ? p : `/${l}${p}`);
 
@@ -19,8 +19,7 @@ export default function Pdp({ product }: { product: Product }) {
   const { cur } = useCurrency();
   const gallery = product.gallery ?? [product.img];
   const [main, setMain] = useState<{ kind: "img" | "vid"; src: string }>({ kind: "img", src: gallery[0] });
-  const [wood, setWood] = useState(woods[0].name);
-  const [fab, setFab] = useState(fabrics[0].name);
+  const sig = product.line === "signature";
 
   const price = formatPrice(product.priceUSD, product.priceEUR, cur, locale);
   const spec = getSpec(product.slug);
@@ -59,34 +58,28 @@ export default function Pdp({ product }: { product: Product }) {
             <h1 className="name2">{product.name}</h1>
 
             <div className="acts">
-              <div className="act"><div className="ak">{t("object")}</div><div className="av">{t("objectV")}</div></div>
-              <div className="act"><div className="ak">{t("house")}</div><div className="av">{t("houseV")}</div></div>
-              <div className="act"><div className="ak">{t("now")}</div><div className="av">{t("nowV")}</div></div>
+              <div className="act"><div className="ak">{t("object")}</div><div className="av">{t(sig ? "objectVsig" : "objectV")}</div></div>
+              <div className="act"><div className="ak">{t(sig ? "houseSig" : "house")}</div><div className="av">{t(sig ? "houseVsig" : "houseV")}</div></div>
+              <div className="act"><div className="ak">{t("now")}</div><div className="av">{t(sig ? "nowVsig" : "nowV")}</div></div>
             </div>
 
             <div className="mat">
-              <div className="lbl"><span>{t("frame")}</span><b>{wood}</b></div>
-              <div className="swatches">
+              <div className="lbl"><span>{t("finishes")}</span></div>
+              <div className="finish-display" aria-hidden="true">
                 {woods.slice(0, 6).map((w) => (
-                  <button type="button" key={w.slug} aria-label={w.name} aria-pressed={wood === w.name} className={`sw${wood === w.name ? " active" : ""}`} onClick={() => setWood(w.name)}>
+                  <span key={w.slug} className="swd" title={`${t("frame")} · ${w.name}`}>
                     <img src={`/wood/${w.slug}.png`} alt="" />
-                  </button>
+                  </span>
                 ))}
-              </div>
-            </div>
-            <div className="mat">
-              <div className="lbl"><span>{t("cloth")}</span><b>{fab}</b></div>
-              <div className="swatches">
                 {fabrics.slice(0, 6).map((f) => (
-                  <button type="button" key={f.slug} aria-label={f.name} aria-pressed={fab === f.name} className={`sw${fab === f.name ? " active" : ""}`} onClick={() => setFab(f.name)}>
+                  <span key={f.slug} className="swd" title={`${t("cloth")} · ${f.name}`}>
                     <img src={`/fabric/${f.slug}.png`} alt="" />
-                  </button>
+                  </span>
                 ))}
               </div>
+              <p className="finish-note">{t("finishesNote")}</p>
               {product.model && (
-                <div style={{ marginTop: 14 }}>
-                  <a className="cta-sec" href={lp(`/configurator/${product.slug}`, locale)} style={{ display: "inline-block" }}>{t("open3d")}</a>
-                </div>
+                <a className="cta-sec" href={lp(`/configurator/${product.slug}`, locale)} style={{ display: "inline-block", marginTop: 4 }}>{t("open3d")}</a>
               )}
             </div>
 
@@ -102,7 +95,7 @@ export default function Pdp({ product }: { product: Product }) {
 
             <div className="cta-row2">
               <a className="cta" href={waUrl(tw("reserve", { name: product.name, price }))} target="_blank" rel="noopener noreferrer">{t("reserve")}</a>
-              <a className="cta-sec" href={waUrl(tw("talk", { name: product.name }))} target="_blank" rel="noopener noreferrer">{t("talk")}</a>
+              <a className="cta-sec" href={mailUrl(t("emailSubj", { name: product.name }), tw("reserve", { name: product.name, price }))}>{t("email")}</a>
             </div>
           </div>
         </div>

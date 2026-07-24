@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aurora — BRETDA · Handcrafted Luxury Game Tables</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600;6..96,700;6..96,800&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  /* ============================================================
+     BRETDA — Aurora PDP v2
+     Tokens: bg #2A2B26 / secondary #1F201C / accent champagne #C9A961
+             headline #F2EFE8 / body #B7B3A8 · corners 4px · one accent
+     Type:   Bodoni Moda (display) · Raleway (body)
+     Conclave fixes: price-after-value (Kahneman) · sticky CTA (Norman/Fogg)
+                     intermediate rungs (Eyal) · brave restraint (Rams/Tobias)
+     ============================================================ */
+
+  :root{
+    --bg:#2A2B26;
+    --bg-2:#1F201C;
+    --bg-3:#242521;
+    --accent:#C9A961;
+    --accent-soft:rgba(201,169,97,.18);
+    --accent-line:rgba(201,169,97,.42);
+    --head:#F2EFE8;
+    --body:#B7B3A8;
+    --body-dim:#928d82;
+    --hairline:rgba(242,239,232,.12);
+    --hairline-2:rgba(242,239,232,.07);
+    --radius:4px;
+    --maxw:1280px;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--body);
+    font-family:'Raleway',system-ui,sans-serif;
+    font-weight:400;
+    line-height:1.7;
+    letter-spacing:.01em;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--accent);color:var(--bg-2)}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 48px}
+  .display{font-family:'Bodoni Moda',serif;color:var(--head);font-weight:600;line-height:.92;letter-spacing:-.01em}
+  .eyebrow{
+    font-family:'Raleway',sans-serif;font-weight:500;
+    font-size:12px;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--accent);
+  }
+  .lead{font-size:21px;line-height:1.55;color:var(--head);font-weight:300}
+  .muted{color:var(--body-dim)}
+
+  /* ---------- top bar ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:60;
+    background:rgba(31,32,28,.72);
+    backdrop-filter:saturate(140%) blur(14px);
+    -webkit-backdrop-filter:saturate(140%) blur(14px);
+    border-bottom:1px solid var(--hairline-2);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{font-family:'Bodoni Moda',serif;font-weight:700;color:var(--head);
+    font-size:23px;letter-spacing:.42em;padding-left:.42em}
+  .nav-links{display:flex;gap:38px;align-items:center;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--body)}
+  .nav-links a{transition:color .3s var(--ease)}
+  .nav-links a:hover{color:var(--head)}
+  .geo-pill{
+    display:inline-flex;align-items:center;gap:8px;
+    border:1px solid var(--hairline);border-radius:var(--radius);
+    padding:8px 13px;font-size:12px;letter-spacing:.08em;color:var(--body);
+  }
+  .geo-pill b{color:var(--head);font-weight:600}
+  .geo-pill .alt{color:var(--body-dim)}
+
+  /* ---------- breadcrumb ---------- */
+  .crumb{display:flex;gap:12px;align-items:center;font-size:11px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--body-dim);padding-top:34px}
+  .crumb a:hover{color:var(--accent)}
+  .crumb span{opacity:.5}
+
+  /* ============================================================
+     HERO — cinematic. value+scarcity line FIRST, no cold price.
+     "Aurora" in BIG Bodoni interlocking with the studio image.
+     ============================================================ */
+  .hero{position:relative;padding-top:30px;padding-bottom:24px}
+  .hero-grid{
+    display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.18fr);
+    gap:0;align-items:center;
+  }
+  .hero-copy{position:relative;z-index:3;padding-right:8px}
+  .hero-scarcity{
+    display:inline-flex;align-items:center;gap:11px;
+    font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--body);
+    margin-bottom:30px;
+  }
+  .hero-scarcity .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);
+    box-shadow:0 0 0 4px var(--accent-soft)}
+  .hero-name{
+    font-size:clamp(86px,13.5vw,210px);line-height:.84;
+    margin-left:-.06em; /* optical hang */
+  }
+  .hero-name .light{font-weight:400;font-style:italic;color:var(--accent)}
+  .hero-tag{
+    margin-top:34px;max-width:30ch;font-size:20px;line-height:1.5;
+    color:var(--head);font-weight:300;
+  }
+  .hero-sub{margin-top:18px;max-width:42ch;color:var(--body);font-size:15px}
+  .hero-img-wrap{position:relative;z-index:1;margin-left:-7%}
+  .hero-img-wrap img{
+    width:100%;
+    filter:saturate(1.02) contrast(1.04);
+    -webkit-mask-image:radial-gradient(120% 120% at 55% 50%,#000 62%,transparent 100%);
+            mask-image:radial-gradient(120% 120% at 55% 50%,#000 62%,transparent 100%);
+  }
+  .hero-meta{
+    display:flex;gap:0;margin-top:26px;border-top:1px solid var(--hairline);
+    padding-top:22px;
+  }
+  .hero-meta .cell{padding-right:46px}
+  .hero-meta .cell + .cell{padding-left:46px;border-left:1px solid var(--hairline)}
+  .hero-meta .k{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--body-dim)}
+  .hero-meta .v{font-family:'Bodoni Moda',serif;color:var(--head);font-size:20px;margin-top:6px}
+
+  /* ============================================================
+     STICKY RAIL — primary CTA + commitment rungs always in reach
+     ============================================================ */
+  .stage{position:relative}
+  .layout{
+    display:grid;grid-template-columns:minmax(0,1fr) 372px;gap:64px;
+    align-items:start;padding-top:18px;
+  }
+  .rail{position:sticky;top:104px}
+  .rail-card{
+    background:linear-gradient(180deg,var(--bg-3),var(--bg-2));
+    border:1px solid var(--hairline);border-radius:var(--radius);
+    padding:30px 30px 26px;
+    box-shadow:0 30px 70px -40px rgba(0,0,0,.85);
+  }
+  .rail-card .from{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--body-dim)}
+  .rail-price{display:flex;align-items:baseline;gap:10px;margin-top:8px}
+  .rail-price .cur{font-family:'Bodoni Moda',serif;color:var(--accent);font-size:24px;font-weight:500}
+  .rail-price .num{font-family:'Bodoni Moda',serif;color:var(--head);font-size:48px;font-weight:600;line-height:1;font-variant-numeric:lining-nums;letter-spacing:.005em}
+  .rail-price .ccy{font-size:11px;letter-spacing:.14em;color:var(--body-dim);align-self:center;
+    border:1px solid var(--hairline);border-radius:3px;padding:3px 6px;margin-left:4px}
+  .rail-note{font-size:12.5px;color:var(--body);margin-top:12px;line-height:1.55}
+  .rail-note b{color:var(--head);font-weight:600}
+
+  .btn{
+    display:flex;align-items:center;justify-content:center;gap:10px;width:100%;
+    min-height:54px;border-radius:var(--radius);font-family:'Raleway',sans-serif;
+    font-weight:600;font-size:13.5px;letter-spacing:.14em;text-transform:uppercase;
+    cursor:pointer;border:1px solid transparent;transition:all .35s var(--ease);
+  }
+  .btn-primary{
+    background:var(--accent);color:#211f18;margin-top:22px;
+    border:1px solid var(--accent);
+  }
+  .btn-primary:hover{background:#d8ba74;box-shadow:0 14px 38px -16px rgba(201,169,97,.6)}
+  .rungs{margin-top:14px;display:flex;flex-direction:column;gap:1px;
+    border:1px solid var(--hairline);border-radius:var(--radius);overflow:hidden}
+  .rung{
+    display:flex;align-items:center;gap:14px;padding:14px 16px;min-height:48px;
+    background:rgba(242,239,232,.015);transition:background .3s var(--ease);
+    border-top:1px solid var(--hairline-2);
+  }
+  .rung:first-child{border-top:0}
+  .rung:hover{background:rgba(201,169,97,.07)}
+  .rung .ico{width:20px;height:20px;flex:0 0 20px;stroke:var(--accent);fill:none;stroke-width:1.4}
+  .rung .lbl{font-size:13px;letter-spacing:.04em;color:var(--head)}
+  .rung .lbl small{display:block;font-size:11px;letter-spacing:.02em;color:var(--body-dim);
+    text-transform:none;margin-top:2px}
+  .rung .arrow{margin-left:auto;color:var(--body-dim);font-size:16px;transition:transform .3s var(--ease),color .3s}
+  .rung:hover .arrow{transform:translateX(3px);color:var(--accent)}
+
+  /* tiny first-step inline form */
+  .quickform{margin-top:16px;border:1px solid var(--hairline);border-radius:var(--radius);
+    padding:16px 16px 18px;background:rgba(242,239,232,.012)}
+  .quickform .qf-h{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--body-dim)}
+  .quickform .qf-row{display:flex;gap:8px;margin-top:11px}
+  .quickform input{
+    flex:1;min-width:0;background:var(--bg-2);border:1px solid var(--hairline);
+    border-radius:3px;color:var(--head);font-family:'Raleway';font-size:14px;
+    padding:12px 13px;letter-spacing:.02em;
+  }
+  .quickform input::placeholder{color:var(--body-dim)}
+  .quickform input:focus{outline:none;border-color:var(--accent-line)}
+  .quickform button{
+    flex:0 0 auto;background:transparent;border:1px solid var(--accent-line);color:var(--accent);
+    border-radius:3px;padding:0 18px;min-height:44px;font-family:'Raleway';font-weight:600;
+    font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .3s var(--ease)}
+  .quickform button:hover{background:var(--accent);color:#211f18}
+  .quickform .qf-fine{font-size:11px;color:var(--body-dim);margin-top:10px;line-height:1.5}
+
+  .reassure{margin-top:20px;display:flex;flex-direction:column;gap:11px}
+  .reassure .r{display:flex;gap:11px;align-items:flex-start;font-size:12.5px;color:var(--body);line-height:1.5}
+  .reassure .r svg{flex:0 0 16px;width:16px;height:16px;stroke:var(--accent);fill:none;stroke-width:1.5;margin-top:2px}
+
+  /* ============================================================
+     MAIN COLUMN — "why object / why house / why now" BEFORE price feel
+     ============================================================ */
+  .col{min-width:0}
+  .sect{padding:60px 0;border-top:1px solid var(--hairline-2)}
+  .sect:first-child{border-top:0;padding-top:34px}
+  .sect-tag{margin-bottom:22px}
+  .h2{font-size:clamp(34px,4.4vw,52px);line-height:1.0;margin-bottom:26px}
+  .prose{max-width:62ch;font-size:16.5px;line-height:1.75;text-align:left}
+  .prose p + p{margin-top:18px}
+  .prose b{color:var(--head);font-weight:600}
+
+  /* media controls over a frame */
+  .frame{position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--hairline)}
+  .frame img{width:100%;object-fit:cover}
+  .frame-controls{position:absolute;left:18px;bottom:18px;display:flex;gap:10px}
+  .mctl{
+    display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:0 16px;
+    background:rgba(20,21,18,.62);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    border:1px solid var(--hairline);border-radius:var(--radius);
+    color:var(--head);font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;
+    cursor:pointer;transition:all .3s var(--ease)}
+  .mctl:hover{border-color:var(--accent-line);color:var(--accent)}
+  .mctl svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.5}
+
+  /* the three "why" editorial blocks */
+  .why{display:grid;grid-template-columns:1fr;gap:0}
+  .why-row{display:grid;grid-template-columns:64px 1fr;gap:28px;padding:30px 0;border-top:1px solid var(--hairline-2)}
+  .why-row:first-child{border-top:0;padding-top:6px}
+  .why-row .idx{font-family:'Bodoni Moda',serif;color:var(--accent);font-size:30px;font-weight:500;line-height:1}
+  .why-row h3{font-family:'Bodoni Moda',serif;color:var(--head);font-size:26px;font-weight:500;margin-bottom:12px}
+
+  /* spec list */
+  .specs{display:grid;grid-template-columns:1fr 1fr;gap:0 56px;margin-top:8px}
+  .specrow{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--hairline-2)}
+  .specrow .k{color:var(--body)}
+  .specrow .v{color:var(--head);text-align:right;font-weight:500}
+
+  /* material + felt swatches */
+  .opts{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:6px}
+  .opt-h{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--body-dim);margin-bottom:18px;display:flex;justify-content:space-between}
+  .opt-h .sel{color:var(--accent)}
+  .swatches{display:flex;gap:16px;flex-wrap:wrap}
+  .sw{cursor:pointer;text-align:center}
+  .sw .chip{
+    width:64px;height:64px;border-radius:50%;border:1px solid var(--hairline);
+    position:relative;transition:transform .3s var(--ease);
+    background-size:cover;background-position:center;
+    box-shadow:inset 0 0 14px rgba(0,0,0,.35);
+  }
+  .sw .chip::after{
+    content:"";position:absolute;inset:-6px;border-radius:50%;
+    border:1.5px solid transparent;transition:border-color .3s var(--ease);
+  }
+  .sw.on .chip::after{border-color:var(--accent)}
+  .sw:hover .chip{transform:translateY(-2px)}
+  .sw .nm{font-size:11px;letter-spacing:.06em;color:var(--body);margin-top:14px}
+  .sw.on .nm{color:var(--head)}
+
+  /* gallery strip */
+  .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .gallery .frame img{height:300px}
+  .gallery .span2{grid-column:1 / -1}
+  .gallery .span2 img{height:420px}
+
+  /* anchor / scarcity reframe (Kahneman loss framing) */
+  .anchor{
+    background:linear-gradient(180deg,rgba(201,169,97,.05),transparent);
+    border:1px solid var(--hairline);border-radius:var(--radius);
+    padding:40px 44px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;
+  }
+  .anchor .big{font-family:'Bodoni Moda',serif;color:var(--head);font-size:30px;font-weight:500;line-height:1.15}
+  .anchor .big em{font-style:italic;color:var(--accent)}
+  .anchor .loss{font-size:14.5px;line-height:1.7;color:var(--body)}
+  .anchor .loss b{color:var(--head);font-weight:600}
+
+  /* trust strip */
+  .trust{display:flex;gap:0;flex-wrap:wrap;border:1px solid var(--hairline);border-radius:var(--radius);overflow:hidden}
+  .trust .t{flex:1;min-width:200px;padding:26px 28px;border-left:1px solid var(--hairline-2)}
+  .trust .t:first-child{border-left:0}
+  .trust .t .n{font-family:'Bodoni Moda',serif;color:var(--accent);font-size:32px;font-weight:500}
+  .trust .t .d{font-size:13px;color:var(--body);margin-top:6px;line-height:1.5}
+
+  /* ============================================================
+     STICKY BOTTOM BAR (mobile + reinforce on scroll)
+     ============================================================ */
+  .stickybar{
+    position:fixed;left:0;right:0;bottom:0;z-index:70;
+    background:rgba(28,29,25,.86);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    border-top:1px solid var(--hairline);
+    transform:translateY(110%);transition:transform .5s var(--ease);
+  }
+  .stickybar.show{transform:translateY(0)}
+  .sb-inner{max-width:var(--maxw);margin:0 auto;padding:13px 48px;display:flex;align-items:center;gap:24px}
+  .sb-name{font-family:'Bodoni Moda',serif;color:var(--head);font-size:22px;font-weight:600;line-height:1}
+  .sb-price{font-size:13px;color:var(--body);margin-top:3px;letter-spacing:.02em}
+  .sb-price b{color:var(--accent);font-family:'Bodoni Moda',serif;font-size:16px;font-weight:600}
+  .sb-spacer{flex:1}
+  .sb-ghost{
+    display:none;align-items:center;gap:9px;min-height:48px;padding:0 18px;border:1px solid var(--hairline);
+    border-radius:var(--radius);color:var(--head);font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+    cursor:pointer;transition:all .3s var(--ease)}
+  .sb-ghost:hover{border-color:var(--accent-line);color:var(--accent)}
+  .sb-ghost svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.5}
+  .sb-cta{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 30px;
+    background:var(--accent);color:#211f18;border-radius:var(--radius);font-weight:600;font-size:12.5px;
+    letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border:1px solid var(--accent);transition:all .3s var(--ease)}
+  .sb-cta:hover{background:#d8ba74}
+
+  /* footer */
+  footer{border-top:1px solid var(--hairline-2);margin-top:30px;padding:54px 0 120px}
+  .foot{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap}
+  .foot .mark{font-family:'Bodoni Moda',serif;color:var(--head);font-size:30px;letter-spacing:.3em;font-weight:700}
+  .foot .meta{font-size:12px;color:var(--body-dim);line-height:1.8;letter-spacing:.04em}
+  .foot a:hover{color:var(--accent)}
+
+  /* reveal-on-scroll */
+  .rv{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .rv.in{opacity:1;transform:none}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1080px){
+    .wrap{padding:0 32px}
+    .layout{grid-template-columns:1fr;gap:0}
+    .rail{position:static;margin-top:8px;display:none}   /* desktop rail hidden; sticky bottom bar carries CTA */
+    .hero-grid{grid-template-columns:1fr;gap:8px}
+    .hero-img-wrap{margin-left:0}
+    .hero-name{font-size:clamp(76px,22vw,150px)}
+    .sb-inner{padding:11px 22px}
+  }
+  @media (min-width:1081px){
+    .stickybar .sb-name,.stickybar .sb-pricewrap{display:block}
+    .sb-ghost{display:inline-flex}
+  }
+  @media (max-width:760px){
+    .wrap{padding:0 20px}
+    .nav-links{display:none}
+    .specs,.opts,.anchor{grid-template-columns:1fr}
+    .gallery{grid-template-columns:1fr}
+    .gallery .frame img,.gallery .span2 img{height:240px}
+    .hero-meta{flex-wrap:wrap;gap:18px}
+    .hero-meta .cell + .cell{border-left:0;padding-left:0}
+    .why-row{grid-template-columns:1fr;gap:8px}
+    .sb-name,.sb-ghost{display:none!important}
+    .sb-cta{flex:1}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .rv{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="home.html" aria-label="BRETDA home">BRETDA</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="home.html">The Atelier</a>
+      <a href="collection.html">Collection</a>
+      <a href="#now">Commissions</a>
+      <a href="#inquire">Contact</a>
+    </nav>
+    <div class="geo-pill" title="Pricing shown in your local currency">
+      <span>Pricing in</span> <b>USD&nbsp;$</b> <span class="alt">· €</span>
+    </div>
+  </div>
+</header>
+
+<!-- breadcrumb -->
+<div class="wrap">
+  <div class="crumb">
+    <a href="collection.html">Collection</a> <span>/</span> <a href="collection.html#atelier">Atelier</a> <span>/</span> <span style="color:var(--accent);opacity:1">Aurora</span>
+  </div>
+</div>
+
+<!-- ===================== HERO (value + scarcity BEFORE price) ===================== -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy rv">
+        <div class="hero-scarcity">
+          <span class="dot" aria-hidden="true"></span>
+          Made to order · 14 commissions accepted each year
+        </div>
+        <h1 class="display hero-name">Diaman<span class="light">te</span></h1>
+        <p class="hero-tag">The hardest, clearest thing in the room — it does not arrive. It reveals.</p>
+        <p class="hero-sub">An Atelier table cut, joined and finished by hand in Brazil, then crated for delivery to your home in the United States or Europe.</p>
+        <div class="hero-meta">
+          <div class="cell"><div class="k">Form</div><div class="v">Atelier</div></div>
+          <div class="cell"><div class="k">Lead time</div><div class="v">10–14 weeks</div></div>
+          <div class="cell"><div class="k">Edition</div><div class="v">Made to order</div></div>
+        </div>
+      </div>
+      <div class="hero-img-wrap rv" aria-hidden="false">
+        <img src="assets-pdp/aurora-studio-hero.jpg" alt="Aurora luxury game table, studio view on black — caramel wood frame and polished steel base." />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== STAGE: main column + sticky rail ===================== -->
+<div class="wrap stage">
+  <div class="layout">
+
+    <!-- ============ MAIN COLUMN ============ -->
+    <div class="col">
+
+      <!-- WHY THIS OBJECT — value established before any cold number -->
+      <section class="sect rv" id="object">
+        <div class="eyebrow sect-tag">Why this object</div>
+        <h2 class="display h2">A single object,<br>uncompromised.</h2>
+        <div class="prose">
+          <p>Aurora is built around one idea: that a game table can be the most considered piece in the room. The frame is shaped from a single run of selected hardwood, its corners eased to a soft 4&nbsp;mm radius so the light travels rather than catches. The base is a continuous ribbon of polished steel — no visible fasteners, no seams to forgive.</p>
+          <p><b>Tournament-grade slate. Hand-stretched worsted cloth. A play surface levelled to within a fraction of a millimetre.</b> What looks like restraint is, in fact, a hundred decisions made so that nothing distracts from the line of the table itself.</p>
+        </div>
+      </section>
+
+      <!-- big media frame with AR / 360 controls -->
+      <section class="sect rv">
+        <div class="frame">
+          <img src="assets-pdp/aurora-studio-angle.jpg" alt="Aurora from a three-quarter angle, isolated on black velvet." />
+          <div class="frame-controls" role="group" aria-label="View options">
+            <button class="mctl" aria-label="Rotate the table 360 degrees">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v4h-4"/></svg>
+              360°
+            </button>
+            <button class="mctl" aria-label="View Aurora in your room with augmented reality">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg>
+              View in AR
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHY THIS HOUSE -->
+      <section class="sect rv" id="house">
+        <div class="eyebrow sect-tag">Why this house</div>
+        <div class="why">
+          <div class="why-row">
+            <div class="idx">01</div>
+            <div>
+              <h3>Made by the few, for the few</h3>
+              <p class="prose">BRETDA accepts a limited number of commissions each year. Every Aurora is assigned to a single maker who signs the underside of the frame. You are not buying from inventory — you are reserving a slot in an atelier.</p>
+            </div>
+          </div>
+          <div class="why-row">
+            <div class="idx">02</div>
+            <div>
+              <h3>Brazilian craft, exported whole</h3>
+              <p class="prose">Designed and built in Brazil, then crated, insured and delivered to your residence in the United States or Europe — installed and levelled by a specialist, not left in a box at your door.</p>
+            </div>
+          </div>
+          <div class="why-row">
+            <div class="idx">03</div>
+            <div>
+              <h3>A lifetime, in writing</h3>
+              <p class="prose">The structure carries a lifetime guarantee. The cloth and slate are serviced by us. An object made this carefully is meant to outlast the room it was made for.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- in-situ photo (REAL installed photography) -->
+      <section class="sect rv">
+        <div class="frame">
+          <img src="assets-pdp/aurora-insitu.jpg" alt="A handcrafted game table in residence beneath a warm chandelier, ocean view." />
+          <div class="frame-controls">
+            <span class="mctl" style="cursor:default;pointer-events:none">In residence · Photographed on site</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- MATERIALS & FELT — swatches with selected ring -->
+      <section class="sect rv" id="materials">
+        <div class="eyebrow sect-tag">Specify yours</div>
+        <h2 class="display h2">Wood &amp; cloth.</h2>
+        <div class="opts">
+          <div>
+            <div class="opt-h"><span>Frame · Hardwood</span><span class="sel">Cerejeira</span></div>
+            <div class="swatches" role="radiogroup" aria-label="Frame wood">
+              <div class="sw on" role="radio" aria-checked="true" tabindex="0">
+                <div class="chip" style="background-image:url('assets-pdp/wood-cerejeira.png')"></div><div class="nm">Cerejeira</div>
+              </div>
+              <div class="sw" role="radio" aria-checked="false" tabindex="0">
+                <div class="chip" style="background-image:url('assets-pdp/wood-itauba.png')"></div><div class="nm">Itaúba</div>
+              </div>
+              <div class="sw" role="radio" aria-checked="false" tabindex="0">
+                <div class="chip" style="background-image:url('assets-pdp/wood-carvalho.png')"></div><div class="nm">White Oak</div>
+              </div>
+              <div class="sw" role="radio" aria-checked="false" tabindex="0">
+                <div class="chip" style="background-image:url('assets-pdp/wood-wengue.png')"></div><div class="nm">Wengé</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="opt-h"><span>Cloth · Worsted</span><span class="sel">Champagne</span></div>
+            <div class="swatches" role="radiogroup" aria-label="Felt cloth">
+              <div class="sw on" role="radio" aria-checked="true" tabindex="0">
+                <div class="chip" style="background-image:url('assets-pdp/fabric-champagne.png')"></div><div class="nm">Champagne</div>
+              </div>
+              <div class="sw" role="radio" aria-checked="false" tabindex="0">
+                <div class="chip" style="background-image:url('assets-pdp/fabric-forest.png')"></div><div class="nm">Forest</div>
+              </div>
+              <div class="sw" role="radio" aria-checked="false" tabindex="0">
+                <div class="chip" style="background-image:url('assets-pdp/fabric-midnight.png')"></div><div class="nm">Petrol</div>
+              </div>
+              <div class="sw" role="radio" aria-checked="false" tabindex="0">
+                <div class="chip" style="background-image:url('assets-pdp/fabric-garnet.png')"></div><div class="nm">Garnet</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="prose" style="margin-top:30px;color:var(--body)">Prefer to hold them in your hand first? Order the swatch box below — it ships free, and the cost is credited to your commission.</p>
+      </section>
+
+      <!-- SPECIFICATIONS -->
+      <section class="sect rv" id="spec">
+        <div class="eyebrow sect-tag">Specification</div>
+        <div class="specs">
+          <div class="specrow"><span class="k">Playing format</span><span class="v">8 ft · pool / billiards</span></div>
+          <div class="specrow"><span class="k">Play surface</span><span class="v">3-piece Italian slate</span></div>
+          <div class="specrow"><span class="k">Frame</span><span class="v">Solid selected hardwood</span></div>
+          <div class="specrow"><span class="k">Base</span><span class="v">Polished stainless ribbon</span></div>
+          <div class="specrow"><span class="k">Cloth</span><span class="v">Worsted tournament wool</span></div>
+          <div class="specrow"><span class="k">Corner radius</span><span class="v">4 mm, hand-eased</span></div>
+          <div class="specrow"><span class="k">Conversion</span><span class="v">Optional dining top</span></div>
+          <div class="specrow"><span class="k">Guarantee</span><span class="v">Lifetime, structure</span></div>
+        </div>
+      </section>
+
+      <!-- gallery -->
+      <section class="sect rv">
+        <div class="eyebrow sect-tag">In detail</div>
+        <div class="gallery">
+          <div class="frame span2"><img src="assets-pdp/aurora-insitu-2.jpg" alt="A handcrafted game table in a daylit residence, photographed on site, wide view." /></div>
+          <div class="frame"><img src="assets-pdp/aurora-studio-angle.jpg" alt="Aurora from a three-quarter angle, studio render isolated on black." /></div>
+          <div class="frame"><img src="assets-pdp/aurora-studio-top.jpg" alt="Aurora studio render, isolated on black." /></div>
+        </div>
+      </section>
+
+      <!-- WHY NOW — loss-framed scarcity (Kahneman), no false urgency -->
+      <section class="sect rv" id="now">
+        <div class="eyebrow sect-tag">Why now</div>
+        <div class="anchor">
+          <div class="big">The atelier opens <em>fourteen</em> commissions a year.<br>Each one takes ten to fourteen weeks by hand.</div>
+          <div class="loss">
+            <p>This is not a queue you can buy your way past. A table begun today is finished for the season ahead; a decision deferred is a season spent without it. <b>The wait is the proof of the work</b> — and it is the one part of Aurora we cannot make faster.</p>
+            <p style="margin-top:14px"><b>Reserve your slot</b> and we hold your maker, your wood and your cloth from the day you confirm.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- trust strip -->
+      <section class="sect rv">
+        <div class="trust">
+          <div class="t"><div class="n">14</div><div class="d">commissions accepted per year</div></div>
+          <div class="t"><div class="n">Lifetime</div><div class="d">guarantee on the structure</div></div>
+          <div class="t"><div class="n">US&nbsp;&amp;&nbsp;EU</div><div class="d">white-glove delivery &amp; install</div></div>
+          <div class="t"><div class="n">1</div><div class="d">maker, signed under the frame</div></div>
+        </div>
+      </section>
+
+    </div><!-- /col -->
+
+    <!-- ============ STICKY RAIL (price lands AFTER value) ============ -->
+    <aside class="rail" aria-label="Reserve Aurora">
+      <div class="rail-card">
+        <div class="from">From</div>
+        <div class="rail-price">
+          <span class="cur">$</span><span class="num">22,400</span><span class="ccy">USD · €</span>
+        </div>
+        <div class="rail-note">Price shown for your region. Final figure depends on <b>wood, cloth and dining-top conversion</b> — confirmed in your written quote.</div>
+
+        <button class="btn btn-primary">Request a quote</button>
+
+        <!-- intermediate commitment rungs (Eyal): each stores effort -->
+        <div class="rungs" role="group" aria-label="Other ways to take the next step">
+          <a href="#materials" class="rung">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            <span class="lbl">Request material samples<small>Free swatch box, credited to your order</small></span>
+            <span class="arrow">→</span>
+          </a>
+          <a href="#" class="rung">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            <span class="lbl">Save this table<small>Keep Aurora in your account</small></span>
+            <span class="arrow">→</span>
+          </a>
+          <a href="#" class="rung">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M12 18v-6M9 15l3 3 3-3"/></svg>
+            <span class="lbl">Download the dossier<small>Full spec &amp; finishes, PDF</small></span>
+            <span class="arrow">→</span>
+          </a>
+          <a href="#" class="rung">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-6 9 6v11a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg>
+            <span class="lbl">Book a private viewing<small>Virtual or by appointment</small></span>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+
+        <!-- TINY first step: single field -->
+        <div class="quickform">
+          <div class="qf-h">Just exploring? Start here</div>
+          <div class="qf-row">
+            <input type="email" placeholder="Your email or WhatsApp" aria-label="Email or WhatsApp" />
+            <button type="button">Send</button>
+          </div>
+          <div class="qf-fine">One field. We reply with the dossier and a note from your maker — no calls unless you ask.</div>
+        </div>
+
+        <div class="reassure">
+          <div class="r"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.4 7.7-8 9-4.6-1.3-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg><span>White-glove delivery &amp; installation in the US and Europe.</span></div>
+          <div class="r"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg><span>No deposit to request a quote. You commit only when you confirm.</span></div>
+        </div>
+      </div>
+    </aside>
+
+  </div><!-- /layout -->
+</div><!-- /stage -->
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="wrap foot">
+    <div>
+      <div class="mark">BRETDA</div>
+      <div class="meta" style="margin-top:14px">Handcrafted luxury game tables · Made to order in Brazil<br>Exported to the United States &amp; Europe · Pricing in USD&nbsp;$ / EUR&nbsp;€</div>
+    </div>
+    <div class="meta" style="text-align:right">
+      <a href="#">Request a quote</a> &nbsp;·&nbsp; <a href="#">Talk on WhatsApp</a><br>
+      <a href="#">The Atelier</a> &nbsp;·&nbsp; <a href="#">Care &amp; guarantee</a> &nbsp;·&nbsp; <a href="#">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== STICKY BOTTOM BAR ===================== -->
+<div class="stickybar" id="stickybar" aria-hidden="true">
+  <div class="sb-inner">
+    <div class="sb-pricewrap">
+      <div class="sb-name">Aurora</div>
+      <div class="sb-price">From <b>$22,400</b> · USD&nbsp;$/€ · made to order</div>
+    </div>
+    <div class="sb-spacer"></div>
+    <a href="#" class="sb-ghost">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8.5 8.5 0 0 1-12.2 7.6L3 20l1-4.7A8.5 8.5 0 1 1 20 11.5z"/></svg>
+      WhatsApp
+    </a>
+    <a href="#" class="sb-cta">Request a quote</a>
+  </div>
+</div>
+
+<script>
+  // sticky bottom bar appears once hero CTA scrolls past (desire peak), hides at top
+  (function(){
+    var bar=document.getElementById('stickybar');
+    var hero=document.querySelector('.hero');
+    function onScroll(){
+      var past=window.scrollY > (hero.offsetTop + hero.offsetHeight - 80);
+      var nearFoot=(window.innerHeight+window.scrollY) > (document.body.offsetHeight-160);
+      if(past && !nearFoot){bar.classList.add('show');bar.setAttribute('aria-hidden','false');}
+      else{bar.classList.remove('show');bar.setAttribute('aria-hidden','true');}
+    }
+    window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  })();
+
+  // reveal on scroll
+  (function(){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:.12});
+    document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+  })();
+
+  // swatch selection (visible selected ring)
+  document.querySelectorAll('.swatches').forEach(function(group){
+    group.querySelectorAll('.sw').forEach(function(sw){
+      function pick(){
+        group.querySelectorAll('.sw').forEach(function(s){s.classList.remove('on');s.setAttribute('aria-checked','false');});
+        sw.classList.add('on');sw.setAttribute('aria-checked','true');
+        var label=sw.querySelector('.nm').textContent;
+        var head=group.closest('div').querySelector('.opt-h .sel');
+        if(head) head.textContent=label;
+      }
+      sw.addEventListener('click',pick);
+      sw.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();pick();}});
+    });
+  });
+</script>
+</body>
+</html>

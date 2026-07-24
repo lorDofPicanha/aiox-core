@@ -163,7 +163,7 @@ vercel deploy
 ```bash
 curl -X POST https://YOUR-VERCEL-URL/api/manual-trigger \
   -H "Content-Type: application/json" \
-  -H "X-Auth-Token: $MANUAL_TRIGGER_TOKEN" \
+  -H "Authorization: Bearer $MANUAL_TRIGGER_TOKEN" \
   -d '{
     "type": "lead.qualified",
     "tenant": "tocks",
@@ -209,7 +209,7 @@ Durante o dogfooding, monitora:
 
 - **Bridge success rate:** quantos lead.qualified events disparados × quantos chegaram both Meta+Google = % verde
 - **Latência média:** segundos do dispatch ao success
-- **Idempotency working:** dispare 2x mesmo `event_id` → audit_log tem apenas 1 row com `status=completed`, 2ª chamada retorna do cache
+- **Idempotency working:** dispare 2x o mesmo evento → cada destino (`meta_capi`, `google_oc`) tem 1 row `completed`; o replay cria rows `skipped_duplicate`, sem novo upload externo
 - **DLQ activity:** quantas vezes caiu em DLQ?
 
 Estes números entram no Gate 0 (Day 7) como "Bridge funcional?" check.
@@ -254,7 +254,7 @@ Estes números entram no Gate 0 (Day 7) como "Bridge funcional?" check.
 │       ├── audit.ts                       # Audit logger
 │       └── idempotency.ts                 # Hash + dedup key
 ├── db/
-│   └── 0001_initial.sql                   # Schema: audit_log + dlq_events + idempotency_keys
+│   └── 0001_initial.sql                   # Schema: bridge_audit_log + bridge_dlq + bridge_idempotency
 └── scripts/
     ├── test-event.ts                      # CLI: dispara test events
     └── google-oauth.ts                    # CLI: gera refresh token Google

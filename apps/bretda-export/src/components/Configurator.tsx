@@ -13,7 +13,7 @@ import {
 } from "@/lib/configurador/tables";
 import { catalog, formatPrice } from "@/data/catalog";
 import { useCurrency } from "@/lib/currency";
-import { waUrl } from "@/lib/inquiry";
+import { waUrl, mailUrl } from "@/lib/inquiry";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -52,6 +52,10 @@ export default function Configurator({ initialSlug }: { initialSlug?: string }) 
   const [customize, setCustomize] = useState(false);
   const [selectedPart, setSelectedPart] = useState<string | null>(null);
   const [selectedCls, setSelectedCls] = useState<string | null>(null);
+  // armed finish waiting for the user to tap a part (guided 1-touch flow)
+  const [pending, setPending] = useState<null | { cls: "madeira" | "metal" | "tecido"; texture: string; color?: number; label: string }>(null);
+  const pendingRef = useRef<typeof pending>(null);
+  pendingRef.current = pending;
   const [toast, setToast] = useState("");
   const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const showToast = useCallback((msg: string) => {
@@ -59,6 +63,18 @@ export default function Configurator({ initialSlug }: { initialSlug?: string }) 
     if (toastTimer.current) clearTimeout(toastTimer.current);
     toastTimer.current = setTimeout(() => setToast(""), 2600);
   }, []);
+
+  // Applies the armed finish to a freshly tapped part (kept in a ref so the
+  // engine callback always sees the current translations/pending state).
+  const applyPendingRef = useRef<(part: string) => void>(() => {});
+  applyPendingRef.current = (part: string) => {
+    const p = pendingRef.current;
+    if (!part || !p || !sceneRef.current) return;
+    if (sceneRef.current.applyToSelected(p.cls, p.texture, p.color)) {
+      showToast(t("applied", { name: p.label }));
+      setPending(null);
+    }
+  };
 
   // scene lifecycle — epoch-driven remount (mirrors the original engine usage)
   useEffect(() => {
@@ -86,6 +102,7 @@ export default function Configurator({ initialSlug }: { initialSlug?: string }) 
         onMaterialSelected: (name: string | null, cls: string | null) => {
           setSelectedPart(name);
           setSelectedCls(cls);
+          if (name) applyPendingRef.current(name);
         },
       });
       sceneRef.current = scene;
@@ -118,9 +135,33 @@ export default function Configurator({ initialSlug }: { initialSlug?: string }) 
     setSelectedCls(c);
   };
 
-  const onWood = (s: (typeof WOODS)[number]) => { setWood(s.name); sceneRef.current?.applyWood(s.texture, s.fallbackColor, s.name); };
-  const onMetal = (s: (typeof METALS)[number]) => { setMetal(s.name); sceneRef.current?.applyMetal(s.texture, s.name); };
-  const onFab = (s: (typeof FABRICS)[number]) => { setFab(s.name); sceneRef.current?.applyFabric(s.texture, s.fallbackColor, s.name); };
+  // Guided 1-touch: paint every surface already known to be this class; if the
+  // model has none yet, arm the finish and ask the buyer to tap the part once
+  // (which classifies it, so subsequent clicks of that class are single-touch).
+  const armOrApply = (
+    cls: "madeira" | "metal" | "tecido",
+    texture: string,
+    color: number | undefined,
+    label: string,
+    setLocal: () => void
+  ) => {
+    setLocal();
+    if (sceneRef.current?.applyToClass(cls, texture, color)) {
+      showToast(t("applied", { name: label }));
+      setPending(null);
+      return;
+    }
+    setPending({ cls, texture, color, label });
+    sceneRef.current?.ensureCustomizeOn();
+    setCustomize(true);
+    sceneRef.current?.clearSelection();
+    setSelectedPart(null);
+    setSelectedCls(null);
+    showToast(t("armedTap", { name: label }));
+  };
+  const onWood = (s: (typeof WOODS)[number]) => armOrApply("madeira", s.texture, s.fallbackColor, s.name, () => setWood(s.name));
+  const onMetal = (s: (typeof METALS)[number]) => armOrApply("metal", s.texture, s.fallbackColor, s.name, () => setMetal(s.name));
+  const onFab = (s: (typeof FABRICS)[number]) => armOrApply("tecido", s.texture, s.fallbackColor, s.name, () => setFab(s.name));
 
   const prod = catFor(activeKey);
   const price = prod ? formatPrice(prod.priceUSD, prod.priceEUR, cur, locale) : null;
@@ -152,7 +193,9 @@ export default function Configurator({ initialSlug }: { initialSlug?: string }) 
             {toast && <div className="cfg-toast">{toast}</div>}
             {customize && (
               <div className="cfg-customize">
-                {selectedPart ? (
+                {pending && !selectedPart ? (
+                  <div className="cc-lbl">{t("armedTap", { name: pending.label })}</div>
+                ) : selectedPart ? (
                   <>
                     <div className="cc-lbl">{t("ccSelected")}</div>
                     <div className="cc-row">
@@ -168,7 +211,7 @@ export default function Configurator({ initialSlug }: { initialSlug?: string }) 
               </div>
             )}
             <div className="bar">
-              <span className="hint">{customize ? (selectedPart ? `${selectedPart} — ${t("pickFinish")}` : t("customizeOn")) : t("hint")}</span>
+              <span className="hint">{pending ? t("armedTap", { name: pending.label }) : customize ? (selectedPart ? `${selectedPart} — ${t("pickFinish")}` : t("customizeOn")) : t("hint")}</span>
               <div className="cfg-tools">
                 <button className={`arbtn${customize ? " on" : ""}`} onClick={toggleCustomize}>{t("customize")}</button>
                 <button className="arbtn" onClick={() => sceneRef.current?.resetCamera()}>Reset</button>
@@ -222,6 +265,7 @@ export default function Configurator({ initialSlug }: { initialSlug?: string }) 
               {price && <div className="price2"><span style={fromStyle}>{t("from")}</span>{price}</div>}
               <div className="ddp">{t("ddp")}</div>
               <a className="cta" style={{ width: "100%", textAlign: "center" }} href={waUrl(tw("config", { name: activeLabel, wood, metal: metal ?? "—", cloth: activeCategory === "sinuca" ? fab : "—", price: price ?? "—" }))} target="_blank" rel="noopener noreferrer">{t("reserve")}</a>
+              <a className="cfg-email" href={mailUrl(t("emailSubj", { name: activeLabel }), tw("config", { name: activeLabel, wood, metal: metal ?? "—", cloth: activeCategory === "sinuca" ? fab : "—", price: price ?? "—" }))}>{t("email")}</a>
             </div>
           </div>
         </div>

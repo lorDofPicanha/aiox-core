@@ -1,10 +1,12 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-const { buildTriage } = await import("../lib/noyce-operational.ts");
+const { buildTriage: rawBuildTriage } = await import("../lib/noyce-operational.ts");
 const { validateTriage } = await import("../lib/agents/guardrails.ts");
 
-// Triage reference "today" inside buildTriage is 2026-05-29.
+// Tests inject a stable clock; production defaults to the real current time.
+const TRIAGE_AS_OF = "2026-05-29T00:00:00Z";
+const buildTriage = (input, opts = {}) => rawBuildTriage(input, { asOf: TRIAGE_AS_OF, ...opts });
 const future = (days) => new Date(Date.UTC(2026, 4, 29) + days * 86400000).toISOString();
 
 test("obra perto com prazo aberto = Vai", () => {
@@ -28,6 +30,17 @@ test("obra fora do raio = Pula", () => {
 
 test("prazo encerrado = Pula", () => {
   const t = buildTriage({ title: "Reforma de edifício escolar", distanceKm: 40, estimatedValue: 600000, proposalDeadline: future(-3) });
+  assert.equal(t.verdict, "pula");
+  assert.match(t.reason, /encerrado/);
+});
+
+test("produção usa o relógio atual quando asOf não é fornecido", () => {
+  const t = rawBuildTriage({
+    title: "Reforma de escola",
+    distanceKm: 30,
+    estimatedValue: 700000,
+    proposalDeadline: "2026-06-30T10:00:00Z",
+  });
   assert.equal(t.verdict, "pula");
   assert.match(t.reason, /encerrado/);
 });

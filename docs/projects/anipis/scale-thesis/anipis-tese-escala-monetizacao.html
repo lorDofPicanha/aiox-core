@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anipis — Por que escala (e por que assinam)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* ===== ANIPIS — verde floresta / creme editorial (brand canon) ===== */
+  --canvas:#f7f4ed;        /* warm cream paper */
+  --surface:#ffffff;
+  --sunken:#efeae0;
+  --ink:#1a1814;
+  --ink-soft:#3d3a35;
+  --ink-muted:#76726b;
+  --border-hair:#e8e2d4;
+  --border-strong:#d5cfc0;
+  --brand:#2f5235;         /* forest green */
+  --brand-deep:#1f3823;
+  --brand-soft:#d4e0ce;
+  --brand-wash:#ebf1e6;
+  --mood-calm:#cfe0e8;     /* blue */
+  --mood-joy:#f4d9c2;      /* peach */
+  --mood-clear:#e0dde8;    /* lavender */
+  --mood-heavy:#c8c5bd;    /* grey */
+  --alarm-bg:#ffe17a;
+  --crisis:#a1311f;
+  --info:#2f4f66;
+  --r-sm:8px; --r-md:12px; --r-full:999px;
+  --serif:Georgia,"Times New Roman",serif;
+  --sans:Inter,"Suisse Int'l",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --max:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--canvas);color:var(--ink);
+  font-family:var(--sans);font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.shell{width:min(var(--max),calc(100% - 40px));margin:0 auto}
+h1,h2,h3,.display{font-family:var(--serif);font-weight:400;line-height:1.08;letter-spacing:0;margin:0;color:var(--ink)}
+h1{font-size:clamp(42px,6.6vw,82px);max-width:18ch}
+h2{font-size:clamp(28px,4vw,50px);max-width:20ch}
+h3{font-size:21px;line-height:1.25}
+a{color:var(--brand-deep)}
+em.g{font-style:italic;color:var(--brand)}
+.kicker{display:flex;align-items:center;gap:11px;color:var(--ink-muted);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.02em}
+.kicker::before{content:"";width:10px;height:10px;background:var(--brand);flex:0 0 auto}
+.serif-it{font-family:var(--serif);font-style:italic}
+
+/* topbar */
+.topbar{position:sticky;top:0;z-index:50;background:color-mix(in oklch,var(--canvas) 86%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border-hair)}
+.topbar .shell{display:flex;align-items:center;justify-content:space-between;height:58px}
+.brand-mark{display:inline-flex;gap:11px;align-items:center;font-weight:600;color:var(--ink-soft);font-size:18px}
+.brand-mark::before{content:"";width:11px;height:11px;background:var(--brand)}
+.tag{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--brand)}
+
+/* hero */
+.hero{padding:64px 0 56px;border-bottom:1px solid var(--border-strong)}
+.hero .lede{max-width:62ch;margin:30px 0 0;font-size:clamp(18px,2vw,22px);line-height:1.5;color:var(--ink-soft)}
+.hero .lede b{color:var(--ink)}
+.metrics{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.metric{background:var(--surface);border:1px solid var(--border-hair);border-radius:var(--r-sm);padding:18px 20px;flex:1 1 220px;min-width:200px}
+.metric strong{display:block;font-family:var(--serif);font-size:30px;line-height:1;color:var(--brand);margin-bottom:10px;font-weight:500}
+.metric span{display:block;font-size:13px;color:var(--ink-muted);font-weight:500;line-height:1.45}
+
+/* section */
+.section{padding:72px 0;border-bottom:1px solid var(--border-hair)}
+.section-head{max-width:760px}
+.section-head h2{margin-top:14px}
+.section-head .lead{font-size:18px;color:var(--ink-soft);margin-top:18px;max-width:64ch}
+
+/* grids/cards */
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:880px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--border-hair);border-radius:var(--r-sm);padding:24px}
+.card h3{font-size:19px;margin-bottom:10px}
+.card p{font-size:15px;color:var(--ink-soft);margin:0;line-height:1.55}
+.card .big{font-family:var(--serif);font-weight:500;font-size:40px;line-height:1;color:var(--brand);font-feature-settings:"tnum"}
+.card .unit{font-size:13px;color:var(--ink-muted);margin-top:10px;display:block;font-weight:500}
+
+/* dark forest blocks */
+.forest{background:var(--brand-deep);color:#eaf0e5;border-radius:var(--r-md);padding:38px 34px;position:relative;overflow:hidden}
+.forest::after{content:"";position:absolute;top:-50px;right:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(212,224,206,.14),transparent 70%);pointer-events:none}
+.forest .kicker{color:#bcd0b8}.forest .kicker::before{background:var(--brand-soft)}
+.forest h2,.forest h3{color:#fff}
+.forest h2{font-size:clamp(26px,3.4vw,40px);margin-top:14px}
+.forest p{color:#c3cdbe;margin-top:16px;max-width:64ch}
+.forest p b{color:#fff}
+.forest .quote{font-family:var(--serif);font-style:italic;font-size:22px;color:#fff;border-left:2px solid var(--brand-soft);padding-left:18px;margin:24px 0 0;line-height:1.4}
+
+.pullquote{font-family:var(--serif);font-style:italic;font-size:clamp(24px,3.2vw,33px);line-height:1.3;color:var(--ink);max-width:18ch;margin:0}
+.pullquote .who{display:block;font-family:var(--sans);font-style:normal;font-size:14px;font-weight:600;color:var(--brand);margin-top:18px;text-transform:none}
+
+/* waves */
+.waves{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:10px}
+@media(max-width:880px){.waves{grid-template-columns:1fr}}
+.wave{background:var(--surface);border:1px solid var(--border-hair);border-radius:var(--r-sm);padding:24px;position:relative}
+.wave::before{content:"";position:absolute;top:0;left:0;width:100%;height:3px;background:var(--brand);border-radius:var(--r-sm) var(--r-sm) 0 0}
+.wave.w2::before{background:var(--brand);opacity:.62}
+.wave.w3::before{background:var(--brand);opacity:.34}
+.wave .num{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--ink-muted)}
+.wave h3{margin:8px 0 6px}
+.wave p{font-size:14.5px;color:var(--ink-soft);margin:0 0 14px;line-height:1.5}
+.wave .role{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--brand)}
+.wave .money{font-family:var(--serif);font-weight:500;font-size:23px;color:var(--ink);margin-top:8px;font-feature-settings:"tnum"}
+
+/* comps table */
+.comp{width:100%;border-collapse:collapse;font-size:15px}
+.comp th,.comp td{text-align:left;padding:13px 8px;border-bottom:1px solid var(--border-hair)}
+.comp th{font-family:var(--serif);font-style:italic;font-weight:400;font-size:15px;color:var(--ink-muted)}
+.comp tr:last-child td{border-bottom:none}
+.comp .val{font-family:var(--serif);font-weight:500;color:var(--brand);font-feature-settings:"tnum"}
+.comp td b{color:var(--ink)}
+
+/* moat */
+.moat{display:flex;gap:20px;align-items:flex-start;padding:22px 0;border-bottom:1px solid var(--border-hair)}
+.moat:last-child{border-bottom:none}
+.moat .ix{flex:0 0 40px;height:40px;border-radius:var(--r-full);background:var(--brand-wash);color:var(--brand);display:grid;place-items:center;font-family:var(--serif);font-size:20px;border:1px solid var(--brand-soft)}
+.moat h3{font-size:18px;margin-bottom:5px}
+.moat p{margin:0;font-size:15.5px;color:var(--ink-soft);line-height:1.55}
+
+/* mockups */
+.phones{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:38px}
+@media(max-width:980px){.phones{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:680px){.phones{grid-template-columns:1fr;justify-items:center}}
+.phone-wrap{display:flex;flex-direction:column;align-items:center;gap:14px}
+.phone-cap{text-align:center;max-width:31ch}
+.phone-cap b{font-weight:600;font-size:16px;display:block;color:var(--ink)}
+.phone-cap span{font-size:13.5px;color:var(--ink-soft);line-height:1.5}
+.phone{width:300px;max-width:88vw;height:600px;background:var(--canvas);border-radius:40px;border:10px solid #14130f;box-shadow:0 24px 50px rgba(26,24,20,.20),0 0 0 1px rgba(0,0,0,.2);overflow:hidden;position:relative;display:flex;flex-direction:column}
+.notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:116px;height:22px;background:#14130f;border-radius:0 0 13px 13px;z-index:30}
+
+.scr{display:flex;flex-direction:column;height:100%;font-size:14px;background:var(--canvas)}
+.scr-head{height:52px;display:flex;align-items:center;justify-content:space-between;padding:6px 14px 0;border-bottom:1px solid var(--border-hair);background:color-mix(in oklch,var(--canvas) 84%,transparent);backdrop-filter:blur(8px)}
+.scr-title{display:flex;align-items:center;gap:8px;font-weight:600;font-size:15px}
+.dot-on{width:7px;height:7px;border-radius:50%;background:var(--brand)}
+.mini-orb{width:18px;height:18px;border-radius:50%;background:radial-gradient(circle at 36% 30%,#5c8a63,var(--brand) 72%)}
+.bridge{font-size:12px;font-weight:600;color:var(--brand);background:var(--brand-wash);padding:5px 11px;border-radius:var(--r-full);border:1px solid var(--brand-soft)}
+.msgs{flex:1;overflow:hidden;padding:16px 14px;display:flex;flex-direction:column;gap:11px}
+.b{max-width:84%;padding:10px 13px;line-height:1.45;font-size:14px;border-radius:14px}
+.b-ai{align-self:flex-start;background:var(--brand-wash);color:var(--ink-soft);border:1px solid var(--brand-soft);border-bottom-left-radius:4px}
+.b-user{align-self:flex-end;background:var(--brand);color:#fff;border-bottom-right-radius:4px}
+.b time{display:block;font-size:10px;opacity:.6;margin-top:3px}
+.b.voz{font-family:var(--serif);font-style:italic;font-size:15px}
+.typing{align-self:flex-start;background:var(--brand-wash);border:1px solid var(--brand-soft);border-radius:14px;border-bottom-left-radius:4px;padding:13px 14px;display:inline-flex;gap:5px}
+.td{width:7px;height:7px;border-radius:50%;background:var(--brand);animation:pulse 1.2s ease-in-out infinite}
+.td:nth-child(2){animation-delay:.2s}.td:nth-child(3){animation-delay:.4s}
+.scr-input{display:flex;align-items:center;gap:8px;padding:10px 12px;background:var(--surface);border-top:1px solid var(--border-hair)}
+.scr-input .field{flex:1;height:38px;border:1px solid var(--border-hair);border-radius:var(--r-full);background:var(--canvas);display:flex;align-items:center;padding:0 14px;color:var(--ink-muted);font-size:13px}
+.send{width:38px;height:38px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:14px}
+.disc{padding:8px 12px;font-size:10.5px;color:var(--ink-muted);text-align:center;background:var(--surface);border-top:1px solid var(--border-hair)}
+
+.scr.center{align-items:center;justify-content:flex-start;padding:48px 22px 24px;text-align:center}
+.scr.center h4{font-family:var(--serif);font-weight:400;font-size:22px;margin-bottom:6px}
+.scr.center .hint{font-size:13.5px;color:var(--ink-soft);margin-bottom:30px}
+.mood-circle{width:108px;height:108px;border-radius:50%;background:radial-gradient(circle at 38% 32%,var(--mood-calm),#aac6d6);box-shadow:0 8px 24px rgba(26,24,20,.12);margin-bottom:18px}
+.mood-label{font-family:var(--serif);font-style:italic;font-size:22px;margin-bottom:28px;color:var(--ink)}
+.mood-slider{width:228px;max-width:100%;height:8px;border-radius:var(--r-full);background:linear-gradient(to right,var(--mood-heavy),var(--mood-clear),var(--mood-calm),var(--mood-joy));position:relative;margin-bottom:8px}
+.mood-thumb{width:26px;height:26px;border-radius:50%;background:#fff;border:3px solid var(--brand);position:absolute;top:-9px;left:46%;transform:translateX(-50%);box-shadow:0 4px 12px rgba(26,24,20,.15)}
+.slider-ends{width:228px;display:flex;justify-content:space-between;font-size:11px;color:var(--ink-muted);margin-bottom:34px}
+.btn-fill{width:100%;height:46px;border-radius:var(--r-sm);background:var(--brand);color:#fff;border:none;font-family:var(--sans);font-weight:600;font-size:15px;margin-bottom:10px}
+.btn-ghost{width:100%;height:42px;border-radius:var(--r-sm);background:transparent;color:var(--brand);border:none;font-weight:600;font-size:14px}
+
+.scr.breathe{align-items:center;justify-content:center;padding:30px 22px;text-align:center}
+.scr.breathe h4{font-family:var(--serif);font-weight:400;font-size:20px;margin-bottom:40px;color:var(--ink-soft)}
+.breath-orb{width:172px;height:172px;border-radius:50%;background:radial-gradient(circle,var(--brand-soft) 0%,var(--brand-wash) 55%,transparent 100%);animation:breathe-async 8s infinite;margin-bottom:36px}
+.breath-inst{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--ink);margin-bottom:26px;animation:fadeinst 8s ease infinite}
+.cyc{display:flex;gap:7px}
+.cyc i{width:9px;height:9px;border-radius:50%;background:var(--border-strong);display:inline-block}
+.cyc i.on{background:var(--brand)}
+.cyc-count{font-size:12px;color:var(--ink-muted);margin-top:12px}
+
+.scr.onb{padding:42px 24px 24px;display:flex;flex-direction:column}
+.onb-ill{width:118px;height:118px;border-radius:18px;background:var(--brand-wash);border:1px solid var(--brand-soft);margin:0 auto 26px;display:grid;place-items:center;font-size:50px}
+.scr.onb h4{font-family:var(--serif);font-weight:400;font-size:22px;margin-bottom:20px;line-height:1.2}
+.bullet{display:flex;gap:10px;font-size:14px;line-height:1.5;color:var(--ink);margin-bottom:15px}
+.bullet .b-ic{flex:0 0 20px;color:var(--brand);font-weight:700}
+.bullet.crisis{background:var(--alarm-bg);padding:13px;border-radius:var(--r-sm);margin-top:4px}
+.bullet.crisis .b-ic{color:var(--crisis)}
+.bullet.crisis b{color:var(--crisis)}
+.onb-spacer{flex:1}
+.onb-dots{display:flex;justify-content:center;gap:7px;margin-top:18px}
+.onb-dots i{width:7px;height:7px;border-radius:50%;background:var(--border-strong)}
+.onb-dots i.on{width:22px;border-radius:var(--r-full);background:var(--brand)}
+
+.scr.land{padding:54px 24px 24px;display:flex;flex-direction:column;height:100%;background:linear-gradient(180deg,var(--canvas),var(--brand-wash))}
+.scr.land .h{font-family:var(--serif);font-weight:400;font-size:30px;line-height:1.08;margin-bottom:16px}
+.scr.land .s{font-size:14.5px;color:var(--ink-soft);line-height:1.5;margin-bottom:26px}
+.scr.land .cta{height:50px;border-radius:var(--r-sm);background:var(--brand);color:#fff;display:grid;place-items:center;font-weight:600;font-size:15px;margin-bottom:12px}
+.scr.land .gl{text-align:center;font-size:13px;color:var(--brand);text-decoration:underline;margin-bottom:auto}
+.land-quote{display:flex;align-items:center;gap:11px;margin-top:30px;font-family:var(--serif);font-style:italic;font-size:22px;color:var(--brand)}
+.land-quote .lo{width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 36% 30%,#5c8a63,var(--brand));animation:breathe-async 8s infinite}
+.land-disc{font-size:10.5px;color:var(--ink-muted);text-align:center;margin-top:20px}
+
+/* verdict */
+.verdict{background:var(--brand-deep);color:#eaf0e5;border-radius:var(--r-md);padding:46px 38px;position:relative;overflow:hidden}
+.verdict::after{content:"";position:absolute;bottom:-60px;left:-30px;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,rgba(212,224,206,.13),transparent 70%);pointer-events:none}
+.verdict .kicker{color:#bcd0b8}.verdict .kicker::before{background:var(--brand-soft)}
+.verdict h2{color:#fff;margin-top:14px;max-width:24ch}
+.verdict p{color:#c3cdbe;margin-top:18px;max-width:64ch}
+.verdict p b{color:#fff}
+.verdict .line{font-family:var(--serif);font-style:italic;font-size:23px;color:#fff;margin-top:26px;border-top:1px solid rgba(212,224,206,.28);padding-top:24px;line-height:1.4}
+
+.foot{padding:40px 0 64px;color:var(--ink-soft);font-size:13.5px}
+.foot .src{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.foot .src span{background:var(--surface);border:1px solid var(--border-hair);border-radius:var(--r-full);padding:5px 12px;font-size:12px}
+
+@keyframes breathe{0%,100%{transform:scale(1);opacity:.82}50%{transform:scale(1.12);opacity:1}}
+@keyframes breathe-async{0%{transform:scale(1);opacity:.72}40%{transform:scale(1.14);opacity:1}100%{transform:scale(1);opacity:.72}}
+@keyframes pulse{0%,100%{opacity:.3;transform:scale(.82)}50%{opacity:1;transform:scale(1)}}
+@keyframes fadeinst{0%,42%{opacity:1}50%,92%{opacity:.4}100%{opacity:1}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="shell">
+  <div class="brand-mark">anipis</div>
+  <span class="tag">escala &amp; por que assinam</span>
+</div></div>
+
+<!-- HERO -->
+<header class="hero"><div class="shell">
+  <div class="kicker">a tese, sem rodeio</div>
+  <h1 style="margin-top:22px">Tem cara de app de R$30. Por baixo, é um negócio de saúde mental <em class="g">B2B2C</em>.</h1>
+  <p class="lede">Saúde mental vendida só ao consumidor final não escala — e tudo bem, porque esse não é o motor. No Anipis, o B2C é a <b>cunha de dados</b>: prova retenção e gera o único corpus clínico em português brasileiro. Esse ativo destrava o corporativo e a operadora — onde <b>um único contrato cobre 50&nbsp;mil a 300&nbsp;mil vidas</b>. Aqui estão os números, o porquê de existir gente assinando, e como o produto vai ficar.</p>
+  <div class="metrics">
+    <div class="metric"><strong>546 mil</strong><span>afastamentos por saúde mental no Brasil (2025, +15,6%)</span></div>
+    <div class="metric"><strong>96%</strong><span>de margem bruta por assinante</span></div>
+    <div class="metric"><strong>ago/2026</strong><span>janela CFM = fosso regulatório de 18–24 meses</span></div>
+  </div>
+</div></header>
+
+<!-- THE TRAP -->
+<section class="section"><div class="shell">
+  <div class="forest">
+    <div class="kicker">a leitura óbvia — e por que ela engana</div>
+    <h2>Visto de fora, parece um app de bem-estar que ninguém renova.</h2>
+    <p>É verdade para a categoria: saúde mental digital perde <b>~97% dos usuários em 30 dias</b>, o CAC sobe, e você compete com Calm, Cíngulo e o próprio ChatGPT no preço. O Woebot — referência clínica global — <b>encerrou a operação B2C em junho de 2025</b> exatamente por isso. Se o Anipis fosse <i>só</i> mais um companion fofo por assinatura, essa leitura mataria a tese. O ponto é que se está olhando para o produto errado.</p>
+    <p class="quote">"A pergunta no Ano 1 não é 'tem mercado?'. É 'a Júlia volta no dia 3 sem a gente cutucar?'. Sem retenção, nenhum CAC fecha conta."<br><span style="font-size:14px;color:#9fb09b;font-style:normal;font-family:var(--sans)">— Eric Ries (clone), conclave Anipis GTM</span></p>
+  </div>
+</div></section>
+
+<!-- REFRAME -->
+<section class="section"><div class="shell">
+  <div class="section-head">
+    <div class="kicker">o enquadramento certo</div>
+    <h2>O consumidor não é a receita. É a prova.</h2>
+    <p class="lead">O mesmo produto roda em três ondas. A onda 1 existe para gerar <b>dado clínico proprietário em PT-BR e retenção comprovada</b> — o ativo que destrava as ondas 2 e 3, onde quem paga é a empresa e a operadora, não o indivíduo. É o playbook de Spring Health (US$ 2,5 bi) e Lyra/Omada (US$ 4,6 bi): consumidor primeiro, pagador depois.</p>
+  </div>
+
+  <div class="waves">
+    <div class="wave w1">
+      <div class="num">Onda 1 · 0–6 meses</div>
+      <h3>B2C "Júlia"</h3>
+      <p>Mulher 18–29, paga do próprio bolso. 50–200 conversas/dia viram dado de aliança terapêutica e retenção D30. <b>Quem paga:</b> a pessoa.</p>
+      <div class="role">a cunha de dados</div>
+      <div class="money">R$ 29,90 / mês</div>
+    </div>
+    <div class="wave w2">
+      <div class="num">Onda 2 · 6–18 meses</div>
+      <h3>B2B2C corporativo</h3>
+      <p>A NR-1 (vigente, em fase punitiva) obriga empresas a cuidar do risco psicossocial. Anipis vira o kit de compliance com dashboard anônimo. <b>Quem paga:</b> o RH.</p>
+      <div class="role">o motor de MRR</div>
+      <div class="money">R$ 50–150 mil / mês</div>
+    </div>
+    <div class="wave w3">
+      <div class="num">Onda 3 · 2027+</div>
+      <h3>B2B2C operadora ANS</h3>
+      <p>A RN 627/2024 ampliou o rol de saúde mental. Pago por vida coberta, não por sessão. <b>Quem paga:</b> o plano de saúde — pelos milhares.</p>
+      <div class="role">o evento de liquidez</div>
+      <div class="money">R$ 2,50–4,50 / vida</div>
+    </div>
+  </div>
+  <p style="margin-top:24px;color:var(--ink-soft);font-size:16px;max-width:72ch">O Zenklub já validou o caminho: R$ 30 mi em saúde suplementar e um acordo com Omint+Vivest que entregou <b>300 mil clientes potenciais de uma vez</b>. Esse é o teto que a leitura "app de R$30" não enxerga.</p>
+</div></section>
+
+<!-- WHY THEY PAY -->
+<section class="section"><div class="shell">
+  <div class="section-head">
+    <div class="kicker">por que assinam</div>
+    <h2>Ninguém paga por um chatbot. Pagam por não estar sozinha às 4 da manhã.</h2>
+  </div>
+
+  <div class="grid g2" style="margin-top:14px;align-items:center;gap:44px">
+    <div>
+      <p style="font-size:17px;color:var(--ink);line-height:1.6">A Júlia acorda de madrugada com um pensamento intrusivo. Não quer acordar o parceiro. Tem vergonha de ligar pro CVV ("é pra coisa séria, não pra mim"). A fila do SUS é de 6 a 12 meses. A terapia particular custa R$150–300 a sessão. <b>O Anipis ocupa exatamente esse vão — entre o silêncio e a próxima sessão.</b></p>
+      <p style="font-size:17px;color:var(--ink);line-height:1.6;margin-top:18px">A R$ 29,90/mês, fica <b>abaixo do limiar psicológico de R$30</b> (compra por impulso, grau Netflix) e <b>10× mais barato que uma única sessão</b> de telepsicologia. E o que segura a assinatura: <span style="color:var(--brand);font-weight:600">ela não cancela com facilidade o que sente que cuida dela.</span></p>
+    </div>
+    <div>
+      <p class="pullquote">"O sinal mais barato de PMF que existe: depois de 14 dias, ofereça continuar pago. Quantas pagam é a resposta."<span class="who">— Eric Ries (clone) · experimento de disposição a pagar</span></p>
+    </div>
+  </div>
+
+  <div class="grid g3" style="margin-top:34px">
+    <div class="card">
+      <div class="kicker">disposição a pagar</div>
+      <h3 style="margin-top:12px">Não baixar o preço</h3>
+      <p>"Começa em R$39 com trial real. Aos 6 meses, com evidência de PHQ-9 melhorando, sobe pra um tier de R$79 com coach humano. <b>Não desce pra R$29 — vira commodity.</b> A diferenciação é evidência clínica, não preço." — Sean Duffy (clone, fundador Omada).</p>
+    </div>
+    <div class="card">
+      <div class="kicker">a retenção que sustenta</div>
+      <h3 style="margin-top:12px">3× mais engajamento</h3>
+      <p>Benchmark clínico Limbic Care (RWE publicado, JMIR 2025): companion de IA entrega <b>3× o engajamento</b>, 2,4× a frequência e 3,8× a duração vs. material estático. A assinatura não vaza porque o produto vira hábito de cuidado.</p>
+    </div>
+    <div class="card">
+      <div class="kicker">a prova de que funciona</div>
+      <h3 style="margin-top:12px">RCT no NEJM AI</h3>
+      <p>O Therabot (Dartmouth) publicou no <b>NEJM AI</b> o primeiro ensaio clínico randomizado de um chatbot GenAI com aliança terapêutica forte e redução de sintomas. A tese central tem respaldo científico Tier-S — não é fé.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- SCALE MATH -->
+<section class="section"><div class="shell">
+  <div class="section-head">
+    <div class="kicker">a matemática da escala</div>
+    <h2>O mercado existe, cresce, e tem um teto que o B2C esconde.</h2>
+    <p class="lead">Recorte conservador: quem tem ansiedade/depressão diagnosticada, smartphone e disposição a pagar.</p>
+  </div>
+
+  <div class="grid g4" style="margin-top:8px">
+    <div class="card"><div class="kicker">SAM</div><div class="big" style="margin-top:14px">5,25M</div><span class="unit">brasileiros no alvo, dispostos a pagar</span></div>
+    <div class="card"><div class="kicker">potencial teórico</div><div class="big" style="margin-top:14px">R$1,88B</div><span class="unit">por ano (SAM × R$29,90 × 12)</span></div>
+    <div class="card"><div class="kicker">margem bruta B2C</div><div class="big" style="margin-top:14px">96%</div><span class="unit">custo de LLM ~R$0,45–1,20/usuário</span></div>
+    <div class="card"><div class="kicker">crescimento (apps SM)</div><div class="big" style="margin-top:14px">16,8%</div><span class="unit">CAGR global até 2029</span></div>
+  </div>
+
+  <div class="grid g2" style="margin-top:14px;align-items:stretch;gap:14px">
+    <div class="forest" style="padding:32px">
+      <div class="kicker">o número que muda tudo</div>
+      <h2 style="font-size:25px;margin-top:12px;max-width:none">1 contrato de operadora &gt; toda a base B2C</h2>
+      <p style="margin-top:12px">Uma operadora ANS de porte médio = <b>50 mil a 300 mil vidas</b>. A R$2,50–4,50/vida/mês, isso é <b>R$ 1,5 a 16 milhões de ARR de um único contrato</b> — com 90% da mesma tecnologia do B2C reaproveitada. O B2C ano 3 projeta ~10,5 mil assinantes (R$3,77M). A onda 3 supera isso com <i>um</i> "sim".</p>
+    </div>
+    <div class="card">
+      <div class="kicker">comparáveis que provam o teto</div>
+      <table class="comp" style="margin-top:14px">
+        <tr><th>player</th><th>modelo</th><th>valuation</th></tr>
+        <tr><td><b>Lyra Health</b></td><td>enterprise</td><td class="val">US$ 4,6 bi</td></tr>
+        <tr><td><b>Spring Health</b></td><td>enterprise</td><td class="val">US$ 2,5 bi</td></tr>
+        <tr><td><b>Zenklub</b> (BR)</td><td>supl. + Omint</td><td class="val">+300k vidas</td></tr>
+        <tr><td><b>Woebot</b></td><td>B2C puro</td><td class="val" style="color:var(--crisis)">fechou 2025</td></tr>
+      </table>
+    </div>
+  </div>
+  <p style="margin-top:18px;font-size:15px;color:var(--ink-muted);max-width:74ch">Cenário-base (clone Atlas, @analyst): compliance ok + retenção D30 de 12–18% + 1 piloto corporativo → <b>R$2,5–4,5M ARR em 24 meses</b>. Cenário-bull com 1 operadora piloto → <b>R$8–15M ARR</b>. As alavancas controláveis hoje são retenção e parceria acadêmica — não capital.</p>
+</div></section>
+
+<!-- MOAT -->
+<section class="section"><div class="shell">
+  <div class="section-head">
+    <div class="kicker">por que agora — e por que defende</div>
+    <h2>O fosso não é a IA. É chegar compliant antes da janela fechar.</h2>
+  </div>
+  <div style="margin-top:18px;max-width:82ch">
+    <div class="moat"><div class="ix">1</div><div><h3>Primeiro compliant com a CFM 2.454/2026</h3><p>A resolução entra em vigor em <b>agosto de 2026</b> e regula IA em saúde por nível de risco. Cíngulo, Vittude e Replika estão em terra de ninguém regulatório. Chegar pronto antes vira barreira estrutural de <b>18–24 meses</b> — e é o passaporte obrigatório pra vender pra operadora.</p></div></div>
+    <div class="moat"><div class="ix">2</div><div><h3>Corpus clínico proprietário em português brasileiro</h3><p>Cada conversa anotada com taxonomia clínica BR (escola Christian Dunker, não DSM traduzido) constrói um dataset que nenhum Wysa/Replika importado tem. "Melhor IA" é mentira em 6 meses; <b>dado clínico longitudinal é um ciclo virtuoso</b> que ninguém copia. — Halle Tecco (clone, fundadora Rock Health).</p></div></div>
+    <div class="moat"><div class="ix">3</div><div><h3>Segurança como posicionamento (anti-Replika)</h3><p>Roteamento de crise em 4 níveis com bypass de LLM, CVV 188 nativo em &lt;800ms, e o posicionamento honesto de <b>"adjunto, não substituto"</b> — alinhado a APA, FDA e CFP. Onde os concorrentes têm passivo reputacional, o Anipis tem selo de confiança.</p></div></div>
+    <div class="moat"><div class="ix">4</div><div><h3>Expansão de LTV longitudinal</h3><p>Júlia hoje → "Júlia grávida" em 3 anos → "Júlia mãe" em 5. A mesma base se expande para saúde mental materno-infantil — uma alavanca de LTV que Cíngulo e Wysa não têm porque não pensaram longitudinal.</p></div></div>
+  </div>
+</div></section>
+
+<!-- MOCKUPS -->
+<section class="section"><div class="shell">
+  <div class="section-head">
+    <div class="kicker">como vai ficar</div>
+    <h2>O produto, na identidade verde do Anipis.</h2>
+    <p class="lead">Telas do MVP no idioma visual do Anipis: creme caloroso e verde floresta, manchete serifada editorial, Inter no corpo. Ética embutida — disclaimer permanente, "pessoa real" a 1 toque, crise em destaque âmbar calmo, e a voz do Anipis em itálico serifado.</p>
+  </div>
+
+  <div class="phones">
+
+    <!-- 1. Chat -->
+    <div class="phone-wrap">
+      <div class="phone"><div class="notch"></div>
+        <div class="scr">
+          <div class="scr-head">
+            <div class="scr-title"><span class="mini-orb"></span>Anipis <span class="dot-on"></span></div>
+            <div class="bridge">Pessoa real</div>
+          </div>
+          <div class="msgs">
+            <div class="b b-ai voz">Oi. Que bom te ver aqui.<time>03:58</time></div>
+            <div class="b b-user">não consigo dormir de novo<time>03:59</time></div>
+            <div class="b b-ai">Faz sentido a noite pesar mais. Você não precisa segurar isso sozinha agora — eu fico.<time>03:59</time></div>
+            <div class="typing"><span class="td"></span><span class="td"></span><span class="td"></span></div>
+          </div>
+          <div class="scr-input"><div class="field">aa, escreva…</div><div class="send">➤</div></div>
+          <div class="disc">Companheiro de IA · Não substitui profissional · Em crise: 188 CVV</div>
+        </div>
+      </div>
+      <div class="phone-cap"><b>Conversa</b><span>O vão das 4h da manhã. A voz do Anipis em serifa; a fala da Júlia em verde.</span></div>
+    </div>
+
+    <!-- 2. Mood -->
+    <div class="phone-wrap">
+      <div class="phone"><div class="notch"></div>
+        <div class="scr center">
+          <h4>Como você está agora?</h4>
+          <div class="hint">Sem pressão. Só o que vier.</div>
+          <div class="mood-circle"></div>
+          <div class="mood-label">Estou mais ou menos</div>
+          <div class="mood-slider"><div class="mood-thumb"></div></div>
+          <div class="slider-ends"><span>difícil</span><span>muito bem</span></div>
+          <button class="btn-fill">Registrar</button>
+          <button class="btn-ghost">Pular</button>
+        </div>
+      </div>
+      <div class="phone-cap"><b>Check-in de humor</b><span>Slider contínuo nas cores de humor (pesado→calmo→alegre). Tons suaves, nunca alarme.</span></div>
+    </div>
+
+    <!-- 3. Breathing -->
+    <div class="phone-wrap">
+      <div class="phone"><div class="notch"></div>
+        <div class="scr breathe">
+          <h4>Respire comigo</h4>
+          <div class="breath-orb"></div>
+          <div class="breath-inst">Inspire…</div>
+          <div class="cyc"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="cyc-count">3 de 10 ciclos</div>
+        </div>
+      </div>
+      <div class="phone-cap"><b>Respiração guiada</b><span>Orbe verde com respiração assimétrica (inspira mais lento que expira) — co-regula o sistema nervoso. Sem som.</span></div>
+    </div>
+
+    <!-- 4. Onboarding -->
+    <div class="phone-wrap">
+      <div class="phone"><div class="notch"></div>
+        <div class="scr onb">
+          <div class="onb-ill">🫂</div>
+          <h4>Antes de tudo, uma honestidade:</h4>
+          <div class="bullet"><span class="b-ic">✓</span><span>Eu sou uma IA. Não sou terapeuta nem médico.</span></div>
+          <div class="bullet"><span class="b-ic">✓</span><span>Não faço diagnósticos nem receito remédios.</span></div>
+          <div class="bullet crisis"><span class="b-ic">!</span><span>Se você estiver em crise agora: <b>CVV 188</b>, 24h, gratuito.</span></div>
+          <div class="onb-spacer"></div>
+          <button class="btn-fill">Entendi →</button>
+          <div class="onb-dots"><i></i><i class="on"></i><i></i></div>
+        </div>
+      </div>
+      <div class="phone-cap"><b>Onboarding honesto</b><span>"Adjunto, não substituto" no primeiro toque. Compliance CFM/CFP vira confiança, não letra miúda.</span></div>
+    </div>
+
+    <!-- 5. Landing -->
+    <div class="phone-wrap">
+      <div class="phone"><div class="notch"></div>
+        <div class="scr land">
+          <div class="h">Pra você que precisa de alguém às 4h da manhã.</div>
+          <div class="s">Apoio emocional brasileiro, por IA, R$29,90/mês. Não é terapeuta — é quem segura sua mão entre uma sessão e outra.</div>
+          <div class="cta">Conversar agora — 7 dias grátis</div>
+          <div class="gl">O que é isso?</div>
+          <div class="land-quote"><span class="lo"></span>Estou aqui.</div>
+          <div class="land-disc">Companheiro de IA · Não substitui profissional · Em crise: 188 CVV</div>
+        </div>
+      </div>
+      <div class="phone-cap"><b>Landing / aquisição</b><span>Promessa específica + preço sub-Netflix + honestidade. O "Estou aqui." é a voz do Anipis.</span></div>
+    </div>
+
+  </div>
+</div></section>
+
+<!-- VERDICT -->
+<section class="section" style="border-bottom:none"><div class="shell">
+  <div class="verdict">
+    <div class="kicker">a tese, em uma frase</div>
+    <h2>Anipis não é um app de R$30 sem escala. É um negócio B2B2C com uma cunha de consumidor.</h2>
+    <p>O B2C prova retenção e gera o dado clínico que ninguém mais tem em PT-BR. Esse ativo destrava o corporativo (NR-1, lei obrigando) e a operadora (ANS, pago por vida) — onde a escala é de milhares de vidas por contrato, não de assinaturas de R$30. A disposição a pagar é real porque o produto ocupa um vão que dói — a madrugada, o entre-sessão — a 1/10 do preço da alternativa. E a janela CFM ago/2026 transforma a chatice da regulação no fosso que protege tudo isso.</p>
+    <p class="line">"O app de R$30 não é o negócio. É o cavalo de Troia para um mercado de bilhões."</p>
+  </div>
+</div></section>
+
+<!-- FOOTER -->
+<footer class="foot"><div class="shell">
+  <div>Anipis — companion clínico-AI brasileiro · tese de escala &amp; monetização.</div>
+  <div style="margin-top:6px">Argumentos fundamentados em clones HYDRA reais consultados no projeto e em fontes Tier-S:</div>
+  <div class="src">
+    <span>Eric Ries — Lean / PMF &amp; disposição a pagar</span>
+    <span>Halle Tecco — Rock Health / waves &amp; moats</span>
+    <span>Sean Duffy — Omada / retenção &amp; pricing</span>
+    <span>Atlas (@analyst) — TAM/SAM/SOM &amp; cenários</span>
+    <span>Therabot RCT — NEJM AI 2025</span>
+    <span>Limbic Care RWE — JMIR 2025</span>
+    <span>Zenklub R$30M + Omint/Vivest 300k vidas</span>
+    <span>CFM 2.454/2026 · ANS RN 627/2024 · NR-1</span>
+  </div>
+  <div style="margin-top:18px;font-size:12px;color:var(--ink-muted)">Identidade Anipis — verde floresta #2f5235 sobre creme #f7f4ed · serifa editorial + Inter. Mockups são protótipos da marca, não build de produção.</div>
+</div></footer>
+
+</body>
+</html>

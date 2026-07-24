@@ -27,7 +27,7 @@ function getDefaultOptions() {
     sourceAgentsDir: path.join(projectRoot, '.aios-core', 'development', 'agents'),
     sourceAgentDirs: [
       path.join(projectRoot, '.aios-core', 'development', 'agents'),
-      path.join(projectRoot, '.claude', 'commands', 'AIOS', 'agents'),
+      path.join(projectRoot, '.codex', 'agents'),
     ],
     quiet: false,
     json: false,
@@ -68,7 +68,7 @@ function validateCodexIntegration(options = {}) {
     sourceAgentsDir: options.sourceAgentsDir || path.join(projectRoot, '.aios-core', 'development', 'agents'),
     sourceAgentDirs: options.sourceAgentDirs || [
       path.join(projectRoot, '.aios-core', 'development', 'agents'),
-      path.join(projectRoot, '.claude', 'commands', 'AIOS', 'agents'),
+      path.join(projectRoot, '.codex', 'agents'),
     ],
   };
   const errors = [];

@@ -24,6 +24,11 @@
     "flagship": "Sur commande", "object": "L'objet", "objectV": "Un seul bloc de bois précieux brésilien, fini à la main en plus de six cents heures.",
     "house": "La maison", "houseV": "Un atelier au Brésil. Chaque table signée, numérotée et conçue pour une seule pièce.",
     "now": "Maintenant", "nowV": "Chaque pièce est fabriquée sur commande — un nombre limité de commandes par saison.",
+    "objectVsig": "Une table de billard premium de notre ligne Signature — bois dur massif, qualité tournoi.",
+    "houseSig": "La ligne", "houseVsig": "L'un des dix-huit modèles Signature — la collection complète, fabriquée au Brésil.",
+    "nowVsig": "Fabriquée sur commande et livrée en gants blancs aux États-Unis et en Europe.",
+    "finishes": "Finitions", "finishesNote": "Bois précieux et feutres disponibles — votre finition est confirmée lors de la commande.",
+    "email": "Demande par e-mail", "emailSubj": "Demande : {name}",
     "frame": "Châssis en bois", "cloth": "Tapis feutre", "from": "À partir de", "ddp": "Livrée à votre porte — droits de douane inclus.",
     "t1": "Transport assuré gants blancs", "t2": "8–10 semaines · sur commande", "t3": "Douanes & taxes prises en charge", "t4": "Garantie d'arrivée en parfait état",
     "reserve": "Réserver cette table", "talk": "Parler à un spécialiste", "open3d": "Ouvrir le configurateur 3D →", "crumb": "Collection"
@@ -32,7 +37,9 @@
     "eyebrow": "Configurer · Sur commande", "sub": "Composez la table qui n'existe qu'une fois.",
     "hint": "Glisser pour pivoter · molette pour zoomer", "ar": "Voir dans votre pièce (AR)",
     "frame": "Châssis — bois massif", "metal": "Socle — métal", "cloth": "Tapis — tissu", "from": "À partir de",
-    "ddp": "Livrée à votre porte — droits de douane inclus.", "reserve": "Réserver votre configuration"
+    "ddp": "Livrée à votre porte — droits de douane inclus.", "reserve": "Réserver votre configuration",
+    "applied": "{name} appliqué", "armedTap": "Touchez la partie de la table pour appliquer {name}",
+    "email": "Plutôt par e-mail ? Écrivez à l'atelier →", "emailSubj": "Configuration : {name}"
   },
   "wa": {
     "viewing": "Bonjour Bretda, je souhaiterais réserver une visite privée.",

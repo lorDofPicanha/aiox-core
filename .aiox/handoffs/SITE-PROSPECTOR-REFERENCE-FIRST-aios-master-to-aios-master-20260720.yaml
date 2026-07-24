@@ -1,0 +1,66 @@
+handoff:
+  id: "SITE-PROSPECTOR-REFERENCE-FIRST-aios-master-to-aios-master-20260720"
+  story: "SITE-PROSPECTOR-REFERENCE-FIRST"
+  from: "@aios-master"
+  to: "@aios-master"
+  timestamp: "2026-07-20T07:28:54-03:00"
+  status: "awaiting-founder-spec-review"
+
+context:
+  summary: >-
+    Discovery and design specification for the Site Prospector reference-first
+    ecommerce pipeline are complete. The next authorized action is Founder review
+    of the written specification; wireframe, prototype, outreach, and implementation
+    have not started.
+  decisions_made:
+    - "Research references across multiple ecommerce niches before wireframing."
+    - "Use a staged pipeline: scout, readiness, primer, deep references, synthesis, wireframe, static preview, paid prototype."
+    - "Dedana is an internal noncommercial dry-run only, not a commercial pilot."
+    - "The static preview deliverable is exactly two PNG files plus one PDF."
+    - "A functional prototype begins only after paid Stage 2 approval under ADR-0001."
+    - "P6 requires independent blind QA and PM scores of at least 80; the lower score governs."
+    - "Primer reuse, bootstrap, and reassessment require immutable input/output snapshots and SHA-256 hashes."
+    - "The shared wall-clock cap is 7 hours; candidate-specific work is capped at 7.75 hours within an 8-hour ceiling."
+  assumptions:
+    - "The Founder has not yet approved the final written specification."
+    - "The fifth and final review-cycle issue was corrected but was not independently re-reviewed because the approved five-cycle ceiling was reached."
+    - "The current branch, feat/eniac-financeiro, is unrelated to this Site Prospector work."
+
+deliverables:
+  files_created:
+    - "docs/superpowers/specs/2026-07-19-site-prospector-reference-wireframe-prototype-pipeline-design.md"
+    - "docs/projects/site-prospector/research/2026-07-19-cross-niche-ecommerce-candidates.md"
+    - "docs/stories/SP-002-cross-niche-ecommerce-discovery.md"
+  files_modified: []
+  tests_added: []
+  linked_decisions:
+    - "docs/projects/site-prospector/99-decisions/0001-pipeline-architecture.md"
+    - "docs/projects/site-prospector/99-decisions/0003-primer-yaml-architecture.md"
+
+quality_gates:
+  markdown_format: "PASS — Prettier reported all specification files formatted correctly."
+  local_links: "PASS — all three local files linked from the main specification exist."
+  draft_markers: "PASS — no TODO, TBD, or PLACEHOLDER markers found in the main specification."
+  lint: "NOT RERUN — documentation-only save; an earlier repository lint attempt timed out."
+  typecheck: "NOT RERUN — documentation-only save; an earlier repository typecheck attempt timed out."
+  tests: "NOT RERUN — documentation-only save; an earlier repository test attempt timed out."
+
+blockers:
+  - "Founder written-spec review is pending. Do not invoke writing-plans until the Founder responds with APROVADO SPEC."
+  - "The deliverables are untracked on an unrelated branch; do not commit or push until the correct branch/worktree destination is chosen."
+  - "Five independent review cycles were completed and the final identified issue was corrected, but no sixth review is authorized."
+
+next_steps:
+  - "Read the main specification completely before resuming work."
+  - "Wait for Founder feedback or the exact approval signal APROVADO SPEC."
+  - "If approved, invoke the writing-plans workflow and create or align the implementation story and acceptance criteria."
+  - "Only after the implementation plan is approved should reference execution and wireframing begin."
+  - "Keep prototype construction gated behind paid Stage 2 approval."
+
+notes: |-
+  No contact, outreach, message send, purchase, deployment, push, or other external
+  action was performed. No commit was created because the worktree contains unrelated
+  user changes and the active branch is feat/eniac-financeiro. Asynchronous clone
+  consultations were requested from Donald Miller, Oli Gardner, Brad Frost, Don Norman,
+  and April Dunford; do not attribute recommendations to them unless responses are
+  explicitly retrieved and verified.
