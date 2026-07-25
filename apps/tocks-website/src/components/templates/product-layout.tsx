@@ -18,6 +18,7 @@ import { ImageGrid } from '@/components/organisms/image-grid'
 import { ProductGallery } from '@/components/templates/product-gallery'
 import { ProductSpecs } from '@/components/templates/product-specs'
 import { ProductCustomization } from '@/components/templates/product-customization'
+import { BuyButton } from '@/components/molecules/buy-button'
 import { WHATSAPP_URL } from '@/lib/constants'
 import { PRODUCTS, type Product } from '@/data/products'
 
@@ -72,9 +73,12 @@ export function ProductLayout({ product }: ProductLayoutProps) {
             <ProductSpecs product={product} />
             <ProductCustomization product={product} />
 
-            <Button href={WHATSAPP_URL} size="lg" external className="w-full">
-              Solicitar orcamento
-            </Button>
+            <div className="flex flex-col gap-3">
+              <BuyButton productSlug={product.slug} label="Comprar agora" />
+              <Button href={WHATSAPP_URL} size="lg" external variant="secondary" className="w-full">
+                Prefiro solicitar orcamento
+              </Button>
+            </div>
           </div>
         </div>
 

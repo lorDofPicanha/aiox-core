@@ -24,6 +24,9 @@
 .DS_Store
 *.pem
 
+# order store (dev-only file persistence — ver src/lib/orders/store.ts)
+/.data
+
 # debug
 npm-debug.log*
 yarn-debug.log*
