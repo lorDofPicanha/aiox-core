@@ -451,3 +451,16 @@ scripts/noyce/discovery-runs.log
 
 # Noyce eval-gate report (gerado a cada execução do scripts/eval-gate.mjs)
 apps/noyce/lib/data/eval-gate-report.json
+
+# Site-Prospector — capturas, raspagens e forks montados (centenas de MB, reproduzíveis
+# por docs/projects/site-prospector/tools/fork-pipeline). Versiona-se a ferramenta, não o output.
+docs/projects/site-prospector/03-proposal-mockups/_batch/
+docs/projects/site-prospector/03-proposal-mockups/_reference-contracts/*/*/site/
+docs/projects/site-prospector/03-proposal-mockups/_reference-contracts/*/*/inputs/
+docs/projects/site-prospector/03-proposal-mockups/*/site-fork/
+docs/projects/site-prospector/03-proposal-mockups/*/mockup-A-fork/
+docs/projects/site-prospector/03-proposal-mockups/*/assets/cropped/
+docs/projects/site-prospector/03-proposal-mockups/*/assets/cutout/
+docs/projects/site-prospector/03-proposal-mockups/*/assets/clean/
+docs/projects/site-prospector/03-proposal-mockups/**/screens/
+docs/projects/site-prospector/03-proposal-mockups/**/screens-baseline/

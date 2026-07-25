@@ -1,64 +1,97 @@
-# reference-layout-contract.yaml — ADR-0004 immutable structural blueprint
-# BRAND-AGNOSTIC: geometry, section sequence, responsive behavior, motion ONLY.
-# Target brand tokens/photos/copy live in the prospect's target/DESIGN.md + slot-map — NOT here.
-# Layout constants here cannot be changed to make a target easier (ADR-0004 token boundary).
+# reference-layout-contract.yaml — blueprint estrutural (ADR-0004)
+# v2 — 2026-07-24. Substitui a v1, que foi escrita DE MEMÓRIA e continha erros.
+# ⚠️ Este arquivo é DERIVADO. A fonte da verdade é ./inputs/ (DOM + CSS + computados + screens).
+#    Se houver divergência, inputs/ vence. Não construa sem ler inputs/.
 
 meta:
   slug: buckssauce
   archetype: food-cpg
-  role: "MASTER for Brandt build A (founder-selected 2026-07-24)"
+  role: "MASTER da variação A (selecionada pelo founder 2026-07-24)"
   source_url: https://buckssauce.com/
-  award: "DTC benchmark (no known Awwwards); chosen for motion + product-hero art direction"
   captured_by: Orion (aios-master)
   captured_at: 2026-07-24
-  capture_method: "live browser — full DOM section read + deep hero scroll observation"
-  fidelity_confidence: high        # full section sequence confirmed via DOM
-  pixel_baseline_pending: true     # exact 1440/375 full-page capture taken at build/gate time
+  capture_method: "puppeteer-core + Chrome real (headless); DOM pós-scroll, CSS de rede + cssRules, computados, assets, screens 1440/375"
+  anti_bot: "Vercel Security Checkpoint — curl retorna 429; exige browser real"
+  artifacts:
+    dom: inputs/page.html            # 2.37 MB
+    css: inputs/css-collected.css    # 163 KB
+    computed: inputs/component-properties.json
+    sections: inputs/section-sequence.json
+    tokens: inputs/tokens-detected.json
+    fonts: inputs/font-faces.json
+    assets: inputs/assets/           # 78 imagens, 2 famílias
+    pixel_baseline: inputs/screens/  # desktop-1440-*.png, mobile-375-*.png
+  fidelity_confidence: verified      # medido contra o código, não declarado
+  pixel_baseline_pending: false      # ✅ baseline existe
 
-art_direction:
-  mood: dark cinematic, playful-premium, opinionated
-  background: near-black warm (~#0F0A08)
-  type: oversized display (condensed/characterful) + clean sans body; stacked words; tight leading
-  imagery: real ingredient cut-outs on black + studio product (bottle front/back)
-  identity_slot: hand-drawn engraved mascot lockup  # target swaps its OWN logo here
+stack:
+  framework: Next.js                 # (v1 dizia Astro — ERRADO)
+  css: Tailwind v4 (utilitários + custom properties)
+  motion: GSAP ScrollTrigger (empacotado; window.gsap === false é falso-negativo — ver .pin-spacer no DOM)
 
-section_sequence:                  # ORDER IS IMMUTABLE — 100% fidelity gate
-  - id: preloader
-    desc: full-screen circle-expand reveal (orange -> red -> black), centered logo mark
-  - id: hero
-    desc: pinned full-viewport; logo centered; 4-5 real ingredient photos orbiting; scroll-scrubbed scatter
-    slots: [headline (bold one-liner), product-number label, flavor list x3, primary CTA "shop"]
-  - id: manifesto_strip
-    desc: short full-bleed statement line
-  - id: trust_badges_row
-    desc: 4 icon + microcopy cells (claims)
-  - id: product_selector           # "Choose your weapon"
-    desc: 3 product cards; each front+back image (hover flip); price; add-to-cart state machine; view-product link
-  - id: brand_story                # "Why <brand>"
-    desc: 3 pillars (batch / ingredients / award) + narrative copy + supporting photo
-  - id: bundle_offer               # "Buy a pack / Save"
-    desc: 3-pack / 6-pack toggle; lifestyle photo; per-product add-to-cart + buy-now
-  - id: reviews
-    desc: horizontal marquee of named reviews w/ social handles (real, specific voice)
-  - id: footer
-    desc: nav list + email capture ("Join the Club") + social links
+tokens:                              # valores EXATOS do :root
+  background: "#100b06"
+  background_lighter: "#272119"
+  foreground: "#f5e4c7"
+  gold: "#be8d3f"
+  orange: "#f15726"
+  red: "#da1f27"
+  menu: "#322c23"
+  brown: "#593e2c"
+  spacing: ".25rem"
+  radius: "10px"
+  pill: "9999px"
 
-hero_mechanic:
-  type: pinned scroll-scrub (GSAP ScrollTrigger)
-  behavior: logo fixed center; ingredient images animate position/scale on scroll progress; long pin before release
+geometry:
+  container: "FULL-BLEED literal — .p-container = padding-inline calc(spacing*1.25)=5px; ≥1024px calc(spacing*2.5)=10px"
+  document_height_1440: 11253
+  breakpoints_px: [364, 383, 1024]
+  breakpoints_rem: [40, 48, 64, 80, 96, 144]
+
+typography:
+  display: "PeperoncinoSansCustom (.woff PROPRIETÁRIA — substituto livre: Anton / Archivo Black)"
+  body: "Inter Tight (variável 100–900, next/font)"
+  scale_px: [16, 20, 26, 30, 36, 44, 50, 60, 100, 140, 168, 300, 403, 432]
+  h1: 100
+  h2_buy_a_pack: 80
+  h3_product: 50
+  h3_pillar: 36
+  gotcha: "rótulos de seção são h2 de 16px; o lettering gigante na tela é OUTRO elemento (contorno, 300–432px)"
+
+section_sequence:                    # ORDEM IMUTÁVEL — altura medida @1440
+  - {id: header,          h: 213,  note: "position:fixed + pointer-events-none; rótulos duplicados = troca de texto no hover"}
+  - {id: hero,            h: 1088, note: "NÃO é pinado. h1 100px c/ 1ª linha em CONTORNO; régua pontilhada c/ 'PRODUCT N0.01' + sabor; setas circulares creme; círculo de cor atrás do produto; recortes flutuando"}
+  - {id: manifesto,       h: 256,  note: "mt-30 lg:mt-40, frase única centrada"}
+  - {id: trust_pinned,    h: 2348, note: "★ AQUI está o pin (.pin-spacer). 4 cards girados que empilham no scroll; cabeçalho creme '• texto •'; corpo tracejado; ícone circular em contorno; recortes desfocados ao fundo"}
+  - {id: product_trio,    h: 1366, note: "título gigante em contorno; 3 cards de COR SÓLIDA (gold/orange/red) c/ borda tracejada interna, cascata vertical, flip frente/verso, add-to-cart Add→Adding→Added"}
+  - {id: why,             h: 3150, note: "maior seção; título letra-a-letra (aboutTitleBorderIn); 3 pilares c/ número gigante em contorno + pílula creme; réguas ticadas em rotação"}
+  - {id: buy_a_pack,      h: 900,  note: "flex-col-reverse; tile de foto + painel tracejado; toggle 3-pack/6-pack"}
+  - {id: reviews,         h: 1210, note: "marquee horizontal; nome + @handle reais"}
+  - {id: footer,          h: 343,  note: "grid-cols-2 lg:grid-cols-[15fr_35fr_35fr_15fr]; newsletter 'Join the Bucks Club'"}
+
+signature_vocabulary:                # sem isto, o build "não parece a referência"
+  - texto só CONTORNO (stroke, fill transparente)
+  - pílula creme com "• texto •"
+  - bordas tracejadas (offset interno) em cards e caixas
+  - réguas pontilhadas/ticadas, algumas rotacionadas
+  - cards girados poucos graus, empilhando no pin
+  - recortes fotográficos flutuando, parte deles DESFOCADOS (profundidade de campo)
+  - blocos de cor sólida gold/orange/red nos produtos
+  - ícones circulares em contorno 1px
+  - botões-seta circulares creme (~86px)
+  - círculo de cor atrás do produto no hero
+  - header vira pílula CTA + caixa carrinho + caixa hambúrguer ao rolar
 
 motion_inventory:
-  - preloader circle-expand reveal (page entry)
-  - hero pinned scroll-scrub ingredient scatter
-  - product card hover flip (front <-> back)
-  - add-to-cart state transition (Add / Adding / Added)
-  - reviews marquee auto-scroll
-  - prefers-reduced-motion: static fallback REQUIRED
-
-responsive:
-  desktop_1440: multi-column product/trust grids; wide hero ingredient orbit
-  mobile_375: single column; trust badges stack; fewer/tighter hero ingredients; sticky CTA advisable
+  - preloader clip-path
+  - pin scroll-scrub das trust badges (NÃO do hero)
+  - flip frente/verso no card de produto
+  - máquina de estado Add / Adding / Added
+  - marquee de reviews (@keyframes antler-scroll)
+  - título letra-a-letra (@keyframes aboutTitleBorderIn)
+  - "prefers-reduced-motion: fallback estático OBRIGATÓRIO"
 
 build_notes:
-  primary_conversion_goal: single (buy product) — one dominant CTA, repeated
-  independent_impl: rebuild in Next.js + GSAP/Framer; ZERO source code/asset/copy reuse (ADR-0004)
+  primary_conversion_goal: "único (comprar) — um CTA dominante, repetido"
+  asset_gap: "identidade da referência é ~70% asset (fonte própria + lettering em imagem + foto de ingrediente recortada). Substituto de fonte é aproximação declarada, não equivalência."
+  screenshot_gotcha: "headless reporta prefers-reduced-motion:reduce por padrão → emular 'no-preference' ou você fotografa o fallback estático"

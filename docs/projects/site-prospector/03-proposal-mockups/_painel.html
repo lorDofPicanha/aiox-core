@@ -1,0 +1,142 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Site-Prospector — painel de revisão</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#100b06;--bg2:#272119;--fg:#f5e4c7;--gold:#be8d3f;--orange:#f15726;--red:#da1f27}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--fg);font:16px/1.5 'Inter Tight',system-ui,sans-serif;padding:40px 24px 80px}
+.wrap{max-width:1100px;margin:0 auto}
+h1{font-family:Anton,sans-serif;text-transform:uppercase;font-size:clamp(2rem,5vw,3.6rem);line-height:.9;letter-spacing:.01em}
+h2{font-family:Anton,sans-serif;text-transform:uppercase;font-size:1.6rem;margin:48px 0 14px;color:var(--gold)}
+p.sub{opacity:.75;margin-top:10px;max-width:70ch}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:28px}
+.kpi{border:1px dashed rgba(245,228,199,.4);border-radius:10px;padding:16px}
+.kpi b{display:block;font-family:Anton,sans-serif;font-size:2rem;line-height:1;color:var(--fg)}
+.kpi span{font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;opacity:.6}
+table{width:100%;border-collapse:collapse;margin-top:8px;font-size:.94rem}
+th{text-align:left;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;color:var(--gold);
+  border-bottom:1px dashed rgba(245,228,199,.35);padding:10px 8px}
+td{padding:11px 8px;border-bottom:1px solid rgba(245,228,199,.09)}
+td.n{text-align:right;font-variant-numeric:tabular-nums}
+a{color:var(--fg)}a:hover{color:var(--gold)}
+.ghost{opacity:.5;font-size:.85rem}
+.ok{color:#9ad17f}.bad{color:var(--orange)}.warn{color:var(--gold)}
+tr.ok td:first-child{color:#9ad17f;font-weight:600}
+tr.bad td:first-child{opacity:.6}
+.note{border-left:3px solid var(--orange);padding:12px 16px;margin-top:16px;background:var(--bg2);border-radius:0 8px 8px 0;font-size:.94rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:14px}
+.card{border:1px dashed rgba(245,228,199,.4);border-radius:10px;padding:18px;display:block;text-decoration:none}
+.card:hover{background:var(--bg2)}
+.card b{font-family:Anton,sans-serif;text-transform:uppercase;font-size:1.15rem;display:block}
+.card span{font-size:.86rem;opacity:.7}
+</style></head><body><div class="wrap">
+
+<h1>Site-Prospector<br>painel de revisão</h1>
+<p class="sub">Gerado a partir dos dados reais da captura e do build — nenhum número aqui foi escrito à mão.</p>
+
+<div class="kpis">
+  <div class="kpi"><b>9</b><span>páginas forkadas</span></div>
+  <div class="kpi"><b>51.764</b><span>px de altura somados</span></div>
+  <div class="kpi"><b>1.538</b><span>substituições de texto</span></div>
+  <div class="kpi"><b class="ok">0</b><span>sobra em inglês</span></div>
+  <div class="kpi"><b>513</b><span>fotos varridas</span></div>
+</div>
+
+<h2>Chokolaten — fork de 9 páginas</h2>
+<p class="sub">Cópia do código real do buckssauce com produto e marca trocados. Cada linha abre a página; a última coluna abre o screenshot do site original para comparar.</p>
+<table><thead><tr><th>página</th><th class="n">altura</th><th class="n">seções</th><th class="n">textos</th><th class="n">peso</th><th class="n">sobra EN</th><th>referência</th></tr></thead>
+<tbody><tr>
+    <td><a href="chokolaten/site-fork/index.html" target="_blank">Home</a></td>
+    <td class="n">11.253px</td><td class="n">13</td>
+    <td class="n">303</td><td class="n">1818 KB</td>
+    <td class="n ok">0</td>
+    <td><a class="ghost" href="_reference-contracts/food/buckssauce/site/pages/home/screens/desktop-0.png" target="_blank">ver original</a></td>
+  </tr>
+<tr>
+    <td><a href="chokolaten/site-fork/shop.html" target="_blank">Loja</a></td>
+    <td class="n">5.100px</td><td class="n">10</td>
+    <td class="n">151</td><td class="n">1684 KB</td>
+    <td class="n ok">0</td>
+    <td><a class="ghost" href="_reference-contracts/food/buckssauce/site/pages/shop/screens/desktop-0.png" target="_blank">ver original</a></td>
+  </tr>
+<tr>
+    <td><a href="chokolaten/site-fork/wholesale.html" target="_blank">Atacado</a></td>
+    <td class="n">6.871px</td><td class="n">11</td>
+    <td class="n">261</td><td class="n">2149 KB</td>
+    <td class="n ok">0</td>
+    <td><a class="ghost" href="_reference-contracts/food/buckssauce/site/pages/wholesale/screens/desktop-0.png" target="_blank">ver original</a></td>
+  </tr>
+<tr>
+    <td><a href="chokolaten/site-fork/about.html" target="_blank">Sobre</a></td>
+    <td class="n">9.852px</td><td class="n">12</td>
+    <td class="n">150</td><td class="n">1211 KB</td>
+    <td class="n ok">0</td>
+    <td><a class="ghost" href="_reference-contracts/food/buckssauce/site/pages/about/screens/desktop-0.png" target="_blank">ver original</a></td>
+  </tr>
+<tr>
+    <td><a href="chokolaten/site-fork/contact.html" target="_blank">Contato</a></td>
+    <td class="n">1.406px</td><td class="n">8</td>
+    <td class="n">82</td><td class="n">736 KB</td>
+    <td class="n ok">0</td>
+    <td><a class="ghost" href="_reference-contracts/food/buckssauce/site/pages/contact/screens/desktop-0.png" target="_blank">ver original</a></td>
+  </tr>
+<tr>
+    <td><a href="chokolaten/site-fork/faq.html" target="_blank">FAQ</a></td>
+    <td class="n">1.517px</td><td class="n">7</td>
+    <td class="n">82</td><td class="n">1395 KB</td>
+    <td class="n ok">0</td>
+    <td><a class="ghost" href="_reference-contracts/food/buckssauce/site/pages/faq/screens/desktop-0.png" target="_blank">ver original</a></td>
+  </tr>
+<tr>
+    <td><a href="chokolaten/site-fork/shop__crushed-pineapple-sriracha.html" target="_blank">Produto · Barras 25g</a></td>
+    <td class="n">5.339px</td><td class="n">9</td>
+    <td class="n">184</td><td class="n">1900 KB</td>
+    <td class="n ok">0</td>
+    <td><a class="ghost" href="_reference-contracts/food/buckssauce/site/pages/shop__crushed-pineapple-sriracha/screens/desktop-0.png" target="_blank">ver original</a></td>
+  </tr>
+<tr>
+    <td><a href="chokolaten/site-fork/shop__crushed-habanero-garlic.html" target="_blank">Produto · Linha zero</a></td>
+    <td class="n">5.216px</td><td class="n">9</td>
+    <td class="n">164</td><td class="n">1900 KB</td>
+    <td class="n ok">0</td>
+    <td><a class="ghost" href="_reference-contracts/food/buckssauce/site/pages/shop__crushed-habanero-garlic/screens/desktop-0.png" target="_blank">ver original</a></td>
+  </tr>
+<tr>
+    <td><a href="chokolaten/site-fork/shop__crushed-cherry-garlic.html" target="_blank">Produto · Drágeas</a></td>
+    <td class="n">5.210px</td><td class="n">9</td>
+    <td class="n">161</td><td class="n">1898 KB</td>
+    <td class="n ok">0</td>
+    <td><a class="ghost" href="_reference-contracts/food/buckssauce/site/pages/shop__crushed-cherry-garlic/screens/desktop-0.png" target="_blank">ver original</a></td>
+  </tr></tbody></table>
+
+<h2>Comparar com o original</h2>
+<div class="cards">
+  <a class="card" href="chokolaten/site-fork/index.html" target="_blank"><b>Fork · Chokolaten</b><span>o que você pediu: cópia do código real com a marca trocada</span></a>
+  <a class="card" href="chokolaten/mockup-A-fork/screens-baseline/build-1440-00.png" target="_blank"><b>Prova do fork</b><span>o mesmo código rodando ainda com a marca Bucks Sauce</span></a>
+  <a class="card" href="chokolaten/mockup-A-buckssauce/index.html" target="_blank"><b>Rebuild autoral</b><span>rodada anterior, construído do zero seguindo a geometria</span></a>
+</div>
+
+<h2>Gate de foto — por que só a Chokolaten foi construída</h2>
+<p class="sub">18 prospects da lista, 513 fotos medidas: fundo chapado, texto queimado nos cantos, tamanho do sujeito e assinatura de imagem gerada por IA.</p>
+<table><thead><tr><th>prospect</th><th class="n">fotos</th><th class="n">catálogo</th><th>veredito</th></tr></thead>
+<tbody><tr class="ok"><td>chokolaten</td><td class="n">30</td><td class="n">9</td><td>✅ construído</td></tr>
+<tr class="warn"><td>delicatenbiscoitos</td><td class="n">26</td><td class="n">7</td><td>❌ polaroid/carrossel, não catálogo</td></tr>
+<tr class="warn"><td>donadsisemijoias</td><td class="n">22</td><td class="n">2</td><td>⚠️ 1-2 fotos, insuficiente</td></tr>
+<tr class="warn"><td>jullyconfeccoes</td><td class="n">20</td><td class="n">2</td><td>⚠️ 1-2 fotos, insuficiente</td></tr>
+<tr class="warn"><td>caoschocolate</td><td class="n">26</td><td class="n">1</td><td>⚠️ 1-2 fotos, insuficiente</td></tr>
+<tr class="warn"><td>chocolatesbrandt</td><td class="n">15</td><td class="n">1</td><td>⚠️ 1-2 fotos, insuficiente</td></tr>
+<tr class="warn"><td>dmsemijoias</td><td class="n">56</td><td class="n">1</td><td>⚠️ 1-2 fotos, insuficiente</td></tr>
+<tr class="warn"><td>inventikidsoficial</td><td class="n">15</td><td class="n">1</td><td>⚠️ 1-2 fotos, insuficiente</td></tr>
+<tr class="bad"><td>balamorretes</td><td class="n">6</td><td class="n">0</td><td>❌ sem foto de catálogo</td></tr>
+<tr class="bad"><td>cataiamodapraia</td><td class="n">27</td><td class="n">0</td><td>❌ 4 geradas por IA (1024² + ✦)</td></tr>
+<tr class="bad"><td>coofanove</td><td class="n">27</td><td class="n">0</td><td>❌ sem foto de catálogo</td></tr>
+<tr class="bad"><td>engeljoias</td><td class="n">29</td><td class="n">0</td><td>❌ sem foto de catálogo</td></tr>
+<tr class="bad"><td>feiraodoscalcadosmix</td><td class="n">28</td><td class="n">0</td><td>❌ sem foto de catálogo</td></tr>
+<tr class="bad"><td>ivicstore</td><td class="n">33</td><td class="n">0</td><td>❌ sem foto de catálogo</td></tr>
+<tr class="bad"><td>lojacellita</td><td class="n">0</td><td class="n">0</td><td>❌ sem foto de catálogo</td></tr>
+<tr class="bad"><td>lojaemporiocasa</td><td class="n">131</td><td class="n">0</td><td>❌ sem foto de catálogo</td></tr>
+<tr class="bad"><td>nuscaachocolate</td><td class="n">0</td><td class="n">0</td><td>❌ sem foto de catálogo</td></tr>
+<tr class="bad"><td>zabelehomedecor</td><td class="n">22</td><td class="n">0</td><td>❌ sem foto de catálogo</td></tr></tbody></table>
+<div class="note"><b>O gate sozinho erra.</b> Delicaten pontuou 7 e Cataia 4 — conferi no olho: as da Delicaten são polaroids e slides de carrossel com moldura chapada, e as da Cataia são mockups gerados por IA (1024×1024 com a marca d'água do Gemini). Confirmação visual continua obrigatória antes de construir.</div>
+
+</div></body></html>
