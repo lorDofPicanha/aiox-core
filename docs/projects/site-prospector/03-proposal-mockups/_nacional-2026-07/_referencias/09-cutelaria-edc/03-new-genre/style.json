@@ -1,0 +1,55 @@
+{
+ "id": "2318d650-b229-4be0-9adc-9f17cecfd253",
+ "url": "https://newgenre.studio",
+ "siteName": "New Genre",
+ "screenshotUrl": "https://images.refero.design/styles/refero.design/image/c092cd73-7fe5-442f-9094-9e1d4ce3771a.jpg",
+ "thumbnailUrl": "https://images.refero.design/styles/refero.design/image/b4ec9eff-cfaa-4780-9074-20b0fe96563e.jpg",
+ "iconUrl": null,
+ "previewVideoUrl": "https://images.refero.design/styles/refero.design/video/08054746-9c8e-4467-8932-602ffb4cb8ec.mp4",
+ "previewVideoPosterUrl": "https://images.refero.design/styles/refero.design/image/269ea5cc-cffc-4a5a-be85-f60707a3eed7.jpg",
+ "previewVideoWidth": 1200,
+ "previewVideoHeight": 750,
+ "previewVideoDetailUrl": "https://images.refero.design/styles/refero.design/video/45afc11d-8781-4835-8a25-bc2ee4cde29e.mp4",
+ "previewVideoDetailPosterUrl": "https://images.refero.design/styles/refero.design/image/ed5e3dcc-8656-49a2-aa28-d4c3cd06fdab.jpg",
+ "previewVideoDetailWidth": 1600,
+ "previewVideoDetailHeight": 1000,
+ "previewVideoDurationMs": 32840,
+ "colorScheme": "light",
+ "colors": [
+  {
+   "name": "Parchment Canvas",
+   "hex": "#ffffff"
+  },
+  {
+   "name": "Onyx",
+   "hex": "#0c1018"
+  },
+  {
+   "name": "Pure Black",
+   "hex": "#000000"
+  },
+  {
+   "name": "Charred Umber",
+   "hex": "#1e1310"
+  },
+  {
+   "name": "Slate Veil",
+   "hex": "#6d7074"
+  },
+  {
+   "name": "Ash Mist",
+   "hex": "#9e9fa3"
+  }
+ ],
+ "fonts": [
+  "sans-serif",
+  "Serrif Condensed",
+  "Saans Variable",
+  "Inter",
+  "Saans Medium",
+  "Saans Regular"
+ ],
+ "northStar": "Cinematic horizon at golden hour — a single gradient arc from charred umber through steel twilight to warm parchment, against which condensed serif headlines carve like editorial mastheads.",
+ "managementSignals": [],
+ "createdAt": "2026-03-30 15:37:58"
+}

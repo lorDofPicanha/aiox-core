@@ -1,0 +1,52 @@
+{
+ "id": "01771d1f-43c6-4e91-88c5-e4d213fe4ff2",
+ "url": "https://paper.design",
+ "siteName": "Paper",
+ "screenshotUrl": "https://images.refero.design/styles/refero.design/image/39e4115b-3c01-46d8-b9df-5a39397863bf.jpg",
+ "thumbnailUrl": "https://images.refero.design/styles/refero.design/image/182abf27-494b-4ab4-abad-61ca5e7e01b0.jpg",
+ "iconUrl": "https://images.refero.design/styles/refero.design/image/9f807d73-0143-45d0-b87d-8a6b9df2c598.png",
+ "previewVideoUrl": "https://images.refero.design/styles/refero.design/video/30a80e18-e844-4094-9147-ecc29e30d73a.mp4",
+ "previewVideoPosterUrl": "https://images.refero.design/styles/refero.design/image/4d10c7a9-1123-4828-950b-cb20812ed98f.jpg",
+ "previewVideoWidth": 1200,
+ "previewVideoHeight": 750,
+ "previewVideoDetailUrl": "https://images.refero.design/styles/refero.design/video/528ce8c4-3a5d-438b-b11d-de5dede50267.mp4",
+ "previewVideoDetailPosterUrl": "https://images.refero.design/styles/refero.design/image/3bf100b1-faf5-4fd2-8bd2-320691c5026b.jpg",
+ "previewVideoDetailWidth": 1600,
+ "previewVideoDetailHeight": 1000,
+ "previewVideoDurationMs": 18983,
+ "colorScheme": "light",
+ "colors": [
+  {
+   "name": "Bone Canvas",
+   "hex": "#efefe4"
+  },
+  {
+   "name": "Paper White",
+   "hex": "#fcfcf9"
+  },
+  {
+   "name": "Bright Card",
+   "hex": "#ffffff"
+  },
+  {
+   "name": "Mist",
+   "hex": "#f3f3f4"
+  },
+  {
+   "name": "Ash Gray",
+   "hex": "#e3e3e3"
+  },
+  {
+   "name": "Stone",
+   "hex": "#d7d7d6"
+  }
+ ],
+ "fonts": [
+  "Matter",
+  "Inter",
+  "Paper Mono"
+ ],
+ "northStar": "warm paper notebook under studio lights",
+ "managementSignals": [],
+ "createdAt": "2026-05-07 18:19:54.558103"
+}

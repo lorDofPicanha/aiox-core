@@ -1,0 +1,53 @@
+{
+ "id": "542453bb-1895-45fe-95c9-66dbacbf1b08",
+ "url": "https://palette.supply",
+ "siteName": "Palette Supply",
+ "screenshotUrl": "https://images.refero.design/styles/refero.design/image/a589e719-c712-41f7-a85e-5836680ad004.jpg",
+ "thumbnailUrl": "https://images.refero.design/styles/refero.design/image/208ae2d4-3d26-4f00-8a1a-4d24544884de.jpg",
+ "iconUrl": null,
+ "previewVideoUrl": "https://images.refero.design/styles/refero.design/video/009bb9a8-4915-4410-b830-adad6f66c745.mp4",
+ "previewVideoPosterUrl": "https://images.refero.design/styles/refero.design/image/95024be6-04ec-44fc-921d-1ed87522819f.jpg",
+ "previewVideoWidth": 1200,
+ "previewVideoHeight": 750,
+ "previewVideoDetailUrl": "https://images.refero.design/styles/refero.design/video/08a2a4a1-6835-457d-a5cd-16b440a09d02.mp4",
+ "previewVideoDetailPosterUrl": "https://images.refero.design/styles/refero.design/image/cb5ee711-9f4b-4e47-b752-07a9a258257a.jpg",
+ "previewVideoDetailWidth": 1600,
+ "previewVideoDetailHeight": 1000,
+ "previewVideoDurationMs": 6517,
+ "colorScheme": "light",
+ "colors": [
+  {
+   "name": "Studio Cream",
+   "hex": "#f2f0e9"
+  },
+  {
+   "name": "Paper White",
+   "hex": "#ffffff"
+  },
+  {
+   "name": "Ink Black",
+   "hex": "#141212"
+  },
+  {
+   "name": "Pencil Gray",
+   "hex": "#a1a0a0"
+  },
+  {
+   "name": "Sage Wash",
+   "hex": "#dde5d8"
+  },
+  {
+   "name": "Studio Ivory",
+   "hex": "#d7d7c8"
+  }
+ ],
+ "fonts": [
+  "ui-sans-serif",
+  "esbuild",
+  "ppsupply",
+  "PPSupplyMonoLight"
+ ],
+ "northStar": "art-supply shelf in a sunlit studio",
+ "managementSignals": [],
+ "createdAt": "2026-04-30 01:37:56.005188"
+}

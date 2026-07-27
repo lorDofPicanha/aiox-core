@@ -159,6 +159,13 @@ apps/eniac-financeiro/node_modules/
 apps/eniac-financeiro/.env
 apps/eniac-financeiro/.env.local
 apps/eniac-financeiro/.env.*.local
+!apps/talos/
+!apps/talos/**
+apps/talos/.next/
+apps/talos/node_modules/
+apps/talos/.env
+apps/talos/.env.local
+apps/talos/.env.*.local
 !apps/polymarket-trader/
 !apps/tocks-lp/
 !apps/tocks-website/
@@ -464,3 +471,6 @@ docs/projects/site-prospector/03-proposal-mockups/*/assets/cutout/
 docs/projects/site-prospector/03-proposal-mockups/*/assets/clean/
 docs/projects/site-prospector/03-proposal-mockups/**/screens/
 docs/projects/site-prospector/03-proposal-mockups/**/screens-baseline/
+
+# Site-Prospector — fotos de prospects (raspadas, ~420MB, reprodutíveis via tools/nacional-2026-07/)
+docs/projects/site-prospector/03-proposal-mockups/_nacional-2026-07/_clientes/**/fotos/

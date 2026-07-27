@@ -1,0 +1,51 @@
+{
+ "id": "cd723d5a-e7ea-4e4c-a3bb-6cf56e05057a",
+ "url": "https://seed.com",
+ "siteName": "Seed",
+ "screenshotUrl": "https://images.refero.design/styles/refero.design/image/4b944596-3d82-44b8-b691-40cc4ff126af.jpg",
+ "thumbnailUrl": "https://images.refero.design/styles/refero.design/image/032d5801-ff40-43d3-939a-8cf3e94d8b8e.jpg",
+ "iconUrl": "https://images.refero.design/styles/refero.design/image/e1ad7a8f-dbbd-499b-83ad-dc674f2ea1c0.png",
+ "previewVideoUrl": "https://images.refero.design/styles/refero.design/video/49908464-ddef-499a-b1eb-5d6d8e5f80c2.mp4",
+ "previewVideoPosterUrl": "https://images.refero.design/styles/refero.design/image/2f7e50e2-406b-41e0-8c92-d114f53356b7.jpg",
+ "previewVideoWidth": 1200,
+ "previewVideoHeight": 750,
+ "previewVideoDetailUrl": "https://images.refero.design/styles/refero.design/video/6b4d6379-b9e9-44f7-a13f-b5065b24c762.mp4",
+ "previewVideoDetailPosterUrl": "https://images.refero.design/styles/refero.design/image/df7c3492-c8ce-428d-85c0-0d08f9a15bb2.jpg",
+ "previewVideoDetailWidth": 1600,
+ "previewVideoDetailHeight": 1000,
+ "previewVideoDurationMs": 22334,
+ "colorScheme": "light",
+ "colors": [
+  {
+   "name": "Forest Depths",
+   "hex": "#1c3a13"
+  },
+  {
+   "name": "Lime Pulse",
+   "hex": "#d3fa99"
+  },
+  {
+   "name": "Sage Moss",
+   "hex": "#757c5d"
+  },
+  {
+   "name": "Olive Gold",
+   "hex": "#9f995b"
+  },
+  {
+   "name": "Eucalyptus",
+   "hex": "#698e79"
+  },
+  {
+   "name": "Snow White",
+   "hex": "#fcfcf7"
+  }
+ ],
+ "fonts": [
+  "Seed Sans",
+  "Seed Sans Mono"
+ ],
+ "northStar": "living organism under laboratory glass",
+ "managementSignals": [],
+ "createdAt": "2026-04-30 00:21:47.74416"
+}

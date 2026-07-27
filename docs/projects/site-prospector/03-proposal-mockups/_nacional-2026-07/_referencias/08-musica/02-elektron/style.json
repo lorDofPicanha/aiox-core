@@ -1,0 +1,54 @@
+{
+ "id": "6b5a0bf4-3d2a-4c3b-aa2e-652f1acb82c0",
+ "url": "https://elektron.se",
+ "siteName": "Elektron",
+ "screenshotUrl": "https://images.refero.design/styles/refero.design/image/cfc27d25-793f-473f-9adc-05ebe3e392aa.jpg",
+ "thumbnailUrl": "https://images.refero.design/styles/refero.design/image/1f6c5705-c087-442b-8444-1f0f8ddabc35.jpg",
+ "iconUrl": null,
+ "previewVideoUrl": "https://images.refero.design/styles/refero.design/video/0f86a102-d5ff-4589-bf6f-c9dade630bd2.mp4",
+ "previewVideoPosterUrl": "https://images.refero.design/styles/refero.design/image/0e3bc7b1-f0c7-4a17-8287-2cfa0fa4e8fa.jpg",
+ "previewVideoWidth": 1200,
+ "previewVideoHeight": 750,
+ "previewVideoDetailUrl": "https://images.refero.design/styles/refero.design/video/dc38c05e-4cdd-4008-be58-37219266f49c.mp4",
+ "previewVideoDetailPosterUrl": "https://images.refero.design/styles/refero.design/image/732e0455-f2f1-4477-8a0c-43fb842049be.jpg",
+ "previewVideoDetailWidth": 1600,
+ "previewVideoDetailHeight": 1000,
+ "previewVideoDurationMs": 17240,
+ "colorScheme": "dark",
+ "colors": [
+  {
+   "name": "Page Canvas",
+   "hex": "#222222"
+  },
+  {
+   "name": "Deep Surface",
+   "hex": "#151515"
+  },
+  {
+   "name": "Void",
+   "hex": "#000000"
+  },
+  {
+   "name": "Platinum",
+   "hex": "#eeeef2"
+  },
+  {
+   "name": "Pure White",
+   "hex": "#ffffff"
+  },
+  {
+   "name": "Iron",
+   "hex": "#333337"
+  }
+ ],
+ "fonts": [
+  "Neue Haas Grotesk Text Pro",
+  "Neue Haas Grotesk Display Pro",
+  "digi one v2",
+  "NHaasGroteskDSPro",
+  "Analog One V2."
+ ],
+ "northStar": "Hardware control panel at midnight — a near-black canvas where product photography glows and the interface stays almost invisible.",
+ "managementSignals": [],
+ "createdAt": "2026-04-02 17:29:13"
+}

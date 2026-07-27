@@ -1,0 +1,54 @@
+{
+ "id": "37f752a0-879e-4451-a4a4-0a82896e3890",
+ "url": "https://agronomywork.shop",
+ "siteName": "Agronomy Workshop",
+ "screenshotUrl": "https://images.refero.design/styles/refero.design/image/f3f4c518-87d5-454a-b0a8-c34a1a99c73b.jpg",
+ "thumbnailUrl": "https://images.refero.design/styles/refero.design/image/3d1ca77f-ab8e-457f-b922-48ce149545a5.jpg",
+ "iconUrl": "https://images.refero.design/styles/refero.design/image/1d9eb9c0-4ca5-44a8-9d1e-668d4f277951.png",
+ "previewVideoUrl": null,
+ "previewVideoPosterUrl": null,
+ "previewVideoWidth": null,
+ "previewVideoHeight": null,
+ "previewVideoDetailUrl": null,
+ "previewVideoDetailPosterUrl": null,
+ "previewVideoDetailWidth": null,
+ "previewVideoDetailHeight": null,
+ "previewVideoDurationMs": null,
+ "colorScheme": "light",
+ "colors": [
+  {
+   "name": "Workshop Blue",
+   "hex": "#0076ff"
+  },
+  {
+   "name": "Hail Yellow",
+   "hex": "#f4eb59"
+  },
+  {
+   "name": "Pale Sky",
+   "hex": "#c3d7ee"
+  },
+  {
+   "name": "Canvas",
+   "hex": "#ffffff"
+  },
+  {
+   "name": "Bone",
+   "hex": "#eeede8"
+  },
+  {
+   "name": "Ink",
+   "hex": "#000000"
+  }
+ ],
+ "fonts": [
+  "Gerstner Programm FSL Regular",
+  "OT Neue Montreal Medium Semi Squeezed",
+  "Gerstner Programm FSL",
+  "ABC Marfa Mono",
+  "system sans-serif"
+ ],
+ "northStar": "newsprint zine taped to a workshop wall",
+ "managementSignals": [],
+ "createdAt": "2026-05-10 22:03:28.195619"
+}

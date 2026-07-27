@@ -1,0 +1,53 @@
+{
+ "id": "c01ccb7b-46c9-487c-8a4e-0e9d6627f0d6",
+ "url": "https://shelby.ashfall.studio",
+ "siteName": "Shelby",
+ "screenshotUrl": "https://images.refero.design/styles/refero.design/image/83f8e0c2-2fec-405e-b302-c1f18d802a21.jpg",
+ "thumbnailUrl": "https://images.refero.design/styles/refero.design/image/4d220550-1546-49fa-9b81-90e3fb27ce10.jpg",
+ "iconUrl": null,
+ "previewVideoUrl": "https://images.refero.design/styles/refero.design/video/82368faa-8fa7-48bb-988b-3d83edbc9e73.mp4",
+ "previewVideoPosterUrl": "https://images.refero.design/styles/refero.design/image/bd6b52a8-671c-4825-be58-e555de41d271.jpg",
+ "previewVideoWidth": 1200,
+ "previewVideoHeight": 750,
+ "previewVideoDetailUrl": "https://images.refero.design/styles/refero.design/video/d0d510e8-ae23-4136-a8e7-b431d0e9521c.mp4",
+ "previewVideoDetailPosterUrl": "https://images.refero.design/styles/refero.design/image/b65d514d-7dd9-42c8-b957-d8cf06054720.jpg",
+ "previewVideoDetailWidth": 1600,
+ "previewVideoDetailHeight": 1000,
+ "previewVideoDurationMs": 36760,
+ "colorScheme": "dark",
+ "colors": [
+  {
+   "name": "Cocoa Husk",
+   "hex": "#322312"
+  },
+  {
+   "name": "Neon Orchid",
+   "hex": "#ff77c9"
+  },
+  {
+   "name": "Petal Wash",
+   "hex": "#ffdfef"
+  },
+  {
+   "name": "Plum Velvet",
+   "hex": "#470b64"
+  },
+  {
+   "name": "Bubblegum Blush",
+   "hex": "#ffc2e1"
+  },
+  {
+   "name": "Lavender Haze",
+   "hex": "#e2c9f8"
+  }
+ ],
+ "fonts": [
+  "Times",
+  "GT-Planar",
+  "ABCReproMono",
+  "SuisseIntl"
+ ],
+ "northStar": "neon signage on cocoa leather",
+ "managementSignals": [],
+ "createdAt": "2026-04-28 21:25:59.538002"
+}
