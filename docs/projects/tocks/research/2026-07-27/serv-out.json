@@ -1,0 +1,4448 @@
+{
+ "totalUnique": 716,
+ "calls": 540,
+ "all": [
+  {
+   "q": "aluguel de mesa de sinuca em joinville",
+   "rel": 1251,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca para festa",
+   "rel": 1251,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "mesa de sinuca usada preço",
+   "rel": 1251,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em itajaí",
+   "rel": 1250,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca perto de mim",
+   "rel": 1250,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca joinville",
+   "rel": 1250,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca valor",
+   "rel": 1250,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca mensal",
+   "rel": 1250,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "locação de mesa de sinuca",
+   "rel": 1250,
+   "seed": "locacao de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de pebolim valor",
+   "rel": 1250,
+   "seed": "aluguel de mesa de pebolim"
+  },
+  {
+   "q": "aluguel de fliperama mensal",
+   "rel": 1250,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "mesa de sinuca usada para vender",
+   "rel": 1250,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada de bar",
+   "rel": 1250,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada olx",
+   "rel": 1250,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada com gaveta",
+   "rel": 1250,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada barata",
+   "rel": 1250,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada rj olx",
+   "rel": 1250,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada marketplace",
+   "rel": 1250,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada à venda",
+   "rel": 1250,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada valor",
+   "rel": 1250,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca semi nova",
+   "rel": 1250,
+   "seed": "mesa de sinuca seminova"
+  },
+  {
+   "q": "reforma de mesa de sinuca perto de mim",
+   "rel": 1250,
+   "seed": "reforma de mesa de sinuca"
+  },
+  {
+   "q": "mesa de sinuca para bar com ficha preço",
+   "rel": 1250,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca para bar usada",
+   "rel": 1250,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca para bar preço",
+   "rel": 1250,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca usada na olx",
+   "rel": 1100,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "aluguel de fliperama para bar",
+   "rel": 850,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de mesa de pebolim preço",
+   "rel": 700,
+   "seed": "aluguel de mesa de pebolim"
+  },
+  {
+   "q": "aluguel de fliperama perto de mim",
+   "rel": 650,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama para comércio",
+   "rel": 602,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de mesa de sinuca e toto",
+   "rel": 601,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca df",
+   "rel": 601,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca para festa preço",
+   "rel": 601,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca qual o preço",
+   "rel": 601,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca anapolis",
+   "rel": 601,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca blumenau",
+   "rel": 601,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca para bar rj",
+   "rel": 601,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "aluguel de mesa de sinuca canoas",
+   "rel": 601,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca jaraguá do sul",
+   "rel": 601,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca dentro de 8 1 km",
+   "rel": 601,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em volta redonda",
+   "rel": 601,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca fazenda rio grande",
+   "rel": 601,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca gravatai",
+   "rel": 601,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca são gonçalo",
+   "rel": 601,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca novo hamburgo",
+   "rel": 601,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em",
+   "rel": 601,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca preço",
+   "rel": 601,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca itajai",
+   "rel": 601,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca londrina",
+   "rel": 601,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca maringa",
+   "rel": 601,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel mesa de sinuca osasco",
+   "rel": 601,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca quanto custa",
+   "rel": 601,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca rj",
+   "rel": 601,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca zona sul",
+   "rel": 601,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca uberlandia",
+   "rel": 601,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "locação de mesa de sinuca campo grande ms",
+   "rel": 601,
+   "seed": "locacao de mesa de sinuca"
+  },
+  {
+   "q": "locação de mesa de sinuca em curitiba",
+   "rel": 601,
+   "seed": "locacao de mesa de sinuca"
+  },
+  {
+   "q": "locação de mesa de sinuca são jose dos pinhais",
+   "rel": 601,
+   "seed": "locacao de mesa de sinuca"
+  },
+  {
+   "q": "locação de mesa de sinuca em maringa",
+   "rel": 601,
+   "seed": "locacao de mesa de sinuca"
+  },
+  {
+   "q": "locação de mesa de sinuca para bar",
+   "rel": 601,
+   "seed": "locacao de mesa de sinuca"
+  },
+  {
+   "q": "locação de mesa de sinuca em londrina",
+   "rel": 601,
+   "seed": "locacao de mesa de sinuca"
+  },
+  {
+   "q": "locação de mesa de sinuca em umuarama",
+   "rel": 601,
+   "seed": "locacao de mesa de sinuca"
+  },
+  {
+   "q": "locação de mesa de sinuca em dourados ms",
+   "rel": 601,
+   "seed": "locacao de mesa de sinuca"
+  },
+  {
+   "q": "locação de mesa de sinuca valor",
+   "rel": 601,
+   "seed": "locacao de mesa de sinuca"
+  },
+  {
+   "q": "locacao de mesas de sinuca",
+   "rel": 601,
+   "seed": "locacao de mesa de sinuca"
+  },
+  {
+   "q": "locação de mesa de sinuca sp",
+   "rel": 601,
+   "seed": "locacao de mesa de sinuca"
+  },
+  {
+   "q": "locação de mesa de sinuca para festa",
+   "rel": 601,
+   "seed": "locacao de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de pebolim perto de mim",
+   "rel": 601,
+   "seed": "aluguel de mesa de pebolim"
+  },
+  {
+   "q": "aluguel de mesa de pebolim sorocaba",
+   "rel": 601,
+   "seed": "aluguel de mesa de pebolim"
+  },
+  {
+   "q": "aluguel de mesa de pebolim zona leste",
+   "rel": 601,
+   "seed": "aluguel de mesa de pebolim"
+  },
+  {
+   "q": "aluguel de mesa de pebolim campo grande ms",
+   "rel": 601,
+   "seed": "aluguel de mesa de pebolim"
+  },
+  {
+   "q": "aluguel de mesa de pebolim em mogi das cruzes",
+   "rel": 601,
+   "seed": "aluguel de mesa de pebolim"
+  },
+  {
+   "q": "aluguel de mesa de pebolim guarulhos",
+   "rel": 601,
+   "seed": "aluguel de mesa de pebolim"
+  },
+  {
+   "q": "aluguel de mesa de pebolim zona norte",
+   "rel": 601,
+   "seed": "aluguel de mesa de pebolim"
+  },
+  {
+   "q": "aluguel de mesa de pebolim florianópolis",
+   "rel": 601,
+   "seed": "aluguel de mesa de pebolim"
+  },
+  {
+   "q": "aluguel de mesa de pebolim osasco",
+   "rel": 601,
+   "seed": "aluguel de mesa de pebolim"
+  },
+  {
+   "q": "quanto custa o aluguel de uma mesa de pebolim",
+   "rel": 601,
+   "seed": "aluguel de mesa de pebolim"
+  },
+  {
+   "q": "aluguel de mesa de bilhar e pebolim",
+   "rel": 601,
+   "seed": "aluguel de mesa de pebolim"
+  },
+  {
+   "q": "aluguel de mesa de pebolim em joinville",
+   "rel": 601,
+   "seed": "aluguel de mesa de pebolim"
+  },
+  {
+   "q": "aluguel de jogos para festa rj",
+   "rel": 601,
+   "seed": "aluguel de jogos para festa"
+  },
+  {
+   "q": "aluguel de jogos para festa sp",
+   "rel": 601,
+   "seed": "aluguel de jogos para festa"
+  },
+  {
+   "q": "aluguel de jogos para festa bh",
+   "rel": 601,
+   "seed": "aluguel de jogos para festa"
+  },
+  {
+   "q": "aluguel de jogos para festa porto alegre",
+   "rel": 601,
+   "seed": "aluguel de jogos para festa"
+  },
+  {
+   "q": "aluguel de jogos para festa infantil",
+   "rel": 601,
+   "seed": "aluguel de jogos para festa"
+  },
+  {
+   "q": "aluguel de jogos para festa curitiba",
+   "rel": 601,
+   "seed": "aluguel de jogos para festa"
+  },
+  {
+   "q": "aluguel de jogos para festa junina",
+   "rel": 601,
+   "seed": "aluguel de jogos para festa"
+  },
+  {
+   "q": "aluguel de jogos eletrônicos para festa",
+   "rel": 601,
+   "seed": "aluguel de jogos para festa"
+  },
+  {
+   "q": "aluguel de jogos para festa de aniversário",
+   "rel": 601,
+   "seed": "aluguel de jogos para festa"
+  },
+  {
+   "q": "aluguel de mesa de jogos para festa",
+   "rel": 601,
+   "seed": "aluguel de jogos para festa"
+  },
+  {
+   "q": "aluguel de fliperama para festas",
+   "rel": 601,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama df",
+   "rel": 601,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama rj",
+   "rel": 601,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama preço",
+   "rel": 601,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama nova iguaçu",
+   "rel": 601,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama em fortaleza",
+   "rel": 601,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama campo grande rj",
+   "rel": 601,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama bh",
+   "rel": 601,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama valor",
+   "rel": 601,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "quanto custa aluguel de fliperama",
+   "rel": 601,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama arcade",
+   "rel": 601,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama em belo horizonte",
+   "rel": 601,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama ilha do governador",
+   "rel": 601,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama para festa",
+   "rel": 601,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama goiania",
+   "rel": 601,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "diversão aluguel de karaokê fliperama e sinuca",
+   "rel": 601,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama londrina",
+   "rel": 601,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama zona leste",
+   "rel": 601,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama manaus",
+   "rel": 601,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama osasco",
+   "rel": 601,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama volta redonda",
+   "rel": 601,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama serra es",
+   "rel": 601,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de totó e fliperama",
+   "rel": 601,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama uberlandia",
+   "rel": 601,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "mesa de sinuca usada pequena",
+   "rel": 601,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada para comprar",
+   "rel": 601,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada olx df",
+   "rel": 601,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada em curitiba",
+   "rel": 601,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca preço usada olx",
+   "rel": 601,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada comprar",
+   "rel": 601,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "quanto custa uma mesa de sinuca profissional usada",
+   "rel": 601,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada a venda em curitiba e região",
+   "rel": 601,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada barata olx",
+   "rel": 601,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada curitiba olx",
+   "rel": 601,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de.sinuca comercial.usada",
+   "rel": 601,
+   "seed": "mesa de sinuca comercial"
+  },
+  {
+   "q": "mesa de sinuca usada quanto custa",
+   "rel": 601,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada df",
+   "rel": 601,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada dentro de 8 1 km",
+   "rel": 601,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada perto de mim",
+   "rel": 601,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada facebook",
+   "rel": 601,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca para bar com ficha usada",
+   "rel": 601,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca usada goiania",
+   "rel": 601,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada em belo horizonte",
+   "rel": 601,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada venda",
+   "rel": 601,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada infantil",
+   "rel": 601,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada rj",
+   "rel": 601,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada jundiai",
+   "rel": 601,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada mercado livre",
+   "rel": 601,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada mercadolivre",
+   "rel": 601,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada no df",
+   "rel": 601,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "quero comprar mesa de sinuca usada",
+   "rel": 601,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada sc",
+   "rel": 601,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "quanto tá uma mesa de sinuca usada",
+   "rel": 601,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada uberlândia",
+   "rel": 601,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca 2 20 x 1 20 usada",
+   "rel": 601,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "compra mesa de sinuca semi nova",
+   "rel": 601,
+   "seed": "mesa de sinuca seminova"
+  },
+  {
+   "q": "mesa de sinuca semi nova preço",
+   "rel": 601,
+   "seed": "mesa de sinuca seminova"
+  },
+  {
+   "q": "mesa de sinuca semi nova a venda",
+   "rel": 601,
+   "seed": "mesa de sinuca seminova"
+  },
+  {
+   "q": "quanto custa uma mesa de sinuca semi nova",
+   "rel": 601,
+   "seed": "mesa de sinuca seminova"
+  },
+  {
+   "q": "qual o valor de uma mesa de sinuca semi nova",
+   "rel": 601,
+   "seed": "mesa de sinuca seminova"
+  },
+  {
+   "q": "mesa de sinuca usada",
+   "rel": 601,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada preco",
+   "rel": 601,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "comprar mesa de sinuca usada",
+   "rel": 601,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "onde comprar mesa de sinuca usada",
+   "rel": 601,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "reforma de mesa de sinuca rj",
+   "rel": 601,
+   "seed": "reforma de mesa de sinuca"
+  },
+  {
+   "q": "reforma de mesa de sinuca em londrina",
+   "rel": 601,
+   "seed": "reforma de mesa de sinuca"
+  },
+  {
+   "q": "reforma de mesa de sinuca em curitiba",
+   "rel": 601,
+   "seed": "reforma de mesa de sinuca"
+  },
+  {
+   "q": "reforma de mesa de sinuca campo grande ms",
+   "rel": 601,
+   "seed": "reforma de mesa de sinuca"
+  },
+  {
+   "q": "reforma de mesa de sinuca goiania",
+   "rel": 601,
+   "seed": "reforma de mesa de sinuca"
+  },
+  {
+   "q": "reforma de mesa de sinuca sp",
+   "rel": 601,
+   "seed": "reforma de mesa de sinuca"
+  },
+  {
+   "q": "reforma de mesa de sinuca df",
+   "rel": 601,
+   "seed": "reforma de mesa de sinuca"
+  },
+  {
+   "q": "reforma mesa de sinuca brasilia",
+   "rel": 601,
+   "seed": "reforma de mesa de sinuca"
+  },
+  {
+   "q": "reforma mesa de sinuca preço",
+   "rel": 601,
+   "seed": "reforma de mesa de sinuca"
+  },
+  {
+   "q": "kit para reforma de mesa de sinuca",
+   "rel": 601,
+   "seed": "reforma de mesa de sinuca"
+  },
+  {
+   "q": "mgh reforma de mesa de bilhar sinuca fotos",
+   "rel": 601,
+   "seed": "reforma de mesa de sinuca"
+  },
+  {
+   "q": "reforma de mesa de sinuca bh",
+   "rel": 601,
+   "seed": "reforma de mesa de sinuca"
+  },
+  {
+   "q": "reforma de mesa de sinuca em são paulo",
+   "rel": 601,
+   "seed": "reforma de mesa de sinuca"
+  },
+  {
+   "q": "quanto custa uma reforma de mesa de sinuca",
+   "rel": 601,
+   "seed": "reforma de mesa de sinuca"
+  },
+  {
+   "q": "empresa que troca pano de mesa de sinuca",
+   "rel": 601,
+   "seed": "troca de pano de mesa de sinuca"
+  },
+  {
+   "q": "pano de mesa de sinuca personalizado",
+   "rel": 601,
+   "seed": "troca de pano de mesa de sinuca"
+  },
+  {
+   "q": "pano de mesa de sinuca azul",
+   "rel": 601,
+   "seed": "troca de pano de mesa de sinuca"
+  },
+  {
+   "q": "pano de mesa de sinuca thais",
+   "rel": 601,
+   "seed": "troca de pano de mesa de sinuca"
+  },
+  {
+   "q": "pano de mesa de sinuca no mercadolivre",
+   "rel": 601,
+   "seed": "troca de pano de mesa de sinuca"
+  },
+  {
+   "q": "pano de mesa de sinuca preço",
+   "rel": 601,
+   "seed": "troca de pano de mesa de sinuca"
+  },
+  {
+   "q": "troca de pano de mesa de sinuca",
+   "rel": 601,
+   "seed": "troca de pano de mesa de sinuca"
+  },
+  {
+   "q": "troca de pano mesa de sinuca",
+   "rel": 601,
+   "seed": "troca de pano de mesa de sinuca"
+  },
+  {
+   "q": "troca de pano da mesa de sinuca",
+   "rel": 601,
+   "seed": "troca de pano de mesa de sinuca"
+  },
+  {
+   "q": "pano de mesa de sinuca mercadolivre",
+   "rel": 601,
+   "seed": "troca de pano de mesa de sinuca"
+  },
+  {
+   "q": "quem troca pano de mesa de sinuca",
+   "rel": 601,
+   "seed": "troca de pano de mesa de sinuca"
+  },
+  {
+   "q": "pano de mesa de sinuca strachan",
+   "rel": 601,
+   "seed": "troca de pano de mesa de sinuca"
+  },
+  {
+   "q": "pano de mesa de sinuca valor",
+   "rel": 601,
+   "seed": "troca de pano de mesa de sinuca"
+  },
+  {
+   "q": "manutenção de mesa de sinuca",
+   "rel": 601,
+   "seed": "manutencao de mesa de sinuca"
+  },
+  {
+   "q": "manutenção mesa de sinuca porto alegre",
+   "rel": 601,
+   "seed": "manutencao de mesa de sinuca"
+  },
+  {
+   "q": "manutenção mesa de sinuca rj",
+   "rel": 601,
+   "seed": "manutencao de mesa de sinuca"
+  },
+  {
+   "q": "manutenção mesa de sinuca perto de mim",
+   "rel": 601,
+   "seed": "manutencao de mesa de sinuca"
+  },
+  {
+   "q": "manutencao de mesa de sinuca",
+   "rel": 601,
+   "seed": "manutencao de mesa de sinuca"
+  },
+  {
+   "q": "manutenção em mesa de sinuca",
+   "rel": 601,
+   "seed": "manutencao de mesa de sinuca"
+  },
+  {
+   "q": "conserto de mesa de sinuca perto de mim",
+   "rel": 601,
+   "seed": "conserto de mesa de sinuca"
+  },
+  {
+   "q": "conserto de mesa de sinuca rj",
+   "rel": 601,
+   "seed": "conserto de mesa de sinuca"
+  },
+  {
+   "q": "conserto de mesa de sinuca",
+   "rel": 601,
+   "seed": "conserto de mesa de sinuca"
+  },
+  {
+   "q": "nivelamento de mesa de sinuca",
+   "rel": 601,
+   "seed": "nivelamento de mesa de sinuca"
+  },
+  {
+   "q": "montagem e desmontagem de mesa de sinuca",
+   "rel": 601,
+   "seed": "montagem de mesa de sinuca"
+  },
+  {
+   "q": "montagem de mesa de sinuca",
+   "rel": 601,
+   "seed": "montagem de mesa de sinuca"
+  },
+  {
+   "q": "transporte de mesa de bilhar",
+   "rel": 601,
+   "seed": "transporte de mesa de sinuca"
+  },
+  {
+   "q": "transporte de mesa de sinuca",
+   "rel": 601,
+   "seed": "transporte de mesa de sinuca"
+  },
+  {
+   "q": "mesa de sinuca para bar alugar",
+   "rel": 601,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca para bar com ficha tamanho",
+   "rel": 601,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca para bar mercadolivre",
+   "rel": 601,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca para bar por perto",
+   "rel": 601,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca para bar olx",
+   "rel": 601,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca para bar com gaveta",
+   "rel": 601,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca para bar valor",
+   "rel": 601,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca de bar quanto custa",
+   "rel": 601,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "bar com mesa de sinuca perto de mim",
+   "rel": 601,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca bilhar para bar",
+   "rel": 601,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca de bar dimensões",
+   "rel": 601,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca em bar",
+   "rel": 601,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca no bar",
+   "rel": 601,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca bar tamanho",
+   "rel": 601,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca comercial com fichas",
+   "rel": 601,
+   "seed": "mesa de sinuca comercial"
+  },
+  {
+   "q": "mesa de sinuca comercial preço",
+   "rel": 601,
+   "seed": "mesa de sinuca comercial"
+  },
+  {
+   "q": "mesa de sinuca comercial para bares",
+   "rel": 601,
+   "seed": "mesa de sinuca comercial"
+  },
+  {
+   "q": "quanto custa uma mesa de sinuca comercial",
+   "rel": 601,
+   "seed": "mesa de sinuca comercial"
+  },
+  {
+   "q": "mesa de sinuca comercial usada",
+   "rel": 601,
+   "seed": "mesa de sinuca comercial"
+  },
+  {
+   "q": "mesa de sinuca para apartamento pequeno",
+   "rel": 601,
+   "seed": "mesa de sinuca para condominio"
+  },
+  {
+   "q": "mesa de sinuca preço para alugar",
+   "rel": 601,
+   "seed": "mesa de sinuca para condominio"
+  },
+  {
+   "q": "mesa de sinuca para condominio",
+   "rel": 601,
+   "seed": "mesa de sinuca para condominio"
+  },
+  {
+   "q": "aluguel de mesa de sinuca para bar",
+   "rel": 600,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em ribeirão preto",
+   "rel": 600,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel mesa de sinuca de bar preço",
+   "rel": 600,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca preço sp",
+   "rel": 600,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca alvorada",
+   "rel": 600,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca bauru",
+   "rel": 600,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca caxias do sul",
+   "rel": 600,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca dourados ms",
+   "rel": 600,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca sao jose dos pinhais",
+   "rel": 600,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em tres lagoas",
+   "rel": 600,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca franca sp",
+   "rel": 600,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca goiania",
+   "rel": 600,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca itapema",
+   "rel": 600,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca nova iguaçu",
+   "rel": 600,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca jatai",
+   "rel": 600,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca lages",
+   "rel": 600,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca zona leste",
+   "rel": 600,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca manaus",
+   "rel": 600,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em rio das ostras",
+   "rel": 600,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca rondonopolis",
+   "rel": 600,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca uberaba",
+   "rel": 600,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em vilhena",
+   "rel": 600,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "locação de mesa de sinuca em joinville",
+   "rel": 600,
+   "seed": "locacao de mesa de sinuca"
+  },
+  {
+   "q": "locação de mesa de sinuca em goiânia",
+   "rel": 600,
+   "seed": "locacao de mesa de sinuca"
+  },
+  {
+   "q": "locacao de mesa bilhar",
+   "rel": 600,
+   "seed": "locacao de mesa de sinuca"
+  },
+  {
+   "q": "locação de mesa de sinuca curitiba",
+   "rel": 600,
+   "seed": "locacao de mesa de sinuca"
+  },
+  {
+   "q": "locação de mesa de sinuca canoas",
+   "rel": 600,
+   "seed": "locacao de mesa de sinuca"
+  },
+  {
+   "q": "locacao de mesa sinuca",
+   "rel": 600,
+   "seed": "locacao de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de pebolim zona sul sp",
+   "rel": 600,
+   "seed": "aluguel de mesa de pebolim"
+  },
+  {
+   "q": "aluguel de mesa de pebolim para festa",
+   "rel": 600,
+   "seed": "aluguel de mesa de pebolim"
+  },
+  {
+   "q": "aluguel de mesa de pebolim curitiba",
+   "rel": 600,
+   "seed": "aluguel de mesa de pebolim"
+  },
+  {
+   "q": "aluguel de mesa de pebolim em santos",
+   "rel": 600,
+   "seed": "aluguel de mesa de pebolim"
+  },
+  {
+   "q": "aluguel de mesa de pebolim sjc",
+   "rel": 600,
+   "seed": "aluguel de mesa de pebolim"
+  },
+  {
+   "q": "aluguel de máquinas de jogos para festa",
+   "rel": 600,
+   "seed": "aluguel de jogos para festa"
+  },
+  {
+   "q": "aluguel de fliperama para festa infantil",
+   "rel": 600,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama duque de caxias",
+   "rel": 600,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama para festas sp",
+   "rel": 600,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama porto alegre",
+   "rel": 600,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama rio de janeiro",
+   "rel": 600,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama betim",
+   "rel": 600,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama contagem",
+   "rel": 600,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama mogi das cruzes",
+   "rel": 600,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama rio das ostras",
+   "rel": 600,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama em salvador",
+   "rel": 600,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama es",
+   "rel": 600,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama guarulhos",
+   "rel": 600,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama são gonçalo",
+   "rel": 600,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama rj valor",
+   "rel": 600,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama natal rn",
+   "rel": 600,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama zona norte",
+   "rel": 600,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama recife",
+   "rel": 600,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "quanto custa o aluguel de um fliperama",
+   "rel": 600,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama vitória es",
+   "rel": 600,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "mesa de sinuca usada olx bh",
+   "rel": 600,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca profissional usada preço",
+   "rel": 600,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada com gaveta preço",
+   "rel": 600,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada qual o valor",
+   "rel": 600,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada por perto",
+   "rel": 600,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada a venda no rs",
+   "rel": 600,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada barata olx são paulo sp",
+   "rel": 600,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada barata olx belo horizonte mg",
+   "rel": 600,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada em londrina",
+   "rel": 600,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada em goiânia",
+   "rel": 600,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca ficha usada",
+   "rel": 600,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada grande",
+   "rel": 600,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada sp",
+   "rel": 600,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada boa",
+   "rel": 600,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca jocari usada",
+   "rel": 600,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada media",
+   "rel": 600,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada no mercadolivre",
+   "rel": 600,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada ribeirao preto",
+   "rel": 600,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "uma mesa de sinuca usada",
+   "rel": 600,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "quero comprar uma mesa de sinuca usada",
+   "rel": 600,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "comprar mesa de sinuca olx",
+   "rel": 600,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "reforma de mesa de sinuca rj preço",
+   "rel": 600,
+   "seed": "reforma de mesa de sinuca"
+  },
+  {
+   "q": "reforma de mesas de sinuca",
+   "rel": 600,
+   "seed": "reforma de mesa de sinuca"
+  },
+  {
+   "q": "preço de pano de mesa de sinuca",
+   "rel": 600,
+   "seed": "troca de pano de mesa de sinuca"
+  },
+  {
+   "q": "pano de mesa de sinuca profissional",
+   "rel": 600,
+   "seed": "troca de pano de mesa de sinuca"
+  },
+  {
+   "q": "pano de mesa de sinuca do flamengo",
+   "rel": 600,
+   "seed": "troca de pano de mesa de sinuca"
+  },
+  {
+   "q": "pano de mesa de sinuca vermelho",
+   "rel": 600,
+   "seed": "troca de pano de mesa de sinuca"
+  },
+  {
+   "q": "troca de pano de mesa de bilhar",
+   "rel": 600,
+   "seed": "troca de pano de mesa de sinuca"
+  },
+  {
+   "q": "troca de pano mesa de bilhar",
+   "rel": 600,
+   "seed": "troca de pano de mesa de sinuca"
+  },
+  {
+   "q": "manutencao de mesa de bilhar",
+   "rel": 600,
+   "seed": "manutencao de mesa de sinuca"
+  },
+  {
+   "q": "manutencao mesa sinuca",
+   "rel": 600,
+   "seed": "manutencao de mesa de sinuca"
+  },
+  {
+   "q": "conserto de mesa de snooker",
+   "rel": 600,
+   "seed": "conserto de mesa de sinuca"
+  },
+  {
+   "q": "conserto mesa sinuca",
+   "rel": 600,
+   "seed": "conserto de mesa de sinuca"
+  },
+  {
+   "q": "nivelamento mesa de bilhar",
+   "rel": 600,
+   "seed": "nivelamento de mesa de sinuca"
+  },
+  {
+   "q": "kit montagem mesa de sinuca",
+   "rel": 600,
+   "seed": "montagem de mesa de sinuca"
+  },
+  {
+   "q": "montagem de mesa de bilhar",
+   "rel": 600,
+   "seed": "montagem de mesa de sinuca"
+  },
+  {
+   "q": "montagem da mesa de sinuca",
+   "rel": 600,
+   "seed": "montagem de mesa de sinuca"
+  },
+  {
+   "q": "transporte de sinuca",
+   "rel": 600,
+   "seed": "transporte de mesa de sinuca"
+  },
+  {
+   "q": "mesa de sinuca para bar com ficha",
+   "rel": 600,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca para bar medidas",
+   "rel": 600,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca para bar pequena",
+   "rel": 600,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "bar com mesa de sinuca perto de mim abertos agora",
+   "rel": 600,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca bar a venda",
+   "rel": 600,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca de bar para vender",
+   "rel": 600,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca de bar mercado livre",
+   "rel": 600,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca de bar nova",
+   "rel": 600,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca estilo bar",
+   "rel": 600,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca grande para bar",
+   "rel": 600,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca de bar oficial",
+   "rel": 600,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca em um bar",
+   "rel": 600,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca comercial com ficheiro",
+   "rel": 600,
+   "seed": "mesa de sinuca comercial"
+  },
+  {
+   "q": "mesa de sinuca para apartamento",
+   "rel": 600,
+   "seed": "mesa de sinuca para condominio"
+  },
+  {
+   "q": "mesa de sinuca residencial com tampo",
+   "rel": 600,
+   "seed": "mesa de sinuca para condominio"
+  },
+  {
+   "q": "aluguel de mesa de sinuca araguari",
+   "rel": 562,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca campo grande ms",
+   "rel": 562,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca diaria",
+   "rel": 562,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca florianopolis",
+   "rel": 562,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca guarulhos",
+   "rel": 562,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca ribeirao preto",
+   "rel": 562,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca sinop",
+   "rel": 562,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de fliperama em bh",
+   "rel": 562,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama sp",
+   "rel": 562,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "rede de pano de mesa de sinuca",
+   "rel": 562,
+   "seed": "troca de pano de mesa de sinuca"
+  },
+  {
+   "q": "mesa de sinuca de bar para comprar",
+   "rel": 562,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "aluguel de mesa de sinuca abertos agora",
+   "rel": 561,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca curitiba",
+   "rel": 561,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca dourados",
+   "rel": 561,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca guanabara",
+   "rel": 561,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca santa maria rs",
+   "rel": 561,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca residencial",
+   "rel": 561,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de fliperama curitiba",
+   "rel": 561,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama caxias do sul",
+   "rel": 561,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama em campinas",
+   "rel": 561,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama maringa",
+   "rel": 561,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama sorocaba",
+   "rel": 561,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "mesa de sinuca usada olx sc",
+   "rel": 561,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada antiga",
+   "rel": 561,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada bh",
+   "rel": 561,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada curitiba",
+   "rel": 561,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada em juiz de fora",
+   "rel": 561,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada em joinville",
+   "rel": 561,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca marmore usada",
+   "rel": 561,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada para vender são paulo sp",
+   "rel": 561,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada profissional",
+   "rel": 561,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada recife",
+   "rel": 561,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "trocador de pano de mesa de sinuca",
+   "rel": 561,
+   "seed": "troca de pano de mesa de sinuca"
+  },
+  {
+   "q": "preço de mesa de sinuca para bar",
+   "rel": 561,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em campos dos goytacazes",
+   "rel": 560,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em luziânia",
+   "rel": 560,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca aguas lindas",
+   "rel": 560,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca brasilia",
+   "rel": 560,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca campo grande rj",
+   "rel": 560,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em foz do iguaçu",
+   "rel": 560,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca sao leopoldo",
+   "rel": 560,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca rio preto",
+   "rel": 560,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de fliperama campo grande ms",
+   "rel": 560,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama campos dos goytacazes",
+   "rel": 560,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama em campo grande ms",
+   "rel": 560,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama para festas rj",
+   "rel": 560,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama salvador",
+   "rel": 560,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama maceio",
+   "rel": 560,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "mesa de sinuca usada por menos de r$ 2.000",
+   "rel": 560,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada e barata",
+   "rel": 560,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca aluguel preço",
+   "rel": 560,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada campo grande ms",
+   "rel": 560,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada caxias do sul",
+   "rel": 560,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada de madeira",
+   "rel": 560,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada olx sp",
+   "rel": 560,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada rs",
+   "rel": 560,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "cores de pano de mesa de sinuca",
+   "rel": 560,
+   "seed": "troca de pano de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca planaltina df",
+   "rel": 559,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em uberaba",
+   "rel": 559,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca aracaju",
+   "rel": 559,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca bh",
+   "rel": 559,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca cuiaba",
+   "rel": 559,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca para festa valor",
+   "rel": 559,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca sp",
+   "rel": 559,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de fliperama para festas abc",
+   "rel": 559,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama brasilia",
+   "rel": 559,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama em santos",
+   "rel": 559,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama maricá",
+   "rel": 559,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama sjc",
+   "rel": 559,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "mesa de sinuca aluguel",
+   "rel": 559,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada bar",
+   "rel": 559,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada com ficha",
+   "rel": 559,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada de ficha",
+   "rel": 559,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada em ribeirão preto",
+   "rel": 559,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada a venda em passo fundo rs",
+   "rel": 559,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca madeira maciça usada",
+   "rel": 559,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada por menos de r$ 1.500",
+   "rel": 559,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada olx es",
+   "rel": 559,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca residencial usada",
+   "rel": 559,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada shopee",
+   "rel": 559,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "rolo de pano de mesa de sinuca",
+   "rel": 559,
+   "seed": "troca de pano de mesa de sinuca"
+  },
+  {
+   "q": "mesa de sinuca para bar com ficheiro",
+   "rel": 559,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "tamanho de mesa de sinuca para bar",
+   "rel": 559,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "aluguel de mesa de sinuca porto alegre",
+   "rel": 558,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca bem avaliados",
+   "rel": 558,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca colombo",
+   "rel": 558,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca cachoeirinha rs",
+   "rel": 558,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em mogi das cruzes",
+   "rel": 558,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em fortaleza",
+   "rel": 558,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em limeira",
+   "rel": 558,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca sorocaba",
+   "rel": 558,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de fliperama para festa preço",
+   "rel": 558,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama em aracaju",
+   "rel": 558,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama belem",
+   "rel": 558,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama cabo frio",
+   "rel": 558,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama para festas guarulhos",
+   "rel": 558,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama jundiai",
+   "rel": 558,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama sete lagoas",
+   "rel": 558,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de maquina fliperama",
+   "rel": 558,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "mesa de sinuca a venda",
+   "rel": 558,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada bauru",
+   "rel": 558,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada de pedra",
+   "rel": 558,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada em florianópolis",
+   "rel": 558,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada entre r$ 1.000 er$ 2.500",
+   "rel": 558,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada olx salvador",
+   "rel": 558,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada porto alegre",
+   "rel": 558,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada para vender olx",
+   "rel": 558,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca simples usada",
+   "rel": 558,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "pano de mesa de sinuca",
+   "rel": 558,
+   "seed": "troca de pano de mesa de sinuca"
+  },
+  {
+   "q": "mesa de sinuca para barbearia",
+   "rel": 558,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em araraquara",
+   "rel": 557,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca barra velha",
+   "rel": 557,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca criciuma",
+   "rel": 557,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca campo largo",
+   "rel": 557,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em campo grande",
+   "rel": 557,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca para festa rj",
+   "rel": 557,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca ponta grossa",
+   "rel": 557,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca para eventos",
+   "rel": 557,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca sjc",
+   "rel": 557,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "locação de mesa de sinuca e pebolim",
+   "rel": 557,
+   "seed": "locacao de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de pebolim em curitiba",
+   "rel": 557,
+   "seed": "aluguel de mesa de pebolim"
+  },
+  {
+   "q": "aluguel de fliperama para aniversário",
+   "rel": 557,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de brinquedos fliperama",
+   "rel": 557,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama em sao paulo",
+   "rel": 557,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama joinville",
+   "rel": 557,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel fliperama montes claros",
+   "rel": 557,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel maquina de fliperama sp",
+   "rel": 557,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "mesa de sinuca adulto",
+   "rel": 557,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada brasilia",
+   "rel": 557,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada campinas",
+   "rel": 557,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada de gaveta",
+   "rel": 557,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada em são paulo",
+   "rel": 557,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada gaveta",
+   "rel": 557,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada para vender belo horizonte mg",
+   "rel": 557,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca jantar usada",
+   "rel": 557,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada olx rj",
+   "rel": 557,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada olx rs",
+   "rel": 557,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca de bar",
+   "rel": 557,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca para bar",
+   "rel": 557,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "aluguel mesa de sinuca rj preço",
+   "rel": 556,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em anápolis goiás",
+   "rel": 556,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca duque de caxias",
+   "rel": 556,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em rondonópolis",
+   "rel": 556,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca passo fundo",
+   "rel": 556,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca planaltina go",
+   "rel": 556,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca indaiatuba",
+   "rel": 556,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel mesa de sinuca marilia",
+   "rel": 556,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca umuarama",
+   "rel": 556,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em viamão",
+   "rel": 556,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "locação de mesa de sinuca em ponta grossa",
+   "rel": 556,
+   "seed": "locacao de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca e pebolim",
+   "rel": 556,
+   "seed": "aluguel de mesa de pebolim"
+  },
+  {
+   "q": "aluguel fliperama abc",
+   "rel": 556,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama campinas",
+   "rel": 556,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama em manaus",
+   "rel": 556,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama para festa sjc",
+   "rel": 556,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama jf",
+   "rel": 556,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama em sao luis",
+   "rel": 556,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel fliperama macae",
+   "rel": 556,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama niteroi",
+   "rel": 556,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "mesa de sinuca azul",
+   "rel": 556,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada bem avaliados",
+   "rel": 556,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada de até r$ 1.500",
+   "rel": 556,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada de rede",
+   "rel": 556,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada em bh",
+   "rel": 556,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca de ferro usada",
+   "rel": 556,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada para bar",
+   "rel": 556,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada para vender no mercadolivre",
+   "rel": 556,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "quem compra mesa de sinuca usada",
+   "rel": 556,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "quanto custa uma mesa de sinuca usada",
+   "rel": 556,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca de bar antiga",
+   "rel": 556,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca de bar usada",
+   "rel": 556,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca padrão bar",
+   "rel": 556,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "aluguel mesa de sinuca df preço",
+   "rel": 555,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em arapongas",
+   "rel": 555,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em brusque",
+   "rel": 555,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel mesa de sinuca para bar abertos agora",
+   "rel": 555,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "aluguel de mesa de sinuca cascavel",
+   "rel": 555,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca com ficha",
+   "rel": 555,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca por um dia",
+   "rel": 555,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em jaraguá do sul",
+   "rel": 555,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em guaratuba",
+   "rel": 555,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel mesa de sinuca jundiai",
+   "rel": 555,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel mesa de sinuca matinhos",
+   "rel": 555,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca niteroi",
+   "rel": 555,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "como funciona o aluguel de mesa de sinuca",
+   "rel": 555,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel mesa de sinuca rs",
+   "rel": 555,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "telefone de aluguel de mesa de sinuca",
+   "rel": 555,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca porto velho",
+   "rel": 555,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "locação de mesa de sinuca em cascavel",
+   "rel": 555,
+   "seed": "locacao de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de pebolim campinas",
+   "rel": 555,
+   "seed": "aluguel de mesa de pebolim"
+  },
+  {
+   "q": "aluguel de fliperama cuiaba",
+   "rel": 555,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama feira de santana",
+   "rel": 555,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama em curitiba",
+   "rel": 555,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama para festa zona leste",
+   "rel": 555,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de jogos fliperama",
+   "rel": 555,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel fliperama ribeirão preto",
+   "rel": 555,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "mesa de sinuca antiga",
+   "rel": 555,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca brunswick usada",
+   "rel": 555,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada em bom estado",
+   "rel": 555,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada cuiaba",
+   "rel": 555,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca com ficheiro usada",
+   "rel": 555,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca e jantar usada olx",
+   "rel": 555,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca que vira mesa de jantar usada",
+   "rel": 555,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mini mesa de sinuca usada",
+   "rel": 555,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada olx curitiba",
+   "rel": 555,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada entre r$ 1.500 er$ 3.000",
+   "rel": 555,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca pequena usada valor",
+   "rel": 555,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca para reforma",
+   "rel": 555,
+   "seed": "reforma de mesa de sinuca"
+  },
+  {
+   "q": "capa para mesa de sinuca de bar",
+   "rel": 555,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca de bar com gaveta",
+   "rel": 555,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "novidades em mesa de sinuca para bar",
+   "rel": 555,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca profissional bar",
+   "rel": 555,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "aluguel de mesa de sinuca campinas",
+   "rel": 554,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em rio preto",
+   "rel": 554,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel mesa de sinuca guarapuava",
+   "rel": 554,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em ituiutaba",
+   "rel": 554,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca rio de janeiro",
+   "rel": 554,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca navegantes",
+   "rel": 554,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "quanto custa o aluguel de mesa de sinuca",
+   "rel": 554,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca pelotas",
+   "rel": 554,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel mesa de sinuca recife",
+   "rel": 554,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em salvador",
+   "rel": 554,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "quanto tá o aluguel de uma mesa de sinuca",
+   "rel": 554,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel mesa de sinuca ubatuba",
+   "rel": 554,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "locação de mesa de sinuca em colombo",
+   "rel": 554,
+   "seed": "locacao de mesa de sinuca"
+  },
+  {
+   "q": "contrato de locação de mesa de sinuca",
+   "rel": 554,
+   "seed": "locacao de mesa de sinuca"
+  },
+  {
+   "q": "qual o valor do aluguel de uma mesa de pebolim",
+   "rel": 554,
+   "seed": "aluguel de mesa de pebolim"
+  },
+  {
+   "q": "aluguel de mesa de ping pong e pebolim",
+   "rel": 554,
+   "seed": "aluguel de mesa de pebolim"
+  },
+  {
+   "q": "mesa de pebolim para aluguel",
+   "rel": 554,
+   "seed": "aluguel de mesa de pebolim"
+  },
+  {
+   "q": "aluguel de jogos de festa",
+   "rel": 554,
+   "seed": "aluguel de jogos para festa"
+  },
+  {
+   "q": "aluguel fliperama blumenau",
+   "rel": 554,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama juiz de fora",
+   "rel": 554,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama em natal",
+   "rel": 554,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "mesa de sinuca articulada",
+   "rel": 554,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca bilhar usada",
+   "rel": 554,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca completa usada",
+   "rel": 554,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada de marmore",
+   "rel": 554,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada em uberlandia",
+   "rel": 554,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada em ponta grossa",
+   "rel": 554,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada à venda em goiânia",
+   "rel": 554,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada oficial",
+   "rel": 554,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada entre r$ 900 er$ 2.500",
+   "rel": 554,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada em salvador",
+   "rel": 554,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "reforma da mesa de sinuca",
+   "rel": 554,
+   "seed": "reforma de mesa de sinuca"
+  },
+  {
+   "q": "reforma de mesa de sinuca em goiânia",
+   "rel": 554,
+   "seed": "reforma de mesa de sinuca"
+  },
+  {
+   "q": "pano de mesa de sinuca do corinthians",
+   "rel": 554,
+   "seed": "troca de pano de mesa de sinuca"
+  },
+  {
+   "q": "mesa de sinuca de bar com ficha",
+   "rel": 554,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca para bar no mercadolivre",
+   "rel": 554,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "qual o valor da mesa de sinuca para bar",
+   "rel": 554,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca para alugar para bar",
+   "rel": 554,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em atibaia",
+   "rel": 553,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel mesa de sinuca foz",
+   "rel": 553,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em juiz de fora",
+   "rel": 553,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel mesa de sinuca guaiba",
+   "rel": 553,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca contagem",
+   "rel": 553,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em caldas novas",
+   "rel": 553,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca presidente prudente",
+   "rel": 553,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel mesa de sinuca rio verde",
+   "rel": 553,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em santo andré",
+   "rel": 553,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de uma mesa de sinuca",
+   "rel": 553,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de fliperama para festas bh",
+   "rel": 553,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel fliperama corrida",
+   "rel": 553,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de máquina de fliperama",
+   "rel": 553,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel fliperama joao pessoa",
+   "rel": 553,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel maquina fliperama rj",
+   "rel": 553,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama em vila velha",
+   "rel": 553,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "mesa de sinuca oficial usada preço",
+   "rel": 553,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca ardosia",
+   "rel": 553,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "vendo mesa de sinuca usada barata",
+   "rel": 553,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca caçapa de ferro usada",
+   "rel": 553,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada para vender rio de janeiro rj",
+   "rel": 553,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada por menos de r$ 1.000",
+   "rel": 553,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca de redinha usada",
+   "rel": 553,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada a venda em curitiba",
+   "rel": 553,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada df a venda",
+   "rel": 553,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "mgh reforma de mesa de bilhar sinuca",
+   "rel": 553,
+   "seed": "reforma de mesa de sinuca"
+  },
+  {
+   "q": "reforma em mesa de sinuca",
+   "rel": 553,
+   "seed": "reforma de mesa de sinuca"
+  },
+  {
+   "q": "bar de sinuca perto de mim abertos agora",
+   "rel": 553,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca para bar aluguel",
+   "rel": 553,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca de bar olx",
+   "rel": 553,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "quanto custa uma mesa de sinuca para bar",
+   "rel": 553,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "aluguel mesa de sinuca bh preço",
+   "rel": 552,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em avaré",
+   "rel": 552,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em cabo frio",
+   "rel": 552,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca salvador",
+   "rel": 552,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "número de telefone de aluguel de mesa de sinuca",
+   "rel": 552,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em santos",
+   "rel": 552,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "quanto custa um aluguel de mesa de sinuca",
+   "rel": 552,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "locacao de mesas de bilhar",
+   "rel": 552,
+   "seed": "locacao de mesa de sinuca"
+  },
+  {
+   "q": "locacao mesa de sinuca joinville",
+   "rel": 552,
+   "seed": "locacao de mesa de sinuca"
+  },
+  {
+   "q": "mesa de sinuca para locação",
+   "rel": 552,
+   "seed": "locacao de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de pebolim londrina",
+   "rel": 552,
+   "seed": "aluguel de mesa de pebolim"
+  },
+  {
+   "q": "aluguel de maquina de fliperama para festa",
+   "rel": 552,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama pinball",
+   "rel": 552,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "mesa de sinuca americana",
+   "rel": 552,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada em porto alegre",
+   "rel": 552,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "mesa sinuca usada olx goiânia go",
+   "rel": 552,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada por menos de r$ 2.500",
+   "rel": 552,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada para",
+   "rel": 552,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada valores",
+   "rel": 552,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "comprar sinuca usada",
+   "rel": 552,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "reforma de mesa de sinuca goiânia",
+   "rel": 552,
+   "seed": "reforma de mesa de sinuca"
+  },
+  {
+   "q": "reforma de mesa sinuca",
+   "rel": 552,
+   "seed": "reforma de mesa de sinuca"
+  },
+  {
+   "q": "pano de mesa de sinuca preto",
+   "rel": 552,
+   "seed": "troca de pano de mesa de sinuca"
+  },
+  {
+   "q": "pano de mesa de sinuca verde",
+   "rel": 552,
+   "seed": "troca de pano de mesa de sinuca"
+  },
+  {
+   "q": "manutencao mesa bilhar",
+   "rel": 552,
+   "seed": "manutencao de mesa de sinuca"
+  },
+  {
+   "q": "sinuca comercial preço",
+   "rel": 552,
+   "seed": "mesa de sinuca comercial"
+  },
+  {
+   "q": "mesa de sinuca para comprar usada",
+   "rel": 552,
+   "seed": "mesa de sinuca para condominio"
+  },
+  {
+   "q": "aluguel de mesa de sinuca valores",
+   "rel": 551,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em araruama",
+   "rel": 551,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel mesa de sinuca botucatu",
+   "rel": 551,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca caraguatatuba",
+   "rel": 551,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em uberlândia",
+   "rel": 551,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca preco",
+   "rel": 551,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca no abc",
+   "rel": 551,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca profissional",
+   "rel": 551,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel mesa de sinuca sbc",
+   "rel": 551,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca uberlândia",
+   "rel": 551,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca viamao",
+   "rel": 551,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "mesa de sinuca para locacao em curitiba",
+   "rel": 551,
+   "seed": "locacao de mesa de sinuca"
+  },
+  {
+   "q": "quanto custa uma mesa de pebolim para alugar",
+   "rel": 551,
+   "seed": "aluguel de mesa de pebolim"
+  },
+  {
+   "q": "aluguel de mesa de pebolim em campinas",
+   "rel": 551,
+   "seed": "aluguel de mesa de pebolim"
+  },
+  {
+   "q": "aluguel de maquinas de fliperama sp",
+   "rel": 551,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama em recife",
+   "rel": 551,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel fliperama florianópolis",
+   "rel": 551,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "mesa de sinuca amazon",
+   "rel": 551,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada em santa catarina",
+   "rel": 551,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada rio de janeiro",
+   "rel": 551,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada em campo grande ms",
+   "rel": 551,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada goiânia",
+   "rel": 551,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada por menos de r$ 900",
+   "rel": 551,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca semi profissional usada",
+   "rel": 551,
+   "seed": "mesa de sinuca seminova"
+  },
+  {
+   "q": "vendo mesa de sinuca usada barata olx",
+   "rel": 551,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca semi oficial",
+   "rel": 551,
+   "seed": "mesa de sinuca seminova"
+  },
+  {
+   "q": "mesa de bilhar semi nova a venda",
+   "rel": 551,
+   "seed": "mesa de sinuca seminova"
+  },
+  {
+   "q": "mesa sinuca semi nova",
+   "rel": 551,
+   "seed": "mesa de sinuca seminova"
+  },
+  {
+   "q": "comprar mesa de sinuca direto da fábrica",
+   "rel": 551,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "comprar mesa de bilhar usada",
+   "rel": 551,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "comprar mesa de sinuca em goiania",
+   "rel": 551,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "comprar mesa de sinuca e jantar",
+   "rel": 551,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "comprar mesa de sinuca mercado livre",
+   "rel": 551,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada para venda",
+   "rel": 551,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "comprar mesa de sinuca rio de janeiro",
+   "rel": 551,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "reforma de sinuca bh",
+   "rel": 551,
+   "seed": "reforma de mesa de sinuca"
+  },
+  {
+   "q": "reforma de mesa de bilhar em sp",
+   "rel": 551,
+   "seed": "reforma de mesa de sinuca"
+  },
+  {
+   "q": "pano de mesa de sinuca do palmeiras",
+   "rel": 551,
+   "seed": "troca de pano de mesa de sinuca"
+  },
+  {
+   "q": "manutenção mesa de sinuca",
+   "rel": 551,
+   "seed": "manutencao de mesa de sinuca"
+  },
+  {
+   "q": "montagem de sinuca",
+   "rel": 551,
+   "seed": "montagem de mesa de sinuca"
+  },
+  {
+   "q": "mesa de sinuca para alugar campinas",
+   "rel": 551,
+   "seed": "mesa de sinuca para condominio"
+  },
+  {
+   "q": "mesa de sinuca para comprar barata",
+   "rel": 551,
+   "seed": "mesa de sinuca para condominio"
+  },
+  {
+   "q": "mesa de sinuca para alugar joinville",
+   "rel": 551,
+   "seed": "mesa de sinuca para condominio"
+  },
+  {
+   "q": "mesa de sinuca para area externa",
+   "rel": 551,
+   "seed": "mesa de sinuca para condominio"
+  },
+  {
+   "q": "aluguel de mesa de sinuca para casa",
+   "rel": 550,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de bilhar perto de mim",
+   "rel": 550,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em araucária",
+   "rel": 550,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca em londrina",
+   "rel": 550,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "como funciona aluguel de mesa de sinuca",
+   "rel": 550,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca bilhar",
+   "rel": 550,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de sinuca pinhais",
+   "rel": 550,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "aluguel mesa de sinuca sao carlos",
+   "rel": 550,
+   "seed": "aluguel de mesa de sinuca"
+  },
+  {
+   "q": "locacao de mesas bilhar",
+   "rel": 550,
+   "seed": "locacao de mesa de sinuca"
+  },
+  {
+   "q": "aluguel de mesa de pebolim joinville",
+   "rel": 550,
+   "seed": "aluguel de mesa de pebolim"
+  },
+  {
+   "q": "ohana locações aluguel de jogos de mesas e artigos para festas",
+   "rel": 550,
+   "seed": "aluguel de jogos para festa"
+  },
+  {
+   "q": "aluguel de jogos para festa recife",
+   "rel": 550,
+   "seed": "aluguel de jogos para festa"
+  },
+  {
+   "q": "aluguel de fliperama para festa valor",
+   "rel": 550,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "quanto custa um aluguel de fliperama",
+   "rel": 550,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de mesa de fliperama",
+   "rel": 550,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama em brasilia",
+   "rel": 550,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama para eventos",
+   "rel": 550,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama vitoria es",
+   "rel": 550,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "aluguel de fliperama florianópolis",
+   "rel": 550,
+   "seed": "aluguel de fliperama"
+  },
+  {
+   "q": "mesa de sinuca amarela",
+   "rel": 550,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada em blumenau",
+   "rel": 550,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "preço de mesa de sinuca usada",
+   "rel": 550,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada olx rio de janeiro rj",
+   "rel": 550,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada no rio de janeiro",
+   "rel": 550,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca profissional usada olx",
+   "rel": 550,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca profissional usada para vender",
+   "rel": 550,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada residencial",
+   "rel": 550,
+   "seed": "mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca semi profissional",
+   "rel": 550,
+   "seed": "mesa de sinuca seminova"
+  },
+  {
+   "q": "mesa de sinuca semi profissional preço",
+   "rel": 550,
+   "seed": "mesa de sinuca seminova"
+  },
+  {
+   "q": "mesa de sinuca semi oficial a venda",
+   "rel": 550,
+   "seed": "mesa de sinuca seminova"
+  },
+  {
+   "q": "comprar mesa de sinuca valor",
+   "rel": 550,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "comprar mesa de sinuca de bar",
+   "rel": 550,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "mesa de sinuca usada brasilia df",
+   "rel": 550,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "comprar mesa de sinuca no mercadolivre",
+   "rel": 550,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "comprar mesa de sinuca em sp",
+   "rel": 550,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "comprar mesa de sinuca nova",
+   "rel": 550,
+   "seed": "comprar mesa de sinuca usada"
+  },
+  {
+   "q": "manutenção de mesas de sinuca",
+   "rel": 550,
+   "seed": "manutencao de mesa de sinuca"
+  },
+  {
+   "q": "conserto de mesa de bilhar",
+   "rel": 550,
+   "seed": "conserto de mesa de sinuca"
+  },
+  {
+   "q": "mesa de sinuca barata para vender",
+   "rel": 550,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca de bar pequena",
+   "rel": 550,
+   "seed": "mesa de sinuca para bar"
+  },
+  {
+   "q": "mesa de sinuca para area de lazer",
+   "rel": 550,
+   "seed": "mesa de sinuca para condominio"
+  },
+  {
+   "q": "mesa de sinuca para colocar em casa",
+   "rel": 550,
+   "seed": "mesa de sinuca para condominio"
+  }
+ ],
+ "bySeed": {
+  "aluguel de mesa de sinuca": [
+   "aluguel de mesa de sinuca em joinville",
+   "aluguel de mesa de sinuca para festa",
+   "aluguel de mesa de sinuca em itajaí",
+   "aluguel de mesa de sinuca perto de mim",
+   "aluguel de mesa de sinuca joinville",
+   "aluguel de mesa de sinuca valor",
+   "aluguel de mesa de sinuca para bar",
+   "aluguel de mesa de sinuca mensal",
+   "aluguel de mesa de sinuca e toto",
+   "aluguel de mesa de sinuca planaltina df",
+   "aluguel de mesa de sinuca df",
+   "aluguel de mesa de sinuca em ribeirão preto",
+   "aluguel de mesa de sinuca em campos dos goytacazes",
+   "aluguel de mesa de sinuca em uberaba",
+   "aluguel de mesa de sinuca em luziânia",
+   "aluguel de mesa de sinuca para festa preço",
+   "aluguel mesa de sinuca de bar preço",
+   "aluguel mesa de sinuca rj preço",
+   "aluguel mesa de sinuca df preço",
+   "aluguel mesa de sinuca bh preço",
+   "aluguel de mesa de sinuca preço sp",
+   "aluguel de mesa de sinuca qual o preço",
+   "aluguel de mesa de sinuca valores",
+   "aluguel de mesa de sinuca para casa",
+   "aluguel de mesa de bilhar perto de mim",
+   "aluguel de mesa de sinuca anapolis",
+   "aluguel de mesa de sinuca alvorada",
+   "aluguel de mesa de sinuca araguari",
+   "aluguel de mesa de sinuca abertos agora",
+   "aluguel de mesa de sinuca aguas lindas",
+   "aluguel de mesa de sinuca aracaju",
+   "aluguel de mesa de sinuca porto alegre",
+   "aluguel de mesa de sinuca em araraquara",
+   "aluguel de mesa de sinuca em anápolis goiás",
+   "aluguel de mesa de sinuca em arapongas",
+   "aluguel de mesa de sinuca bem avaliados",
+   "aluguel de mesa de sinuca em atibaia",
+   "aluguel de mesa de sinuca em avaré",
+   "aluguel de mesa de sinuca em araruama",
+   "aluguel de mesa de sinuca em araucária",
+   "aluguel de mesa de sinuca blumenau",
+   "aluguel de mesa de sinuca bauru",
+   "aluguel de mesa de sinuca brasilia",
+   "aluguel de mesa de sinuca bh",
+   "aluguel de mesa de sinuca barra velha",
+   "aluguel de mesa de sinuca em brusque",
+   "aluguel de mesa de sinuca para bar rj",
+   "aluguel mesa de sinuca botucatu",
+   "aluguel mesa de sinuca para bar abertos agora",
+   "aluguel de mesa de sinuca canoas",
+   "aluguel de mesa de sinuca caxias do sul",
+   "aluguel de mesa de sinuca campo grande ms",
+   "aluguel de mesa de sinuca curitiba",
+   "aluguel de mesa de sinuca campo grande rj",
+   "aluguel de mesa de sinuca cuiaba",
+   "aluguel de mesa de sinuca colombo",
+   "aluguel de mesa de sinuca criciuma",
+   "aluguel de mesa de sinuca cachoeirinha rs",
+   "aluguel de mesa de sinuca cascavel",
+   "aluguel de mesa de sinuca campinas",
+   "aluguel de mesa de sinuca campo largo",
+   "aluguel de mesa de sinuca com ficha",
+   "aluguel de mesa de sinuca caraguatatuba",
+   "aluguel de mesa de sinuca em campo grande",
+   "aluguel de mesa de sinuca dourados ms",
+   "aluguel de mesa de sinuca diaria",
+   "aluguel de mesa de sinuca dourados",
+   "aluguel de mesa de sinuca jaraguá do sul",
+   "aluguel de mesa de sinuca dentro de 8 1 km",
+   "aluguel de mesa de sinuca duque de caxias",
+   "aluguel de mesa de sinuca em foz do iguaçu",
+   "aluguel de mesa de sinuca em mogi das cruzes",
+   "aluguel de mesa de sinuca sao jose dos pinhais",
+   "aluguel de mesa de sinuca por um dia",
+   "aluguel de mesa de sinuca em rondonópolis",
+   "aluguel de mesa de sinuca em jaraguá do sul",
+   "aluguel de mesa de sinuca em rio preto",
+   "aluguel de mesa de sinuca em tres lagoas",
+   "aluguel de mesa de sinuca em volta redonda",
+   "aluguel de mesa de sinuca em uberlândia",
+   "aluguel de mesa de sinuca em londrina",
+   "aluguel de mesa de sinuca fazenda rio grande",
+   "aluguel de mesa de sinuca franca sp",
+   "aluguel de mesa de sinuca florianopolis",
+   "aluguel de mesa de sinuca para festa valor",
+   "aluguel de mesa de sinuca em fortaleza",
+   "aluguel de mesa de sinuca para festa rj",
+   "aluguel de mesa de sinuca passo fundo",
+   "aluguel mesa de sinuca foz",
+   "aluguel de mesa de sinuca em cabo frio",
+   "aluguel de mesa de sinuca em juiz de fora",
+   "como funciona aluguel de mesa de sinuca",
+   "aluguel de mesa de sinuca gravatai",
+   "aluguel de mesa de sinuca goiania",
+   "aluguel de mesa de sinuca guarulhos",
+   "aluguel de mesa de sinuca guanabara",
+   "aluguel de mesa de sinuca são gonçalo",
+   "aluguel de mesa de sinuca ponta grossa",
+   "aluguel de mesa de sinuca planaltina go",
+   "aluguel de mesa de sinuca em guaratuba",
+   "aluguel mesa de sinuca guarapuava",
+   "aluguel mesa de sinuca guaiba",
+   "aluguel de mesa de sinuca novo hamburgo",
+   "aluguel de mesa de sinuca em",
+   "aluguel de mesa de sinuca preço",
+   "aluguel de mesa de sinuca bilhar",
+   "aluguel de mesa de sinuca itajai",
+   "aluguel de mesa de sinuca itapema",
+   "aluguel de mesa de sinuca indaiatuba",
+   "aluguel de mesa de sinuca nova iguaçu",
+   "aluguel de mesa de sinuca em ituiutaba",
+   "aluguel de mesa de sinuca jatai",
+   "aluguel mesa de sinuca jundiai",
+   "aluguel de mesa de sinuca rio de janeiro",
+   "aluguel de mesa de sinuca preco",
+   "aluguel de mesa de sinuca contagem",
+   "aluguel de mesa de sinuca salvador",
+   "aluguel de mesa de sinuca londrina",
+   "aluguel de mesa de sinuca lages",
+   "aluguel de mesa de sinuca sao leopoldo",
+   "aluguel de mesa de sinuca em limeira",
+   "aluguel de mesa de sinuca zona leste",
+   "aluguel de mesa de sinuca maringa",
+   "aluguel de mesa de sinuca manaus",
+   "aluguel de mesa de sinuca santa maria rs",
+   "aluguel mesa de sinuca marilia",
+   "aluguel mesa de sinuca matinhos",
+   "aluguel de mesa de sinuca niteroi",
+   "aluguel de mesa de sinuca navegantes",
+   "aluguel de mesa de sinuca em caldas novas",
+   "número de telefone de aluguel de mesa de sinuca",
+   "aluguel de mesa de sinuca no abc",
+   "aluguel mesa de sinuca osasco",
+   "aluguel de mesa de sinuca em rio das ostras",
+   "como funciona o aluguel de mesa de sinuca",
+   "quanto custa o aluguel de mesa de sinuca",
+   "aluguel de mesa de sinuca para eventos",
+   "aluguel de mesa de sinuca pelotas",
+   "aluguel de mesa de sinuca presidente prudente",
+   "aluguel de mesa de sinuca profissional",
+   "aluguel de mesa de sinuca pinhais",
+   "aluguel de mesa de sinuca quanto custa",
+   "aluguel de mesa de sinuca rj",
+   "aluguel de mesa de sinuca rondonopolis",
+   "aluguel de mesa de sinuca ribeirao preto",
+   "aluguel de mesa de sinuca residencial",
+   "aluguel de mesa de sinuca rio preto",
+   "aluguel mesa de sinuca rs",
+   "aluguel mesa de sinuca recife",
+   "aluguel mesa de sinuca rio verde",
+   "aluguel de mesa de sinuca sinop",
+   "aluguel de mesa de sinuca sp",
+   "aluguel de mesa de sinuca sorocaba",
+   "aluguel de mesa de sinuca sjc",
+   "aluguel de mesa de sinuca zona sul",
+   "aluguel de mesa de sinuca em salvador",
+   "aluguel de mesa de sinuca em santo andré",
+   "aluguel de mesa de sinuca em santos",
+   "aluguel mesa de sinuca sbc",
+   "aluguel mesa de sinuca sao carlos",
+   "telefone de aluguel de mesa de sinuca",
+   "quanto tá o aluguel de uma mesa de sinuca",
+   "aluguel de mesa de sinuca uberlandia",
+   "aluguel de mesa de sinuca uberaba",
+   "aluguel de mesa de sinuca umuarama",
+   "aluguel mesa de sinuca ubatuba",
+   "aluguel de uma mesa de sinuca",
+   "quanto custa um aluguel de mesa de sinuca",
+   "aluguel de mesa de sinuca uberlândia",
+   "aluguel de mesa de sinuca em vilhena",
+   "aluguel de mesa de sinuca em viamão",
+   "aluguel de mesa de sinuca porto velho",
+   "aluguel de mesa de sinuca viamao"
+  ],
+  "locacao de mesa de sinuca": [
+   "locação de mesa de sinuca",
+   "locação de mesa de sinuca campo grande ms",
+   "locação de mesa de sinuca em curitiba",
+   "locação de mesa de sinuca são jose dos pinhais",
+   "locação de mesa de sinuca em maringa",
+   "locação de mesa de sinuca em joinville",
+   "locação de mesa de sinuca para bar",
+   "locação de mesa de sinuca e pebolim",
+   "locação de mesa de sinuca em ponta grossa",
+   "locação de mesa de sinuca em londrina",
+   "locação de mesa de sinuca em umuarama",
+   "locação de mesa de sinuca em dourados ms",
+   "locação de mesa de sinuca valor",
+   "locação de mesa de sinuca em cascavel",
+   "locação de mesa de sinuca em goiânia",
+   "locacao de mesa bilhar",
+   "aluguel mesa de sinuca bh preço",
+   "locação de mesa de sinuca curitiba",
+   "locação de mesa de sinuca em colombo",
+   "contrato de locação de mesa de sinuca",
+   "locacao de mesas de sinuca",
+   "locação de mesa de sinuca sp",
+   "locação de mesa de sinuca para festa",
+   "locacao de mesas de bilhar",
+   "locacao mesa de sinuca joinville",
+   "locação de mesa de sinuca canoas",
+   "locacao de mesa sinuca",
+   "locacao de mesas bilhar",
+   "mesa de sinuca para locação",
+   "mesa de sinuca para locacao em curitiba"
+  ],
+  "aluguel de mesa de pebolim": [
+   "aluguel de mesa de pebolim preço",
+   "aluguel de mesa de pebolim perto de mim",
+   "aluguel de mesa de pebolim sorocaba",
+   "aluguel de mesa de pebolim zona leste",
+   "aluguel de mesa de pebolim zona sul sp",
+   "aluguel de mesa de pebolim campo grande ms",
+   "aluguel de mesa de pebolim em mogi das cruzes",
+   "aluguel de mesa de pebolim guarulhos",
+   "aluguel de mesa de pebolim zona norte",
+   "aluguel de mesa de pebolim para festa",
+   "aluguel de mesa de pebolim florianópolis",
+   "aluguel de mesa de pebolim osasco",
+   "aluguel de mesa de pebolim curitiba",
+   "aluguel de mesa de pebolim em santos",
+   "aluguel de mesa de pebolim campinas",
+   "aluguel de mesa de pebolim valor",
+   "aluguel de mesa de pebolim londrina",
+   "quanto custa o aluguel de uma mesa de pebolim",
+   "quanto custa uma mesa de pebolim para alugar",
+   "aluguel de mesa de pebolim em campinas",
+   "aluguel de mesa de bilhar e pebolim",
+   "qual o valor do aluguel de uma mesa de pebolim",
+   "aluguel de mesa de pebolim em joinville",
+   "aluguel de mesa de pebolim em curitiba",
+   "aluguel de mesa de sinuca e pebolim",
+   "aluguel de mesa de ping pong e pebolim",
+   "mesa de pebolim para aluguel",
+   "aluguel de mesa de pebolim sjc",
+   "aluguel de mesa de pebolim joinville"
+  ],
+  "aluguel de jogos para festa": [
+   "aluguel de jogos para festa rj",
+   "aluguel de jogos para festa sp",
+   "aluguel de jogos para festa bh",
+   "aluguel de jogos para festa porto alegre",
+   "aluguel de jogos para festa infantil",
+   "aluguel de jogos para festa curitiba",
+   "aluguel de jogos para festa junina",
+   "aluguel de jogos eletrônicos para festa",
+   "aluguel de jogos para festa de aniversário",
+   "aluguel de mesa de jogos para festa",
+   "aluguel de máquinas de jogos para festa",
+   "ohana locações aluguel de jogos de mesas e artigos para festas",
+   "aluguel de jogos de festa",
+   "aluguel de jogos para festa recife"
+  ],
+  "aluguel de fliperama": [
+   "aluguel de fliperama para bar",
+   "aluguel de fliperama perto de mim",
+   "aluguel de fliperama para comércio",
+   "aluguel de fliperama mensal",
+   "aluguel de fliperama para festas",
+   "aluguel de fliperama para festa infantil",
+   "aluguel de fliperama df",
+   "aluguel de fliperama rj",
+   "aluguel de fliperama preço",
+   "aluguel de fliperama para festa preço",
+   "aluguel de fliperama duque de caxias",
+   "aluguel de fliperama nova iguaçu",
+   "aluguel de fliperama em fortaleza",
+   "aluguel de fliperama campo grande rj",
+   "aluguel de fliperama bh",
+   "aluguel de fliperama valor",
+   "quanto custa aluguel de fliperama",
+   "aluguel de fliperama para festa valor",
+   "aluguel de fliperama para festas sp",
+   "aluguel de fliperama arcade",
+   "aluguel de fliperama porto alegre",
+   "aluguel de fliperama em aracaju",
+   "aluguel de fliperama para aniversário",
+   "aluguel fliperama abc",
+   "aluguel de fliperama para festas abc",
+   "aluguel de fliperama rio de janeiro",
+   "aluguel de fliperama betim",
+   "aluguel de fliperama brasilia",
+   "aluguel de fliperama belem",
+   "aluguel de brinquedos fliperama",
+   "aluguel de fliperama em belo horizonte",
+   "aluguel fliperama blumenau",
+   "aluguel de fliperama para festas bh",
+   "aluguel de fliperama contagem",
+   "aluguel de fliperama curitiba",
+   "aluguel de fliperama campo grande ms",
+   "aluguel de fliperama caxias do sul",
+   "aluguel de fliperama cabo frio",
+   "aluguel de fliperama campos dos goytacazes",
+   "aluguel de fliperama campinas",
+   "aluguel de fliperama cuiaba",
+   "aluguel fliperama corrida",
+   "aluguel de fliperama mogi das cruzes",
+   "quanto custa um aluguel de fliperama",
+   "aluguel de fliperama ilha do governador",
+   "aluguel de fliperama rio das ostras",
+   "aluguel de fliperama feira de santana",
+   "aluguel de fliperama juiz de fora",
+   "aluguel de máquina de fliperama",
+   "aluguel de maquina de fliperama para festa",
+   "aluguel de maquinas de fliperama sp",
+   "aluguel de mesa de fliperama",
+   "aluguel de fliperama em salvador",
+   "aluguel de fliperama em bh",
+   "aluguel de fliperama em campinas",
+   "aluguel de fliperama em campo grande ms",
+   "aluguel de fliperama em santos",
+   "aluguel de fliperama em sao paulo",
+   "aluguel de fliperama em manaus",
+   "aluguel de fliperama em curitiba",
+   "aluguel de fliperama em natal",
+   "aluguel de fliperama es",
+   "aluguel de fliperama em recife",
+   "aluguel de fliperama em brasilia",
+   "aluguel de fliperama para festa",
+   "aluguel de fliperama para festas rj",
+   "aluguel de fliperama para festas guarulhos",
+   "aluguel de fliperama para festa sjc",
+   "aluguel de fliperama para festa zona leste",
+   "aluguel fliperama florianópolis",
+   "aluguel de fliperama goiania",
+   "aluguel de fliperama guarulhos",
+   "aluguel de fliperama são gonçalo",
+   "aluguel de fliperama rj valor",
+   "aluguel de fliperama jundiai",
+   "aluguel de fliperama joinville",
+   "aluguel de fliperama jf",
+   "aluguel de jogos fliperama",
+   "aluguel fliperama joao pessoa",
+   "diversão aluguel de karaokê fliperama e sinuca",
+   "aluguel de fliperama salvador",
+   "aluguel de fliperama londrina",
+   "aluguel de fliperama zona leste",
+   "aluguel de fliperama sete lagoas",
+   "aluguel de fliperama em sao luis",
+   "aluguel de fliperama manaus",
+   "aluguel de fliperama maringa",
+   "aluguel de fliperama maceio",
+   "aluguel de fliperama maricá",
+   "aluguel de maquina fliperama",
+   "aluguel fliperama montes claros",
+   "aluguel fliperama macae",
+   "aluguel maquina fliperama rj",
+   "aluguel maquina de fliperama sp",
+   "aluguel de fliperama natal rn",
+   "aluguel de fliperama niteroi",
+   "aluguel de fliperama zona norte",
+   "aluguel de fliperama osasco",
+   "aluguel de fliperama pinball",
+   "aluguel de fliperama para eventos",
+   "aluguel de fliperama recife",
+   "aluguel de fliperama volta redonda",
+   "aluguel fliperama ribeirão preto",
+   "aluguel de fliperama serra es",
+   "aluguel de fliperama sp",
+   "aluguel de fliperama sorocaba",
+   "aluguel de fliperama sjc",
+   "aluguel de totó e fliperama",
+   "aluguel de fliperama uberlandia",
+   "quanto custa o aluguel de um fliperama",
+   "aluguel de fliperama vitória es",
+   "aluguel de fliperama em vila velha",
+   "aluguel de fliperama vitoria es",
+   "aluguel de fliperama florianópolis"
+  ],
+  "mesa de sinuca usada": [
+   "mesa de sinuca usada preço",
+   "mesa de sinuca usada para vender",
+   "mesa de sinuca usada de bar",
+   "mesa de sinuca usada olx",
+   "mesa de sinuca usada com gaveta",
+   "mesa de sinuca usada barata",
+   "mesa de sinuca usada pequena",
+   "mesa de sinuca usada para comprar",
+   "mesa de sinuca usada rj olx",
+   "mesa de sinuca usada marketplace",
+   "mesa de sinuca usada olx df",
+   "mesa de sinuca usada olx bh",
+   "mesa de sinuca usada em curitiba",
+   "mesa de sinuca usada olx sc",
+   "mesa de sinuca usada por menos de r$ 2.000",
+   "mesa de sinuca preço usada olx",
+   "mesa de sinuca profissional usada preço",
+   "mesa de sinuca oficial usada preço",
+   "mesa de sinuca usada com gaveta preço",
+   "mesa de sinuca usada comprar",
+   "quanto custa uma mesa de sinuca profissional usada",
+   "mesa de sinuca usada qual o valor",
+   "mesa de sinuca usada à venda",
+   "mesa de sinuca usada e barata",
+   "mesa de sinuca usada por perto",
+   "mesa de sinuca usada a venda em curitiba e região",
+   "mesa de sinuca usada a venda no rs",
+   "mesa de sinuca usada antiga",
+   "mesa de sinuca aluguel preço",
+   "mesa de sinuca aluguel",
+   "mesa de sinuca a venda",
+   "mesa de sinuca adulto",
+   "mesa de sinuca azul",
+   "mesa de sinuca antiga",
+   "mesa de sinuca articulada",
+   "mesa de sinuca ardosia",
+   "mesa de sinuca americana",
+   "mesa de sinuca amazon",
+   "mesa de sinuca amarela",
+   "mesa de sinuca usada barata olx",
+   "mesa de sinuca usada barata olx são paulo sp",
+   "mesa de sinuca usada bh",
+   "mesa de sinuca usada barata olx belo horizonte mg",
+   "mesa de sinuca usada bar",
+   "mesa de sinuca usada bauru",
+   "mesa de sinuca usada brasilia",
+   "mesa de sinuca usada bem avaliados",
+   "mesa de sinuca brunswick usada",
+   "mesa de sinuca bilhar usada",
+   "vendo mesa de sinuca usada barata",
+   "mesa de sinuca usada em bom estado",
+   "mesa de sinuca usada em blumenau",
+   "mesa de sinuca usada curitiba olx",
+   "mesa de sinuca usada curitiba",
+   "mesa de sinuca usada campo grande ms",
+   "mesa de sinuca usada com ficha",
+   "mesa de sinuca usada caxias do sul",
+   "mesa de sinuca usada campinas",
+   "mesa de sinuca usada cuiaba",
+   "mesa de sinuca completa usada",
+   "mesa de.sinuca comercial.usada",
+   "mesa de sinuca usada quanto custa",
+   "mesa de sinuca usada em santa catarina",
+   "mesa de sinuca usada df",
+   "mesa de sinuca usada dentro de 8 1 km",
+   "mesa de sinuca usada de ficha",
+   "mesa de sinuca usada de pedra",
+   "mesa de sinuca usada de gaveta",
+   "mesa de sinuca usada de até r$ 1.500",
+   "mesa de sinuca usada de rede",
+   "mesa de sinuca usada de marmore",
+   "mesa de sinuca usada de madeira",
+   "mesa de sinuca usada perto de mim",
+   "mesa de sinuca usada rio de janeiro",
+   "preço de mesa de sinuca usada",
+   "mesa de sinuca usada em londrina",
+   "mesa de sinuca usada em goiânia",
+   "mesa de sinuca usada em juiz de fora",
+   "mesa de sinuca usada em joinville",
+   "mesa de sinuca usada em ribeirão preto",
+   "mesa de sinuca usada em florianópolis",
+   "mesa de sinuca usada em são paulo",
+   "mesa de sinuca usada em bh",
+   "mesa de sinuca usada em uberlandia",
+   "mesa de sinuca usada entre r$ 1.000 er$ 2.500",
+   "mesa de sinuca usada em porto alegre",
+   "mesa de sinuca usada em campo grande ms",
+   "mesa de sinuca usada facebook",
+   "mesa de sinuca ficha usada",
+   "mesa de sinuca de ferro usada",
+   "mesa de sinuca com ficheiro usada",
+   "mesa de sinuca caçapa de ferro usada",
+   "mesa de sinuca usada a venda em passo fundo rs",
+   "mesa de sinuca para bar com ficha usada",
+   "mesa de sinuca usada goiania",
+   "mesa de sinuca usada grande",
+   "mesa de sinuca usada gaveta",
+   "mesa de sinuca usada em ponta grossa",
+   "mesa de sinuca usada à venda em goiânia",
+   "mesa sinuca usada olx goiânia go",
+   "mesa de sinuca usada goiânia",
+   "mesa de sinuca usada em belo horizonte",
+   "mesa de sinuca usada para vender belo horizonte mg",
+   "mesa de sinuca usada sp",
+   "mesa de sinuca usada venda",
+   "mesa de sinuca usada boa",
+   "mesa de sinuca usada infantil",
+   "mesa de sinuca usada rj",
+   "mesa de sinuca usada jundiai",
+   "mesa de sinuca jocari usada",
+   "mesa de sinuca jantar usada",
+   "mesa de sinuca e jantar usada olx",
+   "mesa de sinuca usada para vender rio de janeiro rj",
+   "mesa de sinuca que vira mesa de jantar usada",
+   "mesa de sinuca usada olx rio de janeiro rj",
+   "mesa de sinuca usada mercado livre",
+   "mesa de sinuca usada mercadolivre",
+   "mesa de sinuca usada media",
+   "mesa de sinuca marmore usada",
+   "mesa de sinuca madeira maciça usada",
+   "mesa de sinuca usada por menos de r$ 1.500",
+   "mini mesa de sinuca usada",
+   "mesa de sinuca usada por menos de r$ 1.000",
+   "mesa de sinuca usada por menos de r$ 2.500",
+   "mesa de sinuca usada por menos de r$ 900",
+   "mesa de sinuca usada na olx",
+   "mesa de sinuca usada no df",
+   "mesa de sinuca usada no mercadolivre",
+   "mesa de sinuca usada no rio de janeiro",
+   "mesa de sinuca usada olx sp",
+   "mesa de sinuca usada olx es",
+   "mesa de sinuca usada olx salvador",
+   "mesa de sinuca usada olx rj",
+   "mesa de sinuca usada olx rs",
+   "mesa de sinuca usada olx curitiba",
+   "mesa de sinuca usada oficial",
+   "mesa de sinuca profissional usada olx",
+   "mesa de sinuca usada para vender são paulo sp",
+   "mesa de sinuca usada profissional",
+   "mesa de sinuca usada porto alegre",
+   "mesa de sinuca usada para bar",
+   "mesa de sinuca usada para vender olx",
+   "mesa de sinuca usada para vender no mercadolivre",
+   "mesa de sinuca usada para",
+   "quero comprar mesa de sinuca usada",
+   "quem compra mesa de sinuca usada",
+   "mesa de sinuca usada ribeirao preto",
+   "mesa de sinuca usada recife",
+   "mesa de sinuca usada rs",
+   "mesa de sinuca residencial usada",
+   "mesa de sinuca usada entre r$ 1.500 er$ 3.000",
+   "mesa de sinuca usada entre r$ 900 er$ 2.500",
+   "mesa de sinuca de redinha usada",
+   "mesa de sinuca usada sc",
+   "mesa de sinuca usada shopee",
+   "mesa de sinuca simples usada",
+   "mesa de sinuca usada em salvador",
+   "mesa de sinuca semi profissional usada",
+   "quanto tá uma mesa de sinuca usada",
+   "mesa de sinuca usada uberlândia",
+   "uma mesa de sinuca usada",
+   "quanto custa uma mesa de sinuca usada",
+   "quero comprar uma mesa de sinuca usada",
+   "mesa de sinuca usada valor",
+   "mesa de sinuca pequena usada valor",
+   "mesa de sinuca usada a venda em curitiba",
+   "vendo mesa de sinuca usada barata olx",
+   "mesa de sinuca profissional usada para vender",
+   "mesa de sinuca usada valores",
+   "mesa de sinuca 2 20 x 1 20 usada",
+   "mesa de sinuca usada residencial"
+  ],
+  "mesa de sinuca seminova": [
+   "mesa de sinuca semi nova",
+   "compra mesa de sinuca semi nova",
+   "mesa de sinuca semi nova preço",
+   "mesa de sinuca semi nova a venda",
+   "mesa de sinuca semi oficial",
+   "mesa de sinuca semi profissional",
+   "mesa de bilhar semi nova a venda",
+   "mesa de sinuca semi profissional preço",
+   "quanto custa uma mesa de sinuca semi nova",
+   "mesa sinuca semi nova",
+   "qual o valor de uma mesa de sinuca semi nova",
+   "mesa de sinuca semi oficial a venda",
+   "mesa de sinuca semi profissional usada"
+  ],
+  "comprar mesa de sinuca usada": [
+   "mesa de sinuca usada",
+   "mesa de sinuca usada para vender",
+   "mesa de sinuca usada preço",
+   "mesa de sinuca usada com gaveta",
+   "mesa de sinuca usada olx",
+   "mesa de sinuca usada barata olx",
+   "mesa de sinuca usada olx sp",
+   "mesa de sinuca usada rj olx",
+   "mesa de sinuca usada no df",
+   "mesa de sinuca usada olx es",
+   "mesa de sinuca usada em curitiba",
+   "mesa de sinuca usada barata olx são paulo sp",
+   "mesa de sinuca usada olx df",
+   "mesa de sinuca usada barata",
+   "mesa de sinuca usada a venda no rs",
+   "mesa de sinuca usada preco",
+   "comprar mesa de sinuca usada",
+   "comprar mesa de sinuca olx",
+   "comprar sinuca usada",
+   "comprar mesa de sinuca valor",
+   "mesa de sinuca usada quanto custa",
+   "mesa de sinuca usada perto de mim",
+   "comprar mesa de sinuca direto da fábrica",
+   "mesa de sinuca usada bh",
+   "mesa de sinuca usada barata olx belo horizonte mg",
+   "mesa de sinuca usada bar",
+   "mesa de sinuca usada bauru",
+   "mesa de sinuca usada brasilia",
+   "mesa de sinuca usada bem avaliados",
+   "vendo mesa de sinuca usada barata",
+   "mesa de sinuca brunswick usada",
+   "mesa de sinuca bilhar usada",
+   "mesa de sinuca usada curitiba olx",
+   "mesa de sinuca usada com gaveta preço",
+   "mesa de sinuca usada curitiba",
+   "mesa de sinuca usada campo grande ms",
+   "mesa de sinuca usada com ficha",
+   "mesa de sinuca usada caxias do sul",
+   "mesa de sinuca usada campinas",
+   "mesa de sinuca usada cuiaba",
+   "mesa de sinuca completa usada",
+   "mesa de.sinuca comercial.usada",
+   "mesa de sinuca usada df",
+   "comprar mesa de bilhar usada",
+   "comprar mesa de sinuca de bar",
+   "mesa de sinuca usada em goiânia",
+   "mesa de sinuca usada em londrina",
+   "mesa de sinuca usada em joinville",
+   "mesa de sinuca usada e barata",
+   "mesa de sinuca usada em ribeirão preto",
+   "mesa de sinuca usada em florianópolis",
+   "mesa de sinuca usada em são paulo",
+   "mesa de sinuca usada em bh",
+   "mesa de sinuca usada em bom estado",
+   "mesa de sinuca usada em uberlandia",
+   "mesa de sinuca usada entre r$ 1.000 er$ 2.500",
+   "mesa de sinuca usada em porto alegre",
+   "mesa de sinuca usada em campo grande ms",
+   "mesa de sinuca usada em salvador",
+   "mesa de sinuca usada facebook",
+   "mesa de sinuca ficha usada",
+   "mesa de sinuca usada df a venda",
+   "mesa de sinuca usada brasilia df",
+   "mesa de sinuca usada goiania",
+   "mesa de sinuca usada grande",
+   "mesa de sinuca usada gaveta",
+   "comprar mesa de sinuca em goiania",
+   "mesa de sinuca usada infantil",
+   "mesa de sinuca usada jundiai",
+   "mesa de sinuca jocari usada",
+   "mesa de sinuca jantar usada",
+   "comprar mesa de sinuca e jantar",
+   "mesa de sinuca usada mercado livre",
+   "mesa de sinuca usada marketplace",
+   "mesa de sinuca usada media",
+   "mesa de sinuca marmore usada",
+   "comprar mesa de sinuca mercado livre",
+   "mesa de sinuca usada no mercadolivre",
+   "mesa de sinuca usada na olx",
+   "comprar mesa de sinuca no mercadolivre",
+   "onde comprar mesa de sinuca usada",
+   "mesa de sinuca usada olx bh",
+   "mesa de sinuca usada olx sc",
+   "mesa de sinuca usada olx salvador",
+   "mesa de sinuca usada olx rj",
+   "mesa de sinuca usada olx rs",
+   "mesa de sinuca usada olx curitiba",
+   "mesa de sinuca usada oficial",
+   "mesa de sinuca oficial usada preço",
+   "mesa de sinuca usada para comprar",
+   "mesa de sinuca usada profissional",
+   "mesa de sinuca usada para vender são paulo sp",
+   "mesa de sinuca usada pequena",
+   "mesa de sinuca usada porto alegre",
+   "mesa de sinuca usada por perto",
+   "mesa de sinuca usada para bar",
+   "mesa de sinuca usada para vender olx",
+   "mesa de sinuca usada para vender belo horizonte mg",
+   "mesa de sinuca usada para vender no mercadolivre",
+   "mesa de sinuca usada para",
+   "mesa de sinuca usada para venda",
+   "mesa de sinuca profissional usada olx",
+   "quero comprar mesa de sinuca usada",
+   "mesa de sinuca usada rj",
+   "mesa de sinuca usada ribeirao preto",
+   "mesa de sinuca usada recife",
+   "mesa de sinuca usada rs",
+   "mesa de sinuca residencial usada",
+   "comprar mesa de sinuca rio de janeiro",
+   "mesa de sinuca usada sc",
+   "mesa de sinuca usada sp",
+   "mesa de sinuca usada shopee",
+   "mesa de sinuca simples usada",
+   "comprar mesa de sinuca em sp",
+   "mesa de sinuca usada uberlândia",
+   "quero comprar uma mesa de sinuca usada",
+   "mesa de sinuca usada valor",
+   "mesa de sinuca usada venda",
+   "comprar mesa de sinuca nova"
+  ],
+  "reforma de mesa de sinuca": [
+   "reforma de mesa de sinuca perto de mim",
+   "reforma de mesa de sinuca rj",
+   "reforma de mesa de sinuca em londrina",
+   "reforma de mesa de sinuca em curitiba",
+   "reforma de mesa de sinuca campo grande ms",
+   "reforma de mesa de sinuca goiania",
+   "reforma de mesa de sinuca sp",
+   "reforma de mesa de sinuca df",
+   "reforma mesa de sinuca brasilia",
+   "reforma mesa de sinuca preço",
+   "kit para reforma de mesa de sinuca",
+   "mgh reforma de mesa de bilhar sinuca fotos",
+   "mgh reforma de mesa de bilhar sinuca",
+   "reforma de mesa de sinuca rj preço",
+   "reforma de mesa de sinuca bh",
+   "reforma de mesa de sinuca em são paulo",
+   "reforma de mesas de sinuca",
+   "quanto custa uma reforma de mesa de sinuca",
+   "reforma de mesa de sinuca goiânia",
+   "reforma de sinuca bh",
+   "reforma de mesa de bilhar em sp",
+   "reforma da mesa de sinuca",
+   "reforma de mesa de sinuca em goiânia",
+   "reforma em mesa de sinuca",
+   "reforma de mesa sinuca",
+   "mesa de sinuca para reforma"
+  ],
+  "troca de pano de mesa de sinuca": [
+   "empresa que troca pano de mesa de sinuca",
+   "preço de pano de mesa de sinuca",
+   "rede de pano de mesa de sinuca",
+   "trocador de pano de mesa de sinuca",
+   "cores de pano de mesa de sinuca",
+   "rolo de pano de mesa de sinuca",
+   "pano de mesa de sinuca",
+   "pano de mesa de sinuca personalizado",
+   "pano de mesa de sinuca profissional",
+   "pano de mesa de sinuca do flamengo",
+   "pano de mesa de sinuca do corinthians",
+   "pano de mesa de sinuca azul",
+   "pano de mesa de sinuca thais",
+   "pano de mesa de sinuca no mercadolivre",
+   "pano de mesa de sinuca vermelho",
+   "pano de mesa de sinuca preço",
+   "troca de pano de mesa de sinuca",
+   "troca de pano de mesa de bilhar",
+   "troca de pano mesa de sinuca",
+   "troca de pano da mesa de sinuca",
+   "pano de mesa de sinuca do palmeiras",
+   "troca de pano mesa de bilhar",
+   "pano de mesa de sinuca mercadolivre",
+   "pano de mesa de sinuca preto",
+   "quem troca pano de mesa de sinuca",
+   "pano de mesa de sinuca strachan",
+   "pano de mesa de sinuca valor",
+   "pano de mesa de sinuca verde"
+  ],
+  "manutencao de mesa de sinuca": [
+   "manutenção de mesa de sinuca",
+   "manutenção mesa de sinuca porto alegre",
+   "manutenção mesa de sinuca rj",
+   "manutenção mesa de sinuca perto de mim",
+   "manutencao de mesa de bilhar",
+   "manutencao mesa sinuca",
+   "manutencao mesa bilhar",
+   "manutenção mesa de sinuca",
+   "manutencao de mesa de sinuca",
+   "manutenção de mesas de sinuca",
+   "manutenção em mesa de sinuca"
+  ],
+  "conserto de mesa de sinuca": [
+   "conserto de mesa de sinuca perto de mim",
+   "conserto de mesa de sinuca rj",
+   "conserto de mesa de snooker",
+   "conserto de mesa de bilhar",
+   "conserto mesa sinuca",
+   "conserto de mesa de sinuca"
+  ],
+  "nivelamento de mesa de sinuca": [
+   "nivelamento mesa de bilhar",
+   "nivelamento de mesa de sinuca"
+  ],
+  "montagem de mesa de sinuca": [
+   "montagem e desmontagem de mesa de sinuca",
+   "kit montagem mesa de sinuca",
+   "montagem de mesa de bilhar",
+   "montagem de sinuca",
+   "montagem da mesa de sinuca",
+   "montagem de mesa de sinuca"
+  ],
+  "transporte de mesa de sinuca": [
+   "transporte de mesa de bilhar",
+   "transporte de sinuca",
+   "transporte de mesa de sinuca"
+  ],
+  "mesa de sinuca para bar": [
+   "mesa de sinuca para bar com ficha preço",
+   "mesa de sinuca para bar usada",
+   "mesa de sinuca para bar preço",
+   "mesa de sinuca para bar alugar",
+   "mesa de sinuca para bar com ficha tamanho",
+   "mesa de sinuca para bar com ficha",
+   "mesa de sinuca para barbearia",
+   "mesa de sinuca para bar mercadolivre",
+   "mesa de sinuca para bar com ficha usada",
+   "mesa de sinuca para bar por perto",
+   "mesa de sinuca para bar medidas",
+   "mesa de sinuca para bar com ficheiro",
+   "mesa de sinuca para bar olx",
+   "mesa de sinuca para bar com gaveta",
+   "mesa de sinuca para bar pequena",
+   "mesa de sinuca para bar valor",
+   "mesa de sinuca barata para vender",
+   "mesa de sinuca de bar quanto custa",
+   "bar com mesa de sinuca perto de mim",
+   "bar com mesa de sinuca perto de mim abertos agora",
+   "bar de sinuca perto de mim abertos agora",
+   "mesa de sinuca para bar aluguel",
+   "mesa de sinuca bar a venda",
+   "mesa de sinuca de bar antiga",
+   "aluguel mesa de sinuca para bar abertos agora",
+   "aluguel de mesa de sinuca para bar rj",
+   "mesa de sinuca bilhar para bar",
+   "mesa de sinuca de bar para comprar",
+   "capa para mesa de sinuca de bar",
+   "mesa de sinuca de bar dimensões",
+   "aluguel de mesa de sinuca para bar",
+   "preço de mesa de sinuca para bar",
+   "mesa de sinuca de bar para vender",
+   "tamanho de mesa de sinuca para bar",
+   "mesa de sinuca de bar",
+   "mesa de sinuca de bar usada",
+   "mesa de sinuca de bar com gaveta",
+   "mesa de sinuca de bar com ficha",
+   "mesa de sinuca de bar olx",
+   "mesa de sinuca de bar mercado livre",
+   "mesa de sinuca de bar nova",
+   "mesa de sinuca de bar pequena",
+   "mesa de sinuca em bar",
+   "mesa de sinuca estilo bar",
+   "novidades em mesa de sinuca para bar",
+   "mesa de sinuca grande para bar",
+   "locação de mesa de sinuca para bar",
+   "mesa de sinuca no bar",
+   "mesa de sinuca para bar no mercadolivre",
+   "mesa de sinuca de bar oficial",
+   "qual o valor da mesa de sinuca para bar",
+   "mesa de sinuca para bar",
+   "mesa de sinuca padrão bar",
+   "mesa de sinuca profissional bar",
+   "mesa de sinuca para alugar para bar",
+   "aluguel mesa de sinuca de bar preço",
+   "mesa de sinuca bar tamanho",
+   "mesa de sinuca em um bar",
+   "quanto custa uma mesa de sinuca para bar"
+  ],
+  "mesa de sinuca comercial": [
+   "mesa de sinuca comercial com fichas",
+   "mesa de sinuca comercial preço",
+   "mesa de sinuca comercial para bares",
+   "mesa de.sinuca comercial.usada",
+   "quanto custa uma mesa de sinuca comercial",
+   "mesa de sinuca comercial com ficheiro",
+   "mesa de sinuca comercial usada",
+   "sinuca comercial preço"
+  ],
+  "mesa de sinuca para condominio": [
+   "mesa de sinuca para apartamento pequeno",
+   "mesa de sinuca para apartamento",
+   "mesa de sinuca para alugar campinas",
+   "mesa de sinuca para area de lazer",
+   "mesa de sinuca preço para alugar",
+   "mesa de sinuca para condominio",
+   "mesa de sinuca para comprar usada",
+   "mesa de sinuca para comprar barata",
+   "mesa de sinuca para alugar joinville",
+   "mesa de sinuca para colocar em casa",
+   "mesa de sinuca residencial com tampo",
+   "mesa de sinuca para area externa"
+  ]
+ }
+}
