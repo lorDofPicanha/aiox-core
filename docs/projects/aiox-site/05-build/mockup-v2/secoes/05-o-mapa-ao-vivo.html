@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect width='28' height='28' fill='%230f0f0f'/%3E%3Crect x='5' y='7' width='18' height='14' rx='4' fill='none' stroke='%23E9A23B' stroke-width='2'/%3E%3C/svg%3E">
+<title>§5 · 004 O mapa ao vivo — mockup v2</title>
+<link rel="preload" href="../fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/JetBrainsMono.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/mockup.css">
+</head>
+<body>
+<div class="folha" aria-hidden="true"><i></i><i></i></div>
+
+<div class="gate">
+  <span><b>§5 · 004 O mapa ao vivo</b></span>
+  <span class="sep">·</span>
+  <span>de: `005 ● CASE STUDIES` / “What We’ve Built” — container largo mídia+copy. O case sai, o motor entra.</span>
+  <span class="sep">|</span>
+  <a href="04-casos-de-uso.html">← §4 · 003 Casos de uso por ramo</a>
+  <a href="06-como-funciona.html">§6 · 005 Como funciona →</a>
+  <a href="index.html">todas</a>
+  <a href="../index.html">página inteira</a>
+</div>
+
+<section class="sec sec--surf" id="prova">
+  <div class="dots dots--32"></div>
+  <div class="wrap wrap--wide">
+    
+    <div class="sec-head">
+      <span class="crop"><span class="pill"><span class="pill-n">004</span><span class="pill-t"><i class="pill-dot"></i>a prova</span></span></span>
+      <h2>Não vou te contar. Olha acontecendo.</h2>
+      <p class="lead">Descreve aí, com as suas palavras, um processo que se repete na sua empresa. O que aparece em seguida é o mesmo diagnóstico que eu faço no primeiro dia de um projeto — só que agora, e de graça.</p>
+    </div>
+    <div class="sec-body">
+      <div class="prova-grid">
+
+        <div class="painel entrada" style="padding:24px;display:flex;flex-direction:column;gap:18px">
+          <div class="campo">
+            <label for="proc">você escreve</label>
+            <textarea id="proc" rows="7" placeholder="Ex.: o cliente me chama no zap pedindo orçamento, eu confiro o preço na tabela e mando pro vendedor...">O cliente me chama no zap pedindo orçamento. Eu confiro o preço na tabela e monto a proposta. Depois eu registro na planilha de vendas. Aí eu aviso o vendedor. Na sexta eu fecho o relatório da semana na mão.</textarea>
+          </div>
+          <div class="campo">
+            <label for="freq">isso acontece</label>
+            <div style="display:flex;gap:10px">
+              <input id="freq" type="number" min="1" value="5" style="width:92px" aria-label="quantidade">
+              <select id="periodo" aria-label="período" style="flex:1;height:48px;border-radius:var(--r-btn);border:1px solid var(--border);background:var(--card);padding:0 12px">
+                <option value="semana">vezes por semana</option>
+                <option value="mes">vezes por mês</option>
+              </select>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button class="btn btn-1" id="btn-ver" style="flex:1 1 auto">ver o meu</button>
+            <button class="btn btn-2 btn-sm" id="btn-ex">usar um exemplo pronto</button>
+          </div>
+          <p class="t-cap">Roda no seu navegador. Nada sai daqui, nada é gravado, não tem cadastro.</p>
+        </div>
+
+        <div class="painel" style="padding:24px;display:flex;flex-direction:column;gap:20px" id="saida">
+          <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
+            <span class="chip">o que eu li</span>
+            <span class="guia" style="flex:1"><span class="traco traco--bronze"></span></span>
+            <span class="t-micro" id="resumo">6 saem da sua mão · 0 pela metade · 0 ficam com você</span>
+          </div>
+
+          <div class="etapas-lista" id="etapas">
+            <div class="etapa etapa--auto">
+      <span class="etapa-n">01</span>
+      <span><span class="etapa-txt">O cliente me chama no zap pedindo orçamento</span><span class="etapa-motivo">aviso de rotina — dispara sozinho quando o gatilho acontece</span></span>
+      <span class="etapa-sinal"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>sai da sua mão</span>
+    </div>
+            <div class="etapa etapa--auto">
+      <span class="etapa-n">02</span>
+      <span><span class="etapa-txt">Eu confiro o preço na tabela</span><span class="etapa-motivo">consulta a dado que já existe em algum sistema</span></span>
+      <span class="etapa-sinal"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>sai da sua mão</span>
+    </div>
+            <div class="etapa etapa--auto">
+      <span class="etapa-n">03</span>
+      <span><span class="etapa-txt">monto a proposta</span><span class="etapa-motivo">documento montado a partir de dado que já existe — modelo mais dados</span></span>
+      <span class="etapa-sinal"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>sai da sua mão</span>
+    </div>
+            <div class="etapa etapa--auto">
+      <span class="etapa-n">04</span>
+      <span><span class="etapa-txt">Depois eu registro na planilha de vendas</span><span class="etapa-motivo">mesmo dado sendo redigitado em outro lugar</span></span>
+      <span class="etapa-sinal"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>sai da sua mão</span>
+    </div>
+            <div class="etapa etapa--auto">
+      <span class="etapa-n">05</span>
+      <span><span class="etapa-txt">Aí eu aviso o vendedor</span><span class="etapa-motivo">aviso de rotina — dispara sozinho quando o gatilho acontece</span></span>
+      <span class="etapa-sinal"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>sai da sua mão</span>
+    </div>
+            <div class="etapa etapa--auto">
+      <span class="etapa-n">06</span>
+      <span><span class="etapa-txt">Na sexta eu fecho o relatório da semana na mão</span><span class="etapa-motivo">número derivado de dado que a operação já produziu</span></span>
+      <span class="etapa-sinal"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>sai da sua mão</span>
+    </div>
+          </div>
+
+          <div style="border-top:1px solid var(--border);padding-top:20px">
+            <p class="t-micro">passos que saem da sua mão, por mês, de volta pra você</p>
+            <p class="total"><b class="tabular" id="horas">13,7</b><span>horas por mês</span></p>
+            <p class="t-cap" id="premissa" style="margin-top:8px;max-width:56ch">
+              A conta: 38 minutos por execução × 5 vezes por semana × 4,33 semanas no mês.
+              Etapa que eu não li vale zero — somar seria chute. Parcial entra pela metade, porque a máquina redige e você confere.
+            </p>
+            <p class="ponte-dinheiro">Quanto vale essa hora na sua empresa, você sabe melhor do que eu.</p>
+          </div>
+
+          <div class="trace" id="trace">
+            <p class="t-micro" style="margin-bottom:8px">a máquina por dentro</p>
+            <div class="trace-l"><span>leitura — 207 caracteres · 40 palavras</span><b>0,01 ms</b></div>
+            <div class="trace-l"><span>separação — 6 etapas identificadas</span><b>0,19 ms</b></div>
+            <div class="trace-l"><span>classificação — 6 automatizáveis · 0 parciais · 0 ficam com você</span><b>0,102 ms</b></div>
+            <div class="trace-l"><span>estimativa — 38 min por execução · 5×/semana</span><b>0,005 ms</b></div>
+            <div class="trace-l" style="border-top:1px solid var(--border);margin-top:8px;padding-top:6px"><span>total</span><b id="totalms">0,319 ms</b></div>
+          </div>
+
+          <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
+            <a class="btn btn-1" href="#contato">quero isso rodando na minha empresa</a>
+          </div>
+          <p class="assinatura t-cap"><a href="#quem" class="cta-mono">quem escreveu essa máquina <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<script type="module" src="../js/mockup.js"></script>
+</body>
+</html>

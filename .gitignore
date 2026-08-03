@@ -474,3 +474,16 @@ docs/projects/site-prospector/03-proposal-mockups/**/screens-baseline/
 
 # Site-Prospector — fotos de prospects (raspadas, ~420MB, reprodutíveis via tools/nacional-2026-07/)
 docs/projects/site-prospector/03-proposal-mockups/_nacional-2026-07/_clientes/**/fotos/
+
+# --- projeto TALOS (docs/projects/aiox-site) ---
+# Capturas de sites de terceiros usadas como referência: 289 MB, material que não é nosso
+# e é rebaixável a qualquer momento. Consequência assumida: sem isso o fork-talos.cjs não
+# roda num clone limpo — por isso o build (05-build/talos-site/) VAI versionado.
+docs/projects/aiox-site/02-references/inputs/
+# Screenshots de processo (seleção de template, A/B de build): ~82 MB, valor arqueológico.
+docs/projects/aiox-site/05-build/shots/
+docs/projects/aiox-site/05-build/shots-v2/
+docs/projects/aiox-site/05-build/shots-talos-site/
+docs/projects/aiox-site/05-build/templates-candidatos/shots/
+docs/projects/aiox-site/05-build/templates-candidatos/shots-completo/
+docs/projects/aiox-site/05-build/templates-candidatos/shots-finalistas/

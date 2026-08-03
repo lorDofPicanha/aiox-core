@@ -1,0 +1,1244 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Talos — automação de processos e construção de sites</title>
+<meta name="description" content="O trabalho repetitivo da sua empresa não precisa de gente. Eu construo as máquinas que fazem esse trabalho sozinhas — e a primeira delas é o seu site." />
+
+<style>
+/* ══════════════════════════════════════════════════════════════════════════
+   SISTEMA VISUAL — extraído do CSS REAL de leanware.co
+   Fonte: 02-references/inputs/leanware/pages/home/page.html (107.607 chars inline)
+   Nenhum token abaixo foi inventado: todos saíram do capture, exceto o ACENTO,
+   que é o bronze #E9A23B já aprovado para a marca Talos (autômato de bronze).
+   ══════════════════════════════════════════════════════════════════════════ */
+
+@font-face{font-family:'Inter Variable';font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/InterVariable.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/JetBrainsMono.woff2) format('woff2')}
+
+:root{
+  /* superfícies — leanware --color-lw-* */
+  --dark:#0e0e10; --surf:#131316; --card:#18181c; --card-hover:#1e1e22;
+  --raised:#232328; --top:#2e2e33;
+  --border-dark:#232328; --border-light:#2e2e33; --border-glass:#ffffff0f;
+
+  /* tinta — leanware --color-lw-ink* */
+  --ink:#fafafa; --ink-2:#fafafaa8; --ink-3:#fafafa6b; --ink-4:#fafafa47;
+
+  /* ACENTO — bronze Talos (leanware usa #3ecf8e; a estrutura de tons é a mesma) */
+  --accent:#e9a23b; --accent-light:#c9862c; --accent-2:#b8791f;
+  --accent-soft:#e9a23b1a; --accent-ring:#e9a23b38; --accent-glow:#e9a23b66;
+  --on-accent:#0e0e10;
+
+  --red:#dc2626;
+
+  /* tipografia — leanware --font-sans / --font-mono */
+  --sans:'Inter Variable','Inter',system-ui,sans-serif;
+  --mono:'JetBrains Mono','IBM Plex Mono','SF Mono',Menlo,ui-monospace,monospace;
+
+  /* escala — leanware --text-* */
+  --t-display:3.875rem; --t-h1:3.25rem; --t-h2:2.75rem; --t-h3:2rem;
+  --t-h4:1.3125rem; --t-h5:1.125rem;
+  --t-body-lg:1.0625rem; --t-body:.9375rem; --t-body-sm:.875rem;
+  --t-caption:.8125rem; --t-label:.6875rem; --t-micro:.625rem;
+
+  /* raios — leanware --radius-* */
+  --r-btn:.625rem; --r-badge:.75rem; --r-card-sm:.875rem;
+  --r-card:1rem; --r-card-lg:1.25rem; --r-card-xl:1.375rem; --r-pill:1.75rem;
+
+  /* largura — leanware --max-width-site* */
+  --site:1200px; --site-wide:1280px;
+
+  --ease:cubic-bezier(0,0,.2,1);
+}
+
+/* Variante verde do leanware — o botão no canto troca isto e nada mais. */
+:root[data-accent="verde"]{
+  --accent:#3ecf8e; --accent-light:#35b47a; --accent-2:#2bb47a;
+  --accent-soft:#3ecf8e1a; --accent-ring:#3ecf8e38; --accent-glow:#3ecf8e66;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--dark); color:var(--ink);
+  font-family:var(--sans); font-size:var(--t-body); line-height:1.7;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+::selection{background:var(--accent);color:var(--on-accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+.wrap{max-width:var(--site-wide);margin:0 auto;width:100%}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ── seções: ritmo do leanware (px-6 py-28 / md:px-16 md:py-32 + border-t) ── */
+section{padding:72px 24px;border-top:1px solid var(--border-dark);position:relative}
+@media(min-width:768px){section{padding:128px 64px}}
+/* o nav é sticky (74px) — sem isto a âncora do menu para embaixo dele.
+   leanware resolve o mesmo com `scroll-mt-24`. */
+section[id],div[id]{scroll-margin-top:96px}
+.bg-surf{background:var(--surf)}
+
+/* ── tipografia ── */
+h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.06}
+.display{font-size:clamp(2.5rem,7vw,var(--t-display));line-height:1.08}
+.h2{font-size:clamp(1.9rem,4.4vw,var(--t-h2))}
+.h3{font-size:var(--t-h3);letter-spacing:-.02em;line-height:1.1}
+.h4{font-size:var(--t-h4);font-weight:700;letter-spacing:-.01em;line-height:1.3}
+.h5{font-size:var(--t-h5);font-weight:700;letter-spacing:-.01em;line-height:1.4}
+.lead{font-size:var(--t-body-lg);line-height:1.7;color:var(--ink-2)}
+.body{font-size:var(--t-body);line-height:1.7;color:var(--ink-2)}
+/* leanware usa --ink-3 (#fafafa6b) aqui, mas medido dá 3,78:1 — reprova AA em texto
+   de leitura. Subido para --ink-2 (8,11:1). Cálculo, não estimativa. */
+.small{font-size:var(--t-body-sm);line-height:1.6;color:var(--ink-2)}
+.mono{font-family:var(--mono)}
+
+/* eyebrow — regra .*-eyebrow do leanware, 1:1 */
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:11px;font-weight:600;line-height:1.2;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--accent);
+}
+.eyebrow::before{content:'';flex:none;width:14px;height:1px;background:var(--accent)}
+
+.micro{
+  font-family:var(--mono);font-size:var(--t-micro);font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--ink-4);
+}
+
+.head{max-width:820px;margin-bottom:56px}
+.head .h2{margin:18px 0 16px}
+.head .lead{max-width:62ch}
+
+/* ── dot grids — valores exatos do capture ── */
+.dg{position:absolute;inset:0;pointer-events:none}
+.dg-hero{
+  background-image:radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:24px 24px;
+  -webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,0) 80%);
+  mask-image:linear-gradient(180deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,0) 80%);
+}
+.dg-sec{
+  background-image:radial-gradient(circle,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:32px 32px;
+  -webkit-mask-image:radial-gradient(ellipse at 50% 30%,rgba(0,0,0,.8) 0%,transparent 75%);
+  mask-image:radial-gradient(ellipse at 50% 30%,rgba(0,0,0,.8) 0%,transparent 75%);
+}
+.dg-cta{
+  background-image:radial-gradient(circle,rgba(255,255,255,.05) 1px,transparent 1px);
+  background-size:24px 24px;
+  -webkit-mask-image:radial-gradient(ellipse at 50% 50%,rgba(0,0,0,.7) 0%,transparent 60%);
+  mask-image:radial-gradient(ellipse at 50% 50%,rgba(0,0,0,.7) 0%,transparent 60%);
+}
+.dg-foot{
+  background-image:radial-gradient(circle,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:28px 28px;
+  -webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,0) 70%);
+  mask-image:linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,0) 70%);
+}
+
+/* ── botões — leanware: primário é FILL de acento, texto escuro ── */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  height:46px;padding:0 22px;border-radius:var(--r-btn);
+  font-size:var(--t-body);font-weight:600;letter-spacing:-.01em;
+  transition:transform .18s var(--ease),background .18s var(--ease),border-color .18s var(--ease);
+}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--accent);color:var(--on-accent)}
+.btn-primary:hover{background:var(--accent-light)}
+.btn-ghost{background:var(--raised);color:var(--ink);border:1px solid var(--border-light)}
+.btn-ghost:hover{background:var(--top)}
+.btn-outline{border:1px solid var(--accent-ring);color:var(--accent)}
+.btn-outline:hover{background:var(--accent-soft)}
+.btn-sm{height:40px;padding:0 16px;font-size:var(--t-body-sm)}
+
+/* ── cards ── */
+.card{
+  background:var(--card);border:1px solid var(--border-dark);
+  border-radius:var(--r-card-lg);padding:28px;
+  transition:background .2s var(--ease),border-color .2s var(--ease),transform .2s var(--ease);
+}
+.card-hover:hover{background:var(--card-hover);border-color:var(--border-light);transform:translateY(-3px)}
+.grid{display:grid;gap:20px}
+@media(min-width:768px){.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1024px){.g4{grid-template-columns:repeat(2,1fr)}}
+
+/* ══ NAV ══ */
+.nav{
+  position:sticky;top:0;z-index:60;background:rgba(14,14,16,.82);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border-dark);
+}
+.nav__in{
+  max-width:var(--site-wide);margin:0 auto;height:74px;padding:0 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+@media(min-width:768px){.nav__in{padding:0 40px}}
+.brand{display:flex;align-items:center;gap:11px;font-size:20px;font-weight:800;letter-spacing:-.04em}
+.brand svg{flex:none}
+.nav__links{display:none;gap:30px;align-items:center}
+@media(min-width:1024px){.nav__links{display:flex}}
+.nav__links a{font-size:var(--t-body);font-weight:500;color:var(--ink-2);transition:color .18s}
+.nav__links a:hover{color:var(--ink)}
+
+/* ══ HERO ══ */
+.hero{border-top:0;padding-top:64px;padding-bottom:64px;overflow:hidden}
+@media(min-width:768px){.hero{padding-top:96px;padding-bottom:96px}}
+.hero__glow{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(ellipse 720px 460px at 92% -8%,
+    color-mix(in srgb,var(--accent) 5%,transparent) 0%,
+    color-mix(in srgb,var(--accent) 2%,transparent) 50%,transparent 78%);
+}
+.hero__in{position:relative;max-width:var(--site-wide);margin:0 auto;
+  display:grid;gap:56px;align-items:center}
+@media(min-width:1024px){.hero__in{grid-template-columns:1.02fr .98fr;gap:64px}}
+.hero h1{margin:22px 0 24px;max-width:14ch}
+.hero .lead{max-width:48ch}
+.hero__acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.hero__note{
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  margin-top:34px;padding-top:22px;border-top:1px solid var(--border-dark);
+}
+
+/* painel do hero — equivalente ao chat panel do leanware, mas o conteúdo é real */
+.panel{
+  background:var(--card);border:1px solid var(--border-dark);
+  border-radius:var(--r-card-xl);padding:22px;
+  box-shadow:0 32px 80px -32px rgba(0,0,0,.9);
+}
+.panel__bar{
+  display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;
+  padding-bottom:16px;border-bottom:1px solid var(--border-dark);
+}
+.step{
+  display:grid;grid-template-columns:26px 1fr auto;gap:14px;align-items:center;
+  padding:14px 0;border-bottom:1px solid var(--border-dark);
+}
+.step:last-child{border-bottom:0}
+.step__n{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--ink-4)}
+.step__t{font-size:var(--t-body);color:var(--ink)}
+.tag{
+  font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;padding:5px 9px;border-radius:var(--r-badge);white-space:nowrap;
+}
+.tag-auto{background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent-ring)}
+.tag-parc{background:#ffffff0a;color:var(--ink-3);border:1px solid var(--border-light)}
+.tag-hum{background:transparent;color:var(--ink-4);border:1px dashed var(--border-light)}
+
+/* ══ MARQUEE — bordas e fades do leanware, verbos do Talos ══ */
+.mq{
+  position:relative;width:100%;overflow:hidden;padding:0;
+  border-top:1px solid var(--border-dark);border-bottom:1px solid var(--border-dark);
+  background:var(--dark);
+}
+.mq__fade{position:absolute;top:0;bottom:0;width:120px;pointer-events:none;z-index:2}
+.mq__fade--l{left:0;background:linear-gradient(90deg,var(--dark) 0%,transparent 100%)}
+.mq__fade--r{right:0;background:linear-gradient(270deg,var(--dark) 0%,transparent 100%)}
+.mq__track{display:flex;width:max-content;animation:mq 38s linear infinite}
+.mq__grp{display:flex;align-items:center}
+.mq__item{
+  display:inline-flex;align-items:center;gap:26px;padding:0 26px;
+  font-size:clamp(1.6rem,4.4vw,2.6rem);font-weight:800;letter-spacing:-.035em;
+  color:transparent;-webkit-text-stroke:1px var(--accent-ring);
+  line-height:1;padding-top:22px;padding-bottom:22px;
+}
+.mq__item:nth-child(3n){color:var(--ink-4);-webkit-text-stroke:0}
+.mq__dot{width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:.5;flex:none}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.mq__track{animation:none}}
+
+/* ══ COMPARATIVO ══ */
+.cmp{border:1px solid var(--border-dark);border-radius:var(--r-card-lg);overflow:hidden;background:var(--card)}
+.cmp__row{display:grid;border-bottom:1px solid var(--border-dark)}
+.cmp__row:last-child{border-bottom:0}
+@media(min-width:900px){.cmp__row{grid-template-columns:1.25fr 1fr 1fr 1fr}}
+.cmp__q{padding:22px 24px;font-weight:700;font-size:var(--t-body);letter-spacing:-.01em;background:var(--surf)}
+.cmp__c{padding:22px 24px;font-size:var(--t-body-sm);color:var(--ink-2);border-top:1px solid var(--border-dark)}
+@media(min-width:900px){.cmp__c{border-top:0;border-left:1px solid var(--border-dark)}}
+.cmp__c--me{color:var(--ink);background:color-mix(in srgb,var(--accent) 4%,transparent)}
+.cmp__head{display:none}
+@media(min-width:900px){
+  .cmp__head{display:grid;grid-template-columns:1.25fr 1fr 1fr 1fr;border-bottom:1px solid var(--border-dark)}
+  .cmp__head>*{padding:14px 24px}
+  .cmp__head>*+*{border-left:1px solid var(--border-dark)}
+}
+.cmp__lbl{display:block;font-family:var(--mono);font-size:10px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-4);margin-bottom:6px}
+@media(min-width:900px){.cmp__c .cmp__lbl{display:none}}
+
+/* ══ ABAS ══ */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.tab{
+  height:42px;padding:0 18px;border-radius:var(--r-btn);
+  border:1px solid var(--border-light);background:var(--raised);
+  font-size:var(--t-body-sm);font-weight:600;color:var(--ink-2);
+  display:inline-flex;align-items:center;gap:9px;transition:.18s var(--ease);
+}
+.tab:hover{background:var(--top);color:var(--ink)}
+.tab[aria-selected="true"]{background:var(--accent-soft);border-color:var(--accent-ring);color:var(--accent)}
+.linha{
+  display:grid;grid-template-columns:28px 1fr;gap:14px;align-items:start;
+  padding:16px 0;border-bottom:1px solid var(--border-dark);
+  animation:sobe .38s var(--ease) both;
+}
+@media(min-width:768px){.linha{grid-template-columns:28px 1fr auto;align-items:center}}
+.linha:last-child{border-bottom:0}
+@keyframes sobe{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.linha{animation:none}}
+
+/* ══ DEMO ══ */
+.demo{display:grid;gap:22px}
+@media(min-width:1024px){.demo{grid-template-columns:.86fr 1.14fr}}
+textarea,input[type=number],input[type=text],input[type=email]{
+  width:100%;background:var(--dark);color:var(--ink);
+  border:1px solid var(--border-light);border-radius:var(--r-card-sm);
+  padding:14px 16px;font:inherit;font-size:var(--t-body);line-height:1.6;
+  transition:border-color .18s var(--ease);
+}
+textarea:focus,input:focus{border-color:var(--accent-ring);outline:none}
+textarea{min-height:186px;resize:vertical}
+label{display:block;font-family:var(--mono);font-size:11px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:9px}
+.stat{display:flex;align-items:baseline;gap:10px}
+.stat__n{font-size:clamp(2.6rem,7vw,3.6rem);font-weight:800;letter-spacing:-.04em;
+  line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
+.trace{font-family:var(--mono);font-size:11.5px;line-height:1.9;color:var(--ink-3)}
+.trace b{color:var(--ink-2);font-weight:600}
+.trace span{color:var(--accent)}
+
+/* ══ TRUST STRIP ══ */
+.strip{background:var(--dark);border-top:1px solid var(--border-dark);
+  border-bottom:1px solid var(--border-dark);padding:80px 24px;position:relative}
+@media(min-width:768px){.strip{padding:96px 64px}}
+.strip::before{
+  content:'';position:absolute;inset:0;pointer-events:none;opacity:.7;
+  background-image:radial-gradient(circle at 50% 0%,var(--accent-soft) 0%,transparent 45%);
+}
+.strip__in{position:relative;max-width:var(--site-wide);margin:0 auto}
+
+/* ══ FAQ ══ */
+details{border-bottom:1px solid var(--border-dark)}
+summary{
+  display:flex;justify-content:space-between;align-items:center;gap:20px;
+  padding:22px 0;cursor:pointer;list-style:none;
+  font-size:var(--t-h5);font-weight:700;letter-spacing:-.015em;color:var(--ink);
+}
+summary::-webkit-details-marker{display:none}
+summary:hover{color:var(--accent)}
+.sinal{position:relative;flex:none;width:15px;height:15px}
+.sinal::before,.sinal::after{
+  content:'';position:absolute;background:var(--accent);transition:transform .22s var(--ease);
+}
+.sinal::before{top:7px;left:0;width:15px;height:1.5px}
+.sinal::after{left:6.75px;top:0;width:1.5px;height:15px}
+details[open] .sinal::after{transform:scaleY(0)}
+details[open] summary{color:var(--accent)}
+details>p{padding-bottom:24px;max-width:72ch;color:var(--ink-2);font-size:var(--t-body);line-height:1.75}
+
+/* ══ CTA ══ */
+.cta{overflow:hidden;text-align:center}
+.cta__glow{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 700px 400px at 50% 50%,var(--accent-soft) 0%,transparent 65%)}
+.cta__in{position:relative;max-width:820px;margin:0 auto;display:flex;
+  flex-direction:column;align-items:center}
+.cta h2{margin:20px 0 18px;font-size:clamp(2rem,5vw,3.25rem)}
+
+/* ══ FOOTER ══ */
+.foot{position:relative;padding:72px 24px 40px;border-top:1px solid var(--border-dark);
+  background:var(--dark);overflow:hidden}
+@media(min-width:768px){.foot{padding:96px 64px 44px}}
+.foot__bg{position:absolute;inset:0;pointer-events:none;opacity:.55;
+  background-image:radial-gradient(ellipse 1200px 360px at 50% 0%,var(--accent-soft) 0%,transparent 70%)}
+.foot__in{position:relative;max-width:var(--site-wide);margin:0 auto}
+.foot__cols{display:grid;gap:40px;margin-top:44px}
+@media(min-width:768px){.foot__cols{grid-template-columns:1.5fr 1fr 1fr 1fr}}
+.foot h2{font-size:10px;font-family:var(--mono);font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-4);margin-bottom:16px}
+.foot ul{list-style:none;display:grid;gap:11px}
+.foot ul a{font-size:var(--t-body-sm);color:var(--ink-2);transition:color .18s}
+.foot ul a:hover{color:var(--accent)}
+.foot__bar{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
+  margin-top:52px;padding-top:24px;border-top:1px solid var(--border-dark)}
+
+/* ══ pendências visíveis — não dá pra publicar sem ver ══ */
+.todo{
+  display:inline-block;font-family:var(--mono);font-size:11px;font-weight:700;
+  letter-spacing:.06em;color:#ffb4b4;background:#dc26261f;border:1px dashed #dc2626aa;
+  padding:3px 8px;border-radius:6px;
+}
+
+/* ══ troca de acento ══ */
+.swatch{
+  position:fixed;right:16px;bottom:16px;z-index:90;display:flex;gap:6px;
+  padding:7px;border-radius:var(--r-pill);background:rgba(20,20,24,.9);
+  border:1px solid var(--border-light);backdrop-filter:blur(10px);
+}
+.swatch button{width:26px;height:26px;border-radius:50%;border:2px solid transparent}
+.swatch button[aria-pressed="true"]{border-color:var(--ink)}
+</style>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<header class="nav">
+  <div class="nav__in">
+    <a class="brand" href="#topo" aria-label="Talos — início">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+        <rect x="1" y="1" width="24" height="24" rx="6" stroke="var(--accent)" stroke-width="1.4"/>
+        <circle cx="13" cy="13" r="4.2" stroke="var(--accent)" stroke-width="1.4"/>
+        <circle cx="13" cy="13" r="8" stroke="var(--accent)" stroke-width="1" opacity=".45"/>
+        <circle cx="13" cy="5" r="1.5" fill="var(--accent)"/>
+      </svg>
+      Talos
+    </a>
+
+    <nav class="nav__links" aria-label="Seções">
+      <a href="#problema">O problema</a>
+      <a href="#servicos">O que eu faço</a>
+      <a href="#casos">Casos de uso</a>
+      <a href="#mapa">Mapa ao vivo</a>
+      <a href="#faq">Perguntas</a>
+    </nav>
+
+    <a class="btn btn-primary btn-sm" href="#contato">Falar comigo</a>
+  </div>
+</header>
+
+<main id="topo">
+
+<!-- ══════════ 1 · HERO ══════════ -->
+<section class="hero">
+  <div class="hero__glow" aria-hidden="true"></div>
+  <div class="dg dg-hero" aria-hidden="true"></div>
+
+  <div class="hero__in">
+    <div>
+      <p class="eyebrow">Automação de processos · Construção de sites</p>
+
+      <h1 class="display">
+        O trabalho repetitivo da sua empresa não precisa de
+        <span style="color:var(--accent)">gente.</span>
+      </h1>
+
+      <p class="lead">
+        Eu construo as máquinas que fazem esse trabalho sozinhas — e a primeira delas
+        é o seu site.
+      </p>
+
+      <div class="hero__acts">
+        <a class="btn btn-primary" href="#mapa">
+          Mapear meu processo
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="btn btn-ghost" href="#comeco">Por onde começa</a>
+      </div>
+
+      <!-- Onde o leanware põe "★5/5 verificado na Clutch · 24 reviews".
+           O Talos não tem review, então não inventa uma: diz o que é verdade. -->
+      <div class="hero__note">
+        <span class="micro" style="color:var(--accent)">Operação nova</span>
+        <span class="small" style="max-width:44ch">
+          Sem case de cliente ainda — e eu não vou inventar um. O que dá pra te mostrar
+          hoje é a máquina funcionando, aqui mesmo na página.
+        </span>
+      </div>
+    </div>
+
+    <!-- painel: mesmo lugar do chat do leanware, mas mostrando o entregável real -->
+    <div class="panel">
+      <div class="panel__bar">
+        <span class="micro">Exemplo · processo mapeado</span>
+        <span class="micro" style="color:var(--accent)">3 de 3 etapas automatizáveis</span>
+      </div>
+      <div class="step">
+        <span class="step__n">01</span>
+        <span class="step__t">pedido chega no e-mail</span>
+        <span class="tag tag-auto">automatizável</span>
+      </div>
+      <div class="step">
+        <span class="step__n">02</span>
+        <span class="step__t">alguém copia pra planilha</span>
+        <span class="tag tag-auto">automatizável</span>
+      </div>
+      <div class="step">
+        <span class="step__n">03</span>
+        <span class="step__t">alguém avisa o financeiro</span>
+        <span class="tag tag-auto">automatizável</span>
+      </div>
+      <p class="small" style="margin-top:18px">
+        Mais abaixo você descreve o processo da sua empresa e recebe esse mapa na hora.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 2 · FAIXA ══════════ -->
+<div class="mq" aria-hidden="true">
+  <div class="mq__fade mq__fade--l"></div>
+  <div class="mq__fade mq__fade--r"></div>
+  <div class="mq__track" id="mq"></div>
+</div>
+<p class="sr">A máquina responde, registra, confere, calcula, avisa, arquiva, integra, cobra, agenda e emite.</p>
+
+<!-- ══════════ 3 · O PROBLEMA ══════════ -->
+<section id="problema" class="bg-surf">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">O problema</p>
+      <h2 class="h2">Você reconhece algum desses?</h2>
+    </div>
+
+    <div class="grid g3">
+      <article class="card card-hover">
+        <span class="tag tag-auto" style="display:inline-block;margin-bottom:22px">22:14</span>
+        <h3 class="h4" style="margin-bottom:12px">Chega pedido fora do horário</h3>
+        <p class="body">O cliente manda mensagem à noite. Ninguém vê até as oito da manhã seguinte — e às vezes ele já resolveu com outro.</p>
+      </article>
+      <article class="card card-hover">
+        <span class="tag tag-auto" style="display:inline-block;margin-bottom:22px">3×</span>
+        <h3 class="h4" style="margin-bottom:12px">A mesma informação, três vezes</h3>
+        <p class="body">Alguém lê no e-mail, digita no sistema e repete na planilha. Três chances de errar, zero de ganhar.</p>
+      </article>
+      <article class="card card-hover">
+        <span class="tag tag-auto" style="display:inline-block;margin-bottom:22px">toda segunda</span>
+        <h3 class="h4" style="margin-bottom:12px">A manhã que o relatório come</h3>
+        <p class="body">Uma pessoa passa metade do dia montando à mão o número que a operação da semana inteira já produziu.</p>
+      </article>
+    </div>
+
+    <p class="lead" style="margin-top:44px;max-width:46ch;color:var(--ink)">
+      Nenhum desses é problema de tecnologia.
+      <span style="color:var(--accent)">São de processo — e processo se automatiza.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ══════════ 4 · O QUE EU FAÇO ══════════ -->
+<section id="servicos">
+  <div class="dg dg-sec" aria-hidden="true"></div>
+  <div class="wrap" style="position:relative">
+    <div class="head">
+      <p class="eyebrow">O que eu faço</p>
+      <h2 class="h2">Automação aplicada, na forma de</h2>
+    </div>
+
+    <div class="grid g4">
+      <article class="card card-hover">
+        <h3 class="h5" style="margin-bottom:10px">Site que já nasce automatizado</h3>
+        <p class="body">É a porta: onde o cliente entra. Formulário que chega em você de verdade, SEO técnico que o Google consegue ler, e manutenção mensal — site não envelhece sozinho.</p>
+      </article>
+      <article class="card card-hover">
+        <h3 class="h5" style="margin-bottom:10px">Agente que atende e qualifica</h3>
+        <p class="body">Responde na hora, entende o que a pessoa quer, pega os dados que faltam e registra. O que não for para máquina chega em você já qualificado.</p>
+      </article>
+      <article class="card card-hover">
+        <h3 class="h5" style="margin-bottom:10px">Automação de processo interno</h3>
+        <p class="body">O que sai de um sistema e entra em outro pela mão de alguém. Pedido, nota, estoque, cobrança — o caminho inteiro sem digitação.</p>
+      </article>
+      <article class="card card-hover">
+        <h3 class="h5" style="margin-bottom:10px">Sistema sob medida</h3>
+        <p class="body">Quando não existe ferramenta de prateleira que sirva, e adaptar a empresa ao software sai mais caro que construir o software certo.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 5 · POR QUE EU ══════════ -->
+<section class="bg-surf">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Por que eu</p>
+      <h2 class="h2">Não é agência. Não é freela de marketplace. Não é software de prateleira.</h2>
+      <p class="lead">Uma pessoa só responde pelo resultado, do primeiro diagnóstico até a máquina rodando na sua operação.</p>
+    </div>
+
+    <div class="grid g3">
+      <!-- ilustração 1 -->
+      <article class="card">
+        <div style="background:var(--dark);border:1px solid var(--border-dark);border-radius:var(--r-card);padding:18px;margin:-6px -6px 22px">
+          <svg viewBox="0 0 320 190" fill="none" style="width:100%;height:auto" aria-hidden="true">
+            <text x="46" y="20" font-family="JetBrains Mono" font-size="11" letter-spacing="1.6" fill="var(--accent)">ESCOPO</text>
+            <text x="205" y="20" font-family="JetBrains Mono" font-size="11" letter-spacing="1.6" fill="var(--ink-3)">CONSTRUÇÃO</text>
+            <circle cx="120" cy="112" r="58" stroke="var(--accent)" stroke-width="1.2" fill="var(--accent-soft)"/>
+            <rect x="160" y="54" width="118" height="116" stroke="var(--ink-4)" stroke-width="1.2"/>
+            <g stroke="var(--ink-2)" stroke-width="1.2" fill="none">
+              <circle cx="160" cy="86" r="9"/>
+              <path d="M160 95v34M146 106h28M160 129l-9 26M160 129l9 26"/>
+            </g>
+          </svg>
+        </div>
+        <h3 class="h5" style="margin-bottom:10px">Quem levanta é quem constrói.</h3>
+        <p class="body">O diagnóstico é feito pela mesma pessoa que escreve o código depois. Sem repasse de briefing, sem o requisito que se perde no caminho.</p>
+      </article>
+
+      <!-- ilustração 2 -->
+      <article class="card">
+        <div style="background:var(--dark);border:1px solid var(--border-dark);border-radius:var(--r-card);padding:18px;margin:-6px -6px 22px">
+          <svg viewBox="0 0 320 190" fill="none" style="width:100%;height:auto" aria-hidden="true">
+            <text x="16" y="20" font-family="JetBrains Mono" font-size="11" letter-spacing="1.6" fill="var(--accent)">RODANDO</text>
+            <text x="216" y="20" font-family="JetBrains Mono" font-size="11" letter-spacing="1.6" fill="var(--ink-4)">PROPOSTA</text>
+            <rect x="16" y="42" width="130" height="98" rx="7" stroke="var(--accent)" stroke-width="1.2" fill="var(--accent-soft)"/>
+            <g stroke="var(--accent)" stroke-width="1.2">
+              <circle cx="44" cy="72" r="7" fill="var(--accent)"/>
+              <path d="M51 72h26M108 72h-24M84 79v22M84 108h-33M51 108v-8"/>
+              <circle cx="84" cy="72" r="7"/><circle cx="115" cy="72" r="7"/>
+              <circle cx="84" cy="108" r="7"/><circle cx="51" cy="115" r="7"/>
+            </g>
+            <line x1="176" y1="42" x2="176" y2="164" stroke="var(--border-light)" stroke-width="1" stroke-dasharray="3 5"/>
+            <g stroke="var(--ink-4)" stroke-width="1.2">
+              <rect x="212" y="42" width="80" height="98" rx="4"/>
+              <path d="M226 66h52M226 82h52M226 98h34M226 114h44"/>
+            </g>
+            <text x="46" y="162" font-family="JetBrains Mono" font-size="9.5" letter-spacing="1" fill="var(--ink-3)">VOCÊ VÊ ANTES</text>
+            <text x="216" y="162" font-family="JetBrains Mono" font-size="9.5" letter-spacing="1" fill="var(--ink-4)">VOCÊ LÊ SOBRE</text>
+          </svg>
+        </div>
+        <h3 class="h5" style="margin-bottom:10px">Você vê antes de aprovar.</h3>
+        <p class="body">A máquina roda na sua frente enquanto está sendo construída. Você aprova o que já viu funcionando, não uma descrição do que ela vai fazer.</p>
+      </article>
+
+      <!-- ilustração 3 -->
+      <article class="card">
+        <div style="background:var(--dark);border:1px solid var(--border-dark);border-radius:var(--r-card);padding:18px;margin:-6px -6px 22px">
+          <svg viewBox="0 0 320 190" fill="none" style="width:100%;height:auto" aria-hidden="true">
+            <g stroke="var(--accent)" stroke-width="1.2" fill="none">
+              <path d="M52 148V44M52 46h64l-13 19 13 19H52"/>
+              <circle cx="52" cy="152" r="4" fill="var(--accent)"/>
+            </g>
+            <text x="24" y="176" font-family="JetBrains Mono" font-size="9.5" letter-spacing="1" fill="var(--accent)">PRAZO FECHADO</text>
+            <line x1="160" y1="34" x2="160" y2="164" stroke="var(--border-light)" stroke-width="1" stroke-dasharray="3 5"/>
+            <g stroke="var(--ink-4)" stroke-width="1.2" fill="none">
+              <circle cx="238" cy="94" r="40"/>
+              <path d="M238 70v26l17 11"/>
+              <path d="M198 148q40-26 80 0" stroke-dasharray="4 4"/>
+            </g>
+            <text x="188" y="176" font-family="JetBrains Mono" font-size="9.5" letter-spacing="1" fill="var(--ink-4)">PROJETO ETERNO</text>
+          </svg>
+        </div>
+        <h3 class="h5" style="margin-bottom:10px">Escopo e prazo por escrito.</h3>
+        <p class="body">Você sabe o que vai receber e quando, antes de qualquer coisa começar. O preço não muda no meio, e não existe "projeto em andamento" por seis meses.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 6 · COMO SE COMPARA ══════════ -->
+<section>
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Como se compara</p>
+      <h2 class="h2">Mesma pergunta, respostas diferentes.</h2>
+      <p class="lead">Cinco perguntas que vale fazer antes de contratar qualquer um — inclusive eu.</p>
+    </div>
+
+    <div class="cmp">
+      <div class="cmp__head">
+        <span class="micro">A pergunta</span>
+        <span class="micro" style="color:var(--accent)">Talos</span>
+        <span class="micro">Agência</span>
+        <span class="micro">Freelancer avulso</span>
+      </div>
+
+      <div class="cmp__row">
+        <div class="cmp__q">Quem escreve o código é quem ouviu o problema?</div>
+        <div class="cmp__c cmp__c--me"><span class="cmp__lbl">Talos</span>Sim — é a mesma pessoa do começo ao fim.</div>
+        <div class="cmp__c"><span class="cmp__lbl">Agência</span>Normalmente não: o atendimento levanta, o time executa.</div>
+        <div class="cmp__c"><span class="cmp__lbl">Freelancer</span>Sim, mas quem está disponível naquele momento.</div>
+      </div>
+
+      <div class="cmp__row">
+        <div class="cmp__q">O que acontece depois que está no ar?</div>
+        <div class="cmp__c cmp__c--me"><span class="cmp__lbl">Talos</span>Manutenção mensal combinada desde o começo, não vendida depois.</div>
+        <div class="cmp__c"><span class="cmp__lbl">Agência</span>Costuma ser contrato à parte.</div>
+        <div class="cmp__c"><span class="cmp__lbl">Freelancer</span>Depende de ele continuar disponível.</div>
+      </div>
+
+      <div class="cmp__row">
+        <div class="cmp__q">O escopo pode crescer no meio do caminho?</div>
+        <div class="cmp__c cmp__c--me"><span class="cmp__lbl">Talos</span>Fechado por escrito antes de começar. O preço não muda no meio.</div>
+        <div class="cmp__c"><span class="cmp__lbl">Agência</span>Aditivo de escopo é parte do modelo.</div>
+        <div class="cmp__c"><span class="cmp__lbl">Freelancer</span>Renegociação caso a caso.</div>
+      </div>
+
+      <div class="cmp__row">
+        <div class="cmp__q">O site é o produto final?</div>
+        <div class="cmp__c cmp__c--me"><span class="cmp__lbl">Talos</span>Não — é a porta. Automatizar a operação é o trabalho de verdade.</div>
+        <div class="cmp__c"><span class="cmp__lbl">Agência</span>Em geral sim, mais mídia e conteúdo.</div>
+        <div class="cmp__c"><span class="cmp__lbl">Freelancer</span>Em geral sim, entrega e encerra.</div>
+      </div>
+
+      <div class="cmp__row">
+        <div class="cmp__q">Com quem você fala quando dá problema?</div>
+        <div class="cmp__c cmp__c--me"><span class="cmp__lbl">Talos</span>Comigo, direto.</div>
+        <div class="cmp__c"><span class="cmp__lbl">Agência</span>Com o atendimento, que fala com o time.</div>
+        <div class="cmp__c"><span class="cmp__lbl">Freelancer</span>Com o chat da plataforma.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 7 · CASOS DE USO ══════════ -->
+<section id="casos" class="bg-surf">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Casos de uso</p>
+      <h2 class="h2">Escolhe o seu ramo. Vê se reconhece.</h2>
+      <p class="lead">Nenhum destes é case de cliente — são processos que existem em quase toda empresa desse porte. Se você leu algum e pensou "é exatamente isso aqui", é por aí que a gente começa.</p>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Segmentos" id="tabs"></div>
+
+    <div class="card" style="padding:30px">
+      <p class="micro" id="seg-linha" style="margin-bottom:20px"></p>
+      <div id="seg-lista"></div>
+      <p class="small" style="margin-top:22px;max-width:64ch">
+        Não achou o seu? O mapa da próxima seção lê qualquer processo em texto livre —
+        inclusive um que não esteja nesta lista.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 8 · MAPA AO VIVO ══════════ -->
+<section id="mapa">
+  <div class="dg dg-sec" aria-hidden="true"></div>
+  <div class="wrap" style="position:relative">
+    <div class="head">
+      <p class="eyebrow">Mapa ao vivo</p>
+      <h2 class="h2">Descreve o seu processo. Recebe o mapa agora.</h2>
+      <p class="lead">Não é chatbot e não é formulário de captura: você escreve com as suas palavras e a máquina devolve as etapas separadas, cada uma classificada, com a conta de horas por mês. Roda no seu navegador — sem enviar nada para lugar nenhum.</p>
+    </div>
+
+    <div class="demo">
+      <form class="card" id="form" style="padding:26px">
+        <label for="txt">O processo, com as suas palavras</label>
+        <textarea id="txt" spellcheck="false"></textarea>
+
+        <div style="display:flex;gap:14px;align-items:flex-end;margin-top:18px;flex-wrap:wrap">
+          <div style="flex:1 1 150px">
+            <label for="freq">Vezes por semana</label>
+            <input id="freq" type="number" min="1" max="500" value="20" />
+          </div>
+          <button class="btn btn-primary" type="submit" style="flex:1 1 150px">Mapear</button>
+        </div>
+
+        <p class="small" style="margin-top:16px">
+          A frequência quem informa é você — por isso o número do resultado é seu, não meu.
+        </p>
+      </form>
+
+      <div class="card" id="saida" style="padding:26px"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 9 · PROVA (strip) ══════════ -->
+<div class="strip">
+  <div class="strip__in">
+    <p class="eyebrow" style="margin-bottom:22px">Prova</p>
+    <div class="grid g3" style="align-items:start">
+      <div>
+        <h2 class="h3" style="margin-bottom:14px">Sem case ainda.<br />E eu não vou inventar um.</h2>
+        <p class="body" style="max-width:38ch">
+          Estou começando esta operação agora, e prefiro dizer isso do que encher a página
+          de logo de empresa que nunca me contratou.
+        </p>
+      </div>
+      <div>
+        <p class="micro" style="color:var(--accent);margin-bottom:10px">Escopo e prazo fechados</p>
+        <p class="body">Você sabe o que vai receber e quando, por escrito, antes de qualquer coisa começar. Sem "projeto em andamento" por seis meses.</p>
+      </div>
+      <div>
+        <p class="micro" style="color:var(--accent);margin-bottom:10px">Você vê antes de aprovar</p>
+        <p class="body">A máquina roda na sua frente enquanto está sendo construída. Você aprova o que já viu funcionando, não uma descrição.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ 10 · POR ONDE COMEÇA ══════════ -->
+<section id="comeco" class="bg-surf">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Por onde começa</p>
+      <h2 class="h2">Começa pelo seu site.</h2>
+      <p class="lead">Porque é onde o cliente entra — e o primeiro trabalho repetitivo de qualquer empresa é atender quem chega. Resolvido esse, o resto da operação fica visível.</p>
+    </div>
+
+    <div class="grid g2">
+      <div class="card">
+        <p class="micro" style="color:var(--accent);margin-bottom:22px">O que está incluso</p>
+        <ul style="list-style:none;display:grid;gap:15px">
+          <li class="inc">site completo, escrito e montado do zero</li>
+          <li class="inc">funciona no celular — que é onde o seu cliente está</li>
+          <li class="inc">SEO técnico: o Google consegue ler e indexar</li>
+          <li class="inc">formulário que chega em você de verdade, não some</li>
+          <li class="inc">manutenção mensal — o site não envelhece sozinho</li>
+        </ul>
+      </div>
+
+      <div class="card" style="background:transparent;border-style:dashed">
+        <p class="micro" style="margin-bottom:22px">O que vem depois</p>
+        <ul style="list-style:none;display:grid;gap:15px">
+          <li class="dep">agente que atende e qualifica quem chega</li>
+          <li class="dep">integração com WhatsApp e com o seu CRM</li>
+          <li class="dep">automação dos processos internos</li>
+          <li class="dep">sistema sob medida, quando nada de prateleira serve</li>
+        </ul>
+        <p class="small" style="margin-top:22px">
+          Nada disso é obrigatório e nada disso entra sem você pedir. Está aqui só para
+          você saber que existe.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 11 · COMO FUNCIONA ══════════ -->
+<section>
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Como funciona</p>
+      <h2 class="h2">Três passos. Sem mistério.</h2>
+      <p class="lead">Você sabe o escopo e o prazo antes de qualquer coisa começar. O que você não vai ter é aquele projeto que nunca termina.</p>
+    </div>
+
+    <div class="grid g3">
+      <article class="card">
+        <span class="mono" style="font-size:13px;font-weight:600;letter-spacing:.12em;color:var(--accent)">01</span>
+        <h3 class="h5" style="margin:14px 0 16px">A gente olha a sua operação</h3>
+        <ul style="list-style:none;display:grid;gap:11px">
+          <li class="pt">o que se repete toda semana</li>
+          <li class="pt">quanto tempo isso consome de gente</li>
+          <li class="pt">o que dá pra tirar da mão de alguém</li>
+        </ul>
+      </article>
+      <article class="card">
+        <span class="mono" style="font-size:13px;font-weight:600;letter-spacing:.12em;color:var(--accent)">02</span>
+        <h3 class="h5" style="margin:14px 0 16px">Eu construo a máquina</h3>
+        <ul style="list-style:none;display:grid;gap:11px">
+          <li class="pt">escopo fechado antes de começar</li>
+          <li class="pt">prazo definido, não "quando ficar pronto"</li>
+          <li class="pt">você vê funcionando antes de aprovar</li>
+        </ul>
+      </article>
+      <article class="card">
+        <span class="mono" style="font-size:13px;font-weight:600;letter-spacing:.12em;color:var(--accent)">03</span>
+        <h3 class="h5" style="margin:14px 0 16px">Roda sozinho e eu cuido</h3>
+        <ul style="list-style:none;display:grid;gap:11px">
+          <li class="pt">manutenção mensal, sem susto</li>
+          <li class="pt">ajuste quando a operação mudar</li>
+          <li class="pt">você recebe o que ela fez, não o que ela é</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 12 · FAQ ══════════ -->
+<section id="faq" class="bg-surf">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Perguntas</p>
+      <h2 class="h2">O que costumam me perguntar antes de fechar.</h2>
+      <p class="lead">Se a sua dúvida não estiver aqui, é só mandar — respondo eu.</p>
+    </div>
+    <div style="max-width:880px" id="faq-lista"></div>
+  </div>
+</section>
+
+<!-- ══════════ 13 · CTA ══════════ -->
+<section id="contato" class="cta">
+  <div class="cta__glow" aria-hidden="true"></div>
+  <div class="dg dg-cta" aria-hidden="true"></div>
+
+  <div class="cta__in">
+    <p class="eyebrow">Vamos?</p>
+    <h2>Me conta o processo que mais consome tempo aí.</h2>
+    <p class="lead" style="max-width:56ch">
+      Você sai da conversa com o próximo passo claro — mesmo que o próximo passo não seja
+      me contratar.
+    </p>
+
+    <div class="hero__acts" style="justify-content:center">
+      <a class="btn btn-primary" href="#" id="cta-wa">
+        Falar comigo no WhatsApp
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a class="btn btn-ghost" href="#mapa">Antes, mapear meu processo</a>
+    </div>
+
+    <!-- Bloco "quem faz" — os campos vazios são VISÍVEIS de propósito (perfil.ts) -->
+    <div class="card" style="margin-top:52px;text-align:left;max-width:560px;width:100%">
+      <p class="micro" style="margin-bottom:16px">Quem faz</p>
+      <p class="h5" style="margin-bottom:8px">
+        <span class="todo">PREENCHER: nome</span>
+      </p>
+      <p class="body">
+        <span class="todo">PREENCHER: uma linha sobre o que você constrói</span>
+      </p>
+      <p class="small" style="margin-top:16px">
+        Foto, LinkedIn e GitHub só aparecem quando estiverem preenchidos em
+        <code class="mono" style="color:var(--accent-light)">lib/perfil.ts</code> —
+        link para perfil vazio pontua pior que link nenhum.
+      </p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="foot">
+  <div class="foot__bg" aria-hidden="true"></div>
+  <div class="dg dg-foot" aria-hidden="true"></div>
+
+  <div class="foot__in">
+    <div style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center">
+      <span class="micro">Automação de processos · Construção de sites</span>
+      <a class="micro" href="#topo" style="color:var(--accent)">Voltar ao topo ↑</a>
+    </div>
+
+    <div class="foot__cols">
+      <div>
+        <span class="brand" style="margin-bottom:16px">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+            <rect x="1" y="1" width="24" height="24" rx="6" stroke="var(--accent)" stroke-width="1.4"/>
+            <circle cx="13" cy="13" r="4.2" stroke="var(--accent)" stroke-width="1.4"/>
+            <circle cx="13" cy="13" r="8" stroke="var(--accent)" stroke-width="1" opacity=".45"/>
+            <circle cx="13" cy="5" r="1.5" fill="var(--accent)"/>
+          </svg>
+          Talos
+        </span>
+        <p class="small" style="max-width:34ch;margin-top:14px">
+          O trabalho repetitivo da sua empresa não precisa de gente. Eu construo as
+          máquinas que fazem esse trabalho sozinhas.
+        </p>
+      </div>
+
+      <div>
+        <h2>O que eu faço</h2>
+        <ul>
+          <li><a href="#servicos">Site automatizado</a></li>
+          <li><a href="#servicos">Agente de atendimento</a></li>
+          <li><a href="#servicos">Processo interno</a></li>
+          <li><a href="#servicos">Sistema sob medida</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>A página</h2>
+        <ul>
+          <li><a href="#problema">O problema</a></li>
+          <li><a href="#casos">Casos de uso</a></li>
+          <li><a href="#mapa">Mapa ao vivo</a></li>
+          <li><a href="#faq">Perguntas</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Contato</h2>
+        <ul>
+          <li><span class="todo">PREENCHER: WhatsApp</span></li>
+          <li><span class="todo">PREENCHER: e-mail</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot__bar">
+      <span class="micro">© 2026 Talos · Todos os direitos reservados</span>
+      <span class="micro"><span class="todo">PREENCHER: domínio</span></span>
+    </div>
+  </div>
+</footer>
+
+<div class="swatch" role="group" aria-label="Cor de acento">
+  <button data-a="bronze" aria-pressed="true"  style="background:#e9a23b" title="Bronze — marca Talos"></button>
+  <button data-a="verde"  aria-pressed="false" style="background:#3ecf8e" title="Verde — igual ao leanware"></button>
+</div>
+
+<script>
+/* ═══ marcadores das listas ═══ */
+document.querySelectorAll('.inc,.dep,.pt').forEach(function(li){
+  var s=document.createElement('span');
+  s.setAttribute('aria-hidden','true');
+  s.style.cssText='flex:none;margin-top:.55em;width:6px;height:6px;border-radius:50%';
+  s.style.background = li.classList.contains('inc') ? 'var(--accent)'
+                     : li.classList.contains('dep') ? 'var(--ink-4)' : 'var(--ink-4)';
+  li.style.cssText='display:flex;gap:12px;align-items:flex-start;font-size:15px;color:'+
+    (li.classList.contains('inc')?'var(--ink)':'var(--ink-2)');
+  li.prepend(s);
+});
+
+/* ═══ faixa corrida ═══ */
+(function(){
+  var VERBOS=['responde','registra','confere','calcula','avisa','arquiva','integra','cobra','agenda','emite'];
+  var track=document.getElementById('mq');
+  for(var c=0;c<2;c++){
+    var g=document.createElement('div'); g.className='mq__grp';
+    VERBOS.concat(VERBOS).forEach(function(v){
+      var s=document.createElement('span'); s.className='mq__item';
+      s.textContent=v;
+      var d=document.createElement('i'); d.className='mq__dot';
+      s.appendChild(d); g.appendChild(s);
+    });
+    track.appendChild(g);
+  }
+})();
+
+/* ═══ abas de casos de uso ═══ */
+(function(){
+  var SEG=[
+    {id:'industria',nome:'Indústria',linha:'metalúrgica, moveleira, alimentos, plástico',p:[
+      'Pedido chega por e-mail ou WhatsApp e alguém redigita no ERP',
+      'Ordem de produção montada à mão a partir da carteira',
+      'Follow-up de entrega que depende de alguém lembrar',
+      'Relatório de produção compilado na planilha toda segunda']},
+    {id:'comercio',nome:'Comércio',linha:'loja física, distribuidora, e-commerce',p:[
+      'Orçamento pedido no WhatsApp fora do horário e respondido no dia seguinte',
+      'Estoque conferido em dois sistemas que não conversam',
+      'Cliente que comprou uma vez e nunca mais foi contatado',
+      'Nota emitida manualmente a cada venda']},
+    {id:'servicos',nome:'Serviços',linha:'clínica, escritório, consultoria',p:[
+      'Agendamento por telefone que ocupa a recepção o dia inteiro',
+      'Confirmação de consulta feita uma a uma na véspera',
+      'Documento montado a partir de um modelo e preenchido na mão',
+      'Cobrança que depende de alguém olhar a planilha de vencimentos']},
+    {id:'obra',nome:'Projeto e obra',linha:'construtora, arquitetura, instalação',p:[
+      'Medição de campo que vira planilha, que vira relatório, que vira e-mail',
+      'Fornecedor cotado por três canais diferentes sem histórico',
+      'Cronograma atualizado à mão quando algo atrasa',
+      'Foto de obra que alguém precisa baixar, renomear e arquivar']}
+  ];
+  var tabs=document.getElementById('tabs'),
+      linha=document.getElementById('seg-linha'),
+      lista=document.getElementById('seg-lista');
+
+  function pinta(seg){
+    linha.textContent=seg.nome+' · '+seg.linha;
+    lista.innerHTML='';
+    seg.p.forEach(function(p,i){
+      var el=document.createElement('div');
+      el.className='linha'; el.style.animationDelay=(i*60)+'ms';
+      el.innerHTML='<span class="step__n">'+String(i+1).padStart(2,'0')+'</span>'+
+                   '<span style="font-size:16px;color:var(--ink)"></span>'+
+                   '<span class="tag tag-auto">dá pra tirar da mão</span>';
+      el.children[1].textContent=p;
+      lista.appendChild(el);
+    });
+  }
+
+  SEG.forEach(function(s,i){
+    var b=document.createElement('button');
+    b.className='tab'; b.type='button'; b.setAttribute('role','tab');
+    b.setAttribute('aria-selected', i===0?'true':'false');
+    b.textContent=s.nome;
+    b.onclick=function(){
+      tabs.querySelectorAll('.tab').forEach(function(t){t.setAttribute('aria-selected','false')});
+      b.setAttribute('aria-selected','true'); pinta(s);
+    };
+    tabs.appendChild(b);
+  });
+  pinta(SEG[0]);
+})();
+
+/* ═══════════════════════════════════════════════════════════════════════
+   MOTOR DO MAPA — porte fiel de apps/talos/lib/mapear.ts
+   Roda no navegador: sem rede, sem chave, sem custo. O trace mostra o
+   tempo REAL medido — nenhum delay artificial (regra do projeto).
+   ═══════════════════════════════════════════════════════════════════════ */
+(function(){
+  var REGRAS=[
+    {cat:'transcricao',v:'automatizavel',min:6,motivo:'mesmo dado sendo redigitado em outro lugar',
+     t:['digit','copia','copio','cola','lanca','lanco','cadastr','preench','transcrev','joga na planilha','joga no sistema','passa pra planilha','passa para a planilha','alimenta','insere','anota','registra']},
+    {cat:'recebimento',v:'automatizavel',min:2,motivo:'entrada de informação — dá para capturar na origem',
+     t:['receb','chega','entra','cai no','cai na','pedido','mensagem','whatsapp','email','e-mail','formulario','ligacao','liga','contato','solicitacao','demanda','orcamento chega']},
+    {cat:'notificacao',v:'automatizavel',min:3,motivo:'aviso de rotina — dispara sozinho quando o gatilho acontece',
+     t:['avis','comunic','notific','inform','encaminh','repassa','manda pro','manda para','passa pro','passa para o','chama o','alerta','cobra','lembra']},
+    {cat:'consulta',v:'automatizavel',min:4,motivo:'consulta a dado que já existe em algum sistema',
+     t:['confer','verific','checa','consult','busca','procur','olha no','olha na','ve no sistema','pesquis','localiza','levanta']},
+    {cat:'calculo',v:'automatizavel',min:12,motivo:'número derivado de dado que a operação já produziu',
+     t:['calcul','soma','totaliz','relatorio','fecha o mes','fechamento','planilha de','consolida','apura','fatur','emite nota','gera','compila','dashboard','indicador']},
+    {cat:'arquivamento',v:'automatizavel',min:3,motivo:'organização de arquivo — regra fixa, zero julgamento',
+     t:['salva','arquiv','anexa','guarda','organiza','renomeia','sobe pro drive','faz backup','digitaliza','escaneia']},
+    {cat:'resposta',v:'parcial',min:8,motivo:'resposta ao cliente — a máquina redige, você mantém a régua',
+     t:['respond','retorna','envia orcamento','envia proposta','manda proposta','manda orcamento','atende','explica','apresenta','faz a proposta']},
+    {cat:'decisao',v:'humana',min:5,motivo:'decisão de negócio — automatizar isso seria terceirizar critério',
+     t:['aprov','autoriza','decide','define','negoci','desconto','assina','avalia se','escolhe','julga','libera']},
+    {cat:'presencial',v:'humana',min:0,motivo:'acontece no mundo físico',
+     t:['visita','vai ate','vai no cliente','entrega','monta','instala','produz','fabrica','carrega','transporta','obra','medicao no local']}
+  ];
+  var CONECTORES=['depois disso','depois que','em seguida','na sequencia','por fim','por ultimo',
+    'ai entao','e entao','entao','depois','dai','ai a','ai o','ai eu','quando isso','feito isso'];
+  var ROTULO={automatizavel:'automatizável',parcial:'parcial',humana:'fica com você'};
+  var CLASSE={automatizavel:'tag-auto',parcial:'tag-parc',humana:'tag-hum'};
+
+  var EXEMPLO='O cliente manda mensagem no WhatsApp pedindo orçamento. Alguém lê e responde perguntando o que ele precisa. Depois copia os dados pra planilha de leads. Aí confere o preço na tabela e monta a proposta no Word. Por fim avisa o vendedor que tem proposta nova.';
+
+  function norm(s){return s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase()}
+
+  function separar(texto){
+    var t=texto.replace(/\r/g,'');
+    t=t.replace(/^[\s]*(?:[-•*–]|\d+[.)])\s+/gm,'\n');
+    t=t.replace(/(\S)\s+\d{1,2}[.)]\s+/g,'$1\n');
+    var plano=norm(t), cortes=[];
+    CONECTORES.forEach(function(c){
+      var i=plano.indexOf(c);
+      while(i!==-1){ if(i===0||/[\s,;.]/.test(plano[i-1])) cortes.push(i); i=plano.indexOf(c,i+c.length); }
+    });
+    cortes.sort(function(a,b){return a-b});
+    var pedacos=[],ini=0;
+    cortes.forEach(function(c){ if(c>ini) pedacos.push(t.slice(ini,c)); ini=c; });
+    pedacos.push(t.slice(ini));
+    var out=[];
+    pedacos.forEach(function(p){
+      p.split(/\n+|(?:(?<=[.;!?])\s+)/).forEach(function(x){ out.push(x); });
+    });
+    return out.map(function(p){return p.replace(/^\W+|[\s.,;]+$/g,'').trim()})
+              .filter(function(p){return p.length>=4}).slice(0,12);
+  }
+
+  function classificar(bruto){
+    var plano=norm(bruto), melhor=null;
+    REGRAS.forEach(function(r){
+      r.t.forEach(function(termo){
+        var pos=plano.indexOf(termo);
+        if(pos!==-1&&(melhor===null||pos<melhor.pos)) melhor={r:r,pos:pos};
+      });
+    });
+    if(!melhor) return {cat:'indefinida',v:'parcial',min:0,motivo:'não reconheci o verbo — isso é conversa, não chute'};
+    return {cat:melhor.r.cat,v:melhor.r.v,min:melhor.r.min,motivo:melhor.r.motivo};
+  }
+
+  function plural(n,um,muitos){return n+' '+(n===1?um:muitos)}
+
+  function mapear(texto,vezes){
+    var trace=[], t0=performance.now(), t=performance.now();
+    function marco(op,det,desde){trace.push({op:op,det:det,ms:Math.round((performance.now()-desde)*1000)/1000})}
+
+    var palavras=texto.trim().split(/\s+/).filter(Boolean).length;
+    marco('leitura',texto.trim().length+' caracteres · '+palavras+' palavras',t);
+
+    t=performance.now();
+    var brutas=separar(texto);
+    marco('separação',plural(brutas.length,'etapa identificada','etapas identificadas'),t);
+
+    t=performance.now();
+    var etapas=brutas.map(function(b,i){var c=classificar(b);c.n=i+1;c.texto=b;return c});
+    var a=etapas.filter(function(e){return e.v==='automatizavel'}).length;
+    var p=etapas.filter(function(e){return e.v==='parcial'}).length;
+    var h=etapas.filter(function(e){return e.v==='humana'}).length;
+    marco('classificação',[plural(a,'automatizável','automatizáveis'),plural(p,'parcial','parciais'),
+      plural(h,'fica com você','ficam com você')].join(' · '),t);
+
+    t=performance.now();
+    var minExec=etapas.reduce(function(s,e){
+      if(e.v==='automatizavel')return s+e.min;
+      if(e.v==='parcial')return s+e.min/2; return s;},0);
+    var minSem=minExec*vezes, horasMes=Math.round((minSem*4.33)/60*10)/10;
+    marco('estimativa',Math.round(minExec)+' min por execução · '+vezes+'×/semana',t);
+
+    return {etapas:etapas,a:a,p:p,h:h,horasMes:horasMes,vezes:vezes,minExec:minExec,
+            trace:trace,totalMs:Math.round((performance.now()-t0)*1000)/1000};
+  }
+
+  var txt=document.getElementById('txt'),
+      freq=document.getElementById('freq'),
+      form=document.getElementById('form'),
+      saida=document.getElementById('saida');
+
+  txt.value=EXEMPLO;
+  txt.placeholder=EXEMPLO;
+
+  function esc(s){return s.replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})}
+
+  function render(m){
+    var linhas=m.etapas.map(function(e){
+      return '<div class="step"><span class="step__n">'+String(e.n).padStart(2,'0')+'</span>'+
+             '<span class="step__t">'+esc(e.texto)+'</span>'+
+             '<span class="tag '+CLASSE[e.v]+'">'+
+             (e.cat==='indefinida'?'não li':ROTULO[e.v])+'</span></div>';
+    }).join('');
+
+    var trace=m.trace.map(function(t){
+      return '<div><b>'+t.op+'</b> · '+t.det+' <span>'+t.ms.toFixed(3)+' ms</span></div>';
+    }).join('');
+
+    saida.innerHTML=
+      '<div class="panel__bar" style="border:0;padding:0 0 18px">'+
+        '<span class="micro">Resultado</span>'+
+        '<span class="micro" style="color:var(--accent)">'+m.a+' de '+m.etapas.length+' automatizáveis</span>'+
+      '</div>'+
+      linhas+
+      '<div style="margin-top:24px;padding-top:22px;border-top:1px solid var(--border-dark)">'+
+        '<div class="stat"><span class="stat__n">'+m.horasMes.toFixed(1).replace('.',',')+'</span>'+
+        '<span class="body">horas por mês que saem da mão de alguém</span></div>'+
+        '<p class="small" style="margin-top:12px">A conta: '+Math.round(m.minExec)+
+        ' min por execução × '+m.vezes+' vezes por semana × 4,33 semanas. '+
+        'Etapa parcial conta metade — alguém ainda confere. Etapa não reconhecida vale zero.</p>'+
+      '</div>'+
+      '<div style="margin-top:22px;padding-top:20px;border-top:1px solid var(--border-dark)">'+
+        '<p class="micro" style="margin-bottom:10px">A máquina por dentro</p>'+
+        '<div class="trace">'+trace+
+        '<div style="margin-top:8px;color:var(--ink-4)">total <span style="color:var(--accent)">'+
+        m.totalMs.toFixed(3)+' ms</span> · no seu navegador, sem rede</div></div>'+
+      '</div>';
+  }
+
+  form.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var v=Math.max(1,Math.min(500,parseInt(freq.value,10)||1));
+    render(mapear(txt.value,v));
+  });
+
+  render(mapear(EXEMPLO,20));
+})();
+
+/* ═══ FAQ ═══ */
+(function(){
+  var P=[
+    ['Quanto tempo leva?','O site fica pronto em semanas, não meses — e o prazo entra por escrito antes de começar. Automação de processo depende do tamanho: o diagnóstico sai em dias, a construção varia conforme quantos sistemas precisam conversar. Você sabe o número antes de aprovar, não depois.'],
+    ['Preciso trocar os sistemas que já uso?','Não. Na maioria das vezes o problema não é o sistema, é o vão entre um sistema e outro — e é esse vão que eu fecho. Se em algum ponto trocar for mesmo melhor, eu digo, com o motivo; mas trocar ERP não é o serviço.'],
+    ['E se eu não souber o que automatizar?','É o caso mais comum, e é para isso que serve o mapa aqui em cima. Você descreve o que consome tempo, com as suas palavras, e o diagnóstico aponta o que sai da mão de alguém. Não precisa chegar com o problema formulado em linguagem técnica.'],
+    ['Isso vai substituir a minha equipe?','A intenção é tirar da sua equipe o trabalho que ninguém queria fazer — digitar duas vezes, conferir planilha, avisar o setor ao lado. O que exige julgamento continua com gente, e o mapa marca essas etapas como "fica com você" justamente porque automatizar decisão seria terceirizar critério.'],
+    ['Quanto custa?','Depende do tamanho, e eu prefiro dizer isso a colocar um número na página que não vale para o seu caso. O que dá para adiantar: o escopo é fechado antes de começar, o preço não muda no meio, e a conversa de orçamento não custa nada.'],
+    ['E se parar de funcionar depois de pronto?','Manutenção mensal faz parte do combinado desde o começo, não é venda separada depois. Sistema que integra outros sistemas quebra quando um deles muda — isso não é acidente, é rotina, e está previsto.'],
+    ['Você trabalha com empresa do meu tamanho?','Meu público é justamente quem não tem time de TI: PME e indústria pequena e média. Empresa com departamento de tecnologia próprio normalmente não precisa de mim — precisa de gente que trabalhe dentro do time que já existe.']
+  ];
+  var box=document.getElementById('faq-lista');
+  P.forEach(function(par){
+    var d=document.createElement('details');
+    var s=document.createElement('summary');
+    var sp=document.createElement('span'); sp.textContent=par[0];
+    var si=document.createElement('span'); si.className='sinal'; si.setAttribute('aria-hidden','true');
+    s.appendChild(sp); s.appendChild(si);
+    var p=document.createElement('p'); p.textContent=par[1];
+    d.appendChild(s); d.appendChild(p); box.appendChild(d);
+  });
+})();
+
+/* ═══ troca de acento ═══ */
+document.querySelectorAll('.swatch button').forEach(function(b){
+  b.onclick=function(){
+    document.documentElement.setAttribute('data-accent',b.dataset.a);
+    document.querySelectorAll('.swatch button').forEach(function(x){
+      x.setAttribute('aria-pressed', x===b ? 'true':'false');
+    });
+  };
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Talos · A ou B</title>
+<!--
+  F4 — página de decisão. Os dois heros no tamanho real, empilhados, para comparar rolando.
+  Cada um dentro de um iframe de 1440×900 para renderizar exatamente como renderiza sozinho.
+-->
+<style>
+  :root{--bg:#14110E;--text:#EDE8E1;--muted:#938B81;--sinal:#FA8F42;--rule:#332C25}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#0a0806;color:var(--text);font:15px/1.55 system-ui,sans-serif;padding:28px}
+  h1{font-size:22px;letter-spacing:-.02em;margin-bottom:6px}
+  .sub{color:var(--muted);margin-bottom:26px;max-width:80ch}
+  .bloco{margin-bottom:40px}
+  .cab{display:flex;align-items:baseline;gap:14px;margin-bottom:12px;
+       padding-bottom:10px;border-bottom:1px solid var(--rule)}
+  .tag{font:700 12px/1 ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;
+       color:#14110E;background:var(--sinal);padding:6px 10px;border-radius:3px}
+  .nome{font-weight:600;font-size:17px}
+  .nota{color:var(--muted);font-size:13px}
+  .moldura{width:100%;max-width:1440px;aspect-ratio:1440/900;border:1px solid var(--rule);
+           overflow:hidden;background:#000}
+  iframe{width:1440px;height:900px;border:0;transform-origin:0 0;display:block}
+  .links{margin-top:10px;font-size:13px}
+  .links a{color:var(--sinal);margin-right:18px}
+</style>
+
+<h1>Hero do Talos — A ou B</h1>
+<p class="sub">Mesma paleta, mesma tipografia, mesma foto. O que muda é a relação com a
+matéria-prima. Não é escolha de gosto: <b>A vende sistema, B vende chão de fábrica.</b></p>
+
+<div class="bloco">
+  <div class="cab">
+    <span class="tag">A</span>
+    <span class="nome">Produto tech com foto de apoio</span>
+    <span class="nota">texto à esquerda · oficina como textura no terço direito · faixa de sinalização · medidores no rodapé</span>
+  </div>
+  <div class="moldura"><iframe src="hero-a.html" scrolling="no"></iframe></div>
+  <p class="links"><a href="hero-a.html" target="_blank">abrir em tela cheia ↗</a></p>
+</div>
+
+<div class="bloco">
+  <div class="cab">
+    <span class="tag">B</span>
+    <span class="nome">Peça industrial com texto por cima</span>
+    <span class="nota">foto em tela cheia · headline de 132px atravessando · marca discreta no topo</span>
+  </div>
+  <div class="moldura"><iframe src="hero-b.html" scrolling="no"></iframe></div>
+  <p class="links"><a href="hero-b.html" target="_blank">abrir em tela cheia ↗</a></p>
+</div>
+
+<script>
+  // encaixa o iframe de 1440 na largura real da moldura, sem distorcer
+  const encaixar = () => {
+    document.querySelectorAll('.moldura').forEach((m) => {
+      const f = m.querySelector('iframe');
+      f.style.transform = `scale(${m.clientWidth / 1440})`;
+    });
+  };
+  addEventListener('resize', encaixar);
+  addEventListener('load', encaixar);
+  encaixar();
+</script>

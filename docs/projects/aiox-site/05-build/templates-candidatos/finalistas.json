@@ -1,0 +1,46 @@
+[
+  {
+    "id": "wf-idesignerlite",
+    "plataforma": "webflow-html",
+    "url": "https://webflow.com/templates/html/idesignerlite-portfolio-website-template",
+    "precos": [],
+    "temFree": false,
+    "preview": [],
+    "entrega": [],
+    "titulo": "iDesigner Lite Website Page Template for Webflow"
+  },
+  {
+    "id": "wf-conicorn",
+    "plataforma": "webflow-html",
+    "url": "https://webflow.com/templates/html/conicorn-website-template",
+    "precos": [],
+    "temFree": false,
+    "preview": [],
+    "entrega": [],
+    "titulo": "Conicorn Website Page Template for Webflow"
+  },
+  {
+    "id": "fr-stackgrid",
+    "plataforma": "framer",
+    "url": "https://www.framer.com/community/marketplace/templates/stackgrid/",
+    "precos": [],
+    "temFree": true,
+    "preview": [
+      "https://stackgrid.framer.website/"
+    ],
+    "entrega": [],
+    "titulo": "Stackgrid: Free Agency Website Template by Krutik Maru — Framer Marketplace"
+  },
+  {
+    "id": "fr-agenciy",
+    "plataforma": "framer",
+    "url": "https://www.framer.com/community/marketplace/templates/agenciy/",
+    "precos": [],
+    "temFree": true,
+    "preview": [
+      "https://agenciy.framer.website/"
+    ],
+    "entrega": [],
+    "titulo": "Agenciy: Free Portfolio Website Template by NFrame — Framer Marketplace"
+  }
+]

@@ -1,0 +1,424 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Talos · hero D</title>
+<!--
+  MOCKUP F4 — variante D: o mesmo conceito da C, agora na GPU.
+
+  Briefing: "está no caminho, mas precisa ser mais técnico ainda."
+  A C rodava 138 partículas em canvas 2D na CPU. Esta roda 96.000 em WebGL com
+  shader GLSL escrito à mão — a posição de cada partícula é calculada dentro do
+  vertex shader a partir da curva de Bézier da aresta e do tempo, e a cor sai de
+  um fragment shader com falloff radial.
+
+  Por que isso importa e não é só número maior: a análise dos 100 premiados de 2026
+  mostrou 39% com WebGL e mediana de 292 ocorrências de GLSL nos que têm shader.
+  É a única parte do padrão que não se resolve instalando biblioteca.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Archivo+Narrow:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#14110E;--text:#EDE8E1;--muted:#938B81;--sinal:#FA8F42}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--text);
+       font-family:'Archivo Narrow',system-ui,sans-serif;
+       -webkit-font-smoothing:antialiased;overflow:hidden}
+  .tela{position:relative;height:100vh;min-height:760px}
+  /* top/left em vez de inset:0 — com inset o CSS estica o canvas para a tela toda
+     enquanto o buffer do WebGL tem outro tamanho, e o desenho sai espremido num canto.
+     Quem define a dimensão aqui é o renderer.setSize, não o layout. */
+  canvas{position:absolute;top:0;left:0;display:block}
+  #rotulos{position:absolute;inset:0;pointer-events:none;z-index:1}
+  .rot{position:absolute;transform:translate(-50%,-100%);font-size:10px;font-weight:600;
+       letter-spacing:.04em;color:#EDE8E1;opacity:0;transition:opacity .5s;white-space:nowrap}
+  .rot.on{opacity:.72}
+  .col{position:absolute;transform:translate(-50%,-100%);font-size:10px;font-weight:700;
+       letter-spacing:.2em;text-transform:uppercase;color:var(--muted);opacity:0;
+       transition:opacity .6s}
+  .col.on{opacity:.55}
+  .veu{position:absolute;inset:0;pointer-events:none;z-index:1;
+    background:radial-gradient(130% 85% at 50% 34%,#0000 34%,#14110EE6 76%,#14110E 100%)}
+
+  .topo{position:absolute;top:38px;left:48px;right:48px;display:flex;
+    justify-content:space-between;align-items:center;z-index:3}
+  .marca{font-family:Archivo,sans-serif;font-weight:900;font-size:21px;
+    letter-spacing:-.02em;text-transform:lowercase}
+  .estado{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--muted);display:flex;align-items:center;gap:10px}
+  .ponto{width:6px;height:6px;border-radius:50%;background:var(--sinal);
+    box-shadow:0 0 14px var(--sinal)}
+
+  .centro{position:absolute;left:0;right:0;bottom:112px;text-align:center;z-index:3;padding:0 24px}
+  h1{font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(30px,4.2vw,58px);
+    line-height:1.02;letter-spacing:-.035em;text-transform:uppercase}
+  h1 em{font-style:normal;color:var(--sinal)}
+  .cta{display:inline-flex;align-items:center;height:54px;padding:0 34px;margin-top:30px;
+    background:var(--sinal);color:#14110E;text-decoration:none;font-weight:700;
+    font-size:14px;letter-spacing:.12em;text-transform:uppercase}
+
+  .hud{position:absolute;left:48px;bottom:36px;display:flex;gap:32px;z-index:3;
+    font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .hud b{color:var(--text);font-family:Archivo,sans-serif;font-weight:800;font-size:15px;
+    letter-spacing:-.01em;display:block;margin-bottom:2px}
+  .hud .s{color:var(--sinal)}
+  .refaz{position:absolute;right:48px;bottom:36px;z-index:3;background:none;border:0;
+    color:var(--muted);cursor:pointer;font:600 10px/1 'Archivo Narrow',sans-serif;
+    letter-spacing:.18em;text-transform:uppercase}
+  .refaz:hover{color:var(--sinal)}
+  .erro{position:absolute;inset:0;display:none;place-items:center;z-index:5;
+    color:var(--muted);font-size:13px;text-align:center;padding:40px}
+</style>
+
+<div class="tela">
+  <canvas id="c"></canvas>
+  <div id="rotulos"></div>
+  <div class="veu"></div>
+  <div class="erro" id="erro">WebGL indisponível neste navegador.</div>
+
+  <div class="topo">
+    <span class="marca">talos</span>
+    <span class="estado"><i class="ponto"></i><span id="fase">mapeando</span></span>
+  </div>
+
+  <div class="centro">
+    <h1>O trabalho que se repete<br><em>não precisa de gente.</em></h1>
+    <br><a class="cta" href="#">mapear meu processo</a>
+  </div>
+
+  <div class="hud">
+    <div><b id="hPart">0</b>partículas</div>
+    <div><b id="hAr">0</b>ligações</div>
+    <div><b class="s" id="hDraw">1</b>draw call</div>
+    <div><b id="hFps">—</b>fps</div>
+    <div><b class="s">GLSL</b>na gpu</div>
+  </div>
+  <button class="refaz" id="refaz">rodar de novo ↻</button>
+</div>
+
+<script type="importmap">
+{"imports":{"three":"./lib/three.module.min.js","three/webgpu":"./lib/three.module.min.js"}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+
+const cv = document.getElementById('c');
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ canvas: cv, antialias: false, alpha: false });
+} catch (e) {
+  document.getElementById('erro').style.display = 'grid';
+  throw e;
+}
+renderer.setClearColor(0x14110e, 1);
+renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+
+const cena = new THREE.Scene();
+// Câmera ortográfica em coordenadas de pixel: o grafo é um diagrama, não uma cena 3D.
+let cam = new THREE.OrthographicCamera(0, 1, 0, 1, -10, 10);
+
+/* ── O processo ───────────────────────────────────────────────────────── */
+const COLUNAS = [
+  { t:'entrada',  itens:['pedido no whatsapp','e-mail do cliente','formulário do site'] },
+  { t:'triagem',  itens:['lê e interpreta','confere cadastro'] },
+  { t:'registro', itens:['lança no sistema','atualiza planilha','gera número'] },
+  { t:'ação',     itens:['calcula preço','monta proposta'] },
+  { t:'saída',    itens:['responde o cliente','avisa o vendedor'] },
+];
+
+const POR_ARESTA = 4000;   // partículas por ligação
+let nos = [], arestas = [], t0 = performance.now();
+let malha = null, geo = null, mat = null;
+const elRot = document.getElementById('rotulos');
+
+const construir = () => {
+  // a medida vem do container, não do canvas: o canvas é dimensionado PELO renderer,
+  // então ler cv.clientWidth aqui seria ler o valor que eu mesmo acabei de escrever
+  const caixa = cv.parentElement.getBoundingClientRect();
+  const L = Math.round(caixa.width), A = Math.round(caixa.height);
+  cam.left = 0; cam.right = L; cam.top = 0; cam.bottom = A; cam.updateProjectionMatrix();
+  renderer.setSize(L, A);
+
+  // 980 e não 1120: em tela larga as arestas ficavam com 300px de vão e o feixe
+  // se dissolvia na distância. Grafo mais compacto = fluxo mais denso e legível.
+  const caixaL = Math.min(L - 360, 980);
+  const margemX = (L - caixaL) / 2;
+  const centroY = Math.min(A * 0.32, 270);
+  const espacoY = Math.min(88, Math.max(A * 0.40, 220) / 4);
+
+  nos = [];
+  COLUNAS.forEach((col, ci) => {
+    const ax = margemX + (caixaL * ci) / (COLUNAS.length - 1);
+    col.itens.forEach((rot, ii) => {
+      const ay = centroY + (ii - (col.itens.length - 1) / 2) * espacoY;
+      nos.push({
+        x: L / 2 + (Math.random() - 0.5) * caixaL * 0.8,
+        y: centroY + (Math.random() - 0.5) * Math.max(A * 0.42, 240),
+        vx: 0, vy: 0, ax, ay, col: ci, rot,
+      });
+    });
+  });
+
+  arestas = [];
+  nos.forEach((n, i) => {
+    const prox = nos.map((m, j) => ({ m, j })).filter(({ m }) => m.col === n.col + 1);
+    if (!prox.length) return;
+    prox.sort((p, q) => Math.abs(p.m.ay - n.ay) - Math.abs(q.m.ay - n.ay));
+    arestas.push([i, prox[0].j]);
+    if (prox[1] && Math.random() < 0.5) arestas.push([i, prox[1].j]);
+  });
+
+  // rótulos em DOM: texto nítido em qualquer DPR, sem atlas de fonte no shader
+  elRot.innerHTML = '';
+  nos.forEach((n) => {
+    const d = document.createElement('div');
+    d.className = 'rot'; d.textContent = n.rot; elRot.appendChild(d); n.el = d;
+  });
+  COLUNAS.forEach((col, ci) => {
+    const d = document.createElement('div');
+    d.className = 'col'; d.textContent = col.t; elRot.appendChild(d); col.el = d;
+  });
+
+  montarGeometria();
+  t0 = performance.now();
+};
+
+/* ── GEOMETRIA ────────────────────────────────────────────────────────────
+   Uma partícula = um vértice. Os 4 pontos de controle da Bézier vão como
+   atributos e a posição é resolvida no vertex shader. A CPU não toca em
+   posição de partícula depois disso: um único draw call move todas. */
+/* ── TEXTURA DE CONTROLE ──────────────────────────────────────────────────
+   Os 4 pontos de Bézier de cada aresta viajam para a GPU como TEXTURA, não como
+   array de uniforms. Motivo: `uCtrl[int(aAresta)*4]` é indexação dinâmica de array
+   de uniform, que o GLSL ES trata de forma inconsistente — as partículas eram
+   desenhadas com pontos de controle errados e o feixe ia parar fora da tela,
+   mesmo com os nós nas posições certas (conferido: x = 294·539·784·1029·1274).
+   Amostrar textura é determinístico em qualquer versão e é como a indústria
+   passa dado por instância para o vertex shader. */
+const MAX_ARESTAS = 40;
+const TEX_L = MAX_ARESTAS * 2;               // 2 texels por aresta
+const ctrlDados = new Float32Array(TEX_L * 4); // rgba: (p0,p1) e (p2,p3)
+const ctrlTex = new THREE.DataTexture(ctrlDados, TEX_L, 1, THREE.RGBAFormat, THREE.FloatType);
+ctrlTex.magFilter = ctrlTex.minFilter = THREE.NearestFilter;
+ctrlTex.generateMipmaps = false;
+ctrlTex.needsUpdate = true;
+
+function montarGeometria() {
+  if (malha) { cena.remove(malha); geo.dispose(); mat.dispose(); }
+  const N = arestas.length * POR_ARESTA;
+
+  const semente = new Float32Array(N);
+  const idAresta = new Float32Array(N);
+  const posicoes = new Float32Array(N * 3); // exigido pelo Points; o shader ignora
+
+  for (let a = 0; a < arestas.length; a++) {
+    for (let k = 0; k < POR_ARESTA; k++) {
+      const i = a * POR_ARESTA + k;
+      semente[i] = Math.random();
+      idAresta[i] = a;
+    }
+  }
+
+  geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(posicoes, 3));
+  geo.setAttribute('aSemente', new THREE.BufferAttribute(semente, 1));
+  geo.setAttribute('aAresta', new THREE.BufferAttribute(idAresta, 1));
+
+  mat = new THREE.ShaderMaterial({
+    transparent: true,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
+    uniforms: {
+      uTempo:  { value: 0 },
+      uVigor:  { value: 0 },   // 0 = parado, 1 = fluxo cheio
+      uEscala: { value: 1 },
+      // 4 pontos de controle por aresta, via textura. A primeira versão mandava isso
+      // como ATRIBUTO por partícula e reescrevia 416 mil floats por frame — travava.
+      // A segunda usou array de uniform e caiu na indexação dinâmica. Textura resolve
+      // as duas coisas: 64 floats por frame e leitura determinística.
+      uCtrlTex: { value: ctrlTex },
+      uTexL:    { value: TEX_L },
+    },
+    vertexShader: /* glsl */`
+      attribute float aSemente;
+      attribute float aAresta;
+      uniform float uTempo, uVigor, uEscala, uTexL;
+      uniform sampler2D uCtrlTex;
+      varying float vVida;
+      varying float vBrilho;
+
+      // Bézier cúbica — a mesma curva que desenha a aresta, resolvida por vértice
+      vec2 bezier(vec2 a, vec2 b, vec2 c, vec2 d, float t){
+        float u = 1.0 - t;
+        return u*u*u*a + 3.0*u*u*t*b + 3.0*u*t*t*c + t*t*t*d;
+      }
+
+      void main(){
+        // dois texels por aresta; +0.5 para cair no centro do texel
+        float u0 = (aAresta * 2.0 + 0.5) / uTexL;
+        float u1 = (aAresta * 2.0 + 1.5) / uTexL;
+        vec4 c01 = texture2D(uCtrlTex, vec2(u0, 0.5));
+        vec4 c23 = texture2D(uCtrlTex, vec2(u1, 0.5));
+        vec2 aP0 = c01.xy, aP1 = c01.zw;
+        vec2 aP2 = c23.xy, aP3 = c23.zw;
+
+        // cada partícula tem fase própria: o fluxo é contínuo, não em pelotão
+        float vel = 0.16 + fract(aSemente * 7.31) * 0.22;
+        float t   = fract(aSemente + uTempo * vel);
+
+        vec2 p = bezier(aP0, aP1, aP2, aP3, t);
+
+        // Dispersão perpendicular concentrada. A 7px o feixe virava névoa espalhada
+        // por uma aresta de 300px e nada brilhava; a distribuição ao quadrado empurra
+        // a maioria das partículas para o eixo e deixa poucas na franja — é isso que
+        // lê como cabo de energia em vez de poeira.
+        vec2 tang = normalize(bezier(aP0,aP1,aP2,aP3, min(t+0.01,1.0)) - p + 1e-5);
+        vec2 norm = vec2(-tang.y, tang.x);
+        float bruto = fract(aSemente * 131.7) * 2.0 - 1.0;
+        float lat = sign(bruto) * bruto * bruto * 3.4;
+        p += norm * lat;
+
+        // acende ao entrar e apaga ao sair: nada aparece ou some de estalo
+        vVida   = smoothstep(0.0, 0.06, t) * (1.0 - smoothstep(0.9, 1.0, t));
+        // núcleo do feixe brilha mais que a franja
+        vBrilho = (0.5 + fract(aSemente * 53.1) * 0.5) * (1.0 - abs(lat) / 4.5);
+
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 0.0, 1.0);
+        gl_PointSize = (1.8 + fract(aSemente * 17.3) * 3.2) * uEscala * (0.35 + uVigor * 0.65);
+      }
+    `,
+    fragmentShader: /* glsl */`
+      precision highp float;
+      varying float vVida;
+      varying float vBrilho;
+      uniform float uVigor;
+
+      void main(){
+        // ponto redondo com falloff quadrático — o glow nasce aqui, não de sprite
+        vec2 d = gl_PointCoord - 0.5;
+        float r = dot(d, d) * 4.0;
+        float a = (1.0 - r);
+        if (a <= 0.0) discard;
+        a *= a;
+
+        // quente no núcleo, âmbar na borda: a cor conta a temperatura do dado
+        vec3 nucleo = vec3(1.00, 0.92, 0.82);
+        vec3 borda  = vec3(0.98, 0.45, 0.09);
+        vec3 cor = mix(borda, nucleo, a * a);
+
+        gl_FragColor = vec4(cor, a * vVida * vBrilho * uVigor);
+      }
+    `,
+  });
+
+  malha = new THREE.Points(geo, mat);
+  malha.frustumCulled = false;
+  cena.add(malha);
+
+  document.getElementById('hPart').textContent = N.toLocaleString('pt-BR');
+  document.getElementById('hAr').textContent = arestas.length;
+}
+
+/* ── LINHAS DO GRAFO ──────────────────────────────────────────────────── */
+const linhaGeo = new THREE.BufferGeometry();
+const linhaMat = new THREE.LineBasicMaterial({ color: 0x6b6157, transparent: true, opacity: 0.22 });
+const linhas = new THREE.LineSegments(linhaGeo, linhaMat);
+linhas.frustumCulled = false;
+cena.add(linhas);
+const SEG = 26;
+
+/* ── LOOP ─────────────────────────────────────────────────────────────── */
+let ultimo = performance.now(), acum = 0, quadros = 0, fps = 0;
+
+function bezier(a, b, c, d, t) {
+  const u = 1 - t;
+  return [
+    u*u*u*a[0] + 3*u*u*t*b[0] + 3*u*t*t*c[0] + t*t*t*d[0],
+    u*u*u*a[1] + 3*u*u*t*b[1] + 3*u*t*t*c[1] + t*t*t*d[1],
+  ];
+}
+
+function passo(agora) {
+  const dt = Math.min((agora - ultimo) / 1000, 0.05); ultimo = agora;
+  const s = (agora - t0) / 1000;
+  const organizando = s > 1.0, fluindo = s > 3.8;
+  document.getElementById('fase').textContent =
+    fluindo ? 'automatizado' : organizando ? 'organizando' : 'mapeando';
+
+  // física dos nós na CPU: são 12, o custo é irrelevante
+  for (const n of nos) {
+    if (organizando) { n.vx += (n.ax - n.x) * 5.2 * dt; n.vy += (n.ay - n.y) * 5.2 * dt; }
+    for (const m of nos) {
+      if (m === n) continue;
+      const dx = n.x - m.x, dy = n.y - m.y, d2 = dx*dx + dy*dy;
+      if (d2 < 3600 && d2 > 0.01) {
+        const f = (fluindo ? 120 : organizando ? 700 : 2600) / d2;
+        n.vx += dx * f * dt; n.vy += dy * f * dt;
+      }
+    }
+    const amort = fluindo ? 0.82 : 0.9;
+    n.vx *= amort; n.vy *= amort;
+    n.x += n.vx * dt * 60; n.y += n.vy * dt * 60;
+  }
+
+  // 64 floats por frame na textura — não 416 mil em atributo
+  const vertLinha = new Float32Array(arestas.length * SEG * 2 * 3);
+  let vi = 0;
+
+  for (let a = 0; a < arestas.length; a++) {
+    const n = nos[arestas[a][0]], m = nos[arestas[a][1]];
+    const dx = (m.x - n.x) * 0.45;
+    const c0 = [n.x, n.y], c1 = [n.x + dx, n.y], c2 = [m.x - dx, m.y], c3 = [m.x, m.y];
+
+    const t = a * 8; // 2 texels × 4 canais
+    ctrlDados[t    ] = c0[0]; ctrlDados[t + 1] = c0[1];
+    ctrlDados[t + 2] = c1[0]; ctrlDados[t + 3] = c1[1];
+    ctrlDados[t + 4] = c2[0]; ctrlDados[t + 5] = c2[1];
+    ctrlDados[t + 6] = c3[0]; ctrlDados[t + 7] = c3[1];
+
+    let ant = bezier(c0, c1, c2, c3, 0);
+    for (let k = 1; k <= SEG; k++) {
+      const p = bezier(c0, c1, c2, c3, k / SEG);
+      vertLinha[vi++] = ant[0]; vertLinha[vi++] = ant[1]; vertLinha[vi++] = 0;
+      vertLinha[vi++] = p[0];   vertLinha[vi++] = p[1];   vertLinha[vi++] = 0;
+      ant = p;
+    }
+  }
+  ctrlTex.needsUpdate = true;
+  linhaGeo.setAttribute('position', new THREE.BufferAttribute(vertLinha, 3));
+  linhaMat.opacity = organizando ? 0.22 : 0.08;
+
+  mat.uniforms.uTempo.value = s;
+  mat.uniforms.uVigor.value += ((fluindo ? 1 : 0) - mat.uniforms.uVigor.value) * dt * 1.6;
+  mat.uniforms.uEscala.value = renderer.getPixelRatio();
+
+  // rótulos acompanham os nós
+  for (const n of nos) {
+    n.el.style.left = n.x + 'px';
+    n.el.style.top = (n.y - 12) + 'px';
+    n.el.classList.toggle('on', organizando);
+  }
+  COLUNAS.forEach((col, ci) => {
+    const daCol = nos.filter((n) => n.col === ci);
+    const x = daCol.reduce((t, n) => t + n.x, 0) / daCol.length;
+    const y = Math.min(...daCol.map((n) => n.y)) - 44;
+    col.el.style.left = x + 'px'; col.el.style.top = y + 'px';
+    col.el.classList.toggle('on', organizando);
+  });
+
+  renderer.render(cena, cam);
+
+  acum += 1 / dt; quadros++;
+  if (quadros >= 30) {
+    fps = Math.round(acum / quadros); acum = 0; quadros = 0;
+    document.getElementById('hFps').textContent = fps;
+  }
+  requestAnimationFrame(passo);
+}
+
+addEventListener('resize', construir);
+document.getElementById('refaz').onclick = construir;
+construir();
+if (document.fonts?.ready) document.fonts.ready.then(construir);
+requestAnimationFrame(passo);
+</script>

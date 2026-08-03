@@ -1,0 +1,779 @@
+[
+ {
+  "titulo": "Oryzo AI",
+  "url": "https://oryzo.ai/",
+  "premio": "Site of the Day + Site of the Month + Developer Award",
+  "requests": 108,
+  "pesoMB": {
+   "html": 0.09,
+   "css": 0.09,
+   "js": 1.41,
+   "json": 0,
+   "imagem": 2.68,
+   "outro": 1.4,
+   "fonte": 0.33
+  },
+  "totalMB": 6.01,
+  "contagem": {
+   "html": 2,
+   "css": 4,
+   "js": 7,
+   "json": 3,
+   "imagem": 67,
+   "outro": 22,
+   "fonte": 3
+  },
+  "formatos": {
+   "webp": 34,
+   "woff2": 2,
+   "png": 6,
+   "avif": 8,
+   "ico": 1
+  },
+  "libs": [
+   "three",
+   "gsap",
+   "splitting",
+   "rive",
+   "react",
+   "postprocessing"
+  ],
+  "shaders": 561,
+  "dom": {
+   "nos": 2945,
+   "profundidade": 16,
+   "canvas": 6,
+   "video": 0,
+   "img": 18,
+   "picture": 17,
+   "fontesUsadas": [
+    "halyard-display-variable"
+   ],
+   "altura": 50007
+  }
+ },
+ {
+  "titulo": "TRIONN",
+  "url": "https://trionn.com/",
+  "premio": "Site of the Day + Developer Award + Honorable Mention",
+  "requests": 151,
+  "pesoMB": {
+   "js": 1.86,
+   "html": 0.12,
+   "css": 0.11,
+   "fonte": 0.1,
+   "imagem": 1.97,
+   "video": 2.81,
+   "outro": 0,
+   "audio": 0.19
+  },
+  "totalMB": 7.15,
+  "contagem": {
+   "js": 26,
+   "html": 1,
+   "css": 3,
+   "fonte": 4,
+   "imagem": 80,
+   "video": 15,
+   "outro": 18,
+   "audio": 4
+  },
+  "formatos": {
+   "woff2": 4,
+   "svg": 14,
+   "mp4": 13,
+   "png": 1,
+   "jpg": 12,
+   "webp": 53
+  },
+  "libs": [
+   "three",
+   "gsap",
+   "lenis",
+   "splitting",
+   "swiper",
+   "react"
+  ],
+  "shaders": 156,
+  "dom": {
+   "nos": 3152,
+   "profundidade": 21,
+   "canvas": 3,
+   "video": 6,
+   "img": 31,
+   "picture": 0,
+   "fontesUsadas": [
+    "neueHaas",
+    "familjen"
+   ],
+   "altura": 24601
+  }
+ },
+ {
+  "titulo": "The Renaissance Edition",
+  "url": "https://www.shopify.com/editions/winter2026",
+  "premio": "Site of the Day + Site of the Month",
+  "requests": 56,
+  "pesoMB": {
+   "html": 1.4,
+   "fonte": 0.13,
+   "css": 0.02,
+   "js": 0.86,
+   "imagem": 0,
+   "json": 0,
+   "outro": 0
+  },
+  "totalMB": 2.41,
+  "contagem": {
+   "html": 3,
+   "fonte": 4,
+   "css": 2,
+   "js": 20,
+   "imagem": 14,
+   "json": 4,
+   "outro": 9
+  },
+  "formatos": {
+   "woff2": 4,
+   "svg": 4,
+   "png": 1,
+   "gif": 1
+  },
+  "libs": [
+   "three",
+   "lenis",
+   "rive",
+   "react",
+   "postprocessing"
+  ],
+  "shaders": 318,
+  "dom": {
+   "nos": 4200,
+   "profundidade": 24,
+   "canvas": 2,
+   "video": 12,
+   "img": 363,
+   "picture": 2,
+   "fontesUsadas": [
+    "ui-sans-serif",
+    "Inter-Variable",
+    "NeueMontreal",
+    "HWCigars"
+   ],
+   "altura": 39630
+  }
+ },
+ {
+  "titulo": "Son Daven",
+  "url": "https://sondaven.com/en",
+  "premio": "Site of the Day + Site of the Month + Developer Award",
+  "requests": 224,
+  "pesoMB": {
+   "html": 0.43,
+   "imagem": 19.45,
+   "css": 0.19,
+   "outro": 0,
+   "js": 2.14,
+   "fonte": 0,
+   "video": 1,
+   "json": 0
+  },
+  "totalMB": 23.22,
+  "contagem": {
+   "html": 4,
+   "imagem": 156,
+   "css": 5,
+   "outro": 15,
+   "js": 38,
+   "fonte": 2,
+   "video": 2,
+   "json": 2
+  },
+  "formatos": {
+   "avif": 2,
+   "webp": 131,
+   "svg": 7,
+   "jpg": 3,
+   "otf": 2,
+   "mp4": 2,
+   "png": 1
+  },
+  "libs": [
+   "gsap",
+   "lenis",
+   "barba",
+   "swiper",
+   "react",
+   "webflow"
+  ],
+  "shaders": 0,
+  "dom": {
+   "nos": 4527,
+   "profundidade": 25,
+   "canvas": 16,
+   "video": 3,
+   "img": 68,
+   "picture": 0,
+   "fontesUsadas": [
+    "KTF Metro Blueline",
+    "KTF Metro Roman"
+   ],
+   "altura": 32348
+  }
+ },
+ {
+  "titulo": "Floema",
+  "url": "https://www.floema.com/en",
+  "premio": "Site of the Day + Site of the Month + Developer Award",
+  "requests": 222,
+  "pesoMB": {
+   "html": 2.95,
+   "imagem": 4.61,
+   "json": 0,
+   "css": 0.23,
+   "js": 6.17,
+   "fonte": 0,
+   "outro": 0,
+   "audio": 13.98
+  },
+  "totalMB": 27.94,
+  "contagem": {
+   "html": 2,
+   "imagem": 126,
+   "json": 6,
+   "css": 10,
+   "js": 67,
+   "fonte": 1,
+   "outro": 3,
+   "audio": 7
+  },
+  "formatos": {
+   "png": 53,
+   "jpg": 60,
+   "svg": 10,
+   "ttf": 1,
+   "ico": 1
+  },
+  "libs": [
+   "three",
+   "gsap",
+   "lenis",
+   "barba",
+   "vue",
+   "nuxt"
+  ],
+  "shaders": 408,
+  "dom": {
+   "nos": 1428,
+   "profundidade": 21,
+   "canvas": 3,
+   "video": 0,
+   "img": 63,
+   "picture": 0,
+   "fontesUsadas": [
+    "sans-serif",
+    "Zimula"
+   ],
+   "altura": 14312
+  }
+ },
+ {
+  "titulo": "NORMAL IS BORING",
+  "url": "https://normalisboring.es/",
+  "premio": "Site of the Day + Developer Award + Honorable Mention",
+  "requests": 70,
+  "pesoMB": {
+   "html": 0.03,
+   "js": 0.2,
+   "outro": 0,
+   "css": 0.02,
+   "fonte": 0.19,
+   "imagem": 16.02,
+   "json": 0
+  },
+  "totalMB": 16.45,
+  "contagem": {
+   "html": 2,
+   "js": 25,
+   "outro": 1,
+   "css": 3,
+   "fonte": 7,
+   "imagem": 31,
+   "json": 1
+  },
+  "formatos": {
+   "woff2": 6,
+   "woff": 1,
+   "jpg": 26,
+   "png": 2,
+   "svg": 3
+  },
+  "libs": [
+   "gsap",
+   "lenis",
+   "splitting",
+   "swiper"
+  ],
+  "shaders": 0,
+  "dom": {
+   "nos": 1638,
+   "profundidade": 14,
+   "canvas": 0,
+   "video": 0,
+   "img": 32,
+   "picture": 0,
+   "fontesUsadas": [
+    "Juana-Regular",
+    "Juana-Medium",
+    "Izmir-Regular",
+    "Editorialnew-Ultralight"
+   ],
+   "altura": 14734
+  }
+ },
+ {
+  "titulo": "IZANAMI",
+  "url": "https://izanami-official.com/",
+  "premio": "Site of the Day + Developer Award + Honorable Mention",
+  "requests": 16,
+  "pesoMB": {
+   "html": 0.05,
+   "css": 0.18,
+   "js": 0.98,
+   "outro": 0,
+   "imagem": 1.28,
+   "fonte": 0.07
+  },
+  "totalMB": 2.57,
+  "contagem": {
+   "html": 1,
+   "css": 3,
+   "js": 2,
+   "outro": 1,
+   "imagem": 4,
+   "fonte": 5
+  },
+  "formatos": {
+   "webp": 2,
+   "woff2": 4,
+   "woff": 1,
+   "svg": 1,
+   "ico": 1
+  },
+  "libs": [
+   "three",
+   "gsap",
+   "lenis",
+   "splitting"
+  ],
+  "shaders": 292,
+  "dom": {
+   "nos": 553,
+   "profundidade": 18,
+   "canvas": 2,
+   "video": 0,
+   "img": 4,
+   "picture": 4,
+   "fontesUsadas": [
+    "Helvetica Neue",
+    "Cinzel",
+    "Shippori Mincho",
+    "Playfair Display"
+   ],
+   "altura": 9003
+  }
+ },
+ {
+  "titulo": "CoffeeTech®",
+  "url": "https://coffee-tech.com/",
+  "premio": "Site of the Day + Developer Award + Honorable Mention",
+  "requests": 77,
+  "pesoMB": {
+   "html": 0.08,
+   "css": 0.13,
+   "imagem": 0.04,
+   "js": 1.94,
+   "fonte": 0.05,
+   "3d": 2.66,
+   "json": 0,
+   "outro": 0
+  },
+  "totalMB": 4.9,
+  "contagem": {
+   "html": 2,
+   "css": 5,
+   "imagem": 24,
+   "js": 22,
+   "fonte": 1,
+   "3d": 1,
+   "json": 4,
+   "outro": 18
+  },
+  "formatos": {
+   "svg": 9,
+   "avif": 1,
+   "woff2": 1,
+   "glb": 1
+  },
+  "libs": [
+   "three",
+   "gsap",
+   "barba",
+   "splitting",
+   "lottie",
+   "react",
+   "webflow",
+   "draco",
+   "ktx2",
+   "gltf",
+   "postprocessing"
+  ],
+  "shaders": 222,
+  "dom": {
+   "nos": 1188,
+   "profundidade": 11,
+   "canvas": 0,
+   "video": 0,
+   "img": 48,
+   "picture": 0,
+   "fontesUsadas": [
+    "Inter"
+   ],
+   "altura": 8351
+  }
+ },
+ {
+  "titulo": "PP Neue Montreal",
+  "url": "https://neuemontreal.com/",
+  "premio": "Site of the Day + Developer Award + Honorable Mention",
+  "requests": 97,
+  "pesoMB": {
+   "imagem": 0.21,
+   "html": 0.98,
+   "js": 2.1,
+   "fonte": 1.95,
+   "outro": 0,
+   "json": 0
+  },
+  "totalMB": 5.24,
+  "contagem": {
+   "imagem": 48,
+   "html": 2,
+   "js": 18,
+   "fonte": 20,
+   "outro": 1,
+   "json": 8
+  },
+  "formatos": {
+   "webp": 10,
+   "jpg": 1,
+   "woff2": 20,
+   "png": 1
+  },
+  "libs": [
+   "lenis",
+   "lottie",
+   "react"
+  ],
+  "shaders": 0,
+  "dom": {
+   "nos": 2167,
+   "profundidade": 20,
+   "canvas": 0,
+   "video": 1,
+   "img": 49,
+   "picture": 0,
+   "fontesUsadas": [
+    "sans-serif",
+    "PP Neue Montreal Bold",
+    "PP Neue Montreal Text Regular",
+    "PP Neue Montreal Regular",
+    "PP Neue Montreal Text Medium",
+    "PP Neue Montreal Variable Variable Regular"
+   ],
+   "altura": 22708
+  }
+ },
+ {
+  "titulo": "MONOLOG",
+  "url": "https://bymonolog.com/",
+  "premio": "Site of the Day + Developer Award + Honorable Mention",
+  "requests": 40,
+  "pesoMB": {
+   "html": 0.26,
+   "imagem": 0.32,
+   "css": 0.24,
+   "fonte": 0.14,
+   "video": 0.18,
+   "js": 0.67,
+   "outro": 0,
+   "audio": 0.01
+  },
+  "totalMB": 1.81,
+  "contagem": {
+   "html": 1,
+   "imagem": 12,
+   "css": 1,
+   "fonte": 3,
+   "video": 1,
+   "js": 14,
+   "outro": 2,
+   "audio": 6
+  },
+  "formatos": {
+   "avif": 2,
+   "png": 2,
+   "woff2": 3,
+   "svg": 8,
+   "webm": 1
+  },
+  "libs": [
+   "three",
+   "gsap",
+   "lenis",
+   "barba",
+   "splitting",
+   "webflow"
+  ],
+  "shaders": 204,
+  "dom": {
+   "nos": 1576,
+   "profundidade": 14,
+   "canvas": 3,
+   "video": 9,
+   "img": 43,
+   "picture": 0,
+   "fontesUsadas": [
+    "Khteka",
+    "Animo",
+    "Suisse Mono"
+   ],
+   "altura": 13227
+  }
+ },
+ {
+  "titulo": "Wembi",
+  "url": "https://www.wembi.ai/",
+  "premio": "Site of the Day + Developer Award + Honorable Mention",
+  "requests": 45,
+  "pesoMB": {
+   "css": 0.04,
+   "js": 1.06,
+   "video": 20.25,
+   "fonte": 0.03,
+   "html": 0.1,
+   "imagem": 0.93,
+   "json": 0,
+   "outro": 0
+  },
+  "totalMB": 22.42,
+  "contagem": {
+   "css": 2,
+   "js": 6,
+   "video": 16,
+   "fonte": 3,
+   "html": 1,
+   "imagem": 12,
+   "json": 2,
+   "outro": 3
+  },
+  "formatos": {
+   "webm": 16,
+   "woff2": 3,
+   "jpg": 9,
+   "ico": 1
+  },
+  "libs": [
+   "gsap",
+   "lenis",
+   "splitting",
+   "vue",
+   "nuxt",
+   "webflow"
+  ],
+  "shaders": 0,
+  "dom": {
+   "nos": 1311,
+   "profundidade": 15,
+   "canvas": 0,
+   "video": 13,
+   "img": 12,
+   "picture": 0,
+   "fontesUsadas": [
+    "HaasUnicaSH-Medium",
+    "HaasUnicaSH-Regular"
+   ],
+   "altura": 21358
+  }
+ },
+ {
+  "titulo": "CIAO ENERGY - LAUNCH WEBSITE",
+  "url": "https://www.ciaoenergy.com/",
+  "premio": "Developer Award + Honorable Mention",
+  "requests": 76,
+  "pesoMB": {
+   "html": 0.17,
+   "imagem": 1.42,
+   "css": 0.15,
+   "js": 1.15,
+   "video": 0.36,
+   "fonte": 0.15,
+   "outro": 1.36,
+   "3d": 0.75,
+   "audio": 0.24,
+   "json": 0
+  },
+  "totalMB": 5.75,
+  "contagem": {
+   "html": 1,
+   "imagem": 20,
+   "css": 2,
+   "js": 39,
+   "video": 1,
+   "fonte": 4,
+   "outro": 2,
+   "3d": 2,
+   "audio": 4,
+   "json": 1
+  },
+  "formatos": {
+   "avif": 15,
+   "svg": 2,
+   "webm": 1,
+   "woff2": 4,
+   "glb": 2,
+   "png": 1
+  },
+  "libs": [
+   "three",
+   "gsap",
+   "splitting",
+   "lottie",
+   "webflow"
+  ],
+  "shaders": 10,
+  "dom": {
+   "nos": 1449,
+   "profundidade": 22,
+   "canvas": 1,
+   "video": 7,
+   "img": 2,
+   "picture": 0,
+   "fontesUsadas": [
+    "Geist",
+    "Franklin Gothic Atf",
+    "Roboto"
+   ],
+   "altura": 12807
+  }
+ },
+ {
+  "titulo": "Wolverine Worldwide",
+  "url": "https://www.wolverineworldwide.com/",
+  "premio": "Site of the Day + Developer Award",
+  "requests": 63,
+  "pesoMB": {
+   "html": 0.01,
+   "imagem": 8.79,
+   "js": 0.2,
+   "video": 9.67,
+   "css": 0.02,
+   "fonte": 0.18,
+   "json": 0
+  },
+  "totalMB": 18.87,
+  "contagem": {
+   "html": 3,
+   "imagem": 35,
+   "js": 17,
+   "video": 2,
+   "css": 2,
+   "fonte": 3,
+   "json": 1
+  },
+  "formatos": {
+   "png": 1,
+   "mp4": 1,
+   "webp": 32,
+   "svg": 1,
+   "woff2": 3,
+   "ico": 1
+  },
+  "libs": [
+   "gsap",
+   "lenis",
+   "splitting"
+  ],
+  "shaders": 0,
+  "dom": {
+   "nos": 951,
+   "profundidade": 14,
+   "canvas": 0,
+   "video": 1,
+   "img": 77,
+   "picture": 0,
+   "fontesUsadas": [
+    "ABCDiatype",
+    "-apple-system"
+   ],
+   "altura": 7954
+  }
+ },
+ {
+  "titulo": "Sui",
+  "url": "https://www.sui.io/",
+  "premio": "Site of the Day + Developer Award",
+  "requests": 206,
+  "pesoMB": {
+   "html": 0.4,
+   "imagem": 0.78,
+   "fonte": 0.12,
+   "js": 2.77,
+   "css": 0.69,
+   "outro": 0.42,
+   "json": 0
+  },
+  "totalMB": 5.16,
+  "contagem": {
+   "html": 1,
+   "imagem": 106,
+   "fonte": 5,
+   "js": 38,
+   "css": 3,
+   "outro": 27,
+   "json": 26
+  },
+  "formatos": {
+   "avif": 1,
+   "woff2": 3,
+   "otf": 2,
+   "svg": 16,
+   "webp": 77,
+   "png": 3
+  },
+  "libs": [
+   "gsap",
+   "lenis",
+   "splitting",
+   "swiper",
+   "lottie",
+   "rive",
+   "react",
+   "webflow"
+  ],
+  "shaders": 0,
+  "dom": {
+   "nos": 4611,
+   "profundidade": 22,
+   "canvas": 15,
+   "video": 2,
+   "img": 38,
+   "picture": 0,
+   "fontesUsadas": [
+    "TWK Everett",
+    "TWK Everett Mono"
+   ],
+   "altura": 13755
+  }
+ }
+]

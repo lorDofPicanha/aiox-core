@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Templates candidatos — site Talos</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{--bg:#0e0e10;--surf:#131316;--line:#26262b;--ink:#fafafa;--ink2:#fafafaa8;--ink3:#fafafa7d;--acc:#E9A23B}
+  body{background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,Inter,system-ui,sans-serif;padding:32px 28px 80px}
+  h1{font-size:26px;font-weight:800;letter-spacing:-.03em}
+  .sub{color:var(--ink2);margin:8px 0 4px;max-width:70ch}
+  .warn{color:var(--ink3);font-size:13px;margin-bottom:22px;max-width:70ch}
+  .bar{position:sticky;top:0;z-index:20;background:var(--bg);padding:14px 0;margin-bottom:18px;
+       border-bottom:1px solid var(--line);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .bar button{background:var(--surf);color:var(--ink2);border:1px solid var(--line);border-radius:999px;
+       padding:7px 15px;cursor:pointer;font:inherit;font-size:13px}
+  .bar button.on{background:var(--acc);color:#0e0e10;border-color:var(--acc);font-weight:600}
+  #copiar{margin-left:auto;background:transparent;border-color:var(--acc);color:var(--acc)}
+  .grid{display:grid;gap:22px}
+  .card{background:var(--surf);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .card.mark{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc)}
+  .card header{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 16px}
+  .tit{display:flex;align-items:center;gap:10px}
+  .star{background:none;border:0;color:var(--ink3);font-size:19px;cursor:pointer;line-height:1}
+  .card.mark .star{color:var(--acc)}
+  h2{font-size:15px;font-weight:600;letter-spacing:-.01em}
+  .badge{font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:5px;
+       border:1px solid var(--line);color:var(--ink3);white-space:nowrap}
+  .b-referencia{background:var(--acc);color:#0e0e10;border-color:var(--acc);font-weight:700}
+  .b-codigo{border-color:#3d6b52;color:#7fd1a3}
+  .b-fora{border-color:#6b3d3d;color:#d18f8f}
+  .strip{display:flex;gap:2px;overflow-x:auto;background:#000}
+  .strip img{height:280px;width:auto;display:block;cursor:zoom-in;flex:0 0 auto}
+  .card footer{display:flex;gap:16px;align-items:center;padding:11px 16px;font-size:13px}
+  .card footer a{color:var(--acc);text-decoration:none}
+  .card footer a:hover{text-decoration:underline}
+  .alt{margin-left:auto;color:var(--ink3);font-size:12px}
+  .falhou{margin-top:36px;color:var(--ink3);font-size:13px}
+  #lb{position:fixed;inset:0;background:#000d;display:none;place-items:center;z-index:50;cursor:zoom-out;padding:20px}
+  #lb img{max-width:100%;max-height:100%;border-radius:8px}
+  #lb.on{display:grid}
+</style></head><body>
+<h1>Templates candidatos — site Talos</h1>
+<p class="sub">31 capturados em 31/07/2026. Cada card mostra 3 alturas de scroll do site ao vivo (1440×900). O primeiro card é o <strong>leanware.co</strong> — a régua que você escolheu.</p>
+<p class="warn">Marque com ☆ os que te interessam e clique em “copiar marcados”. Framer = grátis para remix, mas o site vive no Framer (<strong>sem export de código</strong>). Código = você é dono, mas o design de partida é mais simples.</p>
+<p class="warn" style="border-left:2px solid var(--acc);padding-left:12px">⚠️ O selo <strong>“Made in Framer”</strong> no canto inferior direito de todas as capturas do Framer é a marca d’água do plano grátis. Tirar exige plano pago de site. Para quem <em>vende</em> construção de site, isso não é detalhe.<br>
+⚠️ As capturas são de <strong>1440×900 em 3 alturas de scroll</strong> — não substituem abrir o site. Seis templates precisaram de recaptura porque a intro animada deles demorava mais que a espera inicial e saíam pretos.</p>
+
+<div class="bar">
+  <button data-f="todos" class="on">todos</button>
+  <button data-f="framer">Framer</button>
+  <button data-f="codigo">código</button>
+  <button data-f="mark">☆ marcados</button>
+  <button id="copiar">copiar marcados</button>
+</div>
+
+<div class="grid">
+<article class="card" data-kind="referencia" data-id="00-REGUA-leanware">
+  <header>
+    <div class="tit">
+      <button class="star" title="marcar candidato">☆</button>
+      <h2>leanware</h2>
+    </div>
+    <span class="badge b-referencia">RÉGUA</span>
+    
+  </header>
+  <div class="strip"><img src="shots/00-REGUA-leanware-0.png" loading="lazy" alt="00-REGUA-leanware scroll 0" data-full="shots/00-REGUA-leanware-0.png"><img src="shots/00-REGUA-leanware-1.png" loading="lazy" alt="00-REGUA-leanware scroll 1" data-full="shots/00-REGUA-leanware-1.png"><img src="shots/00-REGUA-leanware-2.png" loading="lazy" alt="00-REGUA-leanware scroll 2" data-full="shots/00-REGUA-leanware-2.png"></div>
+  <footer>
+    <a href="https://leanware.co/" target="_blank" rel="noopener">ver ao vivo ↗</a>
+    
+    <span class="alt">7.764px</span>
+  </footer>
+</article>
+<article class="card" data-kind="framer" data-id="agenciy">
+  <header>
+    <div class="tit">
+      <button class="star" title="marcar candidato">☆</button>
+      <h2>agenciy</h2>
+    </div>
+    <span class="badge b-framer">Framer · grátis</span>
+    
+  </header>
+  <div class="strip"><img src="shots/agenciy-0.png" loading="lazy" alt="agenciy scroll 0" data-full="shots/agenciy-0.png"><img src="shots/agenciy-1.png" loading="lazy" alt="agenciy scroll 1" data-full="shots/agenciy-1.png"><img src="shots/agenciy-2.png" loading="lazy" alt="agenciy scroll 2" data-full="shots/agenciy-2.png"></div>
+  <footer>
+    <a href="https://agenciy.framer.website" target="_blank" rel="noopener">ver ao vivo ↗</a>
+    <a href="https://www.framer.com/marketplace/templates/agenciy/" target="_blank" rel="noopener">marketplace ↗</a>
+    <span class="alt">12.852px</span>
+  </footer>
+</article>
+<article class="card" data-kind="framer" data-id="aixor">
+  <header>
+    <div class="tit">
+      <button class="star" title="marcar candidato">☆</button>
+      <h2>aixor</h2>
+    </div>
+    <span class="badge b-framer">Framer · grátis</span>
+    
+  </header>
+  <div class="strip"><img src="shots/aixor-0.png" loading="lazy" alt="aixor scroll 0" data-full="shots/aixor-0.png"><img src="shots/aixor-1.png" loading="lazy" alt="aixor scroll 1" data-full="shots/aixor-1.png"><img src="shots/aixor-2.png" loading="lazy" alt="aixor scroll 2" data-full="shots/aixor-2.png"></div>
+  <footer>
+    <a href="https://aixor.framer.website" target="_blank" rel="noopener">ver ao vivo ↗</a>
+    <a href="https://www.framer.com/marketplace/templates/aixor/" target="_blank" rel="noopener">marketplace ↗</a>
+    <span class="alt">12.546px</span>
+  </footer>
+</article>
+<article class="card" data-kind="framer" data-id="arik">
+  <header>
+    <div class="tit">
+      <button class="star" title="marcar candidato">☆</button>
+      <h2>arik</h2>
+    </div>
+    <span class="badge b-framer">Framer · grátis</span>
+    
+  </header>
+  <div class="strip"><img src="shots/arik-0.png" loading="lazy" alt="arik scroll 0" data-full="shots/arik-0.png"><img src="shots/arik-1.png" loading="lazy" alt="arik scroll 1" data-full="shots/arik-1.png"><img src="shots/arik-2.png" loading="lazy" alt="arik scroll 2" data-full="shots/arik-2.png"></div>
+  <footer>
+    <a href="https://arik-template.framer.website" target="_blank" rel="noopener">ver ao vivo ↗</a>
+    <a href="https://www.framer.com/marketplace/templates/arik/" target="_blank" rel="noopener">marketplace ↗</a>
+    <span class="alt">10.024px</span>
+  </footer>
+</article>
+<article class="card" data-kind="framer" data-id="bruce">
+  <header>
+    <div class="tit">
+      <button class="star" title="marcar candidato">☆</button>
+      <h2>bruce</h2>
+    </div>
+    <span class="badge b-framer">Framer · grátis</span>
+    
+  </header>
+  <div class="strip"><img src="shots/bruce-0.png" loading="lazy" alt="bruce scroll 0" data-full="shots/bruce-0.png"><img src="shots/bruce-1.png" loading="lazy" alt="bruce scroll 1" data-full="shots/bruce-1.png"><img src="shots/bruce-2.png" loading="lazy" alt="bruce scroll 2" data-full="shots/bruce-2.png"></div>
+  <footer>
+    <a href="https://bruce-template.framer.website" target="_blank" rel="noopener">ver ao vivo ↗</a>
+    <a href="https://www.framer.com/marketplace/templates/bruce/" target="_blank" rel="noopener">marketplace ↗</a>
+    <span class="alt">6.983px</span>
+  </footer>
+</article>
+<article class="card" data-kind="framer" data-id="caladan">
+  <header>
+    <div class="tit">
+      <button class="star" title="marcar candidato">☆</button>
+      <h2>caladan</h2>
+    </div>
+    <span class="badge b-framer">Framer · grátis</span>
+    
+  </header>
+  <div class="strip"><img src="shots/caladan-0.png" loading="lazy" alt="caladan scroll 0" data-full="shots/caladan-0.png"><img src="shots/caladan-1.png" loading="lazy" alt="caladan scroll 1" data-full="shots/caladan-1.png"><img src="shots/caladan-2.png" loading="lazy" alt="caladan scroll 2" data-full="shots/caladan-2.png"></div>
+  <footer>
+    <a href="https://caladantemplate.framer.website" target="_blank" rel="noopener">ver ao vivo ↗</a>
+    <a href="https://www.framer.com/marketplace/templates/caladan/" target="_blank" rel="noopener">marketplace ↗</a>
+    <span class="alt">14.449px</span>
+  </footer>
+</article>
+<article class="card" data-kind="framer" data-id="darkfolio">
+  <header>
+    <div class="tit">
+      <button class="star" title="marcar candidato">☆</button>
+      <h2>darkfolio</h2>
+    </div>
+    <span class="badge b-framer">Framer · grátis</span>
+    
+  </header>
+  <div class="strip"><img src="shots/darkfolio-0.png" loading="lazy" alt="darkfolio scroll 0" data-full="shots/darkfolio-0.png"><img src="shots/darkfolio-1.png" loading="lazy" alt="darkfolio scroll 1" data-full="shots/darkfolio-1.png"><img src="shots/darkfolio-2.png" loading="lazy" alt="darkfolio scroll 2" data-full="shots/darkfolio-2.png"></div>
+  <footer>
+    <a href="https://template-darkfolio.framer.website" target="_blank" rel="noopener">ver ao vivo ↗</a>
+    <a href="https://www.framer.com/marketplace/templates/darkfolio/" target="_blank" rel="noopener">marketplace ↗</a>
+    <span class="alt">4.711px</span>
+  </footer>
+</article>
+<article class="card" data-kind="framer" data-id="drago">
+  <header>
+    <div class="tit">
+      <button class="star" title="marcar candidato">☆</button>
+      <h2>drago</h2>
+    </div>
+    <span class="badge b-framer">Framer · grátis</span>
+    
+  </header>
+  <div class="strip"><img src="shots/drago-0.png" loading="lazy" alt="drago scroll 0" data-full="shots/drago-0.png"><img src="shots/drago-1.png" loading="lazy" alt="drago scroll 1" data-full="shots/drago-1.png"><img src="shots/drago-2.png" loading="lazy" alt="drago scroll 2" data-full="shots/drago-2.png"></div>
+  <footer>
+    <a href="https://drago-template.framer.website" target="_blank" rel="noopener">ver ao vivo ↗</a>
+    <a href="https://www.framer.com/marketplace/templates/drago/" target="_blank" rel="noopener">marketplace ↗</a>
+    <span class="alt">11.523px</span>
+  </footer>
+</article>
+<article class="card" data-kind="framer" data-id="elian">
+  <header>
+    <div class="tit">
+      <button class="star" title="marcar candidato">☆</button>
+      <h2>elian</h2>
+    </div>
+    <span class="badge b-framer">Framer · grátis</span>
+    
+  </header>
+  <div class="strip"><img src="shots/elian-0.png" loading="lazy" alt="elian scroll 0" data-full="shots/elian-0.png"><img src="shots/elian-1.png" loading="lazy" alt="elian scroll 1" data-full="shots/elian-1.png"><img src="shots/elian-2.png" loading="lazy" alt="elian scroll 2" data-full="shots/elian-2.png"></div>
+  <footer>
+    <a href="https://eliankent.framer.website" target="_blank" rel="noopener">ver ao vivo ↗</a>
+    <a href="https://www.framer.com/marketplace/templates/elian/" target="_blank" rel="noopener">marketplace ↗</a>
+    <span class="alt">21.000px</span>
+  </footer>
+</article>
+<article class="card" data-kind="framer" data-id="formix-co">
+  <header>
+    <div class="tit">
+      <button class="star" title="marcar candidato">☆</button>
+      <h2>formix-co</h2>
+    </div>
+    <span class="badge b-framer">Framer · grátis</span>
+    
+  </header>
+  <div class="strip"><img src="shots/formix-co-0.png" loading="lazy" alt="formix-co scroll 0" data-full="shots/formix-co-0.png"><img src="shots/formix-co-1.png" loading="lazy" alt="formix-co scroll 1" data-full="shots/formix-co-1.png"><img src="shots/formix-co-2.png" loading="lazy" alt="formix-co scroll 2" data-full="shots/formix-co-2.png"></div>
+  <footer>
+    <a href="https://formix.framer.ai" target="_blank" rel="noopener">ver ao vivo ↗</a>
+    <a href="https://www.framer.com/marketplace/templates/formix-co/" target="_blank" rel="noopener">marketplace ↗</a>
+    <span class="alt">14.193px</span>
+  </footer>
+</article>
+<article class="card" data-kind="framer" data-id="frame-studio">
+  <header>
+    <div class="tit">
+      <button class="star" title="marcar candidato">☆</button>
+      <h2>frame-studio</h2>
+    </div>
+    <span class="badge b-framer">Framer · grátis</span>
+    
+  </header>
+  <div class="strip"><img src="shots/frame-studio-0.png" loading="lazy" alt="frame-studio scroll 0" data-full="shots/frame-studio-0.png"><img src="shots/frame-studio-1.png" loading="lazy" alt="frame-studio scroll 1" data-full="shots/frame-studio-1.png"><img src="shots/frame-studio-2.png" loading="lazy" alt="frame-studio scroll 2" data-full="shots/frame-studio-2.png"></div>
+  <footer>
+    <a href="https://framestudio.framer.website" target="_blank" rel="noopener">ver ao vivo ↗</a>
+    <a href="https://www.framer.com/marketplace/templates/frame-studio/" target="_blank" rel="noopener">marketplace ↗</a>
+    <span class="alt">3.081px</span>
+  </footer>
+</article>
+<article class="card" data-kind="framer" data-id="hanzo">
+  <header>
+    <div class="tit">
+      <button class="star" title="marcar candidato">☆</button>
+      <h2>hanzo</h2>
+    </div>
+    <span class="badge b-framer">Framer · grátis</span>
+    
+  </header>
+  <div class="strip"><img src="shots/hanzo-0.png" loading="lazy" alt="hanzo scroll 0" data-full="shots/hanzo-0.png"><img src="shots/hanzo-1.png" loading="lazy" alt="hanzo scroll 1" data-full="shots/hanzo-1.png"><img src="shots/hanzo-2.png" loading="lazy" alt="hanzo scroll 2" data-full="shots/hanzo-2.png"></div>
+  <footer>
+    <a href="https://hanzo.framer.website" target="_blank" rel="noopener">ver ao vivo ↗</a>
+    <a href="https://www.framer.com/marketplace/templates/hanzo/" target="_blank" rel="noopener">marketplace ↗</a>
+    <span class="alt">10.409px</span>
+  </footer>
+</article>
+<article class="card" data-kind="framer" data-id="jet">
+  <header>
+    <div class="tit">
+      <button class="star" title="marcar candidato">☆</button>
+      <h2>jet</h2>
+    </div>
+    <span class="badge b-framer">Framer · grátis</span>
+    
+  </header>
+  <div class="strip"><img src="shots/jet-0.png" loading="lazy" alt="jet scroll 0" data-full="shots/jet-0.png"><img src="shots/jet-1.png" loading="lazy" alt="jet scroll 1" data-full="shots/jet-1.png"><img src="shots/jet-2.png" loading="lazy" alt="jet scroll 2" data-full="shots/jet-2.png"></div>
+  <footer>
+    <a href="https://jet.framer.website" target="_blank" rel="noopener">ver ao vivo ↗</a>
+    <a href="https://www.framer.com/marketplace/templates/jet/" target="_blank" rel="noopener">marketplace ↗</a>
+    <span class="alt">7.885px</span>
+  </footer>
+</article>
+<article class="card" data-kind="framer" data-id="jorge">
+  <header>
+    <div class="tit">
+      <button class="star" title="marcar candidato">☆</button>
+      <h2>jorge</h2>
+    </div>
+    <span class="badge b-framer">Framer · grátis</span>
+    
+  </header>
+  <div class="strip"><img src="shots/jorge-0.png" loading="lazy" alt="jorge scroll 0" data-full="shots/jorge-0.png"><img src="shots/jorge-1.png" loading="lazy" alt="jorge scroll 1" data-full="shots/jorge-1.png"><img src="shots/jorge-2.png" loading="lazy" alt="jorge scroll 2" data-full="shots/jorge-2.png"></div>
+  <footer>
+    <a href="https://jorge-template.framer.website" target="_blank" rel="noopener">ver ao vivo ↗</a>
+    <a href="https://www.framer.com/marketplace/templates/jorge/" target="_blank" rel="noopener">marketplace ↗</a>
+    <span class="alt">5.179px</span>
+  </footer>
+</article>
+<article class="card" data-kind="framer" data-id="kajo">
+  <header>
+    <div class="tit">
+      <button class="star" title="marcar candidato">☆</button>
+      <h2>kajo</h2>
+    </div>
+    <span class="badge b-framer">Framer · grátis</span>
+    
+  </header>
+  <div class="strip"><img src="shots/kajo-0.png" loading="lazy" alt="kajo scroll 0" data-full="shots/kajo-0.png"><img src="shots/kajo-1.png" loading="lazy" alt="kajo scroll 1" data-full="shots/kajo-1.png"><img src="shots/kajo-2.png" loading="lazy" alt="kajo scroll 2" data-full="shots/kajo-2.png"></div>
+  <footer>
+    <a href="https://kajo-template.framer.website" target="_blank" rel="noopener">ver ao vivo ↗</a>
+    <a href="https://www.framer.com/marketplace/templates/kajo/" target="_blank" rel="noopener">marketplace ↗</a>
+    <span class="alt">11.140px</span>
+  </footer>
+</article>
+<article class="card" data-kind="framer" data-id="landio">
+  <header>
+    <div class="tit">
+      <button class="star" title="marcar candidato">☆</button>
+      <h2>landio</h2>
+    </div>
+    <span class="badge b-framer">Framer · grátis</span>
+    
+  </header>
+  <div class="strip"><img src="shots/landio-0.png" loading="lazy" alt="landio scroll 0" data-full="shots/landio-0.png"><img src="shots/landio-1.png" loading="lazy" alt="landio scroll 1" data-full="shots/landio-1.png"><img src="shots/landio-2.png" loading="lazy" alt="landio scroll 2" data-full="shots/landio-2.png"></div>
+  <footer>
+    <a href="https://landio.framer.website" target="_blank" rel="noopener">ver ao vivo ↗</a>
+    <a href="https://www.framer.com/marketplace/templates/landio/" target="_blank" rel="noopener">marketplace ↗</a>
+    <span class="alt">12.332px</span>
+  </footer>
+</article>
+<article class="card" data-kind="framer" data-id="modullo">
+  <header>
+    <div class="tit">
+      <button class="star" title="marcar candidato">☆</button>
+      <h2>modullo</h2>
+    </div>
+    <span class="badge b-framer">Framer · grátis</span>
+    
+  </header>
+  <div class="strip"><img src="shots/modullo-0.png" loading="lazy" alt="modullo scroll 0" data-full="shots/modullo-0.png"><img src="shots/modullo-1.png" loading="lazy" alt="modullo scroll 1" data-full="shots/modullo-1.png"><img src="shots/modullo-2.png" loading="lazy" alt="modullo scroll 2" data-full="shots/modullo-2.png"></div>
+  <footer>
+    <a href="https://studiomodulo.framer.website" target="_blank" rel="noopener">ver ao vivo ↗</a>
+    <a href="https://www.framer.com/marketplace/templates/modullo/" target="_blank" rel="noopener">marketplace ↗</a>
+    <span class="alt">8.064px</span>
+  </footer>
+</article>
+<article class="card" data-kind="framer" data-id="nitro">
+  <header>
+    <div class="tit">
+      <button class="star" title="marcar candidato">☆</button>
+      <h2>nitro</h2>
+    </div>
+    <span class="badge b-framer">Framer · grátis</span>
+    
+  </header>
+  <div class="strip"><img src="shots/nitro-0.png" loading="lazy" alt="nitro scroll 0" data-full="shots/nitro-0.png"><img src="shots/nitro-1.png" loading="lazy" alt="nitro scroll 1" data-full="shots/nitro-1.png"><img src="shots/nitro-2.png" loading="lazy" alt="nitro scroll 2" data-full="shots/nitro-2.png"></div>
+  <footer>
+    <a href="https://nitro.framer.website" target="_blank" rel="noopener">ver ao vivo ↗</a>
+    <a href="https://www.framer.com/marketplace/templates/nitro/" target="_blank" rel="noopener">marketplace ↗</a>
+    <span class="alt">8.563px</span>
+  </footer>
+</article>
+<article class="card" data-kind="framer" data-id="other">
+  <header>
+    <div class="tit">
+      <button class="star" title="marcar candidato">☆</button>
+      <h2>other</h2>
+    </div>
+    <span class="badge b-framer">Framer · grátis</span>
+    
+  </header>
+  <div class="strip"><img src="shots/other-0.png" loading="lazy" alt="other scroll 0" data-full="shots/other-0.png"><img src="shots/other-1.png" loading="lazy" alt="other scroll 1" data-full="shots/other-1.png"><img src="shots/other-2.png" loading="lazy" alt="other scroll 2" data-full="shots/other-2.png"></div>
+  <footer>
+    <a href="https://other-template.framer.website" target="_blank" rel="noopener">ver ao vivo ↗</a>
+    <a href="https://www.framer.com/marketplace/templates/other/" target="_blank" rel="noopener">marketplace ↗</a>
+    <span class="alt">4.819px</span>
+  </footer>
+</article>
+<article class="card" data-kind="framer" data-id="palmer">
+  <header>
+    <div class="tit">
+      <button class="star" title="marcar candidato">☆</button>
+      <h2>palmer</h2>
+    </div>
+    <span class="badge b-framer">Framer · grátis</span>
+    
+  </header>
+  <div class="strip"><img src="shots/palmer-0.png" loading="lazy" alt="palmer scroll 0" data-full="shots/palmer-0.png"><img src="shots/palmer-1.png" loading="lazy" alt="palmer scroll 1" data-full="shots/palmer-1.png"><img src="shots/palmer-2.png" loading="lazy" alt="palmer scroll 2" data-full="shots/palmer-2.png"></div>
+  <footer>
+    <a href="https://palmer-template.framer.website" target="_blank" rel="noopener">ver ao vivo ↗</a>
+    <a href="https://www.framer.com/marketplace/templates/palmer/" target="_blank" rel="noopener">marketplace ↗</a>
+    <span class="alt">22.067px</span>
+  </footer>
+</article>
+<article class="card" data-kind="framer" data-id="porto">
+  <header>
+    <div class="tit">
+      <button class="star" title="marcar candidato">☆</button>
+      <h2>porto</h2>
+    </div>
+    <span class="badge b-framer">Framer · grátis</span>
+    
+  </header>
+  <div class="strip"><img src="shots/porto-0.png" loading="lazy" alt="porto scroll 0" data-full="shots/porto-0.png"><img src="shots/porto-1.png" loading="lazy" alt="porto scroll 1" data-full="shots/porto-1.png"><img src="shots/porto-2.png" loading="lazy" alt="porto scroll 2" data-full="shots/porto-2.png"></div>
+  <footer>
+    <a href="https://porto-template.framer.website" target="_blank" rel="noopener">ver ao vivo ↗</a>
+    <a href="https://www.framer.com/marketplace/templates/porto/" target="_blank" rel="noopener">marketplace ↗</a>
+    <span class="alt">22.483px</span>
+  </footer>
+</article>
+<article class="card" data-kind="framer" data-id="prolab">
+  <header>
+    <div class="tit">
+      <button class="star" title="marcar candidato">☆</button>
+      <h2>prolab</h2>
+    </div>
+    <span class="badge b-framer">Framer · grátis</span>
+    
+  </header>
+  <div class="strip"><img src="shots/prolab-0.png" loading="lazy" alt="prolab scroll 0" data-full="shots/prolab-0.png"><img src="shots/prolab-1.png" loading="lazy" alt="prolab scroll 1" data-full="shots/prolab-1.png"><img src="shots/prolab-2.png" loading="lazy" alt="prolab scroll 2" data-full="shots/prolab-2.png"></div>
+  <footer>
+    <a href="https://prolab.framer.website" target="_blank" rel="noopener">ver ao vivo ↗</a>
+    <a href="https://www.framer.com/marketplace/templates/prolab/" target="_blank" rel="noopener">marketplace ↗</a>
+    <span class="alt">11.304px</span>
+  </footer>
+</article>
+<article class="card" data-kind="framer" data-id="qitchen">
+  <header>
+    <div class="tit">
+      <button class="star" title="marcar candidato">☆</button>
+      <h2>qitchen</h2>
+    </div>
+    <span class="badge b-framer">Framer · grátis</span>
+    <span class="badge b-fora">fora de escopo · restaurante</span>
+  </header>
+  <div class="strip"><img src="shots/qitchen-0.png" loading="lazy" alt="qitchen scroll 0" data-full="shots/qitchen-0.png"><img src="shots/qitchen-1.png" loading="lazy" alt="qitchen scroll 1" data-full="shots/qitchen-1.png"><img src="shots/qitchen-2.png" loading="lazy" alt="qitchen scroll 2" data-full="shots/qitchen-2.png"></div>
+  <footer>
+    <a href="https://qitchen-template.framer.website" target="_blank" rel="noopener">ver ao vivo ↗</a>
+    <a href="https://www.framer.com/marketplace/templates/qitchen/" target="_blank" rel="noopener">marketplace ↗</a>
+    <span class="alt">900px</span>
+  </footer>
+</article>
+<article class="card" data-kind="framer" data-id="rauten">
+  <header>
+    <div class="tit">
+      <button class="star" title="marcar candidato">☆</button>
+      <h2>rauten</h2>
+    </div>
+    <span class="badge b-framer">Framer · grátis</span>
+    
+  </header>
+  <div class="strip"><img src="shots/rauten-0.png" loading="lazy" alt="rauten scroll 0" data-full="shots/rauten-0.png"><img src="shots/rauten-1.png" loading="lazy" alt="rauten scroll 1" data-full="shots/rauten-1.png"><img src="shots/rauten-2.png" loading="lazy" alt="rauten scroll 2" data-full="shots/rauten-2.png"></div>
+  <footer>
+    <a href="https://rauten.framer.website" target="_blank" rel="noopener">ver ao vivo ↗</a>
+    <a href="https://www.framer.com/marketplace/templates/rauten/" target="_blank" rel="noopener">marketplace ↗</a>
+    <span class="alt">7.804px</span>
+  </footer>
+</article>
+<article class="card" data-kind="framer" data-id="synk">
+  <header>
+    <div class="tit">
+      <button class="star" title="marcar candidato">☆</button>
+      <h2>synk</h2>
+    </div>
+    <span class="badge b-framer">Framer · grátis</span>
+    
+  </header>
+  <div class="strip"><img src="shots/synk-0.png" loading="lazy" alt="synk scroll 0" data-full="shots/synk-0.png"><img src="shots/synk-1.png" loading="lazy" alt="synk scroll 1" data-full="shots/synk-1.png"><img src="shots/synk-2.png" loading="lazy" alt="synk scroll 2" data-full="shots/synk-2.png"></div>
+  <footer>
+    <a href="https://synk.framer.website" target="_blank" rel="noopener">ver ao vivo ↗</a>
+    <a href="https://www.framer.com/marketplace/templates/synk/" target="_blank" rel="noopener">marketplace ↗</a>
+    <span class="alt">8.622px</span>
+  </footer>
+</article>
+<article class="card" data-kind="framer" data-id="twin-x">
+  <header>
+    <div class="tit">
+      <button class="star" title="marcar candidato">☆</button>
+      <h2>twin-x</h2>
+    </div>
+    <span class="badge b-framer">Framer · grátis</span>
+    
+  </header>
+  <div class="strip"><img src="shots/twin-x-0.png" loading="lazy" alt="twin-x scroll 0" data-full="shots/twin-x-0.png"><img src="shots/twin-x-1.png" loading="lazy" alt="twin-x scroll 1" data-full="shots/twin-x-1.png"><img src="shots/twin-x-2.png" loading="lazy" alt="twin-x scroll 2" data-full="shots/twin-x-2.png"></div>
+  <footer>
+    <a href="https://twinstudio.framer.website" target="_blank" rel="noopener">ver ao vivo ↗</a>
+    <a href="https://www.framer.com/marketplace/templates/twin-x/" target="_blank" rel="noopener">marketplace ↗</a>
+    <span class="alt">4.118px</span>
+  </footer>
+</article>
+<article class="card" data-kind="framer" data-id="villo">
+  <header>
+    <div class="tit">
+      <button class="star" title="marcar candidato">☆</button>
+      <h2>villo</h2>
+    </div>
+    <span class="badge b-framer">Framer · grátis</span>
+    
+  </header>
+  <div class="strip"><img src="shots/villo-0.png" loading="lazy" alt="villo scroll 0" data-full="shots/villo-0.png"><img src="shots/villo-1.png" loading="lazy" alt="villo scroll 1" data-full="shots/villo-1.png"><img src="shots/villo-2.png" loading="lazy" alt="villo scroll 2" data-full="shots/villo-2.png"></div>
+  <footer>
+    <a href="https://villo.framer.website" target="_blank" rel="noopener">ver ao vivo ↗</a>
+    <a href="https://www.framer.com/marketplace/templates/villo/" target="_blank" rel="noopener">marketplace ↗</a>
+    <span class="alt">7.518px</span>
+  </footer>
+</article>
+<article class="card" data-kind="framer" data-id="viper">
+  <header>
+    <div class="tit">
+      <button class="star" title="marcar candidato">☆</button>
+      <h2>viper</h2>
+    </div>
+    <span class="badge b-framer">Framer · grátis</span>
+    
+  </header>
+  <div class="strip"><img src="shots/viper-0.png" loading="lazy" alt="viper scroll 0" data-full="shots/viper-0.png"><img src="shots/viper-1.png" loading="lazy" alt="viper scroll 1" data-full="shots/viper-1.png"><img src="shots/viper-2.png" loading="lazy" alt="viper scroll 2" data-full="shots/viper-2.png"></div>
+  <footer>
+    <a href="https://viper-template.framer.website" target="_blank" rel="noopener">ver ao vivo ↗</a>
+    <a href="https://www.framer.com/marketplace/templates/viper/" target="_blank" rel="noopener">marketplace ↗</a>
+    <span class="alt">19.204px</span>
+  </footer>
+</article>
+<article class="card" data-kind="framer" data-id="zup">
+  <header>
+    <div class="tit">
+      <button class="star" title="marcar candidato">☆</button>
+      <h2>zup</h2>
+    </div>
+    <span class="badge b-framer">Framer · grátis</span>
+    
+  </header>
+  <div class="strip"><img src="shots/zup-0.png" loading="lazy" alt="zup scroll 0" data-full="shots/zup-0.png"><img src="shots/zup-1.png" loading="lazy" alt="zup scroll 1" data-full="shots/zup-1.png"><img src="shots/zup-2.png" loading="lazy" alt="zup scroll 2" data-full="shots/zup-2.png"></div>
+  <footer>
+    <a href="https://zupstudio.framer.website" target="_blank" rel="noopener">ver ao vivo ↗</a>
+    <a href="https://www.framer.com/marketplace/templates/zup/" target="_blank" rel="noopener">marketplace ↗</a>
+    <span class="alt">13.139px</span>
+  </footer>
+</article>
+<article class="card" data-kind="codigo" data-id="code-magicui-startup">
+  <header>
+    <div class="tit">
+      <button class="star" title="marcar candidato">☆</button>
+      <h2>magicui-startup</h2>
+    </div>
+    <span class="badge b-codigo">Código · grátis</span>
+    
+  </header>
+  <div class="strip"><img src="shots/code-magicui-startup-0.png" loading="lazy" alt="code-magicui-startup scroll 0" data-full="shots/code-magicui-startup-0.png"><img src="shots/code-magicui-startup-1.png" loading="lazy" alt="code-magicui-startup scroll 1" data-full="shots/code-magicui-startup-1.png"><img src="shots/code-magicui-startup-2.png" loading="lazy" alt="code-magicui-startup scroll 2" data-full="shots/code-magicui-startup-2.png"></div>
+  <footer>
+    <a href="https://startup-template-sage.vercel.app/" target="_blank" rel="noopener">ver ao vivo ↗</a>
+    
+    <span class="alt">3.547px</span>
+  </footer>
+</article>
+<article class="card" data-kind="codigo" data-id="code-screwfast">
+  <header>
+    <div class="tit">
+      <button class="star" title="marcar candidato">☆</button>
+      <h2>screwfast</h2>
+    </div>
+    <span class="badge b-codigo">Código · grátis</span>
+    
+  </header>
+  <div class="strip"><img src="shots/code-screwfast-0.png" loading="lazy" alt="code-screwfast scroll 0" data-full="shots/code-screwfast-0.png"><img src="shots/code-screwfast-1.png" loading="lazy" alt="code-screwfast scroll 1" data-full="shots/code-screwfast-1.png"><img src="shots/code-screwfast-2.png" loading="lazy" alt="code-screwfast scroll 2" data-full="shots/code-screwfast-2.png"></div>
+  <footer>
+    <a href="https://screwfast.uk/" target="_blank" rel="noopener">ver ao vivo ↗</a>
+    
+    <span class="alt">5.586px</span>
+  </footer>
+</article>
+</div>
+
+
+
+<div id="lb"><img alt=""></div>
+<script>
+  const LS = 'talos-templates-marcados';
+  const marcados = new Set(JSON.parse(localStorage.getItem(LS) || '[]'));
+  const salvar = () => localStorage.setItem(LS, JSON.stringify([...marcados]));
+
+  document.querySelectorAll('.card').forEach(c => {
+    if (marcados.has(c.dataset.id)) c.classList.add('mark');
+    c.querySelector('.star').onclick = () => {
+      c.classList.toggle('mark');
+      c.classList.contains('mark') ? marcados.add(c.dataset.id) : marcados.delete(c.dataset.id);
+      salvar();
+    };
+  });
+
+  document.querySelectorAll('.bar [data-f]').forEach(b => b.onclick = () => {
+    document.querySelectorAll('.bar [data-f]').forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+    const f = b.dataset.f;
+    document.querySelectorAll('.card').forEach(c => {
+      const vis = f === 'todos' ? true
+        : f === 'mark' ? c.classList.contains('mark')
+        : c.dataset.kind === f || c.dataset.kind === 'referencia';
+      c.style.display = vis ? '' : 'none';
+    });
+  });
+
+  document.getElementById('copiar').onclick = async () => {
+    const txt = [...marcados].join(', ') || '(nenhum marcado)';
+    await navigator.clipboard.writeText(txt);
+    document.getElementById('copiar').textContent = 'copiado: ' + txt.slice(0, 40);
+  };
+
+  const lb = document.getElementById('lb');
+  document.querySelectorAll('.strip img').forEach(i => i.onclick = () => {
+    lb.querySelector('img').src = i.dataset.full; lb.classList.add('on');
+  });
+  lb.onclick = () => lb.classList.remove('on');
+  addEventListener('keydown', e => e.key === 'Escape' && lb.classList.remove('on'));
+</script>
+</body></html>

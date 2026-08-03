@@ -1,0 +1,84 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Talos · hero A</title>
+<!--
+  MOCKUP F4 — variante A: "a mão que a máquina substitui"
+  Não é build. É tela para decisão, e por isso é HTML estático sem framework.
+  Tokens: 04-tokens/tokens.json (produzidos por ui-ux-pro-max + design-studio)
+  Foto: 03-assets/fotos/oficina-1920.webp (Unsplash, Adi Goldstein)
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500&family=Archivo+Narrow:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#14110E; --surface:#1C1815; --rule:#332C25;
+    --text:#EDE8E1; --text-2:#A9A29A; --muted:#938B81;
+    --sinal:#FA8F42; --sinal-forte:#F97316; --sinal-dim:#552707;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;
+       -webkit-font-smoothing:antialiased}
+  .tela{min-height:900px;position:relative;overflow:hidden;display:flex;align-items:center}
+
+  /* A foto entra como MATÉRIA, não como ilustração: ocupa a metade direita,
+     dessaturada e escurecida até virar textura, com o laranja por cima. */
+  .foto{position:absolute;inset:0 0 0 46%;background:url('../../03-assets/fotos/oficina-1920.webp') center/cover no-repeat;
+        filter:grayscale(.55) contrast(1.15) brightness(.62);
+        mask-image:linear-gradient(90deg,#0000,#000 22%,#000 78%,#0000)}
+  .foto::after{content:'';position:absolute;inset:0;
+        background:linear-gradient(90deg,var(--bg) 0%,#14110E00 38%),
+                   radial-gradient(60% 80% at 70% 45%,#F9731622,#0000 70%)}
+
+  /* Faixa de sinalização industrial — o detalhe que ancora a paleta na indústria */
+  .faixa{position:absolute;top:0;left:0;right:0;height:6px;
+    background:repeating-linear-gradient(115deg,var(--sinal) 0 22px,#14110E 22px 44px);opacity:.85}
+
+  .wrap{position:relative;width:100%;max-width:1180px;margin:0 auto;padding:0 40px}
+
+  .rotulo{font-family:'Archivo Narrow',sans-serif;font-size:13px;font-weight:700;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--muted);
+    display:flex;align-items:center;gap:14px;margin-bottom:34px}
+  .rotulo::before{content:'';width:52px;height:2px;background:var(--sinal)}
+
+  h1{font-family:Archivo,sans-serif;font-weight:800;font-size:104px;line-height:.92;
+     letter-spacing:-.035em;max-width:13ch;text-transform:uppercase}
+  h1 em{font-style:normal;color:var(--sinal);display:block}
+
+  .lead{font-size:19px;line-height:1.55;color:var(--text-2);max-width:44ch;margin-top:30px}
+
+  .acoes{display:flex;gap:14px;margin-top:42px}
+  .btn{display:inline-flex;align-items:center;gap:10px;height:54px;padding:0 30px;
+    font-family:'Archivo Narrow',sans-serif;font-weight:700;font-size:15px;
+    letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid transparent}
+  .b1{background:var(--sinal);color:#14110E}
+  .b2{border-color:var(--rule);color:var(--text)}
+
+  /* Medidor: dado técnico como ornamento — linguagem de chão de fábrica */
+  .medidor{position:absolute;left:40px;bottom:44px;display:flex;gap:40px;
+    font-family:'Archivo Narrow',sans-serif;font-size:12px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--muted)}
+  .medidor b{display:block;font-family:Archivo,sans-serif;font-size:30px;font-weight:800;
+    letter-spacing:-.02em;color:var(--text);margin-bottom:4px}
+  .medidor .s{color:var(--sinal)}
+</style>
+
+<div class="tela">
+  <div class="faixa"></div>
+  <div class="foto"></div>
+  <div class="wrap">
+    <p class="rotulo">automação de processos · construção de sites</p>
+    <h1>O trabalho que se repete <em>não precisa de gente.</em></h1>
+    <p class="lead">Eu construo as máquinas que fazem esse trabalho sozinhas — e a
+       primeira delas é o seu site.</p>
+    <div class="acoes">
+      <a class="btn b1" href="#">mapear meu processo</a>
+      <a class="btn b2" href="#">por onde começa</a>
+    </div>
+  </div>
+  <div class="medidor">
+    <div><b class="s">3</b>etapas por pedido</div>
+    <div><b>2×</b>a mesma digitação</div>
+    <div><b>0</b>vezes que alguém quis fazer</div>
+  </div>
+</div>

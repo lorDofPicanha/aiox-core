@@ -1,0 +1,145 @@
+{
+  "_leia": "Pares [de, para] aplicados no HTML real do Conicorn. Edite o lado DIREITO à vontade e rode 'node fork-talos.cjs' de novo.",
+  "_escopo": "CUIDADO com palavra curta: 'process', 'values', 'team' também aparecem em id=/class=. Por isso os rótulos vão com o markup inteiro, e os rótulos de menu vão na forma >texto< . Trocar solto corrompe o HTML.",
+
+  "removerSecoes": [
+    ["project-section", "005 CASE STUDIES — case fabricado com logo de cliente inventado. CONTEXT.md §3 proíbe."],
+    ["testimonials-section", "007 TESTIMONIAL — 9 depoimentos inventados. CONTEXT.md §3 proíbe."],
+    ["pricing-section", "008 PRICING — founder decidiu: nenhum preço no site."],
+    ["team-section", "009 TEAM — 3 pessoas fictícias. Founder é solo e perfil.ts está vazio."],
+    ["integrations-section", "02/Ago: founder mandou tirar por enquanto. Bônus: era a origem de quase todo o 'inglês' que restava — os logos são PNG com nome de marca (HubSpot, Salesforce, Zapier, OpenAI...). Sai a seção, sai o inglês."]
+  ],
+
+  "_removerBlocos": "Prova fabricada solta DENTRO de seção que fica. Não se traduz — se remove.",
+  "removerBlocos": [
+    ["logo-marquee-section", "Faixa de logos de cliente do template ('LOGOIPSUM', 'IPSUM'). CONTEXT.md §3: zero logo de cliente que não é cliente. São placeholders genéricos — pior ainda, porque quem reconhece sabe que é template."]
+  ],
+
+  "_staticsMarquee": "02/Ago: a faixa VOLTOU. Antes era removida por ter número inventado ('500+ saved hours'). Agora carrega número MEDIDO por terceiro, com estudo, ano e amostra na própria etiqueta. O template deu o slot visual; a pesquisa deu o conteúdo honesto. Fontes em 01-research/EVIDENCIA-SETORES.md.",
+
+  "hrefs": [
+    ["https://webflow.com/templates/html/conicorn-website-template", "#contato"]
+  ],
+
+  "_rotulosBotao": "Rótulos que o GSAP SplitText já tinha quebrado letra a letra no DOM capturado. Trocados pelo scanner de div balanceado, não por regex — o miolo volta a ser texto puro e o SplitText redivide no runtime.",
+  "rotulosBotao": [
+    ["We helps startups, SMEs &amp; enterprises design and deploy intelligent automation systems that streamline operations and unlock scalable growth.", "Desenhamos e colocamos no ar sistemas de automação para indústria, comércio e serviço — do processo que trava a operação ao que segura o crescimento."],
+    ["Get this Template", "Falar com a gente"],
+    ["Book a Free Consultation", "Marcar conversa"],
+    ["Schedule a Session", "Marcar conversa"],
+    ["Try with Conicorn", "Ver funcionando"],
+    ["Work with Us", "Ver como funciona"],
+    ["Contact Us", "Falar com a gente"],
+    ["Read More", "Ver mais"],
+    ["Menu", "Menu"]
+  ],
+
+  "texto": [
+    ["<div class=\"statics-item-number\">500+</div><div class=\"statics-item-name\">saved hours</div>", "<div class=\"statics-item-number\">+15%</div><div class=\"statics-item-name\">chamados por hora · QJE 2025 · 5.172 pessoas</div>"],
+    ["<div class=\"statics-item-number\">80%</div><div class=\"statics-item-name\">productivity boost</div>", "<div class=\"statics-item-number\">−40%</div><div class=\"statics-item-name\">tempo de redação · Science 2023 · 453 pessoas</div>"],
+    ["<div class=\"statics-item-number\">5x</div><div class=\"statics-item-name\">faster response</div>", "<div class=\"statics-item-number\">−19 p.p.</div><div class=\"statics-item-name\">de acerto se entrar no lugar errado · Org. Science 2025</div>"],
+
+    ["<p class=\"subheading-text hero\">We build AI-powered automation systems that eliminate manual work, reduce costs, and multiply your business performance.</p>", "<p class=\"subheading-text hero\">Não falta ferramenta — falta ela estar no processo certo. Eu entro nos seus processos, refaço o que dá, e a gente mede o antes e o depois.</p>"],
+    ["<h2 class=\"heading-style-h2\">Why Choose Us?</h2><p class=\"subheading-text\">We build AI-powered automation systems that eliminate manual work, reduce costs, and multiply your business performance.</p>", "<h2 class=\"heading-style-h2\">O que a evidência mostra</h2><p class=\"subheading-text\">Nenhum número desta página é meu. Todos vêm de estudo publicado, com ano, amostra e link — inclusive o que mostra a IA piorando o resultado quando ela entra no lugar errado.</p>"],
+    ["Book a free 30-minute AI strategy session. We’ll analyze your current workflows and identify the highest-ROI automation opportunities for your business.", "Conversa de 30 minutos, sem custo. A gente olha o seu processo de hoje e aponta onde a automação devolve mais hora."],
+    ["A proven process designed to transform complex workflows into scalable AI-powered systems — efficiently and strategically.", "Um processo definido para virar rotina complicada em sistema que roda sozinho — sem parar a sua operação no meio."],
+    ["Our automation architecture connects data, workflows, and platforms into a secure, high-performance system that grows with you.", "A arquitetura conecta seus dados, seus processos e as ferramentas que você já usa num sistema só, seguro, que cresce junto."],
+    ["Project timelines typically range from 2 to 6 weeks, depending on complexity.Smaller automation systems — such as AI chatbots with CRM integration — can often be deployed within 2–3 weeks.More advanced projects involving multi-platform integrations, custom AI logic, internal workflow automation, and reporting dashboards may take 4–6 weeks or longer.", "O prazo costuma ficar entre 2 e 6 semanas, dependendo da complexidade. Sistemas menores — um atendimento automático integrado ao CRM, por exemplo — costumam entrar no ar em 2 a 3 semanas. Projetos mais pesados, com integração entre várias plataformas, regra de decisão sob medida, automação interna e painel de indicadores, levam de 4 a 6 semanas ou mais."],
+
+    ["We analyze your workflows, bottlenecks, and revenue opportunities.", "A gente mapeia o seu processo, os gargalos e onde tem dinheiro parado."],
+    ["We design a detailed automation architecture aligned with KPIs.", "Desenhamos a arquitetura da automação amarrada aos seus indicadores."],
+    ["Our engineers implement AI systems and integrate with your existing tools.", "Implementamos o sistema e integramos com as ferramentas que você já usa."],
+    ["Launch, monitor, and continuously optimize for growth.", "Coloca no ar, acompanha e vai ajustando conforme a operação cresce."],
+    ["We design solutions aligned with your revenue goals.", "O desempenho da empresa anda junto com quantos processos usam IA — não com qual ferramenta ela comprou. 57% param em três processos e ficam por ali. (Census Bureau dos EUA, 2026)"],
+    ["From strategy to development, followed by deployment.", "Entre 25 atributos organizacionais testados, redesenhar o fluxo de trabalho foi o que mais explicou lucro com IA. Ligar IA num processo torto entrega um processo torto mais rápido. (McKinsey)"],
+    ["No templates. Every workflow is tailored to your unique operations.", "Fora da competência da IA o resultado piora: numa tarefa escolhida de propósito, quem usou IA errou 19 pontos percentuais mais do que quem não usou. Achar essa fronteira no seu processo é o trabalho. (Organization Science, 2025)"],
+    ["Do we need technical knowledge to work with you?", "Precisa ter alguém técnico na empresa?"],
+    ["Oops! Something went wrong while submitting the form.", "Algo deu errado no envio. Tente de novo ou chame no WhatsApp."],
+    ["Your submission has been received!", "Sua mensagem chegou — a gente responde em breve."],
+    ["What industries do you work with?", "Com que tipo de empresa vocês trabalham?"],
+    ["How long does implementation take?", "Quanto tempo leva para implantar?"],
+    ["What kind of ROI can we expect?", "Que retorno dá para esperar?"],
+    ["Business-First AI Strategy", "Largura, não ferramenta"],
+    ["Not sure what to automate first?", "Não sabe por onde começar?"],
+    ["Your Data. Protected. Always.", "Seus dados. Protegidos. Sempre."],
+    ["Custom-Built Automation", "E onde ela não entra"],
+    ["Is AI automation secure?", "A automação é segura?"],
+    ["Automation Blueprint", "Desenho da automação"],
+    ["Thank you!", "Recebido!"],
+
+    ["Automate repetitive tasks across departments using intelligent triggers and decision logic.", "Tarefa repetitiva de qualquer setor rodando sozinha, com gatilho e regra de decisão."],
+    ["24/7 customer support, lead qualification, booking systems, and AI sales reps.", "Suporte 24 horas, qualificação de contato, agendamento e primeiro atendimento de venda."],
+    ["Automated dashboards, business intelligence, performance forecasting.", "Os números do negócio atualizados sozinhos, sem alguém fechando planilha toda segunda-feira."],
+    ["Pipeline automation, AI lead scoring, follow-ups, predictive insights.", "Funil que anda sozinho, contato priorizado e follow-up que não depende de alguém lembrar."],
+    ["Email sequences, personalization engines, AI-generated content systems.", "Sequência de e-mail, personalização e produção de conteúdo em escala."],
+
+    ["AI Workflow Automation.", "Automação de processo."],
+    ["AI Chatbots &amp; Conversational Agents.", "Atendimento automático."],
+    ["AI Chatbots & Conversational Agents.", "Atendimento automático."],
+    ["AI Data &amp; Reporting Systems.", "Relatório e painel."],
+    ["AI Data & Reporting Systems.", "Relatório e painel."],
+    ["CRM &amp; Sales Automation.", "CRM e vendas."],
+    ["CRM & Sales Automation.", "CRM e vendas."],
+    ["Marketing Automation.", "Marketing."],
+
+    ["Intelligent Automation <br>for Modern Teams", "A IA já entrou na sua empresa. <br>O resultado ainda não."],
+    ["Your Competitors Are Automating. <br>Are you?", "Seu concorrente já automatizou. <br>E você?"],
+    ["Stop wasting time on manual processes. Start building a self-running business.", "Pare de perder hora com processo manual. Comece a montar uma empresa que roda sozinha."],
+
+    ["We helps startups, SMEs &amp; enterprises design and deploy intelligent automation systems that streamline operations and unlock scalable growth.", "Desenhamos e colocamos no ar sistemas de automação para indústria, comércio e serviço — do processo que trava a operação ao que segura o crescimento."],
+    ["placeholder=\"Your business email*\"", "placeholder=\"Seu e-mail*\""],
+    ["placeholder=\"Your company name*\"", "placeholder=\"Nome da empresa*\""],
+    ["placeholder=\"Your name*\"", "placeholder=\"Seu nome*\""],
+    ["placeholder=\"Message\"", "placeholder=\"Conte o que trava hoje\""],
+    ["value=\"Send Your Request!\"", "value=\"Quero falar sobre meu processo\""],
+    ["data-wait=\"Please wait...\"", "data-wait=\"Enviando...\""],
+    ["Performance testing, data validation, refinement.", "Teste de performance, validação de dados e ajuste fino."],
+    ["Real-time system integration.", "Integração de sistema em tempo real."],
+    ["End-to-End Implementation", "O fluxo refeito, não remendado"],
+    ["Role-Based Access Control", "Controle de acesso por papel"],
+    ["Have any other questions?", "Ficou com outra dúvida?"],
+    ["Secure API Integrations", "Integrações de API seguras"],
+    ["End-to-End Encryption", "Criptografia ponta a ponta"],
+    ["Testing &amp; Optimization", "Teste e otimização"],
+    ["Deployment &amp; Scaling", "Publicação e escala"],
+    ["Build &amp; Integration", "Construção e integração"],
+    ["Discovery &amp; Audit", "Diagnóstico e auditoria"],
+    ["Data Minimization", "Mínimo de dado coletado"],
+    ["Workflow mapping", "Mapeamento do processo"],
+    ["Validated output", "Resultado validado"],
+    ["Custom APIs", "APIs sob medida"],
+    ["<div>Unicorn AI Partner</div>", "<div>Automação de processos</div>"],
+    ["Our AI-Driven Services", "O que a gente faz"],
+    ["Technology Ecosystem", "Ferramentas que a gente conecta"],
+    ["Common Questions", "Dúvidas frequentes"],
+    ["Why Choose Us?", "O que a evidência mostra"],
+    ["How We Work", "Como funciona"],
+
+    ["<div class=\"eye-brow-text\">who we are</div>", "<div class=\"eye-brow-text\">quem somos</div>"],
+    ["<div class=\"eye-brow-text\">values</div>", "<div class=\"eye-brow-text\">diferenciais</div>"],
+    ["<div class=\"eye-brow-text\">Capabilities</div>", "<div class=\"eye-brow-text\">o que fazemos</div>"],
+    ["<div class=\"eye-brow-text\">process</div>", "<div class=\"eye-brow-text\">como funciona</div>"],
+    ["<div class=\"eye-brow-text\">integrations</div>", "<div class=\"eye-brow-text\">integrações</div>"],
+    ["<div class=\"eye-brow-text\">FAQs</div>", "<div class=\"eye-brow-text\">dúvidas</div>"],
+
+    [">Get this Template<", ">Falar com a gente<"],
+    [">Book a Free Consultation<", ">Marcar conversa<"],
+    [">Schedule a Session<", ">Marcar conversa<"],
+    [">Try with Conicorn<", ">Ver funcionando<"],
+    [">Work with Us<", ">Ver como funciona<"],
+    [">Contact Us<", ">Falar com a gente<"],
+    [">Integrations<", ">Integrações<"],
+    [">Services<", ">Serviços<"],
+    [">Process<", ">Como funciona<"],
+    [">Values<", ">Diferenciais<"],
+    ["License ", "Licença "],
+    [">About<", ">Sobre<"],
+    [">FAQs<", ">Dúvidas<"],
+
+    ["Powered by", "Feito com"],
+    ["Designed by", "Template de"],
+    ["Conicorn", "Talos"]
+  ],
+
+  "_naoTraduzir": "NinhStudio e Webflow ficam no rodapé — crédito do autor do template grátis. O par 'Conicorn'→'Talos' é MAIÚSCULO de propósito: os arquivos de JS (conicorn.schunk.js) e a URL do marketplace são minúsculos e não podem ser tocados, senão o site perde o GSAP."
+}

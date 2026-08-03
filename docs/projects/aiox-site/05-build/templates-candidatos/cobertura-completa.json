@@ -1,0 +1,95 @@
+[
+  {
+    "id": "wf-conicorn",
+    "demo": "https://conicorn.webflow.io/",
+    "altura": 14307,
+    "frames": 16,
+    "luminanciaMedia": 0.926470588235294,
+    "paradasClaras": 15,
+    "paradasTotal": 16,
+    "fundos": [
+      "rgb(26, 26, 26)",
+      "rgb(255, 255, 255)",
+      "rgb(255, 255, 255)",
+      "rgb(255, 255, 255)",
+      "rgb(255, 255, 255)",
+      "rgb(255, 255, 255)",
+      "rgb(255, 255, 255)",
+      "rgb(255, 255, 255)",
+      "rgb(255, 255, 255)",
+      "rgb(255, 255, 255)",
+      "rgb(255, 255, 255)",
+      "rgb(255, 255, 255)",
+      "rgb(255, 255, 255)",
+      "rgb(255, 255, 255)",
+      "rgb(255, 255, 255)",
+      "rgb(184, 184, 184)"
+    ]
+  },
+  {
+    "id": "fr-agenciy",
+    "demo": "https://agenciy.framer.website/",
+    "altura": 12852,
+    "frames": 15,
+    "luminanciaMedia": 0,
+    "paradasClaras": 0,
+    "paradasTotal": 15,
+    "fundos": [
+      "rgb(0, 0, 0)",
+      "rgb(0, 0, 0)",
+      "rgb(0, 0, 0)",
+      "rgb(0, 0, 0)",
+      "rgb(0, 0, 0)",
+      "rgb(0, 0, 0)",
+      "rgb(0, 0, 0)",
+      "rgb(0, 0, 0)",
+      "rgb(0, 0, 0)",
+      "rgb(0, 0, 0)",
+      "rgb(0, 0, 0)",
+      "rgb(0, 0, 0)",
+      "rgb(0, 0, 0)",
+      "rgb(0, 0, 0)",
+      "rgb(0, 0, 0)"
+    ]
+  },
+  {
+    "id": "fr-stackgrid",
+    "demo": "https://stackgrid.framer.website/",
+    "altura": 8227,
+    "frames": 10,
+    "luminanciaMedia": 0.9921568627450981,
+    "paradasClaras": 10,
+    "paradasTotal": 10,
+    "fundos": [
+      "rgb(253, 253, 253)",
+      "rgb(253, 253, 253)",
+      "rgb(253, 253, 253)",
+      "rgb(253, 253, 253)",
+      "rgb(253, 253, 253)",
+      "rgb(253, 253, 253)",
+      "rgb(253, 253, 253)",
+      "rgb(253, 253, 253)",
+      "rgb(253, 253, 253)",
+      "rgb(253, 253, 253)"
+    ]
+  },
+  {
+    "id": "wf-idesignerlite",
+    "demo": "https://idesigner-lite-template.webflow.io/",
+    "altura": 6376,
+    "frames": 8,
+    "luminanciaMedia": 0.019607843137254898,
+    "paradasClaras": 0,
+    "paradasTotal": 8,
+    "fundos": [
+      "rgb(5, 5, 5)",
+      "rgb(5, 5, 5)",
+      "rgb(5, 5, 5)",
+      "rgb(5, 5, 5)",
+      "rgb(5, 5, 5)",
+      "rgb(5, 5, 5)",
+      "rgb(5, 5, 5)",
+      "rgb(5, 5, 5)"
+    ]
+  }
+]

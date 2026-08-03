@@ -1,0 +1,74 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Talos · hero B</title>
+<!--
+  MOCKUP F4 — variante B: "a foto como plano de fundo inteiro"
+  Mesma paleta e mesma tipografia da A. Muda a relação com a matéria-prima:
+  aqui a oficina ocupa a tela toda e o texto vive sobre ela, como cartaz de fábrica.
+  A escolha entre A e B é de direção, não de gosto: A é produto tech com foto de apoio,
+  B é peça industrial com texto por cima.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500&family=Archivo+Narrow:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#14110E; --surface:#1C1815; --rule:#332C25;
+    --text:#EDE8E1; --text-2:#A9A29A; --muted:#938B81;
+    --sinal:#FA8F42; --sinal-forte:#F97316;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;
+       -webkit-font-smoothing:antialiased}
+  .tela{min-height:900px;position:relative;overflow:hidden;display:flex;align-items:flex-end}
+
+  .foto{position:absolute;inset:0;
+    background:url('../../03-assets/fotos/oficina-1920.webp') center 38%/cover no-repeat;
+    filter:grayscale(.7) contrast(1.2) brightness(.5)}
+  /* Vinheta pesada: o texto precisa de 15:1 de contraste, e foto crua não entrega isso */
+  .foto::after{content:'';position:absolute;inset:0;
+    background:linear-gradient(180deg,#14110EEE 0%,#14110E55 34%,#14110EDD 72%,#14110E 100%),
+               radial-gradient(70% 60% at 50% 40%,#F9731618,#0000 70%)}
+
+  .grade{position:absolute;inset:0;pointer-events:none;opacity:.5;
+    background-image:linear-gradient(90deg,#EDE8E10A 1px,#0000 1px);background-size:98px 100%}
+
+  .wrap{position:relative;width:100%;max-width:1180px;margin:0 auto;padding:0 40px 96px}
+
+  .topo{position:absolute;top:44px;left:40px;right:40px;display:flex;
+    justify-content:space-between;align-items:center;
+    font-family:'Archivo Narrow',sans-serif;font-size:12px;font-weight:700;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .marca{font-family:Archivo,sans-serif;font-weight:900;font-size:22px;
+    letter-spacing:-.02em;color:var(--text);text-transform:lowercase}
+
+  h1{font-family:Archivo,sans-serif;font-weight:900;font-size:132px;line-height:.88;
+     letter-spacing:-.045em;text-transform:uppercase;max-width:14ch}
+  h1 em{font-style:normal;color:var(--sinal)}
+
+  .base{display:flex;justify-content:space-between;align-items:flex-end;
+    gap:60px;margin-top:44px;border-top:1px solid var(--rule);padding-top:28px}
+  .lead{font-size:18px;line-height:1.55;color:var(--text-2);max-width:40ch}
+
+  .btn{display:inline-flex;align-items:center;gap:10px;height:56px;padding:0 32px;
+    background:var(--sinal);color:#14110E;text-decoration:none;flex:none;
+    font-family:'Archivo Narrow',sans-serif;font-weight:700;font-size:15px;
+    letter-spacing:.1em;text-transform:uppercase}
+</style>
+
+<div class="tela">
+  <div class="foto"></div>
+  <div class="grade"></div>
+  <div class="topo">
+    <span class="marca">talos</span>
+    <span>automação de processos · construção de sites</span>
+  </div>
+  <div class="wrap">
+    <h1>O trabalho que se repete <em>não precisa de gente</em></h1>
+    <div class="base">
+      <p class="lead">Eu construo as máquinas que fazem esse trabalho sozinhas —
+         e a primeira delas é o seu site.</p>
+      <a class="btn" href="#">mapear meu processo</a>
+    </div>
+  </div>
+</div>

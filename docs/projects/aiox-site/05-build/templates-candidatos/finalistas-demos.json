@@ -1,0 +1,41 @@
+[
+  {
+    "id": "wf-idesignerlite",
+    "ok": false,
+    "why": "preview não encontrado na página"
+  },
+  {
+    "id": "wf-conicorn",
+    "ok": false,
+    "why": "preview não encontrado na página"
+  },
+  {
+    "id": "fr-stackgrid",
+    "demo": "https://stackgrid.framer.website/",
+    "ok": true,
+    "altura": 8227,
+    "css": {
+      "stylesheetsExternos": 0,
+      "cssInlineChars": 334643,
+      "scripts": [
+        "embed.js",
+        "script?v=2",
+        "script_main.B3gsT1GU.mjs"
+      ]
+    }
+  },
+  {
+    "id": "fr-agenciy",
+    "demo": "https://agenciy.framer.website/",
+    "ok": true,
+    "altura": 12852,
+    "css": {
+      "stylesheetsExternos": 0,
+      "cssInlineChars": 231672,
+      "scripts": [
+        "script?v=2",
+        "script_main.L4Hv1hzi.mjs"
+      ]
+    }
+  }
+]

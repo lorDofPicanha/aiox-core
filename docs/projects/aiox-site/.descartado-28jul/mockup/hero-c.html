@@ -1,0 +1,342 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Talos · hero C</title>
+<!--
+  MOCKUP F4 — variante C: "o hero É a demonstração"
+
+  Briefing do founder: o hero precisa comunicar (1) capacidade técnica de resolver
+  problemas e (2) ser tecnicamente impressionante — passando confiança SEM dizer, porque
+  texto demais afasta.
+
+  A peça: um processo real desenhado como grafo. Ele nasce como está na empresa do
+  visitante — nós espalhados, arestas se cruzando, pacotes de trabalho trombando — e ao
+  longo de ~7s a força dirigida o resolve em colunas limpas, com o fluxo passando reto.
+  Ninguém precisa explicar o que é automação: a tela faz a automação acontecer.
+
+  Tecnicamente: simulação de força dirigida (atração por aresta, repulsão de Coulomb
+  entre nós, gravidade de coluna), ~900 partículas em curvas Bézier cúbicas, composição
+  aditiva com glow. Tudo em canvas 2D, sem biblioteca, 60fps, DPR-aware.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Archivo+Narrow:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#14110E; --text:#EDE8E1; --muted:#938B81;
+    --sinal:#FA8F42; --rule:#332C25;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--text);
+       font-family:'Archivo Narrow',system-ui,sans-serif;-webkit-font-smoothing:antialiased;
+       overflow:hidden}
+
+  .tela{position:relative;height:100vh;min-height:820px}
+  canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+
+  /* Vinheta: o grafo é o assunto, as bordas escurecem para o texto ter onde pousar */
+  .veu{position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(120% 90% at 50% 45%,#0000 30%,#14110EDD 78%,#14110E 100%)}
+
+  .topo{position:absolute;top:40px;left:48px;right:48px;display:flex;
+    justify-content:space-between;align-items:center;z-index:2}
+  .marca{font-family:Archivo,sans-serif;font-weight:900;font-size:21px;
+    letter-spacing:-.02em;text-transform:lowercase}
+  .estado{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--muted);display:flex;align-items:center;gap:10px}
+  .ponto{width:6px;height:6px;border-radius:50%;background:var(--sinal);
+    box-shadow:0 0 12px var(--sinal)}
+
+  /* TEXTO MÍNIMO — 7 palavras. A tela já disse o resto. */
+  .centro{position:absolute;left:0;right:0;bottom:120px;text-align:center;z-index:2;
+    padding:0 24px}
+  h1{font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(30px,4.4vw,62px);
+    line-height:1.02;letter-spacing:-.035em;text-transform:uppercase}
+  h1 em{font-style:normal;color:var(--sinal)}
+  .cta{display:inline-flex;align-items:center;gap:12px;height:56px;padding:0 34px;
+    margin-top:32px;background:var(--sinal);color:#14110E;text-decoration:none;
+    font-weight:700;font-size:14px;letter-spacing:.12em;text-transform:uppercase}
+  .cta:hover{background:#F97316}
+
+  /* Legenda técnica: dado do que está rodando AGORA. Prova, não enfeite. */
+  .hud{position:absolute;left:48px;bottom:40px;display:flex;gap:34px;z-index:2;
+    font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--muted)}
+  .hud b{color:var(--text);font-family:Archivo,sans-serif;font-weight:800;font-size:15px;
+    letter-spacing:-.01em;display:block;margin-bottom:2px}
+  .hud .s{color:var(--sinal)}
+  .refaz{position:absolute;right:48px;bottom:40px;z-index:2;background:none;border:0;
+    color:var(--muted);cursor:pointer;font:600 10px/1 'Archivo Narrow',sans-serif;
+    letter-spacing:.18em;text-transform:uppercase;padding:10px 0}
+  .refaz:hover{color:var(--sinal)}
+</style>
+
+<div class="tela">
+  <canvas id="c"></canvas>
+  <div class="veu"></div>
+
+  <div class="topo">
+    <span class="marca">talos</span>
+    <span class="estado"><i class="ponto"></i><span id="fase">mapeando</span></span>
+  </div>
+
+  <div class="centro">
+    <h1>O trabalho que se repete<br><em>não precisa de gente.</em></h1>
+    <br><a class="cta" href="#">mapear meu processo</a>
+  </div>
+
+  <div class="hud">
+    <div><b id="hNos">0</b>etapas</div>
+    <div><b id="hArestas">0</b>ligações</div>
+    <div><b class="s" id="hFluxo">0</b>em trânsito</div>
+    <div><b id="hFps">60</b>fps</div>
+  </div>
+  <button class="refaz" id="refaz">rodar de novo ↻</button>
+</div>
+
+<script>
+(() => {
+  const cv = document.getElementById('c');
+  const ctx = cv.getContext('2d', { alpha: false });
+  const COR = { bg:'#14110E', sinal:'#FA8F42', quente:'#F97316', frio:'#6B6157', texto:'#EDE8E1' };
+
+  let L = 0, A = 0, dpr = 1;
+  const redim = () => {
+    dpr = Math.min(devicePixelRatio || 1, 2);
+    L = cv.clientWidth; A = cv.clientHeight;
+    cv.width = L * dpr; cv.height = A * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  };
+  addEventListener('resize', () => { redim(); montar(); });
+
+  /* ── SPRITE DE PARTÍCULA ──────────────────────────────────────────────────
+     A primeira versão criava um createRadialGradient POR PARTÍCULA POR FRAME —
+     centenas de gradientes novos a cada 16ms, e o resultado foram 22fps.
+     O glow é sempre o mesmo desenho: renderiza-se UMA vez num canvas fora da
+     tela e depois só se carimba com drawImage. É a diferença entre 22 e 60. */
+  const SPRITE = (() => {
+    const s = 64, off = document.createElement('canvas');
+    off.width = off.height = s;
+    const o = off.getContext('2d');
+    const g = o.createRadialGradient(s/2, s/2, 0, s/2, s/2, s/2);
+    g.addColorStop(0,    'rgba(255,235,214,0.95)');
+    g.addColorStop(0.12, 'rgba(250,143,66,0.75)');
+    g.addColorStop(0.45, 'rgba(249,115,22,0.16)');
+    g.addColorStop(1,    'rgba(249,115,22,0)');
+    o.fillStyle = g; o.fillRect(0, 0, s, s);
+    return off;
+  })();
+
+  /* ── O processo desenhado. Colunas = etapas do fluxo; é para elas que a
+     simulação converge. Os rótulos são de um processo real de PME. ── */
+  const COLUNAS = [
+    { t:'entrada',   itens:['pedido no whatsapp','e-mail do cliente','formulário do site'] },
+    { t:'triagem',   itens:['lê e interpreta','confere cadastro'] },
+    { t:'registro',  itens:['lança no sistema','atualiza planilha','gera número'] },
+    { t:'ação',      itens:['calcula preço','monta proposta'] },
+    { t:'saída',     itens:['responde o cliente','avisa o vendedor'] },
+  ];
+
+  let nos = [], arestas = [], particulas = [], t0 = 0, fase = 'caos';
+
+  const montar = () => {
+    nos = []; arestas = []; particulas = [];
+    /* Área de desenho com teto absoluto, não proporção da janela.
+       Em tela larga (1900px+) o `L * 0.16` espalhava as colunas até as bordas e os
+       rótulos de ENTRADA e SAÍDA saíam da viewport. E o espaçamento vertical fixo
+       de 96px estourava para baixo em janela baixa. Agora a caixa do grafo é
+       calculada e limitada, e o espaçamento se adapta à altura disponível. */
+    // 320 de folga: os rótulos são centralizados no nó e os das pontas
+    // ("formulário do site", "avisa o vendedor") precisam de meia-largura de sobra
+    const caixaL = Math.min(L - 320, 1120);
+    const margemX = (L - caixaL) / 2;
+    const centroY = Math.min(A * 0.34, 300);
+    const alturaUtil = Math.max(A * 0.42, 240);
+    const espacoY = Math.min(96, alturaUtil / 4);
+
+    COLUNAS.forEach((col, ci) => {
+      const alvoX = margemX + (caixaL * ci) / (COLUNAS.length - 1);
+      col.itens.forEach((rot, ii) => {
+        const alvoY = centroY + (ii - (col.itens.length - 1) / 2) * espacoY;
+        nos.push({
+          // nasce espalhado dentro da caixa: é o processo como ele existe hoje
+          x: L / 2 + (Math.random() - 0.5) * caixaL * 0.8,
+          y: centroY + (Math.random() - 0.5) * alturaUtil,
+          vx: 0, vy: 0, alvoX, alvoY, col: ci, rot,
+          r: ci === 0 || ci === COLUNAS.length - 1 ? 5.5 : 4.2,
+          brilho: 0,
+        });
+      });
+    });
+    /* Ligação seletiva, não bipartida completa. Ligar todos com todos gerava 22
+       arestas cruzando no centro e o grafo virava emaranhado — o oposto do que a
+       peça precisa provar. Cada nó vai para o vizinho mais próximo da coluna
+       seguinte, mais uma ramificação ocasional: é assim que processo real se
+       parece, e é assim que ele fica legível. */
+    nos.forEach((n, i) => {
+      const proxima = nos.map((m, j) => ({ m, j })).filter(({ m }) => m.col === n.col + 1);
+      if (!proxima.length) return;
+      proxima.sort((p, q) => Math.abs(p.m.alvoY - n.alvoY) - Math.abs(q.m.alvoY - n.alvoY));
+      arestas.push({ a: i, b: proxima[0].j, carga: 0 });
+      if (proxima[1] && Math.random() < 0.55) arestas.push({ a: i, b: proxima[1].j, carga: 0 });
+    });
+    t0 = performance.now();
+    fase = 'caos';
+  };
+
+  /* Bézier cúbica horizontal: o fluxo tem que ler como cabo, não como reta técnica */
+  const curva = (a, b) => {
+    const dx = (b.x - a.x) * 0.45;
+    return [a.x, a.y, a.x + dx, a.y, b.x - dx, b.y, b.x, b.y];
+  };
+  const emT = (p, t) => {
+    const u = 1 - t, a = u*u*u, b = 3*u*u*t, c = 3*u*t*t, d = t*t*t;
+    return [a*p[0] + b*p[2] + c*p[4] + d*p[6], a*p[1] + b*p[3] + c*p[5] + d*p[7]];
+  };
+
+  let ultimo = performance.now(), fps = 60, acumFps = 0, qFps = 0;
+
+  const passo = (agora) => {
+    const dt = Math.min((agora - ultimo) / 1000, 0.05); ultimo = agora;
+    const decorrido = (agora - t0) / 1000;
+
+    // ── fases: caos → organiza → flui ────────────────────────────────────
+    const organizando = decorrido > 1.2;
+    const fluindo = decorrido > 4.4;
+    fase = fluindo ? 'automatizado' : organizando ? 'organizando' : 'mapeando';
+
+    // ── física ───────────────────────────────────────────────────────────
+    // Repulsão é O(n²), mas n=12: 144 pares por frame é irrelevante. O custo
+    // estava todo no desenho, não aqui. Fica direto mesmo.
+    for (const n of nos) {
+      if (organizando) {
+        // mola até a posição de destino — é a "organização" acontecendo
+        const k = 5.2;
+        n.vx += (n.alvoX - n.x) * k * dt;
+        n.vy += (n.alvoY - n.y) * k * dt;
+      }
+      for (const m of nos) {
+        if (m === n) continue;
+        const dx = n.x - m.x, dy = n.y - m.y;
+        const d2 = dx*dx + dy*dy;
+        // Raio de 60px, não 95. O espaçamento vertical da coluna é ~80px, então o
+        // raio antigo fazia vizinhos da MESMA coluna se repelirem — e como não podiam
+        // subir nem descer (a mola segura), escapavam para os lados. Era isso que
+        // jogava os nós das pontas para fora da tela.
+        if (d2 < 3600 && d2 > 0.01) {
+          // Depois de organizado a repulsão cai a quase nada: mantida forte, ela
+          // empurrava os nós para fora das colunas e o grafo nunca assentava —
+          // era o que fazia os rótulos vazarem da tela em janela larga.
+          const f = (fluindo ? 120 : organizando ? 700 : 2600) / d2;
+          n.vx += dx * f * dt; n.vy += dy * f * dt;
+        }
+      }
+      n.vx *= fluindo ? 0.82 : 0.9; n.vy *= fluindo ? 0.82 : 0.9;
+      n.x += n.vx * dt * 60; n.y += n.vy * dt * 60;
+      n.brilho += ((fluindo ? 1 : 0.35) - n.brilho) * dt * 2.4;
+    }
+
+    // ── partículas: só depois que o fluxo está montado ────────────────────
+    // Teto de 140, não 900. Com 260 na tela o grafo virava sopa: os nós e os
+    // rótulos sumiam sob o glow, e o que devia provar clareza provava confusão.
+    // Menos pontos, mais espaçados, leem como fluxo — não como ruído.
+    if (fluindo && particulas.length < 140) {
+      for (let i = 0; i < 2; i++) {
+        const ar = arestas[(Math.random() * arestas.length) | 0];
+        particulas.push({ ar, t: 0, v: 0.3 + Math.random() * 0.42, tam: 0.85 + Math.random() * 0.9 });
+      }
+    }
+    for (let i = particulas.length - 1; i >= 0; i--) {
+      const p = particulas[i];
+      p.t += p.v * dt;
+      if (p.t >= 1) { particulas.splice(i, 1); arestas[arestas.indexOf(p.ar)] && (p.ar.carga = 1); }
+    }
+    for (const a of arestas) a.carga *= 0.94;
+
+    // ── desenho ──────────────────────────────────────────────────────────
+    ctx.fillStyle = COR.bg; ctx.fillRect(0, 0, L, A);
+
+    // arestas
+    ctx.lineCap = 'round';
+    for (const a of arestas) {
+      const n = nos[a.a], m = nos[a.b];
+      const p = curva(n, m);
+      ctx.beginPath();
+      ctx.moveTo(p[0], p[1]); ctx.bezierCurveTo(p[2], p[3], p[4], p[5], p[6], p[7]);
+      const base = organizando ? 0.13 : 0.05;
+      ctx.strokeStyle = `rgba(147,139,129,${base + a.carga * 0.25})`;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+
+    // partículas em composição aditiva — sprite carimbado, sem gradiente por frame
+    ctx.globalCompositeOperation = 'lighter';
+    for (const p of particulas) {
+      const n = nos[p.ar.a], m = nos[p.ar.b];
+      const [x, y] = emT(curva(n, m), p.t);
+      const d = p.tam * 17;
+      ctx.drawImage(SPRITE, x - d / 2, y - d / 2, d, d);
+    }
+    ctx.globalCompositeOperation = 'source-over';
+
+    // nós
+    for (const n of nos) {
+      const quente = n.brilho;
+      ctx.beginPath(); ctx.arc(n.x, n.y, n.r + 5, 0, 6.2832);
+      ctx.fillStyle = `rgba(250,143,66,${0.05 + quente * 0.1})`; ctx.fill();
+      ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, 6.2832);
+      ctx.fillStyle = quente > 0.7 ? COR.sinal : '#4A423A'; ctx.fill();
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = `rgba(250,143,66,${0.25 + quente * 0.5})`; ctx.stroke();
+
+      // rótulo só quando já organizou — antes disso seria ilegível e poluído
+      if (organizando) {
+        const op = Math.min((decorrido - 1.6) / 1.4, 1) * 0.75;
+        if (op > 0) {
+          ctx.font = '600 10px "Archivo Narrow", sans-serif';
+          ctx.fillStyle = `rgba(237,232,225,${op})`;
+          ctx.textAlign = 'center';
+          ctx.fillText(n.rot, n.x, n.y - n.r - 11);
+        }
+      }
+    }
+
+    // títulos de coluna
+    if (organizando) {
+      const op = Math.min((decorrido - 1.4) / 1.2, 1) * 0.5;
+      ctx.font = '700 10px "Archivo Narrow", sans-serif';
+      ctx.textAlign = 'center';
+      COLUNAS.forEach((col, ci) => {
+        const daCol = nos.filter((n) => n.col === ci);
+        const x = daCol.reduce((s, n) => s + n.x, 0) / daCol.length;
+        const y = Math.min(...daCol.map((n) => n.y)) - 46;
+        ctx.fillStyle = `rgba(147,139,129,${op})`;
+        ctx.fillText(col.t.toUpperCase(), x, y);
+      });
+    }
+
+    // HUD
+    acumFps += 1 / dt; qFps++;
+    if (qFps >= 30) { fps = Math.round(acumFps / qFps); acumFps = 0; qFps = 0; }
+    document.getElementById('hNos').textContent = nos.length;
+    document.getElementById('hArestas').textContent = arestas.length;
+    document.getElementById('hFluxo').textContent = particulas.length;
+    document.getElementById('hFps').textContent = fps;
+    document.getElementById('fase').textContent = fase;
+
+    requestAnimationFrame(passo);
+  };
+
+  document.getElementById('refaz').onclick = montar;
+  redim(); montar(); requestAnimationFrame(passo);
+
+  /* As posições-alvo são calculadas a partir de cv.clientWidth, e no primeiro frame
+     o layout ainda não assentou: as fontes do Google não carregaram e a .tela ainda
+     está resolvendo min-height. O resultado era um grafo montado sobre uma largura
+     que não existia mais — colunas deslocadas e nós fora da tela.
+     Remontar quando as fontes terminam resolve; é a mesma armadilha do ScrollTrigger. */
+  const remontar = () => { redim(); montar(); };
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(remontar);
+  addEventListener('load', remontar);
+})();
+</script>
