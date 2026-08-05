@@ -1,0 +1,954 @@
+{
+  "generatedAt": "2026-08-01T21:35:23.804Z",
+  "uf": "SC",
+  "from": "20260601",
+  "to": "20260731",
+  "nicho": "obras/engenharia",
+  "stats": {},
+  "suppliers": [
+    {
+      "cnpj": "05895635000118",
+      "name": "JR CONSTRUÇÕES E TERRAPLANAGEM LTDA EPP",
+      "wins": 4,
+      "totalBRL": 21447864.22,
+      "municipios": [
+        "Guabiruba",
+        "Içara",
+        "Criciúma"
+      ],
+      "objetos": [
+        "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA EXECUÇÃO DE OBRA DE REVITALIZAÇÃO DAS RUAS BRUSQUE E DEZ DE JUNHO, NO MUNICÍPIO DE GUABIRUBA/SC, COMPREENDENDO SERVIÇO",
+        "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA EXECUÇÃO DE OBRA DE PAVIMENTAÇÃO ASFALTICA DA RODOVIA HILDEBRANDO JOSE DA LUZ E RODOVIA CLAUDINO GABRIEL NO BAIRRO SÃO",
+        "Contratação de empresa, isoladamente ou em consórcio, legalmente constituída e detentora de comprovada capacidade técnica, para execução de obras e de serviços ",
+        "Contratação de empresa, isoladamente ou em consórcio, legalmente constituída e detentora de comprovada capacidade técnica, para execução dos serviços necessário"
+      ]
+    },
+    {
+      "cnpj": "03257777000124",
+      "name": "GAIA RODOVIAS LTDA.",
+      "wins": 2,
+      "totalBRL": 6892572,
+      "municipios": [
+        "Santa Terezinha do Progresso",
+        "Palmitos"
+      ],
+      "objetos": [
+        "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA EXECUÇÃO DE OBRA DE ENGENHARIA DESTINADA À PAVIMENTAÇÃO ASFÁLTICA DE ESTRADA MUNICIPAL RURAL – TRECHO 1 DA ESTRADA MUN",
+        "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA EXECUÇÃO DE PAVIMENTAÇÃO ASFÁLTICA E SERVIÇOS COMPLEMENTARES EM DIVERSAS RUAS DO MUNICÍPIO DE PALMITOS/SC"
+      ]
+    },
+    {
+      "cnpj": "21285299000148",
+      "name": "ENGENFOX TERRAPLANAGENS E SERVICOS LTDA",
+      "wins": 2,
+      "totalBRL": 6183960.720000001,
+      "municipios": [
+        "Concórdia"
+      ],
+      "objetos": [
+        "contratação de serviço comum de engenharia, no regime de empreitada por preços máximos unitários, visando à execução de pavimentação asfáltica na Rua Distrito F",
+        "Contratação de serviço comum de engenharia, no regime de empreitada por preços máximos unitários, visando a execução de pavimentação asfáltica nas Ruas Amélia B"
+      ]
+    },
+    {
+      "cnpj": "05020495000134",
+      "name": "FATOR3 ENGENHARIA E CONSULTORIA LTDA",
+      "wins": 2,
+      "totalBRL": 5493000,
+      "municipios": [
+        "Criciúma"
+      ],
+      "objetos": [
+        "Contratação de empresa, isoladamente ou em consórcio, legalmente constituída e detentora de comprovada capacidade técnica, para execução das obras e dos serviço",
+        "Contratação de empresa, isoladamente ou em consórcio, legalmente constituída e detentora de comprovada capacidade técnica, para execução das obras e dos serviço"
+      ]
+    },
+    {
+      "cnpj": "13669947000131",
+      "name": "PINTURAS E OBRAS LITORAL LTDA",
+      "wins": 3,
+      "totalBRL": 5458226.61,
+      "municipios": [
+        "Sombrio"
+      ],
+      "objetos": [
+        "O objeto da licitação é a revitalização Complexo Esportivo Antônio Sant’Helena e Centro de Eventos Deldi Garcia, no Município de Sombrio/SC, conforme condições,",
+        "O objeto da presente licitação é a construção de C.E.I – Creche Pré-Escola Tipo 2, no Bairro Nova Guarita, no Município de Sombrio/SC, conforme condições, quant",
+        "O objeto da presente licitação é a construção de C.E.I – Creche Pré-Escola Tipo 2, no Bairro Nova Guarita, no Município de Sombrio/SC, conforme condições, quant"
+      ]
+    },
+    {
+      "cnpj": "15371451000102",
+      "name": "R3 PRESTACAO DE SERVICOS LTDA",
+      "wins": 2,
+      "totalBRL": 4445000,
+      "municipios": [
+        "São Domingos",
+        "União do Oeste"
+      ],
+      "objetos": [
+        "Contratação de empresa para a execução da base destinada à pavimentação asfáltica, drenagem pluvial e serviços complementares, nas vias públicas localizadas nos",
+        "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA O FORNECIMENTO DE MATERIAIS E EXECUÇÃO DE MÃO DE OBRA DESTINADA À PAVIMENTAÇÃO ASFÁLTICA DA ESTRADA VICINAL EMUO-020, "
+      ]
+    },
+    {
+      "cnpj": "79382412000193",
+      "name": "CONSTRUTORA NUNES LTDA",
+      "wins": 2,
+      "totalBRL": 4246000,
+      "municipios": [
+        "Forquilhinha"
+      ],
+      "objetos": [
+        "A presente licitação tem por objetivo a implantação de infraestrutura viária com execução de base e sub-base em ruas nos bairros Ouro Negro e Saturno, Município",
+        "A presente licitação tem por objetivo a implantação da infraestrutura viária com a execução base e sub-base na Avenida Afonso Forgiarini e rua 227, no bairro Sa"
+      ]
+    },
+    {
+      "cnpj": "83073536000164",
+      "name": "VERSA ENGENHARIA AMBIENTAL LTDA",
+      "wins": 2,
+      "totalBRL": 4050913.8,
+      "municipios": [
+        "Itapoá",
+        "Jaguaruna"
+      ],
+      "objetos": [
+        "prestação de serviços de coleta manual e mecanizada de resíduos volumosos, disponibilização e operação de local para armazenamento temporário desses resíduos, b",
+        "A presente licitação tem por objetivo a \"CONTRATAÇÃO DE PESSOA JURÍDICA ESPECIALIZADA NA EXECUÇÃO DE SERVIÇO DE DESTINAÇÃO FINAL DOS RESÍDUOS SÓLIDOS DOMICILIAR"
+      ]
+    },
+    {
+      "cnpj": "57909230000195",
+      "name": "MLC PAVIMENTACOES E TERRAPLANAGEM LTDA",
+      "wins": 3,
+      "totalBRL": 3864992,
+      "municipios": [
+        "Içara",
+        "Nova Veneza"
+      ],
+      "objetos": [
+        "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA EXECUÇÃO DE OBRA DE PAVIMENTAÇÃO DO SEGUNDO ACESSO A BASÍLICA SANTUÁRIO SAGRADO CORAÇÃO MISERICORDIOSO DE JESUS.",
+        "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA EXECUÇÃO DE OBRA DE PAVIMENTAÇÃO ASFÁLTICA RUA DONA IRENE MARIA FERNANDES E RECAPEAMENTO DA RUA ZEFERINO DAGOSTIM NO B",
+        "Contratação de empresa para Pavimentação Asfáltica da Rodovia Antônio Cunico, Bairro Rio Guarapari, no município de Nova Veneza/SC. (CONVÊNIO 978933/2025)"
+      ]
+    },
+    {
+      "cnpj": "06224121001922",
+      "name": "SHARK MAQUINAS PARA CONSTRUCAO LTDA",
+      "wins": 8,
+      "totalBRL": 2952000,
+      "municipios": [
+        "Laurentino",
+        "Cunhataí",
+        "Meleiro",
+        "Sombrio",
+        "Palma Sola"
+      ],
+      "objetos": [
+        "RETROESCAVADEIRAS - LEI 14.133/2021 (RENOVADO)",
+        "RETROESCAVADEIRAS - LEI 14.133/2021 (RENOVADO)",
+        "RETROESCAVADEIRAS - LEI 14.133/2021 (RENOVADO)",
+        "RETROESCAVADEIRAS - LEI 14.133/2021 (RENOVADO)"
+      ]
+    },
+    {
+      "cnpj": "14623473000150",
+      "name": "GM INSTALADORA LTDA",
+      "wins": 2,
+      "totalBRL": 2828400,
+      "municipios": [
+        "Três Barras"
+      ],
+      "objetos": [
+        "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA O FORNECIMENTO DE SERVIÇOS TERCEIRIZADOS, COM DEDICAÇÃO EXCLUSIVA DE MÃO DE OBRA, (MOTORISTAS, OPERADOR DE MAQUINAS E ",
+        "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA O FORNECIMENTO DE SERVIÇOS TERCEIRIZADOS, COM DEDICAÇÃO EXCLUSIVA DE MÃO DE OBRA, (MOTORISTAS, OPERADOR DE MAQUINAS E "
+      ]
+    },
+    {
+      "cnpj": "33494765000184",
+      "name": "GRS ENGENHARIA LTDA",
+      "wins": 2,
+      "totalBRL": 2726458.9299999997,
+      "municipios": [
+        "Bombinhas"
+      ],
+      "objetos": [
+        "CONTRATAÇÃO DE EMPRESA PARA CONSTRUÇÃO DE UNIDADE BASICA DE SAUDE DE SERTÃOZINHO E REFORMA E AMPLIAÇÃO DA UPA - UNIDADE DE PRONTO ATENDIMENTO, NO MUNICÍPIO DE B",
+        "CONTRATAÇÃO DE EMPRESA PARA CONSTRUÇÃO DE UNIDADE BASICA DE SAUDE DE SERTÃOZINHO E REFORMA E AMPLIAÇÃO DA UPA - UNIDADE DE PRONTO ATENDIMENTO, NO MUNICÍPIO DE B"
+      ]
+    },
+    {
+      "cnpj": "12547887000111",
+      "name": "POLARIS SERVICOS E CONSTRUCOES LTDA-IR 1.2%",
+      "wins": 5,
+      "totalBRL": 2099652.0300000003,
+      "municipios": [
+        "Joinville"
+      ],
+      "objetos": [
+        "Contratação de serviço de manutenção do calçamento de vias pavimentadas com lajotas, paralelepípedo ou bloco retangular de concreto e meio-fio, executado por eq",
+        "Contratação de serviço de manutenção do calçamento de vias pavimentadas com lajotas, paralelepípedo ou bloco retangular de concreto e meio-fio, executado por eq",
+        "Contratação de serviço de manutenção do calçamento de vias pavimentadas com lajotas, paralelepípedo ou bloco retangular de concreto e meio-fio, executado por eq",
+        "Contratação de serviço de manutenção do calçamento de vias pavimentadas com lajotas, paralelepípedo ou bloco retangular de concreto e meio-fio, executado por eq"
+      ]
+    },
+    {
+      "cnpj": "09549705000137",
+      "name": "MAGNUS ENGENHARIA E ARQUITETURA LTDA",
+      "wins": 3,
+      "totalBRL": 1665194.46,
+      "municipios": [
+        "Itajaí",
+        "Joinville",
+        "Araquari"
+      ],
+      "objetos": [
+        "O Presente instrumento tem por objeto a   Elaboração de 01 Projeto Executivo completo, correspondente à Etapa 01 (Módulo 1) do Centro de Treinamento Esportivo d",
+        "A presente Ata tem como objeto o REGISTRO DE PREÇOS para futura e eventual CONTRATAÇÃO DE EMPRESA PARA A PRESTAÇÃO DE SERVIÇOS ESPECIALIZADOS DE ENGENHARIA E AR",
+        "Contratação de empresa especializada para reformulação dos projetos de engenharia e arquitetura para construção da II Etapa do Hospital Municipal, localizado no"
+      ]
+    },
+    {
+      "cnpj": "21851263000184",
+      "name": "VIGO ENGENHARIA LTDA",
+      "wins": 3,
+      "totalBRL": 1446400,
+      "municipios": [
+        "Lages"
+      ],
+      "objetos": [
+        "Contratação de empresa de engenharia/arquitetura para execução de obra civil com fornecimento de materiais e mão de obra de quadra poliesportiva, Loteamento Jar",
+        "Contratação de empresa de engenharia/arquitetura para execução de obra civil com fornecimento de materiais e mão de obra para construção da quadra poliesportiva",
+        "Contratação de empresa de engenharia/arquitetura para execução de obra civil com fornecimento de materiais e mão de obra de quadra esportiva de areia junto ao g"
+      ]
+    },
+    {
+      "cnpj": "50168586000176",
+      "name": "AVENIDA CONSTRUÇÕES LTDA",
+      "wins": 2,
+      "totalBRL": 1430694.85,
+      "municipios": [
+        "Timbó",
+        "Rodeio"
+      ],
+      "objetos": [
+        "EXECUÇÃO DA AMPLIAÇÃO DA GARAGEM DO QUARTEL DA 2ªCIA/32ºBPM DA POLICIA MILITAR DE TIMBÓ/SC.",
+        "Construção da Creche Municipal Irmã Colomba"
+      ]
+    },
+    {
+      "cnpj": "83728360000484",
+      "name": "FERNANDES ENGENHARIA E EMPREENDIMENTOS LTDA",
+      "wins": 4,
+      "totalBRL": 1385999.3099999998,
+      "municipios": [
+        "Treze de Maio",
+        "Braço do Norte",
+        "Tubarão"
+      ],
+      "objetos": [
+        "AQUISICAO DE MATERIAIS PÉTREOS E MINEIRAIS",
+        "AQUISICAO DE MATERIAIS PÉTREOS E MINEIRAIS",
+        "AQUISICAO DE MATERIAIS PÉTREOS E MINEIRAIS",
+        "AQUISICAO DE MATERIAIS PÉTREOS E MINEIRAIS"
+      ]
+    },
+    {
+      "cnpj": "11260925000350",
+      "name": "LIUGONG LATIN AMERICA MAQUINAS PARA CONSTRUCAO PESADA LTDA",
+      "wins": 2,
+      "totalBRL": 998000,
+      "municipios": [
+        "Caçador"
+      ],
+      "objetos": [
+        "ESCAVADEIRA HIDRÁULICA - LEI 14.133/2021",
+        "ESCAVADEIRA HIDRÁULICA - LEI 14.133/2021"
+      ]
+    },
+    {
+      "cnpj": "57325541000107",
+      "name": "MILANO PRESTADORA DE SERVICOS LTDA",
+      "wins": 2,
+      "totalBRL": 885600,
+      "municipios": [
+        "Três Barras"
+      ],
+      "objetos": [
+        "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA O FORNECIMENTO DE SERVIÇOS TERCEIRIZADOS, COM DEDICAÇÃO EXCLUSIVA DE MÃO DE OBRA, (MOTORISTAS, OPERADOR DE MAQUINAS E ",
+        "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA O FORNECIMENTO DE SERVIÇOS TERCEIRIZADOS, COM DEDICAÇÃO EXCLUSIVA DE MÃO DE OBRA, (MOTORISTAS, OPERADOR DE MAQUINAS E "
+      ]
+    },
+    {
+      "cnpj": "05528870000151",
+      "name": "FABSUL PAVIMENTACOES EIRELI",
+      "wins": 2,
+      "totalBRL": 678856.65,
+      "municipios": [
+        "Santa Rosa do Sul"
+      ],
+      "objetos": [
+        "REF.: O PRESENTE PROCEDIMENTO LICITATÓRIO TEM POR OBJETIVO SELECIONAR A PROPOSTA MAIS VANTAJOSA PARA FUTURA E EVENTUAL CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA",
+        "REF.: O PRESENTE PROCEDIMENTO LICITATÓRIO TEM POR OBJETIVO SELECIONAR A PROPOSTA MAIS VANTAJOSA PARA FUTURA E EVENTUAL CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA"
+      ]
+    },
+    {
+      "cnpj": "03832009000157",
+      "name": "TERRAPLENAGEM POFFO LTDA",
+      "wins": 2,
+      "totalBRL": 588000,
+      "municipios": [
+        "Ascurra"
+      ],
+      "objetos": [
+        "Execução de serviços de pavimentação com bloco retangular de concreto intertravado tipo tijolão, drenagem pluvial, execução de meios-fios, calçadas/passeios, si",
+        "Execução de serviços de pavimentação com bloco retangular de concreto intertravado tipo tijolão, drenagem pluvial, execução de meios-fios, calçadas/passeios, si"
+      ]
+    },
+    {
+      "cnpj": "55705682000120",
+      "name": "LH TERRAPLENAGEM E CONSTRUCOES LTDA",
+      "wins": 2,
+      "totalBRL": 576908,
+      "municipios": [
+        "Joinville"
+      ],
+      "objetos": [
+        "Contratação de Prestação de Serviço com equipamentos pesados e caminhões, com critério de medição por hora trabalhada.",
+        "Contratação de Prestação de Serviço com equipamentos pesados e caminhões, com critério de medição por hora trabalhada."
+      ]
+    },
+    {
+      "cnpj": "03574370000120",
+      "name": "EMPREITEIRA DE MAO DE OBRA ADRIMAR LTDA",
+      "wins": 4,
+      "totalBRL": 569870.49,
+      "municipios": [
+        "Joinville",
+        "Araquari"
+      ],
+      "objetos": [
+        "Contratação eventual de serviços de reparos em redes de drenagem, para as Unidades Regionais de Obras.",
+        "Contratação eventual de serviços de reparos em redes de drenagem, para as Unidades Regionais de Obras.",
+        "Contratação de empresa especializada para repavimentação asfáltica da Rua José Alípio Vieira, no Bairro Corveta. Demanda organizada pela Subprefeitura do Itapoc",
+        "Contratação de empresa para o fornecimento de materiais para utilização no revestimento, manutenção e consertos de ruas públicas do município. Demanda organizad"
+      ]
+    },
+    {
+      "cnpj": "02063876000102",
+      "name": "CCT CONSTRUTORA DE OBRAS LTDA",
+      "wins": 2,
+      "totalBRL": 520748.93000000005,
+      "municipios": [
+        "Joinville"
+      ],
+      "objetos": [
+        "Contratação eventual de serviços de reparos em redes de drenagem, para as Unidades Regionais de Obras.",
+        "Contratação eventual de serviços de reparos em redes de drenagem, para as Unidades Regionais de Obras."
+      ]
+    },
+    {
+      "cnpj": "42147589000103",
+      "name": "SANTA ROSA PAVIMENTACOES LTDA",
+      "wins": 13,
+      "totalBRL": 425147.64999999997,
+      "municipios": [
+        "Capivari de Baixo",
+        "São Martinho",
+        "Jaguaruna",
+        "Braço do Norte",
+        "Grão-Pará",
+        "São Ludgero"
+      ],
+      "objetos": [
+        "AQUISIÇÃO FRACIONADA DE ARTEFATOS DE CONCRETO (RENOVADO)",
+        "AQUISIÇÃO FRACIONADA DE ARTEFATOS DE CONCRETO (RENOVADO)"
+      ]
+    },
+    {
+      "cnpj": "21112949000153",
+      "name": "PAULO R DE SOUZA OBRAS",
+      "wins": 2,
+      "totalBRL": 417800.01,
+      "municipios": [
+        "Palma Sola",
+        "Bandeirante"
+      ],
+      "objetos": [
+        "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA EXECUÇÃO DE OBRA RELATIVA À REFORMA E AMPLIAÇÃO DO PRÉDIO DA CÂMARA MUNICIPAL DE VEREADORES DE PALMA SOLA COM ÁREA TOT",
+        "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA PRESTAÇÃO DE SERVIÇOS, COM FORNECIMENTO DE MATERIAIS E MÃO DE OBRA ESPECIALIZADA, PARA AMPLIAÇÃO E REFORMA DE ÁREA COB"
+      ]
+    },
+    {
+      "cnpj": "11117243000120",
+      "name": "CIDIR",
+      "wins": 2,
+      "totalBRL": 332129.74,
+      "municipios": [
+        "Saudades"
+      ],
+      "objetos": [
+        "COMPLEMENTAÇÃO DA PAVIMENTAÇÃO ASFÁLTICA DO CONTORNO VIÁRIO - TRECHO XI - ETAPA I, COM 446,40M², TUDO EM CONFORMIDADE COM PROJETO E DEMAIS ANEXOS.",
+        "PAVIMENTAÇÃO ASFÁLTICA E SINALIZAÇÃO VIÁRIA HORIZONTAL SOBRE BASE EXISTENTE EM DIVERSAS VIAS DO DISTRITO DE JUVÊNCIO COM 3.635,50 M², TUDO EM CONFORMIDADE COM P"
+      ]
+    },
+    {
+      "cnpj": "42008173000104",
+      "name": "BMB COMERCIO E SERVICOS LTDA",
+      "wins": 2,
+      "totalBRL": 299800,
+      "municipios": [
+        "Brusque",
+        "Itajaí"
+      ],
+      "objetos": [
+        "SERVIÇO DE CAMINHÃO TRUCK E MINI-ESCAVADEIRA, COM MOTORISTA/OPERADOR",
+        "PRESTAÇÃO DE SERVIÇO COMUM DE ENGENHARIA, COMPREENDENDO O FORNECIMENTO, ADAPTAÇÃO E INSTALAÇÃO DE 02 (DOIS) MÓDULOS HABITÁVEIS EM CONTÊINERES DE 20 PÉS, INCLUIN"
+      ]
+    },
+    {
+      "cnpj": "10985639000127",
+      "name": "KURCHAKI COM, TERRAPLENAGEM E LOCACAO DE MAQUINAS LTDA",
+      "wins": 2,
+      "totalBRL": 253184.73,
+      "municipios": [
+        "Joinville"
+      ],
+      "objetos": [
+        "Contratação eventual de serviços de reparos em redes de drenagem, para as Unidades Regionais de Obras.",
+        "Contratação eventual de serviços de reparos em redes de drenagem, para as Unidades Regionais de Obras."
+      ]
+    },
+    {
+      "cnpj": "07544753000107",
+      "name": "CONSTRUTORA NATINHO LTDA",
+      "wins": 2,
+      "totalBRL": 189434.15,
+      "municipios": [
+        "Itajaí"
+      ],
+      "objetos": [
+        "CONTRATAÇÃO DE SERVIÇOS COMUNS DE ENGENHARIA PARA DRENAGEM PLUVIAL NA RUA BENJAMIM DAGNONI",
+        "SERVIÇOS COMUNS DE ENGENHARIA PARA DRENAGEM PLUVIAL A SEREM EXECUTADOS NAS RUAS: RUA JOSÉ FRANCISCO CONSTANTINO, RUA CONSTANTINO LUCAS PEREIRA, TRAVESSA KOBARG,"
+      ]
+    },
+    {
+      "cnpj": "34927925000102",
+      "name": "GOLDEN TECNOLOGIA EM CONSTRUCAO LTDA",
+      "wins": 2,
+      "totalBRL": 93856,
+      "municipios": [
+        "Joinville"
+      ],
+      "objetos": [
+        "Contratação de empresa especializada em levantamento topográfico e sondagem, por sistema de registro de preços.",
+        "Contratação de empresa especializada em levantamento topográfico e sondagem, por sistema de registro de preços."
+      ]
+    },
+    {
+      "cnpj": "43355186000104",
+      "name": "CONSTRUTORA BELICHE LTDA",
+      "wins": 2,
+      "totalBRL": 75850,
+      "municipios": [
+        "Vargem"
+      ],
+      "objetos": [
+        "Contratação de Obras e Serviços de Engenharia para Construção de abrigos para destinação de resíduos sólidos, conforme projeto e demais documentos de Engenharia",
+        "Contratação de Obras e Serviços de Engenharia para Construção de piso e instalação de separador de óleo na Secretaria de Transportes, Obras e Serviços Urbanos, "
+      ]
+    },
+    {
+      "cnpj": "46423434000103",
+      "name": "ATRIUM INDUSTRIA E COMERCIO DE FERRAGENS LTDA",
+      "wins": 17,
+      "totalBRL": 62184.600000000006,
+      "municipios": [
+        "Sangão",
+        "Seara",
+        "Blumenau",
+        "São Domingos",
+        "Formosa do Sul",
+        "Balneário Camboriú",
+        "Santa Cecília",
+        "Ibirama",
+        "Barra Velha"
+      ],
+      "objetos": [
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021",
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021",
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021",
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021"
+      ]
+    },
+    {
+      "cnpj": "57765012000124",
+      "name": "MH COMERCIO LTDA",
+      "wins": 18,
+      "totalBRL": 50658.64,
+      "municipios": [
+        "Planalto Alegre",
+        "Ituporanga",
+        "Schroeder",
+        "Marema",
+        "Laguna",
+        "Rio do Sul",
+        "São Miguel do Oeste",
+        "Concórdia",
+        "Turvo",
+        "Balneário Camboriú",
+        "Canoinhas",
+        "Sangão",
+        "Ipumirim"
+      ],
+      "objetos": [
+        "UTENSÍLIOS DE COZINHA - LEI 14.133/2021",
+        "PAPÉIS PARA HIGIENE PESSOAL E USO DOMÉSTICO - LEI 14.133/2021",
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021",
+        "PAPÉIS PARA HIGIENE PESSOAL E USO DOMÉSTICO - LEI 14.133/2021"
+      ]
+    },
+    {
+      "cnpj": "49149027000130",
+      "name": "RENOVA COMERCIO DE PRODUTOS QUIMICOS E ASFALTICO LTDA",
+      "wins": 10,
+      "totalBRL": 46557.5,
+      "municipios": [
+        "Herval d'Oeste",
+        "Urubici",
+        "Capivari de Baixo",
+        "Saudades",
+        "Barra Bonita",
+        "Tubarão",
+        "Tijucas",
+        "Brunópolis",
+        "Imbituba",
+        "Garopaba"
+      ],
+      "objetos": [
+        "MASSA ASFÁLTICA DE CONCRETO BETUMINOSO USINADO A QUENTE (CBUQ) PARA APLICAÇÃO À FRIO - LEI 14.133/2021",
+        "MASSA ASFÁLTICA DE CONCRETO BETUMINOSO USINADO A QUENTE (CBUQ) PARA APLICAÇÃO À FRIO - LEI 14.133/2021",
+        "MASSA ASFÁLTICA DE CONCRETO BETUMINOSO USINADO A QUENTE (CBUQ) PARA APLICAÇÃO À FRIO - LEI 14.133/2021",
+        "MASSA ASFÁLTICA DE CONCRETO BETUMINOSO USINADO A QUENTE (CBUQ) PARA APLICAÇÃO À FRIO - LEI 14.133/2021"
+      ]
+    },
+    {
+      "cnpj": "42826359000162",
+      "name": "FOCO ELETRICA LTDA",
+      "wins": 27,
+      "totalBRL": 27959.83000000001,
+      "municipios": [
+        "Bom Jesus do Oeste",
+        "São João do Oeste",
+        "Paraíso",
+        "Ibiam",
+        "Araranguá",
+        "Palmitos",
+        "Formosa do Sul",
+        "Balneário Camboriú",
+        "Schroeder",
+        "Laguna",
+        "Tunápolis",
+        "Capinzal",
+        "Camboriú",
+        "Barra Velha",
+        "Brusque",
+        "Palhoça",
+        "São Bento do Sul",
+        "São Miguel do Oeste",
+        "Imaruí",
+        "São João Batista",
+        "Coronel Freitas"
+      ],
+      "objetos": [
+        "MATERIAIS DE CONSTRUÇÃO, FERRAMENTAS E CORRELATOS",
+        "MATERIAIS DE CONSTRUÇÃO, FERRAMENTAS E CORRELATOS"
+      ]
+    },
+    {
+      "cnpj": "37683566000175",
+      "name": "TIAGO TURCHETTO PESSOTTO",
+      "wins": 19,
+      "totalBRL": 20294.3,
+      "municipios": [
+        "Sangão",
+        "Lages",
+        "Rio das Antas",
+        "Pomerode",
+        "Itapema",
+        "Brusque",
+        "Navegantes",
+        "Balneário Piçarras",
+        "Ibirama",
+        "Balneário Camboriú",
+        "Barra Velha",
+        "Schroeder",
+        "Palmitos",
+        "Jaraguá do Sul",
+        "Trombudo Central",
+        "Gaspar",
+        "Biguaçu",
+        "Rio dos Cedros"
+      ],
+      "objetos": [
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021",
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021",
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021",
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021"
+      ]
+    },
+    {
+      "cnpj": "49249373000190",
+      "name": "JM TOPOGRAFIA E ENGENHARIA LTDA.",
+      "wins": 2,
+      "totalBRL": 19941.3,
+      "municipios": [
+        "São Miguel do Oeste"
+      ],
+      "objetos": [
+        "SERVIÇOS TOPOGRÁFICOS E CORRELATOS",
+        "SERVIÇOS TOPOGRÁFICOS E CORRELATOS"
+      ]
+    },
+    {
+      "cnpj": "31840475000110",
+      "name": "TW2K ELETROELETRONICA LTDA",
+      "wins": 2,
+      "totalBRL": 19148.03,
+      "municipios": [
+        "Maravilha",
+        "Balneário Piçarras"
+      ],
+      "objetos": [
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021",
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021"
+      ]
+    },
+    {
+      "cnpj": "23484444000145",
+      "name": "3F LTDA",
+      "wins": 2,
+      "totalBRL": 12089,
+      "municipios": [
+        "Sangão",
+        "Rio Negrinho"
+      ],
+      "objetos": [
+        "A presente contratação direta, por inexigibilidade de licitação, tem por objeto o fornecimento de 01 (uma) licença de uso do software OrçaFascio, com acesso sim",
+        "AQUISIÇÃO DA LICENÇA DO SOFTWARE DE GESTÃO DE OBRAS ORÇAFASCIO NOS MÓDULOS ORÇAMENTO, BASES, MEDIÇÃO, PLANEJAMENTO E DIÁRIO, COM CONTRATAÇÃO DURANTE O PERÍODO D"
+      ]
+    },
+    {
+      "cnpj": "05117514000145",
+      "name": "INSTALART MATERIAIS ELÉTRICOS LTDA",
+      "wins": 25,
+      "totalBRL": 9404.75,
+      "municipios": [
+        "Rio do Oeste",
+        "Sangão",
+        "Entre Rios",
+        "Schroeder",
+        "Brusque",
+        "Lages",
+        "Trombudo Central",
+        "Canoinhas",
+        "Bom Jesus do Oeste",
+        "Biguaçu",
+        "Guaraciaba",
+        "Caçador",
+        "Urussanga",
+        "União do Oeste",
+        "Nova Erechim",
+        "Tunápolis",
+        "Barra Velha",
+        "Ituporanga",
+        "Urubici"
+      ],
+      "objetos": [
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021",
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021",
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021",
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021"
+      ]
+    },
+    {
+      "cnpj": "53111090000154",
+      "name": "FERREIRA & KOHLER ILUMINACAO LTDA",
+      "wins": 5,
+      "totalBRL": 8038.5,
+      "municipios": [
+        "Videira",
+        "Biguaçu",
+        "São Bonifácio",
+        "Schroeder",
+        "Urussanga"
+      ],
+      "objetos": [
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021",
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021",
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021",
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021"
+      ]
+    },
+    {
+      "cnpj": "05063653001024",
+      "name": "ENGEPECAS EQUIPAMENTOS LTDA.",
+      "wins": 2,
+      "totalBRL": 7848.2,
+      "municipios": [
+        "Mafra"
+      ],
+      "objetos": [
+        "Contratação de empresa especializada na prestação de serviço de mão de obra, aquisição de peças e componentes, para realização de revisão veicular (100-500h ou ",
+        "Contratação de empresa especializada na prestação de serviço de mão de obra, aquisição de peças e componentes, para realização de revisão veicular (100-500h ou "
+      ]
+    },
+    {
+      "cnpj": "26162488000147",
+      "name": "RAUL SOPKO JUNIOR ENGENHARIA - ME",
+      "wins": 2,
+      "totalBRL": 5510,
+      "municipios": [
+        "Joinville"
+      ],
+      "objetos": [
+        "Contratação de empresa especializada em levantamento topográfico e sondagem, por sistema de registro de preços.",
+        "Contratação de empresa especializada em levantamento topográfico e sondagem, por sistema de registro de preços."
+      ]
+    },
+    {
+      "cnpj": "56099508000143",
+      "name": "BALBINOTI SOLUCOES ELETRICAS E TECNOLOGIA LTDA",
+      "wins": 13,
+      "totalBRL": 5330.81,
+      "municipios": [
+        "Santa Helena",
+        "Urussanga",
+        "Seara",
+        "Planalto Alegre",
+        "Maravilha",
+        "Paulo Lopes",
+        "Formosa do Sul",
+        "Araranguá",
+        "Schroeder",
+        "Apiúna"
+      ],
+      "objetos": [
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021",
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021",
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021",
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021"
+      ]
+    },
+    {
+      "cnpj": "41348737000187",
+      "name": "AK IMPORTACAO E EXPORTACAO LTDA",
+      "wins": 3,
+      "totalBRL": 5072,
+      "municipios": [
+        "Romelândia",
+        "Tunápolis",
+        "Barra Bonita"
+      ],
+      "objetos": [
+        "MATERIAIS DE CONSTRUÇÃO, FERRAMENTAS E CORRELATOS",
+        "MATERIAIS DE CONSTRUÇÃO, FERRAMENTAS E CORRELATOS",
+        "MATERIAIS DE CONSTRUÇÃO, FERRAMENTAS E CORRELATOS"
+      ]
+    },
+    {
+      "cnpj": "17658136000196",
+      "name": "FERREIRA & REZENDE ENGENHARIA LTDA",
+      "wins": 2,
+      "totalBRL": 4266.5,
+      "municipios": [
+        "São João Batista"
+      ],
+      "objetos": [
+        "SERVIÇOS DE AGRIMENSURA, TOPOGRAFIA E GEODÉSIA - LEI 14.133/2021",
+        "SERVIÇOS DE AGRIMENSURA, TOPOGRAFIA E GEODÉSIA - LEI 14.133/2021"
+      ]
+    },
+    {
+      "cnpj": "33149502000138",
+      "name": "I.R. COMERCIO E MATERIAIS ELETRICOS LTDA",
+      "wins": 7,
+      "totalBRL": 3409.0699999999997,
+      "municipios": [
+        "São Bento do Sul",
+        "Brusque",
+        "Trombudo Central",
+        "Pomerode",
+        "Schroeder",
+        "Arabutã"
+      ],
+      "objetos": [
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021",
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021"
+      ]
+    },
+    {
+      "cnpj": "35944400000130",
+      "name": "ROTTA DO REPARO MATERIAIS DE CONSTRUCAO LTDA",
+      "wins": 7,
+      "totalBRL": 2219.8,
+      "municipios": [
+        "Brusque",
+        "Major Vieira",
+        "Garopaba",
+        "Paraíso",
+        "Schroeder",
+        "Urubici",
+        "Pomerode"
+      ],
+      "objetos": [
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021",
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021",
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021",
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021"
+      ]
+    },
+    {
+      "cnpj": "82977109000148",
+      "name": "HIDROLUNA MATERIAIS PARA SANEAMENTO LTDA",
+      "wins": 2,
+      "totalBRL": 2008.8,
+      "municipios": [
+        "Jaraguá do Sul",
+        "Orleans"
+      ],
+      "objetos": [
+        "TUBOS E CONEXÕES PARA ESGOTO - LEI 14.133/2021",
+        "TUBOS E CONEXÕES PARA ESGOTO - LEI 14.133/2021"
+      ]
+    },
+    {
+      "cnpj": "26749211000115",
+      "name": "SUPERA COMERCIO E IMPORTACAO LTDA",
+      "wins": 6,
+      "totalBRL": 963.8999999999999,
+      "municipios": [
+        "São Miguel do Oeste",
+        "Nova Erechim",
+        "Campo Erê"
+      ],
+      "objetos": [
+        "MATERIAIS DE CONSTRUÇÃO, FERRAMENTAS E CORRELATOS",
+        "MATERIAIS DE CONSTRUÇÃO, FERRAMENTAS E CORRELATOS",
+        "MATERIAIS DE CONSTRUÇÃO, FERRAMENTAS E CORRELATOS",
+        "MATERIAIS DE CONSTRUÇÃO, FERRAMENTAS E CORRELATOS"
+      ]
+    },
+    {
+      "cnpj": "08658622000113",
+      "name": "J. J. VITALLI",
+      "wins": 5,
+      "totalBRL": 853.9399999999999,
+      "municipios": [
+        "Florianópolis",
+        "Barra Bonita",
+        "Nova Erechim",
+        "São Miguel do Oeste",
+        "Descanso"
+      ],
+      "objetos": [
+        "SNE 202604161",
+        "MATERIAIS DE CONSTRUÇÃO, FERRAMENTAS E CORRELATOS",
+        "MATERIAIS DE CONSTRUÇÃO, FERRAMENTAS E CORRELATOS",
+        "MATERIAIS DE CONSTRUÇÃO, FERRAMENTAS E CORRELATOS"
+      ]
+    },
+    {
+      "cnpj": "60699174000116",
+      "name": "60.699.174 ALANA GABRIELLI SANTOS ARAUJO",
+      "wins": 8,
+      "totalBRL": 823.6,
+      "municipios": [
+        "Brusque",
+        "Canoinhas",
+        "Trombudo Central",
+        "Balneário Camboriú",
+        "Pomerode",
+        "Camboriú",
+        "Palhoça"
+      ],
+      "objetos": [
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021",
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021"
+      ]
+    },
+    {
+      "cnpj": "29175860000148",
+      "name": "HIDROSANU SOLUCOES PARA CONSTRUCAO E SANEAMENTO LTDA.",
+      "wins": 2,
+      "totalBRL": 737.5,
+      "municipios": [
+        "Gaspar",
+        "Schroeder"
+      ],
+      "objetos": [
+        "TUBOS E CONEXÕES PARA ESGOTO - LEI 14.133/2021",
+        "TUBOS E CONEXÕES PARA ESGOTO - LEI 14.133/2021"
+      ]
+    },
+    {
+      "cnpj": "26979673000129",
+      "name": "JARDEL JACOBS PEREIRA DA SILVA",
+      "wins": 2,
+      "totalBRL": 569.5,
+      "municipios": [
+        "Guaraciaba",
+        "Tunápolis"
+      ],
+      "objetos": [
+        "MATERIAIS DE CONSTRUÇÃO, FERRAMENTAS E CORRELATOS",
+        "MATERIAIS DE CONSTRUÇÃO, FERRAMENTAS E CORRELATOS"
+      ]
+    },
+    {
+      "cnpj": "35613151000108",
+      "name": "ECOWSOLAR ENERGIAS SUSTENTAVEIS LTDA",
+      "wins": 3,
+      "totalBRL": 345.26,
+      "municipios": [
+        "Trombudo Central",
+        "Balneário Camboriú",
+        "Brusque"
+      ],
+      "objetos": [
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021",
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021",
+        "MATERIAIS ELÉTRICOS PARA EDIFICAÇÕES - LEI 14.133/2021"
+      ]
+    },
+    {
+      "cnpj": "26469541000157",
+      "name": "SUL.COM ATACADO E VAREJO LTDA",
+      "wins": 2,
+      "totalBRL": 285.3,
+      "municipios": [
+        "Santa Helena",
+        "Descanso"
+      ],
+      "objetos": [
+        "MATERIAIS DE CONSTRUÇÃO, FERRAMENTAS E CORRELATOS",
+        "MATERIAIS DE CONSTRUÇÃO, FERRAMENTAS E CORRELATOS"
+      ]
+    },
+    {
+      "cnpj": "15396333000159",
+      "name": "CONSTRURENOVA CASA DE JAU LTDA",
+      "wins": 2,
+      "totalBRL": 254.83,
+      "municipios": [
+        "Joaçaba",
+        "São João do Oeste"
+      ],
+      "objetos": [
+        "EQUIPAMENTOS DE INFORMÁTICA, ELETRÔNICOS E ACESSÓRIOS - LEI 14.133/2021",
+        "EQUIPAMENTOS DE INFORMÁTICA, ELETRÔNICOS E ACESSÓRIOS - LEI 14.133/2021"
+      ]
+    }
+  ]
+}
