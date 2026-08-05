@@ -1,0 +1,32 @@
+module.exports = [
+  {
+    slug: "salamandra", source: "09-salamandra", name: "Salamandra",
+    handle: "@tocasalamandra", niche: "fashion", layout: 18,
+    colors: ["#f2e6cf", "#12100f", "#ff5a1f", "#4ecdc4", "#fffaf0"],
+    fonts: ["Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif", "'Trebuchet MS', sans-serif"],
+    hero: "Arte que se move no corpo.", deck: "Peças únicas, pintura manual e upcycling apresentados como manifesto visual.",
+    categories: ["Jaquetas", "Estamparia", "Upcycling", "Peças únicas"],
+    media: ["catalogo-imagem-22.jpeg", "catalogo-imagem-21.jpeg", "catalogo-imagem-24.jpeg", "catalogo-imagem-19.jpeg", "catalogo-imagem-23.jpeg", "catalogo-imagem-08.jpeg"],
+    guide: "Processo e cuidados",
+  },
+  {
+    slug: "marias-moda-plus", source: "13-marias-moda-plus", name: "Maria's Moda Plus",
+    handle: "@mariasmodaplus", niche: "fashion", layout: 19,
+    colors: ["#fff0d4", "#171515", "#e43d30", "#4f68ff", "#fffaf1"],
+    fonts: ["'Arial Black', 'Franklin Gothic Heavy', sans-serif", "'Century Gothic', 'Trebuchet MS', sans-serif"],
+    hero: "Moda para aparecer inteira.", deck: "Uma loja plus size direta, vibrante e organizada para encontrar o look sem rodeios.",
+    categories: ["Vestidos", "Conjuntos", "Alfaiataria", "Essenciais"],
+    media: ["oficial-18.webp", "oficial-23.webp", "oficial-27.webp", "oficial-32.webp", "oficial-35.webp", "oficial-39.webp", "oficial-44.webp", "oficial-49.webp"],
+    guide: "Guia de medidas",
+  },
+  {
+    slug: "olibi", source: "11-olibiazeitesartesanais", name: "Olibi",
+    handle: "@olibiazeites", niche: "food", layout: 20,
+    colors: ["#ece8d8", "#173629", "#d1911d", "#c6cf8b", "#faf7ec"],
+    fonts: ["'Baskerville', 'Palatino Linotype', serif", "'Gill Sans', 'Trebuchet MS', sans-serif"],
+    hero: "A Mantiqueira em cada gota.", deck: "Azeites artesanais apresentados por origem, aroma e ocasião à mesa.",
+    categories: ["Azeites", "Conservas", "Saborizados", "Seleção"],
+    media: ["oficial-04.png", "oficial-14.png", "oficial-02.webp", "oficial-17.png", "oficial-18.png", "oficial-19.webp"],
+    guide: "Sabores e conservação",
+  },
+];

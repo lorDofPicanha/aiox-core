@@ -11,7 +11,7 @@ process.env.TZ = "UTC";
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-const { deriveMaestroState, sentinelaWatch, buildRecursoPlan } = await import("../lib/agents/maestro-runtime.ts");
+const { deriveMaestroState, buildRecursoPlan } = await import("../lib/agents/maestro-runtime.ts");
 const { ensureBrOffset } = await import("../lib/noyce-dates.ts");
 const { transition } = await import("../lib/agents/orchestrator.ts");
 const { initialMaestroState } = await import("../lib/agents/maestro-types.ts");

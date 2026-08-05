@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import Header from "./Header";
 import Footer from "./Footer";
 import { waUrl } from "@/lib/inquiry";
+import { trackLead } from "@/lib/track";
 
 const lp = (p: string, l: string) => (l === "en" ? p : `/${l}${p}`);
 
@@ -41,7 +42,7 @@ export default function Home() {
           <p className="sub reveal in">{t("sub")}</p>
           <div className="cta-row reveal in">
             <a className="cta" href={lp("/collection", locale)}>{t("cta")}</a>
-            <a className="ghostlink" href={viewing} target="_blank" rel="noopener noreferrer">{t("book")}</a>
+            <a className="ghostlink" href={viewing} target="_blank" rel="noopener noreferrer" onClick={() => trackLead({ channel: "whatsapp", source: "home_hero" })}>{t("book")}</a>
           </div>
         </div>
         <div className="scrollcue"><span className="line" /><span>{t("scroll")}</span></div>
@@ -85,7 +86,7 @@ export default function Home() {
       <section className="ctaband">
         <div className="eyebrow">{t("ctaEb")}</div>
         <h2 className="reveal">{t("ctaH")}</h2>
-        <a className="cta reveal" href={viewing} target="_blank" rel="noopener noreferrer">{t("ctaBtn")}</a>
+        <a className="cta reveal" href={viewing} target="_blank" rel="noopener noreferrer" onClick={() => trackLead({ channel: "whatsapp", source: "home_footer_cta" })}>{t("ctaBtn")}</a>
       </section>
       <Footer />
     </>

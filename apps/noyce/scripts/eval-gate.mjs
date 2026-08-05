@@ -90,7 +90,7 @@ if (runTri && judge === "golden") {
     let llm;
     try {
       llm = await runTriage(g, client, golden.asOf);
-    } catch (e) {
+    } catch {
       llm = { verdict: "ERRO", source: "erro" };
     }
     if (llm.source !== "llm") fallback++;

@@ -1,0 +1,1060 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIOS — Infraestrutura, Clones e Cadeia de Comando</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ────────────────────────────────────────────────────────────────────
+   AIOX BRAND TOKENS (dark observatory · lime accent)
+   Synced from 04-deck-diagnostico-amigo/deck.html (v2 · 2026-05-18)
+   Aplicado a formato long-form (field manual escuro) · 2026-07-26
+  ──────────────────────────────────────────────────────────────────── */
+  :root {
+    --bg: #050505;
+    --panel: #0E0E0E;
+    --panel-2: #141414;
+    --rule: #1F1F1F;
+    --rule-2: #2A2A2A;
+    --text: #F5F5EF;
+    --text-2: #B8B8AE;
+    --muted: #6E6E66;
+    --lime: #D7FF3F;
+    --lime-2: #B8DD2E;
+    --warm: #F0B35A;
+    --rust: #C75F3E;
+    --positive: #9BE57A;
+    --negative: #E25B5B;
+
+    --font-d: 'Inter Tight', system-ui, sans-serif;
+    --font-b: 'Inter', system-ui, sans-serif;
+    --font-m: 'IBM Plex Mono', ui-monospace, monospace;
+
+    --max-w: 1180px;
+    --gutter: 32px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-b);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
+  }
+
+  .container { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--gutter); }
+
+  /* ─── Top rail ────────────────────────────────────────────────── */
+  .topnav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(5,5,5,0.92);
+    backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid var(--rule);
+    padding: 12px 0;
+  }
+  .topnav-inner {
+    max-width: var(--max-w); margin: 0 auto; padding: 0 var(--gutter);
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    font-family: var(--font-m); font-size: 10px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .topnav .brand { color: var(--text-2); }
+  .topnav .lime { color: var(--lime); }
+  .topnav nav { display: flex; gap: 18px; flex-wrap: wrap; }
+  .topnav nav a { color: var(--muted); text-decoration: none; }
+  .topnav nav a:hover { color: var(--lime); }
+
+  /* ─── Hero ────────────────────────────────────────────────────── */
+  .hero { padding: 72px 0 56px; border-bottom: 1px solid var(--rule); }
+  .eyebrow {
+    font-family: var(--font-m); font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--lime); margin-bottom: 20px;
+  }
+  h1.title {
+    font-family: var(--font-d); font-weight: 800;
+    font-size: clamp(38px, 6vw, 68px); line-height: 1.0; letter-spacing: -0.03em;
+    max-width: 20ch;
+  }
+  h1.title .lime { color: var(--lime); }
+  .thesis {
+    margin-top: 26px; max-width: 68ch; font-size: 18px; color: var(--text-2);
+    line-height: 1.6;
+  }
+  .thesis strong { color: var(--text); font-weight: 600; }
+  .hero-meta {
+    margin-top: 34px; display: flex; gap: 32px; flex-wrap: wrap;
+    font-family: var(--font-m); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--muted);
+    border-top: 1px solid var(--rule); padding-top: 20px;
+  }
+  .hero-meta b { color: var(--text-2); font-weight: 500; }
+
+  /* ─── Stat strip ──────────────────────────────────────────────── */
+  .stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1px; background: var(--rule); border: 1px solid var(--rule);
+    margin: 48px 0;
+  }
+  .stat { background: var(--panel); padding: 22px 20px; }
+  .stat .n {
+    font-family: var(--font-d); font-weight: 800; font-size: 34px;
+    letter-spacing: -0.03em; color: var(--lime); line-height: 1;
+  }
+  .stat .l {
+    font-family: var(--font-m); font-size: 10px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted); margin-top: 10px;
+  }
+
+  /* ─── TOC ─────────────────────────────────────────────────────── */
+  .toc {
+    background: var(--panel); border: 1px solid var(--rule);
+    padding: 30px 32px; margin: 0 0 64px;
+  }
+  .toc h3 {
+    font-family: var(--font-m); font-size: 11px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--muted); font-weight: 500;
+    border-bottom: 1px solid var(--rule); padding-bottom: 14px; margin-bottom: 8px;
+  }
+  .toc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0 32px; }
+  .toc a {
+    color: var(--text-2); text-decoration: none; font-size: 14px;
+    display: grid; grid-template-columns: 34px 1fr; gap: 10px; align-items: baseline;
+    padding: 11px 0; border-bottom: 1px dotted var(--rule-2);
+  }
+  .toc a:hover { color: var(--lime); }
+  .toc .n { font-family: var(--font-m); color: var(--lime); font-weight: 600; font-size: 11px; }
+
+  /* ─── Sections ────────────────────────────────────────────────── */
+  section { padding: 56px 0; border-bottom: 1px solid var(--rule); }
+  .sec-num {
+    font-family: var(--font-m); font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--lime); margin-bottom: 14px;
+  }
+  h2 {
+    font-family: var(--font-d); font-weight: 700;
+    font-size: clamp(26px, 3.4vw, 38px); line-height: 1.1; letter-spacing: -0.025em;
+    max-width: 26ch; margin-bottom: 20px;
+  }
+  h2 .lime { color: var(--lime); }
+  h3 {
+    font-family: var(--font-d); font-weight: 600; font-size: 19px;
+    letter-spacing: -0.01em; margin: 38px 0 14px; color: var(--text);
+  }
+  h4 {
+    font-family: var(--font-m); font-size: 11px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--lime); margin: 30px 0 12px; font-weight: 600;
+  }
+  p { max-width: 74ch; color: var(--text-2); margin-bottom: 16px; }
+  p strong, li strong { color: var(--text); font-weight: 600; }
+  a.inline { color: var(--lime); text-decoration: none; border-bottom: 1px solid var(--rule-2); }
+  a.inline:hover { border-color: var(--lime); }
+  ul, ol { max-width: 74ch; color: var(--text-2); margin: 0 0 18px 20px; }
+  li { margin-bottom: 8px; }
+  code {
+    font-family: var(--font-m); font-size: 0.86em;
+    background: var(--panel-2); border: 1px solid var(--rule);
+    padding: 1px 6px; color: var(--warm);
+  }
+  .lime-t { color: var(--lime); }
+  .warm-t { color: var(--warm); }
+  .neg-t { color: var(--negative); }
+  .pos-t { color: var(--positive); }
+  .muted-t { color: var(--muted); }
+
+  /* ─── Tables ──────────────────────────────────────────────────── */
+  .tw { overflow-x: auto; margin: 22px 0 28px; border: 1px solid var(--rule); }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 640px; }
+  thead th {
+    background: var(--panel-2); text-align: left; padding: 12px 14px;
+    font-family: var(--font-m); font-size: 10px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted); font-weight: 500;
+    border-bottom: 1px solid var(--rule-2); white-space: nowrap;
+  }
+  tbody td { padding: 11px 14px; border-bottom: 1px solid var(--rule); color: var(--text-2); vertical-align: top; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) { background: rgba(255,255,255,0.014); }
+  tbody td.mono { font-family: var(--font-m); font-size: 12px; color: var(--text); white-space: nowrap; }
+  tbody td.num { font-family: var(--font-m); font-size: 12px; color: var(--lime); text-align: right; }
+  tbody td b { color: var(--text); font-weight: 600; }
+
+  /* ─── Cards ───────────────────────────────────────────────────── */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 24px 0 30px; }
+  .card { background: var(--panel); padding: 24px 22px; }
+  .card .k {
+    font-family: var(--font-m); font-size: 10px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--lime); margin-bottom: 10px;
+  }
+  .card h5 { font-family: var(--font-d); font-weight: 600; font-size: 17px; margin-bottom: 8px; letter-spacing: -0.01em; }
+  .card p { font-size: 13.5px; margin: 0; max-width: none; }
+
+  /* ─── Callouts ────────────────────────────────────────────────── */
+  .callout {
+    border-left: 2px solid var(--lime); background: var(--panel);
+    padding: 20px 24px; margin: 26px 0; max-width: 82ch;
+  }
+  .callout.warn { border-left-color: var(--warm); }
+  .callout.block { border-left-color: var(--negative); }
+  .callout .k {
+    font-family: var(--font-m); font-size: 10px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--lime); margin-bottom: 10px;
+  }
+  .callout.warn .k { color: var(--warm); }
+  .callout.block .k { color: var(--negative); }
+  .callout p:last-child { margin-bottom: 0; }
+
+  /* ─── Command ladder (hierarchy) ──────────────────────────────── */
+  .ladder { margin: 30px 0 34px; border: 1px solid var(--rule); }
+  .rung {
+    display: grid; grid-template-columns: 82px 1fr auto;
+    gap: 20px; align-items: center;
+    padding: 18px 22px; border-bottom: 1px solid var(--rule);
+    background: var(--panel);
+  }
+  .rung:last-child { border-bottom: none; }
+  .rung .lv {
+    font-family: var(--font-m); font-weight: 600; font-size: 13px;
+    color: var(--lime); letter-spacing: 0.06em;
+  }
+  .rung .lv small { display: block; color: var(--muted); font-size: 9px; letter-spacing: 0.12em; margin-top: 3px; text-transform: uppercase; }
+  .rung .body h5 { font-family: var(--font-d); font-weight: 600; font-size: 16px; margin-bottom: 4px; }
+  .rung .body p { font-size: 13px; margin: 0; max-width: 68ch; }
+  .rung .cnt {
+    font-family: var(--font-m); font-size: 11px; color: var(--muted);
+    letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; text-align: right;
+  }
+  .rung.human { background: var(--panel-2); }
+  .rung.human .lv { color: var(--warm); }
+
+  /* ─── Flow / pipeline ─────────────────────────────────────────── */
+  .flow { display: flex; flex-wrap: wrap; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 24px 0 30px; }
+  .step { background: var(--panel); padding: 18px 20px; flex: 1 1 170px; min-width: 160px; }
+  .step .i { font-family: var(--font-m); font-size: 10px; color: var(--lime); letter-spacing: 0.14em; margin-bottom: 8px; }
+  .step h5 { font-family: var(--font-d); font-weight: 600; font-size: 15px; margin-bottom: 6px; }
+  .step p { font-size: 12.5px; margin: 0; max-width: none; }
+
+  /* ─── Pre / terminal ──────────────────────────────────────────── */
+  pre {
+    background: var(--panel-2); border: 1px solid var(--rule);
+    padding: 18px 20px; overflow-x: auto; margin: 20px 0 26px;
+    font-family: var(--font-m); font-size: 12.5px; line-height: 1.7; color: var(--text-2);
+  }
+  pre .c { color: var(--muted); }
+  pre .l { color: var(--lime); }
+  pre .w { color: var(--warm); }
+
+  /* ─── Badges ──────────────────────────────────────────────────── */
+  .badge {
+    display: inline-block; font-family: var(--font-m); font-size: 9.5px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 3px 8px; border: 1px solid var(--rule-2); color: var(--muted);
+  }
+  .badge.block { border-color: var(--negative); color: var(--negative); }
+  .badge.warn { border-color: var(--warm); color: var(--warm); }
+  .badge.ok { border-color: var(--positive); color: var(--positive); }
+  .badge.lime { border-color: var(--lime); color: var(--lime); }
+
+  /* ─── Footer ──────────────────────────────────────────────────── */
+  footer {
+    padding: 40px 0 60px; color: var(--muted);
+    font-family: var(--font-m); font-size: 11px; letter-spacing: 0.1em;
+  }
+  footer .fi { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--gutter); display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+  footer .lime { color: var(--lime); }
+
+  @media (max-width: 720px) {
+    .rung { grid-template-columns: 62px 1fr; }
+    .rung .cnt { grid-column: 2; text-align: left; }
+    .hero { padding: 48px 0 40px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topnav">
+  <div class="topnav-inner">
+    <span class="brand">[ <span class="lime">AIOX</span> ] · AIOS · INFRAESTRUTURA &amp; CADEIA DE COMANDO</span>
+    <nav>
+      <a href="#topologia">Topologia</a>
+      <a href="#comando">Comando</a>
+      <a href="#squads">Squads</a>
+      <a href="#clones">Clones</a>
+      <a href="#roteamento">Roteamento</a>
+      <a href="#gates">Gates</a>
+      <a href="#frouxo">Dívida</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="hero">
+    <div class="eyebrow">Field Manual · Documento interno · v1.0</div>
+    <h1 class="title">A máquina por trás<br>do <span class="lime">AIOS</span>.</h1>
+    <p class="thesis">
+      O AIOS não é um chatbot com prompts salvos. É uma <strong>organização sintética</strong> —
+      com constituição escrita, hierarquia de 6 níveis, 25 squads, 253 mentes indexadas,
+      roteamento determinístico entre 4 CLIs e gates que <strong>bloqueiam de verdade</strong> quando
+      alguém tenta furar a fila. Este documento mapeia cada peça, quem manda em quem,
+      e onde a corda está frouxa.
+    </p>
+    <div class="hero-meta">
+      <span>Data · <b>26 Jul 2026</b></span>
+      <span>Fonte · <b>leitura direta do repositório D:\AIOS</b></span>
+      <span>Constituição · <b>v1.1.0</b></span>
+      <span>Design · <b>AIOX dark observatory</b></span>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">6</div><div class="l">níveis de comando</div></div>
+    <div class="stat"><div class="n">25</div><div class="l">squads ativos</div></div>
+    <div class="stat"><div class="n">272</div><div class="l">assentos em squad</div></div>
+    <div class="stat"><div class="n">253</div><div class="l">mentes indexadas</div></div>
+    <div class="stat"><div class="n">1.345</div><div class="l">entidades no registry</div></div>
+    <div class="stat"><div class="n">7</div><div class="l">artigos constitucionais</div></div>
+  </div>
+
+  <div class="toc">
+    <h3>Índice</h3>
+    <div class="toc-grid">
+      <a href="#tese"><span class="n">01</span><span>A tese — por que existe</span></a>
+      <a href="#topologia"><span class="n">02</span><span>Topologia — as 7 camadas</span></a>
+      <a href="#constituicao"><span class="n">03</span><span>A Constituição — 7 artigos</span></a>
+      <a href="#comando"><span class="n">04</span><span>Cadeia de comando — L5 → L0</span></a>
+      <a href="#core"><span class="n">05</span><span>Os agentes core (funcionais)</span></a>
+      <a href="#squads"><span class="n">06</span><span>Os 25 squads e seus chiefs</span></a>
+      <a href="#clones"><span class="n">07</span><span>Mind clones — o que são de fato</span></a>
+      <a href="#consulta"><span class="n">08</span><span>Como se consulta um clone</span></a>
+      <a href="#roteamento"><span class="n">09</span><span>Roteamento — intenção → squad</span></a>
+      <a href="#multicli"><span class="n">10</span><span>Delegação multi-CLI</span></a>
+      <a href="#gates"><span class="n">11</span><span>Gates de governança</span></a>
+      <a href="#hooks"><span class="n">12</span><span>Hooks — o que bloqueia hoje</span></a>
+      <a href="#ids"><span class="n">13</span><span>IDS — memória estrutural</span></a>
+      <a href="#synapse"><span class="n">14</span><span>SYNAPSE — injeção de contexto</span></a>
+      <a href="#hydra"><span class="n">15</span><span>HYDRA — inteligência externa</span></a>
+      <a href="#fluxos"><span class="n">16</span><span>Três fluxos ponta a ponta</span></a>
+      <a href="#frouxo"><span class="n">17</span><span>Onde a corda está frouxa</span></a>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ 01 -->
+  <section id="tese">
+    <div class="sec-num">01 · Tese</div>
+    <h2>Por que <span class="lime">organização</span> e não coleção de prompts.</h2>
+    <p>
+      A diferença entre um sistema de agentes que funciona e um que vira teatro está em três coisas:
+      <strong>autoridade exclusiva</strong>, <strong>gate material</strong> e <strong>roteamento determinístico</strong>.
+      O AIOS tem as três escritas em arquivo, não em intenção.
+    </p>
+    <div class="cards">
+      <div class="card">
+        <div class="k">Autoridade exclusiva</div>
+        <h5>Ninguém faz o trabalho do outro</h5>
+        <p>Só <code>@devops</code> dá <code>git push</code>. Só <code>@architect</code> decide arquitetura. Só <code>@qa</code> emite veredito. Está no Art. II da Constituição — não é convenção, é lei do sistema.</p>
+      </div>
+      <div class="card">
+        <div class="k">Gate material</div>
+        <div><h5>Burocracia só quando dói</h5></div>
+        <p>Gate dispara por <strong>gatilho material</strong> — DDL em SQL, criação de agente-pessoa, merge. Nunca em toda tarefa. Anti-burocracia é princípio declarado da policy de roteamento.</p>
+      </div>
+      <div class="card">
+        <div class="k">Roteamento determinístico</div>
+        <h5>Consulta é exceção, não regra</h5>
+        <p>Intenção → domínio → squad → chief, por tabela. O Expert Pool (186 consultivos) só é chamado sob incerteza ou risco. Council só em escalação.</p>
+      </div>
+    </div>
+    <div class="callout">
+      <div class="k">Princípio-raiz</div>
+      <p><strong>CLI First (Art. I, NON-NEGOTIABLE).</strong> Toda funcionalidade precisa funcionar 100% via CLI antes de existir UI. Dashboards <em>observam</em>, nunca controlam. A hierarquia é <span class="lime-t">CLI → Observability → UI</span>. Isso explica por que quase tudo no AIOS é um <code>.js</code> chamável por <code>node</code>, e por que a ponte entre CLIs é subprocess + arquivo compartilhado, não MCP.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ 02 -->
+  <section id="topologia">
+    <div class="sec-num">02 · Topologia</div>
+    <h2>As sete camadas da <span class="lime">infraestrutura</span>.</h2>
+    <p>Tudo vive sob <code>D:\AIOS</code>. A raiz <code>.aios-core/</code> é o framework; o resto são superfícies de acesso e dados externos.</p>
+
+    <div class="tw">
+      <table>
+        <thead><tr><th>Camada</th><th>Onde mora</th><th>O que é</th><th>Volume</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">1 · Constituição</td><td class="mono">.aios-core/constitution.md</td><td>7 princípios inegociáveis + processo de emenda + níveis de severidade de gate</td><td class="num">6,5 KB</td></tr>
+          <tr><td class="mono">2 · Core runtime</td><td class="mono">.aios-core/core/</td><td>23 subsistemas: IDS, SYNAPSE, orchestration, permissions, corporation, quality-gates, memory, code-intel, registry, session, execution, events, jarvis, mcp…</td><td class="num">23 dirs</td></tr>
+          <tr><td class="mono">3 · Development</td><td class="mono">.aios-core/development/</td><td>Definições de agente, tasks executáveis, templates, checklists, workflows, agent-teams</td><td class="num">61 agentes</td></tr>
+          <tr><td class="mono">4 · Infrastructure</td><td class="mono">.aios-core/infrastructure/</td><td>~90 scripts operacionais: <code>route.js</code>, <code>delegate.js</code>, validators, orchestrators, analyzers, git-hooks</td><td class="num">~90 scripts</td></tr>
+          <tr><td class="mono">5 · Squads</td><td class="mono">squads/</td><td>25 arquivos <code>squad.yaml</code> — composição, head, níveis, tipo de cada assento</td><td class="num">272 assentos</td></tr>
+          <tr><td class="mono">6 · Superfícies</td><td class="mono">.codex/ · .claude/ · hooks</td><td>Como cada CLI enxerga o sistema: 228 agentes Codex, 25 agentes Claude, 33 skills, 10 hooks Python/JS</td><td class="num">4 CLIs</td></tr>
+          <tr><td class="mono">7 · Externos</td><td class="mono">D:/jarvis · tools/hydra</td><td>Mega Brain (55 mentes), bridge-data, HYDRA (5 squads de pesquisa contínua)</td><td class="num">fora do repo</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout warn">
+      <div class="k">Proteção de fronteira</div>
+      <p>O <code>core-config.yaml</code> declara <strong>framework protection</strong>: <code>.aios-core/core/**</code>, <code>development/tasks|templates|checklists|workflows/**</code>, <code>infrastructure/**</code>, <code>constitution.md</code>, <code>bin/aios.js</code> e <code>bin/aios-init.js</code> são <strong>protegidos contra escrita</strong>. Exceções liberadas: <code>.aios-core/data/**</code>, os <code>MEMORY.md</code> de cada agente, schemas de config e template-overrides. Ou seja: agentes podem aprender e registrar, mas não podem reescrever o próprio framework sem passar pelo fluxo de <em>propose-modification</em>.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ 03 -->
+  <section id="constituicao">
+    <div class="sec-num">03 · Constituição</div>
+    <h2>Sete artigos. Dois <span class="lime">inegociáveis</span>.</h2>
+    <p>Versão 1.1.0, ratificada em 30/Jan/2025, última emenda em 21/Mai/2026 (o Art. VII). Violação de artigo NON-NEGOTIABLE é <span class="neg-t">BLOCK</span> automático.</p>
+
+    <div class="tw">
+      <table>
+        <thead><tr><th>Art.</th><th>Princípio</th><th>Regra central</th><th>Gate</th><th>Força</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">I</td><td><b>CLI First</b></td><td>Funcionalidade nova roda 100% via CLI antes de UI. Dashboard observa, não controla.</td><td class="mono">dev-develop-story</td><td><span class="badge block">Non-negotiable</span></td></tr>
+          <tr><td class="mono">II</td><td><b>Agent Authority</b></td><td>Cada agente tem autoridade exclusiva. Nenhum assume a do outro — delega.</td><td class="mono">definição de agente</td><td><span class="badge block">Non-negotiable</span></td></tr>
+          <tr><td class="mono">III</td><td><b>Story-Driven</b></td><td>Nenhuma linha de código sem story com acceptance criteria e File List viva.</td><td class="mono">dev-develop-story</td><td><span class="badge warn">Must · BLOCK</span></td></tr>
+          <tr><td class="mono">IV</td><td><b>No Invention</b></td><td>Todo statement de spec rastreia para FR / NFR / CON / finding verificado. Nada de assumir.</td><td class="mono">spec-write-spec</td><td><span class="badge warn">Must · BLOCK</span></td></tr>
+          <tr><td class="mono">V</td><td><b>Quality First</b></td><td>lint + typecheck + test + build passam. CodeRabbit sem CRITICAL. Story em Done/Review.</td><td class="mono">pre-push</td><td><span class="badge warn">Must · BLOCK</span></td></tr>
+          <tr><td class="mono">VI</td><td><b>Absolute Imports</b></td><td>Alias <code>@/</code> sempre. Relativo só dentro do próprio módulo.</td><td class="mono">ESLint</td><td><span class="badge">Should</span></td></tr>
+          <tr><td class="mono">VII</td><td><b>No Programmatic Claude</b></td><td>Claude interativo é preferido e barato. Claude <em>programático</em> (<code>claude -p</code>, Agent SDK, CI) puxa pool metered separado desde 15/Jun/2026 — bulk vai pra Codex/Gemini.</td><td class="mono">delegate.js (warn)</td><td><span class="badge warn">Must</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>Autoridades exclusivas (Art. II)</h4>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Autoridade</th><th>Agente exclusivo</th></tr></thead>
+        <tbody>
+          <tr><td><b>git push</b> para remote</td><td class="mono lime-t">@devops</td></tr>
+          <tr><td>Criação de Pull Request</td><td class="mono lime-t">@devops</td></tr>
+          <tr><td>Release e tag</td><td class="mono lime-t">@devops</td></tr>
+          <tr><td>Criação de story</td><td class="mono lime-t">@sm · @po</td></tr>
+          <tr><td>Decisão de arquitetura</td><td class="mono lime-t">@architect</td></tr>
+          <tr><td>Veredito de qualidade</td><td class="mono lime-t">@qa</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>Severidade de gate</h4>
+    <div class="cards">
+      <div class="card"><div class="k neg-t" style="color:var(--negative)">BLOCK</div><h5>Impede execução</h5><p>Requer correção. Usado em NON-NEGOTIABLE e MUST críticos.</p></div>
+      <div class="card"><div class="k" style="color:var(--warm)">WARN</div><h5>Permite com alerta</h5><p>MUST não-críticos. Segue o baile, mas fica registrado.</p></div>
+      <div class="card"><div class="k" style="color:var(--muted)">INFO</div><h5>Apenas reporta</h5><p>Violações de SHOULD. Aparece no relatório, não interrompe.</p></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ 04 -->
+  <section id="comando">
+    <div class="sec-num">04 · Cadeia de comando</div>
+    <h2>Seis níveis. Um humano no <span class="lime">topo</span>.</h2>
+    <p>
+      Definido em <code>.aios-core/core/corporation/org-config.yaml</code> (59 KB) — <strong>185 agentes</strong>
+      distribuídos em 21 departamentos. O nível L5 tem exatamente um assento, e ele não é de IA.
+    </p>
+
+    <div class="ladder">
+      <div class="rung human">
+        <div class="lv">L5<small>Humano</small></div>
+        <div class="body"><h5>CEO — o founder</h5><p>Autoridade final. Único nível <code>type: human</code>. Toda ação irreversível ou externa (deploy prod, push, envio a terceiro, gasto) exige OK explícito dele.</p></div>
+        <div class="cnt">1 assento</div>
+      </div>
+      <div class="rung">
+        <div class="lv">L4<small>C-Suite</small></div>
+        <div class="body"><h5>Liderança estratégica</h5><p>CEO(agente), COO <code>@aios-master</code>, CTO <code>@architect</code>, CISO <code>@bruce-schneier</code>, CFO <code>@aswath-damodaran</code>, CPO <code>@pm</code>, CSO <code>@alex-hormozi</code>, CHRO <code>@patty-mccord</code>. Decidem tradeoff cross-squad e exceção de política.</p></div>
+        <div class="cnt">8 agentes · máx. 10</div>
+      </div>
+      <div class="rung">
+        <div class="lv">L3<small>VP / Chief</small></div>
+        <div class="body"><h5>Heads de departamento</h5><p>Cada squad tem um head. É a <strong>porta de entrada padrão</strong> do roteamento — a intenção cai no chief, e ele decide se resolve, delega ao core ou consulta o pool.</p></div>
+        <div class="cnt">28 agentes · máx. 20*</div>
+      </div>
+      <div class="rung">
+        <div class="lv">L2<small>Senior</small></div>
+        <div class="body"><h5>Especialistas sênior</h5><p>O grosso da força. Inclui <code>@dev</code>, <code>@sm</code> e a maioria dos mind clones nomeados. Executam com autonomia dentro do escopo do squad.</p></div>
+        <div class="cnt">142 agentes · máx. 50*</div>
+      </div>
+      <div class="rung">
+        <div class="lv">L1<small>Operator</small></div>
+        <div class="body"><h5>Agentes de execução</h5><p>Tarefa estreita e repetível. Roda e reporta.</p></div>
+        <div class="cnt">3 agentes · máx. 80</div>
+      </div>
+      <div class="rung">
+        <div class="lv">L0<small>Tool</small></div>
+        <div class="body"><h5>Ferramentas internas</h5><p><code>type: tool</code>. Utilitários chamáveis, sem persona nem autoridade. Sem teto de quantidade.</p></div>
+        <div class="cnt">3 · ilimitado</div>
+      </div>
+    </div>
+
+    <div class="callout warn">
+      <div class="k">* Tetos estourados</div>
+      <p>O config declara <code>max_agents</code> por nível: L3 máx. 20 (tem <strong>28</strong>) e L2 máx. 50 (tem <strong>142</strong>). Os limites estão nominalmente violados. Como <code>corporation.permissions.enforce</code> está <code>false</code>, nada bloqueia — só registra. É dívida de governança, não bug de runtime.</p>
+    </div>
+
+    <h4>Os 21 departamentos</h4>
+    <p class="muted-t" style="font-family:var(--font-m);font-size:12.5px;letter-spacing:0.04em;max-width:none">
+      engineering · product · design · data · operations · research · security · ai_strategy · growth · sales · people · finance · legal · education · health · customer_success · content · behavioral_science · community · platform · trading
+    </p>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ 05 -->
+  <section id="core">
+    <div class="sec-num">05 · Agentes core</div>
+    <h2>Dezessete agentes <span class="lime">funcionais</span>.</h2>
+    <p>
+      Em <code>.aios-core/development/agents/</code> há 61 arquivos. Destes, <strong>17 são agentes funcionais</strong>
+      (papel, não pessoa) e <strong>44 são mind clones nomeados</strong> promovidos a definição de primeira classe.
+      Os funcionais são quem realmente executa o ciclo de desenvolvimento.
+    </p>
+
+    <div class="tw">
+      <table>
+        <thead><tr><th>Agente</th><th>Persona</th><th>Papel</th><th>Autoridade exclusiva</th></tr></thead>
+        <tbody>
+          <tr><td class="mono lime-t">@aios-master</td><td><b>Orion</b> 👑</td><td>Master Orchestrator &amp; Framework Developer — executa qualquer recurso sem trocar de persona, cria/modifica componentes do framework</td><td>meta-framework, COO L4</td></tr>
+          <tr><td class="mono lime-t">@architect</td><td>CTO</td><td>Arquitetura, análise de impacto, validação de PRD</td><td><b>decisão de arquitetura</b></td></tr>
+          <tr><td class="mono lime-t">@dev</td><td>Dex (Builder)</td><td>Implementa story com self-critique, DoD checklist e protocolo IDS</td><td>—</td></tr>
+          <tr><td class="mono lime-t">@qa</td><td>—</td><td>Quality gate, security scan, test architecture. Veredito PASS/CONCERNS/FAIL</td><td><b>veredito de qualidade</b></td></tr>
+          <tr><td class="mono lime-t">@devops</td><td>—</td><td>Git, CI/CD, PR, pre-push gates, versionamento, gestão de MCP</td><td><b>push · PR · release</b></td></tr>
+          <tr><td class="mono lime-t">@pm</td><td>CPO</td><td>PRD, direção estratégica, roadmap, epics</td><td>epic creation</td></tr>
+          <tr><td class="mono lime-t">@po</td><td>—</td><td>Valida story, backlog, coerência de epic context</td><td><b>criação de story</b></td></tr>
+          <tr><td class="mono lime-t">@sm</td><td>—</td><td>Cria e expande stories. <span class="warm-t">Nunca implementa código.</span></td><td><b>criação de story</b></td></tr>
+          <tr><td class="mono lime-t">@analyst</td><td>VP Research</td><td>Market research, análise competitiva, ROI, deep research</td><td>—</td></tr>
+          <tr><td class="mono lime-t">@data-engineer</td><td>VP Data Eng</td><td>Schema, migrations, RLS, otimização de query</td><td>gate de data-quality</td></tr>
+          <tr><td class="mono lime-t">@design-lead</td><td>Design Lead L4</td><td>Head do squad-design (23 assentos)</td><td>—</td></tr>
+          <tr><td class="mono">@ux-design-expert · @ux-designer · @ui-designer · @design-systems-engineer</td><td>—</td><td>Frontend architecture, wireframes, design system, acessibilidade</td><td>—</td></tr>
+          <tr><td class="mono">@squad-creator</td><td>—</td><td>Cria squads e clona mentes</td><td>gate mind-clone DNA</td></tr>
+          <tr><td class="mono">@slide-creator</td><td>—</td><td>Decks narrative-first</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <div class="k">Ativação</div>
+      <p>Todo agente sobe pelo <code>unified-activation-pipeline.js</code>: carrega config, sessão, project status, git e permissões <strong>em paralelo</strong>; detecta tipo de sessão e estado de workflow em sequência; monta o greeting com <code>GreetingBuilder</code>; filtra comandos por metadados de visibilidade. Alvo declarado: <strong>&lt;30ms</strong> para carregar a definição do agente.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ 06 -->
+  <section id="squads">
+    <div class="sec-num">06 · Squads</div>
+    <h2>Vinte e cinco squads. <span class="lime">272</span> assentos.</h2>
+    <p>
+      Cada squad é um <code>squad.yaml</code> com <code>head</code> (id, título, nível) e lista de <code>agents</code>
+      tipados. Composição real medida no repositório:
+      <strong>207 mind_clone</strong> · <strong>24 core</strong> · <strong>12 specialist</strong> ·
+      1 squad_chief · 1 principal · 27 sem tipo declarado.
+    </p>
+
+    <div class="tw">
+      <table>
+        <thead><tr><th>Squad</th><th>Head</th><th>Título / Nível</th><th style="text-align:right">Assentos</th><th>Composição</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">marketing-traffic</td><td class="mono lime-t">@traffic-masters-chief</td><td>Traffic Masters Chief · L4</td><td class="num">28</td><td>15 clone · 12 specialist · 1 chief</td></tr>
+          <tr><td class="mono">squad-design</td><td class="mono lime-t">@design-lead</td><td>Design Lead · L4</td><td class="num">23</td><td>15 clone · 8 core</td></tr>
+          <tr><td class="mono">squad-health</td><td class="mono lime-t">@alison-darcy</td><td>VP Digital Health · L3</td><td class="num">18</td><td>18 clone</td></tr>
+          <tr><td class="mono">squad-ai</td><td class="mono lime-t">@demis-hassabis</td><td>Chief AI Officer · L3</td><td class="num">16</td><td>16 clone</td></tr>
+          <tr><td class="mono">squad-engineering</td><td class="mono lime-t">@architect</td><td>CTO · L4</td><td class="num">16</td><td>14 clone · 2 core</td></tr>
+          <tr><td class="mono">squad-sales</td><td class="mono lime-t">@alex-hormozi</td><td>CSO · L4</td><td class="num">16</td><td>8 clone · 8 s/ tipo</td></tr>
+          <tr><td class="mono">squad-security</td><td class="mono lime-t">@bruce-schneier</td><td>CISO · L4</td><td class="num">16</td><td>16 clone</td></tr>
+          <tr><td class="mono">squad-legal</td><td class="mono lime-t">@heather-meeker</td><td>General Counsel · L3</td><td class="num">13</td><td>13 clone</td></tr>
+          <tr><td class="mono">squad-executive</td><td class="mono lime-t">@aios-master</td><td>COO · L4</td><td class="num">12</td><td>6 clone · 5 core · 1 principal</td></tr>
+          <tr><td class="mono">squad-customer-success</td><td class="mono lime-t">@lincoln-murphy</td><td>VP Customer Success · L3</td><td class="num">10</td><td>3 clone · 7 s/ tipo</td></tr>
+          <tr><td class="mono">squad-data</td><td class="mono lime-t">@data-engineer</td><td>VP Data Engineering · L3</td><td class="num">10</td><td>8 clone · 2 core</td></tr>
+          <tr><td class="mono">squad-finance</td><td class="mono lime-t">@aswath-damodaran</td><td>CFO · L4</td><td class="num">10</td><td>10 clone</td></tr>
+          <tr><td class="mono">squad-research</td><td class="mono lime-t">@analyst</td><td>VP Research · L3</td><td class="num">10</td><td>6 clone · 4 s/ tipo</td></tr>
+          <tr><td class="mono">squad-markets-intelligence</td><td class="mono lime-t">@luana-lopes-lara</td><td>Head of Markets Intel · L3</td><td class="num">9</td><td>9 clone</td></tr>
+          <tr><td class="mono">squad-platform</td><td class="mono lime-t">@kelsey-hightower</td><td>VP Platform Engineering · L3</td><td class="num">9</td><td>8 clone · 1 core</td></tr>
+          <tr><td class="mono">innovation</td><td class="mono lime-t">@clayton-christensen</td><td>Innovation Director · L4</td><td class="num">8</td><td>8 clone</td></tr>
+          <tr><td class="mono">squad-content</td><td class="mono lime-t">@ann-handley</td><td>VP Content · L3</td><td class="num">8</td><td>7 clone · 1 core</td></tr>
+          <tr><td class="mono">squad-operations</td><td class="mono lime-t">@sm</td><td>Senior Scrum Master · L2</td><td class="num">8</td><td>4 clone · 4 core</td></tr>
+          <tr><td class="mono">squad-behavioral-design</td><td class="mono lime-t">@bj-fogg</td><td>VP Behavioral Design · L3</td><td class="num">7</td><td>7 clone</td></tr>
+          <tr><td class="mono">squad-people</td><td class="mono lime-t">@patty-mccord</td><td>CHRO · L4</td><td class="num">7</td><td>7 clone</td></tr>
+          <tr><td class="mono">executive-team</td><td class="mono lime-t">@ceo</td><td>CEO · L4</td><td class="num">6</td><td>CEO · COO · CFO · CMO · CRO · CCO</td></tr>
+          <tr><td class="mono">squad-product</td><td class="mono lime-t">@pm</td><td>CPO · L4</td><td class="num">5</td><td>4 clone · 1 core</td></tr>
+          <tr><td class="mono">squad-community</td><td class="mono lime-t">@sarah-drasner</td><td>VP Developer Relations · L3</td><td class="num">3</td><td>3 clone</td></tr>
+          <tr><td class="mono">expert-council</td><td class="mono lime-t">@conclave-coordinator</td><td>Conclave Coordinator · L4</td><td class="num">2</td><td>órgão de consulta multi-expert</td></tr>
+          <tr><td class="mono">squad-education</td><td class="mono lime-t">@sal-khan</td><td>VP Education · L3</td><td class="num">2</td><td>2 clone</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout warn">
+      <div class="k">Detalhe estrutural que engana</div>
+      <p>21 dos 25 diretórios <code>squads/*/agents/</code> estão <strong>vazios</strong>. Isso não é squad quebrado — o <code>squad.yaml</code> aponta para arquivos que vivem em <code>.aios-core/development/agents/</code> ou em <code>D:/jarvis/mega brain/</code>. A pasta do squad é <em>manifesto</em>, não repositório de conteúdo. Só <code>marketing-traffic</code> (23), <code>executive-team</code> (6), <code>expert-council</code> (2) e <code>innovation</code> (2) têm arquivo próprio.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ 07 -->
+  <section id="clones">
+    <div class="sec-num">07 · Mind clones</div>
+    <h2>253 mentes indexadas — e o que <span class="lime">de fato</span> são.</h2>
+    <p>
+      Um mind clone <strong>não é</strong> um modelo fine-tunado nem uma API externa. É um arquivo markdown
+      denso com <strong>Voice DNA</strong> (como a pessoa fala) e <strong>Thinking DNA</strong> (como a pessoa decide):
+      frameworks nomeados, modelos mentais, comandos, quando usar e — crucialmente — <em>quando não usar</em>.
+      O motor lê esse arquivo, extrai as seções relevantes e devolve contexto estruturado para o
+      agente chamador responder <em>na perspectiva daquele expert</em>.
+    </p>
+
+    <h4>Origem das 253 mentes</h4>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Fonte</th><th style="text-align:right">Qtd</th><th>Onde vive</th><th>Natureza</th></tr></thead>
+        <tbody>
+          <tr><td class="mono"><b>codex-agent</b></td><td class="num">127</td><td class="mono">.codex/agents/</td><td>Superfície Codex — o motorista programático primário</td></tr>
+          <tr><td class="mono"><b>aios-agent</b></td><td class="num">61</td><td class="mono">.aios-core/development/agents/</td><td>17 funcionais + 44 clones nomeados de primeira classe</td></tr>
+          <tr><td class="mono"><b>mega-brain</b></td><td class="num">55</td><td class="mono">D:/jarvis/mega brain/agents/minds/</td><td>Fora do repo — o acervo original de mentes</td></tr>
+          <tr><td class="mono"><b>squad-agent</b></td><td class="num">10</td><td class="mono">squads/*/agents/</td><td>Nascidos dentro de um squad específico</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>Membership — o que cada mente pode fazer</h4>
+    <p>A policy de roteamento classifica o corpo de mentes em quatro categorias funcionais:</p>
+    <div class="cards">
+      <div class="card"><div class="k">core · 51</div><h5>Executam</h5><p>São DRI. Recebem trabalho do chief e entregam artefato.</p></div>
+      <div class="card"><div class="k">pool · 186</div><h5>Consultivos</h5><p>Só entram sob incerteza, novidade ou alto risco. Consultados por tag de domínio.</p></div>
+      <div class="card"><div class="k">governance · 6</div><h5>C-levels</h5><p>Escalação: tradeoff cross-squad, exceção de política, decisão estratégica.</p></div>
+      <div class="card"><div class="k">runtime · 7</div><h5>Orquestração</h5><p>Movem o sistema — não opinam sobre domínio, coordenam.</p></div>
+    </div>
+
+    <div class="callout block">
+      <div class="k">Gate de DNA — bloqueia de verdade</div>
+      <p>Criar um <strong>novo agente-pessoa</strong> em <code>squads/*/agents/</code> exige DNA extraído. O hook
+      <code>mind-clone-governance.py</code> retorna <strong>exit 2</strong> (BLOCK) se você tentar criar um clone
+      nomeado sem o DNA — ou usar sufixo funcional para disfarçar. Ativo desde 22/Mai/2026. É a defesa contra
+      "canalizar um expert pelo nome" sem substância — o antipadrão que produz conselho genérico com etiqueta de celebridade.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ 08 -->
+  <section id="consulta">
+    <div class="sec-num">08 · Consulta</div>
+    <h2>Como se chama uma <span class="lime">mente</span>.</h2>
+    <p>Três motores, todos em <code>.aios-core/core/jarvis/</code>. Nenhum depende de MCP no caminho crítico.</p>
+
+    <div class="tw">
+      <table>
+        <thead><tr><th>Motor</th><th>Arquivo</th><th>Para quê</th></tr></thead>
+        <tbody>
+          <tr><td class="mono lime-t">self-consultation.js</td><td class="mono">837 linhas</td><td><code>consult</code> (1 expert) · <code>batch</code> (N experts em paralelo) · <code>conclave</code> (mini-debate adversarial com síntese) · <code>save-response</code> · <code>list-available</code></td></tr>
+          <tr><td class="mono lime-t">consultation-engine.js</td><td class="mono">17,6 KB</td><td><code>search --topic</code> (acha expert por assunto) · <code>recommend --agent --project</code> (sugere quem consultar)</td></tr>
+          <tr><td class="mono lime-t">project-detector.js</td><td class="mono">5,8 KB</td><td>Detecta em qual projeto a consulta acontece → carrega overrides de expert por projeto</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <pre><span class="c"># mini-debate adversarial — o padrão preferido</span>
+node .aios-core/core/jarvis/self-consultation.js <span class="l">conclave</span> \
+  --question <span class="w">"{pergunta}"</span> --project {proj} --agent {agent} --experts 3
+
+<span class="c"># retorna: prompts individuais + síntese estruturada</span>
+<span class="c">#   CONSENSUS / DISSENT / BLIND SPOTS / VERDICT</span>
+
+<span class="c"># um expert só</span>
+node .aios-core/core/jarvis/self-consultation.js <span class="l">consult</span> --expert martin-fowler \
+  --question <span class="w">"microservices aqui?"</span> --project tocks
+
+<span class="c"># achar quem chamar</span>
+node .aios-core/core/jarvis/consultation-engine.js <span class="l">search</span> --topic <span class="w">"pricing"</span> --limit 3</pre>
+
+    <div class="callout warn">
+      <div class="k">Regra de quando consultar</div>
+      <p><strong>Consultar</strong> antes de finalizar: criação de story/PRD, arquitetura, pricing, segurança, fluxo de UX, schema de DB, decisão jurídica/regulatória, decisão de mercado, ou qualquer escolha estratégica/irreversível.<br>
+      <strong>Pular</strong>: typo, padrão já estabelecido, bug fix óbvio, hotfix, ou quando o operador diz "skip consultation". Consultas são cacheadas para não repetir.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ 09 -->
+  <section id="roteamento">
+    <div class="sec-num">09 · Roteamento</div>
+    <h2>Da intenção ao <span class="lime">chief</span>, em 4 passos.</h2>
+    <p>Policy v1.0.0 (22/Mai/2026), escrita por Orion. Modelo: <strong>híbrido policy-based</strong> — determinístico por padrão, dinâmico só na incerteza, council só em escalação. Profundidade máxima <code>chief → specialist → clone</code> (<code>max_depth=2</code>).</p>
+
+    <div class="flow">
+      <div class="step"><div class="i">PASSO 1</div><h5>Intenção → domínio → squad</h5><p>Determinístico, por tabela. Entrada padrão = o <strong>chief</strong> do squad (Tier 0).</p></div>
+      <div class="step"><div class="i">PASSO 2</div><h5>Chief roteia dentro</h5><p>Manda pro DRI <code>core</code>. Consulta o Expert Pool <em>só</em> se novo / incerto / alto risco. Evita over-calling.</p></div>
+      <div class="step"><div class="i">PASSO 3</div><h5>Gates disparam</h5><p>Por política, independentemente da rota escolhida.</p></div>
+      <div class="step"><div class="i">PASSO 4</div><h5>Escalação</h5><p>Executive Council só em tradeoff cross-squad, exceção de política ou decisão estratégica.</p></div>
+    </div>
+
+    <h4>Tabela de roteamento — domínio → squad → chief</h4>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Domínio</th><th>Squad</th><th>Chief (Tier 0)</th></tr></thead>
+        <tbody>
+          <tr><td>Software / arquitetura / runtime</td><td class="mono">squad-engineering</td><td class="mono lime-t">@architect (CTO)</td></tr>
+          <tr><td>Plataforma / DevOps / infra</td><td class="mono">squad-platform</td><td class="mono lime-t">@kelsey-hightower</td></tr>
+          <tr><td>Dados / DB / pipelines / RLS</td><td class="mono">squad-data</td><td class="mono lime-t">@data-engineer</td></tr>
+          <tr><td>IA / ML / decision science</td><td class="mono">squad-ai</td><td class="mono lime-t">@demis-hassabis (CAIO)</td></tr>
+          <tr><td>Design / UX / visual</td><td class="mono">squad-design</td><td class="mono lime-t">@design-lead</td></tr>
+          <tr><td>Design comportamental / engajamento</td><td class="mono">squad-behavioral-design</td><td class="mono lime-t">@bj-fogg</td></tr>
+          <tr><td>Segurança / pentest / AppSec</td><td class="mono">squad-security</td><td class="mono lime-t">@bruce-schneier (CISO)</td></tr>
+          <tr><td>Jurídico / compliance / privacidade</td><td class="mono">squad-legal</td><td class="mono lime-t">@heather-meeker (GC)</td></tr>
+          <tr><td>Tráfego pago / growth / SEO / CRO</td><td class="mono">marketing-traffic</td><td class="mono lime-t">@traffic-masters-chief</td></tr>
+          <tr><td>Conteúdo / copy / narrativa</td><td class="mono">squad-content</td><td class="mono lime-t">@ann-handley</td></tr>
+          <tr><td>Vendas</td><td class="mono">squad-sales</td><td class="mono lime-t">@alex-hormozi (CSO)</td></tr>
+          <tr><td>Customer success / suporte</td><td class="mono">squad-customer-success</td><td class="mono lime-t">@lincoln-murphy</td></tr>
+          <tr><td>Produto / discovery / PM</td><td class="mono">squad-product</td><td class="mono lime-t">@pm (CPO)</td></tr>
+          <tr><td>Pesquisa / mercado / foresight</td><td class="mono">squad-research</td><td class="mono lime-t">@analyst</td></tr>
+          <tr><td>Operações / agile / QA / processo</td><td class="mono">squad-operations</td><td class="mono lime-t">@sm</td></tr>
+          <tr><td>Finanças corporativas / valuation</td><td class="mono">squad-finance</td><td class="mono lime-t">@aswath-damodaran (CFO)</td></tr>
+          <tr><td>Mercados / trading / prediction</td><td class="mono">squad-markets-intelligence</td><td class="mono lime-t">@luana-lopes-lara</td></tr>
+          <tr><td>Saúde (Anipis) — digital / mental / clínica</td><td class="mono">squad-health</td><td class="mono lime-t">@alison-darcy</td></tr>
+          <tr><td>Pessoas / cultura / educação</td><td class="mono">squad-people · squad-education</td><td class="mono lime-t">@patty-mccord · @sal-khan</td></tr>
+          <tr><td>Comunidade / DevRel</td><td class="mono">squad-community</td><td class="mono lime-t">@sarah-drasner</td></tr>
+          <tr><td>Inovação / lean / disrupção</td><td class="mono">innovation</td><td class="mono lime-t">@clayton-christensen</td></tr>
+          <tr><td>Orquestração / meta-framework</td><td class="mono">squad-executive</td><td class="mono lime-t">@aios-master (COO)</td></tr>
+          <tr><td>Governança / consulta multi-expert</td><td class="mono">executive-team · expert-council</td><td class="mono lime-t">@ceo · @conclave-coordinator</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ 10 -->
+  <section id="multicli">
+    <div class="sec-num">10 · Multi-CLI</div>
+    <h2>Quatro CLIs. Um <span class="lime">roteador</span> agnóstico.</h2>
+    <p>
+      O AIOS não vive dentro de uma CLI — ele <em>usa</em> várias, cada uma pelo que faz melhor e mais barato.
+      <code>route.js</code> classifica a tarefa e escolhe o destino; <code>delegate.js</code> executa a ponte.
+      Ambos rodam em qualquer host porque dependem só de <strong>node + arquivos</strong>.
+    </p>
+
+    <div class="tw">
+      <table>
+        <thead><tr><th>Destino</th><th>Para quê</th><th>Billing</th><th>Execução</th></tr></thead>
+        <tbody>
+          <tr><td class="mono lime-t">codex</td><td>Execução, refactor, código, volume — a superfície primária</td><td>OpenAI</td><td><span class="badge ok">auto-exec</span></td></tr>
+          <tr><td class="mono lime-t">gemini</td><td>Classificação e bulk barato (Flash)</td><td>Google</td><td><span class="badge ok">auto-exec</span></td></tr>
+          <tr><td class="mono lime-t">jarvis</td><td>Consulta de especialista (mind clones)</td><td>local — sem LLM na camada de roteamento</td><td><span class="badge ok">auto-exec</span></td></tr>
+          <tr><td class="mono warm-t">claude</td><td>Raciocínio profundo, alto risco, arquitetura, legal, code review crítico, segunda opinião</td><td>subscription interativa (inalterado)</td><td><span class="badge warn">handoff manual</span></td></tr>
+          <tr><td class="mono muted-t">current</td><td>Trivial — faz direto na CLI atual</td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <pre><span class="c"># classificar e recomendar</span>
+node .aios-core/infrastructure/scripts/route.js <span class="w">"descreva a tarefa"</span>
+node .aios-core/infrastructure/scripts/route.js <span class="l">--exec</span> <span class="w">"..."</span>   <span class="c"># auto-roda o delegate</span>
+node .aios-core/infrastructure/scripts/route.js <span class="l">--json</span> <span class="w">"..."</span>   <span class="c"># machine-readable</span>
+
+<span class="c"># delegar direto</span>
+node .aios-core/infrastructure/scripts/delegate.js <span class="l">--to codex</span>  <span class="w">"refactor X"</span>
+node .aios-core/infrastructure/scripts/delegate.js <span class="l">--to gemini</span> <span class="w">"classifique 200 leads"</span>
+node .aios-core/infrastructure/scripts/delegate.js <span class="l">--to jarvis</span> --topic <span class="w">"pricing"</span> --limit 3</pre>
+
+    <div class="callout block">
+      <div class="k">Art. VII — a economia por trás da regra</div>
+      <p>Anúncio Anthropic de 14/Mai/2026, vigente 15/Jun/2026: a subscription se dividiu em dois pools.
+      <strong>(1) Interativo</strong> — Claude.ai e Claude Code no terminal/IDE = <span class="pos-t">inalterado</span>.
+      <strong>(2) Programático</strong> — <code>claude -p</code>, Agent SDK, GitHub Actions, subprocess automatizado =
+      <span class="neg-t">pool metered separado</span>, a preços de API cheios, sem rollover.<br><br>
+      Consequência de arquitetura: <strong>Claude interativo é a superfície de raciocínio</strong> (barata, preferida para
+      decisão delicada) e <strong>Codex/Gemini são as superfícies de volume</strong>. O <code>delegate.js</code>
+      <em>avisa</em> ao usar <code>--to claude</code> e sugere alternativa — mas não bloqueia, porque há casos legítimos.</p>
+    </div>
+
+    <div class="callout warn">
+      <div class="k">Por que subprocess e não MCP</div>
+      <p>Decisão registrada no cabeçalho do <code>delegate.js</code>: <em>"MCP handshakes são frágeis — falham em
+      Antigravity, dão version mismatch em Codex"</em>. A ponte usa subprocess simples + arquivos compartilhados,
+      o que funciona em <strong>toda IDE que tenha terminal</strong>, com zero risco de handshake. MCP é usado como
+      conveniência, nunca como caminho crítico.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ 11 -->
+  <section id="gates">
+    <div class="sec-num">11 · Gates</div>
+    <h2>Onze gates. <span class="lime">Quatro</span> bloqueiam.</h2>
+    <p>Gate dispara por <strong>gatilho material</strong>, nunca em toda tarefa. Cada um tem dono que assina.</p>
+
+    <div class="tw">
+      <table>
+        <thead><tr><th>Gate</th><th>Gatilho</th><th>Owner</th><th>Enforcement</th></tr></thead>
+        <tbody>
+          <tr><td><b>Story-driven</b></td><td>início de trabalho</td><td class="mono">@sm · @pm</td><td><span class="badge block">BLOCK</span> Const. Art. III</td></tr>
+          <tr><td><b>Quality (QA)</b></td><td>merge / deploy / release</td><td class="mono">@qa</td><td><span class="badge block">BLOCK</span> <code>pre-push.md</code></td></tr>
+          <tr><td><b>Mind-clone DNA</b></td><td>criar agente-pessoa novo em squad</td><td class="mono">@squad-creator</td><td><span class="badge block">BLOCK exit 2</span> hook ativo</td></tr>
+          <tr><td><b>Data-quality</b></td><td>DDL / DELETE em Bash fora de migration</td><td class="mono">@data-engineer</td><td><span class="badge block">BLOCK exit 2</span> hook ativo</td></tr>
+          <tr><td><b>No-invention</b></td><td>citar fato / spec / dado</td><td class="mono">qualquer agente</td><td><span class="badge warn">BLOCK declarado</span> Const. Art. IV</td></tr>
+          <tr><td><b>Security</b></td><td>secret, dependência nova, superfície de ataque</td><td class="mono">@bruce-schneier</td><td><span class="badge">policy · WARN→review</span></td></tr>
+          <tr><td><b>Legal</b></td><td>contrato, termos, conformidade regulatória</td><td class="mono">@heather-meeker</td><td><span class="badge">policy · review</span></td></tr>
+          <tr><td><b>Privacy / LGPD</b></td><td>dado pessoal / CNPJ</td><td class="mono">@ann-cavoukian (DPO)</td><td><span class="badge">policy · DPIA</span></td></tr>
+          <tr><td><b>Finance</b></td><td>custo/receita acima de limiar</td><td class="mono">@aswath-damodaran</td><td><span class="badge">policy · review</span></td></tr>
+          <tr><td><b>Brand</b></td><td>comunicação externa / identidade</td><td class="mono">@ann-handley</td><td><span class="badge">policy · review</span></td></tr>
+          <tr><td><b>Human approval</b></td><td>ação irreversível ou externa — deploy prod, push, envio a terceiro, gasto</td><td class="mono warm-t">Founder (L5)</td><td><span class="badge warn">OK explícito</span> + push só via @devops</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ 12 -->
+  <section id="hooks">
+    <div class="sec-num">12 · Hooks</div>
+    <h2>O que <span class="lime">realmente</span> intercepta.</h2>
+    <p>Gate é intenção escrita. Hook é código que roda. Estes são os que existem em disco:</p>
+
+    <div class="tw">
+      <table>
+        <thead><tr><th>Hook</th><th>Tipo</th><th>Função</th></tr></thead>
+        <tbody>
+          <tr><td class="mono neg-t">mind-clone-governance.py</td><td>Python</td><td>Bloqueia criação de clone sem DNA extraído — <b>exit 2</b></td></tr>
+          <tr><td class="mono neg-t">sql-governance.py</td><td>Python</td><td>Bloqueia DDL/DELETE fora de migration — <b>exit 2</b></td></tr>
+          <tr><td class="mono">enforce-architecture-first.py</td><td>Python</td><td>Exige design/documentação antes de código</td></tr>
+          <tr><td class="mono">write-path-validation.py</td><td>Python</td><td>Valida caminho de escrita contra a fronteira protegida</td></tr>
+          <tr><td class="mono">read-protection.py</td><td>Python</td><td>Protege leitura de áreas sensíveis</td></tr>
+          <tr><td class="mono">slug-validation.py</td><td>Python</td><td>Valida convenção de nomes/slugs</td></tr>
+          <tr><td class="mono">jarvis-auto-consult.cjs</td><td>Node</td><td>Detecta gatilho de decisão e escreve lembrete de consulta em <code>bridge-data/.gate-reminder.md</code></td></tr>
+          <tr><td class="mono">synapse-engine.cjs</td><td>Node</td><td>Dispara a injeção de contexto do SYNAPSE</td></tr>
+          <tr><td class="mono">precompact-session-digest.cjs</td><td>Node</td><td>Salva digest antes de compactar a sessão</td></tr>
+          <tr><td class="mono">pre-commit-version-check.sh</td><td>Shell</td><td>Checa consistência de versão no commit</td></tr>
+          <tr><td class="mono">ids-post-commit.js · ids-pre-push.js</td><td>Node</td><td>Atualizam o registry IDS no commit e validam antes do push</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ 13 -->
+  <section id="ids">
+    <div class="sec-num">13 · IDS</div>
+    <h2>A memória <span class="lime">estrutural</span> do sistema.</h2>
+    <p>
+      IDS — <em>Incremental Development System</em>. Responde a pergunta que todo sistema grande esquece de fazer:
+      <strong>"isso já existe?"</strong> e <strong>"quem quebra se eu mexer aqui?"</strong>.
+    </p>
+
+    <div class="stats" style="margin:28px 0">
+      <div class="stat"><div class="n">1.345</div><div class="l">entidades registradas</div></div>
+      <div class="stat"><div class="n">14</div><div class="l">categorias</div></div>
+      <div class="stat"><div class="n">100%</div><div class="l">resolution rate</div></div>
+      <div class="stat"><div class="n">920 KB</div><div class="l">entity-registry.yaml</div></div>
+    </div>
+
+    <p>Cada entidade guarda <code>path</code>, <code>layer</code>, <code>type</code>, <code>purpose</code>, <code>keywords</code>,
+    <strong><code>usedBy</code></strong> (quem consome) e <code>dependencies</code>. É esse grafo que sustenta a análise de impacto.</p>
+
+    <div class="tw">
+      <table>
+        <thead><tr><th>Comando</th><th>O que faz</th><th>Modo</th></tr></thead>
+        <tbody>
+          <tr><td class="mono lime-t">*ids check {intenção}</td><td>Consulta o registry antes de criar. Devolve <b>REUSE / ADAPT / CREATE</b></td><td><span class="badge">advisory</span></td></tr>
+          <tr><td class="mono lime-t">*ids impact {entidade}</td><td>Travessia BFS de <code>usedBy</code> — consumidores diretos e indiretos, nível de risco</td><td><span class="badge">advisory</span></td></tr>
+          <tr><td class="mono lime-t">*ids register {arquivo}</td><td>Registra entidade nova após criação</td><td><span class="badge ok">automático</span></td></tr>
+          <tr><td class="mono">*ids health · *ids stats</td><td>Saúde e estatística do registry</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Módulos em <code>.aios-core/core/ids/</code>: <code>framework-governor</code> (o cérebro dos pre-checks),
+    <code>incremental-decision-engine</code>, <code>registry-healer</code>, <code>registry-updater</code>,
+    <code>verification-gate</code>, <code>circuit-breaker</code>.</p>
+
+    <div class="callout">
+      <div class="k">Hook anti-becos-sem-saída</div>
+      <p>Antes de propor abordagem arquitetural, o <code>pre_proposal</code> faz <code>grep</code> em
+      <code>.out-of-scope/</code> — a base de conhecimento de <strong>rejeições passadas</strong>. Se houver match,
+      o agente apresenta o beco sem saída anterior com o raciocínio original e pergunta se as condições que
+      justificariam revisitar foram atendidas. Evita reciclar a mesma ideia ruim a cada três meses.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ 14 -->
+  <section id="synapse">
+    <div class="sec-num">14 · SYNAPSE</div>
+    <h2>Oito camadas de <span class="lime">contexto</span>, empilhadas.</h2>
+    <p>
+      SYNAPSE é o motor que decide <em>que regra entra no contexto de quem, e quando</em>.
+      Processa em pipeline, da camada mais geral para a mais específica — a mais específica vence.
+    </p>
+
+    <div class="tw">
+      <table>
+        <thead><tr><th>Camada</th><th>Escopo</th><th>Injeta</th></tr></thead>
+        <tbody>
+          <tr><td class="mono lime-t">L0 · constitution</td><td>Sistema inteiro</td><td>Os 7 artigos. Sempre presentes, nunca sobrescritos.</td></tr>
+          <tr><td class="mono">L1 · global</td><td>Repositório</td><td>Regras do CLAUDE.md / AGENTS.md do projeto</td></tr>
+          <tr><td class="mono">L2 · agent</td><td>Persona ativa</td><td>Definição, comandos, dependências do agente</td></tr>
+          <tr><td class="mono">L3 · workflow</td><td>Workflow em curso</td><td>Estado, próximo passo, artefatos esperados</td></tr>
+          <tr><td class="mono">L4 · task</td><td>Task executável</td><td>Instruções da task — que sobrepõem comportamento base</td></tr>
+          <tr><td class="mono">L5 · squad</td><td>Squad do domínio</td><td>Composição, chief, membros consultáveis</td></tr>
+          <tr><td class="mono">L6 · keyword</td><td>Gatilho textual</td><td>Regra acionada por palavra-chave na conversa</td></tr>
+          <tr><td class="mono">L7 · star-command</td><td>Comando <code>*</code></td><td>Resolução do comando estrela para task/fluxo</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout warn">
+      <div class="k">Regra crítica de precedência</div>
+      <p>Instruções de <strong>task formal</strong> (L4) <em>sobrepõem</em> restrições comportamentais de base do agente.
+      Workflows interativos com <code>elicit=true</code> <strong>exigem</strong> interação humana e não podem ser
+      pulados por eficiência. É proposital: a task é um workflow executável, não material de referência.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ 15 -->
+  <section id="hydra">
+    <div class="sec-num">15 · HYDRA</div>
+    <h2>Inteligência que chega <span class="lime">de fora</span>.</h2>
+    <p>
+      Enquanto os clones carregam conhecimento <em>congelado</em> no momento da extração do DNA, o HYDRA
+      alimenta o sistema com <strong>sinal contínuo</strong>: RSS, GitHub e fontes curadas, processadas por
+      squad de domínio.
+    </p>
+
+    <div class="tw">
+      <table>
+        <thead><tr><th>Squad HYDRA</th><th>Domínio</th></tr></thead>
+        <tbody>
+          <tr><td class="mono lime-t">squad-ai</td><td>IA, modelos, papers, ferramental</td></tr>
+          <tr><td class="mono lime-t">squad-design</td><td>Design, UI, referências visuais</td></tr>
+          <tr><td class="mono lime-t">squad-crm</td><td>CRM, vendas, automação de relacionamento</td></tr>
+          <tr><td class="mono lime-t">squad-contabil</td><td>Contabilidade, fiscal, regulatório BR</td></tr>
+          <tr><td class="mono lime-t">squad-highticket</td><td>Vendas high-ticket, ofertas, posicionamento</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <pre><span class="c"># pipeline por squad</span>
+node tools/hydra/bin/hydra.js <span class="l">run</span> --config-dir configs/squads/{squad} --sources rss
+
+<span class="c"># ingestão de conhecimento curado no RAG</span>
+node tools/hydra/bin/ingest-curated.mjs --file x.jsonl</pre>
+
+    <div class="callout">
+      <div class="k">Modo heurístico — sem chave de API</div>
+      <p>O HYDRA roda o pipeline <strong>ponta a ponta sem nenhum LLM</strong>: scoring e extração determinísticos,
+      zero chamada de rede além dos fetchers de RSS/GitHub, custo zero. Serve para emergência de quota, ambiente
+      air-gapped, CI/smoke test e modo contínuo barato. O modo LLM fica para o primeiro passe em domínio novo e
+      para fontes de alto sinal — onde a extração sutil (citações, nomes de framework, opinião) vale o custo.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ 16 -->
+  <section id="fluxos">
+    <div class="sec-num">16 · Fluxos</div>
+    <h2>Três caminhos <span class="lime">ponta a ponta</span>.</h2>
+
+    <h3>A · Feature nova entra no sistema</h3>
+    <div class="flow">
+      <div class="step"><div class="i">01</div><h5>@pm · @po</h5><p>PRD e epic. Consulta Expert Pool (gatilho: criação de PRD).</p></div>
+      <div class="step"><div class="i">02</div><h5>@sm</h5><p>Cria story com acceptance criteria. <span class="neg-t">Gate Story-driven — BLOCK sem story.</span></p></div>
+      <div class="step"><div class="i">03</div><h5>@architect</h5><p>Decisão de arquitetura + análise de impacto. <code>*ids impact</code>.</p></div>
+      <div class="step"><div class="i">04</div><h5>@dev</h5><p><code>*ids check</code> → REUSE/ADAPT/CREATE. Implementa com self-critique + DoD.</p></div>
+      <div class="step"><div class="i">05</div><h5>@qa</h5><p>Veredito PASS / CONCERNS / FAIL. <span class="neg-t">Gate Quality — BLOCK.</span></p></div>
+      <div class="step"><div class="i">06</div><h5>@devops</h5><p>pre-push gates → push → PR. <span class="warm-t">Só ele pode.</span></p></div>
+    </div>
+
+    <h3>B · Decisão de alto risco (arquitetura, pricing, jurídico)</h3>
+    <div class="flow">
+      <div class="step"><div class="i">01</div><h5>Hook detecta</h5><p><code>jarvis-auto-consult.cjs</code> vê gatilho de decisão e grava lembrete de gate.</p></div>
+      <div class="step"><div class="i">02</div><h5>Chief do domínio</h5><p>Roteamento determinístico pela tabela §09.</p></div>
+      <div class="step"><div class="i">03</div><h5>Conclave</h5><p>3+ experts independentes → rodada adversarial → síntese CONSENSUS / DISSENT / BLIND SPOTS / VERDICT.</p></div>
+      <div class="step"><div class="i">04</div><h5>Gate de domínio</h5><p>Security / Legal / Privacy / Finance assinam conforme o caso.</p></div>
+      <div class="step"><div class="i">05</div><h5>Founder L5</h5><p>Se for irreversível ou externo — <span class="warm-t">OK explícito obrigatório.</span></p></div>
+    </div>
+
+    <h3>C · Trabalho em volume (bulk, refactor, classificação)</h3>
+    <div class="flow">
+      <div class="step"><div class="i">01</div><h5>route.js classifica</h5><p>Lê a tarefa, mede sinais, escolhe destino.</p></div>
+      <div class="step"><div class="i">02</div><h5>Destino programático</h5><p><code>codex</code> para execução/código · <code>gemini</code> para classificação barata.</p></div>
+      <div class="step"><div class="i">03</div><h5>delegate.js executa</h5><p>Subprocess + arquivo compartilhado. Sem MCP no caminho crítico.</p></div>
+      <div class="step"><div class="i">04</div><h5>Claude fica fora</h5><p><span class="neg-t">Art. VII</span> — bulk nunca vai para o pool programático do Claude.</p></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ 17 -->
+  <section id="frouxo">
+    <div class="sec-num">17 · Dívida</div>
+    <h2>Onde a corda está <span class="lime">frouxa</span>.</h2>
+    <p>
+      Um mapa que só mostra o que funciona é propaganda. Estes são os pontos onde o sistema <em>declarado</em>
+      e o sistema <em>real</em> divergem — todos verificados em disco em 26/Jul/2026.
+    </p>
+
+    <div class="tw">
+      <table>
+        <thead><tr><th>Ponto</th><th>Evidência</th><th>Consequência</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><b>Registry IDS parado</b></td>
+            <td class="mono">lastUpdated: 2026-05-29</td>
+            <td>Quase 2 meses de drift. <code>*ids check</code> e <code>*ids impact</code> operam sobre foto velha — risco de sugerir CREATE onde já existe REUSE.</td>
+          </tr>
+          <tr>
+            <td><b>Permissões não bloqueiam</b></td>
+            <td class="mono">corporation.permissions.enforce: false</td>
+            <td>Toda a matriz de permissão corporativa (18 KB de <code>tool-permissions.yaml</code>) só registra negação, não impede. Governança é observacional.</td>
+          </tr>
+          <tr>
+            <td><b>Tetos de nível estourados</b></td>
+            <td class="mono">L3: 28/20 · L2: 142/50</td>
+            <td>A pirâmide declarada não corresponde à real. Sem enforcement, o org-config vira documentação aspiracional.</td>
+          </tr>
+          <tr>
+            <td><b>MCP declarado como off</b></td>
+            <td class="mono">core-config: mcp.enabled: false, servers: []</td>
+            <td>Na prática há 12 servidores MCP ativos na sessão Claude. O config central não reflete a realidade da superfície.</td>
+          </tr>
+          <tr>
+            <td><b>27 assentos sem tipo</b></td>
+            <td class="mono">squad-sales(8) · customer-success(7) · research(4) · executive-team(6) · expert-council(2)</td>
+            <td>Sem <code>type</code>, o roteamento não sabe se o assento executa (core) ou opina (pool).</td>
+          </tr>
+          <tr>
+            <td><b>Só 4 gates de 11 bloqueiam</b></td>
+            <td class="mono">2 hooks exit 2 + 2 gates de task</td>
+            <td>Security, Legal, Privacy, Finance e Brand são <em>policy</em> — dependem de disciplina do operador, não de código.</td>
+          </tr>
+          <tr>
+            <td><b>Scheduler desligado</b></td>
+            <td class="mono">corporation.scheduler.enabled: false</td>
+            <td>Nada da corporação roda sozinho. Todo ciclo depende de invocação humana.</td>
+          </tr>
+          <tr>
+            <td><b>Doc anterior desatualizado</b></td>
+            <td class="mono">docs/explainers/aios-system.html · 19/Mai</td>
+            <td>Precede a reorganização em 25 squads, a policy de roteamento e o Art. VII. Este documento o substitui como referência de estado.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <div class="k">Leitura honesta</div>
+      <p>
+        A espinha do AIOS — constituição, autoridade exclusiva, roteamento determinístico, delegação multi-CLI —
+        está <strong>escrita, implementada e em uso</strong>. O que está frouxo é a <strong>camada de enforcement
+        automático</strong>: quase tudo que deveria bloquear apenas registra. Na prática o sistema funciona porque
+        o operador L5 segura a disciplina — o que é sustentável em escala de um founder, e quebra no dia em que
+        virar escala de time. As duas alavancas de maior retorno hoje: <span class="lime-t">(1)</span> re-sincronizar
+        o registry IDS e colocá-lo em rotina de commit; <span class="lime-t">(2)</span> ligar
+        <code>corporation.permissions.enforce</code> e ver o que quebra.
+      </p>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="fi">
+    <div>
+      <div class="brand">[ <span class="lime">AIOX</span> ] · AIOS — Infraestrutura, Clones e Cadeia de Comando</div>
+      <div style="margin-top:6px;color:var(--muted)">Field Manual v1.0 · 2026-07-26 · levantamento direto do repositório</div>
+    </div>
+    <div style="text-align:right">
+      <div>Constituição v1.1.0 · Policy de roteamento v1.0.0</div>
+      <div style="margin-top:6px">Design system · AIOX dark observatory</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

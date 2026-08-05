@@ -49,6 +49,12 @@ export function RecorrerTab({ opportunity }: { opportunity: Opportunity }) {
 
   useEffect(() => {
     setResult(loadResult(opportunity.id));
+    setOutcome("inabilitada");
+    setSessionAt("");
+    setMotivo("");
+    setAtaText("");
+    setFundamentos("");
+    setMinuta(null);
   }, [opportunity.id]);
   useEffect(() => {
     const tick = () => setNow(new Date().toISOString());

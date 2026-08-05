@@ -1,0 +1,1133 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Relatório final da revisão integrativa sobre a atuação da enfermagem do trabalho na prevenção de afastamentos relacionados às doenças ocupacionais.">
+  <title>Relatório final — Enfermagem do trabalho e prevenção de afastamentos</title>
+  <style>
+    :root {
+      --navy: #123047;
+      --blue: #1c5d7e;
+      --teal: #168279;
+      --teal-soft: #e7f5f2;
+      --blue-soft: #eaf3f8;
+      --amber: #b86f11;
+      --amber-soft: #fff5df;
+      --red: #a64040;
+      --red-soft: #fff0f0;
+      --ink: #1f2a33;
+      --muted: #5d6b76;
+      --line: #d9e2e7;
+      --paper: #ffffff;
+      --canvas: #f2f6f8;
+      --shadow: 0 18px 45px rgba(20, 54, 73, 0.10);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--canvas);
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    a:hover {
+      color: var(--teal);
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 28px auto 64px;
+      background: var(--paper);
+      border: 1px solid rgba(18, 48, 71, 0.08);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero {
+      position: relative;
+      padding: 64px 68px 58px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 86% 22%, rgba(103, 217, 198, 0.28), transparent 28%),
+        linear-gradient(135deg, #102d43 0%, #165b70 58%, #168279 100%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: 52px;
+      bottom: -62px;
+      width: 180px;
+      height: 180px;
+      border: 26px solid rgba(255, 255, 255, 0.08);
+      border-radius: 50%;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: #bcebe3;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 900px;
+      margin: 0;
+      font-size: clamp(2rem, 4.2vw, 3.7rem);
+      line-height: 1.07;
+      letter-spacing: -0.035em;
+    }
+
+    .hero-subtitle {
+      max-width: 760px;
+      margin: 24px 0 0;
+      color: #e2f4f4;
+      font-size: 1.08rem;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .meta span {
+      padding: 7px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      font-size: 0.85rem;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 28px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+    }
+
+    .toolbar nav {
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      scrollbar-width: thin;
+      white-space: nowrap;
+    }
+
+    .toolbar nav a {
+      color: var(--muted);
+      font-size: 0.86rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .toolbar nav a:hover {
+      color: var(--teal);
+    }
+
+    .print-button {
+      flex: 0 0 auto;
+      padding: 9px 14px;
+      color: #fff;
+      border: 0;
+      border-radius: 10px;
+      background: var(--navy);
+      cursor: pointer;
+      font: inherit;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    main {
+      padding: 48px 68px 64px;
+    }
+
+    section {
+      scroll-margin-top: 76px;
+      margin-bottom: 58px;
+    }
+
+    h2 {
+      margin: 0 0 20px;
+      color: var(--navy);
+      font-size: clamp(1.55rem, 2.6vw, 2.15rem);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    h3 {
+      margin: 28px 0 10px;
+      color: var(--blue);
+      font-size: 1.14rem;
+    }
+
+    p {
+      margin: 0 0 15px;
+    }
+
+    .lead {
+      color: #354753;
+      font-size: 1.08rem;
+    }
+
+    .conclusion {
+      padding: 25px 28px;
+      border-left: 6px solid var(--teal);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      background: var(--teal-soft);
+    }
+
+    .conclusion strong {
+      color: #0c665f;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin: 28px 0;
+    }
+
+    .metric {
+      min-height: 126px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #fff, #f8fbfc);
+    }
+
+    .metric-number {
+      display: block;
+      color: var(--teal);
+      font-size: 2.15rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .metric-label {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.35;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 26px;
+      margin-top: 22px;
+    }
+
+    .flow-step {
+      position: relative;
+      padding: 16px;
+      text-align: center;
+      border: 1px solid #cae1e4;
+      border-radius: 14px;
+      background: var(--blue-soft);
+    }
+
+    .flow-step:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      top: 50%;
+      right: -21px;
+      color: var(--teal);
+      font-size: 1.3rem;
+      font-weight: 800;
+      transform: translateY(-50%);
+    }
+
+    .flow-step b {
+      display: block;
+      color: var(--navy);
+      font-size: 1.4rem;
+    }
+
+    .flow-step span {
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .axis-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 26px;
+    }
+
+    .axis-card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+
+    .axis-number {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      margin-bottom: 14px;
+      place-items: center;
+      color: #fff;
+      border-radius: 50%;
+      background: var(--teal);
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .axis-card h3 {
+      margin: 0 0 7px;
+      color: var(--navy);
+      font-size: 1rem;
+    }
+
+    .axis-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.91rem;
+    }
+
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    .evidence-card {
+      padding: 22px;
+      border-radius: var(--radius);
+    }
+
+    .evidence-card.direct {
+      border: 1px solid #b5ded8;
+      background: var(--teal-soft);
+    }
+
+    .evidence-card.proximal {
+      border: 1px solid #c9dce8;
+      background: var(--blue-soft);
+    }
+
+    .evidence-card.context {
+      border: 1px solid #f1d7a5;
+      background: var(--amber-soft);
+    }
+
+    .evidence-card h3 {
+      margin: 0 0 9px;
+      color: var(--navy);
+      font-size: 1rem;
+    }
+
+    .evidence-card p {
+      margin: 0;
+      color: #41525e;
+      font-size: 0.9rem;
+    }
+
+    .finding {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 16px;
+      padding: 21px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .finding:last-child {
+      border-bottom: 0;
+    }
+
+    .finding-index {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      color: var(--teal);
+      border: 2px solid #b7ded9;
+      border-radius: 12px;
+      font-weight: 800;
+    }
+
+    .finding h3 {
+      margin: 0 0 6px;
+      color: var(--navy);
+    }
+
+    .finding p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .callout {
+      margin: 26px 0;
+      padding: 22px 24px;
+      border-radius: var(--radius);
+    }
+
+    .callout.warning {
+      border: 1px solid #f0d096;
+      background: var(--amber-soft);
+    }
+
+    .callout.caution {
+      border: 1px solid #efc3c3;
+      background: var(--red-soft);
+    }
+
+    .callout h3 {
+      margin: 0 0 7px;
+      color: var(--navy);
+    }
+
+    .callout p:last-child {
+      margin-bottom: 0;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin: 22px 0;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    th,
+    td {
+      padding: 13px 14px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+    }
+
+    th {
+      color: #fff;
+      background: var(--navy);
+      font-size: 0.78rem;
+      letter-spacing: 0.025em;
+      text-transform: uppercase;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #f8fbfc;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .tag.moderate {
+      color: #0c665f;
+      background: #d6efe9;
+    }
+
+    .tag.low {
+      color: #8a5b12;
+      background: #ffedc5;
+    }
+
+    .tag.very-low {
+      color: #8f3535;
+      background: #f8dada;
+    }
+
+    details {
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+
+    summary {
+      padding: 18px 20px;
+      color: var(--navy);
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    details > div {
+      padding: 0 20px 20px;
+    }
+
+    .recommendations {
+      counter-reset: item;
+      display: grid;
+      gap: 14px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .recommendations li {
+      position: relative;
+      padding: 20px 22px 20px 66px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+
+    .recommendations li::before {
+      counter-increment: item;
+      content: counter(item);
+      position: absolute;
+      top: 18px;
+      left: 20px;
+      display: grid;
+      width: 32px;
+      height: 32px;
+      place-items: center;
+      color: #fff;
+      border-radius: 50%;
+      background: var(--teal);
+      font-weight: 800;
+    }
+
+    .priority {
+      color: var(--red);
+      font-size: 0.77rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .checklist li {
+      position: relative;
+      padding: 14px 16px 14px 44px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #f9fbfc;
+    }
+
+    .checklist li::before {
+      content: "□";
+      position: absolute;
+      left: 16px;
+      color: var(--teal);
+      font-size: 1.15rem;
+      font-weight: 800;
+    }
+
+    .references {
+      padding-left: 22px;
+    }
+
+    .references li {
+      margin-bottom: 11px;
+      padding-left: 5px;
+      color: #40515c;
+      font-size: 0.88rem;
+    }
+
+    footer {
+      padding: 30px 68px;
+      color: #d7e8ed;
+      background: var(--navy);
+      font-size: 0.86rem;
+    }
+
+    footer p {
+      margin: 4px 0;
+    }
+
+    .back-to-top {
+      color: #aee4dc;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      main,
+      footer {
+        padding-right: 32px;
+        padding-left: 32px;
+      }
+
+      .metric-grid,
+      .flow,
+      .axis-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .flow-step:nth-child(2)::after {
+        display: none;
+      }
+
+      .evidence-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .page {
+        width: 100%;
+        margin: 0;
+        border: 0;
+        border-radius: 0;
+      }
+
+      .hero {
+        padding: 44px 22px 38px;
+      }
+
+      .toolbar {
+        padding: 10px 14px;
+      }
+
+      .toolbar nav {
+        gap: 14px;
+      }
+
+      main,
+      footer {
+        padding-right: 22px;
+        padding-left: 22px;
+      }
+
+      main {
+        padding-top: 36px;
+      }
+
+      .metric-grid,
+      .flow,
+      .axis-grid,
+      .checklist {
+        grid-template-columns: 1fr;
+      }
+
+      .flow-step::after {
+        display: none;
+      }
+
+      .finding {
+        grid-template-columns: 40px 1fr;
+      }
+
+      .print-button {
+        display: none;
+      }
+    }
+
+    @media print {
+      @page {
+        margin: 1.5cm;
+      }
+
+      body {
+        background: #fff;
+        font-size: 10pt;
+      }
+
+      .page {
+        width: 100%;
+        margin: 0;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .hero {
+        padding: 28px 30px;
+        color: #111;
+        border-bottom: 3px solid var(--teal);
+        background: #fff;
+      }
+
+      .hero .eyebrow,
+      .hero-subtitle {
+        color: #333;
+      }
+
+      .meta span {
+        color: #222;
+        border-color: #999;
+        background: #fff;
+      }
+
+      .toolbar,
+      .print-button {
+        display: none;
+      }
+
+      main {
+        padding: 28px 30px;
+      }
+
+      section {
+        margin-bottom: 32px;
+      }
+
+      .metric,
+      .axis-card,
+      .evidence-card,
+      .recommendations li,
+      details {
+        break-inside: avoid;
+        box-shadow: none;
+      }
+
+      details > div {
+        display: block;
+      }
+
+      a {
+        color: #111;
+        text-decoration: none;
+      }
+
+      footer {
+        padding: 20px 30px;
+        color: #333;
+        border-top: 1px solid #999;
+        background: #fff;
+      }
+    }
+  </style>
+</head>
+<body>
+  <article class="page" id="topo">
+    <header class="hero">
+      <p class="eyebrow">Relatório final de pesquisa</p>
+      <h1>A atuação da enfermagem do trabalho na prevenção dos afastamentos relacionados às doenças ocupacionais</h1>
+      <p class="hero-subtitle">Uma leitura clara da revisão integrativa: o que a enfermagem do trabalho pode fazer, o que os estudos realmente demonstram e quais cuidados ainda são necessários antes da entrega do TCC.</p>
+      <div class="meta" aria-label="Informações do relatório">
+        <span>Data: 26 de julho de 2026</span>
+        <span>Período analisado: 2005–2026</span>
+        <span>17 estudos incluídos</span>
+        <span>Status: manuscrito-base</span>
+      </div>
+    </header>
+
+    <div class="toolbar">
+      <nav aria-label="Navegação do relatório">
+        <a href="#resumo">Resumo</a>
+        <a href="#metodo">Método</a>
+        <a href="#achados">Achados</a>
+        <a href="#evidencias">Evidências</a>
+        <a href="#brasil">Brasil</a>
+        <a href="#recomendacoes">Recomendações</a>
+        <a href="#referencias">Referências</a>
+      </nav>
+      <button class="print-button" type="button" onclick="window.print()">Imprimir / salvar PDF</button>
+    </div>
+
+    <main>
+      <section id="resumo">
+        <p class="eyebrow" style="color: var(--teal);">Leitura em dois minutos</p>
+        <h2>Resumo executivo</h2>
+        <p class="lead">A enfermagem do trabalho ocupa uma posição estratégica entre o trabalhador, o serviço de saúde e a gestão. Essa proximidade permite identificar riscos, reconhecer sinais precoces de adoecimento, orientar trabalhadores, acompanhar casos e ajudar a organizar o retorno ao trabalho.</p>
+
+        <div class="conclusion">
+          <strong>Conclusão principal:</strong> a enfermagem do trabalho pode contribuir de maneira relevante para prevenir adoecimento, incapacidade e afastamentos. Entretanto, a literatura disponível não comprova que o enfermeiro, atuando isoladamente, reduza de forma consistente os dias de ausência. Os melhores resultados aparecem quando sua atuação integra vigilância, equipe multiprofissional, apoio da gestão e mudanças reais nas condições de trabalho.
+        </div>
+
+        <div class="metric-grid" aria-label="Números da revisão">
+          <div class="metric">
+            <span class="metric-number">174</span>
+            <span class="metric-label">registros recuperados nas buscas estruturadas</span>
+          </div>
+          <div class="metric">
+            <span class="metric-number">162</span>
+            <span class="metric-label">registros únicos depois da retirada de duplicatas</span>
+          </div>
+          <div class="metric">
+            <span class="metric-number">22</span>
+            <span class="metric-label">estudos submetidos à leitura ampliada</span>
+          </div>
+          <div class="metric">
+            <span class="metric-number">17</span>
+            <span class="metric-label">estudos incluídos na síntese integrativa</span>
+          </div>
+        </div>
+
+        <div class="callout warning">
+          <h3>O que esta pesquisa não permite afirmar</h3>
+          <p>Não é correto dizer que “a enfermagem do trabalho comprovadamente reduz os afastamentos”. A formulação cientificamente segura é que sua atuação <strong>contribui</strong> para a prevenção e possui sinais favoráveis, mas o efeito isolado sobre a incidência e a duração das ausências ainda é incerto.</p>
+        </div>
+      </section>
+
+      <section id="metodo">
+        <p class="eyebrow" style="color: var(--teal);">Como a pesquisa foi feita</p>
+        <h2>Método da revisão</h2>
+        <p>Foi realizada uma revisão integrativa rápida para responder à pergunta: <strong>quais ações da enfermagem do trabalho são descritas para prevenir afastamentos relacionados às doenças ocupacionais e quais resultados são atribuídos a essas ações?</strong></p>
+
+        <h3>Critérios principais</h3>
+        <ul>
+          <li>Trabalhadores adultos ou serviços de saúde ocupacional.</li>
+          <li>Atuação identificável do enfermeiro do trabalho ou competências diretamente aplicáveis.</li>
+          <li>Relação com prevenção, capacidade laboral, incapacidade, absenteísmo ou retorno ao trabalho.</li>
+          <li>Estudos primários publicados entre janeiro de 2005 e julho de 2026.</li>
+        </ul>
+
+        <div class="flow" aria-label="Fluxo simplificado da seleção">
+          <div class="flow-step"><b>174</b><span>identificados</span></div>
+          <div class="flow-step"><b>162</b><span>triados</span></div>
+          <div class="flow-step"><b>22</b><span>leitura ampliada</span></div>
+          <div class="flow-step"><b>17</b><span>incluídos</span></div>
+        </div>
+
+        <p style="margin-top: 24px;">A busca eletrônica reproduzível foi realizada no PubMed/MEDLINE e complementada por consultas à SciELO, BVS/BDENF, normas brasileiras e documentos institucionais. Os estudos foram comparados quanto ao desenho, amostra, intervenção, resultado, limitações e aplicabilidade ao Brasil.</p>
+      </section>
+
+      <section id="achados">
+        <p class="eyebrow" style="color: var(--teal);">Síntese temática</p>
+        <h2>Seis eixos da atuação da enfermagem do trabalho</h2>
+
+        <div class="axis-grid">
+          <article class="axis-card">
+            <span class="axis-number">1</span>
+            <h3>Vigilância e indicadores</h3>
+            <p>Registrar e analisar agravos, exposições, setores, duração e recorrência dos afastamentos.</p>
+          </article>
+          <article class="axis-card">
+            <span class="axis-number">2</span>
+            <h3>Identificação precoce</h3>
+            <p>Reconhecer sinais físicos e mentais antes que o problema evolua para incapacidade prolongada.</p>
+          </article>
+          <article class="axis-card">
+            <span class="axis-number">3</span>
+            <h3>Educação e aconselhamento</h3>
+            <p>Orientar sobre riscos, autocuidado, procura oportuna de assistência e medidas de proteção.</p>
+          </article>
+          <article class="axis-card">
+            <span class="axis-number">4</span>
+            <h3>Gerenciamento de casos</h3>
+            <p>Acompanhar trabalhadores adoecidos e articular cuidado, adaptações e retorno seguro.</p>
+          </article>
+          <article class="axis-card">
+            <span class="axis-number">5</span>
+            <h3>Intervenção sobre riscos</h3>
+            <p>Levar os achados individuais para ações coletivas sobre ergonomia, organização e ambiente.</p>
+          </article>
+          <article class="axis-card">
+            <span class="axis-number">6</span>
+            <h3>Articulação organizacional</h3>
+            <p>Conectar trabalhador, RH, liderança, medicina, segurança, ergonomia e demais profissionais.</p>
+          </article>
+        </div>
+
+        <h3>Principais achados</h3>
+
+        <div class="finding">
+          <span class="finding-index">01</span>
+          <div>
+            <h3>O contato precoce pode reduzir a duração da ausência</h3>
+            <p>Em estudo controlado, o local que implantou adequadamente contato precoce, identificação de barreiras psicossociais, trabalho modificado e comunicação apresentou média de 6,5 dias de ausência, contra 10,8 no grupo comparador. A implantação desigual impede generalização simples.</p>
+          </div>
+        </div>
+
+        <div class="finding">
+          <span class="finding-index">02</span>
+          <div>
+            <h3>Melhorar dor e capacidade não significa automaticamente reduzir afastamentos</h3>
+            <p>Uma intervenção liderada por enfermeiros para lombalgia melhorou dor, incapacidade e qualidade de vida laboral. Como os dias de ausência não foram medidos, o resultado é favorável, mas indireto.</p>
+          </div>
+        </div>
+
+        <div class="finding">
+          <span class="finding-index">03</span>
+          <div>
+            <h3>Tempo, confiança e apoio da organização são essenciais</h3>
+            <p>Falta de tempo, pressão por produtividade e baixa cooperação limitaram a atuação. Confiança, troca de informações, justiça organizacional, ferramentas digitais e participação da gestão favoreceram o cuidado e o retorno.</p>
+          </div>
+        </div>
+
+        <div class="finding">
+          <span class="finding-index">04</span>
+          <div>
+            <h3>O Brasil possui competências profissionais bem definidas, mas pouca avaliação de efeito</h3>
+            <p>Estudos brasileiros descrevem competências legais, clínicas, gerenciais, educativas, relacionais e de pesquisa. Ainda faltam estudos nacionais controlados que demonstrem o impacto dessas ações sobre a incidência, duração ou repetição dos afastamentos.</p>
+          </div>
+        </div>
+
+        <div class="finding">
+          <span class="finding-index">05</span>
+          <div>
+            <h3>Intervenção individual sem mudança no trabalho é insuficiente</h3>
+            <p>Orientação, relaxamento e educação podem ajudar, mas não substituem correções ergonômicas, redução de sobrecarga, enfrentamento do assédio, adequação de jornadas e melhoria da organização laboral.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="evidencias">
+        <p class="eyebrow" style="color: var(--teal);">Força da conclusão</p>
+        <h2>O que cada tipo de evidência sustenta</h2>
+
+        <div class="evidence-grid">
+          <article class="evidence-card direct">
+            <h3>Efeito direto</h3>
+            <p>Poucos estudos mediram dias de afastamento ou retorno efetivo. Há sinais favoráveis, principalmente em distúrbios musculoesqueléticos, mas a certeza ainda é limitada.</p>
+          </article>
+          <article class="evidence-card proximal">
+            <h3>Efeito proximal</h3>
+            <p>Intervenções apresentaram melhora em dor, incapacidade, qualidade de vida laboral, identificação de riscos e necessidade de encaminhamento.</p>
+          </article>
+          <article class="evidence-card context">
+            <h3>Processos e competências</h3>
+            <p>A literatura é consistente sobre vigilância, comunicação, planejamento, educação, coordenação e cooperação — mas esses estudos não provam redução de afastamento.</p>
+          </article>
+        </div>
+
+        <details>
+          <summary>Ver os 17 estudos incluídos</summary>
+          <div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Estudo</th>
+                    <th>Contribuição principal</th>
+                    <th>Força</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>McCluskey, Burton e Main (2006)</td>
+                    <td>Contato precoce, barreiras psicossociais, trabalho modificado e comunicação; sinal de redução de dias de ausência.</td>
+                    <td><span class="tag moderate">Moderada</span></td>
+                  </tr>
+                  <tr>
+                    <td>Naumanen e Liesivuori (2009)</td>
+                    <td>Avaliação de riscos e aconselhamento; dificuldades para medir efetividade.</td>
+                    <td><span class="tag low">Baixa</span></td>
+                  </tr>
+                  <tr>
+                    <td>Ariyoshi (2009)</td>
+                    <td>Intervenção sobre sintomas do climatério com redução observada em casos de ausência prolongada.</td>
+                    <td><span class="tag very-low">Muito baixa</span></td>
+                  </tr>
+                  <tr>
+                    <td>Marziale et al. (2010)</td>
+                    <td>Funções clínicas e gerenciais predominantes entre enfermeiros brasileiros.</td>
+                    <td><span class="tag low">Baixa</span></td>
+                  </tr>
+                  <tr>
+                    <td>Rogers et al. (2014)</td>
+                    <td>Atuação autônoma e multiprofissional em proteção e promoção da saúde.</td>
+                    <td><span class="tag low">Baixa</span></td>
+                  </tr>
+                  <tr>
+                    <td>Kono et al. (2017)</td>
+                    <td>Sete competências profissionais, incluindo planejamento, coordenação e apoio.</td>
+                    <td><span class="tag low">Baixa</span></td>
+                  </tr>
+                  <tr>
+                    <td>Hernández Martín et al. (2019)</td>
+                    <td>Subdetecção de doença ocupacional ligada à incapacidade; relevância do rastreamento.</td>
+                    <td><span class="tag moderate">Moderada</span></td>
+                  </tr>
+                  <tr>
+                    <td>La Torre et al. (2020)</td>
+                    <td>Apoio de profissionais à inserção do enfermeiro na prevenção.</td>
+                    <td><span class="tag low">Baixa</span></td>
+                  </tr>
+                  <tr>
+                    <td>Parsons et al. (2021)</td>
+                    <td>Gerenciamento de casos em saúde mental aceitável, sem conclusão de eficácia.</td>
+                    <td><span class="tag low">Baixa</span></td>
+                  </tr>
+                  <tr>
+                    <td>Takeguchi (2022)</td>
+                    <td>Escala de competência para prevenção primária em saúde mental.</td>
+                    <td><span class="tag low">Baixa</span></td>
+                  </tr>
+                  <tr>
+                    <td>Gok Metin e Yildiz (2023)</td>
+                    <td>Consenso sobre ambiente seguro, comunicação, educação, risco e legislação.</td>
+                    <td><span class="tag low">Baixa</span></td>
+                  </tr>
+                  <tr>
+                    <td>Adams et al. (2024)</td>
+                    <td>Clínica de rastreamento identificou necessidades, mas o piloto não avaliou eficácia.</td>
+                    <td><span class="tag low">Baixa</span></td>
+                  </tr>
+                  <tr>
+                    <td>Ignacio et al. (2025)</td>
+                    <td>Estrutura brasileira com oito domínios de competência.</td>
+                    <td><span class="tag low">Baixa</span></td>
+                  </tr>
+                  <tr>
+                    <td>Sirkka et al. (2025)</td>
+                    <td>Gestão do risco à capacidade laboral e barreiras organizacionais.</td>
+                    <td><span class="tag low">Baixa</span></td>
+                  </tr>
+                  <tr>
+                    <td>Sabola et al. (2025)</td>
+                    <td>Melhora de dor, incapacidade e qualidade de vida em trabalhadores com lombalgia.</td>
+                    <td><span class="tag moderate">Baixa–moderada</span></td>
+                  </tr>
+                  <tr>
+                    <td>Kanamori et al. (2026)</td>
+                    <td>Envolvimento do enfermeiro associado a melhores resultados organizacionais de saúde e produtividade.</td>
+                    <td><span class="tag moderate">Moderada</span></td>
+                  </tr>
+                  <tr>
+                    <td>Murono et al. (2026)</td>
+                    <td>Confiança, informação e justiça associadas à colaboração no retorno por saúde mental.</td>
+                    <td><span class="tag moderate">Moderada</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <section id="brasil">
+        <p class="eyebrow" style="color: var(--teal);">Aplicação nacional</p>
+        <h2>O que isso significa no contexto brasileiro</h2>
+        <p>A atuação deve integrar o gerenciamento de riscos, o acompanhamento de saúde e a vigilância. A <a href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/nr-1">NR-1</a> disciplina o gerenciamento de riscos ocupacionais e, desde 26 de maio de 2026, explicita fatores psicossociais relacionados ao trabalho. A <a href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-7-nr-7">NR-7</a> orienta o Programa de Controle Médico de Saúde Ocupacional.</p>
+        <p>A <a href="https://www.cofen.gov.br/resolucao-cofen-no-581-2018/">Resolução Cofen nº 581/2018</a> reconhece a Enfermagem em Saúde Ocupacional, a Enfermagem do Trabalho e a Enfermagem em Saúde do Trabalhador como especialidades.</p>
+
+        <div class="callout caution">
+          <h3>Limite profissional e ético</h3>
+          <p>O enfermeiro não substitui médico do trabalho, segurança, ergonomia, psicologia ou gestão. Sua contribuição é integrar cuidado, vigilância e informação, respeitando competências, confidencialidade e participação do trabalhador.</p>
+        </div>
+
+        <h3>Ciclo de atuação recomendado</h3>
+        <ol>
+          <li>Mapear riscos, setores e padrões de adoecimento.</li>
+          <li>Identificar precocemente sinais e trabalhadores prioritários.</li>
+          <li>Acolher, orientar, consultar e encaminhar conforme competência.</li>
+          <li>Transformar achados individuais em medidas preventivas coletivas.</li>
+          <li>Planejar adaptações e acompanhar o retorno ao trabalho.</li>
+          <li>Avaliar incidência, dias perdidos, duração e recorrência.</li>
+          <li>Comunicar resultados agregados, preservando dados pessoais.</li>
+        </ol>
+      </section>
+
+      <section id="recomendacoes">
+        <p class="eyebrow" style="color: var(--teal);">Decisões práticas</p>
+        <h2>Recomendações finais</h2>
+        <ol class="recommendations">
+          <li>
+            <span class="priority">Prioridade alta</span><br>
+            <strong>Não tratar educação como solução isolada.</strong> Associar orientação individual a mudanças ergonômicas, organizacionais e psicossociais.
+          </li>
+          <li>
+            <span class="priority">Prioridade alta</span><br>
+            <strong>Implantar indicadores padronizados.</strong> Medir incidência, dias perdidos, duração mediana, recorrência, tempo até o contato e adesão às adaptações.
+          </li>
+          <li>
+            <span class="priority">Prioridade alta</span><br>
+            <strong>Garantir tempo e apoio institucional.</strong> A enfermagem não consegue realizar vigilância e gerenciamento de casos quando está restrita a demandas administrativas.
+          </li>
+          <li>
+            <span class="priority">Prioridade média</span><br>
+            <strong>Formalizar fluxo de retorno ao trabalho.</strong> Definir contato, consentimento, adaptação, acompanhamento e reavaliação.
+          </li>
+          <li>
+            <span class="priority">Prioridade média</span><br>
+            <strong>Produzir pesquisa brasileira de efetividade.</strong> Comparar unidades ou períodos e acompanhar afastamentos por seis a doze meses.
+          </li>
+        </ol>
+      </section>
+
+      <section id="limites">
+        <p class="eyebrow" style="color: var(--teal);">Transparência científica</p>
+        <h2>Limitações desta versão</h2>
+        <ul>
+          <li>A busca eletrônica formal foi concentrada no PubMed.</li>
+          <li>A triagem foi realizada por um único revisor com apoio computacional.</li>
+          <li>Parte da avaliação utilizou resumos estruturados, não o texto completo.</li>
+          <li>Os estudos apresentaram métodos e desfechos muito diferentes, impedindo metanálise.</li>
+          <li>A maior parte da produção é internacional; a aplicação ao Brasil precisa considerar legislação, serviços e relações de trabalho locais.</li>
+        </ul>
+
+        <div class="callout warning">
+          <h3>Status correto do material</h3>
+          <p>Este documento é um <strong>relatório final de pesquisa e manuscrito-base</strong>. Para se tornar a versão acadêmica definitiva, ainda deve ser revisado pela autora e pelo orientador, complementado em outras bases e formatado segundo o manual da instituição.</p>
+        </div>
+      </section>
+
+      <section id="proximos-passos">
+        <p class="eyebrow" style="color: var(--teal);">Antes do TCC</p>
+        <h2>Checklist para a autora</h2>
+        <ul class="checklist">
+          <li>Preencher nome, faculdade, orientador, cidade e curso.</li>
+          <li>Confirmar o recorte de 2005–2026.</li>
+          <li>Repetir a busca na BVS/BDENF e SciELO.</li>
+          <li>Consultar CINAHL ou Scopus, se houver acesso.</li>
+          <li>Ler integralmente os 17 estudos incluídos.</li>
+          <li>Validar a seleção com o orientador.</li>
+          <li>Adequar citações e referências à ABNT institucional.</li>
+          <li>Declarar o uso de IA conforme as regras da faculdade.</li>
+        </ul>
+      </section>
+
+      <section id="referencias">
+        <p class="eyebrow" style="color: var(--teal);">Fontes essenciais</p>
+        <h2>Referências selecionadas</h2>
+        <ol class="references">
+          <li>MCCLUSKEY, S.; BURTON, A. K.; MAIN, C. J. The implementation of occupational health guidelines principles for reducing sickness absence due to musculoskeletal disorders. <em>Occupational Medicine</em>, v. 56, n. 4, p. 237-242, 2006. <a href="https://doi.org/10.1093/occmed/kql003">DOI</a>.</li>
+          <li>MARZIALE, M. H. P. et al. The roles and functions of occupational health nurses in Brazil and in the United States. <em>Revista Latino-Americana de Enfermagem</em>, v. 18, n. 2, p. 182-188, 2010. <a href="https://doi.org/10.1590/S0104-11692010000200007">DOI</a>.</li>
+          <li>PARSONS, V. et al. A case management occupational health model to facilitate earlier return to work of NHS staff with common mental health disorders. <em>Health Technology Assessment</em>, v. 25, n. 12, p. 1-94, 2021. <a href="https://doi.org/10.3310/hta25120">DOI</a>.</li>
+          <li>IGNACIO, D. S. et al. Professional competency framework for occupational health nurses in Brazil. <em>Revista Brasileira de Enfermagem</em>, v. 78, n. 5, e20240592, 2025. <a href="https://doi.org/10.1590/0034-7167-2024-0592">DOI</a>.</li>
+          <li>SIRKKA, J. et al. Occupational health nurses' perceptions in work ability risk management and analysis. <em>Journal of Occupational Rehabilitation</em>, v. 35, n. 2, p. 423-433, 2025. <a href="https://doi.org/10.1007/s10926-025-10282-7">DOI</a>.</li>
+          <li>SABOLA, N. E. et al. Chronic lower back pain among occupational workers: effect of relaxation technique on quality of working life, pain and disability level with nurse-led intervention. <em>BMC Nursing</em>, v. 24, art. 122, 2025. <a href="https://doi.org/10.1186/s12912-025-02753-2">DOI</a>.</li>
+          <li>KANAMORI, S. et al. Occupational health nurse involvement and Bright 500 certification among Japanese small- and medium-sized enterprises. <em>Journal of Occupational Health</em>, v. 68, n. 1, 2026. <a href="https://doi.org/10.1093/joccuh/uiag031">DOI</a>.</li>
+          <li>MURONO, N. et al. Factors influencing collaboration between occupational health nurses and human resources personnel in supporting the return to work of employees with mental health problems. <em>Journal of Occupational Health</em>, 2026. <a href="https://doi.org/10.1093/joccuh/uiag039">DOI</a>.</li>
+          <li>MENDES, K. D. S.; SILVEIRA, R. C. C. P.; GALVÃO, C. M. Revisão integrativa: método de pesquisa para a incorporação de evidências na saúde e na enfermagem. <em>Texto &amp; Contexto Enfermagem</em>, v. 17, n. 4, p. 758-764, 2008. <a href="https://doi.org/10.1590/S0104-07072008000400018">DOI</a>.</li>
+          <li>WORLD HEALTH ORGANIZATION. <em>Guidelines on mental health at work</em>. Geneva: WHO, 2022. <a href="https://www.who.int/publications/i/item/9789240053052">Acessar</a>.</li>
+        </ol>
+        <p>A relação completa dos estudos e referências encontra-se no manuscrito-base da revisão integrativa.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p><strong>Relatório preparado para leitura e discussão acadêmica.</strong></p>
+      <p>Baseado em revisão integrativa rápida realizada em 26 de julho de 2026.</p>
+      <p><a class="back-to-top" href="#topo">Voltar ao início ↑</a></p>
+    </footer>
+  </article>
+</body>
+</html>

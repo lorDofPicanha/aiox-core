@@ -11,6 +11,12 @@ module.exports = [
     ignores: ['.next/**', 'node_modules/**', 'tsconfig.tsbuildinfo'],
   },
   {
+    files: ['eslint.config.js'],
+    languageOptions: {
+      globals: { require: 'readonly', module: 'readonly' },
+    },
+  },
+  {
     files: ['**/*.ts', '**/*.tsx'],
     languageOptions: {
       parser: tsParser,
@@ -28,7 +34,20 @@ module.exports = [
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
-      globals: { process: 'readonly', console: 'readonly', URL: 'readonly', Blob: 'readonly' },
+      globals: {
+        process: 'readonly',
+        console: 'readonly',
+        URL: 'readonly',
+        Blob: 'readonly',
+        Buffer: 'readonly',
+        Request: 'readonly',
+        Response: 'readonly',
+        fetch: 'readonly',
+        AbortController: 'readonly',
+        setTimeout: 'readonly',
+        clearTimeout: 'readonly',
+        structuredClone: 'readonly',
+      },
     },
   },
 ];

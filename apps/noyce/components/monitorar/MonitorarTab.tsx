@@ -65,11 +65,11 @@ export function MonitorarTab({
   }, [consorcio]);
 
   // Licitações que você SEGUE (marcou interesse) — pra gerenciar várias em paralelo num lugar só.
-  const followed = useMemo(() => opportunities.filter((o) => interested.has(o.id)), [interested]);
+  const followed = useMemo(() => opportunities.filter((o) => interested.has(o.id)), [interested, opportunities]);
 
   const cities = useMemo(
     () => Array.from(new Set(opportunities.map((o) => o.city))).sort((a, b) => a.localeCompare(b, "pt-BR")),
-    [],
+    [opportunities],
   );
 
   const counts = useMemo(
@@ -78,7 +78,7 @@ export function MonitorarTab({
       olha: opportunities.filter((o) => o.triage.verdict === "olha").length,
       pula: opportunities.filter((o) => o.triage.verdict === "pula").length,
     }),
-    [],
+    [opportunities],
   );
 
   const filtered = useMemo(() => {
@@ -96,7 +96,7 @@ export function MonitorarTab({
       if (sortMode === "deadline") return deadlineTime(a.proposalDeadline) - deadlineTime(b.proposalDeadline);
       return b.opportunityScore - a.opportunityScore;
     });
-  }, [cityFilter, sortMode, verdict, consorcio]);
+  }, [cityFilter, sortMode, verdict, consorcio, opportunities]);
 
   return (
     <section className="area area-monitorar">

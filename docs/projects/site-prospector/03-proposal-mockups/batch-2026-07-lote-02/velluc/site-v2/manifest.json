@@ -1,0 +1,42 @@
+{
+  "business": "Velluc",
+  "niche": "fashion",
+  "pages": [
+    {
+      "file": "index.html",
+      "label": "Início"
+    },
+    {
+      "file": "catalogo.html",
+      "label": "Catálogo"
+    },
+    {
+      "file": "categoria.html",
+      "label": "Coleção"
+    },
+    {
+      "file": "produto.html",
+      "label": "Produto"
+    },
+    {
+      "file": "sobre.html",
+      "label": "Sobre"
+    },
+    {
+      "file": "guia.html",
+      "label": "Guia"
+    },
+    {
+      "file": "contato.html",
+      "label": "Atendimento"
+    },
+    {
+      "file": "carrinho.html",
+      "label": "Carrinho"
+    }
+  ],
+  "references": "../../../../research/2026-07-29-full-site-reference-matrix-lote-02.md",
+  "mediaSource": "../../../_nacional-2026-07/_clientes/lote-02/06-velluc",
+  "label": "Conceito visual não oficial",
+  "private": true
+}

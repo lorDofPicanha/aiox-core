@@ -28,8 +28,8 @@ import type { Order, OrderStatus } from './types'
 export interface OrderStore {
   create(input: { productSlug: string; productName: string; amount: number }): Promise<Order>
   getById(id: string): Promise<Order | null>
-  setPreference(id: string, preferenceId: string): Promise<void>
-  updateStatus(id: string, status: OrderStatus, mpPaymentId: string): Promise<Order | null>
+  setCheckout(id: string, checkoutId: string): Promise<void>
+  updateStatus(id: string, status: OrderStatus, paymentId: string): Promise<Order | null>
 }
 
 const DATA_DIR = path.join(process.cwd(), '.data')
@@ -58,8 +58,8 @@ class FileOrderStore implements OrderStore {
       productName: input.productName,
       amount: input.amount,
       status: 'pending',
-      mpPaymentId: null,
-      mpPreferenceId: null,
+      paymentId: null,
+      checkoutId: null,
       createdAt: now,
       updatedAt: now,
     }
@@ -74,21 +74,21 @@ class FileOrderStore implements OrderStore {
     return orders[id] ?? null
   }
 
-  async setPreference(id: string, preferenceId: string): Promise<void> {
+  async setCheckout(id: string, checkoutId: string): Promise<void> {
     const orders = await readAll()
     const order = orders[id]
     if (!order) return
-    order.mpPreferenceId = preferenceId
+    order.checkoutId = checkoutId
     order.updatedAt = new Date().toISOString()
     await writeAll(orders)
   }
 
-  async updateStatus(id: string, status: OrderStatus, mpPaymentId: string): Promise<Order | null> {
+  async updateStatus(id: string, status: OrderStatus, paymentId: string): Promise<Order | null> {
     const orders = await readAll()
     const order = orders[id]
     if (!order) return null
     order.status = status
-    order.mpPaymentId = mpPaymentId
+    order.paymentId = paymentId
     order.updatedAt = new Date().toISOString()
     await writeAll(orders)
     return order

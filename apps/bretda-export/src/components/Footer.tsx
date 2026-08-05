@@ -1,6 +1,7 @@
 "use client";
 import { useLocale, useTranslations } from "next-intl";
 import { waUrl } from "@/lib/inquiry";
+import { trackLead } from "@/lib/track";
 
 const lp = (p: string, l: string) => (l === "en" ? p : `/${l}${p}`);
 
@@ -27,8 +28,8 @@ export default function Footer() {
           <div className="ftr-col">
             <h5>{t("contact")}</h5>
             <a href={lp("/contact", l)}>{n("contact")}</a>
-            <a href={waUrl(tw("contact"))} target="_blank" rel="noopener noreferrer">WhatsApp</a>
-            <a href="mailto:atelier@bretda.com">atelier@bretda.com</a>
+            <a href={waUrl(tw("contact"))} target="_blank" rel="noopener noreferrer" onClick={() => trackLead({ channel: "whatsapp", source: "footer" })}>WhatsApp</a>
+            <a href="mailto:atelier@bretda.com" onClick={() => trackLead({ channel: "email", source: "footer" })}>atelier@bretda.com</a>
           </div>
         </div>
         <div className="ftr-base">

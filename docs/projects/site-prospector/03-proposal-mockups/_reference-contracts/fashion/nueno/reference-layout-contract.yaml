@@ -1,0 +1,21 @@
+# ADR-0004 — contrato estrutural para reconstituições de moda editorial.
+# Fonte analisada: captura local do home de Nueno, preservada em ./site/pages/home/screens.
+meta:
+  slug: nueno
+  archetype: fashion-editorial
+  source_url: https://nueno.pl/
+  analysis_scope: archived desktop and mobile reference captures
+  use: structural blueprint only; do not reuse source code, copy, assets, trademarks, or fonts
+section_sequence:
+  - header: three-part masthead; centered wordmark; circular control at right
+  - hero: near-black full viewport; centered vertical image; oversized overlapping multi-line type
+  - manifesto: centered uppercase statement; small italic monogram and text link
+  - collection: oversized editorial title with an offset image rail
+  - footer: a single oversized closing message
+immutable_layout:
+  desktop: centered image at 29vw width; hero headline overlaps image; wide black negative space
+  mobile: centered wordmark; image above headline; headline remains the dominant visual block
+  geometry_rule: preserve section order, overlap, alignments, proportions, and responsive transformations
+target_substitutions:
+  permitted: target wordmark, first-party media, verified target copy, target palette
+  prohibited: source copy, source imagery, source marks, source fonts, invented sections

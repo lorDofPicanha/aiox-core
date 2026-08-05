@@ -4,7 +4,7 @@
  * BuyButton — CTA de compra (Checkout Pro).
  *
  * Chama a server action createCheckout e redireciona para o init_point do
- * Mercado Pago. Estilo = variante "primary" (gold sólido) do átomo Button,
+ * PagBank. Estilo = variante "primary" (gold sólido) do átomo Button,
  * com estado de loading/erro que o átomo não cobre.
  */
 

@@ -18,7 +18,7 @@ import { runAnalysis } from "../lib/agents/analysis-agent.ts";
 import { runHabilitation } from "../lib/agents/habilitation-agent.ts";
 import { runDocumentDraft } from "../lib/agents/document-agent.ts";
 import { buildTriage } from "../lib/noyce-operational.ts";
-import { validateAnalysis, validateHabilitation, validateDocumentPackage } from "../lib/agents/guardrails.ts";
+import { validateAnalysis, validateHabilitation } from "../lib/agents/guardrails.ts";
 
 if (!process.env.OPENAI_API_KEY && !process.env.ANTHROPIC_API_KEY) {
   console.error("\n✗ Defina OPENAI_API_KEY (ou ANTHROPIC_API_KEY).\n");

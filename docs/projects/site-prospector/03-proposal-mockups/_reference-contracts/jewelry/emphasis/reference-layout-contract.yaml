@@ -1,0 +1,17 @@
+# ADR-0004 — structure extracted from the archived Emphasis Jewellery home.
+meta:
+  slug: emphasis
+  archetype: jewelry-retail
+  source_url: https://www.emphasis.com/en/home
+  use: structure only; source code, text, marks, imagery and fonts are prohibited
+section_sequence:
+  - restrained header with centered category navigation
+  - full-width collection hero with a centered action
+  - featured-collections editorial grid
+  - quiet newsletter / closing block
+immutable_layout:
+  desktop: white canvas, thin navigation, wide full-bleed product imagery, evenly spaced grids
+  mobile: simplified header and a one-column collection stack
+target_substitutions:
+  permitted: target media, verified copy and Bicudos identity
+  prohibited: source identity or source assets

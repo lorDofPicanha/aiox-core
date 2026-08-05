@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Site-Prospector — Mockups completos</title>
+  <style>
+    :root { color-scheme: dark; font-family: Inter, Arial, sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #0d0d0d; color: #f5f2ea; }
+    header { padding: 56px 5vw 34px; border-bottom: 1px solid #303030; }
+    h1 { max-width: 900px; margin: 0 0 16px; font: 500 clamp(38px, 6vw, 82px)/.95 Georgia, serif; }
+    header p { max-width: 760px; color: #b8b4aa; font-size: 17px; line-height: 1.6; }
+    .stats { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .stats span { padding: 9px 13px; border: 1px solid #444; border-radius: 100px; font-size: 13px; }
+    main { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 34px; padding: 42px 5vw 80px; }
+    article { overflow: hidden; background: #171717; border: 1px solid #2c2c2c; border-radius: 18px; }
+    .preview { display: block; height: 520px; overflow: hidden; background: #222; }
+    .preview img { width: 100%; display: block; transition: transform .35s ease; }
+    .preview:hover img { transform: translateY(-12px); }
+    .copy { padding: 22px; }
+    h2 { margin: 0 0 8px; font: 500 29px/1.1 Georgia, serif; }
+    .niche { margin: 0 0 18px; color: #9c978d; text-transform: uppercase; letter-spacing: .12em; font-size: 11px; }
+    nav { display: flex; flex-wrap: wrap; gap: 8px; }
+    nav a { color: #f5f2ea; text-decoration: none; border: 1px solid #484848; border-radius: 100px; padding: 8px 11px; font-size: 12px; }
+    nav a:first-child { color: #111; background: #f5f2ea; border-color: #f5f2ea; }
+    nav a:hover { border-color: #f5f2ea; }
+    @media (max-width: 850px) {
+      main { grid-template-columns: 1fr; }
+      .preview { height: 430px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Mockups completos por negócio</h1>
+    <p>Galeria privada para revisão do Founder. Cada conceito possui oito páginas navegáveis e capturas completas em desktop e mobile.</p>
+    <div class="stats"><span>11 negócios</span><span>88 páginas</span><span>176 capturas</span><span>5 famílias de nicho</span></div>
+  </header>
+  <main id="gallery"></main>
+  <script>
+    const businesses = [
+      ["plus-store-bh", "Plus Store BH", "Moda plus size"],
+      ["flavia-nogueira-confeitaria", "Flavia Nogueira Confeitaria", "Confeitaria"],
+      ["bicudos-acessorios", "Bicudos Acessórios", "Acessórios e joias"],
+      ["center-panos-santo-andre", "Center Panos Santo André", "Casa e tecidos"],
+      ["immerse-earth-aroma", "Immerse Earth Aroma", "Aromas e cosméticos"],
+      ["codigo-g-moda-plus-size", "Código G Moda Plus Size", "Moda plus size"],
+      ["vhal-moda-praia", "Vhal Moda Praia", "Moda praia"],
+      ["julia-plus-rio", "Julia Plus Rio", "Moda plus size"],
+      ["queijaria-sapori-italiani", "Queijaria Sapori Italiani", "Queijos artesanais"],
+      ["atelie-ruby", "Ateliê Ruby", "Noivas e festa"],
+      ["mary-jayne", "Mary Jayne", "Moda feminina"]
+    ];
+    const pages = [
+      ["index.html", "Início"], ["catalogo.html", "Catálogo"],
+      ["categoria.html", "Coleção"], ["produto.html", "Produto"],
+      ["sobre.html", "Sobre"], ["guia.html", "Guia"],
+      ["contato.html", "Atendimento"], ["carrinho.html", "Carrinho"]
+    ];
+    document.querySelector("#gallery").innerHTML = businesses.map(([slug, name, niche]) => `
+      <article>
+        <a class="preview" href="${slug}/site-v2/index.html">
+          <img src="${slug}/site-v2/screens/index-desktop.jpg" alt="Home desktop de ${name}">
+        </a>
+        <div class="copy">
+          <p class="niche">${niche}</p>
+          <h2>${name}</h2>
+          <nav>
+            ${pages.map(([file, label]) => `<a href="${slug}/site-v2/${file}">${label}</a>`).join("")}
+            <a href="${slug}/site-v2/screens/index-mobile.jpg">Mobile</a>
+          </nav>
+        </div>
+      </article>
+    `).join("");
+  </script>
+</body>
+</html>

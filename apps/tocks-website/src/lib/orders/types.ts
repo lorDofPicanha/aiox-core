@@ -9,8 +9,8 @@ export interface Order {
   /** Valor integral em reais (BRL). */
   amount: number
   status: OrderStatus
-  mpPaymentId: string | null
-  mpPreferenceId: string | null
+  paymentId: string | null
+  checkoutId: string | null
   createdAt: string
   updatedAt: string
 }

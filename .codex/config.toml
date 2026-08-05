@@ -27,6 +27,9 @@ approval_mode = "approve"
 [mcp_servers.aios-brain-bridge.tools.request_expert_consultation]
 approval_mode = "approve"
 
+[mcp_servers.aios-brain-bridge.tools.log_tool_error]
+approval_mode = "approve"
+
 [mcp_servers.mcp-ads-bridge]
 args = ["D:/jarvis/mcp-ads-bridge/dist/index.js"]
 command = "node"
@@ -158,6 +161,12 @@ approval_mode = "approve"
 approval_mode = "approve"
 
 [mcp_servers.mcp-ads-bridge.tools.meta_ads_update_budget]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.meta_ads_upload_image]
+approval_mode = "approve"
+
+[mcp_servers.mcp-ads-bridge.tools.meta_ads_create_adset]
 approval_mode = "approve"
 
 [mcp_servers.mcp-design-studio]

@@ -54,18 +54,31 @@ export function useWinIntel(
   const [llm, setLlm] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const ranFor = useRef<string | null>(null);
+  const activeRequest = useRef<AbortController | null>(null);
+  const requestGeneration = useRef(0);
 
-  // Reseta ao trocar de oportunidade — mostra os grounded na hora.
+  // Reseta ao trocar de oportunidade ou quando o ERM chega — mostra os grounded na hora.
   useEffect(() => {
+    activeRequest.current?.abort();
+    activeRequest.current = null;
+    requestGeneration.current += 1;
     setByTab(mergeWinIntel(deterministic, []));
     setStatus("idle");
     setLlm(false);
     setError(null);
     ranFor.current = null;
-    // Reset depende só da troca de oportunidade (deterministic recompute via mergeWinIntel).
-  }, [opportunity.id]);
+    return () => {
+      activeRequest.current?.abort();
+      requestGeneration.current += 1;
+    };
+  }, [opportunity.id, deterministic]);
 
   const run = useCallback(async () => {
+    activeRequest.current?.abort();
+    const controller = new AbortController();
+    activeRequest.current = controller;
+    const generation = ++requestGeneration.current;
+    const isCurrent = () => requestGeneration.current === generation && !controller.signal.aborted;
     setStatus("loading");
     setError(null);
     try {
@@ -78,6 +91,7 @@ export function useWinIntel(
           erm: erm ?? null,
           certame,
         }),
+        signal: controller.signal,
       });
       const data = (await res.json().catch(() => ({}))) as {
         byTab?: Record<string, WinSuggestion[]>;
@@ -85,6 +99,7 @@ export function useWinIntel(
         llmError?: string;
         error?: string;
       };
+      if (!isCurrent()) return;
       if (!res.ok) {
         // 422 (sem histórico e sem ERM) não é erro fatal — mantém os grounded que já temos.
         setError(data.error ?? `erro ${res.status}`);
@@ -95,24 +110,28 @@ export function useWinIntel(
       const merged = emptyByTab();
       for (const t of WIN_TABS) {
         const fromServer = Array.isArray(data.byTab?.[t]) ? (data.byTab![t] as WinSuggestion[]) : [];
-        merged[t] = fromServer.length ? fromServer : byTab[t];
+        merged[t] = fromServer.length ? fromServer : mergeWinIntel(deterministic, [])[t];
       }
       setByTab(merged);
       setLlm(Boolean(data.llm));
       if (data.llmError) setError(data.llmError);
       setStatus("done");
     } catch (e) {
+      if (!isCurrent() || (e as Error)?.name === "AbortError") return;
       setError(`Falha de rede: ${(e as Error)?.message ?? String(e)}`);
       setStatus("error");
+    } finally {
+      if (activeRequest.current === controller) activeRequest.current = null;
     }
-  }, [market?.orgaoCnpj, opportunity.id, erm, certame, byTab]);
+  }, [market?.orgaoCnpj, opportunity.id, erm, certame, deterministic]);
 
   // Auto-dispara o enriquecimento UMA vez quando habilitado e há lastro (mercado ou ERM).
   useEffect(() => {
     if (!enabled) return;
-    if (ranFor.current === opportunity.id) return;
+    const runKey = `${opportunity.id}:${erm ? "with-erm" : "without-erm"}`;
+    if (ranFor.current === runKey) return;
     if (!market && !erm) return; // nada a analisar
-    ranFor.current = opportunity.id;
+    ranFor.current = runKey;
     void run();
   }, [enabled, opportunity.id, market, erm, run]);
 

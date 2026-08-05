@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import Header from "./Header";
@@ -9,6 +9,7 @@ import { getSpec } from "@/data/specs";
 import { dim2, dim3, weight } from "@/lib/units";
 import { useCurrency } from "@/lib/currency";
 import { waUrl, mailUrl } from "@/lib/inquiry";
+import { track, trackLead } from "@/lib/track";
 
 const lp = (p: string, l: string) => (l === "en" ? p : `/${l}${p}`);
 
@@ -23,6 +24,20 @@ export default function Pdp({ product }: { product: Product }) {
 
   const price = formatPrice(product.priceUSD, product.priceEUR, cur, locale);
   const spec = getSpec(product.slug);
+
+  // Product interest — the signal the ad platforms optimise delivery on.
+  // Always reported in USD so the catalogue reads in one currency regardless
+  // of what the visitor is shown.
+  useEffect(() => {
+    track("ViewContent", {
+      content_name: product.name,
+      content_ids: product.slug,
+      content_type: "product",
+      content_category: product.line,
+      value: product.priceUSD,
+      currency: "USD",
+    });
+  }, [product.slug, product.name, product.line, product.priceUSD]);
 
   return (
     <>
@@ -94,8 +109,8 @@ export default function Pdp({ product }: { product: Product }) {
             </div>
 
             <div className="cta-row2">
-              <a className="cta" href={waUrl(tw("reserve", { name: product.name, price }))} target="_blank" rel="noopener noreferrer">{t("reserve")}</a>
-              <a className="cta-sec" href={mailUrl(t("emailSubj", { name: product.name }), tw("reserve", { name: product.name, price }))}>{t("email")}</a>
+              <a className="cta" href={waUrl(tw("reserve", { name: product.name, price }))} target="_blank" rel="noopener noreferrer" onClick={() => trackLead({ channel: "whatsapp", source: "pdp", content_name: product.name, content_ids: product.slug })}>{t("reserve")}</a>
+              <a className="cta-sec" href={mailUrl(t("emailSubj", { name: product.name }), tw("reserve", { name: product.name, price }))} onClick={() => trackLead({ channel: "email", source: "pdp", content_name: product.name, content_ids: product.slug })}>{t("email")}</a>
             </div>
           </div>
         </div>

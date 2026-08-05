@@ -3,8 +3,9 @@
   Registra (ou remove) a tarefa agendada do Windows que roda a discovery do Noyce de hora em hora.
 
 .DESCRIPTION
-  Cria a Scheduled Task "NoyceDiscovery" que, a cada 1 hora, executa:
-    node --experimental-strip-types scripts/noyce/discovery-scheduler.mjs --once -- --days 60
+  Cria a Scheduled Task "NoyceDiscovery" que, a cada 1 hora, executa uma coleta
+  incremental de 3 dias e preserva a janela operacional de 60 dias:
+    node --experimental-strip-types scripts/noyce/discovery-scheduler.mjs --once -- --days 3 --retention-days 60
   O modo --once roda uma vez e registra o resultado em scripts/noyce/discovery-runs.log.
   É a opção DURÁVEL (sobrevive a reboot, não precisa de terminal aberto).
 
@@ -24,6 +25,7 @@
 #>
 param(
   [int]$IntervalHours = 1,
+  [int]$ExecutionTimeLimitMinutes = 45,
   [switch]$Unregister
 )
 
@@ -50,7 +52,7 @@ if (-not $node) { throw "node não encontrado no PATH. Instale o Node.js ou ajus
 $scheduler = Join-Path $ScriptDir 'discovery-scheduler.mjs'
 if (-not (Test-Path $scheduler)) { throw "Não achei $scheduler" }
 
-$arguments = "--experimental-strip-types `"$scheduler`" --once -- --days 60"
+$arguments = "--experimental-strip-types `"$scheduler`" --once -- --days 3 --retention-days 60 --max-runtime-min 40 --request-timeout-ms 30000"
 
 $action  = New-ScheduledTaskAction -Execute $node -Argument $arguments -WorkingDirectory $RepoRoot
 # Repete a cada N horas, por uma janela longa (10 anos), começando agora.
@@ -59,7 +61,7 @@ $trigger = New-ScheduledTaskTrigger -Once -At (Get-Date) `
             -RepetitionDuration (New-TimeSpan -Days 3650)
 $settings = New-ScheduledTaskSettingsSet `
             -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries `
-            -StartWhenAvailable -ExecutionTimeLimit (New-TimeSpan -Minutes 30)
+            -StartWhenAvailable -ExecutionTimeLimit (New-TimeSpan -Minutes $ExecutionTimeLimitMinutes)
 
 Register-ScheduledTask -TaskName $TaskName -Action $action -Trigger $trigger `
   -Settings $settings -Description "Noyce: discovery PNCP de $IntervalHours em $IntervalHours hora(s)" -Force | Out-Null

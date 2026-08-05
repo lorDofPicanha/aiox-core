@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import Header from "./Header";
 import Footer from "./Footer";
 import { waUrl } from "@/lib/inquiry";
+import { trackLead } from "@/lib/track";
 
 export default function Contact() {
   const t = useTranslations("contact");
@@ -35,19 +36,19 @@ export default function Contact() {
             <div className="ck">{t("waK")}</div>
             <h3>{t("waH")}</h3>
             <p>{t("waP")}</p>
-            <a className="clink" href={wa} target="_blank" rel="noopener noreferrer">{t("waL")}</a>
+            <a className="clink" href={wa} target="_blank" rel="noopener noreferrer" onClick={() => trackLead({ channel: "whatsapp", source: "contact" })}>{t("waL")}</a>
           </div>
           <div className="ccard">
             <div className="ck">{t("emK")}</div>
             <h3>{t("emH")}</h3>
             <p>{t("emP")}</p>
-            <a className="clink" href="mailto:atelier@bretda.com">{t("emL")}</a>
+            <a className="clink" href="mailto:atelier@bretda.com" onClick={() => trackLead({ channel: "email", source: "contact" })}>{t("emL")}</a>
           </div>
           <div className="ccard">
             <div className="ck">{t("viK")}</div>
             <h3>{t("viH")}</h3>
             <p>{t("viP")}</p>
-            <a className="clink" href={viewing} target="_blank" rel="noopener noreferrer">{t("viL")}</a>
+            <a className="clink" href={viewing} target="_blank" rel="noopener noreferrer" onClick={() => trackLead({ channel: "whatsapp", source: "contact_viewing" })}>{t("viL")}</a>
           </div>
         </div>
       </section>
@@ -83,7 +84,7 @@ export default function Contact() {
       <section className="ctaband">
         <div className="eyebrow">{t("ctaEb")}</div>
         <h2 className="reveal">{t("ctaH")}</h2>
-        <a className="cta reveal" href={viewing} target="_blank" rel="noopener noreferrer">{t("ctaBtn")}</a>
+        <a className="cta reveal" href={viewing} target="_blank" rel="noopener noreferrer" onClick={() => trackLead({ channel: "whatsapp", source: "contact_footer_cta" })}>{t("ctaBtn")}</a>
       </section>
       <Footer />
     </>

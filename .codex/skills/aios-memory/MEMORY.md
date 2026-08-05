@@ -1,5 +1,8 @@
 # Memory
 
+## ATUALIZAÇÃO 28/JUL/2026
+- [Tocks Clean + Mônaco + Nobus 28/Jul](session_tocks_clean_ads_28jul.md) — 🟡 3 campanhas Meta WhatsApp isoladas criadas na conta Tocks, todas `PAUSED`; 5 ads em `PENDING_REVIEW`. Clean `120253694999830230`, Mônaco `120253694999910230`, Nobus `120253695000270230`. Budget preparado R$30/dia cada, ativação sequencial. Saldo real R$0,00; C007 + QUALIDADE seguem configuradas `ACTIVE`. Triggers: `audit clean meta`, `saldo tocks recarregado`, `ative clean`, `teste monaco`, `teste nobus`.
+
 ## 🔔 LEMBRETES ATIVOS
 - [KR OAuth Attempt 19/Mai](session_kr_oauth_attempt_19mai.md) — 🟡 Diagnóstico KR: ad_account `act_210585430466029` SAUDÁVEL; problema é **token KR = SU "Conversions API System User" poisoned pela BM Vorza banida**. Caminho B (OAuth Kell USER token) bloqueado por redirect `connect/login_success.html` não whitelistado no App `1242013794801262` (erro 191 disfarçado como "Recurso indisponível"). Fix founder 30s: adicionar URL em `developers.facebook.com/apps/1242013794801262/fb-login/settings/`. Script exchange pronto em `kr-oauth-exchange-19mai.cjs`. **Aprendizado:** cascata Vorza-ban → SU-poisoning EXISTE (atualiza [[project_vorza_bm_ban_12mai]]). Triggers: `redirect adicionado` / `code da kell aqui {code}` / `caminho a kr`.
 - [Bretda Form WA Redirect 19/Mai](session_bretda_form_wa_19mai.md) — 🟢 4 ads ACTIVE migrados pra Thank You Screen com WhatsApp redirect controlado (wa.me/5547992259554 + msg Copy Chief prefilled). 2 forms novos clonados (CP2 v3 `2336361236894429` + CP1 v3 `1493680715832924`) + 4 creatives novos + 4 swaps via Graph API. Page Token obtido via `/{page_id}?fields=access_token`. Aguardando Meta review (1-3h). Triggers: `audit bretda thank you wa`, `bretda form rollback`, `bretda leads check`.
@@ -202,6 +205,7 @@
 - [Bretda Criativos R1](project_bretda_creatives_rodada1.md) — 🟢 v7 APROVADO. 54 PNGs Editorial Hybrid
 
 ## References
+- [Sessao Tocks + Bretda 29/Jul](session_international_export_ads_29jul.md) — campanhas, post Instagram e site de exportacao
 - [Vorza Business IDs](reference_vorza_business_ids.md) — BM Vorza ID 2744791262542284
 - [Stitch MCP Setup](reference_stitch_mcp_setup.md) — stdio proxy via @_davideast/stitch-mcp
 - [Bretda Banner Brief](reference_bretda_banner_brief.md) — D:\conteudos bretda\briefs\ Editorial aprovada

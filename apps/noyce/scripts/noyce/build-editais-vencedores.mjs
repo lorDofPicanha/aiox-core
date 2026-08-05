@@ -128,7 +128,11 @@ function yyyymmdd(d) {
 // ── Pool de órgãos do raio (CNPJs reais dos snapshots) ──
 const snapA = JSON.parse(readFileSync(join(DATA, "discovery-snapshot.json"), "utf8"));
 let snapFull = { items: [] };
-try { snapFull = JSON.parse(readFileSync(join(DATA, "discovery-snapshot.full.json"), "utf8")); } catch {}
+try {
+  snapFull = JSON.parse(readFileSync(join(DATA, "discovery-snapshot.full.json"), "utf8"));
+} catch {
+  // O snapshot completo é opcional; a coleta continua com o snapshot canônico.
+}
 const comp = JSON.parse(readFileSync(join(DATA, "competitor-500km-research.json"), "utf8"));
 const geo = JSON.parse(readFileSync(join(DATA, "municipios-raio-500km.json"), "utf8"));
 const ibgeNoRaio = new Set(geo.municipios.map((m) => String(m.ibge)));

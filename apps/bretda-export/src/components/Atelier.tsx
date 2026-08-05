@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import Header from "./Header";
 import Footer from "./Footer";
 import { waUrl } from "@/lib/inquiry";
+import { trackLead } from "@/lib/track";
 
 export default function Atelier() {
   const t = useTranslations("atelier");
@@ -76,7 +77,7 @@ export default function Atelier() {
       <section className="ctaband">
         <div className="eyebrow">{t("ctaEb")}</div>
         <h2 className="reveal">{t("ctaH")}</h2>
-        <a className="cta reveal" href={viewing} target="_blank" rel="noopener noreferrer">{t("ctaBtn")}</a>
+        <a className="cta reveal" href={viewing} target="_blank" rel="noopener noreferrer" onClick={() => trackLead({ channel: "whatsapp", source: "atelier" })}>{t("ctaBtn")}</a>
       </section>
       <Footer />
     </>

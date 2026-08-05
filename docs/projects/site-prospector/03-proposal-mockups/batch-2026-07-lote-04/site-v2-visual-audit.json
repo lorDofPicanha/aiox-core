@@ -1,0 +1,441 @@
+{
+  "generatedAt": "2026-07-29T19:47:49.707Z",
+  "captures": 48,
+  "expectedCaptures": 48,
+  "failures": [],
+  "pass": true,
+  "audit": [
+    {
+      "business": "psluthier",
+      "page": "index",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3591,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "psluthier",
+      "page": "index",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 4312,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "psluthier",
+      "page": "catalogo",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2826,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "psluthier",
+      "page": "catalogo",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3724,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "psluthier",
+      "page": "categoria",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 4043,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "psluthier",
+      "page": "categoria",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3615,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "psluthier",
+      "page": "produto",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3195,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "psluthier",
+      "page": "produto",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3569,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "psluthier",
+      "page": "sobre",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2816,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "psluthier",
+      "page": "sobre",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3895,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "psluthier",
+      "page": "guia",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3283,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "psluthier",
+      "page": "guia",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3219,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "psluthier",
+      "page": "contato",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1648,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "psluthier",
+      "page": "contato",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2061,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "psluthier",
+      "page": "carrinho",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2380,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "psluthier",
+      "page": "carrinho",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2893,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "the-chayi",
+      "page": "index",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3323,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "the-chayi",
+      "page": "index",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 4251,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "the-chayi",
+      "page": "catalogo",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2764,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "the-chayi",
+      "page": "catalogo",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3567,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "the-chayi",
+      "page": "categoria",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3067,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "the-chayi",
+      "page": "categoria",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3504,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "the-chayi",
+      "page": "produto",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3180,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "the-chayi",
+      "page": "produto",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3529,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "the-chayi",
+      "page": "sobre",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2721,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "the-chayi",
+      "page": "sobre",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3784,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "the-chayi",
+      "page": "guia",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2502,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "the-chayi",
+      "page": "guia",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3201,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "the-chayi",
+      "page": "contato",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1648,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "the-chayi",
+      "page": "contato",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2044,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "the-chayi",
+      "page": "carrinho",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2346,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "the-chayi",
+      "page": "carrinho",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2828,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "wanda-cardoso",
+      "page": "index",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3339,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "wanda-cardoso",
+      "page": "index",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 4328,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "wanda-cardoso",
+      "page": "catalogo",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2705,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "wanda-cardoso",
+      "page": "catalogo",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3438,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "wanda-cardoso",
+      "page": "categoria",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3025,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "wanda-cardoso",
+      "page": "categoria",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3476,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "wanda-cardoso",
+      "page": "produto",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3155,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "wanda-cardoso",
+      "page": "produto",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3487,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "wanda-cardoso",
+      "page": "sobre",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2816,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "wanda-cardoso",
+      "page": "sobre",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3821,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "wanda-cardoso",
+      "page": "guia",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2502,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "wanda-cardoso",
+      "page": "guia",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3202,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "wanda-cardoso",
+      "page": "contato",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1648,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "wanda-cardoso",
+      "page": "contato",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2045,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "wanda-cardoso",
+      "page": "carrinho",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2321,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "wanda-cardoso",
+      "page": "carrinho",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2786,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    }
+  ]
+}

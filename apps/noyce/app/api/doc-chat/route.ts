@@ -1,70 +1,79 @@
 import { NextResponse } from "next/server";
 import { createLlmClient } from "@/lib/agents/clients/client-factory";
 import {
-  buildDocChatRequest,
-  parseDocChatResponse,
-  type DocChatInput,
-} from "@/lib/noyce-doc-chat";
+  HttpInputError,
+  assertJsonLimits,
+  expectObject,
+  optionalString,
+  readJsonBody,
+} from "@/lib/http/request-validation";
+import { buildDocChatRequest, parseDocChatResponse, type DocChatInput } from "@/lib/noyce-doc-chat";
 
-// CORRIGIR por chat (Fase 3): recebe o documento + a instrução em linguagem natural, a IA reescreve.
-// Roda no runtime Node (LLM pode levar dezenas de segundos). Nada é submetido a portal — devolve o
-// texto reescrito p/ o humano aprovar.
 export const runtime = "nodejs";
 export const maxDuration = 300;
+const MAX_BODY_BYTES = 256 * 1024;
 
-// POST /api/doc-chat
-//   body: DocChatInput (docLabel, secao, currentText, proveniencia, instruction, certame?, history?)
-//   → { correctedText, explanation }
-export async function POST(req: Request) {
-  let body: Partial<DocChatInput>;
-  try {
-    body = (await req.json()) as Partial<DocChatInput>;
-  } catch {
-    return NextResponse.json({ error: "corpo JSON inválido" }, { status: 400 });
-  }
+function parseBody(value: unknown): DocChatInput {
+  const body = expectObject(value, ["docLabel", "secao", "currentText", "proveniencia", "instruction", "certame", "history"]);
+  assertJsonLimits(body, { maxDepth: 4, maxArrayLength: 20, maxObjectKeys: 12, maxStringLength: 180_000 });
+  const docLabel = optionalString(body, "docLabel", { minLength: 1, maxLength: 300 });
+  const currentText = optionalString(body, "currentText", { minLength: 1, maxLength: 180_000, trim: false });
+  const instruction = optionalString(body, "instruction", { minLength: 1, maxLength: 8_000 });
+  if (!docLabel || !currentText || !instruction) throw new HttpInputError(400);
 
-  const { docLabel, secao, currentText, proveniencia, instruction, certame, history } = body ?? {};
-  if (!docLabel || !currentText || !instruction) {
-    return NextResponse.json(
-      { error: "campos obrigatórios: docLabel, currentText, instruction" },
-      { status: 400 },
-    );
-  }
+  const certameRecord = body.certame == null ? undefined : expectObject(body.certame, ["titulo", "orgao", "empresa"]);
+  const certame = certameRecord ? {
+    titulo: optionalString(certameRecord, "titulo", { maxLength: 500 }),
+    orgao: optionalString(certameRecord, "orgao", { maxLength: 300 }),
+    empresa: optionalString(certameRecord, "empresa", { maxLength: 300 }),
+  } : undefined;
 
-  const request = buildDocChatRequest({
+  if (body.history !== undefined && !Array.isArray(body.history)) throw new HttpInputError(400);
+  const history = (body.history as unknown[] | undefined)?.map((item) => {
+    const turn = expectObject(item, ["role", "content"]);
+    const role = optionalString(turn, "role", { minLength: 1, maxLength: 9, pattern: /^(user|assistant)$/ });
+    const content = optionalString(turn, "content", { minLength: 1, maxLength: 8_000, trim: false });
+    if (!role || !content) throw new HttpInputError(400);
+    return { role: role as "user" | "assistant", content };
+  });
+
+  return {
     docLabel,
-    secao: secao ?? "",
+    secao: optionalString(body, "secao", { maxLength: 300 }) ?? "",
     currentText,
-    proveniencia: proveniencia ?? "",
+    proveniencia: optionalString(body, "proveniencia", { maxLength: 2_000 }) ?? "",
     instruction,
     certame,
     history,
-  });
+  };
+}
 
+export async function POST(req: Request) {
+  let body: DocChatInput;
+  try {
+    body = parseBody(await readJsonBody(req, MAX_BODY_BYTES));
+  } catch (error) {
+    const status = error instanceof HttpInputError ? error.status : 400;
+    return NextResponse.json({ error: "requisição inválida" }, { status });
+  }
+
+  const request = buildDocChatRequest(body);
   let client;
   try {
     client = createLlmClient();
-  } catch (err) {
-    return NextResponse.json(
-      { error: `LLM indisponível: ${(err as Error)?.message ?? "sem provider configurado"}` },
-      { status: 503 },
-    );
+  } catch {
+    return NextResponse.json({ error: "serviço temporariamente indisponível" }, { status: 503 });
   }
 
   try {
-    const resp = await client.complete(request);
-    if (resp.refusal) {
-      return NextResponse.json({ error: "modelo recusou a solicitação — reformule a instrução." }, { status: 422 });
+    const response = await client.complete(request);
+    if (response.refusal) {
+      return NextResponse.json({ error: "solicitação não processável" }, { status: 422 });
     }
-    const result = parseDocChatResponse(resp.json);
-    if (!result) {
-      return NextResponse.json({ error: "saída do modelo inválida — tente novamente." }, { status: 502 });
-    }
+    const result = parseDocChatResponse(response.json);
+    if (!result) return NextResponse.json({ error: "resposta inválida do serviço" }, { status: 502 });
     return NextResponse.json(result);
-  } catch (err) {
-    return NextResponse.json(
-      { error: `falha ao reescrever o documento: ${(err as Error)?.message ?? String(err)}` },
-      { status: 502 },
-    );
+  } catch {
+    return NextResponse.json({ error: "não foi possível processar a solicitação" }, { status: 502 });
   }
 }

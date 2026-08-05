@@ -14,6 +14,7 @@ import {
 import { catalog, formatPrice } from "@/data/catalog";
 import { useCurrency } from "@/lib/currency";
 import { waUrl, mailUrl } from "@/lib/inquiry";
+import { trackLead } from "@/lib/track";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -264,8 +265,8 @@ export default function Configurator({ initialSlug }: { initialSlug?: string }) 
             <div className="summary">
               {price && <div className="price2"><span style={fromStyle}>{t("from")}</span>{price}</div>}
               <div className="ddp">{t("ddp")}</div>
-              <a className="cta" style={{ width: "100%", textAlign: "center" }} href={waUrl(tw("config", { name: activeLabel, wood, metal: metal ?? "—", cloth: activeCategory === "sinuca" ? fab : "—", price: price ?? "—" }))} target="_blank" rel="noopener noreferrer">{t("reserve")}</a>
-              <a className="cfg-email" href={mailUrl(t("emailSubj", { name: activeLabel }), tw("config", { name: activeLabel, wood, metal: metal ?? "—", cloth: activeCategory === "sinuca" ? fab : "—", price: price ?? "—" }))}>{t("email")}</a>
+              <a className="cta" style={{ width: "100%", textAlign: "center" }} href={waUrl(tw("config", { name: activeLabel, wood, metal: metal ?? "—", cloth: activeCategory === "sinuca" ? fab : "—", price: price ?? "—" }))} target="_blank" rel="noopener noreferrer" onClick={() => trackLead({ channel: "whatsapp", source: "configurator", content_name: activeLabel })}>{t("reserve")}</a>
+              <a className="cfg-email" href={mailUrl(t("emailSubj", { name: activeLabel }), tw("config", { name: activeLabel, wood, metal: metal ?? "—", cloth: activeCategory === "sinuca" ? fab : "—", price: price ?? "—" }))} onClick={() => trackLead({ channel: "email", source: "configurator", content_name: activeLabel })}>{t("email")}</a>
             </div>
           </div>
         </div>

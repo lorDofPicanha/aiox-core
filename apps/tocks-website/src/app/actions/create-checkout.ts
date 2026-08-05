@@ -1,7 +1,7 @@
 'use server'
 
 /**
- * Server Action — inicia o checkout (Mercado Pago Checkout Pro).
+ * Server Action — inicia o checkout hospedado pelo PagBank.
  *
  * Recebe APENAS o slug do produto. O preço é resolvido no servidor a partir
  * de PRODUCTS — NUNCA confiar em valor vindo do client.
@@ -10,7 +10,7 @@
 
 import { getProductBySlug } from '@/data/products'
 import { getOrderStore } from '@/lib/orders/store'
-import { createCheckoutPreference } from '@/lib/mercadopago/preference'
+import { createPagBankCheckout } from '@/lib/pagbank/checkout'
 
 export interface CheckoutResult {
   ok: boolean
@@ -32,12 +32,12 @@ export async function createCheckout(productSlug: string): Promise<CheckoutResul
       amount: product.price, // integral — preço do servidor
     })
 
-    const { preferenceId, initPoint } = await createCheckoutPreference(order)
-    await store.setPreference(order.id, preferenceId)
+    const { checkoutId, checkoutUrl } = await createPagBankCheckout(order, product)
+    await store.setCheckout(order.id, checkoutId)
 
-    return { ok: true, initPoint }
+    return { ok: true, initPoint: checkoutUrl }
   } catch (err) {
-    console.error('[checkout] falha ao criar preference:', err)
+    console.error('[checkout] falha ao criar checkout PagBank:', err)
     return { ok: false, error: 'Não foi possível iniciar o pagamento. Tente novamente.' }
   }
 }

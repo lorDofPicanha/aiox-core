@@ -1,0 +1,268 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//AIOS//Trilha Empresarial 20 Semanas//PT-BR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Trilha Empresarial + IA
+X-WR-TIMEZONE:America/Sao_Paulo
+BEGIN:VEVENT
+UID:aios-estudo-w01-20260728@local
+DTSTAMP:20260727T120000Z
+DTSTART;TZID=America/Sao_Paulo:20260728T070000
+DTEND;TZID=America/Sao_Paulo:20260728T073000
+SUMMARY:Trilha 01/20 — Administração e fundamentos de IA
+DESCRIPTION:Todos os dias: 3h de formação empresarial + 1h exclusiva de IA.\nNegócio: B01\, B02 e C16 — empresa-laboratório\, funções administrativas\, objetivo anual\, organograma e responsabilidades.\nIA: conceitos fundamentais\, tipos de IA\, capacidades\, limitações e supervisão humana.\nEntrega: diagnóstico inicial e mapa do sistema empresarial.
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Iniciar a semana 1 da Trilha Empresarial + IA
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aios-estudo-w02-20260804@local
+DTSTAMP:20260727T120000Z
+DTSTART;TZID=America/Sao_Paulo:20260804T070000
+DTEND;TZID=America/Sao_Paulo:20260804T073000
+SUMMARY:Trilha 02/20 — Sistema de gestão e contabilidade
+DESCRIPTION:Todos os dias: 3h de formação empresarial + 1h exclusiva de IA.\nNegócio: B02\, B03 e A01 — metas\, reuniões\, indicadores\, patrimônio\, contas e regime de competência.\nIA: fundamentos de prompting — objetivo\, contexto\, restrições\, formato e exemplos.\nEntrega: sistema mínimo de gestão e classificação de 20 transações.
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Iniciar a semana 2 da Trilha Empresarial + IA
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aios-estudo-w03-20260811@local
+DTSTAMP:20260727T120000Z
+DTSTART;TZID=America/Sao_Paulo:20260811T070000
+DTEND;TZID=America/Sao_Paulo:20260811T073000
+SUMMARY:Trilha 03/20 — Demonstrativos e análise financeira
+DESCRIPTION:Todos os dias: 3h de formação empresarial + 1h exclusiva de IA.\nNegócio: A01 e A02 — balanço\, DRE\, DFC\, análise vertical e horizontal\, liquidez\, margens e endividamento.\nIA: contexto\, decomposição de tarefas\, respostas estruturadas e verificação factual.\nEntrega: relatório contábil gerencial de três páginas.
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Iniciar a semana 3 da Trilha Empresarial + IA
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aios-estudo-w04-20260818@local
+DTSTAMP:20260727T120000Z
+DTSTART;TZID=America/Sao_Paulo:20260818T070000
+DTEND;TZID=America/Sao_Paulo:20260818T073000
+SUMMARY:Trilha 04/20 — Caixa, custos e preços
+DESCRIPTION:Todos os dias: 3h de formação empresarial + 1h exclusiva de IA.\nNegócio: A03 e A04 — conciliação\, fluxo de caixa de 13 semanas\, custos\, margem de contribuição\, preço e ponto de equilíbrio.\nIA: pesquisa assistida\, comparação de fontes\, citações e prevenção de alucinações.\nEntrega: planilha financeira com cenários base\, estresse e crescimento.
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Iniciar a semana 4 da Trilha Empresarial + IA
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aios-estudo-w05-20260825@local
+DTSTAMP:20260727T120000Z
+DTSTART;TZID=America/Sao_Paulo:20260825T070000
+DTEND;TZID=America/Sao_Paulo:20260825T073000
+SUMMARY:Trilha 05/20 — Investimentos e microeconomia
+DESCRIPTION:Todos os dias: 3h de formação empresarial + 1h exclusiva de IA.\nNegócio: A05\, A06 e A08 — risco\, retorno\, VPL\, TIR\, payback\, demanda\, elasticidade\, custos e concorrência.\nIA: análise de planilhas com IA\, qualidade dos dados e proteção de informações sensíveis.\nEntrega: memorando comparando dois investimentos e seus riscos.
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Iniciar a semana 5 da Trilha Empresarial + IA
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aios-estudo-w06-20260901@local
+DTSTAMP:20260727T120000Z
+DTSTART;TZID=America/Sao_Paulo:20260901T070000
+DTEND;TZID=America/Sao_Paulo:20260901T073000
+SUMMARY:Trilha 06/20 — Macroeconomia e estratégia
+DESCRIPTION:Todos os dias: 3h de formação empresarial + 1h exclusiva de IA.\nNegócio: A09 e B04 — PIB\, inflação\, juros\, câmbio\, cenários\, vantagem competitiva e formulação estratégica.\nIA: construção de cenários\, análise de premissas e crítica de recomendações geradas.\nEntrega: boletim macroeconômico e definição do problema estratégico.
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Iniciar a semana 6 da Trilha Empresarial + IA
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aios-estudo-w07-20260908@local
+DTSTAMP:20260727T120000Z
+DTSTART;TZID=America/Sao_Paulo:20260908T070000
+DTEND;TZID=America/Sao_Paulo:20260908T073000
+SUMMARY:Trilha 07/20 — Estratégia competitiva e mercado
+DESCRIPTION:Todos os dias: 3h de formação empresarial + 1h exclusiva de IA.\nNegócio: B04\, B05 e B06 — cinco forças\, concorrentes\, cadeia de valor\, trade-offs\, onde competir e como vencer.\nIA: pesquisa de mercado\, síntese de concorrentes e validação humana das evidências.\nEntrega: memorando estratégico de duas páginas.
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Iniciar a semana 7 da Trilha Empresarial + IA
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aios-estudo-w08-20260915@local
+DTSTAMP:20260727T120000Z
+DTSTART;TZID=America/Sao_Paulo:20260915T070000
+DTEND;TZID=America/Sao_Paulo:20260915T073000
+SUMMARY:Trilha 08/20 — Marketing e posicionamento
+DESCRIPTION:Todos os dias: 3h de formação empresarial + 1h exclusiva de IA.\nNegócio: B07\, B08 e B09 — ICP\, persona\, posicionamento\, proposta de valor\, canais\, conteúdo\, CAC\, conversão\, ROAS e LTV.\nIA: geração e avaliação de conteúdo\, análise de campanhas e manutenção da voz da marca.\nEntrega: plano de marketing de 90 dias com painel do funil.
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Iniciar a semana 8 da Trilha Empresarial + IA
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aios-estudo-w09-20260922@local
+DTSTAMP:20260727T120000Z
+DTSTART;TZID=America/Sao_Paulo:20260922T070000
+DTEND;TZID=America/Sao_Paulo:20260922T073000
+SUMMARY:Trilha 09/20 — Vendas e negociação
+DESCRIPTION:Todos os dias: 3h de formação empresarial + 1h exclusiva de IA.\nNegócio: B10\, B11 e B12 — funil\, qualificação\, descoberta\, proposta\, metas\, BATNA/MAANA\, ZOPA e concessões.\nIA: preparação comercial\, simulação de objeções e revisão humana antes de qualquer envio.\nEntrega: playbook comercial e negociação simulada documentada.
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Iniciar a semana 9 da Trilha Empresarial + IA
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aios-estudo-w10-20260929@local
+DTSTAMP:20260727T120000Z
+DTSTART;TZID=America/Sao_Paulo:20260929T070000
+DTEND;TZID=America/Sao_Paulo:20260929T073000
+SUMMARY:Trilha 10/20 — Modelo de negócio e produto
+DESCRIPTION:Todos os dias: 3h de formação empresarial + 1h exclusiva de IA.\nNegócio: B13 e B14 — Business Model Canvas\, descoberta\, visão\, priorização\, hipóteses e experimentos.\nIA: descoberta assistida\, agrupamento de entrevistas e desenho de testes sem inventar evidências.\nEntrega: Canvas atual\, duas alternativas e experimento prioritário.
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Iniciar a semana 10 da Trilha Empresarial + IA
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aios-estudo-w11-20261006@local
+DTSTAMP:20260727T120000Z
+DTSTART;TZID=America/Sao_Paulo:20261006T070000
+DTEND;TZID=America/Sao_Paulo:20261006T073000
+SUMMARY:Trilha 11/20 — Experiência do cliente e processos
+DESCRIPTION:Todos os dias: 3h de formação empresarial + 1h exclusiva de IA.\nNegócio: B15 e C01 — jornada\, retenção\, saúde do cliente\, SIPOC\, fluxo atual e responsabilidades.\nIA: atendimento assistido\, base de conhecimento\, escalonamento e limites de automação.\nEntrega: jornada do cliente e mapa de um processo crítico.
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Iniciar a semana 11 da Trilha Empresarial + IA
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aios-estudo-w12-20261013@local
+DTSTAMP:20260727T120000Z
+DTSTART;TZID=America/Sao_Paulo:20261013T070000
+DTEND;TZID=America/Sao_Paulo:20261013T073000
+SUMMARY:Trilha 12/20 — Lean, qualidade e projetos
+DESCRIPTION:Todos os dias: 3h de formação empresarial + 1h exclusiva de IA.\nNegócio: C02\, C16\, C17 e C18 — desperdício\, gargalo\, capacidade\, charter\, escopo\, riscos\, sprint e retrospectiva.\nIA: desenho de workflows\, automações simples\, aprovação humana e logs.\nEntrega: ciclo real de melhoria com indicador antes e depois.
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Iniciar a semana 12 da Trilha Empresarial + IA
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aios-estudo-w13-20261020@local
+DTSTAMP:20260727T120000Z
+DTSTART;TZID=America/Sao_Paulo:20261020T070000
+DTEND;TZID=America/Sao_Paulo:20261020T073000
+SUMMARY:Trilha 13/20 — Supply chain e estoques
+DESCRIPTION:Todos os dias: 3h de formação empresarial + 1h exclusiva de IA.\nNegócio: C04\, C05 e C06 — fornecedores\, armazenagem\, curva ABC/XYZ\, giro\, reposição\, custo total e risco.\nIA: previsão de demanda\, análise de compras e validação de dados operacionais.\nEntrega: mapa da cadeia\, política de estoque e scorecard de fornecedores.
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Iniciar a semana 13 da Trilha Empresarial + IA
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aios-estudo-w14-20261027@local
+DTSTAMP:20260727T120000Z
+DTSTART;TZID=America/Sao_Paulo:20261027T070000
+DTEND;TZID=America/Sao_Paulo:20261027T073000
+SUMMARY:Trilha 14/20 — Pessoas e liderança
+DESCRIPTION:Todos os dias: 3h de formação empresarial + 1h exclusiva de IA.\nNegócio: C07\, C08 e C09 — contratação\, onboarding\, delegação\, feedback\, desempenho\, segurança psicológica e reuniões.\nIA: apoio a RH\, vieses\, privacidade de colaboradores e decisões que não devem ser automatizadas.\nEntrega: manual mínimo de pessoas e rituais de liderança.
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Iniciar a semana 14 da Trilha Empresarial + IA
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aios-estudo-w15-20261103@local
+DTSTAMP:20260727T120000Z
+DTSTART;TZID=America/Sao_Paulo:20261103T070000
+DTEND;TZID=America/Sao_Paulo:20261103T073000
+SUMMARY:Trilha 15/20 — Dados e indicadores
+DESCRIPTION:Todos os dias: 3h de formação empresarial + 1h exclusiva de IA.\nNegócio: C10\, C11 e C12 — estatística\, limpeza\, dicionário de dados\, KPIs\, visualização e memo decisório.\nIA: análise exploratória\, criação de gráficos\, interpretação crítica e prevenção de conclusões falsas.\nEntrega: base tratada\, dashboard com até dez KPIs e memo de decisão.
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Iniciar a semana 15 da Trilha Empresarial + IA
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aios-estudo-w16-20261110@local
+DTSTAMP:20260727T120000Z
+DTSTART;TZID=America/Sao_Paulo:20261110T070000
+DTEND;TZID=America/Sao_Paulo:20261110T073000
+SUMMARY:Trilha 16/20 — Tecnologia, IA e segurança
+DESCRIPTION:Todos os dias: 3h de formação empresarial + 1h exclusiva de IA.\nNegócio: C13\, C14\, C15 e C19 — transformação digital\, casos de IA\, sistemas\, acessos\, backups e resposta a incidentes.\nIA: selecionar uma POC\, medir qualidade e tempo poupado\, registrar erros e aplicar controles do NIST.\nEntrega: roadmap tecnológico e business case da POC de IA.
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Iniciar a semana 16 da Trilha Empresarial + IA
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aios-estudo-w17-20261117@local
+DTSTAMP:20260727T120000Z
+DTSTART;TZID=America/Sao_Paulo:20261117T070000
+DTEND;TZID=America/Sao_Paulo:20261117T073000
+SUMMARY:Trilha 17/20 — Jurídico, tributário e LGPD
+DESCRIPTION:Todos os dias: 3h de formação empresarial + 1h exclusiva de IA.\nNegócio: A10\, A11\, A12 e A16 — Ltda.\, sistema tributário\, compliance trabalhista\, dados pessoais e obrigações.\nIA: dados pessoais em prompts\, contratos com fornecedores de IA\, retenção e revisão jurídica humana.\nEntrega: mapa jurídico\, calendário de obrigações e checklist de privacidade.
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Iniciar a semana 17 da Trilha Empresarial + IA
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aios-estudo-w18-20261124@local
+DTSTAMP:20260727T120000Z
+DTSTART;TZID=America/Sao_Paulo:20261124T070000
+DTEND;TZID=America/Sao_Paulo:20261124T073000
+SUMMARY:Trilha 18/20 — Governança, integridade e riscos
+DESCRIPTION:Todos os dias: 3h de formação empresarial + 1h exclusiva de IA.\nNegócio: A13\, A14 e A15 — alçadas\, accountability\, registro de riscos\, controles\, integridade e canal de relato.\nIA: política de uso\, inventário de modelos\, donos\, testes\, monitoramento e protocolo de incidentes.\nEntrega: kit mínimo de governança e registro com 15 riscos.
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Iniciar a semana 18 da Trilha Empresarial + IA
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aios-estudo-w19-20261201@local
+DTSTAMP:20260727T120000Z
+DTSTART;TZID=America/Sao_Paulo:20261201T070000
+DTEND;TZID=America/Sao_Paulo:20261201T073000
+SUMMARY:Trilha 19/20 — Projeto final integrado I
+DESCRIPTION:Todos os dias: 3h de formação empresarial + 1h exclusiva de IA.\nNegócio: consolidar diagnóstico\, estratégia\, modelo\, finanças\, marketing\, vendas\, produto\, operações e cadeia.\nIA: integrar um caso de uso ao modelo financeiro\, aos processos e aos riscos da empresa.\nEntrega: primeira versão do plano empresarial e lista de inconsistências.
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Iniciar a semana 19 da Trilha Empresarial + IA
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:aios-estudo-w20-20261208@local
+DTSTAMP:20260727T120000Z
+DTSTART;TZID=America/Sao_Paulo:20261208T070000
+DTEND;TZID=America/Sao_Paulo:20261208T073000
+SUMMARY:Trilha 20/20 — Projeto final e defesa
+DESCRIPTION:Todos os dias: 3h de formação empresarial + 1h exclusiva de IA.\nNegócio: consolidar pessoas\, dados\, tecnologia\, jurídico\, governança\, riscos e plano de execução de 90 dias.\nIA: fechar roadmap de IA\, indicadores\, guardrails\, supervisão humana e próximos experimentos.\nEntrega: documento final\, apresentação de 15 minutos e retrospectiva da formação.
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Concluir a Trilha Empresarial + IA
+END:VALARM
+END:VEVENT
+END:VCALENDAR

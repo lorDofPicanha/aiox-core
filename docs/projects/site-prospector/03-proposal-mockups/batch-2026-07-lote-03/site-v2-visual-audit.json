@@ -1,0 +1,441 @@
+{
+  "generatedAt": "2026-07-29T19:27:09.116Z",
+  "captures": 48,
+  "expectedCaptures": 48,
+  "failures": [],
+  "pass": true,
+  "audit": [
+    {
+      "business": "marias-moda-plus",
+      "page": "index",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3843,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "marias-moda-plus",
+      "page": "index",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 4230,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "marias-moda-plus",
+      "page": "catalogo",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2830,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "marias-moda-plus",
+      "page": "catalogo",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3694,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "marias-moda-plus",
+      "page": "categoria",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3457,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "marias-moda-plus",
+      "page": "categoria",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3627,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "marias-moda-plus",
+      "page": "produto",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3201,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "marias-moda-plus",
+      "page": "produto",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3667,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "marias-moda-plus",
+      "page": "sobre",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2878,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "marias-moda-plus",
+      "page": "sobre",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 4082,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "marias-moda-plus",
+      "page": "guia",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2817,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "marias-moda-plus",
+      "page": "guia",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3301,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "marias-moda-plus",
+      "page": "contato",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1649,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "marias-moda-plus",
+      "page": "contato",
+      "viewport": "mobile",
+      "width": 469,
+      "height": 2101,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "marias-moda-plus",
+      "page": "carrinho",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2368,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "marias-moda-plus",
+      "page": "carrinho",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2936,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "olibi",
+      "page": "index",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3314,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "olibi",
+      "page": "index",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 4227,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "olibi",
+      "page": "catalogo",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2799,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "olibi",
+      "page": "catalogo",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3550,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "olibi",
+      "page": "categoria",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2964,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "olibi",
+      "page": "categoria",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3493,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "olibi",
+      "page": "produto",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3186,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "olibi",
+      "page": "produto",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3563,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "olibi",
+      "page": "sobre",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2823,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "olibi",
+      "page": "sobre",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3865,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "olibi",
+      "page": "guia",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2451,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "olibi",
+      "page": "guia",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3286,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "olibi",
+      "page": "contato",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1648,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "olibi",
+      "page": "contato",
+      "viewport": "mobile",
+      "width": 398,
+      "height": 2060,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "olibi",
+      "page": "carrinho",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2353,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "olibi",
+      "page": "carrinho",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2831,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "salamandra",
+      "page": "index",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3358,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "salamandra",
+      "page": "index",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 4354,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "salamandra",
+      "page": "catalogo",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2788,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "salamandra",
+      "page": "catalogo",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3533,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "salamandra",
+      "page": "categoria",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3080,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "salamandra",
+      "page": "categoria",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3482,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "salamandra",
+      "page": "produto",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3183,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "salamandra",
+      "page": "produto",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3558,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "salamandra",
+      "page": "sobre",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2724,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "salamandra",
+      "page": "sobre",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3793,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "salamandra",
+      "page": "guia",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2510,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "salamandra",
+      "page": "guia",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3258,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "salamandra",
+      "page": "contato",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1649,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "salamandra",
+      "page": "contato",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2051,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "salamandra",
+      "page": "carrinho",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2350,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "salamandra",
+      "page": "carrinho",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2820,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    }
+  ]
+}

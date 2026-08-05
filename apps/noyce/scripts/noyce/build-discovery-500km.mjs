@@ -9,6 +9,11 @@
 //   node scripts/noyce/build-discovery-500km.mjs --watch    (refresh automático a cada 1h — daemon)
 
 import { readFileSync, renameSync, writeFileSync } from "node:fs";
+import {
+  mergeDiscoveryItems,
+  retentionStartFor,
+  shouldAbortCollection,
+} from "./discovery-incremental-policy.mjs";
 import { assertPublishableDiscoverySnapshot } from "./discovery-snapshot-contract.mjs";
 
 const BASE = "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao";
@@ -18,8 +23,7 @@ const MODALIDADES = [4, 5, 6];
 const PAGE_SIZE = 50;
 const MAX_PAGES = { 4: 200, 5: 200, 6: 40 };
 const DELAY_MS = 1500; // educado: o PNCP rate-limita bursts curtos.
-const RETRIES = 5;
-const REQUEST_TIMEOUT_MS = 13_000;
+const RETRIES = 3;
 const REFRESH_MS = 60 * 60 * 1000; // 1 hora (modo --watch).
 
 const OBRAS_RE = /obra|engenharia|reforma|constru|pavimenta|edifica|amplia|recupera[çc][ãa]o|drenagem|terraplan|saneamento|infraestrutura|quadra|gin[áa]sio|ponte|cal[çc]ament|muro|pra[çc]a|ubs\b|creche|escola/i;
@@ -27,7 +31,18 @@ const OBRAS_RE = /obra|engenharia|reforma|constru|pavimenta|edifica|amplia|recup
 const args = process.argv.slice(2);
 const watch = args.includes("--watch");
 const daysFlag = args.indexOf("--days");
-const days = Number.parseInt(daysFlag >= 0 ? args[daysFlag + 1] : args.find((a) => /^\d+$/.test(a)) ?? "60", 10);
+const queryDays = Number.parseInt(daysFlag >= 0 ? args[daysFlag + 1] : args.find((a) => /^\d+$/.test(a)) ?? "60", 10);
+const retentionDaysFlag = args.indexOf("--retention-days");
+const retentionDays = Number.parseInt(retentionDaysFlag >= 0 ? args[retentionDaysFlag + 1] : String(queryDays), 10);
+const maxRuntimeFlag = args.indexOf("--max-runtime-min");
+const maxRuntimeMin = Number.parseInt(maxRuntimeFlag >= 0 ? args[maxRuntimeFlag + 1] : "50", 10);
+const requestTimeoutFlag = args.indexOf("--request-timeout-ms");
+const requestTimeoutMs = Number.parseInt(requestTimeoutFlag >= 0 ? args[requestTimeoutFlag + 1] : "30000", 10);
+
+for (const [name, value] of Object.entries({ queryDays, retentionDays, maxRuntimeMin, requestTimeoutMs })) {
+  if (!Number.isFinite(value) || value < 1) throw new TypeError(`${name} deve ser um inteiro positivo`);
+}
+if (retentionDays < queryDays) throw new TypeError("retentionDays deve ser maior ou igual a queryDays");
 
 // Base de municípios no raio (estática) + helpers (carregados uma vez).
 const geo = JSON.parse(readFileSync(new URL("../../lib/data/municipios-raio-500km.json", import.meta.url), "utf8"));
@@ -36,11 +51,13 @@ const UFS = [...new Set(geo.municipios.map((m) => m.uf))];
 const OUT = new URL("../../lib/data/discovery-snapshot.json", import.meta.url);
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-const BACKOFF = [5000, 12000, 25000, 45000];
-async function fetchJson(url) {
+const BACKOFF = [3000, 8000];
+async function fetchJson(url, deadlineAt) {
   for (let i = 0; i < RETRIES; i++) {
+    const remainingMs = deadlineAt - Date.now();
+    if (remainingMs <= 0) throw new Error(`orçamento de ${maxRuntimeMin} min esgotado`);
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+    const timeout = setTimeout(() => controller.abort(), Math.min(requestTimeoutMs, remainingMs));
     try {
       const res = await fetch(url, { signal: controller.signal, headers: { accept: "application/json", "user-agent": UA } });
       if (res.status === 204) return { data: [], totalPaginas: 0, totalRegistros: 0 };
@@ -62,24 +79,27 @@ function yyyymmdd(d) {
 
 async function buildOnce() {
   const hoje = new Date();
-  const dataInicial = yyyymmdd(new Date(hoje.getTime() - days * 86_400_000));
+  const deadlineAt = Date.now() + maxRuntimeMin * 60_000;
+  const dataInicial = yyyymmdd(new Date(hoje.getTime() - queryDays * 86_400_000));
+  const retentionStart = retentionStartFor(hoje, retentionDays);
   const dataFinal = yyyymmdd(hoje);
-  console.log(`\n[${hoje.toISOString()}] Raio 500km de ${geo.origem.nome}: ${geo.municipios.length} municípios, ${UFS.length} UFs. Janela ${dataInicial}→${dataFinal} (${days}d). Mod ${MODALIDADES.join(",")}.`);
+  console.log(`\n[${hoje.toISOString()}] Raio 500km de ${geo.origem.nome}: ${geo.municipios.length} municípios, ${UFS.length} UFs. Consulta ${dataInicial}→${dataFinal} (${queryDays}d), retenção ${retentionDays}d. Mod ${MODALIDADES.join(",")}.`);
 
   const seen = new Map();
   const stats = { okQueries: 0, failQueries: 0, brutos: 0, foraRaio: 0, naoObra: 0 };
   const failures = [];
 
-  for (const uf of UFS) {
+  collection: for (const uf of UFS) {
     for (const mod of MODALIDADES) {
       let page = 1, totalPaginas = 1;
       do {
         const url = `${BASE}?dataInicial=${dataInicial}&dataFinal=${dataFinal}&codigoModalidadeContratacao=${mod}&uf=${uf}&pagina=${page}&tamanhoPagina=${PAGE_SIZE}`;
         let j;
-        try { j = await fetchJson(url); stats.okQueries++; }
+        try { j = await fetchJson(url, deadlineAt); stats.okQueries++; }
         catch (error) {
           stats.failQueries++;
           failures.push({ uf, modalidade: mod, pagina: page, error: error instanceof Error ? error.message : String(error) });
+          if (shouldAbortCollection(stats)) break collection;
           break;
         }
         totalPaginas = j.totalPaginas ?? 0;
@@ -117,7 +137,7 @@ async function buildOnce() {
     process.stdout.write(`  ${uf}: ${seen.size} editais de obra no raio\n`);
   }
 
-  const items = [...seen.values()].sort((a, b) => a.distanceKm - b.distanceKm);
+  const freshItems = [...seen.values()].sort((a, b) => a.distanceKm - b.distanceKm);
 
   // ── DIFF vs run anterior (embrião do Radar): quem é NOVO desde a última varredura? ──
   // firstSeenAt é carregado adiante entre runs (o item mantém a data em que apareceu pela
@@ -129,10 +149,14 @@ async function buildOnce() {
     prevGeneratedAt = prev.generatedAt ?? null;
     for (const it of prev.items ?? []) prevItems.set(it.id, it);
   } catch { /* primeiro run — sem base de comparação */ }
+  const items = queryDays < retentionDays
+    ? mergeDiscoveryItems({ freshItems, previousItems: [...prevItems.values()], retentionStart })
+    : freshItems;
   const nowIso = new Date().toISOString();
   for (const it of items) it.firstSeenAt = prevItems.get(it.id)?.firstSeenAt ?? nowIso;
   const novosIds = items.filter((i) => !prevItems.has(i.id)).map((i) => i.id);
-  const removidos = [...prevItems.keys()].filter((id) => !seen.has(id)).length;
+  const currentIds = new Set(items.map((item) => item.id));
+  const removidos = [...prevItems.keys()].filter((id) => !currentIds.has(id)).length;
 
   const byUf = {};
   for (const i of items) byUf[i.uf] = (byUf[i.uf] || 0) + 1;
@@ -140,7 +164,8 @@ async function buildOnce() {
     generatedAt: nowIso,
     source: "PNCP /contratacoes/publicacao (público, read-only)",
     pipeline: "build-discovery-500km.mjs → IBGE haversine 500km → filtro obras → dedupe id",
-    windowDays: days, windowStart: dataInicial, windowEnd: dataFinal, raioKm: 500,
+    windowDays: retentionDays, windowStart: yyyymmdd(retentionStart), windowEnd: dataFinal,
+    queryWindowDays: queryDays, queryWindowStart: dataInicial, raioKm: 500,
     origem: geo.origem, municipiosNoRaio: geo.municipios.length, ufs: UFS,
     itensPorUf: byUf, queryStats: stats, failures,
     diff: {

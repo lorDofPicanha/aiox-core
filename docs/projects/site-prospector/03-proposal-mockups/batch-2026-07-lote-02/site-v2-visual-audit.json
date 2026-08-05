@@ -1,0 +1,1017 @@
+{
+  "generatedAt": "2026-07-29T18:47:58.987Z",
+  "captures": 112,
+  "expectedCaptures": 112,
+  "failures": [],
+  "pass": true,
+  "audit": [
+    {
+      "business": "amar-moda-praia",
+      "page": "index",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3686,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "amar-moda-praia",
+      "page": "index",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 4136,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "amar-moda-praia",
+      "page": "catalogo",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2784,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "amar-moda-praia",
+      "page": "catalogo",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3525,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "amar-moda-praia",
+      "page": "categoria",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3346,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "amar-moda-praia",
+      "page": "categoria",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3476,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "amar-moda-praia",
+      "page": "produto",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3181,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "amar-moda-praia",
+      "page": "produto",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3516,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "amar-moda-praia",
+      "page": "sobre",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2721,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "amar-moda-praia",
+      "page": "sobre",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3728,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "amar-moda-praia",
+      "page": "guia",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2726,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "amar-moda-praia",
+      "page": "guia",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3202,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "amar-moda-praia",
+      "page": "contato",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1648,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "amar-moda-praia",
+      "page": "contato",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2045,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "amar-moda-praia",
+      "page": "carrinho",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2348,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "amar-moda-praia",
+      "page": "carrinho",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2815,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "batard-padaria-artesanal",
+      "page": "index",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3579,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "batard-padaria-artesanal",
+      "page": "index",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 4084,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "batard-padaria-artesanal",
+      "page": "catalogo",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2468,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "batard-padaria-artesanal",
+      "page": "catalogo",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3289,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "batard-padaria-artesanal",
+      "page": "categoria",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3082,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "batard-padaria-artesanal",
+      "page": "categoria",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3325,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "batard-padaria-artesanal",
+      "page": "produto",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3076,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "batard-padaria-artesanal",
+      "page": "produto",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3463,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "batard-padaria-artesanal",
+      "page": "sobre",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2720,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "batard-padaria-artesanal",
+      "page": "sobre",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3800,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "batard-padaria-artesanal",
+      "page": "guia",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2680,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "batard-padaria-artesanal",
+      "page": "guia",
+      "viewport": "mobile",
+      "width": 426,
+      "height": 3253,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "batard-padaria-artesanal",
+      "page": "contato",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1648,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "batard-padaria-artesanal",
+      "page": "contato",
+      "viewport": "mobile",
+      "width": 451,
+      "height": 2060,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "batard-padaria-artesanal",
+      "page": "carrinho",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2260,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "batard-padaria-artesanal",
+      "page": "carrinho",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2747,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "donatella-moda-autoral",
+      "page": "index",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 4258,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "donatella-moda-autoral",
+      "page": "index",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 4267,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "donatella-moda-autoral",
+      "page": "catalogo",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2784,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "donatella-moda-autoral",
+      "page": "catalogo",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3525,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "donatella-moda-autoral",
+      "page": "categoria",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3747,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "donatella-moda-autoral",
+      "page": "categoria",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3476,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "donatella-moda-autoral",
+      "page": "produto",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3181,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "donatella-moda-autoral",
+      "page": "produto",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3516,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "donatella-moda-autoral",
+      "page": "sobre",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2816,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "donatella-moda-autoral",
+      "page": "sobre",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3749,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "donatella-moda-autoral",
+      "page": "guia",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3060,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "donatella-moda-autoral",
+      "page": "guia",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3202,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "donatella-moda-autoral",
+      "page": "contato",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1648,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "donatella-moda-autoral",
+      "page": "contato",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2045,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "donatella-moda-autoral",
+      "page": "carrinho",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2348,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "donatella-moda-autoral",
+      "page": "carrinho",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2815,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "enne-chocolate",
+      "page": "index",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3905,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "enne-chocolate",
+      "page": "index",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3864,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "enne-chocolate",
+      "page": "catalogo",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2784,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "enne-chocolate",
+      "page": "catalogo",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3525,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "enne-chocolate",
+      "page": "categoria",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3744,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "enne-chocolate",
+      "page": "categoria",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3476,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "enne-chocolate",
+      "page": "produto",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3181,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "enne-chocolate",
+      "page": "produto",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3516,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "enne-chocolate",
+      "page": "sobre",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2816,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "enne-chocolate",
+      "page": "sobre",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3785,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "enne-chocolate",
+      "page": "guia",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3057,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "enne-chocolate",
+      "page": "guia",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3202,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "enne-chocolate",
+      "page": "contato",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1648,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "enne-chocolate",
+      "page": "contato",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2045,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "enne-chocolate",
+      "page": "carrinho",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2348,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "enne-chocolate",
+      "page": "carrinho",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2815,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "farinha-na-cozinha",
+      "page": "index",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3425,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "farinha-na-cozinha",
+      "page": "index",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 4446,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "farinha-na-cozinha",
+      "page": "catalogo",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2784,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "farinha-na-cozinha",
+      "page": "catalogo",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3640,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "farinha-na-cozinha",
+      "page": "categoria",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3365,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "farinha-na-cozinha",
+      "page": "categoria",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3559,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "farinha-na-cozinha",
+      "page": "produto",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3181,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "farinha-na-cozinha",
+      "page": "produto",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3541,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "farinha-na-cozinha",
+      "page": "sobre",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2721,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "farinha-na-cozinha",
+      "page": "sobre",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3744,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "farinha-na-cozinha",
+      "page": "guia",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2742,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "farinha-na-cozinha",
+      "page": "guia",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3219,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "farinha-na-cozinha",
+      "page": "contato",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1648,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "farinha-na-cozinha",
+      "page": "contato",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2061,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "farinha-na-cozinha",
+      "page": "carrinho",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2366,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "farinha-na-cozinha",
+      "page": "carrinho",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2865,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "teodosia",
+      "page": "index",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3900,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "teodosia",
+      "page": "index",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 4192,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "teodosia",
+      "page": "catalogo",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2835,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "teodosia",
+      "page": "catalogo",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3670,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "teodosia",
+      "page": "categoria",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3789,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "teodosia",
+      "page": "categoria",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3579,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "teodosia",
+      "page": "produto",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3210,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "teodosia",
+      "page": "produto",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3586,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "teodosia",
+      "page": "sobre",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2728,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "teodosia",
+      "page": "sobre",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3806,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "teodosia",
+      "page": "guia",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3081,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "teodosia",
+      "page": "guia",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3285,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "teodosia",
+      "page": "contato",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1648,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "teodosia",
+      "page": "contato",
+      "viewport": "mobile",
+      "width": 398,
+      "height": 2059,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "teodosia",
+      "page": "carrinho",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2377,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "teodosia",
+      "page": "carrinho",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2878,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "velluc",
+      "page": "index",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 4390,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "velluc",
+      "page": "index",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 4201,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "velluc",
+      "page": "catalogo",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2784,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "velluc",
+      "page": "catalogo",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3640,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "velluc",
+      "page": "categoria",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3365,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "velluc",
+      "page": "categoria",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3559,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "velluc",
+      "page": "produto",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3181,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "velluc",
+      "page": "produto",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3541,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "velluc",
+      "page": "sobre",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2721,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "velluc",
+      "page": "sobre",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3766,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "velluc",
+      "page": "guia",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2742,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "velluc",
+      "page": "guia",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3219,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "velluc",
+      "page": "contato",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1648,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "velluc",
+      "page": "contato",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2061,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "velluc",
+      "page": "carrinho",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2366,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "velluc",
+      "page": "carrinho",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2865,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    }
+  ]
+}

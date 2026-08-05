@@ -1,0 +1,1593 @@
+{
+  "generatedAt": "2026-07-29T18:19:40.319Z",
+  "captures": 176,
+  "expectedCaptures": 176,
+  "failures": [],
+  "pass": true,
+  "audit": [
+    {
+      "business": "atelie-ruby",
+      "page": "index",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3577,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "atelie-ruby",
+      "page": "index",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 4136,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "atelie-ruby",
+      "page": "catalogo",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2784,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "atelie-ruby",
+      "page": "catalogo",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3525,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "atelie-ruby",
+      "page": "categoria",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3077,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "atelie-ruby",
+      "page": "categoria",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3476,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "atelie-ruby",
+      "page": "produto",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3181,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "atelie-ruby",
+      "page": "produto",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3516,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "atelie-ruby",
+      "page": "sobre",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2721,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "atelie-ruby",
+      "page": "sobre",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3749,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "atelie-ruby",
+      "page": "guia",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2502,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "atelie-ruby",
+      "page": "guia",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3202,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "atelie-ruby",
+      "page": "contato",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1648,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "atelie-ruby",
+      "page": "contato",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2045,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "atelie-ruby",
+      "page": "carrinho",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2348,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "atelie-ruby",
+      "page": "carrinho",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2815,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "bicudos-acessorios",
+      "page": "index",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3366,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "bicudos-acessorios",
+      "page": "index",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 4171,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "bicudos-acessorios",
+      "page": "catalogo",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2784,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "bicudos-acessorios",
+      "page": "catalogo",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3620,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "bicudos-acessorios",
+      "page": "categoria",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3077,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "bicudos-acessorios",
+      "page": "categoria",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3518,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "bicudos-acessorios",
+      "page": "produto",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3181,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "bicudos-acessorios",
+      "page": "produto",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3549,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "bicudos-acessorios",
+      "page": "sobre",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2685,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "bicudos-acessorios",
+      "page": "sobre",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3749,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "bicudos-acessorios",
+      "page": "guia",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2502,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "bicudos-acessorios",
+      "page": "guia",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3202,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "bicudos-acessorios",
+      "page": "contato",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1646,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "bicudos-acessorios",
+      "page": "contato",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2043,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "bicudos-acessorios",
+      "page": "carrinho",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2366,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "bicudos-acessorios",
+      "page": "carrinho",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2848,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "center-panos-santo-andre",
+      "page": "index",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 4585,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "center-panos-santo-andre",
+      "page": "index",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 4201,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "center-panos-santo-andre",
+      "page": "catalogo",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2784,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "center-panos-santo-andre",
+      "page": "catalogo",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3640,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "center-panos-santo-andre",
+      "page": "categoria",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3747,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "center-panos-santo-andre",
+      "page": "categoria",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3559,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "center-panos-santo-andre",
+      "page": "produto",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3181,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "center-panos-santo-andre",
+      "page": "produto",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3541,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "center-panos-santo-andre",
+      "page": "sobre",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2721,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "center-panos-santo-andre",
+      "page": "sobre",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3802,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "center-panos-santo-andre",
+      "page": "guia",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3060,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "center-panos-santo-andre",
+      "page": "guia",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3219,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "center-panos-santo-andre",
+      "page": "contato",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1648,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "center-panos-santo-andre",
+      "page": "contato",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2061,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "center-panos-santo-andre",
+      "page": "carrinho",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2366,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "center-panos-santo-andre",
+      "page": "carrinho",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2865,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "codigo-g-moda-plus-size",
+      "page": "index",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3641,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "codigo-g-moda-plus-size",
+      "page": "index",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 4135,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "codigo-g-moda-plus-size",
+      "page": "catalogo",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2784,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "codigo-g-moda-plus-size",
+      "page": "catalogo",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3520,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "codigo-g-moda-plus-size",
+      "page": "categoria",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3365,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "codigo-g-moda-plus-size",
+      "page": "categoria",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3451,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "codigo-g-moda-plus-size",
+      "page": "produto",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3181,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "codigo-g-moda-plus-size",
+      "page": "produto",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3491,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "codigo-g-moda-plus-size",
+      "page": "sobre",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2780,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "codigo-g-moda-plus-size",
+      "page": "sobre",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3806,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "codigo-g-moda-plus-size",
+      "page": "guia",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2742,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "codigo-g-moda-plus-size",
+      "page": "guia",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3201,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "codigo-g-moda-plus-size",
+      "page": "contato",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1648,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "codigo-g-moda-plus-size",
+      "page": "contato",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2044,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "codigo-g-moda-plus-size",
+      "page": "carrinho",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2348,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "codigo-g-moda-plus-size",
+      "page": "carrinho",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2814,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "flavia-nogueira-confeitaria",
+      "page": "index",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 4219,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "flavia-nogueira-confeitaria",
+      "page": "index",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 4145,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "flavia-nogueira-confeitaria",
+      "page": "catalogo",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2856,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "flavia-nogueira-confeitaria",
+      "page": "catalogo",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3550,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "flavia-nogueira-confeitaria",
+      "page": "categoria",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3433,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "flavia-nogueira-confeitaria",
+      "page": "categoria",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3493,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "flavia-nogueira-confeitaria",
+      "page": "produto",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3244,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "flavia-nogueira-confeitaria",
+      "page": "produto",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3563,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "flavia-nogueira-confeitaria",
+      "page": "sobre",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2880,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "flavia-nogueira-confeitaria",
+      "page": "sobre",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3771,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "flavia-nogueira-confeitaria",
+      "page": "guia",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2818,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "flavia-nogueira-confeitaria",
+      "page": "guia",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3286,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "flavia-nogueira-confeitaria",
+      "page": "contato",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1705,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "flavia-nogueira-confeitaria",
+      "page": "contato",
+      "viewport": "mobile",
+      "width": 398,
+      "height": 2060,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "flavia-nogueira-confeitaria",
+      "page": "carrinho",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2410,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "flavia-nogueira-confeitaria",
+      "page": "carrinho",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2831,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "immerse-earth-aroma",
+      "page": "index",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 4585,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "immerse-earth-aroma",
+      "page": "index",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 4136,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "immerse-earth-aroma",
+      "page": "catalogo",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2784,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "immerse-earth-aroma",
+      "page": "catalogo",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3525,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "immerse-earth-aroma",
+      "page": "categoria",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3293,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "immerse-earth-aroma",
+      "page": "categoria",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3476,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "immerse-earth-aroma",
+      "page": "produto",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3181,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "immerse-earth-aroma",
+      "page": "produto",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3516,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "immerse-earth-aroma",
+      "page": "sobre",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2685,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "immerse-earth-aroma",
+      "page": "sobre",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3749,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "immerse-earth-aroma",
+      "page": "guia",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2682,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "immerse-earth-aroma",
+      "page": "guia",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3202,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "immerse-earth-aroma",
+      "page": "contato",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1648,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "immerse-earth-aroma",
+      "page": "contato",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2045,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "immerse-earth-aroma",
+      "page": "carrinho",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2348,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "immerse-earth-aroma",
+      "page": "carrinho",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2815,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "julia-plus-rio",
+      "page": "index",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 4234,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "julia-plus-rio",
+      "page": "index",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 4200,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "julia-plus-rio",
+      "page": "catalogo",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2784,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "julia-plus-rio",
+      "page": "catalogo",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3635,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "julia-plus-rio",
+      "page": "categoria",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3332,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "julia-plus-rio",
+      "page": "categoria",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3518,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "julia-plus-rio",
+      "page": "produto",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3181,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "julia-plus-rio",
+      "page": "produto",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3578,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "julia-plus-rio",
+      "page": "sobre",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2720,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "julia-plus-rio",
+      "page": "sobre",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3742,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "julia-plus-rio",
+      "page": "guia",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2712,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "julia-plus-rio",
+      "page": "guia",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3253,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "julia-plus-rio",
+      "page": "contato",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1648,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "julia-plus-rio",
+      "page": "contato",
+      "viewport": "mobile",
+      "width": 451,
+      "height": 2060,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "julia-plus-rio",
+      "page": "carrinho",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2366,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "julia-plus-rio",
+      "page": "carrinho",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2863,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "mary-jayne",
+      "page": "index",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 4462,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "mary-jayne",
+      "page": "index",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 4210,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "mary-jayne",
+      "page": "catalogo",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2799,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "mary-jayne",
+      "page": "catalogo",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3665,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "mary-jayne",
+      "page": "categoria",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3757,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "mary-jayne",
+      "page": "categoria",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3576,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "mary-jayne",
+      "page": "produto",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3186,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "mary-jayne",
+      "page": "produto",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3588,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "mary-jayne",
+      "page": "sobre",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2823,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "mary-jayne",
+      "page": "sobre",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3824,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "mary-jayne",
+      "page": "guia",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3079,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "mary-jayne",
+      "page": "guia",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3303,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "mary-jayne",
+      "page": "contato",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1648,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "mary-jayne",
+      "page": "contato",
+      "viewport": "mobile",
+      "width": 398,
+      "height": 2076,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "mary-jayne",
+      "page": "carrinho",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2371,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "mary-jayne",
+      "page": "carrinho",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2881,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "plus-store-bh",
+      "page": "index",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 4581,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "plus-store-bh",
+      "page": "index",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 4136,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "plus-store-bh",
+      "page": "catalogo",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2784,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "plus-store-bh",
+      "page": "catalogo",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3525,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "plus-store-bh",
+      "page": "categoria",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3747,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "plus-store-bh",
+      "page": "categoria",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3476,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "plus-store-bh",
+      "page": "produto",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3181,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "plus-store-bh",
+      "page": "produto",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3516,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "plus-store-bh",
+      "page": "sobre",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2721,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "plus-store-bh",
+      "page": "sobre",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3749,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "plus-store-bh",
+      "page": "guia",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3060,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "plus-store-bh",
+      "page": "guia",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3202,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "plus-store-bh",
+      "page": "contato",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1648,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "plus-store-bh",
+      "page": "contato",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2045,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "plus-store-bh",
+      "page": "carrinho",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2348,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "plus-store-bh",
+      "page": "carrinho",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2815,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "queijaria-sapori-italiani",
+      "page": "index",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3856,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "queijaria-sapori-italiani",
+      "page": "index",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 4220,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "queijaria-sapori-italiani",
+      "page": "catalogo",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2784,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "queijaria-sapori-italiani",
+      "page": "catalogo",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3635,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "queijaria-sapori-italiani",
+      "page": "categoria",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3365,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "queijaria-sapori-italiani",
+      "page": "categoria",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3556,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "queijaria-sapori-italiani",
+      "page": "produto",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3181,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "queijaria-sapori-italiani",
+      "page": "produto",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3578,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "queijaria-sapori-italiani",
+      "page": "sobre",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2815,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "queijaria-sapori-italiani",
+      "page": "sobre",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3857,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "queijaria-sapori-italiani",
+      "page": "guia",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2740,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "queijaria-sapori-italiani",
+      "page": "guia",
+      "viewport": "mobile",
+      "width": 426,
+      "height": 3253,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "queijaria-sapori-italiani",
+      "page": "contato",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1648,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "queijaria-sapori-italiani",
+      "page": "contato",
+      "viewport": "mobile",
+      "width": 451,
+      "height": 2060,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "queijaria-sapori-italiani",
+      "page": "carrinho",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2366,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "queijaria-sapori-italiani",
+      "page": "carrinho",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2863,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "vhal-moda-praia",
+      "page": "index",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3598,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "vhal-moda-praia",
+      "page": "index",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 4201,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "vhal-moda-praia",
+      "page": "catalogo",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2784,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "vhal-moda-praia",
+      "page": "catalogo",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3640,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "vhal-moda-praia",
+      "page": "categoria",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3077,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "vhal-moda-praia",
+      "page": "categoria",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3559,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "vhal-moda-praia",
+      "page": "produto",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 3181,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "vhal-moda-praia",
+      "page": "produto",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3541,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "vhal-moda-praia",
+      "page": "sobre",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2685,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "vhal-moda-praia",
+      "page": "sobre",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3708,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "vhal-moda-praia",
+      "page": "guia",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2502,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "vhal-moda-praia",
+      "page": "guia",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 3219,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "vhal-moda-praia",
+      "page": "contato",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1648,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "vhal-moda-praia",
+      "page": "contato",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2061,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "vhal-moda-praia",
+      "page": "carrinho",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 2366,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    },
+    {
+      "business": "vhal-moda-praia",
+      "page": "carrinho",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 2865,
+      "horizontalOverflow": false,
+      "labelPresent": true
+    }
+  ]
+}

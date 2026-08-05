@@ -16,6 +16,67 @@ const BASE = "https://pncp.gov.br/pncp-api/v1";
 const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36";
 const TIMEOUT_MS = 60_000;
 
+export const PNCP_LIMITS = Object.freeze({
+  maxDownloadBytes: 30 * 1024 * 1024,
+  maxZipEntries: 200,
+  maxZipPdfs: 20,
+  maxZipPdfBytes: 15 * 1024 * 1024,
+  maxZipExpandedBytes: 50 * 1024 * 1024,
+  maxSourceDocs: 10,
+});
+
+export function isZipExpansionWithinLimits(entryCount: number, pdfSizes: readonly number[]): boolean {
+  if (!Number.isSafeInteger(entryCount) || entryCount < 0 || entryCount > PNCP_LIMITS.maxZipEntries) return false;
+  if (pdfSizes.length > PNCP_LIMITS.maxZipPdfs) return false;
+  let total = 0;
+  for (const size of pdfSizes) {
+    if (!Number.isSafeInteger(size) || size < 0 || size > PNCP_LIMITS.maxZipPdfBytes) return false;
+    total += size;
+    if (total > PNCP_LIMITS.maxZipExpandedBytes) return false;
+  }
+  return true;
+}
+
+export async function readBoundedResponseBytes(
+  response: Response,
+  maxBytes = PNCP_LIMITS.maxDownloadBytes,
+): Promise<Uint8Array> {
+  const lengthHeader = response.headers.get("content-length");
+  if (lengthHeader) {
+    const declared = Number(lengthHeader);
+    if (!Number.isSafeInteger(declared) || declared < 0 || declared > maxBytes) {
+      throw new Error("PNCP response exceeds download limit");
+    }
+  }
+  if (!response.body) return new Uint8Array();
+
+  const reader = response.body.getReader();
+  const chunks: Uint8Array[] = [];
+  let total = 0;
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      total += value.byteLength;
+      if (total > maxBytes) {
+        await reader.cancel();
+        throw new Error("PNCP response exceeds download limit");
+      }
+      chunks.push(value);
+    }
+  } finally {
+    reader.releaseLock();
+  }
+
+  const result = new Uint8Array(total);
+  let offset = 0;
+  for (const chunk of chunks) {
+    result.set(chunk, offset);
+    offset += chunk.byteLength;
+  }
+  return result;
+}
+
 export interface PncpRef {
   cnpj: string;
   ano: string;
@@ -84,7 +145,7 @@ export async function fetchDocBytes(ref: PncpRef, sequencialDocumento: number): 
   try {
     const res = await fetch(url, { headers: { "User-Agent": UA, Accept: "*/*" }, signal: ctrl.signal });
     if (!res.ok) return null;
-    return new Uint8Array(await res.arrayBuffer());
+    return await readBoundedResponseBytes(res);
   } catch {
     return null;
   } finally {
@@ -109,12 +170,29 @@ export async function expandToPdfs(buf: Uint8Array, label: string): Promise<{ la
     const zip = await JSZip.loadAsync(buf);
     const out: { label: string; buf: Uint8Array }[] = [];
     const names = Object.keys(zip.files).sort();
+    if (!isZipExpansionWithinLimits(names.length, [])) return [];
+    let expandedBytes = 0;
+    let pdfCount = 0;
+    const pdfSizes: number[] = [];
     for (const name of names) {
       const entry = zip.files[name];
       if (entry.dir) continue;
       if (!/\.pdf$/i.test(name)) continue; // só PDFs (ignora .dwg/.jpg/.docx internos)
       if (SKIP.test(name)) continue; // pula projeto executivo/plantas/imagens
+      pdfCount += 1;
+      if (pdfCount > PNCP_LIMITS.maxZipPdfs) return [];
+      const metadata = entry as unknown as { _data?: { uncompressedSize?: number } };
+      const declaredSize = metadata._data?.uncompressedSize;
+      if (
+        declaredSize === undefined
+        || !Number.isSafeInteger(declaredSize)
+      ) return [];
+      pdfSizes.push(declaredSize);
+      if (!isZipExpansionWithinLimits(names.length, pdfSizes)) return [];
+      expandedBytes += declaredSize;
+      if (expandedBytes > PNCP_LIMITS.maxZipExpandedBytes) return [];
       const inner = await entry.async("uint8array");
+      if (inner.byteLength !== declaredSize || inner.byteLength > PNCP_LIMITS.maxZipPdfBytes) return [];
       if (isPdf(inner)) out.push({ label: `${label} › ${name.split("/").pop()}`, buf: inner });
     }
     return out;
@@ -132,10 +210,12 @@ const SKIP = /executivo|planta|prancha|\.dwg|imagem|foto|art\b|cronograma\s+f[í
 export async function fetchEditalSources(pncpId: string, maxDocs = 6): Promise<EditalSource[]> {
   const ref = parsePncpId(pncpId);
   const docs = await listEditalDocs(ref);
+  const requestedMaxDocs = Number.isFinite(maxDocs) ? Math.floor(maxDocs) : 1;
+  const boundedMaxDocs = Math.max(1, Math.min(requestedMaxDocs, PNCP_LIMITS.maxSourceDocs));
 
   const picked = docs
     .filter((d) => RELEVANT.test(`${d.tipo} ${d.titulo}`) && !SKIP.test(`${d.tipo} ${d.titulo}`))
-    .slice(0, maxDocs);
+    .slice(0, boundedMaxDocs);
 
   const sources: EditalSource[] = [];
   for (const d of picked) {
@@ -149,9 +229,9 @@ export async function fetchEditalSources(pncpId: string, maxDocs = 6): Promise<E
       } catch {
         // PDF ilegível (escaneado/protegido) — pula, não trava o pipeline.
       }
-      if (sources.length >= maxDocs) break; // cap: evita estourar tokens com ZIP gigante
+      if (sources.length >= boundedMaxDocs) break; // cap: evita estourar tokens com ZIP gigante
     }
-    if (sources.length >= maxDocs) break;
+    if (sources.length >= boundedMaxDocs) break;
   }
   return sources;
 }

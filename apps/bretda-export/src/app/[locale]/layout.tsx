@@ -6,7 +6,12 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import { Bodoni_Moda, Raleway } from "next/font/google";
 import { routing, localeCurrency } from "@/i18n/routing";
 import { CurrencyProvider, type Currency } from "@/lib/currency";
+import { Analytics } from "@/components/Analytics";
 import "../globals.css";
+
+// Absolute URLs for og/canonical. Set NEXT_PUBLIC_SITE_URL once the custom
+// domain is live so the tags stop pointing at the preview host.
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://bretda-export.vercel.app";
 
 const bodoni = Bodoni_Moda({
   subsets: ["latin"],
@@ -36,13 +41,16 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const m = META[locale] ?? META.en;
+  const path = locale === "en" ? "/" : `/${locale}`;
   return {
+    metadataBase: new URL(SITE_URL),
     title: m.title,
     description: m.description,
     alternates: {
+      canonical: path,
       languages: { en: "/", es: "/es", de: "/de", fr: "/fr", "x-default": "/" },
     },
-    openGraph: { title: m.title, description: m.description, locale, type: "website" },
+    openGraph: { title: m.title, description: m.description, locale, type: "website", url: path },
   };
 }
 
@@ -76,6 +84,7 @@ export default async function LocaleLayout({
             {children}
           </CurrencyProvider>
         </NextIntlClientProvider>
+        <Analytics />
       </body>
     </html>
   );

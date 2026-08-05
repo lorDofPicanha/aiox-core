@@ -1,0 +1,17 @@
+# ADR-0004 — blueprint structural from archived Format Furniture home captures.
+meta:
+  slug: format
+  archetype: material-and-home-retail
+  source_url: https://format.furniture/
+  use: structural blueprint only; no source code, copy, marks, imagery, or fonts
+section_sequence:
+  - hero: full-viewport photographic surface with minimal centered navigation
+  - about: broad white-space, two-column identity statement
+  - projects: two-column image project grid with generous gutters
+  - invitation: full-width high-contrast appointment/contact block
+immutable_layout:
+  desktop: hero is a single field; statement and gallery are restrained and spacious
+  mobile: navigation simplifies; imagery stacks; broad margins remain
+target_substitutions:
+  permitted: Center Panos identity, verified copy, first-party media
+  prohibited: reference brand, source media, source text, source code

@@ -3,8 +3,6 @@ import { test } from "node:test";
 
 const { selectDiscoveryInbox } = await import("../lib/discovery-inbox.ts");
 
-const rank = { vai: 0, olha: 1, pula: 2 };
-
 test("inbox exclui editais vencidos", () => {
   const inbox = selectDiscoveryInbox([
     { id: "expired", proposalDeadline: "2026-06-30T10:00:00Z", publicationDate: "2026-06-20", triage: { verdict: "vai", score: 90 } },

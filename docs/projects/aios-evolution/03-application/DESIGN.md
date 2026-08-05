@@ -3,6 +3,7 @@
 **Status:** draft operacional  
 **Autor:** Orion (`@aios-master`)  
 **Gerado em:** 2026-07-11  
+**Atualizado em:** 2026-07-26
 **Story:** `docs/stories/active/squad-1-squad-first-architecture.md`  
 
 ## Fontes
@@ -126,6 +127,23 @@ Founder
               -> Quality Gate / Human Approval
 ```
 
+```mermaid
+flowchart TD
+    F[Founder / Operador] --> C[AIOX Corporation]
+    C --> G[Executive Council<br/>6 governance]
+    C --> R[Orchestration Runtime<br/>7 runtime]
+    R --> O[Orion / aios-master]
+    O --> S[25 squads ativos]
+    S --> H[Squad Chiefs / Tier 0]
+    H --> E[Core Agents e Specialists]
+    H --> P[Expert Pool / Mind Clones]
+    P --> K[Conclave e consulta Jarvis]
+    E --> Q[Quality e Governance Gates]
+    K --> Q
+    Q --> A[Execucao ou aprovacao humana]
+    S -. composicao temporaria .-> T[Task Forces por projeto]
+```
+
 ### Regras De Roteamento
 
 1. A intencao vira dominio.
@@ -161,6 +179,41 @@ Resumo derivado dos manifests atuais:
 - **Catalogo Jarvis de clones:** 253 entradas
 
 Observacao: a soma por squad inclui duplicacoes intencionais. Alguns clones pertencem a mais de um contexto, por exemplo seguranca + legal, dados + mercados, saude + comportamento.
+
+### Snapshot Auditavel Do Catalogo
+
+Snapshot derivado em 2026-07-26 das fontes locais, excluindo manifests sob `squads/.deprecated/`:
+
+| Medida | Total | Interpretacao |
+|---|---:|---|
+| Manifests ativos | 25 | Squads que participam da arquitetura vigente |
+| Participacoes em squads | 272 | Soma das listas `agents`; inclui repeticoes cross-squad |
+| IDs unicos nas listas de membros | 246 | Pessoas/agentes sem dupla contagem |
+| Participacoes `mind_clone` | 207 | Ocupacoes de assento por clones nos squads |
+| IDs unicos `mind_clone` | 181 | Clones distintos classificados explicitamente nos manifests |
+| Entradas no indice Jarvis | 253 | Identidades unicas catalogadas |
+| Entradas Jarvis referenciadas por squad/head | 250 | Entradas com pelo menos um vinculo operacional ativo |
+| Entradas Jarvis sem squad ativo | 3 | Catalogadas, mas sem alocacao em manifest vigente |
+
+Distribuicao das 253 entradas por origem:
+
+| Origem | Total |
+|---|---:|
+| `codex-agent` | 127 |
+| `aios-agent` | 61 |
+| `mega-brain` | 55 |
+| `squad-agent` | 10 |
+
+#### Divergencia De Schema
+
+O arquivo `.aios-core/data/jarvis-mind-clone-index.json` vigente possui `id`, `name`, `department`, `source`, `role`, `keywords`, `frameworks`, `commands` e `filePath`. Ele **nao possui**, neste snapshot, os campos `membership`, `domain` e `squads` citados em documentos anteriores.
+
+Por isso:
+
+1. Vinculo operacional e tipo sao derivados apenas dos 25 manifests ativos.
+2. `department` e `source` continuam sendo lidos diretamente do indice Jarvis.
+3. Nenhuma classificacao ausente e inferida ou inventada.
+4. Os tres IDs catalogados sem squad ativo sao: `@anderson-hernandes`, `@heleno-taveira-torres` e `@roberto-dias-duarte`.
 
 ### Executive Team
 
@@ -388,6 +441,108 @@ Observacao: a soma por squad inclui duplicacoes intencionais. Alguns clones pert
 **Mind clones:** 8
 
 - Mind clones: `@clayton-christensen`, `@eric-ries`, `@steve-blank`, `@alexander-osterwalder`, `@peter-diamandis`, `@mariana-mazzucato`, `@marty-cagan`, `@teresa-torres`
+
+## Catalogo Jarvis Integral
+
+Este e o indice alfabetico completo das **253 identidades unicas** presentes em `.aios-core/data/jarvis-mind-clone-index.json` no snapshot de 2026-07-26. O catalogo inclui mind clones, agentes funcionais, runtime e governance; portanto, "entrada Jarvis" e mais preciso do que chamar todas as entradas de mind clones.
+
+As alocacoes operacionais aparecem no inventario por squad acima. Os tres IDs sem alocacao ativa estao explicitados na secao `Divergencia De Schema`.
+
+### A (27)
+
+@abby-covert · @acacia-parks · @adam-grant · @addy-osmani · @adriana-dallari · @aios-developer · @aios-master · @aios-orchestrator · @alan-nichol · @alex-hormozi · @alexander-osterwalder · @alison-darcy · @amy-edmondson · @analyst · @analytics-agent · @anders-ericsson · @anderson-hernandes · @andre-chaperon · @andrej-karpathy · @andrew-ng · @ann-cavoukian · @ann-handley · @april-dunford · @architect · @aswath-damodaran · @atul-butte · @audience-researcher
+
+### B (7)
+
+@bakul-patel · @bj-fogg · @brad-feld · @brad-frost · @brendan-gregg · @brene-brown · @bruce-schneier
+
+### C (27)
+
+@campaign-manager · @casey-rosenthal · @cassie-kozyrkov · @cathy-pearl · @cco · @ceo · @cfo · @charity-majors · @charles-spurgeon · @chip-huyen · @chris-sanders · @chris-voss · @christian-dunker · @churn-prevention · @clayton-christensen · @cmo · @community-manager · @competitor-watcher · @conclave-coordinator · @coo · @copy-specialist · @craig-kerstiens · @crm-manager · @cro · @customer-success-manager · @customer-support-t1 · @customer-support-t2
+
+### D (21)
+
+@dan-abramov · @daniel-kahneman · @daniel-miessler · @danijel-overtime · @darren-murph · @data-engineer · @dave-snowden · @david-ebersman · @db-sage · @demis-hassabis · @demis-hassabis-dossier · @dena-bravata · @depesh-mandalia · @design-lead · @design-systems-engineer · @dev · @devops · @dieter-rams · @domer-polymarket · @don-norman · @donald-miller
+
+### E (8)
+
+@eduardo-bunge · @edward-tufte · @eliyahu-goldratt · @email-marketing-specialist · @eric-ries · @eric-topol · @erik-nymanczuk · @erik-spiekermann
+
+### F (2)
+
+@fei-fei-li · @funnel-architect
+
+### G (10)
+
+@gary-vaynerchuk · @gcr-crypto · @gene-kim · @geoff-cook · @georgia-weidman · @github-devops · @grant-cardone · @growth-strategist · @guillaume-moubeche · @guillermo-rauch
+
+### H (5)
+
+@halle-tecco · @harrison-chase · @hd-moore · @heather-meeker · @heleno-taveira-torres
+
+### I (2)
+
+@ilya-sutskever · @influencer-partnership-manager
+
+### J (16)
+
+@jason-lemkin · @jay-abraham · @jeb-blount · @jerry-liu · @jez-humble · @jim-fan · @jim-manico · @joanna-wiebe · @joe-pulizzi · @joe-reis · @joel-de-menezes-niebuhr · @johannes-thrul · @john-kindervag · @john-maeda · @josh-bersin · @julie-zhuo
+
+### K (7)
+
+@kasim-aslam · @kat-holmes · @kate-ryder · @kelsey-hightower · @kent-beck · @kent-c-dodds · @kevin-mitnick
+
+### L (11)
+
+@landing-page-optimizer · @larry-kim · @laszlo-bock · @lawrence-lessig · @lead-qualifier · @lilian-weng · @lincoln-murphy · @linus-torvalds · @liran-tal · @luana-lopes-lara · @lucia-savage
+
+### M (17)
+
+@marcal-justen-filho · @marcus-carey · @mariana-mazzucato · @market-analyst · @markus-winand · @martin-fowler · @martin-kleppmann · @marty-cagan · @marty-neumeier · @matt-dixon · @matt-pocock · @micky-tripathi · @mikko-hypponen · @mitchell-hashimoto · @molly-pittman · @morgan-housel · @motion-designer
+
+### N (8)
+
+@nate-silver · @neil-patel · @niall-murphy · @niche-explorer · @nicholas-kusmich · @nick-mehta · @nicole-forsgren · @nir-eyal
+
+### O (5)
+
+@oalanicolas · @oli-gardner · @omar-santos · @onboarding-specialist · @outbound-specialist
+
+### P (15)
+
+@pablo-hoffman · @patricia-peck · @patrick-campbell · @patty-mccord · @paul-copplestone · @pedro-sobral · @pedro-valerio · @peep-laja · @peter-diamandis · @peter-kim · @philip-tetlock · @pm · @po · @pricing-strategist · @proposal-writer
+
+### Q (1)
+
+@qa
+
+### R (15)
+
+@rafael-calvo · @ralph-burns · @rand-fishkin · @ray-dalio · @refika-anadol · @retention-specialist · @richard-susskind · @richard-thaler · @rob-walling · @robert-mckee · @roberto-dias-duarte · @robin-hanson · @russell-brunson · @ryan-dahl · @ryan-holiday
+
+### S (23)
+
+@sal-khan · @sales-closer · @sales-ops-analyst · @sales-strategist · @sam-newman · @sarah-drasner · @scott-alexander · @scott-galloway · @scott-hanselman · @sean-duffy · @seo-content-strategist · @seth-godin · @simon-sinek · @simon-willison · @slide-creator · @sm · @social-media-manager · @sop-extractor · @squad-creator · @stephen-hahn · @steve-blank · @sugata-mitra · @swyx
+
+### T (10)
+
+@tanya-janca · @template-mind-clone · @teresa-torres · @theo-polymarket · @timnit-gebru · @tobias-van-schneider · @tom-breeze · @traffic-masters-chief · @trend-hunter · @troy-hunt
+
+### U (6)
+
+@ui-designer · @uncle-bob-martin · @ux-design-expert · @ux-designer · @ux-researcher · @ux-writer
+
+### V (3)
+
+@val-head · @vitaly-friedman · @voice-of-customer
+
+### W (5)
+
+@warren-buffett · @wendi-whitmore · @werner-vogels · @wes-bush · @will-larson
+
+### Y (2)
+
+@yann-lecun · @yu-kai-chou
 
 ## Padrao De Interface Para Hierarquia
 

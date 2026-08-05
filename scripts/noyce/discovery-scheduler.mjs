@@ -7,9 +7,9 @@
 /**
  * Hourly DISCOVERY scheduler for Noyce.
  *
- * Wraps the canonical 500 km discovery builder, which has retry (5x),
- * per-request timeout, and an anti-empty guard (won't overwrite a good snapshot with a
- * 0-item run unless --allow-empty). This scheduler adds only:
+ * Wraps the canonical 500 km discovery builder, which has bounded retries,
+ * per-request/run timeouts, and guards that never overwrite a healthy snapshot with
+ * an empty or partial run. This scheduler adds only:
  *   - timed repetition (--loop) so the snapshot stays fresh on its own, and
  *   - structured run logging (scripts/noyce/discovery-runs.log) so a degraded PNCP
  *     (the HikariPool 500s, see doc 22) is VISIBLE instead of silently leaving a
@@ -107,9 +107,12 @@ async function main() {
   logLine({ event: 'scheduler_start', mode: ARGS.loop ? 'loop' : 'once', intervalMin: ARGS.loop ? ARGS.intervalMin : undefined, forward: ARGS.forward });
 
   // Always run immediately.
-  await runOnce();
+  const result = await runOnce();
 
-  if (!ARGS.loop) return;
+  if (!ARGS.loop) {
+    if (result.code !== 0) process.exitCode = Number.isInteger(result.code) ? result.code : 1;
+    return;
+  }
 
   let stopping = false;
   const stop = (sig) => { stopping = true; logLine({ event: 'scheduler_stop', signal: sig }); process.exit(0); };

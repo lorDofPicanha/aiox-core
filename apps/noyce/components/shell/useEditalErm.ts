@@ -51,27 +51,43 @@ export function useEditalErm(opportunity: Pick<Opportunity, "id" | "source">): U
   const [status, setStatus] = useState<ErmStatus>("idle");
   const [confidence, setConfidence] = useState<ErmConfidence | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const activeRequest = useRef<AbortController | null>(null);
+  const requestGeneration = useRef(0);
 
   // Restaura ERM extraído do cache ao trocar de oportunidade (evita re-baixar do PNCP).
   useEffect(() => {
+    activeRequest.current?.abort();
+    activeRequest.current = null;
+    requestGeneration.current += 1;
     setExtractedErm(undefined);
     setConfidence(null);
     setStatus("idle");
     setErrorMsg(null);
-    if (curatedErm) return;
-    const cached = globalThis.localStorage?.getItem(ERM_CACHE_PREFIX + opportunity.id);
-    if (!cached) return;
-    try {
-      const parsed = JSON.parse(cached) as ErmCachePayload;
-      setExtractedErm(parsed.erm);
-      setConfidence(parsed.confidence ?? null);
-      setStatus("done");
-    } catch {
-      /* cache corrompido — ignora */
+    if (!curatedErm) {
+      const cached = globalThis.localStorage?.getItem(ERM_CACHE_PREFIX + opportunity.id);
+      if (cached) {
+        try {
+          const parsed = JSON.parse(cached) as ErmCachePayload;
+          setExtractedErm(parsed.erm);
+          setConfidence(parsed.confidence ?? null);
+          setStatus("done");
+        } catch {
+          /* cache corrompido — ignora */
+        }
+      }
     }
+    return () => {
+      activeRequest.current?.abort();
+      requestGeneration.current += 1;
+    };
   }, [opportunity.id, curatedErm]);
 
   const pull = useCallback(async () => {
+    activeRequest.current?.abort();
+    const controller = new AbortController();
+    activeRequest.current = controller;
+    const generation = ++requestGeneration.current;
+    const isCurrent = () => requestGeneration.current === generation && !controller.signal.aborted;
     setStatus("loading");
     setErrorMsg(null);
     try {
@@ -79,12 +95,14 @@ export function useEditalErm(opportunity: Pick<Opportunity, "id" | "source">): U
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ pncpId: opportunity.id }),
+        signal: controller.signal,
       });
       const data = (await res.json().catch(() => ({}))) as {
         erm?: EditalRequirementsModel;
         confidence?: ErmConfidence | null;
         error?: string;
       };
+      if (!isCurrent()) return;
       if (!res.ok || !data.erm) {
         // Mensagem real do servidor + dica por fonte (ComprasGov não está no path do PNCP).
         const serverMsg = data.error ?? `erro ${res.status}`;
@@ -108,8 +126,11 @@ export function useEditalErm(opportunity: Pick<Opportunity, "id" | "source">): U
         JSON.stringify({ erm: data.erm, confidence: data.confidence ?? null } satisfies ErmCachePayload),
       );
     } catch (e) {
+      if (!isCurrent() || (e as Error)?.name === "AbortError") return;
       setErrorMsg(`Falha de rede ao puxar do PNCP: ${(e as Error)?.message ?? String(e)}`);
       setStatus("error");
+    } finally {
+      if (activeRequest.current === controller) activeRequest.current = null;
     }
   }, [opportunity.id, opportunity.source]);
 

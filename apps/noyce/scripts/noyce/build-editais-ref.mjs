@@ -17,7 +17,7 @@
 // Fonte legal: PNCP API pública oficial (Lei 14.133, art. 174) — read-only, UA identificado,
 // delay educado entre downloads (o PNCP rate-limita bursts).
 
-import { readFileSync, writeFileSync, readdirSync, mkdirSync, existsSync } from "node:fs";
+import { readFileSync, writeFileSync, readdirSync, mkdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { fetchAndExtractEdital } from "../../lib/edital/pncp-source.ts";
@@ -107,13 +107,15 @@ function roundRobin(strata, limit, into) {
 }
 
 const selected = [];
-roundRobin(stratify(obras), TARGET, selected);
+const obraStrata = stratify(obras);
+const otherStrata = stratify(outros);
+roundRobin(obraStrata, TARGET, selected);
 const soObras = selected.length;
-if (selected.length < TARGET) roundRobin(stratify(outros), TARGET, selected); // completa se faltar obra
+if (selected.length < TARGET) roundRobin(otherStrata, TARGET, selected); // completa se faltar obra
 console.log(`Pool: ${obras.length} obras + ${outros.length} outros · selecionados ${soObras} de obra + ${selected.length - soObras} de aquisição/serviço`);
 
 console.log(`Snapshot: ${snapshot.items.length} editais · já no RAG: ${existing.size} · candidatos: ${candidates.length}`);
-console.log(`Alvo: ${TARGET} novos · selecionados: ${selected.length} de ${strata.size} estratos (UF×modalidade×valor)`);
+console.log(`Alvo: ${TARGET} novos · selecionados: ${selected.length} de ${obraStrata.size + otherStrata.size} estratos (UF×modalidade×valor)`);
 if (DRY) {
   for (const it of selected) console.log(`  ${it.id} · ${it.uf} · ${it.modality} · ${valueBand(it.estimatedValue)} · ${it.distanceKm}km · ${it.title.slice(0, 70)}`);
   process.exit(0);
