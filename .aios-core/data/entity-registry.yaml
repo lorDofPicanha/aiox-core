@@ -1,6 +1,6 @@
 metadata:
   version: 1.0.0
-  lastUpdated: '2026-05-29T14:11:59.263Z'
+  lastUpdated: '2026-08-05T11:33:08.810Z'
   entityCount: 1345
   checksumAlgorithm: sha256
   resolutionRate: 100
@@ -19872,7 +19872,7 @@ entities:
       path: .aios-core/core/doctor/checks/core-config.js
       layer: L1
       type: module
-      purpose: Entity at .aios-core\core\doctor\checks\core-config.js
+      purpose: Entity at .aios-core\core-config.yaml
       keywords:
         - core
         - config
@@ -19885,8 +19885,8 @@ entities:
         score: 0.4
         constraints: []
         extensionPoints: []
-      checksum: sha256:fbf07087b997250f1c00a2f698910f0689f82f4a3ddfcc007c084a81a784ef87
-      lastVerified: '2026-04-10T23:10:00.817Z'
+      checksum: sha256:d018d0ce10226fad345ea7c02f4b4eb865621eab57b39bb3d5c2fb6359c1a976
+      lastVerified: '2026-08-05T11:33:08.786Z'
     entity-registry:
       path: .aios-core/core/doctor/checks/entity-registry.js
       layer: L1
