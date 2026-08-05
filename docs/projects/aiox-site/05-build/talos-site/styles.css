@@ -1,5 +1,4 @@
 
-/* ===== https://cdn.prod.website-files.com/69abbb96278770785e4b2dc1/css/conicorn.shared.0d60b288d.css (131103 bytes) ===== */
 html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -2057,7 +2056,7 @@ textarea.w-input, textarea.w-select {
 
 @font-face {
   font-family: Geist;
-  src: url("https://cdn.prod.website-files.com/69abbb96278770785e4b2dc1/69abbcf306b3cfc08aeaf20d_Geist-Regular.ttf") format("truetype");
+  src: url("assets/fonts/69abbcf306b3cfc08aeaf20d_Geist-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -2065,7 +2064,7 @@ textarea.w-input, textarea.w-select {
 
 @font-face {
   font-family: Geist;
-  src: url("https://cdn.prod.website-files.com/69abbb96278770785e4b2dc1/69abbcf3e497e6345c29999a_Geist-SemiBold.ttf") format("truetype");
+  src: url("assets/fonts/69abbcf3e497e6345c29999a_Geist-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -2073,7 +2072,7 @@ textarea.w-input, textarea.w-select {
 
 @font-face {
   font-family: Geist;
-  src: url("https://cdn.prod.website-files.com/69abbb96278770785e4b2dc1/69abbcf3b9d1a5952a9496e5_Geist-Medium.ttf") format("truetype");
+  src: url("assets/fonts/69abbcf3b9d1a5952a9496e5_Geist-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -3111,7 +3110,7 @@ blockquote {
   border-radius: var(--_radius---radius-6xl) var(--_radius---radius-6xl) var(--_radius---radius-4xl) var(--_radius---radius-4xl);
   background-color: var(--_color---grey--02);
   object-fit: cover;
-  background-image: linear-gradient(#292929e6, #292929e6), url("https://cdn.prod.website-files.com/69abbb96278770785e4b2dc1/69ad4120480a7c5857041503_Dots%20Pattern.svg");
+  background-image: linear-gradient(#292929e6, #292929e6), url("assets/img/69ad4120480a7c5857041503_Dots_20Pattern.svg");
   background-position: 0 0, 50%;
   background-repeat: repeat, repeat;
   background-size: auto, 300px 300px;
@@ -3290,7 +3289,7 @@ blockquote {
   z-index: -1;
   opacity: .2;
   pointer-events: none;
-  background-image: url("https://cdn.prod.website-files.com/69abbb96278770785e4b2dc1/69ad4120480a7c5857041503_Dots%20Pattern.svg");
+  background-image: url("assets/img/69ad4120480a7c5857041503_Dots_20Pattern.svg");
   background-position: 0 0;
   background-size: 300px 300px;
   position: absolute;
@@ -4414,7 +4413,7 @@ blockquote {
   grid-row-gap: .25rem;
   background-color: var(--_color---white--01);
   font-size: var(--font-size--body-s);
-  background-image: linear-gradient(#ffffffb3, #ffffffb3), url("https://cdn.prod.website-files.com/69abbb96278770785e4b2dc1/69aee0cbd53015397346e563_Dots%20Pattern%20Black.svg");
+  background-image: linear-gradient(#ffffffb3, #ffffffb3), url("assets/img/69aee0cbd53015397346e563_Dots_20Pattern_20Black.svg");
   background-position: 0 0, 0 0;
   background-size: auto, 60px 60px;
   border-radius: 9px;

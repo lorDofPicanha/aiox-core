@@ -1,0 +1,568 @@
+@import 'tailwindcss';
+
+/* ══════════════════════════════════════════════════════════════════════
+   TALOS — design tokens
+   Derivados por extração determinística de 2,3 MB de CSS real capturado
+   (clerk, liveblocks, railway, trigger). Ver docs/projects/aiox-site/04-tokens/TOKENS.md
+   Contraste verificado por WCAG 2.1 — não estimado.
+
+   NOTA: tokens ficam em :root como custom properties puras, NÃO em @theme.
+   Motivo: bug conhecido do Tailwind v4 em que tokens de spacing no @theme
+   colapsam utilitários max-w-*.
+   ══════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ══ TEMPERATURA ══════════════════════════════════════════════════════
+     Reescrito em 27/Jul depois da rodada 2 de referências (as 7 aprovadas
+     pelo founder — ver 02-references/REFERENCIAS-R2.md).
+
+     O diagnóstico: o bronze estava certo, os neutros em volta é que eram frios.
+     `--bg: #0c0d10` tem undertone AZUL; `--text: #f2f3f5` é branco frio. Um acento
+     quente sobre uma escala fria lê como "tema dark padrão com um laranja por cima",
+     não como sistema — que é exatamente a crítica de "parece genérico".
+
+     As referências quentes puxam a ESCALA INTEIRA:
+       ORYZO     #100904 nogueira + #ffedd7 creme  (regra: nunca #fff, nunca #000)
+       Minh Pham #0d0d0d + #b7ab98 taupe + #c59b64 bronze
+       Mesh      #0f0f10 + #f2b98b
+     E o n8n prova pelo avesso: escolheu violeta e PROIBIU cinza neutro no sistema,
+     justamente para o dark dele não virar o dark de todo mundo.
+
+     Contraste calculado (script WCAG 2.1, não estimado) — valores em cada linha.
+     ══════════════════════════════════════════════════════════════════════ */
+
+  /* ── superfície: nogueira, não carvão. Nunca #000 puro. */
+  --bg: #0d0a06;
+  --surface: #18120c;
+  --surface-2: #231a11;
+  --rule: #2f2418;
+  --rule-2: #3f3122;
+
+  /* ── texto ── contraste medido sobre --bg */
+  --text: #f5ece0;      /* 16,89:1 AAA — creme, não branco */
+  --text-2: #b3a692;    /*  8,26:1 AAA — taupe, colhido do #b7ab98 do Minh Pham */
+  --muted: #857868;     /*  4,59:1 AA — SÓ label ≥18px, bold ≥14px, bordas e ícones
+                              (era 3,86:1 na escala fria: subiu junto com a temperatura) */
+
+  /* ── acento: o bronze de Talos ── 9,12:1 sobre bg · 8,58:1 sobre surface (AAA)
+     🔴 REGRA HERDADA DAS REFERÊNCIAS: bronze NUNCA como preenchimento.
+     Mesh: "reserve o bronze para contorno, sublinhado e filete — nunca fill, para
+     seguir sendo sinal quente e não cor de botão." ORYZO diz o mesmo do ember dele:
+     "nunca em botões ou superfícies interativas — é crédito editorial."
+     O botão cheio é --cream. Ver .btn-primary. */
+  --bronze: #e9a23b;
+  --bronze-2: #c9832a;
+  --bronze-dim: #4a3a1e;
+
+  /* preenchimento de ação — 17,26:1 sobre bg (AAA). Vem do #ffedd7 do ORYZO. */
+  --cream: #ffedd7;
+
+  --positive: #7fcf8b;
+  --negative: #e2695f;
+
+  /* ── tipografia — as vars --f-* vêm do next/font em layout.tsx (self-hosted, sem CDN) */
+  --font-d: var(--f-inter-tight), 'Inter Tight', system-ui, sans-serif;
+  --font-b: var(--f-inter), 'Inter', system-ui, sans-serif;
+  --font-m: var(--f-geist-mono), 'JetBrains Mono', ui-monospace, monospace;
+
+  /* ── forma — consenso do tier: 4px em 4/4 refs */
+  --r-sm: 4px;
+  --r-md: 6px;
+  --r-lg: 8px;
+  --r-xl: 12px;
+  --r-full: 9999px;
+
+  /* ── espaço — base 4 */
+  --s-1: 4px;   --s-2: 8px;   --s-3: 12px;  --s-4: 16px;
+  --s-6: 24px;  --s-8: 32px;  --s-12: 48px; --s-16: 64px;
+  --s-24: 96px; --s-32: 128px;
+
+  --max-w: 1180px;
+
+  /* ── motion — .2s em 4/4 refs, ease-out em 4/4. Teto 500ms exceto loop */
+  --t-micro: 150ms;
+  --t-fast: 200ms;
+  --t-mid: 300ms;
+  --t-slow: 500ms;
+  --e-out: cubic-bezier(0, 0, 0.2, 1);
+  --e-std: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* Sem `scroll-behavior: smooth` aqui: quem suaviza é o lenis (ver ScrollFX.tsx), e as
+   duas suavizações juntas brigam pela posição do scroll. Fica como fallback só para
+   quem não tem JS — aí o lenis não existe e o âncora precisa deslizar de alguma forma. */
+@media (scripting: none) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-b);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Respeita quem desligou animação no sistema operacional */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   PRIMITIVAS DE TEXTURA
+   Colhidas do CSS real das referências, re-tonalizadas para o bronze.
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* Glow duplo do hero — padrão trigger.dev:
+   radial-gradient(940px 480px, accent@10%) + radial-gradient(1120px 750px at top, accent@8%)
+   Rebaixado depois que o .tx-backdrop entrou: os dois somados estouravam o topo. */
+.tx-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(940px 480px at 50% 8%, #e9a23b12, #0000 70%),
+    radial-gradient(1120px 750px at top, #e9a23b0d, #0000 60%);
+}
+
+
+/* ── CENA 3D DO HERO ─────────────────────────────────────────────────────────
+   Substituiu o backdrop de lâminas borradas. A profundidade agora vem de geometria
+   real com reflexo real, não de blur simulando um objeto que não existe.
+
+   Fica no terço direito no desktop, onde não há texto — e vira fundo inteiro no
+   celular, com opacidade menor: ali a coluna de texto passa por cima da cena, e
+   contraste de headline ganha de atmosfera sempre.
+   ─────────────────────────────────────────────────────────────────────────── */
+.hero-cena {
+  position: absolute;
+  top: 50%;
+  right: -12%;
+  transform: translateY(-50%);
+  width: 56%;
+  height: 780px;
+  max-height: 90vh;
+  pointer-events: none;
+  z-index: 0;
+  /* Duas máscaras compostas por interseção: a radial dissolve as bordas do objeto,
+     a linear apaga o flanco esquerdo. Sem a segunda, o bronze do objeto encostava no
+     "gente." da headline — bronze sobre bronze, e a palavra que carrega a promessa
+     era a que ficava ilegível. */
+  mask-image:
+    radial-gradient(ellipse 70% 70% at 52% 50%, #000 46%, #0000 84%),
+    linear-gradient(90deg, #0000 0%, #0000 14%, #000 46%);
+  mask-composite: intersect;
+  -webkit-mask-composite: source-in;
+}
+@media (max-width: 980px) {
+  .hero-cena {
+    right: auto;
+    left: 50%;
+    transform: translate(-50%, -46%);
+    width: 118%;
+    height: 520px;
+    opacity: 0.28;
+    mask-image: radial-gradient(ellipse 62% 62% at 50% 50%, #000 36%, #0000 78%);
+    mask-composite: add;
+    -webkit-mask-composite: source-over;
+  }
+}
+/* Grid de 1px — padrão trigger.dev.
+   No A/B, grid + glow juntos no hero ficaram lamacentos: no trigger o grid é
+   imperceptível ali. Mantido com opacidade baixa e máscara mais curta. */
+.tx-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image:
+    linear-gradient(90deg, #1e1710 1px, #0000 1px),
+    linear-gradient(#1e1710 1px, #0000 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 70% 45% at 50% 0%, #000 20%, #0000 100%);
+}
+
+/* Sombra de card em 4 camadas — padrão clerk:
+   hairline ring + sombra ampla + sombra curta + highlight interno */
+.tx-card {
+  background: var(--surface);
+  border-radius: var(--r-xl);
+  box-shadow:
+    0 0 0 0.5px #fff2e00f,
+    0 16px 36px -6px #00000066,
+    0 8px 16px -3px #00000040,
+    inset 0 0 0 0.5px #fff2e00a;
+}
+
+/* Fade nas bordas de linha rolável — padrão railway */
+.tx-fade-x {
+  mask-image: linear-gradient(
+    to right, transparent 0, #000 96px, #000 calc(100% - 96px), transparent 100%
+  );
+}
+
+/* Régua com brilho no meio */
+.tx-rule {
+  height: 1px;
+  border: 0;
+  background: linear-gradient(90deg, #0000, var(--rule-2) 50%, #0000);
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   TIPOGRAFIA — escala do modelo "editorial largo" (resend/railway)
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ══ ESCALA DE DISPLAY ═════════════════════════════════════════════════════
+   O teto era 66px. Medido nas 7 referências aprovadas: Minh Pham 116px ·
+   Iventions e Uncommon 120px · Assembly 188px · ORYZO 216px (15vw, sem teto) ·
+   Mat Voyce 412px. Nenhuma perto de 66. O Talos usava escala de produto SaaS
+   enquanto as referências usam escala de display — sozinho, isso já explica boa
+   parte do "parece genérico".
+
+   Primeiro teste foi a 132px (9,5vw) e a headline comeu a dobra inteira: o card de
+   prova sumiu de vista, violando a regra dos 10s que ainda vale. 112px resolve em 3
+   linhas e deixa o topo do card aparecendo — o "peek" que convida ao scroll.
+   Fica na faixa Minh Pham (116) / Iventions (120), longe do extremo do Mat Voyce (412).
+   line-height cai para 0,94: em display grande, 1.02 abre buraco entre as linhas.
+   Tracking mais negativo pelo mesmo motivo.
+   ═══════════════════════════════════════════════════════════════════════════ */
+.t-display-xl {
+  font-family: var(--font-d);
+  font-weight: 800;
+  font-size: clamp(44px, 8vw, 112px);
+  line-height: 0.94;
+  letter-spacing: -0.042em;
+}
+.t-display-l {
+  font-family: var(--font-d);
+  font-weight: 700;
+  font-size: clamp(38px, 6.6vw, 92px);
+  line-height: 0.98;
+  letter-spacing: -0.036em;
+}
+.t-display-m {
+  font-family: var(--font-d);
+  font-weight: 700;
+  font-size: clamp(30px, 4.2vw, 58px);
+  line-height: 1.04;
+  letter-spacing: -0.028em;
+}
+.t-title {
+  font-family: var(--font-d);
+  font-weight: 600;
+  font-size: clamp(20px, 1.7vw, 24px);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+.t-body-l { font-size: clamp(17px, 1.35vw, 19px); line-height: 1.6; color: var(--text-2); }
+.t-body { font-size: 16px; line-height: 1.65; color: var(--text-2); }
+
+/* label/micro usam --muted, que só passa AA em ≥18px ou bold ≥14px.
+   Por isso ambos são bold + uppercase com tracking. */
+.t-label {
+  font-family: var(--font-m);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.t-micro {
+  font-family: var(--font-m);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.bronze { color: var(--bronze); }
+
+/* ══════════════════════════════════════════════════════════════════════
+   LAYOUT
+   ══════════════════════════════════════════════════════════════════════ */
+
+.wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--s-6); }
+
+section { position: relative; padding: var(--s-32) 0; }
+@media (max-width: 720px) { section { padding: var(--s-24) 0; } }
+
+/* Grades. Colapsam em 860px — abaixo disso 3 colunas viram cartão-tira ilegível. */
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-4); }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-4); }
+.grid-demo { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4); align-items: start; }
+@media (max-width: 860px) {
+  .grid-3, .grid-2, .grid-demo { grid-template-columns: 1fr; }
+}
+
+/* Card de conteúdo — mais leve que .tx-card (que é o card-herói, com 4 camadas de sombra).
+   Aqui basta o hairline: card pesado repetido 9 vezes na página vira ruído. */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-xl);
+  padding: var(--s-6);
+  transition: border-color var(--t-fast) var(--e-out), background var(--t-fast) var(--e-out);
+}
+.card-hover:hover { border-color: var(--rule-2); background: var(--surface-2); }
+
+/* Campos de formulário */
+.field {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-lg);
+  color: var(--text);
+  font-family: var(--font-b);
+  font-size: 15px;
+  padding: 13px var(--s-4);
+  transition: border-color var(--t-micro) var(--e-out);
+}
+.field::placeholder { color: var(--muted); }
+.field:hover { border-color: var(--rule-2); }
+.field:focus { border-color: var(--bronze-dim); outline-offset: 1px; }
+textarea.field { resize: vertical; line-height: 1.6; min-height: 132px; }
+
+@keyframes riseIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.rise { animation: riseIn var(--t-slow) var(--e-out) both; }
+
+/* Selos de veredito — usados no hero e no resultado do demo. Saíram do inline style
+   quando viraram três variantes: cor de estado repetida em dois arquivos vira drift. */
+.selo {
+  font-family: var(--font-m);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: var(--r-full);
+  padding: 4px 10px;
+  white-space: nowrap;
+  border: 1px solid;
+}
+.selo-auto { color: var(--bronze); background: #e9a23b12; border-color: var(--bronze-dim); }
+.selo-parcial { color: var(--text-2); background: #fff6ea08; border-color: var(--rule-2); }
+.selo-humana { color: var(--muted); background: transparent; border-color: var(--rule); }
+
+/* Linha de etapa (card do hero e mapa da §3). Em 390px as três colunas espremiam o
+   texto em três linhas de duas palavras — o selo passa para baixo e o número sai. */
+.linha-etapa {
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  gap: var(--s-4);
+  align-items: center;
+  padding: var(--s-3) 0;
+  border-bottom: 1px solid #241b12;
+}
+.linha-etapa.linha-topo { align-items: start; padding: var(--s-4) 0; grid-template-columns: 32px 1fr auto; }
+@media (max-width: 560px) {
+  .linha-etapa, .linha-etapa.linha-topo {
+    grid-template-columns: 1fr;
+    gap: var(--s-2);
+    justify-items: start;
+  }
+  .linha-etapa .num { display: none; }
+}
+
+/* ── FAIXA CORRIDA ────────────────────────────────────────────────────────────
+   Assinatura tipográfica no modelo do Minh Pham. Ver Marquee.tsx.
+   Duas cópias do conteúdo + translateX de -50% = laço sem emenda. */
+.marquee {
+  position: relative;
+  overflow: hidden;
+  padding: var(--s-12) 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  /* dissolve nas pontas: sem isto o texto "bate" na borda da tela e denuncia o truque */
+  mask-image: linear-gradient(90deg, #0000, #000 12%, #000 88%, #0000);
+}
+.marquee-fita { display: flex; width: max-content; animation: correr 46s linear infinite; }
+.marquee-grupo { display: flex; align-items: center; }
+@keyframes correr { to { transform: translateX(-50%); } }
+.marquee:hover .marquee-fita { animation-play-state: paused; }
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-d);
+  font-weight: 800;
+  font-size: clamp(30px, 4.4vw, 62px);
+  letter-spacing: -0.03em;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--bronze-dim);
+  mix-blend-mode: screen;
+  white-space: nowrap;
+}
+/* um em cada três vem sólido: fita toda vazada some, toda sólida vira banner */
+.marquee-item:nth-child(3n) {
+  color: var(--bronze);
+  -webkit-text-stroke: 0;
+  opacity: 0.85;
+}
+.marquee-ponto {
+  width: 7px;
+  height: 7px;
+  margin: 0 var(--s-8);
+  border-radius: var(--r-full);
+  background: var(--bronze-dim);
+  flex: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-fita { animation: none; }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── CASOS DE USO ─────────────────────────────────────────────────────────── */
+.caso-linha {
+  display: grid;
+  grid-template-columns: 34px 1fr auto;
+  gap: var(--s-4);
+  align-items: center;
+  padding: var(--s-4) 0;
+  border-bottom: 1px solid #241b12;
+  animation: casoIn 0.45s var(--e-out) both;
+}
+@keyframes casoIn { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: none; } }
+@media (max-width: 620px) {
+  .caso-linha { grid-template-columns: 1fr; gap: var(--s-2); justify-items: start; }
+  .caso-linha .num { display: none; }
+}
+
+/* ── FAQ ──────────────────────────────────────────────────────────────────────
+   <details>/<summary> nativos: teclado, leitor de tela e indexação vêm de graça,
+   e funciona com JS desligado. O único trabalho de CSS é tirar o triângulo padrão
+   e desenhar o sinal de mais/menos. */
+.faq-item { border-bottom: 1px solid var(--rule); }
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-6);
+  padding: var(--s-6) 0;
+  cursor: pointer;
+  list-style: none;
+  transition: color var(--t-micro) var(--e-out);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary:hover { color: var(--bronze); }
+
+/* sinal de + que vira − ao abrir: duas barras, uma delas gira 90° */
+.faq-sinal { position: relative; width: 15px; height: 15px; flex: none; }
+.faq-sinal::before,
+.faq-sinal::after {
+  content: '';
+  position: absolute;
+  inset: 50% 0 auto 0;
+  height: 1.5px;
+  background: var(--bronze);
+  transition: transform var(--t-fast) var(--e-out);
+}
+.faq-sinal::after { transform: rotate(90deg); }
+.faq-item[open] .faq-sinal::after { transform: rotate(0deg); }
+.faq-item[open] summary { color: var(--bronze); }
+
+/* Trilha da §4 — preenche com o scroll. Ver ScrollFX.tsx. */
+.trilha {
+  height: 2px;
+  background: var(--rule);
+  margin-bottom: var(--s-4);
+  overflow: hidden;
+}
+.trilha-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--bronze), #e9a23b33);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+}
+
+/* Barra de progresso da leitura — GSAP ScrollTrigger escreve --p aqui. */
+.leitura {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  z-index: 60;
+  transform-origin: 0 50%;
+  transform: scaleX(var(--p, 0));
+  background: linear-gradient(90deg, var(--bronze-2), var(--bronze));
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   BOTÕES — micro-interação 150ms ease-out (consenso do tier)
+   ══════════════════════════════════════════════════════════════════════ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  height: 48px;
+  padding: 0 var(--s-6);
+  border-radius: var(--r-lg);
+  font-weight: 600;
+  font-size: 15px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background var(--t-micro) var(--e-out),
+              border-color var(--t-micro) var(--e-out),
+              transform var(--t-micro) var(--e-out);
+  text-decoration: none;
+}
+.btn:active { transform: translateY(1px); }
+
+/* Preenchimento creme, não bronze — regra herdada do Mesh e do ORYZO (ver :root).
+   O bronze fica reservado para contorno, sublinhado e filete; se virar cor de botão,
+   deixa de ser sinal e vira decoração. */
+.btn-primary { background: var(--cream); color: #17120a; }
+.btn-primary:hover { background: #fff; transform: translateY(-1px); }
+
+/* O bronze aparece como AÇÃO aqui: contorno + texto, nunca fundo. */
+.btn-bronze {
+  background: transparent;
+  border-color: var(--bronze-dim);
+  color: var(--bronze);
+}
+.btn-bronze:hover { border-color: var(--bronze); background: #e9a23b0f; }
+
+.btn-ghost {
+  background: #fff6ea08;
+  border-color: var(--rule-2);
+  color: var(--text);
+}
+.btn-ghost:hover { background: #fff6ea14; border-color: #55432e; }
+
+.nav-link {
+  font-size: 14px;
+  color: var(--text-2);
+  text-decoration: none;
+  transition: color var(--t-micro) var(--e-out);
+}
+.nav-link:hover { color: var(--text); }
+@media (max-width: 860px) { .nav-link { display: none; } }
+
+/* Foco visível — acessibilidade, não decoração */
+.btn:focus-visible,
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--bronze);
+  outline-offset: 2px;
+}

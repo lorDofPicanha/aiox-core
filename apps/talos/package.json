@@ -1,0 +1,37 @@
+{
+  "name": "talos",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Talos — site de serviços: construção e automação de workflows para empresas.",
+  "scripts": {
+    "dev": "next dev -p 3020",
+    "build": "next build",
+    "start": "next start -p 3020",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "validate": "npm run lint && npm run typecheck"
+  },
+  "dependencies": {
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.6.1",
+    "clsx": "^2.1.1",
+    "gsap": "^3.15.0",
+    "lenis": "^1.3.25",
+    "lucide-react": "^0.469.0",
+    "motion": "^12.42.2",
+    "next": "16.2.9",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "three": "^0.185.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/three": "^0.185.1",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
