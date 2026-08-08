@@ -25,7 +25,7 @@
     "house": "Das Haus", "houseV": "Ein Atelier in Brasilien. Jeder Tisch signiert, nummeriert und für einen einzigen Raum gefertigt.",
     "now": "Jetzt", "nowV": "Jedes Stück wird auf Bestellung gefertigt — pro Saison nur eine begrenzte Zahl an Aufträgen.",
     "objectVsig": "Ein Premium-Billardtisch aus unserer Signature-Linie — massives Hartholz, Turnierqualität.",
-    "houseSig": "Die Linie", "houseVsig": "Eines von achtzehn Signature-Modellen — die komplette Kollektion, gefertigt in Brasilien.",
+    "houseSig": "Die Linie", "houseVsig": "Eines von dreizehn Signature-Modellen — die komplette Kollektion, gefertigt in Brasilien.",
     "nowVsig": "Auf Bestellung gefertigt und mit White-Glove-Service in die USA und nach Europa geliefert.",
     "finishes": "Ausführungen", "finishesNote": "Verfügbare Harthölzer und Filze — Ihre Ausführung wird bei der Beauftragung festgelegt.",
     "email": "Per E-Mail anfragen", "emailSubj": "Anfrage: {name}",
@@ -42,11 +42,11 @@
     "email": "Lieber per E-Mail? Schreiben Sie dem Atelier →", "emailSubj": "Konfiguration: {name}"
   },
   "wa": {
-    "viewing": "Hallo Bretda, ich möchte eine private Besichtigung buchen.",
-    "reserve": "Hallo Bretda, ich interessiere mich für den {name} ({price}). Ich möchte ihn reservieren.",
-    "talk": "Hallo Bretda, ich möchte mit einem Spezialisten über den {name} sprechen.",
-    "config": "Hallo Bretda, ich habe den {name} konfiguriert — Rahmen in {wood}, Sockel in {metal}, Filz in {cloth} ({price}). Ich möchte fortfahren.",
-    "contact": "Hallo Bretda, ich hätte gerne mehr Informationen zu Ihren Tischen."
+    "viewing": "Hallo Tocks, ich möchte eine private Besichtigung buchen.",
+    "reserve": "Hallo Tocks, ich interessiere mich für den {name} ({price}). Ich möchte ihn reservieren.",
+    "talk": "Hallo Tocks, ich möchte mit einem Spezialisten über den {name} sprechen.",
+    "config": "Hallo Tocks, ich habe den {name} konfiguriert — Rahmen in {wood}, Sockel in {metal}, Filz in {cloth} ({price}). Ich möchte fortfahren.",
+    "contact": "Hallo Tocks, ich hätte gerne mehr Informationen zu Ihren Tischen."
   },
-  "footer": { "tagline": "Skulpturale Billardtische, in Brasilien von Hand gefertigt und mit White-Glove-Service an Häuser in den USA und Europa geliefert.", "since": "Atelier seit 2009 · Brasilien", "rights": "Bretda Atelier · Itajaí, Brasilien", "contact": "Sprechen Sie uns an", "shipping": "Versand & Zoll" }
+  "footer": { "tagline": "Skulpturale Billardtische, in Brasilien von Hand gefertigt und mit White-Glove-Service an Häuser in den USA und Europa geliefert.", "since": "Atelier seit 2009 · Brasilien", "rights": "Tocks Custom · Itajaí, Brasilien", "contact": "Sprechen Sie uns an", "shipping": "Versand & Zoll" }
 }

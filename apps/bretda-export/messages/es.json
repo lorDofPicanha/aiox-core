@@ -25,7 +25,7 @@
     "house": "La casa", "houseV": "Un atelier en Brasil. Cada mesa firmada, numerada y creada para una sola sala.",
     "now": "Ahora", "nowV": "Cada pieza se hace a medida — un número limitado de encargos por temporada.",
     "objectVsig": "Una mesa de billar premium de nuestra línea Signature — madera noble maciza, juego de nivel de torneo.",
-    "houseSig": "La línea", "houseVsig": "Uno de dieciocho modelos Signature — la colección completa, hecha en Brasil.",
+    "houseSig": "La línea", "houseVsig": "Uno de trece modelos Signature — la colección completa, hecha en Brasil.",
     "nowVsig": "Hecha a medida y entregada con guante blanco en EE. UU. y Europa.",
     "finishes": "Acabados", "finishesNote": "Maderas nobles y fieltros disponibles — tu acabado se confirma durante el encargo.",
     "email": "Consultar por correo", "emailSubj": "Consulta: {name}",
@@ -42,11 +42,11 @@
     "email": "¿Prefieres correo? Escribe al atelier →", "emailSubj": "Configuración: {name}"
   },
   "wa": {
-    "viewing": "Hola Bretda, me gustaría reservar una cita privada.",
-    "reserve": "Hola Bretda, me interesa la {name} ({price}). Me gustaría reservarla.",
-    "talk": "Hola Bretda, me gustaría hablar con un especialista sobre la {name}.",
-    "config": "Hola Bretda, configuré la {name} — estructura en {wood}, base en {metal}, paño en {cloth} ({price}). Me gustaría continuar.",
-    "contact": "Hola Bretda, me gustaría más información sobre sus mesas."
+    "viewing": "Hola Tocks, me gustaría reservar una cita privada.",
+    "reserve": "Hola Tocks, me interesa la {name} ({price}). Me gustaría reservarla.",
+    "talk": "Hola Tocks, me gustaría hablar con un especialista sobre la {name}.",
+    "config": "Hola Tocks, configuré la {name} — estructura en {wood}, base en {metal}, paño en {cloth} ({price}). Me gustaría continuar.",
+    "contact": "Hola Tocks, me gustaría más información sobre sus mesas."
   },
-  "footer": { "tagline": "Mesas de billar escultóricas, hechas a mano en Brasil y entregadas con guante blanco en hogares de EE. UU. y Europa.", "since": "Atelier desde 2009 · Brasil", "rights": "Bretda Atelier · Itajaí, Brasil", "contact": "Hablar con nosotros", "shipping": "Envío y aduanas" }
+  "footer": { "tagline": "Mesas de billar escultóricas, hechas a mano en Brasil y entregadas con guante blanco en hogares de EE. UU. y Europa.", "since": "Atelier desde 2009 · Brasil", "rights": "Tocks Custom · Itajaí, Brasil", "contact": "Hablar con nosotros", "shipping": "Envío y aduanas" }
 }

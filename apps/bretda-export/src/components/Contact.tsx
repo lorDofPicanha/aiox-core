@@ -42,7 +42,7 @@ export default function Contact() {
             <div className="ck">{t("emK")}</div>
             <h3>{t("emH")}</h3>
             <p>{t("emP")}</p>
-            <a className="clink" href="mailto:atelier@bretda.com" onClick={() => trackLead({ channel: "email", source: "contact" })}>{t("emL")}</a>
+            <a className="clink" href="mailto:contato@tockscustom.com.br" onClick={() => trackLead({ channel: "email", source: "contact" })}>{t("emL")}</a>
           </div>
           <div className="ccard">
             <div className="ck">{t("viK")}</div>

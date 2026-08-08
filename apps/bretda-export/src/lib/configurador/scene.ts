@@ -1,4 +1,4 @@
-// Bretda 3D configurator scene controller.
+// Tocks 3D configurator scene controller.
 // Vanilla Three.js r162 — ported from the prototype arquiteto.html.
 // Framework-agnostic so React only has to mount a canvas and call methods.
 
@@ -26,7 +26,7 @@ const DRACO_DECODER =
   "https://cdn.jsdelivr.net/npm/three@0.162.0/examples/jsm/libs/draco/";
 const HDRI_URL =
   "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/paul_lobe_haus_1k.hdr";
-const STORAGE_KEY = "bretda_mat_classifications";
+const STORAGE_KEY = "tocks_mat_classifications";
 
 export class ConfiguradorScene {
   private readonly canvas: HTMLCanvasElement;
@@ -244,7 +244,7 @@ export class ConfiguradorScene {
 
     const setup = (sceneObj: THREE.Group): void => {
       this.tableGroup = sceneObj;
-      this.tableGroup.name = "bretdaTable";
+      this.tableGroup.name = "tocksTable";
       this.tableGroup.rotation.x = -Math.PI / 2; // SketchUp Z-up -> Three Y-up
 
       this.tableGroup.traverse((child) => {
@@ -298,7 +298,7 @@ export class ConfiguradorScene {
       this.callbacks.onModelChange?.(model.label, model.category);
       // No auto-classification — the GLBs carry no part-type info, so guessing
       // scrambles the table. Finishes apply via "Personalizar" (click a part →
-      // classify → pick a swatch), matching the proven bretda-lp configurator.
+      // classify → pick a swatch), matching the proven configurator.
     };
 
     const cached = this.modelCache.get(modelKey);
@@ -688,7 +688,7 @@ export class ConfiguradorScene {
     );
   }
 
-  exportScreenshot(filename = "bretda-configurador.png"): void {
+  exportScreenshot(filename = "tocks-configurator.png"): void {
     this.renderer.render(this.scene, this.camera);
     const dataUrl = this.renderer.domElement.toDataURL("image/png");
     const a = document.createElement("a");

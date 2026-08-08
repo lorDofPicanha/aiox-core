@@ -7,7 +7,6 @@ import Footer from "./Footer";
 import { woods, fabrics, formatPrice, type Product } from "@/data/catalog";
 import { getSpec } from "@/data/specs";
 import { dim2, dim3, weight } from "@/lib/units";
-import { useCurrency } from "@/lib/currency";
 import { waUrl, mailUrl } from "@/lib/inquiry";
 import { track, trackLead } from "@/lib/track";
 
@@ -17,12 +16,11 @@ export default function Pdp({ product }: { product: Product }) {
   const t = useTranslations("pdp");
   const tw = useTranslations("wa");
   const locale = useLocale();
-  const { cur } = useCurrency();
   const gallery = product.gallery ?? [product.img];
   const [main, setMain] = useState<{ kind: "img" | "vid"; src: string }>({ kind: "img", src: gallery[0] });
   const sig = product.line === "signature";
 
-  const price = formatPrice(product.priceUSD, product.priceEUR, cur, locale);
+  const price = formatPrice(product.priceUSD);
   const spec = getSpec(product.slug);
 
   // Product interest — the signal the ad platforms optimise delivery on.

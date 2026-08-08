@@ -2,8 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { routing, localeCurrency, type Locale } from "@/i18n/routing";
-import { useCurrency } from "@/lib/currency";
+import { routing, type Locale } from "@/i18n/routing";
 
 const LANG_LABEL: Record<string, string> = {
   en: "English",
@@ -18,7 +17,6 @@ export default function Header({ solidOnScroll = false }: { solidOnScroll?: bool
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
-  const { cur, setCur } = useCurrency();
   const [open, setOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [solid, setSolid] = useState(!solidOnScroll);
@@ -41,7 +39,6 @@ export default function Header({ solidOnScroll = false }: { solidOnScroll?: bool
   }, []);
 
   function switchLocale(l: Locale) {
-    setCur(localeCurrency[l]);
     router.replace(pathname, { locale: l });
     setOpen(false);
   }
@@ -49,7 +46,7 @@ export default function Header({ solidOnScroll = false }: { solidOnScroll?: bool
   return (
     <div className={`hdr${solid ? " solid" : ""}`}>
       <div className="in">
-        <a href={`/${locale === "en" ? "" : locale}`} className="logo">BRETDA</a>
+        <a href={`/${locale === "en" ? "" : locale}`} className="logo">TOCKS</a>
         <nav className="nav">
           <a href={localized("/collection", locale)}>{t("collection")}</a>
           <a href={localized("/atelier", locale)}>{t("atelier")}</a>
@@ -60,7 +57,7 @@ export default function Header({ solidOnScroll = false }: { solidOnScroll?: bool
           <button className={`mark${open ? " open" : ""}`} onClick={(e) => { e.stopPropagation(); setOpen((v) => !v); }}>
             <span>{locale.toUpperCase()}</span>
             <span className="sep">·</span>
-            <span>{cur === "usd" ? "$" : "€"}</span>
+            <span>$</span>
             <span className="chev" />
           </button>
           <div className={`panel${open ? " open" : ""}`}>
@@ -74,8 +71,7 @@ export default function Header({ solidOnScroll = false }: { solidOnScroll?: bool
             </div>
             <div>
               <h4>{tsw("currency")}</h4>
-              <button className={`opt${cur === "usd" ? " active" : ""}`} onClick={() => setCur("usd")}><span className="dot" />$ USD</button>
-              <button className={`opt${cur === "eur" ? " active" : ""}`} onClick={() => setCur("eur")}><span className="dot" />€ EUR</button>
+              <div className="opt active"><span className="dot" />$ USD</div>
             </div>
           </div>
         </div>

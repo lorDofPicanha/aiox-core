@@ -5,14 +5,12 @@ import { useLocale, useTranslations } from "next-intl";
 import Header from "./Header";
 import Footer from "./Footer";
 import { atelier, signature, formatPrice, type Product, type Category } from "@/data/catalog";
-import { useCurrency } from "@/lib/currency";
 
 const lp = (p: string, l: string) => (l === "en" ? p : `/${l}${p}`);
 
 export default function Collection() {
   const t = useTranslations("col");
   const locale = useLocale();
-  const { cur } = useCurrency();
   const [filter, setFilter] = useState<Category | "all">("all");
 
   useEffect(() => {
@@ -26,7 +24,7 @@ export default function Collection() {
 
   const catLabel = (c: Category) =>
     t.has(c) ? t(c) : c;
-  const price = (p: Product) => formatPrice(p.priceUSD, p.priceEUR, cur, locale);
+  const price = (p: Product) => formatPrice(p.priceUSD);
   const show = (p: Product) => filter === "all" || p.category === filter;
   // Number within each line (Atelier 01.., Signature 01..) rather than across the whole catalog.
   const anum = (p: Product) => String(atelier.indexOf(p) + 1).padStart(2, "0");

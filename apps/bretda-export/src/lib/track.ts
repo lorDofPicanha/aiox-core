@@ -15,12 +15,9 @@ declare global {
   }
 }
 
-// "Bretda Export US/EU", created 03/Aug on ad account act_381618241134624 and
-// deliberately separate from the domestic pixel so the US/EU audience never
-// pollutes the Brazilian site's optimisation. A pixel id is public — it ships
-// in the page source either way — so it lives in the repo rather than in a
-// dashboard nobody can diff. Override with the env var to point elsewhere.
-export const FB_PIXEL_ID = process.env.NEXT_PUBLIC_FB_PIXEL_ID || "2135978950283654";
+// Tocks tracking is opt-in. No fallback pixel is allowed because a stale
+// cross-brand id would contaminate both attribution and audience optimisation.
+export const FB_PIXEL_ID = process.env.NEXT_PUBLIC_FB_PIXEL_ID ?? "";
 export const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "";
 export const GOOGLE_ADS_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID ?? "";
 export const GOOGLE_ADS_LEAD_LABEL = process.env.NEXT_PUBLIC_GOOGLE_ADS_LEAD_LABEL ?? "";

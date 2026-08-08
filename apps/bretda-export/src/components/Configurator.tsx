@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import Header from "./Header";
 import Footer from "./Footer";
 import {
@@ -12,21 +12,20 @@ import {
   type TableCategory,
 } from "@/lib/configurador/tables";
 import { catalog, formatPrice } from "@/data/catalog";
-import { useCurrency } from "@/lib/currency";
 import { waUrl, mailUrl } from "@/lib/inquiry";
 import { trackLead } from "@/lib/track";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-// bretda-export catalog slug -> engine model key
+// Tocks export catalog slug -> engine model key
 const SLUG_TO_KEY: Record<string, string> = {
-  aurora: "aurora", espinela: "espinela", opal: "opal", citrino: "citrino", ambar: "ambar", zurita: "zurita",
+  aurora: "aurora", opal: "opal", citrino: "citrino", zurita: "zurita",
   "ambar-foosball": "pimbolim-ambar", "opal-foosball": "pimbolim-opal", "berilo-foosball": "pimbolim-berilo",
   "citrino-pingpong": "tenis-citrino", "cobal-pingpong": "tenis-cobal", "ambar-shuffleboard": "shuffleboard",
 };
-// engine model key -> bretda-export catalog slug (for thumbnail + price)
+// engine model key -> Tocks export catalog slug (for thumbnail + price)
 const KEY_TO_SLUG: Record<string, string> = {
-  opal: "opal", aurora: "aurora", zurita: "zurita", espinela: "espinela", citrino: "citrino", ambar: "ambar",
+  opal: "opal", aurora: "aurora", zurita: "zurita", citrino: "citrino",
   "pimbolim-ambar": "ambar-foosball", "pimbolim-opal": "opal-foosball", "pimbolim-berilo": "berilo-foosball",
   "tenis-citrino": "citrino-pingpong", "tenis-cobal": "cobal-pingpong", shuffleboard: "ambar-shuffleboard",
 };
@@ -35,8 +34,6 @@ const catFor = (key: string) => catalog.find((p) => p.slug === KEY_TO_SLUG[key])
 export default function Configurator({ initialSlug }: { initialSlug?: string }) {
   const t = useTranslations("cfg");
   const tw = useTranslations("wa");
-  const locale = useLocale();
-  const { cur } = useCurrency();
 
   const initialKey = (initialSlug && SLUG_TO_KEY[initialSlug]) || "aurora";
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -56,7 +53,6 @@ export default function Configurator({ initialSlug }: { initialSlug?: string }) 
   // armed finish waiting for the user to tap a part (guided 1-touch flow)
   const [pending, setPending] = useState<null | { cls: "madeira" | "metal" | "tecido"; texture: string; color?: number; label: string }>(null);
   const pendingRef = useRef<typeof pending>(null);
-  pendingRef.current = pending;
   const [toast, setToast] = useState("");
   const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const showToast = useCallback((msg: string) => {
@@ -65,17 +61,23 @@ export default function Configurator({ initialSlug }: { initialSlug?: string }) 
     toastTimer.current = setTimeout(() => setToast(""), 2600);
   }, []);
 
+  useEffect(() => {
+    pendingRef.current = pending;
+  }, [pending]);
+
   // Applies the armed finish to a freshly tapped part (kept in a ref so the
   // engine callback always sees the current translations/pending state).
   const applyPendingRef = useRef<(part: string) => void>(() => {});
-  applyPendingRef.current = (part: string) => {
-    const p = pendingRef.current;
-    if (!part || !p || !sceneRef.current) return;
-    if (sceneRef.current.applyToSelected(p.cls, p.texture, p.color)) {
-      showToast(t("applied", { name: p.label }));
-      setPending(null);
-    }
-  };
+  useEffect(() => {
+    applyPendingRef.current = (part: string) => {
+      const p = pendingRef.current;
+      if (!part || !p || !sceneRef.current) return;
+      if (sceneRef.current.applyToSelected(p.cls, p.texture, p.color)) {
+        showToast(t("applied", { name: p.label }));
+        setPending(null);
+      }
+    };
+  }, [showToast, t]);
 
   // scene lifecycle — epoch-driven remount (mirrors the original engine usage)
   useEffect(() => {
@@ -165,7 +167,7 @@ export default function Configurator({ initialSlug }: { initialSlug?: string }) 
   const onFab = (s: (typeof FABRICS)[number]) => armOrApply("tecido", s.texture, s.fallbackColor, s.name, () => setFab(s.name));
 
   const prod = catFor(activeKey);
-  const price = prod ? formatPrice(prod.priceUSD, prod.priceEUR, cur, locale) : null;
+  const price = prod ? formatPrice(prod.priceUSD) : null;
   const fromStyle = { fontFamily: "var(--font-body)", fontSize: 11, letterSpacing: ".2em", textTransform: "uppercase" as const, color: "var(--muted)", marginRight: 8 };
 
   return (
@@ -174,7 +176,7 @@ export default function Configurator({ initialSlug }: { initialSlug?: string }) 
       <div className="wrap">
         {/* model selector */}
         <div className="cfg-models">
-          {Object.values(TABLE_MODELS).map((m) => {
+          {Object.values(TABLE_MODELS).filter((m) => catFor(m.key)).map((m) => {
             const c = catalog.find((p) => p.slug === KEY_TO_SLUG[m.key]);
             return (
               <button key={m.key} className={`cfg-model${m.key === activeKey ? " active" : ""}`} onClick={() => selectModel(m.key)}>
@@ -217,7 +219,7 @@ export default function Configurator({ initialSlug }: { initialSlug?: string }) 
                 <button className={`arbtn${customize ? " on" : ""}`} onClick={toggleCustomize}>{t("customize")}</button>
                 <button className="arbtn" onClick={() => sceneRef.current?.resetCamera()}>Reset</button>
                 <button className="arbtn" onClick={() => sceneRef.current?.toggleGrid()}>Grid</button>
-                <button className="arbtn" onClick={() => sceneRef.current?.exportScreenshot(`bretda-${activeKey}.png`)}>Photo</button>
+                <button className="arbtn" onClick={() => sceneRef.current?.exportScreenshot(`tocks-${activeKey}.png`)}>Photo</button>
               </div>
             </div>
           </div>

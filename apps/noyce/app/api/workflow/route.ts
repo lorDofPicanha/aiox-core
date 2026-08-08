@@ -11,7 +11,7 @@ import {
 import { runParticipationWorkflow, type WorkflowSource } from "@/lib/workflow/run-participation";
 
 export const runtime = "nodejs";
-export const maxDuration = 800;
+export const maxDuration = 300;
 const MAX_BODY_BYTES = 512 * 1024;
 const PNCP_ID = /^\d{14}-\d+-\d{1,12}\/\d{4}$/;
 

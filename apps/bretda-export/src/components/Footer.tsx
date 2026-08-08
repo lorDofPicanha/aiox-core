@@ -15,7 +15,7 @@ export default function Footer() {
       <div className="wrap">
         <div className="ftr-top">
           <div className="ftr-brand">
-            <div className="logo">BRETDA</div>
+            <div className="logo">TOCKS</div>
             <p>{t("tagline")}</p>
             <div className="since">{t("since")}</div>
           </div>
@@ -29,7 +29,7 @@ export default function Footer() {
             <h5>{t("contact")}</h5>
             <a href={lp("/contact", l)}>{n("contact")}</a>
             <a href={waUrl(tw("contact"))} target="_blank" rel="noopener noreferrer" onClick={() => trackLead({ channel: "whatsapp", source: "footer" })}>WhatsApp</a>
-            <a href="mailto:atelier@bretda.com" onClick={() => trackLead({ channel: "email", source: "footer" })}>atelier@bretda.com</a>
+            <a href="mailto:contato@tockscustom.com.br" onClick={() => trackLead({ channel: "email", source: "footer" })}>contato@tockscustom.com.br</a>
           </div>
         </div>
         <div className="ftr-base">
@@ -37,7 +37,7 @@ export default function Footer() {
           <span className="meta">Signed &amp; numbered · Insured worldwide delivery</span>
         </div>
       </div>
-      <div className="ftr-sign" aria-hidden="true">BRETDA</div>
+      <div className="ftr-sign" aria-hidden="true">TOCKS</div>
     </footer>
   );
 }

@@ -1,4 +1,4 @@
-// Catalog of 13 Bretda table models for the 3D configurator.
+// Legacy 3D model library used by the Tocks configurator.
 // Paths are absolute-from-public (served by Next.js /public).
 // Ported 1:1 from prototype-tawny-omega.vercel.app/arquiteto.html
 
@@ -15,13 +15,10 @@ export const TABLE_MODELS: Readonly<Record<string, TableModel>> = {
   opal:             { key: "opal",             label: "Opal",          glb: "/models/mesa-bretda-sinuca-opal.glb",          category: "sinuca" },
   aurora:           { key: "aurora",           label: "Aurora",        glb: "/models/mesa-bretda-sinuca-aurora.glb",        category: "sinuca" },
   zurita:           { key: "zurita",           label: "Zurita",        glb: "/models/mesa-bretda-sinuca-zurita.glb",        category: "sinuca" },
-  espinela:         { key: "espinela",         label: "Espinela",      glb: "/models/mesa-bretda-sinuca-espinela.glb",      category: "sinuca" },
   citrino:          { key: "citrino",          label: "Citrino",       glb: "/models/mesa-bretda-sinuca-citrino.glb",       category: "sinuca" },
-  ambar:            { key: "ambar",            label: "Ambar",         glb: "/models/mesa-bretda-sinuca-ambar.glb",         category: "sinuca" },
   "pimbolim-ambar": { key: "pimbolim-ambar",   label: "Pebolim Ambar", glb: "/models/mesa-bretda-pimbolim-ambar.glb",       category: "pebolim" },
   "pimbolim-berilo":{ key: "pimbolim-berilo",  label: "Pebolim Berilo",glb: "/models/mesa-bretda-pimbolim-berilo.glb",      category: "pebolim" },
   "pimbolim-opal":  { key: "pimbolim-opal",    label: "Pebolim Opal",  glb: "/models/mesa-bretda-pimbolim-opal.glb",        category: "pebolim" },
-  "tenis-ambar":    { key: "tenis-ambar",      label: "Tenis Ambar",   glb: "/models/mesa-bretda-tenis-de-mesa-ambar.glb",  category: "tenis" },
   "tenis-citrino":  { key: "tenis-citrino",    label: "Tenis Citrino", glb: "/models/mesa-bretda-tenis-de-mesa-citrino.glb",category: "tenis" },
   "tenis-cobal":    { key: "tenis-cobal",      label: "Tenis Cobal",   glb: "/models/mesa-bretda-tenis-de-mesa-cobal.glb",  category: "tenis" },
   shuffleboard:     { key: "shuffleboard",     label: "Shuffleboard",  glb: "/models/mesa-bretda-shufflebooard.glb",        category: "shuffleboard" },
@@ -43,8 +40,7 @@ export function getTablesByCategory(cat: TableCategory): TableModel[] {
 // (Round 3 optimization renamed Portuguese-accent files to plain ASCII;
 //  prior URL-encoded paths like Cabre%C3%BAva.jpg returned 404 silently,
 //  leaving WOOD + METAL swatches as empty bordered circles).
-// fallbackColor hex values sourced from Bretda brand book
-// (D:/Bretda_CustomGPT_Knowledge/03_MATERIAIS_Catalogo.md).
+// fallbackColor values preserve the approved material library.
 
 export interface Swatch {
   readonly name: string;

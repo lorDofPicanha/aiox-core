@@ -28,9 +28,14 @@ export default function Home() {
     <>
       <Header solidOnScroll />
       <section className="hero">
-        <video autoPlay muted loop playsInline poster="/img/aurora-1.jpg">
-          <source src="/video/aurora.mp4" type="video/mp4" />
-        </video>
+        <Image
+          src="/tocks/elipse/lifestyle.jpg"
+          alt="Tocks Elipse"
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: "cover", zIndex: 0 }}
+        />
         <div className="scrim" />
         <div className="vig" />
         <div className="in">
@@ -41,8 +46,8 @@ export default function Home() {
           </h1>
           <p className="sub reveal in">{t("sub")}</p>
           <div className="cta-row reveal in">
-            <a className="cta" href={lp("/collection", locale)}>{t("cta")}</a>
-            <a className="ghostlink" href={viewing} target="_blank" rel="noopener noreferrer" onClick={() => trackLead({ channel: "whatsapp", source: "home_hero" })}>{t("book")}</a>
+            <a className="cta" href={viewing} target="_blank" rel="noopener noreferrer" onClick={() => trackLead({ channel: "whatsapp", source: "home_hero" })}>{t("book")}</a>
+            <a className="ghostlink" href={lp("/collection", locale)}>{t("cta")}</a>
           </div>
         </div>
         <div className="scrollcue"><span className="line" /><span>{t("scroll")}</span></div>

@@ -25,7 +25,7 @@
     "house": "La maison", "houseV": "Un atelier au Brésil. Chaque table signée, numérotée et conçue pour une seule pièce.",
     "now": "Maintenant", "nowV": "Chaque pièce est fabriquée sur commande — un nombre limité de commandes par saison.",
     "objectVsig": "Une table de billard premium de notre ligne Signature — bois dur massif, qualité tournoi.",
-    "houseSig": "La ligne", "houseVsig": "L'un des dix-huit modèles Signature — la collection complète, fabriquée au Brésil.",
+    "houseSig": "La ligne", "houseVsig": "L'un des treize modèles Signature — la collection complète, fabriquée au Brésil.",
     "nowVsig": "Fabriquée sur commande et livrée en gants blancs aux États-Unis et en Europe.",
     "finishes": "Finitions", "finishesNote": "Bois précieux et feutres disponibles — votre finition est confirmée lors de la commande.",
     "email": "Demande par e-mail", "emailSubj": "Demande : {name}",
@@ -42,11 +42,11 @@
     "email": "Plutôt par e-mail ? Écrivez à l'atelier →", "emailSubj": "Configuration : {name}"
   },
   "wa": {
-    "viewing": "Bonjour Bretda, je souhaiterais réserver une visite privée.",
-    "reserve": "Bonjour Bretda, je suis intéressé(e) par la {name} ({price}). Je souhaiterais la réserver.",
-    "talk": "Bonjour Bretda, je souhaiterais parler à un spécialiste de la {name}.",
-    "config": "Bonjour Bretda, j'ai configuré la {name} — châssis en {wood}, socle en {metal}, feutre en {cloth} ({price}). Je souhaiterais continuer.",
-    "contact": "Bonjour Bretda, je souhaiterais plus d'informations sur vos tables."
+    "viewing": "Bonjour Tocks, je souhaiterais réserver une visite privée.",
+    "reserve": "Bonjour Tocks, je suis intéressé(e) par la {name} ({price}). Je souhaiterais la réserver.",
+    "talk": "Bonjour Tocks, je souhaiterais parler à un spécialiste de la {name}.",
+    "config": "Bonjour Tocks, j'ai configuré la {name} — châssis en {wood}, socle en {metal}, feutre en {cloth} ({price}). Je souhaiterais continuer.",
+    "contact": "Bonjour Tocks, je souhaiterais plus d'informations sur vos tables."
   },
-  "footer": { "tagline": "Tables de billard sculpturales, fabriquées à la main au Brésil et livrées en gants blancs dans les foyers des États-Unis et d'Europe.", "since": "Atelier depuis 2009 · Brésil", "rights": "Bretda Atelier · Itajaí, Brésil", "contact": "Parlez-nous", "shipping": "Livraison & douanes" }
+  "footer": { "tagline": "Tables de billard sculpturales, fabriquées à la main au Brésil et livrées en gants blancs dans les foyers des États-Unis et d'Europe.", "since": "Atelier depuis 2009 · Brésil", "rights": "Tocks Custom · Itajaí, Brésil", "contact": "Parlez-nous", "shipping": "Livraison & douanes" }
 }

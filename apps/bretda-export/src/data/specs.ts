@@ -1,5 +1,5 @@
-// Real Bretda product data — dimensions, structure and editorial description.
-// Source of truth: apps/bretda-lp/src/lib/product-copy.ts (founder's catalog).
+// Real Tocks product data — dimensions, structure and editorial description.
+// Source of truth: the founder's legacy catalog copy.
 // Descriptions translated to English, faithful to the original (no invention).
 // NOTE: the source carries NO weight figures — `weightKg` is intentionally
 // absent until the atelier provides them; the PDP shows "On request".
@@ -12,7 +12,7 @@ export interface Size {
 
 export interface Spec {
   readonly description: readonly string[];
-  readonly sizes?: readonly Size[]; // several sizes (Bretda billiards) or modes (convertible)
+  readonly sizes?: readonly Size[]; // several sizes (Tocks billiards) or modes (convertible)
   readonly dim?: { readonly l: number; readonly w: number; readonly h?: number }; // single size (cm); h optional
   readonly base?: string;
   readonly structure?: string; // material / structure
@@ -41,7 +41,7 @@ const TOCKS_CLOTH = "10+ imported cloth options";
 const SLATE_25 = "Italian slate, 25 mm (included)";
 const SLATE_30 = "Italian slate, 30 mm (included)";
 
-// Keyed by bretda-export catalog slug.
+// Keyed by Tocks export catalog slug.
 export const SPECS: Readonly<Record<string, Spec>> = {
   aurora: {
     description: [
