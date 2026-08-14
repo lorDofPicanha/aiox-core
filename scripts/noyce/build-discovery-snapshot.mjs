@@ -27,6 +27,7 @@ import { fileURLToPath } from 'node:url';
 import { createPncpPublicAdapter } from '../../apps/noyce/lib/sources/pncp-public-adapter.ts';
 import { dedupeCandidates } from '../../apps/noyce/lib/sources/source-dedupe.ts';
 import { canReadPublicNow } from '../../apps/noyce/lib/noyce-source-registry.ts';
+import { fetchPncpPage } from '../../apps/noyce/lib/sources/pncp-resilient-fetch.ts';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..', '..');
@@ -35,10 +36,15 @@ const ROOT = path.resolve(__dirname, '..', '..');
 const MUNICIPIOS = [
   { ibge: '5200258', name: 'Águas Lindas de Goiás', uf: 'GO', distanceKm: 0 },
   { ibge: '5300108', name: 'Brasília', uf: 'DF', distanceKm: 50 },
-  { ibge: '5214887', name: 'Novo Gama', uf: 'GO', distanceKm: 30 },
+  // CORRECAO 13/Ago: 5214887 nao e codigo IBGE valido (a API devolvia HTTP 422).
+  // Novo Gama e 5215231, a 42 km. Conferido em lib/data/municipios-raio-500km.json.
+  { ibge: '5215231', name: 'Novo Gama', uf: 'GO', distanceKm: 42 },
   { ibge: '5212501', name: 'Luziânia', uf: 'GO', distanceKm: 64 },
   { ibge: '5208004', name: 'Formosa', uf: 'GO', distanceKm: 82 },
-  { ibge: '5200050', name: 'Abadiânia', uf: 'GO', distanceKm: 90 },
+  // CORREÇÃO 13/Ago: estava `5200050` rotulado como "Abadiânia" — mas 5200050 é
+  // "Abadia de Goiás" (166 km). Abadiânia é 5200100 (66 km). Mesmo erro que havia no
+  // fixture do kill-gate; conferido contra lib/data/municipios-raio-500km.json.
+  { ibge: '5200100', name: 'Abadiânia', uf: 'GO', distanceKm: 66 },
   { ibge: '5217302', name: 'Pirenópolis', uf: 'GO', distanceKm: 100 },
   { ibge: '5201108', name: 'Anápolis', uf: 'GO', distanceKm: 120 },
   { ibge: '5208707', name: 'Goiânia', uf: 'GO', distanceKm: 170 },
@@ -54,9 +60,9 @@ function parseArgs(argv) {
   const a = {
     days: 90,
     asof: null,
-    retries: 5,
+    retries: 6,
     delayMs: 350,
-    timeoutMs: 13000,
+    timeoutMs: 75000, // 13/Ago: resposta legitima do PNCP medida em 62,6s
     out: path.join(ROOT, 'apps', 'noyce', 'lib', 'data', 'discovery-snapshot.json'),
   };
   for (let i = 0; i < argv.length; i++) {
@@ -69,24 +75,28 @@ function parseArgs(argv) {
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const ymd = (d) => `${d.getUTCFullYear()}${String(d.getUTCMonth() + 1).padStart(2, '0')}${String(d.getUTCDate()).padStart(2, '0')}`;
 
-// Retry-resilient fetch (the /contratacoes/publicacao endpoint is stable but the PNCP
-// backend 500s intermittently — see doc 22). Returns the parsed payload.
+/**
+ * Leitura resiliente — desde 13/Ago roteada por lib/sources/pncp-resilient-fetch.ts
+ * (19 testes). A versão anterior tratava HTTP 200 com corpo HTML (página de erro do WAF
+ * do PNCP) como JSON inválido e o edital sumia do snapshot silenciosamente. Medimos uma
+ * resposta legítima levando 62,6 s — timeout de 13 s abortava antes da hora.
+ *
+ * Toda consulta empilha telemetria em QUERY_TELEMETRY para o snapshot registrar quantas
+ * consultas falharam: um snapshot pequeno por falha de rede não pode parecer um dia calmo.
+ */
+export const QUERY_TELEMETRY = [];
+
 async function fetchJson(url) {
-  let lastErr;
-  for (let attempt = 1; attempt <= ARGS.retries; attempt++) {
-    const ctrl = new AbortController();
-    const to = setTimeout(() => ctrl.abort(), ARGS.timeoutMs);
-    try {
-      const res = await fetch(url, { signal: ctrl.signal, headers: { accept: 'application/json', 'user-agent': 'noyce-discovery/0.2' } });
-      clearTimeout(to);
-      if (res.status === 204) return { data: [], totalPaginas: 0 };
-      if (res.ok) { const t = await res.text(); return t.trim() ? JSON.parse(t) : { data: [], totalPaginas: 0 }; }
-      lastErr = new Error(`HTTP ${res.status}`);
-      if (![408, 429, 500, 502, 503, 504].includes(res.status)) throw lastErr;
-    } catch (e) { clearTimeout(to); lastErr = e; }
-    await sleep(ARGS.delayMs * attempt * 2);
+  const page = await fetchPncpPage(url, {
+    retries: ARGS.retries,
+    timeoutMs: ARGS.timeoutMs,
+    backoffMs: Math.max(ARGS.delayMs, 800),
+  });
+  QUERY_TELEMETRY.push(page.telemetry);
+  if (page.telemetry.outcome === 'failed') {
+    throw new Error(`${page.telemetry.failureKind}: ${page.telemetry.detail}`);
   }
-  throw lastErr;
+  return { data: page.data, totalPaginas: page.totalPaginas };
 }
 
 // Portal-of-origin inference (PNCP aggregates editais from PCP/BLL/BNC/ComprasGov).
@@ -205,7 +215,15 @@ async function main() {
     windowEnd: df,
     municipios: MUNICIPIOS,
     note: 'Cluster real (GO ≤170km). Raio completo 500km via IBGE haversine = follow-up. Triagem Vai/Olha/Pula é app-side. Discovery roteado pela camada legal-calibrada lib/sources.',
-    queryStats: { okQueries, failQueries },
+    queryStats: {
+      okQueries,
+      failQueries,
+      // Telemetria por consulta: um snapshot pequeno por falha de rede nao pode
+      // parecer um dia calmo. Ver lib/sources/pncp-resilient-fetch.ts.
+      attempts: QUERY_TELEMETRY.reduce((sum, t) => sum + t.attempts, 0),
+      failed: QUERY_TELEMETRY.filter((t) => t.outcome === 'failed').length,
+      slowestMs: QUERY_TELEMETRY.reduce((max, t) => Math.max(max, t.totalMs), 0),
+    },
     dedupe: {
       total: dedupe.report.total,
       unique: dedupe.report.unique,

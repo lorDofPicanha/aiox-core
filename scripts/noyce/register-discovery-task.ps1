@@ -52,7 +52,7 @@ if (-not $node) { throw "node não encontrado no PATH. Instale o Node.js ou ajus
 $scheduler = Join-Path $ScriptDir 'discovery-scheduler.mjs'
 if (-not (Test-Path $scheduler)) { throw "Não achei $scheduler" }
 
-$arguments = "--experimental-strip-types `"$scheduler`" --once -- --days 3 --retention-days 60 --max-runtime-min 40 --request-timeout-ms 30000"
+$arguments = "--experimental-strip-types `"$scheduler`" --once -- --days 3 --retention-days 60 --max-runtime-min 40 --request-timeout-ms 75000"
 
 $action  = New-ScheduledTaskAction -Execute $node -Argument $arguments -WorkingDirectory $RepoRoot
 # Repete a cada N horas, por uma janela longa (10 anos), começando agora.

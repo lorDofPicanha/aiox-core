@@ -68,7 +68,7 @@ const EDITAIS = [
     orgao: 'Pref. Novo Gama',
     municipio: 'Novo Gama/GO',
     cnpjOrgao: '01629276000104',
-    codigoMunicipioIbge: '5214887',
+    codigoMunicipioIbge: '5215231',
     modalidade: 4,
     dataInicial: '20260401',
     dataFinal: '20260430',
@@ -81,7 +81,7 @@ const EDITAIS = [
     orgao: 'Pref. Novo Gama',
     municipio: 'Novo Gama/GO',
     cnpjOrgao: '01629276000104',
-    codigoMunicipioIbge: '5214887',
+    codigoMunicipioIbge: '5215231',
     modalidade: 4,
     dataInicial: '20260101',
     dataFinal: '20260531',
@@ -94,7 +94,10 @@ const EDITAIS = [
     orgao: 'Camara de Abadiania',
     municipio: 'Abadiania/GO',
     cnpjOrgao: null,
-    codigoMunicipioIbge: '5200050',
+    // CORRECAO 13/Ago: estava 5200050 = "Abadia de Goias" (166 km da sede), municipio
+    // DIFERENTE de Abadiania (5200100, 66 km). O miss deste edital vinha sendo atribuido
+    // a "BNC nao publica no PNCP" quando a causa era este digito no nosso proprio fixture.
+    codigoMunicipioIbge: '5200100',
     modalidade: 4,
     dataInicial: '20260101',
     dataFinal: '20260531',
@@ -160,8 +163,10 @@ function parseArgs(argv) {
     dryRun: false,
     outputDir: DEFAULT_OUTPUT_DIR,
     delayMs: 350,
-    retries: 3,
-    timeoutMs: 12000,
+    // 13/Ago: medimos uma resposta legitima do PNCP em 62,6s. Com 12s/3x o gate abortava
+    // e contava ausencia. Ver lib/sources/pncp-resilient-fetch.ts.
+    retries: 6,
+    timeoutMs: 75000,
   };
 
   for (let index = 0; index < argv.length; index += 1) {
@@ -189,8 +194,8 @@ Options:
   --dry-run              Print dataset and planned PNCP requests without network calls.
   --output-dir <path>    Output directory for CSV and JSON files.
   --delay-ms <number>    Delay between PNCP requests. Default: 350.
-  --retries <number>     Retry attempts per PNCP request. Default: 3.
-  --timeout-ms <number>  Timeout per PNCP request. Default: 12000.
+  --retries <number>     Retry attempts per PNCP request. Default: 6.
+  --timeout-ms <number>  Timeout per PNCP request. Default: 75000.
 `);
 }
 
@@ -208,46 +213,32 @@ async function sleep(ms) {
   await new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function fetchJson(url, options) {
-  let lastError;
+// Carregado em main() via import() dinamico (o modulo e TS/ESM e este script e CJS).
+let resilient = null;
 
-  for (let attempt = 1; attempt <= options.retries; attempt += 1) {
-    try {
-      const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), options.timeoutMs);
-      let response;
-      try {
-        response = await fetch(url, {
-          signal: controller.signal,
-          headers: {
-            accept: 'application/json',
-            'user-agent': 'noyce-stage2-gate/0.1',
-          },
-        });
-      } finally {
-        clearTimeout(timeout);
-      }
+/**
+ * CORRECAO 13/Ago — antes esta funcao tratava timeout, HTTP 500 e corpo HTML como se
+ * fossem "nao achado". Medimos uma chamada legitima do PNCP levando 62,6s e devolvendo
+ * 500; com timeout de 12s e 3 tentativas, o gate abortava e registrava ausencia.
+ *
+ * Agora a leitura passa por lib/sources/pncp-resilient-fetch.ts (19 testes) e a telemetria
+ * de cada consulta e empilhada em `sink`, para o gate poder separar "o PNCP nao tem" de
+ * "nao conseguimos perguntar".
+ */
+async function fetchJson(url, options, sink) {
+  const page = await resilient.fetchPncpPage(url, {
+    retries: options.retries,
+    timeoutMs: options.timeoutMs,
+    backoffMs: Math.max(options.delayMs, 800),
+  });
+  if (Array.isArray(sink)) sink.push(page.telemetry);
 
-      if (response.ok) {
-        const body = await response.text();
-        if (!body.trim()) {
-          throw new Error('Empty JSON response');
-        }
-        return JSON.parse(body);
-      }
-      lastError = new Error(`HTTP ${response.status} ${response.statusText}`);
-
-      if (![408, 429, 500, 502, 503, 504].includes(response.status)) {
-        throw lastError;
-      }
-    } catch (error) {
-      lastError = error;
-    }
-
-    await sleep(options.delayMs * attempt * 2);
+  if (page.telemetry.outcome === 'failed') {
+    const error = new Error(`${page.telemetry.failureKind}: ${page.telemetry.detail}`);
+    error.telemetry = page.telemetry;
+    throw error;
   }
-
-  throw lastError;
+  return { data: page.data, totalPaginas: page.totalPaginas };
 }
 
 function normalizeCnpj(value) {
@@ -425,7 +416,7 @@ async function collectPublication(edital, options) {
   const errors = [];
   if (byCnpj) {
     try {
-      payloads.push({ source: 'cnpj', url: byCnpj, payload: await fetchJson(byCnpj, options) });
+      payloads.push({ source: 'cnpj', url: byCnpj, payload: await fetchJson(byCnpj, options, options.telemetrySink) });
     } catch (error) {
       errors.push(`publicacao:cnpj:${error.message}`);
     }
@@ -436,7 +427,7 @@ async function collectPublication(edital, options) {
     payloads.push({
       source: 'codigoMunicipioIbge',
       url: byMunicipio,
-      payload: await fetchJson(byMunicipio, options),
+      payload: await fetchJson(byMunicipio, options, options.telemetrySink),
     });
   } catch (error) {
     errors.push(`publicacao:codigoMunicipioIbge:${error.message}`);
@@ -478,7 +469,7 @@ async function collectOutcome(edital, options, publicationRow) {
     tamanhoPagina: 500,
   });
 
-  const payload = await fetchJson(url, options);
+  const payload = await fetchJson(url, options, options.telemetrySink);
   const rows = getRows(payload);
 
   return {
@@ -505,6 +496,9 @@ async function run(options) {
 
   for (const edital of EDITAIS) {
     process.stdout.write(`Running ${edital.edital}... `);
+    // Telemetria por edital: zerada a cada iteracao para o veredito refletir SO as
+    // consultas deste edital.
+    options.telemetrySink = [];
 
     try {
       const publication = await collectPublication(edital, options);
@@ -517,6 +511,11 @@ async function run(options) {
         errors.push(`contratos:cnpjOrgao:${error.message}`);
         outcome = { rows: [], best: null, url: null };
       }
+
+      // VEREDITO DE COBERTURA (13/Ago) — a correcao conceitual do gate.
+      // `unknown` = as consultas falharam, entao nao sabemos se o PNCP tem ou nao.
+      // Contar isso como ausencia media a NOSSA rede, nao a cobertura do PNCP.
+      const queryOutcome = resilient.judgeCoverage(Boolean(publication.best), options.telemetrySink || []);
 
       const publicationValue = publication.best ? extractPublicationValue(publication.best.row) : null;
       const outcomeValue = outcome.best ? outcome.best.value : null;
@@ -533,6 +532,9 @@ async function run(options) {
         metadataCompleta: Boolean(edital.cnpjOrgao && edital.valorEstimado),
         metadataNotes: edital.metadataNotes || '',
         achado: Boolean(publication.best),
+        queryOutcome,
+        queryAttempts: (options.telemetrySink || []).reduce((sum, entry) => sum + entry.attempts, 0),
+        queryFailures: (options.telemetrySink || []).filter((entry) => entry.outcome === 'failed').length,
         discoverySource: publication.best?.row.__source || '',
         discoveryCandidates: publication.rows.length,
         discoveryScore: publication.best?.score ?? '',
@@ -566,6 +568,10 @@ async function run(options) {
         metadataCompleta: Boolean(edital.cnpjOrgao && edital.valorEstimado),
         metadataNotes: edital.metadataNotes || '',
         achado: false,
+        // Excecao no fluxo = nao conseguimos concluir a consulta. Nunca afirmar ausencia.
+        queryOutcome: 'unknown',
+        queryAttempts: (options.telemetrySink || []).reduce((sum, entry) => sum + entry.attempts, 0),
+        queryFailures: (options.telemetrySink || []).filter((entry) => entry.outcome === 'failed').length,
         discoverySource: '',
         discoveryCandidates: 0,
         discoveryScore: '',
@@ -605,7 +611,15 @@ function summarize(results) {
       : null;
   const incompleteMetadata = results.filter((row) => !row.metadataCompleta).length;
 
-  const coverage = found / total;
+  // COBERTURA COM DENOMINADOR HONESTO (13/Ago).
+  // `unknown` = a consulta nunca voltou. Mante-lo no denominador faz a metrica medir a
+  // estabilidade do PNCP e a nossa rede em vez de medir se o edital esta publicado la.
+  // Reportamos as duas: `coverage` (so o que foi respondido) e `coverageRaw` (a antiga).
+  const unknown = results.filter((row) => row.queryOutcome === 'unknown').length;
+  const notPublished = results.filter((row) => row.queryOutcome === 'not_published').length;
+  const answered = total - unknown;
+  const coverage = answered > 0 ? found / answered : 0;
+  const coverageRaw = found / total;
   const outcomeHitRate = outcomeBase.length > 0 ? outcomes / outcomeBase.length : 0;
   const passesCoverage = coverage >= 0.5;
   const passesOutcome = outcomeHitRate >= 0.5;
@@ -621,11 +635,16 @@ function summarize(results) {
   return {
     total,
     found,
+    // Decomposicao do que antes era so "nao achado".
+    answered,
+    notPublished,
+    unknown,
     outcomes,
     exactOutcomeRows,
     incompleteMetadata,
     preliminaryMapeRows: preliminaryMapeRows.length,
     coverage,
+    coverageRaw,
     outcomeHitRate,
     avgMape,
     thresholds: {
@@ -659,6 +678,9 @@ function toCsv(rows) {
   const headers = [
     'edital',
     'achado',
+    'query_outcome',
+    'query_attempts',
+    'query_failures',
     'modalidade_usada',
     'vencedor',
     'valor_homologado',
@@ -683,6 +705,9 @@ function toCsv(rows) {
       [
         row.edital,
         row.achado ? 's' : 'n',
+        row.queryOutcome,
+        row.queryAttempts,
+        row.queryFailures,
         row.discoverySource,
         row.vencedor ? 's' : 'n',
         formatNumber(row.valorHomologado),
@@ -722,6 +747,10 @@ function csvEscape(value) {
 
 async function main() {
   const options = parseArgs(process.argv.slice(2));
+  // Modulo TS/ESM testado (19 testes) carregado dinamicamente a partir deste script CJS.
+  resilient = await import(
+    new URL('../../apps/noyce/lib/sources/pncp-resilient-fetch.ts', `file://${__filename.replace(/\\/g, '/')}`).href
+  );
   await run(options);
 }
 

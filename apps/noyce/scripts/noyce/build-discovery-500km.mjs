@@ -15,6 +15,7 @@ import {
   shouldAbortCollection,
 } from "./discovery-incremental-policy.mjs";
 import { assertPublishableDiscoverySnapshot } from "./discovery-snapshot-contract.mjs";
+import { fetchPncpPage } from "../../lib/sources/pncp-resilient-fetch.ts";
 
 const BASE = "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao";
 const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36";
@@ -23,7 +24,7 @@ const MODALIDADES = [4, 5, 6];
 const PAGE_SIZE = 50;
 const MAX_PAGES = { 4: 200, 5: 200, 6: 40 };
 const DELAY_MS = 1500; // educado: o PNCP rate-limita bursts curtos.
-const RETRIES = 3;
+const RETRIES = 6; // 13/Ago: 3 era pouco para o PNCP degradado (uma consulta precisou de 22 tentativas no kill-gate).
 const REFRESH_MS = 60 * 60 * 1000; // 1 hora (modo --watch).
 
 const OBRAS_RE = /obra|engenharia|reforma|constru|pavimenta|edifica|amplia|recupera[çc][ãa]o|drenagem|terraplan|saneamento|infraestrutura|quadra|gin[áa]sio|ponte|cal[çc]ament|muro|pra[çc]a|ubs\b|creche|escola/i;
@@ -37,7 +38,7 @@ const retentionDays = Number.parseInt(retentionDaysFlag >= 0 ? args[retentionDay
 const maxRuntimeFlag = args.indexOf("--max-runtime-min");
 const maxRuntimeMin = Number.parseInt(maxRuntimeFlag >= 0 ? args[maxRuntimeFlag + 1] : "50", 10);
 const requestTimeoutFlag = args.indexOf("--request-timeout-ms");
-const requestTimeoutMs = Number.parseInt(requestTimeoutFlag >= 0 ? args[requestTimeoutFlag + 1] : "30000", 10);
+const requestTimeoutMs = Number.parseInt(requestTimeoutFlag >= 0 ? args[requestTimeoutFlag + 1] : "75000", 10);
 
 for (const [name, value] of Object.entries({ queryDays, retentionDays, maxRuntimeMin, requestTimeoutMs })) {
   if (!Number.isFinite(value) || value < 1) throw new TypeError(`${name} deve ser um inteiro positivo`);
@@ -51,26 +52,37 @@ const UFS = [...new Set(geo.municipios.map((m) => m.uf))];
 const OUT = new URL("../../lib/data/discovery-snapshot.json", import.meta.url);
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-const BACKOFF = [3000, 8000];
+
+/**
+ * Leitura roteada por lib/sources/pncp-resilient-fetch.ts (21 testes) desde 13/Ago.
+ *
+ * Por que trocar uma implementação que já retentava: o contrato deste pipeline recusa
+ * publicar se UMA ÚNICA página falhar (`shouldAbortCollection` + `assertPublishableDiscoverySnapshot`).
+ * Isso é correto — snapshot parcial é pior que snapshot velho — mas torna a varredura
+ * inteira refém da página mais azarada. Duas das três últimas execuções horárias morreram
+ * em `preserved_stale` por isso.
+ *
+ * O que muda concretamente:
+ *   - timeout padrão 30 s → 75 s: medimos uma resposta LEGÍTIMA do PNCP em 62,6 s;
+ *   - 3 → 6 tentativas, com backoff exponencial + jitter (era escada fixa de 2 degraus);
+ *   - HTTP 200 com corpo HTML (página do WAF) é classificado como retentável;
+ *   - 4xx de cliente é FATAL e não gasta as tentativas restantes (um IBGE inválido
+ *     devolvia 422 e queimava 3 rodadas de retry à toa).
+ */
 async function fetchJson(url, deadlineAt) {
-  for (let i = 0; i < RETRIES; i++) {
-    const remainingMs = deadlineAt - Date.now();
-    if (remainingMs <= 0) throw new Error(`orçamento de ${maxRuntimeMin} min esgotado`);
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), Math.min(requestTimeoutMs, remainingMs));
-    try {
-      const res = await fetch(url, { signal: controller.signal, headers: { accept: "application/json", "user-agent": UA } });
-      if (res.status === 204) return { data: [], totalPaginas: 0, totalRegistros: 0 };
-      if (res.status === 429 || res.status >= 500) throw new Error(`HTTP ${res.status} (rate/again)`);
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return await res.json();
-    } catch (e) {
-      if (i === RETRIES - 1) throw e;
-      await sleep(BACKOFF[Math.min(i, BACKOFF.length - 1)]);
-    } finally {
-      clearTimeout(timeout);
-    }
+  const remainingMs = deadlineAt - Date.now();
+  if (remainingMs <= 0) throw new Error(`orçamento de ${maxRuntimeMin} min esgotado`);
+  const page = await fetchPncpPage(url, {
+    retries: RETRIES,
+    timeoutMs: Math.min(requestTimeoutMs, remainingMs),
+    backoffMs: 3000,
+    maxBackoffMs: 20000,
+    userAgent: UA,
+  });
+  if (page.telemetry.outcome === "failed") {
+    throw new Error(`${page.telemetry.failureKind}: ${page.telemetry.detail} (${page.telemetry.attempts} tentativas, ${page.telemetry.totalMs}ms)`);
   }
+  return { data: page.data, totalPaginas: page.totalPaginas, totalRegistros: page.data.length };
 }
 
 function yyyymmdd(d) {
