@@ -8,10 +8,17 @@ import { MAX_DISCOVERY_RADIUS_KM } from "@/lib/noyce-source-registry";
 import { ScorePill } from "@/components/shell/bits";
 import { ConsorcioChip } from "@/components/shell/ConsorcioChip";
 import { needsConsorcioPartner } from "@/lib/noyce-operational";
+import { KeywordStudio } from "@/components/monitorar/KeywordStudio";
+import { captureText, type CaptureAttribution, type KeywordConfig } from "@/lib/noyce-keywords";
+import seedKeywordConfig from "@/lib/data/keyword-groups.json";
+
+const KEYWORD_STORAGE_KEY = "noyce.keywords.config.v1";
 
 type SortMode = "triagem" | "best" | "worst" | "deadline";
 type VerdictFilter = "all" | "vai" | "olha" | "pula";
 type ConsorcioFilter = "qualquer" | "sim" | "nao";
+/** "all" = sem filtro · "none" = só os que NENHUMA palavra-chave pegou · resto = id do grupo. */
+type CaptureFilter = string;
 const RANK: Record<string, number> = { vai: 0, olha: 1, pula: 2 };
 const VERDICT_LABEL: Record<string, string> = { vai: "Vai", olha: "Olha", pula: "Pula" };
 type OpportunityWithSuspicion = Opportunity & { suspicionSignals?: SuspicionSignal[] };
@@ -48,6 +55,39 @@ export function MonitorarTab({
   const [verdict, setVerdict] = useState<VerdictFilter>("all");
   // Story 30.1 AC3 — filtro de consórcio, hidratado do query param `consorcio=sim|nao|qualquer`.
   const [consorcio, setConsorcio] = useState<ConsorcioFilter>("qualquer");
+  // Motor de palavras-chave (Slice A, 12/Ago): config viva + filtro por quem capturou.
+  const [keywordConfig, setKeywordConfig] = useState<KeywordConfig>(() => seedKeywordConfig as unknown as KeywordConfig);
+  const [captureFilter, setCaptureFilter] = useState<CaptureFilter>("all");
+  const [showStudio, setShowStudio] = useState(false);
+
+  // Hidrata a config editada pelo usuário só após a montagem (evita mismatch de SSR).
+  useEffect(() => {
+    try {
+      const raw = globalThis.localStorage?.getItem(KEYWORD_STORAGE_KEY);
+      if (raw) setKeywordConfig(JSON.parse(raw) as KeywordConfig);
+    } catch {
+      /* config corrompida: segue com o seed calibrado */
+    }
+  }, []);
+
+  // ATRIBUIÇÃO — quem capturou cada edital. Derivada, nunca persistida: editar a palavra-chave
+  // reclassifica a fila na hora, sem rebuild de snapshot.
+  const captureById = useMemo(() => {
+    const map = new Map<string, CaptureAttribution>();
+    for (const opportunity of opportunities) {
+      const result = captureText(opportunity.title, keywordConfig);
+      if (result.primary) map.set(opportunity.id, result.primary);
+    }
+    return map;
+  }, [opportunities, keywordConfig]);
+
+  const captureCounts = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const attribution of captureById.values()) {
+      counts.set(attribution.groupId, (counts.get(attribution.groupId) ?? 0) + 1);
+    }
+    return counts;
+  }, [captureById]);
 
   // Hidrata o filtro a partir da URL na montagem (consistente com o padrão localStorage do app).
   useEffect(() => {
@@ -87,6 +127,9 @@ export function MonitorarTab({
     // Story 30.1 AC3 — "Sim" só os que permitem; "Não" só os que vedam. N/I (null) cai fora de ambos.
     if (consorcio === "sim") scoped = scoped.filter((o) => o.permiteConsorcio === true);
     else if (consorcio === "nao") scoped = scoped.filter((o) => o.permiteConsorcio === false);
+    // Filtro por quem capturou — o que torna o motor auditável em vez de caixa-preta.
+    if (captureFilter === "none") scoped = scoped.filter((o) => !captureById.has(o.id));
+    else if (captureFilter !== "all") scoped = scoped.filter((o) => captureById.get(o.id)?.groupId === captureFilter);
     return [...scoped].sort((a, b) => {
       if (sortMode === "triagem") {
         if (RANK[a.triage.verdict] !== RANK[b.triage.verdict]) return RANK[a.triage.verdict] - RANK[b.triage.verdict];
@@ -96,7 +139,7 @@ export function MonitorarTab({
       if (sortMode === "deadline") return deadlineTime(a.proposalDeadline) - deadlineTime(b.proposalDeadline);
       return b.opportunityScore - a.opportunityScore;
     });
-  }, [cityFilter, sortMode, verdict, consorcio, opportunities]);
+  }, [cityFilter, sortMode, verdict, consorcio, opportunities, captureFilter, captureById]);
 
   return (
     <section className="area area-monitorar">
@@ -193,7 +236,30 @@ export function MonitorarTab({
               ))}
             </select>
           </label>
+          <label>
+            <span>Capturado por</span>
+            <select value={captureFilter} onChange={(event) => setCaptureFilter(event.target.value)}>
+              <option value="all">Qualquer palavra-chave ({captureById.size})</option>
+              {keywordConfig.groups.map((group) => (
+                <option value={group.id} key={group.id}>
+                  {group.name} ({captureCounts.get(group.id) ?? 0})
+                </option>
+              ))}
+              <option value="none">Nenhuma palavra-chave ({opportunities.length - captureById.size})</option>
+            </select>
+          </label>
         </div>
+
+        <div className="kw-studio-toggle">
+          <button type="button" onClick={() => setShowStudio((current) => !current)} aria-expanded={showStudio}>
+            {showStudio ? "▾ Fechar motor de palavras-chave" : "▸ Ajustar palavras-chave"}
+          </button>
+          <span className="filter-src">
+            {captureById.size} de {opportunities.length} editais do radar têm dono de captura
+          </span>
+        </div>
+
+        {showStudio ? <KeywordStudio onConfigChange={setKeywordConfig} /> : null}
 
         <div className="filter-summary" aria-live="polite">
           {filtered.length} editais · <strong className="triage-vai">{counts.vai} Vai</strong> ·{" "}
@@ -238,6 +304,19 @@ export function MonitorarTab({
               <p>
                 {opportunity.buyer} · {opportunity.city}/{opportunity.uf} · {opportunity.distanceKm} km
               </p>
+              {captureById.has(opportunity.id) ? (
+                <p
+                  className="capture-credit"
+                  title={`Perfil "${captureById.get(opportunity.id)?.profileName}" · grupo "${captureById.get(opportunity.id)?.groupName}"`}
+                >
+                  capturado por <strong>{captureById.get(opportunity.id)?.term}</strong> ·{" "}
+                  {captureById.get(opportunity.id)?.groupName}
+                </p>
+              ) : (
+                <p className="capture-credit orphan" title="Entrou pelo filtro geográfico, não por palavra-chave">
+                  nenhuma palavra-chave capturou este edital
+                </p>
+              )}
               {needsConsorcioPartner(opportunity) ? (
                 <p className="consorcio-alert" role="note">
                   Consórcio pode ser necessário — cadastre empresa parceira no Vault para análise completa.

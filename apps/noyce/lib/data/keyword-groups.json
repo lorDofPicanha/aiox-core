@@ -1,0 +1,265 @@
+{
+  "version": 1,
+  "note": "Grupos semeados a partir dos TERMOS REAIS que ocorrem nos objetos do discovery-snapshot (PNCP, raio 500 km). Nenhum termo inventado: cada palavra-chave foi verificada com o painel de teste antes de entrar aqui. Indesejadas foram calibradas para não derrubar obra real — ver tests/noyce-keywords.test.mjs.",
+  "groups": [
+    {
+      "id": "obras-civis",
+      "name": "Obras civis",
+      "note": "O tronco: execução de obra e engenharia. É o grupo que mais captura e o que mais precisa de veto.",
+      "rules": [
+        {
+          "id": "oc-construcao",
+          "term": "construção",
+          "complementares": [],
+          "indesejadas": ["material de construção", "aquisição de materiais", "aquisição de insumos"],
+          "complementarMode": "todas",
+          "enabled": true,
+          "note": "Sem os vetos, 41 compras de material de construção entram como se fossem obra."
+        },
+        {
+          "id": "oc-engenharia",
+          "term": "engenharia",
+          "complementares": [
+            "execução",
+            "serviços",
+            "obra",
+            "instalação",
+            "construção",
+            "reforma",
+            "adequação",
+            "implantação"
+          ],
+          "indesejadas": ["aquisição de materiais", "curso"],
+          "complementarMode": "qualquer",
+          "enabled": true,
+          "note": "Começou como \"engenharia + execução\" (E) e capturava 220. O painel de teste mostrou 43 obras reais escapando (subestação, geotécnica, galeria pluvial, serviços SINAPI): virou OU sobre 8 verbos de obra → 340. Os vetos tiram compra de material e equipamento de curso de engenharia."
+        },
+        {
+          "id": "oc-manutencao-predial",
+          "term": "manutenção predial",
+          "complementares": [],
+          "indesejadas": [],
+          "complementarMode": "todas",
+          "enabled": true
+        },
+        {
+          "id": "oc-revitalizacao",
+          "term": "revitalização",
+          "complementares": [],
+          "indesejadas": [],
+          "complementarMode": "todas",
+          "enabled": true
+        },
+        {
+          "id": "oc-reforma",
+          "term": "reforma",
+          "complementares": [],
+          "indesejadas": ["aquisição de materiais"],
+          "complementarMode": "todas",
+          "enabled": true
+        },
+        {
+          "id": "oc-ampliacao",
+          "term": "ampliação",
+          "complementares": [],
+          "indesejadas": [],
+          "complementarMode": "todas",
+          "enabled": true
+        },
+        {
+          "id": "oc-obra",
+          "term": "obra",
+          "complementares": [],
+          "indesejadas": ["material de construção"],
+          "complementarMode": "todas",
+          "enabled": true,
+          "note": "Pega singular e plural pela dobra (obra/obras → obr)."
+        }
+      ]
+    },
+    {
+      "id": "pavimentacao",
+      "name": "Pavimentação e recapeamento",
+      "note": "Vertical de maior volume real no raio depois de edificações.",
+      "rules": [
+        {
+          "id": "pv-pavimentacao",
+          "term": "pavimentação",
+          "complementares": [],
+          "indesejadas": [],
+          "complementarMode": "todas",
+          "enabled": true
+        },
+        {
+          "id": "pv-asfaltico",
+          "term": "asfáltico",
+          "complementares": [],
+          "indesejadas": [],
+          "complementarMode": "todas",
+          "enabled": true,
+          "note": "A dobra de gênero faz este termo pegar \"asfáltica\" e \"asfálticas\" também."
+        },
+        {
+          "id": "pv-recapeamento",
+          "term": "recapeamento",
+          "complementares": [],
+          "indesejadas": [],
+          "complementarMode": "todas",
+          "enabled": true
+        },
+        {
+          "id": "pv-meio-fio",
+          "term": "meio fio",
+          "complementares": [],
+          "indesejadas": [],
+          "complementarMode": "todas",
+          "enabled": true,
+          "note": "Multi-palavra: casa \"meio-fio\" e \"meio fio\" (a pontuação some na dobra)."
+        },
+        {
+          "id": "pv-calcada",
+          "term": "calçada",
+          "complementares": [],
+          "indesejadas": [],
+          "complementarMode": "todas",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "id": "drenagem-saneamento",
+      "name": "Drenagem e saneamento",
+      "rules": [
+        {
+          "id": "dr-drenagem",
+          "term": "drenagem",
+          "complementares": [],
+          "indesejadas": ["aquisição"],
+          "complementarMode": "todas",
+          "enabled": true,
+          "note": "Sem o veto entra \"aquisição de sistema fechado de drenagem por sucção\", que é equipamento hospitalar."
+        },
+        {
+          "id": "dr-esgoto",
+          "term": "esgoto",
+          "complementares": [],
+          "indesejadas": [],
+          "complementarMode": "todas",
+          "enabled": true
+        },
+        {
+          "id": "dr-saneamento",
+          "term": "saneamento",
+          "complementares": [],
+          "indesejadas": [],
+          "complementarMode": "todas",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "id": "edificacoes",
+      "name": "Edificações públicas",
+      "note": "Escola, creche, UBS, quadra e praça — o miolo da obra municipal no raio.",
+      "rules": [
+        {
+          "id": "ed-escola",
+          "term": "escola",
+          "complementares": [],
+          "indesejadas": ["material escolar", "kit escolar", "transporte escolar", "merenda"],
+          "complementarMode": "todas",
+          "enabled": true,
+          "note": "\"Escola\" sozinho traz material e transporte escolar; os vetos limpam."
+        },
+        {
+          "id": "ed-creche",
+          "term": "creche",
+          "complementares": [],
+          "indesejadas": [],
+          "complementarMode": "todas",
+          "enabled": true
+        },
+        {
+          "id": "ed-quadra",
+          "term": "quadra",
+          "complementares": [],
+          "indesejadas": [],
+          "complementarMode": "todas",
+          "enabled": true
+        },
+        {
+          "id": "ed-praca",
+          "term": "praça",
+          "complementares": [],
+          "indesejadas": [],
+          "complementarMode": "todas",
+          "enabled": true
+        },
+        {
+          "id": "ed-muro",
+          "term": "muro",
+          "complementares": [],
+          "indesejadas": [],
+          "complementarMode": "todas",
+          "enabled": true
+        },
+        {
+          "id": "ed-cobertura",
+          "term": "cobertura",
+          "complementares": ["quadra", "construção", "reforma"],
+          "indesejadas": [],
+          "complementarMode": "qualquer",
+          "enabled": true,
+          "note": "\"Cobertura\" sozinho é ambíguo (cobertura de seguro/plano). Exige contexto de obra."
+        }
+      ]
+    },
+    {
+      "id": "viario",
+      "name": "Infraestrutura viária",
+      "rules": [
+        {
+          "id": "vi-ponte",
+          "term": "ponte",
+          "complementares": [],
+          "indesejadas": [],
+          "complementarMode": "todas",
+          "enabled": true
+        },
+        {
+          "id": "vi-estrada",
+          "term": "estrada",
+          "complementares": [],
+          "indesejadas": [],
+          "complementarMode": "todas",
+          "enabled": true
+        },
+        {
+          "id": "vi-sinalizacao",
+          "term": "sinalização",
+          "complementares": [],
+          "indesejadas": [],
+          "complementarMode": "todas",
+          "enabled": true
+        },
+        {
+          "id": "vi-infraestrutura",
+          "term": "infraestrutura",
+          "complementares": [],
+          "indesejadas": [],
+          "complementarMode": "todas",
+          "enabled": true
+        }
+      ]
+    }
+  ],
+  "profiles": [
+    {
+      "id": "eniac-obras",
+      "name": "Obras ENIAC",
+      "note": "Perfil operacional da ENIAC: obras e engenharia civil no raio de 500 km.",
+      "groupIds": ["obras-civis", "pavimentacao", "drenagem-saneamento", "edificacoes", "viario"],
+      "enabled": true
+    }
+  ]
+}

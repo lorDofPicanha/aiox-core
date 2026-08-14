@@ -10,7 +10,27 @@ test("Monitorar recalcula listas, cidades, contadores e filtros após refresh de
   const code = source("../components/monitorar/MonitorarTab.tsx");
   assert.match(code, /\[interested, opportunities\]/);
   assert.ok((code.match(/\[opportunities\]/g) ?? []).length >= 2);
-  assert.match(code, /\[cityFilter, sortMode, verdict, consorcio, opportunities\]/);
+
+  // O memo `filtered` precisa depender de TODO filtro que ele lê — senão a lista congela
+  // com um recorte velho. Verifica por pertinência, não pela literal do array: acrescentar
+  // um filtro novo deve exigir acrescentá-lo aqui, mas não deve quebrar por reordenação.
+  const filteredDeps = code.match(/const filtered = useMemo\([\s\S]*?\}, \[([^\]]*)\]\);/)?.[1];
+  assert.ok(filteredDeps, "não achei o array de dependências do memo `filtered`");
+  const deps = filteredDeps.split(",").map((dep) => dep.trim());
+  for (const required of ["cityFilter", "sortMode", "verdict", "consorcio", "opportunities", "captureFilter", "captureById"]) {
+    assert.ok(deps.includes(required), `dependência ausente no memo \`filtered\`: ${required}`);
+  }
+});
+
+test("Monitorar deriva a atribuição de captura da config viva, sem persistir crédito", () => {
+  const code = source("../components/monitorar/MonitorarTab.tsx");
+  // A atribuição tem que recalcular quando o usuário edita palavra-chave — se `keywordConfig`
+  // sair das deps, a fila continua creditada pela config antiga e o filtro mente.
+  const captureDeps = code.match(/const captureById = useMemo\([\s\S]*?\}, \[([^\]]*)\]\);/)?.[1];
+  assert.ok(captureDeps, "não achei o array de dependências do memo `captureById`");
+  for (const required of ["opportunities", "keywordConfig"]) {
+    assert.ok(captureDeps.includes(required), `dependência ausente no memo \`captureById\`: ${required}`);
+  }
 });
 
 test("ERM e Win-Intel cancelam requests e descartam gerações tardias", () => {
